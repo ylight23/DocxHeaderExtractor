@@ -279,6 +279,32 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
         Assert.Equal(ReasoningCompletionFailureClass.ProviderFirstByteTimeout, exception.FailureClass);
     }
 
+    [Fact]
+    public async Task Retries_share_one_semantic_pass_deadline()
+    {
+        var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
+        var model = new BudgetedTransientModel(TimeSpan.FromMilliseconds(35));
+        var budget = new ReasoningExecutionBudgetOptions
+        {
+            AttemptTotalTimeout = TimeSpan.FromMilliseconds(100),
+            SemanticPassTimeout = TimeSpan.FromMilliseconds(60),
+            MaxTransientRetries = 2,
+        };
+        var started = System.Diagnostics.Stopwatch.StartNew();
+
+        var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() =>
+            new ReasoningPreservingHeadingHarness(model, budgetOptions: budget)
+                .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling));
+
+        Assert.Equal(ReasoningCompletionFailureClass.ProviderSemanticPassTimeout, exception.FailureClass);
+        Assert.Equal(2, model.Calls);
+        Assert.Equal(2, model.Requests.Count);
+        Assert.InRange(model.AttemptTimeouts[0].TotalMilliseconds, 45, 60);
+        Assert.InRange(model.AttemptTimeouts[1].TotalMilliseconds, 1, 30);
+        Assert.True(model.AttemptTimeouts[1] < model.AttemptTimeouts[0]);
+        Assert.InRange(started.ElapsedMilliseconds, 35, 220);
+    }
+
     private static ReasoningModelRequest Request() => new()
     {
         RequestId = "request",
@@ -346,6 +372,40 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
             Requests.Add(request);
             ProviderCalls++;
             return Task.FromResult(handler(request));
+        }
+    }
+
+    private sealed class BudgetedTransientModel(TimeSpan delay) : IReasoningSemanticModel, IReasoningAttemptTimeoutModel
+    {
+        public string ModelName => "test";
+        public string ProviderName => "test";
+        public int ContextSize => 80_000;
+        public int ProviderCalls => Calls;
+        public int Calls { get; private set; }
+        public List<ReasoningModelRequest> Requests { get; } = [];
+        public List<TimeSpan> AttemptTimeouts { get; } = [];
+
+        public Task<ReasoningModelResponse> CompleteAsync(ReasoningModelRequest request, CancellationToken ct = default) =>
+            CompleteAsync(request, TimeSpan.FromMinutes(1), ct);
+
+        public async Task<ReasoningModelResponse> CompleteAsync(
+            ReasoningModelRequest request,
+            TimeSpan attemptTimeout,
+            CancellationToken ct = default)
+        {
+            Calls++;
+            Requests.Add(request);
+            AttemptTimeouts.Add(attemptTimeout);
+            try
+            {
+                await Task.Delay(delay, ct);
+            }
+            catch (OperationCanceledException) when (ct.IsCancellationRequested)
+            {
+                throw Completion(ReasoningCompletionFailureClass.ProviderTotalTimeout);
+            }
+
+            throw Completion(ReasoningCompletionFailureClass.ProviderFirstByteTimeout);
         }
     }
 

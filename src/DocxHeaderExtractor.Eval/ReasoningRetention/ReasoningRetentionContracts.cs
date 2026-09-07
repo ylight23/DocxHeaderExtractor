@@ -158,6 +158,13 @@ public static class ReasoningCompletionFailureClass
     public const string ProviderFirstByteTimeout = "PROVIDER_FIRST_BYTE_TIMEOUT";
     public const string ProviderStreamInactivityTimeout = "PROVIDER_STREAM_INACTIVITY_TIMEOUT";
     public const string ProviderTotalTimeout = "PROVIDER_TOTAL_TIMEOUT";
+    public const string ProviderSemanticPassTimeout = "PROVIDER_SEMANTIC_PASS_TIMEOUT";
+    public const string ProviderAttemptAbortUnconfirmed = "PROVIDER_ATTEMPT_ABORT_UNCONFIRMED";
+    public const string DocumentTimeout = "DOCUMENT_TIMEOUT";
+    public const string RouteTimeout = "ROUTE_TIMEOUT";
+    public const string RepeatTimeout = "REPEAT_TIMEOUT";
+    public const string CampaignTimeout = "R1_CAMPAIGN_TIMEOUT";
+    public const string UserCancelled = "USER_CANCELLED";
     public const string ProviderUnavailable = "PROVIDER_UNAVAILABLE";
     public const string ProviderAuthFailure = "PROVIDER_AUTH_FAILURE";
     public const string OtherProviderFailure = "OTHER_PROVIDER_FAILURE";
@@ -202,6 +209,16 @@ public sealed class ReasoningCompletionTelemetry
     [JsonPropertyName("visibleSourceIds")] public IReadOnlyList<string> VisibleSourceIds { get; set; } = [];
     [JsonPropertyName("ownedSourceIds")] public IReadOnlyList<string> OwnedSourceIds { get; set; } = [];
     [JsonPropertyName("failureClass")] public string? FailureClass { get; set; }
+    [JsonPropertyName("attemptStartedUtc")] public DateTimeOffset? AttemptStartedUtc { get; set; }
+    [JsonPropertyName("attemptEndedUtc")] public DateTimeOffset? AttemptEndedUtc { get; set; }
+    [JsonPropertyName("attemptElapsedMs")] public long? AttemptElapsedMs { get; set; }
+    [JsonPropertyName("configuredAttemptTimeoutMs")] public long? ConfiguredAttemptTimeoutMs { get; set; }
+    [JsonPropertyName("semanticPassBudgetMs")] public long? SemanticPassBudgetMs { get; set; }
+    [JsonPropertyName("semanticPassElapsedBeforeAttemptMs")] public long? SemanticPassElapsedBeforeAttemptMs { get; set; }
+    [JsonPropertyName("semanticPassRemainingBeforeAttemptMs")] public long? SemanticPassRemainingBeforeAttemptMs { get; set; }
+    [JsonPropertyName("semanticPassRemainingAfterAttemptMs")] public long? SemanticPassRemainingAfterAttemptMs { get; set; }
+    [JsonPropertyName("retryScheduled")] public bool RetryScheduled { get; set; }
+    [JsonPropertyName("retrySuppressedByDeadline")] public bool RetrySuppressedByDeadline { get; set; }
 }
 
 public sealed class ReasoningCompletionException : Exception
@@ -250,6 +267,14 @@ public sealed class ReasoningRetentionExecutionException : Exception
     public IReadOnlyList<ReasoningCompletionStats> CompletionStats { get; }
 }
 
+public sealed class ReasoningExecutionBudgetExceededException : Exception
+{
+    public ReasoningExecutionBudgetExceededException(string failureClass, string message, Exception innerException)
+        : base(message, innerException) => FailureClass = failureClass;
+
+    public string FailureClass { get; }
+}
+
 public interface IReasoningCompletionTelemetrySource
 {
     IReadOnlyList<ReasoningCompletionTelemetry> CompletionTelemetry { get; }
@@ -268,7 +293,45 @@ public sealed record ReasoningCompletionRunStats(
 
 public sealed record ReasoningCompletionStats(
     [property: JsonPropertyName("completion")] ReasoningCompletionRunStats Completion,
-    [property: JsonPropertyName("failureClasses")] IReadOnlyList<string> FailureClasses);
+    [property: JsonPropertyName("failureClasses")] IReadOnlyList<string> FailureClasses)
+{
+    [JsonPropertyName("semanticPasses")] public IReadOnlyList<ReasoningSemanticPassTelemetry> SemanticPasses { get; init; } = [];
+    [JsonPropertyName("attemptBudgets")] public IReadOnlyList<ReasoningAttemptBudgetTelemetry> AttemptBudgets { get; init; } = [];
+}
+
+public sealed record ReasoningSemanticPassTelemetry(
+    [property: JsonPropertyName("documentId")] string DocumentId,
+    [property: JsonPropertyName("route")] string Route,
+    [property: JsonPropertyName("semanticPassId")] string SemanticPassId,
+    [property: JsonPropertyName("contextSegmentId")] string ContextSegmentId,
+    [property: JsonPropertyName("passStartedUtc")] DateTimeOffset PassStartedUtc,
+    [property: JsonPropertyName("passEndedUtc")] DateTimeOffset PassEndedUtc,
+    [property: JsonPropertyName("passElapsedMs")] long PassElapsedMs,
+    [property: JsonPropertyName("passBudgetMs")] long PassBudgetMs,
+    [property: JsonPropertyName("attemptsUsed")] int AttemptsUsed,
+    [property: JsonPropertyName("retriesUsed")] int RetriesUsed,
+    [property: JsonPropertyName("passCompletedNormally")] bool PassCompletedNormally,
+    [property: JsonPropertyName("passTerminalClass")] string? PassTerminalClass);
+
+public sealed record ReasoningAttemptBudgetTelemetry(
+    [property: JsonPropertyName("documentId")] string DocumentId,
+    [property: JsonPropertyName("route")] string Route,
+    [property: JsonPropertyName("semanticPassId")] string SemanticPassId,
+    [property: JsonPropertyName("contextSegmentId")] string ContextSegmentId,
+    [property: JsonPropertyName("attemptNumber")] int AttemptNumber,
+    [property: JsonPropertyName("maxRetries")] int MaxRetries,
+    [property: JsonPropertyName("attemptStartedUtc")] DateTimeOffset AttemptStartedUtc,
+    [property: JsonPropertyName("attemptEndedUtc")] DateTimeOffset AttemptEndedUtc,
+    [property: JsonPropertyName("attemptElapsedMs")] long AttemptElapsedMs,
+    [property: JsonPropertyName("configuredAttemptTimeoutMs")] long ConfiguredAttemptTimeoutMs,
+    [property: JsonPropertyName("semanticPassBudgetMs")] long SemanticPassBudgetMs,
+    [property: JsonPropertyName("semanticPassElapsedBeforeAttemptMs")] long SemanticPassElapsedBeforeAttemptMs,
+    [property: JsonPropertyName("semanticPassRemainingBeforeAttemptMs")] long SemanticPassRemainingBeforeAttemptMs,
+    [property: JsonPropertyName("semanticPassRemainingAfterAttemptMs")] long SemanticPassRemainingAfterAttemptMs,
+    [property: JsonPropertyName("failureClass")] string? FailureClass,
+    [property: JsonPropertyName("timeoutStage")] string? TimeoutStage,
+    [property: JsonPropertyName("retryScheduled")] bool RetryScheduled,
+    [property: JsonPropertyName("retrySuppressedByDeadline")] bool RetrySuppressedByDeadline);
 
 public interface IReasoningSemanticModel
 {
@@ -277,6 +340,15 @@ public interface IReasoningSemanticModel
     int ContextSize { get; }
     int ProviderCalls { get; }
     Task<ReasoningModelResponse> CompleteAsync(ReasoningModelRequest request, CancellationToken ct = default);
+}
+
+/// <summary>Optional eval-only capability for applying the remaining attempt budget directly.</summary>
+public interface IReasoningAttemptTimeoutModel
+{
+    Task<ReasoningModelResponse> CompleteAsync(
+        ReasoningModelRequest request,
+        TimeSpan attemptTimeout,
+        CancellationToken ct = default);
 }
 
 public sealed record ReasoningValidatedProposal(

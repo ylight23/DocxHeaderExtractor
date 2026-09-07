@@ -16,17 +16,24 @@ public sealed class ReasoningPreservingHeadingHarness
     private readonly int _maxContextCharacters;
     private readonly int _windowCharacters;
     private readonly int _maxTransientRetries;
+    private readonly ReasoningExecutionBudgetOptions _budgetOptions;
 
     public ReasoningPreservingHeadingHarness(
         IReasoningSemanticModel model,
         int maxContextCharacters = 80_000,
         int windowCharacters = 48_000,
-        int maxTransientRetries = 2)
+        int maxTransientRetries = 2,
+        ReasoningExecutionBudgetOptions? budgetOptions = null)
     {
         _model = model ?? throw new ArgumentNullException(nameof(model));
         _maxContextCharacters = maxContextCharacters;
         _windowCharacters = windowCharacters;
-        _maxTransientRetries = Math.Max(0, maxTransientRetries);
+        _budgetOptions = budgetOptions ?? new ReasoningExecutionBudgetOptions
+        {
+            MaxTransientRetries = Math.Max(0, maxTransientRetries),
+        };
+        _budgetOptions.Validate();
+        _maxTransientRetries = budgetOptions?.MaxTransientRetries ?? Math.Max(0, maxTransientRetries);
     }
 
     public async Task<ReasoningRouteObservation> RunAsync(
@@ -128,110 +135,352 @@ public sealed class ReasoningPreservingHeadingHarness
         pending.Enqueue(initialSegment);
         var responses = new List<ReasoningHeadingProposal>();
         var occurrenceById = pack.Occurrences.ToDictionary(item => item.SourceOccurrenceId, StringComparer.Ordinal);
+        var passStartedUtc = DateTimeOffset.UtcNow;
+        var passClock = System.Diagnostics.Stopwatch.StartNew();
+        var passBudgetMs = (long)_budgetOptions.SemanticPassTimeout.TotalMilliseconds;
+        var passAttempts = 0;
+        var passRetries = 0;
+        string? terminalClass = null;
+        var passCompletedNormally = false;
 
-        while (pending.Count > 0)
+        try
         {
-            var segment = pending.Dequeue();
-            var transientRetries = 0;
-            while (true)
+            while (pending.Count > 0)
             {
-                ct.ThrowIfCancellationRequested();
-                completion.AttemptCount++;
-                var requestId = ReasoningPrompt.BuildRequestId(source.DocumentId, segment.ContextSegmentId, ConfigurationSignature(route));
-                var attemptNumber = transientRetries + 1;
-                var visibleOccurrences = segment.SourceOccurrenceIds
-                    .Select(id => occurrenceById[id])
-                    .ToArray();
-                var ownedScope = BuildOwnedOutputScope(segment, occurrenceById);
-                var ownedSourceIdsForTelemetry = segment.OwnedSourceOccurrenceIds
-                    .Where(occurrenceById.ContainsKey)
-                    .Select(id => occurrenceById[id].SourceId)
-                    .Distinct(StringComparer.Ordinal)
-                    .ToArray();
-                var request = new ReasoningModelRequest
+                var segment = pending.Dequeue();
+                var transientRetries = 0;
+                while (true)
                 {
-                    RequestId = requestId,
-                    DocumentId = source.DocumentId,
-                    Route = route.ToString(),
-                    SemanticPassId = semanticPassId,
-                    ContextSegmentId = segment.ContextSegmentId,
-                    SystemPrompt = ReasoningPrompt.System,
-                    UserPrompt = ReasoningPrompt.BuildUser(
-                        segment,
-                        route == ReasoningRoute.ReasoningPreservingShadow,
-                        ownedScope),
-                    SourceOccurrenceIds = segment.SourceOccurrenceIds,
-                    OwnedSourceOccurrenceIds = segment.OwnedSourceOccurrenceIds,
-                    OwnedOutputScope = ownedScope,
-                    AttemptId = $"{requestId}:attempt-{attemptNumber}",
-                    ConfigurationSignature = ConfigurationSignature(route),
-                };
-
-                try
-                {
-                    var response = await _model.CompleteAsync(request, ct);
-                    var attemptTelemetry = (_model as IReasoningCompletionTelemetrySource)?.CompletionTelemetry.LastOrDefault();
-                    if (attemptTelemetry is not null)
+                    ct.ThrowIfCancellationRequested();
+                    var elapsedBeforeAttempt = passClock.Elapsed;
+                    var remainingBeforeAttempt = _budgetOptions.SemanticPassTimeout - elapsedBeforeAttempt;
+                    if (remainingBeforeAttempt <= TimeSpan.Zero)
                     {
-                        attemptTelemetry.AttemptId = request.AttemptId;
-                        attemptTelemetry.AttemptNumber = attemptNumber;
-                        attemptTelemetry.VisibleSourceIds = visibleOccurrences
-                            .Select(item => item.SourceId)
-                            .Distinct(StringComparer.Ordinal)
-                            .ToArray();
-                        attemptTelemetry.OwnedSourceIds = ownedSourceIdsForTelemetry
-                            .Order(StringComparer.Ordinal)
-                            .ToArray();
+                        terminalClass = ReasoningCompletionFailureClass.ProviderSemanticPassTimeout;
+                        completion.FailedCompletionCount++;
+                        completion.FailureClasses.Add(terminalClass);
+                        throw PassTimeout(source, route, semanticPassId, segment.ContextSegmentId, passClock.Elapsed);
                     }
-                    var scopedResponse = ValidateResponseOwnership(response, request, segment, occurrenceById, completion);
-                    responses.AddRange(scopedResponse);
-                    completion.SuccessfulCompletionCount++;
-                    if (semanticPassId.StartsWith("global-", StringComparison.Ordinal))
-                        completion.ConsolidationPassCount++;
-                    else
-                        completion.SemanticPassCount++;
-                    break;
-                }
-                catch (ReasoningCompletionException ex)
-                {
-                    completion.FailedCompletionCount++;
-                    completion.FailureClasses.Add(ex.FailureClass);
-                    if (ex.FailureClass == ReasoningCompletionFailureClass.ProviderOutputLimit)
+
+                    completion.AttemptCount++;
+                    passAttempts++;
+                    var requestId = ReasoningPrompt.BuildRequestId(source.DocumentId, segment.ContextSegmentId, ConfigurationSignature(route));
+                    var attemptNumber = transientRetries + 1;
+                    var visibleOccurrences = segment.SourceOccurrenceIds
+                        .Select(id => occurrenceById[id])
+                        .ToArray();
+                    var ownedScope = BuildOwnedOutputScope(segment, occurrenceById);
+                    var ownedSourceIdsForTelemetry = segment.OwnedSourceOccurrenceIds
+                        .Where(occurrenceById.ContainsKey)
+                        .Select(id => occurrenceById[id].SourceId)
+                        .Distinct(StringComparer.Ordinal)
+                        .ToArray();
+                    var request = new ReasoningModelRequest
                     {
-                        if (!CanSplitOwnedRange(segment, occurrenceById))
-                            throw WithAttemptHistory(ex);
-                        var split = SplitOwnership(segment, pack.Occurrences);
-                        pending.Enqueue(split.Left);
-                        pending.Enqueue(split.Right);
-                        completion.RangeSplitCount++;
+                        RequestId = requestId,
+                        DocumentId = source.DocumentId,
+                        Route = route.ToString(),
+                        SemanticPassId = semanticPassId,
+                        ContextSegmentId = segment.ContextSegmentId,
+                        SystemPrompt = ReasoningPrompt.System,
+                        UserPrompt = ReasoningPrompt.BuildUser(
+                            segment,
+                            route == ReasoningRoute.ReasoningPreservingShadow,
+                            ownedScope),
+                        SourceOccurrenceIds = segment.SourceOccurrenceIds,
+                        OwnedSourceOccurrenceIds = segment.OwnedSourceOccurrenceIds,
+                        OwnedOutputScope = ownedScope,
+                        AttemptId = $"{requestId}:attempt-{attemptNumber}",
+                        ConfigurationSignature = ConfigurationSignature(route),
+                    };
+                    var attemptStartedUtc = DateTimeOffset.UtcNow;
+                    var attemptClock = System.Diagnostics.Stopwatch.StartNew();
+                    var attemptTimeout = Min(_budgetOptions.AttemptTotalTimeout, remainingBeforeAttempt);
+
+                    try
+                    {
+                        var response = await CompleteAttemptAsync(request, attemptTimeout, ct);
+                        var attemptTelemetry = (_model as IReasoningCompletionTelemetrySource)?.CompletionTelemetry.LastOrDefault();
+                        var attemptEndedUtc = DateTimeOffset.UtcNow;
+                        var attemptElapsed = attemptClock.Elapsed;
+                        AnnotateAttempt(
+                            attemptTelemetry,
+                            request,
+                            attemptNumber,
+                            visibleOccurrences,
+                            ownedSourceIdsForTelemetry,
+                            attemptStartedUtc,
+                            attemptEndedUtc,
+                            attemptElapsed,
+                            attemptTimeout,
+                            passBudgetMs,
+                            elapsedBeforeAttempt,
+                            remainingBeforeAttempt,
+                            _budgetOptions.SemanticPassTimeout - passClock.Elapsed,
+                            failureClass: null,
+                            retryScheduled: false,
+                            retrySuppressedByDeadline: false);
+                        completion.AddAttemptBudget(new ReasoningAttemptBudgetTelemetry(
+                            source.DocumentId,
+                            route.ToString(),
+                            semanticPassId,
+                            segment.ContextSegmentId,
+                            attemptNumber,
+                            _maxTransientRetries,
+                            attemptStartedUtc,
+                            attemptEndedUtc,
+                            (long)attemptElapsed.TotalMilliseconds,
+                            (long)attemptTimeout.TotalMilliseconds,
+                            passBudgetMs,
+                            (long)elapsedBeforeAttempt.TotalMilliseconds,
+                            (long)remainingBeforeAttempt.TotalMilliseconds,
+                            Math.Max(0, (long)(_budgetOptions.SemanticPassTimeout - passClock.Elapsed).TotalMilliseconds),
+                            null,
+                            null,
+                            false,
+                            false));
+                        var scopedResponse = ValidateResponseOwnership(response, request, segment, occurrenceById, completion);
+                        responses.AddRange(scopedResponse);
+                        completion.SuccessfulCompletionCount++;
+                        if (semanticPassId.StartsWith("global-", StringComparison.Ordinal))
+                            completion.ConsolidationPassCount++;
+                        else
+                            completion.SemanticPassCount++;
                         break;
                     }
-
-                    if (IsTransientProviderFailure(ex.FailureClass) && transientRetries < _maxTransientRetries)
+                    catch (ReasoningCompletionException ex)
                     {
-                        transientRetries++;
-                        completion.RetryCount++;
-                        continue;
+                        completion.FailedCompletionCount++;
+                        completion.FailureClasses.Add(ex.FailureClass);
+                        var attemptTelemetry = (_model as IReasoningCompletionTelemetrySource)?.CompletionTelemetry.LastOrDefault();
+                        var attemptEndedUtc = DateTimeOffset.UtcNow;
+                        var attemptElapsed = attemptClock.Elapsed;
+                        var remainingAfterAttempt = Math.Max(0, (_budgetOptions.SemanticPassTimeout - passClock.Elapsed).TotalMilliseconds);
+                        var retry = ex.FailureClass != ReasoningCompletionFailureClass.ProviderAttemptAbortUnconfirmed &&
+                            IsTransientProviderFailure(ex.FailureClass) && transientRetries < _maxTransientRetries;
+                        var suppressRetry = retry && remainingAfterAttempt <= 1;
+                        AnnotateAttempt(
+                            attemptTelemetry,
+                            request,
+                            attemptNumber,
+                            visibleOccurrences,
+                            ownedSourceIdsForTelemetry,
+                            attemptStartedUtc,
+                            attemptEndedUtc,
+                            attemptElapsed,
+                            attemptTimeout,
+                            passBudgetMs,
+                            elapsedBeforeAttempt,
+                            remainingBeforeAttempt,
+                            TimeSpan.FromMilliseconds(remainingAfterAttempt),
+                            ex.FailureClass,
+                            retryScheduled: retry && !suppressRetry,
+                            retrySuppressedByDeadline: suppressRetry);
+                        completion.AddAttemptBudget(new ReasoningAttemptBudgetTelemetry(
+                            source.DocumentId,
+                            route.ToString(),
+                            semanticPassId,
+                            segment.ContextSegmentId,
+                            attemptNumber,
+                            _maxTransientRetries,
+                            attemptStartedUtc,
+                            attemptEndedUtc,
+                            (long)attemptElapsed.TotalMilliseconds,
+                            (long)attemptTimeout.TotalMilliseconds,
+                            passBudgetMs,
+                            (long)elapsedBeforeAttempt.TotalMilliseconds,
+                            (long)remainingBeforeAttempt.TotalMilliseconds,
+                            (long)remainingAfterAttempt,
+                            ex.FailureClass,
+                            ex.Telemetry.TimeoutStage,
+                            retry && !suppressRetry,
+                            suppressRetry));
+
+                        if (ex.FailureClass == ReasoningCompletionFailureClass.ProviderOutputLimit)
+                        {
+                            if (!CanSplitOwnedRange(segment, occurrenceById))
+                                throw WithAttemptHistory(ex);
+                            var split = SplitOwnership(segment, pack.Occurrences);
+                            pending.Enqueue(split.Left);
+                            pending.Enqueue(split.Right);
+                            completion.RangeSplitCount++;
+                            break;
+                        }
+
+                        if (retry && !suppressRetry)
+                        {
+                            transientRetries++;
+                            passRetries++;
+                            completion.RetryCount++;
+                            continue;
+                        }
+
+                        if (retry && suppressRetry)
+                        {
+                            terminalClass = ReasoningCompletionFailureClass.ProviderSemanticPassTimeout;
+                            completion.FailureClasses.Add(terminalClass);
+                            throw PassTimeout(source, route, semanticPassId, segment.ContextSegmentId, passClock.Elapsed, ex);
+                        }
+
+                        throw WithAttemptHistory(ex);
                     }
-                    throw WithAttemptHistory(ex);
+                    catch (Exception ex) when (ex is InvalidDataException)
+                    {
+                        completion.FailedCompletionCount++;
+                        completion.FailureClasses.Add(ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid);
+                        var telemetry = (_model as IReasoningCompletionTelemetrySource)?.CompletionTelemetry.LastOrDefault()
+                            ?? new ReasoningCompletionTelemetry { FailureClass = ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid };
+                        telemetry.ValidationReason = ex.Message;
+                        AnnotateAttempt(
+                            telemetry,
+                            request,
+                            attemptNumber,
+                            visibleOccurrences,
+                            ownedSourceIdsForTelemetry,
+                            attemptStartedUtc,
+                            DateTimeOffset.UtcNow,
+                            attemptClock.Elapsed,
+                            attemptTimeout,
+                            passBudgetMs,
+                            elapsedBeforeAttempt,
+                            remainingBeforeAttempt,
+                            TimeSpan.FromMilliseconds(Math.Max(0, (_budgetOptions.SemanticPassTimeout - passClock.Elapsed).TotalMilliseconds)),
+                            ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid,
+                            false,
+                            false);
+                        throw WithAttemptHistory(new ReasoningCompletionException(
+                            ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid,
+                            ex.Message,
+                            telemetry,
+                            ex));
+                    }
                 }
-                catch (Exception ex) when (ex is InvalidDataException)
-                {
-                    completion.FailedCompletionCount++;
-                    completion.FailureClasses.Add(ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid);
-                    var telemetry = (_model as IReasoningCompletionTelemetrySource)?.CompletionTelemetry.LastOrDefault()
-                        ?? new ReasoningCompletionTelemetry { FailureClass = ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid };
-                    telemetry.ValidationReason = ex.Message;
-                    throw WithAttemptHistory(new ReasoningCompletionException(
-                        ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid,
-                        ex.Message,
-                        telemetry,
-                        ex));
-                }
+            }
+
+            passCompletedNormally = true;
+            return responses;
+        }
+        catch (ReasoningCompletionException ex)
+        {
+            terminalClass ??= ex.FailureClass;
+            throw;
+        }
+        finally
+        {
+            var passEndedUtc = DateTimeOffset.UtcNow;
+            completion.AddSemanticPass(new ReasoningSemanticPassTelemetry(
+                source.DocumentId,
+                route.ToString(),
+                semanticPassId,
+                initialSegment.ContextSegmentId,
+                passStartedUtc,
+                passEndedUtc,
+                passClock.ElapsedMilliseconds,
+                passBudgetMs,
+                passAttempts,
+                passRetries,
+                passCompletedNormally,
+                terminalClass));
+        }
+    }
+
+    private async Task<ReasoningModelResponse> CompleteAttemptAsync(
+        ReasoningModelRequest request,
+        TimeSpan attemptTimeout,
+        CancellationToken callerToken)
+    {
+        using var attemptCancellation = CancellationTokenSource.CreateLinkedTokenSource(callerToken);
+        var completion = _model is IReasoningAttemptTimeoutModel timeoutModel
+            ? timeoutModel.CompleteAsync(request, attemptTimeout, attemptCancellation.Token)
+            : _model.CompleteAsync(request, attemptCancellation.Token);
+        var timeout = Task.Delay(attemptTimeout);
+        var cancelled = Task.Delay(Timeout.InfiniteTimeSpan, callerToken);
+        var finished = await Task.WhenAny(completion, timeout, cancelled);
+        if (finished == cancelled)
+            throw new OperationCanceledException(callerToken);
+        if (finished == timeout)
+        {
+            attemptCancellation.Cancel();
+            var cancellationConfirmed = await Task.WhenAny(
+                completion,
+                Task.Delay(TimeSpan.FromMilliseconds(100)));
+            if (cancellationConfirmed != completion)
+            {
+                _ = completion.ContinueWith(
+                    task => _ = task.Exception,
+                    CancellationToken.None,
+                    TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
+                    TaskScheduler.Default);
+                throw new ReasoningCompletionException(
+                    ReasoningCompletionFailureClass.ProviderAttemptAbortUnconfirmed,
+                    "Provider attempt did not confirm cancellation before its attempt deadline.",
+                    new ReasoningCompletionTelemetry { FailureClass = ReasoningCompletionFailureClass.ProviderAttemptAbortUnconfirmed });
             }
         }
 
-        return responses;
+        return await completion;
+    }
+
+    private static TimeSpan Min(TimeSpan left, TimeSpan right) => left <= right ? left : right;
+
+    private static ReasoningCompletionException PassTimeout(
+        SourceDocument source,
+        ReasoningRoute route,
+        string semanticPassId,
+        string contextSegmentId,
+        TimeSpan elapsed,
+        Exception? inner = null) =>
+        new(
+            ReasoningCompletionFailureClass.ProviderSemanticPassTimeout,
+            $"Semantic pass exceeded its shared deadline after {elapsed.TotalMilliseconds:F0} ms.",
+            new ReasoningCompletionTelemetry
+            {
+                DocumentId = source.DocumentId,
+                Route = route.ToString(),
+                SemanticPassId = semanticPassId,
+                ContextSegmentId = contextSegmentId,
+                FailureClass = ReasoningCompletionFailureClass.ProviderSemanticPassTimeout,
+                TimeoutStage = "SEMANTIC_PASS",
+            },
+            inner);
+
+    private static void AnnotateAttempt(
+        ReasoningCompletionTelemetry? telemetry,
+        ReasoningModelRequest request,
+        int attemptNumber,
+        IReadOnlyList<ReasoningSourceOccurrence> visibleOccurrences,
+        IReadOnlyList<string> ownedSourceIds,
+        DateTimeOffset startedUtc,
+        DateTimeOffset endedUtc,
+        TimeSpan elapsed,
+        TimeSpan attemptTimeout,
+        long passBudgetMs,
+        TimeSpan passElapsedBefore,
+        TimeSpan passRemainingBefore,
+        TimeSpan passRemainingAfter,
+        string? failureClass,
+        bool retryScheduled,
+        bool retrySuppressedByDeadline)
+    {
+        if (telemetry is null) return;
+        telemetry.AttemptId = request.AttemptId;
+        telemetry.AttemptNumber = attemptNumber;
+        telemetry.VisibleSourceIds = visibleOccurrences
+            .Select(item => item.SourceId)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        telemetry.OwnedSourceIds = ownedSourceIds.Order(StringComparer.Ordinal).ToArray();
+        telemetry.AttemptStartedUtc = startedUtc;
+        telemetry.AttemptEndedUtc = endedUtc;
+        telemetry.AttemptElapsedMs = (long)elapsed.TotalMilliseconds;
+        telemetry.ConfiguredAttemptTimeoutMs = (long)attemptTimeout.TotalMilliseconds;
+        telemetry.SemanticPassBudgetMs = passBudgetMs;
+        telemetry.SemanticPassElapsedBeforeAttemptMs = (long)passElapsedBefore.TotalMilliseconds;
+        telemetry.SemanticPassRemainingBeforeAttemptMs = Math.Max(0, (long)passRemainingBefore.TotalMilliseconds);
+        telemetry.SemanticPassRemainingAfterAttemptMs = Math.Max(0, (long)passRemainingAfter.TotalMilliseconds);
+        telemetry.FailureClass ??= failureClass;
+        telemetry.RetryScheduled = retryScheduled;
+        telemetry.RetrySuppressedByDeadline = retrySuppressedByDeadline;
     }
 
     private ReasoningCompletionException WithAttemptHistory(ReasoningCompletionException exception)
@@ -406,9 +655,17 @@ public sealed class ReasoningPreservingHeadingHarness
         public int OutOfScopeProposalCount { get; set; }
         public int OwnershipViolationCount { get; set; }
         public List<string> FailureClasses { get; } = [];
+        public List<ReasoningSemanticPassTelemetry> SemanticPasses { get; } = [];
+        public List<ReasoningAttemptBudgetTelemetry> AttemptBudgets { get; } = [];
 
-        public ReasoningCompletionStats ToStats() => new(
-            new ReasoningCompletionRunStats(
+        public void AddSemanticPass(ReasoningSemanticPassTelemetry telemetry) => SemanticPasses.Add(telemetry);
+
+        public void AddAttemptBudget(ReasoningAttemptBudgetTelemetry telemetry) => AttemptBudgets.Add(telemetry);
+
+        public ReasoningCompletionStats ToStats()
+        {
+            var stats = new ReasoningCompletionStats(
+                new ReasoningCompletionRunStats(
                 AttemptCount,
                 SuccessfulCompletionCount,
                 FailedCompletionCount,
@@ -418,6 +675,12 @@ public sealed class ReasoningPreservingHeadingHarness
                 ConsolidationPassCount,
                 OutOfScopeProposalCount,
                 OwnershipViolationCount),
-            FailureClasses.Distinct(StringComparer.Ordinal).ToArray());
+                FailureClasses.Distinct(StringComparer.Ordinal).ToArray())
+            {
+                SemanticPasses = SemanticPasses.ToArray(),
+                AttemptBudgets = AttemptBudgets.ToArray(),
+            };
+            return stats;
+        }
     }
 }

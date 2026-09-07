@@ -44,6 +44,8 @@ public static class ReasoningRetentionRunner
         var reasoningRemote = BuildReasoningRemoteOptions(remote);
         var timeoutOptions = ReasoningProviderTimeoutOptions.FromEnvironment();
         timeoutOptions.Validate();
+        var executionBudget = ReasoningExecutionBudgetOptions.FromEnvironment(timeoutOptions);
+        executionBudget.Validate();
         var gold = LoadAndValidateGold(repoRoot);
         var manifestPath = Path.Combine(repoRoot, OccurrenceManifest.Replace('/', Path.DirectorySeparatorChar));
         var executionRevision = GitRevision(repoRoot) ?? "UNRESOLVED";
@@ -84,38 +86,49 @@ public static class ReasoningRetentionRunner
                 maxOutputTokens = reasoningRemote.MaxOutputTokens,
                 seed = (int?)null,
                 timeouts = TimeoutConfiguration(timeoutOptions),
+                executionBudget = BudgetConfiguration(executionBudget),
             },
             providerCalls = 0,
             holdoutTouched = false,
         }, cancellationToken);
 
         var repeats = new List<RepeatResult>();
+        using var campaignTimeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        campaignTimeout.CancelAfter(executionBudget.CampaignTimeout);
+        var executionToken = campaignTimeout.Token;
         try
         {
             for (var repeat = 1; repeat <= 3; repeat++)
             {
-                cancellationToken.ThrowIfCancellationRequested();
+                executionToken.ThrowIfCancellationRequested();
                 Console.WriteLine($"R1-B repeat {repeat}/3: A -> B -> C");
-                repeats.Add(await RunRepeatAsync(
+                repeats.Add(await RunRepeatWithDeadlineAsync(
                     repoRoot,
                     gold,
                     remote,
                     reasoningRemote,
                     timeoutOptions,
+                    executionBudget,
                     repeat,
-                    cancellationToken));
+                    executionToken));
             }
         }
         catch (Exception ex)
         {
             var completionFailure = ex as ReasoningCompletionException;
             var executionFailure = ex as ReasoningRetentionExecutionException;
+            var budgetFailure = ex as ReasoningExecutionBudgetExceededException;
             var failureClass = completionFailure?.FailureClass ?? executionFailure?.FailureClass ??
-                (ex.Message.Contains("PROVIDER_AUTH_FAILURE", StringComparison.Ordinal)
-                    ? ReasoningCompletionFailureClass.ProviderAuthFailure
-                    : ex is InvalidDataException
-                        ? ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid
-                        : ReasoningCompletionFailureClass.ProviderUnavailable);
+                budgetFailure?.FailureClass ??
+                (!cancellationToken.IsCancellationRequested && campaignTimeout.IsCancellationRequested
+                    ? ReasoningCompletionFailureClass.CampaignTimeout
+                    : cancellationToken.IsCancellationRequested
+                        ? ReasoningCompletionFailureClass.UserCancelled
+                        : ex.Message.Contains("PROVIDER_AUTH_FAILURE", StringComparison.Ordinal)
+                            ? ReasoningCompletionFailureClass.ProviderAuthFailure
+                            : ex is InvalidDataException
+                                ? ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid
+                                : ReasoningCompletionFailureClass.ProviderUnavailable);
             var attempts = completionFailure?.AttemptTelemetry ?? executionFailure?.CompletionTelemetry ?? [];
             var observedProviderCalls = executionFailure?.ProviderCalls ?? attempts.Count;
             var completionStats = executionFailure?.CompletionStats ?? [];
@@ -268,6 +281,7 @@ public static class ReasoningRetentionRunner
             firstLoss,
             providerCalls,
             providerTimeouts = TimeoutConfiguration(timeoutOptions),
+            executionBudget = BudgetConfiguration(executionBudget),
             holdoutTouched = false,
             rawPromptsStored = false,
             rawCompletionsStored = false,
@@ -335,12 +349,119 @@ public static class ReasoningRetentionRunner
             },
             providerCalls,
             partialResponsesScored = false,
+            executionBudget = BudgetConfiguration(executionBudget),
             holdoutTouched = false,
             statusReason = "three paired repeats completed",
         }, cancellationToken);
 
         Console.WriteLine($"R1-B complete: gold={gold.Count}; providerCalls={providerCalls}; owner={RecommendOwner(repeats)}");
         return 0;
+    }
+
+    /// <summary>
+    /// Runs one provider-backed reasoning route without Gold scoring. This is the required
+    /// liveness smoke before starting the six-document, three-repeat campaign.
+    /// </summary>
+    public static async Task<int> RunSmokeAsync(
+        string repoRoot,
+        RemoteInferenceOptions remote,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(repoRoot);
+        ArgumentNullException.ThrowIfNull(remote);
+
+        remote.Validate();
+        var reasoningRemote = BuildReasoningRemoteOptions(remote);
+        var timeoutOptions = ReasoningProviderTimeoutOptions.FromEnvironment();
+        timeoutOptions.Validate();
+        var executionBudget = ReasoningExecutionBudgetOptions.FromEnvironment(timeoutOptions);
+        executionBudget.Validate();
+
+        const string documentId = "DOC-0001";
+        const ReasoningRoute route = ReasoningRoute.ModelCapabilityCeiling;
+        var inputPath = Path.Combine(
+            repoRoot,
+            StrictGoldOccurrenceMaterializer.SourcePaths[documentId]
+                .Replace('/', Path.DirectorySeparatorChar));
+        var outputRoot = Path.Combine(repoRoot, RetentionRoot.Replace('/', Path.DirectorySeparatorChar));
+        var artifactPath = Path.Combine(outputRoot, "provider-smoke.v1.json");
+        var executionRevision = GitRevision(repoRoot) ?? "UNRESOLVED";
+        var startedUtc = DateTimeOffset.UtcNow;
+        using var model = new OpenRouterReasoningSemanticModel(reasoningRemote, timeoutOptions: timeoutOptions);
+
+        try
+        {
+            var source = new OpenXmlDocumentSource().Read(inputPath);
+            var features = NumberingStyleFeatures.FromSourceDocument(source);
+            var derived = new DocumentFeatureDeriver().Derive(source);
+            var pipelineOptions = new PipelineOptions { DisableLlm = false };
+            var policyState = DocxPolicyStateBuilder.Build(source, features, derived, pipelineOptions.Extraction);
+            var observation = await new ReasoningPreservingHeadingHarness(
+                    model,
+                    budgetOptions: executionBudget)
+                .RunAsync(source, policyState, route, cancellationToken);
+
+            await WriteJsonAsync(artifactPath, new
+            {
+                artifactKind = "a99_reasoning_provider_smoke",
+                schemaVersion = "a99-provider-smoke-v1",
+                status = "PASS",
+                classification = "PROVIDER_COMPLETION_CONFIRMED",
+                executionRevision,
+                documentId,
+                route = route.ToString(),
+                repeat = 1,
+                startedUtc,
+                endedUtc = DateTimeOffset.UtcNow,
+                providerCalls = model.ProviderCalls,
+                proposedCount = observation.Proposed.Count,
+                validatedCount = observation.Validated.Count,
+                completionStats = observation.CompletionStats,
+                providerTimeouts = TimeoutConfiguration(timeoutOptions),
+                executionBudget = BudgetConfiguration(executionBudget),
+                scored = false,
+                holdoutTouched = false,
+                goldJoined = false,
+            }, cancellationToken);
+            Console.WriteLine($"R1-B provider smoke complete: {documentId}/{route}; providerCalls={model.ProviderCalls}");
+            return 0;
+        }
+        catch (Exception ex)
+        {
+            var failureClass = ex switch
+            {
+                ReasoningCompletionException completion => completion.FailureClass,
+                ReasoningExecutionBudgetExceededException budget => budget.FailureClass,
+                OperationCanceledException when cancellationToken.IsCancellationRequested => ReasoningCompletionFailureClass.UserCancelled,
+                _ => ReasoningCompletionFailureClass.ProviderUnavailable,
+            };
+            var unavailable = IsTimeoutFailure(failureClass) ||
+                failureClass == ReasoningCompletionFailureClass.ProviderUnavailable;
+            await WriteJsonAsync(artifactPath, new
+            {
+                artifactKind = "a99_reasoning_provider_smoke",
+                schemaVersion = "a99-provider-smoke-v1",
+                status = "BLOCKED",
+                classification = unavailable ? "MODEL_OR_SERVICE_UNAVAILABLE" : failureClass,
+                failureClass,
+                message = ex.Message,
+                executionRevision,
+                documentId,
+                route = route.ToString(),
+                repeat = 1,
+                startedUtc,
+                endedUtc = DateTimeOffset.UtcNow,
+                providerCalls = model.ProviderCalls,
+                attempts = model.CompletionTelemetry,
+                providerTimeouts = TimeoutConfiguration(timeoutOptions),
+                executionBudget = BudgetConfiguration(executionBudget),
+                scored = false,
+                holdoutTouched = false,
+                goldJoined = false,
+            }, cancellationToken);
+            Console.Error.WriteLine($"R1-B provider smoke blocked: {failureClass}: {ex.Message}");
+            return 1;
+        }
     }
 
     private static RemoteInferenceOptions BuildReasoningRemoteOptions(RemoteInferenceOptions remote)
@@ -372,12 +493,67 @@ public static class ReasoningRetentionRunner
         return reasoningRemote;
     }
 
+    private static async Task<T> RunRouteWithDeadlineAsync<T>(
+        Func<CancellationToken, Task<T>> operation,
+        CancellationToken parentToken,
+        TimeSpan timeout,
+        string operationName)
+    {
+        using var routeTimeout = CancellationTokenSource.CreateLinkedTokenSource(parentToken);
+        routeTimeout.CancelAfter(timeout);
+        try
+        {
+            return await operation(routeTimeout.Token);
+        }
+        catch (OperationCanceledException ex) when (!parentToken.IsCancellationRequested && routeTimeout.IsCancellationRequested)
+        {
+            throw new ReasoningExecutionBudgetExceededException(
+                ReasoningCompletionFailureClass.RouteTimeout,
+                $"Route operation '{operationName}' exceeded its shared deadline.",
+                ex);
+        }
+    }
+
+    private static async Task<RepeatResult> RunRepeatWithDeadlineAsync(
+        string repoRoot,
+        IReadOnlyList<ReasoningGoldOccurrence> gold,
+        RemoteInferenceOptions remote,
+        RemoteInferenceOptions reasoningRemote,
+        ReasoningProviderTimeoutOptions timeoutOptions,
+        ReasoningExecutionBudgetOptions executionBudget,
+        int repeat,
+        CancellationToken parentToken)
+    {
+        using var repeatTimeout = CancellationTokenSource.CreateLinkedTokenSource(parentToken);
+        repeatTimeout.CancelAfter(executionBudget.RepeatTimeout);
+        try
+        {
+            return await RunRepeatAsync(
+                repoRoot,
+                gold,
+                remote,
+                reasoningRemote,
+                timeoutOptions,
+                executionBudget,
+                repeat,
+                repeatTimeout.Token);
+        }
+        catch (OperationCanceledException ex) when (!parentToken.IsCancellationRequested && repeatTimeout.IsCancellationRequested)
+        {
+            throw new ReasoningExecutionBudgetExceededException(
+                ReasoningCompletionFailureClass.RepeatTimeout,
+                $"Repeat {repeat} exceeded its shared deadline.",
+                ex);
+        }
+    }
+
     private static async Task<RepeatResult> RunRepeatAsync(
         string repoRoot,
         IReadOnlyList<ReasoningGoldOccurrence> gold,
         RemoteInferenceOptions remote,
         RemoteInferenceOptions reasoningRemote,
         ReasoningProviderTimeoutOptions timeoutOptions,
+        ReasoningExecutionBudgetOptions executionBudget,
         int repeat,
         CancellationToken ct)
     {
@@ -387,29 +563,46 @@ public static class ReasoningRetentionRunner
         var completionStats = new List<ReasoningCompletionStats>();
         foreach (var documentId in StrictGoldOccurrenceMaterializer.DocumentIds)
         {
-            ct.ThrowIfCancellationRequested();
-            var inputPath = Path.Combine(repoRoot, StrictGoldOccurrenceMaterializer.SourcePaths[documentId]
-                .Replace('/', Path.DirectorySeparatorChar));
-            var documentGold = gold.Where(item => item.DocumentId == documentId).ToArray();
-            var source = new OpenXmlDocumentSource().Read(inputPath);
-            var features = NumberingStyleFeatures.FromSourceDocument(source);
-            var derived = new DocumentFeatureDeriver().Derive(source);
-            var pipelineOptions = new PipelineOptions { DisableLlm = false };
-            var policyState = DocxPolicyStateBuilder.Build(source, features, derived, pipelineOptions.Extraction);
+            using var documentTimeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
+            documentTimeout.CancelAfter(executionBudget.DocumentTimeout);
+            var documentToken = documentTimeout.Token;
+            try
+            {
+                documentToken.ThrowIfCancellationRequested();
+                var inputPath = Path.Combine(repoRoot, StrictGoldOccurrenceMaterializer.SourcePaths[documentId]
+                    .Replace('/', Path.DirectorySeparatorChar));
+                var documentGold = gold.Where(item => item.DocumentId == documentId).ToArray();
+                var source = new OpenXmlDocumentSource().Read(inputPath);
+                var features = NumberingStyleFeatures.FromSourceDocument(source);
+                var derived = new DocumentFeatureDeriver().Derive(source);
+                var pipelineOptions = new PipelineOptions { DisableLlm = false };
+                var policyState = DocxPolicyStateBuilder.Build(source, features, derived, pipelineOptions.Extraction);
 
-            using var ceilingModel = new OpenRouterReasoningSemanticModel(reasoningRemote, timeoutOptions: timeoutOptions);
-            var ceilingObservation = await new ReasoningPreservingHeadingHarness(ceilingModel)
-                .RunAsync(source, policyState, ReasoningRoute.ModelCapabilityCeiling, ct);
-            providerCalls += ceilingModel.ProviderCalls;
-            completionTelemetry.AddRange(ceilingModel.CompletionTelemetry);
-            completionStats.Add(ceilingObservation.CompletionStats);
+                using var ceilingModel = new OpenRouterReasoningSemanticModel(reasoningRemote, timeoutOptions: timeoutOptions);
+                var ceilingObservation = await RunRouteWithDeadlineAsync(
+                    token => new ReasoningPreservingHeadingHarness(
+                            ceilingModel,
+                            budgetOptions: executionBudget)
+                        .RunAsync(source, policyState, ReasoningRoute.ModelCapabilityCeiling, token),
+                    documentToken,
+                    executionBudget.RouteTimeout,
+                    $"{documentId}:ceiling");
+                providerCalls += ceilingModel.ProviderCalls;
+                completionTelemetry.AddRange(ceilingModel.CompletionTelemetry);
+                completionStats.Add(ceilingObservation.CompletionStats);
 
-            using var shadowModel = new OpenRouterReasoningSemanticModel(reasoningRemote, timeoutOptions: timeoutOptions);
-            var shadowObservation = await new ReasoningPreservingHeadingHarness(shadowModel)
-                .RunAsync(source, policyState, ReasoningRoute.ReasoningPreservingShadow, ct);
-            providerCalls += shadowModel.ProviderCalls;
-            completionTelemetry.AddRange(shadowModel.CompletionTelemetry);
-            completionStats.Add(shadowObservation.CompletionStats);
+                using var shadowModel = new OpenRouterReasoningSemanticModel(reasoningRemote, timeoutOptions: timeoutOptions);
+                var shadowObservation = await RunRouteWithDeadlineAsync(
+                    token => new ReasoningPreservingHeadingHarness(
+                            shadowModel,
+                            budgetOptions: executionBudget)
+                        .RunAsync(source, policyState, ReasoningRoute.ReasoningPreservingShadow, token),
+                    documentToken,
+                    executionBudget.RouteTimeout,
+                    $"{documentId}:shadow");
+                providerCalls += shadowModel.ProviderCalls;
+                completionTelemetry.AddRange(shadowModel.CompletionTelemetry);
+                completionStats.Add(shadowObservation.CompletionStats);
 
             var selection = new InferenceProviderSelection
             {
@@ -422,7 +615,15 @@ public static class ReasoningRetentionRunner
             AuthorityPipelineExecutionResult execution;
             try
             {
-                execution = await pipeline.RunDocumentExecutionAsync(inputPath, ct: ct);
+                execution = await RunRouteWithDeadlineAsync(
+                    token => pipeline.RunDocumentExecutionAsync(inputPath, ct: token),
+                    documentToken,
+                    executionBudget.RouteTimeout,
+                    $"{documentId}:production");
+            }
+            catch (OperationCanceledException) when (!ct.IsCancellationRequested && documentTimeout.IsCancellationRequested)
+            {
+                throw;
             }
             catch (Exception ex)
             {
@@ -467,6 +668,14 @@ public static class ReasoningRetentionRunner
                 semanticCoverage,
                 ownershipCoverage,
                 [ceilingObservation.CompletionStats, shadowObservation.CompletionStats]));
+            }
+            catch (OperationCanceledException ex) when (!ct.IsCancellationRequested && documentTimeout.IsCancellationRequested)
+            {
+                throw new ReasoningExecutionBudgetExceededException(
+                    ReasoningCompletionFailureClass.DocumentTimeout,
+                    $"Document {documentId} exceeded its shared deadline.",
+                    ex);
+            }
         }
 
         return new RepeatResult(repeat, providerCalls, documents, completionTelemetry);
@@ -631,6 +840,17 @@ public static class ReasoningRetentionRunner
         totalSeconds = (int)options.TotalRequestTimeout.TotalSeconds,
     };
 
+    private static object BudgetConfiguration(ReasoningExecutionBudgetOptions options) => new
+    {
+        attemptTotalSeconds = (int)options.AttemptTotalTimeout.TotalSeconds,
+        semanticPassSeconds = (int)options.SemanticPassTimeout.TotalSeconds,
+        documentSeconds = (int)options.DocumentTimeout.TotalSeconds,
+        routeSeconds = (int)options.RouteTimeout.TotalSeconds,
+        repeatSeconds = (int)options.RepeatTimeout.TotalSeconds,
+        campaignSeconds = (int)options.CampaignTimeout.TotalSeconds,
+        maxTransientRetries = options.MaxTransientRetries,
+    };
+
     private static object BuildProviderLivenessArtifact(
         string status,
         ReasoningProviderTimeoutOptions timeoutOptions,
@@ -715,7 +935,13 @@ public static class ReasoningRetentionRunner
         ReasoningCompletionFailureClass.ProviderConnectTimeout or
         ReasoningCompletionFailureClass.ProviderFirstByteTimeout or
         ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout or
-        ReasoningCompletionFailureClass.ProviderTotalTimeout;
+        ReasoningCompletionFailureClass.ProviderTotalTimeout or
+        ReasoningCompletionFailureClass.ProviderSemanticPassTimeout or
+        ReasoningCompletionFailureClass.ProviderAttemptAbortUnconfirmed or
+        ReasoningCompletionFailureClass.DocumentTimeout or
+        ReasoningCompletionFailureClass.RouteTimeout or
+        ReasoningCompletionFailureClass.RepeatTimeout or
+        ReasoningCompletionFailureClass.CampaignTimeout;
 
     private static async Task WriteJsonAsync(string path, object value, CancellationToken ct)
     {

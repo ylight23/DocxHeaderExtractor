@@ -12,7 +12,7 @@ namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 /// Eval-only OpenRouter adapter. It records call count and hashes responses, never private
 /// chain-of-thought or raw prompts in the retention artifacts.
 /// </summary>
-public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, IDisposable
+public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, IReasoningAttemptTimeoutModel, IDisposable
 {
     private readonly HttpClient _http;
     private readonly RemoteInferenceOptions _options;
@@ -43,11 +43,19 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
     public IReadOnlyList<ReasoningCompletionTelemetry> CompletionTelemetry => _completionTelemetry;
     public ReasoningProviderTimeoutOptions TimeoutOptions => _timeoutOptions;
 
+    public Task<ReasoningModelResponse> CompleteAsync(
+        ReasoningModelRequest request,
+        CancellationToken ct = default) =>
+        CompleteAsync(request, _timeoutOptions.TotalRequestTimeout, ct);
+
     public async Task<ReasoningModelResponse> CompleteAsync(
         ReasoningModelRequest request,
+        TimeSpan attemptTimeout,
         CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(request);
+        if (attemptTimeout <= TimeSpan.Zero)
+            throw new ArgumentOutOfRangeException(nameof(attemptTimeout));
         var telemetry = new ReasoningCompletionTelemetry
         {
             RequestId = request.RequestId,
@@ -95,7 +103,7 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
         var responseHeadersReceived = false;
         var stopwatch = Stopwatch.StartNew();
         using var totalTimeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
-        totalTimeout.CancelAfter(_timeoutOptions.TotalRequestTimeout);
+        totalTimeout.CancelAfter(attemptTimeout);
         try
         {
             using var response = await SendForHeadersAsync(message, totalTimeout, ct);
