@@ -97,38 +97,48 @@ public static class ReasoningRetentionRunner
         catch (Exception ex)
         {
             var completionFailure = ex as ReasoningCompletionException;
-            var failureClass = completionFailure?.FailureClass ??
+            var executionFailure = ex as ReasoningRetentionExecutionException;
+            var failureClass = completionFailure?.FailureClass ?? executionFailure?.FailureClass ??
                 (ex.Message.Contains("PROVIDER_AUTH_FAILURE", StringComparison.Ordinal)
                     ? ReasoningCompletionFailureClass.ProviderAuthFailure
                     : ex is InvalidDataException
                         ? ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid
                         : ReasoningCompletionFailureClass.ProviderUnavailable);
-            var attempts = completionFailure?.AttemptTelemetry ?? [];
-            var observedProviderCalls = attempts.Count;
+            var attempts = completionFailure?.AttemptTelemetry ?? executionFailure?.CompletionTelemetry ?? [];
+            var observedProviderCalls = executionFailure?.ProviderCalls ?? attempts.Count;
+            var completionStats = executionFailure?.CompletionStats ?? [];
             await WriteJsonAsync(Path.Combine(outputRoot, "provider-completion-integrity.v1.json"), new
             {
                 artifactKind = "a99_provider_completion_integrity",
                 schemaVersion = "a99-provider-completion-integrity-v1",
                 status = "BLOCKED",
                 attemptCount = observedProviderCalls,
-                successfulCompletionCount = 0,
-                failedCompletionCount = observedProviderCalls,
-                failureClasses = new[] { failureClass },
-                rangeSplitCount = 0,
-                retryCount = 0,
-                maxObservedOutputTokens = completionFailure?.Telemetry.ReportedOutputTokens,
-                maxObservedResponseBytes = completionFailure?.Telemetry.ReceivedContentBytes,
-                allSemanticPassesComplete = false,
+                completionAttemptCount = attempts.Count,
+                successfulCompletionCount = attempts.Count(item => item.JsonParseSucceeded && item.CompletionEnvelopeComplete && item.FailureClass is null),
+                failedCompletionCount = attempts.Count(item => item.FailureClass is not null),
+                failureClasses = attempts.Where(item => item.FailureClass is not null)
+                    .Select(item => item.FailureClass!).Distinct(StringComparer.Ordinal).ToArray(),
+                blockerClass = executionFailure?.FailureClass,
+                blockerDocumentId = executionFailure?.DocumentId,
+                blockerMessage = executionFailure?.Message,
+                rangeSplitCount = completionStats.Sum(item => item.Completion.RangeSplitCount),
+                retryCount = completionStats.Sum(item => item.Completion.RetryCount),
+                maxObservedOutputTokens = attempts.Where(item => item.ReportedOutputTokens is not null)
+                    .Select(item => item.ReportedOutputTokens!.Value).DefaultIfEmpty().Max(),
+                maxObservedResponseBytes = attempts.Select(item => item.ReceivedContentBytes).DefaultIfEmpty().Max(),
+                allSemanticPassesComplete = attempts.Count > 0 && attempts.All(item => item.FailureClass is null),
                 partialResponsesScored = false,
                 attempts,
             }, cancellationToken);
             await WriteCompletionMarkdownAsync(
                 repoRoot,
                 "BLOCKED",
-                [failureClass],
+                attempts.Where(item => item.FailureClass is not null)
+                    .Select(item => item.FailureClass!).Distinct(StringComparer.Ordinal).ToArray(),
                 attempts,
-                0,
-                0,
+                completionStats.Sum(item => item.Completion.RangeSplitCount),
+                completionStats.Sum(item => item.Completion.RetryCount),
+                executionFailure?.FailureClass,
                 cancellationToken);
             await WriteJsonAsync(Path.Combine(outputRoot, "final-diagnosis.v1.json"), new
             {
@@ -138,6 +148,7 @@ public static class ReasoningRetentionRunner
                 population = Population,
                 executionRevision,
                 failureClass,
+                blockerDocumentId = executionFailure?.DocumentId,
                 message = ex.Message,
                 materialization = "PASS_311_OF_311",
                 providerCalls = observedProviderCalls,
@@ -191,6 +202,7 @@ public static class ReasoningRetentionRunner
             completionTelemetry,
             repeats.SelectMany(item => item.CompletionStats()).Sum(item => item.Completion.RangeSplitCount),
             repeats.SelectMany(item => item.CompletionStats()).Sum(item => item.Completion.RetryCount),
+            null,
             cancellationToken);
         var aggregate = new
         {
@@ -290,6 +302,7 @@ public static class ReasoningRetentionRunner
         var documents = new List<DocumentRunResult>();
         var providerCalls = 0;
         var completionTelemetry = new List<ReasoningCompletionTelemetry>();
+        var completionStats = new List<ReasoningCompletionStats>();
         foreach (var documentId in StrictGoldOccurrenceMaterializer.DocumentIds)
         {
             ct.ThrowIfCancellationRequested();
@@ -307,12 +320,14 @@ public static class ReasoningRetentionRunner
                 .RunAsync(source, policyState, ReasoningRoute.ModelCapabilityCeiling, ct);
             providerCalls += ceilingModel.ProviderCalls;
             completionTelemetry.AddRange(ceilingModel.CompletionTelemetry);
+            completionStats.Add(ceilingObservation.CompletionStats);
 
             using var shadowModel = new OpenRouterReasoningSemanticModel(remote);
             var shadowObservation = await new ReasoningPreservingHeadingHarness(shadowModel)
                 .RunAsync(source, policyState, ReasoningRoute.ReasoningPreservingShadow, ct);
             providerCalls += shadowModel.ProviderCalls;
             completionTelemetry.AddRange(shadowModel.CompletionTelemetry);
+            completionStats.Add(shadowObservation.CompletionStats);
 
             var selection = new InferenceProviderSelection
             {
@@ -322,7 +337,22 @@ public static class ReasoningRetentionRunner
             using var pipeline = new AuthorityExtractionPipeline(
                 pipelineOptions,
                 new HeaderClassifierFactory(selection));
-            var execution = await pipeline.RunDocumentExecutionAsync(inputPath, ct: ct);
+            AuthorityPipelineExecutionResult execution;
+            try
+            {
+                execution = await pipeline.RunDocumentExecutionAsync(inputPath, ct: ct);
+            }
+            catch (Exception ex)
+            {
+                throw new ReasoningRetentionExecutionException(
+                    documentId,
+                    "PRODUCTION_PIPELINE_FAILURE",
+                    ex.Message,
+                    providerCalls,
+                    completionTelemetry.ToArray(),
+                    completionStats.ToArray(),
+                    ex);
+            }
             var productionCalls = execution.Result.Provenance.ProviderCalls;
             providerCalls += productionCalls;
 
@@ -556,6 +586,7 @@ public static class ReasoningRetentionRunner
         IReadOnlyList<ReasoningCompletionTelemetry> telemetry,
         int rangeSplits,
         int retries,
+        string? blockerClass,
         CancellationToken ct)
     {
         var path = Path.Combine(repoRoot, "docs", "accuracy", "accuracy99-provider-completion-integrity-v1.md");
@@ -569,6 +600,8 @@ public static class ReasoningRetentionRunner
         sb.AppendLine($"- Range splits: `{rangeSplits}`");
         sb.AppendLine($"- Retries: `{retries}`");
         sb.AppendLine($"- Failure classes: `{(failureClasses.Count == 0 ? "none" : string.Join(", ", failureClasses))}`");
+        if (blockerClass is not null)
+            sb.AppendLine($"- Run blocker: `{blockerClass}`");
         sb.AppendLine("- Partial responses scored: `false`");
         sb.AppendLine("- Raw prompts/completions: `not stored`");
         await File.WriteAllTextAsync(path, sb.ToString(), new UTF8Encoding(false), ct);

@@ -191,6 +191,32 @@ public sealed class ReasoningCompletionException : Exception
     public IReadOnlyList<ReasoningCompletionTelemetry> AttemptTelemetry { get; }
 }
 
+public sealed class ReasoningRetentionExecutionException : Exception
+{
+    public ReasoningRetentionExecutionException(
+        string documentId,
+        string failureClass,
+        string message,
+        int providerCalls,
+        IReadOnlyList<ReasoningCompletionTelemetry> completionTelemetry,
+        IReadOnlyList<ReasoningCompletionStats> completionStats,
+        Exception innerException)
+        : base(message, innerException)
+    {
+        DocumentId = documentId;
+        FailureClass = failureClass;
+        ProviderCalls = providerCalls;
+        CompletionTelemetry = completionTelemetry;
+        CompletionStats = completionStats;
+    }
+
+    public string DocumentId { get; }
+    public string FailureClass { get; }
+    public int ProviderCalls { get; }
+    public IReadOnlyList<ReasoningCompletionTelemetry> CompletionTelemetry { get; }
+    public IReadOnlyList<ReasoningCompletionStats> CompletionStats { get; }
+}
+
 public interface IReasoningCompletionTelemetrySource
 {
     IReadOnlyList<ReasoningCompletionTelemetry> CompletionTelemetry { get; }
