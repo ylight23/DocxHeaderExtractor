@@ -283,11 +283,11 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
     public async Task Retries_share_one_semantic_pass_deadline()
     {
         var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
-        var model = new BudgetedTransientModel(TimeSpan.FromMilliseconds(35));
+        var model = new BudgetedTransientModel(TimeSpan.FromMilliseconds(10));
         var budget = new ReasoningExecutionBudgetOptions
         {
-            AttemptTotalTimeout = TimeSpan.FromMilliseconds(100),
-            SemanticPassTimeout = TimeSpan.FromMilliseconds(60),
+            AttemptTotalTimeout = TimeSpan.FromMilliseconds(200),
+            SemanticPassTimeout = TimeSpan.FromMilliseconds(150),
             MaxTransientRetries = 2,
         };
         var started = System.Diagnostics.Stopwatch.StartNew();
@@ -299,10 +299,10 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
         Assert.Equal(ReasoningCompletionFailureClass.ProviderSemanticPassTimeout, exception.FailureClass);
         Assert.Equal(2, model.Calls);
         Assert.Equal(2, model.Requests.Count);
-        Assert.InRange(model.AttemptTimeouts[0].TotalMilliseconds, 45, 60);
-        Assert.InRange(model.AttemptTimeouts[1].TotalMilliseconds, 1, 30);
+        Assert.InRange(model.AttemptTimeouts[0].TotalMilliseconds, 120, 160);
+        Assert.InRange(model.AttemptTimeouts[1].TotalMilliseconds, 100, 150);
         Assert.True(model.AttemptTimeouts[1] < model.AttemptTimeouts[0]);
-        Assert.InRange(started.ElapsedMilliseconds, 35, 220);
+        Assert.InRange(started.ElapsedMilliseconds, 10, 400);
     }
 
     private static ReasoningModelRequest Request() => new()
@@ -398,7 +398,10 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
             AttemptTimeouts.Add(attemptTimeout);
             try
             {
-                await Task.Delay(delay, ct);
+                if (Calls == 1)
+                    await Task.Delay(delay, ct);
+                else
+                    await Task.Delay(Timeout.InfiniteTimeSpan, ct);
             }
             catch (OperationCanceledException) when (ct.IsCancellationRequested)
             {
