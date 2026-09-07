@@ -11,6 +11,30 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class ReasoningSourceVisibilityAndLivenessTests
 {
     [Fact]
+    public void Prompt_makes_per_request_identity_explicit()
+    {
+        var segment = new ReasoningContextSegment
+        {
+            ContextSegmentId = "segment-1",
+            Ordinal = 1,
+            SourceOccurrenceIds = [],
+            OwnedSourceOccurrenceIds = [],
+            Text = "SOURCE_OCCURRENCE blocks"
+        };
+
+        var prompt = ReasoningPrompt.BuildUser(
+            segment,
+            shadow: false,
+            requestId: "request-123",
+            semanticPassId: "semantic-456",
+            attemptId: "request-123:attempt-1");
+
+        Assert.Contains("REQUEST_ID_EXACT=request-123", prompt);
+        Assert.Contains("SEMANTIC_PASS_ID_EXACT=semantic-456", prompt);
+        Assert.Contains("ATTEMPT_ID_EXACT=request-123:attempt-1", prompt);
+    }
+
+    [Fact]
     public async Task Canonical_source_id_visible_is_accepted()
     {
         var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);

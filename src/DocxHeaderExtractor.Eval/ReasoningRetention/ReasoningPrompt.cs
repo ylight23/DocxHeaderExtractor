@@ -50,10 +50,18 @@ Use the exact canonical sourceId value from each SOURCE_OCCURRENCE. The sourceOc
 is an explicit context alias only; do not invent or shorten source identities.
 """;
 
-    public static string BuildUser(ReasoningContextSegment segment, bool shadow) =>
+    public static string BuildUser(
+        ReasoningContextSegment segment,
+        bool shadow,
+        string requestId,
+        string semanticPassId,
+        string attemptId) =>
         $"""
 TASK={Version}
 route={(shadow ? "REASONING_PRESERVING_SHADOW" : "MODEL_CAPABILITY_CEILING")}
+REQUEST_ID_EXACT={requestId}
+SEMANTIC_PASS_ID_EXACT={semanticPassId}
+ATTEMPT_ID_EXACT={attemptId}
 The candidateHint fields are optional attention hints only. They do not restrict visibility.
 Inspect all SOURCE_OCCURRENCE blocks below, including rows whose candidateHint.candidate is false.
 The visible source ordinal range is {segment.VisibleStartOrdinal?.ToString() ?? "empty"}..{segment.VisibleEndOrdinal?.ToString() ?? "empty"}.
