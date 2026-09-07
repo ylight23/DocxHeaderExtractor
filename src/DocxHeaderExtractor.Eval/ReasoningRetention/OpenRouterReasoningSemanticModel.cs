@@ -1,4 +1,5 @@
 using System.Net.Http.Headers;
+using System.Diagnostics;
 using System.Net.Http.Json;
 using System.Security.Cryptography;
 using System.Text;
@@ -15,17 +16,23 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
 {
     private readonly HttpClient _http;
     private readonly RemoteInferenceOptions _options;
+    private readonly ReasoningProviderTimeoutOptions _timeoutOptions;
     private readonly bool _ownsHttp;
     private int _providerCalls;
     private readonly List<ReasoningCompletionTelemetry> _completionTelemetry = [];
 
-    public OpenRouterReasoningSemanticModel(RemoteInferenceOptions options, HttpClient? http = null)
+    public OpenRouterReasoningSemanticModel(
+        RemoteInferenceOptions options,
+        HttpClient? http = null,
+        ReasoningProviderTimeoutOptions? timeoutOptions = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _options.Validate();
+        _timeoutOptions = timeoutOptions ?? ReasoningProviderTimeoutOptions.FromEnvironment();
+        _timeoutOptions.Validate();
         if (string.IsNullOrWhiteSpace(_options.ApiKey))
             throw new InvalidOperationException("PROVIDER_AUTH_FAILURE");
-        _http = http ?? new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
+        _http = http ?? CreateHttpClient(_timeoutOptions);
         _ownsHttp = http is null;
     }
 
@@ -34,6 +41,7 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
     public int ContextSize => _options.ContextSize;
     public int ProviderCalls => Volatile.Read(ref _providerCalls);
     public IReadOnlyList<ReasoningCompletionTelemetry> CompletionTelemetry => _completionTelemetry;
+    public ReasoningProviderTimeoutOptions TimeoutOptions => _timeoutOptions;
 
     public async Task<ReasoningModelResponse> CompleteAsync(
         ReasoningModelRequest request,
@@ -47,6 +55,8 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
             DocumentId = request.DocumentId,
             SemanticPassId = request.SemanticPassId,
             ContextSegmentId = request.ContextSegmentId,
+            AttemptId = request.AttemptId,
+            AttemptNumber = ParseAttemptNumber(request.AttemptId),
             Model = _options.Model,
             Provider = ProviderName,
             Temperature = 0,
@@ -83,16 +93,15 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
         message.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor Accuracy99");
 
         var responseHeadersReceived = false;
-        using var requestTimeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
-        if (_http.Timeout != Timeout.InfiniteTimeSpan)
-            requestTimeout.CancelAfter(_http.Timeout);
-        var requestToken = requestTimeout.Token;
+        var stopwatch = Stopwatch.StartNew();
+        using var totalTimeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        totalTimeout.CancelAfter(_timeoutOptions.TotalRequestTimeout);
         try
         {
-            using var response = await _http.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, requestToken);
+            using var response = await SendForHeadersAsync(message, totalTimeout, ct);
             responseHeadersReceived = true;
             telemetry.HttpStatus = (int)response.StatusCode;
-            var responseText = await response.Content.ReadAsStringAsync(requestToken);
+            var responseText = await ReadResponseBodyAsync(response, totalTimeout, ct, telemetry);
             telemetry.StreamCompletedNormally = true;
             var envelope = ReadEnvelope(responseText, telemetry);
             if (!response.IsSuccessStatusCode)
@@ -126,11 +135,16 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
                     telemetry);
 
             telemetry.JsonParseSucceeded = true;
+            telemetry.ReturnedSourceIds = parsed.Headings
+                .Select(item => item.SourceId)
+                .Distinct(StringComparer.Ordinal)
+                .ToArray();
             return parsed with
             {
                 RawResponseHash = telemetry.FullContentSha256,
                 RequestId = parsed.RequestId ?? request.RequestId,
                 SemanticPassId = parsed.SemanticPassId ?? request.SemanticPassId,
+                AttemptId = parsed.AttemptId ?? request.AttemptId,
                 OwnedRange = parsed.OwnedRange ??
                     (request.OwnedStartOrdinal is { } start && request.OwnedEndOrdinal is { } end
                         ? new ReasoningOrdinalRange(start, end)
@@ -140,6 +154,12 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
         catch (ReasoningCompletionException)
         {
             throw;
+        }
+        catch (ReasoningProviderTimeoutException ex)
+        {
+            telemetry.TimeoutStage = ex.TimeoutStage;
+            telemetry.TransportException = ex.GetType().Name;
+            throw CompletionFailure(ex.FailureClass, ex.Message, telemetry, ex);
         }
         catch (JsonException ex)
         {
@@ -151,18 +171,30 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
                 telemetry,
                 ex);
         }
+        catch (OperationCanceledException) when (ct.IsCancellationRequested)
+        {
+            throw;
+        }
         catch (TaskCanceledException ex) when (!ct.IsCancellationRequested)
         {
             telemetry.TransportException = ex.GetType().Name;
-            telemetry.FailureClass = ReasoningCompletionFailureClass.Timeout;
-            throw CompletionFailure(ReasoningCompletionFailureClass.Timeout, ex.Message, telemetry, ex);
+            telemetry.TimeoutStage = responseHeadersReceived ? "TOTAL_OR_CLIENT_AFTER_HEADERS" : "TOTAL_OR_CLIENT_BEFORE_HEADERS";
+            throw CompletionFailure(
+                ReasoningCompletionFailureClass.ProviderTotalTimeout,
+                ex.Message,
+                telemetry,
+                ex);
         }
         catch (HttpRequestException ex)
         {
             telemetry.TransportException = ex.GetType().Name;
+            var connectTimeout = !responseHeadersReceived && IsConnectTimeout(ex);
+            telemetry.TimeoutStage = connectTimeout ? "CONNECT" : telemetry.TimeoutStage;
             telemetry.FailureClass = responseHeadersReceived
                 ? ReasoningCompletionFailureClass.TransportTruncation
-                : ReasoningCompletionFailureClass.ProviderUnavailable;
+                : connectTimeout
+                    ? ReasoningCompletionFailureClass.ProviderConnectTimeout
+                    : ReasoningCompletionFailureClass.ProviderUnavailable;
             throw CompletionFailure(telemetry.FailureClass, ex.Message, telemetry, ex);
         }
         catch (Exception ex) when (ex is FormatException or InvalidOperationException)
@@ -178,8 +210,127 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
         }
         finally
         {
+            telemetry.ElapsedMilliseconds = stopwatch.ElapsedMilliseconds;
             _completionTelemetry.Add(telemetry);
         }
+    }
+
+    private async Task<HttpResponseMessage> SendForHeadersAsync(
+        HttpRequestMessage message,
+        CancellationTokenSource totalTimeout,
+        CancellationToken callerToken)
+    {
+        using var firstByteTimeout = CancellationTokenSource.CreateLinkedTokenSource(totalTimeout.Token);
+        firstByteTimeout.CancelAfter(_timeoutOptions.FirstByteTimeout);
+        try
+        {
+            return await _http.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, firstByteTimeout.Token);
+        }
+        catch (OperationCanceledException) when (!callerToken.IsCancellationRequested)
+        {
+            if (totalTimeout.IsCancellationRequested)
+                throw new ReasoningProviderTimeoutException(
+                    ReasoningCompletionFailureClass.ProviderTotalTimeout,
+                    "OpenRouter request exceeded its total timeout before response headers.",
+                    "TOTAL");
+            throw new ReasoningProviderTimeoutException(
+                ReasoningCompletionFailureClass.ProviderFirstByteTimeout,
+                "OpenRouter request exceeded its first-byte timeout.",
+                "FIRST_BYTE");
+        }
+    }
+
+    private async Task<string> ReadResponseBodyAsync(
+        HttpResponseMessage response,
+        CancellationTokenSource totalTimeout,
+        CancellationToken callerToken,
+        ReasoningCompletionTelemetry telemetry)
+    {
+        Stream stream;
+        using (var streamTimeout = CancellationTokenSource.CreateLinkedTokenSource(totalTimeout.Token))
+        {
+            streamTimeout.CancelAfter(_timeoutOptions.InactivityTimeout);
+            try
+            {
+                stream = await response.Content.ReadAsStreamAsync(streamTimeout.Token);
+            }
+            catch (OperationCanceledException) when (!callerToken.IsCancellationRequested)
+            {
+                if (totalTimeout.IsCancellationRequested)
+                    throw new ReasoningProviderTimeoutException(
+                        ReasoningCompletionFailureClass.ProviderTotalTimeout,
+                        "OpenRouter response exceeded its total timeout before the body stream was available.",
+                        "TOTAL");
+                throw new ReasoningProviderTimeoutException(
+                    ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout,
+                    "OpenRouter response produced no body activity within the inactivity timeout.",
+                    "STREAM_INACTIVITY");
+            }
+        }
+
+        await using var responseStream = stream;
+        using var body = new MemoryStream();
+        var buffer = new byte[8192];
+        while (true)
+        {
+            using var readTimeout = CancellationTokenSource.CreateLinkedTokenSource(totalTimeout.Token);
+            readTimeout.CancelAfter(_timeoutOptions.InactivityTimeout);
+            int read;
+            try
+            {
+                read = await responseStream.ReadAsync(buffer.AsMemory(), readTimeout.Token);
+            }
+            catch (OperationCanceledException) when (!callerToken.IsCancellationRequested)
+            {
+                if (totalTimeout.IsCancellationRequested)
+                    throw new ReasoningProviderTimeoutException(
+                        ReasoningCompletionFailureClass.ProviderTotalTimeout,
+                        "OpenRouter response exceeded its total timeout while reading the body.",
+                        "TOTAL");
+                throw new ReasoningProviderTimeoutException(
+                    ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout,
+                    "OpenRouter response produced no body activity within the inactivity timeout.",
+                    "STREAM_INACTIVITY");
+            }
+
+            if (read == 0) break;
+            await body.WriteAsync(buffer.AsMemory(0, read), callerToken);
+            telemetry.ReceivedContentBytes += read;
+        }
+
+        return Encoding.UTF8.GetString(body.ToArray());
+    }
+
+    private static HttpClient CreateHttpClient(ReasoningProviderTimeoutOptions timeoutOptions)
+    {
+        var handler = new SocketsHttpHandler
+        {
+            ConnectTimeout = timeoutOptions.ConnectTimeout,
+        };
+        return new HttpClient(handler) { Timeout = Timeout.InfiniteTimeSpan };
+    }
+
+    private static bool IsConnectTimeout(HttpRequestException exception) =>
+        exception.InnerException is TimeoutException or OperationCanceledException ||
+        exception.Message.Contains("timed out", StringComparison.OrdinalIgnoreCase);
+
+    private static int ParseAttemptNumber(string? attemptId)
+    {
+        const string marker = ":attempt-";
+        if (string.IsNullOrWhiteSpace(attemptId)) return 0;
+        var markerIndex = attemptId.LastIndexOf(marker, StringComparison.Ordinal);
+        return markerIndex >= 0 && int.TryParse(attemptId[(markerIndex + marker.Length)..], out var number)
+            ? number
+            : 0;
+    }
+
+    private sealed class ReasoningProviderTimeoutException(
+        string failureClass,
+        string message,
+        string timeoutStage) : Exception(message)
+    {
+        public string FailureClass { get; } = failureClass;
+        public string TimeoutStage { get; } = timeoutStage;
     }
 
     private static ReasoningCompletionException CompletionFailure(

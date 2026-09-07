@@ -134,9 +134,19 @@ public sealed class ReasoningPreservingHeadingHarness
             {
                 ct.ThrowIfCancellationRequested();
                 completion.AttemptCount++;
+                var requestId = ReasoningPrompt.BuildRequestId(source.DocumentId, segment.ContextSegmentId, ConfigurationSignature(route));
+                var attemptNumber = transientRetries + 1;
+                var visibleOccurrences = segment.SourceOccurrenceIds
+                    .Select(id => occurrenceById[id])
+                    .ToArray();
+                var ownedSourceIdsForTelemetry = segment.OwnedSourceOccurrenceIds
+                    .Where(occurrenceById.ContainsKey)
+                    .Select(id => occurrenceById[id].SourceId)
+                    .Distinct(StringComparer.Ordinal)
+                    .ToArray();
                 var request = new ReasoningModelRequest
                 {
-                    RequestId = ReasoningPrompt.BuildRequestId(source.DocumentId, segment.ContextSegmentId, ConfigurationSignature(route)),
+                    RequestId = requestId,
                     DocumentId = source.DocumentId,
                     Route = route.ToString(),
                     SemanticPassId = semanticPassId,
@@ -147,15 +157,36 @@ public sealed class ReasoningPreservingHeadingHarness
                     OwnedSourceOccurrenceIds = segment.OwnedSourceOccurrenceIds,
                     OwnedStartOrdinal = segment.OwnedStartOrdinal,
                     OwnedEndOrdinal = segment.OwnedEndOrdinal,
+                    AttemptId = $"{requestId}:attempt-{attemptNumber}",
+                    SourceIdentityMap = visibleOccurrences.Select(item => new ReasoningSourceIdentity
+                    {
+                        CanonicalSourceId = item.SourceId,
+                        SourceOccurrenceId = item.SourceOccurrenceId,
+                        SourceOrdinal = item.SourceOrdinal,
+                        RawTextLength = item.RawText.Length,
+                    }).ToArray(),
                     ConfigurationSignature = ConfigurationSignature(route),
                 };
 
                 try
                 {
                     var response = await _model.CompleteAsync(request, ct);
+                    var attemptTelemetry = (_model as IReasoningCompletionTelemetrySource)?.CompletionTelemetry.LastOrDefault();
+                    if (attemptTelemetry is not null)
+                    {
+                        attemptTelemetry.AttemptId = request.AttemptId;
+                        attemptTelemetry.AttemptNumber = attemptNumber;
+                        attemptTelemetry.VisibleSourceIds = visibleOccurrences
+                            .Select(item => item.SourceId)
+                            .Distinct(StringComparer.Ordinal)
+                            .ToArray();
+                        attemptTelemetry.OwnedSourceIds = ownedSourceIdsForTelemetry
+                            .Order(StringComparer.Ordinal)
+                            .ToArray();
+                    }
                     if (!response.Complete)
                         throw new InvalidDataException("reasoning-response-complete-marker-missing");
-                    var scopedResponse = ValidateResponseOwnership(response, segment, occurrenceById, completion);
+                    var scopedResponse = ValidateResponseOwnership(response, request, segment, occurrenceById, completion);
                     responses.Add(scopedResponse);
                     completion.SuccessfulCompletionCount++;
                     if (semanticPassId.StartsWith("global-", StringComparison.Ordinal))
@@ -179,8 +210,7 @@ public sealed class ReasoningPreservingHeadingHarness
                         break;
                     }
 
-                    if ((ex.FailureClass is ReasoningCompletionFailureClass.TransportTruncation or
-                        ReasoningCompletionFailureClass.Timeout) && transientRetries < _maxTransientRetries)
+                    if (IsTransientProviderFailure(ex.FailureClass) && transientRetries < _maxTransientRetries)
                     {
                         transientRetries++;
                         completion.RetryCount++;
@@ -188,12 +218,19 @@ public sealed class ReasoningPreservingHeadingHarness
                     }
                     throw WithAttemptHistory(ex);
                 }
-                catch (InvalidDataException ex)
+                catch (Exception ex) when (ex is InvalidDataException or ReasoningResponseIdentityException)
                 {
                     completion.FailedCompletionCount++;
                     completion.FailureClasses.Add(ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid);
                     var telemetry = (_model as IReasoningCompletionTelemetrySource)?.CompletionTelemetry.LastOrDefault()
                         ?? new ReasoningCompletionTelemetry { FailureClass = ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid };
+                    telemetry.ValidationReason = ex.Message;
+                    if (ex is ReasoningResponseIdentityException identity)
+                    {
+                        telemetry.ReturnedSourceIds = identity.ReturnedSourceIds;
+                        telemetry.VisibleSourceIds = identity.VisibleSourceIds;
+                        telemetry.OwnedSourceIds = identity.OwnedSourceIds;
+                    }
                     throw WithAttemptHistory(new ReasoningCompletionException(
                         ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid,
                         ex.Message,
@@ -220,36 +257,70 @@ public sealed class ReasoningPreservingHeadingHarness
 
     private static ReasoningModelResponse ValidateResponseOwnership(
         ReasoningModelResponse response,
+        ReasoningModelRequest request,
         ReasoningContextSegment segment,
         IReadOnlyDictionary<string, ReasoningSourceOccurrence> occurrenceById,
         CompletionAccumulator completion)
     {
+        if (response.RequestId is not null && response.RequestId != request.RequestId)
+            throw new InvalidDataException($"reasoning-response-request-id-mismatch; expected={request.RequestId}; actual={response.RequestId}");
+        if (response.SemanticPassId is not null && response.SemanticPassId != request.SemanticPassId)
+            throw new InvalidDataException($"reasoning-response-semantic-pass-id-mismatch; expected={request.SemanticPassId}; actual={response.SemanticPassId}");
+        if (response.AttemptId is not null && response.AttemptId != request.AttemptId)
+            throw new InvalidDataException($"reasoning-response-attempt-id-mismatch; expected={request.AttemptId}; actual={response.AttemptId}");
         if (response.OwnedRange is { } range &&
             (range.Start != segment.OwnedStartOrdinal || range.End != segment.OwnedEndOrdinal))
             throw new InvalidDataException("reasoning-response-owned-range-mismatch");
 
-        var visibleSourceIds = segment.SourceOccurrenceIds
+        var visibleOccurrences = segment.SourceOccurrenceIds
             .Where(occurrenceById.ContainsKey)
-            .Select(id => occurrenceById[id].SourceId)
-            .ToHashSet(StringComparer.Ordinal);
+            .Select(id => occurrenceById[id])
+            .ToArray();
         var ownedSourceIds = segment.OwnedSourceOccurrenceIds
             .Where(occurrenceById.ContainsKey)
             .Select(id => occurrenceById[id].SourceId)
             .ToHashSet(StringComparer.Ordinal);
         var scoped = new List<ReasoningHeadingProposal>(response.Headings.Count);
+        var emittedOccurrences = new HashSet<string>(StringComparer.Ordinal);
         foreach (var proposal in response.Headings)
         {
-            if (!visibleSourceIds.Contains(proposal.SourceId))
-                throw new InvalidDataException("reasoning-response-source-not-visible");
-            if (!ownedSourceIds.Contains(proposal.SourceId))
+            var identity = ReasoningSourceIdentityResolver.Resolve(proposal.SourceId, visibleOccurrences, ownedSourceIds);
+            if (!identity.IsVisible || identity.CanonicalSourceId is null)
+                throw new ReasoningResponseIdentityException(
+                    $"reasoning-response-source-not-visible; returnedSourceId={proposal.SourceId}",
+                    proposal.SourceId,
+                    visibleOccurrences.Select(item => item.SourceId).ToArray(),
+                    ownedSourceIds.Order(StringComparer.Ordinal).ToArray());
+
+            var source = visibleOccurrences.First(item => item.SourceId == identity.CanonicalSourceId);
+            if (!proposal.HeadingSpan.IsValidFor(source.RawText))
+                throw new InvalidDataException(
+                    $"reasoning-response-span-invalid-for-visible-source; sourceId={source.SourceId}; " +
+                    $"start={proposal.HeadingSpan.Start}; end={proposal.HeadingSpan.End}; rawTextLength={source.RawText.Length}");
+
+            var normalized = proposal with { SourceId = identity.CanonicalSourceId };
+            var occurrenceKey = $"{normalized.SourceId}:{normalized.HeadingSpan.Start}:{normalized.HeadingSpan.End}";
+            if (!emittedOccurrences.Add(occurrenceKey))
+                throw new InvalidDataException($"reasoning-response-duplicate-occurrence; occurrence={occurrenceKey}");
+
+            if (!ownedSourceIds.Contains(normalized.SourceId))
             {
                 completion.OutOfScopeProposalCount++;
+                completion.OwnershipViolationCount++;
                 continue;
             }
-            scoped.Add(proposal);
+            scoped.Add(normalized);
         }
         return response with { Headings = scoped };
     }
+
+    private static bool IsTransientProviderFailure(string failureClass) =>
+        failureClass is ReasoningCompletionFailureClass.TransportTruncation or
+            ReasoningCompletionFailureClass.Timeout or
+            ReasoningCompletionFailureClass.ProviderConnectTimeout or
+            ReasoningCompletionFailureClass.ProviderFirstByteTimeout or
+            ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout or
+            ReasoningCompletionFailureClass.ProviderTotalTimeout;
 
     private static (ReasoningContextSegment Left, ReasoningContextSegment Right) SplitOwnership(
         ReasoningContextSegment segment,
@@ -316,6 +387,7 @@ public sealed class ReasoningPreservingHeadingHarness
         public int SemanticPassCount { get; set; }
         public int ConsolidationPassCount { get; set; }
         public int OutOfScopeProposalCount { get; set; }
+        public int OwnershipViolationCount { get; set; }
         public List<string> FailureClasses { get; } = [];
 
         public ReasoningCompletionStats ToStats() => new(
@@ -327,7 +399,8 @@ public sealed class ReasoningPreservingHeadingHarness
                 RetryCount,
                 SemanticPassCount,
                 ConsolidationPassCount,
-                OutOfScopeProposalCount),
+                OutOfScopeProposalCount,
+                OwnershipViolationCount),
             FailureClasses.Distinct(StringComparer.Ordinal).ToArray());
     }
 }

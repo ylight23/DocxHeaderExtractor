@@ -39,6 +39,9 @@ public static class ReasoningRetentionRunner
         ArgumentException.ThrowIfNullOrWhiteSpace(repoRoot);
         ArgumentNullException.ThrowIfNull(remote);
 
+        remote.Validate();
+        var timeoutOptions = ReasoningProviderTimeoutOptions.FromEnvironment();
+        timeoutOptions.Validate();
         var gold = LoadAndValidateGold(repoRoot);
         var manifestPath = Path.Combine(repoRoot, OccurrenceManifest.Replace('/', Path.DirectorySeparatorChar));
         var executionRevision = GitRevision(repoRoot) ?? "UNRESOLVED";
@@ -78,6 +81,7 @@ public static class ReasoningRetentionRunner
                 contextSize = remote.ContextSize,
                 maxOutputTokens = remote.MaxOutputTokens,
                 seed = (int?)null,
+                timeouts = TimeoutConfiguration(timeoutOptions),
             },
             providerCalls = 0,
             holdoutTouched = false,
@@ -86,12 +90,11 @@ public static class ReasoningRetentionRunner
         var repeats = new List<RepeatResult>();
         try
         {
-            remote.Validate();
             for (var repeat = 1; repeat <= 3; repeat++)
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 Console.WriteLine($"R1-B repeat {repeat}/3: A -> B -> C");
-                repeats.Add(await RunRepeatAsync(repoRoot, gold, remote, repeat, cancellationToken));
+                repeats.Add(await RunRepeatAsync(repoRoot, gold, remote, timeoutOptions, repeat, cancellationToken));
             }
         }
         catch (Exception ex)
@@ -128,8 +131,17 @@ public static class ReasoningRetentionRunner
                 maxObservedResponseBytes = attempts.Select(item => item.ReceivedContentBytes).DefaultIfEmpty().Max(),
                 allSemanticPassesComplete = attempts.Count > 0 && attempts.All(item => item.FailureClass is null),
                 partialResponsesScored = false,
+                providerTimeouts = TimeoutConfiguration(timeoutOptions),
                 attempts,
             }, cancellationToken);
+            await WriteJsonAsync(
+                Path.Combine(outputRoot, "provider-liveness.v1.json"),
+                BuildProviderLivenessArtifact("BLOCKED", timeoutOptions, attempts, completionStats, observedProviderCalls),
+                cancellationToken);
+            await WriteJsonAsync(
+                Path.Combine(outputRoot, "source-visibility-contract.v1.json"),
+                BuildSourceVisibilityArtifact("BLOCKED", timeoutOptions, attempts, completionStats, observedProviderCalls),
+                cancellationToken);
             await WriteCompletionMarkdownAsync(
                 repoRoot,
                 "BLOCKED",
@@ -152,6 +164,7 @@ public static class ReasoningRetentionRunner
                 message = ex.Message,
                 materialization = "PASS_311_OF_311",
                 providerCalls = observedProviderCalls,
+                providerTimeouts = TimeoutConfiguration(timeoutOptions),
                 partialResponsesScored = false,
                 holdoutTouched = false,
             }, cancellationToken);
@@ -192,8 +205,28 @@ public static class ReasoningRetentionRunner
             maxObservedResponseBytes = completionTelemetry.Select(item => item.ReceivedContentBytes).DefaultIfEmpty().Max(),
             allSemanticPassesComplete = completionTelemetry.Length > 0 && completionTelemetry.All(item => item.FailureClass is null),
             partialResponsesScored = false,
+            ownershipViolationCount = repeats.SelectMany(item => item.CompletionStats()).Sum(item => item.Completion.OwnershipViolationCount),
+            providerTimeouts = TimeoutConfiguration(timeoutOptions),
             attempts = completionTelemetry,
         }, cancellationToken);
+        await WriteJsonAsync(
+            Path.Combine(outputRoot, "provider-liveness.v1.json"),
+            BuildProviderLivenessArtifact(
+                "PASS",
+                timeoutOptions,
+                completionTelemetry,
+                repeats.SelectMany(item => item.CompletionStats()).ToArray(),
+                providerCalls),
+            cancellationToken);
+        await WriteJsonAsync(
+            Path.Combine(outputRoot, "source-visibility-contract.v1.json"),
+            BuildSourceVisibilityArtifact(
+                "PASS",
+                timeoutOptions,
+                completionTelemetry,
+                repeats.SelectMany(item => item.CompletionStats()).ToArray(),
+                providerCalls),
+            cancellationToken);
         await WriteCompletionMarkdownAsync(
             repoRoot,
             "PASS",
@@ -225,6 +258,7 @@ public static class ReasoningRetentionRunner
             classificationCounts,
             firstLoss,
             providerCalls,
+            providerTimeouts = TimeoutConfiguration(timeoutOptions),
             holdoutTouched = false,
             rawPromptsStored = false,
             rawCompletionsStored = false,
@@ -281,7 +315,7 @@ public static class ReasoningRetentionRunner
             routes = new[] { "MODEL_CAPABILITY_CEILING", "PRODUCTION_SYSTEM", "REASONING_PRESERVING_SHADOW" },
             repeats = 3,
             goldFirewall = new { goldSuppliedToRoutes = false, goldJoinedAfterRoutes = true },
-            provider = new { name = "OpenRouter", model = remote.Model, temperature = 0, contextSize = remote.ContextSize },
+            provider = new { name = "OpenRouter", model = remote.Model, temperature = 0, contextSize = remote.ContextSize, timeouts = TimeoutConfiguration(timeoutOptions) },
             providerCalls,
             partialResponsesScored = false,
             holdoutTouched = false,
@@ -296,6 +330,7 @@ public static class ReasoningRetentionRunner
         string repoRoot,
         IReadOnlyList<ReasoningGoldOccurrence> gold,
         RemoteInferenceOptions remote,
+        ReasoningProviderTimeoutOptions timeoutOptions,
         int repeat,
         CancellationToken ct)
     {
@@ -315,14 +350,14 @@ public static class ReasoningRetentionRunner
             var pipelineOptions = new PipelineOptions { DisableLlm = false };
             var policyState = DocxPolicyStateBuilder.Build(source, features, derived, pipelineOptions.Extraction);
 
-            using var ceilingModel = new OpenRouterReasoningSemanticModel(remote);
+            using var ceilingModel = new OpenRouterReasoningSemanticModel(remote, timeoutOptions: timeoutOptions);
             var ceilingObservation = await new ReasoningPreservingHeadingHarness(ceilingModel)
                 .RunAsync(source, policyState, ReasoningRoute.ModelCapabilityCeiling, ct);
             providerCalls += ceilingModel.ProviderCalls;
             completionTelemetry.AddRange(ceilingModel.CompletionTelemetry);
             completionStats.Add(ceilingObservation.CompletionStats);
 
-            using var shadowModel = new OpenRouterReasoningSemanticModel(remote);
+            using var shadowModel = new OpenRouterReasoningSemanticModel(remote, timeoutOptions: timeoutOptions);
             var shadowObservation = await new ReasoningPreservingHeadingHarness(shadowModel)
                 .RunAsync(source, policyState, ReasoningRoute.ReasoningPreservingShadow, ct);
             providerCalls += shadowModel.ProviderCalls;
@@ -540,6 +575,108 @@ public static class ReasoningRetentionRunner
             "MODEL_CAPABILITY" => "improve context/prompt/model only after the diagnostic review",
             _ => "retain current pipeline and adjudicate the largest measured error bucket",
         };
+
+    private static object TimeoutConfiguration(ReasoningProviderTimeoutOptions options) => new
+    {
+        connectSeconds = (int)options.ConnectTimeout.TotalSeconds,
+        firstByteSeconds = (int)options.FirstByteTimeout.TotalSeconds,
+        inactivitySeconds = (int)options.InactivityTimeout.TotalSeconds,
+        totalSeconds = (int)options.TotalRequestTimeout.TotalSeconds,
+    };
+
+    private static object BuildProviderLivenessArtifact(
+        string status,
+        ReasoningProviderTimeoutOptions timeoutOptions,
+        IReadOnlyList<ReasoningCompletionTelemetry> telemetry,
+        IReadOnlyList<ReasoningCompletionStats> completionStats,
+        int providerCalls) {
+        var timeoutAttempts = telemetry
+            .Where(item => IsTimeoutFailure(item.FailureClass))
+            .ToArray();
+        return new
+        {
+            artifactKind = "a99_provider_liveness",
+            schemaVersion = "a99-provider-liveness-v1",
+            status,
+            provider = "OpenRouter",
+            timeouts = TimeoutConfiguration(timeoutOptions),
+            providerCalls,
+            attemptCount = telemetry.Count,
+            timeoutCount = timeoutAttempts.Length,
+            timeoutFailureClasses = timeoutAttempts
+                .Select(item => item.FailureClass!)
+                .Distinct(StringComparer.Ordinal)
+                .ToArray(),
+            timeoutStages = timeoutAttempts
+                .Where(item => !string.IsNullOrWhiteSpace(item.TimeoutStage))
+                .GroupBy(item => item.TimeoutStage!, StringComparer.Ordinal)
+                .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal),
+            transportRetryCount = completionStats.Sum(item => item.Completion.RetryCount),
+            outputLimitSplitCount = completionStats.Sum(item => item.Completion.RangeSplitCount),
+            partialResponsesScored = false,
+            boundedRetries = true,
+        };
+    }
+
+    private static object BuildSourceVisibilityArtifact(
+        string status,
+        ReasoningProviderTimeoutOptions timeoutOptions,
+        IReadOnlyList<ReasoningCompletionTelemetry> telemetry,
+        IReadOnlyList<ReasoningCompletionStats> completionStats,
+        int providerCalls) {
+        var sourceFailures = telemetry
+            .Where(item => item.ValidationReason?.StartsWith("reasoning-response-source-not-visible", StringComparison.Ordinal) == true)
+            .ToArray();
+        var spanFailures = telemetry
+            .Where(item => item.ValidationReason?.StartsWith("reasoning-response-span-invalid-for-visible-source", StringComparison.Ordinal) == true)
+            .ToArray();
+        return new
+        {
+            artifactKind = "a99_source_visibility_contract",
+            schemaVersion = "a99-source-visibility-contract-v1",
+            status,
+            identityContract = "canonicalSourceId plus explicit sourceOccurrenceId alias; no fuzzy repair",
+            canonicalSourceIdAccepted = true,
+            explicitOccurrenceAliasAccepted = true,
+            unknownSourceIdFailClosed = true,
+            visibleButNotOwnedClassified = true,
+            requestIdentityChecks = new[] { "requestId", "semanticPassId", "attemptId", "ownedRange" },
+            spanValidation = "against visible source RawText",
+            sourceVisibilityFailureCount = sourceFailures.Length,
+            spanValidationFailureCount = spanFailures.Length,
+            ownershipViolationCount = completionStats.Sum(item => item.Completion.OwnershipViolationCount),
+            returnedSourceIds = telemetry
+                .SelectMany(item => item.ReturnedSourceIds)
+                .Distinct(StringComparer.Ordinal)
+                .Order(StringComparer.Ordinal)
+                .ToArray(),
+            visibleSourceIds = telemetry
+                .SelectMany(item => item.VisibleSourceIds)
+                .Distinct(StringComparer.Ordinal)
+                .Order(StringComparer.Ordinal)
+                .ToArray(),
+            ownedSourceIds = telemetry
+                .SelectMany(item => item.OwnedSourceIds)
+                .Distinct(StringComparer.Ordinal)
+                .Order(StringComparer.Ordinal)
+                .ToArray(),
+            goldFirewall = new
+            {
+                goldUsedForSourceMapping = false,
+                goldUsedForResponseRepair = false,
+                goldJoinedAfterRoutes = true,
+            },
+            providerTimeouts = TimeoutConfiguration(timeoutOptions),
+            providerCalls,
+            holdoutTouched = false,
+        };
+    }
+
+    private static bool IsTimeoutFailure(string? failureClass) => failureClass is
+        ReasoningCompletionFailureClass.ProviderConnectTimeout or
+        ReasoningCompletionFailureClass.ProviderFirstByteTimeout or
+        ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout or
+        ReasoningCompletionFailureClass.ProviderTotalTimeout;
 
     private static async Task WriteJsonAsync(string path, object value, CancellationToken ct)
     {

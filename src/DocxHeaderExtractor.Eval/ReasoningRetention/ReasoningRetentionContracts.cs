@@ -93,7 +93,21 @@ public sealed record ReasoningModelRequest
     [JsonPropertyName("ownedSourceOccurrenceIds")] public required IReadOnlyList<string> OwnedSourceOccurrenceIds { get; init; }
     [JsonPropertyName("ownedStartOrdinal")] public int? OwnedStartOrdinal { get; init; }
     [JsonPropertyName("ownedEndOrdinal")] public int? OwnedEndOrdinal { get; init; }
+    [JsonPropertyName("attemptId")] public string? AttemptId { get; init; }
+    [JsonPropertyName("sourceIdentityMap")] public IReadOnlyList<ReasoningSourceIdentity> SourceIdentityMap { get; init; } = [];
     [JsonPropertyName("configurationSignature")] public required string ConfigurationSignature { get; init; }
+}
+
+/// <summary>
+/// Exact identity map used by the evaluation harness. The provider may echo either the
+/// canonical source id or the explicitly serialized occurrence id, but never an inferred id.
+/// </summary>
+public sealed record ReasoningSourceIdentity
+{
+    [JsonPropertyName("canonicalSourceId")] public required string CanonicalSourceId { get; init; }
+    [JsonPropertyName("sourceOccurrenceId")] public required string SourceOccurrenceId { get; init; }
+    [JsonPropertyName("sourceOrdinal")] public required int SourceOrdinal { get; init; }
+    [JsonPropertyName("rawTextLength")] public required int RawTextLength { get; init; }
 }
 
 public sealed record ReasoningDecisionEvidence(
@@ -125,7 +139,8 @@ public sealed record ReasoningModelResponse(
     [property: JsonPropertyName("ownedRange")] ReasoningOrdinalRange? OwnedRange = null,
     [property: JsonPropertyName("complete")] bool Complete = true,
     [property: JsonPropertyName("requestId")] string? RequestId = null,
-    [property: JsonPropertyName("semanticPassId")] string? SemanticPassId = null);
+    [property: JsonPropertyName("semanticPassId")] string? SemanticPassId = null,
+    [property: JsonPropertyName("attemptId")] string? AttemptId = null);
 
 public static class ReasoningCompletionFailureClass
 {
@@ -133,6 +148,10 @@ public static class ReasoningCompletionFailureClass
     public const string TransportTruncation = "TRANSPORT_TRUNCATION";
     public const string CompleteResponseSchemaInvalid = "COMPLETE_RESPONSE_SCHEMA_INVALID";
     public const string Timeout = "TIMEOUT";
+    public const string ProviderConnectTimeout = "PROVIDER_CONNECT_TIMEOUT";
+    public const string ProviderFirstByteTimeout = "PROVIDER_FIRST_BYTE_TIMEOUT";
+    public const string ProviderStreamInactivityTimeout = "PROVIDER_STREAM_INACTIVITY_TIMEOUT";
+    public const string ProviderTotalTimeout = "PROVIDER_TOTAL_TIMEOUT";
     public const string ProviderUnavailable = "PROVIDER_UNAVAILABLE";
     public const string ProviderAuthFailure = "PROVIDER_AUTH_FAILURE";
     public const string OtherProviderFailure = "OTHER_PROVIDER_FAILURE";
@@ -145,6 +164,8 @@ public sealed class ReasoningCompletionTelemetry
     [JsonPropertyName("documentId")] public string DocumentId { get; set; } = "";
     [JsonPropertyName("semanticPassId")] public string SemanticPassId { get; set; } = "";
     [JsonPropertyName("contextSegmentId")] public string ContextSegmentId { get; set; } = "";
+    [JsonPropertyName("attemptId")] public string? AttemptId { get; set; }
+    [JsonPropertyName("attemptNumber")] public int AttemptNumber { get; set; }
     [JsonPropertyName("model")] public string Model { get; set; } = "";
     [JsonPropertyName("provider")] public string Provider { get; set; } = "";
     [JsonPropertyName("temperature")] public double Temperature { get; set; }
@@ -168,7 +189,36 @@ public sealed class ReasoningCompletionTelemetry
     [JsonPropertyName("completionEnvelopeComplete")] public bool CompletionEnvelopeComplete { get; set; }
     [JsonPropertyName("streamCompletedNormally")] public bool StreamCompletedNormally { get; set; }
     [JsonPropertyName("transportException")] public string? TransportException { get; set; }
+    [JsonPropertyName("elapsedMilliseconds")] public long ElapsedMilliseconds { get; set; }
+    [JsonPropertyName("timeoutStage")] public string? TimeoutStage { get; set; }
+    [JsonPropertyName("validationReason")] public string? ValidationReason { get; set; }
+    [JsonPropertyName("returnedSourceIds")] public IReadOnlyList<string> ReturnedSourceIds { get; set; } = [];
+    [JsonPropertyName("visibleSourceIds")] public IReadOnlyList<string> VisibleSourceIds { get; set; } = [];
+    [JsonPropertyName("ownedSourceIds")] public IReadOnlyList<string> OwnedSourceIds { get; set; } = [];
     [JsonPropertyName("failureClass")] public string? FailureClass { get; set; }
+}
+
+/// <summary>
+/// Diagnostic-only identity failure. It carries the exact ids involved without attempting to
+/// repair an unknown provider value by text, ordinal, or nearest-source matching.
+/// </summary>
+public sealed class ReasoningResponseIdentityException : Exception
+{
+    public ReasoningResponseIdentityException(
+        string message,
+        string returnedSourceId,
+        IReadOnlyList<string> visibleSourceIds,
+        IReadOnlyList<string> ownedSourceIds)
+        : base(message)
+    {
+        ReturnedSourceIds = [returnedSourceId];
+        VisibleSourceIds = visibleSourceIds;
+        OwnedSourceIds = ownedSourceIds;
+    }
+
+    public IReadOnlyList<string> ReturnedSourceIds { get; }
+    public IReadOnlyList<string> VisibleSourceIds { get; }
+    public IReadOnlyList<string> OwnedSourceIds { get; }
 }
 
 public sealed class ReasoningCompletionException : Exception
@@ -230,7 +280,8 @@ public sealed record ReasoningCompletionRunStats(
     [property: JsonPropertyName("retryCount")] int RetryCount = 0,
     [property: JsonPropertyName("semanticPassCount")] int SemanticPassCount = 0,
     [property: JsonPropertyName("consolidationPassCount")] int ConsolidationPassCount = 0,
-    [property: JsonPropertyName("outOfScopeProposalCount")] int OutOfScopeProposalCount = 0);
+    [property: JsonPropertyName("outOfScopeProposalCount")] int OutOfScopeProposalCount = 0,
+    [property: JsonPropertyName("ownershipViolationCount")] int OwnershipViolationCount = 0);
 
 public sealed record ReasoningCompletionStats(
     [property: JsonPropertyName("completion")] ReasoningCompletionRunStats Completion,

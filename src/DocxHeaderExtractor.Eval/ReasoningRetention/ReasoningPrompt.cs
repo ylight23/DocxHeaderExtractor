@@ -45,6 +45,9 @@ Emit headings only when the source ordinal belongs to ownedRange. The full visib
 contain other source occurrences for global reasoning, but those occurrences are not owned by
 this response.
 The response is an untrusted proposal and will be hard-validated locally.
+
+Use the exact canonical sourceId value from each SOURCE_OCCURRENCE. The sourceOccurrenceId
+is an explicit context alias only; do not invent or shorten source identities.
 """;
 
     public static string BuildUser(ReasoningContextSegment segment, bool shadow) =>
@@ -113,7 +116,8 @@ public static class ReasoningModelResponseParser
             OwnedRange: ownedRange,
             Complete: true,
             RequestId: root.TryGetProperty("requestId", out var requestId) ? requestId.GetString() : null,
-            SemanticPassId: root.TryGetProperty("semanticPassId", out var semanticPassId) ? semanticPassId.GetString() : null);
+            SemanticPassId: root.TryGetProperty("semanticPassId", out var semanticPassId) ? semanticPassId.GetString() : null,
+            AttemptId: root.TryGetProperty("attemptId", out var attemptId) ? attemptId.GetString() : null);
     }
 
     private static IReadOnlyList<ReasoningDecisionEvidence> ReadEvidence(JsonElement parent, string property)
