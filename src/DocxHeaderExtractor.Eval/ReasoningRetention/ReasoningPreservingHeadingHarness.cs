@@ -152,7 +152,12 @@ public sealed class ReasoningPreservingHeadingHarness
                     SemanticPassId = semanticPassId,
                     ContextSegmentId = segment.ContextSegmentId,
                     SystemPrompt = ReasoningPrompt.System,
-                    UserPrompt = ReasoningPrompt.BuildUser(segment, route == ReasoningRoute.ReasoningPreservingShadow),
+                    UserPrompt = ReasoningPrompt.BuildUser(
+                        segment,
+                        route == ReasoningRoute.ReasoningPreservingShadow,
+                        requestId,
+                        semanticPassId,
+                        $"{requestId}:attempt-{attemptNumber}"),
                     SourceOccurrenceIds = segment.SourceOccurrenceIds,
                     OwnedSourceOccurrenceIds = segment.OwnedSourceOccurrenceIds,
                     OwnedStartOrdinal = segment.OwnedStartOrdinal,
