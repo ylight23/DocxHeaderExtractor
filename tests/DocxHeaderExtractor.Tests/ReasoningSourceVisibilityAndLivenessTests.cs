@@ -37,6 +37,7 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
         Assert.Contains("source=body[1]/p[1]", prompt);
         Assert.Contains("ownedCharacters=0..9", prompt);
         Assert.Contains("local start/end offsets", prompt);
+        Assert.Contains("each exact local span at most once", prompt);
         Assert.DoesNotContain("REQUEST_ID_EXACT", prompt);
         Assert.DoesNotContain("sourceId field", prompt);
     }

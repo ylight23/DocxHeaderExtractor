@@ -68,6 +68,9 @@ The harness-owned output scope is source={scope?.CanonicalSourceId ?? "none"};
 rawTextLength={scope?.RawTextLength.ToString() ?? "0"};
 ownedCharacters={scope?.OwnedStart.ToString() ?? "empty"}..{scope?.OwnedEnd.ToString() ?? "empty"}.
 Return local start/end offsets within that owned character range only.
+Emit each exact local span at most once. A source occurrence may have zero or one heading
+proposal in this response; never repeat the same start/end pair, even with a different role.
+If a boundary is uncertain, omit the proposal rather than emitting a duplicate.
 
 {segment.Text}
 """;
