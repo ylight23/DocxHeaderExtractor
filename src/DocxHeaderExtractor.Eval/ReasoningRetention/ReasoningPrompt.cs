@@ -62,7 +62,8 @@ is an explicit context alias only; do not invent or shorten source identities.
             ? string.Join(
                 Environment.NewLine,
                 sourceIdentityMap.Select(item =>
-                    $"- canonicalSourceId={item.CanonicalSourceId} | sourceOccurrenceId={item.SourceOccurrenceId}"))
+                    $"- providerSourceAlias={item.ProviderSourceAlias ?? "(none)"} | " +
+                    $"canonicalSourceId={item.CanonicalSourceId} | sourceOccurrenceId={item.SourceOccurrenceId}"))
             : "(no visible source identities)";
         return $"""
 TASK={Version}
@@ -70,9 +71,9 @@ route={(shadow ? "REASONING_PRESERVING_SHADOW" : "MODEL_CAPABILITY_CEILING")}
 REQUEST_ID_EXACT={requestId}
 SEMANTIC_PASS_ID_EXACT={semanticPassId}
 ATTEMPT_ID_EXACT={attemptId}
-SOURCE_ID_COPY_RULE: the sourceId field in every heading must be copied character-for-character from a canonicalSourceId below.
+SOURCE_ID_COPY_RULE: the sourceId field in every heading must be copied character-for-character from a canonicalSourceId below, or be exactly one providerSourceAlias below.
 Never use a file path, sourceReferencePath, sourceOccurrenceId, or a span-bearing identifier as sourceId.
-Do not append :start:end to sourceId. Unknown values are invalid.
+Do not append :start:end to sourceId. If using an alias, copy only the alias token. Unknown values are invalid.
 CANONICAL_SOURCE_ID_TABLE
 {identityTable}
 The candidateHint fields are optional attention hints only. They do not restrict visibility.

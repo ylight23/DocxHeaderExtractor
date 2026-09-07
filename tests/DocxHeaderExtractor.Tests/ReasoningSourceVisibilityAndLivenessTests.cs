@@ -32,6 +32,7 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
             {
                 CanonicalSourceId = "body[1]/p[1]",
                 SourceOccurrenceId = "DOC-1:body[1]/p[1]:1:9",
+                ProviderSourceAlias = "s0001",
                 SourceOrdinal = 1,
                 RawTextLength = 9,
             }]);
@@ -40,6 +41,7 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
         Assert.Contains("SEMANTIC_PASS_ID_EXACT=semantic-456", prompt);
         Assert.Contains("ATTEMPT_ID_EXACT=request-123:attempt-1", prompt);
         Assert.Contains("canonicalSourceId=body[1]/p[1]", prompt);
+        Assert.Contains("providerSourceAlias=s0001", prompt);
         Assert.Contains("Never use a file path", prompt);
     }
 
@@ -64,6 +66,22 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
         {
             var identity = Assert.Single(request.SourceIdentityMap);
             return ProposalResponse(identity.SourceOccurrenceId, 0, identity.RawTextLength);
+        });
+
+        var observation = await new ReasoningPreservingHeadingHarness(model)
+            .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling);
+
+        Assert.Equal("p[0]", Assert.Single(observation.Proposed).SourceId);
+    }
+
+    [Fact]
+    public async Task Explicit_provider_source_alias_reverses_to_canonical_source_id()
+    {
+        var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
+        var model = new ProgrammableModel(request =>
+        {
+            var identity = Assert.Single(request.SourceIdentityMap);
+            return ProposalResponse(identity.ProviderSourceAlias!, 0, identity.RawTextLength);
         });
 
         var observation = await new ReasoningPreservingHeadingHarness(model)

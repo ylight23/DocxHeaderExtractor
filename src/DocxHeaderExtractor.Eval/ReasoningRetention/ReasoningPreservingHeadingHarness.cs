@@ -144,10 +144,11 @@ public sealed class ReasoningPreservingHeadingHarness
                     .Select(id => occurrenceById[id].SourceId)
                     .Distinct(StringComparer.Ordinal)
                     .ToArray();
-                var sourceIdentityMap = visibleOccurrences.Select(item => new ReasoningSourceIdentity
+                var sourceIdentityMap = visibleOccurrences.Select((item, index) => new ReasoningSourceIdentity
                 {
                     CanonicalSourceId = item.SourceId,
                     SourceOccurrenceId = item.SourceOccurrenceId,
+                    ProviderSourceAlias = $"s{index + 1:D4}",
                     SourceOrdinal = item.SourceOrdinal,
                     RawTextLength = item.RawText.Length,
                 }).ToArray();
@@ -291,7 +292,11 @@ public sealed class ReasoningPreservingHeadingHarness
         var emittedOccurrences = new HashSet<string>(StringComparer.Ordinal);
         foreach (var proposal in response.Headings)
         {
-            var identity = ReasoningSourceIdentityResolver.Resolve(proposal.SourceId, visibleOccurrences, ownedSourceIds);
+            var identity = ReasoningSourceIdentityResolver.Resolve(
+                proposal.SourceId,
+                visibleOccurrences,
+                ownedSourceIds,
+                request.SourceIdentityMap);
             if (!identity.IsVisible || identity.CanonicalSourceId is null)
                 throw new ReasoningResponseIdentityException(
                     $"reasoning-response-source-not-visible; returnedSourceId={proposal.SourceId}",

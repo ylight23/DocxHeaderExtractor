@@ -99,13 +99,14 @@ public sealed record ReasoningModelRequest
 }
 
 /// <summary>
-/// Exact identity map used by the evaluation harness. The provider may echo either the
-/// canonical source id or the explicitly serialized occurrence id, but never an inferred id.
+/// Exact identity map used by the evaluation harness. The provider may echo the canonical
+/// source id or one explicitly serialized alias, but never an inferred id.
 /// </summary>
 public sealed record ReasoningSourceIdentity
 {
     [JsonPropertyName("canonicalSourceId")] public required string CanonicalSourceId { get; init; }
     [JsonPropertyName("sourceOccurrenceId")] public required string SourceOccurrenceId { get; init; }
+    [JsonPropertyName("providerSourceAlias")] public string? ProviderSourceAlias { get; init; }
     [JsonPropertyName("sourceOrdinal")] public required int SourceOrdinal { get; init; }
     [JsonPropertyName("rawTextLength")] public required int RawTextLength { get; init; }
 }
