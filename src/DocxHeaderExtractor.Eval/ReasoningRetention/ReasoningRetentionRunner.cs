@@ -23,6 +23,7 @@ public static class ReasoningRetentionRunner
     private const string Population = "DIAGNOSTIC_DEV_SUBSET_V1";
     private const string OccurrenceManifest = "eval/a99-closed-loop/strict-gold-occurrence-materialization.v1.json";
     private const string RetentionRoot = "eval/a99-closed-loop/reasoning-retention";
+    private const int DefaultReasoningMaxOutputTokens = 8_192;
 
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web)
     {
@@ -40,6 +41,7 @@ public static class ReasoningRetentionRunner
         ArgumentNullException.ThrowIfNull(remote);
 
         remote.Validate();
+        var reasoningRemote = BuildReasoningRemoteOptions(remote);
         var timeoutOptions = ReasoningProviderTimeoutOptions.FromEnvironment();
         timeoutOptions.Validate();
         var gold = LoadAndValidateGold(repoRoot);
@@ -79,7 +81,7 @@ public static class ReasoningRetentionRunner
                 temperature = 0,
                 reasoning = "none",
                 contextSize = remote.ContextSize,
-                maxOutputTokens = remote.MaxOutputTokens,
+                maxOutputTokens = reasoningRemote.MaxOutputTokens,
                 seed = (int?)null,
                 timeouts = TimeoutConfiguration(timeoutOptions),
             },
@@ -94,7 +96,14 @@ public static class ReasoningRetentionRunner
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 Console.WriteLine($"R1-B repeat {repeat}/3: A -> B -> C");
-                repeats.Add(await RunRepeatAsync(repoRoot, gold, remote, timeoutOptions, repeat, cancellationToken));
+                repeats.Add(await RunRepeatAsync(
+                    repoRoot,
+                    gold,
+                    remote,
+                    reasoningRemote,
+                    timeoutOptions,
+                    repeat,
+                    cancellationToken));
             }
         }
         catch (Exception ex)
@@ -315,7 +324,15 @@ public static class ReasoningRetentionRunner
             routes = new[] { "MODEL_CAPABILITY_CEILING", "PRODUCTION_SYSTEM", "REASONING_PRESERVING_SHADOW" },
             repeats = 3,
             goldFirewall = new { goldSuppliedToRoutes = false, goldJoinedAfterRoutes = true },
-            provider = new { name = "OpenRouter", model = remote.Model, temperature = 0, contextSize = remote.ContextSize, timeouts = TimeoutConfiguration(timeoutOptions) },
+            provider = new
+            {
+                name = "OpenRouter",
+                model = reasoningRemote.Model,
+                temperature = 0,
+                contextSize = reasoningRemote.ContextSize,
+                maxOutputTokens = reasoningRemote.MaxOutputTokens,
+                timeouts = TimeoutConfiguration(timeoutOptions),
+            },
             providerCalls,
             partialResponsesScored = false,
             holdoutTouched = false,
@@ -326,10 +343,40 @@ public static class ReasoningRetentionRunner
         return 0;
     }
 
+    private static RemoteInferenceOptions BuildReasoningRemoteOptions(RemoteInferenceOptions remote)
+    {
+        var configured = Environment.GetEnvironmentVariable("A99_REASONING_MAX_OUTPUT_TOKENS");
+        var maxOutputTokens = string.IsNullOrWhiteSpace(configured)
+            ? Math.Max(remote.MaxOutputTokens, DefaultReasoningMaxOutputTokens)
+            : int.TryParse(configured, out var parsed) ? parsed : throw new InvalidOperationException(
+                "A99_REASONING_MAX_OUTPUT_TOKENS must be an integer.");
+        if (maxOutputTokens is < 1_024 or > 16_384)
+            throw new InvalidOperationException("A99_REASONING_MAX_OUTPUT_TOKENS must be between 1024 and 16384.");
+
+        var reasoningRemote = new RemoteInferenceOptions
+        {
+            Endpoint = remote.Endpoint,
+            ApiKey = remote.ApiKey,
+            Model = remote.Model,
+            ContextSize = remote.ContextSize,
+            MaxOutputTokens = maxOutputTokens,
+            MissingIdRetries = remote.MissingIdRetries,
+            RequestTimeoutSeconds = remote.RequestTimeoutSeconds,
+            TransientRequestRetries = remote.TransientRequestRetries,
+            MaxParallelRequests = remote.MaxParallelRequests,
+            SendChatTemplateKwargs = remote.SendChatTemplateKwargs,
+            RequireJsonObjectResponse = remote.RequireJsonObjectResponse,
+            DebugLog = remote.DebugLog,
+        };
+        reasoningRemote.Validate();
+        return reasoningRemote;
+    }
+
     private static async Task<RepeatResult> RunRepeatAsync(
         string repoRoot,
         IReadOnlyList<ReasoningGoldOccurrence> gold,
         RemoteInferenceOptions remote,
+        RemoteInferenceOptions reasoningRemote,
         ReasoningProviderTimeoutOptions timeoutOptions,
         int repeat,
         CancellationToken ct)
@@ -350,14 +397,14 @@ public static class ReasoningRetentionRunner
             var pipelineOptions = new PipelineOptions { DisableLlm = false };
             var policyState = DocxPolicyStateBuilder.Build(source, features, derived, pipelineOptions.Extraction);
 
-            using var ceilingModel = new OpenRouterReasoningSemanticModel(remote, timeoutOptions: timeoutOptions);
+            using var ceilingModel = new OpenRouterReasoningSemanticModel(reasoningRemote, timeoutOptions: timeoutOptions);
             var ceilingObservation = await new ReasoningPreservingHeadingHarness(ceilingModel)
                 .RunAsync(source, policyState, ReasoningRoute.ModelCapabilityCeiling, ct);
             providerCalls += ceilingModel.ProviderCalls;
             completionTelemetry.AddRange(ceilingModel.CompletionTelemetry);
             completionStats.Add(ceilingObservation.CompletionStats);
 
-            using var shadowModel = new OpenRouterReasoningSemanticModel(remote, timeoutOptions: timeoutOptions);
+            using var shadowModel = new OpenRouterReasoningSemanticModel(reasoningRemote, timeoutOptions: timeoutOptions);
             var shadowObservation = await new ReasoningPreservingHeadingHarness(shadowModel)
                 .RunAsync(source, policyState, ReasoningRoute.ReasoningPreservingShadow, ct);
             providerCalls += shadowModel.ProviderCalls;

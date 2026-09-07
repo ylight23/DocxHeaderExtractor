@@ -69,7 +69,7 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
         {
             model = _options.Model,
             temperature = 0,
-            max_tokens = Math.Min(_options.MaxOutputTokens, 4096),
+            max_tokens = Math.Min(_options.MaxOutputTokens, 16_384),
             reasoning = new { effort = "none" },
             messages = new[]
             {
