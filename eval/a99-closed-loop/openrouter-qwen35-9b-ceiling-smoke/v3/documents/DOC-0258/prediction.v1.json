@@ -1,0 +1,836 @@
+{
+  "documentId": "DOC-0258",
+  "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+  "requestedModel": "qwen/qwen3.5-9b",
+  "sourceCharacters": 31703,
+  "segments": 1,
+  "semanticProtocolVersion": "a99-ceiling-semantic-v3",
+  "hierarchyProtocolVersion": "a99-ceiling-hierarchy-v2",
+  "semanticCalls": 1,
+  "hierarchyCalls": 1,
+  "rawProposalCount": 37,
+  "boundProposalCount": 37,
+  "spanErrorCount": 0,
+  "validatedSemanticCount": 37,
+  "proposals": [
+    {
+      "sourceId": "body[1]/p[3]",
+      "headingSpan": {
+        "start": 0,
+        "end": 87
+      },
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "semanticRole": "DOCUMENT_TITLE",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[6]",
+      "headingSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "text": "Welcome and meeting objectives",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[10]",
+      "headingSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[25]",
+      "headingSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[39]",
+      "headingSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "text": "Data review: Household consumption price and importance data",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[48]",
+      "headingSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "text": "Data review: Housing prices and volumes",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[50]",
+      "headingSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "text": "Data review: Private Education",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[56]",
+      "headingSpan": {
+        "start": 0,
+        "end": 64
+      },
+      "text": "Data review: Government compensation and productivity adjustment",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[59]",
+      "headingSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "text": "Data review: Machinery and equipment and construction",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[62]",
+      "headingSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "text": "Data review: 2017-2021 National Accounts expenditures",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[70]",
+      "headingSpan": {
+        "start": 0,
+        "end": 59
+      },
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[72]",
+      "headingSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "text": "Results review: draft revised 2017 and 2021 results",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[74]",
+      "headingSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "text": "Planning for the ICP 2024 cycle",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[84]",
+      "headingSpan": {
+        "start": 0,
+        "end": 70
+      },
+      "text": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[91]",
+      "headingSpan": {
+        "start": 0,
+        "end": 68
+      },
+      "text": "Planning for an approach to produce annual ICP results and forecasts",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[96]",
+      "headingSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "text": "Any other business",
+      "semanticRole": "SECTION",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[102]",
+      "headingSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "text": "Annex 1: Meeting Agenda",
+      "semanticRole": "ANNEX_HEADING",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 57
+      },
+      "text": "DAY 1: MONDAY, MAY 15, 2023 09:00 \u2013 09:10 Opening remarks",
+      "semanticRole": "PART",
+      "proposedLevel": 3,
+      "proposedParent": "reasoning:body[1]/p[102]:0:23",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[103]",
+      "headingSpan": {
+        "start": 0,
+        "end": 28
+      },
+      "text": "DAY 2: TUESDAY, MAY 16, 2023",
+      "semanticRole": "PART",
+      "proposedLevel": 3,
+      "proposedParent": "reasoning:body[1]/p[102]:0:23",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[2]",
+      "headingSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "text": "DAY 3: WEDNESDAY, MAY 17, 2023",
+      "semanticRole": "PART",
+      "proposedLevel": 3,
+      "proposedParent": "reasoning:body[1]/p[102]:0:23",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[104]",
+      "headingSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "text": "DAY 4: THURSDAY, MAY 18, 2023",
+      "semanticRole": "PART",
+      "proposedLevel": 3,
+      "proposedParent": "reasoning:body[1]/p[102]:0:23",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[11]/tc[2]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "text": "Data review: Household consumption price and importance data",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:57",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "text": "Data review: Housing prices and volumes",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[103]:0:28",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "text": "Data review: Private education",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[103]:0:28",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[3]/tc[2]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 64
+      },
+      "text": "Data review: Government compensation and productivity adjustment",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[103]:0:28",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 36
+      },
+      "text": "Data review: Machinery and equipment",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[103]:0:28",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 61
+      },
+      "text": "15:45 \u2013 17:00 Data review: Construction and civil engineering",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[103]:0:28",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "text": "Data review: 2017-2021 National accounts expenditures",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 59
+      },
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 50
+      },
+      "text": "Result review: draft revised 2017 and 2021 results",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 43
+      },
+      "text": "Planning for the ICP 2024 cycle \u2013 Timetable",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[104]:0:29",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[4]/tr[2]/tc[3]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "text": "Operational materials",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[104]:0:29",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[108]",
+      "headingSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "text": "10:45 \u2013 12:00 ICP PPP calculation tools",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[104]:0:29",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[109]",
+      "headingSpan": {
+        "start": 0,
+        "end": 84
+      },
+      "text": "13:00 \u2013 14:00 Planning for the 2023 governance activities and ICP 2021 cycle release",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[104]:0:29",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[110]",
+      "headingSpan": {
+        "start": 0,
+        "end": 82
+      },
+      "text": "14:15 \u2013 16:30 Planning for an approach to produce annual ICP results and forecasts",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[104]:0:29",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[111]",
+      "headingSpan": {
+        "start": 0,
+        "end": 44
+      },
+      "text": "16:30 \u2013 17:00 Any other business and closing",
+      "semanticRole": "AGENDA_NAVIGATION_HEADING",
+      "proposedLevel": 4,
+      "proposedParent": "reasoning:body[1]/p[104]:0:29",
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[115]",
+      "headingSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "text": "Annex 2: List of partic",
+      "semanticRole": "ANNEX_HEADING",
+      "proposedLevel": 2,
+      "proposedParent": "reasoning:body[1]/p[3]:0:87",
+      "confidence": 1,
+      "decisionEvidence": []
+    }
+  ],
+  "projection": [
+    {
+      "proposalId": "reasoning:body[1]/p[102]:0:23",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[103]:0:28",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[104]:0:29",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[108]:0:39",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[109]:0:84",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[10]:0:53",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[110]:0:82",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[111]:0:44",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[115]:0:23",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[25]:0:51",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[39]:0:60",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[3]:0:87",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[48]:0:39",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[50]:0:30",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[56]:0:64",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[59]:0:53",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[62]:0:53",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[6]:0:30",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[70]:0:59",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[72]:0:51",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[74]:0:31",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[84]:0:70",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[91]:0:68",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[96]:0:18",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[2]/tr[11]/tc[2]/p[1]:0:60",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:57",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[3]/tr[1]/tc[2]/p[1]:0:39",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[3]/tr[2]/tc[2]/p[1]:0:30",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[3]/tr[3]/tc[2]/p[1]:0:64",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[3]/tr[4]/tc[2]/p[1]:0:36",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[3]/tr[5]/tc[1]/p[1]:0:61",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[3]/tr[6]/tc[2]/p[1]:0:53",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[3]/tr[7]/tc[2]/p[1]:0:59",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[3]/tr[8]/tc[2]/p[1]:0:50",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[4]/tr[1]/tc[2]/p[1]:0:43",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[4]/tr[2]/tc[3]/p[1]:0:21",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY"
+    }
+  ],
+  "hierarchyValidation": {
+    "acceptedEdges": [
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[102]:0:23",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[103]:0:28",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[102]:0:23"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[104]:0:29",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[102]:0:23"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[108]:0:39",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[104]:0:29"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[109]:0:84",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[104]:0:29"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[10]:0:53",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[110]:0:82",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[104]:0:29"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[111]:0:44",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[104]:0:29"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[115]:0:23",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[25]:0:51",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[39]:0:60",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[48]:0:39",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[50]:0:30",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[56]:0:64",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[59]:0:53",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[62]:0:53",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[6]:0:30",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[70]:0:59",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[72]:0:51",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[74]:0:31",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[84]:0:70",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[91]:0:68",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/p[96]:0:18",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[3]:0:87"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[2]/tr[11]/tc[2]/p[1]:0:60",
+        "parentProposalId": "proposal:DOC-0258:body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:57"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:57",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[102]:0:23"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[1]/tc[2]/p[1]:0:39",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[103]:0:28"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[2]/tc[2]/p[1]:0:30",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[103]:0:28"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[3]/tc[2]/p[1]:0:64",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[103]:0:28"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[4]/tc[2]/p[1]:0:36",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[103]:0:28"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[5]/tc[1]/p[1]:0:61",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[103]:0:28"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[102]:0:23"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[6]/tc[2]/p[1]:0:53",
+        "parentProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[7]/tc[2]/p[1]:0:59",
+        "parentProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[8]/tc[2]/p[1]:0:50",
+        "parentProposalId": "proposal:DOC-0258:body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[4]/tr[1]/tc[2]/p[1]:0:43",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[104]:0:29"
+      },
+      {
+        "childProposalId": "proposal:DOC-0258:body[1]/tbl[4]/tr[2]/tc[3]/p[1]:0:21",
+        "parentProposalId": "proposal:DOC-0258:body[1]/p[104]:0:29"
+      }
+    ],
+    "rejectedEdges": [],
+    "errors": []
+  },
+  "goldReadBeforeFreeze": false
+}

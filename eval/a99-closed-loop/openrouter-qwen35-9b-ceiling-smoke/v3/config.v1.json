@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "a99-openrouter-qwen35-9b-true-ceiling-v1",
+  "requestedModel": "qwen/qwen3.5-9b",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "provider": "OpenRouter",
+  "selectedDocuments": [
+    "DOC-0258",
+    "DOC-0205",
+    "DOC-0264"
+  ],
+  "apiKeyPresent": true,
+  "modelFallback": "NONE",
+  "goldReadBeforeFreeze": false,
+  "sourceFaithfulContext": true,
+  "capability": {
+    "modelId": "qwen/qwen3.5-9b",
+    "contextLength": 262144,
+    "reasoningSupported": true,
+    "supportedReasoningEfforts": [],
+    "defaultReasoningEffort": null,
+    "maxCompletionTokens": 235929,
+    "supportedParameters": [
+      "frequency_penalty",
+      "include_reasoning",
+      "logit_bias",
+      "logprobs",
+      "max_tokens",
+      "min_p",
+      "presence_penalty",
+      "reasoning",
+      "repetition_penalty",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_k",
+      "top_logprobs",
+      "top_p"
+    ],
+    "structuredOutputSupported": true,
+    "selectedReasoningEffort": "enabled",
+    "reasoningEnabled": true,
+    "effortListReported": false
+  },
+  "preflightAvailable": true,
+  "preflightClassification": "",
+  "preflightReason": "MODEL_AVAILABLE",
+  "packetOverheadGate": [
+    {
+      "documentId": "DOC-0258",
+      "sourceTextChars": 31703,
+      "oldPacketChars": 132042,
+      "newPacketChars": 43299,
+      "reductionPercent": 67.21,
+      "oldSourcePayloadRatio": 0.24009784765453415,
+      "newSourcePayloadRatio": 0.7321878103420403,
+      "sourceOccurrenceCoverage": 1
+    },
+    {
+      "documentId": "DOC-0205",
+      "sourceTextChars": 60919,
+      "oldPacketChars": 125607,
+      "newPacketChars": 123822,
+      "reductionPercent": 1.42,
+      "oldSourcePayloadRatio": 0.484996855270805,
+      "newSourcePayloadRatio": 0.49198849962042285,
+      "sourceOccurrenceCoverage": 1
+    },
+    {
+      "documentId": "DOC-0264",
+      "sourceTextChars": 224731,
+      "oldPacketChars": 227716,
+      "newPacketChars": 225930,
+      "reductionPercent": 0.78,
+      "oldSourcePayloadRatio": 0.9868915666883311,
+      "newSourcePayloadRatio": 0.9946930465188333,
+      "sourceOccurrenceCoverage": 1
+    }
+  ],
+  "resultLabel": "QWEN9B_CEILING_ON_SELECTED_DEV",
+  "startedUtc": "2026-09-08T16:43:56.0345953+00:00"
+}

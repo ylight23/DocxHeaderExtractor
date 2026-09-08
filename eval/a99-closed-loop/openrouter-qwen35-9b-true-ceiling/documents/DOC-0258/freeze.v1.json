@@ -1,0 +1,17 @@
+{
+  "documentId": "DOC-0258",
+  "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+  "predictionSha256": "c4f0d629e279b79e18302196d82e624956cb366770ab00bc88ad8ca0c51fbb55",
+  "resultSha256": "d7ce15c190e82b78dc1efb72982910dd0c355c15c365f53f659a2eee19297fce",
+  "runtimeTraceSha256": "99870d0fcfd6a02fe04d7b6749f0cdc56820131c7e1d7d9fe39d890dd487ee8c",
+  "requestMetricsSha256": "490df3816356adaad904e77c69362431cb8fd6ae41a8424c0c8d3e6718e4cdc3",
+  "model": "qwen/qwen3.5-9b",
+  "modelCapabilityDigest": "e239ba48886abcc9a173bd8f4d752bbcc9c6a2790c6652d872de5f90d0cae99e",
+  "semanticProtocolVersion": "a99-ceiling-semantic-v3",
+  "hierarchyProtocolVersion": "a99-ceiling-hierarchy-v2",
+  "reasoningEffort": "enabled",
+  "contextLength": 262144,
+  "configurationSignature": "00909d1e73061eedb6df7c760bc11d754c84002fe277147bcc5d8d110ab9932e",
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-08T16:56:08.624606+00:00"
+}

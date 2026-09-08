@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "a99-ceiling-campaign-notes-v3",
+  "note": "Execution/classification addendum written after the frozen per-document artifacts. It never mutates prediction/result/freeze bytes; it only labels what the run's execution outcome means.",
+  "documents": {
+    "DOC-0258": {
+      "outcome": "SUCCESS",
+      "reasoningExecutionMode": "Ceiling",
+      "note": "Reasoning-enabled full-context single-segment execution completed cleanly. F1=0.7391, systemInducedLoss=0. Valid ceiling result."
+    },
+    "DOC-0205": {
+      "outcome": "NOT_EVALUABLE_EXECUTION_TIMEOUT",
+      "reasoningExecutionMode": "Ceiling",
+      "note": "Full-context (60,919 source chars, well inside the 262,144-token context window) single reasoning-enabled request did not return within 600s across 3 attempts (~30 min). This is a compute/latency/request-granularity finding, not a context-capacity finding and not a model quality finding -- it must not be scored as F1=0 or classified as MODEL_OMISSION. Two distinct ceiling concepts should be tracked going forward: MODEL_FULL_CONTEXT_CEILING (single whole-document reasoning-on request; FAILED_TIMEOUT here) vs EXECUTABLE_REASONING_CEILING (deterministic segmentation with reasoning still enabled, union of proposals, then global hierarchy) -- the latter is not implemented in this session and is recommended as separate follow-up work ('A99 QWEN9B REASONING EXECUTION RECOVERY')."
+    },
+    "DOC-0264": {
+      "outcome": "NOT_EVALUABLE_EXECUTION_LIMIT",
+      "reasoningExecutionMode": "Ceiling",
+      "note": "224,731 source chars fit in one packet under the resolved token budget, so a single full-document request was attempted. The provider returned finish_reason=length with no content: reasoning consumed the entire 48,000-token completion budget before any final JSON was produced (PROVIDER_OUTPUT_LIMIT). A code fix was applied so this failure mode is now classified as PROVIDER_OUTPUT_LIMIT rather than a generic schema error, but source-faithful split-and-retry recovery for an output-limit failure was not implemented/re-run in this session. DOC-0264 was already expected to be exact-NOT_EVALUABLE under canonical Gold eligibility regardless of this execution outcome, so this does not change the DOC-0258/DOC-0205 exact scoring."
+    }
+  },
+  "discrepancyFlag": "DOC-0264 (224,731 chars) did not exhibit the same hang as DOC-0205 (60,919 chars) -- it failed fast on an output-limit rather than a 600s timeout. Document size alone does not explain execution outcome; a follow-up audit comparing request token counts and reasoning-token consumption across documents is recommended rather than assumed.",
+  "recommendedFollowUp": "A99 QWEN9B REASONING EXECUTION RECOVERY: on FULL_CONTEXT_TIMEOUT or PROVIDER_OUTPUT_LIMIT, deterministically re-segment the source-faithful packet, run bounded (still reasoning-enabled) semantic calls per segment, union proposals, run the existing compact global hierarchy pass, then freeze/score. A segmented-recovery result must never be reported as a MODEL_FULL_CONTEXT_CEILING result.",
+  "goldReadBeforeFreeze": false
+}

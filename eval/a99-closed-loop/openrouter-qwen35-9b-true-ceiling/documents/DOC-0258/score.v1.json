@@ -1,0 +1,18 @@
+{
+  "documentId": "DOC-0258",
+  "exactStatus": "EVALUABLE",
+  "goldCount": 24,
+  "tp": 17,
+  "fp": 5,
+  "fn": 7,
+  "precision": 0.7727272727272727,
+  "recall": 0.7083333333333334,
+  "f1": 0.7391304347826088,
+  "lossCounts": {
+    "MODEL_OMISSION": 6,
+    "MODEL_SPAN_ERROR": 1,
+    "MODEL_FALSE_POSITIVE": 5
+  },
+  "systemLossCount": 0,
+  "goldReadBeforeFreeze": false
+}

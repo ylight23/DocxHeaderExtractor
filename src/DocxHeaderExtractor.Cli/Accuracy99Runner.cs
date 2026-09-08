@@ -31,7 +31,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, gold-occurrence-bindings, reasoning-retention, reasoning-retention-smoke, openrouter-qwen35-smoke, doc-0205-canary, mode-stratification, doc-0027-support-canary");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, gold-occurrence-bindings, reasoning-retention, reasoning-retention-smoke, openrouter-qwen35-smoke, openrouter-qwen9b-true-ceiling, doc-0205-canary, mode-stratification, doc-0027-support-canary");
             return 0;
         }
 
@@ -60,6 +60,7 @@ internal static class Accuracy99Runner
             "reasoning-retention" => await RunReasoningRetentionAsync(options, cancellationToken),
             "reasoning-retention-smoke" => await RunReasoningRetentionSmokeAsync(options, cancellationToken),
             "openrouter-qwen35-smoke" => await RunOpenRouterQwen35SmokeAsync(options, cancellationToken),
+            "openrouter-qwen9b-true-ceiling" => await RunOpenRouterQwen9BTrueCeilingAsync(options, cancellationToken),
             "reasoning-retention-timing-diagnostic" => await RunReasoningRetentionTimingDiagnosticAsync(options, cancellationToken),
             "reasoning-retention-source-stats" => await RunReasoningRetentionSourceStatsAsync(options, cancellationToken),
             "doc-0205-canary" => await RunDoc0205CanaryAsync(options, cancellationToken),
@@ -73,6 +74,12 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return OpenRouterQwen35CeilingSmokeRunner.RunAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunOpenRouterQwen9BTrueCeilingAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return OpenRouterQwen9BTrueCeilingRunner.RunAsync(repoRoot, cancellationToken);
     }
 
     private static int MaterializeStrictGoldOccurrences(CommandLineOptions options)
