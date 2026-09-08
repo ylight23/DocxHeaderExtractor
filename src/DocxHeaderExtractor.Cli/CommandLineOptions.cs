@@ -161,7 +161,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-hierarchy-marker-counterfactual" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-shadow-compare" or "pdf-human-audit-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt" or "accuracy99" or "r18" or "harness-lift")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-hierarchy-marker-counterfactual" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-shadow-compare" or "pdf-human-audit-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt" or "source-facts" or "accuracy99" or "r18" or "harness-lift" or "local-qwen-preflight" or "local-qwen-large")
         {
             o.Command = args[0];
             i = 1;
@@ -532,6 +532,8 @@ public sealed class CommandLineOptions
           dhx accuracy99 review-ui              # copy the source-first v2 reviewer UI
           dhx r18 ownership <file.docx> --out <report.json>
                                               # Evaluation-only decision ownership audit; never calls a provider.
+          dhx local-qwen-preflight                # 2-document local vLLM concurrency preflight (global 8 slots)
+          dhx local-qwen-large                    # resumable 95-file local Qwen campaign (global 8 slots)
 
         Tuỳ chọn chính:
           -m, --model <path.gguf>   Mô hình GGUF (mặc định: biến DHX_MODEL, appsettings.json

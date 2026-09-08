@@ -40,9 +40,6 @@ public static class StrictGoldOccurrenceMaterializer
         @"^\s*@?(?<source>\S+)\s+(?<level>\d+)\s+#\s*(?<text>.*)$",
         RegexOptions.Compiled);
 
-    private static readonly Regex LegalMarker = new(
-        @"(?<!\p{L})(?<kind>Chapter\s+[IVXLCDM]+\s+|Section\s+\d+\s+|Article\s+\d+\.)",
-        RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
     public static IReadOnlyList<string> DocumentIds => Specs.Select(x => x.Id).ToArray();
 
@@ -109,7 +106,10 @@ public static class StrictGoldOccurrenceMaterializer
         ArgumentNullException.ThrowIfNull(reviewedText);
         usedSpans ??= new HashSet<StrictGoldOccurrenceSpan>();
         var exact = FindExact(rawText, reviewedText, usedSpans, minimumStart);
-        if (exact is not null)
+        var normalized = FindNormalized(rawText, reviewedText, usedSpans, minimumStart);
+        // Prefer the earliest reversible source match. An ASCII-normalized historical key can
+        // otherwise bind a later literal-hyphen body mention ahead of an earlier en-dash heading.
+        if (exact is not null && (normalized is null || exact.Start <= normalized.Start))
         {
             span = exact;
             method = "exact-raw-text-substring";
@@ -117,7 +117,6 @@ public static class StrictGoldOccurrenceMaterializer
             return true;
         }
 
-        var normalized = FindNormalized(rawText, reviewedText, usedSpans, minimumStart);
         if (normalized is not null)
         {
             span = normalized;
@@ -205,7 +204,13 @@ public static class StrictGoldOccurrenceMaterializer
 
         IReadOnlyList<StrictGoldOccurrenceBinding> bindings;
         if (spec.Id == "DOC-0264")
-            bindings = MaterializeLegalDocument(spec, source, referencePath, Sha256File(referencePath), errors);
+        {
+            // The live canonical Gold records a semantic total only. Its reviewed heading list
+            // is not materialized, so this document is intentionally non-evaluable for exact
+            // occurrence/span scoring. Never manufacture rows from legal-marker heuristics.
+            bindings = [];
+            errors.Add("exact-approved-heading-list-not-materialized");
+        }
         else
             bindings = MaterializeKeyBackedDocument(spec, source, v4Root, referencePath, Sha256File(referencePath), v4Path, v4Sha, repoRoot, errors);
 
@@ -330,69 +335,6 @@ public static class StrictGoldOccurrenceMaterializer
         return null;
     }
 
-    private static IReadOnlyList<StrictGoldOccurrenceBinding> MaterializeLegalDocument(
-        DocumentSpec spec,
-        SourceDocument source,
-        string referencePath,
-        string referenceSha,
-        ICollection<string> errors)
-    {
-        var paragraph = source.Paragraphs.FirstOrDefault(x => x.Text.Contains("Chapter I", StringComparison.Ordinal));
-        if (paragraph is null)
-        {
-            errors.Add("legal-source-paragraph-not-found");
-            return [];
-        }
-
-        var raw = paragraph.Text;
-        var titleMatches = AllExact(raw, "LAW ON SECURITIES[1]");
-        var markers = LegalMarker.Matches(raw).Cast<Match>().ToArray();
-        var chapterCount = markers.Count(x => x.Groups["kind"].Value.StartsWith("Chapter", StringComparison.Ordinal));
-        var sectionCount = markers.Count(x => x.Groups["kind"].Value.StartsWith("Section", StringComparison.Ordinal));
-        var articleCount = markers.Count(x => x.Groups["kind"].Value.StartsWith("Article", StringComparison.Ordinal));
-        if (titleMatches.Count != 1 || chapterCount != 10 || sectionCount != 12 || articleCount != 135)
-        {
-            errors.Add($"legal-marker-count:title={titleMatches.Count},chapter={chapterCount},section={sectionCount},article={articleCount}");
-            return [];
-        }
-
-        var facts = new List<(int Start, int End, string Text, string Role, int Level)>();
-        var title = titleMatches[0];
-        facts.Add((title.Index, title.Index + title.Text.Length, title.Text, "title", 1));
-        foreach (var marker in markers)
-        {
-            var kind = marker.Groups["kind"].Value.TrimEnd();
-            var role = kind.StartsWith("Chapter", StringComparison.Ordinal) ? "chapter" :
-                kind.StartsWith("Section", StringComparison.Ordinal) ? "section" : "article";
-            var level = role == "chapter" ? 2 : role == "section" ? 3 : 4;
-            facts.Add((marker.Index, marker.Index + kind.Length, kind, role, level));
-        }
-
-        var bindings = new List<StrictGoldOccurrenceBinding>();
-        foreach (var (fact, ordinal) in facts.OrderBy(x => x.Start).Select((value, index) => (value, index)))
-        {
-            var span = new StrictGoldOccurrenceSpan(fact.Start, fact.End);
-            var text = raw.Substring(span.Start, span.End - span.Start);
-            bindings.Add(new StrictGoldOccurrenceBinding
-            {
-                HeadingOrdinal = ordinal,
-                HeadingOccurrenceId = OccurrenceId(spec.Id, paragraph.SourceId, span),
-                SourceId = paragraph.SourceId,
-                HeadingSpan = span,
-                RawSourceText = text,
-                ApprovedHeadingText = text,
-                SemanticRole = fact.Role,
-                Level = fact.Level,
-                BindingMethod = "deterministic-legal-marker-evidence",
-                ComparisonRule = "ordinal-raw-source-marker",
-                SourceReferencePath = referencePath + "#source-occurrence=" + paragraph.SourceId,
-                SourceReferenceSha256 = referenceSha,
-                ExactRawSubstringVerified = true,
-            });
-        }
-        return bindings;
-    }
-
     private static StrictGoldOccurrenceArtifact BuildArtifact(
         DocumentSpec spec,
         string groupId,
@@ -417,6 +359,7 @@ public static class StrictGoldOccurrenceMaterializer
             MaterializedOccurrenceCount = bindings.Count,
             Bindings = bindings,
             Discrepancies = errors,
+            ExactApprovedHeadingListMaterialized = passed,
             Capabilities = new StrictGoldOccurrenceCapabilities
             {
                 OccurrenceEvaluable = passed,
@@ -459,8 +402,8 @@ public static class StrictGoldOccurrenceMaterializer
             schemaVersion = "a99-strict-gold-capability-matrix-v5",
             policyAuthority = "USER_PROMOTED_STRICT_GOLD_V4",
             capabilityRevision = "V5_EVALUATION_CAPABILITY_ONLY",
-            activeStrictGoldDocuments = 15,
-            activeStrictGoldTotal = 15,
+            activeStrictGoldDocuments = exhaustive,
+            activeStrictGoldTotal = exhaustive,
             exhaustiveSemanticDocuments = exhaustive,
             occurrenceEvaluableExhaustive = $"{occurrence}/{exhaustive}",
             characterSpanEvaluableExhaustive = $"{spans}/{exhaustive}",

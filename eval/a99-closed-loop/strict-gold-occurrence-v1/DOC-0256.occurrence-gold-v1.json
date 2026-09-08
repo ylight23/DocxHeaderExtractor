@@ -8,6 +8,7 @@
   "strictGoldArtifactPath": "eval/a99-closed-loop/strict-gold-v4/DOC-0256.strict-gold-v4.json",
   "strictGoldArtifactSha256": "f12a4a407deddf9d6f1039510d8b2ee4965db091901e2e1b3e806b97344c92e2",
   "semanticHeadingTotal": 24,
+  "exactApprovedHeadingListMaterialized": true,
   "materializedOccurrenceCount": 24,
   "bindings": [
     {
@@ -102,18 +103,18 @@
     },
     {
       "headingOrdinal": 5,
-      "headingOccurrenceId": "DOC-0256:body[1]/p[26]@103:128",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[26]@0:25",
       "sourceId": "body[1]/p[26]",
       "headingSpan": {
-        "start": 103,
-        "end": 128
+        "start": 0,
+        "end": 25
       },
-      "rawSourceText": "Eurostat-OECD PPP Program",
+      "rawSourceText": "Eurostat\u2013OECD PPP Program",
       "approvedHeadingText": "Eurostat-OECD PPP Program",
       "semanticRole": "heading",
       "level": 2,
-      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
-      "comparisonRule": "ordinal",
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
       "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key#key-line=10:body[1]/p[26]",
       "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4",
       "exactRawSubstringVerified": true

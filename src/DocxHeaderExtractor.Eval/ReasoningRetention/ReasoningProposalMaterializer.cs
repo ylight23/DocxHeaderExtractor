@@ -21,38 +21,36 @@ public static class ReasoningProposalMaterializer
         var sourceTextById = source.Paragraphs.ToDictionary(p => p.SourceId, p => p.Text, StringComparer.Ordinal);
         var grouped = proposals
             .GroupBy(p => $"{p.SourceId}:{p.HeadingSpan.Start}:{p.HeadingSpan.End}", StringComparer.Ordinal)
+            .OrderBy(group => group.Key, StringComparer.Ordinal)
             .ToArray();
-        var conflictingKeys = grouped
-            .Where(group => group.Skip(1).Any(item => !EquivalentPayload(group.First(), item)))
-            .Select(group => group.Key)
-            .ToHashSet(StringComparer.Ordinal);
-        var distinct = grouped
-            .Where(group => !conflictingKeys.Contains(group.Key))
-            .Select(group => group.First())
-            .ToArray();
+        var canonical = grouped.Select(MergeGroup).ToArray();
+        var distinct = canonical.Select(item => item.Proposal).ToArray();
         var elementIds = distinct.Select(ElementId).ToHashSet(StringComparer.Ordinal);
         var rows = new List<ReasoningValidatedProposal>();
         var elements = new List<ValidatedStructuralElement>();
-
-        foreach (var conflict in grouped.Where(group => conflictingKeys.Contains(group.Key)))
-        {
-            foreach (var proposal in conflict)
-                rows.Add(new(proposal, ElementId(proposal), false, "conflicting-proposal-payload"));
-        }
 
         var normalized = NormalizeHierarchy(distinct, source, elementIds);
 
         foreach (var proposal in normalized)
         {
+            var group = canonical.Single(item => ElementId(item.Proposal) == ElementId(proposal));
             var hardIssues = ReasoningHardInvariantValidator.Validate(proposal, sourceTextById);
             if (hardIssues.Count > 0)
             {
-                rows.Add(new(proposal, ElementId(proposal), false, string.Join(",", hardIssues)));
+                rows.Add(new ReasoningValidatedProposal(proposal, ElementId(proposal), false, string.Join(",", hardIssues))
+                {
+                    ConflictStatus = group.ConflictStatus,
+                    MergedDuplicateCount = group.Count,
+                });
                 continue;
             }
             if (!policyById.TryGetValue(proposal.SourceId, out var paragraph))
             {
-                rows.Add(new(proposal, ElementId(proposal), false, "source-not-present"));
+                rows.Add(new ReasoningValidatedProposal(proposal, ElementId(proposal), false, "source-not-present")
+                {
+                    ConflictStatus = group.ConflictStatus,
+                    MergedDuplicateCount = group.Count,
+                });
                 continue;
             }
 
@@ -83,7 +81,11 @@ public static class ReasoningProposalMaterializer
             var validation = StructuralProposalValidator.Validate(candidate, proposalContract, elementIds);
             if (!validation.Accepted)
             {
-                rows.Add(new(proposal, ElementId(proposal), false, validation.RejectionReason));
+                rows.Add(new ReasoningValidatedProposal(proposal, ElementId(proposal), false, validation.RejectionReason)
+                {
+                    ConflictStatus = group.ConflictStatus,
+                    MergedDuplicateCount = group.Count,
+                });
                 continue;
             }
 
@@ -91,16 +93,24 @@ public static class ReasoningProposalMaterializer
                 candidate,
                 proposalContract,
                 ElementId(materializedProposal),
-                new StructuralDecision("reasoning-preserving-eval", "accepted", materializedProposal.Confidence, "model-proposal"),
+                new StructuralDecision("reasoning-preserving-eval", "accepted", materializedProposal.Confidence, "model-proposal", group.ConflictStatus is not null),
                 elementIds,
                 new StructuralProjectionMetadata { OriginalText = materializedProposal.Text });
             if (element is null)
             {
-                rows.Add(new(proposal, ElementId(proposal), false, "materialization-failed"));
+                rows.Add(new ReasoningValidatedProposal(proposal, ElementId(proposal), false, "materialization-failed")
+                {
+                    ConflictStatus = group.ConflictStatus,
+                    MergedDuplicateCount = group.Count,
+                });
                 continue;
             }
             elements.Add(element);
-            rows.Add(new(proposal, element.Id, true, null));
+            rows.Add(new ReasoningValidatedProposal(proposal, element.Id, true, null)
+            {
+                ConflictStatus = group.ConflictStatus,
+                MergedDuplicateCount = group.Count,
+            });
         }
 
         var surviving = elements
@@ -116,32 +126,56 @@ public static class ReasoningProposalMaterializer
     public static string ElementId(ReasoningHeadingProposal proposal) =>
         $"reasoning:{proposal.SourceId}:{proposal.HeadingSpan.Start}:{proposal.HeadingSpan.End}";
 
-    private static bool EquivalentPayload(ReasoningHeadingProposal left, ReasoningHeadingProposal right) =>
-        string.Equals(left.SourceId, right.SourceId, StringComparison.Ordinal) &&
-        left.HeadingSpan == right.HeadingSpan &&
-        string.Equals(left.Text, right.Text, StringComparison.Ordinal) &&
-        string.Equals(left.SemanticRole, right.SemanticRole, StringComparison.Ordinal) &&
-        left.ProposedLevel == right.ProposedLevel &&
-        string.Equals(left.ProposedParent, right.ProposedParent, StringComparison.Ordinal) &&
-        left.Confidence.Equals(right.Confidence) &&
-        left.DecisionEvidence.SequenceEqual(right.DecisionEvidence);
+    private sealed record CanonicalGroup(ReasoningHeadingProposal Proposal, string? ConflictStatus, int Count);
+
+    private static CanonicalGroup MergeGroup(IGrouping<string, ReasoningHeadingProposal> group)
+    {
+        var items = group.ToArray();
+        var roles = items.Select(item => Normalize(item.SemanticRole)).Distinct(StringComparer.Ordinal).Order().ToArray();
+        var parents = items.Select(item => NormalizeParent(item.ProposedParent)).Distinct(StringComparer.Ordinal).Order().ToArray();
+        var roleConflict = roles.Length > 1;
+        var parentConflict = parents.Length > 1;
+        var canonical = items
+            .OrderBy(item => roleConflict ? Normalize(item.SemanticRole) : "")
+            .ThenBy(item => parentConflict ? NormalizeParent(item.ProposedParent) : "", StringComparer.Ordinal)
+            .ThenByDescending(item => item.Confidence)
+            .ThenBy(item => item.ProposedLevel ?? int.MaxValue)
+            .ThenBy(item => string.Join("|", item.DecisionEvidence.Select(e => $"{e.EvidenceType}:{e.SourceReference}:{e.ShortEvidenceCode}")), StringComparer.Ordinal)
+            .Take(1)
+            .Single();
+        var evidence = items.SelectMany(item => item.DecisionEvidence)
+            .Distinct()
+            .OrderBy(item => item.EvidenceType, StringComparer.Ordinal)
+            .ThenBy(item => item.SourceReference, StringComparer.Ordinal)
+            .ThenBy(item => item.ShortEvidenceCode, StringComparer.Ordinal)
+            .ToArray();
+        var merged = canonical with
+        {
+            SemanticRole = roleConflict ? "OTHER_STRUCTURAL_LABEL" : canonical.SemanticRole,
+            ProposedParent = parentConflict ? null : canonical.ProposedParent,
+            Confidence = items.Max(item => item.Confidence),
+            DecisionEvidence = evidence,
+        };
+        var conflicts = new List<string>();
+        if (roleConflict) conflicts.Add("ROLE_CONFLICT");
+        if (parentConflict) conflicts.Add("PARENT_CONFLICT");
+        return new CanonicalGroup(merged, conflicts.Count == 0 ? null : string.Join(",", conflicts), items.Length);
+    }
+
+    private static string Normalize(string value) => value.Trim().ToUpperInvariant();
+    private static string NormalizeParent(string? value) => string.IsNullOrWhiteSpace(value) ? "<null>" : value.Trim();
 
     private static IReadOnlyList<ReasoningHeadingProposal> NormalizeHierarchy(
         IReadOnlyList<ReasoningHeadingProposal> proposals,
         SourceDocument source,
         IReadOnlySet<string> elementIds)
     {
-        var sourceById = source.Paragraphs.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
-        var firstByOrdinal = proposals
-            .Where(item => sourceById.ContainsKey(item.SourceId))
-            .GroupBy(item => sourceById[item.SourceId].SourceOrdinal)
-            .ToDictionary(group => group.Key, group => ElementId(group.First()));
         var parentById = new Dictionary<string, string?>(StringComparer.Ordinal);
 
         foreach (var proposal in proposals)
         {
             var id = ElementId(proposal);
-            var parent = ResolveParent(proposal.ProposedParent, sourceById, firstByOrdinal, elementIds);
+            var parent = ResolveParent(proposal.ProposedParent, elementIds);
             // An invalid edge must not erase the node. Drop only the bad edge and keep the
             // accepted heading available for projection.
             parentById[id] = parent is not null && !string.Equals(parent, id, StringComparison.Ordinal)
@@ -171,7 +205,7 @@ public static class ReasoningProposalMaterializer
             if (levelById.TryGetValue(id, out var known)) return known;
             if (!path.Add(id) || !parentById.TryGetValue(id, out var parent) || parent is null)
                 return levelById[id] = 1;
-            return levelById[id] = Math.Min(9, DerivedLevel(parent, path) + 1);
+            return levelById[id] = DerivedLevel(parent, path) + 1;
         }
 
         return proposals.Select(proposal =>
@@ -186,19 +220,10 @@ public static class ReasoningProposalMaterializer
         }).ToArray();
     }
 
-    private static string? ResolveParent(
-        string? token,
-        IReadOnlyDictionary<string, SourceParagraph> sourceById,
-        IReadOnlyDictionary<int, string> firstByOrdinal,
-        IReadOnlySet<string> elementIds)
+    private static string? ResolveParent(string? token, IReadOnlySet<string> elementIds)
     {
         if (string.IsNullOrWhiteSpace(token)) return null;
         if (elementIds.Contains(token)) return token;
-        if (token.StartsWith("sourceOrdinal:", StringComparison.Ordinal) &&
-            int.TryParse(token[14..], out var ordinal) && firstByOrdinal.TryGetValue(ordinal, out var id))
-            return id;
-        if (sourceById.TryGetValue(token, out var paragraph) && firstByOrdinal.TryGetValue(paragraph.SourceOrdinal, out var sourceId))
-            return sourceId;
         return null;
     }
 
@@ -206,7 +231,7 @@ public static class ReasoningProposalMaterializer
         role.Trim().ToUpperInvariant() switch
         {
             "DOCUMENT_TITLE" or "COVER_TITLE" => StructuralElementType.Title,
-            "LOCAL_INDEX_TITLE" or "AGENDA_NAVIGATION_HEADING" or "TOC_ENTRY" => StructuralElementType.Subtitle,
+            "LOCAL_INDEX_TITLE" or "AGENDA_NAVIGATION_HEADING" or "TOC_ENTRY" or "FRONT_MATTER" => StructuralElementType.Subtitle,
             _ => StructuralElementType.Heading,
         };
 
@@ -216,6 +241,7 @@ public static class ReasoningProposalMaterializer
             "DOCUMENT_TITLE" => ProposedRole.DocumentTitle,
             "COVER_TITLE" => ProposedRole.CoverTitle,
             "LOCAL_INDEX_TITLE" or "AGENDA_NAVIGATION_HEADING" or "TOC_ENTRY" => ProposedRole.LocalSubheading,
+            "FRONT_MATTER" => ProposedRole.Metadata,
             "PART" or "CHAPTER" or "SECTION" or "SUBSECTION" or "ARTICLE" or "CLAUSE_HEADING" or
                 "ANNEX_HEADING" or "CONTENT_HEADING" or "OTHER_STRUCTURAL_LABEL" => ProposedRole.HeadingTopic,
             _ => ProposedRole.Unknown,

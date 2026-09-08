@@ -6,22 +6,25 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class StrictGoldOccurrenceMaterializerTests
 {
     [Fact]
-    public void Frozen_strict_gold_materializes_all_311_occurrences()
+    public void Exact_occurrence_gold_is_reported_without_promoting_semantic_only_documents()
     {
         var report = StrictGoldOccurrenceMaterializer.MaterializeAll(FindRepositoryRoot(), out _);
 
-        Assert.Equal("PASS", report.Status);
+        Assert.Equal("BLOCKED", report.Status);
         Assert.Equal(6, report.ExpectedDocuments);
-        Assert.Equal(6, report.MaterializedDocuments);
+        Assert.Equal(5, report.MaterializedDocuments);
         Assert.Equal(311, report.ExpectedOccurrences);
-        Assert.Equal(311, report.MaterializedOccurrences);
-        Assert.All(report.PerDocument, item =>
+        Assert.Equal(153, report.MaterializedOccurrences);
+        Assert.All(report.PerDocument.Where(item => item.DocumentId != "DOC-0264"), item =>
         {
             Assert.Equal(item.Expected, item.Materialized);
             Assert.True(item.OccurrenceEvaluable);
             Assert.True(item.CharacterSpanEvaluable);
             Assert.Equal("PASS", item.Status);
         });
+        var semanticOnly = Assert.Single(report.PerDocument, item => item.DocumentId == "DOC-0264");
+        Assert.Equal("BLOCKED", semanticOnly.Status);
+        Assert.False(semanticOnly.OccurrenceEvaluable);
     }
 
     [Fact]
@@ -37,7 +40,7 @@ public sealed class StrictGoldOccurrenceMaterializerTests
             $"{item.SourceId}@{item.HeadingSpan.Start}:{item.HeadingSpan.End}",
             item.HeadingOccurrenceId,
             StringComparison.Ordinal));
-        Assert.Equal("PASS", report.Status);
+        Assert.Equal("BLOCKED", report.Status);
     }
 
     [Fact]
@@ -111,6 +114,17 @@ public sealed class StrictGoldOccurrenceMaterializerTests
     }
 
     [Fact]
+    public void Earlier_normalized_heading_beats_later_literal_body_mention()
+    {
+        const string raw = "Eurostat–OECD PPP Program presenter status of the Eurostat-OECD PPP Program.";
+        Assert.True(StrictGoldOccurrenceMaterializer.TryBindExactSubstring(
+            raw, "Eurostat-OECD PPP Program", new HashSet<StrictGoldOccurrenceSpan>(), 0,
+            out var span, out var method, out _));
+        Assert.Equal(new StrictGoldOccurrenceSpan(0, 25), span);
+        Assert.Equal("reversible-normalized-text-map", method);
+    }
+
+    [Fact]
     public void Invalid_or_missing_text_never_materializes_a_span()
     {
         var bound = StrictGoldOccurrenceMaterializer.TryBindExactSubstring(
@@ -131,7 +145,7 @@ public sealed class StrictGoldOccurrenceMaterializerTests
     {
         var report = StrictGoldOccurrenceMaterializer.MaterializeAll(FindRepositoryRoot(), out var artifacts);
 
-        Assert.Equal("PASS", report.Status);
+        Assert.Equal("BLOCKED", report.Status);
         foreach (var binding in artifacts.SelectMany(item => item.Bindings))
         {
             Assert.InRange(binding.HeadingSpan.Start, 0, binding.RawSourceText.Length == 0 ? 0 : int.MaxValue);
@@ -142,21 +156,22 @@ public sealed class StrictGoldOccurrenceMaterializerTests
     }
 
     [Theory]
-    [InlineData("DOC-0001", 7)]
-    [InlineData("DOC-0205", 71)]
-    [InlineData("DOC-0252", 27)]
-    [InlineData("DOC-0256", 24)]
-    [InlineData("DOC-0258", 24)]
-    [InlineData("DOC-0264", 158)]
-    public void Artifact_counts_match_the_frozen_semantic_totals(string documentId, int expected)
+    [InlineData("DOC-0001", 7, "PASS")]
+    [InlineData("DOC-0205", 71, "PASS")]
+    [InlineData("DOC-0252", 27, "PASS")]
+    [InlineData("DOC-0256", 24, "PASS")]
+    [InlineData("DOC-0258", 24, "PASS")]
+    [InlineData("DOC-0264", 158, "BLOCKED")]
+    public void Artifact_counts_match_authority_capabilities(string documentId, int expected, string status)
     {
         using var artifact = LoadArtifact(documentId);
         var root = artifact.RootElement;
 
-        Assert.Equal("PASS", root.GetProperty("status").GetString());
+        Assert.Equal(status, root.GetProperty("status").GetString());
         Assert.Equal(expected, root.GetProperty("semanticHeadingTotal").GetInt32());
-        Assert.Equal(expected, root.GetProperty("materializedOccurrenceCount").GetInt32());
-        Assert.Equal(expected, root.GetProperty("bindings").GetArrayLength());
+        var materialized = status == "PASS" ? expected : 0;
+        Assert.Equal(materialized, root.GetProperty("materializedOccurrenceCount").GetInt32());
+        Assert.Equal(materialized, root.GetProperty("bindings").GetArrayLength());
     }
 
     [Fact]
@@ -170,19 +185,15 @@ public sealed class StrictGoldOccurrenceMaterializerTests
     }
 
     [Fact]
-    public void DOC_0264_uses_the_approved_158_marker_set_and_excludes_the_order_preamble()
+    public void DOC_0264_semantic_total_does_not_become_exact_occurrence_gold()
     {
         using var artifact = LoadArtifact("DOC-0264");
         var bindings = artifact.RootElement.GetProperty("bindings").EnumerateArray().ToArray();
 
-        Assert.Equal(158, bindings.Length);
-        Assert.Equal(1, bindings.Count(item => item.GetProperty("semanticRole").GetString() == "title"));
-        Assert.Equal(10, bindings.Count(item => item.GetProperty("semanticRole").GetString() == "chapter"));
-        Assert.Equal(12, bindings.Count(item => item.GetProperty("semanticRole").GetString() == "section"));
-        Assert.Equal(135, bindings.Count(item => item.GetProperty("semanticRole").GetString() == "article"));
-        Assert.DoesNotContain(bindings, item =>
-            item.GetProperty("rawSourceText").GetString()?.Contains(
-                "Order On the promulgation of law", StringComparison.Ordinal) == true);
+        Assert.Empty(bindings);
+        Assert.Equal("BLOCKED", artifact.RootElement.GetProperty("status").GetString());
+        Assert.False(artifact.RootElement.GetProperty("exactApprovedHeadingListMaterialized").GetBoolean());
+        Assert.False(artifact.RootElement.GetProperty("capabilities").GetProperty("occurrenceEvaluable").GetBoolean());
     }
 
     private static JsonDocument LoadArtifact(string documentId) =>

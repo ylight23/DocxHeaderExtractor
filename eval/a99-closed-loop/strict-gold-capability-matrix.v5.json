@@ -3,14 +3,14 @@
   "schemaVersion": "a99-strict-gold-capability-matrix-v5",
   "policyAuthority": "USER_PROMOTED_STRICT_GOLD_V4",
   "capabilityRevision": "V5_EVALUATION_CAPABILITY_ONLY",
-  "activeStrictGoldDocuments": 15,
-  "activeStrictGoldTotal": 15,
+  "activeStrictGoldDocuments": 6,
+  "activeStrictGoldTotal": 6,
   "exhaustiveSemanticDocuments": 6,
-  "occurrenceEvaluableExhaustive": "6/6",
-  "characterSpanEvaluableExhaustive": "6/6",
+  "occurrenceEvaluableExhaustive": "5/6",
+  "characterSpanEvaluableExhaustive": "5/6",
   "expectedGoldOccurrences": 311,
-  "materializedGoldOccurrences": 311,
-  "baselineReady": true,
+  "materializedGoldOccurrences": 153,
+  "baselineReady": false,
   "providerCalls": 0,
   "holdoutTouched": false,
   "documents": [
@@ -82,15 +82,18 @@
     {
       "documentId": "DOC-0264",
       "expected": 158,
-      "materialized": 158,
+      "materialized": 0,
       "ambiguous": 0,
       "missing": 0,
-      "occurrenceEvaluable": true,
-      "characterSpanEvaluable": true,
+      "occurrenceEvaluable": false,
+      "characterSpanEvaluable": false,
       "parentEvaluable": false,
       "hierarchyEvaluable": false,
-      "status": "PASS",
-      "discrepancies": []
+      "status": "BLOCKED",
+      "discrepancies": [
+        "exact-approved-heading-list-not-materialized",
+        "materialized-count-mismatch:expected=158:actual=0"
+      ]
     }
   ],
   "source": "strict-gold-occurrence-materialization.v1.json",

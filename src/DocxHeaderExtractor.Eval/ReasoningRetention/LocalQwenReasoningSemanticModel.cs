@@ -10,7 +10,7 @@ namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 
 /// <summary>OpenAI-compatible vLLM adapter for the fixed LAN Qwen campaign.</summary>
 public sealed class LocalQwenReasoningSemanticModel : IReasoningSemanticModel,
-    IReasoningAttemptTimeoutModel, IReasoningCompletionTelemetrySource, IDisposable
+    IReasoningAttemptTimeoutModel, IReasoningCompletionTelemetrySource, IReasoningHierarchyModel, IDisposable
 {
     private readonly RemoteInferenceOptions _options;
     private readonly ReasoningProviderTimeoutOptions _timeouts;
@@ -133,6 +133,33 @@ public sealed class LocalQwenReasoningSemanticModel : IReasoningSemanticModel,
         }
     }
 
+    public async Task<ReasoningHierarchyModelResponse> CompleteHierarchyAsync(
+        ReasoningHierarchyModelRequest request,
+        CancellationToken ct = default)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        var body = new
+        {
+            model = _options.Model, temperature = 0, top_p = 1, top_k = 1, seed = 42,
+            max_tokens = Math.Min(_options.MaxOutputTokens, 8_192), stream = false,
+            chat_template_kwargs = new { enable_thinking = false },
+            messages = new[] { new { role = "system", content = request.SystemPrompt }, new { role = "user", content = request.UserPrompt } },
+            response_format = new { type = "json_schema", json_schema = new { name = "reasoning_hierarchy_v1", strict = true, schema = HierarchySchema() } },
+        };
+        using var message = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint) { Content = JsonContent.Create(body) };
+        if (!string.IsNullOrWhiteSpace(_options.ApiKey)) message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        timeout.CancelAfter(_timeouts.TotalRequestTimeout);
+        Interlocked.Increment(ref _providerCalls);
+        using var response = await _http.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, timeout.Token).ConfigureAwait(false);
+        var raw = await response.Content.ReadAsStringAsync(timeout.Token).ConfigureAwait(false);
+        if (!response.IsSuccessStatusCode) throw new InvalidDataException($"local-qwen-hierarchy-http-{(int)response.StatusCode}");
+        using var envelope = JsonDocument.Parse(raw);
+        var content = envelope.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString();
+        if (string.IsNullOrWhiteSpace(content)) throw new FormatException("reasoning-hierarchy-content-missing");
+        return ReasoningHierarchyResponseParser.Parse(content) with { RawResponseHash = Sha256(raw) };
+    }
+
     private static ReasoningCompletionException Failure(string cls, string message, ReasoningCompletionTelemetry telemetry, Exception? inner = null)
     {
         telemetry.FailureClass = cls;
@@ -159,6 +186,25 @@ public sealed class LocalQwenReasoningSemanticModel : IReasoningSemanticModel,
             } },
             decisionEvidence = new { type = "array", items = new { type = "object", additionalProperties = false, properties = new { evidenceType = new { type = "string" }, sourceReference = new { type = "string" }, shortEvidenceCode = new { type = "string" } }, required = new[] { "evidenceType", "sourceReference", "shortEvidenceCode" } } },
         }, required = new[] { "schemaVersion", "headings", "decisionEvidence" },
+    };
+
+    private static object HierarchySchema() => new
+    {
+        type = "object", additionalProperties = false,
+        properties = new
+        {
+            edges = new
+            {
+                type = "array",
+                items = new
+                {
+                    type = "object", additionalProperties = false,
+                    properties = new { childProposalId = new { type = "string" }, parentProposalId = new { type = new[] { "string", "null" } } },
+                    required = new[] { "childProposalId", "parentProposalId" },
+                },
+            },
+        },
+        required = new[] { "edges" },
     };
 
     private static HttpClient CreateHttpClient(ReasoningProviderTimeoutOptions options) => new(new SocketsHttpHandler { ConnectTimeout = options.ConnectTimeout, MaxConnectionsPerServer = 8 }) { Timeout = Timeout.InfiniteTimeSpan };

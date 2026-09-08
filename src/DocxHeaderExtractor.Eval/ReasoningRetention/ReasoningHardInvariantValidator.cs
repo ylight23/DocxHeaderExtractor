@@ -62,10 +62,53 @@ public static class ReasoningHardInvariantValidator
 
 public static class ReasoningTaskProjection
 {
+    public const string Included = "INCLUDED";
+    public const string Excluded = "EXCLUDED";
+
+    public static IReadOnlyList<ReasoningProjectionDecision> Project(ValidatedStructure structure)
+    {
+        ArgumentNullException.ThrowIfNull(structure);
+        return structure.Elements
+            .OrderBy(element => element.Sources.FirstOrDefault()?.SourceOrdinal ?? int.MaxValue)
+            .ThenBy(element => element.Sources.FirstOrDefault()?.Span.Start ?? int.MaxValue)
+            .ThenBy(element => element.Id, StringComparer.Ordinal)
+            .Select(element =>
+            {
+                var reason = ExclusionReason(element);
+                return new ReasoningProjectionDecision(
+                    element.Id,
+                    reason is null ? Included : Excluded,
+                    reason);
+            })
+            .ToArray();
+    }
+
     public static IReadOnlyList<ValidatedStructuralElement> ProjectContentHeadings(
         ValidatedStructure structure) =>
-        structure.Elements
-            .Where(element => element.Type is StructuralElementType.Title or StructuralElementType.Heading)
-            .Where(element => element.Role is not ProposedRole.LocalSubheading)
+        Project(structure)
+            .Where(item => item.Status == Included)
+            .Join(structure.Elements, item => item.ProposalId, element => element.Id, (_, element) => element)
             .ToArray();
+
+    private static string? ExclusionReason(ValidatedStructuralElement element)
+    {
+        if (element.Type is not (StructuralElementType.Title or StructuralElementType.Heading))
+            return element.Role switch
+            {
+                ProposedRole.LocalSubheading => "NAVIGATION_ONLY",
+                ProposedRole.Metadata => "FRONT_MATTER",
+                _ => "TASK_ROLE_EXCLUDED",
+            };
+        return element.Role switch
+        {
+            ProposedRole.LocalSubheading => "NAVIGATION_ONLY",
+            ProposedRole.Metadata => "FRONT_MATTER",
+            _ => null,
+        };
+    }
 }
+
+public sealed record ReasoningProjectionDecision(
+    [property: System.Text.Json.Serialization.JsonPropertyName("proposalId")] string ProposalId,
+    [property: System.Text.Json.Serialization.JsonPropertyName("projectionStatus")] string Status,
+    [property: System.Text.Json.Serialization.JsonPropertyName("projectionReason")] string? Reason);

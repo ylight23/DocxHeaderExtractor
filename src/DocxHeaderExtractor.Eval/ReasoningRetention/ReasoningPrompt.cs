@@ -8,9 +8,10 @@ public static class ReasoningPrompt
 
     public const string System = """
 You are a document-structure extraction evaluator.
-Read the supplied source occurrences as a whole. Identify semantic structural headings
-and their hierarchy, including headings whose style is Normal and excluding body prose,
-metadata, and navigation-only material when its role is distinct.
+Read the supplied source occurrences as a whole. Identify every semantically real structural
+element and its hierarchy, including headings whose style is Normal and navigation/TOC/front-
+matter headings when structurally present. Semantic extraction is rich; task-specific projection
+happens after validation.
 
 Formatting, numbering, layout, and candidate signals are evidence only. They do not decide
 whether a source occurrence is visible or semantically a heading. Inspect every supplied
@@ -34,8 +35,10 @@ Return exactly:
   "decisionEvidence": []
 }
 
-start and end are UTF-16 offsets relative to the harness-owned output range, not document offsets.
-The harness adds the owned range start and binds the result to the canonical source. The response
+start and end are UTF-16 offsets relative to the model-visible slice, not document offsets.
+The harness adds visibleStart and binds the result to the canonical source. A proposal is owned
+when its heading start is inside the owned range, even when its end extends into the visible halo.
+The response
 must not contain sourceId, sourceOccurrenceId, source paths, request ids, attempt ids, semantic pass
 ids, parent ids, or a completion marker. The response may omit duplicated heading text; the harness
 materializes exact text from parser-owned rawText. The full visible context may contain other
@@ -72,14 +75,16 @@ The harness-owned output scope is source={scope?.CanonicalSourceId ?? "none"};
 ownedSourceOccurrenceId={scope?.SourceOccurrenceId ?? "none"};
 rawTextLength={scope?.RawTextLength.ToString() ?? "0"};
 ownedCharacters={scope?.OwnedStart.ToString() ?? "empty"}..{scope?.OwnedEnd.ToString() ?? "empty"}.
-Return local start/end offsets within that owned character range only.
+    visibleCharacters={scope?.VisibleStart.ToString() ?? "0"}..{scope?.VisibleEnd.ToString() ?? "0"}.
+Return local start/end offsets within the visible character slice only.
 The headings array is scoped to exactly that one owned source occurrence. Emit headings only
 whose text is contained in that owned occurrence's raw text and whose offsets refer to that
 occurrence; never project a heading from another visible SOURCE_OCCURRENCE into this scope.
 Other visible occurrences are context for reasoning only and must contribute zero output items
 to this response. If the owned occurrence is not a heading, return an empty headings array.
-Emit each exact local span at most once. A source occurrence may have zero or one heading
-proposal in this response; never repeat the same start/end pair, even with a different role.
+Emit zero, one, or many headings for the occurrence. There is no semantic one-heading limit.
+Emit each exact local span at most once; never repeat the same start/end pair, even with a
+different role.
 If a boundary is uncertain, omit the proposal rather than emitting a duplicate.
 
 {segment.Text}
@@ -99,7 +104,7 @@ If a boundary is uncertain, omit the proposal rather than emitting a duplicate.
 Batched throughput mode: this request owns SEVERAL source occurrences at once, each introduced by
 an OWNED_OCCURRENCE[ownedIndex] marker below. Every heading you return must include "ownedIndex"
 naming exactly which owned occurrence it belongs to. start/end are local UTF-16 offsets within
-that one owned occurrence's raw text only -- never offsets into the whole request or into another
+ that occurrence's visible raw-text slice only -- never offsets into the whole request or into another
 occurrence. An occurrence may have zero, one, or more than one heading. Occurrences shown only as
 plain SOURCE_OCCURRENCE context (no OWNED_OCCURRENCE marker) are for reasoning only and must
 contribute zero output items.
@@ -111,7 +116,7 @@ contribute zero output items.
         IReadOnlyList<ReasoningOwnedOutputScope> ownedScopes)
     {
         var mapping = string.Join("\n", ownedScopes.Select(s =>
-            $"OWNED_OCCURRENCE[{s.OwnedIndex}] = sourceOccurrenceId {s.SourceOccurrenceId} (rawTextLength={s.RawTextLength})"));
+            $"OWNED_OCCURRENCE[{s.OwnedIndex}] = sourceOccurrenceId {s.SourceOccurrenceId} (rawTextLength={s.RawTextLength}, visible={s.VisibleStart}..{s.VisibleEnd}, owned={s.OwnedStart}..{s.OwnedEnd})"));
         return $"""
 TASK={Version}
 route={(shadow ? "REASONING_PRESERVING_SHADOW" : "MODEL_CAPABILITY_CEILING")}

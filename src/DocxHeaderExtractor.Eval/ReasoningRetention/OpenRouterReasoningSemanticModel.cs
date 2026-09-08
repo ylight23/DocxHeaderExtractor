@@ -12,7 +12,8 @@ namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 /// Eval-only OpenRouter adapter. It records call count and hashes responses, never private
 /// chain-of-thought or raw prompts in the retention artifacts.
 /// </summary>
-public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, IReasoningAttemptTimeoutModel, IDisposable
+public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, IReasoningAttemptTimeoutModel,
+    IReasoningCompletionTelemetrySource, IReasoningHierarchyModel, IDisposable
 {
     private readonly HttpClient _http;
     private readonly RemoteInferenceOptions _options;
@@ -84,13 +85,13 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
                 new { role = "system", content = request.SystemPrompt },
                 new { role = "user", content = request.UserPrompt },
             },
-            response_format = new { type = "json_object" },
+            response_format = new { type = "json_schema", json_schema = new { name = "reasoning_v2", strict = true, schema = ResponseSchema() } },
             provider = new
             {
                 zdr = true,
                 data_collection = "deny",
                 require_parameters = true,
-                allow_fallbacks = true,
+                allow_fallbacks = false,
             },
         };
         using var message = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
@@ -196,6 +197,67 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
             telemetry.TransportException = ex.GetType().Name;
             telemetry.FailureClass = ReasoningCompletionFailureClass.OtherProviderFailure;
             throw CompletionFailure(ReasoningCompletionFailureClass.OtherProviderFailure, ex.Message, telemetry, ex);
+        }
+        finally
+        {
+            telemetry.ElapsedMilliseconds = stopwatch.ElapsedMilliseconds;
+            _completionTelemetry.Add(telemetry);
+        }
+    }
+
+    public async Task<ReasoningHierarchyModelResponse> CompleteHierarchyAsync(
+        ReasoningHierarchyModelRequest request,
+        CancellationToken ct = default)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        var telemetry = new ReasoningCompletionTelemetry
+        {
+            RequestId = request.RequestId, Route = request.Route, DocumentId = request.DocumentId,
+            SemanticPassId = "global-hierarchy", ContextSegmentId = "global-hierarchy",
+            Model = _options.Model, Provider = ProviderName, Temperature = 0,
+            ConfiguredMaxOutputTokens = Math.Min(_options.MaxOutputTokens, 8_192),
+            InputCharacters = request.SystemPrompt.Length + request.UserPrompt.Length,
+        };
+        var stopwatch = Stopwatch.StartNew();
+        Interlocked.Increment(ref _providerCalls);
+        var body = new
+        {
+            model = _options.Model,
+            temperature = 0,
+            max_tokens = Math.Min(_options.MaxOutputTokens, 8_192),
+            reasoning = new { effort = "none" },
+            messages = new[]
+            {
+                new { role = "system", content = request.SystemPrompt },
+                new { role = "user", content = request.UserPrompt },
+            },
+            response_format = new { type = "json_schema", json_schema = new { name = "reasoning_hierarchy_v1", strict = true, schema = HierarchySchema() } },
+            provider = new { zdr = true, data_collection = "deny", require_parameters = true, allow_fallbacks = false },
+        };
+        using var message = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint) { Content = JsonContent.Create(body) };
+        message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
+        message.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor Accuracy99");
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        timeout.CancelAfter(_timeoutOptions.TotalRequestTimeout);
+        try
+        {
+            using var response = await _http.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, timeout.Token).ConfigureAwait(false);
+            telemetry.HttpStatus = (int)response.StatusCode;
+            var raw = await response.Content.ReadAsStringAsync(timeout.Token).ConfigureAwait(false);
+            var envelope = ReadEnvelope(raw, telemetry);
+            if (!response.IsSuccessStatusCode) throw new InvalidDataException($"OPENROUTER_HIERARCHY_HTTP_{(int)response.StatusCode}");
+            if (string.IsNullOrWhiteSpace(envelope.Content)) throw new FormatException("reasoning-hierarchy-content-missing");
+            var parsed = ReasoningHierarchyResponseParser.Parse(envelope.Content);
+            telemetry.JsonParseSucceeded = true;
+            telemetry.StreamCompletedNormally = true;
+            return parsed with { RawResponseHash = telemetry.FullContentSha256 };
+        }
+        catch (Exception ex)
+        {
+            telemetry.FailureClass = ex is FormatException or JsonException
+                ? ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid
+                : ReasoningCompletionFailureClass.OtherProviderFailure;
+            throw;
         }
         finally
         {
@@ -349,6 +411,8 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
             telemetry.ReportedInputTokens = ReadInt(usage, "prompt_tokens");
             telemetry.ReportedOutputTokens = ReadInt(usage, "completion_tokens");
             telemetry.ReportedTotalTokens = ReadInt(usage, "total_tokens");
+            if (usage.TryGetProperty("cost", out var cost) && cost.TryGetDecimal(out var reportedCost))
+                telemetry.ReportedCost = reportedCost;
         }
 
         if (!root.TryGetProperty("choices", out var choices) ||
@@ -375,6 +439,86 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
         finishReason is not null && (finishReason.Equals("length", StringComparison.OrdinalIgnoreCase) ||
             finishReason.Equals("max_tokens", StringComparison.OrdinalIgnoreCase) ||
             finishReason.Equals("max_output_tokens", StringComparison.OrdinalIgnoreCase));
+
+    private static object HierarchySchema() => new
+    {
+        type = "object", additionalProperties = false,
+        properties = new
+        {
+            edges = new
+            {
+                type = "array",
+                items = new
+                {
+                    type = "object", additionalProperties = false,
+                    properties = new
+                    {
+                        childProposalId = new { type = "string" },
+                        parentProposalId = new { type = new[] { "string", "null" } },
+                    },
+                    required = new[] { "childProposalId", "parentProposalId" },
+                },
+            },
+        },
+        required = new[] { "edges" },
+    };
+
+    private static object ResponseSchema() => new
+    {
+        type = "object", additionalProperties = false,
+        properties = new
+        {
+            schemaVersion = new { type = "string" },
+            headings = new
+            {
+                type = "array",
+                items = new
+                {
+                    type = "object", additionalProperties = false,
+                    properties = new
+                    {
+                        start = new { type = "integer", minimum = 0 },
+                        end = new { type = "integer", minimum = 1 },
+                        semanticRole = new { type = "string" },
+                        proposedLevel = new { type = new[] { "integer", "null" } },
+                        proposedParentLocalId = new { type = new[] { "string", "null" } },
+                        confidence = new { type = "number" },
+                        ownedIndex = new { type = new[] { "integer", "null" } },
+                        decisionEvidence = new
+                        {
+                            type = "array", items = new
+                            {
+                                type = "object", additionalProperties = false,
+                                properties = new
+                                {
+                                    evidenceType = new { type = "string" },
+                                    sourceReference = new { type = "string" },
+                                    shortEvidenceCode = new { type = "string" },
+                                },
+                                required = new[] { "evidenceType", "sourceReference", "shortEvidenceCode" },
+                            },
+                        },
+                    },
+                    required = new[] { "start", "end", "semanticRole", "proposedLevel", "proposedParentLocalId", "confidence", "ownedIndex", "decisionEvidence" },
+                },
+            },
+            decisionEvidence = new
+            {
+                type = "array", items = new
+                {
+                    type = "object", additionalProperties = false,
+                    properties = new
+                    {
+                        evidenceType = new { type = "string" },
+                        sourceReference = new { type = "string" },
+                        shortEvidenceCode = new { type = "string" },
+                    },
+                    required = new[] { "evidenceType", "sourceReference", "shortEvidenceCode" },
+                },
+            },
+        },
+        required = new[] { "schemaVersion", "headings", "decisionEvidence" },
+    };
 
     private static string Sha256(string value) =>
         Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();

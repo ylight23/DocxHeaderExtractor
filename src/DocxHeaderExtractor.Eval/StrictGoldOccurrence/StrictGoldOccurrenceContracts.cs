@@ -48,6 +48,7 @@ public sealed record StrictGoldOccurrenceArtifact
     [JsonPropertyName("strictGoldArtifactPath")] public required string StrictGoldArtifactPath { get; init; }
     [JsonPropertyName("strictGoldArtifactSha256")] public required string StrictGoldArtifactSha256 { get; init; }
     [JsonPropertyName("semanticHeadingTotal")] public int SemanticHeadingTotal { get; init; }
+    [JsonPropertyName("exactApprovedHeadingListMaterialized")] public bool ExactApprovedHeadingListMaterialized { get; init; }
     [JsonPropertyName("materializedOccurrenceCount")] public int MaterializedOccurrenceCount { get; init; }
     [JsonPropertyName("bindings")] public IReadOnlyList<StrictGoldOccurrenceBinding> Bindings { get; init; } = [];
     [JsonPropertyName("discrepancies")] public IReadOnlyList<string> Discrepancies { get; init; } = [];

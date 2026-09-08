@@ -1,11 +1,11 @@
 {
   "artifactKind": "a99_strict_gold_occurrence_materialization",
   "schemaVersion": "a99-strict-gold-occurrence-materialization-v1",
-  "status": "PASS",
+  "status": "BLOCKED",
   "expectedDocuments": 6,
-  "materializedDocuments": 6,
+  "materializedDocuments": 5,
   "expectedOccurrences": 311,
-  "materializedOccurrences": 311,
+  "materializedOccurrences": 153,
   "perDocument": [
     {
       "documentId": "DOC-0001",
@@ -75,15 +75,18 @@
     {
       "documentId": "DOC-0264",
       "expected": 158,
-      "materialized": 158,
+      "materialized": 0,
       "ambiguous": 0,
       "missing": 0,
-      "occurrenceEvaluable": true,
-      "characterSpanEvaluable": true,
+      "occurrenceEvaluable": false,
+      "characterSpanEvaluable": false,
       "parentEvaluable": false,
       "hierarchyEvaluable": false,
-      "status": "PASS",
-      "discrepancies": []
+      "status": "BLOCKED",
+      "discrepancies": [
+        "exact-approved-heading-list-not-materialized",
+        "materialized-count-mismatch:expected=158:actual=0"
+      ]
     }
   ]
 }

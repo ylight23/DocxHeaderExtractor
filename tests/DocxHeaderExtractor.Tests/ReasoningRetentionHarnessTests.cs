@@ -126,9 +126,10 @@ public sealed class ReasoningRetentionHarnessTests
 
         var (structure, validated) = ReasoningProposalMaterializer.Materialize(state.Source, state, proposals);
 
-        Assert.Empty(structure.Elements);
-        Assert.Equal(2, validated.Count);
-        Assert.All(validated, item => Assert.Equal("conflicting-proposal-payload", item.RejectionReason));
+        Assert.Single(structure.Elements);
+        var row = Assert.Single(validated);
+        Assert.True(row.Accepted);
+        Assert.Equal("ROLE_CONFLICT", row.ConflictStatus);
     }
 
     [Fact]
@@ -141,7 +142,7 @@ public sealed class ReasoningRetentionHarnessTests
         var proposals = new[]
         {
             Proposal("p[0]", "Parent", 0, 6, 99),
-            Proposal("p[1]", "Child", 0, 5, -4) with { ProposedParent = "sourceOrdinal:0" },
+            Proposal("p[1]", "Child", 0, 5, -4) with { ProposedParent = "reasoning:p[0]:0:6" },
         };
 
         var (structure, validated) = ReasoningProposalMaterializer.Materialize(state.Source, state, proposals);
@@ -237,7 +238,8 @@ public sealed class ReasoningRetentionHarnessTests
         var evaluable = ReasoningGoldArtifactLoader.DiscoverMetricEvaluableDocuments(root);
 
         Assert.Equal(6, exhaustive.Count);
-        Assert.Empty(evaluable);
+        Assert.Equal(5, evaluable.Count);
+        Assert.DoesNotContain("DOC-0264", evaluable);
     }
 
     private static ReasoningHeadingProposal Proposal(

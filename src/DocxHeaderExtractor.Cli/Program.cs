@@ -17,6 +17,7 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Repair;
 using DocxHeaderExtractor.DocumentProcessing.Vision;
 using DocxHeaderExtractor.Infrastructure.AI;
+using DocxHeaderExtractor.Eval.ReasoningRetention;
 
 Console.OutputEncoding = Encoding.UTF8;
 
@@ -37,7 +38,7 @@ if (options.ShowHelp)
     return 0;
 }
 // `sample`/`bench`/`eval` có đích mặc định, `info` tự dò mô hình – không cần đầu vào.
-if (options.Inputs.Count == 0 && options.Command is not ("sample" or "info" or "bench" or "eval" or "accuracy99" or "r18" or "harness-lift"))
+if (options.Inputs.Count == 0 && options.Command is not ("sample" or "info" or "bench" or "eval" or "accuracy99" or "r18" or "harness-lift" or "local-qwen-preflight" or "local-qwen-large"))
 {
     Console.Error.WriteLine("Chưa chỉ định file đầu vào.");
     return 2;
@@ -59,6 +60,8 @@ try
         "accuracy99" => await Accuracy99Runner.RunAsync(options, cts.Token),
         "r18" => await R18Runner.RunAsync(options, cts.Token),
         "harness-lift" => await HarnessLiftRunner.RunAsync(options, cts.Token),
+        "local-qwen-preflight" => await LocalQwenLargeCorpusRunner.RunPreflightAsync(Directory.GetCurrentDirectory(), 2, cts.Token),
+        "local-qwen-large" => await LocalQwenLargeCorpusRunner.RunAsync(Directory.GetCurrentDirectory(), cts.Token),
         "review" => await RunReviewAsync(options, cts.Token),
         "review-key" => RunReviewKey(options),
         "toc-keys" => RunTocKeys(options),
@@ -89,6 +92,7 @@ try
         "pdf-tags" => await RunPdfTagsAsync(options, cts.Token),
         "pdf-bookmarks" => RunPdfBookmarks(options),
         "verify-corrupt" => await RunVerifyCorruptAsync(options, cts.Token),
+        "source-facts" => RunSourceFacts(options),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -967,6 +971,60 @@ static int RunPdfBookmarks(CommandLineOptions o)
         File.WriteAllText(path, json, new UTF8Encoding(false));
         Console.Error.WriteLine($"Đã ghi: {path}");
     }
+    return 0;
+}
+
+/// <summary>
+/// Deterministic, LLM-free dump of a document's raw paragraph text and light structural facts,
+/// for ad-hoc interactive Q&amp;A (e.g. handing the output to a Claude subagent). No provider
+/// calls, no Gold, no R1-B artifacts -- reuses the same parser as the production pipeline.
+/// </summary>
+static int RunSourceFacts(CommandLineOptions o)
+{
+    var file = o.Inputs.FirstOrDefault();
+    if (string.IsNullOrWhiteSpace(file) || !File.Exists(file))
+    {
+        Console.Error.WriteLine("source-facts cần một file .docx/.docm/.doc còn tồn tại.");
+        return 2;
+    }
+    var extension = Path.GetExtension(file);
+    if (string.Equals(extension, ".pdf", StringComparison.OrdinalIgnoreCase))
+    {
+        Console.Error.WriteLine("source-facts chưa hỗ trợ PDF; hiện chỉ đọc .docx/.docm/.doc.");
+        return 2;
+    }
+
+    o.Pipeline.DisableLlm = true; // source-facts only reads raw paragraphs; never needs a local model.
+    var conversion = LegacyDocConverter.EnsureDocx(file);
+    var policyState = BuildPolicyState(conversion.Path, o.Pipeline.Extraction);
+    var source = policyState.Source;
+
+    var report = new
+    {
+        file = Path.GetFullPath(file),
+        documentId = source.DocumentId,
+        totalParagraphs = source.Paragraphs.Count,
+        paragraphs = source.Paragraphs
+            .Where(p => !string.IsNullOrWhiteSpace(p.Text))
+            .Select(p => new
+            {
+                sourceId = p.SourceId,
+                sourceOrdinal = p.SourceOrdinal,
+                text = p.Text,
+                styleId = p.Style.StyleId,
+                styleName = p.Style.StyleName,
+                builtInHeadingStyleLevel = p.Style.BuiltInHeadingStyleLevel,
+                outlineLevel = p.Style.OutlineLevel,
+                bold = p.Style.Bold,
+                numberLabel = p.Numbering.NumberLabel,
+            }),
+    };
+    Console.WriteLine(JsonSerializer.Serialize(report, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    }));
     return 0;
 }
 

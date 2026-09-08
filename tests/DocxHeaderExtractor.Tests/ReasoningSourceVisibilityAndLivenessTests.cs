@@ -135,18 +135,19 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
     }
 
     [Fact]
-    public async Task Conflicting_duplicate_occurrence_in_one_response_fails_closed()
+    public async Task Conflicting_duplicate_occurrence_in_one_response_retains_existence_with_conflict()
     {
         var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
         var model = new ProgrammableModel(_ => new ReasoningModelResponse(
             [ModelProposal(0, 9), ModelProposal(0, 9, semanticRole: "LIST_ITEM")],
             []));
 
-        var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() =>
-            new ReasoningPreservingHeadingHarness(model)
-                .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling));
+        var observation = await new ReasoningPreservingHeadingHarness(model)
+            .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling);
 
-        Assert.Contains("reasoning-response-conflicting-duplicate-occurrence", exception.Message);
+        Assert.Single(observation.Validated);
+        Assert.True(observation.Validated[0].Accepted);
+        Assert.Equal("ROLE_CONFLICT", observation.Validated[0].ConflictStatus);
     }
 
     [Fact]

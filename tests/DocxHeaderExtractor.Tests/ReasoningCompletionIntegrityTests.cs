@@ -157,8 +157,8 @@ public sealed class ReasoningCompletionIntegrityTests
                 ? new ReasoningModelResponse(
                     [new ReasoningModelHeadingProposal
                     {
-                        Start = 0,
-                        End = 1,
+                        Start = 2,
+                        End = 3,
                         SemanticRole = "CONTENT_HEADING",
                     }],
                     [])
@@ -283,7 +283,7 @@ public sealed class ReasoningCompletionIntegrityTests
     public void Provider_text_is_optional_when_span_is_valid()
     {
         var response = ReasoningModelResponseParser.Parse(
-            "{\"headings\":[{\"start\":7,\"end\":14,\"semanticRole\":\"CONTENT_HEADING\",\"proposedLevel\":1}],\"decisionEvidence\":[]}");
+            "{\"headings\":[{\"start\":7,\"end\":14,\"semanticRole\":\"CONTENT_HEADING\",\"proposedLevel\":1,\"proposedParentLocalId\":null,\"confidence\":0.9,\"decisionEvidence\":[]}],\"decisionEvidence\":[]}");
 
         Assert.Equal(7, Assert.Single(response.Headings).Start);
     }

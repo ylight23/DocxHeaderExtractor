@@ -113,6 +113,8 @@ public sealed record ReasoningOwnedOutputScope
     [JsonPropertyName("canonicalSourceId")] public required string CanonicalSourceId { get; init; }
     [JsonPropertyName("sourceOccurrenceId")] public required string SourceOccurrenceId { get; init; }
     [JsonPropertyName("rawTextLength")] public required int RawTextLength { get; init; }
+    [JsonPropertyName("visibleStart")] public int VisibleStart { get; init; }
+    [JsonPropertyName("visibleEnd")] public int VisibleEnd { get; init; }
     [JsonPropertyName("ownedStart")] public required int OwnedStart { get; init; }
     [JsonPropertyName("ownedEnd")] public required int OwnedEnd { get; init; }
     /// <summary>
@@ -206,6 +208,7 @@ public sealed class ReasoningCompletionTelemetry
     [JsonPropertyName("reportedInputTokens")] public int? ReportedInputTokens { get; set; }
     [JsonPropertyName("reportedOutputTokens")] public int? ReportedOutputTokens { get; set; }
     [JsonPropertyName("reportedTotalTokens")] public int? ReportedTotalTokens { get; set; }
+    [JsonPropertyName("reportedCost")] public decimal? ReportedCost { get; set; }
     [JsonPropertyName("receivedContentCharacters")] public int ReceivedContentCharacters { get; set; }
     [JsonPropertyName("receivedContentBytes")] public int ReceivedContentBytes { get; set; }
     [JsonPropertyName("firstContentHash")] public string? FirstContentHash { get; set; }
@@ -369,7 +372,11 @@ public sealed record ReasoningValidatedProposal(
     [property: JsonPropertyName("proposal")] ReasoningHeadingProposal Proposal,
     [property: JsonPropertyName("elementId")] string ElementId,
     [property: JsonPropertyName("accepted")] bool Accepted,
-    [property: JsonPropertyName("rejectionReason")] string? RejectionReason);
+    [property: JsonPropertyName("rejectionReason")] string? RejectionReason)
+{
+    [JsonPropertyName("conflictStatus")] public string? ConflictStatus { get; init; }
+    [JsonPropertyName("mergedDuplicateCount")] public int MergedDuplicateCount { get; init; } = 1;
+}
 
 public sealed record ReasoningRouteObservation
 {
@@ -393,6 +400,7 @@ public sealed record ReasoningGoldOccurrence
     [JsonPropertyName("sourceId")] public required string SourceId { get; init; }
     [JsonPropertyName("headingSpan")] public StructuralSpan? HeadingSpan { get; init; }
     [JsonPropertyName("goldRole")] public string? GoldRole { get; init; }
+    [JsonPropertyName("goldRoleEvaluability")] public string GoldRoleEvaluability { get; init; } = "EVALUABLE";
     [JsonPropertyName("goldLevel")] public int? GoldLevel { get; init; }
     [JsonPropertyName("goldParent")] public string? GoldParent { get; init; }
     [JsonPropertyName("exactText")] public required string ExactText { get; init; }

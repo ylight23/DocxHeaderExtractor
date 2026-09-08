@@ -50,6 +50,9 @@ public static class ReasoningGoldArtifactLoader
                 SourceId = heading.GetProperty("sourceId").GetString() ?? "",
                 HeadingSpan = span,
                 GoldRole = heading.TryGetProperty("role", out var role) ? role.GetString() : null,
+                GoldRoleEvaluability = heading.TryGetProperty("role", out var roleValue) &&
+                    string.Equals(roleValue.GetString(), "heading", StringComparison.OrdinalIgnoreCase)
+                    ? "ROLE_NOT_EVALUABLE" : "EVALUABLE",
                 GoldLevel = heading.TryGetProperty("level", out var level) && level.TryGetInt32(out var l) ? l : null,
                 GoldParent = heading.TryGetProperty("parentHeadingOccurrenceId", out var parent) ? parent.GetString() : null,
                 ExactText = heading.TryGetProperty("exactText", out var text) ? text.GetString() ?? "" : "",
@@ -82,33 +85,7 @@ public static class ReasoningGoldArtifactLoader
     /// deliberately insufficient for this denominator.
     /// </summary>
     public static IReadOnlyList<string> DiscoverMetricEvaluableDocuments(string root)
-    {
-        var result = new List<string>();
-        foreach (var path in Directory.EnumerateFiles(
-                     Path.Combine(root, "eval", "a99-closed-loop", "strict-gold-v4"),
-                     "*.strict-gold-v4.json"))
-        {
-            using var document = JsonDocument.Parse(File.ReadAllText(path));
-            var rootElement = document.RootElement;
-            if (rootElement.GetProperty("coverage").GetString() != "EXHAUSTIVE" ||
-                !rootElement.GetProperty("headingSetExhaustive").GetBoolean() ||
-                !rootElement.GetProperty("capabilities").GetProperty("semanticEvaluable").GetBoolean())
-                continue;
-
-            var capabilities = rootElement.GetProperty("capabilities");
-            if (!capabilities.GetProperty("occurrenceEvaluable").GetBoolean() ||
-                !capabilities.GetProperty("characterSpanEvaluable").GetBoolean())
-                continue;
-
-            if (!rootElement.TryGetProperty("headings", out var headings) ||
-                headings.ValueKind != JsonValueKind.Array ||
-                !headings.EnumerateArray().Any(HasExactHeadingSpan))
-                continue;
-
-            result.Add(rootElement.GetProperty("documentId").GetString()!);
-        }
-        return result;
-    }
+        => DiscoverOccurrenceEvaluableDocuments(root);
 
     /// <summary>
     /// Loads the exact occurrence-binding artifact. This is the only Gold loader used by the
@@ -122,6 +99,7 @@ public static class ReasoningGoldArtifactLoader
             File.ReadAllText(path), new JsonSerializerOptions(JsonSerializerDefaults.Web))
             ?? throw new InvalidDataException($"Không đọc được occurrence Gold: {path}");
         if (!string.Equals(artifact.Status, "PASS", StringComparison.Ordinal) ||
+            !artifact.ExactApprovedHeadingListMaterialized ||
             artifact.Bindings.Count != artifact.SemanticHeadingTotal ||
             artifact.Bindings.Any(binding => !binding.ExactRawSubstringVerified ||
                                              binding.HeadingSpan.Start < 0 ||
@@ -138,6 +116,8 @@ public static class ReasoningGoldArtifactLoader
                 SourceId = binding.SourceId,
                 HeadingSpan = new StructuralSpan(binding.HeadingSpan.Start, binding.HeadingSpan.End),
                 GoldRole = binding.SemanticRole,
+                GoldRoleEvaluability = string.Equals(binding.SemanticRole, "heading", StringComparison.OrdinalIgnoreCase)
+                    ? "ROLE_NOT_EVALUABLE" : "EVALUABLE",
                 GoldLevel = binding.Level,
                 GoldParent = binding.ParentHeadingOccurrenceId,
                 ExactText = binding.RawSourceText,
@@ -156,6 +136,7 @@ public static class ReasoningGoldArtifactLoader
                 File.ReadAllText(path), new JsonSerializerOptions(JsonSerializerDefaults.Web));
             if (artifact is not null &&
                 artifact.Status == "PASS" &&
+                artifact.ExactApprovedHeadingListMaterialized &&
                 artifact.Bindings.Count == artifact.SemanticHeadingTotal &&
                 artifact.Bindings.All(binding => binding.ExactRawSubstringVerified &&
                                                   binding.HeadingSpan.Start >= 0 &&
@@ -242,7 +223,7 @@ public static class RetentionEvaluation
         string.Equals(result.SourceId, gold.SourceId, StringComparison.Ordinal) &&
         gold.HeadingSpan is { } span &&
         result.Span == span &&
-        (gold.GoldRole is null || string.Equals(gold.GoldRole, result.Role, StringComparison.OrdinalIgnoreCase)) &&
+        (gold.GoldRoleEvaluability == "ROLE_NOT_EVALUABLE" || gold.GoldRole is null || string.Equals(gold.GoldRole, result.Role, StringComparison.OrdinalIgnoreCase)) &&
         (gold.GoldLevel is null || gold.GoldLevel == result.Level);
 
     private static ReasoningRetentionLedgerEntry BuildEntry(

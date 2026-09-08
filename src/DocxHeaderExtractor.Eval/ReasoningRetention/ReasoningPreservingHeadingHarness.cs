@@ -492,31 +492,38 @@ public sealed class ReasoningPreservingHeadingHarness
             throw new InvalidDataException("reasoning-owned-output-scope-invalid");
 
         var scoped = new List<ReasoningHeadingProposal>(response.Headings.Count);
-        var emittedOccurrences = new Dictionary<string, ReasoningModelHeadingProposal>(StringComparer.Ordinal);
+        var emittedSemanticOccurrences = new HashSet<string>(StringComparer.Ordinal);
         foreach (var proposal in response.Headings)
         {
             var localSpan = new StructuralSpan(proposal.Start, proposal.End);
             if (localSpan.Start < 0 ||
                 localSpan.End <= localSpan.Start ||
-                localSpan.End > scope.OwnedEnd - scope.OwnedStart)
+                scope.VisibleStart < 0 ||
+                scope.VisibleEnd <= scope.VisibleStart ||
+                scope.VisibleEnd > scope.RawTextLength ||
+                scope.OwnedStart < scope.VisibleStart ||
+                scope.OwnedEnd <= scope.OwnedStart ||
+                scope.OwnedEnd > scope.RawTextLength ||
+                localSpan.End > scope.VisibleEnd - scope.VisibleStart)
                 throw new InvalidDataException(
                     $"reasoning-response-local-span-invalid; start={proposal.Start}; end={proposal.End}; " +
+                    $"visibleStart={scope.VisibleStart}; visibleEnd={scope.VisibleEnd}; " +
                     $"ownedStart={scope.OwnedStart}; ownedEnd={scope.OwnedEnd}");
 
-            var globalSpan = new StructuralSpan(scope.OwnedStart + localSpan.Start, scope.OwnedStart + localSpan.End);
-            var occurrenceKey = $"{scope.CanonicalSourceId}:{globalSpan.Start}:{globalSpan.End}";
-            if (emittedOccurrences.TryGetValue(occurrenceKey, out var existingProposal))
+            var globalSpan = new StructuralSpan(scope.VisibleStart + localSpan.Start, scope.VisibleStart + localSpan.End);
+            if (globalSpan.Start < scope.OwnedStart || globalSpan.Start >= scope.OwnedEnd)
             {
-                if (!EquivalentProposal(existingProposal, proposal))
-                    throw new InvalidDataException(
-                        $"reasoning-response-conflicting-duplicate-occurrence; occurrence={occurrenceKey}");
-
-                // A retry/consolidation response may repeat the same owned occurrence. Keep one
-                // canonical proposal and reject only contradictory duplicates.
+                completion.OutOfScopeProposalCount++;
+                completion.OwnershipViolationCount++;
                 continue;
             }
-
-            emittedOccurrences.Add(occurrenceKey, proposal);
+            if (globalSpan.Start < scope.VisibleStart || globalSpan.Start >= globalSpan.End ||
+                globalSpan.End > scope.VisibleEnd || globalSpan.End > scope.RawTextLength)
+                throw new InvalidDataException("reasoning-response-global-span-invalid");
+            var semanticKey = $"{scope.CanonicalSourceId}:{globalSpan.Start}:{globalSpan.End}:" +
+                $"{proposal.SemanticRole.Trim().ToUpperInvariant()}:{proposal.ProposedParentLocalId?.Trim() ?? ""}";
+            if (!emittedSemanticOccurrences.Add(semanticKey))
+                continue;
 
             scoped.Add(new ReasoningHeadingProposal
             {
@@ -533,17 +540,6 @@ public sealed class ReasoningPreservingHeadingHarness
         return scoped;
     }
 
-    private static bool EquivalentProposal(
-        ReasoningModelHeadingProposal left,
-        ReasoningModelHeadingProposal right) =>
-        left.Start == right.Start &&
-        left.End == right.End &&
-        string.Equals(left.SemanticRole, right.SemanticRole, StringComparison.Ordinal) &&
-        left.ProposedLevel == right.ProposedLevel &&
-        string.Equals(left.ProposedParentLocalId, right.ProposedParentLocalId, StringComparison.Ordinal) &&
-        left.Confidence.Equals(right.Confidence) &&
-        left.DecisionEvidence.SequenceEqual(right.DecisionEvidence);
-
     private static ReasoningOwnedOutputScope BuildOwnedOutputScope(
         ReasoningContextSegment segment,
         IReadOnlyDictionary<string, ReasoningSourceOccurrence> occurrenceById)
@@ -558,6 +554,8 @@ public sealed class ReasoningPreservingHeadingHarness
             CanonicalSourceId = occurrence.SourceId,
             SourceOccurrenceId = occurrence.SourceOccurrenceId,
             RawTextLength = occurrence.RawText.Length,
+            VisibleStart = segment.VisibleStartCharacter ?? 0,
+            VisibleEnd = segment.VisibleEndCharacter ?? occurrence.RawText.Length,
             OwnedStart = start,
             OwnedEnd = end,
         };

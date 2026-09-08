@@ -139,19 +139,15 @@ public static class LocalQwenLargeCorpusRunner
                 var segment = state.Pack.Segments[index];
                 var occurrenceById = state.Pack.Occurrences.ToDictionary(o => o.SourceOccurrenceId, StringComparer.Ordinal);
                 var ownedOccurrences = segment.OwnedSourceOccurrenceIds.Select(id => occurrenceById[id]).ToArray();
-                var scopes = ownedOccurrences.Select((occ, i) => new ReasoningOwnedOutputScope
-                {
-                    CanonicalSourceId = occ.SourceId, SourceOccurrenceId = occ.SourceOccurrenceId,
-                    RawTextLength = occ.RawText.Length, OwnedStart = 0, OwnedEnd = occ.RawText.Length, OwnedIndex = i,
-                }).ToArray();
+                var scopes = ownedOccurrences.Select((occ, i) => ScopeForSegment(segment, occ, i)).ToArray();
                 var request = new ReasoningModelRequest
                 {
                     RequestId = ReasoningPrompt.BuildRequestId(state.Source!.DocumentId, segment.ContextSegmentId, ConfigurationSignature),
                     DocumentId = state.Source.DocumentId, Route = ReasoningRoute.ModelCapabilityCeiling.ToString(), SemanticPassId = "semantic-heading-extraction-v2-batched",
-                    ContextSegmentId = segment.ContextSegmentId, SystemPrompt = ReasoningPrompt.System + ParentTokenInstruction + ReasoningPrompt.BatchedInstruction,
+                    ContextSegmentId = segment.ContextSegmentId, SystemPrompt = ReasoningPrompt.System + ReasoningPrompt.BatchedInstruction,
                     UserPrompt = ReasoningPrompt.BuildUserBatched(segment, false, scopes),
                     SourceOccurrenceIds = segment.SourceOccurrenceIds, OwnedSourceOccurrenceIds = segment.OwnedSourceOccurrenceIds,
-                    OwnedOutputScope = scopes.Length > 0 ? scopes[0] : new ReasoningOwnedOutputScope { CanonicalSourceId = "none", SourceOccurrenceId = "none", RawTextLength = 0, OwnedStart = 0, OwnedEnd = 0 },
+                    OwnedOutputScope = scopes.Length > 0 ? scopes[0] : EmptyScope(),
                     OwnedOutputScopes = scopes,
                     AttemptId = $"{state.Source.DocumentId}:{segment.ContextSegmentId}:attempt-1", ConfigurationSignature = ConfigurationSignature,
                 };
@@ -183,6 +179,7 @@ public static class LocalQwenLargeCorpusRunner
                 return;
             }
             var (proposals, parentGraphErrors) = MaterializeAndValidateParentGraph(results, state.Pack!);
+            proposals = await ResolveGlobalHierarchyAsync(state, proposals, model, ct);
             if (parentGraphErrors.Count > 0)
             {
                 var executionArtifactPath = Path.Combine(docDir, "execution.v1.json");
@@ -197,17 +194,44 @@ public static class LocalQwenLargeCorpusRunner
             var materialized = ReasoningProposalMaterializer.Materialize(state.Source!, state.Policy!, proposals);
             var sourceOrdinal = state.Pack!.Occurrences.ToDictionary(x => x.SourceId, x => x.SourceOrdinal, StringComparer.Ordinal);
             var ordered = proposals.OrderBy(x => sourceOrdinal.GetValueOrDefault(x.SourceId, int.MaxValue)).ThenBy(x => x.HeadingSpan.Start).ThenBy(x => x.SourceId, StringComparer.Ordinal).ToArray();
-            var accepted = materialized.Validated.Where(x => x.Accepted).Select(x => x.Proposal).Where(x => !ExcludedProjectionRole(x.SemanticRole)).OrderBy(x => sourceOrdinal.GetValueOrDefault(x.SourceId, int.MaxValue)).ThenBy(x => x.HeadingSpan.Start).ThenBy(x => x.SourceId, StringComparer.Ordinal).ToArray();
+            var structure = materialized.Structure;
+            var projection = ReasoningTaskProjection.Project(structure);
+            var accepted = projection.Where(x => x.Status == ReasoningTaskProjection.Included)
+                .Select(x => structure.Elements.Single(e => e.Id == x.ProposalId))
+                .OrderBy(x => x.Sources.Single().SourceOrdinal).ThenBy(x => x.Sources.Single().Span.Start).ThenBy(x => x.Id, StringComparer.Ordinal).ToArray();
+            var validatedById = materialized.Validated.ToDictionary(x => x.ElementId, StringComparer.Ordinal);
+            var traces = proposals.Select(proposal =>
+            {
+                var id = ReasoningProposalMaterializer.ElementId(proposal);
+                var row = validatedById.GetValueOrDefault(id);
+                var decision = projection.Single(x => x.ProposalId == id);
+                return ReasoningFirstLossTraceBuilder.Build(
+                    state.Inventory.DocumentId,
+                    proposal,
+                    sourceVisible: true,
+                    modelRequestOwner: true,
+                    modelProposed: true,
+                    boundToSource: row is not null,
+                    deduped: true,
+                    hardValidated: row?.Accepted == true,
+                    hierarchyEdgeValid: true,
+                    levelDerived: row?.Accepted == true,
+                    decision,
+                    finalIncluded: accepted.Any(x => x.Id == id));
+            }).ToArray();
+            var tracePath = Path.Combine(docDir, "trace.v1.json");
+            await WriteJsonAsync(tracePath, new { documentId = state.Inventory.DocumentId, goldReadBeforeFreeze = false, traces }, ct);
             var predictionPath = Path.Combine(docDir, "prediction.v1.json");
-            await WriteJsonAsync(predictionPath, new { documentId = state.Inventory.DocumentId, schemaVersion = ReasoningPrompt.Version, sourceSha256 = state.Inventory.SourceSha256, sourceFaithfulContext = true, segmentCount = state.Pack.Segments.Count, proposals = ordered, projection = new { excludedRoles = new[] { "AGENDA_NAVIGATION_HEADING", "TOC_ENTRY", "FRONT_MATTER" }, finalIncluded = accepted } }, ct);
+            await WriteJsonAsync(predictionPath, new { documentId = state.Inventory.DocumentId, schemaVersion = ReasoningPrompt.Version, sourceSha256 = state.Inventory.SourceSha256, sourceFaithfulContext = true, segmentCount = state.Pack.Segments.Count, proposals = ordered, projection }, ct);
             var predictionHash = Sha256(predictionPath);
-            await WriteJsonAsync(Path.Combine(docDir, "prediction.freeze.v1.json"), new { documentId = state.Inventory.DocumentId, predictionHash, frozenUtc = DateTimeOffset.UtcNow, goldReadBeforeFreeze = false, configurationSignature = ConfigurationSignature }, ct);
-            var executionPath = Path.Combine(docDir, "execution.v1.json");
-            await WriteExecutionAsync(executionPath, new { documentId = state.Inventory.DocumentId, sourceSha256 = state.Inventory.SourceSha256, configurationSignature = ConfigurationSignature, model = model.ModelName, endpoint = options.Endpoint.ToString(), status = "SUCCESS", segmentCount = state.Pack!.Segments.Count, modelRequestCount = results.Length, successfulRequests = results.Length, failedRequests = 0, wallClockMs = results.Sum(x => x.QueueWait.TotalMilliseconds + x.Inference.TotalMilliseconds), parentGraphValidated = true, derivedLevel = true, projectionApplied = true, predictionHash, peakInflight = scheduler.PeakInflight }, ct);
             var resultPath = Path.Combine(docDir, "result.v1.json");
             await WriteJsonAsync(resultPath, new { documentId = state.Inventory.DocumentId, status = "SUCCESS", headings = accepted }, ct);
             var resultHash = Sha256(resultPath);
-            await AppendEventAsync(campaignLog, new { eventType = "DOCUMENT_RESULT_READY", documentId = state.Inventory.DocumentId, documentOrdinal = state.Ordinal, terminalStatus = "SUCCESS", headingCount = accepted.Length, modelRequestCount = results.Length, retryCount = 0, wallClockMs = results.Sum(x => x.QueueWait.TotalMilliseconds + x.Inference.TotalMilliseconds), predictionHash, resultHash, resultPath, executionPath, timestampUtc = DateTimeOffset.UtcNow }, ct);
+            var executionPath = Path.Combine(docDir, "execution.v1.json");
+            await WriteExecutionAsync(executionPath, new { documentId = state.Inventory.DocumentId, sourceSha256 = state.Inventory.SourceSha256, configurationSignature = ConfigurationSignature, model = model.ModelName, endpoint = options.Endpoint.ToString(), status = "SUCCESS", segmentCount = state.Pack!.Segments.Count, modelRequestCount = results.Length, successfulRequests = results.Length, failedRequests = 0, wallClockMs = results.Sum(x => x.QueueWait.TotalMilliseconds + x.Inference.TotalMilliseconds), parentGraphValidated = true, derivedLevel = true, projectionApplied = true, predictionHash, peakInflight = scheduler.PeakInflight }, ct);
+            var freezePath = Path.Combine(docDir, "freeze.v1.json");
+            await WriteJsonAsync(freezePath, new { documentId = state.Inventory.DocumentId, predictionSha256 = predictionHash, resultSha256 = resultHash, sourceSha256 = state.Inventory.SourceSha256, configurationSignature = ConfigurationSignature, model = model.ModelName, runtimeContractVersion = ReasoningPrompt.Version, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow }, ct);
+            await AppendEventAsync(campaignLog, new { eventType = "DOCUMENT_RESULT_READY", documentId = state.Inventory.DocumentId, documentOrdinal = state.Ordinal, terminalStatus = "SUCCESS", headingCount = accepted.Length, modelRequestCount = results.Length, retryCount = 0, wallClockMs = results.Sum(x => x.QueueWait.TotalMilliseconds + x.Inference.TotalMilliseconds), predictionHash, resultHash, resultPath, freezePath, tracePath, executionPath, timestampUtc = DateTimeOffset.UtcNow }, ct);
             Console.WriteLine($"[C4][RESULT_READY] document={state.Inventory.DocumentId} ordinal={state.Ordinal} status=SUCCESS headings={accepted.Length} segments={results.Length} requests={results.Length} result={resultPath} execution={executionPath}");
         }
         campaignClock.Stop();
@@ -255,8 +279,11 @@ public static class LocalQwenLargeCorpusRunner
                 var ownedIndex = h.OwnedIndex ?? (owned.Count == 1 ? 0 : (int?)null);
                 if (ownedIndex is not { } resolvedIndex || resolvedIndex < 0 || resolvedIndex >= owned.Count)
                     throw new InvalidDataException($"MODEL_RESPONSE_INVALID_OWNED_INDEX:{h.OwnedIndex}");
-                var occurrence = owned[resolvedIndex]; var span = new StructuralSpan(h.Start, h.End);
-                if (!span.IsValidFor(occurrence.RawText)) throw new InvalidDataException("MODEL_RESPONSE_INVALID_SPAN");
+                var occurrence = owned[resolvedIndex];
+                var scope = result.Work.Request.OwnedOutputScopes[resolvedIndex];
+                var span = new StructuralSpan(scope.VisibleStart + h.Start, scope.VisibleStart + h.End);
+                if (!span.IsValidFor(occurrence.RawText) || span.Start < scope.OwnedStart || span.Start >= scope.OwnedEnd || span.End > scope.VisibleEnd)
+                    throw new InvalidDataException("MODEL_RESPONSE_INVALID_SPAN_OR_OWNERSHIP");
                 list.Add(new ReasoningHeadingProposal { SourceId = occurrence.SourceId, HeadingSpan = span, Text = occurrence.RawText[span.Start..span.End], SemanticRole = h.SemanticRole, ProposedLevel = h.ProposedLevel, ProposedParent = h.ProposedParentLocalId, Confidence = h.Confidence, DecisionEvidence = h.DecisionEvidence });
             }
         }
@@ -266,12 +293,88 @@ public static class LocalQwenLargeCorpusRunner
         return (list, []);
     }
 
-    private static int? ParseParentOrdinal(string? token) => token is not null && token.StartsWith("sourceOrdinal:", StringComparison.Ordinal) && int.TryParse(token[14..], out var value) ? value : token is null ? null : null;
+    private static async Task<IReadOnlyList<ReasoningHeadingProposal>> ResolveGlobalHierarchyAsync(
+        DocumentState state,
+        IReadOnlyList<ReasoningHeadingProposal> proposals,
+        LocalQwenReasoningSemanticModel model,
+        CancellationToken ct)
+    {
+        if (proposals.Count == 0) return proposals;
+        var inventory = ReasoningGlobalHierarchyPass.BuildInventory(state.Source!.DocumentId, state.Source, proposals);
+        var request = new ReasoningHierarchyModelRequest(
+            state.Source.DocumentId,
+            ReasoningRoute.ModelCapabilityCeiling.ToString(),
+            $"{state.Source.DocumentId}:global-hierarchy",
+            inventory,
+            ReasoningHierarchyPrompt.System,
+            ReasoningHierarchyPrompt.BuildUser(inventory),
+            ConfigurationSignature);
+        ReasoningHierarchyModelResponse response;
+        try
+        {
+            response = await model.CompleteHierarchyAsync(request, ct).ConfigureAwait(false);
+        }
+        catch
+        {
+            // A hierarchy-provider failure must not delete semantic heading existence. Every
+            // proposal remains a root with a deterministically derived level.
+            response = new ReasoningHierarchyModelResponse([]);
+        }
+        var validation = ReasoningGlobalHierarchyPass.Validate(inventory, response.Edges);
+        var levels = ReasoningGlobalHierarchyPass.DeriveLevels(inventory, validation.AcceptedEdges);
+        var proposalByGlobalId = proposals.ToDictionary(p => ReasoningGlobalHierarchyPass.ProposalId(state.Source.DocumentId, p.SourceId, p.HeadingSpan), StringComparer.Ordinal);
+        var parents = validation.AcceptedEdges.ToDictionary(
+            x => x.ChildProposalId,
+            x => x.ParentProposalId is not null && proposalByGlobalId.TryGetValue(x.ParentProposalId, out var parent)
+                ? ReasoningProposalMaterializer.ElementId(parent)
+                : null,
+            StringComparer.Ordinal);
+        return proposals.Select(proposal =>
+        {
+            var id = ReasoningGlobalHierarchyPass.ProposalId(state.Source.DocumentId, proposal.SourceId, proposal.HeadingSpan);
+            return proposal with { ProposedParent = parents.GetValueOrDefault(id), ProposedLevel = levels.GetValueOrDefault(id, 1) };
+        }).ToArray();
+    }
 
-    private const string ParentTokenInstruction = "\nHierarchy contract: proposedParentLocalId may be null or a local token exactly like sourceOrdinal:17 copied from a visible SOURCE_OCCURRENCE. Never emit a sourceId or sourceOccurrenceId. The harness validates parent edges and derives final levels from the validated parent graph; proposedLevel is only a hint.\n";
+    private static ReasoningOwnedOutputScope ScopeForSegment(ReasoningContextSegment segment, ReasoningSourceOccurrence occurrence, int ownedIndex) => new()
+    {
+        CanonicalSourceId = occurrence.SourceId,
+        SourceOccurrenceId = occurrence.SourceOccurrenceId,
+        RawTextLength = occurrence.RawText.Length,
+        VisibleStart = segment.VisibleStartCharacter ?? 0,
+        VisibleEnd = segment.VisibleEndCharacter ?? occurrence.RawText.Length,
+        OwnedStart = segment.OwnedSourceOccurrenceId == occurrence.SourceOccurrenceId ? segment.OwnedStartCharacter ?? 0 : 0,
+        OwnedEnd = segment.OwnedSourceOccurrenceId == occurrence.SourceOccurrenceId ? segment.OwnedEndCharacter ?? occurrence.RawText.Length : occurrence.RawText.Length,
+        OwnedIndex = ownedIndex,
+    };
 
-    private static bool ExcludedProjectionRole(string role) => role is "AGENDA_NAVIGATION_HEADING" or "TOC_ENTRY" or "FRONT_MATTER";
-    private static bool TryResume(string path, string sourceSha, string configurationSignature) { if (!File.Exists(path)) return false; try { using var doc = JsonDocument.Parse(File.ReadAllText(path)); return doc.RootElement.GetProperty("status").GetString() == "SUCCESS" && doc.RootElement.GetProperty("sourceSha256").GetString() == sourceSha && doc.RootElement.GetProperty("configurationSignature").GetString() == configurationSignature; } catch { return false; } }
+    private static ReasoningOwnedOutputScope EmptyScope() => new() { CanonicalSourceId = "none", SourceOccurrenceId = "none", RawTextLength = 0, VisibleStart = 0, VisibleEnd = 0, OwnedStart = 0, OwnedEnd = 0 };
+    private static bool TryResume(string path, string sourceSha, string configurationSignature)
+    {
+        if (!File.Exists(path)) return false;
+        try
+        {
+            using var doc = JsonDocument.Parse(File.ReadAllText(path));
+            var root = doc.RootElement;
+            if (root.GetProperty("status").GetString() != "SUCCESS" ||
+                root.GetProperty("sourceSha256").GetString() != sourceSha ||
+                root.GetProperty("configurationSignature").GetString() != configurationSignature)
+                return false;
+            var dir = Path.GetDirectoryName(path)!;
+            var prediction = Path.Combine(dir, "prediction.v1.json");
+            var result = Path.Combine(dir, "result.v1.json");
+            var freeze = Path.Combine(dir, "freeze.v1.json");
+            if (!File.Exists(prediction) || !File.Exists(result) || !File.Exists(freeze)) return false;
+            using var frozen = JsonDocument.Parse(File.ReadAllText(freeze));
+            var frozenRoot = frozen.RootElement;
+            return frozenRoot.GetProperty("goldReadBeforeFreeze").GetBoolean() == false &&
+                frozenRoot.GetProperty("sourceSha256").GetString() == sourceSha &&
+                frozenRoot.GetProperty("configurationSignature").GetString() == configurationSignature &&
+                frozenRoot.GetProperty("predictionSha256").GetString() == Sha256(prediction) &&
+                frozenRoot.GetProperty("resultSha256").GetString() == Sha256(result);
+        }
+        catch { return false; }
+    }
     private static string ConfigurationSignature => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes($"R1C4_LOCAL_QWEN_LARGE|reasoning-v2-batched|orchestration=round-robin-v2|ctx=80000|window=48000|temp=0|top_p=1|top_k=1|seed=42|inflight=8|maxHeadingsPerResponse={MaxHeadingsPerBatchedResponse}"))).ToLowerInvariant();
     private static string GitSha(string repo)
     {
@@ -311,7 +414,14 @@ public static class LocalQwenLargeCorpusRunner
             throw new InvalidOperationException("LOCAL_QWEN_SERVICE_UNAVAILABLE", ex);
         }
     }
-    private static async Task WriteJsonAsync(string path, object value, CancellationToken ct) => await File.WriteAllTextAsync(path, JsonSerializer.Serialize(value, JsonOptions) + Environment.NewLine, new UTF8Encoding(false), ct);
+    private static async Task WriteJsonAsync(string path, object value, CancellationToken ct)
+    {
+        var bytes = new UTF8Encoding(false).GetBytes(JsonSerializer.Serialize(value, JsonOptions) + Environment.NewLine);
+        await using var stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read, 4096, FileOptions.SequentialScan);
+        await stream.WriteAsync(bytes, ct).ConfigureAwait(false);
+        await stream.FlushAsync(ct).ConfigureAwait(false);
+        stream.Flush(flushToDisk: true);
+    }
     private static async Task AppendEventAsync(string path, object value, CancellationToken ct) => await File.AppendAllTextAsync(path, JsonSerializer.Serialize(value, CompactJsonOptions) + Environment.NewLine, new UTF8Encoding(false), ct);
     private static Task WriteExecutionAsync(string path, object value, CancellationToken ct) => WriteJsonAsync(path, value, ct);
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };

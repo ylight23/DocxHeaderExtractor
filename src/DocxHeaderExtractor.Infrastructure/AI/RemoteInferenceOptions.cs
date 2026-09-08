@@ -60,7 +60,17 @@ public sealed class RemoteInferenceOptions
         };
     }
 
-    public Uri ModelsEndpoint => new(Endpoint, "/v1/models");
+    public Uri ModelsEndpoint
+    {
+        get
+        {
+            var path = Endpoint.AbsolutePath;
+            var marker = "/chat/completions";
+            var index = path.IndexOf(marker, StringComparison.OrdinalIgnoreCase);
+            var modelsPath = index >= 0 ? path[..index] + "/models" : "/v1/models";
+            return new UriBuilder(Endpoint) { Path = modelsPath, Query = "" }.Uri;
+        }
+    }
 
     public static bool IsLoopback(Uri endpoint) => endpoint.IsLoopback ||
         endpoint.Host.Equals("localhost", StringComparison.OrdinalIgnoreCase) ||
