@@ -66,6 +66,8 @@ public sealed record ReasoningContextSegment
     [JsonPropertyName("ownedSourceOccurrenceId")] public string? OwnedSourceOccurrenceId { get; init; }
     [JsonPropertyName("ownedStartCharacter")] public int? OwnedStartCharacter { get; init; }
     [JsonPropertyName("ownedEndCharacter")] public int? OwnedEndCharacter { get; init; }
+    [JsonPropertyName("visibleStartCharacter")] public int? VisibleStartCharacter { get; init; }
+    [JsonPropertyName("visibleEndCharacter")] public int? VisibleEndCharacter { get; init; }
     [JsonPropertyName("text")] public required string Text { get; init; }
 }
 
@@ -95,6 +97,9 @@ public sealed record ReasoningModelRequest
     [JsonPropertyName("sourceOccurrenceIds")] public required IReadOnlyList<string> SourceOccurrenceIds { get; init; }
     [JsonPropertyName("ownedSourceOccurrenceIds")] public required IReadOnlyList<string> OwnedSourceOccurrenceIds { get; init; }
     [JsonPropertyName("ownedOutputScope")] public required ReasoningOwnedOutputScope OwnedOutputScope { get; init; }
+    /// <summary>Full batch of owned scopes when this request covers several occurrences at once
+    /// (batched throughput mode). Empty in the single-occurrence contract.</summary>
+    [JsonPropertyName("ownedOutputScopes")] public IReadOnlyList<ReasoningOwnedOutputScope> OwnedOutputScopes { get; init; } = [];
     [JsonPropertyName("attemptId")] public string? AttemptId { get; init; }
     [JsonPropertyName("configurationSignature")] public required string ConfigurationSignature { get; init; }
 }
@@ -110,6 +115,11 @@ public sealed record ReasoningOwnedOutputScope
     [JsonPropertyName("rawTextLength")] public required int RawTextLength { get; init; }
     [JsonPropertyName("ownedStart")] public required int OwnedStart { get; init; }
     [JsonPropertyName("ownedEnd")] public required int OwnedEnd { get; init; }
+    /// <summary>
+    /// Local batch position when several owned occurrences are sent in one request (batched
+    /// throughput mode). Null in the single-occurrence contract; never a source identity.
+    /// </summary>
+    [JsonPropertyName("ownedIndex")] public int? OwnedIndex { get; init; }
 }
 
 public sealed record ReasoningDecisionEvidence(
@@ -139,8 +149,12 @@ public sealed record ReasoningModelHeadingProposal
     [JsonPropertyName("end")] public required int End { get; init; }
     [JsonPropertyName("semanticRole")] public required string SemanticRole { get; init; }
     [JsonPropertyName("proposedLevel")] public int? ProposedLevel { get; init; }
+    [JsonPropertyName("proposedParentLocalId")] public string? ProposedParentLocalId { get; init; }
     [JsonPropertyName("confidence")] public double Confidence { get; init; }
     [JsonPropertyName("decisionEvidence")] public IReadOnlyList<ReasoningDecisionEvidence> DecisionEvidence { get; init; } = [];
+    /// <summary>Which batched owned occurrence this heading belongs to. Null in the
+    /// single-occurrence contract, where the response is scoped to exactly one occurrence.</summary>
+    [JsonPropertyName("ownedIndex")] public int? OwnedIndex { get; init; }
 }
 
 public sealed record ReasoningModelResponse(

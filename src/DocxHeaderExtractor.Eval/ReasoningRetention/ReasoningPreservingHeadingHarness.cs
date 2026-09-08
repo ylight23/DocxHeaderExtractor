@@ -67,36 +67,15 @@ public sealed class ReasoningPreservingHeadingHarness
             allProposals.AddRange(responses);
         }
 
-        // Hierarchical mode gets one explicit consolidation pass. It sees every source identity
-        // and the window proposals, but it never sees Gold or a candidate-filtered source subset.
-        if (pack.Segments.Count > 1)
-        {
-            var consolidated = new List<ReasoningHeadingProposal>();
-            foreach (var consolidation in BuildConsolidationSegments(pack, allProposals))
-            {
-                var responses = await CompleteWithRecoveryAsync(
-                    source,
-                    pack,
-                    consolidation,
-                    route,
-                    "global-structural-consolidation-v1",
-                    completion,
-                    ct);
-                consolidated.AddRange(responses);
-            }
-            if (consolidated.Count > 0)
-                allProposals = [.. consolidated];
-        }
-
         var materialized = ReasoningProposalMaterializer.Materialize(source, policyState, allProposals);
         var acceptedIds = materialized.Validated
             .Where(row => row.Accepted)
             .Select(row => row.ElementId)
             .ToHashSet(StringComparer.Ordinal);
-        var proposed = allProposals
-            .GroupBy(p => $"{p.SourceId}:{p.HeadingSpan.Start}:{p.HeadingSpan.End}", StringComparer.Ordinal)
-            .Select(group => group.First())
-            .ToArray();
+        // Preserve the union. Exact duplicate payloads are harmless and are collapsed by the
+        // materializer; conflicting payloads remain visible and are rejected as an explicit
+        // conflict instead of being resolved by discovery order.
+        var proposed = allProposals.ToArray();
         var occurrenceCount = pack.Occurrences.Count;
         var visibleCount = pack.Segments.SelectMany(item => item.SourceOccurrenceIds)
             .Distinct(StringComparer.Ordinal).Count();
@@ -513,7 +492,7 @@ public sealed class ReasoningPreservingHeadingHarness
             throw new InvalidDataException("reasoning-owned-output-scope-invalid");
 
         var scoped = new List<ReasoningHeadingProposal>(response.Headings.Count);
-        var emittedOccurrences = new HashSet<string>(StringComparer.Ordinal);
+        var emittedOccurrences = new Dictionary<string, ReasoningModelHeadingProposal>(StringComparer.Ordinal);
         foreach (var proposal in response.Headings)
         {
             var localSpan = new StructuralSpan(proposal.Start, proposal.End);
@@ -526,8 +505,18 @@ public sealed class ReasoningPreservingHeadingHarness
 
             var globalSpan = new StructuralSpan(scope.OwnedStart + localSpan.Start, scope.OwnedStart + localSpan.End);
             var occurrenceKey = $"{scope.CanonicalSourceId}:{globalSpan.Start}:{globalSpan.End}";
-            if (!emittedOccurrences.Add(occurrenceKey))
-                throw new InvalidDataException($"reasoning-response-duplicate-occurrence; occurrence={occurrenceKey}");
+            if (emittedOccurrences.TryGetValue(occurrenceKey, out var existingProposal))
+            {
+                if (!EquivalentProposal(existingProposal, proposal))
+                    throw new InvalidDataException(
+                        $"reasoning-response-conflicting-duplicate-occurrence; occurrence={occurrenceKey}");
+
+                // A retry/consolidation response may repeat the same owned occurrence. Keep one
+                // canonical proposal and reject only contradictory duplicates.
+                continue;
+            }
+
+            emittedOccurrences.Add(occurrenceKey, proposal);
 
             scoped.Add(new ReasoningHeadingProposal
             {
@@ -536,12 +525,24 @@ public sealed class ReasoningPreservingHeadingHarness
                 Text = occurrence.RawText[globalSpan.Start..globalSpan.End],
                 SemanticRole = proposal.SemanticRole,
                 ProposedLevel = proposal.ProposedLevel,
+                ProposedParent = proposal.ProposedParentLocalId,
                 Confidence = proposal.Confidence,
                 DecisionEvidence = proposal.DecisionEvidence,
             });
         }
         return scoped;
     }
+
+    private static bool EquivalentProposal(
+        ReasoningModelHeadingProposal left,
+        ReasoningModelHeadingProposal right) =>
+        left.Start == right.Start &&
+        left.End == right.End &&
+        string.Equals(left.SemanticRole, right.SemanticRole, StringComparison.Ordinal) &&
+        left.ProposedLevel == right.ProposedLevel &&
+        string.Equals(left.ProposedParentLocalId, right.ProposedParentLocalId, StringComparison.Ordinal) &&
+        left.Confidence.Equals(right.Confidence) &&
+        left.DecisionEvidence.SequenceEqual(right.DecisionEvidence);
 
     private static ReasoningOwnedOutputScope BuildOwnedOutputScope(
         ReasoningContextSegment segment,
@@ -605,42 +606,6 @@ public sealed class ReasoningPreservingHeadingHarness
             OwnedEndCharacter = end,
         };
         return (left, right);
-    }
-
-    private static IReadOnlyList<ReasoningContextSegment> BuildConsolidationSegments(
-        ReasoningContextPack pack,
-        IReadOnlyList<ReasoningHeadingProposal> proposals)
-    {
-        var sb = new StringBuilder();
-        sb.AppendLine("GLOBAL_PROPOSAL_CONSOLIDATION");
-        sb.AppendLine("All source occurrences were visible in at least one prior window.");
-        sb.AppendLine(JsonSerializer.Serialize(new
-        {
-            sourceOccurrenceIds = pack.Occurrences.Select(o => o.SourceOccurrenceId),
-            windowProposals = proposals,
-        }));
-        var baseSegment = new ReasoningContextSegment
-        {
-            ContextSegmentId = "global-consolidation",
-            Ordinal = pack.Segments.Count + 1,
-            SourceOccurrenceIds = pack.Occurrences.Select(o => o.SourceOccurrenceId).ToArray(),
-            OwnedSourceOccurrenceIds = pack.Occurrences.Select(o => o.SourceOccurrenceId).ToArray(),
-            VisibleStartOrdinal = pack.Occurrences.Count == 0 ? null : pack.Occurrences[0].SourceOrdinal,
-            VisibleEndOrdinal = pack.Occurrences.Count == 0 ? null : pack.Occurrences[^1].SourceOrdinal,
-            OwnedStartOrdinal = pack.Occurrences.Count == 0 ? null : pack.Occurrences[0].SourceOrdinal,
-            OwnedEndOrdinal = pack.Occurrences.Count == 0 ? null : pack.Occurrences[^1].SourceOrdinal,
-            Text = sb.ToString(),
-        };
-        return pack.Occurrences.Select(occurrence => baseSegment with
-        {
-            ContextSegmentId = $"global-consolidation-owned-{occurrence.SourceOrdinal}",
-            OwnedSourceOccurrenceIds = [occurrence.SourceOccurrenceId],
-            OwnedSourceOccurrenceId = occurrence.SourceOccurrenceId,
-            OwnedStartCharacter = 0,
-            OwnedEndCharacter = occurrence.RawText.Length,
-            OwnedStartOrdinal = occurrence.SourceOrdinal,
-            OwnedEndOrdinal = occurrence.SourceOrdinal,
-        }).ToArray();
     }
 
     private sealed class CompletionAccumulator

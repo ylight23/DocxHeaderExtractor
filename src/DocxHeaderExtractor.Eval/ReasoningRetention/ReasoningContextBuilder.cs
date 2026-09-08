@@ -16,7 +16,8 @@ public static class ReasoningContextBuilder
         DocxPolicyState policyState,
         int maxContextCharacters = 80_000,
         int windowCharacters = 48_000,
-        int overlapOccurrences = 2)
+        int overlapOccurrences = 2,
+        bool expandOwnedPerOccurrence = true)
     {
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(policyState);
@@ -76,7 +77,11 @@ public static class ReasoningContextBuilder
         var baseSegments = totalCharacters <= maxContextCharacters
             ? [BuildSegment(occurrences, 0, lines.Length, 0, lines.Length)]
             : BuildWindows(occurrences, lines, windowCharacters, overlapOccurrences);
-        var segments = ExpandOwnedCharacterScopes(baseSegments, occurrences);
+        var segments = ExpandOwnedCharacterScopes(
+            baseSegments,
+            occurrences,
+            windowCharacters,
+            expandOwnedPerOccurrence);
 
         var visibleIds = baseSegments.SelectMany(s => s.SourceOccurrenceIds).ToHashSet(StringComparer.Ordinal);
         var visibleCharacters = baseSegments.Sum(segment => segment.Text.Length);
@@ -199,16 +204,35 @@ public static class ReasoningContextBuilder
 
     private static IReadOnlyList<ReasoningContextSegment> ExpandOwnedCharacterScopes(
         IReadOnlyList<ReasoningContextSegment> segments,
-        IReadOnlyList<ReasoningSourceOccurrence> occurrences)
+        IReadOnlyList<ReasoningSourceOccurrence> occurrences,
+        int windowCharacters,
+        bool expandOwnedPerOccurrence)
     {
         var occurrenceById = occurrences.ToDictionary(item => item.SourceOccurrenceId, StringComparer.Ordinal);
         var expanded = new List<ReasoningContextSegment>();
         foreach (var segment in segments)
         {
+            var oversized = segment.SourceOccurrenceIds
+                .Select(id => occurrenceById[id])
+                .Where(item => item.RawText.Length > windowCharacters)
+                .ToArray();
+            if (!expandOwnedPerOccurrence && oversized.Length == 0)
+            {
+                expanded.Add(segment);
+                continue;
+            }
+
             foreach (var occurrenceId in segment.OwnedSourceOccurrenceIds)
             {
                 if (!occurrenceById.TryGetValue(occurrenceId, out var occurrence))
                     throw new InvalidOperationException($"reasoning-owned-source-occurrence-missing:{occurrenceId}");
+
+                if (occurrence.RawText.Length > windowCharacters)
+                {
+                    expanded.AddRange(BuildCharacterSegments(occurrence, windowCharacters));
+                    continue;
+                }
+
                 expanded.Add(segment with
                 {
                     ContextSegmentId = $"{segment.ContextSegmentId}-owned-{occurrence.SourceOrdinal}",
@@ -222,6 +246,60 @@ public static class ReasoningContextBuilder
             }
         }
         return expanded;
+    }
+
+    private static IReadOnlyList<ReasoningContextSegment> BuildCharacterSegments(
+        ReasoningSourceOccurrence occurrence,
+        int visibleBudget)
+    {
+        var ownedBudget = Math.Max(1, visibleBudget * 2 / 3);
+        var haloBudget = Math.Max(0, visibleBudget - ownedBudget);
+        var result = new List<ReasoningContextSegment>();
+        var ordinal = 0;
+        for (var ownedStart = 0; ownedStart < occurrence.RawText.Length; ownedStart += ownedBudget)
+        {
+            var ownedEnd = Math.Min(occurrence.RawText.Length, ownedStart + ownedBudget);
+            var visibleStart = Math.Max(0, ownedStart - haloBudget);
+            var visibleEnd = Math.Min(occurrence.RawText.Length, ownedEnd + haloBudget);
+            var visibleText = occurrence.RawText[visibleStart..visibleEnd];
+            var body = new StringBuilder();
+            body.AppendLine("DOCUMENT_CONTEXT");
+            body.AppendLine("SOURCE_OCCURRENCE");
+            body.AppendLine(JsonSerializer.Serialize(new
+            {
+                occurrence.SourceOccurrenceId,
+                occurrence.SourceId,
+                occurrence.SourceOrdinal,
+                rawText = visibleText,
+                sourceSpan = new StructuralSpan(visibleStart, visibleEnd),
+                ownedCharacterRange = new StructuralSpan(ownedStart, ownedEnd),
+                occurrence.CandidateHint,
+                occurrence.StyleFacts,
+                occurrence.LayoutFacts,
+                occurrence.NumberingFacts,
+            }, JsonOptions));
+            body.AppendLine("END_SOURCE_OCCURRENCE");
+            body.Append("END_DOCUMENT_CONTEXT");
+            ordinal++;
+            result.Add(new ReasoningContextSegment
+            {
+                ContextSegmentId = $"segment-{occurrence.SourceOrdinal}-chars-{ownedStart}-{ownedEnd}",
+                Ordinal = occurrence.SourceOrdinal * 1_000_000 + ordinal,
+                SourceOccurrenceIds = [occurrence.SourceOccurrenceId],
+                OwnedSourceOccurrenceIds = [occurrence.SourceOccurrenceId],
+                VisibleStartOrdinal = occurrence.SourceOrdinal,
+                VisibleEndOrdinal = occurrence.SourceOrdinal,
+                OwnedStartOrdinal = occurrence.SourceOrdinal,
+                OwnedEndOrdinal = occurrence.SourceOrdinal,
+                OwnedSourceOccurrenceId = occurrence.SourceOccurrenceId,
+                OwnedStartCharacter = ownedStart,
+                OwnedEndCharacter = ownedEnd,
+                VisibleStartCharacter = visibleStart,
+                VisibleEndCharacter = visibleEnd,
+                Text = body.ToString(),
+            });
+        }
+        return result;
     }
 
     private static readonly JsonSerializerOptions JsonOptions = new()

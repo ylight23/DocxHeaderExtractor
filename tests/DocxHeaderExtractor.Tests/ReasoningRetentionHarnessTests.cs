@@ -38,14 +38,51 @@ public sealed class ReasoningRetentionHarnessTests
     }
 
     [Fact]
-    public void Hard_validator_rejects_invalid_span_and_level()
+    public void Oversized_occurrence_has_exactly_once_utf16_ownership_and_overlapping_halo()
+    {
+        var state = NativePolicyStateFactory.Create([(0, new string('x', 101), null, (int?)null)]);
+        var pack = ReasoningContextBuilder.Build(
+            state.Source,
+            state,
+            maxContextCharacters: 20,
+            windowCharacters: 20,
+            expandOwnedPerOccurrence: false);
+
+        var ranges = pack.Segments
+            .OrderBy(segment => segment.OwnedStartCharacter)
+            .Select(segment => (OwnedStart: segment.OwnedStartCharacter!.Value, OwnedEnd: segment.OwnedEndCharacter!.Value,
+                VisibleStart: segment.VisibleStartCharacter!.Value, VisibleEnd: segment.VisibleEndCharacter!.Value))
+            .ToArray();
+        Assert.True(ranges.Length > 1);
+        Assert.Equal(0, ranges[0].OwnedStart);
+        Assert.Equal(101, ranges[^1].OwnedEnd);
+        Assert.All(ranges.Zip(ranges.Skip(1)), pair => Assert.Equal(pair.First.OwnedEnd, pair.Second.OwnedStart));
+        Assert.Contains(ranges.Zip(ranges.Skip(1)), pair => pair.First.VisibleEnd > pair.Second.VisibleStart);
+    }
+
+    [Fact]
+    public void Character_ownership_uses_utf16_offsets_for_supplementary_characters()
+    {
+        var text = "A😀BC";
+        var state = NativePolicyStateFactory.Create([(0, text, null, (int?)null)]);
+        var pack = ReasoningContextBuilder.Build(state.Source, state, 3, 3, expandOwnedPerOccurrence: false);
+        var owned = pack.Segments.Select(segment => (segment.OwnedStartCharacter!.Value, segment.OwnedEndCharacter!.Value)).ToArray();
+
+        Assert.Equal(text.Length, 5);
+        Assert.Equal((0, 2), owned[0]);
+        Assert.Equal((2, 4), owned[1]);
+        Assert.Equal((4, 5), owned[2]);
+    }
+
+    [Fact]
+    public void Hard_validator_rejects_invalid_span_but_bad_model_level_cannot_delete()
     {
         var issues = ReasoningHardInvariantValidator.Validate(
             Proposal("p[0]", "Heading", 0, 99, 10),
             new Dictionary<string, string> { ["p[0]"] = "Heading" });
 
         Assert.Contains("source-span-invalid", issues);
-        Assert.Contains("level-out-of-range", issues);
+        Assert.DoesNotContain("level-out-of-range", issues);
     }
 
     [Fact]
@@ -75,6 +112,44 @@ public sealed class ReasoningRetentionHarnessTests
         Assert.True(Assert.Single(validated).Accepted);
         Assert.Single(structure.Elements);
         Assert.Empty(ReasoningTaskProjection.ProjectContentHeadings(structure));
+    }
+
+    [Fact]
+    public void Materializer_does_not_first_win_conflicting_same_span_payloads()
+    {
+        var state = NativePolicyStateFactory.Create([(0, "Heading", null, (int?)null)]);
+        var proposals = new[]
+        {
+            Proposal("p[0]", "Heading", 0, 7, 1, "SECTION"),
+            Proposal("p[0]", "Heading", 0, 7, 1, "CONTENT_HEADING"),
+        };
+
+        var (structure, validated) = ReasoningProposalMaterializer.Materialize(state.Source, state, proposals);
+
+        Assert.Empty(structure.Elements);
+        Assert.Equal(2, validated.Count);
+        Assert.All(validated, item => Assert.Equal("conflicting-proposal-payload", item.RejectionReason));
+    }
+
+    [Fact]
+    public void Bad_model_level_is_derived_from_validated_parent_graph()
+    {
+        var state = NativePolicyStateFactory.Create([
+            (0, "Parent", null, (int?)null),
+            (1, "Child", null, (int?)null),
+        ]);
+        var proposals = new[]
+        {
+            Proposal("p[0]", "Parent", 0, 6, 99),
+            Proposal("p[1]", "Child", 0, 5, -4) with { ProposedParent = "sourceOrdinal:0" },
+        };
+
+        var (structure, validated) = ReasoningProposalMaterializer.Materialize(state.Source, state, proposals);
+
+        Assert.Equal(2, structure.Elements.Count);
+        Assert.All(validated, item => Assert.True(item.Accepted));
+        Assert.Equal(1, structure.Elements.Single(item => item.Sources.Single().SourceId == "p[0]").Level);
+        Assert.Equal(2, structure.Elements.Single(item => item.Sources.Single().SourceId == "p[1]").Level);
     }
 
     [Fact]
@@ -131,20 +206,27 @@ public sealed class ReasoningRetentionHarnessTests
         Assert.Equal(2, observation.ContextVisible.Count);
         Assert.Contains(observation.ContextVisible, id => id.Contains("p[0]", StringComparison.Ordinal));
         Assert.Single(observation.Validated);
-        Assert.Equal(4, model.ProviderCalls);
+        Assert.Equal(2, model.ProviderCalls);
     }
 
     [Fact]
     public void Prompt_parser_accepts_rich_roles_without_private_reasoning()
     {
         var raw = """
-        {"schemaVersion":"a99-reasoning-bounded-v2","headings":[{"start":0,"end":7,"semanticRole":"CONTENT_HEADING","proposedLevel":1,"confidence":0.9,"decisionEvidence":[{"evidenceType":"semantic","sourceReference":"context","shortEvidenceCode":"TOPIC_PHRASE"}]}],"decisionEvidence":[]}
+        {"schemaVersion":"a99-reasoning-bounded-v2","headings":[{"start":0,"end":7,"semanticRole":"CONTENT_HEADING","proposedLevel":1,"proposedParentLocalId":null,"confidence":0.9,"decisionEvidence":[{"evidenceType":"semantic","sourceReference":"context","shortEvidenceCode":"TOPIC_PHRASE"}]}],"decisionEvidence":[]}
         """;
 
         var response = ReasoningModelResponseParser.Parse(raw);
 
         Assert.Equal("CONTENT_HEADING", Assert.Single(response.Headings).SemanticRole);
         Assert.DoesNotContain("chain", raw, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Prompt_parser_fails_closed_when_required_semantic_role_is_missing()
+    {
+        Assert.Throws<FormatException>(() => ReasoningModelResponseParser.Parse(
+            "{\"headings\":[{\"start\":0,\"end\":1,\"proposedLevel\":1,\"proposedParentLocalId\":null,\"confidence\":0.9,\"decisionEvidence\":[]}]}"));
     }
 
     [Fact]

@@ -23,8 +23,6 @@ public static class ReasoningHardInvariantValidator
                 StringComparison.Ordinal))
                 issues.Add("claimed-text-does-not-match-source");
         }
-        if (proposal.ProposedLevel is < 1 or > 9)
-            issues.Add("level-out-of-range");
         return issues;
     }
 

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "a99-ceiling-unblock-final-summary-v1",
+  "classification": "BLOCKED_LOCAL_MODEL_SERVICE_UNAVAILABLE",
+  "startHead": "51a1df423432fd2aff91269b599228b1d011b4be",
+  "endHead": "51a1df423432fd2aff91269b599228b1d011b4be",
+  "endpoint": "http://192.168.11.22:8881",
+  "model": "Qwen3.8-27B-AWQ-INT4",
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "l2Modified": false,
+  "metrics": "NOT_MEASURED",
+  "nextLargestProvenBucket": "UNMEASURED_UNTIL_LOCAL_QWEN_IDENTITY_VERIFICATION",
+  "hardStop": "GET /v1/models timed out after 5 seconds",
+  "offlineRepairsApplied": [
+    "window proposal union no longer replaced by consolidation output",
+    "conflicting same-source-span payloads are explicit conflicts, not first-wins",
+    "bad model levels are ignored and levels are derived from validated parent edges",
+    "oversized occurrences use UTF-16 owned ranges with visible halo",
+    "local runner verifies exact LAN model identity before inference"
+  ],
+  "tests": {
+    "focusedBeforeFinalPatch": "PASS_WITH_ONE_TIMING_SENSITIVE_ASSERTION",
+    "focusedFinal": "PASS_42_OF_42",
+    "solutionBuild": "PASS_0_ERRORS",
+    "broaderSuite": "BLOCKED_UNRELATED_MCP_STDIO_TEST_TIMEOUT"
+  }
+}

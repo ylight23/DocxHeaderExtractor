@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "a99-ceiling-unblock-baseline-v1",
+  "status": "BLOCKED_LOCAL_MODEL_SERVICE_UNAVAILABLE",
+  "endpoint": "http://192.168.11.22:8881",
+  "expectedModel": "Qwen3.8-27B-AWQ-INT4",
+  "identityProbe": "GET /v1/models",
+  "identityProbeTimeoutSeconds": 5,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "metrics": "NOT_MEASURED",
+  "reason": "The fixed LAN endpoint timed out before model identity could be verified."
+}

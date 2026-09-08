@@ -19,15 +19,30 @@ public static class ReasoningProposalMaterializer
 
         var policyById = policyState.Paragraphs.ToDictionary(p => p.StableId, StringComparer.Ordinal);
         var sourceTextById = source.Paragraphs.ToDictionary(p => p.SourceId, p => p.Text, StringComparer.Ordinal);
-        var distinct = proposals
+        var grouped = proposals
             .GroupBy(p => $"{p.SourceId}:{p.HeadingSpan.Start}:{p.HeadingSpan.End}", StringComparer.Ordinal)
+            .ToArray();
+        var conflictingKeys = grouped
+            .Where(group => group.Skip(1).Any(item => !EquivalentPayload(group.First(), item)))
+            .Select(group => group.Key)
+            .ToHashSet(StringComparer.Ordinal);
+        var distinct = grouped
+            .Where(group => !conflictingKeys.Contains(group.Key))
             .Select(group => group.First())
             .ToArray();
         var elementIds = distinct.Select(ElementId).ToHashSet(StringComparer.Ordinal);
         var rows = new List<ReasoningValidatedProposal>();
         var elements = new List<ValidatedStructuralElement>();
 
-        foreach (var proposal in distinct)
+        foreach (var conflict in grouped.Where(group => conflictingKeys.Contains(group.Key)))
+        {
+            foreach (var proposal in conflict)
+                rows.Add(new(proposal, ElementId(proposal), false, "conflicting-proposal-payload"));
+        }
+
+        var normalized = NormalizeHierarchy(distinct, source, elementIds);
+
+        foreach (var proposal in normalized)
         {
             var hardIssues = ReasoningHardInvariantValidator.Validate(proposal, sourceTextById);
             if (hardIssues.Count > 0)
@@ -61,7 +76,9 @@ public static class ReasoningProposalMaterializer
                 Role = MapRole(materializedProposal.SemanticRole),
                 ProposedSources = [new ProposedSourceReference(materializedProposal.SourceId, materializedProposal.HeadingSpan)],
                 ProposedParentId = materializedProposal.ProposedParent,
-                ProposedLevel = materializedProposal.ProposedLevel,
+                ProposedLevel = materializedProposal.ProposedLevel is >= 1 and <= 9
+                    ? materializedProposal.ProposedLevel
+                    : null,
             };
             var validation = StructuralProposalValidator.Validate(candidate, proposalContract, elementIds);
             if (!validation.Accepted)
@@ -98,6 +115,92 @@ public static class ReasoningProposalMaterializer
 
     public static string ElementId(ReasoningHeadingProposal proposal) =>
         $"reasoning:{proposal.SourceId}:{proposal.HeadingSpan.Start}:{proposal.HeadingSpan.End}";
+
+    private static bool EquivalentPayload(ReasoningHeadingProposal left, ReasoningHeadingProposal right) =>
+        string.Equals(left.SourceId, right.SourceId, StringComparison.Ordinal) &&
+        left.HeadingSpan == right.HeadingSpan &&
+        string.Equals(left.Text, right.Text, StringComparison.Ordinal) &&
+        string.Equals(left.SemanticRole, right.SemanticRole, StringComparison.Ordinal) &&
+        left.ProposedLevel == right.ProposedLevel &&
+        string.Equals(left.ProposedParent, right.ProposedParent, StringComparison.Ordinal) &&
+        left.Confidence.Equals(right.Confidence) &&
+        left.DecisionEvidence.SequenceEqual(right.DecisionEvidence);
+
+    private static IReadOnlyList<ReasoningHeadingProposal> NormalizeHierarchy(
+        IReadOnlyList<ReasoningHeadingProposal> proposals,
+        SourceDocument source,
+        IReadOnlySet<string> elementIds)
+    {
+        var sourceById = source.Paragraphs.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
+        var firstByOrdinal = proposals
+            .Where(item => sourceById.ContainsKey(item.SourceId))
+            .GroupBy(item => sourceById[item.SourceId].SourceOrdinal)
+            .ToDictionary(group => group.Key, group => ElementId(group.First()));
+        var parentById = new Dictionary<string, string?>(StringComparer.Ordinal);
+
+        foreach (var proposal in proposals)
+        {
+            var id = ElementId(proposal);
+            var parent = ResolveParent(proposal.ProposedParent, sourceById, firstByOrdinal, elementIds);
+            // An invalid edge must not erase the node. Drop only the bad edge and keep the
+            // accepted heading available for projection.
+            parentById[id] = parent is not null && !string.Equals(parent, id, StringComparison.Ordinal)
+                ? parent
+                : null;
+        }
+
+        // Break only cyclic edges. Nodes remain in the union and receive a valid root level.
+        foreach (var id in parentById.Keys.ToArray())
+        {
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            var current = id;
+            while (parentById.TryGetValue(current, out var parent) && parent is not null)
+            {
+                if (!seen.Add(current) || string.Equals(parent, id, StringComparison.Ordinal))
+                {
+                    parentById[id] = null;
+                    break;
+                }
+                current = parent;
+            }
+        }
+
+        var levelById = new Dictionary<string, int>(StringComparer.Ordinal);
+        int DerivedLevel(string id, HashSet<string> path)
+        {
+            if (levelById.TryGetValue(id, out var known)) return known;
+            if (!path.Add(id) || !parentById.TryGetValue(id, out var parent) || parent is null)
+                return levelById[id] = 1;
+            return levelById[id] = Math.Min(9, DerivedLevel(parent, path) + 1);
+        }
+
+        return proposals.Select(proposal =>
+        {
+            var id = ElementId(proposal);
+            var level = DerivedLevel(id, new HashSet<string>(StringComparer.Ordinal));
+            return proposal with
+            {
+                ProposedParent = parentById[id],
+                ProposedLevel = level,
+            };
+        }).ToArray();
+    }
+
+    private static string? ResolveParent(
+        string? token,
+        IReadOnlyDictionary<string, SourceParagraph> sourceById,
+        IReadOnlyDictionary<int, string> firstByOrdinal,
+        IReadOnlySet<string> elementIds)
+    {
+        if (string.IsNullOrWhiteSpace(token)) return null;
+        if (elementIds.Contains(token)) return token;
+        if (token.StartsWith("sourceOrdinal:", StringComparison.Ordinal) &&
+            int.TryParse(token[14..], out var ordinal) && firstByOrdinal.TryGetValue(ordinal, out var id))
+            return id;
+        if (sourceById.TryGetValue(token, out var paragraph) && firstByOrdinal.TryGetValue(paragraph.SourceOrdinal, out var sourceId))
+            return sourceId;
+        return null;
+    }
 
     private static StructuralElementType MapType(string role) =>
         role.Trim().ToUpperInvariant() switch
