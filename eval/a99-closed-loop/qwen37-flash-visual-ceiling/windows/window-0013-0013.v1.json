@@ -1,0 +1,113 @@
+{
+  "pageIndices": [
+    13
+  ],
+  "sourceOccurrenceIds": [
+    "DOC-0205:body[1]/p[4]:3:60769"
+  ],
+  "packetMetrics": {
+    "pageCountInRequest": 1,
+    "imageCount": 1,
+    "mappedSourceOccurrences": 1,
+    "visibleSourceChars": 537,
+    "ownedSourceChars": 537,
+    "packetChars": 1143,
+    "estimatedInputTokens": 337,
+    "imageDimensions": [
+      {
+        "pageIndex": 13,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      }
+    ]
+  },
+  "headings": [
+    {
+      "i": 0,
+      "start": 537,
+      "end": 575,
+      "role": "SECTION"
+    },
+    {
+      "i": 1,
+      "start": 633,
+      "end": 671,
+      "role": "ARTICLE"
+    },
+    {
+      "i": 2,
+      "start": 729,
+      "end": 767,
+      "role": "ARTICLE"
+    },
+    {
+      "i": 3,
+      "start": 825,
+      "end": 863,
+      "role": "ARTICLE"
+    },
+    {
+      "i": 4,
+      "start": 921,
+      "end": 959,
+      "role": "ARTICLE"
+    },
+    {
+      "i": 5,
+      "start": 1017,
+      "end": 1055,
+      "role": "ARTICLE"
+    }
+  ],
+  "boundCount": 0,
+  "requestTelemetry": {
+    "requestIdHash": "eaa6d072d9df9f75bb968bfad17ba6079a4d15b34a65334b182ca14f1e157e20",
+    "documentId": "DOC-0205",
+    "passType": "VISUAL_SEMANTIC",
+    "model": "qwen/qwen3.7-flash",
+    "reasoningEffort": "enabled",
+    "reasoningExcludedFromResponse": true,
+    "reasoningRequested": true,
+    "reasoningAccepted": true,
+    "contextLength": 1000000,
+    "maxPromptTokens": 948000,
+    "maxCompletionTokens": 48000,
+    "sourceTextCharacters": 537,
+    "packetCharacters": 1311,
+    "packetOverheadCharacters": 774,
+    "sourcePayloadRatio": 0.4096109839816934,
+    "estimatedInputTokens": 386,
+    "reportedInputTokens": 2135,
+    "reportedOutputTokens": 550,
+    "reportedReasoningTokens": 274,
+    "cachedInputTokens": 0,
+    "cacheMode": "COLD_OR_UNCACHED",
+    "segmentCount": 1,
+    "ownedOccurrences": 1,
+    "visibleOccurrences": 1,
+    "headingOutputCount": 6,
+    "elapsedMs": 8862,
+    "finishReason": "stop",
+    "httpStatus": 200,
+    "failureClass": null,
+    "providerCallId": "gen-1788978580-vYVVUHQuYtXF715cS0g6",
+    "providerRoute": "Alibaba",
+    "canonicalRequestHash": "358eba79f1eae7e266fa77b83597d3696178bcf47bb6f1d3f2ab0023f565fbc7",
+    "requestBodyHash": "358eba79f1eae7e266fa77b83597d3696178bcf47bb6f1d3f2ab0023f565fbc7",
+    "responseContentPresent": true,
+    "structuredOutputParsed": true,
+    "timeoutDetected": null,
+    "streamStallDetected": null,
+    "requestStartedUtc": "2026-09-09T18:29:39.0488586+00:00",
+    "headersReceivedUtc": "2026-09-09T18:29:41.5987128+00:00",
+    "firstResponseByteUtc": "2026-09-09T18:29:41.5988361+00:00",
+    "firstModelContentUtc": null,
+    "responseCompletedUtc": "2026-09-09T18:29:47.9115462+00:00",
+    "ttfbMs": 2549,
+    "ttftMs": null,
+    "generationElapsedMs": null
+  },
+  "goldReadBeforeFreeze": false
+}

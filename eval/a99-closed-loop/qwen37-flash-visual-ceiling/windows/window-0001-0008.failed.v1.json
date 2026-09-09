@@ -1,0 +1,94 @@
+{
+  "pageIndices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "status": "FAILED",
+  "packetMetrics": {
+    "pageCountInRequest": 8,
+    "imageCount": 8,
+    "mappedSourceOccurrences": 3,
+    "visibleSourceChars": 24100,
+    "ownedSourceChars": 24100,
+    "packetChars": 49772,
+    "estimatedInputTokens": 14639,
+    "imageDimensions": [
+      {
+        "pageIndex": 1,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 2,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 3,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 4,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 5,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 6,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 7,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 8,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      }
+    ]
+  },
+  "error": "Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed. LineNumber: 0 | BytePositionInLine: 28237.",
+  "recovery": "SPLIT_TO_SINGLE_PAGE",
+  "failureTelemetry": {
+    "finishReason": "error",
+    "reasoningTokens": 12374,
+    "outputTokens": 19445,
+    "responseContentPresent": true,
+    "structuredOutputParsed": false,
+    "outputLimitDetected": false,
+    "actualProvider": "Alibaba",
+    "elapsedMs": 412557,
+    "failureClass": "STRUCTURED_OUTPUT_TRUNCATED"
+  },
+  "goldReadBeforeFreeze": false
+}

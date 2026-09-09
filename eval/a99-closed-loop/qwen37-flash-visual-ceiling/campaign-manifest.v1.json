@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "a99-qwen37-flash-visual-ceiling-v1",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "OpenRouter",
+  "documentId": "DOC-0205",
+  "dataClassification": "PUBLIC",
+  "zdrRequested": false,
+  "privacyExceptionAuthorized": true,
+  "privacyExceptionScope": "FLASH_VISUAL_CEILING_ONLY",
+  "modelFallback": "NONE",
+  "visualPromptContract": "VISUAL_EVIDENCE_SUPPLEMENTS_XML_SOURCE;SOURCE_XML_IS_CANONICAL;NO_GOLD;NO_CANDIDATE_FILTERING;NO_HEURISTIC_HEADING_RULES",
+  "pageCount": 19,
+  "pageCoverage": 1,
+  "sourceOwnershipCoverage": 1,
+  "capability": {
+    "available": true,
+    "classification": "",
+    "reason": "MODEL_AVAILABLE",
+    "capability": {
+      "modelId": "qwen/qwen3.7-flash",
+      "contextLength": 1000000,
+      "reasoningSupported": true,
+      "supportedReasoningEfforts": [],
+      "defaultReasoningEffort": null,
+      "maxCompletionTokens": 65536,
+      "supportedParameters": [
+        "include_reasoning",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "response_format",
+        "seed",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ],
+      "structuredOutputSupported": true,
+      "selectedReasoningEffort": "enabled",
+      "reasoningEnabled": true,
+      "effortListReported": false
+    }
+  },
+  "goldReadBeforeFreeze": false,
+  "startedUtc": "2026-09-09T18:01:37.8003754+00:00"
+}

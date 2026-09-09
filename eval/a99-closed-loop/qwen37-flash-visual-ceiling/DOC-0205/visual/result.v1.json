@@ -1,0 +1,1736 @@
+{
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "mode": "TEXT_PLUS_VISUAL",
+  "headings": [
+    {
+      "id": "reasoning:body[1]/p[1]:0:37",
+      "type": "Title",
+      "role": "DocumentTitle",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[1]",
+          "sourceOrdinal": 0,
+          "span": {
+            "start": 0,
+            "end": 37
+          }
+        }
+      ],
+      "text": "025_ND_47-2020_Chia_se_du_lieu_so.doc",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "025_ND_47-2020_Chia_se_du_lieu_so.doc",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:228:720",
+      "type": "Title",
+      "role": "DocumentTitle",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 228,
+            "end": 720
+          }
+        }
+      ],
+      "text": "\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________ C\u0103n c\u1EE9 Lu\u1EADt T\u1ED5 ch\u1EE9c Ch\u00EDnh ph\u1EE7 ng\u00E0y 19 th\u00E1ng 6 n\u0103m 2015; C\u0103n c\u1EE9 Lu\u1EADt C\u00F4ng ngh\u1EC7 th\u00F4ng tin ng\u00E0y 29 th\u00E1ng 6 n\u0103m 2006; C\u0103n c\u1EE9 Lu\u1EADt Giao d\u1ECBch \u0111i\u1EC7n t\u1EED ng\u00E0y 29 th\u00E1ng 11 n\u0103m 2005; C\u0103n c\u1EE9 Lu\u1EADt Ti\u1EBFp c\u1EADn th\u00F4ng tin ng\u00E0y 06 th\u00E1ng 4 n\u0103m 2016; Theo \u0111\u1EC1 ngh\u1ECB c\u1EE7a B\u1ED9 tr\u01B0\u1EDFng B\u1ED9 Th\u00F4ng tin v\u00E0 Truy\u1EC1n th\u00F4ng; Ch\u00EDnh ph\u1EE7 ban h\u00E0nh Ngh\u1ECB \u0111\u1ECBnh v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc. Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG \u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh 1. Ngh\u1ECB \u0111\u1ECBnh n\u00E0y quy \u0111\u1ECBn",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________ C\u0103n c\u1EE9 Lu\u1EADt T\u1ED5 ch\u1EE9c Ch\u00EDnh ph\u1EE7 ng\u00E0y 19 th\u00E1ng 6 n\u0103m 2015; C\u0103n c\u1EE9 Lu\u1EADt C\u00F4ng ngh\u1EC7 th\u00F4ng tin ng\u00E0y 29 th\u00E1ng 6 n\u0103m 2006; C\u0103n c\u1EE9 Lu\u1EADt Giao d\u1ECBch \u0111i\u1EC7n t\u1EED ng\u00E0y 29 th\u00E1ng 11 n\u0103m 2005; C\u0103n c\u1EE9 Lu\u1EADt Ti\u1EBFp c\u1EADn th\u00F4ng tin ng\u00E0y 06 th\u00E1ng 4 n\u0103m 2016; Theo \u0111\u1EC1 ngh\u1ECB c\u1EE7a B\u1ED9 tr\u01B0\u1EDFng B\u1ED9 Th\u00F4ng tin v\u00E0 Truy\u1EC1n th\u00F4ng; Ch\u00EDnh ph\u1EE7 ban h\u00E0nh Ngh\u1ECB \u0111\u1ECBnh v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc. Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG \u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh 1. Ngh\u1ECB \u0111\u1ECBnh n\u00E0y quy \u0111\u1ECBn",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:10715:10795",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 10715,
+            "end": 10795
+          }
+        }
+      ],
+      "text": " li\u1EC7u \u0111\u00F3 \u0111\u01B0\u1EE3c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc kh\u00E1c s\u1EB5n s\u00E0ng chia s\u1EBB v\u00E0 \u0111\u00E1p \u1EE9ng \u0111\u01B0\u1EE3c y\u00EAu c\u1EA7u, tr",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": " li\u1EC7u \u0111\u00F3 \u0111\u01B0\u1EE3c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc kh\u00E1c s\u1EB5n s\u00E0ng chia s\u1EBB v\u00E0 \u0111\u00E1p \u1EE9ng \u0111\u01B0\u1EE3c y\u00EAu c\u1EA7u, tr",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:10893:10935",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 10893,
+            "end": 10935
+          }
+        }
+      ],
+      "text": "a d\u1EEF li\u1EC7u. \u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "a d\u1EEF li\u1EC7u. \u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:11033:11085",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 11033,
+            "end": 11085
+          }
+        }
+      ],
+      "text": "nh th\u00E0nh c\u00E1c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u; b) Qu\u1EA3n l\u00FD, duy tr\u00EC, c\u1EADp",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "nh th\u00E0nh c\u00E1c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u; b) Qu\u1EA3n l\u00FD, duy tr\u00EC, c\u1EADp",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:14039:14069",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 14039,
+            "end": 14069
+          }
+        }
+      ],
+      "text": " d\u1EEF li\u1EC7u t\u1EEB c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": " d\u1EEF li\u1EC7u t\u1EEB c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:14071:14099",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 14071,
+            "end": 14099
+          }
+        }
+      ],
+      "text": "ia. 3. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gi",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "ia. 3. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gi",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:14192:14249",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 14192,
+            "end": 14249
+          }
+        }
+      ],
+      "text": "ng c\u00E1c v\u0103n b\u1EA3n gi\u1EA5y ch\u1EE9a th\u00F4ng tin \u0111\u01B0\u1EE3c c\u01A1 quan c\u00F3 th\u1EA9m q",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "ng c\u00E1c v\u0103n b\u1EA3n gi\u1EA5y ch\u1EE9a th\u00F4ng tin \u0111\u01B0\u1EE3c c\u01A1 quan c\u00F3 th\u1EA9m q",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:14251:14299",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 14251,
+            "end": 14299
+          }
+        }
+      ],
+      "text": "\u1EC1n cung c\u1EA5p; b) Ch\u1EE9a d\u1EEF li\u1EC7u ch\u1EE7 c\u1EE7a Ch\u00EDnh ph\u1EE7 l",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "\u1EC1n cung c\u1EA5p; b) Ch\u1EE9a d\u1EEF li\u1EC7u ch\u1EE7 c\u1EE7a Ch\u00EDnh ph\u1EE7 l",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:20222:20292",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 20222,
+            "end": 20292
+          }
+        }
+      ],
+      "text": "t\u1ECBch \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng c\u00F3 tr\u00E1c",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "t\u1ECBch \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng c\u00F3 tr\u00E1c",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:20552:20612",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 20552,
+            "end": 20612
+          }
+        }
+      ],
+      "text": "\u1EE3c ph\u00E9p t\u1EF1 do sao ch\u00E9p, chia s\u1EBB, trao \u0111\u1ED5i, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "\u1EE3c ph\u00E9p t\u1EF1 do sao ch\u00E9p, chia s\u1EBB, trao \u0111\u1ED5i, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:23725:23777",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 23725,
+            "end": 23777
+          }
+        }
+      ],
+      "text": "g d\u1EEF li\u1EC7u qu\u1ED1c gia. M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "g d\u1EEF li\u1EC7u qu\u1ED1c gia. M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:23779:23815",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 23779,
+            "end": 23815
+          }
+        }
+      ],
+      "text": "\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U \u0110i\u1EC1u 22. Quy",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U \u0110i\u1EC1u 22. Quy",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:23865:23895",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 23865,
+            "end": 23895
+          }
+        }
+      ],
+      "text": ", chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u c\u1EE7a",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": ", chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u c\u1EE7a",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:30480:30695",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 30480,
+            "end": 30695
+          }
+        }
+      ],
+      "text": "n d\u1EEF li\u1EC7u chia s\u1EBB theo quy \u0111\u1ECBnh c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u v\u00E0 c\u00E1c quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt. \u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u 1. \u0110\u1ED1i v\u1EDBi kinh ph\u00ED th\u1EF1c hi\u1EC7n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng h\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "n d\u1EEF li\u1EC7u chia s\u1EBB theo quy \u0111\u1ECBnh c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u v\u00E0 c\u00E1c quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt. \u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u 1. \u0110\u1ED1i v\u1EDBi kinh ph\u00ED th\u1EF1c hi\u1EC7n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng h\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:30696:30725",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 30696,
+            "end": 30725
+          }
+        }
+      ],
+      "text": " li\u1EC7u; n\u1EC1n t\u1EA3ng t\u00EDch h\u1EE3p, chi",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": " li\u1EC7u; n\u1EC1n t\u1EA3ng t\u00EDch h\u1EE3p, chi",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:30726:30765",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 30726,
+            "end": 30765
+          }
+        }
+      ],
+      "text": " s\u1EBB d\u1EEF li\u1EC7u c\u1EA5p b\u1ED9, c\u1EA5p t\u1EC9nh v\u00E0 c\u00E1c c\u01A1 ",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": " s\u1EBB d\u1EEF li\u1EC7u c\u1EA5p b\u1ED9, c\u1EA5p t\u1EC9nh v\u00E0 c\u00E1c c\u01A1 ",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:30766:30795",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 30766,
+            "end": 30795
+          }
+        }
+      ],
+      "text": "\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, ngu\u1ED3n kin",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, ngu\u1ED3n kin",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:34108:34241",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 34108,
+            "end": 34241
+          }
+        }
+      ],
+      "text": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trun",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trun",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:43267:43268",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 43267,
+            "end": 43268
+          }
+        }
+      ],
+      "text": "i",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "i",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:43268:43269",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 43268,
+            "end": 43269
+          }
+        }
+      ],
+      "text": "n",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "n",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:43269:43270",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 43269,
+            "end": 43270
+          }
+        }
+      ],
+      "text": ";",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": ";",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:46641:46681",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 46641,
+            "end": 46681
+          }
+        }
+      ],
+      "text": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:46803:46840",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 46803,
+            "end": 46840
+          }
+        }
+      ],
+      "text": "i\u00EAn sau: 1. K\u1EBFt n\u1ED1i qua c\u00E1c h\u1EC7 th\u1ED1ng ",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "i\u00EAn sau: 1. K\u1EBFt n\u1ED1i qua c\u00E1c h\u1EC7 th\u1ED1ng ",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:47040:47086",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 47040,
+            "end": 47086
+          }
+        }
+      ],
+      "text": "n t\u1EED \u0111\u00E3 \u0111\u01B0\u1EE3c c\u00E1c c\u1EA5p c\u00F3 th\u1EA9m quy\u1EC1n ph\u00EA duy\u1EC7t. ",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "n t\u1EED \u0111\u00E3 \u0111\u01B0\u1EE3c c\u00E1c c\u1EA5p c\u00F3 th\u1EA9m quy\u1EC1n ph\u00EA duy\u1EC7t. ",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:50257:50330",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 50257,
+            "end": 50330
+          }
+        }
+      ],
+      "text": "quy\u1EBFt. \u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED ",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "quy\u1EBFt. \u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED ",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:50331:50361",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 50331,
+            "end": 50361
+          }
+        }
+      ],
+      "text": "\u00FD v\u01B0\u1EDBng m\u1EAFc 1. Nguy\u00EAn t\u1EAFc gi\u1EA3i",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "\u00FD v\u01B0\u1EDBng m\u1EAFc 1. Nguy\u00EAn t\u1EAFc gi\u1EA3i",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:54365:54368",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 54365,
+            "end": 54368
+          }
+        }
+      ],
+      "text": ". T",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": ". T",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:54370:54386",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 54370,
+            "end": 54386
+          }
+        }
+      ],
+      "text": " th\u1EADp, qu\u1EA3n l\u00FD d",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": " th\u1EADp, qu\u1EA3n l\u00FD d",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:54388:54404",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 54388,
+            "end": 54404
+          }
+        }
+      ],
+      "text": "li\u1EC7u danh m\u1EE5c d\u00F9",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "li\u1EC7u danh m\u1EE5c d\u00F9",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:54456:54472",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 54456,
+            "end": 54472
+          }
+        }
+      ],
+      "text": "uan c\u00F3 nhu c\u1EA7u; ",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "uan c\u00F3 nhu c\u1EA7u; ",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[4]:54664:54680",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "span": {
+            "start": 54664,
+            "end": 54680
+          }
+        }
+      ],
+      "text": "i c\u00E1c gi\u1EA3i ph\u00E1p,",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "i c\u00E1c gi\u1EA3i ph\u00E1p,",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

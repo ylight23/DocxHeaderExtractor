@@ -1,0 +1,94 @@
+{
+  "pageIndices": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "status": "FAILED",
+  "packetMetrics": {
+    "pageCountInRequest": 8,
+    "imageCount": 8,
+    "mappedSourceOccurrences": 1,
+    "visibleSourceChars": 23822,
+    "ownedSourceChars": 23822,
+    "packetChars": 47980,
+    "estimatedInputTokens": 14112,
+    "imageDimensions": [
+      {
+        "pageIndex": 9,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 10,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 11,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 12,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 13,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 14,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 15,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 16,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      }
+    ]
+  },
+  "error": "ceiling-provider-response-content-missing",
+  "recovery": "SPLIT_TO_SINGLE_PAGE",
+  "failureTelemetry": {
+    "finishReason": "error",
+    "reasoningTokens": 21695,
+    "outputTokens": 21695,
+    "responseContentPresent": false,
+    "structuredOutputParsed": false,
+    "outputLimitDetected": false,
+    "actualProvider": "Alibaba",
+    "elapsedMs": 452714,
+    "failureClass": "INCOMPLETE_PROVIDER_RESPONSE"
+  },
+  "goldReadBeforeFreeze": false
+}

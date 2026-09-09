@@ -1,0 +1,888 @@
+{
+  "invariant": "8_PAGE_WINDOW_TO_1_PAGE_WINDOW_MUST_REDUCE_MODEL_VISIBLE_WORKLOAD",
+  "windows": [
+    {
+      "kind": "PLANNED_WINDOW",
+      "pageIndices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 8,
+        "imageCount": 8,
+        "mappedSourceOccurrences": 3,
+        "visibleSourceChars": 24100,
+        "ownedSourceChars": 24100,
+        "packetChars": 49772,
+        "estimatedInputTokens": 14639,
+        "imageDimensions": [
+          {
+            "pageIndex": 1,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 2,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 3,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 4,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 5,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 6,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 7,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 8,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[1]:0:37",
+          "visibleStart": 0,
+          "visibleEnd": 37,
+          "ownedStart": 0,
+          "ownedEnd": 37
+        },
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[2]:1:113",
+          "visibleStart": 8,
+          "visibleEnd": 72,
+          "ownedStart": 8,
+          "ownedEnd": 72
+        },
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 164,
+          "visibleEnd": 24163,
+          "ownedStart": 164,
+          "ownedEnd": 24163
+        }
+      ]
+    },
+    {
+      "kind": "PLANNED_WINDOW",
+      "pageIndices": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 8,
+        "imageCount": 8,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 23822,
+        "ownedSourceChars": 23822,
+        "packetChars": 47980,
+        "estimatedInputTokens": 14112,
+        "imageDimensions": [
+          {
+            "pageIndex": 9,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 10,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 11,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 12,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 13,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 14,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 15,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 16,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 26866,
+          "visibleEnd": 50688,
+          "ownedStart": 26866,
+          "ownedEnd": 50688
+        }
+      ]
+    },
+    {
+      "kind": "PLANNED_WINDOW",
+      "pageIndices": [
+        17,
+        18,
+        19
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 3,
+        "imageCount": 3,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 7391,
+        "ownedSourceChars": 7391,
+        "packetChars": 15003,
+        "estimatedInputTokens": 4413,
+        "imageDimensions": [
+          {
+            "pageIndex": 17,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 18,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          },
+          {
+            "pageIndex": 19,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 53326,
+          "visibleEnd": 60717,
+          "ownedStart": 53326,
+          "ownedEnd": 60717
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        1
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 3,
+        "visibleSourceChars": 657,
+        "ownedSourceChars": 657,
+        "packetChars": 1397,
+        "estimatedInputTokens": 411,
+        "imageDimensions": [
+          {
+            "pageIndex": 1,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[1]:0:37",
+          "visibleStart": 0,
+          "visibleEnd": 37,
+          "ownedStart": 0,
+          "ownedEnd": 37
+        },
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[2]:1:113",
+          "visibleStart": 8,
+          "visibleEnd": 72,
+          "ownedStart": 8,
+          "ownedEnd": 72
+        },
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 164,
+          "visibleEnd": 720,
+          "ownedStart": 164,
+          "ownedEnd": 720
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        2
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 532,
+        "ownedSourceChars": 532,
+        "packetChars": 1178,
+        "estimatedInputTokens": 347,
+        "imageDimensions": [
+          {
+            "pageIndex": 2,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 3037,
+          "visibleEnd": 3569,
+          "ownedStart": 3037,
+          "ownedEnd": 3569
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        3
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 529,
+        "ownedSourceChars": 529,
+        "packetChars": 1150,
+        "estimatedInputTokens": 339,
+        "imageDimensions": [
+          {
+            "pageIndex": 3,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 7140,
+          "visibleEnd": 7669,
+          "ownedStart": 7140,
+          "ownedEnd": 7669
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        4
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 551,
+        "ownedSourceChars": 551,
+        "packetChars": 1262,
+        "estimatedInputTokens": 372,
+        "imageDimensions": [
+          {
+            "pageIndex": 4,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 10600,
+          "visibleEnd": 11151,
+          "ownedStart": 10600,
+          "ownedEnd": 11151
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        5
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 545,
+        "ownedSourceChars": 545,
+        "packetChars": 1211,
+        "estimatedInputTokens": 357,
+        "imageDimensions": [
+          {
+            "pageIndex": 5,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 13754,
+          "visibleEnd": 14299,
+          "ownedStart": 13754,
+          "ownedEnd": 14299
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        6
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 530,
+        "ownedSourceChars": 530,
+        "packetChars": 1086,
+        "estimatedInputTokens": 320,
+        "imageDimensions": [
+          {
+            "pageIndex": 6,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 16964,
+          "visibleEnd": 17494,
+          "ownedStart": 16964,
+          "ownedEnd": 17494
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        7
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 538,
+        "ownedSourceChars": 538,
+        "packetChars": 1159,
+        "estimatedInputTokens": 341,
+        "imageDimensions": [
+          {
+            "pageIndex": 7,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 20119,
+          "visibleEnd": 20657,
+          "ownedStart": 20119,
+          "ownedEnd": 20657
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        8
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 546,
+        "ownedSourceChars": 546,
+        "packetChars": 1172,
+        "estimatedInputTokens": 345,
+        "imageDimensions": [
+          {
+            "pageIndex": 8,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 23617,
+          "visibleEnd": 24163,
+          "ownedStart": 23617,
+          "ownedEnd": 24163
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        9
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 532,
+        "ownedSourceChars": 532,
+        "packetChars": 1158,
+        "estimatedInputTokens": 341,
+        "imageDimensions": [
+          {
+            "pageIndex": 9,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 26866,
+          "visibleEnd": 27398,
+          "ownedStart": 26866,
+          "ownedEnd": 27398
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        10
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 537,
+        "ownedSourceChars": 537,
+        "packetChars": 1148,
+        "estimatedInputTokens": 338,
+        "imageDimensions": [
+          {
+            "pageIndex": 10,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 30380,
+          "visibleEnd": 30917,
+          "ownedStart": 30380,
+          "ownedEnd": 30917
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        11
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 538,
+        "ownedSourceChars": 538,
+        "packetChars": 1164,
+        "estimatedInputTokens": 343,
+        "imageDimensions": [
+          {
+            "pageIndex": 11,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 34007,
+          "visibleEnd": 34545,
+          "ownedStart": 34007,
+          "ownedEnd": 34545
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        12
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 553,
+        "ownedSourceChars": 553,
+        "packetChars": 1204,
+        "estimatedInputTokens": 355,
+        "imageDimensions": [
+          {
+            "pageIndex": 12,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 37106,
+          "visibleEnd": 37659,
+          "ownedStart": 37106,
+          "ownedEnd": 37659
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        13
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 537,
+        "ownedSourceChars": 537,
+        "packetChars": 1143,
+        "estimatedInputTokens": 337,
+        "imageDimensions": [
+          {
+            "pageIndex": 13,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 39785,
+          "visibleEnd": 40322,
+          "ownedStart": 39785,
+          "ownedEnd": 40322
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        14
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 536,
+        "ownedSourceChars": 536,
+        "packetChars": 1107,
+        "estimatedInputTokens": 326,
+        "imageDimensions": [
+          {
+            "pageIndex": 14,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 43266,
+          "visibleEnd": 43802,
+          "ownedStart": 43266,
+          "ownedEnd": 43802
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        15
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 537,
+        "ownedSourceChars": 537,
+        "packetChars": 1143,
+        "estimatedInputTokens": 337,
+        "imageDimensions": [
+          {
+            "pageIndex": 15,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 46641,
+          "visibleEnd": 47178,
+          "ownedStart": 46641,
+          "ownedEnd": 47178
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        16
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 534,
+        "ownedSourceChars": 534,
+        "packetChars": 1170,
+        "estimatedInputTokens": 345,
+        "imageDimensions": [
+          {
+            "pageIndex": 16,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 50154,
+          "visibleEnd": 50688,
+          "ownedStart": 50154,
+          "ownedEnd": 50688
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        17
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 537,
+        "ownedSourceChars": 537,
+        "packetChars": 1098,
+        "estimatedInputTokens": 323,
+        "imageDimensions": [
+          {
+            "pageIndex": 17,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 53326,
+          "visibleEnd": 53863,
+          "ownedStart": 53326,
+          "ownedEnd": 53863
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        18
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 535,
+        "ownedSourceChars": 535,
+        "packetChars": 1206,
+        "estimatedInputTokens": 355,
+        "imageDimensions": [
+          {
+            "pageIndex": 18,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 56814,
+          "visibleEnd": 57349,
+          "ownedStart": 56814,
+          "ownedEnd": 57349
+        }
+      ]
+    },
+    {
+      "kind": "SINGLE_PAGE_PROBE",
+      "pageIndices": [
+        19
+      ],
+      "packetMetrics": {
+        "pageCountInRequest": 1,
+        "imageCount": 1,
+        "mappedSourceOccurrences": 1,
+        "visibleSourceChars": 254,
+        "ownedSourceChars": 254,
+        "packetChars": 530,
+        "estimatedInputTokens": 156,
+        "imageDimensions": [
+          {
+            "pageIndex": 19,
+            "dimensions": {
+              "width": 935,
+              "height": 1210
+            }
+          }
+        ]
+      },
+      "sourceRanges": [
+        {
+          "sourceOccurrenceId": "DOC-0205:body[1]/p[4]:3:60769",
+          "visibleStart": 60463,
+          "visibleEnd": 60717,
+          "ownedStart": 60463,
+          "ownedEnd": 60717
+        }
+      ]
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

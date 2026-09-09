@@ -44,11 +44,13 @@ public static class OpenRouterQwen37VisualCeilingRunner
         if (!File.Exists(sourcePath) || !string.Equals(Sha256File(sourcePath), item.SourceSha256, StringComparison.OrdinalIgnoreCase))
             return await BlockAsync(output, "VLM_EXECUTION_BLOCKED", "SOURCE_HASH_MISMATCH", control, ct);
 
-        var render = await RenderAndManifestAsync(sourcePath, output, ct);
+        var renderer = DiscoverRenderer();
+        await WriteJsonAsync(Path.Combine(output, "renderer.v1.json"), renderer, ct);
+        var render = await RenderAndManifestAsync(sourcePath, output, renderer, ct);
         await WriteJsonAsync(Path.Combine(output, "page-render-manifest.v1.json"), render.Manifest, ct);
         if (!render.Success)
-            return await BlockAsync(output, "VLM_EXECUTION_BLOCKED", render.Error ?? "DOCX_LAYOUT_RENDERER_UNAVAILABLE", control, ct,
-                new { render = render.Manifest });
+            return await BlockAsync(output, "DOCX_RENDERER_INSTALLATION_REQUIRED", render.Error ?? "DOCX_LAYOUT_RENDERER_UNAVAILABLE", control, ct,
+                new { renderer, render = render.Manifest });
 
         var source = new OpenXmlDocumentSource().Read(sourcePath) with { DocumentId = item.DocumentId };
         var features = NumberingStyleFeatures.FromSourceDocument(source);
@@ -80,7 +82,7 @@ public static class OpenRouterQwen37VisualCeilingRunner
         {
             schemaVersion = "a99-qwen37-flash-visual-ceiling-v1", model = Model, provider = "OpenRouter",
             documentId = "DOC-0205", dataClassification = "PUBLIC", zdrRequested = false,
-            privacyExceptionAuthorized = true, privacyExceptionScope = "THIS_CAMPAIGN_ONLY", modelFallback = "NONE",
+            privacyExceptionAuthorized = true, privacyExceptionScope = "FLASH_VISUAL_CEILING_ONLY", modelFallback = "NONE",
             visualPromptContract = VisualPromptContract, pageCount = render.Manifest.PageCount,
             pageCoverage = 1d, sourceOwnershipCoverage = mapping.MappedCount / (double)Math.Max(1, mapping.TotalCount),
             capability, goldReadBeforeFreeze = false, startedUtc = DateTimeOffset.UtcNow,
@@ -95,35 +97,74 @@ public static class OpenRouterQwen37VisualCeilingRunner
         var proposals = new List<ReasoningHeadingProposal>();
         var telemetry = new List<RequestPacketTelemetry>();
         var pageWindows = BuildWindows(pages, mapping, pack.Occurrences);
+        var packetAudit = BuildPacketAudit(pageWindows, pages, mapping, pack.Occurrences);
+        await WriteJsonAsync(Path.Combine(output, "visual-packet-audit.v1.json"), new
+        {
+            invariant = "8_PAGE_WINDOW_TO_1_PAGE_WINDOW_MUST_REDUCE_MODEL_VISIBLE_WORKLOAD",
+            windows = packetAudit,
+            goldReadBeforeFreeze = false,
+        }, ct);
         using var model = new OpenRouterCeilingReasoningModel(options, capability.Capability, http);
         var windowResults = new List<object>();
-        foreach (var window in pageWindows)
+        var unresolvedWindows = new List<object>();
+        var pendingWindows = new Queue<VisualWindow>(pageWindows);
+        while (pendingWindows.Count > 0)
         {
+            var window = pendingWindows.Dequeue();
             ct.ThrowIfCancellationRequested();
             var visible = window.OccurrenceIds.Select(id => pack.Occurrences.Single(x => x.SourceOccurrenceId == id)).ToArray();
             var owned = visible.Select(x => x.SourceOccurrenceId).ToHashSet(StringComparer.Ordinal);
-            var packet = CeilingPacketBuilder.Build(visible, owned);
+            var packet = CeilingPacketBuilder.Build(visible, owned, window.VisibleRanges, window.OwnedRanges);
             var metadata = JsonSerializer.Serialize(new { pages = window.PageIndices, sourceAliases = packet.Bindings.Select(x => new { x.LocalIndex, x.SourceId }).ToArray() });
             var requestId = $"VISUAL_SEMANTIC:DOC-0205:{string.Join(',', window.PageIndices)}:{Sha256Text(packet.SerializedJson + metadata)}";
-            var (response, requestTelemetry) = await model.CompleteVisualSemanticAsync("DOC-0205", ReasoningRoute.ModelCapabilityCeiling.ToString(),
-                requestId, packet.SerializedJson + "\nVISUAL_WINDOW_METADATA=" + metadata, pages.Where(x => window.PageIndices.Contains(x.PageIndex)).ToArray(),
-                packet.SourceTextCharacters, owned.Count, visible.Length, ct);
-            telemetry.Add(requestTelemetry);
-            var bound = 0;
-            foreach (var heading in response.Headings)
+            var pageEvidence = pages.Where(x => window.PageIndices.Contains(x.PageIndex)).ToArray();
+            var packetMetrics = BuildPacketMetrics(window, packet, pageEvidence);
+            try
             {
-                var binding = CeilingProposalBinder.ResolveBinding(heading.I, packet.Bindings, owned);
-                if (binding is null || !binding.TryBind(heading.Start, heading.End, out var start, out var end, out var isOwned) || !isOwned) continue;
-                var occurrence = visible.Single(x => x.SourceOccurrenceId == binding.SourceOccurrenceId);
-                proposals.Add(new ReasoningHeadingProposal
+                var (response, requestTelemetry) = await model.CompleteVisualSemanticAsync("DOC-0205", ReasoningRoute.ModelCapabilityCeiling.ToString(),
+                    requestId, packet.SerializedJson + "\nVISUAL_WINDOW_METADATA=" + metadata, pages.Where(x => window.PageIndices.Contains(x.PageIndex)).ToArray(),
+                    packet.SourceTextCharacters, owned.Count, visible.Length, ct);
+                telemetry.Add(requestTelemetry);
+                var bound = 0;
+                foreach (var heading in response.Headings)
                 {
-                    SourceId = occurrence.SourceId, HeadingSpan = new StructuralSpan(start, end),
-                    Text = occurrence.RawText[start..end], SemanticRole = heading.Role, Confidence = 1,
-                });
-                bound++;
+                    var binding = CeilingProposalBinder.ResolveBinding(heading.I, packet.Bindings, owned);
+                    if (binding is null || !binding.TryBind(heading.Start, heading.End, out var start, out var end, out var isOwned) || !isOwned) continue;
+                    var occurrence = visible.Single(x => x.SourceOccurrenceId == binding.SourceOccurrenceId);
+                    proposals.Add(new ReasoningHeadingProposal
+                    {
+                        SourceId = occurrence.SourceId, HeadingSpan = new StructuralSpan(start, end),
+                        Text = occurrence.RawText[start..end], SemanticRole = heading.Role, Confidence = 1,
+                    });
+                    bound++;
+                }
+                windowResults.Add(new { window.PageIndices, status = "SUCCESS", packetMetrics, responseCount = response.Headings.Count, boundCount = bound, requestTelemetry });
+                await WriteJsonAsync(Path.Combine(output, "windows", $"window-{window.PageIndices[0]:0000}-{window.PageIndices[^1]:0000}.v1.json"),
+                    new { pageIndices = window.PageIndices, sourceOccurrenceIds = window.OccurrenceIds, packetMetrics, response.Headings, boundCount = bound, requestTelemetry, goldReadBeforeFreeze = false }, ct);
             }
-            windowResults.Add(new { window.PageIndices, responseCount = response.Headings.Count, boundCount = bound, requestTelemetry });
+            catch (Exception ex) when (ex is ReasoningCompletionException or FormatException or HttpRequestException or JsonException or InvalidOperationException)
+            {
+                var requestTelemetry = model.Telemetry.LastOrDefault();
+                var failureTelemetry = BuildFailureTelemetry(requestTelemetry, ex);
+                if (window.PageIndices.Count > 1)
+                {
+                    foreach (var pageIndex in window.PageIndices)
+                    {
+                        pendingWindows.Enqueue(BuildSinglePageWindow(pageIndex, pages, mapping, pack.Occurrences));
+                    }
+                }
+                else
+                {
+                    unresolvedWindows.Add(new { pageIndices = window.PageIndices, status = "FAILED", error = ex.Message, packetMetrics, failureTelemetry });
+                }
+                windowResults.Add(new { window.PageIndices, status = "FAILED", packetMetrics, error = ex.Message, recovery = window.PageIndices.Count > 1 ? "SPLIT_TO_SINGLE_PAGE" : "UNRESOLVED", failureTelemetry });
+                await WriteJsonAsync(Path.Combine(output, "windows", $"window-{window.PageIndices[0]:0000}-{window.PageIndices[^1]:0000}.failed.v1.json"),
+                    new { pageIndices = window.PageIndices, status = "FAILED", packetMetrics, error = ex.Message, recovery = window.PageIndices.Count > 1 ? "SPLIT_TO_SINGLE_PAGE" : "UNRESOLVED", failureTelemetry, goldReadBeforeFreeze = false }, ct);
+            }
         }
+        if (unresolvedWindows.Count > 0)
+            return await BlockAsync(output, "VLM_EXECUTION_BLOCKED", "VISUAL_WINDOWS_UNRESOLVED", control, ct,
+                new { renderer, render = render.Manifest, mapping, unresolvedWindows, windowResults, telemetry = model.Telemetry, goldReadBeforeFreeze = false });
 
         var deduped = proposals.GroupBy(x => $"{x.SourceId}:{x.HeadingSpan.Start}:{x.HeadingSpan.End}", StringComparer.Ordinal)
             .Select(x => x.OrderByDescending(p => p.Confidence).ThenBy(p => p.SemanticRole, StringComparer.Ordinal).First()).ToArray();
@@ -151,7 +192,7 @@ public static class OpenRouterQwen37VisualCeilingRunner
         {
             documentId = "DOC-0205", model = Model, actualProvider = telemetry.Select(x => x.ProviderRoute).FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? "NOT_EXPOSED",
             reasoningConfiguration = new { requested = true, enabled = true, exclude = true }, dataClassification = "PUBLIC", zdrRequested = false,
-            privacyExceptionAuthorized = true, privacyExceptionScope = "THIS_CAMPAIGN_ONLY", gitSha = CurrentGitSha(repoRoot),
+            privacyExceptionAuthorized = true, privacyExceptionScope = "FLASH_VISUAL_CEILING_ONLY", gitSha = CurrentGitSha(repoRoot),
             sourceSha256 = item.SourceSha256, pageRenderManifestSha256 = Sha256File(Path.Combine(output, "page-render-manifest.v1.json")),
             mappingSha256 = Sha256File(Path.Combine(output, "source-page-mapping.v1.json")), predictionSha256 = predictionHash,
             resultSha256 = resultHash, promptHash = Sha256Text(CeilingSemanticPrompt.ProtocolVersion + "\n" + CeilingSemanticPrompt.System + "\n" + VisualPromptContract),
@@ -206,71 +247,229 @@ public static class OpenRouterQwen37VisualCeilingRunner
     public static IReadOnlyList<string> DeduplicateCanonicalKeys(IEnumerable<string> keys) => keys.Distinct(StringComparer.Ordinal).OrderBy(x => x, StringComparer.Ordinal).ToArray();
     public static bool VisualPromptKeepsGoldOut(string prompt) => !prompt.Contains("gold", StringComparison.OrdinalIgnoreCase);
 
-    private static async Task<RenderResult> RenderAndManifestAsync(string sourcePath, string output, CancellationToken ct)
+    private static async Task<RenderResult> RenderAndManifestAsync(string sourcePath, string output, RendererAudit renderer, CancellationToken ct)
     {
+        if (string.IsNullOrWhiteSpace(renderer.Executable))
+            return new RenderResult(false, "DOCX_LAYOUT_RENDERER_UNAVAILABLE", EmptyManifest(sourcePath), Array.Empty<string>(), renderer);
         var renderDir = Path.Combine(output, "render"); Directory.CreateDirectory(renderDir);
-        var pdf = Path.Combine(renderDir, Path.GetFileNameWithoutExtension(sourcePath) + ".pdf");
-        if (!File.Exists(pdf))
-        {
-            var converter = FindExecutable("soffice") ?? FindExecutable("libreoffice");
-            if (converter is not null)
-            {
-                var psi = new ProcessStartInfo(converter) { WorkingDirectory = renderDir, RedirectStandardError = true, RedirectStandardOutput = true, UseShellExecute = false, CreateNoWindow = true };
-                foreach (var arg in new[] { "--headless", "--norestore", "--convert-to", "pdf", "--outdir", renderDir, sourcePath }) psi.ArgumentList.Add(arg);
-                using var process = Process.Start(psi);
-                if (process is not null && await WaitForExitAsync(process, TimeSpan.FromMinutes(3), ct) && !File.Exists(pdf))
-                    pdf = Directory.EnumerateFiles(renderDir, "*.pdf").FirstOrDefault() ?? pdf;
-            }
-            if (!File.Exists(pdf) && OperatingSystem.IsWindows()) TryWordPdf(sourcePath, pdf);
-        }
-        if (!File.Exists(pdf))
-            return new RenderResult(false, "DOCX_LAYOUT_RENDERER_UNAVAILABLE", new PageManifest(0, 0, "", Array.Empty<PageEntry>()), Array.Empty<string>());
+        var firstDir = Path.Combine(renderDir, "pass-1"); var secondDir = Path.Combine(renderDir, "pass-2");
+        var firstPdf = await RenderOnceAsync(sourcePath, firstDir, renderer, ct);
+        var secondPdf = await RenderOnceAsync(sourcePath, secondDir, renderer, ct);
+        if (firstPdf is null || secondPdf is null)
+            return new RenderResult(false, "DOCX_RENDERER_EXECUTION_FAILED", EmptyManifest(sourcePath), Array.Empty<string>(), renderer);
 
         var pagesDir = Path.Combine(output, "pages"); Directory.CreateDirectory(pagesDir);
-        var pageEntries = new List<PageEntry>(); var pageTexts = new List<string>();
+        var repeatDir = Path.Combine(renderDir, "repeat-pages"); Directory.CreateDirectory(repeatDir);
+        var first = await RenderPagesAsync(firstPdf, pagesDir, "page", ct);
+        var second = await RenderPagesAsync(secondPdf, repeatDir, "page", ct);
+        var deterministic = first.Entries.Count > 0 && first.Entries.Count == second.Entries.Count && first.Entries.Zip(second.Entries).All(pair =>
+            pair.First.Width == pair.Second.Width && pair.First.Height == pair.Second.Height && pair.First.ImageHash == pair.Second.ImageHash);
+        var reason = deterministic ? "same_page_count_dimensions_and_pixel_hashes" : "page_count_dimensions_or_pixel_hash_mismatch";
+        var manifestJson = JsonSerializer.Serialize(new { sourceDocxSha256 = Sha256File(sourcePath), renderedPdfSha256 = Sha256File(firstPdf), pageCount = first.Entries.Count, pages = first.Entries }, JsonOptions);
+        var manifest = new PageManifest(first.Entries.Count, first.Entries.Count > 0 ? 1d : 0d, Sha256Text(manifestJson), first.Entries,
+            Sha256File(sourcePath), Sha256File(firstPdf), deterministic, reason);
+        if (!deterministic)
+            return new RenderResult(false, "RENDER_INTEGRITY_FAILURE", manifest, first.PageTexts, renderer);
+        return new RenderResult(true, null, manifest, first.PageTexts, renderer);
+    }
+
+    private static PageManifest EmptyManifest(string sourcePath) => new(0, 0, "", Array.Empty<PageEntry>(), File.Exists(sourcePath) ? Sha256File(sourcePath) : "", "", false, "renderer_unavailable");
+
+    private static async Task<string?> RenderOnceAsync(string sourcePath, string outputDir, RendererAudit renderer, CancellationToken ct)
+    {
+        Directory.CreateDirectory(outputDir);
+        var expected = Path.Combine(outputDir, Path.GetFileNameWithoutExtension(sourcePath) + ".pdf");
+        if (renderer.Name == "LibreOffice")
+        {
+            var psi = new ProcessStartInfo(renderer.Executable!) { WorkingDirectory = outputDir, RedirectStandardError = true, RedirectStandardOutput = true, UseShellExecute = false, CreateNoWindow = true };
+            foreach (var arg in new[] { "--headless", "--norestore", "--convert-to", "pdf", "--outdir", outputDir, sourcePath }) psi.ArgumentList.Add(arg);
+            using var process = Process.Start(psi);
+            if (process is null || !await WaitForExitAsync(process, TimeSpan.FromMinutes(3), ct)) return null;
+        }
+        else if (renderer.Name == "Microsoft Word" && OperatingSystem.IsWindows())
+        {
+            if (!TryWordPdf(sourcePath, expected)) return null;
+        }
+        else if (renderer.Name == "Microsoft Word") return null;
+        return File.Exists(expected) ? expected : Directory.EnumerateFiles(outputDir, "*.pdf").FirstOrDefault();
+    }
+
+    private static async Task<RenderedPages> RenderPagesAsync(string pdf, string outputDir, string prefix, CancellationToken ct)
+    {
+        Directory.CreateDirectory(outputDir); var entries = new List<PageEntry>(); var texts = new List<string>();
         using var document = PdfDocument.Open(pdf);
         for (var index = 1; index <= document.NumberOfPages; index++)
         {
-            ct.ThrowIfCancellationRequested();
-            var bounds = PdfRegionRasterizer.GetPageBounds(pdf, index);
+            ct.ThrowIfCancellationRequested(); var bounds = PdfRegionRasterizer.GetPageBounds(pdf, index);
             var png = PdfRegionRasterizer.RenderCropPng(pdf, index, 0, 0, bounds.Width, bounds.Height, 110);
-            var name = $"page-{index:0000}.png"; await File.WriteAllBytesAsync(Path.Combine(pagesDir, name), png, ct);
-            pageEntries.Add(new PageEntry(index, name, Sha256Bytes(png), PngDimensions(png).Width, PngDimensions(png).Height));
-            pageTexts.Add(document.GetPage(index).Text);
+            var name = $"{prefix}-{index:0000}.png"; await File.WriteAllBytesAsync(Path.Combine(outputDir, name), png, ct);
+            var dimensions = PngDimensions(png); entries.Add(new PageEntry(index, name, Sha256Bytes(png), dimensions.Width, dimensions.Height)); texts.Add(document.GetPage(index).Text);
         }
-        var manifestJson = JsonSerializer.Serialize(new { pageCount = pageEntries.Count, pages = pageEntries }, JsonOptions);
-        return new RenderResult(true, null, new PageManifest(pageEntries.Count, 1d, Sha256Text(manifestJson), pageEntries), pageTexts);
+        return new RenderedPages(entries, texts);
     }
 
     private static IReadOnlyList<VisualWindow> BuildWindows(IReadOnlyList<VisualPageEvidence> pages, PageMapping mapping, IReadOnlyList<ReasoningSourceOccurrence> occurrences)
     {
-        var byPage = mapping.Entries.GroupBy(x => x.PageIndex).ToDictionary(x => x.Key, x => x.Select(y => y.SourceOccurrenceId).ToArray());
         var result = new List<VisualWindow>();
         for (var start = 0; start < pages.Count; start += 8)
         {
             var selected = pages.Skip(start).Take(8).ToArray();
-            var ids = selected.SelectMany(p => byPage.GetValueOrDefault(p.PageIndex, Array.Empty<string>())).Distinct(StringComparer.Ordinal)
-                .OrderBy(id => occurrences.Single(x => x.SourceOccurrenceId == id).SourceOrdinal).ToArray();
+            var entries = mapping.Entries.Where(x => selected.Any(p => p.PageIndex == x.PageIndex)).ToArray();
+            var ranges = entries.GroupBy(x => x.SourceOccurrenceId, StringComparer.Ordinal)
+                .ToDictionary(g => g.Key, g => (g.Min(x => x.VisibleStartCharacter), g.Max(x => x.VisibleEndCharacter)), StringComparer.Ordinal);
+            var ids = ranges.Keys.OrderBy(id => occurrences.Single(x => x.SourceOccurrenceId == id).SourceOrdinal, Comparer<int>.Default).ToArray();
             // Keep empty-source pages in the visual schedule as well. They still need to be
             // observed for pageCoverage=1.0; an empty XML packet makes the model unable to invent
             // a source heading while preserving the page-level visual audit trail.
-            result.Add(new VisualWindow(selected.Select(x => x.PageIndex).ToArray(), ids));
+            result.Add(new VisualWindow(selected.Select(x => x.PageIndex).ToArray(), ids, ranges, ranges));
         }
         return result;
     }
 
     private static PageMapping MapOccurrencesToPages(IReadOnlyList<ReasoningSourceOccurrence> occurrences, IReadOnlyList<string> pageTexts)
     {
-        var entries = new List<PageMappingEntry>(); var previous = 0; var unmapped = 0;
+        var entries = new List<PageMappingEntry>(); var unmapped = 0;
         foreach (var occurrence in occurrences.OrderBy(x => x.SourceOrdinal))
         {
-            var needle = Canonical(occurrence.RawText); if (needle.Length > 180) needle = needle[..180];
-            var pages = Enumerable.Range(0, pageTexts.Count).Where(i => Canonical(pageTexts[i]).Contains(needle, StringComparison.Ordinal)).ToArray();
-            var page = pages.FirstOrDefault(i => i >= previous, -1);
-            if (page < 0) { unmapped++; continue; }
-            previous = page; entries.Add(new PageMappingEntry(occurrence.SourceOccurrenceId, occurrence.SourceId, occurrence.SourceOrdinal, page + 1, "canonical_text_anchor"));
+            var canonicalRaw = CanonicalWithOffsets(occurrence.RawText);
+            var occurrenceEntries = new List<PageMappingEntry>();
+            var cursor = 0;
+            for (var page = 0; page < pageTexts.Count; page++)
+            {
+                var canonicalPage = Canonical(pageTexts[page]);
+                if (canonicalPage.Length == 0) continue;
+                var anchor = FindAnchor(canonicalRaw.Text, canonicalPage, cursor);
+                if (anchor is null) continue;
+                var nextCursor = anchor.Value.EndCanonical;
+                var rawStart = canonicalRaw.RawOffsets[anchor.Value.StartCanonical];
+                var rawEnd = nextCursor < canonicalRaw.RawOffsets.Count ? canonicalRaw.RawOffsets[nextCursor] : occurrence.RawText.Length;
+                if (rawEnd <= rawStart) continue;
+                occurrenceEntries.Add(new PageMappingEntry(occurrence.SourceOccurrenceId, occurrence.SourceId, occurrence.SourceOrdinal,
+                    page + 1, "canonical_text_page_anchor", rawStart, rawEnd, rawStart, rawEnd));
+                cursor = Math.Max(cursor, nextCursor);
+            }
+
+            if (occurrenceEntries.Count == 0)
+            {
+                var needle = canonicalRaw.Text.Length > 180 ? canonicalRaw.Text[..180] : canonicalRaw.Text;
+                var page = Enumerable.Range(0, pageTexts.Count).FirstOrDefault(i => Canonical(pageTexts[i]).Contains(needle, StringComparison.Ordinal));
+                if (needle.Length == 0 || !Canonical(pageTexts[page]).Contains(needle, StringComparison.Ordinal)) { unmapped++; continue; }
+                occurrenceEntries.Add(new PageMappingEntry(occurrence.SourceOccurrenceId, occurrence.SourceId, occurrence.SourceOrdinal,
+                    page + 1, "canonical_text_anchor", 0, occurrence.RawText.Length, 0, occurrence.RawText.Length));
+            }
+            entries.AddRange(occurrenceEntries);
         }
-        return new PageMapping(occurrences.Count, entries.Count, unmapped, entries);
+        var mapped = entries.Select(x => x.SourceOccurrenceId).Distinct(StringComparer.Ordinal).Count();
+        return new PageMapping(occurrences.Count, mapped, unmapped, entries);
+    }
+
+    private static VisualWindow BuildSinglePageWindow(int pageIndex, IReadOnlyList<VisualPageEvidence> pages, PageMapping mapping, IReadOnlyList<ReasoningSourceOccurrence> occurrences)
+    {
+        var entries = mapping.Entries.Where(x => x.PageIndex == pageIndex).ToArray();
+        var ranges = entries.GroupBy(x => x.SourceOccurrenceId, StringComparer.Ordinal)
+            .ToDictionary(g => g.Key, g => (g.Min(x => x.VisibleStartCharacter), g.Max(x => x.VisibleEndCharacter)), StringComparer.Ordinal);
+        var ids = ranges.Keys.OrderBy(id => occurrences.Single(x => x.SourceOccurrenceId == id).SourceOrdinal, Comparer<int>.Default).ToArray();
+        return new VisualWindow([pageIndex], ids, ranges, ranges);
+    }
+
+    private static object BuildPacketMetrics(VisualWindow window, CeilingPacketResult packet, IReadOnlyList<VisualPageEvidence> pages) => new
+    {
+        pageCountInRequest = window.PageIndices.Count,
+        imageCount = pages.Count,
+        mappedSourceOccurrences = window.OccurrenceIds.Count,
+        visibleSourceChars = packet.SourceTextCharacters,
+        ownedSourceChars = window.OwnedRanges.Values.Sum(x => Math.Max(0, x.End - x.Start)),
+        packetChars = packet.PacketCharacters,
+        estimatedInputTokens = ReasoningTokenBudget.EstimateTokens(packet.PacketCharacters),
+        imageDimensions = pages.Select(x => new { pageIndex = x.PageIndex, dimensions = PngDimensionObject(x.PngBytes) }).ToArray(),
+    };
+
+    private static IReadOnlyList<object> BuildPacketAudit(IReadOnlyList<VisualWindow> windows,
+        IReadOnlyList<VisualPageEvidence> pages, PageMapping mapping, IReadOnlyList<ReasoningSourceOccurrence> occurrences)
+    {
+        var planned = windows.Select(window => BuildPacketAuditEntry(window, "PLANNED_WINDOW", pages, occurrences));
+        var singlePageProbes = pages.Select(page => BuildSinglePageWindow(page.PageIndex, pages, mapping, occurrences)
+            ).Select(window => BuildPacketAuditEntry(window, "SINGLE_PAGE_PROBE", pages, occurrences));
+        return planned.Concat(singlePageProbes).ToArray();
+    }
+
+    private static object BuildPacketAuditEntry(VisualWindow window, string kind,
+        IReadOnlyList<VisualPageEvidence> pages, IReadOnlyList<ReasoningSourceOccurrence> occurrences)
+    {
+        var visible = window.OccurrenceIds.Select(id => occurrences.Single(x => x.SourceOccurrenceId == id)).ToArray();
+        var packet = CeilingPacketBuilder.Build(visible, visible.Select(x => x.SourceOccurrenceId).ToHashSet(StringComparer.Ordinal), window.VisibleRanges, window.OwnedRanges);
+        return new
+        {
+            kind,
+            pageIndices = window.PageIndices,
+            packetMetrics = BuildPacketMetrics(window, packet, pages.Where(x => window.PageIndices.Contains(x.PageIndex)).ToArray()),
+            sourceRanges = window.VisibleRanges.Select(x => new { sourceOccurrenceId = x.Key, visibleStart = x.Value.Start, visibleEnd = x.Value.End,
+                ownedStart = window.OwnedRanges[x.Key].Start, ownedEnd = window.OwnedRanges[x.Key].End }).ToArray(),
+        };
+    }
+
+    private static object BuildFailureTelemetry(RequestPacketTelemetry? telemetry, Exception error)
+    {
+        var finishReason = telemetry?.FinishReason;
+        var outputLimitDetected = IsOutputLimit(finishReason) || string.Equals(telemetry?.FailureClass, ReasoningCompletionFailureClass.ProviderOutputLimit, StringComparison.Ordinal);
+        var responseContentPresent = telemetry?.ResponseContentPresent;
+        var structuredParsed = telemetry?.StructuredOutputParsed;
+        var failureClass = outputLimitDetected ? "PROVIDER_OUTPUT_LIMIT"
+            : telemetry?.TimeoutDetected == true || telemetry?.StreamStallDetected == true ? "TIMEOUT/STREAM_STALL"
+            : responseContentPresent == true && structuredParsed != true ? "STRUCTURED_OUTPUT_TRUNCATED"
+            : responseContentPresent == false ? "INCOMPLETE_PROVIDER_RESPONSE"
+            : telemetry?.FailureClass ?? error.GetType().Name;
+        return new
+        {
+            finishReason,
+            reasoningTokens = telemetry?.ReportedReasoningTokens,
+            outputTokens = telemetry?.ReportedOutputTokens,
+            responseContentPresent,
+            structuredOutputParsed = structuredParsed,
+            outputLimitDetected,
+            actualProvider = telemetry?.ProviderRoute,
+            elapsedMs = telemetry?.ElapsedMs,
+            failureClass,
+        };
+    }
+
+    private static bool IsOutputLimit(string? finishReason) => finishReason is "length" or "max_tokens" or "max_output_tokens";
+
+    private static object PngDimensionObject(byte[] bytes)
+    {
+        var (width, height) = PngDimensions(bytes);
+        return new { width, height };
+    }
+
+    private static (string Text, IReadOnlyList<int> RawOffsets) CanonicalWithOffsets(string text)
+    {
+        var canonical = new StringBuilder();
+        var offsets = new List<int>();
+        for (var i = 0; i < text.Length; i++)
+        {
+            foreach (var normalized in text[i].ToString().Normalize(NormalizationForm.FormD))
+            {
+                if (System.Globalization.CharUnicodeInfo.GetUnicodeCategory(normalized) == System.Globalization.UnicodeCategory.NonSpacingMark || !char.IsLetterOrDigit(normalized)) continue;
+                canonical.Append(char.ToLowerInvariant(normalized)); offsets.Add(i);
+            }
+        }
+        return (canonical.ToString(), offsets);
+    }
+
+    private static (int StartCanonical, int EndCanonical)? FindAnchor(string rawCanonical, string pageCanonical, int searchStart)
+    {
+        if (pageCanonical.Length == 0) return null;
+        foreach (var length in new[] { 400, 300, 220, 160, 120, 80, 50 })
+        {
+            if (pageCanonical.Length < length) continue;
+            for (var offset = 0; offset <= pageCanonical.Length - length; offset += Math.Max(1, length / 4))
+            {
+                var needle = pageCanonical.Substring(offset, length);
+                var found = rawCanonical.IndexOf(needle, Math.Max(0, searchStart), StringComparison.Ordinal);
+                if (found >= 0) return (found, found + length);
+            }
+        }
+        return null;
     }
 
     private static ControlReuse VerifyFrozenControl(string repoRoot)
@@ -308,7 +507,33 @@ public static class OpenRouterQwen37VisualCeilingRunner
     private static InventoryItem ReadInventory(string path, string id) { using var doc = JsonDocument.Parse(File.ReadAllText(path)); var x = doc.RootElement.GetProperty("documents").EnumerateArray().Single(x => x.GetProperty("documentId").GetString() == id); return new(id, x.GetProperty("sourcePath").GetString()!, x.GetProperty("sourceSha256").GetString()!); }
     private static async Task WriteJsonAsync(string path, object value, CancellationToken ct) { Directory.CreateDirectory(Path.GetDirectoryName(path)!); await File.WriteAllTextAsync(path, JsonSerializer.Serialize(value, JsonOptions) + Environment.NewLine, ct); }
     private static async Task<int> BlockAsync(string output, string classification, string reason, ControlReuse control, CancellationToken ct, object? details = null) { await WriteJsonAsync(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-qwen37-flash-visual-ceiling-v1", primaryClassification = classification, reason, control, details, goldReadBeforeFreeze = false, completedUtc = DateTimeOffset.UtcNow }, ct); Console.WriteLine($"FINAL_CLASSIFICATION={classification}:{reason}"); return 1; }
-    private static string? FindExecutable(string name) { foreach (var dir in (Environment.GetEnvironmentVariable("PATH") ?? "").Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries)) { var path = Path.Combine(dir, OperatingSystem.IsWindows() ? name + ".exe" : name); if (File.Exists(path)) return path; } return null; }
+    private static RendererAudit DiscoverRenderer()
+    {
+        var soffice = FindExecutable("soffice");
+        var word = OperatingSystem.IsWindows() && IsWordComAvailable();
+        var selected = soffice is not null ? ("LibreOffice", soffice) : word ? ("Microsoft Word", "Word.Application") : ("NONE", (string?)null);
+        return new RendererAudit(
+            selected.Item1,
+            selected.Item2,
+            selected.Item2 is not null && File.Exists(selected.Item2) ? FileVersionInfo.GetVersionInfo(selected.Item2).FileVersion : null,
+            "NONE", false, false,
+            selected.Item1 == "NONE" ? "INSTALLATION_REQUIRED" : "AVAILABLE_PENDING_DETERMINISM");
+    }
+
+    private static string? FindExecutable(string name)
+    {
+        var explicitPath = Environment.GetEnvironmentVariable("DOCX_RENDERER_PATH") ?? Environment.GetEnvironmentVariable("SOFFICE_PATH");
+        var candidates = new List<string>();
+        if (!string.IsNullOrWhiteSpace(explicitPath)) candidates.Add(explicitPath);
+        candidates.AddRange((Environment.GetEnvironmentVariable("PATH") ?? "").Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries)
+            .Select(dir => Path.Combine(dir, OperatingSystem.IsWindows() ? name + ".exe" : name)));
+        if (OperatingSystem.IsWindows() && name.Equals("soffice", StringComparison.OrdinalIgnoreCase))
+            candidates.AddRange([@"C:\Program Files\LibreOffice\program\soffice.exe", @"C:\Program Files (x86)\LibreOffice\program\soffice.exe"]);
+        return candidates.Select(Path.GetFullPath).FirstOrDefault(File.Exists);
+    }
+
+    [SupportedOSPlatform("windows")]
+    private static bool IsWordComAvailable() => Type.GetTypeFromProgID("Word.Application") is not null;
     [SupportedOSPlatform("windows")]
     private static bool TryWordPdf(string sourcePath, string pdfPath) { dynamic? app = null; dynamic? doc = null; try { var type = Type.GetTypeFromProgID("Word.Application"); if (type is null) return false; var instance = Activator.CreateInstance(type); if (instance is null) return false; app = instance; app.Visible = false; app.DisplayAlerts = 0; doc = app.Documents.Open(sourcePath, false, true, false); doc.ExportAsFixedFormat(pdfPath, 17, false, 0, 0, 0, 0, 0, true, false, 0, true, true, false); return File.Exists(pdfPath); } catch { return false; } finally { try { doc?.Close(0); } catch { } try { app?.Quit(0); } catch { } } }
     private static async Task<bool> WaitForExitAsync(Process process, TimeSpan timeout, CancellationToken ct) { using var timer = CancellationTokenSource.CreateLinkedTokenSource(ct); timer.CancelAfter(timeout); try { await process.WaitForExitAsync(timer.Token); return true; } catch { try { if (!process.HasExited) process.Kill(true); } catch { } return false; } }
@@ -316,11 +541,16 @@ public static class OpenRouterQwen37VisualCeilingRunner
 
     private sealed record InventoryItem(string DocumentId, string SourcePath, string SourceSha256);
     private sealed record ControlReuse(bool Valid, string Status, string? PredictionHash, string? ResultHash, int? TP, int? FP, int? FN);
-    private sealed record RenderResult(bool Success, string? Error, PageManifest Manifest, IReadOnlyList<string> PageTexts);
-    private sealed record PageManifest(int PageCount, double Coverage, string ManifestHash, IReadOnlyList<PageEntry> Pages);
+    private sealed record RendererAudit(string Name, string? Executable, string? Version, string GemBoxStatus, bool GemBoxDependencyPresent, bool GemBoxLicenseConfigured, string CapabilityStatus);
+    private sealed record RenderResult(bool Success, string? Error, PageManifest Manifest, IReadOnlyList<string> PageTexts, RendererAudit Renderer);
+    private sealed record RenderedPages(IReadOnlyList<PageEntry> Entries, IReadOnlyList<string> PageTexts);
+    private sealed record PageManifest(int PageCount, double Coverage, string ManifestHash, IReadOnlyList<PageEntry> Pages, string SourceDocxSha256, string RenderedPdfSha256, bool Deterministic, string DeterminismReason);
     private sealed record PageEntry(int PageIndex, string FileName, string ImageHash, int Width, int Height);
     private sealed record PageMapping(int TotalCount, int MappedCount, int UnmappedCount, IReadOnlyList<PageMappingEntry> Entries);
-    private sealed record PageMappingEntry(string SourceOccurrenceId, string SourceId, int SourceOrdinal, int PageIndex, string Authority);
-    private sealed record VisualWindow(IReadOnlyList<int> PageIndices, IReadOnlyList<string> OccurrenceIds);
+    private sealed record PageMappingEntry(string SourceOccurrenceId, string SourceId, int SourceOrdinal, int PageIndex, string Authority,
+        int VisibleStartCharacter, int VisibleEndCharacter, int OwnedStartCharacter, int OwnedEndCharacter);
+    private sealed record VisualWindow(IReadOnlyList<int> PageIndices, IReadOnlyList<string> OccurrenceIds,
+        IReadOnlyDictionary<string, (int Start, int End)> VisibleRanges,
+        IReadOnlyDictionary<string, (int Start, int End)> OwnedRanges);
     private sealed record ScoreResult(int TP, int FP, int FN, double P, double R, double F1);
 }

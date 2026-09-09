@@ -118,7 +118,7 @@ public static class CeilingPacketBuilder
             Packet = packet,
             Bindings = bindings,
             SerializedJson = json,
-            SourceTextCharacters = visibleOccurrences.Sum(o => o.RawText.Length),
+            SourceTextCharacters = occurrencePackets.Sum(o => o.Text.Length),
             PacketCharacters = json.Length,
         };
     }

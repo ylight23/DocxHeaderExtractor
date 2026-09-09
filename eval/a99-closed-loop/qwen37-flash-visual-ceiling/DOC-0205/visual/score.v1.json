@@ -1,0 +1,21 @@
+{
+  "documentId": "DOC-0205",
+  "exactStatus": "EVALUABLE",
+  "tp": 0,
+  "fp": 32,
+  "fn": 71,
+  "precision": 0,
+  "recall": 0,
+  "f1": 0,
+  "lossCounts": {
+    "MODEL_SPAN_ERROR": 5,
+    "MODEL_OMISSION": 66,
+    "MODEL_FALSE_POSITIVE": 32
+  },
+  "systemVisualAlignmentLoss": 0,
+  "systemBindingLoss": 0,
+  "systemValidatorLoss": 0,
+  "systemProjectionLoss": 0,
+  "systemLossCount": 0,
+  "goldReadBeforeFreeze": false
+}

@@ -182,7 +182,18 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
                 "Visual semantic pass hit the provider output limit before a complete response.",
                 new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
         }
-        var response = CeilingSemanticResponseParser.Parse(rawContent);
+        CeilingSemanticResponse response;
+        try
+        {
+            response = CeilingSemanticResponseParser.Parse(rawContent);
+        }
+        catch (Exception ex) when (ex is FormatException or JsonException)
+        {
+            telemetry.StructuredOutputParsed = false;
+            telemetry.FailureClass = ReasoningCompletionFailureClass.TransportTruncation;
+            _telemetry.Add(telemetry);
+            throw;
+        }
         telemetry.StructuredOutputParsed = true;
         telemetry.HeadingOutputCount = response.Headings.Count;
         _telemetry.Add(telemetry);
@@ -462,6 +473,20 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
             throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout,
                 "Ceiling response stream stalled before a complete response was received.",
                 new ReasoningCompletionTelemetry { RequestId = telemetry.RequestIdHash, DocumentId = telemetry.DocumentId, FailureClass = ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout }, ex);
+        }
+        catch (FormatException)
+        {
+            telemetry.StructuredOutputParsed = false;
+            telemetry.FailureClass ??= ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid;
+            _telemetry.Add(telemetry);
+            throw;
+        }
+        catch (JsonException)
+        {
+            telemetry.StructuredOutputParsed = false;
+            telemetry.FailureClass ??= ReasoningCompletionFailureClass.TransportTruncation;
+            _telemetry.Add(telemetry);
+            throw;
         }
         catch (HttpRequestException ex)
         {

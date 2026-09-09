@@ -1,0 +1,76 @@
+{
+  "pageIndices": [
+    3
+  ],
+  "sourceOccurrenceIds": [
+    "DOC-0205:body[1]/p[4]:3:60769"
+  ],
+  "packetMetrics": {
+    "pageCountInRequest": 1,
+    "imageCount": 1,
+    "mappedSourceOccurrences": 1,
+    "visibleSourceChars": 529,
+    "ownedSourceChars": 529,
+    "packetChars": 1150,
+    "estimatedInputTokens": 339,
+    "imageDimensions": [
+      {
+        "pageIndex": 3,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      }
+    ]
+  },
+  "headings": [],
+  "boundCount": 0,
+  "requestTelemetry": {
+    "requestIdHash": "0bb725f856c1108ecd391ea854c9ee2ff5696802b81ad45e9d1dbfb545a4c20a",
+    "documentId": "DOC-0205",
+    "passType": "VISUAL_SEMANTIC",
+    "model": "qwen/qwen3.7-flash",
+    "reasoningEffort": "enabled",
+    "reasoningExcludedFromResponse": true,
+    "reasoningRequested": true,
+    "reasoningAccepted": true,
+    "contextLength": 1000000,
+    "maxPromptTokens": 948000,
+    "maxCompletionTokens": 48000,
+    "sourceTextCharacters": 529,
+    "packetCharacters": 1316,
+    "packetOverheadCharacters": 787,
+    "sourcePayloadRatio": 0.40197568389057753,
+    "estimatedInputTokens": 388,
+    "reportedInputTokens": 2144,
+    "reportedOutputTokens": 4310,
+    "reportedReasoningTokens": 4297,
+    "cachedInputTokens": 0,
+    "cacheMode": "COLD_OR_UNCACHED",
+    "segmentCount": 1,
+    "ownedOccurrences": 1,
+    "visibleOccurrences": 1,
+    "headingOutputCount": 0,
+    "elapsedMs": 89800,
+    "finishReason": "stop",
+    "httpStatus": 200,
+    "failureClass": null,
+    "providerCallId": "gen-1788977784-2qD08ymQVimXr3tfGyua",
+    "providerRoute": "Alibaba",
+    "canonicalRequestHash": "edcfe35c9c272d0a5ca2e8e789b7bf0efd18c464f6e2be7582d938ceaeeb0b8b",
+    "requestBodyHash": "edcfe35c9c272d0a5ca2e8e789b7bf0efd18c464f6e2be7582d938ceaeeb0b8b",
+    "responseContentPresent": true,
+    "structuredOutputParsed": true,
+    "timeoutDetected": null,
+    "streamStallDetected": null,
+    "requestStartedUtc": "2026-09-09T18:16:24.048275+00:00",
+    "headersReceivedUtc": "2026-09-09T18:16:25.8741997+00:00",
+    "firstResponseByteUtc": "2026-09-09T18:16:25.8742327+00:00",
+    "firstModelContentUtc": null,
+    "responseCompletedUtc": "2026-09-09T18:17:53.8490379+00:00",
+    "ttfbMs": 1825,
+    "ttftMs": null,
+    "generationElapsedMs": null
+  },
+  "goldReadBeforeFreeze": false
+}
