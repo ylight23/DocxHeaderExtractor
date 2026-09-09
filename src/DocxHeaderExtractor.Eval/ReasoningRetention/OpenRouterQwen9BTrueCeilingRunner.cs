@@ -13,29 +13,36 @@ using DocxHeaderExtractor.Infrastructure.AI;
 namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 
 /// <summary>
-/// The Qwen3.5-9B TRUE ceiling campaign: optimized compact request packet, provider-resolved
-/// context/reasoning capability, semantic-only extraction pass, compact global hierarchy pass,
-/// derived level, canonical projection, freeze, then Gold. Exactly DOC-0258, DOC-0205, DOC-0264
-/// (in that order) -- these are DEV/smoke evidence, not a holdout claim. Writes to a fresh
-/// artifact root so the prior 32K/verbose-packet smoke campaign is never overwritten.
+/// OpenRouter single-pass ceiling campaign: optimized compact request packet, provider-resolved
+/// context/reasoning capability, semantic extraction, compact global hierarchy, canonical
+/// projection, freeze, then Gold. The default Qwen3.5-9B campaign and the Qwen3.7 Flash control
+/// use separate settings and artifact roots; neither overwrites the other.
 /// </summary>
 public static class OpenRouterQwen9BTrueCeilingRunner
 {
-    private const string OutputRoot = "eval/a99-closed-loop/openrouter-qwen35-9b-true-ceiling";
+    private const string DefaultOutputRoot = "eval/a99-closed-loop/openrouter-qwen35-9b-true-ceiling";
     private const string InventoryPath = "eval/a99-dataset/document-inventory.v1.json";
-    private const string Model = "qwen/qwen3.5-9b";
+    private const string DefaultModel = "qwen/qwen3.5-9b";
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
-    private static readonly string[] SelectedIds = ["DOC-0258", "DOC-0205", "DOC-0264"];
+    private static readonly string[] DefaultSelectedIds = ["DOC-0258", "DOC-0205", "DOC-0264"];
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
-    public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
+    public static Task<int> RunAsync(string repoRoot, CancellationToken ct = default) =>
+        RunAsync(repoRoot, new RunSettings(DefaultModel, DefaultOutputRoot, DefaultSelectedIds,
+            "a99-openrouter-qwen35-9b-true-ceiling-v1", "QWEN9B_CEILING_ON_SELECTED_DEV"), ct);
+
+    public static Task<int> RunFlashControlAsync(string repoRoot, CancellationToken ct = default) =>
+        RunAsync(repoRoot, new RunSettings("qwen/qwen3.7-flash", "eval/a99-closed-loop/qwen37-flash-control", ["DOC-0205", "DOC-0258"],
+            "a99-qwen37-flash-control-v1", "QWEN37_FLASH_CLEAN_SINGLE_PASS"), ct);
+
+    private static async Task<int> RunAsync(string repoRoot, RunSettings settings, CancellationToken ct)
     {
         repoRoot = Path.GetFullPath(repoRoot);
-        var output = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var output = Path.Combine(repoRoot, settings.OutputRoot.Replace('/', Path.DirectorySeparatorChar));
         Directory.CreateDirectory(Path.Combine(output, "documents"));
         var inventory = ReadInventory(Path.Combine(repoRoot, InventoryPath));
-        var selected = SelectedIds.Select(id => inventory.Single(item => item.DocumentId == id)).ToArray();
-        Console.WriteLine($"SELECTED_DOCS={string.Join(',', SelectedIds)}");
+        var selected = settings.SelectedIds.Select(id => inventory.Single(item => item.DocumentId == id)).ToArray();
+        Console.WriteLine($"SELECTED_DOCS={string.Join(',', settings.SelectedIds)}");
 
         // Section 17: offline packet-overhead gate. Runs unconditionally, no model calls.
         var overheadGate = await RunPacketOverheadGateAsync(repoRoot, output, selected, ct);
@@ -43,17 +50,17 @@ public static class OpenRouterQwen9BTrueCeilingRunner
         var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
         var options = new RemoteInferenceOptions
         {
-            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = key ?? "",
+            Endpoint = new Uri(Endpoint), Model = settings.Model, ApiKey = key ?? "",
             ContextSize = 262_144, MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600,
             TransientRequestRetries = 2, MaxParallelRequests = 1, SendChatTemplateKwargs = false,
         };
 
         if (string.IsNullOrWhiteSpace(key))
-            return await WriteBlockedAsync(output, "BLOCKED_OPENROUTER_MODEL_UNAVAILABLE", "OPENROUTER_API_KEY_MISSING", overheadGate, ct);
+            return await WriteBlockedAsync(output, settings, "BLOCKED_OPENROUTER_MODEL_UNAVAILABLE", "OPENROUTER_API_KEY_MISSING", overheadGate, ct);
 
         using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
         var preflight = await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct);
-        Console.WriteLine($"MODEL={Model}");
+        Console.WriteLine($"MODEL={settings.Model}");
         if (preflight.Capability is { } cap)
         {
             Console.WriteLine($"CONTEXT_LENGTH={cap.ContextLength}");
@@ -65,28 +72,30 @@ public static class OpenRouterQwen9BTrueCeilingRunner
         }
         await WriteJsonAsync(Path.Combine(output, "config.v1.json"), new
         {
-            schemaVersion = "a99-openrouter-qwen35-9b-true-ceiling-v1",
-            requestedModel = Model, endpoint = Endpoint, provider = "OpenRouter",
-            selectedDocuments = SelectedIds, apiKeyPresent = true, modelFallback = "NONE",
+            schemaVersion = settings.SchemaVersion,
+            requestedModel = settings.Model, endpoint = Endpoint, provider = "OpenRouter",
+            selectedDocuments = settings.SelectedIds, apiKeyPresent = true, modelFallback = "NONE",
             goldReadBeforeFreeze = false, sourceFaithfulContext = true,
             capability = preflight.Capability, preflightAvailable = preflight.Available,
             preflightClassification = preflight.Classification, preflightReason = preflight.Reason,
             packetOverheadGate = overheadGate,
-            resultLabel = "QWEN9B_CEILING_ON_SELECTED_DEV",
+            resultLabel = settings.ResultLabel,
             startedUtc = DateTimeOffset.UtcNow,
         }, ct);
 
         if (!preflight.Available || preflight.Capability is null)
-            return await WriteBlockedAsync(output, preflight.Classification, preflight.Reason, overheadGate, ct);
+            return await WriteBlockedAsync(output, settings, preflight.Classification, preflight.Reason, overheadGate, ct);
 
         if (!preflight.Capability.ReasoningSupported)
-            return await WriteBlockedAsync(output, "BLOCKED_PROVIDER_CAPABILITY_MISMATCH", "REASONING_NOT_REPORTED_SUPPORTED", overheadGate, ct);
+            return await WriteBlockedAsync(output, settings, "BLOCKED_PROVIDER_CAPABILITY_MISMATCH", "REASONING_NOT_REPORTED_SUPPORTED", overheadGate, ct);
 
         // Fail closed rather than silently accepting a provider substitution: the resolved
         // capability must be for exactly the requested model id.
-        if (!string.Equals(preflight.Capability.ModelId, Model, StringComparison.Ordinal))
-            return await WriteBlockedAsync(output, "BLOCKED_PROVIDER_CAPABILITY_MISMATCH", "MODEL_IDENTITY_MISMATCH", overheadGate, ct);
+        if (!string.Equals(preflight.Capability.ModelId, settings.Model, StringComparison.Ordinal))
+            return await WriteBlockedAsync(output, settings, "BLOCKED_PROVIDER_CAPABILITY_MISMATCH", "MODEL_IDENTITY_MISMATCH", overheadGate, ct);
 
+        using var liveLease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, settings.ResultLabel, string.Join(',', settings.SelectedIds), ct);
+        Console.WriteLine($"LIVE_PROVIDER_LOCK=acquired concurrentCampaignsDetected={liveLease.ConcurrentCampaignsDetected} providerConcurrency={liveLease.ProviderConcurrency}");
         using var model = new OpenRouterCeilingReasoningModel(options, preflight.Capability, http);
         var documents = new List<DocumentMetric>();
         var providerFailure = false;
@@ -95,7 +104,7 @@ public static class OpenRouterQwen9BTrueCeilingRunner
             ct.ThrowIfCancellationRequested();
             try
             {
-                documents.Add(await RunDocumentAsync(repoRoot, output, item, model, ct));
+                documents.Add(await RunDocumentAsync(repoRoot, output, item, model, settings.Model, ct));
             }
             catch (Exception ex)
             {
@@ -104,7 +113,7 @@ public static class OpenRouterQwen9BTrueCeilingRunner
                 Directory.CreateDirectory(docDir);
                 await WriteJsonAsync(Path.Combine(docDir, "execution.v1.json"), new
                 {
-                    documentId = item.DocumentId, sourceSha256 = item.SourceSha256, requestedModel = Model,
+                    documentId = item.DocumentId, sourceSha256 = item.SourceSha256, requestedModel = settings.Model,
                     status = "DOCUMENT_FAILURE", error = ex.Message, goldReadBeforeFreeze = false,
                 }, ct);
                 Console.Error.WriteLine($"CEILING_DOCUMENT_FAILURE={item.DocumentId}:{ex.Message}");
@@ -129,9 +138,9 @@ public static class OpenRouterQwen9BTrueCeilingRunner
                     : "QWEN9B_TRUE_CEILING_EXPOSED";
         await WriteJsonAsync(Path.Combine(output, "summary.v1.json"), new
         {
-            schemaVersion = "a99-openrouter-qwen35-9b-true-ceiling-v1",
-            status = classification, resultLabel = "QWEN9B_CEILING_ON_SELECTED_DEV",
-            requestedModel = Model, provider = "OpenRouter", selectedDocuments = SelectedIds,
+            schemaVersion = settings.SchemaVersion,
+            status = classification, resultLabel = settings.ResultLabel,
+            requestedModel = settings.Model, provider = "OpenRouter", selectedDocuments = settings.SelectedIds,
             documents, microExact = micro, systemInducedLossTotal = systemLossTotal,
             openRouterCalls = model.ProviderCalls,
             inputTokens = model.Telemetry.Sum(x => x.ReportedInputTokens ?? 0),
@@ -146,7 +155,7 @@ public static class OpenRouterQwen9BTrueCeilingRunner
     }
 
     private static async Task<DocumentMetric> RunDocumentAsync(
-        string repoRoot, string output, InventoryItem item, OpenRouterCeilingReasoningModel model, CancellationToken ct)
+        string repoRoot, string output, InventoryItem item, OpenRouterCeilingReasoningModel model, string modelId, CancellationToken ct)
     {
         var docDir = Path.Combine(output, "documents", item.DocumentId);
         Directory.CreateDirectory(docDir);
@@ -166,7 +175,7 @@ public static class OpenRouterQwen9BTrueCeilingRunner
         var pack = ReasoningContextBuilder.Build(source, policy, Math.Max(4_000, maxContextCharacters), windowCharacters, expandOwnedPerOccurrence: false);
         var occurrenceById = pack.Occurrences.ToDictionary(x => x.SourceOccurrenceId, StringComparer.Ordinal);
 
-        var configurationSignature = ConfigurationSignature(model.Capability);
+        var configurationSignature = ConfigurationSignature(model.Capability, modelId);
         var proposals = new List<ReasoningHeadingProposal>();
         var rawProposalCount = 0;
         var spanErrorCount = 0;
@@ -262,7 +271,7 @@ public static class OpenRouterQwen9BTrueCeilingRunner
         var predictionPath = Path.Combine(docDir, "prediction.v1.json");
         await WriteJsonAsync(predictionPath, new
         {
-            documentId = item.DocumentId, sourceSha256 = item.SourceSha256, requestedModel = Model,
+            documentId = item.DocumentId, sourceSha256 = item.SourceSha256, requestedModel = modelId,
             sourceCharacters = pack.SourceCharacters, segments = pack.Segments.Count,
             semanticProtocolVersion = CeilingSemanticPrompt.ProtocolVersion, hierarchyProtocolVersion = CeilingHierarchyPrompt.ProtocolVersion,
             semanticCalls, hierarchyCalls, rawProposalCount, boundProposalCount = proposals.Count, spanErrorCount,
@@ -301,7 +310,7 @@ public static class OpenRouterQwen9BTrueCeilingRunner
             documentId = item.DocumentId, sourceSha256 = item.SourceSha256,
             predictionSha256 = predictionHash, resultSha256 = resultHash,
             runtimeTraceSha256 = runtimeTraceHash, requestMetricsSha256 = requestMetricsHash,
-            model = Model, modelCapabilityDigest = CapabilityDigest(model.Capability),
+            model = modelId, modelCapabilityDigest = CapabilityDigest(model.Capability),
             semanticProtocolVersion = CeilingSemanticPrompt.ProtocolVersion,
             hierarchyProtocolVersion = CeilingHierarchyPrompt.ProtocolVersion,
             reasoningEffort = model.Capability.SelectedReasoningEffort, contextLength = model.Capability.ContextLength,
@@ -474,8 +483,8 @@ public static class OpenRouterQwen9BTrueCeilingRunner
     private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
     private static string Sha256Text(string value) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();
 
-    private static string ConfigurationSignature(OpenRouterModelCapability capability) => Sha256Text(
-        $"A99_OPENROUTER_QWEN35_9B_TRUE_CEILING|{Model}|{CeilingSemanticPrompt.ProtocolVersion}|{CeilingHierarchyPrompt.ProtocolVersion}|temperature=0|reasoning={capability.SelectedReasoningEffort}|exclude=true|fallbacks=false|context={capability.ContextLength}");
+    private static string ConfigurationSignature(OpenRouterModelCapability capability, string modelId) => Sha256Text(
+        $"A99_OPENROUTER_SINGLE_PASS_S0|{modelId}|{CeilingSemanticPrompt.ProtocolVersion}|{CeilingHierarchyPrompt.ProtocolVersion}|temperature=0|reasoning={capability.SelectedReasoningEffort}|exclude=true|fallbacks=false|context={capability.ContextLength}");
 
     private static string CapabilityDigest(OpenRouterModelCapability capability) => Sha256Text(
         $"{capability.ModelId}|{capability.ContextLength}|{capability.ReasoningSupported}|{string.Join(',', capability.SupportedReasoningEfforts)}|{capability.SelectedReasoningEffort}|{capability.StructuredOutputSupported}|{capability.MaxCompletionTokens}");
@@ -487,12 +496,12 @@ public static class OpenRouterQwen9BTrueCeilingRunner
         await stream.WriteAsync(bytes, ct); await stream.FlushAsync(ct); stream.Flush(true);
     }
 
-    private static async Task<int> WriteBlockedAsync(string output, string classification, string reason, object[] overheadGate, CancellationToken ct)
+    private static async Task<int> WriteBlockedAsync(string output, RunSettings settings, string classification, string reason, object[] overheadGate, CancellationToken ct)
     {
         await WriteJsonAsync(Path.Combine(output, "summary.v1.json"), new
         {
-            schemaVersion = "a99-openrouter-qwen35-9b-true-ceiling-v1", status = classification, reason,
-            requestedModel = Model, provider = "OpenRouter", selectedDocuments = SelectedIds,
+            schemaVersion = settings.SchemaVersion, status = classification, reason,
+            requestedModel = settings.Model, provider = "OpenRouter", selectedDocuments = settings.SelectedIds,
             packetOverheadGate = overheadGate, openRouterCalls = 0, inputTokens = 0, outputTokens = 0,
             goldReadBeforeFreeze = false,
         }, ct);
@@ -512,6 +521,9 @@ public static class OpenRouterQwen9BTrueCeilingRunner
         var f1 = precision + recall == 0 ? 0d : 2 * precision * recall / (precision + recall);
         return new ScoreResult(tp, fp, fn, precision, recall, f1);
     }
+
+    private sealed record RunSettings(string Model, string OutputRoot, IReadOnlyList<string> SelectedIds,
+        string SchemaVersion, string ResultLabel);
 
     private sealed record InventoryItem(string DocumentId, string SourcePath, string SourceSha256);
     private sealed record ScoreResult(int TP, int FP, int FN, double P, double R, double F1);

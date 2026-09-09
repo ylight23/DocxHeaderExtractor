@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "a99-ceiling-packet-overhead-gate-v1",
+  "rows": [
+    {
+      "documentId": "DOC-0205",
+      "sourceTextChars": 60919,
+      "oldPacketChars": 125607,
+      "newPacketChars": 123822,
+      "reductionPercent": 1.42,
+      "oldSourcePayloadRatio": 0.484996855270805,
+      "newSourcePayloadRatio": 0.49198849962042285,
+      "sourceOccurrenceCoverage": 1
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceTextChars": 31703,
+      "oldPacketChars": 132042,
+      "newPacketChars": 43299,
+      "reductionPercent": 67.21,
+      "oldSourcePayloadRatio": 0.24009784765453415,
+      "newSourcePayloadRatio": 0.7321878103420403,
+      "sourceOccurrenceCoverage": 1
+    }
+  ]
+}
