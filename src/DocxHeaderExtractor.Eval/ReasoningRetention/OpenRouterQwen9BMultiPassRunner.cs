@@ -36,7 +36,7 @@ public static class OpenRouterQwen9BMultiPassRunner
     private const int MaxTransientAttemptsPerLeaf = 2;
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
-    public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
+    public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default, Qwen9BExecutionProfile? executionProfile = null)
     {
         repoRoot = Path.GetFullPath(repoRoot);
         var output = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
@@ -113,6 +113,7 @@ public static class OpenRouterQwen9BMultiPassRunner
             Endpoint = new Uri(Endpoint), Model = Model, ApiKey = key ?? "",
             ContextSize = 262_144, MaxOutputTokens = 48_000, RequestTimeoutSeconds = 1_500,
             TransientRequestRetries = 2, MaxParallelRequests = 1, SendChatTemplateKwargs = false,
+            OpenRouterProviderRoute = executionProfile?.PinnedProvider,
         };
         if (string.IsNullOrWhiteSpace(key))
             return await WriteBlockedAsync(output, "OPENROUTER_API_KEY_MISSING", ct);
@@ -132,7 +133,8 @@ public static class OpenRouterQwen9BMultiPassRunner
             // Three minutes is an execution guard, not a completion-token reduction: the
             // CEILING request still advertises the resolved 48K budget. It bounds a leaf that
             // receives no usable completion while allowing small leaves to return normally.
-            attemptDeadline: TimeSpan.FromMinutes(3), streamStallDeadline: TimeSpan.FromMinutes(2));
+            attemptDeadline: executionProfile?.AttemptDeadline ?? TimeSpan.FromMinutes(3),
+            streamStallDeadline: executionProfile?.StreamStallDeadline ?? TimeSpan.FromMinutes(2));
         var configurationSignature = ConfigurationSignature(model.Capability);
         var route = ReasoningRoute.ModelCapabilityCeiling.ToString();
         var gitSha = CurrentGitSha(repoRoot);
@@ -149,7 +151,7 @@ public static class OpenRouterQwen9BMultiPassRunner
         string? failedStrategy = null;
         try
         {
-            var s1 = await RunS1SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct);
+            var s1 = await RunS1SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct, executionProfile is not null);
             strategies.Add(s1);
         }
         catch (ReasoningCompletionException ex)
@@ -163,7 +165,7 @@ public static class OpenRouterQwen9BMultiPassRunner
         (StrategyMetric Metric, IReadOnlyList<CeilingHeadingProposal> UnionLocalProposals)? s2Result = null;
         try
         {
-            s2Result = await RunS2SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct);
+            s2Result = await RunS2SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct, executionProfile is not null);
             strategies.Add(s2Result.Value.Metric);
         }
         catch (ReasoningCompletionException ex)
@@ -176,7 +178,7 @@ public static class OpenRouterQwen9BMultiPassRunner
         {
             try
             {
-                var s3 = await RunS3SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s2Result.Value.UnionLocalProposals, goldPath, item.SourceSha256, ct);
+                var s3 = await RunS3SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s2Result.Value.UnionLocalProposals, goldPath, item.SourceSha256, ct, executionProfile is not null);
                 strategies.Add(s3);
             }
             catch (ReasoningCompletionException ex)
@@ -193,6 +195,8 @@ public static class OpenRouterQwen9BMultiPassRunner
                 schemaVersion = "a99-qwen9b-multipass-doc0205-v1", status = "QWEN9B_MULTI_PASS_EXECUTION_BLOCKED",
                 reason = blocked.FailureClass, message = blocked.Message, strategiesCompleted = strategies.Select(s => s.Strategy).ToArray(),
                 failedStrategy, providerCalls = model.ProviderCalls, telemetry = model.Telemetry,
+                historicalAttempts = ReadAccounting(output, "historicalAttempts"), probeAttempts = ReadAccounting(output, "probeAttempts"),
+                resumeAttempts = model.ProviderCalls, reusedSuccessLeaves = strategies.Sum(s => s.ReusedLeaves),
                 segmentAudits = new[] { ReadSegmentAudit(output, "S1"), ReadSegmentAudit(output, "S2"), ReadSegmentAudit(output, "S3") },
                 goldReadBeforeFreeze = false, completedUtc = DateTimeOffset.UtcNow,
             }, ct);
@@ -234,6 +238,8 @@ public static class OpenRouterQwen9BMultiPassRunner
         {
             schemaVersion = "a99-qwen9b-multipass-doc0205-v1", status = classification, documentId = DocumentId,
             strategies, bestRecallStrategy = bestRecall.Strategy, bestF1Strategy = bestF1.Strategy,
+            historicalAttempts = ReadAccounting(output, "historicalAttempts"), probeAttempts = ReadAccounting(output, "probeAttempts"),
+            resumeAttempts = model.ProviderCalls, reusedSuccessLeaves = strategies.Sum(s => s.ReusedLeaves),
             capability = preflight.Capability, goldReadBeforeFreeze = false, completedUtc = DateTimeOffset.UtcNow,
         }, ct);
         PrintComparison(strategies);
@@ -254,12 +260,15 @@ public static class OpenRouterQwen9BMultiPassRunner
         string strategy, string dir, string sourceSha256, string configurationSignature,
         IReadOnlyList<ReasoningSourceOccurrence> occurrences,
         Func<SegmentNode, Task<(string ResponseJson, RequestPacketTelemetry Telemetry)>> invoke,
-        Action<SegmentNode, string> consume, OpenRouterCeilingReasoningModel model, CancellationToken ct)
+        Action<SegmentNode, string> consume, OpenRouterCeilingReasoningModel model, CancellationToken ct,
+        bool reopenExecutionTerminals = false)
     {
         Directory.CreateDirectory(dir);
         var lengths = occurrences.Select(o => o.RawText.Length).ToArray();
         var treePath = Path.Combine(dir, "segment-tree-state.v1.json");
         var tree = LoadSegmentTree(treePath, sourceSha256, configurationSignature, lengths);
+        if (reopenExecutionTerminals)
+            tree.ReopenFailedTerminalsForExecutionChange();
         var telemetry = new List<RequestPacketTelemetry>();
         var splitCount = tree.AllNodes.Count(n => n.Status == SegmentRecoveryState.SplitParent);
         var successCount = 0;
@@ -454,7 +463,7 @@ public static class OpenRouterQwen9BMultiPassRunner
         string output, OpenRouterCeilingReasoningModel model, string route, string configurationSignature, string gitSha,
         SourceDocument source, DocxPolicyState policy, IReadOnlyList<ReasoningSourceOccurrence> occurrences,
         CeilingPacketResult packetResult, IReadOnlySet<string> ownedSet, IReadOnlyList<CeilingHeadingProposal> s0LocalProposals,
-        string goldPath, string sourceSha256, CancellationToken ct)
+        string goldPath, string sourceSha256, CancellationToken ct, bool reopenExecutionTerminals)
     {
         var dir = Path.Combine(output, "s1");
         var inventory = Globalize(s0LocalProposals, packetResult);
@@ -492,7 +501,7 @@ public static class OpenRouterQwen9BMultiPassRunner
                     }
                     reviewItems.Add((new CeilingHeadingProposal(fullIndex, globalStart, globalEnd, item.Role), item.Marker, correctsKey));
                 }
-            }, model, ct);
+            }, model, ct, reopenExecutionTerminals);
         if (!run.Complete)
             throw new ReasoningCompletionException(run.FailureClass!, "S1 segmented recovery did not reach complete ownership coverage.",
                 new ReasoningCompletionTelemetry { DocumentId = DocumentId, FailureClass = run.FailureClass! });
@@ -515,7 +524,7 @@ public static class OpenRouterQwen9BMultiPassRunner
         string output, OpenRouterCeilingReasoningModel model, string route, string configurationSignature, string gitSha,
         SourceDocument source, DocxPolicyState policy, IReadOnlyList<ReasoningSourceOccurrence> occurrences,
         CeilingPacketResult packetResult, IReadOnlySet<string> ownedSet, IReadOnlyList<CeilingHeadingProposal> extractorALocal,
-        string goldPath, string sourceSha256, CancellationToken ct)
+        string goldPath, string sourceSha256, CancellationToken ct, bool reopenExecutionTerminals)
     {
         var dir = Path.Combine(output, "s2");
         var extractorB = new List<CeilingHeadingProposal>();
@@ -540,7 +549,7 @@ public static class OpenRouterQwen9BMultiPassRunner
                     var fullIndex = packetResult.Bindings.First(b => b.SourceId == binding.SourceId).LocalIndex;
                     extractorB.Add(new CeilingHeadingProposal(fullIndex, start, end, p.Role));
                 }
-            }, model, ct);
+            }, model, ct, reopenExecutionTerminals);
         if (!run.Complete)
             throw new ReasoningCompletionException(run.FailureClass!, "S2 segmented recovery did not reach complete ownership coverage.",
                 new ReasoningCompletionTelemetry { DocumentId = DocumentId, FailureClass = run.FailureClass! });
@@ -555,7 +564,7 @@ public static class OpenRouterQwen9BMultiPassRunner
         string output, OpenRouterCeilingReasoningModel model, string route, string configurationSignature, string gitSha,
         SourceDocument source, DocxPolicyState policy, IReadOnlyList<ReasoningSourceOccurrence> occurrences,
         CeilingPacketResult packetResult, IReadOnlySet<string> ownedSet, IReadOnlyList<CeilingHeadingProposal> s2UnionLocal,
-        string goldPath, string sourceSha256, CancellationToken ct)
+        string goldPath, string sourceSha256, CancellationToken ct, bool reopenExecutionTerminals)
     {
         var dir = Path.Combine(output, "s3");
         var candidatesById = MultiPassProposalCombiner.AssignCandidateIds(s2UnionLocal);
@@ -579,7 +588,7 @@ public static class OpenRouterQwen9BMultiPassRunner
                 foreach (var decision in verifier.Decisions)
                     if (candidatesById.TryGetValue(decision.Id, out var candidate) && IsOwnedStartForFullProposal(segment, candidate, packetResult))
                         decisions.Add(decision);
-            }, model, ct);
+            }, model, ct, reopenExecutionTerminals);
         if (!run.Complete)
             throw new ReasoningCompletionException(run.FailureClass!, "S3 segmented recovery did not reach complete ownership coverage.",
                 new ReasoningCompletionTelemetry { DocumentId = DocumentId, FailureClass = run.FailureClass! });
@@ -1014,10 +1023,24 @@ public static class OpenRouterQwen9BMultiPassRunner
         {
             nodeCount = nodes.Length,
             leafCount = nodes.Count(n => n.Status != SegmentRecoveryState.SplitParent),
-            attempts = nodes.Sum(n => n.Attempts),
+            attempts = nodes.Sum(n => n.HistoricalAttempts + n.Attempts),
+            historicalAttempts = nodes.Sum(n => n.HistoricalAttempts),
+            currentAttempts = nodes.Sum(n => n.Attempts),
             statuses = nodes.GroupBy(n => n.Status).ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal),
             failureClasses = nodes.Where(n => n.FailureClass is not null).GroupBy(n => n.FailureClass!, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal),
         };
+    }
+
+    private static int ReadAccounting(string output, string property)
+    {
+        var path = Path.Combine(output, "provider-diagnosis.v1.json");
+        if (!File.Exists(path)) return 0;
+        try
+        {
+            using var doc = JsonDocument.Parse(File.ReadAllText(path));
+            return doc.RootElement.TryGetProperty(property, out var value) && value.TryGetInt32(out var result) ? result : 0;
+        }
+        catch (JsonException) { return 0; }
     }
 
     private sealed record InventoryItem(string DocumentId, string SourcePath, string SourceSha256);

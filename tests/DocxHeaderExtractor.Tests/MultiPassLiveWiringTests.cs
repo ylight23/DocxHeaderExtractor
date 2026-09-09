@@ -162,6 +162,45 @@ public sealed class MultiPassLiveWiringTests
     }
 
     [Fact]
+    public async Task PinnedProviderRoute_IsInRequest_WhileCanonicalRequestHashStaysRouteNeutral()
+    {
+        var first = new CapturingHandler { ResponseContent = "{\"headings\":[]}" };
+        var second = new CapturingHandler { ResponseContent = "{\"headings\":[]}" };
+        var capability = Capability();
+        using var modelA = new OpenRouterCeilingReasoningModel(
+            new RemoteInferenceOptions { ApiKey = "k", Model = capability.ModelId, OpenRouterProviderRoute = "darkbloom/fp4" },
+            capability, new HttpClient(first));
+        using var modelB = new OpenRouterCeilingReasoningModel(
+            new RemoteInferenceOptions { ApiKey = "k", Model = capability.ModelId, OpenRouterProviderRoute = "deepinfra/bf16" },
+            capability, new HttpClient(second));
+
+        var (_, telemetryA) = await modelA.CompleteCoverageSemanticAsync("D", "ModelCapabilityCeiling", "same", "{\"occurrences\":[]}", 0, 0, 0);
+        var (_, telemetryB) = await modelB.CompleteCoverageSemanticAsync("D", "ModelCapabilityCeiling", "same", "{\"occurrences\":[]}", 0, 0, 0);
+
+        Assert.Equal("darkbloom/fp4", first.CapturedBody!.RootElement.GetProperty("provider").GetProperty("order")[0].GetString());
+        Assert.Equal("deepinfra/bf16", second.CapturedBody!.RootElement.GetProperty("provider").GetProperty("order")[0].GetString());
+        Assert.Equal("qwen/qwen3.5-9b", first.CapturedBody.RootElement.GetProperty("model").GetString());
+        Assert.False(first.CapturedBody.RootElement.TryGetProperty("models", out _));
+        Assert.Equal(telemetryA.CanonicalRequestHash, telemetryB.CanonicalRequestHash);
+        Assert.NotEqual(telemetryA.RequestBodyHash, telemetryB.RequestBodyHash);
+    }
+
+    [Fact]
+    public async Task TelemetrySeparatesHeadersTtfbFromUnavailableStreamingTtft()
+    {
+        var (model, handler) = NewModel();
+        handler.ResponseContent = "{\"headings\":[]}";
+        var (_, telemetry) = await model.CompleteCoverageSemanticAsync("D", "ModelCapabilityCeiling", "timing", "{\"occurrences\":[]}", 0, 0, 0);
+
+        Assert.NotNull(telemetry.HeadersReceivedUtc);
+        Assert.NotNull(telemetry.FirstResponseByteUtc);
+        Assert.NotNull(telemetry.ResponseCompletedUtc);
+        Assert.NotNull(telemetry.TtfbMs);
+        Assert.Null(telemetry.TtftMs); // non-streaming transport cannot measure first streamed token
+        Assert.True(telemetry.ElapsedMs >= telemetry.TtfbMs);
+    }
+
+    [Fact]
     public void S3_VerifierKeepDecision_StillRequiresSeparateBinderValidation()
     {
         // Live-wiring counterpart of the offline invariant already proven in

@@ -1,43 +1,50 @@
 {
   "schemaVersion": "a99-qwen9b-multipass-doc0205-v1",
   "status": "QWEN9B_MULTI_PASS_EXECUTION_BLOCKED",
-  "reason": "SEGMENTED_RECOVERY_PARTIAL_BLOCKED",
-  "message": "S1 segmented recovery did not reach complete ownership coverage.",
+  "reason": "RUNNER_INTERRUPTED_AFTER_S1_PARTIAL",
+  "message": "Provider diagnosis completed; profile-driven resume was interrupted while S1 recovery remained partial. Gold evaluation was not entered.",
   "strategiesCompleted": [
     "S0"
   ],
   "failedStrategy": "S1",
   "providerCalls": 0,
   "telemetry": [],
+  "historicalAttempts": 34,
+  "probeAttempts": 9,
+  "resumeAttempts": 25,
+  "reusedSuccessLeaves": 3,
   "segmentAudits": [
     {
       "nodeCount": 19,
       "leafCount": 10,
-      "attempts": 19,
+      "attempts": 32,
+      "historicalAttempts": 18,
+      "currentAttempts": 14,
       "statuses": {
         "SPLIT_PARENT": 9,
-        "FAILED_TERMINAL": 9,
-        "SUCCESS": 1
+        "FAILED_TERMINAL": 3,
+        "STALE_TERMINAL": 3,
+        "SUCCESS": 3,
+        "WORKLOAD_SPLIT_REQUIRED": 1
       },
-      "failureClasses": {
-        "PROVIDER_STREAM_INACTIVITY_TIMEOUT": 16,
-        "PROVIDER_OUTPUT_LIMIT": 2
-      }
+      "strategy": "S1"
     },
     {
       "nodeCount": 15,
       "leafCount": 8,
-      "attempts": 15,
+      "attempts": 19,
+      "historicalAttempts": 8,
+      "currentAttempts": 11,
       "statuses": {
         "SPLIT_PARENT": 7,
-        "FAILED_TERMINAL": 8
+        "FAILED_TERMINAL": 3,
+        "STALE_TERMINAL": 4,
+        "WORKLOAD_SPLIT_REQUIRED": 1
       },
-      "failureClasses": {
-        "PROVIDER_STREAM_INACTIVITY_TIMEOUT": 15
-      }
+      "strategy": "S2"
     },
     null
   ],
   "goldReadBeforeFreeze": false,
-  "completedUtc": "2026-09-09T12:39:43.159854+00:00"
+  "completedUtc": "2026-09-09T15:36:32Z"
 }

@@ -47,6 +47,8 @@ public sealed class SegmentNode
     public required IReadOnlyList<SegmentAtom> Visible { get; set; }
     public string Status { get; set; } = SegmentRecoveryState.Pending;
     public int Attempts { get; set; }
+    public int HistoricalAttempts { get; set; }
+    public List<string> FailureHistory { get; } = [];
     public string? FailureClass { get; set; }
     public string? RequestHash { get; set; }
     public string? ResponseHash { get; set; }
@@ -313,9 +315,29 @@ public sealed class SegmentRecoveryTree
         var recomputed = ExpandHalo(node.Owned, haloOccurrences);
         if (VisibleAtomsEqual(node.Visible, recomputed)) return false;
         node.Visible = recomputed;
+        node.HistoricalAttempts += node.Attempts;
+        if (!string.IsNullOrWhiteSpace(node.FailureClass)) node.FailureHistory.Add(node.FailureClass!);
         node.Status = SegmentRecoveryState.StaleTerminal;
         node.Attempts = 0;
         return true;
+    }
+
+    /// <summary>Execution-only contract change (for example a pinned provider or a larger
+    /// bounded deadline) invalidates old terminal transport verdicts, but never invalidates a
+    /// frozen SUCCESS leaf. The old evidence remains in the persisted history via its prior
+    /// attempt count/failure class in the campaign report.</summary>
+    public int ReopenFailedTerminalsForExecutionChange()
+    {
+        var reopened = 0;
+        foreach (var node in _nodes.Values.Where(n => n.Status == SegmentRecoveryState.FailedTerminal))
+        {
+            node.HistoricalAttempts += node.Attempts;
+            if (!string.IsNullOrWhiteSpace(node.FailureClass)) node.FailureHistory.Add(node.FailureClass!);
+            node.Status = SegmentRecoveryState.StaleTerminal;
+            node.Attempts = 0;
+            reopened++;
+        }
+        return reopened;
     }
 
     /// <summary>Section 10: coverage=1.0, overlap=0, no unresolved leaf -- verified against the
@@ -353,10 +375,10 @@ public sealed class SegmentRecoveryTree
         string SegmentId, string? ParentSegmentId, int Depth,
         IReadOnlyList<SegmentAtom> Owned, IReadOnlyList<SegmentAtom> Visible,
         string Status, int Attempts, string? FailureClass, string? RequestHash, string? ResponseHash,
-        IReadOnlyList<string> ChildSegmentIds);
+        IReadOnlyList<string> ChildSegmentIds, int HistoricalAttempts = 0, IReadOnlyList<string>? FailureHistory = null);
 
     public IReadOnlyList<SegmentNodeSnapshot> ExportSnapshot() => _nodes.Values.Select(n => new SegmentNodeSnapshot(
-        n.SegmentId, n.ParentSegmentId, n.Depth, n.Owned, n.Visible, n.Status, n.Attempts, n.FailureClass, n.RequestHash, n.ResponseHash, n.ChildSegmentIds)).ToArray();
+        n.SegmentId, n.ParentSegmentId, n.Depth, n.Owned, n.Visible, n.Status, n.Attempts, n.FailureClass, n.RequestHash, n.ResponseHash, n.ChildSegmentIds, n.HistoricalAttempts, n.FailureHistory)).ToArray();
 
     /// <summary>Rebuilds a tree exactly as it stood at export time -- every node's status,
     /// attempts, and hashes are restored verbatim, so SUCCESS leaves are never revisited and
@@ -376,6 +398,8 @@ public sealed class SegmentRecoveryTree
                 Owned = s.Owned, Visible = s.Visible, Status = s.Status, Attempts = s.Attempts,
                 FailureClass = s.FailureClass, RequestHash = s.RequestHash, ResponseHash = s.ResponseHash,
             };
+            node.HistoricalAttempts = s.HistoricalAttempts;
+            node.FailureHistory.AddRange(s.FailureHistory ?? []);
             node.ChildSegmentIds.AddRange(s.ChildSegmentIds);
             tree._nodes[node.SegmentId] = node;
         }

@@ -20,6 +20,10 @@ public sealed class RemoteInferenceOptions
     public int MaxParallelRequests { get; set; } = 1;
     public bool SendChatTemplateKwargs { get; set; } = true;
     public bool RequireJsonObjectResponse { get; set; }
+    /// <summary>Optional OpenRouter provider slug/tag. When set, the request is pinned to this
+    /// serving route with fallbacks disabled. Null preserves the existing automatic routing
+    /// policy. This is intentionally an infrastructure option, never a semantic prompt input.</summary>
+    public string? OpenRouterProviderRoute { get; set; }
     public Action<string>? DebugLog { get; set; }
 
     public void Validate(bool requireModel = true)

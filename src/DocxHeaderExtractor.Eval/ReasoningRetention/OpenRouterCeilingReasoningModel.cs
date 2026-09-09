@@ -30,6 +30,8 @@ public sealed record RequestPacketTelemetry
     [JsonPropertyName("reportedInputTokens")] public int? ReportedInputTokens { get; set; }
     [JsonPropertyName("reportedOutputTokens")] public int? ReportedOutputTokens { get; set; }
     [JsonPropertyName("reportedReasoningTokens")] public int? ReportedReasoningTokens { get; set; }
+    [JsonPropertyName("cachedInputTokens")] public int? CachedInputTokens { get; set; }
+    [JsonPropertyName("cacheMode")] public string CacheMode { get; set; } = "NOT_MEASURED";
     [JsonPropertyName("segmentCount")] public int SegmentCount { get; init; } = 1;
     [JsonPropertyName("ownedOccurrences")] public int OwnedOccurrences { get; init; }
     [JsonPropertyName("visibleOccurrences")] public int VisibleOccurrences { get; init; }
@@ -39,10 +41,21 @@ public sealed record RequestPacketTelemetry
     [JsonPropertyName("httpStatus")] public int? HttpStatus { get; set; }
     [JsonPropertyName("failureClass")] public string? FailureClass { get; set; }
     [JsonPropertyName("providerCallId")] public string? ProviderCallId { get; set; }
+    [JsonPropertyName("providerRoute")] public string? ProviderRoute { get; set; }
+    [JsonPropertyName("canonicalRequestHash")] public string? CanonicalRequestHash { get; set; }
+    [JsonPropertyName("requestBodyHash")] public string? RequestBodyHash { get; set; }
     [JsonPropertyName("responseContentPresent")] public bool? ResponseContentPresent { get; set; }
     [JsonPropertyName("structuredOutputParsed")] public bool? StructuredOutputParsed { get; set; }
     [JsonPropertyName("timeoutDetected")] public bool? TimeoutDetected { get; set; }
     [JsonPropertyName("streamStallDetected")] public bool? StreamStallDetected { get; set; }
+    [JsonPropertyName("requestStartedUtc")] public DateTimeOffset? RequestStartedUtc { get; set; }
+    [JsonPropertyName("headersReceivedUtc")] public DateTimeOffset? HeadersReceivedUtc { get; set; }
+    [JsonPropertyName("firstResponseByteUtc")] public DateTimeOffset? FirstResponseByteUtc { get; set; }
+    [JsonPropertyName("firstModelContentUtc")] public DateTimeOffset? FirstModelContentUtc { get; set; }
+    [JsonPropertyName("responseCompletedUtc")] public DateTimeOffset? ResponseCompletedUtc { get; set; }
+    [JsonPropertyName("ttfbMs")] public long? TtfbMs { get; set; }
+    [JsonPropertyName("ttftMs")] public long? TtftMs { get; set; }
+    [JsonPropertyName("generationElapsedMs")] public long? GenerationElapsedMs { get; set; }
 }
 
 /// <summary>OpenRouter adapter for the reasoning-ceiling route only: qwen/qwen3.5-9b, no
@@ -270,32 +283,18 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
     {
         Interlocked.Increment(ref _providerCalls);
         var reasoning = BuildReasoningParameter();
-        object body = reasoning is null
-            ? new
-            {
-                model = _options.Model,
-                temperature = 0,
-                max_tokens = maxCompletionTokens,
-                messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userPrompt } },
-                response_format = new { type = "json_schema", json_schema = new { name = schemaName, strict = true, schema } },
-                provider = new { zdr = true, data_collection = "deny", require_parameters = true, allow_fallbacks = false },
-            }
-            : new
-            {
-                model = _options.Model,
-                temperature = 0,
-                max_tokens = maxCompletionTokens,
-                reasoning,
-                messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userPrompt } },
-                response_format = new { type = "json_schema", json_schema = new { name = schemaName, strict = true, schema } },
-                provider = new { zdr = true, data_collection = "deny", require_parameters = true, allow_fallbacks = false },
-            };
+        object body = BuildRequestBody(_options.Model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning, _options.OpenRouterProviderRoute);
+        var canonicalBody = BuildRequestBody(_options.Model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning, null);
+        telemetry.ProviderRoute = _options.OpenRouterProviderRoute ?? "AUTO";
+        telemetry.CanonicalRequestHash = Sha256Bytes(JsonSerializer.SerializeToUtf8Bytes(canonicalBody));
+        telemetry.RequestBodyHash = Sha256Bytes(JsonSerializer.SerializeToUtf8Bytes(body));
 
         using var message = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint) { Content = JsonContent.Create(body) };
         message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
         message.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor Accuracy99 Ceiling");
 
         var stopwatch = Stopwatch.StartNew();
+        telemetry.RequestStartedUtc = DateTimeOffset.UtcNow;
         using var timeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
         // Ceiling-mode reasoning (highest supported effort, large context) can genuinely take
         // several minutes on OpenRouter; a short attempt timeout would misclassify slow-but-valid
@@ -304,9 +303,23 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         timeout.CancelAfter(_attemptDeadline);
         try
         {
-            using var response = await _http.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, timeout.Token).ConfigureAwait(false);
+            var sendTask = _http.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
+            var absoluteHeadersTask = Task.Delay(_attemptDeadline);
+            if (await Task.WhenAny(sendTask, absoluteHeadersTask).ConfigureAwait(false) != sendTask)
+            {
+                timeout.Cancel();
+                throw new AbsoluteDeadlineException();
+            }
+            using var response = await sendTask.ConfigureAwait(false);
             telemetry.HttpStatus = (int)response.StatusCode;
-            var raw = await ReadResponseBodyAsync(response, timeout.Token).ConfigureAwait(false);
+            telemetry.HeadersReceivedUtc = DateTimeOffset.UtcNow;
+            telemetry.TtfbMs = stopwatch.ElapsedMilliseconds;
+            var raw = await ReadResponseBodyAsync(response, timeout.Token, () =>
+            {
+                telemetry.FirstResponseByteUtc ??= DateTimeOffset.UtcNow;
+                telemetry.TtfbMs ??= stopwatch.ElapsedMilliseconds;
+            }, _attemptDeadline - stopwatch.Elapsed).ConfigureAwait(false);
+            telemetry.ResponseCompletedUtc = DateTimeOffset.UtcNow;
             if (!response.IsSuccessStatusCode)
             {
                 telemetry.FailureClass = response.StatusCode is System.Net.HttpStatusCode.Unauthorized or System.Net.HttpStatusCode.Forbidden
@@ -318,12 +331,18 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
             var root = document.RootElement;
             telemetry.ProviderCallId = root.TryGetProperty("id", out var id) && id.ValueKind == JsonValueKind.String
                 ? id.GetString() : null;
+            telemetry.ProviderRoute = ReadString(root, "provider") ?? ReadString(root, "provider_name") ?? telemetry.ProviderRoute;
             if (root.TryGetProperty("usage", out var usage) && usage.ValueKind == JsonValueKind.Object)
             {
                 telemetry.ReportedInputTokens = ReadInt(usage, "prompt_tokens");
                 telemetry.ReportedOutputTokens = ReadInt(usage, "completion_tokens");
                 if (usage.TryGetProperty("completion_tokens_details", out var details) && details.ValueKind == JsonValueKind.Object)
                     telemetry.ReportedReasoningTokens = ReadInt(details, "reasoning_tokens");
+                if (usage.TryGetProperty("prompt_tokens_details", out var promptDetails) && promptDetails.ValueKind == JsonValueKind.Object)
+                {
+                    telemetry.CachedInputTokens = ReadInt(promptDetails, "cached_tokens");
+                    telemetry.CacheMode = telemetry.CachedInputTokens is > 0 ? "WARM_OR_PARTIAL" : "COLD_OR_UNCACHED";
+                }
             }
             if (!root.TryGetProperty("choices", out var choices) || choices.ValueKind != JsonValueKind.Array || choices.GetArrayLength() == 0)
                 throw new FormatException("ceiling-provider-response-choices-missing");
@@ -373,6 +392,15 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
                 "Ceiling request exceeded its attempt timeout.",
                 new ReasoningCompletionTelemetry { RequestId = telemetry.RequestIdHash, DocumentId = telemetry.DocumentId, FailureClass = ReasoningCompletionFailureClass.ProviderTotalTimeout });
         }
+        catch (AbsoluteDeadlineException)
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderTotalTimeout;
+            telemetry.TimeoutDetected = true;
+            _telemetry.Add(telemetry);
+            throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderTotalTimeout,
+                "Ceiling response exceeded its absolute attempt deadline.",
+                new ReasoningCompletionTelemetry { RequestId = telemetry.RequestIdHash, DocumentId = telemetry.DocumentId, FailureClass = ReasoningCompletionFailureClass.ProviderTotalTimeout });
+        }
         catch (StreamStallException ex)
         {
             telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout;
@@ -396,25 +424,36 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
     }
 
     private async Task<string> ReadResponseBodyAsync(HttpResponseMessage response, CancellationToken ct)
+        => await ReadResponseBodyAsync(response, ct, null, _attemptDeadline).ConfigureAwait(false);
+
+    private async Task<string> ReadResponseBodyAsync(HttpResponseMessage response, CancellationToken ct, Action? onFirstByte, TimeSpan absoluteRemaining)
     {
         await using var stream = await response.Content.ReadAsStreamAsync(ct).ConfigureAwait(false);
         using var buffer = new MemoryStream();
         var chunk = new byte[16 * 1024];
+        using var absoluteTimer = new CancellationTokenSource();
+        absoluteTimer.CancelAfter(absoluteRemaining <= TimeSpan.Zero ? TimeSpan.Zero : absoluteRemaining);
+        using var bodyToken = CancellationTokenSource.CreateLinkedTokenSource(ct, absoluteTimer.Token);
         while (true)
         {
-            var readTask = stream.ReadAsync(chunk.AsMemory(), ct).AsTask();
-            var stallTask = Task.Delay(_streamStallDeadline, ct);
-            var completed = await Task.WhenAny(readTask, stallTask).ConfigureAwait(false);
+            var readTask = stream.ReadAsync(chunk.AsMemory(), bodyToken.Token).AsTask();
+            var stallTask = Task.Delay(_streamStallDeadline, bodyToken.Token);
+            var absoluteTask = Task.Delay(Timeout.InfiniteTimeSpan, absoluteTimer.Token);
+            var completed = await Task.WhenAny(readTask, stallTask, absoluteTask).ConfigureAwait(false);
+            if (completed == absoluteTask)
+                throw new AbsoluteDeadlineException();
             if (completed != readTask)
                 throw new StreamStallException();
             var count = await readTask.ConfigureAwait(false);
             if (count == 0) break;
+            onFirstByte?.Invoke();
             buffer.Write(chunk, 0, count);
         }
         return Encoding.UTF8.GetString(buffer.ToArray());
     }
 
     private sealed class StreamStallException : Exception { }
+    private sealed class AbsoluteDeadlineException : Exception { }
 
     /// <summary>Section 3: enable internal reasoning without returning chain-of-thought.
     /// Uses effort+exclude when an explicit effort is supported; falls back to enabled+exclude
@@ -437,7 +476,26 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
     private static int? ReadInt(JsonElement parent, string name) =>
         parent.TryGetProperty(name, out var value) && value.TryGetInt32(out var result) ? result : null;
 
-    private static string Sha256(string value) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();
+    private static string? ReadString(JsonElement parent, string name) =>
+        parent.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String ? value.GetString() : null;
+
+    private static object BuildRequestBody(string model, string systemPrompt, string userPrompt, int maxCompletionTokens,
+        object schema, string schemaName, object? reasoning, string? providerRoute)
+    {
+        object provider = providerRoute is null
+            ? new { zdr = true, data_collection = "deny", require_parameters = true, allow_fallbacks = false }
+            : new { order = new[] { providerRoute }, zdr = true, data_collection = "deny", require_parameters = true, allow_fallbacks = false };
+        return reasoning is null
+            ? new { model, temperature = 0, max_tokens = maxCompletionTokens,
+                messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userPrompt } },
+                response_format = new { type = "json_schema", json_schema = new { name = schemaName, strict = true, schema } }, provider }
+            : new { model, temperature = 0, max_tokens = maxCompletionTokens, reasoning,
+                messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userPrompt } },
+                response_format = new { type = "json_schema", json_schema = new { name = schemaName, strict = true, schema } }, provider };
+    }
+
+    private static string Sha256(string value) => Sha256Bytes(Encoding.UTF8.GetBytes(value));
+    private static string Sha256Bytes(byte[] bytes) => Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
 
     public void Dispose()
     {

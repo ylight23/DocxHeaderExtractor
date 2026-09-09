@@ -1,0 +1,38 @@
+{
+  "documentId": "DOC-0205",
+  "strategy": "S1",
+  "pass": "S1",
+  "segmentId": "seg-21bab316480aabc4",
+  "parentSegmentId": "seg-f8dfa1a84ceeb27b",
+  "depth": 3,
+  "owned": [
+    {
+      "occurrenceIndex": 2,
+      "charStart": 53154,
+      "charEnd": 60769,
+      "length": 7615
+    }
+  ],
+  "visible": [
+    {
+      "occurrenceIndex": 0,
+      "charStart": 0,
+      "charEnd": 37,
+      "length": 37
+    },
+    {
+      "occurrenceIndex": 1,
+      "charStart": 0,
+      "charEnd": 113,
+      "length": 113
+    },
+    {
+      "occurrenceIndex": 2,
+      "charStart": 53154,
+      "charEnd": 60769,
+      "length": 7615
+    }
+  ],
+  "requestHash": "7131d9e985e475a7472d418c07f1090a48665ce117842089970f6f8c601231a6",
+  "inventoryHash": "2e0fa7d3ea2e25302f01651ce6ffc84bab7dd4408962cf471d7a4cd5b6823647"
+}

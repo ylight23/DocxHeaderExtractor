@@ -1,0 +1,17 @@
+{
+  "documentId": "DOC-0205",
+  "strategy": "S1",
+  "segmentId": "seg-99b11e5bc7aa32bc",
+  "attemptOrdinal": 1,
+  "finishReason": "stop",
+  "reportedModel": "qwen/qwen3.5-9b",
+  "responseContentPresent": true,
+  "structuredOutputParsed": true,
+  "timeoutDetected": false,
+  "streamStallDetected": false,
+  "outputLimitDetected": false,
+  "inputTokens": 10501,
+  "reasoningTokens": 12253,
+  "outputTokens": 26430,
+  "latencyMs": 235398
+}

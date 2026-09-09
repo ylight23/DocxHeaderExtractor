@@ -55,7 +55,9 @@
       "childSegmentIds": [
         "seg-1a299197342bf872",
         "seg-099cca0365262b37"
-      ]
+      ],
+      "historicalAttempts": 0,
+      "failureHistory": []
     },
     {
       "segmentId": "seg-099cca0365262b37",
@@ -97,7 +99,9 @@
       "childSegmentIds": [
         "seg-ade132b8a41520b9",
         "seg-f8dfa1a84ceeb27b"
-      ]
+      ],
+      "historicalAttempts": 0,
+      "failureHistory": []
     },
     {
       "segmentId": "seg-1a299197342bf872",
@@ -151,7 +155,9 @@
       "childSegmentIds": [
         "seg-418ffc2b3373825d",
         "seg-665a8dc9ac2123d8"
-      ]
+      ],
+      "historicalAttempts": 0,
+      "failureHistory": []
     },
     {
       "segmentId": "seg-ade132b8a41520b9",
@@ -193,7 +199,9 @@
       "childSegmentIds": [
         "seg-49b8dc39d33e6d73",
         "seg-a0405b0341286515"
-      ]
+      ],
+      "historicalAttempts": 0,
+      "failureHistory": []
     },
     {
       "segmentId": "seg-f8dfa1a84ceeb27b",
@@ -235,7 +243,9 @@
       "childSegmentIds": [
         "seg-1d66642c7aa0cc20",
         "seg-21bab316480aabc4"
-      ]
+      ],
+      "historicalAttempts": 0,
+      "failureHistory": []
     },
     {
       "segmentId": "seg-665a8dc9ac2123d8",
@@ -277,7 +287,9 @@
       "childSegmentIds": [
         "seg-4430eb49ab1fb3b7",
         "seg-eed94dec9ec8c611"
-      ]
+      ],
+      "historicalAttempts": 0,
+      "failureHistory": []
     },
     {
       "segmentId": "seg-418ffc2b3373825d",
@@ -331,7 +343,9 @@
       "childSegmentIds": [
         "seg-bee56d75e0498922",
         "seg-99b11e5bc7aa32bc"
-      ]
+      ],
+      "historicalAttempts": 0,
+      "failureHistory": []
     },
     {
       "segmentId": "seg-49b8dc39d33e6d73",
@@ -370,7 +384,11 @@
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
       "requestHash": null,
       "responseHash": null,
-      "childSegmentIds": []
+      "childSegmentIds": [],
+      "historicalAttempts": 1,
+      "failureHistory": [
+        "PROVIDER_STREAM_INACTIVITY_TIMEOUT"
+      ]
     },
     {
       "segmentId": "seg-a0405b0341286515",
@@ -409,7 +427,11 @@
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
       "requestHash": null,
       "responseHash": null,
-      "childSegmentIds": []
+      "childSegmentIds": [],
+      "historicalAttempts": 1,
+      "failureHistory": [
+        "PROVIDER_STREAM_INACTIVITY_TIMEOUT"
+      ]
     },
     {
       "segmentId": "seg-1d66642c7aa0cc20",
@@ -448,7 +470,11 @@
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
       "requestHash": null,
       "responseHash": null,
-      "childSegmentIds": []
+      "childSegmentIds": [],
+      "historicalAttempts": 1,
+      "failureHistory": [
+        "PROVIDER_STREAM_INACTIVITY_TIMEOUT"
+      ]
     },
     {
       "segmentId": "seg-21bab316480aabc4",
@@ -482,12 +508,16 @@
           "length": 7615
         }
       ],
-      "status": "FAILED_TERMINAL",
+      "status": "WORKLOAD_SPLIT_REQUIRED",
       "attempts": 1,
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
       "requestHash": null,
       "responseHash": null,
-      "childSegmentIds": []
+      "childSegmentIds": [],
+      "historicalAttempts": 1,
+      "failureHistory": [
+        "PROVIDER_STREAM_INACTIVITY_TIMEOUT"
+      ]
     },
     {
       "segmentId": "seg-4430eb49ab1fb3b7",
@@ -521,12 +551,16 @@
           "length": 7615
         }
       ],
-      "status": "FAILED_TERMINAL",
-      "attempts": 1,
+      "status": "STALE_TERMINAL",
+      "attempts": 0,
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
       "requestHash": null,
       "responseHash": null,
-      "childSegmentIds": []
+      "childSegmentIds": [],
+      "historicalAttempts": 1,
+      "failureHistory": [
+        "PROVIDER_STREAM_INACTIVITY_TIMEOUT"
+      ]
     },
     {
       "segmentId": "seg-eed94dec9ec8c611",
@@ -560,12 +594,16 @@
           "length": 7615
         }
       ],
-      "status": "FAILED_TERMINAL",
-      "attempts": 1,
+      "status": "STALE_TERMINAL",
+      "attempts": 0,
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
       "requestHash": null,
       "responseHash": null,
-      "childSegmentIds": []
+      "childSegmentIds": [],
+      "historicalAttempts": 1,
+      "failureHistory": [
+        "PROVIDER_STREAM_INACTIVITY_TIMEOUT"
+      ]
     },
     {
       "segmentId": "seg-99b11e5bc7aa32bc",
@@ -599,12 +637,16 @@
           "length": 7615
         }
       ],
-      "status": "FAILED_TERMINAL",
-      "attempts": 1,
+      "status": "STALE_TERMINAL",
+      "attempts": 0,
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
       "requestHash": null,
       "responseHash": null,
-      "childSegmentIds": []
+      "childSegmentIds": [],
+      "historicalAttempts": 1,
+      "failureHistory": [
+        "PROVIDER_STREAM_INACTIVITY_TIMEOUT"
+      ]
     },
     {
       "segmentId": "seg-bee56d75e0498922",
@@ -650,13 +692,17 @@
           "length": 7464
         }
       ],
-      "status": "FAILED_TERMINAL",
-      "attempts": 1,
+      "status": "STALE_TERMINAL",
+      "attempts": 0,
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
       "requestHash": null,
       "responseHash": null,
-      "childSegmentIds": []
+      "childSegmentIds": [],
+      "historicalAttempts": 1,
+      "failureHistory": [
+        "PROVIDER_STREAM_INACTIVITY_TIMEOUT"
+      ]
     }
   ],
-  "savedUtc": "2026-09-09T12:37:38.875211+00:00"
+  "savedUtc": "2026-09-09T15:16:45.8598431+00:00"
 }
