@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "a99-qwen9b-doc0205-zero-f1-audit-v1",
+  "mode": "OFFLINE_NO_MODEL_CALLS",
+  "documentId": "DOC-0205",
+  "official": {
+    "gold": 71,
+    "TP": 0,
+    "FP": 15,
+    "FN": 71,
+    "F1": 0,
+    "scoreArtifact": "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\openrouter-qwen35-9b-per-segment-recovery\\documents\\DOC-0205\\score.v1.json"
+  },
+  "observedCounts": {
+    "rawProposalCount": 15,
+    "boundProposalCount": 15,
+    "validatedSemanticCount": 15,
+    "finalHeadingCount": 15
+  },
+  "fpClassification": {
+    "exactTrueExtra": 13,
+    "wrongSpan": 0,
+    "wrongSource": 0,
+    "partialSpan": 2,
+    "supersetSpan": 0,
+    "normalizationMismatch": 0,
+    "referenceIssue": 0,
+    "unresolved": 0
+  },
+  "fnFirstLoss": {
+    "trueModelOmission": 69,
+    "modelWrongSpan": 2,
+    "modelWrongRole": 0,
+    "systemBinding": 0,
+    "systemValidation": 0,
+    "systemProjection": 0,
+    "referenceIssue": 0,
+    "unresolved": 0
+  },
+  "semanticPresence": {
+    "correspondingGoldCount": 2,
+    "trueOmissionCount": 69,
+    "unresolvedCount": 0,
+    "semanticPresenceRecall": 0.028169
+  },
+  "spanConvention": {
+    "sameSourceExactTextDifferentSpan": 0,
+    "sameSourceSubstring": 0,
+    "sameSourceSuperset": 0,
+    "normalizedExact": 0,
+    "wrongSourceSameText": 0
+  },
+  "responseCompletion": {
+    "finishReason": "NOT_PERSISTED",
+    "modelResponseComplete": true,
+    "outputLimit": false,
+    "schemaLimit": false,
+    "promptLimit": false,
+    "transportLimit": false,
+    "evidence": "leaf SUCCESS and structured semantic response persisted; raw provider finish_reason was not persisted; max output was 48000 and leaf execution reported 12877 output tokens"
+  },
+  "hierarchy": {
+    "finalExecutionMode": "SEMANTIC_COMPLETE_HIERARCHY_BLOCKED",
+    "hierarchyDegraded": true,
+    "existenceScoreIndependent": true,
+    "evidence": "validatedSemanticCount equals finalHeadingCount; exact scorer keys sourceId+exact span"
+  },
+  "integrity": {
+    "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+    "freezeFiles": [
+      {
+        "file": "prediction.v1.json",
+        "expectedSha256": "87806218db77813629e50fd5ce31a6e38fead71329426d6fce4f2edb37adadd1",
+        "actualSha256": "87806218db77813629e50fd5ce31a6e38fead71329426d6fce4f2edb37adadd1",
+        "match": true
+      },
+      {
+        "file": "result.v1.json",
+        "expectedSha256": "9fa17ebe58fa322e09f573cb254aa683929ed1010be8979ecfffc09316d61e49",
+        "actualSha256": "9fa17ebe58fa322e09f573cb254aa683929ed1010be8979ecfffc09316d61e49",
+        "match": true
+      },
+      {
+        "file": "runtime-trace.v1.json",
+        "expectedSha256": "9480ec68c526f455641c3c0dcfd9708f8d93de986dd5e8a7f932deb7e99502bd",
+        "actualSha256": "9480ec68c526f455641c3c0dcfd9708f8d93de986dd5e8a7f932deb7e99502bd",
+        "match": true
+      }
+    ],
+    "leafRequestHash": "f791d144f94ac7c883c662a1bb4a2e9544500dc89bd615d604bd48160c132784",
+    "leafResponseHash": "26880f06be33deefaec642fd26479e71a630cf09b9ca214afe742a8641f214cb",
+    "manifestRequestId": "a99-ceiling-semantic-v3:DOC-0205:seg-3b2235d181b26dfe:c9212dc42e3d14e45a818962ba7f562ceca802f75d7d93ac9ef93494abfad779:attempt-1"
+  },
+  "decision": "QWEN9B_TRUE_SEMANTIC_FAILURE",
+  "rationale": "All 71 Gold occurrences were visible and 69 have no overlapping/substring raw proposal; the remaining 2 have only partial overlapping spans. The 15 frozen predictions are mostly prose fragments, not a binding or projection loss."
+}
