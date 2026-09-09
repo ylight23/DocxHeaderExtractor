@@ -63,6 +63,7 @@ internal static class Accuracy99Runner
             "openrouter-qwen9b-true-ceiling" => await RunOpenRouterQwen9BTrueCeilingAsync(options, cancellationToken),
             "openrouter-qwen9b-executable-ceiling" => await RunOpenRouterQwen9BExecutableCeilingAsync(options, cancellationToken),
             "openrouter-qwen9b-per-segment-recovery" => await RunOpenRouterQwen9BPerSegmentRecoveryAsync(options, cancellationToken),
+            "openrouter-qwen9b-multipass-doc0205" => await RunOpenRouterQwen9BMultiPassDoc0205Async(options, cancellationToken),
             "reasoning-retention-timing-diagnostic" => await RunReasoningRetentionTimingDiagnosticAsync(options, cancellationToken),
             "reasoning-retention-source-stats" => await RunReasoningRetentionSourceStatsAsync(options, cancellationToken),
             "doc-0205-canary" => await RunDoc0205CanaryAsync(options, cancellationToken),
@@ -94,6 +95,12 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return OpenRouterQwen9BPerSegmentRecoveryRunner.RunAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunOpenRouterQwen9BMultiPassDoc0205Async(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return OpenRouterQwen9BMultiPassRunner.RunAsync(repoRoot, cancellationToken);
     }
 
     private static int MaterializeStrictGoldOccurrences(CommandLineOptions options)

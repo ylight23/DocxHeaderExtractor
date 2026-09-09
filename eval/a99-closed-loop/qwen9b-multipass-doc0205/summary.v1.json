@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "a99-qwen9b-multipass-doc0205-v1",
+  "status": "QWEN9B_MULTI_PASS_EXECUTION_BLOCKED",
+  "reason": "PROVIDER_OUTPUT_LIMIT",
+  "message": "Reasoning consumed the completion budget before a final response was produced.",
+  "strategiesCompleted": [
+    "S0"
+  ],
+  "goldReadBeforeFreeze": false,
+  "completedUtc": "2026-09-09T07:48:51.1555307+00:00"
+}

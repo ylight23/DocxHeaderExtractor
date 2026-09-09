@@ -1,0 +1,312 @@
+{
+  "documentId": "DOC-0205",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "requestedModel": "qwen/qwen3.5-9b",
+  "finalExecutionMode": "SEMANTIC_COMPLETE_HIERARCHY_BLOCKED",
+  "semanticCompletionMode": "FULL_CONTEXT_SUCCESS",
+  "hierarchyDegraded": true,
+  "semanticProtocolVersion": "a99-ceiling-semantic-v3",
+  "hierarchyProtocolVersion": "a99-ceiling-hierarchy-v2",
+  "leafSegments": 1,
+  "successfulLeafCount": 0,
+  "failedLeafCount": 0,
+  "splitCount": 0,
+  "reusedLeafCount": 1,
+  "providerCalls": 0,
+  "rawProposalCount": 15,
+  "boundProposalCount": 15,
+  "validatedSemanticCount": 15,
+  "proposals": [
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 295,
+        "end": 375
+      },
+      "text": "\u1EE7 ng\u00E0y 19 th\u00E1ng 6 n\u0103m 2015; C\u0103n c\u1EE9 Lu\u1EADt C\u00F4ng ngh\u1EC7 th\u00F4ng tin ng\u00E0y 29 th\u00E1ng 6 n\u0103m ",
+      "semanticRole": "DOCUMENT_TITLE",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 376,
+        "end": 401
+      },
+      "text": "006; C\u0103n c\u1EE9 Lu\u1EADt Giao d\u1ECBc",
+      "semanticRole": "CHAPTER",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 402,
+        "end": 427
+      },
+      "text": " \u0111i\u1EC7n t\u1EED ng\u00E0y 29 th\u00E1ng 11",
+      "semanticRole": "ARTICLE",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 527,
+        "end": 607
+      },
+      "text": "\u00F4ng tin v\u00E0 Truy\u1EC1n th\u00F4ng; Ch\u00EDnh ph\u1EE7 ban h\u00E0nh Ngh\u1ECB \u0111\u1ECBnh v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chi",
+      "semanticRole": "CHAPTER",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 608,
+        "end": 658
+      },
+      "text": " s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc. Ch\u01B0\u01A1ng I QUY ",
+      "semanticRole": "SUBSECTION",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 659,
+        "end": 689
+      },
+      "text": "\u1ECANH CHUNG \u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u",
+      "semanticRole": "ARTICLE",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 889,
+        "end": 949
+      },
+      "text": "li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc; cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 qua",
+      "semanticRole": "CHAPTER",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 950,
+        "end": 990
+      },
+      "text": " nh\u00E0 n\u01B0\u1EDBc cho t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n; quy\u1EC1n v\u00E0",
+      "semanticRole": "SUBSECTION",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 991,
+        "end": 1021
+      },
+      "text": "tr\u00E1ch nhi\u1EC7m trong k\u1EBFt n\u1ED1i, chi",
+      "semanticRole": "ARTICLE",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 1221,
+        "end": 1281
+      },
+      "text": "ia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 ch\u1EE9a th\u00F4ng tin thu\u1ED9c ph\u1EA1m vi b\u00ED m\u1EADt nh\u00E0 n\u01B0\u1EDB",
+      "semanticRole": "CHAPTER",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 1282,
+        "end": 1312
+      },
+      "text": " \u0111\u01B0\u1EE3c th\u1EF1c hi\u1EC7n theo quy \u0111\u1ECBnh ",
+      "semanticRole": "ARTICLE",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 1412,
+        "end": 1432
+      },
+      "text": "c bao g\u1ED3m c\u00E1c b\u1ED9, c\u01A1",
+      "semanticRole": "CHAPTER",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 1433,
+        "end": 1453
+      },
+      "text": "quan ngang b\u1ED9, c\u01A1 qu",
+      "semanticRole": "ARTICLE",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 1454,
+        "end": 1474
+      },
+      "text": "n thu\u1ED9c Ch\u00EDnh ph\u1EE7, \u1EE6",
+      "semanticRole": "ARTICLE",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 1475,
+        "end": 1495
+      },
+      "text": " ban nh\u00E2n d\u00E2n c\u00E1c c\u1EA5",
+      "semanticRole": "ARTICLE",
+      "proposedLevel": 1,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    }
+  ],
+  "projection": [
+    {
+      "proposalId": "reasoning:body[1]/p[4]:1221:1281",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:1282:1312",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:1412:1432",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:1433:1453",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:1454:1474",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:1475:1495",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:295:375",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:376:401",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:402:427",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:527:607",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:608:658",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:659:689",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:889:949",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:950:990",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:991:1021",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    }
+  ],
+  "hierarchyValidation": {
+    "acceptedEdges": [],
+    "rejectedEdges": [],
+    "errors": []
+  },
+  "segmentTree": [
+    {
+      "segmentId": "seg-3b2235d181b26dfe",
+      "parentSegmentId": null,
+      "depth": 0,
+      "status": "SUCCESS",
+      "attempts": 0,
+      "failureClass": null,
+      "responseHash": "26880f06be33deefaec642fd26479e71a630cf09b9ca214afe742a8641f214cb",
+      "ownedCharacters": 60919,
+      "childSegmentIds": []
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

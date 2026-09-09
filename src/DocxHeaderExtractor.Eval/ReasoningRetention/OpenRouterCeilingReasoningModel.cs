@@ -38,6 +38,10 @@ public sealed record RequestPacketTelemetry
     [JsonPropertyName("finishReason")] public string? FinishReason { get; set; }
     [JsonPropertyName("httpStatus")] public int? HttpStatus { get; set; }
     [JsonPropertyName("failureClass")] public string? FailureClass { get; set; }
+    [JsonPropertyName("providerCallId")] public string? ProviderCallId { get; set; }
+    [JsonPropertyName("responseContentPresent")] public bool? ResponseContentPresent { get; set; }
+    [JsonPropertyName("structuredOutputParsed")] public bool? StructuredOutputParsed { get; set; }
+    [JsonPropertyName("timeoutDetected")] public bool? TimeoutDetected { get; set; }
 }
 
 /// <summary>OpenRouter adapter for the reasoning-ceiling route only: qwen/qwen3.5-9b, no
@@ -104,11 +108,93 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         var user = CeilingSemanticPrompt.BuildUser(packetJson, route);
         var (content, finishReason) = await SendAsync(system, user, maxCompletion, CeilingSemanticPrompt.Schema(), "ceiling_semantic_v3", telemetry, ct).ConfigureAwait(false);
         if (IsOutputLimit(finishReason))
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
+            _telemetry.Add(telemetry);
             throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
                 "Ceiling semantic pass hit the provider output limit before a complete response.",
                 new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
+        }
         var response = CeilingSemanticResponseParser.Parse(content);
+        telemetry.StructuredOutputParsed = true;
         telemetry.HeadingOutputCount = response.Headings.Count;
+        _telemetry.Add(telemetry);
+        return (response, telemetry);
+    }
+
+    /// <summary>Strategy S1's omission-review pass (Pass B). Same reasoning route/model/effort as
+    /// the semantic pass -- reasoning is never disabled for this call.</summary>
+    public async Task<(OmissionReviewResponse Response, RequestPacketTelemetry Telemetry)> CompleteOmissionReviewAsync(
+        string documentId, string route, string requestId, string packetJson, string inventoryJson,
+        int sourceTextCharacters, int ownedOccurrences, int visibleOccurrences, CancellationToken ct = default)
+    {
+        var maxCompletion = SemanticMaxCompletionTokens;
+        var telemetry = NewTelemetry(documentId, "OMISSION_REVIEW", requestId, packetJson + inventoryJson, sourceTextCharacters, maxCompletion, ownedOccurrences, visibleOccurrences);
+        var user = OmissionReviewPrompt.BuildUser(packetJson, inventoryJson, route);
+        var (content, finishReason) = await SendAsync(OmissionReviewPrompt.System, user, maxCompletion, OmissionReviewPrompt.Schema(), "ceiling_omission_review_v1", telemetry, ct).ConfigureAwait(false);
+        if (IsOutputLimit(finishReason))
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
+            _telemetry.Add(telemetry);
+            throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
+                "Omission-review pass hit the provider output limit before a complete response.",
+                new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
+        }
+        var response = OmissionReviewResponseParser.Parse(content);
+        telemetry.StructuredOutputParsed = true;
+        telemetry.HeadingOutputCount = response.Items.Count;
+        _telemetry.Add(telemetry);
+        return (response, telemetry);
+    }
+
+    /// <summary>Strategy S2's independent second discovery extractor ("Extractor B"). Sees ONLY the
+    /// source packet -- never Extractor A's (S0's) proposals.</summary>
+    public async Task<(CeilingSemanticResponse Response, RequestPacketTelemetry Telemetry)> CompleteCoverageSemanticAsync(
+        string documentId, string route, string requestId, string packetJson,
+        int sourceTextCharacters, int ownedOccurrences, int visibleOccurrences, CancellationToken ct = default)
+    {
+        var maxCompletion = SemanticMaxCompletionTokens;
+        var telemetry = NewTelemetry(documentId, "COVERAGE_SEMANTIC", requestId, packetJson, sourceTextCharacters, maxCompletion, ownedOccurrences, visibleOccurrences);
+        var user = ExhaustiveCoverageSemanticPrompt.BuildUser(packetJson, route);
+        var (content, finishReason) = await SendAsync(ExhaustiveCoverageSemanticPrompt.System, user, maxCompletion, ExhaustiveCoverageSemanticPrompt.Schema(), "ceiling_coverage_semantic_v1", telemetry, ct).ConfigureAwait(false);
+        if (IsOutputLimit(finishReason))
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
+            _telemetry.Add(telemetry);
+            throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
+                "Coverage semantic pass hit the provider output limit before a complete response.",
+                new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
+        }
+        var response = CeilingSemanticResponseParser.Parse(content);
+        telemetry.StructuredOutputParsed = true;
+        telemetry.HeadingOutputCount = response.Headings.Count;
+        _telemetry.Add(telemetry);
+        return (response, telemetry);
+    }
+
+    /// <summary>Strategy S3's advisory verifier/critic pass. Its KEEP/REJECT/CORRECT_SPAN decisions
+    /// never themselves bypass the hard validator -- callers must still run every surviving
+    /// candidate through <see cref="CeilingProposalBinder"/> and
+    /// <see cref="ReasoningHardInvariantValidator"/> afterwards.</summary>
+    public async Task<(VerifierResponse Response, RequestPacketTelemetry Telemetry)> CompleteVerifierAsync(
+        string documentId, string route, string requestId, string occurrencesJson, string candidatesJson,
+        int sourceTextCharacters, int ownedOccurrences, int visibleOccurrences, CancellationToken ct = default)
+    {
+        var maxCompletion = SemanticMaxCompletionTokens;
+        var telemetry = NewTelemetry(documentId, "VERIFIER", requestId, occurrencesJson + candidatesJson, sourceTextCharacters, maxCompletion, ownedOccurrences, visibleOccurrences);
+        var user = VerifierPrompt.BuildUser(occurrencesJson, candidatesJson, route);
+        var (content, finishReason) = await SendAsync(VerifierPrompt.System, user, maxCompletion, VerifierPrompt.Schema(), "ceiling_verifier_v1", telemetry, ct).ConfigureAwait(false);
+        if (IsOutputLimit(finishReason))
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
+            _telemetry.Add(telemetry);
+            throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
+                "Verifier pass hit the provider output limit before a complete response.",
+                new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
+        }
+        var response = VerifierResponseParser.Parse(content);
+        telemetry.StructuredOutputParsed = true;
+        telemetry.HeadingOutputCount = response.Decisions.Count;
         _telemetry.Add(telemetry);
         return (response, telemetry);
     }
@@ -127,10 +213,15 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         var user = CeilingHierarchyPrompt.BuildUser(packetJson);
         var (content, finishReason) = await SendAsync(system, user, maxCompletion, CeilingHierarchyPrompt.Schema(inventoryCount), "ceiling_hierarchy_v2", telemetry, ct).ConfigureAwait(false);
         if (IsOutputLimit(finishReason))
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
+            _telemetry.Add(telemetry);
             throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
                 "Ceiling hierarchy pass hit the provider output limit before a complete response.",
                 new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
+        }
         var response = CeilingHierarchyResponseParser.Parse(content, inventoryCount);
+        telemetry.StructuredOutputParsed = true;
         telemetry.HeadingOutputCount = response.Parents.Count;
         _telemetry.Add(telemetry);
         return (response, telemetry);
@@ -218,6 +309,8 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
             }
             using var document = JsonDocument.Parse(raw);
             var root = document.RootElement;
+            telemetry.ProviderCallId = root.TryGetProperty("id", out var id) && id.ValueKind == JsonValueKind.String
+                ? id.GetString() : null;
             if (root.TryGetProperty("usage", out var usage) && usage.ValueKind == JsonValueKind.Object)
             {
                 telemetry.ReportedInputTokens = ReadInt(usage, "prompt_tokens");
@@ -239,6 +332,7 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
             var hasContent = choice.TryGetProperty("message", out var msg) && msg.ValueKind == JsonValueKind.Object &&
                 msg.TryGetProperty("content", out contentEl) && contentEl.ValueKind == JsonValueKind.String &&
                 !string.IsNullOrEmpty(contentEl.GetString());
+            telemetry.ResponseContentPresent = hasContent;
             if (!hasContent && IsOutputLimit(finishReason))
                 throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
                     "Reasoning consumed the completion budget before a final response was produced.",
@@ -249,6 +343,7 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         }
         catch (ReasoningCompletionException)
         {
+            _telemetry.Add(telemetry);
             throw;
         }
         catch (OperationCanceledException) when (!ct.IsCancellationRequested)
@@ -257,6 +352,8 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
             // (but not necessarily failed) reasoning call and must be retryable, never silently
             // reclassified as a semantic omission.
             telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderTotalTimeout;
+            telemetry.TimeoutDetected = true;
+            _telemetry.Add(telemetry);
             throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderTotalTimeout,
                 "Ceiling request exceeded its attempt timeout.",
                 new ReasoningCompletionTelemetry { RequestId = telemetry.RequestIdHash, DocumentId = telemetry.DocumentId, FailureClass = ReasoningCompletionFailureClass.ProviderTotalTimeout });
@@ -264,6 +361,7 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         catch (HttpRequestException ex)
         {
             telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderUnavailable;
+            _telemetry.Add(telemetry);
             throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderUnavailable, ex.Message,
                 new ReasoningCompletionTelemetry { RequestId = telemetry.RequestIdHash, DocumentId = telemetry.DocumentId, FailureClass = ReasoningCompletionFailureClass.ProviderUnavailable }, ex);
         }
