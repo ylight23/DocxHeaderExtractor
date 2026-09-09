@@ -195,6 +195,40 @@ public sealed class MultiPassLiveWiringTests
     }
 
     [Fact]
+    public async Task VisualSemanticRequestCarriesPageImages_AndKeepsXmlSourceContract()
+    {
+        var handler = new CapturingHandler { ResponseContent = "{\"headings\":[]}" };
+        var capability = Capability() with { ModelId = "qwen/qwen3.7-flash" };
+        using var model = new OpenRouterCeilingReasoningModel(new RemoteInferenceOptions
+        {
+            ApiKey = "k", Model = capability.ModelId, OpenRouterAllowNonZdrPublicBenchmark = true,
+        }, capability, new HttpClient(handler));
+
+        await model.CompleteVisualSemanticAsync("DOC-0205", "ModelCapabilityCeiling", "visual-1",
+            "{\"occurrences\":[{\"i\":0,\"text\":\"Article one\",\"owned\":[0,11],\"facts\":{}}]}",
+            [new VisualPageEvidence(1, "image-hash", [137, 80, 78, 71])], 11, 1, 1);
+
+        var root = handler.CapturedBody!.RootElement;
+        var content = root.GetProperty("messages")[1].GetProperty("content");
+        Assert.Equal(JsonValueKind.Array, content.ValueKind);
+        Assert.Equal("text", content[0].GetProperty("type").GetString());
+        Assert.Contains("occurrences", content[0].GetProperty("text").GetString()!);
+        Assert.Equal("image_url", content[1].GetProperty("type").GetString());
+        Assert.StartsWith("data:image/png;base64,", content[1].GetProperty("image_url").GetProperty("url").GetString());
+        Assert.False(root.TryGetProperty("provider", out _));
+        var reasoning = root.GetProperty("reasoning");
+        Assert.True(reasoning.TryGetProperty("effort", out _) || (reasoning.TryGetProperty("enabled", out var enabled) && enabled.GetBoolean()));
+    }
+
+    [Fact]
+    public void VisualContract_ExcludesGoldAndDeduplicatesOverlappingCanonicalKeys()
+    {
+        var prompt = CeilingSemanticPrompt.System + CeilingSemanticPrompt.BuildUser("{\"occurrences\":[]}", "ModelCapabilityCeiling");
+        Assert.True(OpenRouterQwen37VisualCeilingRunner.VisualPromptKeepsGoldOut(prompt));
+        Assert.Equal(["a:0:1", "b:2:3"], OpenRouterQwen37VisualCeilingRunner.DeduplicateCanonicalKeys(["b:2:3", "a:0:1", "b:2:3"]));
+    }
+
+    [Fact]
     public async Task PinnedProviderRoute_IsInRequest_WhileCanonicalRequestHashStaysRouteNeutral()
     {
         var first = new CapturingHandler { ResponseContent = "{\"headings\":[]}" };

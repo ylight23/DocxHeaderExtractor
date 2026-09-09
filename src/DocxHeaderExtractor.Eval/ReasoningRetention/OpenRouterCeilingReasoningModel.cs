@@ -144,6 +144,51 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         return (response, telemetry);
     }
 
+    /// <summary>Visual-evidence variant of the same single semantic pass. Images supplement the
+    /// XML/source packet; they never carry source identity or final binding authority.</summary>
+    public async Task<(CeilingSemanticResponse Response, RequestPacketTelemetry Telemetry)> CompleteVisualSemanticAsync(
+        string documentId,
+        string route,
+        string requestId,
+        string packetJson,
+        IReadOnlyList<VisualPageEvidence> pages,
+        int sourceTextCharacters,
+        int ownedOccurrences,
+        int visibleOccurrences,
+        CancellationToken ct = default)
+    {
+        if (pages is null || pages.Count == 0) throw new ArgumentException("Visual page evidence is required.", nameof(pages));
+        var maxCompletion = SemanticMaxCompletionTokens;
+        var visualManifest = string.Join('|', pages.Select(page => $"p{page.PageIndex}:{page.ImageHash}"));
+        var telemetry = NewTelemetry(documentId, "VISUAL_SEMANTIC", requestId, packetJson + "\n" + visualManifest,
+            sourceTextCharacters, maxCompletion, ownedOccurrences, visibleOccurrences);
+        var userText = CeilingSemanticPrompt.BuildUser(packetJson, route) + "\nVISUAL_EVIDENCE_PAGES=" +
+            string.Join(',', pages.Select(page => page.PageIndex)) +
+            "\nUse the supplied page images as visual evidence. XML/source text remains canonical for exact text, identity, and spans. " +
+            "Do not emit text that cannot be bound to the supplied source occurrences.";
+        var content = new List<object> { new { type = "text", text = userText } };
+        content.AddRange(pages.Select(page => (object)new
+        {
+            type = "image_url",
+            image_url = new { url = "data:image/png;base64," + Convert.ToBase64String(page.PngBytes) },
+        }));
+        var (rawContent, finishReason) = await SendAsync(CeilingSemanticPrompt.System, content, maxCompletion,
+            CeilingSemanticPrompt.Schema(), "ceiling_visual_semantic_v1", telemetry, ct).ConfigureAwait(false);
+        if (IsOutputLimit(finishReason))
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
+            _telemetry.Add(telemetry);
+            throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
+                "Visual semantic pass hit the provider output limit before a complete response.",
+                new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
+        }
+        var response = CeilingSemanticResponseParser.Parse(rawContent);
+        telemetry.StructuredOutputParsed = true;
+        telemetry.HeadingOutputCount = response.Headings.Count;
+        _telemetry.Add(telemetry);
+        return (response, telemetry);
+    }
+
     /// <summary>Strategy S1's omission-review pass (Pass B). Same reasoning route/model/effort as
     /// the semantic pass -- reasoning is never disabled for this call.</summary>
     public async Task<(OmissionReviewResponse Response, RequestPacketTelemetry Telemetry)> CompleteOmissionReviewAsync(
@@ -283,7 +328,7 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         ? "disabled" : _capability.SelectedReasoningEffort;
 
     private async Task<(string Content, string? FinishReason)> SendAsync(
-        string systemPrompt, string userPrompt, int maxCompletionTokens, object schema, string schemaName,
+        string systemPrompt, object userPrompt, int maxCompletionTokens, object schema, string schemaName,
         RequestPacketTelemetry telemetry, CancellationToken ct)
     {
         Interlocked.Increment(ref _providerCalls);
@@ -488,17 +533,17 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
     private static string? ReadString(JsonElement parent, string name) =>
         parent.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String ? value.GetString() : null;
 
-    private static object BuildRequestBody(string model, string systemPrompt, string userPrompt, int maxCompletionTokens,
+    private static object BuildRequestBody(string model, string systemPrompt, object userPrompt, int maxCompletionTokens,
         object schema, string schemaName, object? reasoning, string? providerRoute, bool allowNonZdrPublicBenchmark)
     {
         if (allowNonZdrPublicBenchmark && providerRoute is null)
         {
             return reasoning is null
                 ? new { model, temperature = 0, max_tokens = maxCompletionTokens,
-                    messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userPrompt } },
+                    messages = new object[] { new { role = "system", content = (object)systemPrompt }, new { role = "user", content = userPrompt } },
                     response_format = new { type = "json_schema", json_schema = new { name = schemaName, strict = true, schema } } }
                 : new { model, temperature = 0, max_tokens = maxCompletionTokens, reasoning,
-                    messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userPrompt } },
+                    messages = new object[] { new { role = "system", content = (object)systemPrompt }, new { role = "user", content = userPrompt } },
                     response_format = new { type = "json_schema", json_schema = new { name = schemaName, strict = true, schema } } };
         }
 
@@ -507,10 +552,10 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
             : new { order = new[] { providerRoute }, zdr = true, data_collection = "deny", require_parameters = true, allow_fallbacks = false };
         return reasoning is null
             ? new { model, temperature = 0, max_tokens = maxCompletionTokens,
-                messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userPrompt } },
+                messages = new object[] { new { role = "system", content = (object)systemPrompt }, new { role = "user", content = userPrompt } },
                 response_format = new { type = "json_schema", json_schema = new { name = schemaName, strict = true, schema } }, provider }
             : new { model, temperature = 0, max_tokens = maxCompletionTokens, reasoning,
-                messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userPrompt } },
+                messages = new object[] { new { role = "system", content = (object)systemPrompt }, new { role = "user", content = userPrompt } },
                 response_format = new { type = "json_schema", json_schema = new { name = schemaName, strict = true, schema } }, provider };
     }
 
@@ -522,3 +567,7 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         if (_ownsHttp) _http.Dispose();
     }
 }
+
+/// <summary>Persistable-free in-memory page evidence. The image bytes are sent only for the
+/// request; artifacts persist its hash, never the model's private reasoning.</summary>
+public sealed record VisualPageEvidence(int PageIndex, string ImageHash, byte[] PngBytes);

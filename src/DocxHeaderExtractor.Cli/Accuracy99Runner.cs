@@ -31,7 +31,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, gold-occurrence-bindings, reasoning-retention, reasoning-retention-smoke, openrouter-qwen35-smoke, openrouter-qwen9b-true-ceiling, openrouter-qwen37-flash-control, openrouter-qwen37-request-ladder, openrouter-qwen37-flash-reasoning-ceiling, openrouter-qwen9b-executable-ceiling, openrouter-qwen9b-per-segment-recovery, openrouter-qwen9b-provider-diagnosis, openrouter-qwen9b-provider-resume, openrouter-qwen9b-multipass-doc0205, doc-0205-canary, mode-stratification, doc-0027-support-canary");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, gold-occurrence-bindings, reasoning-retention, reasoning-retention-smoke, openrouter-qwen35-smoke, openrouter-qwen9b-true-ceiling, openrouter-qwen37-flash-control, openrouter-qwen37-request-ladder, openrouter-qwen37-flash-reasoning-ceiling, openrouter-qwen37-flash-visual-ceiling, openrouter-qwen9b-executable-ceiling, openrouter-qwen9b-per-segment-recovery, openrouter-qwen9b-provider-diagnosis, openrouter-qwen9b-provider-resume, openrouter-qwen9b-multipass-doc0205, doc-0205-canary, mode-stratification, doc-0027-support-canary");
             return 0;
         }
 
@@ -64,6 +64,7 @@ internal static class Accuracy99Runner
             "openrouter-qwen37-flash-control" => await RunOpenRouterQwen37FlashControlAsync(options, cancellationToken),
             "openrouter-qwen37-request-ladder" => await RunOpenRouterQwen37RequestLadderAsync(options, cancellationToken),
             "openrouter-qwen37-flash-reasoning-ceiling" => await RunOpenRouterQwen37FlashReasoningCeilingAsync(options, cancellationToken),
+            "openrouter-qwen37-flash-visual-ceiling" => await RunOpenRouterQwen37FlashVisualCeilingAsync(options, cancellationToken),
             "openrouter-qwen9b-executable-ceiling" => await RunOpenRouterQwen9BExecutableCeilingAsync(options, cancellationToken),
             "openrouter-qwen9b-per-segment-recovery" => await RunOpenRouterQwen9BPerSegmentRecoveryAsync(options, cancellationToken),
             "openrouter-qwen9b-provider-diagnosis" => await RunOpenRouterQwen9BProviderDiagnosisAsync(options, cancellationToken),
@@ -109,6 +110,12 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return OpenRouterQwen37ReasoningCeilingRunner.RunAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunOpenRouterQwen37FlashVisualCeilingAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return OpenRouterQwen37VisualCeilingRunner.RunAsync(repoRoot, cancellationToken);
     }
 
     private static Task<int> RunOpenRouterQwen9BExecutableCeilingAsync(CommandLineOptions options, CancellationToken cancellationToken)
