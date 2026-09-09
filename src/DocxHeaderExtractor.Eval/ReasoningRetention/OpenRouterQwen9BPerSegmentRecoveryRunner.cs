@@ -36,6 +36,10 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
     private const int MinimumSegmentCharacters = 2_000;
     private const int HaloOccurrences = 1;
 
+    /// <summary>Section 8: the floor for VISIBLE context characters around a leaf's OWNED range,
+    /// independent of how tiny that owned range is. See <see cref="SegmentRecoveryTree.ExpandHalo"/>.</summary>
+    private const int MinimumVisibleContextCharacters = 6_000;
+
     public static Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
     {
         // Section 8/operational note: bounded wall clock so a single invocation never runs
@@ -104,6 +108,25 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
             var state = await PrepareDocumentAsync(repoRoot, output, item, model, configurationSignature, ct);
             ReconcileSuccessfulLeavesFromDisk(output, state, configurationSignature);
             documentStates.Add(state);
+
+            // Section 6/20: resume-first execution is observable before any provider call is made.
+            var successLeaves = state.Tree.Leaves.Count(n => n.Status == SegmentRecoveryState.Success);
+            var unresolvedLeaves = state.Tree.PendingLeaves.Count;
+            var failedTerminalLeaves = state.Tree.Leaves.Count(n => n.Status == SegmentRecoveryState.FailedTerminal);
+            Console.WriteLine($"{item.DocumentId}_SUCCESS_LEAVES_REUSED={successLeaves}");
+            Console.WriteLine($"{item.DocumentId}_UNRESOLVED_LEAVES={unresolvedLeaves}");
+            Console.WriteLine($"{item.DocumentId}_FAILED_TERMINAL_LEAVES={failedTerminalLeaves}");
+            if (item.DocumentId == "DOC-0205")
+            {
+                Console.WriteLine($"DOC0205_SEMANTIC_REUSED={successLeaves > 0}");
+                var hierarchyCachePath = Path.Combine(state.DocDir, "hierarchy-cache.v1.json");
+                Console.WriteLine($"DOC0205_HIERARCHY_REUSED={File.Exists(hierarchyCachePath)}");
+            }
+            if (item.DocumentId == "DOC-0264")
+            {
+                Console.WriteLine($"DOC0264_SUCCESS_LEAVES_REUSED={successLeaves}");
+                Console.WriteLine($"DOC0264_UNRESOLVED_LEAVES={unresolvedLeaves}");
+            }
         }
 
         var deadlineHit = false;
@@ -127,12 +150,15 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
         var exact = documents.Where(x => x.exactStatus == "EVALUABLE").ToArray();
         var micro = Score(exact.SelectMany(x => x.GoldKeys).ToArray(), exact.SelectMany(x => x.PredictionKeys).ToArray());
         var systemLossTotal = documents.Sum(x => x.systemLossCount);
-        var anyBlocked = documents.Any(x => x.finalExecutionMode is DocumentCompletionState.SegmentedRecoveryPartialBlocked or DocumentCompletionState.SemanticCompleteHierarchyBlocked);
-        var classification = deadlineHit || anyBlocked
-            ? (documents.Any(x => x.reusedLeafCount + x.successfulLeafCount > 0) ? "QWEN9B_PER_SEGMENT_RECOVERY_PARTIAL_BLOCKED" : "BLOCKED_PROVIDER_UNAVAILABLE")
-            : systemLossTotal > 0
-                ? "QWEN9B_PER_SEGMENT_RECOVERY_SYSTEM_LOSS_REMAINS"
-                : "QWEN9B_PER_SEGMENT_RECOVERY_COMPLETE";
+        // Mission classification is narrower than the historical runner labels: DOC-0205 is the
+        // scoreable authority, while DOC-0264 remains exact-NOT_EVALUABLE until its authority
+        // changes. A hierarchy timeout does not erase a complete semantic DOC-0205 score, but
+        // unresolved semantic leaves do make the run partial-blocked.
+        var doc0205 = documents.Single(x => x.documentId == "DOC-0205");
+        var doc0264 = documents.Single(x => x.documentId == "DOC-0264");
+        var classification = !deadlineHit && doc0205.exactStatus == "EVALUABLE" && doc0264.exactStatus == "NOT_EVALUABLE"
+            ? "QWEN9B_DOC0205_SCOREABLE_DOC0264_PARTIAL"
+            : "QWEN9B_TERMINAL_COMPLETION_PARTIAL_BLOCKED";
 
         var previous = new { doc0205Calls = 6, doc0205ReasoningTokens = 16_409, doc0205OutputTokens = 18_896, doc0264Calls = 16, doc0264ReasoningTokens = 55_687, doc0264OutputTokens = 54_195 };
         var totalProviderCalls = model.ProviderCalls;
@@ -160,7 +186,7 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
             completedUtc = DateTimeOffset.UtcNow,
         }, ct);
         Console.WriteLine($"FINAL_CLASSIFICATION={classification}");
-        return classification is "QWEN9B_PER_SEGMENT_RECOVERY_COMPLETE" or "QWEN9B_PER_SEGMENT_RECOVERY_SYSTEM_LOSS_REMAINS" ? 0 : 1;
+        return classification == "QWEN9B_DOC0205_SCOREABLE_DOC0264_PARTIAL" ? 0 : 1;
     }
 
     private sealed class DocumentRecoveryState
@@ -200,6 +226,13 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
         var lengths = pack.Occurrences.Select(o => o.RawText.Length).ToArray();
         var tree = LoadOrCreateTree(output, item, lengths, configurationSignature);
 
+        // Section 9: any FAILED_TERMINAL leaf is re-checked against the current halo policy before
+        // this invocation touches the provider at all. A leaf whose corrected visible window
+        // differs from what it actually saw is promoted to STALE_TERMINAL for exactly one bounded
+        // re-attempt; a leaf whose window is unchanged is left as a genuine, still-current failure.
+        foreach (var node in tree.Leaves.Where(n => n.Status == SegmentRecoveryState.FailedTerminal).ToArray())
+            tree.ReconcileTerminalContract(node.SegmentId, HaloOccurrences);
+
         return Task.FromResult(new DocumentRecoveryState
         {
             Item = item, Source = source, Policy = policy, Occurrences = pack.Occurrences,
@@ -232,7 +265,7 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
                     // running across a process restart, so normalize it back to PENDING or it
                     // would never be picked up again (RUNNING is excluded from PendingLeaves).
                     var normalized = snapshot.Select(n => n.Status == SegmentRecoveryState.Running ? n with { Status = SegmentRecoveryState.Pending } : n).ToArray();
-                    return SegmentRecoveryTree.RestoreFromSnapshot(item.DocumentId, lengths, MinimumSegmentCharacters, normalized);
+                    return SegmentRecoveryTree.RestoreFromSnapshot(item.DocumentId, lengths, MinimumSegmentCharacters, normalized, MinimumVisibleContextCharacters);
                 }
             }
             catch (JsonException)
@@ -241,7 +274,7 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
                 // tree rather than propagating a resume failure.
             }
         }
-        return new SegmentRecoveryTree(item.DocumentId, lengths, MinimumSegmentCharacters);
+        return new SegmentRecoveryTree(item.DocumentId, lengths, MinimumSegmentCharacters, MinimumVisibleContextCharacters);
     }
 
     private static void SaveTreeState(string output, DocumentRecoveryState state, string configurationSignature)
@@ -317,7 +350,7 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
         // including a source/config/plan change -- forces a fresh call for this leaf only.
         if (SegmentLeafPersistence.TryLoad(output, key, out var artifact) && artifact is not null)
         {
-            state.Tree.MarkSuccess(leaf.SegmentId, "REUSED", artifact.ResponseHash);
+            state.Tree.MarkSuccess(leaf.SegmentId, artifact.RequestHash, artifact.ResponseHash);
             state.ReusedLeafCount++;
             LoadRawProposalsFromArtifact(state, leaf, artifact);
             return;
@@ -340,7 +373,11 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
         // otherwise-fine reasoning as a workload-shape timeout and split segments that would have
         // succeeded given more time, so the floor here stays generous; only genuinely oversized
         // owned ranges get a materially longer allowance.
-        var leafTimeoutSeconds = Math.Clamp(leaf.OwnedCharacters / 50, 180, 400);
+        // Section 8: visible (input) characters, not just owned (output-scope) characters, drive
+        // request latency -- a tiny-owned leaf can still carry a large visible halo now, so the
+        // budget must scale with whichever is larger.
+        var driverCharacters = Math.Max(leaf.OwnedCharacters, leaf.Visible.Sum(a => a.Length));
+        var leafTimeoutSeconds = Math.Clamp(driverCharacters / 50, 180, 400);
         using var leafCts = CancellationTokenSource.CreateLinkedTokenSource(ct);
         leafCts.CancelAfter(TimeSpan.FromSeconds(leafTimeoutSeconds));
 
@@ -352,16 +389,12 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
             state.ProviderCalls++;
 
             var rawResponseHash = Sha256Text(JsonSerializer.Serialize(response));
-            var proposals = new List<(string, string, int, int, string)>();
-            foreach (var heading in response.Headings)
-            {
-                if (heading.I < 0 || heading.I >= packetResult.Bindings.Count) continue;
-                var binding = packetResult.Bindings[heading.I];
-                if (!ownedSet.Contains(binding.SourceOccurrenceId)) continue;
-                if (!binding.TryBind(heading.Start, heading.End, out var globalStart, out var globalEnd, out var owned) || !owned) continue;
-                var occurrence = state.OccurrenceById[binding.SourceOccurrenceId];
-                proposals.Add((leaf.SegmentId, occurrence.SourceId, globalStart, globalEnd, heading.Role));
-            }
+            // Section 1/3: binding goes through the single canonical binder shared with the disk
+            // reload path (LoadRawProposalsFromArtifact) so a fresh execution and a reload of the
+            // same leaf always agree byte-for-byte.
+            var proposals = CeilingProposalBinder.Bind(response.Headings, packetResult, ownedSet)
+                .Select(b => (leaf.SegmentId, b.SourceId, b.Start, b.End, b.Role))
+                .ToList();
 
             var requestHash = Sha256Text(requestId);
             var predictionJson = JsonSerializer.Serialize(new
@@ -402,27 +435,64 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
         }
     }
 
+    /// <summary>Section 3/4 union/reload fix: a reused (or resumed) leaf's proposals are NEVER
+    /// trusted from the historically-frozen "boundProposals" array (that array can carry a binding
+    /// defect baked in at the time it was first written, e.g. every heading declaring the wrong
+    /// local occurrence index -- exactly the bug this campaign found: a genuinely successful leaf
+    /// persisted with real model headings but zero bound proposals). Instead, the authority is the
+    /// persisted raw "headings" (the parsed model response) plus this leaf's own owned/visible
+    /// atoms, which deterministically reconstruct the identical request packet and are re-bound
+    /// through the same canonical <see cref="CeilingProposalBinder"/> used at fresh-execution time.
+    /// A fresh execution and a reload of the same leaf therefore always agree byte-for-byte, and a
+    /// binder fix (like this one) retroactively benefits every previously-persisted SUCCESS leaf on
+    /// its next reload without ever mutating the historical prediction.json bytes.</summary>
     private static void LoadRawProposalsFromArtifact(DocumentRecoveryState state, SegmentNode leaf, SegmentLeafArtifact artifact)
     {
-        // Section 7/14: a reused (or resumed) leaf's bound proposals are re-parsed verbatim from
-        // its persisted prediction.json -- never re-derived by re-calling the provider, and never
-        // fabricated when the file is unexpectedly absent/corrupt (the union simply reflects
-        // whatever this leaf genuinely produced last time it ran).
         try
         {
             using var doc = JsonDocument.Parse(artifact.PredictionJson);
-            if (!doc.RootElement.TryGetProperty("boundProposals", out var arr) || arr.ValueKind != JsonValueKind.Array) return;
-            foreach (var row in arr.EnumerateArray())
+            if (doc.RootElement.TryGetProperty("segmentId", out var segmentId) &&
+                !string.Equals(segmentId.GetString(), leaf.SegmentId, StringComparison.Ordinal)) return;
+
+            var headings = new List<CeilingHeadingProposal>();
+            if (doc.RootElement.TryGetProperty("headings", out var arr) && arr.ValueKind == JsonValueKind.Array)
             {
-                var sourceId = row.GetProperty("sourceId").GetString();
-                var start = row.GetProperty("start").GetInt32();
-                var end = row.GetProperty("end").GetInt32();
-                var role = row.GetProperty("role").GetString();
-                if (sourceId is null || role is null) continue;
+                foreach (var row in arr.EnumerateArray())
+                {
+                    if (!row.TryGetProperty("i", out var iValue) || !iValue.TryGetInt32(out var i)) continue;
+                    if (!row.TryGetProperty("start", out var startValue) || !startValue.TryGetInt32(out var s)) continue;
+                    if (!row.TryGetProperty("end", out var endValue) || !endValue.TryGetInt32(out var e)) continue;
+                    if (!row.TryGetProperty("role", out var roleValue) || roleValue.ValueKind != JsonValueKind.String || roleValue.GetString() is not { } role) continue;
+                    headings.Add(new CeilingHeadingProposal(i, s, e, role));
+                }
+            }
+
+            var (ownedSet, visibleWindow, ownedWindow, visibleOccurrences) = BuildWindows(state, leaf);
+            var packetResult = CeilingPacketBuilder.Build(visibleOccurrences, ownedSet, visibleWindow, ownedWindow);
+            var rebound = CeilingProposalBinder.Bind(headings, packetResult, ownedSet);
+            if (rebound.Count > 0 || headings.Count > 0)
+            {
+                foreach (var (sourceId, start, end, role) in rebound)
+                    state.RawProposals.Add((leaf.SegmentId, sourceId, start, end, role));
+                return;
+            }
+
+            // Compatibility path for an older frozen SUCCESS artifact that persisted only the
+            // harness-derived bound proposals. It is used only when raw semantic headings are
+            // absent/empty; when headings exist, the canonical binder above remains authoritative.
+            if (!doc.RootElement.TryGetProperty("boundProposals", out var bound) || bound.ValueKind != JsonValueKind.Array) return;
+            foreach (var row in bound.EnumerateArray())
+            {
+                if (!row.TryGetProperty("sourceId", out var sourceValue) || sourceValue.ValueKind != JsonValueKind.String || sourceValue.GetString() is not { } sourceId) continue;
+                if (!row.TryGetProperty("start", out var startValue) || !startValue.TryGetInt32(out var start)) continue;
+                if (!row.TryGetProperty("end", out var endValue) || !endValue.TryGetInt32(out var end)) continue;
+                if (!row.TryGetProperty("role", out var roleValue) || roleValue.ValueKind != JsonValueKind.String || roleValue.GetString() is not { } role) continue;
+                var occurrence = state.OccurrenceById.Values.FirstOrDefault(o => string.Equals(o.SourceId, sourceId, StringComparison.Ordinal));
+                if (occurrence is null || start < 0 || end <= start || end > occurrence.RawText.Length || !CeilingSemanticRole.IsAllowed(role)) continue;
                 state.RawProposals.Add((leaf.SegmentId, sourceId, start, end, role));
             }
         }
-        catch (JsonException)
+        catch (Exception ex) when (ex is JsonException or InvalidOperationException)
         {
             // Corrupt cached artifact -- leave proposals empty for this leaf; the mismatch will
             // surface as a coverage/union gap rather than fabricated headings.
@@ -440,7 +510,11 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
             var planHash = SegmentLeafPersistence.PlanHash(leaf.Owned);
             var key = new SegmentLeafArtifactKey(state.Item.DocumentId, leaf.SegmentId, state.Item.SourceSha256, configurationSignature, planHash, Model, ReasoningMode);
             if (SegmentLeafPersistence.TryLoad(output, key, out var artifact) && artifact is not null)
+            {
+                state.ReusedLeafCount++;
+                state.ResponseHashBySegment[leaf.SegmentId] = artifact.ResponseHash;
                 LoadRawProposalsFromArtifact(state, leaf, artifact);
+            }
         }
     }
 
@@ -488,6 +562,17 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
         if (fullCoverage && isForcedFullContext) finalExecutionMode = DocumentCompletionState.FullContextSuccess;
         else if (fullCoverage) finalExecutionMode = DocumentCompletionState.SegmentedRecoverySuccess;
         else finalExecutionMode = DocumentCompletionState.SegmentedRecoveryPartialBlocked;
+        // Section 14/15 audit: semantic completion (fullCoverage) is captured here, BEFORE the
+        // hierarchy pass runs. Audited authority -- ReasoningHardInvariantValidator/
+        // StructuralProposalValidator treat a null ProposedParentId as valid (never rejects on a
+        // missing parent) and ReasoningTaskProjection.ExclusionReason keys only on element
+        // Type/Role, never on ProposedParent/ProposedLevel -- so exact-occurrence existence/span
+        // scoring is genuinely independent of hierarchy outcome. A later hierarchy failure is
+        // allowed to downgrade finalExecutionMode (the document-level headline status) to
+        // SEMANTIC_COMPLETE_HIERARCHY_BLOCKED without retroactively making exact-occurrence
+        // scoring NOT_EVALUABLE -- semanticCompletionMode is the metric-independent capability used
+        // for that decision below, not the (possibly hierarchy-downgraded) finalExecutionMode.
+        var semanticCompletionMode = finalExecutionMode;
 
         var union = SegmentProposalUnion.Union(state.RawProposals);
         var proposals = union.Select(p => new ReasoningHeadingProposal
@@ -559,6 +644,10 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
             }
         }
 
+        // Section 11/15: hierarchy is its own recovery/reporting domain, independent of the
+        // exact-occurrence capability computed below via semanticCompletionMode.
+        var hierarchyStatus = hierarchyDegraded ? "BLOCKED" : hierarchyCalls > 0 ? "SUCCESS" : "NOT_ATTEMPTED";
+
         var materialized = ReasoningProposalMaterializer.Materialize(source, policy, proposals);
         var structureProjection = ReasoningTaskProjection.Project(materialized.Structure);
         var structureProjectionById = structureProjection.ToDictionary(x => x.ProposalId, StringComparer.Ordinal);
@@ -580,7 +669,7 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
         await WriteJsonAsync(predictionPath, new
         {
             documentId = item.DocumentId, sourceSha256 = item.SourceSha256, requestedModel = Model,
-            finalExecutionMode, hierarchyDegraded, semanticProtocolVersion = CeilingSemanticPrompt.ProtocolVersion,
+            finalExecutionMode, semanticCompletionMode, hierarchyDegraded, semanticProtocolVersion = CeilingSemanticPrompt.ProtocolVersion,
             hierarchyProtocolVersion = CeilingHierarchyPrompt.ProtocolVersion,
             leafSegments = tree.Leaves.Count, successfulLeafCount = state.SuccessfulLeafCount, failedLeafCount = state.FailedLeafCount,
             splitCount = state.SplitCount, reusedLeafCount = state.ReusedLeafCount, providerCalls = state.ProviderCalls,
@@ -619,7 +708,7 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
         var goldKeys = Array.Empty<string>();
         var tp = 0; var fp = 0; var fn = 0; var exactStatus = "NOT_EVALUABLE"; var systemLoss = 0;
         var lossCounts = new Dictionary<string, int>(StringComparer.Ordinal);
-        var canScore = eligibility.Eligible && finalExecutionMode is DocumentCompletionState.FullContextSuccess or DocumentCompletionState.SegmentedRecoverySuccess;
+        var canScore = eligibility.Eligible && semanticCompletionMode is DocumentCompletionState.FullContextSuccess or DocumentCompletionState.SegmentedRecoverySuccess;
         // Hierarchy completion can flip between invocations (the hierarchy pass has its own
         // independent timeout/retry surface, non-deterministic in latency); never leave a stale
         // score.v1.json or semantic-evaluation.v1.json from a previous invocation's different
@@ -640,7 +729,7 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
             {
                 documentId = item.DocumentId, exactStatus, goldCount = goldKeys.Length, tp, fp, fn,
                 precision = score.P, recall = score.R, f1 = score.F1, lossCounts, systemLossCount = systemLoss,
-                finalExecutionMode, goldReadBeforeFreeze = false,
+                finalExecutionMode, semanticCompletionMode, hierarchyStatus, goldReadBeforeFreeze = false,
             }, ct);
         }
         else
@@ -651,7 +740,7 @@ public static class OpenRouterQwen9BPerSegmentRecoveryRunner
             {
                 documentId = item.DocumentId, exactStatus, eligibilityReason = eligibility.Eligible ? "EXECUTION_INCOMPLETE" : eligibility.Reason,
                 semanticHeadingTotal = semanticTotal, rawProposalCount = state.RawProposals.Count, boundProposalCount = proposals.Count,
-                finalHeadingCount = finalElements.Length, systemLossCount = 0, finalExecutionMode, goldReadBeforeFreeze = false,
+                finalHeadingCount = finalElements.Length, systemLossCount = 0, finalExecutionMode, semanticCompletionMode, hierarchyStatus, goldReadBeforeFreeze = false,
             }, ct);
         }
 

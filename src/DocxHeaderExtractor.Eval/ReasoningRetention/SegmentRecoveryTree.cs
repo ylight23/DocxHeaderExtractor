@@ -17,6 +17,12 @@ public static class SegmentRecoveryState
     public const string WorkloadSplitRequired = "WORKLOAD_SPLIT_REQUIRED";
     public const string SplitParent = "SPLIT_PARENT";
     public const string FailedTerminal = "FAILED_TERMINAL";
+
+    /// <summary>Section 9: a FAILED_TERMINAL leaf whose runtime contract (e.g. the visible-context
+    /// halo policy) has changed underneath it since it was terminated. It is no longer validly
+    /// "terminal" under the old, now-corrected contract, so it gets exactly one bounded re-attempt
+    /// under the new contract before it can become FAILED_TERMINAL again.</summary>
+    public const string StaleTerminal = "STALE_TERMINAL";
 }
 
 /// <summary>A half-open character slice [CharStart, CharEnd) of one source occurrence, identified
@@ -35,7 +41,10 @@ public sealed class SegmentNode
     public string? ParentSegmentId { get; init; }
     public required int Depth { get; init; }
     public required IReadOnlyList<SegmentAtom> Owned { get; init; }
-    public required IReadOnlyList<SegmentAtom> Visible { get; init; }
+    // Section 8/9: Visible is mutable (Owned never is) so a resumed tree can reconcile a
+    // FAILED_TERMINAL leaf's context window against a corrected halo policy without changing the
+    // node's identity (SegmentId is derived from Owned only, never Visible).
+    public required IReadOnlyList<SegmentAtom> Visible { get; set; }
     public string Status { get; set; } = SegmentRecoveryState.Pending;
     public int Attempts { get; set; }
     public string? FailureClass { get; set; }
@@ -58,14 +67,23 @@ public sealed class SegmentRecoveryTree
 
     public string DocumentId { get; }
     public int MinimumSegmentCharacters { get; }
+
+    /// <summary>Section 8: the floor for VISIBLE context characters surrounding a leaf's OWNED
+    /// range. Ownership (who may emit a heading) and visibility (how much surrounding context the
+    /// model gets to reason with) are independent -- a tiny owned range must not collapse the
+    /// visible window down to itself and one immediate neighbor.</summary>
+    public int MinimumVisibleContextCharacters { get; }
     public string RootSegmentId { get; }
     public IReadOnlyList<int> OccurrenceCharacterLengths { get; }
 
-    public SegmentRecoveryTree(string documentId, IReadOnlyList<int> occurrenceCharacterLengths, int minimumSegmentCharacters = 1_500)
+    public SegmentRecoveryTree(
+        string documentId, IReadOnlyList<int> occurrenceCharacterLengths, int minimumSegmentCharacters = 1_500,
+        int minimumVisibleContextCharacters = 4_000)
     {
         DocumentId = documentId;
         OccurrenceCharacterLengths = occurrenceCharacterLengths;
         MinimumSegmentCharacters = Math.Max(1, minimumSegmentCharacters);
+        MinimumVisibleContextCharacters = Math.Max(0, minimumVisibleContextCharacters);
         var rootAtoms = occurrenceCharacterLengths.Select((len, idx) => new SegmentAtom(idx, 0, len)).ToArray();
         RootSegmentId = ComputeSegmentId(documentId, rootAtoms);
         _nodes[RootSegmentId] = new SegmentNode
@@ -87,7 +105,8 @@ public sealed class SegmentRecoveryTree
     public IReadOnlyList<SegmentNode> Leaves => _nodes.Values.Where(n => n.Status != SegmentRecoveryState.SplitParent).ToArray();
 
     public IReadOnlyList<SegmentNode> PendingLeaves => Leaves
-        .Where(n => n.Status is SegmentRecoveryState.Pending or SegmentRecoveryState.TransientRetry or SegmentRecoveryState.WorkloadSplitRequired)
+        .Where(n => n.Status is SegmentRecoveryState.Pending or SegmentRecoveryState.TransientRetry
+            or SegmentRecoveryState.WorkloadSplitRequired or SegmentRecoveryState.StaleTerminal)
         .ToArray();
 
     public bool IsComplete => Leaves.Count > 0 && Leaves.All(n => n.Status == SegmentRecoveryState.Success);
@@ -191,18 +210,67 @@ public sealed class SegmentRecoveryTree
         return (left, right);
     }
 
-    private IReadOnlyList<SegmentAtom> ExpandHalo(IReadOnlyList<SegmentAtom> owned, int haloOccurrences)
+    /// <summary>Section 8: expands OWNED into a VISIBLE window. At least <paramref name="haloOccurrences"/>
+    /// neighboring occurrences are always included on each side (when available) -- but a tiny owned
+    /// range does not stop there: each side keeps pulling further neighboring occurrences until it
+    /// has contributed at least <see cref="MinimumVisibleContextCharacters"/> of halo, or the
+    /// document boundary is reached. This is a pure function of (owned, haloOccurrences,
+    /// MinimumVisibleContextCharacters, OccurrenceCharacterLengths) -- deterministic and safe to
+    /// recompute on any resume to check whether a persisted node's Visible is still current.</summary>
+    public IReadOnlyList<SegmentAtom> ExpandHalo(IReadOnlyList<SegmentAtom> owned, int haloOccurrences)
     {
-        if (haloOccurrences <= 0 || owned.Count == 0) return owned;
+        if (owned.Count == 0) return owned;
         var minOcc = owned[0].OccurrenceIndex;
         var maxOcc = owned[^1].OccurrenceIndex;
-        var visible = new List<SegmentAtom>();
-        for (var occ = Math.Max(0, minOcc - haloOccurrences); occ < minOcc; occ++)
-            visible.Add(new SegmentAtom(occ, 0, OccurrenceCharacterLengths[occ]));
+
+        var left = new List<SegmentAtom>();
+        var leftOcc = minOcc - 1;
+        while (leftOcc >= 0 && (minOcc - 1 - leftOcc < haloOccurrences || left.Sum(a => a.Length) < MinimumVisibleContextCharacters))
+        {
+            left.Insert(0, new SegmentAtom(leftOcc, 0, OccurrenceCharacterLengths[leftOcc]));
+            leftOcc--;
+        }
+
+        var right = new List<SegmentAtom>();
+        var rightOcc = maxOcc + 1;
+        while (rightOcc < OccurrenceCharacterLengths.Count && (rightOcc - maxOcc - 1 < haloOccurrences || right.Sum(a => a.Length) < MinimumVisibleContextCharacters))
+        {
+            right.Add(new SegmentAtom(rightOcc, 0, OccurrenceCharacterLengths[rightOcc]));
+            rightOcc++;
+        }
+
+        var visible = new List<SegmentAtom>(left.Count + owned.Count + right.Count);
+        visible.AddRange(left);
         visible.AddRange(owned);
-        for (var occ = maxOcc + 1; occ < Math.Min(OccurrenceCharacterLengths.Count, maxOcc + 1 + haloOccurrences); occ++)
-            visible.Add(new SegmentAtom(occ, 0, OccurrenceCharacterLengths[occ]));
+        visible.AddRange(right);
         return visible;
+    }
+
+    private static bool VisibleAtomsEqual(IReadOnlyList<SegmentAtom> a, IReadOnlyList<SegmentAtom> b)
+    {
+        if (a.Count != b.Count) return false;
+        for (var i = 0; i < a.Count; i++)
+            if (a[i] != b[i]) return false;
+        return true;
+    }
+
+    /// <summary>Section 9: recomputes a FAILED_TERMINAL leaf's Visible window under the tree's
+    /// current halo policy. If the corrected window differs from what this leaf was actually
+    /// evaluated against, the old FAILED_TERMINAL verdict no longer reflects the current runtime
+    /// contract -- the leaf is promoted to STALE_TERMINAL (eligible for exactly one bounded
+    /// re-attempt) instead of being silently reused or silently re-run forever. A leaf whose
+    /// recomputed window is unchanged is left exactly as it was (a genuine, still-current
+    /// terminal failure is never disturbed).</summary>
+    public bool ReconcileTerminalContract(string segmentId, int haloOccurrences)
+    {
+        var node = _nodes[segmentId];
+        if (node.Status != SegmentRecoveryState.FailedTerminal) return false;
+        var recomputed = ExpandHalo(node.Owned, haloOccurrences);
+        if (VisibleAtomsEqual(node.Visible, recomputed)) return false;
+        node.Visible = recomputed;
+        node.Status = SegmentRecoveryState.StaleTerminal;
+        node.Attempts = 0;
+        return true;
     }
 
     /// <summary>Section 10: coverage=1.0, overlap=0, no unresolved leaf -- verified against the
@@ -250,9 +318,9 @@ public sealed class SegmentRecoveryTree
     /// already-split parents are never re-split.</summary>
     public static SegmentRecoveryTree RestoreFromSnapshot(
         string documentId, IReadOnlyList<int> occurrenceCharacterLengths, int minimumSegmentCharacters,
-        IReadOnlyList<SegmentNodeSnapshot> snapshot)
+        IReadOnlyList<SegmentNodeSnapshot> snapshot, int minimumVisibleContextCharacters = 4_000)
     {
-        var tree = new SegmentRecoveryTree(documentId, occurrenceCharacterLengths, minimumSegmentCharacters);
+        var tree = new SegmentRecoveryTree(documentId, occurrenceCharacterLengths, minimumSegmentCharacters, minimumVisibleContextCharacters);
         if (snapshot.Count == 0) return tree;
         tree._nodes.Clear();
         foreach (var s in snapshot)
@@ -351,7 +419,7 @@ public sealed record SegmentLeafArtifactKey(
     string Model,
     string ReasoningMode);
 
-public sealed record SegmentLeafArtifact(string SegmentId, string PredictionJson, string ResponseHash);
+public sealed record SegmentLeafArtifact(string SegmentId, string PredictionJson, string RequestHash, string ResponseHash);
 
 /// <summary>Section 7 persistence: one directory per leaf, written immediately on SUCCESS. A
 /// resume that finds a leaf directory whose freeze.json key matches the requested key reuses the
@@ -380,8 +448,12 @@ public static class SegmentLeafPersistence
         if (!MatchesKey(root, key)) return false;
 
         var predictionJson = File.ReadAllText(predictionPath);
+        // Restore the immutable request/response lineage; do not replace the original request
+        // hash with a synthetic reuse marker when a SUCCESS leaf is resumed.
+        var requestHash = root.TryGetProperty("requestHash", out var req) ? req.GetString() ?? "" : "";
         var responseHash = root.TryGetProperty("responseHash", out var rh) ? rh.GetString() ?? "" : "";
-        artifact = new SegmentLeafArtifact(key.SegmentId, predictionJson, responseHash);
+        if (string.IsNullOrWhiteSpace(requestHash) || string.IsNullOrWhiteSpace(responseHash)) return false;
+        artifact = new SegmentLeafArtifact(key.SegmentId, predictionJson, requestHash, responseHash);
         return true;
     }
 

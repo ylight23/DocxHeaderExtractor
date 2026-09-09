@@ -185,6 +185,60 @@ public static class CeilingPacketBuilder
     }
 }
 
+/// <summary>
+/// Canonical, harness-owned span binder shared by fresh execution and disk reload (per-segment
+/// recovery mission, union/reload lineage). A heading's declared local "i" is honored whenever it
+/// names an occurrence this request actually owns. When it does not -- the observed real-world
+/// failure mode: a compact ceiling packet carries exactly one OWNED occurrence alongside one or
+/// more context-only (owned=null) halo occurrences, and the model emits the same local index
+/// (frequently 0) for every heading regardless of which packet slot is actually owned -- the
+/// heading is unambiguous only because there is exactly one legal destination for it. In that
+/// specific case it is rebound to the sole owned occurrence rather than silently discarded, which
+/// is what previously turned a genuinely successful leaf (real headings, correctly reasoned) into
+/// a persisted SUCCESS with zero bound proposals. When a request owns more than one occurrence, an
+/// unresolvable index is never guessed -- there would be no principled way to choose among
+/// candidates, so the heading is dropped exactly as before.
+/// </summary>
+public static class CeilingProposalBinder
+{
+    public static CeilingOccurrenceBinding? ResolveBinding(
+        int declaredLocalIndex, IReadOnlyList<CeilingOccurrenceBinding> bindings, IReadOnlySet<string> ownedOccurrenceIds)
+    {
+        if (declaredLocalIndex >= 0 && declaredLocalIndex < bindings.Count)
+        {
+            var declared = bindings[declaredLocalIndex];
+            if (ownedOccurrenceIds.Contains(declared.SourceOccurrenceId)) return declared;
+        }
+
+        CeilingOccurrenceBinding? onlyOwned = null;
+        foreach (var binding in bindings)
+        {
+            if (!ownedOccurrenceIds.Contains(binding.SourceOccurrenceId)) continue;
+            if (onlyOwned is not null) return null; // more than one owned occurrence -- ambiguous, never guess
+            onlyOwned = binding;
+        }
+        return onlyOwned;
+    }
+
+    /// <summary>Resolves and range-checks every heading in one pass. Deterministic given
+    /// (headings, packetResult, ownedOccurrenceIds) -- a fresh execution and a reload that rebuild
+    /// the identical packet from the identical persisted leaf atoms always produce byte-identical
+    /// output from this method.</summary>
+    public static IReadOnlyList<(string SourceId, int Start, int End, string Role)> Bind(
+        IReadOnlyList<CeilingHeadingProposal> headings, CeilingPacketResult packetResult, IReadOnlySet<string> ownedOccurrenceIds)
+    {
+        var results = new List<(string, int, int, string)>();
+        foreach (var heading in headings)
+        {
+            var binding = ResolveBinding(heading.I, packetResult.Bindings, ownedOccurrenceIds);
+            if (binding is null) continue;
+            if (!binding.TryBind(heading.Start, heading.End, out var globalStart, out var globalEnd, out var owned) || !owned) continue;
+            results.Add((binding.SourceId, globalStart, globalEnd, heading.Role));
+        }
+        return results;
+    }
+}
+
 /// <summary>Closed semantic-role vocabulary for the strict ceiling schema (v3). Identical
 /// vocabulary to the legacy contract; only the OUTPUT SHAPE changed (no hierarchy fields).</summary>
 public static class CeilingSemanticRole

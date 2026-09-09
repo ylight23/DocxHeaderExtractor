@@ -87,6 +87,7 @@ public sealed class SegmentRecoveryTreeTests
 
             Assert.True(SegmentLeafPersistence.TryLoad(outputRoot, key, out var artifact));
             Assert.NotNull(artifact);
+            Assert.Equal("reqhash1", artifact!.RequestHash);
             Assert.Equal("resphash1", artifact!.ResponseHash);
             Assert.Equal("{\"headings\":[]}", artifact.PredictionJson);
         }
@@ -253,6 +254,71 @@ public sealed class SegmentRecoveryTreeTests
         gate.MarkFrozen();
         var exception = Record.Exception(() => gate.GuardGoldRead());
         Assert.Null(exception);
+    }
+
+    // (M) section 8: a tiny owned range must not collapse the visible window down to itself and a
+    // single fixed-hop-count neighbor -- the halo keeps expanding until a minimum visible-context
+    // character floor is reached (or the document boundary is hit).
+    [Fact]
+    public void TinyOwnedRangeStillGetsALargeVisibleHalo()
+    {
+        // Mirrors the real DOC-0264 shape: two tiny front-matter occurrences (32, 113 chars)
+        // followed by one huge body occurrence. With the old fixed "1 neighboring occurrence" halo,
+        // a leaf owning only occurrence 0 would see just 32+113=145 visible chars, never reaching
+        // the real content.
+        var tree = new SegmentRecoveryTree("DOC-TEST", [32, 113, 50_000], minimumSegmentCharacters: 1, minimumVisibleContextCharacters: 6_000);
+        var (left, _) = tree.Split(tree.RootSegmentId); // splits occurrence 0 off from {1,2}
+        var (tiny, _) = tree.Split(left.SegmentId);      // isolates occurrence 0 alone as a leaf
+
+        Assert.Single(tiny.Owned);
+        Assert.Equal(0, tiny.Owned[0].OccurrenceIndex);
+        Assert.Equal(32, tiny.OwnedCharacters);
+
+        var visibleCharacters = tiny.Visible.Sum(a => a.Length);
+        Assert.True(visibleCharacters >= 6_000, $"expected >= 6000 visible characters, got {visibleCharacters}");
+        // The model may legitimately emit a heading whose span begins inside the tiny owned range,
+        // reasoning from the larger visible halo -- occurrence 2 (the real body) must be reachable.
+        Assert.Contains(tiny.Visible, a => a.OccurrenceIndex == 2);
+    }
+
+    // (N) section 9: a FAILED_TERMINAL leaf whose visible-context contract changed underneath it
+    // (e.g. the halo policy was corrected) is no longer validly terminal -- it is promoted to
+    // STALE_TERMINAL for exactly one bounded re-attempt, not silently reused and not re-run forever.
+    [Fact]
+    public void RuntimeContractChangeInvalidatesFailedTerminalIntoStaleTerminal()
+    {
+        // Build under the OLD (narrow) halo policy and terminate a tiny leaf.
+        var oldTree = new SegmentRecoveryTree("DOC-TEST", [32, 113, 50_000], minimumSegmentCharacters: 1, minimumVisibleContextCharacters: 0);
+        var (oldLeft, _) = oldTree.Split(oldTree.RootSegmentId);
+        var (oldTiny, _) = oldTree.Split(oldLeft.SegmentId);
+        oldTree.MarkFailedTerminal(oldTiny.SegmentId, ReasoningCompletionFailureClass.ProviderTotalTimeout);
+        var narrowVisibleChars = oldTiny.Visible.Sum(a => a.Length);
+
+        var snapshot = oldTree.ExportSnapshot();
+
+        // Resume under the CORRECTED (wide) halo policy.
+        var resumedTree = SegmentRecoveryTree.RestoreFromSnapshot("DOC-TEST", [32, 113, 50_000], 1, snapshot, minimumVisibleContextCharacters: 6_000);
+        var resumedNode = resumedTree.Get(oldTiny.SegmentId);
+        Assert.Equal(SegmentRecoveryState.FailedTerminal, resumedNode.Status);
+        Assert.Equal(narrowVisibleChars, resumedNode.Visible.Sum(a => a.Length));
+
+        var changed = resumedTree.ReconcileTerminalContract(oldTiny.SegmentId, haloOccurrences: 1);
+
+        Assert.True(changed);
+        Assert.Equal(SegmentRecoveryState.StaleTerminal, resumedNode.Status);
+        Assert.Equal(0, resumedNode.Attempts);
+        Assert.True(resumedNode.Visible.Sum(a => a.Length) > narrowVisibleChars);
+        // Owned range (and therefore identity/coverage) is completely untouched by reconciliation.
+        Assert.Equal(oldTiny.Owned, resumedNode.Owned);
+        // STALE_TERMINAL is eligible for exactly one bounded re-attempt -- it must show up as
+        // pending work, not be silently skipped forever.
+        Assert.Contains(resumedNode.SegmentId, resumedTree.PendingLeaves.Select(n => n.SegmentId));
+
+        // A second reconciliation against the same (now-current) contract is a no-op: a genuinely
+        // still-current terminal/stale state is never repeatedly perturbed.
+        resumedTree.MarkFailedTerminal(oldTiny.SegmentId, ReasoningCompletionFailureClass.ProviderTotalTimeout);
+        var changedAgain = resumedTree.ReconcileTerminalContract(oldTiny.SegmentId, haloOccurrences: 1);
+        Assert.False(changedAgain);
     }
 
     [Fact]
