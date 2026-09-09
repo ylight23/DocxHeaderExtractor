@@ -30,6 +30,10 @@ public static class OpenRouterQwen9BMultiPassRunner
     private const string Model = "qwen/qwen3.5-9b";
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string ReasoningMode = "CEILING_NEVER_DISABLED";
+    private const int MinimumSegmentCharacters = 12_000;
+    private const int MinimumVisibleContextCharacters = 6_000;
+    private const int HaloOccurrences = 1;
+    private const int MaxTransientAttemptsPerLeaf = 2;
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
@@ -101,6 +105,8 @@ public static class OpenRouterQwen9BMultiPassRunner
         Console.WriteLine("S0_PROVIDER_CALLS=0");
 
         // ---- Provider preflight (S1/S2/S3 only) -------------------------------------------------
+        using var liveLease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, "S1/S2/S3", DocumentId, ct);
+        Console.WriteLine($"LIVE_PROVIDER_LOCK=acquired concurrentCampaignsDetected={liveLease.ConcurrentCampaignsDetected} providerConcurrency={liveLease.ProviderConcurrency}");
         var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
         var options = new RemoteInferenceOptions
         {
@@ -135,13 +141,13 @@ public static class OpenRouterQwen9BMultiPassRunner
 
         try
         {
-            var s1 = await RunS1Async(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct);
+            var s1 = await RunS1SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct);
             strategies.Add(s1);
 
-            var s2Result = await RunS2Async(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct);
+            var s2Result = await RunS2SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct);
             strategies.Add(s2Result.Metric);
 
-            var s3 = await RunS3Async(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s2Result.UnionLocalProposals, goldPath, item.SourceSha256, ct);
+            var s3 = await RunS3SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s2Result.UnionLocalProposals, goldPath, item.SourceSha256, ct);
             strategies.Add(s3);
         }
         catch (ReasoningCompletionException ex)
@@ -213,6 +219,359 @@ public static class OpenRouterQwen9BMultiPassRunner
         Console.WriteLine($"FINAL_CLASSIFICATION={classification}");
         Console.WriteLine("VLM_NEXT_STEP=VLM_UNDECIDED");
         return 0;
+    }
+
+    private sealed record SegmentPassResult(
+        bool Complete, string? FailureClass, IReadOnlyList<RequestPacketTelemetry> Telemetry,
+        int SegmentCount, int SplitCount, int SuccessfulLeaves, int ReusedLeaves);
+
+    private sealed record SegmentPacket(
+        CeilingPacketResult Packet, IReadOnlySet<string> OwnedSet,
+        IReadOnlyDictionary<string, (int Start, int End)> OwnedWindow);
+
+    private static async Task<SegmentPassResult> ExecuteSegmentPassAsync(
+        string strategy, string dir, string sourceSha256, string configurationSignature,
+        IReadOnlyList<ReasoningSourceOccurrence> occurrences,
+        Func<SegmentNode, Task<(string ResponseJson, RequestPacketTelemetry Telemetry)>> invoke,
+        Action<SegmentNode, string> consume, OpenRouterCeilingReasoningModel model, CancellationToken ct)
+    {
+        Directory.CreateDirectory(dir);
+        var lengths = occurrences.Select(o => o.RawText.Length).ToArray();
+        var treePath = Path.Combine(dir, "segment-tree-state.v1.json");
+        var tree = LoadSegmentTree(treePath, sourceSha256, configurationSignature, lengths);
+        var telemetry = new List<RequestPacketTelemetry>();
+        var splitCount = tree.AllNodes.Count(n => n.Status == SegmentRecoveryState.SplitParent);
+        var successCount = 0;
+        var reusedCount = 0;
+        string? failureClass = null;
+
+        while (tree.PendingLeaves.Count > 0)
+        {
+            ct.ThrowIfCancellationRequested();
+            var leaf = tree.PendingLeaves[0];
+            if (leaf.Status == SegmentRecoveryState.WorkloadSplitRequired ||
+                (leaf.Status == SegmentRecoveryState.TransientRetry && leaf.Attempts >= MaxTransientAttemptsPerLeaf))
+            {
+                if (!tree.CanSplit(leaf))
+                {
+                    tree.MarkFailedTerminal(leaf.SegmentId, leaf.FailureClass ?? "WORKLOAD_SHAPE_RECOVERY_FLOOR");
+                    failureClass ??= leaf.FailureClass;
+                }
+                else
+                {
+                    tree.Split(leaf.SegmentId, HaloOccurrences);
+                    splitCount++;
+                }
+                SaveSegmentTree(treePath, tree, sourceSha256, configurationSignature);
+                continue;
+            }
+
+            var planHash = SegmentLeafPersistence.PlanHash(leaf.Owned);
+            var key = new SegmentLeafArtifactKey(DocumentId, leaf.SegmentId, sourceSha256, configurationSignature, planHash, Model, ReasoningMode);
+            if (SegmentLeafPersistence.TryLoad(dir, key, out var cached) && cached is not null)
+            {
+                tree.MarkSuccess(leaf.SegmentId, cached.RequestHash, cached.ResponseHash);
+                consume(leaf, cached.PredictionJson);
+                reusedCount++;
+                SaveSegmentTree(treePath, tree, sourceSha256, configurationSignature);
+                continue;
+            }
+
+            tree.MarkRunning(leaf.SegmentId);
+            SaveSegmentTree(treePath, tree, sourceSha256, configurationSignature);
+            var beforeTelemetry = model.Telemetry.Count;
+            try
+            {
+                var (responseJson, requestTelemetry) = await invoke(leaf).ConfigureAwait(false);
+                telemetry.Add(requestTelemetry);
+                var requestHash = Sha256Text($"{strategy}:{DocumentId}:{leaf.SegmentId}:attempt-{leaf.Attempts + 1}");
+                var responseHash = Sha256Text(responseJson);
+                var manifest = JsonSerializer.Serialize(new
+                {
+                    documentId = DocumentId, strategy, pass = strategy, segmentId = leaf.SegmentId,
+                    parentSegmentId = leaf.ParentSegmentId, depth = leaf.Depth, owned = leaf.Owned,
+                    visible = leaf.Visible, requestHash, inventoryHash = Sha256Text(responseJson),
+                }, JsonOptions);
+                var execution = JsonSerializer.Serialize(new
+                {
+                    documentId = DocumentId, strategy, segmentId = leaf.SegmentId, attemptOrdinal = leaf.Attempts + 1,
+                    finishReason = requestTelemetry.FinishReason ?? "NOT_EXPOSED", reportedModel = requestTelemetry.Model,
+                    responseContentPresent = requestTelemetry.ResponseContentPresent ?? false,
+                    structuredOutputParsed = requestTelemetry.StructuredOutputParsed ?? false,
+                    timeoutDetected = requestTelemetry.TimeoutDetected ?? false,
+                    outputLimitDetected = string.Equals(requestTelemetry.FinishReason, "length", StringComparison.OrdinalIgnoreCase),
+                    inputTokens = requestTelemetry.ReportedInputTokens, reasoningTokens = requestTelemetry.ReportedReasoningTokens,
+                    outputTokens = requestTelemetry.ReportedOutputTokens, latencyMs = requestTelemetry.ElapsedMs,
+                }, JsonOptions);
+                SegmentLeafPersistence.Save(dir, key, manifest, responseJson, execution, requestHash, responseHash);
+                tree.MarkSuccess(leaf.SegmentId, requestHash, responseHash);
+                consume(leaf, responseJson);
+                successCount++;
+            }
+            catch (ReasoningCompletionException ex)
+            {
+                telemetry.AddRange(model.Telemetry.Skip(beforeTelemetry));
+                tree.RecordFailure(leaf.SegmentId, ex.FailureClass);
+                failureClass ??= ex.FailureClass;
+            }
+            catch (OperationCanceledException) when (!ct.IsCancellationRequested)
+            {
+                telemetry.AddRange(model.Telemetry.Skip(beforeTelemetry));
+                tree.RecordFailure(leaf.SegmentId, ReasoningCompletionFailureClass.ProviderTotalTimeout);
+                failureClass ??= ReasoningCompletionFailureClass.ProviderTotalTimeout;
+            }
+            catch (Exception ex) when (ex is FormatException or JsonException or HttpRequestException)
+            {
+                telemetry.AddRange(model.Telemetry.Skip(beforeTelemetry));
+                tree.RecordFailure(leaf.SegmentId, ReasoningCompletionFailureClass.OtherProviderFailure);
+                failureClass ??= ReasoningCompletionFailureClass.OtherProviderFailure;
+            }
+            SaveSegmentTree(treePath, tree, sourceSha256, configurationSignature);
+        }
+
+        var complete = tree.VerifyFullCoverage();
+        return new SegmentPassResult(complete, complete ? null : failureClass ?? "SEGMENTED_RECOVERY_PARTIAL_BLOCKED",
+            telemetry, tree.Leaves.Count, splitCount, successCount, reusedCount);
+    }
+
+    private static SegmentPacket BuildSegmentPacket(IReadOnlyList<ReasoningSourceOccurrence> occurrences, SegmentNode leaf)
+    {
+        var ownedByOccurrence = leaf.Owned.GroupBy(a => a.OccurrenceIndex)
+            .ToDictionary(g => g.Key, g => (g.Min(a => a.CharStart), g.Max(a => a.CharEnd)));
+        var visibleByOccurrence = leaf.Visible.GroupBy(a => a.OccurrenceIndex)
+            .ToDictionary(g => g.Key, g => (g.Min(a => a.CharStart), g.Max(a => a.CharEnd)));
+        var visible = new List<ReasoningSourceOccurrence>();
+        var visibleWindow = new Dictionary<string, (int Start, int End)>(StringComparer.Ordinal);
+        var ownedWindow = new Dictionary<string, (int Start, int End)>(StringComparer.Ordinal);
+        var ownedSet = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var (index, window) in visibleByOccurrence.OrderBy(x => x.Key))
+        {
+            var occurrence = occurrences[index];
+            visible.Add(occurrence);
+            visibleWindow[occurrence.SourceOccurrenceId] = window;
+            if (ownedByOccurrence.TryGetValue(index, out var owned))
+            {
+                ownedSet.Add(occurrence.SourceOccurrenceId);
+                ownedWindow[occurrence.SourceOccurrenceId] = owned;
+            }
+            else ownedWindow[occurrence.SourceOccurrenceId] = (window.Item1, window.Item1);
+        }
+        return new SegmentPacket(CeilingPacketBuilder.Build(visible, ownedSet, visibleWindow, ownedWindow), ownedSet, ownedWindow);
+    }
+
+    private static SegmentRecoveryTree LoadSegmentTree(string path, string sourceSha256, string configurationSignature, int[] lengths)
+    {
+        if (File.Exists(path))
+        {
+            try
+            {
+                using var doc = JsonDocument.Parse(File.ReadAllText(path));
+                var root = doc.RootElement;
+                if (root.GetProperty("sourceSha256").GetString() == sourceSha256 && root.GetProperty("configurationSignature").GetString() == configurationSignature)
+                {
+                    var snapshot = root.GetProperty("nodes").Deserialize<SegmentRecoveryTree.SegmentNodeSnapshot[]>(JsonOptions) ?? [];
+                    var normalized = snapshot.Select(x => x.Status == SegmentRecoveryState.Running ? x with { Status = SegmentRecoveryState.Pending } : x).ToArray();
+                    return SegmentRecoveryTree.RestoreFromSnapshot(DocumentId, lengths, MinimumSegmentCharacters, normalized, MinimumVisibleContextCharacters);
+                }
+            }
+            catch (JsonException) { }
+        }
+        return new SegmentRecoveryTree(DocumentId, lengths, MinimumSegmentCharacters, MinimumVisibleContextCharacters);
+    }
+
+    private static void SaveSegmentTree(string path, SegmentRecoveryTree tree, string sourceSha256, string configurationSignature)
+    {
+        var temp = path + ".tmp";
+        File.WriteAllText(temp, JsonSerializer.Serialize(new
+        {
+            documentId = DocumentId, sourceSha256, configurationSignature, nodes = tree.ExportSnapshot(), savedUtc = DateTimeOffset.UtcNow,
+        }, JsonOptions));
+        File.Move(temp, path, true);
+    }
+
+    private static IReadOnlyList<CeilingHeadingProposal> GlobalInventoryForSegment(
+        SegmentPacket segment, IReadOnlyList<(string SourceId, int Start, int End, string Role)> globalInventory)
+    {
+        var result = new List<CeilingHeadingProposal>();
+        foreach (var item in globalInventory)
+        {
+            var binding = segment.Packet.Bindings.FirstOrDefault(x => x.SourceId == item.SourceId);
+            if (binding is null || item.Start >= binding.VisibleEnd || item.End <= binding.VisibleStart) continue;
+            var start = item.Start - binding.VisibleStart;
+            var end = item.End - binding.VisibleStart;
+            if (start >= 0 && end > start && end <= binding.RawTextLength - binding.VisibleStart)
+                result.Add(new CeilingHeadingProposal(binding.LocalIndex, start, end, item.Role));
+        }
+        return result;
+    }
+
+    private static bool IsOwnedStart(SegmentPacket segment, int localIndex, int start)
+    {
+        var binding = segment.Packet.Bindings.FirstOrDefault(x => x.LocalIndex == localIndex);
+        return binding is not null && binding.TryBind(start, start + 1, out _, out _, out var owned) && owned;
+    }
+
+    private static IReadOnlyList<(string SourceId, int Start, int End, string Role)> Globalize(
+        IReadOnlyList<CeilingHeadingProposal> local, CeilingPacketResult fullPacket) => local
+        .Select(p => fullPacket.Bindings.FirstOrDefault(b => b.LocalIndex == p.I) is { } b
+            ? (b.SourceId, p.Start + b.VisibleStart, p.End + b.VisibleStart, p.Role)
+            : ("", 0, 0, ""))
+        .Where(x => x.Item1.Length > 0)
+        .ToArray();
+
+    private static async Task<StrategyMetric> RunS1SegmentedAsync(
+        string output, OpenRouterCeilingReasoningModel model, string route, string configurationSignature, string gitSha,
+        SourceDocument source, DocxPolicyState policy, IReadOnlyList<ReasoningSourceOccurrence> occurrences,
+        CeilingPacketResult packetResult, IReadOnlySet<string> ownedSet, IReadOnlyList<CeilingHeadingProposal> s0LocalProposals,
+        string goldPath, string sourceSha256, CancellationToken ct)
+    {
+        var dir = Path.Combine(output, "s1");
+        var inventory = Globalize(s0LocalProposals, packetResult);
+        var reviewItems = new List<(CeilingHeadingProposal Proposal, string Marker, string? CorrectsKey)>();
+        var run = await ExecuteSegmentPassAsync("S1", Path.Combine(dir, "segments"), sourceSha256, configurationSignature, occurrences,
+            async leaf =>
+            {
+                var segment = BuildSegmentPacket(occurrences, leaf);
+                var localInventory = GlobalInventoryForSegment(segment, inventory);
+                var inventoryJson = OmissionReviewPrompt.BuildInventoryJson(localInventory);
+                var requestId = $"{OmissionReviewPrompt.ProtocolVersion}:{DocumentId}:{leaf.SegmentId}:{configurationSignature}:attempt-{leaf.Attempts + 1}";
+                var (review, telemetry) = await model.CompleteOmissionReviewAsync(DocumentId, route, requestId,
+                    segment.Packet.SerializedJson, inventoryJson, segment.Packet.SourceTextCharacters,
+                    segment.OwnedSet.Count, segment.Packet.Bindings.Count, ct).ConfigureAwait(false);
+                return (JsonSerializer.Serialize(review, JsonOptions), telemetry);
+            },
+            (leaf, responseJson) =>
+            {
+                var segment = BuildSegmentPacket(occurrences, leaf);
+                var review = OmissionReviewResponseParser.Parse(responseJson);
+                var localInventory = GlobalInventoryForSegment(segment, inventory);
+                foreach (var item in review.Items)
+                {
+                    if (!IsOwnedStart(segment, item.I, item.Start)) continue;
+                    var binding = segment.Packet.Bindings.FirstOrDefault(b => b.LocalIndex == item.I);
+                    if (binding is null || !binding.TryBind(item.Start, item.End, out var globalStart, out var globalEnd, out var owned) || !owned) continue;
+                    var fullIndex = packetResult.Bindings.First(b => b.SourceId == binding.SourceId).LocalIndex;
+                    string? correctsKey = null;
+                    if (item.Marker == OmissionReviewMarker.SpanCorrection && item.CorrectsProposalIndex is int idx && idx >= 0 && idx < localInventory.Count)
+                    {
+                        var old = localInventory[idx];
+                        var oldBinding = segment.Packet.Bindings.FirstOrDefault(b => b.LocalIndex == old.I);
+                        if (oldBinding is not null && oldBinding.TryBind(old.Start, old.End, out var oldStart, out var oldEnd, out _))
+                            correctsKey = Key(oldBinding.SourceId, oldStart, oldEnd);
+                    }
+                    reviewItems.Add((new CeilingHeadingProposal(fullIndex, globalStart, globalEnd, item.Role), item.Marker, correctsKey));
+                }
+            }, model, ct);
+        if (!run.Complete)
+            throw new ReasoningCompletionException(run.FailureClass!, "S1 segmented recovery did not reach complete ownership coverage.",
+                new ReasoningCompletionTelemetry { DocumentId = DocumentId, FailureClass = run.FailureClass! });
+
+        var corrected = reviewItems.Where(x => x.CorrectsKey is not null).Select(x => x.CorrectsKey!).ToHashSet(StringComparer.Ordinal);
+        var combined = s0LocalProposals.Where(p => !corrected.Contains(KeyForLocal(p, packetResult)))
+            .Concat(reviewItems.Select(x => x.Proposal)).ToArray();
+        return await FinalizeStrategyAsync("S1", dir, source, policy, occurrences, packetResult, ownedSet, combined, goldPath, gitSha, configurationSignature,
+            run.Telemetry.Count, run.Telemetry, new { s0InventoryHash = Sha256Text(JsonSerializer.Serialize(inventory)), segmented = true, segmentCount = run.SegmentCount, splitCount = run.SplitCount }, ct, sourceSha256,
+            run.SegmentCount, run.SplitCount, run.SuccessfulLeaves, run.ReusedLeaves);
+    }
+
+    private static string KeyForLocal(CeilingHeadingProposal p, CeilingPacketResult fullPacket)
+    {
+        var binding = fullPacket.Bindings.FirstOrDefault(b => b.LocalIndex == p.I);
+        return binding is null ? $"invalid:{p.I}:{p.Start}:{p.End}" : Key(binding.SourceId, p.Start + binding.VisibleStart, p.End + binding.VisibleStart);
+    }
+
+    private static async Task<(StrategyMetric Metric, IReadOnlyList<CeilingHeadingProposal> UnionLocalProposals)> RunS2SegmentedAsync(
+        string output, OpenRouterCeilingReasoningModel model, string route, string configurationSignature, string gitSha,
+        SourceDocument source, DocxPolicyState policy, IReadOnlyList<ReasoningSourceOccurrence> occurrences,
+        CeilingPacketResult packetResult, IReadOnlySet<string> ownedSet, IReadOnlyList<CeilingHeadingProposal> extractorALocal,
+        string goldPath, string sourceSha256, CancellationToken ct)
+    {
+        var dir = Path.Combine(output, "s2");
+        var extractorB = new List<CeilingHeadingProposal>();
+        var run = await ExecuteSegmentPassAsync("S2", Path.Combine(dir, "extractor-b-segments"), sourceSha256, configurationSignature, occurrences,
+            async leaf =>
+            {
+                var segment = BuildSegmentPacket(occurrences, leaf);
+                var requestId = $"{ExhaustiveCoverageSemanticPrompt.ProtocolVersion}:{DocumentId}:{leaf.SegmentId}:{configurationSignature}:attempt-{leaf.Attempts + 1}";
+                var (response, telemetry) = await model.CompleteCoverageSemanticAsync(DocumentId, route, requestId,
+                    segment.Packet.SerializedJson, segment.Packet.SourceTextCharacters, segment.OwnedSet.Count, segment.Packet.Bindings.Count, ct).ConfigureAwait(false);
+                return (JsonSerializer.Serialize(response, JsonOptions), telemetry);
+            },
+            (leaf, responseJson) =>
+            {
+                var segment = BuildSegmentPacket(occurrences, leaf);
+                var response = CeilingSemanticResponseParser.Parse(responseJson);
+                foreach (var p in response.Headings)
+                {
+                    if (!IsOwnedStart(segment, p.I, p.Start)) continue;
+                    var binding = segment.Packet.Bindings.FirstOrDefault(b => b.LocalIndex == p.I);
+                    if (binding is null || !binding.TryBind(p.Start, p.End, out var start, out var end, out var owned) || !owned) continue;
+                    var fullIndex = packetResult.Bindings.First(b => b.SourceId == binding.SourceId).LocalIndex;
+                    extractorB.Add(new CeilingHeadingProposal(fullIndex, start, end, p.Role));
+                }
+            }, model, ct);
+        if (!run.Complete)
+            throw new ReasoningCompletionException(run.FailureClass!, "S2 segmented recovery did not reach complete ownership coverage.",
+                new ReasoningCompletionTelemetry { DocumentId = DocumentId, FailureClass = run.FailureClass! });
+        var union = MultiPassProposalCombiner.UnionExtractors(extractorALocal, extractorB);
+        var metric = await FinalizeStrategyAsync("S2", dir, source, policy, occurrences, packetResult, ownedSet, union, goldPath, gitSha, configurationSignature,
+            run.Telemetry.Count, run.Telemetry, new { extractorAHash = Sha256Text(JsonSerializer.Serialize(extractorALocal)), extractorBResultHash = Sha256Text(JsonSerializer.Serialize(extractorB)), segmented = true, segmentCount = run.SegmentCount, splitCount = run.SplitCount }, ct, sourceSha256,
+            run.SegmentCount, run.SplitCount, run.SuccessfulLeaves, run.ReusedLeaves);
+        return (metric, union);
+    }
+
+    private static async Task<StrategyMetric> RunS3SegmentedAsync(
+        string output, OpenRouterCeilingReasoningModel model, string route, string configurationSignature, string gitSha,
+        SourceDocument source, DocxPolicyState policy, IReadOnlyList<ReasoningSourceOccurrence> occurrences,
+        CeilingPacketResult packetResult, IReadOnlySet<string> ownedSet, IReadOnlyList<CeilingHeadingProposal> s2UnionLocal,
+        string goldPath, string sourceSha256, CancellationToken ct)
+    {
+        var dir = Path.Combine(output, "s3");
+        var candidatesById = MultiPassProposalCombiner.AssignCandidateIds(s2UnionLocal);
+        var decisions = new List<VerifierProposalDecision>();
+        var run = await ExecuteSegmentPassAsync("S3", Path.Combine(dir, "verifier-segments"), sourceSha256, configurationSignature, occurrences,
+            async leaf =>
+            {
+                var segment = BuildSegmentPacket(occurrences, leaf);
+                var visibleSourceIds = segment.Packet.Bindings.Select(b => b.SourceId).ToHashSet(StringComparer.Ordinal);
+                var candidates = candidatesById.Where(kv => visibleSourceIds.Contains(packetResult.Bindings[kv.Value.I].SourceId))
+                    .Where(kv => IsOwnedStartForFullProposal(segment, kv.Value, packetResult)).Select(kv => new { id = kv.Key, i = ToSegmentIndex(segment, packetResult.Bindings[kv.Value.I].SourceId), start = ToSegmentStart(segment, packetResult.Bindings[kv.Value.I].SourceId, kv.Value.Start, packetResult), end = ToSegmentStart(segment, packetResult.Bindings[kv.Value.I].SourceId, kv.Value.End, packetResult), role = kv.Value.Role }).ToArray();
+                var requestId = $"{VerifierPrompt.ProtocolVersion}:{DocumentId}:{leaf.SegmentId}:{configurationSignature}:attempt-{leaf.Attempts + 1}";
+                var (response, telemetry) = await model.CompleteVerifierAsync(DocumentId, route, requestId,
+                    ExtractOccurrencesArray(segment.Packet.SerializedJson), JsonSerializer.Serialize(candidates), segment.Packet.SourceTextCharacters, segment.OwnedSet.Count, segment.Packet.Bindings.Count, ct).ConfigureAwait(false);
+                return (JsonSerializer.Serialize(response, JsonOptions), telemetry);
+            },
+            (leaf, responseJson) =>
+            {
+                var verifier = VerifierResponseParser.Parse(responseJson);
+                var segment = BuildSegmentPacket(occurrences, leaf);
+                foreach (var decision in verifier.Decisions)
+                    if (candidatesById.TryGetValue(decision.Id, out var candidate) && IsOwnedStartForFullProposal(segment, candidate, packetResult))
+                        decisions.Add(decision);
+            }, model, ct);
+        if (!run.Complete)
+            throw new ReasoningCompletionException(run.FailureClass!, "S3 segmented recovery did not reach complete ownership coverage.",
+                new ReasoningCompletionTelemetry { DocumentId = DocumentId, FailureClass = run.FailureClass! });
+        var survivors = MultiPassProposalCombiner.ApplyVerifierDecisions(candidatesById, new VerifierResponse(decisions));
+        return await FinalizeStrategyAsync("S3", dir, source, policy, occurrences, packetResult, ownedSet, survivors, goldPath, gitSha, configurationSignature,
+            run.Telemetry.Count, run.Telemetry, new { s2UnionHash = Sha256Text(JsonSerializer.Serialize(s2UnionLocal)), verifierResponseHash = Sha256Text(JsonSerializer.Serialize(decisions)), segmented = true, segmentCount = run.SegmentCount, splitCount = run.SplitCount }, ct, sourceSha256,
+            run.SegmentCount, run.SplitCount, run.SuccessfulLeaves, run.ReusedLeaves);
+    }
+
+    private static bool IsOwnedStartForFullProposal(SegmentPacket segment, CeilingHeadingProposal proposal, CeilingPacketResult fullPacket)
+    {
+        var sourceId = fullPacket.Bindings[proposal.I].SourceId;
+        var binding = segment.Packet.Bindings.FirstOrDefault(x => x.SourceId == sourceId);
+        return binding is not null && proposal.Start >= binding.VisibleStart && proposal.Start < binding.VisibleEnd &&
+            proposal.Start >= binding.OwnedStart && proposal.Start < binding.OwnedEnd;
+    }
+
+    private static int ToSegmentIndex(SegmentPacket segment, string sourceId) => segment.Packet.Bindings.First(x => x.SourceId == sourceId).LocalIndex;
+    private static int ToSegmentStart(SegmentPacket segment, string sourceId, int globalStart, CeilingPacketResult fullPacket)
+    {
+        var binding = segment.Packet.Bindings.First(x => x.SourceId == sourceId);
+        var fullBinding = fullPacket.Bindings.First(x => x.SourceId == sourceId);
+        return globalStart - binding.VisibleStart;
     }
 
     // ============================== Strategy S1 (omission review) ==============================
@@ -289,7 +648,8 @@ public static class OpenRouterQwen9BMultiPassRunner
         string strategy, string dir, SourceDocument source, DocxPolicyState policy,
         IReadOnlyList<ReasoningSourceOccurrence> occurrences, CeilingPacketResult packetResult, IReadOnlySet<string> ownedSet,
         IReadOnlyList<CeilingHeadingProposal> localProposals, string goldPath, string gitSha, string configurationSignature,
-        int providerCalls, IReadOnlyList<RequestPacketTelemetry> telemetry, object rawInputHashes, CancellationToken ct, string sourceSha256)
+        int providerCalls, IReadOnlyList<RequestPacketTelemetry> telemetry, object rawInputHashes, CancellationToken ct, string sourceSha256,
+        int segmentCount = 1, int splitCount = 0, int successfulLeaves = 0, int reusedLeaves = 0)
     {
         var occurrenceById = occurrences.ToDictionary(o => o.SourceId, StringComparer.Ordinal);
         var bound = CeilingProposalBinder.Bind(localProposals, packetResult, ownedSet);
@@ -323,6 +683,17 @@ public static class OpenRouterQwen9BMultiPassRunner
         await WriteJsonAsync(executionPath, new
         {
             documentId = DocumentId, strategy, providerCalls,
+            segmentCount, splitCount, successfulLeaves, reusedLeaves,
+            providerAttempts = telemetry.Count,
+            providerSuccessfulResponses = telemetry.Count(t => t.StructuredOutputParsed == true),
+            providerTimeouts = telemetry.Count(t => t.TimeoutDetected == true),
+            providerOutputLimits = telemetry.Count(t => string.Equals(t.FinishReason, "length", StringComparison.OrdinalIgnoreCase)),
+            providerTransportFailures = telemetry.Count(t => t.FailureClass is not null && t.FailureClass != ReasoningCompletionFailureClass.ProviderOutputLimit && t.TimeoutDetected != true),
+            providerCallsCurrentRun = telemetry.Count, providerCallsHistoricalReused = 0,
+            reasoningTokensKnown = telemetry.Count(t => t.ReportedReasoningTokens.HasValue),
+            outputTokensKnown = telemetry.Count(t => t.ReportedOutputTokens.HasValue),
+            inputTokensKnown = telemetry.Count(t => t.ReportedInputTokens.HasValue),
+            usageUnknownAttempts = telemetry.Count(t => !t.ReportedInputTokens.HasValue || !t.ReportedOutputTokens.HasValue),
             inputTokens = telemetry.Sum(t => t.ReportedInputTokens ?? 0), outputTokens = telemetry.Sum(t => t.ReportedOutputTokens ?? 0),
             reasoningTokens = telemetry.Sum(t => t.ReportedReasoningTokens ?? 0),
             finishReasons = telemetry.Select(t => t.FinishReason ?? "NOT_EXPOSED").ToArray(),
@@ -344,6 +715,17 @@ public static class OpenRouterQwen9BMultiPassRunner
             documentId = DocumentId, strategy, gitSha, sourceSha256, model = Model, reasoningMode = ReasoningMode,
             configurationSignature, semanticPromptHash, packetHash,
             predictionSha256 = predictionSha, resultSha256 = resultSha, providerCalls,
+            segmentCount, splitCount, successfulLeaves, reusedLeaves,
+            providerAttempts = telemetry.Count,
+            providerSuccessfulResponses = telemetry.Count(t => t.StructuredOutputParsed == true),
+            providerTimeouts = telemetry.Count(t => t.TimeoutDetected == true),
+            providerOutputLimits = telemetry.Count(t => string.Equals(t.FinishReason, "length", StringComparison.OrdinalIgnoreCase)),
+            providerTransportFailures = telemetry.Count(t => t.FailureClass is not null && t.FailureClass != ReasoningCompletionFailureClass.ProviderOutputLimit && t.TimeoutDetected != true),
+            providerCallsCurrentRun = telemetry.Count, providerCallsHistoricalReused = 0,
+            reasoningTokensKnown = telemetry.Count(t => t.ReportedReasoningTokens.HasValue),
+            outputTokensKnown = telemetry.Count(t => t.ReportedOutputTokens.HasValue),
+            inputTokensKnown = telemetry.Count(t => t.ReportedInputTokens.HasValue),
+            usageUnknownAttempts = telemetry.Count(t => !t.ReportedInputTokens.HasValue || !t.ReportedOutputTokens.HasValue),
             inputTokens = telemetry.Sum(t => t.ReportedInputTokens ?? 0), outputTokens = telemetry.Sum(t => t.ReportedOutputTokens ?? 0),
             reasoningTokens = telemetry.Sum(t => t.ReportedReasoningTokens ?? 0),
             finishReasons = telemetry.Select(t => t.FinishReason ?? "NOT_EXPOSED").ToArray(),
@@ -380,13 +762,13 @@ public static class OpenRouterQwen9BMultiPassRunner
         return new StrategyMetric(strategy, localProposals.Count, globalProposals.Count, finalElements.Length,
             score.TP, score.FP, score.FN, score.P, score.R, score.F1, trueModelOmission, modelWrongSpan, modelFalsePositive,
             systemLoss, providerCalls, telemetry.Sum(t => t.ReportedReasoningTokens ?? 0), telemetry.Sum(t => t.ReportedOutputTokens ?? 0),
-            telemetry.Sum(t => t.ElapsedMs));
+            telemetry.Sum(t => t.ElapsedMs), segmentCount, splitCount, successfulLeaves, reusedLeaves);
     }
 
     private static StrategyMetric ReadS0Metric(string s0ScorePath, int rawProposalCount)
     {
         if (!File.Exists(s0ScorePath))
-            return new StrategyMetric("S0", rawProposalCount, rawProposalCount, 0, 0, 0, 71, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            return new StrategyMetric("S0", rawProposalCount, rawProposalCount, 0, 0, 0, 71, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         using var doc = JsonDocument.Parse(File.ReadAllText(s0ScorePath));
         var root = doc.RootElement;
         var tp = root.GetProperty("tp").GetInt32();
@@ -396,7 +778,7 @@ public static class OpenRouterQwen9BMultiPassRunner
         var r = root.GetProperty("recall").GetDouble();
         var f1 = root.GetProperty("f1").GetDouble();
         // From the frozen zero-F1 forensic audit (offline, diagnostic-only, never re-derived here).
-        return new StrategyMetric("S0", rawProposalCount, rawProposalCount, tp + fp, tp, fp, fn, p, r, f1, 69, 2, fp, 0, 6, 16_409, 18_896, 0);
+        return new StrategyMetric("S0", rawProposalCount, rawProposalCount, tp + fp, tp, fp, fn, p, r, f1, 69, 2, fp, 0, 0, 16_409, 18_896, 0, 1, 0, 0, 1);
     }
 
     private static IEnumerable<string> ClassifyFirstLoss(
@@ -577,5 +959,6 @@ public static class OpenRouterQwen9BMultiPassRunner
         string Strategy, int RawProposalCount, int BoundProposalCount, int FinalHeadingCount,
         int TP, int FP, int FN, double Precision, double Recall, double F1,
         int TrueModelOmission, int ModelWrongSpan, int ModelFalsePositive, int SystemInducedLoss,
-        int ProviderCalls, int ReasoningTokens, int OutputTokens, long WallTimeMs);
+        int ProviderCalls, int ReasoningTokens, int OutputTokens, long WallTimeMs,
+        int SegmentCount, int SplitCount, int SuccessfulLeaves, int ReusedLeaves);
 }

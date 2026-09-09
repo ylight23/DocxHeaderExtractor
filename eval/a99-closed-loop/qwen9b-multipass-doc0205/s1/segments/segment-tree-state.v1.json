@@ -1,0 +1,59 @@
+{
+  "documentId": "DOC-0205",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "configurationSignature": "887ce24f80ad627d971f8194d4d07313bb6fd176639c5af60698a5a07ec24c6a",
+  "nodes": [
+    {
+      "segmentId": "seg-3b2235d181b26dfe",
+      "parentSegmentId": null,
+      "depth": 0,
+      "owned": [
+        {
+          "occurrenceIndex": 0,
+          "charStart": 0,
+          "charEnd": 37,
+          "length": 37
+        },
+        {
+          "occurrenceIndex": 1,
+          "charStart": 0,
+          "charEnd": 113,
+          "length": 113
+        },
+        {
+          "occurrenceIndex": 2,
+          "charStart": 0,
+          "charEnd": 60769,
+          "length": 60769
+        }
+      ],
+      "visible": [
+        {
+          "occurrenceIndex": 0,
+          "charStart": 0,
+          "charEnd": 37,
+          "length": 37
+        },
+        {
+          "occurrenceIndex": 1,
+          "charStart": 0,
+          "charEnd": 113,
+          "length": 113
+        },
+        {
+          "occurrenceIndex": 2,
+          "charStart": 0,
+          "charEnd": 60769,
+          "length": 60769
+        }
+      ],
+      "status": "PENDING",
+      "attempts": 1,
+      "failureClass": "OTHER_PROVIDER_FAILURE",
+      "requestHash": null,
+      "responseHash": null,
+      "childSegmentIds": []
+    }
+  ],
+  "savedUtc": "2026-09-09T08:38:57.7292226+00:00"
+}
