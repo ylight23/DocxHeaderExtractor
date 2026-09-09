@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "a99-qwen37-flash-reasoning-ceiling-v1",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "OpenRouter",
+  "dataClassification": "PUBLIC",
+  "zdrRequested": false,
+  "privacyExceptionAuthorized": true,
+  "privacyExceptionScope": "THIS_CAMPAIGN_ONLY",
+  "modelFallback": "NONE",
+  "selectedDocuments": [
+    "DOC-0205",
+    "DOC-0258"
+  ],
+  "preflightAvailable": true,
+  "preflightClassification": "",
+  "preflightReason": "MODEL_AVAILABLE",
+  "capability": {
+    "modelId": "qwen/qwen3.7-flash",
+    "contextLength": 1000000,
+    "reasoningSupported": true,
+    "supportedReasoningEfforts": [],
+    "defaultReasoningEffort": null,
+    "maxCompletionTokens": 65536,
+    "supportedParameters": [
+      "include_reasoning",
+      "logprobs",
+      "max_tokens",
+      "presence_penalty",
+      "reasoning",
+      "response_format",
+      "seed",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_logprobs",
+      "top_p"
+    ],
+    "structuredOutputSupported": true,
+    "selectedReasoningEffort": "enabled",
+    "reasoningEnabled": true,
+    "effortListReported": false
+  },
+  "goldReadBeforeFreeze": false,
+  "startedUtc": "2026-09-09T16:24:11.0650689+00:00"
+}

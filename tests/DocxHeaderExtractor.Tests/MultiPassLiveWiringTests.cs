@@ -162,6 +162,39 @@ public sealed class MultiPassLiveWiringTests
     }
 
     [Fact]
+    public async Task PublicBenchmark_OmitsZdrOnlyWhenExplicitlyEnabled_AndKeepsReasoningControl()
+    {
+        var handler = new CapturingHandler { ResponseContent = "{\"headings\":[]}" };
+        var capability = Capability() with { ModelId = "qwen/qwen3.7-flash" };
+        using var model = new OpenRouterCeilingReasoningModel(new RemoteInferenceOptions
+        {
+            ApiKey = "k", Model = capability.ModelId, OpenRouterAllowNonZdrPublicBenchmark = true,
+            OpenRouterReasoningEnabledOverride = false,
+        }, capability, new HttpClient(handler));
+
+        var (_, telemetry) = await model.CompleteSemanticAsync("D", "ModelCapabilityCeiling", "public-r0", "{\"occurrences\":[]}", 0, 0, 0);
+        var root = handler.CapturedBody!.RootElement;
+        Assert.False(root.TryGetProperty("provider", out _));
+        Assert.False(root.GetProperty("reasoning").GetProperty("enabled").GetBoolean());
+        Assert.False(telemetry.ReasoningRequested);
+        Assert.False(telemetry.ReasoningAccepted);
+    }
+
+    [Fact]
+    public async Task NormalCampaign_RetainsZdrProviderPolicy()
+    {
+        var (model, handler) = NewModel();
+        handler.ResponseContent = "{\"headings\":[]}";
+
+        await model.CompleteSemanticAsync("D", "ModelCapabilityCeiling", "normal", "{\"occurrences\":[]}", 0, 0, 0);
+
+        var provider = handler.CapturedBody!.RootElement.GetProperty("provider");
+        Assert.True(provider.GetProperty("zdr").GetBoolean());
+        Assert.Equal("deny", provider.GetProperty("data_collection").GetString());
+        Assert.True(provider.GetProperty("require_parameters").GetBoolean());
+    }
+
+    [Fact]
     public async Task PinnedProviderRoute_IsInRequest_WhileCanonicalRequestHashStaysRouteNeutral()
     {
         var first = new CapturingHandler { ResponseContent = "{\"headings\":[]}" };

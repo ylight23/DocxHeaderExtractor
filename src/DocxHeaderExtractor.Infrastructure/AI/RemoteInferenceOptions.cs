@@ -24,6 +24,12 @@ public sealed class RemoteInferenceOptions
     /// serving route with fallbacks disabled. Null preserves the existing automatic routing
     /// policy. This is intentionally an infrastructure option, never a semantic prompt input.</summary>
     public string? OpenRouterProviderRoute { get; set; }
+    /// <summary>Campaign-scoped exception for public benchmark documents. Default false keeps
+    /// the normal OpenRouter zero-data-retention policy unchanged.</summary>
+    public bool OpenRouterAllowNonZdrPublicBenchmark { get; set; }
+    /// <summary>Optional A/B control override. Null uses the provider-reported reasoning
+    /// ceiling; false sends the explicit reasoning.enabled=false control.</summary>
+    public bool? OpenRouterReasoningEnabledOverride { get; set; }
     public Action<string>? DebugLog { get; set; }
 
     public void Validate(bool requireModel = true)

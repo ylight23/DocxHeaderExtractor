@@ -1,0 +1,2076 @@
+{
+  "documentId": "DOC-0258",
+  "model": "qwen/qwen3.7-flash",
+  "reasoningMode": "R1_CEILING",
+  "executionMode": "FULL_CONTEXT_CEILING",
+  "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+  "sourceCharacters": 31703,
+  "packetCharacters": 43299,
+  "packetHash": "185917cd4c44f4a63b2e3f99ef766c01cab04f174c9acf07145856c44ff9235e",
+  "promptHash": "68ea21005b50f43b3c39338152f4a5a640882922a2163735dbe98ef286cfe68d",
+  "schemaHash": "11b12dceeaf5267392a0e0cb3eff31a00e0820d361a1f4c735eaeb02b04f46f3",
+  "semanticProtocolVersion": "a99-ceiling-semantic-v3",
+  "rawProposalCount": 30,
+  "boundProposalCount": 30,
+  "spanErrorCount": 0,
+  "validatedSemanticCount": 28,
+  "proposals": [
+    {
+      "sourceId": "body[1]/p[3]",
+      "headingSpan": {
+        "start": 0,
+        "end": 87
+      },
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "semanticRole": "DOCUMENT_TITLE",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "headingSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "text": "MAY 15 - 18, 2023",
+      "semanticRole": "FRONT_MATTER",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "headingSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "text": "Hybrid meeting",
+      "semanticRole": "FRONT_MATTER",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[6]",
+      "headingSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "text": "Welcome and meeting objectives",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[10]",
+      "headingSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "headingSpan": {
+        "start": 0,
+        "end": 6
+      },
+      "text": "Africa",
+      "semanticRole": "SUBSECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[12]",
+      "headingSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "text": "Asia and the Pacific",
+      "semanticRole": "SUBSECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[17]",
+      "headingSpan": {
+        "start": 0,
+        "end": 28
+      },
+      "text": "Eurostat\u2013OECD PPP Program Mi",
+      "semanticRole": "SUBSECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[18]",
+      "headingSpan": {
+        "start": 0,
+        "end": 26
+      },
+      "text": "Commonwealth of Independen",
+      "semanticRole": "SUBSECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[19]",
+      "headingSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "text": "Latin America and the Caribbea",
+      "semanticRole": "SUBSECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[24]",
+      "headingSpan": {
+        "start": 0,
+        "end": 12
+      },
+      "text": "Western Asia",
+      "semanticRole": "SUBSECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[25]",
+      "headingSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[39]",
+      "headingSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "text": "Data review: Household consumption price and importance data",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[48]",
+      "headingSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "text": "Data review: Housing prices and volumes",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[50]",
+      "headingSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "text": "Data review: Private Education",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[56]",
+      "headingSpan": {
+        "start": 0,
+        "end": 64
+      },
+      "text": "Data review: Government compensation and productivity adjustment",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[59]",
+      "headingSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "text": "Data review: Machinery and equipment and construction",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[62]",
+      "headingSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "text": "Data review: 2017-2021 National Accounts expenditures",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[70]",
+      "headingSpan": {
+        "start": 0,
+        "end": 59
+      },
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[72]",
+      "headingSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "text": "Results review: draft revised 2017 and 2021 results",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[74]",
+      "headingSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "text": "Planning for the ICP 2024 cycle",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[84]",
+      "headingSpan": {
+        "start": 0,
+        "end": 70
+      },
+      "text": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[91]",
+      "headingSpan": {
+        "start": 0,
+        "end": 68
+      },
+      "text": "Planning for an approach to produce annual ICP results and forecasts",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[96]",
+      "headingSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "text": "Any other business",
+      "semanticRole": "SECTION",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[102]",
+      "headingSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "text": "Annex 1: Meeting Agenda",
+      "semanticRole": "ANNEX_HEADING",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 57
+      },
+      "text": "DAY 1: MONDAY, MAY 15, 2023 09:00 \u2013 09:10 Opening remarks",
+      "semanticRole": "CHAPTER",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[103]",
+      "headingSpan": {
+        "start": 0,
+        "end": 28
+      },
+      "text": "DAY 2: TUESDAY, MAY 16, 2023",
+      "semanticRole": "CHAPTER",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[2]",
+      "headingSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "text": "DAY 3: WEDNESDAY, MAY 17, 2023",
+      "semanticRole": "CHAPTER",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[104]",
+      "headingSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "text": "DAY 4: THURSDAY, MAY 18, 2023",
+      "semanticRole": "CHAPTER",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    },
+    {
+      "sourceId": "body[1]/p[115]",
+      "headingSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "text": "Annex 2: List",
+      "semanticRole": "ANNEX_HEADING",
+      "proposedLevel": null,
+      "proposedParent": null,
+      "confidence": 1,
+      "decisionEvidence": []
+    }
+  ],
+  "projection": [
+    {
+      "proposalId": "reasoning:body[1]/p[102]:0:23",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[103]:0:28",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[104]:0:29",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[10]:0:53",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[115]:0:13",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[11]:0:6",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[12]:0:20",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[17]:0:28",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[18]:0:26",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[19]:0:30",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[24]:0:12",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[25]:0:51",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[39]:0:60",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[3]:0:87",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[48]:0:39",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[4]:0:17",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "VALIDATION_REJECTED"
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[50]:0:30",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[56]:0:64",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[59]:0:53",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[5]:0:14",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "VALIDATION_REJECTED"
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[62]:0:53",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[6]:0:30",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[70]:0:59",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[72]:0:51",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[74]:0:31",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[84]:0:70",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[91]:0:68",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/p[96]:0:18",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:57",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    },
+    {
+      "proposalId": "reasoning:body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30",
+      "projectionStatus": "INCLUDED",
+      "projectionReason": null
+    }
+  ],
+  "headings": [
+    {
+      "id": "reasoning:body[1]/p[3]:0:87",
+      "type": "Title",
+      "role": "DocumentTitle",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[3]",
+          "sourceOrdinal": 2,
+          "span": {
+            "start": 0,
+            "end": 87
+          }
+        }
+      ],
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[6]:0:30",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[6]",
+          "sourceOrdinal": 5,
+          "span": {
+            "start": 0,
+            "end": 30
+          }
+        }
+      ],
+      "text": "Welcome and meeting objectives",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Welcome and meeting objectives",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[10]:0:53",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[10]",
+          "sourceOrdinal": 9,
+          "span": {
+            "start": 0,
+            "end": 53
+          }
+        }
+      ],
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Regional updates on the ICP 2021 cycle implementation",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[11]:0:6",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[11]",
+          "sourceOrdinal": 10,
+          "span": {
+            "start": 0,
+            "end": 6
+          }
+        }
+      ],
+      "text": "Africa",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Africa",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[12]:0:20",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[12]",
+          "sourceOrdinal": 11,
+          "span": {
+            "start": 0,
+            "end": 20
+          }
+        }
+      ],
+      "text": "Asia and the Pacific",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Asia and the Pacific",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[17]:0:28",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[17]",
+          "sourceOrdinal": 16,
+          "span": {
+            "start": 0,
+            "end": 28
+          }
+        }
+      ],
+      "text": "Eurostat\u2013OECD PPP Program Mi",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Eurostat\u2013OECD PPP Program Mi",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[18]:0:26",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[18]",
+          "sourceOrdinal": 17,
+          "span": {
+            "start": 0,
+            "end": 26
+          }
+        }
+      ],
+      "text": "Commonwealth of Independen",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Commonwealth of Independen",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[19]:0:30",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[19]",
+          "sourceOrdinal": 18,
+          "span": {
+            "start": 0,
+            "end": 30
+          }
+        }
+      ],
+      "text": "Latin America and the Caribbea",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Latin America and the Caribbea",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[24]:0:12",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[24]",
+          "sourceOrdinal": 23,
+          "span": {
+            "start": 0,
+            "end": 12
+          }
+        }
+      ],
+      "text": "Western Asia",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Western Asia",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[25]:0:51",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[25]",
+          "sourceOrdinal": 24,
+          "span": {
+            "start": 0,
+            "end": 51
+          }
+        }
+      ],
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Global updates on the ICP 2021 cycle implementation",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[39]:0:60",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[39]",
+          "sourceOrdinal": 38,
+          "span": {
+            "start": 0,
+            "end": 60
+          }
+        }
+      ],
+      "text": "Data review: Household consumption price and importance data",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Data review: Household consumption price and importance data",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[48]:0:39",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[48]",
+          "sourceOrdinal": 50,
+          "span": {
+            "start": 0,
+            "end": 39
+          }
+        }
+      ],
+      "text": "Data review: Housing prices and volumes",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Data review: Housing prices and volumes",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[50]:0:30",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[50]",
+          "sourceOrdinal": 52,
+          "span": {
+            "start": 0,
+            "end": 30
+          }
+        }
+      ],
+      "text": "Data review: Private Education",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Data review: Private Education",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[56]:0:64",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[56]",
+          "sourceOrdinal": 58,
+          "span": {
+            "start": 0,
+            "end": 64
+          }
+        }
+      ],
+      "text": "Data review: Government compensation and productivity adjustment",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Data review: Government compensation and productivity adjustment",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[59]:0:53",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[59]",
+          "sourceOrdinal": 61,
+          "span": {
+            "start": 0,
+            "end": 53
+          }
+        }
+      ],
+      "text": "Data review: Machinery and equipment and construction",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Data review: Machinery and equipment and construction",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[62]:0:53",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[62]",
+          "sourceOrdinal": 64,
+          "span": {
+            "start": 0,
+            "end": 53
+          }
+        }
+      ],
+      "text": "Data review: 2017-2021 National Accounts expenditures",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Data review: 2017-2021 National Accounts expenditures",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[70]:0:59",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[70]",
+          "sourceOrdinal": 72,
+          "span": {
+            "start": 0,
+            "end": 59
+          }
+        }
+      ],
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Data review: 2017-2021 Population and market exchange rates",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[72]:0:51",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[72]",
+          "sourceOrdinal": 74,
+          "span": {
+            "start": 0,
+            "end": 51
+          }
+        }
+      ],
+      "text": "Results review: draft revised 2017 and 2021 results",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Results review: draft revised 2017 and 2021 results",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[74]:0:31",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[74]",
+          "sourceOrdinal": 76,
+          "span": {
+            "start": 0,
+            "end": 31
+          }
+        }
+      ],
+      "text": "Planning for the ICP 2024 cycle",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Planning for the ICP 2024 cycle",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[84]:0:70",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[84]",
+          "sourceOrdinal": 86,
+          "span": {
+            "start": 0,
+            "end": 70
+          }
+        }
+      ],
+      "text": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[91]:0:68",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[91]",
+          "sourceOrdinal": 93,
+          "span": {
+            "start": 0,
+            "end": 68
+          }
+        }
+      ],
+      "text": "Planning for an approach to produce annual ICP results and forecasts",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Planning for an approach to produce annual ICP results and forecasts",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[96]:0:18",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[96]",
+          "sourceOrdinal": 98,
+          "span": {
+            "start": 0,
+            "end": 18
+          }
+        }
+      ],
+      "text": "Any other business",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Any other business",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[102]:0:23",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[102]",
+          "sourceOrdinal": 104,
+          "span": {
+            "start": 0,
+            "end": 23
+          }
+        }
+      ],
+      "text": "Annex 1: Meeting Agenda",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Annex 1: Meeting Agenda",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:57",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+          "sourceOrdinal": 105,
+          "span": {
+            "start": 0,
+            "end": 57
+          }
+        }
+      ],
+      "text": "DAY 1: MONDAY, MAY 15, 2023 09:00 \u2013 09:10 Opening remarks",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "DAY 1: MONDAY, MAY 15, 2023 09:00 \u2013 09:10 Opening remarks",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[103]:0:28",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[103]",
+          "sourceOrdinal": 126,
+          "span": {
+            "start": 0,
+            "end": 28
+          }
+        }
+      ],
+      "text": "DAY 2: TUESDAY, MAY 16, 2023",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "DAY 2: TUESDAY, MAY 16, 2023",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[2]",
+          "sourceOrdinal": 136,
+          "span": {
+            "start": 0,
+            "end": 30
+          }
+        }
+      ],
+      "text": "DAY 3: WEDNESDAY, MAY 17, 2023",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "DAY 3: WEDNESDAY, MAY 17, 2023",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[104]:0:29",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[104]",
+          "sourceOrdinal": 143,
+          "span": {
+            "start": 0,
+            "end": 29
+          }
+        }
+      ],
+      "text": "DAY 4: THURSDAY, MAY 18, 2023",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "DAY 4: THURSDAY, MAY 18, 2023",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    },
+    {
+      "id": "reasoning:body[1]/p[115]:0:13",
+      "type": "Heading",
+      "role": "HeadingTopic",
+      "sources": [
+        {
+          "sourceId": "body[1]/p[115]",
+          "sourceOrdinal": 159,
+          "span": {
+            "start": 0,
+            "end": 13
+          }
+        }
+      ],
+      "text": "Annex 2: List",
+      "level": 1,
+      "parentId": null,
+      "validation": {
+        "candidateGrounded": true,
+        "sourceFactsPresent": true,
+        "proposedSpanValid": true,
+        "sourceSelectionValid": true,
+        "validatedSourceCount": 1,
+        "typeValid": true,
+        "levelValid": true,
+        "parentValid": true,
+        "rejectionReason": null,
+        "typeRoleValid": true
+      },
+      "decision": {
+        "origin": "reasoning-preserving-eval",
+        "status": "accepted",
+        "confidence": 1,
+        "confidenceBasis": "model-proposal",
+        "disputed": false
+      },
+      "projectionMetadata": {
+        "compatibilitySourceId": null,
+        "compatibilitySourceOrdinal": null,
+        "compatibilityStableId": null,
+        "compatibilityHeadingSpan": null,
+        "compatibilityText": null,
+        "originalText": "Annex 2: List",
+        "inlineBody": null,
+        "inlineBodySpan": null,
+        "boundarySource": null,
+        "styleId": null,
+        "modelConfirmed": false,
+        "criticConfirmed": false,
+        "acceptanceSignature": null,
+        "calibrationSamples": 0,
+        "evidence": null
+      }
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

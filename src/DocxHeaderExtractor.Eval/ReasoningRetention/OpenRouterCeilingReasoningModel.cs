@@ -19,6 +19,8 @@ public sealed record RequestPacketTelemetry
     [JsonPropertyName("model")] public required string Model { get; init; }
     [JsonPropertyName("reasoningEffort")] public required string ReasoningEffort { get; init; }
     [JsonPropertyName("reasoningExcludedFromResponse")] public required bool ReasoningExcludedFromResponse { get; init; }
+    [JsonPropertyName("reasoningRequested")] public bool ReasoningRequested { get; init; }
+    [JsonPropertyName("reasoningAccepted")] public bool? ReasoningAccepted { get; set; }
     [JsonPropertyName("contextLength")] public required int ContextLength { get; init; }
     [JsonPropertyName("maxPromptTokens")] public required int MaxPromptTokens { get; init; }
     [JsonPropertyName("maxCompletionTokens")] public required int MaxCompletionTokens { get; init; }
@@ -92,10 +94,10 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         _ownsHttp = http is null;
     }
 
-    /// <summary>This adapter always executes in <see cref="ReasoningExecutionMode.Ceiling"/> --
-    /// it never sends reasoning=none and results from it may always be reported as ceiling
-    /// metrics.</summary>
-    public ReasoningExecutionMode ExecutionMode => ReasoningExecutionMode.Ceiling;
+    /// <summary>Normal callers use the reasoning ceiling. An explicit benchmark control may
+    /// request the provider's reasoning.enabled=false mode without changing semantic logic.</summary>
+    public ReasoningExecutionMode ExecutionMode => _options.OpenRouterReasoningEnabledOverride == false
+        ? ReasoningExecutionMode.Fast : ReasoningExecutionMode.Ceiling;
 
     public int ProviderCalls => Volatile.Read(ref _providerCalls);
     public IReadOnlyList<RequestPacketTelemetry> Telemetry => _telemetry;
@@ -261,7 +263,8 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
             PassType = passType,
             Model = _options.Model,
             ReasoningEffort = ReasoningEffortValue,
-            ReasoningExcludedFromResponse = _capability.ReasoningEnabled,
+            ReasoningExcludedFromResponse = ReasoningRequested,
+            ReasoningRequested = ReasoningRequested,
             ContextLength = contextLength,
             MaxPromptTokens = maxPrompt,
             MaxCompletionTokens = maxCompletionTokens,
@@ -275,7 +278,9 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         };
     }
 
-    private string ReasoningEffortValue => _capability.ReasoningEnabled ? _capability.SelectedReasoningEffort : "none";
+    private bool ReasoningRequested => _options.OpenRouterReasoningEnabledOverride ?? _capability.ReasoningEnabled;
+    private string ReasoningEffortValue => !ReasoningRequested
+        ? "disabled" : _capability.SelectedReasoningEffort;
 
     private async Task<(string Content, string? FinishReason)> SendAsync(
         string systemPrompt, string userPrompt, int maxCompletionTokens, object schema, string schemaName,
@@ -283,8 +288,10 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
     {
         Interlocked.Increment(ref _providerCalls);
         var reasoning = BuildReasoningParameter();
-        object body = BuildRequestBody(_options.Model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning, _options.OpenRouterProviderRoute);
-        var canonicalBody = BuildRequestBody(_options.Model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning, null);
+        object body = BuildRequestBody(_options.Model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning,
+            _options.OpenRouterProviderRoute, _options.OpenRouterAllowNonZdrPublicBenchmark);
+        var canonicalBody = BuildRequestBody(_options.Model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning,
+            null, _options.OpenRouterAllowNonZdrPublicBenchmark);
         telemetry.ProviderRoute = _options.OpenRouterProviderRoute ?? "AUTO";
         telemetry.CanonicalRequestHash = Sha256Bytes(JsonSerializer.SerializeToUtf8Bytes(canonicalBody));
         telemetry.RequestBodyHash = Sha256Bytes(JsonSerializer.SerializeToUtf8Bytes(body));
@@ -329,6 +336,7 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
             }
             using var document = JsonDocument.Parse(raw);
             var root = document.RootElement;
+            telemetry.ReasoningAccepted = telemetry.ReasoningRequested;
             telemetry.ProviderCallId = root.TryGetProperty("id", out var id) && id.ValueKind == JsonValueKind.String
                 ? id.GetString() : null;
             telemetry.ProviderRoute = ReadString(root, "provider") ?? ReadString(root, "provider_name") ?? telemetry.ProviderRoute;
@@ -462,6 +470,7 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
     /// model.</summary>
     private object? BuildReasoningParameter()
     {
+        if (_options.OpenRouterReasoningEnabledOverride == false) return new { enabled = false };
         if (!_capability.ReasoningEnabled) return null;
         if (_capability.EffortListReported && _capability.SelectedReasoningEffort != "enabled" && _capability.SelectedReasoningEffort != "none")
             return new { effort = _capability.SelectedReasoningEffort, exclude = true };
@@ -480,8 +489,19 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         parent.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String ? value.GetString() : null;
 
     private static object BuildRequestBody(string model, string systemPrompt, string userPrompt, int maxCompletionTokens,
-        object schema, string schemaName, object? reasoning, string? providerRoute)
+        object schema, string schemaName, object? reasoning, string? providerRoute, bool allowNonZdrPublicBenchmark)
     {
+        if (allowNonZdrPublicBenchmark && providerRoute is null)
+        {
+            return reasoning is null
+                ? new { model, temperature = 0, max_tokens = maxCompletionTokens,
+                    messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userPrompt } },
+                    response_format = new { type = "json_schema", json_schema = new { name = schemaName, strict = true, schema } } }
+                : new { model, temperature = 0, max_tokens = maxCompletionTokens, reasoning,
+                    messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userPrompt } },
+                    response_format = new { type = "json_schema", json_schema = new { name = schemaName, strict = true, schema } } };
+        }
+
         object provider = providerRoute is null
             ? new { zdr = true, data_collection = "deny", require_parameters = true, allow_fallbacks = false }
             : new { order = new[] { providerRoute }, zdr = true, data_collection = "deny", require_parameters = true, allow_fallbacks = false };
