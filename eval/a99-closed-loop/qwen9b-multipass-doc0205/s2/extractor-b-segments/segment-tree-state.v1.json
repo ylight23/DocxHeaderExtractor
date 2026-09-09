@@ -48,175 +48,13 @@
         }
       ],
       "status": "SPLIT_PARENT",
-      "attempts": 2,
+      "attempts": 1,
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
       "requestHash": null,
       "responseHash": null,
       "childSegmentIds": [
         "seg-1a299197342bf872",
         "seg-099cca0365262b37"
-      ]
-    },
-    {
-      "segmentId": "seg-a0405b0341286515",
-      "parentSegmentId": "seg-ade132b8a41520b9",
-      "depth": 3,
-      "owned": [
-        {
-          "occurrenceIndex": 2,
-          "charStart": 37924,
-          "charEnd": 45539,
-          "length": 7615
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 37924,
-          "charEnd": 45539,
-          "length": 7615
-        }
-      ],
-      "status": "FAILED_TERMINAL",
-      "attempts": 1,
-      "failureClass": "PROVIDER_OUTPUT_LIMIT",
-      "requestHash": null,
-      "responseHash": null,
-      "childSegmentIds": []
-    },
-    {
-      "segmentId": "seg-ade132b8a41520b9",
-      "parentSegmentId": "seg-099cca0365262b37",
-      "depth": 2,
-      "owned": [
-        {
-          "occurrenceIndex": 2,
-          "charStart": 30309,
-          "charEnd": 45539,
-          "length": 15230
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 30309,
-          "charEnd": 45539,
-          "length": 15230
-        }
-      ],
-      "status": "SPLIT_PARENT",
-      "attempts": 1,
-      "failureClass": "PROVIDER_OUTPUT_LIMIT",
-      "requestHash": null,
-      "responseHash": null,
-      "childSegmentIds": [
-        "seg-49b8dc39d33e6d73",
-        "seg-a0405b0341286515"
-      ]
-    },
-    {
-      "segmentId": "seg-49b8dc39d33e6d73",
-      "parentSegmentId": "seg-ade132b8a41520b9",
-      "depth": 3,
-      "owned": [
-        {
-          "occurrenceIndex": 2,
-          "charStart": 30309,
-          "charEnd": 37924,
-          "length": 7615
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 30309,
-          "charEnd": 37924,
-          "length": 7615
-        }
-      ],
-      "status": "FAILED_TERMINAL",
-      "attempts": 1,
-      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
-      "requestHash": null,
-      "responseHash": null,
-      "childSegmentIds": []
-    },
-    {
-      "segmentId": "seg-f8dfa1a84ceeb27b",
-      "parentSegmentId": "seg-099cca0365262b37",
-      "depth": 2,
-      "owned": [
-        {
-          "occurrenceIndex": 2,
-          "charStart": 45539,
-          "charEnd": 60769,
-          "length": 15230
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 45539,
-          "charEnd": 60769,
-          "length": 15230
-        }
-      ],
-      "status": "SPLIT_PARENT",
-      "attempts": 1,
-      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
-      "requestHash": null,
-      "responseHash": null,
-      "childSegmentIds": [
-        "seg-1d66642c7aa0cc20",
-        "seg-21bab316480aabc4"
       ]
     },
     {
@@ -316,6 +154,264 @@
       ]
     },
     {
+      "segmentId": "seg-ade132b8a41520b9",
+      "parentSegmentId": "seg-099cca0365262b37",
+      "depth": 2,
+      "owned": [
+        {
+          "occurrenceIndex": 2,
+          "charStart": 30309,
+          "charEnd": 45539,
+          "length": 15230
+        }
+      ],
+      "visible": [
+        {
+          "occurrenceIndex": 0,
+          "charStart": 0,
+          "charEnd": 37,
+          "length": 37
+        },
+        {
+          "occurrenceIndex": 1,
+          "charStart": 0,
+          "charEnd": 113,
+          "length": 113
+        },
+        {
+          "occurrenceIndex": 2,
+          "charStart": 30309,
+          "charEnd": 45539,
+          "length": 15230
+        }
+      ],
+      "status": "SPLIT_PARENT",
+      "attempts": 1,
+      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
+      "requestHash": null,
+      "responseHash": null,
+      "childSegmentIds": [
+        "seg-49b8dc39d33e6d73",
+        "seg-a0405b0341286515"
+      ]
+    },
+    {
+      "segmentId": "seg-f8dfa1a84ceeb27b",
+      "parentSegmentId": "seg-099cca0365262b37",
+      "depth": 2,
+      "owned": [
+        {
+          "occurrenceIndex": 2,
+          "charStart": 45539,
+          "charEnd": 60769,
+          "length": 15230
+        }
+      ],
+      "visible": [
+        {
+          "occurrenceIndex": 0,
+          "charStart": 0,
+          "charEnd": 37,
+          "length": 37
+        },
+        {
+          "occurrenceIndex": 1,
+          "charStart": 0,
+          "charEnd": 113,
+          "length": 113
+        },
+        {
+          "occurrenceIndex": 2,
+          "charStart": 45539,
+          "charEnd": 60769,
+          "length": 15230
+        }
+      ],
+      "status": "SPLIT_PARENT",
+      "attempts": 1,
+      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
+      "requestHash": null,
+      "responseHash": null,
+      "childSegmentIds": [
+        "seg-1d66642c7aa0cc20",
+        "seg-21bab316480aabc4"
+      ]
+    },
+    {
+      "segmentId": "seg-665a8dc9ac2123d8",
+      "parentSegmentId": "seg-1a299197342bf872",
+      "depth": 2,
+      "owned": [
+        {
+          "occurrenceIndex": 2,
+          "charStart": 15079,
+          "charEnd": 30309,
+          "length": 15230
+        }
+      ],
+      "visible": [
+        {
+          "occurrenceIndex": 0,
+          "charStart": 0,
+          "charEnd": 37,
+          "length": 37
+        },
+        {
+          "occurrenceIndex": 1,
+          "charStart": 0,
+          "charEnd": 113,
+          "length": 113
+        },
+        {
+          "occurrenceIndex": 2,
+          "charStart": 15079,
+          "charEnd": 30309,
+          "length": 15230
+        }
+      ],
+      "status": "SPLIT_PARENT",
+      "attempts": 1,
+      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
+      "requestHash": null,
+      "responseHash": null,
+      "childSegmentIds": [
+        "seg-4430eb49ab1fb3b7",
+        "seg-eed94dec9ec8c611"
+      ]
+    },
+    {
+      "segmentId": "seg-418ffc2b3373825d",
+      "parentSegmentId": "seg-1a299197342bf872",
+      "depth": 2,
+      "owned": [
+        {
+          "occurrenceIndex": 0,
+          "charStart": 0,
+          "charEnd": 37,
+          "length": 37
+        },
+        {
+          "occurrenceIndex": 1,
+          "charStart": 0,
+          "charEnd": 113,
+          "length": 113
+        },
+        {
+          "occurrenceIndex": 2,
+          "charStart": 0,
+          "charEnd": 15079,
+          "length": 15079
+        }
+      ],
+      "visible": [
+        {
+          "occurrenceIndex": 0,
+          "charStart": 0,
+          "charEnd": 37,
+          "length": 37
+        },
+        {
+          "occurrenceIndex": 1,
+          "charStart": 0,
+          "charEnd": 113,
+          "length": 113
+        },
+        {
+          "occurrenceIndex": 2,
+          "charStart": 0,
+          "charEnd": 15079,
+          "length": 15079
+        }
+      ],
+      "status": "SPLIT_PARENT",
+      "attempts": 1,
+      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
+      "requestHash": null,
+      "responseHash": null,
+      "childSegmentIds": [
+        "seg-bee56d75e0498922",
+        "seg-99b11e5bc7aa32bc"
+      ]
+    },
+    {
+      "segmentId": "seg-49b8dc39d33e6d73",
+      "parentSegmentId": "seg-ade132b8a41520b9",
+      "depth": 3,
+      "owned": [
+        {
+          "occurrenceIndex": 2,
+          "charStart": 30309,
+          "charEnd": 37924,
+          "length": 7615
+        }
+      ],
+      "visible": [
+        {
+          "occurrenceIndex": 0,
+          "charStart": 0,
+          "charEnd": 37,
+          "length": 37
+        },
+        {
+          "occurrenceIndex": 1,
+          "charStart": 0,
+          "charEnd": 113,
+          "length": 113
+        },
+        {
+          "occurrenceIndex": 2,
+          "charStart": 30309,
+          "charEnd": 37924,
+          "length": 7615
+        }
+      ],
+      "status": "FAILED_TERMINAL",
+      "attempts": 1,
+      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
+      "requestHash": null,
+      "responseHash": null,
+      "childSegmentIds": []
+    },
+    {
+      "segmentId": "seg-a0405b0341286515",
+      "parentSegmentId": "seg-ade132b8a41520b9",
+      "depth": 3,
+      "owned": [
+        {
+          "occurrenceIndex": 2,
+          "charStart": 37924,
+          "charEnd": 45539,
+          "length": 7615
+        }
+      ],
+      "visible": [
+        {
+          "occurrenceIndex": 0,
+          "charStart": 0,
+          "charEnd": 37,
+          "length": 37
+        },
+        {
+          "occurrenceIndex": 1,
+          "charStart": 0,
+          "charEnd": 113,
+          "length": 113
+        },
+        {
+          "occurrenceIndex": 2,
+          "charStart": 37924,
+          "charEnd": 45539,
+          "length": 7615
+        }
+      ],
+      "status": "FAILED_TERMINAL",
+      "attempts": 1,
+      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
+      "requestHash": null,
+      "responseHash": null,
+      "childSegmentIds": []
+    },
+    {
       "segmentId": "seg-1d66642c7aa0cc20",
       "parentSegmentId": "seg-f8dfa1a84ceeb27b",
       "depth": 3,
@@ -394,15 +490,15 @@
       "childSegmentIds": []
     },
     {
-      "segmentId": "seg-665a8dc9ac2123d8",
-      "parentSegmentId": "seg-1a299197342bf872",
-      "depth": 2,
+      "segmentId": "seg-4430eb49ab1fb3b7",
+      "parentSegmentId": "seg-665a8dc9ac2123d8",
+      "depth": 3,
       "owned": [
         {
           "occurrenceIndex": 2,
           "charStart": 15079,
-          "charEnd": 30309,
-          "length": 15230
+          "charEnd": 22694,
+          "length": 7615
         }
       ],
       "visible": [
@@ -421,70 +517,55 @@
         {
           "occurrenceIndex": 2,
           "charStart": 15079,
-          "charEnd": 30309,
-          "length": 15230
+          "charEnd": 22694,
+          "length": 7615
         }
       ],
-      "status": "SUCCESS",
-      "attempts": 0,
-      "failureClass": null,
-      "requestHash": "1d089a6e340a0fae3ff0154550dcd716de793e8ff1ee4110fbb668c2f009303e",
-      "responseHash": "2a88ad03f9289a3ee788950a69c70898cd13dc47b72ec03351782ed4f2278ce3",
-      "childSegmentIds": []
-    },
-    {
-      "segmentId": "seg-418ffc2b3373825d",
-      "parentSegmentId": "seg-1a299197342bf872",
-      "depth": 2,
-      "owned": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 0,
-          "charEnd": 15079,
-          "length": 15079
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 0,
-          "charEnd": 15079,
-          "length": 15079
-        }
-      ],
-      "status": "SPLIT_PARENT",
+      "status": "FAILED_TERMINAL",
       "attempts": 1,
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
       "requestHash": null,
       "responseHash": null,
-      "childSegmentIds": [
-        "seg-bee56d75e0498922",
-        "seg-99b11e5bc7aa32bc"
-      ]
+      "childSegmentIds": []
+    },
+    {
+      "segmentId": "seg-eed94dec9ec8c611",
+      "parentSegmentId": "seg-665a8dc9ac2123d8",
+      "depth": 3,
+      "owned": [
+        {
+          "occurrenceIndex": 2,
+          "charStart": 22694,
+          "charEnd": 30309,
+          "length": 7615
+        }
+      ],
+      "visible": [
+        {
+          "occurrenceIndex": 0,
+          "charStart": 0,
+          "charEnd": 37,
+          "length": 37
+        },
+        {
+          "occurrenceIndex": 1,
+          "charStart": 0,
+          "charEnd": 113,
+          "length": 113
+        },
+        {
+          "occurrenceIndex": 2,
+          "charStart": 22694,
+          "charEnd": 30309,
+          "length": 7615
+        }
+      ],
+      "status": "FAILED_TERMINAL",
+      "attempts": 1,
+      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
+      "requestHash": null,
+      "responseHash": null,
+      "childSegmentIds": []
     },
     {
       "segmentId": "seg-99b11e5bc7aa32bc",
@@ -569,285 +650,6 @@
           "length": 7464
         }
       ],
-      "status": "SPLIT_PARENT",
-      "attempts": 1,
-      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
-      "requestHash": null,
-      "responseHash": null,
-      "childSegmentIds": [
-        "seg-5b1870d72b3dea66",
-        "seg-fe59c28cd5df3f0a"
-      ]
-    },
-    {
-      "segmentId": "seg-fe59c28cd5df3f0a",
-      "parentSegmentId": "seg-bee56d75e0498922",
-      "depth": 4,
-      "owned": [
-        {
-          "occurrenceIndex": 2,
-          "charStart": 3657,
-          "charEnd": 7464,
-          "length": 3807
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 3657,
-          "charEnd": 7464,
-          "length": 3807
-        }
-      ],
-      "status": "FAILED_TERMINAL",
-      "attempts": 1,
-      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
-      "requestHash": null,
-      "responseHash": null,
-      "childSegmentIds": []
-    },
-    {
-      "segmentId": "seg-5b1870d72b3dea66",
-      "parentSegmentId": "seg-bee56d75e0498922",
-      "depth": 4,
-      "owned": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 0,
-          "charEnd": 3657,
-          "length": 3657
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 0,
-          "charEnd": 3657,
-          "length": 3657
-        }
-      ],
-      "status": "SPLIT_PARENT",
-      "attempts": 1,
-      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
-      "requestHash": null,
-      "responseHash": null,
-      "childSegmentIds": [
-        "seg-0652be8b9b37f3b7",
-        "seg-dfbd536d0edf3275"
-      ]
-    },
-    {
-      "segmentId": "seg-dfbd536d0edf3275",
-      "parentSegmentId": "seg-5b1870d72b3dea66",
-      "depth": 5,
-      "owned": [
-        {
-          "occurrenceIndex": 2,
-          "charStart": 1753,
-          "charEnd": 3657,
-          "length": 1904
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 1753,
-          "charEnd": 3657,
-          "length": 1904
-        }
-      ],
-      "status": "FAILED_TERMINAL",
-      "attempts": 1,
-      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
-      "requestHash": null,
-      "responseHash": null,
-      "childSegmentIds": []
-    },
-    {
-      "segmentId": "seg-0652be8b9b37f3b7",
-      "parentSegmentId": "seg-5b1870d72b3dea66",
-      "depth": 5,
-      "owned": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 0,
-          "charEnd": 1753,
-          "length": 1753
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 0,
-          "charEnd": 1753,
-          "length": 1753
-        }
-      ],
-      "status": "SPLIT_PARENT",
-      "attempts": 1,
-      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
-      "requestHash": null,
-      "responseHash": null,
-      "childSegmentIds": [
-        "seg-0bf362adae0da3f6",
-        "seg-3d0842fa7450836c"
-      ]
-    },
-    {
-      "segmentId": "seg-3d0842fa7450836c",
-      "parentSegmentId": "seg-0652be8b9b37f3b7",
-      "depth": 6,
-      "owned": [
-        {
-          "occurrenceIndex": 2,
-          "charStart": 801,
-          "charEnd": 1753,
-          "length": 952
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 801,
-          "charEnd": 1753,
-          "length": 952
-        }
-      ],
-      "status": "FAILED_TERMINAL",
-      "attempts": 1,
-      "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
-      "requestHash": null,
-      "responseHash": null,
-      "childSegmentIds": []
-    },
-    {
-      "segmentId": "seg-0bf362adae0da3f6",
-      "parentSegmentId": "seg-0652be8b9b37f3b7",
-      "depth": 6,
-      "owned": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 0,
-          "charEnd": 801,
-          "length": 801
-        }
-      ],
-      "visible": [
-        {
-          "occurrenceIndex": 0,
-          "charStart": 0,
-          "charEnd": 37,
-          "length": 37
-        },
-        {
-          "occurrenceIndex": 1,
-          "charStart": 0,
-          "charEnd": 113,
-          "length": 113
-        },
-        {
-          "occurrenceIndex": 2,
-          "charStart": 0,
-          "charEnd": 801,
-          "length": 801
-        }
-      ],
       "status": "FAILED_TERMINAL",
       "attempts": 1,
       "failureClass": "PROVIDER_STREAM_INACTIVITY_TIMEOUT",
@@ -856,5 +658,5 @@
       "childSegmentIds": []
     }
   ],
-  "savedUtc": "2026-09-09T11:52:38.5812504+00:00"
+  "savedUtc": "2026-09-09T12:37:38.875211+00:00"
 }

@@ -155,24 +155,24 @@ public sealed class SegmentRecoveryTree
 
     /// <summary>Section 6: whether this node can still be split, or is already at the minimum
     /// safe segment floor (one source occurrence, itself no larger than the character floor).</summary>
-    public bool CanSplit(SegmentNode node) => node.Owned.Count > 1 || node.Owned[0].Length > MinimumSegmentCharacters;
+    public bool CanSplit(SegmentNode node) => node.OwnedCharacters > MinimumSegmentCharacters;
 
     /// <summary>Section 4/5: split exactly the failed segment. Deterministic: multiple whole
     /// occurrences split at the source boundary nearest the character-weighted halfway point;
     /// a single oversized occurrence is character-sliced in half. Halo occurrences (their full
     /// text, not just owned chars) are attached to Visible without touching Owned, so children's
     /// owned ranges still exactly partition the parent's -- coverage identical, zero overlap.</summary>
-    public (SegmentNode Left, SegmentNode Right) Split(string segmentId, int haloOccurrences = 1)
+    public (SegmentNode Left, SegmentNode Right) Split(string segmentId, int haloOccurrences = 1, bool characterWeighted = false)
     {
         var parent = _nodes[segmentId];
         if (!CanSplit(parent))
             throw new InvalidOperationException($"segment-recovery-floor-reached:{segmentId}");
 
         IReadOnlyList<SegmentAtom> leftOwned, rightOwned;
-        if (parent.Owned.Count > 1)
+        var running = 0;
+        if (parent.Owned.Count > 1 && !characterWeighted)
         {
             var half = parent.OwnedCharacters / 2;
-            var running = 0;
             var cut = 1;
             for (var i = 0; i < parent.Owned.Count; i++)
             {
@@ -180,16 +180,28 @@ public sealed class SegmentRecoveryTree
                 if (running >= half) { cut = i + 1; break; }
             }
             cut = Math.Clamp(cut, 1, parent.Owned.Count - 1);
-            leftOwned = parent.Owned.Take(cut).ToArray();
-            rightOwned = parent.Owned.Skip(cut).ToArray();
+            var boundaryLeft = parent.Owned.Take(cut).ToArray();
+            var boundaryRight = parent.Owned.Skip(cut).ToArray();
+
+            leftOwned = boundaryLeft;
+            rightOwned = boundaryRight;
         }
         else
         {
-            var atom = parent.Owned[0];
-            var mid = atom.CharStart + Math.Max(1, atom.Length / 2);
-            mid = Math.Min(mid, atom.CharEnd - 1);
-            leftOwned = [atom with { CharEnd = mid }];
-            rightOwned = [atom with { CharStart = mid }];
+            var target = Math.Max(1, parent.OwnedCharacters / 2);
+            running = 0;
+            var splitIndex = 0;
+            for (; splitIndex < parent.Owned.Count; splitIndex++)
+            {
+                var next = running + parent.Owned[splitIndex].Length;
+                if (target <= next) break;
+                running = next;
+            }
+            var atom = parent.Owned[Math.Min(splitIndex, parent.Owned.Count - 1)];
+            var offset = Math.Clamp(target - running, 1, Math.Max(1, atom.Length - 1));
+            var mid = atom.CharStart + offset;
+            leftOwned = parent.Owned.Take(splitIndex).Append(atom with { CharEnd = mid }).ToArray();
+            rightOwned = parent.Owned.Skip(splitIndex + 1).Prepend(atom with { CharStart = mid }).ToArray();
         }
 
         var left = new SegmentNode
@@ -208,6 +220,39 @@ public sealed class SegmentRecoveryTree
         parent.ChildSegmentIds.Add(right.SegmentId);
         parent.Status = SegmentRecoveryState.SplitParent;
         return (left, right);
+    }
+
+    /// <summary>Repairs a persisted pre-midpoint tree whose first split was made only at an
+    /// occurrence boundary (for example 150/60K). It is safe only when no descendant leaf has
+    /// succeeded: successful owned ranges are frozen and are never discarded. The failed
+    /// subtree is replaced by one deterministic midpoint split of the original parent, retaining
+    /// the parent's failure evidence while removing the giant halo workload.</summary>
+    public bool RebalanceGrossSplitIfUnsuccessful(string segmentId, int haloOccurrences = 1)
+    {
+        if (!_nodes.TryGetValue(segmentId, out var parent) || parent.Status != SegmentRecoveryState.SplitParent)
+            return false;
+
+        var descendantIds = DescendantIds(parent).ToArray();
+        var leaves = descendantIds.Select(id => _nodes[id]).Where(n => n.Status != SegmentRecoveryState.SplitParent).ToArray();
+        if (leaves.Any(n => n.Status == SegmentRecoveryState.Success)) return false;
+        var childSizes = parent.ChildSegmentIds.Select(id => _nodes[id].OwnedCharacters).ToArray();
+        if (childSizes.Length < 2 || childSizes.Max() <= parent.OwnedCharacters * 0.75) return false;
+
+        foreach (var id in descendantIds) _nodes.Remove(id);
+        parent.ChildSegmentIds.Clear();
+        parent.Status = SegmentRecoveryState.WorkloadSplitRequired;
+        Split(segmentId, haloOccurrences, characterWeighted: true);
+        return true;
+    }
+
+    private IEnumerable<string> DescendantIds(SegmentNode parent)
+    {
+        foreach (var childId in parent.ChildSegmentIds)
+        {
+            yield return childId;
+            if (!_nodes.TryGetValue(childId, out var child)) continue;
+            foreach (var descendant in DescendantIds(child)) yield return descendant;
+        }
     }
 
     /// <summary>Section 8: expands OWNED into a VISIBLE window. At least <paramref name="haloOccurrences"/>

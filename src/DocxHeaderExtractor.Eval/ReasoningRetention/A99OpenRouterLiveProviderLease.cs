@@ -4,19 +4,19 @@ using System.Text.Json;
 namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 
 /// <summary>Cross-process guard for Accuracy99 live OpenRouter ceiling campaigns. The named
-/// mutex is the authority; the small metadata file is only an audit breadcrumb and is never used
-/// to infer ownership. An abandoned mutex is safe to take over because Windows has already proved
-/// the previous owner died.</summary>
+/// semaphore is the authority; the small metadata file is only an audit breadcrumb and is never
+/// used to infer ownership. A semaphore is used instead of a mutex because async provider work
+/// resumes on arbitrary thread-pool threads and Windows mutex release is thread-affine.</summary>
 public sealed class A99OpenRouterLiveProviderLease : IDisposable
 {
-    private const string MutexName = "Global\\DocxHeaderExtractor-A99-OpenRouter-Live";
-    private readonly Mutex _mutex;
+    private const string SemaphoreName = "Global\\DocxHeaderExtractor-A99-OpenRouter-Live";
+    private readonly Semaphore _semaphore;
     private readonly string _metadataPath;
     private bool _owned;
 
-    private A99OpenRouterLiveProviderLease(Mutex mutex, string metadataPath)
+    private A99OpenRouterLiveProviderLease(Semaphore semaphore, string metadataPath)
     {
-        _mutex = mutex;
+        _semaphore = semaphore;
         _metadataPath = metadataPath;
         _owned = true;
     }
@@ -27,21 +27,13 @@ public sealed class A99OpenRouterLiveProviderLease : IDisposable
     public static async Task<A99OpenRouterLiveProviderLease> AcquireAsync(
         string repoRoot, string strategy, string documentId, CancellationToken ct = default)
     {
-        var mutex = new Mutex(false, MutexName);
+        var semaphore = new Semaphore(1, 1, SemaphoreName);
         var metadataPath = Path.Combine(repoRoot, ".a99-openrouter-live-lease.json");
         var detected = false;
         while (true)
         {
             ct.ThrowIfCancellationRequested();
-            try
-            {
-                if (mutex.WaitOne(0)) break;
-            }
-            catch (AbandonedMutexException)
-            {
-                // The OS proved the previous owner died; this process now owns the mutex.
-                break;
-            }
+            if (semaphore.WaitOne(0)) break;
 
             detected = true;
             await Task.Delay(TimeSpan.FromSeconds(1), ct).ConfigureAwait(false);
@@ -57,7 +49,7 @@ public sealed class A99OpenRouterLiveProviderLease : IDisposable
             acquiredUtc = DateTimeOffset.UtcNow,
         };
         await File.WriteAllTextAsync(metadataPath, JsonSerializer.Serialize(owner), ct).ConfigureAwait(false);
-        return new A99OpenRouterLiveProviderLease(mutex, metadataPath) { ConcurrentCampaignsDetected = detected };
+        return new A99OpenRouterLiveProviderLease(semaphore, metadataPath) { ConcurrentCampaignsDetected = detected };
     }
 
     public void Dispose()
@@ -69,7 +61,7 @@ public sealed class A99OpenRouterLiveProviderLease : IDisposable
             if (File.Exists(_metadataPath)) File.Delete(_metadataPath);
         }
         catch (IOException) { }
-        _mutex.ReleaseMutex();
-        _mutex.Dispose();
+        _semaphore.Release();
+        _semaphore.Dispose();
     }
 }

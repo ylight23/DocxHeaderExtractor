@@ -126,7 +126,13 @@ public static class OpenRouterQwen9BMultiPassRunner
         if (!string.Equals(preflight.Capability.ModelId, Model, StringComparison.Ordinal))
             return await WriteBlockedAsync(output, "MODEL_IDENTITY_MISMATCH", ct);
 
-        using var model = new OpenRouterCeilingReasoningModel(options, preflight.Capability, http);
+        // Bound every live leaf independently. The provider client itself is infinite-timeout;
+        // this adapter deadline covers headers, body streaming, and post-body parsing.
+        using var model = new OpenRouterCeilingReasoningModel(options, preflight.Capability, http,
+            // Three minutes is an execution guard, not a completion-token reduction: the
+            // CEILING request still advertises the resolved 48K budget. It bounds a leaf that
+            // receives no usable completion while allowing small leaves to return normally.
+            attemptDeadline: TimeSpan.FromMinutes(3), streamStallDeadline: TimeSpan.FromMinutes(2));
         var configurationSignature = ConfigurationSignature(model.Capability);
         var route = ReasoningRoute.ModelCapabilityCeiling.ToString();
         var gitSha = CurrentGitSha(repoRoot);
@@ -139,40 +145,55 @@ public static class OpenRouterQwen9BMultiPassRunner
         // S0 metrics (reference only, from the frozen score artifact, never re-scored here).
         strategies.Add(ReadS0Metric(s0Score, s0GlobalProposals.Count));
 
+        ReasoningCompletionException? blocked = null;
+        string? failedStrategy = null;
         try
         {
             var s1 = await RunS1SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct);
             strategies.Add(s1);
-
-            var s2Result = await RunS2SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct);
-            strategies.Add(s2Result.Metric);
-
-            var s3 = await RunS3SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s2Result.UnionLocalProposals, goldPath, item.SourceSha256, ct);
-            strategies.Add(s3);
         }
         catch (ReasoningCompletionException ex)
         {
-            var failedStrategy = strategies.Count switch
+            blocked = ex; failedStrategy = "S1";
+            await WriteStrategyBlockedAsync(output, "S1", ex, model, ct);
+        }
+
+        // S2 is an independent source-only extractor and is required even when S1 reaches a
+        // genuine terminal leaf block; it must never inherit S1's failure as a semantic result.
+        (StrategyMetric Metric, IReadOnlyList<CeilingHeadingProposal> UnionLocalProposals)? s2Result = null;
+        try
+        {
+            s2Result = await RunS2SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s0LocalProposals, goldPath, item.SourceSha256, ct);
+            strategies.Add(s2Result.Value.Metric);
+        }
+        catch (ReasoningCompletionException ex)
+        {
+            blocked ??= ex; failedStrategy ??= "S2";
+            await WriteStrategyBlockedAsync(output, "S2", ex, model, ct);
+        }
+
+        if (s2Result is not null)
+        {
+            try
             {
-                1 => "S1",
-                2 => "S2",
-                _ => "S3",
-            };
-            await WriteJsonAsync(Path.Combine(output, failedStrategy.ToLowerInvariant(), "execution.v1.json"), new
+                var s3 = await RunS3SegmentedAsync(output, model, route, configurationSignature, gitSha, source, policy, occurrences, packetResult, ownedSet, s2Result.Value.UnionLocalProposals, goldPath, item.SourceSha256, ct);
+                strategies.Add(s3);
+            }
+            catch (ReasoningCompletionException ex)
             {
-                documentId = DocumentId,
-                strategy = failedStrategy,
-                status = "BLOCKED",
-                providerCalls = model.ProviderCalls,
-                telemetry = model.Telemetry,
-                reason = ex.FailureClass.ToString(),
-                goldReadBeforeFreeze = false,
-            }, ct);
+                blocked ??= ex; failedStrategy ??= "S3";
+                await WriteStrategyBlockedAsync(output, "S3", ex, model, ct);
+            }
+        }
+
+        if (blocked is not null)
+        {
             await WriteJsonAsync(Path.Combine(output, "summary.v1.json"), new
             {
                 schemaVersion = "a99-qwen9b-multipass-doc0205-v1", status = "QWEN9B_MULTI_PASS_EXECUTION_BLOCKED",
-                reason = ex.FailureClass, message = ex.Message, strategiesCompleted = strategies.Select(s => s.Strategy).ToArray(),
+                reason = blocked.FailureClass, message = blocked.Message, strategiesCompleted = strategies.Select(s => s.Strategy).ToArray(),
                 failedStrategy, providerCalls = model.ProviderCalls, telemetry = model.Telemetry,
+                segmentAudits = new[] { ReadSegmentAudit(output, "S1"), ReadSegmentAudit(output, "S2"), ReadSegmentAudit(output, "S3") },
                 goldReadBeforeFreeze = false, completedUtc = DateTimeOffset.UtcNow,
             }, ct);
             PrintComparison(strategies);
@@ -260,6 +281,10 @@ public static class OpenRouterQwen9BMultiPassRunner
                 else
                 {
                     tree.Split(leaf.SegmentId, HaloOccurrences);
+                    // If an occurrence-boundary split is grossly unbalanced, immediately migrate
+                    // that unsuccessful subtree to a deterministic character midpoint so the
+                    // next request is genuinely smaller (roughly 30K/30K for this source).
+                    tree.RebalanceGrossSplitIfUnsuccessful(leaf.SegmentId, HaloOccurrences);
                     splitCount++;
                 }
                 SaveSegmentTree(treePath, tree, sourceSha256, configurationSignature);
@@ -299,6 +324,7 @@ public static class OpenRouterQwen9BMultiPassRunner
                     responseContentPresent = requestTelemetry.ResponseContentPresent ?? false,
                     structuredOutputParsed = requestTelemetry.StructuredOutputParsed ?? false,
                     timeoutDetected = requestTelemetry.TimeoutDetected ?? false,
+                    streamStallDetected = requestTelemetry.StreamStallDetected ?? false,
                     outputLimitDetected = string.Equals(requestTelemetry.FinishReason, "length", StringComparison.OrdinalIgnoreCase),
                     inputTokens = requestTelemetry.ReportedInputTokens, reasoningTokens = requestTelemetry.ReportedReasoningTokens,
                     outputTokens = requestTelemetry.ReportedOutputTokens, latencyMs = requestTelemetry.ElapsedMs,
@@ -371,7 +397,12 @@ public static class OpenRouterQwen9BMultiPassRunner
                 {
                     var snapshot = root.GetProperty("nodes").Deserialize<SegmentRecoveryTree.SegmentNodeSnapshot[]>(JsonOptions) ?? [];
                     var normalized = snapshot.Select(x => x.Status == SegmentRecoveryState.Running ? x with { Status = SegmentRecoveryState.Pending } : x).ToArray();
-                    return SegmentRecoveryTree.RestoreFromSnapshot(DocumentId, lengths, MinimumSegmentCharacters, normalized, MinimumVisibleContextCharacters);
+                    var restored = SegmentRecoveryTree.RestoreFromSnapshot(DocumentId, lengths, MinimumSegmentCharacters, normalized, MinimumVisibleContextCharacters);
+                    // Migrate the earlier occurrence-boundary split if it produced a grossly
+                    // unbalanced, wholly unsuccessful subtree. Frozen SUCCESS descendants are
+                    // deliberately never touched by this repair.
+                    restored.RebalanceGrossSplitIfUnsuccessful(restored.RootSegmentId, HaloOccurrences);
+                    return restored;
                 }
             }
             catch (JsonException) { }
@@ -687,6 +718,7 @@ public static class OpenRouterQwen9BMultiPassRunner
             providerAttempts = telemetry.Count,
             providerSuccessfulResponses = telemetry.Count(t => t.StructuredOutputParsed == true),
             providerTimeouts = telemetry.Count(t => t.TimeoutDetected == true),
+            providerStreamStalls = telemetry.Count(t => t.StreamStallDetected == true),
             providerOutputLimits = telemetry.Count(t => string.Equals(t.FinishReason, "length", StringComparison.OrdinalIgnoreCase)),
             providerTransportFailures = telemetry.Count(t => t.FailureClass is not null && t.FailureClass != ReasoningCompletionFailureClass.ProviderOutputLimit && t.TimeoutDetected != true),
             providerCallsCurrentRun = telemetry.Count, providerCallsHistoricalReused = 0,
@@ -703,6 +735,7 @@ public static class OpenRouterQwen9BMultiPassRunner
             responseContentPresent = telemetry.All(t => t.ResponseContentPresent == true),
             structuredOutputParsed = telemetry.All(t => t.StructuredOutputParsed == true),
             timeoutDetected = telemetry.Any(t => t.TimeoutDetected == true),
+            streamStallDetected = telemetry.Any(t => t.StreamStallDetected == true),
             providerCallIds = telemetry.Select(t => t.ProviderCallId ?? "NOT_EXPOSED").ToArray(),
             goldReadBeforeFreeze = false,
         }, ct);
@@ -719,6 +752,7 @@ public static class OpenRouterQwen9BMultiPassRunner
             providerAttempts = telemetry.Count,
             providerSuccessfulResponses = telemetry.Count(t => t.StructuredOutputParsed == true),
             providerTimeouts = telemetry.Count(t => t.TimeoutDetected == true),
+            providerStreamStalls = telemetry.Count(t => t.StreamStallDetected == true),
             providerOutputLimits = telemetry.Count(t => string.Equals(t.FinishReason, "length", StringComparison.OrdinalIgnoreCase)),
             providerTransportFailures = telemetry.Count(t => t.FailureClass is not null && t.FailureClass != ReasoningCompletionFailureClass.ProviderOutputLimit && t.TimeoutDetected != true),
             providerCallsCurrentRun = telemetry.Count, providerCallsHistoricalReused = 0,
@@ -943,6 +977,47 @@ public static class OpenRouterQwen9BMultiPassRunner
         }, ct);
         Console.WriteLine("FINAL_CLASSIFICATION=QWEN9B_MULTI_PASS_EXECUTION_BLOCKED");
         return 1;
+    }
+
+    private static Task WriteStrategyBlockedAsync(string output, string strategy, ReasoningCompletionException ex,
+        OpenRouterCeilingReasoningModel model, CancellationToken ct)
+    {
+        var passType = strategy switch
+        {
+            "S1" => "OMISSION_REVIEW",
+            "S2" => "COVERAGE_SEMANTIC",
+            "S3" => "VERIFIER",
+            _ => strategy,
+        };
+        var strategyTelemetry = model.Telemetry.Where(t => string.Equals(t.PassType, passType, StringComparison.Ordinal)).ToArray();
+        return WriteJsonAsync(Path.Combine(output, strategy.ToLowerInvariant(), "execution.v1.json"), new
+        {
+            documentId = DocumentId, strategy, status = "BLOCKED", providerCalls = strategyTelemetry.Length,
+            telemetry = strategyTelemetry, historicalTree = ReadSegmentAudit(output, strategy),
+            reason = ex.FailureClass.ToString(), goldReadBeforeFreeze = false,
+        }, ct);
+    }
+
+    private static object? ReadSegmentAudit(string output, string strategy)
+    {
+        var treePath = strategy switch
+        {
+            "S1" => Path.Combine(output, "s1", "segments", "segment-tree-state.v1.json"),
+            "S2" => Path.Combine(output, "s2", "extractor-b-segments", "segment-tree-state.v1.json"),
+            "S3" => Path.Combine(output, "s3", "verifier-segments", "segment-tree-state.v1.json"),
+            _ => "",
+        };
+        if (!File.Exists(treePath)) return null;
+        using var doc = JsonDocument.Parse(File.ReadAllText(treePath));
+        var nodes = doc.RootElement.GetProperty("nodes").Deserialize<SegmentRecoveryTree.SegmentNodeSnapshot[]>(JsonOptions) ?? [];
+        return new
+        {
+            nodeCount = nodes.Length,
+            leafCount = nodes.Count(n => n.Status != SegmentRecoveryState.SplitParent),
+            attempts = nodes.Sum(n => n.Attempts),
+            statuses = nodes.GroupBy(n => n.Status).ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal),
+            failureClasses = nodes.Where(n => n.FailureClass is not null).GroupBy(n => n.FailureClass!, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal),
+        };
     }
 
     private sealed record InventoryItem(string DocumentId, string SourcePath, string SourceSha256);

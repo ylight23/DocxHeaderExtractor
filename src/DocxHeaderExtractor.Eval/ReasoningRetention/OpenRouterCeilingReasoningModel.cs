@@ -42,6 +42,7 @@ public sealed record RequestPacketTelemetry
     [JsonPropertyName("responseContentPresent")] public bool? ResponseContentPresent { get; set; }
     [JsonPropertyName("structuredOutputParsed")] public bool? StructuredOutputParsed { get; set; }
     [JsonPropertyName("timeoutDetected")] public bool? TimeoutDetected { get; set; }
+    [JsonPropertyName("streamStallDetected")] public bool? StreamStallDetected { get; set; }
 }
 
 /// <summary>OpenRouter adapter for the reasoning-ceiling route only: qwen/qwen3.5-9b, no
@@ -55,6 +56,8 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
     private readonly RemoteInferenceOptions _options;
     private readonly OpenRouterModelCapability _capability;
     private readonly int _safetyTokens;
+    private readonly TimeSpan _attemptDeadline;
+    private readonly TimeSpan _streamStallDeadline;
     private int _providerCalls;
     private readonly List<RequestPacketTelemetry> _telemetry = [];
 
@@ -62,12 +65,16 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         RemoteInferenceOptions options,
         OpenRouterModelCapability capability,
         HttpClient? http = null,
-        int safetyTokens = 4_000)
+        int safetyTokens = 4_000,
+        TimeSpan? attemptDeadline = null,
+        TimeSpan? streamStallDeadline = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _capability = capability ?? throw new ArgumentNullException(nameof(capability));
         if (string.IsNullOrWhiteSpace(_options.ApiKey)) throw new InvalidOperationException("PROVIDER_AUTH_FAILURE");
         _safetyTokens = safetyTokens;
+        _attemptDeadline = attemptDeadline ?? TimeSpan.FromSeconds(Math.Max(600, _options.RequestTimeoutSeconds));
+        _streamStallDeadline = streamStallDeadline ?? TimeSpan.FromSeconds(120);
         _http = http ?? new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
         _ownsHttp = http is null;
     }
@@ -294,12 +301,12 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         // several minutes on OpenRouter; a short attempt timeout would misclassify slow-but-valid
         // reasoning as a transport failure. Use a generous floor and still respect a larger
         // explicit RequestTimeoutSeconds.
-        timeout.CancelAfter(TimeSpan.FromSeconds(Math.Max(600, _options.RequestTimeoutSeconds)));
+        timeout.CancelAfter(_attemptDeadline);
         try
         {
             using var response = await _http.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, timeout.Token).ConfigureAwait(false);
             telemetry.HttpStatus = (int)response.StatusCode;
-            var raw = await response.Content.ReadAsStringAsync(timeout.Token).ConfigureAwait(false);
+            var raw = await ReadResponseBodyAsync(response, timeout.Token).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
                 telemetry.FailureClass = response.StatusCode is System.Net.HttpStatusCode.Unauthorized or System.Net.HttpStatusCode.Forbidden
@@ -339,6 +346,14 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
                     new ReasoningCompletionTelemetry { RequestId = telemetry.RequestIdHash, DocumentId = telemetry.DocumentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
             if (!hasContent)
                 throw new FormatException("ceiling-provider-response-content-missing");
+            if (stopwatch.Elapsed >= _attemptDeadline)
+            {
+                telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderTotalTimeout;
+                telemetry.TimeoutDetected = true;
+                throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderTotalTimeout,
+                    "Ceiling request exceeded its attempt deadline before parsing completed.",
+                    new ReasoningCompletionTelemetry { RequestId = telemetry.RequestIdHash, DocumentId = telemetry.DocumentId, FailureClass = ReasoningCompletionFailureClass.ProviderTotalTimeout });
+            }
             return (contentEl.GetString() ?? "", finishReason);
         }
         catch (ReasoningCompletionException)
@@ -358,6 +373,15 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
                 "Ceiling request exceeded its attempt timeout.",
                 new ReasoningCompletionTelemetry { RequestId = telemetry.RequestIdHash, DocumentId = telemetry.DocumentId, FailureClass = ReasoningCompletionFailureClass.ProviderTotalTimeout });
         }
+        catch (StreamStallException ex)
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout;
+            telemetry.StreamStallDetected = true;
+            _telemetry.Add(telemetry);
+            throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout,
+                "Ceiling response stream stalled before a complete response was received.",
+                new ReasoningCompletionTelemetry { RequestId = telemetry.RequestIdHash, DocumentId = telemetry.DocumentId, FailureClass = ReasoningCompletionFailureClass.ProviderStreamInactivityTimeout }, ex);
+        }
         catch (HttpRequestException ex)
         {
             telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderUnavailable;
@@ -370,6 +394,27 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
             telemetry.ElapsedMs = stopwatch.ElapsedMilliseconds;
         }
     }
+
+    private async Task<string> ReadResponseBodyAsync(HttpResponseMessage response, CancellationToken ct)
+    {
+        await using var stream = await response.Content.ReadAsStreamAsync(ct).ConfigureAwait(false);
+        using var buffer = new MemoryStream();
+        var chunk = new byte[16 * 1024];
+        while (true)
+        {
+            var readTask = stream.ReadAsync(chunk.AsMemory(), ct).AsTask();
+            var stallTask = Task.Delay(_streamStallDeadline, ct);
+            var completed = await Task.WhenAny(readTask, stallTask).ConfigureAwait(false);
+            if (completed != readTask)
+                throw new StreamStallException();
+            var count = await readTask.ConfigureAwait(false);
+            if (count == 0) break;
+            buffer.Write(chunk, 0, count);
+        }
+        return Encoding.UTF8.GetString(buffer.ToArray());
+    }
+
+    private sealed class StreamStallException : Exception { }
 
     /// <summary>Section 3: enable internal reasoning without returning chain-of-thought.
     /// Uses effort+exclude when an explicit effort is supported; falls back to enabled+exclude

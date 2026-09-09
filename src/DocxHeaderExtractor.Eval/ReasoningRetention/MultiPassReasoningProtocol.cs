@@ -156,7 +156,8 @@ public static class OmissionReviewResponseParser
                 !item.TryGetProperty("marker", out var markerValue) || markerValue.ValueKind != JsonValueKind.String ||
                 !OmissionReviewMarker.IsAllowed(markerValue.GetString()))
                 throw new FormatException("omission-review-response-item-schema-invalid");
-            int? corrects = item.TryGetProperty("correctsProposalIndex", out var correctsValue) && correctsValue.TryGetInt32(out var c)
+            int? corrects = item.TryGetProperty("correctsProposalIndex", out var correctsValue) &&
+                correctsValue.ValueKind == JsonValueKind.Number && correctsValue.TryGetInt32(out var c)
                 ? c : null;
             items.Add(new OmissionReviewProposal(i, s, e, roleValue.GetString()!, markerValue.GetString()!, corrects));
         }

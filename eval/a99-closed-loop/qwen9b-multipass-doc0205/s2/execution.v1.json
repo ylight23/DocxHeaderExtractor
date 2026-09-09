@@ -1,0 +1,21 @@
+{
+  "documentId": "DOC-0205",
+  "strategy": "S2",
+  "status": "BLOCKED",
+  "providerCalls": 0,
+  "telemetry": [],
+  "historicalTree": {
+    "nodeCount": 15,
+    "leafCount": 8,
+    "attempts": 15,
+    "statuses": {
+      "SPLIT_PARENT": 7,
+      "FAILED_TERMINAL": 8
+    },
+    "failureClasses": {
+      "PROVIDER_STREAM_INACTIVITY_TIMEOUT": 15
+    }
+  },
+  "reason": "SEGMENTED_RECOVERY_PARTIAL_BLOCKED",
+  "goldReadBeforeFreeze": false
+}
