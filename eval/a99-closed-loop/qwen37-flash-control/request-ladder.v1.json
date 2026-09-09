@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "a99-qwen37-flash-request-ladder-v1",
+  "status": "P2A_FAILED_STOP",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "apiKeyPresent": true,
+  "goldReadBeforeFreeze": false,
+  "requests": [
+    {
+      "stage": "P0_DOCUMENTED_MINIMAL",
+      "isSuccess": true,
+      "status": 200,
+      "errorBody": null,
+      "reportedModel": "qwen/qwen3.7-flash",
+      "provider": "Alibaba",
+      "finishReason": "stop",
+      "inputTokens": 16,
+      "reasoningTokens": 137,
+      "outputTokens": 141,
+      "elapsedMs": 3797,
+      "requestBodySha256": "57fd29813d19aaf23f53063999a296199d69975c37a369ae29ca95e500094762",
+      "requestBodyCharacters": 124,
+      "structuredOutputParsed": true
+    },
+    {
+      "stage": "P1_STRUCTURED_OUTPUT",
+      "isSuccess": true,
+      "status": 200,
+      "errorBody": null,
+      "reportedModel": "qwen/qwen3.7-flash",
+      "provider": "Alibaba",
+      "finishReason": "stop",
+      "inputTokens": 18,
+      "reasoningTokens": 120,
+      "outputTokens": 131,
+      "elapsedMs": 2817,
+      "requestBodySha256": "7a832ae2f46a035f90b05941e8117b3344313aff94fe681fdb68efa04c47b6ca",
+      "requestBodyCharacters": 335,
+      "structuredOutputParsed": true
+    },
+    {
+      "stage": "P2A_PRIVACY_ZDR",
+      "isSuccess": false,
+      "status": 404,
+      "errorBody": "{\u0022error\u0022:{\u0022message\u0022:\u0022No endpoints found matching your data policy (Zero data retention). Configure: https://openrouter.ai/settings/privacy\u0022,\u0022code\u0022:404,\u0022metadata\u0022:{\u0022routing_funnel\u0022:[{\u0022step\u0022:\u0022Initial Endpoints\u0022,\u0022endpoint_count\u0022:1}],\u0022failed_routing_step\u0022:\u0022Filter by Data Policy\u0022}}}",
+      "reportedModel": null,
+      "provider": null,
+      "finishReason": null,
+      "inputTokens": null,
+      "reasoningTokens": null,
+      "outputTokens": null,
+      "elapsedMs": 115,
+      "requestBodySha256": "83f3a112e62e025e603765481dbe68e776f713125fb14f30ce7c57f5c0b1aa51",
+      "requestBodyCharacters": 359,
+      "structuredOutputParsed": false
+    }
+  ],
+  "firstFailingStage": "P2A_PRIVACY_ZDR",
+  "firstFailureStatus": 404,
+  "firstFailureErrorBody": "{\u0022error\u0022:{\u0022message\u0022:\u0022No endpoints found matching your data policy (Zero data retention). Configure: https://openrouter.ai/settings/privacy\u0022,\u0022code\u0022:404,\u0022metadata\u0022:{\u0022routing_funnel\u0022:[{\u0022step\u0022:\u0022Initial Endpoints\u0022,\u0022endpoint_count\u0022:1}],\u0022failed_routing_step\u0022:\u0022Filter by Data Policy\u0022}}}",
+  "providerMetadata": null,
+  "documentedWorkingRequest": {
+    "model": "qwen/qwen3.7-flash",
+    "messages": "one tiny user message",
+    "reasoning": {
+      "enabled": true
+    }
+  },
+  "oldFlashRunnerRequest": {
+    "model": "qwen/qwen3.7-flash",
+    "temperature": 0,
+    "max_tokens": 48000,
+    "messages": [
+      "system semantic prompt",
+      "user semantic packet"
+    ],
+    "reasoning": {
+      "enabled": true,
+      "exclude": true
+    },
+    "response_format": "json_schema",
+    "provider": {
+      "zdr": true,
+      "data_collection": "deny",
+      "require_parameters": true,
+      "allow_fallbacks": false
+    }
+  },
+  "requestDiff": {
+    "documentedRequestFields": [
+      "model",
+      "messages[0].user.tiny",
+      "reasoning.enabled"
+    ],
+    "additionalOldRunnerFields": [
+      "temperature",
+      "max_tokens",
+      "messages.system",
+      "messages.user.semantic_packet",
+      "reasoning.exclude",
+      "response_format",
+      "provider.zdr",
+      "provider.data_collection",
+      "provider.require_parameters",
+      "provider.allow_fallbacks"
+    ]
+  },
+  "completedUtc": "2026-09-09T16:10:59.12943+00:00"
+}
