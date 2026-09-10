@@ -105,6 +105,25 @@ public sealed class CanonicalHeadingTaskContractV2Tests
         Assert.True(one.GetProperty("packetMetrics").GetProperty("packetChars").GetInt32() < eight.GetProperty("packetMetrics").GetProperty("packetChars").GetInt32());
     }
 
+    [Fact]
+    public void Visual_semantic_presence_audit_reconciles_all_71_gold_rows_without_provider_calls()
+    {
+        using var audit = LoadArtifactFrom("doc0205-visual-semantic-audit", "audit.v1.json");
+        var root = audit.RootElement;
+        Assert.True(root.GetProperty("offlineOnly").GetBoolean());
+        Assert.Equal(0, root.GetProperty("providerCalls").GetInt32());
+        Assert.Equal(4, root.GetProperty("sourceStructure").GetProperty("sourceOccurrenceCount").GetInt32());
+        Assert.Equal(60769, root.GetProperty("sourceStructure").GetProperty("dominantOccurrence").GetProperty("rawCharacterLength").GetInt32());
+        Assert.Equal(1512, root.GetProperty("sourceStructure").GetProperty("ooxmlFacts").GetProperty("breakElementCount").GetInt32());
+        Assert.Equal(72, root.GetProperty("vlmPipeline").GetProperty("rawVlmProposalCount").GetInt32());
+        Assert.Equal(5, root.GetProperty("vlmPipeline").GetProperty("boundCount").GetInt32());
+        Assert.Equal(3, root.GetProperty("vlmPipeline").GetProperty("finalCount").GetInt32());
+        Assert.Equal(31, root.GetProperty("semantic").GetProperty("mappingFailure").GetInt32());
+        Assert.Equal(40, root.GetProperty("semantic").GetProperty("trueOmission").GetInt32());
+        Assert.Equal("MIXED_REPRESENTATION_AND_MODEL_FAILURE", root.GetProperty("finalClassification").GetString());
+        Assert.True(root.GetProperty("goldFirewall").GetProperty("goldMutation").GetBoolean() == false);
+    }
+
     private static JsonDocument LoadArtifact(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), "eval", "a99-closed-loop", "canonical-heading-contract-v2", name)));
 
     private static JsonDocument LoadArtifactFrom(string directory, string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), "eval", "a99-closed-loop", directory, name)));

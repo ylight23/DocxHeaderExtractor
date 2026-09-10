@@ -1,0 +1,2720 @@
+{
+  "schemaVersion": "a99-doc0205-visual-semantic-summary-v1",
+  "documentId": "DOC-0205",
+  "startHead": "0b61d0c6b7804dee2d5147c6199395d1e87d565d",
+  "sourceOccurrenceCount": 4,
+  "dominantOccurrenceCharacters": 60769,
+  "ooxmlInternalBoundaries": {
+    "paragraphCount": 4,
+    "dominantSourceId": "body[1]/p[4]",
+    "dominantParagraphChildElements": [
+      "pPr",
+      "r"
+    ],
+    "runCount": 1,
+    "textNodeCount": 1057,
+    "xmlTextNodeCharacters": 65277,
+    "breakElementCount": 1512,
+    "breakTypes": {
+      "text": 1512
+    },
+    "crCount": 0,
+    "tabCount": 0,
+    "lastRenderedPageBreakCount": 0,
+    "fieldElementCount": 0,
+    "drawingCount": 0,
+    "textBoxCount": 0,
+    "sectionBreakCount": 0,
+    "pageBreakBeforeCount": 0,
+    "sourceFactRawCharacters": 60769,
+    "sourceFactNewlineCount": 0
+  },
+  "vlmPipeline": {
+    "raw": 72,
+    "bound": 5,
+    "validated": 3,
+    "projected": 3,
+    "final": 3
+  },
+  "exact": {
+    "tp": 0,
+    "fp": 3,
+    "fn": 71,
+    "f1": 0,
+    "trueModelOmission": 40,
+    "semanticMatchWrongSpan": 0,
+    "partialSpan": 0,
+    "supersetSpan": 0,
+    "wrongSource": 0,
+    "unresolved": 0,
+    "arithmeticCheck": true,
+    "officialSpanErrorCount": 65,
+    "officialSpanErrorInterpretation": "Not promoted to semantic span error unless a bound proposal demonstrably corresponds to the same Gold heading."
+  },
+  "semantic": {
+    "exactPresent": 0,
+    "wrongSpan": 0,
+    "wrongSource": 0,
+    "mappingFailure": 31,
+    "trueOmission": 40,
+    "unresolved": 0,
+    "counts": {
+      "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED": 31,
+      "TRUE_VLM_OMISSION": 40
+    },
+    "goldCorrespondence": [
+      {
+        "headingOrdinal": 0,
+        "goldText": "Chương I QUY ĐỊNH CHUNG",
+        "sourceId": "body[1]/p[4]",
+        "start": 645,
+        "end": 668,
+        "pageIndex": [
+          1
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "CHƯƠNG I",
+            "role": "CHAPTER",
+            "rawStart": 1038,
+            "rawEnd": 1051,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "QUY ĐỊNH CHUNG",
+            "role": "SECTION",
+            "rawStart": 1052,
+            "rawEnd": 1065,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 1,
+        "goldText": "Điều 1. Phạm vi điều chỉnh",
+        "sourceId": "body[1]/p[4]",
+        "start": 669,
+        "end": 695,
+        "pageIndex": [
+          1
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 1",
+            "role": "ARTICLE",
+            "rawStart": 1067,
+            "rawEnd": 1075,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Phạm vi điều chỉnh",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 1076,
+            "rawEnd": 1091,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 2,
+        "goldText": "Điều 2. Đối tượng áp dụng",
+        "sourceId": "body[1]/p[4]",
+        "start": 1337,
+        "end": 1362,
+        "pageIndex": [
+          1
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 2",
+            "role": "ARTICLE",
+            "rawStart": 1193,
+            "rawEnd": 1201,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Đối tượng áp dụng",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 1202,
+            "rawEnd": 1217,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 3,
+        "goldText": "Điều 3. Giải thích từ ngữ",
+        "sourceId": "body[1]/p[4]",
+        "start": 1629,
+        "end": 1654,
+        "pageIndex": [
+          1
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 3",
+            "role": "ARTICLE",
+            "rawStart": 1269,
+            "rawEnd": 1277,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Giải thích từ ngữ",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 1278,
+            "rawEnd": 1291,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 4,
+        "goldText": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+        "sourceId": "body[1]/p[4]",
+        "start": 4361,
+        "end": 4409,
+        "pageIndex": [
+          2
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 4",
+            "role": "ARTICLE",
+            "rawStart": 2333,
+            "rawEnd": 2341,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Giá trị pháp lý của dữ liệu được chia sẻ",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 2342,
+            "rawEnd": 2378,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 5,
+        "goldText": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 4626,
+        "end": 4689,
+        "pageIndex": [
+          2
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 5",
+            "role": "ARTICLE",
+            "rawStart": 2430,
+            "rawEnd": 2438,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 2439,
+            "rawEnd": 2483,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 6,
+        "goldText": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 6603,
+        "end": 6645,
+        "pageIndex": [
+          2
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 6",
+            "role": "ARTICLE",
+            "rawStart": 3035,
+            "rawEnd": 3043,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Thực hiện kết nối, chia sẻ dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 3044,
+            "rawEnd": 3072,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 7,
+        "goldText": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 8146,
+        "end": 8206,
+        "pageIndex": [
+          3
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 7",
+            "role": "ARTICLE",
+            "rawStart": 3605,
+            "rawEnd": 3613,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 3614,
+            "rawEnd": 3659,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 8,
+        "goldText": "Điều 8. Các hành vi không được làm",
+        "sourceId": "body[1]/p[4]",
+        "start": 9298,
+        "end": 9332,
+        "pageIndex": [
+          3
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 8",
+            "role": "ARTICLE",
+            "rawStart": 3711,
+            "rawEnd": 3719,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Các hành vi không được làm",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 3720,
+            "rawEnd": 3740,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 9,
+        "goldText": "Chương II QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU, QUẢN TRỊ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC VÀ BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "sourceId": "body[1]/p[4]",
+        "start": 9843,
+        "end": 9978,
+        "pageIndex": [
+          3
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 3,
+        "semanticCandidateCount": 3,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "CHƯƠNG II",
+            "role": "CHAPTER",
+            "rawStart": 3792,
+            "rawEnd": 3800,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU, QUẢN TRỊ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC VÀ BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+            "role": "SECTION",
+            "rawStart": 3801,
+            "rawEnd": 3983,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+            "role": "SUBSECTION",
+            "rawStart": 6038,
+            "rawEnd": 6080,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 10,
+        "goldText": "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+        "sourceId": "body[1]/p[4]",
+        "start": 9979,
+        "end": 10039,
+        "pageIndex": [
+          3
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 3,
+        "semanticCandidateCount": 3,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Mục 1",
+            "role": "SUBSECTION",
+            "rawStart": 4035,
+            "rawEnd": 4040,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+            "role": "SUBSECTION",
+            "rawStart": 4041,
+            "rawEnd": 4087,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Cơ sở dữ liệu trong cơ quan nhà nước",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 4301,
+            "rawEnd": 4334,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 11,
+        "goldText": "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+        "sourceId": "body[1]/p[4]",
+        "start": 10040,
+        "end": 10112,
+        "pageIndex": [
+          3
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 4,
+        "semanticCandidateCount": 4,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+            "role": "SUBSECTION",
+            "rawStart": 4041,
+            "rawEnd": 4087,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 9",
+            "role": "ARTICLE",
+            "rawStart": 4089,
+            "rawEnd": 4097,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 4098,
+            "rawEnd": 4148,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Cơ sở dữ liệu trong cơ quan nhà nước",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 4301,
+            "rawEnd": 4334,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 12,
+        "goldText": "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 10904,
+        "end": 10952,
+        "pageIndex": [
+          4
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 10",
+            "role": "ARTICLE",
+            "rawStart": 4200,
+            "rawEnd": 4208,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 4209,
+            "rawEnd": 4240,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 13,
+        "goldText": "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+        "sourceId": "body[1]/p[4]",
+        "start": 11449,
+        "end": 11494,
+        "pageIndex": [
+          4
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 11",
+            "role": "ARTICLE",
+            "rawStart": 4292,
+            "rawEnd": 4300,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Cơ sở dữ liệu trong cơ quan nhà nước",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 4301,
+            "rawEnd": 4334,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 14,
+        "goldText": "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+        "sourceId": "body[1]/p[4]",
+        "start": 13065,
+        "end": 13146,
+        "pageIndex": [
+          4
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 12",
+            "role": "ARTICLE",
+            "rawStart": 4536,
+            "rawEnd": 4544,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 4545,
+            "rawEnd": 4611,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 15,
+        "goldText": "Điều 13. Cổng dữ liệu quốc gia",
+        "sourceId": "body[1]/p[4]",
+        "start": 14829,
+        "end": 14859,
+        "pageIndex": [
+          5
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 13",
+            "role": "ARTICLE",
+            "rawStart": 4713,
+            "rawEnd": 4721,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Cổng dữ liệu quốc gia",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 4722,
+            "rawEnd": 4740,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 16,
+        "goldText": "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+        "sourceId": "body[1]/p[4]",
+        "start": 15558,
+        "end": 15618,
+        "pageIndex": [
+          5
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Mục 2",
+            "role": "SUBSECTION",
+            "rawStart": 4842,
+            "rawEnd": 4847,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+            "role": "SUBSECTION",
+            "rawStart": 4848,
+            "rawEnd": 4893,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 17,
+        "goldText": "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 15619,
+        "end": 15691,
+        "pageIndex": [
+          5
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 3,
+        "semanticCandidateCount": 3,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+            "role": "SUBSECTION",
+            "rawStart": 4848,
+            "rawEnd": 4893,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 14",
+            "role": "ARTICLE",
+            "rawStart": 4895,
+            "rawEnd": 4903,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 4904,
+            "rawEnd": 4956,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 18,
+        "goldText": "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 16890,
+        "end": 16963,
+        "pageIndex": [
+          5
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 15",
+            "role": "ARTICLE",
+            "rawStart": 5058,
+            "rawEnd": 5066,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 5067,
+            "rawEnd": 5115,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 19,
+        "goldText": "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 17527,
+        "end": 17571,
+        "pageIndex": [
+          6
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 16",
+            "role": "ARTICLE",
+            "rawStart": 5167,
+            "rawEnd": 5175,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Kiểm tra, đánh giá, duy trì dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 5176,
+            "rawEnd": 5201,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 20,
+        "goldText": "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+        "sourceId": "body[1]/p[4]",
+        "start": 19329,
+        "end": 19367,
+        "pageIndex": [
+          6
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Mục 3",
+            "role": "SUBSECTION",
+            "rawStart": 5353,
+            "rawEnd": 5358,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+            "role": "SUBSECTION",
+            "rawStart": 5359,
+            "rawEnd": 5388,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 21,
+        "goldText": "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+        "sourceId": "body[1]/p[4]",
+        "start": 19368,
+        "end": 19428,
+        "pageIndex": [
+          6
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 3,
+        "semanticCandidateCount": 3,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+            "role": "SUBSECTION",
+            "rawStart": 5359,
+            "rawEnd": 5388,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 17",
+            "role": "ARTICLE",
+            "rawStart": 5390,
+            "rawEnd": 5398,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 5399,
+            "rawEnd": 5443,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 22,
+        "goldText": "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+        "sourceId": "body[1]/p[4]",
+        "start": 20463,
+        "end": 20520,
+        "pageIndex": [
+          7
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 3,
+        "semanticCandidateCount": 3,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+            "role": "SUBSECTION",
+            "rawStart": 5359,
+            "rawEnd": 5388,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 18",
+            "role": "ARTICLE",
+            "rawStart": 5550,
+            "rawEnd": 5558,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 5559,
+            "rawEnd": 5599,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 23,
+        "goldText": "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+        "sourceId": "body[1]/p[4]",
+        "start": 21486,
+        "end": 21553,
+        "pageIndex": [
+          7
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 19",
+            "role": "ARTICLE",
+            "rawStart": 5651,
+            "rawEnd": 5659,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 5660,
+            "rawEnd": 5708,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 24,
+        "goldText": "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+        "sourceId": "body[1]/p[4]",
+        "start": 22765,
+        "end": 22832,
+        "pageIndex": [
+          7
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 3,
+        "semanticCandidateCount": 3,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+            "role": "SUBSECTION",
+            "rawStart": 5359,
+            "rawEnd": 5388,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 20",
+            "role": "ARTICLE",
+            "rawStart": 5760,
+            "rawEnd": 5768,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 5769,
+            "rawEnd": 5817,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 25,
+        "goldText": "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+        "sourceId": "body[1]/p[4]",
+        "start": 23401,
+        "end": 23472,
+        "pageIndex": [
+          7
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 3,
+        "semanticCandidateCount": 3,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+            "role": "SUBSECTION",
+            "rawStart": 5359,
+            "rawEnd": 5388,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 21",
+            "role": "ARTICLE",
+            "rawStart": 5869,
+            "rawEnd": 5877,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 5878,
+            "rawEnd": 5930,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 26,
+        "goldText": "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "sourceId": "body[1]/p[4]",
+        "start": 23745,
+        "end": 23802,
+        "pageIndex": [
+          8
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Mục 4",
+            "role": "SUBSECTION",
+            "rawStart": 6032,
+            "rawEnd": 6037,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+            "role": "SUBSECTION",
+            "rawStart": 6038,
+            "rawEnd": 6080,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 27,
+        "goldText": "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+        "sourceId": "body[1]/p[4]",
+        "start": 23803,
+        "end": 23854,
+        "pageIndex": [
+          8
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 22",
+            "role": "ARTICLE",
+            "rawStart": 6082,
+            "rawEnd": 6090,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 6091,
+            "rawEnd": 6124,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 28,
+        "goldText": "Điều 23. Phương thức chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 24158,
+        "end": 24194,
+        "pageIndex": [
+          8
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 23",
+            "role": "ARTICLE",
+            "rawStart": 6176,
+            "rawEnd": 6184,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Phương thức chia sẻ dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 6185,
+            "rawEnd": 6205,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 29,
+        "goldText": "Điều 24. Dịch vụ chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 25199,
+        "end": 25231,
+        "pageIndex": [
+          8
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 2,
+        "semanticCandidateCount": 2,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 24",
+            "role": "ARTICLE",
+            "rawStart": 6286,
+            "rawEnd": 6294,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Dịch vụ chia sẻ dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 6295,
+            "rawEnd": 6315,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 30,
+        "goldText": "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 26019,
+        "end": 26074,
+        "pageIndex": [
+          8
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 3,
+        "semanticCandidateCount": 3,
+        "semanticCorrespondence": [
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Dịch vụ chia sẻ dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 6295,
+            "rawEnd": 6315,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Điều 25",
+            "role": "ARTICLE",
+            "rawStart": 6367,
+            "rawEnd": 6375,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          },
+          {
+            "windowFile": "window-0001-0008.v2.json",
+            "pages": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "visualAlias": "Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+            "role": "CLAUSE_HEADING",
+            "rawStart": 6376,
+            "rawEnd": 6408,
+            "bound": false,
+            "bindingReason": "RAW_ALIAS_NOT_IN_SOURCE_ALIAS_MAP"
+          }
+        ],
+        "classification": "VISUALLY_DETECTED_SOURCE_MAPPING_FAILED",
+        "note": "Semantic alias occurs in the Gold label and its rendered page window, but no canonical source binding survived raw-to-bound."
+      },
+      {
+        "headingOrdinal": 31,
+        "goldText": "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 27351,
+        "end": 27400,
+        "pageIndex": [
+          9
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 32,
+        "goldText": "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 28415,
+        "end": 28456,
+        "pageIndex": [
+          9
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 33,
+        "goldText": "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 29974,
+        "end": 30039,
+        "pageIndex": [
+          9
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 34,
+        "goldText": "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 30572,
+        "end": 30622,
+        "pageIndex": [
+          10
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 35,
+        "goldText": "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 32357,
+        "end": 32413,
+        "pageIndex": [
+          10
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 36,
+        "goldText": "Chương III THỰC HIỆN KẾT NỐI, CHIA SẺ, SỬ DỤNG DỮ LIỆU",
+        "sourceId": "body[1]/p[4]",
+        "start": 32768,
+        "end": 32822,
+        "pageIndex": [
+          10
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 37,
+        "goldText": "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "sourceId": "body[1]/p[4]",
+        "start": 32823,
+        "end": 32862,
+        "pageIndex": [
+          10
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 38,
+        "goldText": "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+        "sourceId": "body[1]/p[4]",
+        "start": 32863,
+        "end": 32994,
+        "pageIndex": [
+          10
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 39,
+        "goldText": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+        "sourceId": "body[1]/p[4]",
+        "start": 34108,
+        "end": 34247,
+        "pageIndex": [
+          11
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 40,
+        "goldText": "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+        "sourceId": "body[1]/p[4]",
+        "start": 35467,
+        "end": 35498,
+        "pageIndex": [
+          11
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 41,
+        "goldText": "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 35499,
+        "end": 35546,
+        "pageIndex": [
+          11
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 42,
+        "goldText": "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+        "sourceId": "body[1]/p[4]",
+        "start": 36126,
+        "end": 36182,
+        "pageIndex": [
+          11
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 43,
+        "goldText": "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 36916,
+        "end": 36963,
+        "pageIndex": [
+          11
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 44,
+        "goldText": "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+        "sourceId": "body[1]/p[4]",
+        "start": 37929,
+        "end": 37972,
+        "pageIndex": [
+          12
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 45,
+        "goldText": "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+        "sourceId": "body[1]/p[4]",
+        "start": 37973,
+        "end": 38029,
+        "pageIndex": [
+          12
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 46,
+        "goldText": "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 38781,
+        "end": 38832,
+        "pageIndex": [
+          12
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 47,
+        "goldText": "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 39241,
+        "end": 39285,
+        "pageIndex": [
+          12
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 48,
+        "goldText": "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 40307,
+        "end": 40359,
+        "pageIndex": [
+          13
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 49,
+        "goldText": "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "sourceId": "body[1]/p[4]",
+        "start": 40706,
+        "end": 40745,
+        "pageIndex": [
+          13
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 50,
+        "goldText": "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+        "sourceId": "body[1]/p[4]",
+        "start": 40746,
+        "end": 40793,
+        "pageIndex": [
+          13
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 51,
+        "goldText": "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+        "sourceId": "body[1]/p[4]",
+        "start": 41526,
+        "end": 41577,
+        "pageIndex": [
+          13
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 52,
+        "goldText": "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+        "sourceId": "body[1]/p[4]",
+        "start": 42645,
+        "end": 42692,
+        "pageIndex": [
+          13
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 53,
+        "goldText": "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+        "sourceId": "body[1]/p[4]",
+        "start": 42984,
+        "end": 43069,
+        "pageIndex": [
+          13
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 54,
+        "goldText": "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+        "sourceId": "body[1]/p[4]",
+        "start": 44921,
+        "end": 44983,
+        "pageIndex": [
+          14
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 55,
+        "goldText": "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 45915,
+        "end": 45955,
+        "pageIndex": [
+          14
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 56,
+        "goldText": "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 46641,
+        "end": 46682,
+        "pageIndex": [
+          15
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 57,
+        "goldText": "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "sourceId": "body[1]/p[4]",
+        "start": 47323,
+        "end": 47375,
+        "pageIndex": [
+          15
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 58,
+        "goldText": "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 47376,
+        "end": 47436,
+        "pageIndex": [
+          15
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 59,
+        "goldText": "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+        "sourceId": "body[1]/p[4]",
+        "start": 47923,
+        "end": 47974,
+        "pageIndex": [
+          15
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 60,
+        "goldText": "Điều 49. Trình tự xử lý vướng mắc",
+        "sourceId": "body[1]/p[4]",
+        "start": 48627,
+        "end": 48660,
+        "pageIndex": [
+          15
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 61,
+        "goldText": "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+        "sourceId": "body[1]/p[4]",
+        "start": 50264,
+        "end": 50342,
+        "pageIndex": [
+          16
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 62,
+        "goldText": "Chương IV QUYỀN, TRÁCH NHIỆM TRONG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "sourceId": "body[1]/p[4]",
+        "start": 50896,
+        "end": 50955,
+        "pageIndex": [
+          16
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 63,
+        "goldText": "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 50956,
+        "end": 51014,
+        "pageIndex": [
+          16
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 64,
+        "goldText": "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+        "sourceId": "body[1]/p[4]",
+        "start": 52830,
+        "end": 52907,
+        "pageIndex": [
+          16
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 65,
+        "goldText": "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+        "sourceId": "body[1]/p[4]",
+        "start": 53712,
+        "end": 53786,
+        "pageIndex": [
+          17
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 66,
+        "goldText": "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+        "sourceId": "body[1]/p[4]",
+        "start": 56513,
+        "end": 56595,
+        "pageIndex": [
+          17
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 67,
+        "goldText": "Chương V ĐIỀU KHOẢN THI HÀNH",
+        "sourceId": "body[1]/p[4]",
+        "start": 57453,
+        "end": 57481,
+        "pageIndex": [
+          18
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 68,
+        "goldText": "Điều 55. Điều khoản chuyển tiếp",
+        "sourceId": "body[1]/p[4]",
+        "start": 57482,
+        "end": 57513,
+        "pageIndex": [
+          18
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 69,
+        "goldText": "Điều 56. Hiệu lực thi hành",
+        "sourceId": "body[1]/p[4]",
+        "start": 58966,
+        "end": 58992,
+        "pageIndex": [
+          18
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      },
+      {
+        "headingOrdinal": 70,
+        "goldText": "Điều 57. Trách nhiệm thi hành",
+        "sourceId": "body[1]/p[4]",
+        "start": 59240,
+        "end": 59269,
+        "pageIndex": [
+          18
+        ],
+        "visibleOnRenderedPage": true,
+        "sourceMappingAvailable": true,
+        "vlmProposalOnSamePage": 0,
+        "semanticCandidateCount": 0,
+        "semanticCorrespondence": [],
+        "classification": "TRUE_VLM_OMISSION",
+        "note": "Diagnostic only; official exact score is unchanged."
+      }
+    ]
+  },
+  "textVsVlm": {
+    "textV2": {
+      "exactTP": 0,
+      "exactFP": 101,
+      "exactFN": 71,
+      "f1": 0,
+      "semanticPresent": 20,
+      "wrongSpan": 20,
+      "trueOmission": 51,
+      "systemBindingLoss": 0,
+      "visualAlignmentLoss": 0
+    },
+    "vlm": {
+      "exactTP": 0,
+      "exactFP": 3,
+      "exactFN": 71,
+      "f1": 0,
+      "semanticPresent": 31,
+      "wrongSpan": 0,
+      "trueOmission": 40,
+      "systemBindingLoss": 0,
+      "visualAlignmentLoss": 31
+    }
+  },
+  "lostSourceSignals": [
+    {
+      "signal": "run_boundaries",
+      "ooXml": "PRESENT_IN_OOXML (1 run; 1057 text children inside it)",
+      "sourceFacts": "LOST_DURING_NORMALIZATION",
+      "textLlm": "VISIBLE_TO_TEXT_LLM only as concatenated text",
+      "vlm": "VISIBLE_TO_VLM as page layout, not XML boundaries",
+      "status": "LOST_DURING_NORMALIZATION"
+    },
+    {
+      "signal": "manual_line_breaks_w_br",
+      "ooXml": "PRESENT_IN_OOXML (1512 type=text w:br)",
+      "sourceFacts": "LOST_DURING_NORMALIZATION",
+      "textLlm": "NOT_VISIBLE_AS_BREAKS",
+      "vlm": "VISIBLE_TO_VLM_AS_LAYOUT",
+      "status": "LOST_DURING_NORMALIZATION"
+    }
+  ],
+  "finalClassification": "MIXED_REPRESENTATION_AND_MODEL_FAILURE",
+  "nextArchitecturalAction": "Do not change runtime in this audit. If a new campaign is authorized, introduce a rich source IR that preserves w:t/run/br boundaries and page/layout anchors while retaining exact UTF-16 offsets, then rerun the same Contract V2 visual benchmark.",
+  "modelCalls": 0,
+  "goldReadBeforeFreeze": false
+}
