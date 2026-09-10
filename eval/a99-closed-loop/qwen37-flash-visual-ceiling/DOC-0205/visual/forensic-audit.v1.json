@@ -1,0 +1,2780 @@
+{
+  "schemaVersion": "a99-qwen37-flash-zero-tp-forensic-audit-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "mode": "TEXT_PLUS_VISUAL",
+  "offlineOnly": true,
+  "providerCalls": 0,
+  "expectedStartHead": "2d7960366960af781ac69320d3e1ec6b730305bd",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "integrity": {
+    "sourceShaMatch": true,
+    "pageRenderManifestHashMatch": true,
+    "mappingHashMatch": true,
+    "predictionHashMatch": true,
+    "resultHashMatch": true,
+    "goldReadBeforeFreeze": false,
+    "all19PageHashesMatch": true,
+    "all19DimensionsMatch": true
+  },
+  "render": {
+    "renderer": "LibreOffice",
+    "pageCount": 19,
+    "deterministic": true,
+    "determinismReason": "same_page_count_dimensions_and_pixel_hashes",
+    "pageCoverage": 1,
+    "sourceOccurrenceMappingCoverage": 1,
+    "mappedSourceOccurrences": 3,
+    "totalSourceOccurrences": 3,
+    "pageEntries": 19
+  },
+  "packet": {
+    "auditPath": "visual-packet-audit.v1.json",
+    "packetAuditHash": "7c3489f7b44a4906a343b74a1bf6c34345f53026b07e8c5280c1037fd38e38e3",
+    "eightPageMaxPacketChars": 49772,
+    "singlePagePacketCharsMin": 530,
+    "singlePagePacketCharsMax": 1397,
+    "eightPageMaxVisibleSourceChars": 24100,
+    "singlePageVisibleSourceCharsMin": 254,
+    "singlePageVisibleSourceCharsMax": 657,
+    "hiddenFullOccurrenceReplication": false
+  },
+  "reconstruction": {
+    "finalPredictionCount": 32,
+    "bindingExactMatch": 32,
+    "bindingMismatch": 0,
+    "unresolvableAlias": 0,
+    "outOfRangeSpan": 0,
+    "wrongPageSourceMapping": 0,
+    "validatorAccepted": 32,
+    "projectionIncluded": 32,
+    "predictionRows": [
+      {
+        "predictionOrdinal": 0,
+        "pageIndex": 1,
+        "windowId": "window-0001-0001.v1",
+        "rawVisualAlias": 0,
+        "rawLocalStart": 0,
+        "rawLocalEnd": 37,
+        "rawRole": "DOCUMENT_TITLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[1]:0:37",
+        "sourceId": "body[1]/p[1]",
+        "globalStart": 0.0,
+        "globalEnd": 37.0,
+        "exactPredictionText": "025_ND_47-2020_Chia_se_du_lieu_so.doc",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[1]:0:37",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 1,
+        "pageIndex": 1,
+        "windowId": "window-0001-0001.v1",
+        "rawVisualAlias": 2,
+        "rawLocalStart": 64,
+        "rawLocalEnd": 556,
+        "rawRole": "DOCUMENT_TITLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 228.0,
+        "globalEnd": 720.0,
+        "exactPredictionText": "ơ quan nhà nước ______________________ Căn cứ Luật Tổ chức Chính phủ ngày 19 tháng 6 năm 2015; Căn cứ Luật Công nghệ thông tin ngày 29 tháng 6 năm 2006; Căn cứ Luật Giao dịch điện tử ngày 29 tháng 11 năm 2005; Căn cứ Luật Tiếp cận thông tin ngày 06 tháng 4 năm 2016; Theo đề nghị của Bộ trưởng Bộ Thông tin và Truyền thông; Chính phủ ban hành Nghị định về quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước. Chương I QUY ĐỊNH CHUNG Điều 1. Phạm vi điều chỉnh 1. Nghị định này quy địn",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:228:720",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 2,
+        "pageIndex": 4,
+        "windowId": "window-0004-0004.v1",
+        "rawVisualAlias": 0,
+        "rawLocalStart": 115,
+        "rawLocalEnd": 195,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 10715.0,
+        "globalEnd": 10795.0,
+        "exactPredictionText": " liệu đó được cơ quan nhà nước khác sẵn sàng chia sẻ và đáp ứng được yêu cầu, tr",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:10715:10795",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 3,
+        "pageIndex": 4,
+        "windowId": "window-0004-0004.v1",
+        "rawVisualAlias": 1,
+        "rawLocalStart": 293,
+        "rawLocalEnd": 335,
+        "rawRole": "SUBSECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 10893.0,
+        "globalEnd": 10935.0,
+        "exactPredictionText": "a dữ liệu. Điều 10. Tổ chức, quản lý dữ li",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:10893:10935",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 4,
+        "pageIndex": 4,
+        "windowId": "window-0004-0004.v1",
+        "rawVisualAlias": 2,
+        "rawLocalStart": 433,
+        "rawLocalEnd": 485,
+        "rawRole": "SUBSECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 11033.0,
+        "globalEnd": 11085.0,
+        "exactPredictionText": "nh thành các cơ sở dữ liệu; b) Quản lý, duy trì, cập",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:11033:11085",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 5,
+        "pageIndex": 5,
+        "windowId": "window-0005-0005.v1",
+        "rawVisualAlias": 0,
+        "rawLocalStart": 285,
+        "rawLocalEnd": 315,
+        "rawRole": "SUBSECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 14039.0,
+        "globalEnd": 14069.0,
+        "exactPredictionText": " dữ liệu từ cơ sở dữ liệu quốc",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:14039:14069",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 6,
+        "pageIndex": 5,
+        "windowId": "window-0005-0005.v1",
+        "rawVisualAlias": 1,
+        "rawLocalStart": 317,
+        "rawLocalEnd": 345,
+        "rawRole": "ARTICLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 14071.0,
+        "globalEnd": 14099.0,
+        "exactPredictionText": "ia. 3. Cơ sở dữ liệu quốc gi",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:14071:14099",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 7,
+        "pageIndex": 5,
+        "windowId": "window-0005-0005.v1",
+        "rawVisualAlias": 2,
+        "rawLocalStart": 438,
+        "rawLocalEnd": 495,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 14192.0,
+        "globalEnd": 14249.0,
+        "exactPredictionText": "ng các văn bản giấy chứa thông tin được cơ quan có thẩm q",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:14192:14249",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 8,
+        "pageIndex": 5,
+        "windowId": "window-0005-0005.v1",
+        "rawVisualAlias": 3,
+        "rawLocalStart": 497,
+        "rawLocalEnd": 545,
+        "rawRole": "ARTICLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 14251.0,
+        "globalEnd": 14299.0,
+        "exactPredictionText": "ền cung cấp; b) Chứa dữ liệu chủ của Chính phủ l",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:14251:14299",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 9,
+        "pageIndex": 7,
+        "windowId": "window-0007-0007.v1",
+        "rawVisualAlias": 0,
+        "rawLocalStart": 103,
+        "rawLocalEnd": 173,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 20222.0,
+        "globalEnd": 20292.0,
+        "exactPredictionText": "tịch Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương có trác",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:20222:20292",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 10,
+        "pageIndex": 7,
+        "windowId": "window-0007-0007.v1",
+        "rawVisualAlias": 1,
+        "rawLocalStart": 433,
+        "rawLocalEnd": 493,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 20552.0,
+        "globalEnd": 20612.0,
+        "exactPredictionText": "ợc phép tự do sao chép, chia sẻ, trao đổi, sử dụng dữ liệu m",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:20552:20612",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 11,
+        "pageIndex": 8,
+        "windowId": "window-0008-0008.v1",
+        "rawVisualAlias": 0,
+        "rawLocalStart": 108,
+        "rawLocalEnd": 160,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 23725.0,
+        "globalEnd": 23777.0,
+        "exactPredictionText": "g dữ liệu quốc gia. Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:23725:23777",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 12,
+        "pageIndex": 8,
+        "windowId": "window-0008-0008.v1",
+        "rawVisualAlias": 1,
+        "rawLocalStart": 162,
+        "rawLocalEnd": 198,
+        "rawRole": "ARTICLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 23779.0,
+        "globalEnd": 23815.0,
+        "exactPredictionText": "ẾT NỐI, CHIA SẺ DỮ LIỆU Điều 22. Quy",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:23779:23815",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 13,
+        "pageIndex": 8,
+        "windowId": "window-0008-0008.v1",
+        "rawVisualAlias": 2,
+        "rawLocalStart": 248,
+        "rawLocalEnd": 278,
+        "rawRole": "ARTICLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 23865.0,
+        "globalEnd": 23895.0,
+        "exactPredictionText": ", chia sẻ, sử dụng dữ liệu của",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:23865:23895",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 14,
+        "pageIndex": 10,
+        "windowId": "window-0010-0010.v1",
+        "rawVisualAlias": 0,
+        "rawLocalStart": 100,
+        "rawLocalEnd": 315,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 30480.0,
+        "globalEnd": 30695.0,
+        "exactPredictionText": "n dữ liệu chia sẻ theo quy định của cơ quan cung cấp dữ liệu và các quy định của pháp luật. Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu 1. Đối với kinh phí thực hiện đầu tư xây dựng hạ tầng kết nối, chia sẻ d",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:30480:30695",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 15,
+        "pageIndex": 10,
+        "windowId": "window-0010-0010.v1",
+        "rawVisualAlias": 1,
+        "rawLocalStart": 316,
+        "rawLocalEnd": 345,
+        "rawRole": "CHAPTER",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 30696.0,
+        "globalEnd": 30725.0,
+        "exactPredictionText": " liệu; nền tảng tích hợp, chi",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:30696:30725",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 16,
+        "pageIndex": 10,
+        "windowId": "window-0010-0010.v1",
+        "rawVisualAlias": 2,
+        "rawLocalStart": 346,
+        "rawLocalEnd": 385,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 30726.0,
+        "globalEnd": 30765.0,
+        "exactPredictionText": " sẻ dữ liệu cấp bộ, cấp tỉnh và các cơ ",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:30726:30765",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 17,
+        "pageIndex": 10,
+        "windowId": "window-0010-0010.v1",
+        "rawVisualAlias": 3,
+        "rawLocalStart": 386,
+        "rawLocalEnd": 415,
+        "rawRole": "SUBSECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 30766.0,
+        "globalEnd": 30795.0,
+        "exactPredictionText": "ở dữ liệu quốc gia, nguồn kin",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:30766:30795",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 18,
+        "pageIndex": 11,
+        "windowId": "window-0011-0011.v1",
+        "rawVisualAlias": 0,
+        "rawLocalStart": 101,
+        "rawLocalEnd": 234,
+        "rawRole": "ARTICLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 34108.0,
+        "globalEnd": 34241.0,
+        "exactPredictionText": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trun",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:34108:34241",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 19,
+        "pageIndex": 14,
+        "windowId": "window-0014-0014.v1",
+        "rawVisualAlias": 1,
+        "rawLocalStart": 1,
+        "rawLocalEnd": 2,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 43267.0,
+        "globalEnd": 43268.0,
+        "exactPredictionText": "i",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:43267:43268",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 20,
+        "pageIndex": 14,
+        "windowId": "window-0014-0014.v1",
+        "rawVisualAlias": 2,
+        "rawLocalStart": 2,
+        "rawLocalEnd": 3,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 43268.0,
+        "globalEnd": 43269.0,
+        "exactPredictionText": "n",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:43268:43269",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 21,
+        "pageIndex": 14,
+        "windowId": "window-0014-0014.v1",
+        "rawVisualAlias": 3,
+        "rawLocalStart": 3,
+        "rawLocalEnd": 4,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 43269.0,
+        "globalEnd": 43270.0,
+        "exactPredictionText": ";",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:43269:43270",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 22,
+        "pageIndex": 15,
+        "windowId": "window-0015-0015.v1",
+        "rawVisualAlias": 0,
+        "rawLocalStart": 0,
+        "rawLocalEnd": 40,
+        "rawRole": "ARTICLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 46641.0,
+        "globalEnd": 46681.0,
+        "exactPredictionText": "Điều 46. Mô hình kết nối, chia sẻ dữ liệ",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:46641:46681",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 23,
+        "pageIndex": 15,
+        "windowId": "window-0015-0015.v1",
+        "rawVisualAlias": 1,
+        "rawLocalStart": 162,
+        "rawLocalEnd": 199,
+        "rawRole": "CLAUSE_HEADING",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 46803.0,
+        "globalEnd": 46840.0,
+        "exactPredictionText": "iên sau: 1. Kết nối qua các hệ thống ",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:46803:46840",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 24,
+        "pageIndex": 15,
+        "windowId": "window-0015-0015.v1",
+        "rawVisualAlias": 2,
+        "rawLocalStart": 399,
+        "rawLocalEnd": 445,
+        "rawRole": "CLAUSE_HEADING",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 47040.0,
+        "globalEnd": 47086.0,
+        "exactPredictionText": "n tử đã được các cấp có thẩm quyền phê duyệt. ",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:47040:47086",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 25,
+        "pageIndex": 16,
+        "windowId": "window-0016-0016.v1",
+        "rawVisualAlias": 0,
+        "rawLocalStart": 103,
+        "rawLocalEnd": 176,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 50257.0,
+        "globalEnd": 50330.0,
+        "exactPredictionText": "quyết. Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử ",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:50257:50330",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 26,
+        "pageIndex": 16,
+        "windowId": "window-0016-0016.v1",
+        "rawVisualAlias": 1,
+        "rawLocalStart": 177,
+        "rawLocalEnd": 207,
+        "rawRole": "SUBSECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 50331.0,
+        "globalEnd": 50361.0,
+        "exactPredictionText": "ý vướng mắc 1. Nguyên tắc giải",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:50331:50361",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 27,
+        "pageIndex": null,
+        "windowId": "window-0017-0019.v1",
+        "rawVisualAlias": 0,
+        "rawLocalStart": 1039,
+        "rawLocalEnd": 1042,
+        "rawRole": "CHAPTER",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 54365.0,
+        "globalEnd": 54368.0,
+        "exactPredictionText": ". T",
+        "binderStatus": "EXACT_RECOMPUTED",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:54365:54368",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 28,
+        "pageIndex": null,
+        "windowId": "window-0017-0019.v1",
+        "rawVisualAlias": 1,
+        "rawLocalStart": 1044,
+        "rawLocalEnd": 1060,
+        "rawRole": "SECTION",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 54370.0,
+        "globalEnd": 54386.0,
+        "exactPredictionText": " thập, quản lý d",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:54370:54386",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 29,
+        "pageIndex": null,
+        "windowId": "window-0017-0019.v1",
+        "rawVisualAlias": 2,
+        "rawLocalStart": 1062,
+        "rawLocalEnd": 1078,
+        "rawRole": "ARTICLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 54388.0,
+        "globalEnd": 54404.0,
+        "exactPredictionText": "liệu danh mục dù",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:54388:54404",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 30,
+        "pageIndex": null,
+        "windowId": "window-0017-0019.v1",
+        "rawVisualAlias": 3,
+        "rawLocalStart": 1130,
+        "rawLocalEnd": 1146,
+        "rawRole": "ARTICLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 54456.0,
+        "globalEnd": 54472.0,
+        "exactPredictionText": "uan có nhu cầu; ",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:54456:54472",
+        "final": true
+      },
+      {
+        "predictionOrdinal": 31,
+        "pageIndex": null,
+        "windowId": "window-0017-0019.v1",
+        "rawVisualAlias": 4,
+        "rawLocalStart": 1338,
+        "rawLocalEnd": 1354,
+        "rawRole": "ARTICLE",
+        "resolvedSourceAlias": "DOC-0205:body[1]/p[4]:3:60769",
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 54664.0,
+        "globalEnd": 54680.0,
+        "exactPredictionText": "i các giải pháp,",
+        "binderStatus": "SOLE_OWNED_FALLBACK",
+        "validatorStatus": "ACCEPTED",
+        "projectionStatus": "INCLUDED",
+        "key": "body[1]/p[4]:54664:54680",
+        "final": true
+      }
+    ]
+  },
+  "officialScore": {
+    "TP": 0,
+    "FP": 32,
+    "FN": 71,
+    "F1": 0
+  },
+  "fpClassification": {
+    "counts": {
+      "SUPERSET_GOLD_HEADING_SPAN": 2,
+      "EXACT_TRUE_EXTRA": 23,
+      "SEMANTIC_GOLD_MATCH_WRONG_SPAN": 5,
+      "PARTIAL_GOLD_HEADING_SPAN": 2
+    },
+    "rows": [
+      {
+        "predictionKey": "body[1]/p[1]:0:37",
+        "pageIndex": 1,
+        "sourceId": "body[1]/p[1]",
+        "globalStart": 0.0,
+        "globalEnd": 37.0,
+        "text": "025_ND_47-2020_Chia_se_du_lieu_so.doc",
+        "role": "DOCUMENT_TITLE",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:228:720",
+        "pageIndex": 1,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 228.0,
+        "globalEnd": 720.0,
+        "text": "ơ quan nhà nước ______________________ Căn cứ Luật Tổ chức Chính phủ ngày 19 tháng 6 năm 2015; Căn cứ Luật Công nghệ thông tin ngày 29 tháng 6 năm 2006; Căn cứ Luật Giao dịch điện tử ngày 29 tháng 11 năm 2005; Căn cứ Luật Tiếp cận thông tin ngày 06 tháng 4 năm 2016; Theo đề nghị của Bộ trưởng Bộ Thông tin và Truyền thông; Chính phủ ban hành Nghị định về quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước. Chương I QUY ĐỊNH CHUNG Điều 1. Phạm vi điều chỉnh 1. Nghị định này quy địn",
+        "role": "DOCUMENT_TITLE",
+        "primaryBucket": "SUPERSET_GOLD_HEADING_SPAN",
+        "overlappingGoldOrdinals": [
+          0,
+          1
+        ],
+        "semanticGoldOrdinals": [
+          0,
+          1
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:10715:10795",
+        "pageIndex": 4,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 10715.0,
+        "globalEnd": 10795.0,
+        "text": " liệu đó được cơ quan nhà nước khác sẵn sàng chia sẻ và đáp ứng được yêu cầu, tr",
+        "role": "SECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:10893:10935",
+        "pageIndex": 4,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 10893.0,
+        "globalEnd": 10935.0,
+        "text": "a dữ liệu. Điều 10. Tổ chức, quản lý dữ li",
+        "role": "SUBSECTION",
+        "primaryBucket": "SEMANTIC_GOLD_MATCH_WRONG_SPAN",
+        "overlappingGoldOrdinals": [
+          12
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:11033:11085",
+        "pageIndex": 4,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 11033.0,
+        "globalEnd": 11085.0,
+        "text": "nh thành các cơ sở dữ liệu; b) Quản lý, duy trì, cập",
+        "role": "SUBSECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:14039:14069",
+        "pageIndex": 5,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 14039.0,
+        "globalEnd": 14069.0,
+        "text": " dữ liệu từ cơ sở dữ liệu quốc",
+        "role": "SUBSECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:14071:14099",
+        "pageIndex": 5,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 14071.0,
+        "globalEnd": 14099.0,
+        "text": "ia. 3. Cơ sở dữ liệu quốc gi",
+        "role": "ARTICLE",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:14192:14249",
+        "pageIndex": 5,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 14192.0,
+        "globalEnd": 14249.0,
+        "text": "ng các văn bản giấy chứa thông tin được cơ quan có thẩm q",
+        "role": "SECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:14251:14299",
+        "pageIndex": 5,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 14251.0,
+        "globalEnd": 14299.0,
+        "text": "ền cung cấp; b) Chứa dữ liệu chủ của Chính phủ l",
+        "role": "ARTICLE",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:20222:20292",
+        "pageIndex": 7,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 20222.0,
+        "globalEnd": 20292.0,
+        "text": "tịch Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương có trác",
+        "role": "SECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:20552:20612",
+        "pageIndex": 7,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 20552.0,
+        "globalEnd": 20612.0,
+        "text": "ợc phép tự do sao chép, chia sẻ, trao đổi, sử dụng dữ liệu m",
+        "role": "SECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:23725:23777",
+        "pageIndex": 8,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 23725.0,
+        "globalEnd": 23777.0,
+        "text": "g dữ liệu quốc gia. Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG",
+        "role": "SECTION",
+        "primaryBucket": "SEMANTIC_GOLD_MATCH_WRONG_SPAN",
+        "overlappingGoldOrdinals": [
+          26
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:23779:23815",
+        "pageIndex": 8,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 23779.0,
+        "globalEnd": 23815.0,
+        "text": "ẾT NỐI, CHIA SẺ DỮ LIỆU Điều 22. Quy",
+        "role": "ARTICLE",
+        "primaryBucket": "SEMANTIC_GOLD_MATCH_WRONG_SPAN",
+        "overlappingGoldOrdinals": [
+          26,
+          27
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:23865:23895",
+        "pageIndex": 8,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 23865.0,
+        "globalEnd": 23895.0,
+        "text": ", chia sẻ, sử dụng dữ liệu của",
+        "role": "ARTICLE",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:30480:30695",
+        "pageIndex": 10,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 30480.0,
+        "globalEnd": 30695.0,
+        "text": "n dữ liệu chia sẻ theo quy định của cơ quan cung cấp dữ liệu và các quy định của pháp luật. Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu 1. Đối với kinh phí thực hiện đầu tư xây dựng hạ tầng kết nối, chia sẻ d",
+        "role": "SECTION",
+        "primaryBucket": "SUPERSET_GOLD_HEADING_SPAN",
+        "overlappingGoldOrdinals": [
+          34
+        ],
+        "semanticGoldOrdinals": [
+          34
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:30696:30725",
+        "pageIndex": 10,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 30696.0,
+        "globalEnd": 30725.0,
+        "text": " liệu; nền tảng tích hợp, chi",
+        "role": "CHAPTER",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:30726:30765",
+        "pageIndex": 10,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 30726.0,
+        "globalEnd": 30765.0,
+        "text": " sẻ dữ liệu cấp bộ, cấp tỉnh và các cơ ",
+        "role": "SECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:30766:30795",
+        "pageIndex": 10,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 30766.0,
+        "globalEnd": 30795.0,
+        "text": "ở dữ liệu quốc gia, nguồn kin",
+        "role": "SUBSECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:34108:34241",
+        "pageIndex": 11,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 34108.0,
+        "globalEnd": 34241.0,
+        "text": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trun",
+        "role": "ARTICLE",
+        "primaryBucket": "PARTIAL_GOLD_HEADING_SPAN",
+        "overlappingGoldOrdinals": [
+          39
+        ],
+        "semanticGoldOrdinals": [
+          39
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:43267:43268",
+        "pageIndex": 14,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 43267.0,
+        "globalEnd": 43268.0,
+        "text": "i",
+        "role": "SECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:43268:43269",
+        "pageIndex": 14,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 43268.0,
+        "globalEnd": 43269.0,
+        "text": "n",
+        "role": "SECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:43269:43270",
+        "pageIndex": 14,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 43269.0,
+        "globalEnd": 43270.0,
+        "text": ";",
+        "role": "SECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:46641:46681",
+        "pageIndex": 15,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 46641.0,
+        "globalEnd": 46681.0,
+        "text": "Điều 46. Mô hình kết nối, chia sẻ dữ liệ",
+        "role": "ARTICLE",
+        "primaryBucket": "PARTIAL_GOLD_HEADING_SPAN",
+        "overlappingGoldOrdinals": [
+          56
+        ],
+        "semanticGoldOrdinals": [
+          56
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:46803:46840",
+        "pageIndex": 15,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 46803.0,
+        "globalEnd": 46840.0,
+        "text": "iên sau: 1. Kết nối qua các hệ thống ",
+        "role": "CLAUSE_HEADING",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:47040:47086",
+        "pageIndex": 15,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 47040.0,
+        "globalEnd": 47086.0,
+        "text": "n tử đã được các cấp có thẩm quyền phê duyệt. ",
+        "role": "CLAUSE_HEADING",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:50257:50330",
+        "pageIndex": 16,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 50257.0,
+        "globalEnd": 50330.0,
+        "text": "quyết. Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử ",
+        "role": "SECTION",
+        "primaryBucket": "SEMANTIC_GOLD_MATCH_WRONG_SPAN",
+        "overlappingGoldOrdinals": [
+          61
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:50331:50361",
+        "pageIndex": 16,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 50331.0,
+        "globalEnd": 50361.0,
+        "text": "ý vướng mắc 1. Nguyên tắc giải",
+        "role": "SUBSECTION",
+        "primaryBucket": "SEMANTIC_GOLD_MATCH_WRONG_SPAN",
+        "overlappingGoldOrdinals": [
+          61
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:54365:54368",
+        "pageIndex": null,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 54365.0,
+        "globalEnd": 54368.0,
+        "text": ". T",
+        "role": "CHAPTER",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:54370:54386",
+        "pageIndex": null,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 54370.0,
+        "globalEnd": 54386.0,
+        "text": " thập, quản lý d",
+        "role": "SECTION",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:54388:54404",
+        "pageIndex": null,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 54388.0,
+        "globalEnd": 54404.0,
+        "text": "liệu danh mục dù",
+        "role": "ARTICLE",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:54456:54472",
+        "pageIndex": null,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 54456.0,
+        "globalEnd": 54472.0,
+        "text": "uan có nhu cầu; ",
+        "role": "ARTICLE",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      },
+      {
+        "predictionKey": "body[1]/p[4]:54664:54680",
+        "pageIndex": null,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 54664.0,
+        "globalEnd": 54680.0,
+        "text": "i các giải pháp,",
+        "role": "ARTICLE",
+        "primaryBucket": "EXACT_TRUE_EXTRA",
+        "overlappingGoldOrdinals": [
+          null
+        ],
+        "semanticGoldOrdinals": [
+          null
+        ]
+      }
+    ]
+  },
+  "gold": {
+    "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+    "sourceShaMatch": true,
+    "exactApprovedHeadingListMaterialized": true,
+    "goldCount": 71,
+    "validExactOccurrences": 71,
+    "firstLossCounts": {
+      "SYSTEM_VISUAL_ALIAS_LOSS": 60,
+      "MODEL_VISUAL_OMISSION": 6,
+      "MODEL_WRONG_SPAN": 5
+    },
+    "trace": [
+      {
+        "headingOrdinal": 0,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 645,
+        "globalEnd": 668,
+        "exactText": "Chương I QUY ĐỊNH CHUNG",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          1
+        ],
+        "rawExact": false,
+        "rawSemanticNear": true,
+        "rawOverlap": true,
+        "firstLoss": "MODEL_WRONG_SPAN",
+        "rawProposalKeys": [
+          "body[1]/p[4]:228:720"
+        ],
+        "semanticNearProposalKeys": [
+          "body[1]/p[4]:228:720"
+        ]
+      },
+      {
+        "headingOrdinal": 1,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 669,
+        "globalEnd": 695,
+        "exactText": "Điều 1. Phạm vi điều chỉnh",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          1
+        ],
+        "rawExact": false,
+        "rawSemanticNear": true,
+        "rawOverlap": true,
+        "firstLoss": "MODEL_WRONG_SPAN",
+        "rawProposalKeys": [
+          "body[1]/p[4]:228:720"
+        ],
+        "semanticNearProposalKeys": [
+          "body[1]/p[4]:228:720"
+        ]
+      },
+      {
+        "headingOrdinal": 2,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 1337,
+        "globalEnd": 1362,
+        "exactText": "Điều 2. Đối tượng áp dụng",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 3,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 1629,
+        "globalEnd": 1654,
+        "exactText": "Điều 3. Giải thích từ ngữ",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 4,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 4361,
+        "globalEnd": 4409,
+        "exactText": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 5,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 4626,
+        "globalEnd": 4689,
+        "exactText": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 6,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 6603,
+        "globalEnd": 6645,
+        "exactText": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 7,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 8146,
+        "globalEnd": 8206,
+        "exactText": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 8,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 9298,
+        "globalEnd": 9332,
+        "exactText": "Điều 8. Các hành vi không được làm",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 9,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 9843,
+        "globalEnd": 9978,
+        "exactText": "Chương II QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU, QUẢN TRỊ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC VÀ BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 10,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 9979,
+        "globalEnd": 10039,
+        "exactText": "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 11,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 10040,
+        "globalEnd": 10112,
+        "exactText": "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 12,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 10904,
+        "globalEnd": 10952,
+        "exactText": "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          4
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": true,
+        "firstLoss": "MODEL_VISUAL_OMISSION",
+        "rawProposalKeys": [
+          "body[1]/p[4]:10893:10935"
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 13,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 11449,
+        "globalEnd": 11494,
+        "exactText": "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 14,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 13065,
+        "globalEnd": 13146,
+        "exactText": "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 15,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 14829,
+        "globalEnd": 14859,
+        "exactText": "Điều 13. Cổng dữ liệu quốc gia",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 16,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 15558,
+        "globalEnd": 15618,
+        "exactText": "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 17,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 15619,
+        "globalEnd": 15691,
+        "exactText": "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 18,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 16890,
+        "globalEnd": 16963,
+        "exactText": "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 19,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 17527,
+        "globalEnd": 17571,
+        "exactText": "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 20,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 19329,
+        "globalEnd": 19367,
+        "exactText": "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 21,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 19368,
+        "globalEnd": 19428,
+        "exactText": "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 22,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 20463,
+        "globalEnd": 20520,
+        "exactText": "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          7
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "MODEL_VISUAL_OMISSION",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 23,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 21486,
+        "globalEnd": 21553,
+        "exactText": "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 24,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 22765,
+        "globalEnd": 22832,
+        "exactText": "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 25,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 23401,
+        "globalEnd": 23472,
+        "exactText": "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 26,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 23745,
+        "globalEnd": 23802,
+        "exactText": "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          8
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": true,
+        "firstLoss": "MODEL_VISUAL_OMISSION",
+        "rawProposalKeys": [
+          "body[1]/p[4]:23725:23777",
+          "body[1]/p[4]:23779:23815"
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 27,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 23803,
+        "globalEnd": 23854,
+        "exactText": "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          8
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": true,
+        "firstLoss": "MODEL_VISUAL_OMISSION",
+        "rawProposalKeys": [
+          "body[1]/p[4]:23779:23815"
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 28,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 24158,
+        "globalEnd": 24194,
+        "exactText": "Điều 23. Phương thức chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 29,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 25199,
+        "globalEnd": 25231,
+        "exactText": "Điều 24. Dịch vụ chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 30,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 26019,
+        "globalEnd": 26074,
+        "exactText": "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 31,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 27351,
+        "globalEnd": 27400,
+        "exactText": "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 32,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 28415,
+        "globalEnd": 28456,
+        "exactText": "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 33,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 29974,
+        "globalEnd": 30039,
+        "exactText": "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 34,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 30572,
+        "globalEnd": 30622,
+        "exactText": "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          10
+        ],
+        "rawExact": false,
+        "rawSemanticNear": true,
+        "rawOverlap": true,
+        "firstLoss": "MODEL_WRONG_SPAN",
+        "rawProposalKeys": [
+          "body[1]/p[4]:30480:30695"
+        ],
+        "semanticNearProposalKeys": [
+          "body[1]/p[4]:30480:30695"
+        ]
+      },
+      {
+        "headingOrdinal": 35,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 32357,
+        "globalEnd": 32413,
+        "exactText": "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 36,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 32768,
+        "globalEnd": 32822,
+        "exactText": "Chương III THỰC HIỆN KẾT NỐI, CHIA SẺ, SỬ DỤNG DỮ LIỆU",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 37,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 32823,
+        "globalEnd": 32862,
+        "exactText": "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 38,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 32863,
+        "globalEnd": 32994,
+        "exactText": "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 39,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 34108,
+        "globalEnd": 34247,
+        "exactText": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          11
+        ],
+        "rawExact": false,
+        "rawSemanticNear": true,
+        "rawOverlap": true,
+        "firstLoss": "MODEL_WRONG_SPAN",
+        "rawProposalKeys": [
+          "body[1]/p[4]:34108:34241"
+        ],
+        "semanticNearProposalKeys": [
+          "body[1]/p[4]:34108:34241"
+        ]
+      },
+      {
+        "headingOrdinal": 40,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 35467,
+        "globalEnd": 35498,
+        "exactText": "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 41,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 35499,
+        "globalEnd": 35546,
+        "exactText": "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 42,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 36126,
+        "globalEnd": 36182,
+        "exactText": "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 43,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 36916,
+        "globalEnd": 36963,
+        "exactText": "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 44,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 37929,
+        "globalEnd": 37972,
+        "exactText": "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 45,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 37973,
+        "globalEnd": 38029,
+        "exactText": "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 46,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 38781,
+        "globalEnd": 38832,
+        "exactText": "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 47,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 39241,
+        "globalEnd": 39285,
+        "exactText": "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 48,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 40307,
+        "globalEnd": 40359,
+        "exactText": "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 49,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 40706,
+        "globalEnd": 40745,
+        "exactText": "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 50,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 40746,
+        "globalEnd": 40793,
+        "exactText": "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 51,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 41526,
+        "globalEnd": 41577,
+        "exactText": "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 52,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 42645,
+        "globalEnd": 42692,
+        "exactText": "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 53,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 42984,
+        "globalEnd": 43069,
+        "exactText": "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 54,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 44921,
+        "globalEnd": 44983,
+        "exactText": "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 55,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 45915,
+        "globalEnd": 45955,
+        "exactText": "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 56,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 46641,
+        "globalEnd": 46682,
+        "exactText": "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          15
+        ],
+        "rawExact": false,
+        "rawSemanticNear": true,
+        "rawOverlap": true,
+        "firstLoss": "MODEL_WRONG_SPAN",
+        "rawProposalKeys": [
+          "body[1]/p[4]:46641:46681"
+        ],
+        "semanticNearProposalKeys": [
+          "body[1]/p[4]:46641:46681"
+        ]
+      },
+      {
+        "headingOrdinal": 57,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 47323,
+        "globalEnd": 47375,
+        "exactText": "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 58,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 47376,
+        "globalEnd": 47436,
+        "exactText": "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 59,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 47923,
+        "globalEnd": 47974,
+        "exactText": "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 60,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 48627,
+        "globalEnd": 48660,
+        "exactText": "Điều 49. Trình tự xử lý vướng mắc",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 61,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 50264,
+        "globalEnd": 50342,
+        "exactText": "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          16
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": true,
+        "firstLoss": "MODEL_VISUAL_OMISSION",
+        "rawProposalKeys": [
+          "body[1]/p[4]:50257:50330",
+          "body[1]/p[4]:50331:50361"
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 62,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 50896,
+        "globalEnd": 50955,
+        "exactText": "Chương IV QUYỀN, TRÁCH NHIỆM TRONG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 63,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 50956,
+        "globalEnd": 51014,
+        "exactText": "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 64,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 52830,
+        "globalEnd": 52907,
+        "exactText": "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 65,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 53712,
+        "globalEnd": 53786,
+        "exactText": "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+        "pageAliasExposed": true,
+        "mappingPages": [
+          17
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "MODEL_VISUAL_OMISSION",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 66,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 56513,
+        "globalEnd": 56595,
+        "exactText": "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 67,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 57453,
+        "globalEnd": 57481,
+        "exactText": "Chương V ĐIỀU KHOẢN THI HÀNH",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 68,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 57482,
+        "globalEnd": 57513,
+        "exactText": "Điều 55. Điều khoản chuyển tiếp",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 69,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 58966,
+        "globalEnd": 58992,
+        "exactText": "Điều 56. Hiệu lực thi hành",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      },
+      {
+        "headingOrdinal": 70,
+        "sourceId": "body[1]/p[4]",
+        "globalStart": 59240,
+        "globalEnd": 59269,
+        "exactText": "Điều 57. Trách nhiệm thi hành",
+        "pageAliasExposed": false,
+        "mappingPages": [
+          null
+        ],
+        "rawExact": false,
+        "rawSemanticNear": false,
+        "rawOverlap": false,
+        "firstLoss": "SYSTEM_VISUAL_ALIAS_LOSS",
+        "rawProposalKeys": [
+          null
+        ],
+        "semanticNearProposalKeys": [
+          null
+        ]
+      }
+    ]
+  },
+  "semanticPresence": {
+    "semanticCorrespondenceCount": 5,
+    "trueVisualModelOmissionCount": 6,
+    "systemAlignmentLossCount": 60,
+    "unresolvedCount": 0,
+    "semanticPresenceRecall": 0.070423
+  },
+  "fallback": {
+    "failedMultiPageWindows": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "successfulSinglePages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "allFailedPagesCovered": true,
+    "systemCoverageLoss": 0
+  },
+  "responseCompleteness": {
+    "successfulRequests": 17,
+    "allSuccessfulStop": true,
+    "allSuccessfulContentPresent": true,
+    "allSuccessfulStructuredParsed": true,
+    "failedWindowTelemetry": [
+      {
+        "finishReason": "error",
+        "reasoningTokens": 12374,
+        "outputTokens": 19445,
+        "responseContentPresent": true,
+        "structuredOutputParsed": false,
+        "outputLimitDetected": false,
+        "actualProvider": "Alibaba",
+        "elapsedMs": 412557,
+        "failureClass": "STRUCTURED_OUTPUT_TRUNCATED"
+      },
+      {
+        "finishReason": "error",
+        "reasoningTokens": 21695,
+        "outputTokens": 21695,
+        "responseContentPresent": false,
+        "structuredOutputParsed": false,
+        "outputLimitDetected": false,
+        "actualProvider": "Alibaba",
+        "elapsedMs": 452714,
+        "failureClass": "INCOMPLETE_PROVIDER_RESPONSE"
+      }
+    ]
+  },
+  "primaryClassification": "CROSS_MODAL_ALIGNMENT_FAILURE",
+  "interpretationGate": "SYSTEM_FIX_REQUIRED_BEFORE_VLM_JUDGMENT",
+  "goldReadBeforeFreeze": false
+}
