@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-semantic-text-exact-binding-freeze-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "contract": "a99-semantic-text-exact-binding-v1",
+  "actualProvider": "Alibaba",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "promptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+  "schemaHash": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
+  "packetHash": "65b616df872739a49c9cba307f1530c6673e563bb014723ecabe395485a34afe",
+  "predictionSha256": "9ec6e31426b402b46dce363882a4ae19f23f77058dd8076adce117feb97db46b",
+  "resultSha256": "156f73f851f056f3aa97f51b4c32ba3dca766920adbd0bc3b417ac0939827ea4",
+  "finishReason": "stop",
+  "reasoningTokens": 16137,
+  "outputTokens": 19194,
+  "inputTokens": 78175,
+  "elapsedMs": 70889,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-10T07:28:02.2270902+00:00"
+}

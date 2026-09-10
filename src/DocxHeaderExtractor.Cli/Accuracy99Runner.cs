@@ -68,6 +68,8 @@ internal static class Accuracy99Runner
             "openrouter-qwen37-flash-visual-audit" => await RunOpenRouterQwen37FlashVisualAuditAsync(options, cancellationToken),
             "doc0205-semantic-taxonomy-audit" => await RunDoc0205SemanticTaxonomyAuditAsync(options, cancellationToken),
             "doc0205-semantic-contract-reconciliation" => await RunDoc0205SemanticContractReconciliationAsync(options, cancellationToken),
+            "semantic-text-exact-binding" => await RunSemanticTextExactBindingAsync(options, cancellationToken),
+            "semantic-text-exact-binding-offline" => await RunSemanticTextExactBindingOfflineAsync(options, cancellationToken),
             "canonical-heading-contract-v2" => await RunCanonicalHeadingContractV2Async(options, cancellationToken),
             "heading-target-ontology-v4" => await RunHeadingTargetOntologyV4Async(options, cancellationToken),
             "structure-preserving-ir" => await RunStructurePreservingIrAsync(options, cancellationToken),
@@ -143,6 +145,18 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return Doc0205SemanticContractReconciliationRunner.RunAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextExactBindingAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextExactBindingRunner.RunAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextExactBindingOfflineAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextExactBindingRunner.RunOfflineComparisonAsync(repoRoot, cancellationToken);
     }
 
     private static Task<int> RunCanonicalHeadingContractV2Async(CommandLineOptions options, CancellationToken cancellationToken)

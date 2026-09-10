@@ -7,6 +7,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class Doc0205SemanticContractReconciliationTests
 {
     private const string Root = "eval/a99-closed-loop/doc0205-semantic-contract-audit";
+    private const string SemanticRoot = "eval/a99-closed-loop/semantic-text-exact-binding";
 
     [Theory]
     [InlineData("EXACT_MATCH", 10, 20, "body/p4", "Heading", "article", 10, 20, "body/p4", "Heading")]
@@ -75,7 +76,82 @@ public sealed class Doc0205SemanticContractReconciliationTests
         }
     }
 
+    [Fact]
+    public void Unique_verbatim_text_binds_exact_utf16_span()
+    {
+        var aliases = new[] { new SemanticTextSourceAlias("S0042", "body/p4", 42, "ARTICLE 1 Scope") };
+        var bound = SemanticTextExactBinder.Bind([new("S0042", "Scope", "SECTION")], aliases, out var observations);
+        var item = Assert.Single(bound);
+        Assert.Equal(10, item.Start);
+        Assert.Equal(15, item.End);
+        Assert.Equal(SemanticTextBindingStatus.BOUND, Assert.Single(observations).Status);
+    }
+
+    [Fact]
+    public void Zero_match_duplicate_and_unknown_aliases_are_rejected_without_fuzzy_binding()
+    {
+        var aliases = new[] { new SemanticTextSourceAlias("S0042", "body/p4", 42, "ARTICLE ARTICLE") };
+        var headings = new[] { new SemanticTextHeading("S0042", "ARTICLEX", "ARTICLE"), new SemanticTextHeading("S0042", "ARTICLE", "ARTICLE"), new SemanticTextHeading("S9999", "ARTICLE", "ARTICLE") };
+        var bound = SemanticTextExactBinder.Bind(headings, aliases, out var observations);
+        Assert.Empty(bound);
+        Assert.Equal([SemanticTextBindingStatus.TEXT_NOT_FOUND, SemanticTextBindingStatus.AMBIGUOUS_EXACT_TEXT, SemanticTextBindingStatus.INVALID_SOURCE_ALIAS], observations.Select(x => x.Status));
+    }
+
+    [Fact]
+    public void Duplicate_occurrence_ordinal_and_multiple_headings_in_one_occurrence_are_deterministic()
+    {
+        var aliases = new[] { new SemanticTextSourceAlias("S0042", "body/p4", 42, "ARTICLE ARTICLE") };
+        var headings = new[] { new SemanticTextHeading("S0042", "ARTICLE", "ARTICLE", 2), new SemanticTextHeading("S0042", "ARTICLE", "ARTICLE", 1) };
+        var bound = SemanticTextExactBinder.Bind(headings, aliases, out _);
+        Assert.Equal([8, 0], bound.Select(x => x.Start));
+        Assert.Equal([15, 7], bound.Select(x => x.End));
+    }
+
+    [Fact]
+    public void Semantic_contract_has_no_numeric_offset_fields_and_keeps_source_alias_authority()
+    {
+        var schema = JsonSerializer.Serialize(SemanticTextExactBindingContract.Schema());
+        Assert.DoesNotContain("\"start\":", schema, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("\"end\":", schema, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("source", schema, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("verbatim", SemanticTextExactBindingContract.System, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("semanticHeadingTotal", SemanticTextExactBindingContract.System, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Frozen_semantic_text_benchmark_recovers_exact_bindings_without_system_loss()
+    {
+        using var comparison = LoadSemantic("comparison.v1.json");
+        var root = comparison.RootElement;
+        Assert.Equal(0, root.GetProperty("providerCalls").GetInt32());
+        Assert.False(root.GetProperty("goldReadBeforeFreeze").GetBoolean());
+        Assert.Equal("SEMANTIC_TEXT_BINDING_RECOVERS_EXACT_ACCURACY", root.GetProperty("finalClassification").GetString());
+
+        var documents = root.GetProperty("documents").EnumerateArray().ToDictionary(x => x.GetProperty("documentId").GetString()!);
+        var doc0205 = documents["DOC-0205"].GetProperty("score");
+        Assert.Equal((70, 1, 1), (doc0205.GetProperty("tp").GetInt32(), doc0205.GetProperty("fp").GetInt32(), doc0205.GetProperty("fn").GetInt32()));
+        Assert.Equal(70, doc0205.GetProperty("semanticCorrespondence").GetInt32());
+        Assert.Equal(0, doc0205.GetProperty("wrongBoundary").GetInt32());
+        Assert.Equal(1, doc0205.GetProperty("textNotFound").GetInt32());
+        Assert.Equal(0, doc0205.GetProperty("systemBindingLoss").GetInt32());
+        Assert.Equal(0, doc0205.GetProperty("systemValidatorLoss").GetInt32());
+        Assert.Equal(0, doc0205.GetProperty("systemProjectionLoss").GetInt32());
+
+        var doc0258 = documents["DOC-0258"].GetProperty("score");
+        Assert.Equal((19, 0, 5), (doc0258.GetProperty("tp").GetInt32(), doc0258.GetProperty("fp").GetInt32(), doc0258.GetProperty("fn").GetInt32()));
+        Assert.Equal(5, doc0258.GetProperty("ambiguousExactText").GetInt32());
+        Assert.Equal(0, doc0258.GetProperty("systemBindingLoss").GetInt32());
+        Assert.Equal(0, doc0258.GetProperty("systemValidatorLoss").GetInt32());
+        Assert.Equal(0, doc0258.GetProperty("systemProjectionLoss").GetInt32());
+
+        var summaryPath = Path.Combine(RepoRoot(), SemanticRoot, "summary.v1.json");
+        using var summary = JsonDocument.Parse(File.ReadAllText(summaryPath));
+        Assert.Equal(2, summary.RootElement.GetProperty("modelCalls").GetInt32());
+        Assert.False(summary.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());
+    }
+
     private static JsonDocument Load(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), Root, name)));
+    private static JsonDocument LoadSemantic(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), SemanticRoot, name)));
     private static string RepoRoot() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
     private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
 }

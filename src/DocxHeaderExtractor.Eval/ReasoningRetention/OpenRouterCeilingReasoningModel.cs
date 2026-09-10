@@ -144,6 +144,34 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         return (response, telemetry);
     }
 
+    /// <summary>Runs one custom structured semantic request and returns the provider content
+    /// without imposing the numeric-span parser.  The caller owns only its deterministic
+    /// post-processing contract; transport, completion-limit handling, and telemetry remain
+    /// identical to the ceiling route.</summary>
+    public async Task<(string Content, RequestPacketTelemetry Telemetry)> CompleteRawStructuredSemanticAsync(
+        string documentId, string route, string requestId, string packetJson, int sourceTextCharacters,
+        int ownedOccurrences, int visibleOccurrences, string systemPrompt, string userPrompt,
+        object schema, string schemaName, CancellationToken ct = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(systemPrompt);
+        ArgumentException.ThrowIfNullOrWhiteSpace(userPrompt);
+        ArgumentNullException.ThrowIfNull(schema);
+        var maxCompletion = SemanticMaxCompletionTokens;
+        var telemetry = NewTelemetry(documentId, "SEMANTIC", requestId, packetJson, sourceTextCharacters, maxCompletion, ownedOccurrences, visibleOccurrences);
+        var (content, finishReason) = await SendAsync(systemPrompt, userPrompt, maxCompletion, schema, schemaName, telemetry, ct).ConfigureAwait(false);
+        if (IsOutputLimit(finishReason))
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
+            _telemetry.Add(telemetry);
+            throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
+                "Custom semantic pass hit the provider output limit before a complete response.",
+                new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
+        }
+        telemetry.ResponseContentPresent = !string.IsNullOrWhiteSpace(content);
+        _telemetry.Add(telemetry);
+        return (content, telemetry);
+    }
+
     public async Task<(StructurePreservingSemanticResponse Response, RequestPacketTelemetry Telemetry)> CompleteStructurePreservingSemanticAsync(
         string documentId, string route, string requestId, string packetJson, int sourceTextCharacters,
         int ownedOccurrences, int visibleOccurrences, CancellationToken ct = default)
