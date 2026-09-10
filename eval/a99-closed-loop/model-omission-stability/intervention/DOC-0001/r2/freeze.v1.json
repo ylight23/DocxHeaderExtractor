@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "a99-model-omission-stability-freeze-v1",
+  "documentId": "DOC-0001",
+  "repeat": "r2",
+  "gitSha": "67faa6c6decef4961015f2617eb6237dce440cdf",
+  "model": "qwen/qwen3.7-flash",
+  "actualProvider": "Alibaba",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "baseContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "verifierContractHash": "6edb24c76c3d3976c91a0e27da7b49ed43fffad6be3a31fa093dd77357da18cd",
+  "extractionCalls": 3,
+  "verifierCalls": 1,
+  "extractionResponseHashes": [
+    "9e9aeaeb87f28b60d15cbfc18b3734c6b96f38c94508e4c1c74583c138556efe",
+    "0423609a72a3ed99cb6dd7e0eb916e374798f1bc8d1b2442b67953d3974c5cfa",
+    "0423609a72a3ed99cb6dd7e0eb916e374798f1bc8d1b2442b67953d3974c5cfa"
+  ],
+  "verifierResponseHash": "1b4a7cdc0d59517e79e4c4ddcb17b5cd1f48283853495ff6d430b2b2fd476b5b",
+  "predictionSha256": "52005e40ab177200d11b6747b65272f1c997eed3a9f12623562f16f9b85d8e3a",
+  "resultSha256": "8e3890c93fa730e4fea208c22cbd08866838ead4f05e53dd68a77aa7b342b868",
+  "rawUnionCount": 7,
+  "selectedCount": 7,
+  "boundProposalCount": 7,
+  "finalCount": 7,
+  "providerAttempts": 4,
+  "inputTokens": 10181,
+  "reasoningTokens": 9884,
+  "outputTokens": 11148,
+  "finishReason": "stop",
+  "reasoningConfiguration": {
+    "requested": true,
+    "enabled": true,
+    "excluded": true,
+    "effort": "MODEL_DEFAULT"
+  },
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-10T14:56:33.8007204+00:00"
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "a99-model-omission-stability-summary-v1",
+  "status": "INTERVENTION_REVERTED",
+  "startHead": "67faa6c6decef4961015f2617eb6237dce440cdf",
+  "endHead": "67faa6c6decef4961015f2617eb6237dce440cdf",
+  "baseline": {
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "systemLoss": 0
+  },
+  "omissionStability": {
+    "ALWAYS_FOUND": 139,
+    "UNRESOLVED": 5,
+    "PERSISTENT_3_OF_3_MISS": 1,
+    "SYSTEM_AFFECTED": 7,
+    "STOCHASTIC_2_OF_3_MISS": 1
+  },
+  "threeRepeatOracleUnion": {
+    "tp": 144,
+    "fp": 10,
+    "fn": 9,
+    "precision": 0.935064935064935,
+    "recall": 0.9411764705882353,
+    "f1": 0.9381107491856677
+  },
+  "consensus2Of3": {
+    "tp": 142,
+    "fp": 9,
+    "fn": 11,
+    "precision": 0.9403973509933775,
+    "recall": 0.9281045751633987,
+    "f1": 0.9342105263157895
+  },
+  "consensus3Of3": {
+    "tp": 139,
+    "fp": 3,
+    "fn": 14,
+    "precision": 0.9788732394366197,
+    "recall": 0.9084967320261438,
+    "f1": 0.9423728813559321
+  },
+  "chosenIntervention": "SELF_CONSISTENCY_RECOVERY",
+  "intervention": {
+    "tp": 426,
+    "fp": 39,
+    "fn": 33,
+    "precision": 0.9161290322580645,
+    "recall": 0.9281045751633987,
+    "f1": 0.922077922077922,
+    "systemLoss": 27
+  },
+  "keepOrRevert": "REVERT_INTERVENTION",
+  "finalClassification": "INTERVENTION_REVERTED",
+  "distanceTo99": {
+    "precision": {
+      "target": 0.99,
+      "baseline": 0.9507829977628636,
+      "intervention": 0.9161290322580645,
+      "baselineGap": 0.03921700223713642,
+      "interventionGap": 0.07387096774193547
+    },
+    "recall": {
+      "target": 0.99,
+      "baseline": 0.9259259259259259,
+      "intervention": 0.9281045751633987,
+      "baselineGap": 0.06407407407407406,
+      "interventionGap": 0.061895424836601265
+    },
+    "f1": {
+      "target": 0.99,
+      "baseline": 0.9381898454746137,
+      "intervention": 0.922077922077922,
+      "baselineGap": 0.05181015452538629,
+      "interventionGap": 0.06792207792207794
+    }
+  },
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReadBeforeFreeze": false
+}

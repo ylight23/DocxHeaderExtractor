@@ -256,7 +256,7 @@ public static class SemanticTextGeneralizationRunner
         await WriteJson(Path.Combine(output, "summary.v1.json"), new
         {
             schemaVersion = "a99-semantic-text-duplicate-disambiguation-summary-v1", startHead, endHead = GitSha(repoRoot), model = Model,
-            baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1 },
+            baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1, systemLoss = baseline.Sum(x => x.SystemLoss) },
             intervention = new { tp = reviewMicro.Tp, fp = reviewMicro.Fp, fn = reviewMicro.Fn, precision = reviewMicro.Precision, recall = reviewMicro.Recall, f1 = reviewMicro.F1 },
             ambiguousBefore = audit.Count, mechanicallyResolvableWithoutModel = 0, requiresFreshModelDiscriminator = audit.Count, ambiguousAfter, resolvedDuplicates,
             incorrectlyResolvedDuplicateCount = incorrectResolutions, systemLoss = review.Sum(x => x.SystemLoss), deltaTP = reviewMicro.Tp - baselineMicro.Tp, deltaFP = reviewMicro.Fp - baselineMicro.Fp, deltaFN = reviewMicro.Fn - baselineMicro.Fn, deltaF1 = reviewMicro.F1 - baselineMicro.F1,
@@ -363,7 +363,7 @@ public static class SemanticTextGeneralizationRunner
         await WriteJson(Path.Combine(output, "summary.v1.json"), new
         {
             schemaVersion = "a99-semantic-text-duplicate-disambiguation-summary-v1", status = "COMPLETE_OFFLINE_REBUILD", startHead = baselineManifest.RootElement.GetProperty("startHead").GetString(), endHead = GitSha(repoRoot), model = Model,
-            baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1 },
+            baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1, systemLoss = baseline.Sum(x => x.SystemLoss) },
             intervention = new { tp = reviewMicro.Tp, fp = reviewMicro.Fp, fn = reviewMicro.Fn, precision = reviewMicro.Precision, recall = reviewMicro.Recall, f1 = reviewMicro.F1 },
             ambiguousBefore, mechanicallyResolvableWithoutModel = 0, requiresFreshModelDiscriminator = ambiguousBefore, ambiguousAfter, resolvedDuplicates = resolved, incorrectlyResolvedDuplicateCount = incorrect,
             systemLoss = review.Sum(x => x.SystemLoss), deltaTP = reviewMicro.Tp - baselineMicro.Tp, deltaFP = reviewMicro.Fp - baselineMicro.Fp, deltaFN = reviewMicro.Fn - baselineMicro.Fn, deltaF1 = reviewMicro.F1 - baselineMicro.F1,
@@ -944,6 +944,375 @@ public static class SemanticTextGeneralizationRunner
         Console.WriteLine($"RESUME_PROVIDER_CALLS={model.ProviderCalls}");
         Console.WriteLine($"RESUME_CLEAN_COMPLETION_EXIT={postAudit}");
         return postAudit;
+    }
+
+    /// <summary>Audits the already frozen three-repeat semantic-text cohort and, only when the
+    /// audit shows recoverable variance, runs one generic union-plus-verifier intervention.</summary>
+    public static async Task<int> RunModelOmissionStabilityAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/model-omission-stability");
+        var interventionRoot = Path.Combine(output, "intervention");
+        Directory.CreateDirectory(output);
+        var startHead = GitSha(repoRoot);
+        Console.WriteLine($"START_HEAD={startHead}");
+        Console.WriteLine($"BRANCH={Git(repoRoot, "branch --show-current")}");
+        var selected = LoadInventory(repoRoot)
+            .Where(x => StableRepairDocuments.Contains(x.GetProperty("documentId").GetString(), StringComparer.Ordinal))
+            .OrderBy(x => x.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        if (selected.Length != StableRepairDocuments.Length)
+            return await WriteStabilityBlocked(output, startHead, "EXACT_EVALUABLE_COHORT_MISSING", ct);
+
+        var baseline = new List<RepeatMetric>();
+        var frozenCells = new List<object>();
+        foreach (var item in selected)
+        {
+            var documentId = item.GetProperty("documentId").GetString()!;
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                var dir = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar), documentId, $"r{repeat}");
+                var predictionPath = Path.Combine(dir, "prediction.v1.json");
+                var resultPath = Path.Combine(dir, "result.v1.json");
+                var freezePath = Path.Combine(dir, "freeze.v1.json");
+                if (!File.Exists(predictionPath) || !File.Exists(resultPath) || !File.Exists(freezePath))
+                    return await WriteStabilityBlocked(output, startHead, $"BASELINE_CELL_MISSING:{documentId}:r{repeat}", ct);
+                using var freeze = JsonDocument.Parse(File.ReadAllText(freezePath));
+                var root = freeze.RootElement;
+                if (root.TryGetProperty("goldReadBeforeFreeze", out var firewall) && firewall.GetBoolean())
+                    throw new InvalidDataException($"GOLD_FIREWALL_FAILED_BASELINE:{documentId}:r{repeat}");
+                var predictionHash = Sha256(predictionPath);
+                var resultHash = Sha256(resultPath);
+                if (!string.Equals(predictionHash, root.GetProperty("predictionSha256").GetString(), StringComparison.OrdinalIgnoreCase) ||
+                    !string.Equals(resultHash, root.GetProperty("resultSha256").GetString(), StringComparison.OrdinalIgnoreCase))
+                    throw new InvalidDataException($"BASELINE_FREEZE_HASH_MISMATCH:{documentId}:r{repeat}");
+                baseline.Add(LoadFrozenMetric(Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar)), documentId, $"r{repeat}"));
+                frozenCells.Add(new { documentId, repeat = $"R{repeat}", predictionSha256 = predictionHash, resultSha256 = resultHash, providerCalls = 0 });
+            }
+        }
+        if (baseline.Count != 15 || baseline.Any(x => x.Status != "SUCCESS"))
+            return await WriteStabilityBlocked(output, startHead, "BASELINE_COHORT_INCOMPLETE", ct);
+
+        var stability = BuildStabilityMatrix(repoRoot, selected, baseline);
+        var oracle = BuildOracleDiagnostics(baseline, selected);
+        await WriteJson(Path.Combine(output, "stability-matrix.v1.json"), new
+        {
+            schemaVersion = "a99-model-omission-stability-matrix-v1", startHead, model = Model,
+            baselineArtifact = OutputRoot, baselineProviderCalls = 0, frozenCells, hashVerified = true,
+            statuses = new[] { "EXACT_TP", "MODEL_OMISSION", "MODEL_WRONG_SPAN", "MODEL_EXTRA_NOT_APPLICABLE", "SYSTEM_LOSS", "UNRESOLVED" },
+            rows = stability.Rows, classificationCounts = stability.ClassificationCounts,
+            statusCounts = stability.StatusCounts, goldReadBeforeFreeze = false,
+        }, ct);
+        await WriteJson(Path.Combine(output, "oracle-union-diagnostic.v1.json"), new
+        {
+            schemaVersion = "a99-three-repeat-oracle-union-diagnostic-v1", source = "frozen baseline finalHeadings", diagnosticOnly = true,
+            baselineProviderCalls = 0, union = oracle.Union, consensus2Of3 = oracle.Consensus2, consensus3Of3 = oracle.Consensus3,
+            goldReadBeforeFreeze = false,
+        }, ct);
+        Console.WriteLine($"PERSISTENT_3_OF_3_MISS={stability.ClassificationCounts.GetValueOrDefault("PERSISTENT_3_OF_3_MISS")}");
+        Console.WriteLine($"STOCHASTIC_2_OF_3_MISS={stability.ClassificationCounts.GetValueOrDefault("STOCHASTIC_2_OF_3_MISS")}");
+        Console.WriteLine($"STOCHASTIC_1_OF_3_MISS={stability.ClassificationCounts.GetValueOrDefault("STOCHASTIC_1_OF_3_MISS")}");
+        Console.WriteLine($"THREE_REPEAT_ORACLE_UNION=TP:{oracle.Union.Tp},FP:{oracle.Union.Fp},FN:{oracle.Union.Fn},F1:{oracle.Union.F1:0.######}");
+        Console.WriteLine($"CONSENSUS_2_OF_3=TP:{oracle.Consensus2.Tp},FP:{oracle.Consensus2.Fp},FN:{oracle.Consensus2.Fn},F1:{oracle.Consensus2.F1:0.######}");
+        Console.WriteLine($"CONSENSUS_3_OF_3=TP:{oracle.Consensus3.Tp},FP:{oracle.Consensus3.Fp},FN:{oracle.Consensus3.Fn},F1:{oracle.Consensus3.F1:0.######}");
+
+        var recovered = stability.ClassificationCounts.GetValueOrDefault("STOCHASTIC_2_OF_3_MISS") + stability.ClassificationCounts.GetValueOrDefault("STOCHASTIC_1_OF_3_MISS");
+        var persistent = stability.ClassificationCounts.GetValueOrDefault("PERSISTENT_3_OF_3_MISS");
+        var spanAdjacent = stability.ClassificationCounts.GetValueOrDefault("MIXED_SPAN_OR_OMISSION");
+        // A non-zero exact recovery in another frozen repeat is direct evidence that the
+        // unchanged contract can discover the heading. The union diagnostic is the recoverability
+        // upper bound; this gate therefore selects self-consistency even when duplicate-bound
+        // system losses dominate the raw first-loss ledger.
+        var chosen = recovered > 0 && (oracle.Union.Fn < 10 || recovered >= persistent) ? "SELF_CONSISTENCY_RECOVERY" : persistent >= spanAdjacent ? "GENERIC_OMISSION_REVIEW" : "SEMANTIC_SPAN_REPAIR";
+        if (chosen != "SELF_CONSISTENCY_RECOVERY")
+            throw new InvalidOperationException($"AUDIT_SELECTED_UNIMPLEMENTED_INTERVENTION:{chosen}");
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey))
+            return await WriteStabilityBlocked(output, startHead, "OPENROUTER_API_KEY_MISSING", ct, chosen);
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = apiKey, ContextSize = 1_000_000,
+            MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 0,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capability = (await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct)).Capability;
+        if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) || !capability.ReasoningSupported || !capability.StructuredOutputSupported)
+            return await WriteStabilityBlocked(output, startHead, "MODEL_CAPABILITY_MISMATCH", ct, chosen);
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, "eval/a99-closed-loop/model-omission-stability", string.Join(',', StableRepairDocuments), ct);
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        var fresh = new List<RepeatMetric>();
+        foreach (var item in selected)
+        {
+            var context = Prepare(repoRoot, item);
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                var existingDir = Path.Combine(interventionRoot, context.DocumentId, $"r{repeat}");
+                if (IsFrozenSuccessCell(existingDir))
+                {
+                    fresh.Add(LoadMetricAtDir(existingDir));
+                    Console.WriteLine($"REUSING_SELF_CONSISTENCY_SUCCESS={context.DocumentId}/R{repeat}");
+                    continue;
+                }
+                Console.WriteLine($"RUNNING_SELF_CONSISTENCY={context.DocumentId}/R{repeat}");
+                fresh.Add(await RunSelfConsistencyRepeatAsync(repoRoot, interventionRoot, context, repeat, model, startHead, ct));
+            }
+        }
+        var baselineMicro = Micro(baseline);
+        var freshMicro = Micro(fresh);
+        var keep = fresh.Count == 15 && fresh.All(x => x.Status == "SUCCESS") && freshMicro.F1 > baselineMicro.F1 && fresh.Sum(x => x.SystemLoss) == 0;
+        var classification = fresh.Count != 15 || fresh.Any(x => x.Status == "BLOCKED") ? "BLOCKED_PROVIDER" : keep ? "INTERVENTION_IMPROVES_DEV" : "INTERVENTION_REVERTED";
+        await WriteJson(Path.Combine(output, "intervention-result.v1.json"), new
+        {
+            schemaVersion = "a99-model-omission-stability-intervention-result-v1", startHead, endHead = GitSha(repoRoot),
+            chosenIntervention = chosen, baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1, systemLoss = baseline.Sum(x => x.SystemLoss) },
+            intervention = new { tp = freshMicro.Tp, fp = freshMicro.Fp, fn = freshMicro.Fn, precision = freshMicro.Precision, recall = freshMicro.Recall, f1 = freshMicro.F1, systemLoss = freshMicro.SystemLoss },
+            delta = new { tp = freshMicro.Tp - baselineMicro.Tp, fp = freshMicro.Fp - baselineMicro.Fp, fn = freshMicro.Fn - baselineMicro.Fn, precision = freshMicro.Precision - baselineMicro.Precision, recall = freshMicro.Recall - baselineMicro.Recall, f1 = freshMicro.F1 - baselineMicro.F1 },
+            paired = fresh.OrderBy(x => x.DocumentId, StringComparer.Ordinal).ThenBy(x => x.Repeat, StringComparer.Ordinal).Select(x => new
+            {
+                documentId = x.DocumentId, repeat = x.Repeat,
+                baseline = RepeatTable(baseline.Single(y => y.DocumentId == x.DocumentId && y.Repeat == x.Repeat)), review = RepeatTable(x),
+            }).ToArray(),
+            providerCalls = model.ProviderCalls, systemLoss = fresh.Sum(x => x.SystemLoss), keepOrRevert = keep ? "KEEP_INTERVENTION" : "REVERT_INTERVENTION",
+            goldReadBeforeFreeze = false,
+        }, ct);
+        var distance = new
+        {
+            precision = new { target = .99, baseline = baselineMicro.Precision, intervention = freshMicro.Precision, baselineGap = Math.Max(0, .99 - baselineMicro.Precision), interventionGap = Math.Max(0, .99 - freshMicro.Precision) },
+            recall = new { target = .99, baseline = baselineMicro.Recall, intervention = freshMicro.Recall, baselineGap = Math.Max(0, .99 - baselineMicro.Recall), interventionGap = Math.Max(0, .99 - freshMicro.Recall) },
+            f1 = new { target = .99, baseline = baselineMicro.F1, intervention = freshMicro.F1, baselineGap = Math.Max(0, .99 - baselineMicro.F1), interventionGap = Math.Max(0, .99 - freshMicro.F1) },
+        };
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-model-omission-stability-summary-v1", status = classification, startHead, endHead = GitSha(repoRoot),
+            baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1, systemLoss = baseline.Sum(x => x.SystemLoss) },
+            omissionStability = stability.ClassificationCounts, threeRepeatOracleUnion = oracle.Union, consensus2Of3 = oracle.Consensus2, consensus3Of3 = oracle.Consensus3,
+            chosenIntervention = chosen, intervention = new { tp = freshMicro.Tp, fp = freshMicro.Fp, fn = freshMicro.Fn, precision = freshMicro.Precision, recall = freshMicro.Recall, f1 = freshMicro.F1, systemLoss = freshMicro.SystemLoss },
+            keepOrRevert = keep ? "KEEP_INTERVENTION" : "REVERT_INTERVENTION", finalClassification = classification,
+            distanceTo99 = distance, providerCalls = model.ProviderCalls, modelCalls = model.ProviderCalls, goldReadBeforeFreeze = false,
+        }, ct);
+        Console.WriteLine($"INTERVENTION={freshMicro.Tp}/{freshMicro.Fp}/{freshMicro.Fn} P={freshMicro.Precision:0.######} R={freshMicro.Recall:0.######} F1={freshMicro.F1:0.######}");
+        Console.WriteLine($"KEEP_OR_REVERT={(keep ? "KEEP_INTERVENTION" : "REVERT_INTERVENTION")}");
+        Console.WriteLine($"FINAL_CLASSIFICATION={classification}");
+        return classification == "BLOCKED_PROVIDER" ? 2 : 0;
+    }
+
+    private static async Task<RepeatMetric> RunSelfConsistencyRepeatAsync(string repoRoot, string output, DocumentContext context, int repeat, OpenRouterCeilingReasoningModel model, string gitSha, CancellationToken ct)
+    {
+        var repeatName = $"r{repeat}";
+        var dir = Path.Combine(output, context.DocumentId, repeatName);
+        Directory.CreateDirectory(dir);
+        var stopwatch = Stopwatch.StartNew();
+        var extraction = new List<SemanticTextHeading>();
+        var extractionTelemetry = new List<RequestPacketTelemetry>();
+        var extractionResponseHashes = new List<string>();
+        try
+        {
+            for (var pass = 1; pass <= 3; pass++)
+            {
+                var request = await CompleteSelfConsistencyRequestAsync(model, context, repeat, $"extract:{pass}", SemanticTextExactBindingContract.System, SemanticTextExactBindingContract.BuildUser(context.Packet, ReasoningRoute.ModelCapabilityCeiling.ToString()), SemanticTextExactBindingContract.Schema(), "semantic_text_self_consistency_extract_v1", ct);
+                var parsed = SemanticTextExactBindingContract.Parse(request.Content);
+                request.Telemetry.StructuredOutputParsed = true;
+                request.Telemetry.HeadingOutputCount = parsed.Headings.Count;
+                extraction.AddRange(parsed.Headings);
+                extractionTelemetry.Add(request.Telemetry);
+                extractionResponseHashes.Add(Sha256Text(request.Content));
+            }
+            var union = extraction.DistinctBy(x => JsonSerializer.Serialize(x), StringComparer.Ordinal).ToArray();
+            var candidateRows = union.Select((x, i) => new { candidateId = i, source = x.Source, text = x.Text, role = x.Role, occurrence = x.Occurrence, leftExactContext = x.LeftExactContext, rightExactContext = x.RightExactContext }).ToArray();
+            var candidateJson = JsonSerializer.Serialize(new { proposals = candidateRows }, JsonOptions);
+            var verifyRequest = await CompleteSelfConsistencyRequestAsync(model, context, repeat, "verify", SemanticTextSelfConsistencyContract.System, SemanticTextSelfConsistencyContract.BuildUser(context.Packet, candidateJson, ReasoningRoute.ModelCapabilityCeiling.ToString()), SemanticTextSelfConsistencyContract.Schema(), "semantic_text_self_consistency_verify_v1", ct);
+            verifyRequest.Telemetry.StructuredOutputParsed = true;
+            var decisions = SemanticTextSelfConsistencyContract.Parse(verifyRequest.Content);
+            var selected = new List<SemanticTextHeading>();
+            foreach (var decision in decisions.Where(x => x.Action is "KEEP" or "CORRECT_SPAN"))
+            {
+                if (decision.CandidateId < 0 || decision.CandidateId >= union.Length) continue;
+                var candidate = union[decision.CandidateId];
+                var source = decision.Action == "KEEP" ? candidate.Source : decision.Source;
+                var text = decision.Action == "KEEP" ? candidate.Text : decision.Text;
+                var role = decision.Action == "KEEP" ? candidate.Role : decision.Role;
+                if (string.IsNullOrWhiteSpace(source) || string.IsNullOrWhiteSpace(text) || !CeilingSemanticRole.IsAllowed(role)) continue;
+                selected.Add(new SemanticTextHeading(source!, text!, role!, decision.Action == "KEEP" ? candidate.Occurrence : decision.Occurrence, decision.Action == "KEEP" ? candidate.LeftExactContext : decision.LeftExactContext, decision.Action == "KEEP" ? candidate.RightExactContext : decision.RightExactContext));
+            }
+            var finalResponse = new SemanticTextResponse(union);
+            var bound = SemanticTextExactBinder.Bind(selected, context.SourceRows, out var observations);
+            var proposals = bound.Select(x => new ReasoningHeadingProposal { SourceId = x.SourceId, HeadingSpan = new StructuralSpan(x.Start, x.End), Text = x.Text, SemanticRole = x.Role, Confidence = 1 }).ToArray();
+            var materialized = ReasoningProposalMaterializer.Materialize(context.Source, context.Policy, proposals);
+            var finalElements = ReasoningTaskProjection.ProjectContentHeadings(materialized.Structure).OrderBy(x => x.Sources.Single().SourceOrdinal).ThenBy(x => x.Sources.Single().Span.Start).ThenBy(x => x.Id, StringComparer.Ordinal).ToArray();
+            stopwatch.Stop();
+            var finalRows = finalElements.Select(x => new { sourceId = x.Sources.Single().SourceId, start = x.Sources.Single().Span.Start, end = x.Sources.Single().Span.End, text = x.Text, role = x.Role }).ToArray();
+            var prediction = new
+            {
+                schemaVersion = "a99-model-omission-stability-prediction-v1", context.DocumentId, repeat = repeatName, model = Model,
+                intervention = "SELF_CONSISTENCY_RECOVERY", baseContractHash = ContractHash(), verifierContractHash = SelfConsistencyContractHash(),
+                sourceSha256 = context.SourceSha256, extractionCount = 3, extractionHeadings = extraction, unionHeadings = union,
+                verifierDecisions = decisions, selectedHeadings = selected, bindingObservations = observations, boundHeadings = bound,
+                validatorAccepted = materialized.Validated.Count(x => x.Accepted), validatorRejected = materialized.Validated.Count(x => !x.Accepted), finalHeadings = finalRows, goldReadBeforeFreeze = false,
+            };
+            var result = new { schemaVersion = "a99-model-omission-stability-result-v1", context.DocumentId, repeat = repeatName, model = Model, headings = finalRows, goldReadBeforeFreeze = false };
+            var predictionPath = Path.Combine(dir, "prediction.v1.json");
+            var resultPath = Path.Combine(dir, "result.v1.json");
+            await WriteJson(predictionPath, prediction, ct);
+            await WriteJson(resultPath, result, ct);
+            var freeze = new
+            {
+                schemaVersion = "a99-model-omission-stability-freeze-v1", context.DocumentId, repeat = repeatName, gitSha, model = Model,
+                actualProvider = verifyRequest.Telemetry.ProviderRoute, sourceSha256 = context.SourceSha256, baseContractHash = ContractHash(), verifierContractHash = SelfConsistencyContractHash(),
+                extractionCalls = 3, verifierCalls = 1, extractionResponseHashes = extractionResponseHashes.ToArray(), verifierResponseHash = Sha256Text(verifyRequest.Content),
+                predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath), rawUnionCount = union.Length, selectedCount = selected.Count, boundProposalCount = bound.Count, finalCount = finalElements.Length,
+                providerAttempts = 4, inputTokens = extractionTelemetry.Sum(x => x.ReportedInputTokens ?? 0) + (verifyRequest.Telemetry.ReportedInputTokens ?? 0), reasoningTokens = extractionTelemetry.Sum(x => x.ReportedReasoningTokens ?? 0) + (verifyRequest.Telemetry.ReportedReasoningTokens ?? 0), outputTokens = extractionTelemetry.Sum(x => x.ReportedOutputTokens ?? 0) + (verifyRequest.Telemetry.ReportedOutputTokens ?? 0), finishReason = verifyRequest.Telemetry.FinishReason,
+                reasoningConfiguration = new { requested = true, enabled = true, excluded = true, effort = "MODEL_DEFAULT" }, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow,
+            };
+            var freezePath = Path.Combine(dir, "freeze.v1.json");
+            await WriteJson(freezePath, freeze, ct);
+            if (Sha256(predictionPath) != freeze.predictionSha256 || Sha256(resultPath) != freeze.resultSha256) throw new InvalidDataException($"SELF_CONSISTENCY_FREEZE_HASH_VERIFICATION_FAILED:{context.DocumentId}:{repeatName}");
+            var goldPath = Path.Combine(repoRoot, "eval/a99-closed-loop/strict-gold-occurrence-v1", context.DocumentId + ".occurrence-gold-v1.json");
+            var gold = ReasoningGoldArtifactLoader.LoadOccurrence(goldPath).Where(x => x.HeadingSpan is not null).ToArray();
+            var metric = Score(context, repeatName, finalResponse, observations, bound, materialized, finalElements, gold, verifyRequest.Telemetry, stopwatch.ElapsedMilliseconds);
+            await WriteJson(Path.Combine(dir, "score.v1.json"), metric.Score!, ct);
+            await WriteJson(Path.Combine(dir, "first-loss.v1.json"), new { context.DocumentId, repeat = repeatName, metric.FirstLosses, metric.FalsePositives, metric.FirstLossCounts, systemLoss = metric.SystemLoss, goldReadBeforeFreeze = false }, ct);
+            return metric;
+        }
+        catch (Exception ex) when (ex is not OperationCanceledException)
+        {
+            stopwatch.Stop();
+            var telemetry = model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId);
+            var predictionPath = Path.Combine(dir, "prediction.v1.json");
+            var resultPath = Path.Combine(dir, "result.v1.json");
+            await WriteJson(predictionPath, new { schemaVersion = "a99-model-omission-stability-prediction-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.GetType().Name + ":" + ex.Message, model = Model, goldReadBeforeFreeze = false }, ct);
+            await WriteJson(resultPath, new { schemaVersion = "a99-model-omission-stability-result-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", headings = Array.Empty<object>(), goldReadBeforeFreeze = false }, ct);
+            await WriteJson(Path.Combine(dir, "freeze.v1.json"), new { schemaVersion = "a99-model-omission-stability-freeze-v1", context.DocumentId, repeat = repeatName, gitSha, model = Model, predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath), providerAttempts = model.ProviderCalls, actualProvider = telemetry?.ProviderRoute, finishReason = telemetry?.FinishReason, failureClass = ex.GetType().Name, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow }, ct);
+            await WriteJson(Path.Combine(dir, "score.v1.json"), new { schemaVersion = "a99-model-omission-stability-score-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", exactStatus = "NOT_EVALUABLE", tp = 0, fp = 0, fn = 0, systemLoss = 0, goldReadBeforeFreeze = false }, ct);
+            await WriteJson(Path.Combine(dir, "first-loss.v1.json"), new { context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.GetType().Name + ":" + ex.Message, goldReadBeforeFreeze = false }, ct);
+            return new RepeatMetric(context.DocumentId, repeatName, "BLOCKED", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, telemetry?.ProviderRoute, telemetry?.FinishReason, telemetry?.ReportedInputTokens, telemetry?.ReportedReasoningTokens, telemetry?.ReportedOutputTokens, stopwatch.ElapsedMilliseconds, [], [], []);
+        }
+    }
+
+    private static async Task<(string Content, RequestPacketTelemetry Telemetry)> CompleteSelfConsistencyRequestAsync(OpenRouterCeilingReasoningModel model, DocumentContext context, int repeat, string pass, string system, string user, object schema, string schemaName, CancellationToken ct)
+    {
+        for (var attempt = 1; ; attempt++)
+        {
+            try
+            {
+                return await model.CompleteRawStructuredSemanticAsync(context.DocumentId, ReasoningRoute.ModelCapabilityCeiling.ToString(), $"{SemanticTextSelfConsistencyContract.ProtocolVersion}:{context.DocumentId}:{repeat}:{pass}:{context.PacketHash}", context.Packet, context.SourceRows.Sum(x => x.RawText.Length), context.SourceRows.Count, context.SourceRows.Count, system, user, schema, schemaName, ct);
+            }
+            catch (ReasoningCompletionException) when (attempt < 3 && model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId)?.HttpStatus == 429)
+            {
+                Console.WriteLine($"TRANSIENT_RETRY_SELF_CONSISTENCY=HTTP_429/{context.DocumentId}/R{repeat}/{pass}/attempt={attempt + 1}");
+                await Task.Delay(TimeSpan.FromSeconds(3), ct);
+            }
+        }
+    }
+
+    private static bool IsFrozenSuccessCell(string dir)
+    {
+        var scorePath = Path.Combine(dir, "score.v1.json");
+        var predictionPath = Path.Combine(dir, "prediction.v1.json");
+        var resultPath = Path.Combine(dir, "result.v1.json");
+        var freezePath = Path.Combine(dir, "freeze.v1.json");
+        if (!File.Exists(scorePath) || !File.Exists(predictionPath) || !File.Exists(resultPath) || !File.Exists(freezePath)) return false;
+        using var score = JsonDocument.Parse(File.ReadAllText(scorePath));
+        if (!score.RootElement.TryGetProperty("status", out var status) || status.GetString() != "SUCCESS") return false;
+        using var freeze = JsonDocument.Parse(File.ReadAllText(freezePath));
+        return string.Equals(Sha256(predictionPath), freeze.RootElement.GetProperty("predictionSha256").GetString(), StringComparison.OrdinalIgnoreCase) &&
+               string.Equals(Sha256(resultPath), freeze.RootElement.GetProperty("resultSha256").GetString(), StringComparison.OrdinalIgnoreCase) &&
+               !(freeze.RootElement.TryGetProperty("goldReadBeforeFreeze", out var firewall) && firewall.GetBoolean());
+    }
+
+    private static string SelfConsistencyContractHash() => Sha256Text(string.Join("\n", SemanticTextSelfConsistencyContract.ProtocolVersion, SemanticTextSelfConsistencyContract.System, JsonSerializer.Serialize(SemanticTextSelfConsistencyContract.Schema())));
+
+    private static StabilityMatrix BuildStabilityMatrix(string repoRoot, IReadOnlyList<JsonElement> selected, IReadOnlyList<RepeatMetric> baseline)
+    {
+        var rows = new List<object>();
+        var statusCounts = new Dictionary<string, int>(StringComparer.Ordinal);
+        var classCounts = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var item in selected)
+        {
+            var documentId = item.GetProperty("documentId").GetString()!;
+            var goldPath = Path.Combine(repoRoot, "eval/a99-closed-loop/strict-gold-occurrence-v1", documentId + ".occurrence-gold-v1.json");
+            var gold = ReasoningGoldArtifactLoader.LoadOccurrence(goldPath).Where(x => x.HeadingSpan is not null).ToArray();
+            foreach (var occurrence in gold)
+            {
+                var key = Key(occurrence.SourceId, occurrence.HeadingSpan!);
+                var statuses = baseline.Where(x => x.DocumentId == documentId).OrderBy(x => x.Repeat, StringComparer.Ordinal).Select(x =>
+                {
+                    var loss = x.FirstLosses.FirstOrDefault(y => y.Key == key);
+                    return loss is null ? "UNRESOLVED" : StabilityStatus(loss.FirstLoss);
+                }).ToArray();
+                var classification = StabilityClassification(statuses);
+                foreach (var status in statuses) statusCounts[status] = statusCounts.GetValueOrDefault(status) + 1;
+                classCounts[classification] = classCounts.GetValueOrDefault(classification) + 1;
+                rows.Add(new { documentId, goldOccurrenceId = $"{documentId}:{key}", exactText = occurrence.ExactText, sourceId = occurrence.SourceId, start = occurrence.HeadingSpan!.Start, end = occurrence.HeadingSpan.End, r1 = statuses.ElementAtOrDefault(0) ?? "UNRESOLVED", r2 = statuses.ElementAtOrDefault(1) ?? "UNRESOLVED", r3 = statuses.ElementAtOrDefault(2) ?? "UNRESOLVED", classification });
+            }
+        }
+        return new StabilityMatrix(rows, classCounts, statusCounts);
+    }
+
+    private static string StabilityStatus(string firstLoss) => firstLoss switch
+    {
+        "FOUND" => "EXACT_TP",
+        "MODEL_OMISSION" => "MODEL_OMISSION",
+        "MODEL_WRONG_SPAN" or "MODEL_WRONG_TEXT" => "MODEL_WRONG_SPAN",
+        "MODEL_FALSE_POSITIVE" => "MODEL_EXTRA_NOT_APPLICABLE",
+        "SYSTEM_BINDING_LOSS" or "SYSTEM_VALIDATOR_LOSS" or "SYSTEM_PROJECTION_LOSS" or "SYSTEM_ALIAS_RESOLUTION_LOSS" or "SYSTEM_DEDUPE_LOSS" or "AMBIGUOUS_DUPLICATE_TEXT" => "SYSTEM_LOSS",
+        _ => "UNRESOLVED",
+    };
+
+    private static string StabilityClassification(IReadOnlyList<string> statuses)
+        => SemanticTextStabilityDiagnostics.Classify(statuses);
+
+    private static OracleDiagnostics BuildOracleDiagnostics(IReadOnlyList<RepeatMetric> baseline, IReadOnlyList<JsonElement> selected)
+    {
+        var diagnostics = new List<(string DocumentId, string Mode, DiagnosticMetric Metric)>();
+        foreach (var item in selected)
+        {
+            var documentId = item.GetProperty("documentId").GetString()!;
+            var goldCount = baseline.First(x => x.DocumentId == documentId).Gold;
+            var local = baseline.Where(x => x.DocumentId == documentId).OrderBy(x => x.Repeat, StringComparer.Ordinal).ToArray();
+            var keys = local.SelectMany(x => x.PredictionKeys).Distinct(StringComparer.Ordinal).ToHashSet(StringComparer.Ordinal);
+            var counts = local.SelectMany(x => x.PredictionKeys).GroupBy(x => x, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Count(), StringComparer.Ordinal);
+            var goldKeys = local.SelectMany(x => x.FirstLosses.Where(y => y.FirstLoss == "FOUND").Select(y => y.Key)).Concat(local.SelectMany(x => x.FirstLosses.Where(y => y.FirstLoss != "FOUND" && y.FirstLoss != "MODEL_FALSE_POSITIVE").Select(y => y.Key))).Distinct(StringComparer.Ordinal).Take(goldCount).ToHashSet(StringComparer.Ordinal);
+            // Gold keys are reconstructed from the frozen first-loss rows; every baseline cell has
+            // one row per canonical occurrence and no runtime Gold is used by the intervention.
+            diagnostics.Add((documentId, "UNION", DiagnosticScore(keys, goldKeys)));
+            diagnostics.Add((documentId, "CONSENSUS_2_OF_3", DiagnosticScore(counts.Where(x => x.Value >= 2).Select(x => x.Key).ToHashSet(StringComparer.Ordinal), goldKeys)));
+            diagnostics.Add((documentId, "CONSENSUS_3_OF_3", DiagnosticScore(counts.Where(x => x.Value == 3).Select(x => x.Key).ToHashSet(StringComparer.Ordinal), goldKeys)));
+        }
+        return new OracleDiagnostics(MicroDiagnostic(diagnostics.Where(x => x.Mode == "UNION").Select(x => x.Metric)), MicroDiagnostic(diagnostics.Where(x => x.Mode == "CONSENSUS_2_OF_3").Select(x => x.Metric)), MicroDiagnostic(diagnostics.Where(x => x.Mode == "CONSENSUS_3_OF_3").Select(x => x.Metric)));
+    }
+
+    private static DiagnosticMetric DiagnosticScore(IReadOnlySet<string> prediction, IReadOnlySet<string> gold)
+    {
+        var score = SemanticTextStabilityDiagnostics.Score([prediction], gold, 1);
+        return new DiagnosticMetric(score.Tp, score.Fp, score.Fn, score.Precision, score.Recall, score.F1);
+    }
+
+    private static DiagnosticMetric MicroDiagnostic(IEnumerable<DiagnosticMetric> metrics)
+    {
+        var rows = metrics.ToArray();
+        return DiagnosticMetric.Create(rows.Sum(x => x.Tp), rows.Sum(x => x.Fp), rows.Sum(x => x.Fn));
+    }
+
+    private static async Task<int> WriteStabilityBlocked(string output, string head, string reason, CancellationToken ct, string chosenIntervention = "SELF_CONSISTENCY_RECOVERY")
+    {
+        await WriteJson(Path.Combine(output, "intervention-result.v1.json"), new { schemaVersion = "a99-model-omission-stability-intervention-result-v1", status = "BLOCKED", reason, chosenIntervention, providerCalls = 0, goldReadBeforeFreeze = false }, ct);
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-model-omission-stability-summary-v1", status = "BLOCKED_PROVIDER", finalClassification = "BLOCKED_PROVIDER", reason, startHead = head, providerCalls = 0, modelCalls = 0, goldReadBeforeFreeze = false }, ct);
+        Console.WriteLine($"FINAL_CLASSIFICATION=BLOCKED_PROVIDER");
+        Console.WriteLine($"BLOCK_REASON={reason}");
+        return 2;
+    }
+
+    private sealed record StabilityMatrix(IReadOnlyList<object> Rows, IReadOnlyDictionary<string, int> ClassificationCounts, IReadOnlyDictionary<string, int> StatusCounts);
+    private sealed record OracleDiagnostics(DiagnosticMetric Union, DiagnosticMetric Consensus2, DiagnosticMetric Consensus3);
+    private sealed record DiagnosticMetric(int Tp, int Fp, int Fn, double Precision, double Recall, double F1)
+    {
+        public static DiagnosticMetric Create(int tp, int fp, int fn)
+        {
+            var p = tp + fp == 0 ? 0d : (double)tp / (tp + fp);
+            var r = tp + fn == 0 ? 0d : (double)tp / (tp + fn);
+            return new(tp, fp, fn, p, r, p + r == 0 ? 0d : 2 * p * r / (p + r));
+        }
     }
 
     private static Dictionary<string, string> CaptureFrozenSuccessCellHashes(string repairRoot)

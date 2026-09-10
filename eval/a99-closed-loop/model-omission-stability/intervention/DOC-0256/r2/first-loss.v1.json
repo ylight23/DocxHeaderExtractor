@@ -1,0 +1,196 @@
+{
+  "documentId": "DOC-0256",
+  "repeat": "r2",
+  "firstLosses": [
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[6]:0:30",
+      "exactSourceText": "Welcome and meeting objectives",
+      "firstLoss": "SYSTEM_BINDING_LOSS",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[10]:0:53",
+      "exactSourceText": "Regional updates on the ICP 2021 cycle implementation",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLoss": "SYSTEM_BINDING_LOSS",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[17]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLoss": "SYSTEM_BINDING_LOSS",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[20]:0:34",
+      "exactSourceText": "Commonwealth of Independent States",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[26]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[32]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[35]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[42]:0:51",
+      "exactSourceText": "Global updates on the ICP 2021 cycle implementation",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[55]:0:60",
+      "exactSourceText": "Data review: Household consumption price and importance data",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[61]:0:39",
+      "exactSourceText": "Data review: Housing prices and volumes",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[67]:0:30",
+      "exactSourceText": "Data review: Private Education",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[73]:0:64",
+      "exactSourceText": "Data review: Government compensation and productivity adjustment",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[76]:0:53",
+      "exactSourceText": "Data review: Machinery and equipment and construction",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[80]:0:53",
+      "exactSourceText": "Data review: 2017-2021 National Accounts expenditures",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[88]:0:59",
+      "exactSourceText": "Data review: 2017-2021 Population and market exchange rates",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[90]:0:102",
+      "exactSourceText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[99]:0:31",
+      "exactSourceText": "Planning for the ICP 2024 cycle",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[107]:0:23",
+      "exactSourceText": "Annex 1: Meeting Agenda",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]:0:32",
+      "exactSourceText": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:34",
+      "exactSourceText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]:0:33",
+      "exactSourceText": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]:0:31",
+      "exactSourceText": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[124]:0:29",
+      "exactSourceText": "Annex 2: List of participants",
+      "firstLoss": "FOUND",
+      "found": true
+    }
+  ],
+  "falsePositives": [
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[3]:0:87",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[17]:0:877",
+      "exactSourceText": "Asia and the Pacific Criselda De Dios, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. Twenty-one economies aring in the ICP 2021 cycle. Most economies conducted price surveys in 2021. Surveys in some economies were delayed due to COVID-19, with the data collection period extended until Q4, 2022 to accommodate the completion of surveys in all economies. For prices collected in periods outside the reference year 2021, a standard method for extrapolation was utilized, employing tools developed by ADB to facilitate this process. Price survey data, national accounts expenditure data, and required metadata questionnaires have been submitted by most economies as of November 2023, and the data validation process is in its final stages. Bilateral engagement with economies is ongoing to address specific data quality issues.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    }
+  ],
+  "firstLossCounts": {
+    "SYSTEM_BINDING_LOSS": 3,
+    "FOUND": 21
+  },
+  "systemLoss": 3,
+  "goldReadBeforeFreeze": false
+}
