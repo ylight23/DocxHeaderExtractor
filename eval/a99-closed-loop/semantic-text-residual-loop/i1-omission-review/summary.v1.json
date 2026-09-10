@@ -23,6 +23,7 @@
   "goldReadBeforeFreeze": false,
   "a99DevMarginMet": false,
   "classification": "OMISSION_REVIEW_RECALL_UP_PRECISION_TRADEOFF",
+  "keepOrRevert": "REVERT",
   "dominantBaselineBucket": {
     "bucket": "MODEL_OMISSION",
     "count": 21,
