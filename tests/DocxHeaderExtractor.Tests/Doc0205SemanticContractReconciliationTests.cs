@@ -8,6 +8,7 @@ public sealed class Doc0205SemanticContractReconciliationTests
 {
     private const string Root = "eval/a99-closed-loop/doc0205-semantic-contract-audit";
     private const string SemanticRoot = "eval/a99-closed-loop/semantic-text-exact-binding";
+    private const string GeneralizationRoot = "eval/a99-closed-loop/semantic-text-generalization";
 
     [Theory]
     [InlineData("EXACT_MATCH", 10, 20, "body/p4", "Heading", "article", 10, 20, "body/p4", "Heading")]
@@ -150,8 +151,66 @@ public sealed class Doc0205SemanticContractReconciliationTests
         Assert.False(summary.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());
     }
 
+    [Fact]
+    public void Strict_gold_generalization_cohort_is_dynamic_and_excludes_doc0264()
+    {
+        var inventoryPath = Path.Combine(RepoRoot(), "eval/a99-dataset/document-inventory.v1.json");
+        using var inventory = JsonDocument.Parse(File.ReadAllText(inventoryPath));
+        var eligible = inventory.RootElement.GetProperty("documents").EnumerateArray()
+            .Select(x => x.GetProperty("documentId").GetString()!)
+            .Where(id => ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(RepoRoot(), id).Eligible)
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+        Assert.Equal(["DOC-0001", "DOC-0205", "DOC-0252", "DOC-0256", "DOC-0258"], eligible);
+        Assert.False(ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(RepoRoot(), "DOC-0264").Eligible);
+    }
+
+    [Fact]
+    public void Generalization_artifacts_keep_three_repeats_independent_and_firewall_intact()
+    {
+        using var summary = LoadGeneralization("summary.v1.json");
+        var root = summary.RootElement;
+        Assert.Equal(15, root.GetProperty("providerAttempts").GetInt32());
+        Assert.Equal(15, root.GetProperty("modelCalls").GetInt32());
+        Assert.False(root.GetProperty("goldReadBeforeFreeze").GetBoolean());
+        Assert.Equal("SEMANTIC_TEXT_GENERALIZATION_EXECUTION_BLOCKED", root.GetProperty("generalizationClassification").GetString());
+
+        var cohort = root.GetProperty("selectedStrictGoldCohort").EnumerateArray().Select(x => x.GetString()!).ToArray();
+        Assert.Equal(["DOC-0001", "DOC-0205", "DOC-0252", "DOC-0256", "DOC-0258"], cohort);
+        foreach (var documentId in cohort)
+        {
+            foreach (var repeat in new[] { "r1", "r2", "r3" })
+            {
+                var dir = Path.Combine(RepoRoot(), GeneralizationRoot, documentId!, repeat);
+                using var freeze = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "freeze.v1.json")));
+                Assert.False(freeze.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());
+                Assert.Equal("a99-semantic-text-exact-binding-v1", freeze.RootElement.GetProperty("semanticContractVersion").GetString());
+            }
+        }
+
+        using var r2 = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), GeneralizationRoot, "DOC-0258", "r2", "score.v1.json")));
+        Assert.Equal("BLOCKED", r2.RootElement.GetProperty("status").GetString());
+    }
+
+    [Fact]
+    public void Generalization_freezes_use_one_contract_hash_across_all_completed_repeats()
+    {
+        var hashes = new HashSet<string>(StringComparer.Ordinal);
+        var providers = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var documentId in new[] { "DOC-0001", "DOC-0205", "DOC-0252", "DOC-0256", "DOC-0258" })
+        foreach (var repeat in new[] { "r1", "r2", "r3" })
+        {
+            using var freeze = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), GeneralizationRoot, documentId, repeat, "freeze.v1.json")));
+            hashes.Add(freeze.RootElement.GetProperty("promptHash").GetString()! + ":" + freeze.RootElement.GetProperty("schemaHash").GetString()!);
+            providers.Add(freeze.RootElement.GetProperty("actualProvider").GetString() ?? "NOT_EXPOSED");
+        }
+        Assert.Single(hashes);
+        Assert.NotEmpty(providers);
+    }
+
     private static JsonDocument Load(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), Root, name)));
     private static JsonDocument LoadSemantic(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), SemanticRoot, name)));
+    private static JsonDocument LoadGeneralization(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), GeneralizationRoot, name)));
     private static string RepoRoot() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
     private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
 }
