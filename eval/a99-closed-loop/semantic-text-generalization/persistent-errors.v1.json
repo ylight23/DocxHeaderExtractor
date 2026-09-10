@@ -26,7 +26,7 @@
       "documentId": "DOC-0256",
       "goldOrPredictionKey": "body[1]/p[17]:0:20",
       "exactSourceText": "Asia and the Pacific",
-      "firstLossClass": "MODEL_OMISSION",
+      "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
       "repeatPresenceMask": "000"
     },
     {
@@ -40,6 +40,13 @@
       "documentId": "DOC-0258",
       "goldOrPredictionKey": "body[1]/p[12]:0:20",
       "exactSourceText": "Asia and the Pacific",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[17]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
       "firstLossClass": "MODEL_OMISSION",
       "repeatPresenceMask": "000"
     },
@@ -67,61 +74,151 @@
   ],
   "intermittentErrors": [
     {
-      "documentId": "DOC-0205",
-      "goldOrPredictionKey": "body[1]/p[4]:29974:30039",
-      "exactSourceText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
-      "firstLossClass": "MODEL_WRONG_TEXT",
-      "repeatPresenceMask": "011"
-    },
-    {
-      "documentId": "DOC-0205",
-      "goldOrPredictionKey": "body[1]/p[4]:30572:30622",
-      "exactSourceText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
-      "firstLossClass": "MODEL_WRONG_TEXT",
-      "repeatPresenceMask": "011"
-    },
-    {
-      "documentId": "DOC-0205",
-      "goldOrPredictionKey": "body[1]/p[4]:32357:32413",
-      "exactSourceText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
-      "firstLossClass": "MODEL_WRONG_TEXT",
-      "repeatPresenceMask": "011"
-    },
-    {
-      "documentId": "DOC-0258",
-      "goldOrPredictionKey": "body[1]/p[17]:0:25",
-      "exactSourceText": "Eurostat\u2013OECD PPP Program",
-      "firstLossClass": "MODEL_OMISSION",
-      "repeatPresenceMask": "010"
-    },
-    {
       "documentId": "DOC-0258",
       "goldOrPredictionKey": "body[1]/p[115]:0:29",
       "exactSourceText": "Annex 2: List of participants",
       "firstLossClass": "MODEL_WRONG_SPAN",
-      "repeatPresenceMask": "100"
+      "repeatPresenceMask": "101"
     }
   ],
-  "persistentFalsePositives": [],
+  "persistentFalsePositives": [
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:1:266",
+      "exactSourceText": "CH\u00CDNH PH\u1EE6 |C\u1ED8NG H\u00D2A X\u00C3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM | |________ |\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc | |S\u1ED1: 47/2020/N\u0110-CP |_______________________ | | |H\u00E0 N\u1ED9i, ng\u00E0y 09 th\u00E1ng 4 n\u0103m 2020 | NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[3]:0:47",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[46]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[175]:0:36",
+      "exactSourceText": "ICP Technical Advisory Group members",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[176]:0:42",
+      "exactSourceText": "ICP experts, guest speakers, and observers",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[177]:0:42",
+      "exactSourceText": "ICP Inter-Agency Coordination Group (IACG)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[3]:0:87",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    }
+  ],
   "intermittentFalsePositives": [
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[178]:0:10",
+      "exactSourceText": "World Bank",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[125]:0:31",
+      "exactSourceText": "African Development Bank (AfDB)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[130]:0:28",
+      "exactSourceText": "Asian Development Bank (ADB)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[133]:0:85",
+      "exactSourceText": "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[136]:0:61",
+      "exactSourceText": "Organisation for Economic Co-operation and Development (OECD)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[139]:0:57",
+      "exactSourceText": "Statistical Office of the European Communities (Eurostat)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[142]:0:81",
+      "exactSourceText": "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[146]:0:73",
+      "exactSourceText": "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[149]:0:33",
+      "exactSourceText": "International Monetary Fund (IMF)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[151]:0:10",
+      "exactSourceText": "World Bank",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
     {
       "documentId": "DOC-0258",
       "goldOrPredictionKey": "body[1]/p[115]:0:230",
       "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
       "firstLossClass": "MODEL_FALSE_POSITIVE",
-      "repeatPresenceMask": "011"
+      "repeatPresenceMask": "010"
     }
   ],
   "persistentErrorCounts": {
     "MODEL_OMISSION": 7,
     "MODEL_WRONG_SPAN": 1,
-    "AMBIGUOUS_DUPLICATE_TEXT": 1
+    "AMBIGUOUS_DUPLICATE_TEXT": 2
   },
   "intermittentErrorCounts": {
-    "MODEL_WRONG_TEXT": 3,
-    "MODEL_OMISSION": 1,
     "MODEL_WRONG_SPAN": 1
   },
-  "persistentFalsePositiveCount": 0,
-  "intermittentFalsePositiveCount": 1
+  "persistentFalsePositiveCount": 7,
+  "intermittentFalsePositiveCount": 11
 }

@@ -27,42 +27,42 @@
       "documentId": "DOC-0258",
       "key": "body[1]/p[11]:0:6",
       "exactSourceText": "Africa",
-      "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "firstLoss": "MODEL_OMISSION",
       "found": false
     },
     {
       "documentId": "DOC-0258",
       "key": "body[1]/p[12]:0:20",
       "exactSourceText": "Asia and the Pacific",
-      "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "firstLoss": "MODEL_OMISSION",
       "found": false
     },
     {
       "documentId": "DOC-0258",
       "key": "body[1]/p[17]:0:25",
       "exactSourceText": "Eurostat\u2013OECD PPP Program",
-      "firstLoss": "FOUND",
-      "found": true
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
     },
     {
       "documentId": "DOC-0258",
       "key": "body[1]/p[18]:0:34",
       "exactSourceText": "Commonwealth of Independent States",
-      "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "firstLoss": "MODEL_OMISSION",
       "found": false
     },
     {
       "documentId": "DOC-0258",
       "key": "body[1]/p[19]:0:31",
       "exactSourceText": "Latin America and the Caribbean",
-      "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "firstLoss": "MODEL_OMISSION",
       "found": false
     },
     {
       "documentId": "DOC-0258",
       "key": "body[1]/p[24]:0:12",
       "exactSourceText": "Western Asia",
-      "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "firstLoss": "MODEL_OMISSION",
       "found": false
     },
     {
@@ -181,8 +181,8 @@
     }
   ],
   "firstLossCounts": {
-    "FOUND": 18,
-    "AMBIGUOUS_DUPLICATE_TEXT": 5,
+    "FOUND": 17,
+    "MODEL_OMISSION": 6,
     "MODEL_WRONG_SPAN": 1
   },
   "systemLoss": 0,

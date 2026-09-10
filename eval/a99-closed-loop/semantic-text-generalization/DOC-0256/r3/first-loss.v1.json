@@ -171,6 +171,78 @@
       "found": true
     }
   ],
+  "falsePositives": [
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[3]:0:87",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[125]:0:31",
+      "exactSourceText": "African Development Bank (AfDB)",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[130]:0:28",
+      "exactSourceText": "Asian Development Bank (ADB)",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[133]:0:85",
+      "exactSourceText": "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[136]:0:61",
+      "exactSourceText": "Organisation for Economic Co-operation and Development (OECD)",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[139]:0:57",
+      "exactSourceText": "Statistical Office of the European Communities (Eurostat)",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[142]:0:81",
+      "exactSourceText": "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[146]:0:73",
+      "exactSourceText": "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[149]:0:33",
+      "exactSourceText": "International Monetary Fund (IMF)",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[151]:0:10",
+      "exactSourceText": "World Bank",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    }
+  ],
   "firstLossCounts": {
     "FOUND": 22,
     "AMBIGUOUS_DUPLICATE_TEXT": 2

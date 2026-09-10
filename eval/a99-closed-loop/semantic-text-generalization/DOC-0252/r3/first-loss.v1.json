@@ -192,6 +192,50 @@
       "found": true
     }
   ],
+  "falsePositives": [
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[3]:0:47",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[46]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[175]:0:36",
+      "exactSourceText": "ICP Technical Advisory Group members",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[176]:0:42",
+      "exactSourceText": "ICP experts, guest speakers, and observers",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[177]:0:42",
+      "exactSourceText": "ICP Inter-Agency Coordination Group (IACG)",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[178]:0:10",
+      "exactSourceText": "World Bank",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    }
+  ],
   "firstLossCounts": {
     "FOUND": 25,
     "MODEL_OMISSION": 1,

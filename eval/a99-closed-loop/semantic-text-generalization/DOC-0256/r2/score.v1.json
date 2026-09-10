@@ -5,8 +5,8 @@
   "status": "SUCCESS",
   "exactStatus": "EVALUABLE",
   "goldCount": 24,
-  "rawProposalCount": 48,
-  "boundProposalCount": 46,
+  "rawProposalCount": 72,
+  "boundProposalCount": 70,
   "validatedCount": 23,
   "finalCount": 23,
   "tp": 22,
@@ -34,7 +34,7 @@
   "actualProvider": "Alibaba",
   "finishReason": "stop",
   "inputTokens": 12685,
-  "reasoningTokens": 6211,
-  "outputTokens": 8461,
+  "reasoningTokens": 10134,
+  "outputTokens": 13341,
   "goldReadBeforeFreeze": false
 }

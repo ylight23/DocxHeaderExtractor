@@ -223,17 +223,17 @@
       "rightExactContext": null
     },
     {
-      "source": "S0160",
-      "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
-      "role": "RUNNING_HEADER",
+      "source": "S0161",
+      "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks",
+      "role": "AGENDA_NAVIGATION_HEADING",
       "occurrence": null,
       "leftExactContext": null,
       "rightExactContext": null
     },
     {
-      "source": "S0161",
-      "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
-      "role": "AGENDA_NAVIGATION_HEADING",
+      "source": "S0163",
+      "text": "Update on the ICP 2021 and 2024 Cycles [World Bank and ICP Regional Implementing Agencies]",
+      "role": "LIST_ITEM",
       "occurrence": null,
       "leftExactContext": null,
       "rightExactContext": null
@@ -247,6 +247,22 @@
       "rightExactContext": null
     },
     {
+      "source": "S0167",
+      "text": "Research Topics Emerging from the Previous ICP Cycles [World Bank] Forthcoming Research Topics [Prasada Rao]",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0168",
+      "text": "Setting Up a Short- and Long-Term Research and Development Agenda [Co- Chairs and TAG]",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
       "source": "S0169",
       "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces 14:00 \u2013 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]",
       "role": "AGENDA_NAVIGATION_HEADING",
@@ -255,9 +271,33 @@
       "rightExactContext": null
     },
     {
+      "source": "S0171",
+      "text": "14:15 \u2013 15:00 Terms of Reference for a Task Force on Annual PPP Production [World Bank]",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0172",
+      "text": "15:00 \u2013 15:45 Terms of Reference for a Task Force on ICP Classification Update [World Bank]",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
       "source": "S0173",
       "text": "SESSION V: Current Research",
       "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0175",
+      "text": "The Treatment of Import and Export Prices in International Comparisons [Rob Feenstra]",
+      "role": "LIST_ITEM",
       "occurrence": null,
       "leftExactContext": null,
       "rightExactContext": null
@@ -279,9 +319,73 @@
       "rightExactContext": null
     },
     {
+      "source": "S0183",
+      "text": "A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons [Naohito Abe and Prasada Rao]",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0184",
+      "text": "Treatment of Scanner (Transaction) Data in the European Comparison Program (ECP) [Eurostat]",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0185",
+      "text": "Treatment of Negative Expenditures in ICP [Prasada Rao and Sergey Sergeev]",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0186",
+      "text": "Fine Tuning Global Linking Procedures",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0188",
+      "text": "Alternative Global Linking Methods [Robert Hill] Similarity Linking Within and Between Regions [Erwin Diewert and Yuri",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0189",
+      "text": "Dikhanov] Improving Reliability of Price Comparisons \u2013 Basic Heading PPPs and Sparsity of Price Tableaus [Erwin Diewert]",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0191",
+      "text": "Alternative Basic Heading PPP Aggregation Methods [Yuri Dikhanov]",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
       "source": "S0192",
       "text": "SESSION VI: Closing",
       "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0193",
+      "text": "15:00 \u2013 15:15 Any Other Business and Closing [TAG Co-Chairs]",
+      "role": "LIST_ITEM",
       "occurrence": null,
       "leftExactContext": null,
       "rightExactContext": null
@@ -313,14 +417,6 @@
     {
       "source": "S0202",
       "text": "ICP Inter-Agency Coordination Group (IACG)",
-      "role": "SUBSECTION",
-      "occurrence": null,
-      "leftExactContext": null,
-      "rightExactContext": null
-    },
-    {
-      "source": "S0207",
-      "text": "World Bank",
       "role": "SUBSECTION",
       "occurrence": null,
       "leftExactContext": null,
@@ -799,26 +895,8 @@
     {
       "rawOrdinal": 26,
       "heading": {
-        "source": "S0160",
-        "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
-        "role": "RUNNING_HEADER",
-        "occurrence": null,
-        "leftExactContext": null,
-        "rightExactContext": null
-      },
-      "status": 2,
-      "exactTextOccurrenceCount": 1,
-      "alias": "S0160",
-      "sourceId": "body[1]/p[157]",
-      "start": 0,
-      "end": 100,
-      "failureReason": null
-    },
-    {
-      "rawOrdinal": 27,
-      "heading": {
         "source": "S0161",
-        "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks",
         "role": "AGENDA_NAVIGATION_HEADING",
         "occurrence": null,
         "leftExactContext": null,
@@ -829,7 +907,25 @@
       "alias": "S0161",
       "sourceId": "body[1]/p[158]",
       "start": 56,
-      "end": 274,
+      "end": 153,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 27,
+      "heading": {
+        "source": "S0163",
+        "text": "Update on the ICP 2021 and 2024 Cycles [World Bank and ICP Regional Implementing Agencies]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0163",
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+      "start": 0,
+      "end": 90,
       "failureReason": null
     },
     {
@@ -853,6 +949,42 @@
     {
       "rawOrdinal": 29,
       "heading": {
+        "source": "S0167",
+        "text": "Research Topics Emerging from the Previous ICP Cycles [World Bank] Forthcoming Research Topics [Prasada Rao]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0167",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]",
+      "start": 0,
+      "end": 108,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 30,
+      "heading": {
+        "source": "S0168",
+        "text": "Setting Up a Short- and Long-Term Research and Development Agenda [Co- Chairs and TAG]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0168",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[2]",
+      "start": 0,
+      "end": 86,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 31,
+      "heading": {
         "source": "S0169",
         "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces 14:00 \u2013 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]",
         "role": "AGENDA_NAVIGATION_HEADING",
@@ -869,7 +1001,43 @@
       "failureReason": null
     },
     {
-      "rawOrdinal": 30,
+      "rawOrdinal": 32,
+      "heading": {
+        "source": "S0171",
+        "text": "14:15 \u2013 15:00 Terms of Reference for a Task Force on Annual PPP Production [World Bank]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0171",
+      "sourceId": "body[1]/p[164]",
+      "start": 0,
+      "end": 87,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 33,
+      "heading": {
+        "source": "S0172",
+        "text": "15:00 \u2013 15:45 Terms of Reference for a Task Force on ICP Classification Update [World Bank]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0172",
+      "sourceId": "body[1]/p[165]",
+      "start": 0,
+      "end": 91,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 34,
       "heading": {
         "source": "S0173",
         "text": "SESSION V: Current Research",
@@ -887,7 +1055,25 @@
       "failureReason": null
     },
     {
-      "rawOrdinal": 31,
+      "rawOrdinal": 35,
+      "heading": {
+        "source": "S0175",
+        "text": "The Treatment of Import and Export Prices in International Comparisons [Rob Feenstra]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0175",
+      "sourceId": "body[1]/tbl[6]/tr[1]/tc[2]/p[1]",
+      "start": 0,
+      "end": 85,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 36,
       "heading": {
         "source": "S0176",
         "text": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
@@ -905,7 +1091,7 @@
       "failureReason": null
     },
     {
-      "rawOrdinal": 32,
+      "rawOrdinal": 37,
       "heading": {
         "source": "S0177",
         "text": "SESSION V: Current Research (Cont\u2019d)",
@@ -923,7 +1109,133 @@
       "failureReason": null
     },
     {
-      "rawOrdinal": 33,
+      "rawOrdinal": 38,
+      "heading": {
+        "source": "S0183",
+        "text": "A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons [Naohito Abe and Prasada Rao]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0183",
+      "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[1]",
+      "start": 0,
+      "end": 138,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 39,
+      "heading": {
+        "source": "S0184",
+        "text": "Treatment of Scanner (Transaction) Data in the European Comparison Program (ECP) [Eurostat]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0184",
+      "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[2]",
+      "start": 0,
+      "end": 91,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 40,
+      "heading": {
+        "source": "S0185",
+        "text": "Treatment of Negative Expenditures in ICP [Prasada Rao and Sergey Sergeev]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0185",
+      "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[3]",
+      "start": 0,
+      "end": 74,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 41,
+      "heading": {
+        "source": "S0186",
+        "text": "Fine Tuning Global Linking Procedures",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0186",
+      "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[4]",
+      "start": 0,
+      "end": 37,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 42,
+      "heading": {
+        "source": "S0188",
+        "text": "Alternative Global Linking Methods [Robert Hill] Similarity Linking Within and Between Regions [Erwin Diewert and Yuri",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0188",
+      "sourceId": "body[1]/tbl[7]/tr[2]/tc[3]/p[1]",
+      "start": 0,
+      "end": 118,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 43,
+      "heading": {
+        "source": "S0189",
+        "text": "Dikhanov] Improving Reliability of Price Comparisons \u2013 Basic Heading PPPs and Sparsity of Price Tableaus [Erwin Diewert]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0189",
+      "sourceId": "body[1]/tbl[7]/tr[3]/tc[2]/p[1]",
+      "start": 0,
+      "end": 120,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 44,
+      "heading": {
+        "source": "S0191",
+        "text": "Alternative Basic Heading PPP Aggregation Methods [Yuri Dikhanov]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0191",
+      "sourceId": "body[1]/tbl[7]/tr[4]/tc[3]/p[1]",
+      "start": 0,
+      "end": 65,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 45,
       "heading": {
         "source": "S0192",
         "text": "SESSION VI: Closing",
@@ -941,7 +1253,25 @@
       "failureReason": null
     },
     {
-      "rawOrdinal": 34,
+      "rawOrdinal": 46,
+      "heading": {
+        "source": "S0193",
+        "text": "15:00 \u2013 15:15 Any Other Business and Closing [TAG Co-Chairs]",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0193",
+      "sourceId": "body[1]/p[170]",
+      "start": 0,
+      "end": 60,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 47,
       "heading": {
         "source": "S0195",
         "text": "Annex 2: List of Participants",
@@ -959,7 +1289,7 @@
       "failureReason": null
     },
     {
-      "rawOrdinal": 35,
+      "rawOrdinal": 48,
       "heading": {
         "source": "S0196",
         "text": "ICP Technical Advisory Group members",
@@ -977,7 +1307,7 @@
       "failureReason": null
     },
     {
-      "rawOrdinal": 36,
+      "rawOrdinal": 49,
       "heading": {
         "source": "S0199",
         "text": "ICP experts, guest speakers, and observers",
@@ -995,7 +1325,7 @@
       "failureReason": null
     },
     {
-      "rawOrdinal": 37,
+      "rawOrdinal": 50,
       "heading": {
         "source": "S0202",
         "text": "ICP Inter-Agency Coordination Group (IACG)",
@@ -1010,24 +1340,6 @@
       "sourceId": "body[1]/p[177]",
       "start": 0,
       "end": 42,
-      "failureReason": null
-    },
-    {
-      "rawOrdinal": 38,
-      "heading": {
-        "source": "S0207",
-        "text": "World Bank",
-        "role": "SUBSECTION",
-        "occurrence": null,
-        "leftExactContext": null,
-        "rightExactContext": null
-      },
-      "status": 2,
-      "exactTextOccurrenceCount": 1,
-      "alias": "S0207",
-      "sourceId": "body[1]/p[178]",
-      "start": 0,
-      "end": 10,
       "failureReason": null
     }
   ],
@@ -1267,22 +1579,22 @@
       "end": 30
     },
     {
-      "alias": "S0160",
-      "sourceId": "body[1]/p[157]",
-      "sourceOrdinal": 186,
-      "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
-      "role": "RUNNING_HEADER",
-      "start": 0,
-      "end": 100
-    },
-    {
       "alias": "S0161",
       "sourceId": "body[1]/p[158]",
       "sourceOrdinal": 187,
-      "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+      "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks",
       "role": "AGENDA_NAVIGATION_HEADING",
       "start": 56,
-      "end": 274
+      "end": 153
+    },
+    {
+      "alias": "S0163",
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+      "sourceOrdinal": 189,
+      "text": "Update on the ICP 2021 and 2024 Cycles [World Bank and ICP Regional Implementing Agencies]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 90
     },
     {
       "alias": "S0164",
@@ -1294,6 +1606,24 @@
       "end": 65
     },
     {
+      "alias": "S0167",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]",
+      "sourceOrdinal": 193,
+      "text": "Research Topics Emerging from the Previous ICP Cycles [World Bank] Forthcoming Research Topics [Prasada Rao]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 108
+    },
+    {
+      "alias": "S0168",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[2]",
+      "sourceOrdinal": 194,
+      "text": "Setting Up a Short- and Long-Term Research and Development Agenda [Co- Chairs and TAG]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 86
+    },
+    {
       "alias": "S0169",
       "sourceId": "body[1]/p[160]",
       "sourceOrdinal": 195,
@@ -1303,6 +1633,24 @@
       "end": 133
     },
     {
+      "alias": "S0171",
+      "sourceId": "body[1]/p[164]",
+      "sourceOrdinal": 199,
+      "text": "14:15 \u2013 15:00 Terms of Reference for a Task Force on Annual PPP Production [World Bank]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 87
+    },
+    {
+      "alias": "S0172",
+      "sourceId": "body[1]/p[165]",
+      "sourceOrdinal": 200,
+      "text": "15:00 \u2013 15:45 Terms of Reference for a Task Force on ICP Classification Update [World Bank]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 91
+    },
+    {
       "alias": "S0173",
       "sourceId": "body[1]/p[166]",
       "sourceOrdinal": 201,
@@ -1310,6 +1658,15 @@
       "role": "AGENDA_NAVIGATION_HEADING",
       "start": 0,
       "end": 27
+    },
+    {
+      "alias": "S0175",
+      "sourceId": "body[1]/tbl[6]/tr[1]/tc[2]/p[1]",
+      "sourceOrdinal": 203,
+      "text": "The Treatment of Import and Export Prices in International Comparisons [Rob Feenstra]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 85
     },
     {
       "alias": "S0176",
@@ -1330,6 +1687,69 @@
       "end": 36
     },
     {
+      "alias": "S0183",
+      "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[1]",
+      "sourceOrdinal": 211,
+      "text": "A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons [Naohito Abe and Prasada Rao]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 138
+    },
+    {
+      "alias": "S0184",
+      "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[2]",
+      "sourceOrdinal": 212,
+      "text": "Treatment of Scanner (Transaction) Data in the European Comparison Program (ECP) [Eurostat]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 91
+    },
+    {
+      "alias": "S0185",
+      "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[3]",
+      "sourceOrdinal": 213,
+      "text": "Treatment of Negative Expenditures in ICP [Prasada Rao and Sergey Sergeev]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 74
+    },
+    {
+      "alias": "S0186",
+      "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[4]",
+      "sourceOrdinal": 214,
+      "text": "Fine Tuning Global Linking Procedures",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 37
+    },
+    {
+      "alias": "S0188",
+      "sourceId": "body[1]/tbl[7]/tr[2]/tc[3]/p[1]",
+      "sourceOrdinal": 217,
+      "text": "Alternative Global Linking Methods [Robert Hill] Similarity Linking Within and Between Regions [Erwin Diewert and Yuri",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 118
+    },
+    {
+      "alias": "S0189",
+      "sourceId": "body[1]/tbl[7]/tr[3]/tc[2]/p[1]",
+      "sourceOrdinal": 219,
+      "text": "Dikhanov] Improving Reliability of Price Comparisons \u2013 Basic Heading PPPs and Sparsity of Price Tableaus [Erwin Diewert]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 120
+    },
+    {
+      "alias": "S0191",
+      "sourceId": "body[1]/tbl[7]/tr[4]/tc[3]/p[1]",
+      "sourceOrdinal": 222,
+      "text": "Alternative Basic Heading PPP Aggregation Methods [Yuri Dikhanov]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 65
+    },
+    {
       "alias": "S0192",
       "sourceId": "body[1]/p[169]",
       "sourceOrdinal": 223,
@@ -1337,6 +1757,15 @@
       "role": "AGENDA_NAVIGATION_HEADING",
       "start": 0,
       "end": 19
+    },
+    {
+      "alias": "S0193",
+      "sourceId": "body[1]/p[170]",
+      "sourceOrdinal": 224,
+      "text": "15:00 \u2013 15:15 Any Other Business and Closing [TAG Co-Chairs]",
+      "role": "LIST_ITEM",
+      "start": 0,
+      "end": 60
     },
     {
       "alias": "S0195",
@@ -1373,19 +1802,10 @@
       "role": "SUBSECTION",
       "start": 0,
       "end": 42
-    },
-    {
-      "alias": "S0207",
-      "sourceId": "body[1]/p[178]",
-      "sourceOrdinal": 240,
-      "text": "World Bank",
-      "role": "SUBSECTION",
-      "start": 0,
-      "end": 10
     }
   ],
-  "validatorAccepted": 38,
-  "validatorRejected": 1,
+  "validatorAccepted": 37,
+  "validatorRejected": 14,
   "finalHeadings": [
     {
       "sourceId": "body[1]/p[3]",
@@ -1595,13 +2015,6 @@
       "start": 0,
       "end": 42,
       "text": "ICP Inter-Agency Coordination Group (IACG)",
-      "role": 0
-    },
-    {
-      "sourceId": "body[1]/p[178]",
-      "start": 0,
-      "end": 10,
-      "text": "World Bank",
       "role": 0
     }
   ],

@@ -2,7 +2,7 @@
   "schemaVersion": "a99-semantic-text-generalization-freeze-v1",
   "documentId": "DOC-0258",
   "repeat": "r1",
-  "gitSha": "98ed48fcabf9c2bb617da0fddd269e8e807a9ba0",
+  "gitSha": "6453f6caadccfc08f699d2e1791cd527aeb3e86b",
   "model": "qwen/qwen3.7-flash",
   "actualProvider": "Alibaba",
   "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
@@ -21,15 +21,16 @@
   "rawProposalCount": 18,
   "boundProposalCount": 18,
   "finalCount": 18,
+  "wallTimeMs": 54340,
   "providerAttempts": 1,
   "inputTokens": 10103,
-  "reasoningTokens": 9116,
-  "outputTokens": 9930,
+  "reasoningTokens": 6565,
+  "outputTokens": 7380,
   "finishReason": "stop",
   "executionMode": "FULL_CONTEXT",
   "dataClassification": "PUBLIC",
   "zdrRequested": false,
   "privacyExceptionAuthorized": true,
   "goldReadBeforeFreeze": false,
-  "frozenUtc": "2026-09-10T08:22:08.30767+00:00"
+  "frozenUtc": "2026-09-10T17:00:41.4241969+00:00"
 }

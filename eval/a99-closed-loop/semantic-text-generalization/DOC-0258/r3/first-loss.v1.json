@@ -167,14 +167,14 @@
       "documentId": "DOC-0258",
       "key": "body[1]/p[115]:0:29",
       "exactSourceText": "Annex 2: List of participants",
-      "firstLoss": "MODEL_WRONG_SPAN",
-      "found": false
+      "firstLoss": "FOUND",
+      "found": true
     }
   ],
+  "falsePositives": [],
   "firstLossCounts": {
-    "FOUND": 17,
-    "MODEL_OMISSION": 6,
-    "MODEL_WRONG_SPAN": 1
+    "FOUND": 18,
+    "MODEL_OMISSION": 6
   },
   "systemLoss": 0,
   "goldReadBeforeFreeze": false

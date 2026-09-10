@@ -27,7 +27,7 @@
       "documentId": "DOC-0256",
       "key": "body[1]/p[17]:0:20",
       "exactSourceText": "Asia and the Pacific",
-      "firstLoss": "MODEL_OMISSION",
+      "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
       "found": false
     },
     {
@@ -171,10 +171,18 @@
       "found": true
     }
   ],
+  "falsePositives": [
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[3]:0:87",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    }
+  ],
   "firstLossCounts": {
     "FOUND": 22,
-    "AMBIGUOUS_DUPLICATE_TEXT": 1,
-    "MODEL_OMISSION": 1
+    "AMBIGUOUS_DUPLICATE_TEXT": 2
   },
   "systemLoss": 0,
   "goldReadBeforeFreeze": false
