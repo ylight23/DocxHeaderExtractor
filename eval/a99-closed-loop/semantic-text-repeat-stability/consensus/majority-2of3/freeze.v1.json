@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "a99-semantic-text-repeat-stability-consensus-freeze-v1",
+  "operatorName": "MAJORITY_2_OF_3",
+  "threshold": 2,
+  "model": "qwen/qwen3.7-flash",
+  "predictionSha256": "54485d64f10ad0c76590b6a17cecc10913f6733e72db039daf793dc802ccf349",
+  "rowCount": 151,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-10T09:39:36.9599931+00:00"
+}

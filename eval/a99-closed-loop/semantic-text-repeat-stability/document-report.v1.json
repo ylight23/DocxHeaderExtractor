@@ -1,0 +1,67 @@
+[
+  {
+    "documentId": "DOC-0001",
+    "gold": 7,
+    "tpMedian": 7,
+    "fpMedian": 0,
+    "fnMedian": 0,
+    "stableOmissions": 0,
+    "stochasticOmissions": 0,
+    "spanVariants": 0,
+    "stableFalsePositives": 0,
+    "stochasticFalsePositives": 0,
+    "roleVariants": 0
+  },
+  {
+    "documentId": "DOC-0205",
+    "gold": 71,
+    "tpMedian": 71,
+    "fpMedian": 1,
+    "fnMedian": 0,
+    "stableOmissions": 0,
+    "stochasticOmissions": 0,
+    "spanVariants": 3,
+    "stableFalsePositives": 0,
+    "stochasticFalsePositives": 1,
+    "roleVariants": 0
+  },
+  {
+    "documentId": "DOC-0252",
+    "gold": 27,
+    "tpMedian": 25,
+    "fpMedian": 6,
+    "fnMedian": 2,
+    "stableOmissions": 2,
+    "stochasticOmissions": 0,
+    "spanVariants": 0,
+    "stableFalsePositives": 2,
+    "stochasticFalsePositives": 5,
+    "roleVariants": 0
+  },
+  {
+    "documentId": "DOC-0256",
+    "gold": 24,
+    "tpMedian": 22,
+    "fpMedian": 1,
+    "fnMedian": 2,
+    "stableOmissions": 2,
+    "stochasticOmissions": 0,
+    "spanVariants": 0,
+    "stableFalsePositives": 1,
+    "stochasticFalsePositives": 0,
+    "roleVariants": 0
+  },
+  {
+    "documentId": "DOC-0258",
+    "gold": 24,
+    "tpMedian": 18,
+    "fpMedian": 1,
+    "fnMedian": 6,
+    "stableOmissions": 5,
+    "stochasticOmissions": 0,
+    "spanVariants": 2,
+    "stableFalsePositives": 0,
+    "stochasticFalsePositives": 1,
+    "roleVariants": 0
+  }
+]

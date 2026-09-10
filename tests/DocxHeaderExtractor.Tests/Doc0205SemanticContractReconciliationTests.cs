@@ -9,6 +9,7 @@ public sealed class Doc0205SemanticContractReconciliationTests
     private const string Root = "eval/a99-closed-loop/doc0205-semantic-contract-audit";
     private const string SemanticRoot = "eval/a99-closed-loop/semantic-text-exact-binding";
     private const string GeneralizationRoot = "eval/a99-closed-loop/semantic-text-generalization";
+    private const string StabilityRoot = "eval/a99-closed-loop/semantic-text-repeat-stability";
 
     [Theory]
     [InlineData("EXACT_MATCH", 10, 20, "body/p4", "Heading", "article", 10, 20, "body/p4", "Heading")]
@@ -266,9 +267,63 @@ public sealed class Doc0205SemanticContractReconciliationTests
         Assert.Null(response.Headings[0].Occurrence);
     }
 
+    [Fact]
+    public void Repeat_stability_audit_is_offline_and_freezes_before_gold_score()
+    {
+        using var summary = LoadStability("summary.v1.json");
+        var root = summary.RootElement;
+        Assert.Equal(0, root.GetProperty("providerCalls").GetInt32());
+        Assert.Equal(0, root.GetProperty("modelCalls").GetInt32());
+        Assert.False(root.GetProperty("goldReadBeforeFreeze").GetBoolean());
+        Assert.Equal(153, root.GetProperty("goldTotal").GetInt32());
+        Assert.Equal(0, root.GetProperty("systemLoss").GetInt32());
+        Assert.Equal("STABLE_MODEL_ERRORS_DOMINATE", root.GetProperty("finalClassification").GetString());
+        Assert.Equal("STABLE_OMISSION", root.GetProperty("largestResidualBucket").GetString());
+
+        using var matrix = LoadStability("baseline-matrix.v1.json");
+        Assert.False(matrix.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());
+        Assert.DoesNotContain("goldOccurrences", matrix.RootElement.ToString(), StringComparison.OrdinalIgnoreCase);
+        Assert.Equal(15, matrix.RootElement.GetProperty("runs").GetArrayLength());
+        foreach (var operatorName in new[] { "intersection-3of3", "majority-2of3", "union-1of3" })
+        {
+            var dir = Path.Combine(RepoRoot(), StabilityRoot, "consensus", operatorName);
+            using var freeze = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "freeze.v1.json")));
+            Assert.False(freeze.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());
+            Assert.Equal(0, freeze.RootElement.GetProperty("providerCalls").GetInt32());
+            var predictionPath = Path.Combine(dir, "prediction.v1.json");
+            var expectedHash = freeze.RootElement.GetProperty("predictionSha256").GetString();
+            Assert.Equal(expectedHash, Sha256(predictionPath));
+        }
+    }
+
+    [Fact]
+    public void Repeat_stability_and_consensus_counts_are_exact_and_predefined()
+    {
+        using var stability = LoadStability("gold-stability.v1.json");
+        var root = stability.RootElement;
+        Assert.Equal(139, root.GetProperty("found3of3").GetInt32());
+        Assert.Equal(3, root.GetProperty("found2of3").GetInt32());
+        Assert.Equal(2, root.GetProperty("found1of3").GetInt32());
+        Assert.Equal(9, root.GetProperty("found0of3").GetInt32());
+        Assert.Equal(139, root.GetProperty("stableExact").GetInt32());
+        Assert.Equal(5, root.GetProperty("spanVariant").GetInt32());
+        Assert.Equal(9, root.GetProperty("stableOmission").GetInt32());
+        Assert.Equal(0, root.GetProperty("stochasticOmission").GetInt32());
+        Assert.Equal(3, root.GetProperty("fpStability").GetProperty("fp3of3").GetInt32());
+        Assert.Equal(6, root.GetProperty("fpStability").GetProperty("fp2of3").GetInt32());
+        Assert.Equal(1, root.GetProperty("fpStability").GetProperty("fp1of3").GetInt32());
+
+        using var summary = LoadStability("summary.v1.json");
+        var metrics = summary.RootElement.GetProperty("consensus").EnumerateArray().ToDictionary(x => x.GetProperty("label").GetString()!);
+        Assert.Equal((139, 3, 14), (metrics["INTERSECTION_3_OF_3"].GetProperty("tp").GetInt32(), metrics["INTERSECTION_3_OF_3"].GetProperty("fp").GetInt32(), metrics["INTERSECTION_3_OF_3"].GetProperty("fn").GetInt32()));
+        Assert.Equal((142, 9, 11), (metrics["MAJORITY_2_OF_3"].GetProperty("tp").GetInt32(), metrics["MAJORITY_2_OF_3"].GetProperty("fp").GetInt32(), metrics["MAJORITY_2_OF_3"].GetProperty("fn").GetInt32()));
+        Assert.Equal((144, 10, 9), (metrics["UNION_1_OF_3"].GetProperty("tp").GetInt32(), metrics["UNION_1_OF_3"].GetProperty("fp").GetInt32(), metrics["UNION_1_OF_3"].GetProperty("fn").GetInt32()));
+    }
+
     private static JsonDocument Load(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), Root, name)));
     private static JsonDocument LoadSemantic(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), SemanticRoot, name)));
     private static JsonDocument LoadGeneralization(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), GeneralizationRoot, name)));
+    private static JsonDocument LoadStability(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), StabilityRoot, name)));
     private static string RepoRoot() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
     private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
 }

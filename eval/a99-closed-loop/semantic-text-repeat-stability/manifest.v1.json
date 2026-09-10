@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "a99-semantic-text-repeat-stability-manifest-v1",
+  "startHead": "e4b71731bccf8bf392e19e528dda4cb429ea8389",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "model": "qwen/qwen3.7-flash",
+  "baselineArtifact": "eval/a99-closed-loop/semantic-text-generalization",
+  "cohort": [
+    "DOC-0001",
+    "DOC-0205",
+    "DOC-0252",
+    "DOC-0256",
+    "DOC-0258"
+  ],
+  "repeats": [
+    "r1",
+    "r2",
+    "r3"
+  ],
+  "canonicalIdentity": "documentId \u002B sourceId \u002B exact start \u002B exact end",
+  "operatorsDefinedBeforeGold": [
+    "INTERSECTION_3_OF_3",
+    "MAJORITY_2_OF_3",
+    "UNION_1_OF_3"
+  ],
+  "rolePolicy": "preserve semantic existence; role disagreement is reported separately",
+  "spanPolicy": "exact canonical identities only; no fuzzy merge or fabricated span",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReadBeforeFreeze": false
+}
