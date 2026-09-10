@@ -549,6 +549,7 @@ public static class SemanticTextGeneralizationRunner
             baselineComplete, baselineProviderAttempts = baseline.Count, passAReused = true, passAProviderCallsCurrentRun = 0,
             reviewProviderAttempts = model.ProviderCalls, modelCalls = model.ProviderCalls, goldOccurrencesPerRepeat = expectedGoldOccurrences,
             goldReadBeforeFreeze = false, a99DevMarginMet = gate, classification,
+            keepOrRevert = classification == "OMISSION_REVIEW_CLEAR_GAIN" ? "KEEP" : "REVERT",
             dominantBaselineBucket = NextBucket(baseline), dominantReviewBucket = NextBucket(review),
             persistentMovement = new { before = BuildPersistentErrors(baseline), after = BuildPersistentErrors(review) },
             performance = new { inputTokens = review.Sum(x => x.InputTokens ?? 0), reasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), outputTokens = review.Sum(x => x.OutputTokens ?? 0), wallTimeMs = review.Sum(x => x.WallTimeMs) },

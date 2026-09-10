@@ -2,7 +2,183 @@
   "schemaVersion": "a99-semantic-text-omission-review-result-v1",
   "documentId": "DOC-0256",
   "repeat": "r1",
-  "status": "BLOCKED",
-  "headings": [],
+  "model": "qwen/qwen3.7-flash",
+  "headings": [
+    {
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 87,
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "role": 3
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 0,
+      "end": 29,
+      "text": "OCTOBER 31 \u2013 NOVEMBER 3, 2023",
+      "role": 3
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "start": 0,
+      "end": 14,
+      "text": "Hybrid Meeting",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[6]",
+      "start": 0,
+      "end": 30,
+      "text": "Welcome and meeting objectives",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[10]",
+      "start": 0,
+      "end": 53,
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[20]",
+      "start": 0,
+      "end": 34,
+      "text": "Commonwealth of Independent States",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[26]",
+      "start": 0,
+      "end": 25,
+      "text": "Eurostat\u2013OECD PPP Program",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[32]",
+      "start": 0,
+      "end": 31,
+      "text": "Latin America and the Caribbean",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[35]",
+      "start": 0,
+      "end": 12,
+      "text": "Western Asia",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[42]",
+      "start": 0,
+      "end": 51,
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[55]",
+      "start": 0,
+      "end": 60,
+      "text": "Data review: Household consumption price and importance data",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[61]",
+      "start": 0,
+      "end": 39,
+      "text": "Data review: Housing prices and volumes",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[67]",
+      "start": 0,
+      "end": 30,
+      "text": "Data review: Private Education",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[73]",
+      "start": 0,
+      "end": 64,
+      "text": "Data review: Government compensation and productivity adjustment",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[76]",
+      "start": 0,
+      "end": 53,
+      "text": "Data review: Machinery and equipment and construction",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[80]",
+      "start": 0,
+      "end": 53,
+      "text": "Data review: 2017-2021 National Accounts expenditures",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[88]",
+      "start": 0,
+      "end": 59,
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[90]",
+      "start": 0,
+      "end": 102,
+      "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[99]",
+      "start": 0,
+      "end": 31,
+      "text": "Planning for the ICP 2024 cycle",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[107]",
+      "start": 0,
+      "end": 23,
+      "text": "Annex 1: Meeting Agenda",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 32,
+      "text": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 34,
+      "text": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 33,
+      "text": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 31,
+      "text": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[124]",
+      "start": 0,
+      "end": 29,
+      "text": "Annex 2: List of participants",
+      "role": 0
+    }
+  ],
   "goldReadBeforeFreeze": false
 }

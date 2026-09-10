@@ -1,7 +1,7 @@
 {
   "schemaVersion": "a99-semantic-text-omission-review-summary-v1",
-  "startHead": "76c4e01a10577b1c6069255646843cbaef729a1f",
-  "endHead": "76c4e01a10577b1c6069255646843cbaef729a1f",
+  "startHead": "b8e462327c66d3aa2fefb32c263e77f9c089d86e",
+  "endHead": "b8e462327c66d3aa2fefb32c263e77f9c089d86e",
   "intervention": "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
   "baseContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
   "reviewPromptHash": "cf1597aed817aa8b5b577ad7dd308be159ecb4bcfaff762eb5a5f9a3f6094b4b",
@@ -17,12 +17,12 @@
   "baselineProviderAttempts": 15,
   "passAReused": true,
   "passAProviderCallsCurrentRun": 0,
-  "reviewProviderAttempts": 11,
-  "modelCalls": 11,
+  "reviewProviderAttempts": 5,
+  "modelCalls": 5,
   "goldOccurrencesPerRepeat": 153,
   "goldReadBeforeFreeze": false,
   "a99DevMarginMet": false,
-  "classification": "OMISSION_REVIEW_EXECUTION_BLOCKED",
+  "classification": "OMISSION_REVIEW_RECALL_UP_PRECISION_TRADEOFF",
   "dominantBaselineBucket": {
     "bucket": "MODEL_OMISSION",
     "count": 21,
@@ -33,7 +33,7 @@
   },
   "dominantReviewBucket": {
     "bucket": "AMBIGUOUS_DUPLICATE_TEXT",
-    "count": 14,
+    "count": 16,
     "affectedDocuments": [
       "DOC-0256",
       "DOC-0258"
@@ -331,7 +331,22 @@
           "repeatPresenceMask": "000"
         }
       ],
-      "intermittentErrors": [],
+      "intermittentErrors": [
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[17]:0:25",
+          "exactSourceText": "Eurostat\u2013OECD PPP Program",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "101"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[115]:0:29",
+          "exactSourceText": "Annex 2: List of participants",
+          "firstLossClass": "MODEL_WRONG_SPAN",
+          "repeatPresenceMask": "101"
+        }
+      ],
       "persistentFalsePositives": [
         {
           "documentId": "DOC-0205",
@@ -374,6 +389,13 @@
           "exactSourceText": "ICP Inter-Agency Coordination Group (IACG)",
           "firstLossClass": "MODEL_FALSE_POSITIVE",
           "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[3]:0:87",
+          "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
         }
       ],
       "intermittentFalsePositives": [
@@ -400,10 +422,17 @@
         },
         {
           "documentId": "DOC-0256",
-          "goldOrPredictionKey": "body[1]/p[3]:0:87",
-          "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+          "goldOrPredictionKey": "body[1]/p[4]:0:29",
+          "exactSourceText": "OCTOBER 31 \u2013 NOVEMBER 3, 2023",
           "firstLossClass": "MODEL_FALSE_POSITIVE",
-          "repeatPresenceMask": "011"
+          "repeatPresenceMask": "100"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[5]:0:14",
+          "exactSourceText": "Hybrid Meeting",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "100"
         },
         {
           "documentId": "DOC-0256",
@@ -467,6 +496,13 @@
           "exactSourceText": "World Bank",
           "firstLossClass": "MODEL_FALSE_POSITIVE",
           "repeatPresenceMask": "001"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[115]:0:230",
+          "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "010"
         }
       ],
       "persistentErrorCounts": {
@@ -474,16 +510,19 @@
         "MODEL_WRONG_SPAN": 1,
         "AMBIGUOUS_DUPLICATE_TEXT": 7
       },
-      "intermittentErrorCounts": {},
-      "persistentFalsePositiveCount": 6,
-      "intermittentFalsePositiveCount": 13
+      "intermittentErrorCounts": {
+        "MODEL_OMISSION": 1,
+        "MODEL_WRONG_SPAN": 1
+      },
+      "persistentFalsePositiveCount": 7,
+      "intermittentFalsePositiveCount": 15
     }
   },
   "performance": {
-    "inputTokens": 388462,
-    "reasoningTokens": 95148,
-    "outputTokens": 99137,
-    "wallTimeMs": 202289
+    "inputTokens": 417594,
+    "reasoningTokens": 107140,
+    "outputTokens": 111341,
+    "wallTimeMs": 110663
   },
   "repeatSummary": {
     "schemaVersion": "a99-semantic-text-generalization-repeat-summary-v1",
@@ -715,7 +754,7 @@
             "inputTokens": 18417,
             "reasoningTokens": 5476,
             "outputTokens": 6175,
-            "wallTimeMs": 53545
+            "wallTimeMs": 0
           },
           {
             "documentId": "DOC-0252",
@@ -738,7 +777,7 @@
             "inputTokens": 18619,
             "reasoningTokens": 9141,
             "outputTokens": 10369,
-            "wallTimeMs": 78783
+            "wallTimeMs": 0
           }
         ],
         "minPrecision": 0.8064516129032258,
@@ -763,25 +802,25 @@
           {
             "documentId": "DOC-0256",
             "repeat": "r1",
-            "status": "BLOCKED",
-            "gold": 0,
-            "tp": 0,
-            "fp": 0,
-            "fn": 0,
-            "precision": 0,
-            "recall": 0,
-            "f1": 0,
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 22,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.88,
+            "recall": 0.9166666666666666,
+            "f1": 0.8979591836734694,
             "modelOmission": 0,
             "wrongText": 0,
             "wrongSpan": 0,
             "systemLoss": 0,
             "executionMode": "FULL_CONTEXT",
-            "actualProvider": "AUTO",
-            "finishReason": null,
-            "inputTokens": null,
-            "reasoningTokens": null,
-            "outputTokens": null,
-            "wallTimeMs": 5214
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 17690,
+            "reasoningTokens": 6101,
+            "outputTokens": 6207,
+            "wallTimeMs": 51198
           },
           {
             "documentId": "DOC-0256",
@@ -827,21 +866,21 @@
             "inputTokens": 20486,
             "reasoningTokens": 6628,
             "outputTokens": 6917,
-            "wallTimeMs": 59658
+            "wallTimeMs": 0
           }
         ],
-        "minPrecision": 0,
-        "minRecall": 0,
-        "minF1": 0,
+        "minPrecision": 0.6875,
+        "minRecall": 0.9166666666666666,
+        "minF1": 0.7857142857142857,
         "maxPrecision": 0.9565217391304348,
         "maxRecall": 0.9166666666666666,
         "maxF1": 0.9361702127659574,
-        "meanF1": 0.5739614994934144,
-        "tpIntersection": 0,
-        "tpUnion": 32,
+        "meanF1": 0.8732812273845708,
+        "tpIntersection": 23,
+        "tpUnion": 34,
         "jaccard": {
-          "r1VsR2": 0,
-          "r1VsR3": 0,
+          "r1VsR2": 0.92,
+          "r1VsR3": 0.6764705882352942,
           "r2VsR3": 0.71875
         },
         "systemLoss": 0
@@ -875,25 +914,25 @@
           {
             "documentId": "DOC-0258",
             "repeat": "r2",
-            "status": "BLOCKED",
-            "gold": 0,
-            "tp": 0,
-            "fp": 0,
-            "fn": 0,
-            "precision": 0,
-            "recall": 0,
-            "f1": 0,
-            "modelOmission": 0,
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 17,
+            "fp": 1,
+            "fn": 7,
+            "precision": 0.9444444444444444,
+            "recall": 0.7083333333333334,
+            "f1": 0.8095238095238096,
+            "modelOmission": 6,
             "wrongText": 0,
-            "wrongSpan": 0,
+            "wrongSpan": 1,
             "systemLoss": 0,
             "executionMode": "FULL_CONTEXT",
-            "actualProvider": "AUTO",
-            "finishReason": null,
-            "inputTokens": null,
-            "reasoningTokens": null,
-            "outputTokens": null,
-            "wallTimeMs": 5089
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 11442,
+            "reasoningTokens": 5891,
+            "outputTokens": 5997,
+            "wallTimeMs": 59465
           },
           {
             "documentId": "DOC-0258",
@@ -919,19 +958,19 @@
             "wallTimeMs": 0
           }
         ],
-        "minPrecision": 0,
-        "minRecall": 0,
-        "minF1": 0,
+        "minPrecision": 0.9444444444444444,
+        "minRecall": 0.7083333333333334,
+        "minF1": 0.8095238095238096,
         "maxPrecision": 1,
         "maxRecall": 0.7916666666666666,
         "maxF1": 0.8837209302325582,
-        "meanF1": 0.5891472868217055,
-        "tpIntersection": 0,
-        "tpUnion": 19,
+        "meanF1": 0.8589885566629754,
+        "tpIntersection": 17,
+        "tpUnion": 20,
         "jaccard": {
-          "r1VsR2": 0,
+          "r1VsR2": 0.85,
           "r1VsR3": 1,
-          "r2VsR3": 0
+          "r2VsR3": 0.85
         },
         "systemLoss": 0
       }
@@ -939,24 +978,24 @@
     "cohortMicroByRepeat": [
       {
         "repeat": "r1",
-        "gold": 129,
-        "tp": 122,
-        "fp": 7,
-        "fn": 7,
-        "precision": 0.9457364341085271,
-        "recall": 0.9457364341085271,
-        "f1": 0.945736434108527,
+        "gold": 153,
+        "tp": 144,
+        "fp": 10,
+        "fn": 9,
+        "precision": 0.935064935064935,
+        "recall": 0.9411764705882353,
+        "f1": 0.9381107491856677,
         "systemLoss": 0
       },
       {
         "repeat": "r2",
-        "gold": 129,
-        "tp": 125,
-        "fp": 9,
-        "fn": 4,
-        "precision": 0.9328358208955224,
-        "recall": 0.9689922480620154,
-        "f1": 0.9505703422053232,
+        "gold": 153,
+        "tp": 142,
+        "fp": 10,
+        "fn": 11,
+        "precision": 0.9342105263157895,
+        "recall": 0.9281045751633987,
+        "f1": 0.9311475409836065,
         "systemLoss": 0
       },
       {
@@ -972,7 +1011,7 @@
       }
     ],
     "minRepeatMicroPrecision": 0.8944099378881988,
-    "minRepeatMicroRecall": 0.9411764705882353,
+    "minRepeatMicroRecall": 0.9281045751633987,
     "minRepeatMicroF1": 0.9171974522292994
   }
 }

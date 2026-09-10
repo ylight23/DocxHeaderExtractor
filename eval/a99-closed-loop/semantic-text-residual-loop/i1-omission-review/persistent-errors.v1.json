@@ -65,7 +65,22 @@
       "repeatPresenceMask": "000"
     }
   ],
-  "intermittentErrors": [],
+  "intermittentErrors": [
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[17]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "101"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[115]:0:29",
+      "exactSourceText": "Annex 2: List of participants",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "101"
+    }
+  ],
   "persistentFalsePositives": [
     {
       "documentId": "DOC-0205",
@@ -108,6 +123,13 @@
       "exactSourceText": "ICP Inter-Agency Coordination Group (IACG)",
       "firstLossClass": "MODEL_FALSE_POSITIVE",
       "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[3]:0:87",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
     }
   ],
   "intermittentFalsePositives": [
@@ -134,10 +156,17 @@
     },
     {
       "documentId": "DOC-0256",
-      "goldOrPredictionKey": "body[1]/p[3]:0:87",
-      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "goldOrPredictionKey": "body[1]/p[4]:0:29",
+      "exactSourceText": "OCTOBER 31 \u2013 NOVEMBER 3, 2023",
       "firstLossClass": "MODEL_FALSE_POSITIVE",
-      "repeatPresenceMask": "011"
+      "repeatPresenceMask": "100"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[5]:0:14",
+      "exactSourceText": "Hybrid Meeting",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "100"
     },
     {
       "documentId": "DOC-0256",
@@ -201,6 +230,13 @@
       "exactSourceText": "World Bank",
       "firstLossClass": "MODEL_FALSE_POSITIVE",
       "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[115]:0:230",
+      "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "010"
     }
   ],
   "persistentErrorCounts": {
@@ -208,7 +244,10 @@
     "MODEL_WRONG_SPAN": 1,
     "AMBIGUOUS_DUPLICATE_TEXT": 7
   },
-  "intermittentErrorCounts": {},
-  "persistentFalsePositiveCount": 6,
-  "intermittentFalsePositiveCount": 13
+  "intermittentErrorCounts": {
+    "MODEL_OMISSION": 1,
+    "MODEL_WRONG_SPAN": 1
+  },
+  "persistentFalsePositiveCount": 7,
+  "intermittentFalsePositiveCount": 15
 }
