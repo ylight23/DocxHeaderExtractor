@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "a99-qwen37-flash-visual-ceiling-v1",
+  "primaryClassification": "VISUAL_EVIDENCE_NO_MATERIAL_GAIN",
+  "model": "qwen/qwen3.7-flash",
+  "textControl": {
+    "tp": 0,
+    "fp": 73,
+    "fn": 71,
+    "f1": 0,
+    "modelOmission": 70,
+    "spanError": 1,
+    "systemLoss": 0
+  },
+  "visual": {
+    "tp": 0,
+    "fp": 361,
+    "fn": 71,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "modelOmission": 37,
+    "spanError": 34,
+    "systemLoss": 0
+  },
+  "delta": {
+    "deltaTP": 0,
+    "deltaFP": 288,
+    "deltaFN": 0,
+    "deltaRecall": 0,
+    "deltaF1": 0,
+    "deltaModelOmission": -33
+  },
+  "pageCount": 19,
+  "pageCoverage": 1,
+  "sourceOwnershipCoverage": 1,
+  "sourceCharacterCoverage": 1,
+  "unmappedVisualRegions": 0,
+  "reasoningTokens": 21300,
+  "wallTimeMs": 494684,
+  "goldReadBeforeFreeze": false,
+  "completedUtc": "2026-09-10T01:00:25.8725388+00:00"
+}

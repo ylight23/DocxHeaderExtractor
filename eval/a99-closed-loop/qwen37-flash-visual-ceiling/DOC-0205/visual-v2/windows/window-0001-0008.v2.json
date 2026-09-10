@@ -1,0 +1,394 @@
+{
+  "pageIndices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "sourceOccurrenceIds": [
+    "DOC-0205:body[1]/p[1]:0:37",
+    "DOC-0205:body[1]/p[2]:1:113",
+    "DOC-0205:body[1]/p[4]:3:60769"
+  ],
+  "packetMetrics": {
+    "pageCountInRequest": 8,
+    "imageCount": 8,
+    "mappedSourceOccurrences": 3,
+    "visibleSourceChars": 27016,
+    "ownedSourceChars": 27016,
+    "packetChars": 55566,
+    "estimatedInputTokens": 16343,
+    "imageDimensions": [
+      {
+        "pageIndex": 1,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 2,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 3,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 4,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 5,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 6,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 7,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      },
+      {
+        "pageIndex": 8,
+        "dimensions": {
+          "width": 935,
+          "height": 1210
+        }
+      }
+    ]
+  },
+  "headings": [
+    {
+      "i": 0,
+      "start": 0,
+      "end": 1,
+      "role": "DOCUMENT_TITLE",
+      "alias": "P01-O000"
+    },
+    {
+      "i": 1,
+      "start": 1,
+      "end": 2,
+      "role": "FRONT_MATTER",
+      "alias": "P01-O001"
+    },
+    {
+      "i": 2,
+      "start": 2,
+      "end": 3,
+      "role": "FRONT_MATTER",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 3,
+      "start": 3,
+      "end": 4,
+      "role": "CHAPTER",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 4,
+      "start": 4,
+      "end": 5,
+      "role": "SECTION",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 5,
+      "start": 5,
+      "end": 6,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 6,
+      "start": 6,
+      "end": 7,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 7,
+      "start": 7,
+      "end": 8,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 8,
+      "start": 8,
+      "end": 9,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 9,
+      "start": 9,
+      "end": 10,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 10,
+      "start": 10,
+      "end": 11,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 11,
+      "start": 11,
+      "end": 12,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 12,
+      "start": 12,
+      "end": 13,
+      "role": "CHAPTER",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 13,
+      "start": 13,
+      "end": 14,
+      "role": "SUBSECTION",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 14,
+      "start": 14,
+      "end": 15,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 15,
+      "start": 15,
+      "end": 16,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 16,
+      "start": 16,
+      "end": 17,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 17,
+      "start": 17,
+      "end": 18,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 18,
+      "start": 18,
+      "end": 19,
+      "role": "SUBSECTION",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 19,
+      "start": 19,
+      "end": 20,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 20,
+      "start": 20,
+      "end": 21,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 21,
+      "start": 21,
+      "end": 22,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 22,
+      "start": 22,
+      "end": 23,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 23,
+      "start": 23,
+      "end": 24,
+      "role": "SUBSECTION",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 24,
+      "start": 24,
+      "end": 25,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 25,
+      "start": 25,
+      "end": 26,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 26,
+      "start": 26,
+      "end": 27,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 27,
+      "start": 27,
+      "end": 28,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 28,
+      "start": 28,
+      "end": 29,
+      "role": "SUBSECTION",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 29,
+      "start": 29,
+      "end": 30,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 30,
+      "start": 30,
+      "end": 31,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 31,
+      "start": 31,
+      "end": 32,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 32,
+      "start": 32,
+      "end": 33,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 33,
+      "start": 33,
+      "end": 34,
+      "role": "SUBSECTION",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 34,
+      "start": 34,
+      "end": 35,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 35,
+      "start": 35,
+      "end": 36,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    },
+    {
+      "i": 36,
+      "start": 36,
+      "end": 37,
+      "role": "ARTICLE",
+      "alias": "P01-O003"
+    }
+  ],
+  "boundCount": 37,
+  "requestTelemetry": {
+    "requestIdHash": "c8478ef94897bb932db330c24c9c6418d35a17b9ee4a9196d2f36211e3e225cb",
+    "documentId": "DOC-0205",
+    "passType": "VISUAL_SEMANTIC",
+    "model": "qwen/qwen3.7-flash",
+    "reasoningEffort": "enabled",
+    "reasoningExcludedFromResponse": true,
+    "reasoningRequested": true,
+    "reasoningAccepted": true,
+    "contextLength": 1000000,
+    "maxPromptTokens": 948000,
+    "maxCompletionTokens": 48000,
+    "sourceTextCharacters": 27016,
+    "packetCharacters": 56260,
+    "packetOverheadCharacters": 29244,
+    "sourcePayloadRatio": 0.480199075719872,
+    "estimatedInputTokens": 16548,
+    "reportedInputTokens": 44240,
+    "reportedOutputTokens": 3882,
+    "reportedReasoningTokens": 1823,
+    "cachedInputTokens": 0,
+    "cacheMode": "COLD_OR_UNCACHED",
+    "segmentCount": 1,
+    "ownedOccurrences": 3,
+    "visibleOccurrences": 3,
+    "headingOutputCount": 37,
+    "elapsedMs": 56024,
+    "finishReason": "stop",
+    "httpStatus": 200,
+    "failureClass": null,
+    "providerCallId": "gen-1789001530-lvyPb0pB6Z1WM5JfkEjg",
+    "providerRoute": "Alibaba",
+    "canonicalRequestHash": "ac00391f241f95c6fbeea7030747603c7c4ab8b790e5f03d9ddc5f7cc511536b",
+    "requestBodyHash": "ac00391f241f95c6fbeea7030747603c7c4ab8b790e5f03d9ddc5f7cc511536b",
+    "responseContentPresent": true,
+    "structuredOutputParsed": true,
+    "timeoutDetected": null,
+    "streamStallDetected": null,
+    "requestStartedUtc": "2026-09-10T00:52:08.2506988+00:00",
+    "headersReceivedUtc": "2026-09-10T00:52:15.3257476+00:00",
+    "firstResponseByteUtc": "2026-09-10T00:52:15.3313929+00:00",
+    "firstModelContentUtc": null,
+    "responseCompletedUtc": "2026-09-10T00:53:04.271872+00:00",
+    "ttfbMs": 7075,
+    "ttftMs": null,
+    "generationElapsedMs": null
+  },
+  "goldReadBeforeFreeze": false
+}
