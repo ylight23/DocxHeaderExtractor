@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "a99-semantic-text-stable-error-system-loss-audit-v1",
+  "schemaVersion": "a99-semantic-text-stable-error-system-loss-audit-v2",
   "documentId": "DOC-0256",
   "repeat": "r4",
   "aggregateAttributionCorrection": "R4_SYSTEM_LOSS=4 is DOC-0256, not DOC-0252; DOC-0252/R4 systemLoss=0.",
@@ -19,7 +19,8 @@
       "firstStageAbsent": "PROJECTION",
       "projectionStatus": "EXCLUDED",
       "projectionReason": "NAVIGATION_ONLY",
-      "classification": "MODEL_ROLE_CONTRACT_EXCLUSION"
+      "classification": "EXPECTED_PROJECTION_EXCLUSION",
+      "legacyTraceClassification": "SYSTEM_PROJECTION_LOSS"
     },
     {
       "key": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:34",
@@ -32,7 +33,8 @@
       "firstStageAbsent": "PROJECTION",
       "projectionStatus": "EXCLUDED",
       "projectionReason": "NAVIGATION_ONLY",
-      "classification": "MODEL_ROLE_CONTRACT_EXCLUSION"
+      "classification": "EXPECTED_PROJECTION_EXCLUSION",
+      "legacyTraceClassification": "SYSTEM_PROJECTION_LOSS"
     },
     {
       "key": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]:0:33",
@@ -45,7 +47,8 @@
       "firstStageAbsent": "PROJECTION",
       "projectionStatus": "EXCLUDED",
       "projectionReason": "NAVIGATION_ONLY",
-      "classification": "MODEL_ROLE_CONTRACT_EXCLUSION"
+      "classification": "EXPECTED_PROJECTION_EXCLUSION",
+      "legacyTraceClassification": "SYSTEM_PROJECTION_LOSS"
     },
     {
       "key": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]:0:31",
@@ -58,17 +61,22 @@
       "firstStageAbsent": "PROJECTION",
       "projectionStatus": "EXCLUDED",
       "projectionReason": "NAVIGATION_ONLY",
-      "classification": "MODEL_ROLE_CONTRACT_EXCLUSION"
+      "classification": "EXPECTED_PROJECTION_EXCLUSION",
+      "legacyTraceClassification": "SYSTEM_PROJECTION_LOSS"
     }
   ],
   "counts": {
-    "systemBinding": 0,
-    "systemDedupe": 0,
-    "systemValidator": 0,
-    "systemProjection": 4,
+    "systemLossTrace": 4,
+    "expectedProjectionExclusion": 4,
+    "systemBugLoss": 0,
     "traceAccounting": 0
   },
   "genericPostModelDefectProven": false,
   "replayApplied": false,
-  "conclusion": "All four proposals are exact-bound and validator-accepted, then intentionally excluded as NAVIGATION_ONLY because the model role is AGENDA_NAVIGATION_HEADING. Existing generic projection invariant and focused test confirm this is a role/projection contract exclusion, not a binder/projection implementation bug."
+  "metricDefinitions": {
+    "systemLossTrace": "Every proposal whose first loss is after model output; tracing metric, not necessarily a defect.",
+    "expectedProjectionExclusion": "Proposal intentionally excluded by the projection contract with reason NAVIGATION_ONLY.",
+    "systemBugLoss": "Post-model loss not explained by an expected projection exclusion or trace-accounting classification."
+  },
+  "conclusion": "All four proposals are exact-bound and validator-accepted, then intentionally excluded as NAVIGATION_ONLY because the model role is AGENDA_NAVIGATION_HEADING. Therefore EXPECTED_PROJECTION_EXCLUSION=4 and SYSTEM_BUG_LOSS=0; this is not a binder/projection implementation bug. The same frozen structural contract produces the same four expected exclusions in R5 and R6."
 }

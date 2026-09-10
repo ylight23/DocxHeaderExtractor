@@ -1,62 +1,8 @@
 {
   "schemaVersion": "a99-semantic-text-stable-error-provider-failure-audit-v1",
-  "failures": [
-    {
-      "documentId": "DOC-0252",
-      "repeat": "r5",
-      "failure": "FormatException:ceiling-provider-response-choices-missing",
-      "httpStatus": null,
-      "contentType": null,
-      "rawBodyPersisted": false,
-      "reportedModel": "qwen/qwen3.7-flash",
-      "provider": "AUTO",
-      "finishReason": null,
-      "choicesPresent": false,
-      "alternateValidEnvelope": false,
-      "classification": "PROVIDER_EXECUTION_NOT_EVALUABLE",
-      "evidenceGap": "Historical freeze persisted only parser failure and no raw HTTP status/content-type/body envelope."
-    },
-    {
-      "documentId": "DOC-0252",
-      "repeat": "r6",
-      "failure": "FormatException:ceiling-provider-response-choices-missing",
-      "httpStatus": null,
-      "contentType": null,
-      "rawBodyPersisted": false,
-      "reportedModel": "qwen/qwen3.7-flash",
-      "provider": "AUTO",
-      "finishReason": null,
-      "choicesPresent": false,
-      "alternateValidEnvelope": false,
-      "classification": "PROVIDER_EXECUTION_NOT_EVALUABLE",
-      "evidenceGap": "Historical freeze persisted only parser failure and no raw HTTP status/content-type/body envelope."
-    }
-  ],
-  "providerCallsCurrentRun": 0,
-  "retriesExhausted": true,
-  "attemptLineage": [
-    {
-      "documentId": "DOC-0252",
-      "repeat": "r5",
-      "attemptOrdinal": null,
-      "priorFailureHash": null,
-      "requestHash": null,
-      "provider": "AUTO",
-      "startedUtc": null,
-      "finishedUtc": null,
-      "lineageStatus": "NOT_PERSISTED_BY_PREVIOUS_RUNNER"
-    },
-    {
-      "documentId": "DOC-0252",
-      "repeat": "r6",
-      "attemptOrdinal": null,
-      "priorFailureHash": null,
-      "requestHash": null,
-      "provider": "AUTO",
-      "startedUtc": null,
-      "finishedUtc": null,
-      "lineageStatus": "NOT_PERSISTED_BY_PREVIOUS_RUNNER"
-    }
-  ],
+  "failures": [],
+  "providerCallsCurrentRun": 2,
+  "retriesExhausted": false,
+  "attemptLineage": [],
   "historicalEvidenceIntegrity": "The prior runner overwrote failed-cell paths; no raw transport envelope or per-attempt hashes remain to reconstruct retroactively."
 }

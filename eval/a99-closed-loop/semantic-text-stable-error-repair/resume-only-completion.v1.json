@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "a99-semantic-text-stable-error-repair-resume-only-completion-v1",
+  "startHead": "52cdd5fcf9fd3d093db19d03463c2f342f74c16b",
+  "endHead": "52cdd5fcf9fd3d093db19d03463c2f342f74c16b",
+  "model": "qwen/qwen3.7-flash",
+  "intervention": "GLOBAL_STRUCTURAL_CONTEXT_ENRICHMENT_V1",
+  "targetedCells": [
+    "DOC-0252/R5",
+    "DOC-0252/R6"
+  ],
+  "successfulCellsReusedByteForByte": true,
+  "retainedCellFileHashCount": 39,
+  "terminalStatuses": [
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r5",
+      "status": "SUCCESS"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r6",
+      "status": "SUCCESS"
+    }
+  ],
+  "providerCallsCurrentRun": 2,
+  "postCompletionDecision": "RECOMPUTED_BY_OFFLINE_CLEAN_COMPLETION",
+  "goldFirewall": "PASS",
+  "noSuccessfulCellRerun": true,
+  "offlineRecomputeExitCode": 0
+}

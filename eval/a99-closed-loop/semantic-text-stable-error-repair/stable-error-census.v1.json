@@ -35,12 +35,14 @@
       {
         "documentId": "DOC-0252",
         "availableRepeats": [
-          "r4"
+          "r4",
+          "r5",
+          "r6"
         ],
-        "executionStatus": "NOT_EVALUABLE_EXECUTION",
-        "stableOmissions3of3": 0,
+        "executionStatus": "THREE_REPEAT_EVALUABLE",
+        "stableOmissions3of3": 2,
         "spanVariants3of3": 0,
-        "stableFalsePositives3of3": 0
+        "stableFalsePositives3of3": 7
       },
       {
         "documentId": "DOC-0256",
@@ -67,8 +69,8 @@
         "stableFalsePositives3of3": 0
       }
     ],
-    "completeDocuments": 4,
-    "providerBlockedDocuments": 1,
+    "completeDocuments": 5,
+    "providerBlockedDocuments": 0,
     "stableCountsSuppressedForIncompleteDocuments": true
   },
   "conclusion": "Stable post-enrichment census is not promotable because DOC-0252 lacks R5/R6 provider-success repeats."

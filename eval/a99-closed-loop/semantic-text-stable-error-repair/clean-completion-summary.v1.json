@@ -1,11 +1,11 @@
 {
   "schemaVersion": "a99-semantic-text-stable-error-repair-clean-completion-summary-v1",
-  "status": "NOT_EVALUABLE_EXECUTION",
-  "startHead": "43e3f38",
-  "endHead": "43e3f383433d9dc60d3b4e3d21be0233d308d13c",
+  "status": "COMPLETE",
+  "startHead": "52cdd5fcf9fd3d093db19d03463c2f342f74c16b",
+  "endHead": "52cdd5fcf9fd3d093db19d03463c2f342f74c16b",
   "model": "qwen/qwen3.7-flash",
   "intervention": "GLOBAL_STRUCTURAL_CONTEXT_ENRICHMENT_V1",
-  "decision": "ENRICHMENT_V1_NOT_MEASURED_PROVIDER_BLOCKED",
+  "decision": "ENRICHMENT_V1_REGRESSION",
   "cellMatrix": "campaign-cell-matrix.v1.json",
   "systemLossAudit": "system-loss-audit.v1.json",
   "providerFailureAudit": "provider-failure-audit.v1.json",
@@ -14,11 +14,52 @@
   "stableErrorCensus": "stable-error-census.v1.json",
   "systemLossFixApplied": false,
   "replayApplied": false,
-  "providerCallsCurrentRun": 0,
+  "providerCallsCurrentRun": 2,
   "goldFirewall": "PASS",
+  "aggregateComparison": {
+    "baseline": {
+      "tp": 425,
+      "fp": 22,
+      "fn": 34,
+      "precision": 0.9507829977628636,
+      "recall": 0.9259259259259259,
+      "f1": 0.9381898454746137,
+      "modelOmission": 16,
+      "spanError": 5,
+      "systemLossTrace": 0,
+      "expectedProjectionExclusion": 0,
+      "systemBugLoss": 0
+    },
+    "enrichmentV1": {
+      "tp": 413,
+      "fp": 38,
+      "fn": 46,
+      "precision": 0.9157427937915743,
+      "recall": 0.8997821350762527,
+      "f1": 0.9076923076923077,
+      "modelOmission": 22,
+      "spanError": 4,
+      "systemLossTrace": 12,
+      "expectedProjectionExclusion": 12,
+      "systemBugLoss": 0
+    },
+    "delta": {
+      "tp": -12,
+      "fp": 16,
+      "fn": 12,
+      "precision": -0.03504020397128926,
+      "recall": -0.02614379084967322,
+      "f1": -0.030497537782306017,
+      "modelOmission": 6,
+      "spanError": -1,
+      "systemLossTrace": 12,
+      "expectedProjectionExclusion": 12,
+      "systemBugLoss": 0
+    }
+  },
   "notes": [
     "Existing frozen success cells reused byte-for-byte.",
-    "DOC-0252/R5 and DOC-0252/R6 remain provider execution failures with no persisted raw transport envelope.",
-    "The four aggregate R4 losses are DOC-0256 navigation-role projection exclusions, not a generic binder/validator defect."
+    "The resume-only task ran only DOC-0252/R5 and DOC-0252/R6; both were frozen before Gold scoring.",
+    "The four DOC-0256 navigation losses are EXPECTED_PROJECTION_EXCLUSION values; SYSTEM_BUG_LOSS is 0."
   ]
 }

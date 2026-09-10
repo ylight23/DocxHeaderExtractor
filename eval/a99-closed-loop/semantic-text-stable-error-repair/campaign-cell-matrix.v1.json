@@ -118,34 +118,34 @@
     {
       "documentId": "DOC-0252",
       "repeat": "r5",
-      "state": "FROZEN_PROVIDER_FAILURE",
+      "state": "FROZEN_SUCCESS",
       "sourceHashOk": true,
       "predictionHashOk": true,
       "resultHashOk": true,
       "goldFirewall": true,
       "modelOk": true,
-      "promptHash": null,
-      "schemaHash": null,
+      "promptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+      "schemaHash": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
       "configurationSignature": null,
-      "failure": "FormatException:ceiling-provider-response-choices-missing",
-      "provider": "AUTO",
-      "finishReason": null
+      "failure": null,
+      "provider": "Alibaba",
+      "finishReason": "stop"
     },
     {
       "documentId": "DOC-0252",
       "repeat": "r6",
-      "state": "FROZEN_PROVIDER_FAILURE",
+      "state": "FROZEN_SUCCESS",
       "sourceHashOk": true,
       "predictionHashOk": true,
       "resultHashOk": true,
       "goldFirewall": true,
       "modelOk": true,
-      "promptHash": null,
-      "schemaHash": null,
+      "promptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+      "schemaHash": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
       "configurationSignature": null,
-      "failure": "FormatException:ceiling-provider-response-choices-missing",
-      "provider": "AUTO",
-      "finishReason": null
+      "failure": null,
+      "provider": "Alibaba",
+      "finishReason": "stop"
     },
     {
       "documentId": "DOC-0256",
@@ -244,8 +244,8 @@
       "finishReason": "stop"
     }
   ],
-  "providerCallsCurrentRun": 0,
-  "successfulCellsReused": 13,
-  "providerFailureCells": 2,
+  "providerCallsCurrentRun": 2,
+  "successfulCellsReused": 15,
+  "providerFailureCells": 0,
   "goldReadBeforeFreeze": false
 }
