@@ -31,7 +31,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, gold-occurrence-bindings, reasoning-retention, reasoning-retention-smoke, openrouter-qwen35-smoke, openrouter-qwen9b-true-ceiling, openrouter-qwen37-flash-control, openrouter-qwen37-request-ladder, openrouter-qwen37-flash-reasoning-ceiling, openrouter-qwen37-flash-visual-ceiling, openrouter-qwen37-flash-visual-audit, doc0205-semantic-taxonomy-audit, doc0205-semantic-contract-reconciliation, semantic-text-exact-binding, semantic-text-generalization, semantic-text-generalization-offline, semantic-text-generalization-recover-0258-r2, semantic-text-omission-review, semantic-text-omission-review-offline, semantic-text-omission-review-recover-0001-r1, semantic-text-repeat-stability-audit, semantic-text-stable-error-repair, semantic-text-stable-error-repair-recover-0252-r4, semantic-text-stable-error-repair-clean-completion, semantic-text-stable-error-repair-resume-0252-r5-r6, semantic-text-stable-error-loop, canonical-heading-contract-v2, heading-target-ontology-v4, structure-preserving-ir, structure-preserving-ir-vlm, doc0205-contract-audit, flash-heading-contract-realignment, openrouter-qwen9b-executable-ceiling, openrouter-qwen9b-per-segment-recovery, openrouter-qwen9b-provider-diagnosis, openrouter-qwen9b-provider-resume, openrouter-qwen9b-multipass-doc0205, doc-0205-canary, mode-stratification, doc-0027-support-canary");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, gold-occurrence-bindings, reasoning-retention, reasoning-retention-smoke, openrouter-qwen35-smoke, openrouter-qwen9b-true-ceiling, openrouter-qwen37-flash-control, openrouter-qwen37-request-ladder, openrouter-qwen37-flash-reasoning-ceiling, openrouter-qwen37-flash-visual-ceiling, openrouter-qwen37-flash-visual-audit, doc0205-semantic-taxonomy-audit, doc0205-semantic-contract-reconciliation, semantic-text-exact-binding, semantic-text-generalization, semantic-text-generalization-offline, semantic-text-generalization-recover-0258-r2, semantic-text-omission-review, semantic-text-omission-review-offline, semantic-text-omission-review-recover-0001-r1, semantic-text-repeat-stability-audit, semantic-text-stable-error-repair, semantic-text-stable-error-repair-recover-0252-r4, semantic-text-stable-error-repair-clean-completion, semantic-text-stable-error-repair-resume-0252-r5-r6, semantic-text-stable-error-loop, semantic-text-residual-gap-loop, canonical-heading-contract-v2, heading-target-ontology-v4, structure-preserving-ir, structure-preserving-ir-vlm, doc0205-contract-audit, flash-heading-contract-realignment, openrouter-qwen9b-executable-ceiling, openrouter-qwen9b-per-segment-recovery, openrouter-qwen9b-provider-diagnosis, openrouter-qwen9b-provider-resume, openrouter-qwen9b-multipass-doc0205, doc-0205-canary, mode-stratification, doc-0027-support-canary");
             return 0;
         }
 
@@ -82,6 +82,7 @@ internal static class Accuracy99Runner
             "semantic-text-stable-error-repair-clean-completion" => await RunStructuralContextEnrichmentCleanCompletionAsync(options, cancellationToken),
             "semantic-text-stable-error-repair-resume-0252-r5-r6" => await RunSemanticTextStableErrorRepairResumeAsync(options, cancellationToken),
             "semantic-text-stable-error-loop" => await RunSemanticTextStableErrorLoopAsync(options, cancellationToken),
+            "semantic-text-residual-gap-loop" => await RunSemanticTextResidualGapLoopAsync(options, cancellationToken),
             "canonical-heading-contract-v2" => await RunCanonicalHeadingContractV2Async(options, cancellationToken),
             "heading-target-ontology-v4" => await RunHeadingTargetOntologyV4Async(options, cancellationToken),
             "structure-preserving-ir" => await RunStructurePreservingIrAsync(options, cancellationToken),
@@ -241,6 +242,12 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return SemanticTextStableErrorLoopRunner.RunAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextResidualGapLoopAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextResidualGapLoopRunner.RunAsync(repoRoot, cancellationToken);
     }
 
     private static Task<int> RunCanonicalHeadingContractV2Async(CommandLineOptions options, CancellationToken cancellationToken)

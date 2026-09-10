@@ -1,0 +1,52 @@
+{
+  "code": "C_MODEL_OMISSION_CAPABILITY",
+  "hypothesis": "A source-preserving exhaustive instruction or review could recover omissions.",
+  "genericityProof": "The 16 omission rows span 3 documents and mixed structural roles/positions. A coverage pass would be a new provider-visible reasoning intervention, not a representation repair; the existing paired review evidence is not a monotonic exact-F1 improvement. No single safe generic change is proven offline.",
+  "modelVisibleChange": false,
+  "freshInferenceRequired": false,
+  "affectedCells": [
+    "DOC-0252/r1",
+    "DOC-0252/r2",
+    "DOC-0252/r3",
+    "DOC-0256/r1",
+    "DOC-0258/r1",
+    "DOC-0258/r3"
+  ],
+  "controlCells": [
+    "DOC-0001/r1",
+    "DOC-0205/r1",
+    "DOC-0256/r1"
+  ],
+  "before": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "after": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "delta": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "systemLoss": 0
+  },
+  "systemLoss": 0,
+  "decision": "NO_GENERIC_SAFE_INTERVENTION",
+  "reason": "Defer provider calls until a single generic source-presentation hypothesis is isolated; current evidence is insufficient."
+}

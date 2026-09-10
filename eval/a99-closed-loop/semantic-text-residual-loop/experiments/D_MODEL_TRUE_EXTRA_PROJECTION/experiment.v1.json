@@ -1,0 +1,56 @@
+{
+  "code": "D_MODEL_TRUE_EXTRA_PROJECTION",
+  "hypothesis": "Semantic role projection could reduce true extras without formatting rules.",
+  "genericityProof": "The 22 FP rows include titles, participant labels, and navigation/agenda structures. They are model-visible semantic proposals and projection taxonomy is already canonical; changing it from Gold examples would be task-specific leakage.",
+  "modelVisibleChange": false,
+  "freshInferenceRequired": false,
+  "affectedCells": [
+    "DOC-0205/r1",
+    "DOC-0205/r3",
+    "DOC-0252/r1",
+    "DOC-0252/r2",
+    "DOC-0252/r3",
+    "DOC-0256/r1",
+    "DOC-0256/r2",
+    "DOC-0256/r3",
+    "DOC-0258/r2",
+    "DOC-0258/r3"
+  ],
+  "controlCells": [
+    "DOC-0001/r1",
+    "DOC-0205/r1",
+    "DOC-0256/r1"
+  ],
+  "before": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "after": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "delta": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "systemLoss": 0
+  },
+  "systemLoss": 0,
+  "decision": "NO_GENERIC_SAFE_INTERVENTION",
+  "reason": "Retain rich semantic evidence and do not alter projection taxonomy in this loop."
+}

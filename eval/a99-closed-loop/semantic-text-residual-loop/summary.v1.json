@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "a99-semantic-text-residual-loop-summary-v1",
+  "status": "TERMINAL_OFFLINE_GENERICITY_GATE",
+  "startHead": "1b31842947d1a8111d1a2bcc7742a83c45b54de1",
+  "endHead": "1b31842947d1a8111d1a2bcc7742a83c45b54de1",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "model": "qwen/qwen3.7-flash",
+  "contract": "a99-semantic-text-exact-binding-v1",
+  "baseline": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "initialResiduals": {
+    "MODEL_OMISSION": 16,
+    "MODEL_WRONG_TEXT_BOUNDARY": 5,
+    "MODEL_WRONG_TEXT": 3,
+    "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT": 10,
+    "MODEL_TRUE_EXTRA": 22
+  },
+  "experiments": [
+    {
+      "code": "A_DUPLICATE_TEXT_DISAMBIGUATION",
+      "decision": "NO_GENERIC_SAFE_INTERVENTION",
+      "modelVisibleChange": false,
+      "freshInferenceRequired": false,
+      "systemLoss": 0,
+      "genericityProof": "The accepted contract already exposes occurrence ordinal and left/right exact context; the binder already binds a valid discriminator and rejects missing/invalid ones. Persisted duplicate residuals contain no discriminator, so a binder-side choice would be guessing."
+    },
+    {
+      "code": "B_TEXT_BOUNDARY_CONTRACT",
+      "decision": "NO_GENERIC_SAFE_INTERVENTION",
+      "modelVisibleChange": false,
+      "freshInferenceRequired": false,
+      "systemLoss": 0,
+      "genericityProof": "The five boundary rows are model-selected spans with heterogeneous prefix/superset shapes; no source-only discriminator identifies the task boundary without Gold semantics. Adding anchors would preserve the same model decision and cannot be accepted as a generic fix before a valid A contract exists."
+    },
+    {
+      "code": "C_MODEL_OMISSION_CAPABILITY",
+      "decision": "NO_GENERIC_SAFE_INTERVENTION",
+      "modelVisibleChange": false,
+      "freshInferenceRequired": false,
+      "systemLoss": 0,
+      "genericityProof": "The 16 omission rows span 3 documents and mixed structural roles/positions. A coverage pass would be a new provider-visible reasoning intervention, not a representation repair; the existing paired review evidence is not a monotonic exact-F1 improvement. No single safe generic change is proven offline."
+    },
+    {
+      "code": "D_MODEL_TRUE_EXTRA_PROJECTION",
+      "decision": "NO_GENERIC_SAFE_INTERVENTION",
+      "modelVisibleChange": false,
+      "freshInferenceRequired": false,
+      "systemLoss": 0,
+      "genericityProof": "The 22 FP rows include titles, participant labels, and navigation/agenda structures. They are model-visible semantic proposals and projection taxonomy is already canonical; changing it from Gold examples would be task-specific leakage."
+    }
+  ],
+  "finalDev": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "finalResidualBuckets": [
+    {
+      "bucket": "MODEL_OMISSION",
+      "occurrences": 23,
+      "uniqueCases": 8,
+      "documents": [
+        "DOC-0252",
+        "DOC-0256",
+        "DOC-0258"
+      ]
+    },
+    {
+      "bucket": "MODEL_TRUE_EXTRA",
+      "occurrences": 22,
+      "uniqueCases": 10,
+      "documents": [
+        "DOC-0205",
+        "DOC-0252",
+        "DOC-0256",
+        "DOC-0258"
+      ]
+    },
+    {
+      "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "occurrences": 5,
+      "uniqueCases": 2,
+      "documents": [
+        "DOC-0252",
+        "DOC-0258"
+      ]
+    },
+    {
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "occurrences": 3,
+      "uniqueCases": 1,
+      "documents": [
+        "DOC-0256"
+      ]
+    },
+    {
+      "bucket": "MODEL_WRONG_TEXT",
+      "occurrences": 3,
+      "uniqueCases": 3,
+      "documents": [
+        "DOC-0205"
+      ]
+    }
+  ],
+  "noGenericSafeIntervention": [
+    {
+      "code": "A_DUPLICATE_TEXT_DISAMBIGUATION",
+      "reason": "No new model-visible contract is proven safe at the representation gate; no provider call is authorized."
+    },
+    {
+      "code": "B_TEXT_BOUNDARY_CONTRACT",
+      "reason": "No generic boundary intervention is proven; do not special-case Agenda or Annex text."
+    },
+    {
+      "code": "C_MODEL_OMISSION_CAPABILITY",
+      "reason": "Defer provider calls until a single generic source-presentation hypothesis is isolated; current evidence is insufficient."
+    },
+    {
+      "code": "D_MODEL_TRUE_EXTRA_PROJECTION",
+      "reason": "Retain rich semantic evidence and do not alter projection taxonomy in this loop."
+    }
+  ],
+  "nextLargestProvenLoss": "MODEL_OMISSION",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldFirewall": "PASS",
+  "runtimeGoldLeakage": false,
+  "a99Status": "A99_NOT_MEASURED_DEV_MARGIN_BELOW_0.995",
+  "holdoutClaim": "NONE_DEV_ONLY"
+}

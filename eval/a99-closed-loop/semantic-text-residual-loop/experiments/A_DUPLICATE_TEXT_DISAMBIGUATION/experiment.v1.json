@@ -1,0 +1,50 @@
+{
+  "code": "A_DUPLICATE_TEXT_DISAMBIGUATION",
+  "hypothesis": "A source-derived discriminator could resolve duplicate verbatim text exactly.",
+  "genericityProof": "The accepted contract already exposes occurrence ordinal and left/right exact context; the binder already binds a valid discriminator and rejects missing/invalid ones. Persisted duplicate residuals contain no discriminator, so a binder-side choice would be guessing.",
+  "modelVisibleChange": false,
+  "freshInferenceRequired": false,
+  "affectedCells": [
+    "DOC-0256/r1",
+    "DOC-0256/r2",
+    "DOC-0256/r3",
+    "DOC-0258/r2"
+  ],
+  "controlCells": [
+    "DOC-0001/r1",
+    "DOC-0205/r1",
+    "DOC-0252/r1"
+  ],
+  "before": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "after": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "delta": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "systemLoss": 0
+  },
+  "systemLoss": 0,
+  "decision": "NO_GENERIC_SAFE_INTERVENTION",
+  "reason": "No new model-visible contract is proven safe at the representation gate; no provider call is authorized."
+}

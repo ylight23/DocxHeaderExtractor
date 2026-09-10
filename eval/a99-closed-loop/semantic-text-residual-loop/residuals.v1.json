@@ -1,0 +1,2139 @@
+{
+  "schemaVersion": "a99-semantic-text-residual-inventory-v1",
+  "generatedFrom": {
+    "baselineRoot": "eval/a99-closed-loop/semantic-text-generalization",
+    "stableLoopRoot": "eval/a99-closed-loop/semantic-text-stable-error-loop",
+    "model": "qwen/qwen3.7-flash",
+    "contract": "a99-semantic-text-exact-binding-v1"
+  },
+  "modelCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "rows": [
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT",
+      "key": "body[1]/p[4]:29974:30039",
+      "sourceId": "body[1]/p[4]",
+      "sourceAlias": "S0003",
+      "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 28. B\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m an to\u00C3\u00A0n trong qu\u00C3\u00A1 tr\u00C3\u00ACnh k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+      "modelTexts": [
+        "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+        "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+        "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+        "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+        "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+        "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 28. \u0110\u1EA3m b\u1EA3o an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 29. Kinh ph\u00ED \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+        "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+        "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+        "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+        "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+        "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+        "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+        "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+        "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+        "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+        "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+        "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+        "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+        "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+        "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+        "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+        "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+        "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+        "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE",
+        "CHAPTER",
+        "ARTICLE",
+        "SECTION"
+      ],
+      "bindingObservations": [
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=3;reason=TEXT_NOT_FOUND;count=0",
+        "status=3;reason=TEXT_NOT_FOUND;count=0",
+        "status=3;reason=TEXT_NOT_FOUND;count=0",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1"
+      ],
+      "context": " chia s\u1EBB d\u1EEF li\u1EC7u v\u1EDBi c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng kh\u00E1c. \u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u Vi\u1EC7c k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u ph\u1EA3i tu\u00E2n th\u1EE7 c\u00E1c quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt v\u1EC1 an to\u00E0n th\u00F4ng tin m\u1EA1ng, an ninh m\u1EA1ng v\u00E0 c\u00E1c q",
+      "start": 29974,
+      "end": 30039,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "100"
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT",
+      "key": "body[1]/p[4]:30572:30622",
+      "sourceId": "body[1]/p[4]",
+      "sourceAlias": "S0003",
+      "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 29. Kinh ph\u00C3\u00AD b\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+      "modelTexts": [
+        "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+        "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+        "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+        "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+        "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+        "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 28. \u0110\u1EA3m b\u1EA3o an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 29. Kinh ph\u00ED \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+        "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+        "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+        "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+        "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+        "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+        "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+        "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+        "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+        "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+        "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+        "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+        "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+        "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+        "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+        "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+        "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+        "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+        "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE",
+        "CHAPTER",
+        "ARTICLE",
+        "SECTION"
+      ],
+      "bindingObservations": [
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=3;reason=TEXT_NOT_FOUND;count=0",
+        "status=3;reason=TEXT_NOT_FOUND;count=0",
+        "status=3;reason=TEXT_NOT_FOUND;count=0",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1"
+      ],
+      "context": "ng tin khi k\u1EBFt n\u1ED1i, ti\u1EBFp nh\u1EADn d\u1EEF li\u1EC7u chia s\u1EBB theo quy \u0111\u1ECBnh c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u v\u00E0 c\u00E1c quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt. \u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u 1. \u0110\u1ED1i v\u1EDBi kinh ph\u00ED th\u1EF1c hi\u1EC7n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng h\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u; n\u1EC1n t\u1EA3ng t\u00EDch h\u1EE3p, chia s\u1EBB d\u1EEF li\u1EC7u c\u1EA5p ",
+      "start": 30572,
+      "end": 30622,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "100"
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT",
+      "key": "body[1]/p[4]:32357:32413",
+      "sourceId": "body[1]/p[4]",
+      "sourceAlias": "S0003",
+      "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 30. Ngu\u00E1\u00BB\u201Cn nh\u00C3\u00A2n l\u00E1\u00BB\u00B1c b\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+      "modelTexts": [
+        "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+        "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+        "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+        "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+        "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+        "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 28. \u0110\u1EA3m b\u1EA3o an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 29. Kinh ph\u00ED \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+        "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+        "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+        "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+        "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+        "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+        "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+        "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+        "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+        "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+        "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+        "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+        "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+        "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+        "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+        "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+        "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+        "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+        "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE",
+        "CHAPTER",
+        "ARTICLE",
+        "SECTION"
+      ],
+      "bindingObservations": [
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=3;reason=TEXT_NOT_FOUND;count=0",
+        "status=3;reason=TEXT_NOT_FOUND;count=0",
+        "status=3;reason=TEXT_NOT_FOUND;count=0",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1",
+        "status=2;reason=;count=1"
+      ],
+      "context": "h\u00E2n c\u1EA5p ng\u00E2n s\u00E1ch (kinh ph\u00ED th\u1EF1c hi\u1EC7n nhi\u1EC7m v\u1EE5 kh\u00F4ng th\u01B0\u1EDDng xuy\u00EAn, kh\u00F4ng th\u1EF1c hi\u1EC7n ch\u1EBF \u0111\u1ED9 t\u1EF1 ch\u1EE7) c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc. \u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u 1. Nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c t\u1EADn d\u1EE5ng t\u1EEB ngu\u1ED3n nh\u00E2n l\u1EF1c t\u1EA1i ch\u1ED7 \u0111ang th\u1EF1c hi\u1EC7n qu\u1EA3n l\u00FD, v\u1EADn h\u00E0nh c",
+      "start": 32357,
+      "end": 32413,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "100"
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[4]:174:243",
+      "sourceId": "body[1]/p[4]",
+      "sourceAlias": "S0003",
+      "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "modelTexts": [
+        "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE"
+      ],
+      "bindingObservations": [],
+      "context": "____ |\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc | |S\u1ED1: 47/2020/N\u0110-CP |_______________________ | | |H\u00E0 N\u1ED9i, ng\u00E0y 09 th\u00E1ng 4 n\u0103m 2020 | NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________ C\u0103n c\u1EE9 Lu\u1EADt T\u1ED5 ch\u1EE9c Ch\u00EDnh ph\u1EE7 ng\u00E0y 19 th\u00E1ng 6 n\u0103m 2015; C\u0103n c\u1EE9 Lu\u1EADt C\u00F4ng ngh\u1EC7 th\u00F4ng tin ng\u00E0y 29 ",
+      "start": 174,
+      "end": 243,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[4]",
+      "repeatMask": "101"
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r3",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[4]:174:243",
+      "sourceId": "body[1]/p[4]",
+      "sourceAlias": "S0003",
+      "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "modelTexts": [
+        "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE"
+      ],
+      "bindingObservations": [],
+      "context": "____ |\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc | |S\u1ED1: 47/2020/N\u0110-CP |_______________________ | | |H\u00E0 N\u1ED9i, ng\u00E0y 09 th\u00E1ng 4 n\u0103m 2020 | NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________ C\u0103n c\u1EE9 Lu\u1EADt T\u1ED5 ch\u1EE9c Ch\u00EDnh ph\u1EE7 ng\u00E0y 19 th\u00E1ng 6 n\u0103m 2015; C\u0103n c\u1EE9 Lu\u1EADt C\u00F4ng ngh\u1EC7 th\u00F4ng tin ng\u00E0y 29 ",
+      "start": 174,
+      "end": 243,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[4]",
+      "repeatMask": "101"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "text": "Western Asia",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "nd validation of price data and the production of PPPs has been introduced in both the Latin American and Caribbean and Western Asia ICP regions, based on the Eurostat PPP production system which was made available for other regional agencies to use.",
+      "start": 182,
+      "end": 194,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "key": "body[1]/p[158]:56:62",
+      "sourceId": "body[1]/p[158]",
+      "sourceAlias": "S0161",
+      "text": "Agenda",
+      "modelTexts": [
+        "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles"
+      ],
+      "modelRoles": [
+        "AGENDA_NAVIGATION_HEADING"
+      ],
+      "bindingObservations": [
+        "status=2;reason=;count=1"
+      ],
+      "context": "Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105 Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Op",
+      "start": 56,
+      "end": 62,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[3]:0:47",
+      "sourceId": "body[1]/p[3]",
+      "sourceAlias": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "modelTexts": [
+        "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE"
+      ],
+      "bindingObservations": [],
+      "context": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "start": 0,
+      "end": 47,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[46]:0:12",
+      "sourceId": "body[1]/p[46]",
+      "sourceAlias": "S0056",
+      "text": "Western Asia",
+      "modelTexts": [
+        "Western Asia"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "Western Asia",
+      "start": 0,
+      "end": 12,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[46]",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[175]:0:36",
+      "sourceId": "body[1]/p[175]",
+      "sourceAlias": "S0196",
+      "text": "ICP Technical Advisory Group members",
+      "modelTexts": [
+        "ICP Technical Advisory Group members"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "ICP Technical Advisory Group members",
+      "start": 0,
+      "end": 36,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[175]",
+      "repeatMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[176]:0:42",
+      "sourceId": "body[1]/p[176]",
+      "sourceAlias": "S0199",
+      "text": "ICP experts, guest speakers, and observers",
+      "modelTexts": [
+        "ICP experts, guest speakers, and observers"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "ICP experts, guest speakers, and observers",
+      "start": 0,
+      "end": 42,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[176]",
+      "repeatMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[177]:0:42",
+      "sourceId": "body[1]/p[177]",
+      "sourceAlias": "S0202",
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "modelTexts": [
+        "ICP Inter-Agency Coordination Group (IACG)"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "ICP Inter-Agency Coordination Group (IACG)",
+      "start": 0,
+      "end": 42,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[177]",
+      "repeatMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[178]:0:10",
+      "sourceId": "body[1]/p[178]",
+      "sourceAlias": "S0207",
+      "text": "World Bank",
+      "modelTexts": [
+        "World Bank"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "World Bank",
+      "start": 0,
+      "end": 10,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[178]",
+      "repeatMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "text": "Western Asia",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "nd validation of price data and the production of PPPs has been introduced in both the Latin American and Caribbean and Western Asia ICP regions, based on the Eurostat PPP production system which was made available for other regional agencies to use.",
+      "start": 182,
+      "end": 194,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "key": "body[1]/p[158]:56:62",
+      "sourceId": "body[1]/p[158]",
+      "sourceAlias": "S0161",
+      "text": "Agenda",
+      "modelTexts": [
+        "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles"
+      ],
+      "modelRoles": [
+        "AGENDA_NAVIGATION_HEADING"
+      ],
+      "bindingObservations": [
+        "status=2;reason=;count=1"
+      ],
+      "context": "Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105 Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Op",
+      "start": 56,
+      "end": 62,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[3]:0:47",
+      "sourceId": "body[1]/p[3]",
+      "sourceAlias": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "modelTexts": [
+        "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE"
+      ],
+      "bindingObservations": [],
+      "context": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "start": 0,
+      "end": 47,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[46]:0:12",
+      "sourceId": "body[1]/p[46]",
+      "sourceAlias": "S0056",
+      "text": "Western Asia",
+      "modelTexts": [
+        "Western Asia"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "Western Asia",
+      "start": 0,
+      "end": 12,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[46]",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[175]:0:36",
+      "sourceId": "body[1]/p[175]",
+      "sourceAlias": "S0196",
+      "text": "ICP Technical Advisory Group members",
+      "modelTexts": [
+        "ICP Technical Advisory Group members"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "ICP Technical Advisory Group members",
+      "start": 0,
+      "end": 36,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[175]",
+      "repeatMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[176]:0:42",
+      "sourceId": "body[1]/p[176]",
+      "sourceAlias": "S0199",
+      "text": "ICP experts, guest speakers, and observers",
+      "modelTexts": [
+        "ICP experts, guest speakers, and observers"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "ICP experts, guest speakers, and observers",
+      "start": 0,
+      "end": 42,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[176]",
+      "repeatMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[177]:0:42",
+      "sourceId": "body[1]/p[177]",
+      "sourceAlias": "S0202",
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "modelTexts": [
+        "ICP Inter-Agency Coordination Group (IACG)"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "ICP Inter-Agency Coordination Group (IACG)",
+      "start": 0,
+      "end": 42,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[177]",
+      "repeatMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[178]:0:10",
+      "sourceId": "body[1]/p[178]",
+      "sourceAlias": "S0207",
+      "text": "World Bank",
+      "modelTexts": [
+        "World Bank"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "World Bank",
+      "start": 0,
+      "end": 10,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[178]",
+      "repeatMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "text": "Western Asia",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "nd validation of price data and the production of PPPs has been introduced in both the Latin American and Caribbean and Western Asia ICP regions, based on the Eurostat PPP production system which was made available for other regional agencies to use.",
+      "start": 182,
+      "end": 194,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "key": "body[1]/p[158]:56:62",
+      "sourceId": "body[1]/p[158]",
+      "sourceAlias": "S0161",
+      "text": "Agenda",
+      "modelTexts": [
+        "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks"
+      ],
+      "modelRoles": [
+        "AGENDA_NAVIGATION_HEADING"
+      ],
+      "bindingObservations": [
+        "status=2;reason=;count=1"
+      ],
+      "context": "Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105 Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Op",
+      "start": 56,
+      "end": 62,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[3]:0:47",
+      "sourceId": "body[1]/p[3]",
+      "sourceAlias": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "modelTexts": [
+        "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE"
+      ],
+      "bindingObservations": [],
+      "context": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "start": 0,
+      "end": 47,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[4]:0:24",
+      "sourceId": "body[1]/p[4]",
+      "sourceAlias": "S0002",
+      "text": "TECHNICAL ADVISORY GROUP",
+      "modelTexts": [
+        "TECHNICAL ADVISORY GROUP"
+      ],
+      "modelRoles": [
+        "PART"
+      ],
+      "bindingObservations": [],
+      "context": "TECHNICAL ADVISORY GROUP",
+      "start": 0,
+      "end": 24,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[4]",
+      "repeatMask": "001"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[46]:0:12",
+      "sourceId": "body[1]/p[46]",
+      "sourceAlias": "S0056",
+      "text": "Western Asia",
+      "modelTexts": [
+        "Western Asia"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [],
+      "context": "Western Asia",
+      "start": 0,
+      "end": 12,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[46]",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[11]:0:6",
+      "sourceId": "body[1]/p[11]",
+      "sourceAlias": "S0009",
+      "text": "Africa",
+      "modelTexts": [
+        "Africa"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [
+        "status=4;reason=AMBIGUOUS_EXACT_TEXT;count=3"
+      ],
+      "context": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), the status of the ICP 2021 cycle in the Africa region, wh",
+      "start": 0,
+      "end": 6,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[17]:0:20",
+      "sourceId": "body[1]/p[17]",
+      "text": "Asia and the Pacific",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Asia and the Pacific Criselda De Dios, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. Tw",
+      "start": 0,
+      "end": 20,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r1",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[3]:0:87",
+      "sourceId": "body[1]/p[3]",
+      "sourceAlias": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "modelTexts": [
+        "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE"
+      ],
+      "bindingObservations": [],
+      "context": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "start": 0,
+      "end": 87,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r2",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[11]:0:6",
+      "sourceId": "body[1]/p[11]",
+      "sourceAlias": "S0009",
+      "text": "Africa",
+      "modelTexts": [
+        "Africa"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [
+        "status=4;reason=AMBIGUOUS_EXACT_TEXT;count=3"
+      ],
+      "context": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), the status of the ICP 2021 cycle in the Africa region, wh",
+      "start": 0,
+      "end": 6,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r2",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[17]:0:20",
+      "sourceId": "body[1]/p[17]",
+      "sourceAlias": "S0013",
+      "text": "Asia and the Pacific",
+      "modelTexts": [
+        "Asia and the Pacific"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [
+        "status=4;reason=AMBIGUOUS_EXACT_TEXT;count=2"
+      ],
+      "context": "Asia and the Pacific Criselda De Dios, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. Tw",
+      "start": 0,
+      "end": 20,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r2",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[3]:0:87",
+      "sourceId": "body[1]/p[3]",
+      "sourceAlias": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "modelTexts": [
+        "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE"
+      ],
+      "bindingObservations": [],
+      "context": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "start": 0,
+      "end": 87,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[11]:0:6",
+      "sourceId": "body[1]/p[11]",
+      "sourceAlias": "S0009",
+      "text": "Africa",
+      "modelTexts": [
+        "Africa"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [
+        "status=4;reason=AMBIGUOUS_EXACT_TEXT;count=3"
+      ],
+      "context": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), the status of the ICP 2021 cycle in the Africa region, wh",
+      "start": 0,
+      "end": 6,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[17]:0:20",
+      "sourceId": "body[1]/p[17]",
+      "sourceAlias": "S0013",
+      "text": "Asia and the Pacific",
+      "modelTexts": [
+        "Asia and the Pacific"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [
+        "status=4;reason=AMBIGUOUS_EXACT_TEXT;count=2"
+      ],
+      "context": "Asia and the Pacific Criselda De Dios, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. Tw",
+      "start": 0,
+      "end": 20,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r3",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[3]:0:87",
+      "sourceId": "body[1]/p[3]",
+      "sourceAlias": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "modelTexts": [
+        "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING"
+      ],
+      "modelRoles": [
+        "DOCUMENT_TITLE"
+      ],
+      "bindingObservations": [],
+      "context": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "start": 0,
+      "end": 87,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[11]:0:6",
+      "sourceId": "body[1]/p[11]",
+      "text": "Africa",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), paid tribute to the late Michel Mouyelo-Katoula. He then ",
+      "start": 0,
+      "end": 6,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[12]:0:20",
+      "sourceId": "body[1]/p[12]",
+      "text": "Asia and the Pacific",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Asia and the Pacific Kaushal Joshi, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. More ",
+      "start": 0,
+      "end": 20,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[17]:0:25",
+      "sourceId": "body[1]/p[17]",
+      "text": "Eurostat-OECD PPP Program",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Eurostat\u2013OECD PPP Program Mihai-Iulian Gheorghe, Eurostat, and Sophie Bournot, OECD, the status of the Eurostat-OECD PPP Program. Data for househ",
+      "start": 0,
+      "end": 25,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "101"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[18]:0:34",
+      "sourceId": "body[1]/p[18]",
+      "text": "Commonwealth of Independent States",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Commonwealth of Independent States Andrehe Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), the status of the ICP 20",
+      "start": 0,
+      "end": 34,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[19]:0:31",
+      "sourceId": "body[1]/p[19]",
+      "text": "Latin America and the Caribbean",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Latin America and the Caribbean Claudia de Cario, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), the status of the ",
+      "start": 0,
+      "end": 31,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[24]:0:12",
+      "sourceId": "body[1]/p[24]",
+      "text": "Western Asia",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Western Asia Majed Skaini, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), the status of the ICP 2021 cyc",
+      "start": 0,
+      "end": 12,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[11]:0:6",
+      "sourceId": "body[1]/p[11]",
+      "sourceAlias": "S0009",
+      "text": "Africa",
+      "modelTexts": [
+        "Africa"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [
+        "status=4;reason=AMBIGUOUS_EXACT_TEXT;count=4"
+      ],
+      "context": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), paid tribute to the late Michel Mouyelo-Katoula. He then ",
+      "start": 0,
+      "end": 6,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[12]:0:20",
+      "sourceId": "body[1]/p[12]",
+      "sourceAlias": "S0010",
+      "text": "Asia and the Pacific",
+      "modelTexts": [
+        "Asia and the Pacific"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [
+        "status=4;reason=AMBIGUOUS_EXACT_TEXT;count=2"
+      ],
+      "context": "Asia and the Pacific Kaushal Joshi, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. More ",
+      "start": 0,
+      "end": 20,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[18]:0:34",
+      "sourceId": "body[1]/p[18]",
+      "sourceAlias": "S0014",
+      "text": "Commonwealth of Independent States",
+      "modelTexts": [
+        "Commonwealth of Independent States"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [
+        "status=4;reason=AMBIGUOUS_EXACT_TEXT;count=2"
+      ],
+      "context": "Commonwealth of Independent States Andrehe Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), the status of the ICP 20",
+      "start": 0,
+      "end": 34,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[19]:0:31",
+      "sourceId": "body[1]/p[19]",
+      "sourceAlias": "S0015",
+      "text": "Latin America and the Caribbean",
+      "modelTexts": [
+        "Latin America and the Caribbean"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [
+        "status=4;reason=AMBIGUOUS_EXACT_TEXT;count=3"
+      ],
+      "context": "Latin America and the Caribbean Claudia de Cario, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), the status of the ",
+      "start": 0,
+      "end": 31,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[24]:0:12",
+      "sourceId": "body[1]/p[24]",
+      "sourceAlias": "S0018",
+      "text": "Western Asia",
+      "modelTexts": [
+        "Western Asia"
+      ],
+      "modelRoles": [
+        "SUBSECTION"
+      ],
+      "bindingObservations": [
+        "status=4;reason=AMBIGUOUS_EXACT_TEXT;count=3"
+      ],
+      "context": "Western Asia Majed Skaini, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), the status of the ICP 2021 cyc",
+      "start": 0,
+      "end": 12,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "key": "body[1]/p[115]:0:29",
+      "sourceId": "body[1]/p[115]",
+      "sourceAlias": "S0135",
+      "text": "Annex 2: List of participants",
+      "modelTexts": [
+        "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)"
+      ],
+      "modelRoles": [
+        "ANNEX_HEADING"
+      ],
+      "bindingObservations": [
+        "status=2;reason=;count=1"
+      ],
+      "context": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 ",
+      "start": 0,
+      "end": 29,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "011"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[115]:0:230",
+      "sourceId": "body[1]/p[115]",
+      "sourceAlias": "S0135",
+      "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "modelTexts": [
+        "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)"
+      ],
+      "modelRoles": [
+        "ANNEX_HEADING"
+      ],
+      "bindingObservations": [],
+      "context": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "start": 0,
+      "end": 230,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[115]",
+      "repeatMask": "011"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[11]:0:6",
+      "sourceId": "body[1]/p[11]",
+      "text": "Africa",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), paid tribute to the late Michel Mouyelo-Katoula. He then ",
+      "start": 0,
+      "end": 6,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[12]:0:20",
+      "sourceId": "body[1]/p[12]",
+      "text": "Asia and the Pacific",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Asia and the Pacific Kaushal Joshi, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. More ",
+      "start": 0,
+      "end": 20,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[17]:0:25",
+      "sourceId": "body[1]/p[17]",
+      "text": "Eurostat-OECD PPP Program",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Eurostat\u2013OECD PPP Program Mihai-Iulian Gheorghe, Eurostat, and Sophie Bournot, OECD, the status of the Eurostat-OECD PPP Program. Data for househ",
+      "start": 0,
+      "end": 25,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "101"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[18]:0:34",
+      "sourceId": "body[1]/p[18]",
+      "text": "Commonwealth of Independent States",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Commonwealth of Independent States Andrehe Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), the status of the ICP 20",
+      "start": 0,
+      "end": 34,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[19]:0:31",
+      "sourceId": "body[1]/p[19]",
+      "text": "Latin America and the Caribbean",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Latin America and the Caribbean Claudia de Cario, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), the status of the ",
+      "start": 0,
+      "end": 31,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[24]:0:12",
+      "sourceId": "body[1]/p[24]",
+      "text": "Western Asia",
+      "modelTexts": [],
+      "modelRoles": [],
+      "bindingObservations": [],
+      "context": "Western Asia Majed Skaini, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), the status of the ICP 2021 cyc",
+      "start": 0,
+      "end": 12,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "key": "body[1]/p[115]:0:29",
+      "sourceId": "body[1]/p[115]",
+      "sourceAlias": "S0135",
+      "text": "Annex 2: List of participants",
+      "modelTexts": [
+        "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)"
+      ],
+      "modelRoles": [
+        "ANNEX_HEADING"
+      ],
+      "bindingObservations": [
+        "status=2;reason=;count=1"
+      ],
+      "context": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 ",
+      "start": 0,
+      "end": 29,
+      "finalPrediction": false,
+      "finalRole": "",
+      "finalSourceId": "",
+      "repeatMask": "011"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[115]:0:230",
+      "sourceId": "body[1]/p[115]",
+      "sourceAlias": "S0135",
+      "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "modelTexts": [
+        "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)"
+      ],
+      "modelRoles": [
+        "ANNEX_HEADING"
+      ],
+      "bindingObservations": [],
+      "context": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "start": 0,
+      "end": 230,
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[115]",
+      "repeatMask": "011"
+    }
+  ],
+  "signatures": [
+    {
+      "documentId": "DOC-0252",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "key": "body[1]/p[158]:56:62",
+      "text": "Agenda",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0161"
+      ],
+      "contexts": [
+        "Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105 Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Op"
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0252",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[3]:0:47",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0001"
+      ],
+      "contexts": [
+        "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0252",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[46]:0:12",
+      "text": "Western Asia",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0056"
+      ],
+      "contexts": [
+        "Western Asia"
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0252",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "text": "Western Asia",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [],
+      "contexts": [
+        "nd validation of price data and the production of PPPs has been introduced in both the Latin American and Caribbean and Western Asia ICP regions, based on the Eurostat PPP production system which was made available for other regional agencies to use."
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0256",
+      "kind": "FN",
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "key": "body[1]/p[11]:0:6",
+      "text": "Africa",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0009"
+      ],
+      "contexts": [
+        "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), the status of the ICP 2021 cycle in the Africa region, wh"
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0256",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[17]:0:20",
+      "text": "Asia and the Pacific",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0013"
+      ],
+      "contexts": [
+        "Asia and the Pacific Criselda De Dios, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. Tw"
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0256",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[3]:0:87",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0001"
+      ],
+      "contexts": [
+        "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING"
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0258",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[11]:0:6",
+      "text": "Africa",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0009"
+      ],
+      "contexts": [
+        "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), paid tribute to the late Michel Mouyelo-Katoula. He then "
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0258",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[12]:0:20",
+      "text": "Asia and the Pacific",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0010"
+      ],
+      "contexts": [
+        "Asia and the Pacific Kaushal Joshi, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. More "
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0258",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[18]:0:34",
+      "text": "Commonwealth of Independent States",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0014"
+      ],
+      "contexts": [
+        "Commonwealth of Independent States Andrehe Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), the status of the ICP 20"
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0258",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[19]:0:31",
+      "text": "Latin America and the Caribbean",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0015"
+      ],
+      "contexts": [
+        "Latin America and the Caribbean Claudia de Cario, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), the status of the "
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0258",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[24]:0:12",
+      "text": "Western Asia",
+      "occurrenceCount": 3,
+      "repeatMask": "111",
+      "sourceAliases": [
+        "S0018"
+      ],
+      "contexts": [
+        "Western Asia Majed Skaini, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), the status of the ICP 2021 cyc"
+      ],
+      "repeatCount": 3
+    },
+    {
+      "documentId": "DOC-0205",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[4]:174:243",
+      "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "occurrenceCount": 2,
+      "repeatMask": "101",
+      "sourceAliases": [
+        "S0003"
+      ],
+      "contexts": [
+        "____ |\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc | |S\u1ED1: 47/2020/N\u0110-CP |_______________________ | | |H\u00E0 N\u1ED9i, ng\u00E0y 09 th\u00E1ng 4 n\u0103m 2020 | NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________ C\u0103n c\u1EE9 Lu\u1EADt T\u1ED5 ch\u1EE9c Ch\u00EDnh ph\u1EE7 ng\u00E0y 19 th\u00E1ng 6 n\u0103m 2015; C\u0103n c\u1EE9 Lu\u1EADt C\u00F4ng ngh\u1EC7 th\u00F4ng tin ng\u00E0y 29 "
+      ],
+      "repeatCount": 2
+    },
+    {
+      "documentId": "DOC-0252",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[175]:0:36",
+      "text": "ICP Technical Advisory Group members",
+      "occurrenceCount": 2,
+      "repeatMask": "110",
+      "sourceAliases": [
+        "S0196"
+      ],
+      "contexts": [
+        "ICP Technical Advisory Group members"
+      ],
+      "repeatCount": 2
+    },
+    {
+      "documentId": "DOC-0252",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[176]:0:42",
+      "text": "ICP experts, guest speakers, and observers",
+      "occurrenceCount": 2,
+      "repeatMask": "110",
+      "sourceAliases": [
+        "S0199"
+      ],
+      "contexts": [
+        "ICP experts, guest speakers, and observers"
+      ],
+      "repeatCount": 2
+    },
+    {
+      "documentId": "DOC-0252",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[177]:0:42",
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "occurrenceCount": 2,
+      "repeatMask": "110",
+      "sourceAliases": [
+        "S0202"
+      ],
+      "contexts": [
+        "ICP Inter-Agency Coordination Group (IACG)"
+      ],
+      "repeatCount": 2
+    },
+    {
+      "documentId": "DOC-0252",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[178]:0:10",
+      "text": "World Bank",
+      "occurrenceCount": 2,
+      "repeatMask": "110",
+      "sourceAliases": [
+        "S0207"
+      ],
+      "contexts": [
+        "World Bank"
+      ],
+      "repeatCount": 2
+    },
+    {
+      "documentId": "DOC-0258",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[115]:0:230",
+      "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "occurrenceCount": 2,
+      "repeatMask": "011",
+      "sourceAliases": [
+        "S0135"
+      ],
+      "contexts": [
+        "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)"
+      ],
+      "repeatCount": 2
+    },
+    {
+      "documentId": "DOC-0258",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "key": "body[1]/p[115]:0:29",
+      "text": "Annex 2: List of participants",
+      "occurrenceCount": 2,
+      "repeatMask": "011",
+      "sourceAliases": [
+        "S0135"
+      ],
+      "contexts": [
+        "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 "
+      ],
+      "repeatCount": 2
+    },
+    {
+      "documentId": "DOC-0258",
+      "kind": "FN",
+      "bucket": "MODEL_OMISSION",
+      "key": "body[1]/p[17]:0:25",
+      "text": "Eurostat-OECD PPP Program",
+      "occurrenceCount": 2,
+      "repeatMask": "101",
+      "sourceAliases": [],
+      "contexts": [
+        "Eurostat\u2013OECD PPP Program Mihai-Iulian Gheorghe, Eurostat, and Sophie Bournot, OECD, the status of the Eurostat-OECD PPP Program. Data for househ"
+      ],
+      "repeatCount": 2
+    },
+    {
+      "documentId": "DOC-0205",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT",
+      "key": "body[1]/p[4]:29974:30039",
+      "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 28. B\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m an to\u00C3\u00A0n trong qu\u00C3\u00A1 tr\u00C3\u00ACnh k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+      "occurrenceCount": 1,
+      "repeatMask": "100",
+      "sourceAliases": [
+        "S0003"
+      ],
+      "contexts": [
+        " chia s\u1EBB d\u1EEF li\u1EC7u v\u1EDBi c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng kh\u00E1c. \u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u Vi\u1EC7c k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u ph\u1EA3i tu\u00E2n th\u1EE7 c\u00E1c quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt v\u1EC1 an to\u00E0n th\u00F4ng tin m\u1EA1ng, an ninh m\u1EA1ng v\u00E0 c\u00E1c q"
+      ],
+      "repeatCount": 1
+    },
+    {
+      "documentId": "DOC-0205",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT",
+      "key": "body[1]/p[4]:30572:30622",
+      "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 29. Kinh ph\u00C3\u00AD b\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+      "occurrenceCount": 1,
+      "repeatMask": "100",
+      "sourceAliases": [
+        "S0003"
+      ],
+      "contexts": [
+        "ng tin khi k\u1EBFt n\u1ED1i, ti\u1EBFp nh\u1EADn d\u1EEF li\u1EC7u chia s\u1EBB theo quy \u0111\u1ECBnh c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u v\u00E0 c\u00E1c quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt. \u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u 1. \u0110\u1ED1i v\u1EDBi kinh ph\u00ED th\u1EF1c hi\u1EC7n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng h\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u; n\u1EC1n t\u1EA3ng t\u00EDch h\u1EE3p, chia s\u1EBB d\u1EEF li\u1EC7u c\u1EA5p "
+      ],
+      "repeatCount": 1
+    },
+    {
+      "documentId": "DOC-0205",
+      "kind": "FN",
+      "bucket": "MODEL_WRONG_TEXT",
+      "key": "body[1]/p[4]:32357:32413",
+      "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 30. Ngu\u00E1\u00BB\u201Cn nh\u00C3\u00A2n l\u00E1\u00BB\u00B1c b\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+      "occurrenceCount": 1,
+      "repeatMask": "100",
+      "sourceAliases": [
+        "S0003"
+      ],
+      "contexts": [
+        "h\u00E2n c\u1EA5p ng\u00E2n s\u00E1ch (kinh ph\u00ED th\u1EF1c hi\u1EC7n nhi\u1EC7m v\u1EE5 kh\u00F4ng th\u01B0\u1EDDng xuy\u00EAn, kh\u00F4ng th\u1EF1c hi\u1EC7n ch\u1EBF \u0111\u1ED9 t\u1EF1 ch\u1EE7) c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc. \u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u 1. Nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c t\u1EADn d\u1EE5ng t\u1EEB ngu\u1ED3n nh\u00E2n l\u1EF1c t\u1EA1i ch\u1ED7 \u0111ang th\u1EF1c hi\u1EC7n qu\u1EA3n l\u00FD, v\u1EADn h\u00E0nh c"
+      ],
+      "repeatCount": 1
+    },
+    {
+      "documentId": "DOC-0252",
+      "kind": "FP",
+      "bucket": "MODEL_TRUE_EXTRA",
+      "key": "body[1]/p[4]:0:24",
+      "text": "TECHNICAL ADVISORY GROUP",
+      "occurrenceCount": 1,
+      "repeatMask": "001",
+      "sourceAliases": [
+        "S0002"
+      ],
+      "contexts": [
+        "TECHNICAL ADVISORY GROUP"
+      ],
+      "repeatCount": 1
+    }
+  ],
+  "counts": {
+    "allResidualRows": 56,
+    "falseNegatives": 34,
+    "falsePositives": 22,
+    "stableFn": 9,
+    "stableFp": 3
+  },
+  "goldFirewall": "PASS",
+  "runtimeGoldLeakage": false
+}

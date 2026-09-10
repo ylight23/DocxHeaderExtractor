@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "a99-semantic-text-residual-baseline-v1",
+  "startHead": "98ed48fcabf9c2bb617da0fddd269e8e807a9ba0",
+  "currentAuditHead": "1b31842947d1a8111d1a2bcc7742a83c45b54de1",
+  "model": "qwen/qwen3.7-flash",
+  "contract": "a99-semantic-text-exact-binding-v1",
+  "documents": [
+    "DOC-0001",
+    "DOC-0205",
+    "DOC-0252",
+    "DOC-0256",
+    "DOC-0258"
+  ],
+  "repeats": [
+    "r1",
+    "r2",
+    "r3"
+  ],
+  "cells": [
+    {
+      "documentId": "DOC-0001",
+      "repeat": "r1",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r1/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r1/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r1/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r1/score.v1.json",
+      "predictionSha256": "a4103f1421bc39aa8e11c7e7b44bd0fa7ff0c2a2b2b315337ef986620819e7aa",
+      "resultSha256": "e9d321b3547c6d943ce3d9474568c4440890dda1c7ee75b0eb4990cb7b717da6",
+      "score": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "f1": 1
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "r2",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r2/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r2/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r2/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r2/score.v1.json",
+      "predictionSha256": "4136012ac4d9e7acbb0c8540ed059684c544f558e5111bee5fb1c7c8153998ca",
+      "resultSha256": "14b74c872192fca9e4b9487947a7f0ad38f18c4495256adcf2b6c1d6f827088c",
+      "score": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "f1": 1
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "r3",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r3/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r3/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r3/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0001/r3/score.v1.json",
+      "predictionSha256": "42833089bc5b5ee2c214185448318e2bd06eb434cd28b1e0d746c966a133a10b",
+      "resultSha256": "e88fa52cbedca5035af4575ac253d6d9f6f0397dbdebdd27f7d3f33bfd636bd3",
+      "score": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "f1": 1
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r1/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r1/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r1/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r1/score.v1.json",
+      "predictionSha256": "053bcab884139524db325c5b3741b5cf4cdbb5928e2aa51abd9d0a4ad887790e",
+      "resultSha256": "61a145a32203ea944794cb877e232949b0759e0f20b9fd68867c75e3916e0536",
+      "score": {
+        "tp": 68,
+        "fp": 1,
+        "fn": 3,
+        "f1": 0.9714285714285714
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r2",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r2/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r2/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r2/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r2/score.v1.json",
+      "predictionSha256": "d9f684cef3937f33849d374e7d6992a8d8ef9e119337df090278b407dc53f5c9",
+      "resultSha256": "13dc3a878437e893adf9f7f88555491ffe208b7efdf86634f78263694f1e3d9d",
+      "score": {
+        "tp": 71,
+        "fp": 0,
+        "fn": 0,
+        "f1": 1
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r3",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r3/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r3/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r3/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0205/r3/score.v1.json",
+      "predictionSha256": "71d0550d74c472a89311927152b80e06dfcb0d45c94ccb6ce55be4df4f9ce2b6",
+      "resultSha256": "fe252b36fd32072f6fbab7f962105e574918d2b919ae50ea6500f01b587c81c7",
+      "score": {
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "f1": 0.993006993006993
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r1/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r1/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r1/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r1/score.v1.json",
+      "predictionSha256": "4e87745de7b2dfd6436dfa9ec9ed313d655a427d877dc153b51343966380c584",
+      "resultSha256": "dadecdedba8983e7778244cd1295a46658882e3984a29095a6e6a516c4a40482",
+      "score": {
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "f1": 0.8620689655172414
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r2/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r2/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r2/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r2/score.v1.json",
+      "predictionSha256": "0b8b85c83e50d4c4c578a09326972fd06d15a5d4f41f2feb5a48092de5ecd2a9",
+      "resultSha256": "42daf0fbb0b9d50815e054df169025c468955fd561b7d52c7dc6fe076c6f905d",
+      "score": {
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "f1": 0.8620689655172414
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r3/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r3/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r3/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0252/r3/score.v1.json",
+      "predictionSha256": "5cf6423936c4fb7fa321613d6ce800b04bce5f6bef63ac42d47763bc93838a73",
+      "resultSha256": "264665790784b3b37e138da5f2e29c9801344d61252096c4d618ed91d9d9d5e1",
+      "score": {
+        "tp": 25,
+        "fp": 3,
+        "fn": 2,
+        "f1": 0.9090909090909091
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r1",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r1/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r1/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r1/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r1/score.v1.json",
+      "predictionSha256": "b9d8d07928702ae85bfe0d9f6ee4dee3b4634ea0167cd3dc189fb21da1f6129c",
+      "resultSha256": "9e118fdb7d8c8e61f853003280e1ef51fa264edffdd4478eb5e7739ea6d77095",
+      "score": {
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "f1": 0.9361702127659574
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r2",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r2/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r2/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r2/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r2/score.v1.json",
+      "predictionSha256": "0de4b6f96dd76df4fb5c990b7e75005b252d15644df2e2d06304914c06c6491a",
+      "resultSha256": "2ad0f632d6f0a22915bc60b764cbf854cfae64775d9ffa8e5b81d9b2a891dd0f",
+      "score": {
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "f1": 0.9361702127659574
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r3",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r3/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r3/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r3/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0256/r3/score.v1.json",
+      "predictionSha256": "dc08deabbbe6249c5fe02845871f4525cded48513cf5272bd35c936f49b43294",
+      "resultSha256": "2cfb4d68da7ec13ee4f6f17a059130ece79faf45bfc961b345a096c24dcc0322",
+      "score": {
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "f1": 0.9361702127659574
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r1/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r1/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r1/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r1/score.v1.json",
+      "predictionSha256": "120561fe39ff006aed699c96be08e028a60d844cab9a1789b585ee84532d08ae",
+      "resultSha256": "254b34da99d806720178c5de13c9f20e68339a40457114faa42aa052266f728b",
+      "score": {
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "f1": 0.8571428571428571
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r2/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r2/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r2/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r2/score.v1.json",
+      "predictionSha256": "36c0b54a7aadf8fb131174bf8fb27796c278b8a20325970020460a1bdb600987",
+      "resultSha256": "84ff25ee8764e1442c4a73e400ce37d8ab1e3a2889a7d4b88ae68f81a6c55c7b",
+      "score": {
+        "tp": 18,
+        "fp": 1,
+        "fn": 6,
+        "f1": 0.8372093023255814
+      },
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "predictionPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r3/prediction.v1.json",
+      "resultPath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r3/result.v1.json",
+      "freezePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r3/freeze.v1.json",
+      "scorePath": "eval/a99-closed-loop/semantic-text-generalization/DOC-0258/r3/score.v1.json",
+      "predictionSha256": "5b27f89d9f3e1e527254670716e22a29dd8a1782f3bc76cecc9baf20837a9985",
+      "resultSha256": "803c126ed730d213602fa48c251b29467f9544e819518b5a91fcc8bb9fd9b27e",
+      "score": {
+        "tp": 17,
+        "fp": 1,
+        "fn": 7,
+        "f1": 0.8095238095238096
+      },
+      "goldReadBeforeFreeze": false
+    }
+  ],
+  "aggregate": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137
+  },
+  "firstLossCounts": {
+    "MODEL_OMISSION": 16,
+    "MODEL_WRONG_TEXT_BOUNDARY": 5,
+    "MODEL_WRONG_TEXT": 3,
+    "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT": 10
+  },
+  "sourceOfTruth": {
+    "baselineRoot": "eval/a99-closed-loop/semantic-text-generalization",
+    "stableLoopRoot": "eval/a99-closed-loop/semantic-text-stable-error-loop"
+  },
+  "dynamicGoldEligibility": true,
+  "goldFirewall": "PASS",
+  "runtimeGoldLeakage": false
+}

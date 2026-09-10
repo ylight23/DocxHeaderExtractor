@@ -1,0 +1,52 @@
+{
+  "code": "B_TEXT_BOUNDARY_CONTRACT",
+  "hypothesis": "Exact left/right boundary anchors might reduce prefix/superset boundary errors.",
+  "genericityProof": "The five boundary rows are model-selected spans with heterogeneous prefix/superset shapes; no source-only discriminator identifies the task boundary without Gold semantics. Adding anchors would preserve the same model decision and cannot be accepted as a generic fix before a valid A contract exists.",
+  "modelVisibleChange": false,
+  "freshInferenceRequired": false,
+  "affectedCells": [
+    "DOC-0205/r1",
+    "DOC-0252/r1",
+    "DOC-0252/r2",
+    "DOC-0252/r3",
+    "DOC-0258/r2",
+    "DOC-0258/r3"
+  ],
+  "controlCells": [
+    "DOC-0001/r1",
+    "DOC-0256/r1",
+    "DOC-0258/r1"
+  ],
+  "before": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "after": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "delta": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "systemLoss": 0
+  },
+  "systemLoss": 0,
+  "decision": "NO_GENERIC_SAFE_INTERVENTION",
+  "reason": "No generic boundary intervention is proven; do not special-case Agenda or Annex text."
+}
