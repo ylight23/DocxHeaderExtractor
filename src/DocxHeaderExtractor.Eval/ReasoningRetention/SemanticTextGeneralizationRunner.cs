@@ -21,6 +21,7 @@ public static class SemanticTextGeneralizationRunner
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string OutputRoot = "eval/a99-closed-loop/semantic-text-generalization";
     private const string DuplicateOutputRoot = "eval/a99-closed-loop/semantic-text-duplicate-disambiguation";
+    private const string ResidualLoopI1OutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i1-omission-review";
     private const string InventoryPath = "eval/a99-dataset/document-inventory.v1.json";
     private const int RepeatCount = 3;
     private static readonly string[] StableRepairDocuments = ["DOC-0001", "DOC-0205", "DOC-0252", "DOC-0256", "DOC-0258"];
@@ -439,10 +440,16 @@ public static class SemanticTextGeneralizationRunner
 
     /// <summary>Runs exactly one generic omission-review intervention over the frozen 15-repeat
     /// baseline. Pass A is loaded from frozen artifacts and is never called again.</summary>
-    public static async Task<int> RunOmissionReviewAsync(string repoRoot, CancellationToken ct = default)
+    public static Task<int> RunSemanticTextResidualLoopI1Async(string repoRoot, CancellationToken ct = default) =>
+        RunOmissionReviewAsync(repoRoot, ct, ResidualLoopI1OutputRoot);
+
+    public static Task<int> RunSemanticTextResidualLoopI1ResumeAsync(string repoRoot, CancellationToken ct = default) =>
+        RunOmissionReviewAsync(repoRoot, ct, ResidualLoopI1OutputRoot, resumeBlockedOnly: true);
+
+    public static async Task<int> RunOmissionReviewAsync(string repoRoot, CancellationToken ct = default, string outputRootName = "eval/a99-closed-loop/semantic-text-omission-review", bool resumeBlockedOnly = false)
     {
         repoRoot = Path.GetFullPath(repoRoot);
-        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review".Replace('/', Path.DirectorySeparatorChar));
+        var output = Path.Combine(repoRoot, outputRootName.Replace('/', Path.DirectorySeparatorChar));
         Directory.CreateDirectory(output);
         var baselineRoot = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
         var startHead = GitSha(repoRoot);
@@ -454,7 +461,9 @@ public static class SemanticTextGeneralizationRunner
             for (var repeat = 1; repeat <= RepeatCount; repeat++)
                 baseline.Add(LoadFrozenMetric(baselineRoot, item.item.GetProperty("documentId").GetString()!, $"r{repeat}"));
 
-        var baselineComplete = selected.Length == 5 && baseline.Count == 15 && CohortComplete(baseline);
+        var expectedCellCount = selected.Length * RepeatCount;
+        var expectedGoldOccurrences = selected.Sum(x => x.eligibility.OccurrenceCount);
+        var baselineComplete = selected.Length > 0 && baseline.Count == expectedCellCount && CohortComplete(baseline, expectedGoldOccurrences);
         var reviewPromptHash = SemanticTextOmissionReviewContract.Hash();
         await WriteJson(Path.Combine(output, "manifest.v1.json"), new
         {
@@ -462,17 +471,17 @@ public static class SemanticTextGeneralizationRunner
             startHead, branch = Git(repoRoot, "branch --show-current"), model = Model,
             baseContractHash = ContractHash(), reviewPromptHash,
             intervention = "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
-            selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
+            artifactRoot = outputRootName, selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
             repeats = new[] { "R1", "R2", "R3" }, providerConcurrency = 1,
             passAReused = true, passAProviderCallsCurrentRun = 0,
             inventoryIsInformationalOnly = true, additiveUnion = true, validatorsUnchanged = true,
-            noVlm = true, goldReadBeforeFreeze = false, baselineComplete, goldOccurrencesPerRepeat = 153,
+            noVlm = true, goldReadBeforeFreeze = false, baselineComplete, goldOccurrencesPerRepeat = expectedGoldOccurrences,
             promptFrozenBeforeInference = true,
         }, ct);
         await WriteJson(Path.Combine(output, "baseline-error-inventory.v1.json"), new
         {
             schemaVersion = "a99-semantic-text-omission-review-baseline-inventory-v1",
-            baselineArtifact = OutputRoot, baselineComplete, goldOccurrencesPerRepeat = 153,
+            baselineArtifact = OutputRoot, baselineComplete, goldOccurrencesPerRepeat = expectedGoldOccurrences,
             persistent = BuildPersistentErrors(baseline), nextLargestErrorBucket = NextBucket(baseline), goldReadBeforeFreeze = false,
         }, ct);
         if (!baselineComplete)
@@ -502,7 +511,7 @@ public static class SemanticTextGeneralizationRunner
             return 1;
         }
 
-        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review", string.Join(',', selected.Select(x => x.item.GetProperty("documentId").GetString())), ct);
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, outputRootName, string.Join(',', selected.Select(x => x.item.GetProperty("documentId").GetString())), ct);
         using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
         var review = new List<RepeatMetric>();
         foreach (var item in selected)
@@ -510,25 +519,35 @@ public static class SemanticTextGeneralizationRunner
             var context = Prepare(repoRoot, item.item);
             for (var repeat = 1; repeat <= RepeatCount; repeat++)
             {
+                var existingScorePath = Path.Combine(output, context.DocumentId, $"r{repeat}", "score.v1.json");
+                if (resumeBlockedOnly && File.Exists(existingScorePath))
+                {
+                    using var existingScore = JsonDocument.Parse(File.ReadAllText(existingScorePath));
+                    if (existingScore.RootElement.TryGetProperty("status", out var existingStatus) && existingStatus.GetString() == "SUCCESS")
+                    {
+                        review.Add(LoadFrozenMetric(output, context.DocumentId, $"r{repeat}"));
+                        continue;
+                    }
+                }
                 Console.WriteLine($"RUNNING_REVIEW={context.DocumentId}/R{repeat}");
-                review.Add(await RunReviewRepeatAsync(repoRoot, output, baselineRoot, context, repeat, model, startHead, reviewPromptHash, ct));
+                review.Add(await RunReviewRepeatAsync(repoRoot, output, baselineRoot, context, repeat, model, startHead, reviewPromptHash, ct, transientRetries: resumeBlockedOnly ? 2 : 0));
             }
         }
 
         var reviewSummary = BuildRepeatSummary(review, selected.Length);
-        var paired = BuildPairedComparison(baseline, review);
+        var paired = BuildPairedComparison(baseline, review, expectedGoldOccurrences);
         await WriteJson(Path.Combine(output, "repeat-summary.v1.json"), reviewSummary, ct);
         await WriteJson(Path.Combine(output, "persistent-errors.v1.json"), BuildPersistentErrors(review), ct);
         await WriteJson(Path.Combine(output, "paired-deltas.v1.json"), paired, ct);
-        var classification = OmissionReviewClass(baseline, review);
-        var gate = review.Count == 15 && CohortComplete(review) && review.All(x => x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0);
+        var classification = OmissionReviewClass(baseline, review, expectedCellCount, expectedGoldOccurrences);
+        var gate = review.Count == expectedCellCount && CohortComplete(review, expectedGoldOccurrences) && review.All(x => x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0);
         await WriteJson(Path.Combine(output, "summary.v1.json"), new
         {
             schemaVersion = "a99-semantic-text-omission-review-summary-v1", startHead, endHead = GitSha(repoRoot),
             intervention = "SEMANTIC_TEXT_OMISSION_REVIEW_V1", baseContractHash = ContractHash(), reviewPromptHash,
-            selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
-            baselineComplete, baselineProviderAttempts = 15, passAReused = true, passAProviderCallsCurrentRun = 0,
-            reviewProviderAttempts = model.ProviderCalls, modelCalls = model.ProviderCalls, goldOccurrencesPerRepeat = 153,
+            artifactRoot = outputRootName, selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
+            baselineComplete, baselineProviderAttempts = baseline.Count, passAReused = true, passAProviderCallsCurrentRun = 0,
+            reviewProviderAttempts = model.ProviderCalls, modelCalls = model.ProviderCalls, goldOccurrencesPerRepeat = expectedGoldOccurrences,
             goldReadBeforeFreeze = false, a99DevMarginMet = gate, classification,
             dominantBaselineBucket = NextBucket(baseline), dominantReviewBucket = NextBucket(review),
             persistentMovement = new { before = BuildPersistentErrors(baseline), after = BuildPersistentErrors(review) },
@@ -582,6 +601,7 @@ public static class SemanticTextGeneralizationRunner
         var inventory = LoadInventory(repoRoot);
         var selected = inventory.Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
             .Where(x => x.eligibility.Eligible).OrderBy(x => x.item.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        var expectedGoldOccurrences = selected.Sum(x => x.eligibility.OccurrenceCount);
         var baseline = new List<RepeatMetric>();
         var review = new List<RepeatMetric>();
         foreach (var item in selected)
@@ -598,9 +618,9 @@ public static class SemanticTextGeneralizationRunner
         var reviewProviderAttempts = FrozenProviderAttempts(output, selected);
         await WriteJson(Path.Combine(output, "repeat-summary.v1.json"), reviewSummary, ct);
         await WriteJson(Path.Combine(output, "persistent-errors.v1.json"), BuildPersistentErrors(review), ct);
-        await WriteJson(Path.Combine(output, "paired-deltas.v1.json"), BuildPairedComparison(baseline, review), ct);
-        var classification = OmissionReviewClass(baseline, review);
-        var gate = review.Count == 15 && CohortComplete(review) && review.All(x => x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0);
+        await WriteJson(Path.Combine(output, "paired-deltas.v1.json"), BuildPairedComparison(baseline, review, expectedGoldOccurrences), ct);
+        var classification = OmissionReviewClass(baseline, review, selected.Length * RepeatCount, selected.Sum(x => x.eligibility.OccurrenceCount));
+        var gate = review.Count == selected.Length * RepeatCount && CohortComplete(review, selected.Sum(x => x.eligibility.OccurrenceCount)) && review.All(x => x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0);
         var baselineMicro = Micro(baseline);
         var reviewMicro = Micro(review);
         var recoveredGold = Math.Max(0, reviewMicro.Tp - baselineMicro.Tp);
@@ -613,9 +633,9 @@ public static class SemanticTextGeneralizationRunner
             startHead = GitSha(repoRoot), endHead = GitSha(repoRoot), intervention = "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
             baseContractHash = ContractHash(), reviewPromptHash = SemanticTextOmissionReviewContract.Hash(),
             selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
-            baselineComplete = CohortComplete(baseline), baselineProviderAttempts = 15, controlReused = true, controlProviderCallsCurrent = 0, passAReused = true,
+            baselineComplete = CohortComplete(baseline, expectedGoldOccurrences), baselineProviderAttempts = baseline.Count, controlReused = true, controlProviderCallsCurrent = 0, passAReused = true,
             passAProviderCallsCurrentRun = 0, reviewProviderAttempts, modelCalls = reviewProviderAttempts, offlineProviderCalls = 0,
-            goldOccurrencesPerRepeat = 153, goldReadBeforeFreeze = false, a99DevMarginMet = gate, classification,
+            goldOccurrencesPerRepeat = expectedGoldOccurrences, goldReadBeforeFreeze = false, a99DevMarginMet = gate, classification,
             keepOrRevert = classification == "OMISSION_REVIEW_CLEAR_GAIN" ? "KEEP" : "REVERT",
             dominantBaselineBucket = NextBucket(baseline), dominantReviewBucket = NextBucket(review),
             persistentMovement = new { before = BuildPersistentErrors(baseline), after = BuildPersistentErrors(review) },
@@ -1943,7 +1963,18 @@ public static class SemanticTextGeneralizationRunner
             var resultPath = Path.Combine(dir, "result.v1.json");
             await WriteJson(predictionPath, new { schemaVersion = "a99-semantic-text-omission-review-prediction-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.ToString(), model = Model, intervention = "SEMANTIC_TEXT_OMISSION_REVIEW_V1", passAReused = true, passAProviderCallsCurrentRun = 0, goldReadBeforeFreeze = false }, ct);
             await WriteJson(resultPath, new { schemaVersion = "a99-semantic-text-omission-review-result-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", headings = Array.Empty<object>(), goldReadBeforeFreeze = false }, ct);
-            var freeze = new { schemaVersion = "a99-semantic-text-omission-review-freeze-v1", context.DocumentId, repeat = repeatName, gitSha, model = Model, baseContractHash = ContractHash(), reviewPromptHash, sourceSha256 = context.SourceSha256, predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath), providerAttempts = providerAttempts == 0 ? (last is null ? 0 : 1) : providerAttempts, inputTokens = last?.ReportedInputTokens, reasoningTokens = last?.ReportedReasoningTokens, outputTokens = last?.ReportedOutputTokens, finishReason = last?.FinishReason, failureClass = ex.GetType().Name, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow };
+            var freeze = new
+            {
+                schemaVersion = "a99-semantic-text-omission-review-freeze-v1", context.DocumentId, repeat = repeatName, gitSha,
+                model = Model, baseContractHash = ContractHash(), reviewPromptHash, sourceSha256 = context.SourceSha256,
+                predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath),
+                providerAttempts = providerAttempts == 0 ? (last is null ? 0 : 1) : providerAttempts,
+                actualProvider = last?.ProviderRoute, httpStatus = last?.HttpStatus,
+                inputTokens = last?.ReportedInputTokens, reasoningTokens = last?.ReportedReasoningTokens,
+                outputTokens = last?.ReportedOutputTokens, finishReason = last?.FinishReason,
+                telemetryFailureClass = last?.FailureClass, failureClass = ex.GetType().Name,
+                error = ex.Message, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow
+            };
             await WriteJson(Path.Combine(dir, "freeze.v1.json"), freeze, ct);
             await WriteJson(Path.Combine(dir, "score.v1.json"), new { schemaVersion = "a99-semantic-text-omission-review-score-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", exactStatus = "NOT_EVALUABLE", tp = 0, fp = 0, fn = 0, systemLoss = 0, goldReadBeforeFreeze = false }, ct);
             await WriteJson(Path.Combine(dir, "first-loss.v1.json"), new { context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.GetType().Name + ":" + ex.Message, goldReadBeforeFreeze = false }, ct);
@@ -2323,7 +2354,7 @@ public static class SemanticTextGeneralizationRunner
         goldFirewall = "PASS", noGoldRuntimeTransformation = true, providerConcurrency = 1, providerAttempts = runs.Count,
     };
 
-    private static object BuildPairedComparison(IReadOnlyList<RepeatMetric> baseline, IReadOnlyList<RepeatMetric> review)
+    private static object BuildPairedComparison(IReadOnlyList<RepeatMetric> baseline, IReadOnlyList<RepeatMetric> review, int expectedGoldOccurrences = 153)
     {
         var rows = review.OrderBy(x => x.DocumentId, StringComparer.Ordinal).ThenBy(x => x.Repeat, StringComparer.Ordinal).Select(x =>
         {
@@ -2343,12 +2374,12 @@ public static class SemanticTextGeneralizationRunner
             review = new { tp = g.Sum(x => x.review.tp), fp = g.Sum(x => x.review.fp), fn = g.Sum(x => x.review.fn), gold = g.Sum(x => x.review.tp + x.review.fn) },
             delta = new { tp = g.Sum(x => x.delta.tp), fp = g.Sum(x => x.delta.fp), fn = g.Sum(x => x.delta.fn) },
         }).ToArray();
-        return new { schemaVersion = "a99-semantic-text-omission-review-paired-deltas-v1", rows, cohortByRepeat = cohort, goldOccurrencesPerRepeat = 153 };
+        return new { schemaVersion = "a99-semantic-text-omission-review-paired-deltas-v1", rows, cohortByRepeat = cohort, goldOccurrencesPerRepeat = expectedGoldOccurrences };
     }
 
-    private static string OmissionReviewClass(IReadOnlyList<RepeatMetric> baseline, IReadOnlyList<RepeatMetric> review)
+    private static string OmissionReviewClass(IReadOnlyList<RepeatMetric> baseline, IReadOnlyList<RepeatMetric> review, int expectedCellCount, int expectedGoldOccurrences)
     {
-        if (review.Count != 15 || !CohortComplete(review)) return "OMISSION_REVIEW_EXECUTION_BLOCKED";
+        if (review.Count != expectedCellCount || !CohortComplete(review, expectedGoldOccurrences)) return "OMISSION_REVIEW_EXECUTION_BLOCKED";
         var paired = review.Select(x => (current: x, before: baseline.Single(y => y.DocumentId == x.DocumentId && y.Repeat == x.Repeat))).ToArray();
         var recallUp = paired.Any(x => x.current.Recall > x.before.Recall || x.current.Fn < x.before.Fn);
         var precisionDown = paired.Any(x => x.current.Precision < x.before.Precision || x.current.Fp > x.before.Fp);
@@ -2358,9 +2389,9 @@ public static class SemanticTextGeneralizationRunner
         return "OMISSION_REVIEW_NO_GAIN";
     }
 
-    private static bool CohortComplete(IReadOnlyList<RepeatMetric> runs) =>
+    private static bool CohortComplete(IReadOnlyList<RepeatMetric> runs, int expectedGoldOccurrences = 153) =>
         runs.All(x => x.Status == "SUCCESS") &&
-        runs.GroupBy(x => x.Repeat, StringComparer.Ordinal).All(group => group.Sum(x => x.Gold) == 153 && group.Sum(x => x.Tp + x.Fn) == 153);
+        runs.GroupBy(x => x.Repeat, StringComparer.Ordinal).All(group => group.Sum(x => x.Gold) == expectedGoldOccurrences && group.Sum(x => x.Tp + x.Fn) == expectedGoldOccurrences);
 
     private static async Task WriteReviewBlockedSummary(string output, string head, IReadOnlyList<(JsonElement item, ReasoningGoldEligibilityMetadata eligibility)> selected, string reason, CancellationToken ct)
     {

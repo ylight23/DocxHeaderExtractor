@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "a99-semantic-text-omission-review-prediction-v1",
+  "documentId": "DOC-0256",
+  "repeat": "r1",
+  "status": "BLOCKED",
+  "failure": "DocxHeaderExtractor.Eval.ReasoningRetention.ReasoningCompletionException: OpenRouter returned 429\r\n   at DocxHeaderExtractor.Eval.ReasoningRetention.OpenRouterCeilingReasoningModel.SendAsync(String systemPrompt, Object userPrompt, Int32 maxCompletionTokens, Object schema, String schemaName, RequestPacketTelemetry telemetry, CancellationToken ct) in C:\\DocxHeaderExtractor-a99-closed-loop\\src\\DocxHeaderExtractor.Eval\\ReasoningRetention\\OpenRouterCeilingReasoningModel.cs:line 540\r\n   at DocxHeaderExtractor.Eval.ReasoningRetention.OpenRouterCeilingReasoningModel.CompleteRawStructuredSemanticAsync(String documentId, String route, String requestId, String packetJson, Int32 sourceTextCharacters, Int32 ownedOccurrences, Int32 visibleOccurrences, String systemPrompt, String userPrompt, Object schema, String schemaName, CancellationToken ct) in C:\\DocxHeaderExtractor-a99-closed-loop\\src\\DocxHeaderExtractor.Eval\\ReasoningRetention\\OpenRouterCeilingReasoningModel.cs:line 161\r\n   at DocxHeaderExtractor.Eval.ReasoningRetention.SemanticTextGeneralizationRunner.RunReviewRepeatAsync(String repoRoot, String output, String baselineRoot, DocumentContext context, Int32 repeat, OpenRouterCeilingReasoningModel model, String gitSha, String reviewPromptHash, CancellationToken ct, Int32 transientRetries) in C:\\DocxHeaderExtractor-a99-closed-loop\\src\\DocxHeaderExtractor.Eval\\ReasoningRetention\\SemanticTextGeneralizationRunner.cs:line 1884",
+  "model": "qwen/qwen3.7-flash",
+  "intervention": "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
+  "passAReused": true,
+  "passAProviderCallsCurrentRun": 0,
+  "goldReadBeforeFreeze": false
+}

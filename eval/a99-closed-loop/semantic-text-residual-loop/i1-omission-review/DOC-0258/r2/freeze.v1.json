@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-semantic-text-omission-review-freeze-v1",
+  "documentId": "DOC-0258",
+  "repeat": "r2",
+  "gitSha": "76c4e01a10577b1c6069255646843cbaef729a1f",
+  "model": "qwen/qwen3.7-flash",
+  "baseContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "reviewPromptHash": "cf1597aed817aa8b5b577ad7dd308be159ecb4bcfaff762eb5a5f9a3f6094b4b",
+  "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+  "predictionSha256": "a332122206f22481d92423d278f900dd537f3f8158dfe5f3f517f4fe969173ee",
+  "resultSha256": "7686612c6491677f7e57da06ac2200a6c95811171a0d09bd6be521eaa0726a4b",
+  "providerAttempts": 3,
+  "inputTokens": null,
+  "reasoningTokens": null,
+  "outputTokens": null,
+  "finishReason": null,
+  "failureClass": "ReasoningCompletionException",
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-10T17:33:17.3195712+00:00"
+}
