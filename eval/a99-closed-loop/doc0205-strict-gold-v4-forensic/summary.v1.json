@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "a99-doc0205-strict-gold-v4-forensic-summary-v1",
+  "documentId": "DOC-0205",
+  "mode": "OFFLINE_FROZEN_ARTIFACTS_ONLY",
+  "providerCalls": 0,
+  "strictGoldV4": {
+    "goldStatus": "STRICT_GOLD",
+    "userFinalApproval": true,
+    "reviewedEntireDocument": true,
+    "headingSetExhaustive": true,
+    "unresolvedSemanticUncertainty": false,
+    "observedCounts": {
+      "section": 9,
+      "article": 57,
+      "chapter": 5
+    },
+    "observedTotal": 71,
+    "occurrenceSpanBindings": 71,
+    "allExactRawSubstringVerified": true,
+    "taskStatementClaim": {
+      "chapter": 5,
+      "section": 5,
+      "article": 61,
+      "total": 71
+    },
+    "taskStatementClaimMatchesArtifact": false,
+    "encodingIssue": "DOC-0205 v4 exactText is mojibake in storage; rawSourceText plus sourceId/start/end is verified span authority."
+  },
+  "sourceVisibility": {
+    "goldTotal": 71,
+    "sourcePresent": 71,
+    "fullyModelVisible": 71,
+    "partial": 0,
+    "missing": 0,
+    "modelPacket": {
+      "sourceCharacters": 60919,
+      "packetCharacters": 123822,
+      "packetHash": "6dd2fb6f790431c8fe33e3d4dbe182fced52dd108e18946a5dc0d3255dc18f45",
+      "segmentCount": 1,
+      "visibleOccurrences": 3,
+      "ownedOccurrences": 3,
+      "sourceId": "body[1]/p[4]",
+      "maxGoldEnd": 59269.0,
+      "evidence": "ONE_FROZEN_FULL_CONTEXT_REQUEST;ALL_GOLD_SPANS_WITHIN_SOURCE_OCCURRENCE"
+    }
+  },
+  "structuralTextPreservation": {
+    "chapter": {
+      "goldCount": 5,
+      "completeLineOrSpanVisible": 5
+    },
+    "section": {
+      "goldCount": 9,
+      "completeLineOrSpanVisible": 9
+    },
+    "article": {
+      "goldCount": 57,
+      "completeLineOrSpanVisible": 57
+    },
+    "sourceAuthority": "OCCURRENCE_GOLD_VERIFIED_RAW_SUBSTRING;NO_RUNTIME_RULE_CREATED"
+  },
+  "controls": [
+    {
+      "contract": "FLASH_R1_ORIGINAL",
+      "artifactRoot": "eval/a99-closed-loop/qwen37-flash-reasoning-ceiling/DOC-0205/r1-ceiling",
+      "gitSha": "ff40d62ce4999e08ce6e7776dda22d37490687b6",
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": "68ea21005b50f43b3c39338152f4a5a640882922a2163735dbe98ef286cfe68d",
+      "packetHash": "6dd2fb6f790431c8fe33e3d4dbe182fced52dd108e18946a5dc0d3255dc18f45",
+      "schemaHash": "11b12dceeaf5267392a0e0cb3eff31a00e0820d361a1f4c735eaeb02b04f46f3",
+      "predictionSha256": "4c45342f42665c038ddc21b21257b9dfe34e920bfa23e9de79e3375ffabaab92",
+      "resultSha256": "3564c6167df4ce4e646a0a3abe24ec996854d6ef289ccb814fc669c199ccff67",
+      "scoreArtifactSha256": "42c4bffa3b8a62e216f77d7b0ba63fa77543a38f6c7f8c651f57ab54438cc640",
+      "predictionCount": 73,
+      "TP": 0,
+      "FP": 73,
+      "FN": 71,
+      "wrongSpan": 1,
+      "omission": null,
+      "systemLoss": 0,
+      "goldReadBeforeFreeze": false,
+      "predictionFile": "eval\\a99-closed-loop\\qwen37-flash-reasoning-ceiling\\DOC-0205\\r1-ceiling\\prediction.v1.json",
+      "resultFile": "eval\\a99-closed-loop\\qwen37-flash-reasoning-ceiling\\DOC-0205\\r1-ceiling\\result.v1.json",
+      "scoreFile": "eval\\a99-closed-loop\\qwen37-flash-reasoning-ceiling\\DOC-0205\\r1-ceiling\\score.v1.json"
+    },
+    {
+      "contract": "C0_STRUCTURE_PRESERVING",
+      "artifactRoot": "eval/a99-closed-loop/structure-preserving-ir/DOC-0205",
+      "gitSha": null,
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": "297dcf491f8dcafd9655a8cf8b757111dcd03d8109e77970ca0046d76b2bca90",
+      "packetHash": "5947c9f6c7cb95c8fc81ebe77821978152a05e9957988b0c88ef6d5139c6146e",
+      "schemaHash": "ad4a2d3d6222f5c45907499de3733bd2d9510fe0954fad6be7c04c3f2bf8f3f3",
+      "predictionSha256": "4fe3d8a82eabf4e6161dad14f77f8a1e276960933437f58d4706e9bd2dbab8a0",
+      "resultSha256": "12d652821bef40a36112763af17b8d7f8a4671fa2a37e02ef838f83fde90f19d",
+      "scoreArtifactSha256": "869b6f0831ae97ee417233808632612fa3ff4b7dd6411a71fe10e7b8c1450d12",
+      "predictionCount": 71,
+      "TP": 1,
+      "FP": 57,
+      "FN": 70,
+      "wrongSpan": 56,
+      "omission": 14,
+      "systemLoss": 0,
+      "goldReadBeforeFreeze": false,
+      "predictionFile": "eval\\a99-closed-loop\\structure-preserving-ir\\DOC-0205\\text-ceiling.prediction.v1.json",
+      "resultFile": "eval\\a99-closed-loop\\structure-preserving-ir\\DOC-0205\\text-ceiling.result.v1.json",
+      "scoreFile": "eval\\a99-closed-loop\\structure-preserving-ir\\DOC-0205\\text-ceiling.score.v1.json"
+    },
+    {
+      "contract": "C1_BOUNDARY",
+      "artifactRoot": "eval/a99-closed-loop/flash-heading-contract-realignment/DOC-0205/c1_boundary",
+      "gitSha": null,
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": "bbd764d3d8c58db2f9edd8965aca664811a669d6d761e9cee8eb619ee67d57e8",
+      "packetHash": "6dd2fb6f790431c8fe33e3d4dbe182fced52dd108e18946a5dc0d3255dc18f45",
+      "schemaHash": "cd4f141efa6b1c1d6eaf2c35f7516d827478930846bbf9b16620909dfadaf5d4",
+      "predictionSha256": "6ce3b84f605e6d081bca4e16e8d5562f1053485412fab926362c0140927db286",
+      "resultSha256": "9a4634b479c0e47b831561ff0c132dd4572b905c02369b88ea20a159ec748c90",
+      "scoreArtifactSha256": "4a7521ed92a89856810a0a42f447f53a75e358bf076724629fc85bcb0b0de97f",
+      "predictionCount": 71,
+      "TP": 0,
+      "FP": 0,
+      "FN": 71,
+      "wrongSpan": 0,
+      "omission": 71,
+      "systemLoss": 71,
+      "goldReadBeforeFreeze": false,
+      "predictionFile": "eval\\a99-closed-loop\\flash-heading-contract-realignment\\DOC-0205\\c1_boundary\\prediction.v1.json",
+      "resultFile": "eval\\a99-closed-loop\\flash-heading-contract-realignment\\DOC-0205\\c1_boundary\\result.v1.json",
+      "scoreFile": "eval\\a99-closed-loop\\flash-heading-contract-realignment\\DOC-0205\\c1_boundary\\score.v1.json"
+    },
+    {
+      "contract": "C2_ADDRESSED",
+      "artifactRoot": "eval/a99-closed-loop/flash-heading-contract-realignment/DOC-0205/c2_addressed",
+      "gitSha": null,
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": "41e2d1a0ea3497cb527f66f2b24a5237bfd721de07cecd1d1dba0257e8e3100e",
+      "packetHash": "2d1035a4db9b8dd85c4487bb4b3a1b16e4667fe26810c7acee9144fc6ff8fc11",
+      "schemaHash": "d545b95203d19ca99cff6e32b23c417f1d4711d056099fcabba26f28a204d5a6",
+      "predictionSha256": "36f7895a3c8cade880a6b9548227e55b6bb15bcffb38a5dbec4dc3cc233e996d",
+      "resultSha256": "9ce0b10d77bf63e6db6a9343087f148f05f5b5f088ac35a20e42a322458bc7a5",
+      "scoreArtifactSha256": "ae76849ec7ce0e5e7f0bb64d5206ec8eaa2068c14da0d4a46662adb266044ff4",
+      "predictionCount": 90,
+      "TP": 0,
+      "FP": 90,
+      "FN": 71,
+      "wrongSpan": 10,
+      "omission": 61,
+      "systemLoss": 0,
+      "goldReadBeforeFreeze": false,
+      "predictionFile": "eval\\a99-closed-loop\\flash-heading-contract-realignment\\DOC-0205\\c2_addressed\\prediction.v1.json",
+      "resultFile": "eval\\a99-closed-loop\\flash-heading-contract-realignment\\DOC-0205\\c2_addressed\\result.v1.json",
+      "scoreFile": "eval\\a99-closed-loop\\flash-heading-contract-realignment\\DOC-0205\\c2_addressed\\score.v1.json"
+    }
+  ],
+  "r1VsC0AttributionReconciliation": {
+    "finding": "DIFFERENT_FROZEN_CONTRACT",
+    "sameFrozenPrediction": false,
+    "originalR1": "TP=0 FP=73 FN=71; official first-loss omission=70 spanError=1",
+    "c0": "TP=1 FP=57 FN=70; final contract-realignment attribution wrongSpan=56 omission=14",
+    "explanation": "R1 and C0 have different promptHash, packetHash, schemaHash, predictionSha256 and resultSha256. C0 bound 58/71 raw proposals; its historical score records coarse modelOmission=70, while the later contract report split the final 58 into 1 exact + 56 wrong-span + 14 omitted. Gold authority/source hash is unchanged.",
+    "scorerOrReferenceLineageMismatch": false
+  },
+  "firstLoss": {
+    "modelOmission": 67,
+    "modelWrongSpan": 4,
+    "modelWrongRole": 0,
+    "systemRepresentation": 0,
+    "systemBinding": 0,
+    "systemValidation": 0,
+    "systemProjection": 0,
+    "unresolved": 0,
+    "officialR1": {
+      "modelOmission": 70,
+      "modelWrongSpan": 1,
+      "modelFalsePositive": 73
+    },
+    "note": "Forensic omission/span split follows the task rule using complete visibility plus interval-near raw proposal. It does not mutate the official scorer or frozen artifacts."
+  },
+  "rawModelOutput": {
+    "count": 73,
+    "relationshipCounts": {
+      "SAME_GOLD_WRONG_BOUNDARY": 5,
+      "TRUE_EXTRA": 67,
+      "SUPERSET_GOLD": 1
+    },
+    "localIndexAvailable": false,
+    "localIndexNote": "Frozen R1 did not persist raw local i; no index invented."
+  },
+  "primaryCause": "MODEL_SEMANTIC_DISCOVERY_FAILURE",
+  "supportedAlternatives": {
+    "A_MODEL_SEMANTIC_DISCOVERY_FAILURE": true,
+    "B_MODEL_BOUNDARY_CONTRACT_FAILURE": "LIMITED_SECONDARY_SIGNAL_ONLY",
+    "C_SOURCE_REPRESENTATION_FAILURE": false,
+    "D_MIXED_MODEL_AND_CONTRACT_FAILURE": false
+  },
+  "vlmPriority": "LOW",
+  "nextExperiment": "FREEZE_VLM; later run a generic ontology/boundary A-B only if needed, without Gold-derived rules.",
+  "goldReadBeforeFreeze": false,
+  "knownN15": "UNTOUCHED"
+}
