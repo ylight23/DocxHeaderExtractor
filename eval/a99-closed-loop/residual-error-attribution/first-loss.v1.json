@@ -1,0 +1,528 @@
+{
+  "schemaVersion": "a99-residual-error-attribution-first-loss-v1",
+  "rows": [
+    {
+      "documentId": "DOC-0205",
+      "goldOccurrenceId": "DOC-0205:body[1]/p[4]:29974:30039",
+      "exactText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "currentClassification": "UNRESOLVED",
+      "resolvedClassification": "MODEL_WRONG_SPAN",
+      "systemFirstLoss": "NONE",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "MODEL_WRONG_TEXT",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "FOUND",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": true,
+          "validated": true,
+          "projected": true,
+          "final": true,
+          "exactFinalKey": "body[1]/p[4]:29974:30039"
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "FOUND",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": true,
+          "validated": true,
+          "projected": true,
+          "final": true,
+          "exactFinalKey": "body[1]/p[4]:29974:30039"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOccurrenceId": "DOC-0205:body[1]/p[4]:30572:30622",
+      "exactText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "currentClassification": "UNRESOLVED",
+      "resolvedClassification": "MODEL_WRONG_SPAN",
+      "systemFirstLoss": "NONE",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "MODEL_WRONG_TEXT",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "FOUND",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": true,
+          "validated": true,
+          "projected": true,
+          "final": true,
+          "exactFinalKey": "body[1]/p[4]:30572:30622"
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "FOUND",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": true,
+          "validated": true,
+          "projected": true,
+          "final": true,
+          "exactFinalKey": "body[1]/p[4]:30572:30622"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOccurrenceId": "DOC-0205:body[1]/p[4]:32357:32413",
+      "exactText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "currentClassification": "UNRESOLVED",
+      "resolvedClassification": "MODEL_WRONG_SPAN",
+      "systemFirstLoss": "NONE",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "MODEL_WRONG_TEXT",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "FOUND",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": true,
+          "validated": true,
+          "projected": true,
+          "final": true,
+          "exactFinalKey": "body[1]/p[4]:32357:32413"
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "FOUND",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": true,
+          "validated": true,
+          "projected": true,
+          "final": true,
+          "exactFinalKey": "body[1]/p[4]:32357:32413"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOccurrenceId": "DOC-0252:body[1]/p[158]:56:62",
+      "exactText": "Agenda",
+      "currentClassification": "UNRESOLVED",
+      "resolvedClassification": "MODEL_WRONG_SPAN",
+      "systemFirstLoss": "NONE",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "MODEL_WRONG_SPAN",
+          "modelRawExact": false,
+          "modelRawNear": true,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "MODEL_WRONG_SPAN",
+          "modelRawExact": false,
+          "modelRawNear": true,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "MODEL_WRONG_SPAN",
+          "modelRawExact": false,
+          "modelRawNear": true,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOccurrenceId": "DOC-0256:body[1]/p[11]:0:6",
+      "exactText": "Africa",
+      "currentClassification": "SYSTEM_AFFECTED",
+      "resolvedClassification": "SYSTEM_BINDING_LOSS",
+      "systemFirstLoss": "BINDER_LOSS",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOccurrenceId": "DOC-0256:body[1]/p[17]:0:20",
+      "exactText": "Asia and the Pacific",
+      "currentClassification": "SYSTEM_AFFECTED",
+      "resolvedClassification": "SYSTEM_BINDING_LOSS",
+      "systemFirstLoss": "BINDER_LOSS",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOccurrenceId": "DOC-0258:body[1]/p[11]:0:6",
+      "exactText": "Africa",
+      "currentClassification": "SYSTEM_AFFECTED",
+      "resolvedClassification": "SYSTEM_BINDING_LOSS",
+      "systemFirstLoss": "BINDER_LOSS",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOccurrenceId": "DOC-0258:body[1]/p[12]:0:20",
+      "exactText": "Asia and the Pacific",
+      "currentClassification": "SYSTEM_AFFECTED",
+      "resolvedClassification": "SYSTEM_BINDING_LOSS",
+      "systemFirstLoss": "BINDER_LOSS",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOccurrenceId": "DOC-0258:body[1]/p[18]:0:34",
+      "exactText": "Commonwealth of Independent States",
+      "currentClassification": "SYSTEM_AFFECTED",
+      "resolvedClassification": "SYSTEM_BINDING_LOSS",
+      "systemFirstLoss": "BINDER_LOSS",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOccurrenceId": "DOC-0258:body[1]/p[19]:0:31",
+      "exactText": "Latin America and the Caribbean",
+      "currentClassification": "SYSTEM_AFFECTED",
+      "resolvedClassification": "SYSTEM_BINDING_LOSS",
+      "systemFirstLoss": "BINDER_LOSS",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOccurrenceId": "DOC-0258:body[1]/p[24]:0:12",
+      "exactText": "Western Asia",
+      "currentClassification": "SYSTEM_AFFECTED",
+      "resolvedClassification": "SYSTEM_BINDING_LOSS",
+      "systemFirstLoss": "BINDER_LOSS",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "MODEL_OMISSION",
+          "modelRawExact": false,
+          "modelRawNear": false,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOccurrenceId": "DOC-0258:body[1]/p[115]:0:29",
+      "exactText": "Annex 2: List of participants",
+      "currentClassification": "UNRESOLVED",
+      "resolvedClassification": "MODEL_WRONG_SPAN",
+      "systemFirstLoss": "NONE",
+      "perRepeat": [
+        {
+          "repeat": "R1",
+          "firstLoss": "FOUND",
+          "modelRawExact": true,
+          "modelRawNear": false,
+          "bound": true,
+          "validated": true,
+          "projected": true,
+          "final": true,
+          "exactFinalKey": "body[1]/p[115]:0:29"
+        },
+        {
+          "repeat": "R2",
+          "firstLoss": "MODEL_WRONG_SPAN",
+          "modelRawExact": false,
+          "modelRawNear": true,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        },
+        {
+          "repeat": "R3",
+          "firstLoss": "MODEL_WRONG_SPAN",
+          "modelRawExact": false,
+          "modelRawNear": true,
+          "bound": false,
+          "validated": false,
+          "projected": false,
+          "final": false,
+          "exactFinalKey": null
+        }
+      ]
+    }
+  ],
+  "systemFirstLossCounts": {
+    "BINDER_LOSS": 7
+  },
+  "unresolvedResolutionCounts": {
+    "MODEL_WRONG_SPAN": 5
+  },
+  "goldReadBeforeFreeze": false
+}

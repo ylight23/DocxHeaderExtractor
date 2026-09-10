@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "a99-residual-error-attribution-summary-v1",
+  "startHead": "c66345510398a399eb5678709fb9a0072a80ea8a",
+  "endHead": "c66345510398a399eb5678709fb9a0072a80ea8a",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "baseline": {
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "systemLoss": 0
+  },
+  "stability": {
+    "persistent3of3": 1,
+    "stochastic2of3": 1,
+    "stochastic1of3": 0,
+    "alwaysFound": 139,
+    "systemAffected": 7,
+    "unresolved": 5,
+    "resolvedModelWrongSpan": 5
+  },
+  "systemFirstLoss": {
+    "BINDER_LOSS": 7
+  },
+  "selectedBucket": {
+    "bucket": "SYSTEM_BINDING_LOSS",
+    "count": 7,
+    "fixable": false,
+    "whyFixableGenerically": "The exact raw proposal is present, but the frozen exact binder rejects ambiguous duplicate text; repairing this requires additional model occurrence evidence and is not a safe post-model fix."
+  },
+  "intervention": "NONE",
+  "pairedReplay": null,
+  "currentBest": {
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137
+  },
+  "gapTo99": {
+    "additionalTpForRecall": 30,
+    "fpToRemoveForPrecision": 0,
+    "f1Gap": 0.05181015452538629
+  },
+  "nextModelAction": "NEXT_MODEL_ACTION_NONE_YET",
+  "finalClassification": "RESIDUAL_MIXED_CAUSES",
+  "goldReadBeforeFreeze": false
+}

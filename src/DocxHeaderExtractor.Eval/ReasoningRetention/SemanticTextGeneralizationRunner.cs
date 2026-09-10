@@ -1097,6 +1097,282 @@ public static class SemanticTextGeneralizationRunner
         return classification == "BLOCKED_PROVIDER" ? 2 : 0;
     }
 
+    /// <summary>Offline first-loss attribution for the frozen semantic-text cohort. This lane
+    /// never creates an inference client and never changes the active extraction pipeline.</summary>
+    public static async Task<int> RunResidualErrorAttributionAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/residual-error-attribution");
+        Directory.CreateDirectory(output);
+        var startHead = GitSha(repoRoot);
+        Console.WriteLine($"START_HEAD={startHead}");
+        Console.WriteLine($"BRANCH={Git(repoRoot, "branch --show-current")}");
+        Console.WriteLine(Git(repoRoot, "status --short"));
+        Console.WriteLine("MODEL_CALLS=0");
+        var selected = LoadInventory(repoRoot).Where(x => StableRepairDocuments.Contains(x.GetProperty("documentId").GetString(), StringComparer.Ordinal)).OrderBy(x => x.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        if (startHead != "c66345510398a399eb5678709fb9a0072a80ea8a")
+            Console.WriteLine($"EXPECTED_ANCESTOR_WARNING={startHead}");
+        var cells = new List<FrozenCellAudit>();
+        var frozenCellHashes = new List<object>();
+        foreach (var item in selected)
+        {
+            var context = Prepare(repoRoot, item);
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                var cell = LoadFrozenCellAudit(repoRoot, context, repeat);
+                cells.Add(cell);
+                frozenCellHashes.Add(new { documentId = context.DocumentId, repeat = $"R{repeat}", sourceSha256 = cell.SourceSha256, predictionSha256 = cell.PredictionSha256, resultSha256 = cell.ResultSha256, freezeSha256 = Sha256(cell.FreezePath), model = cell.Model, actualProvider = cell.ActualProvider, semanticContractVersion = cell.SemanticContractVersion, promptHash = cell.PromptHash, schemaHash = cell.SchemaHash, packetHash = cell.PacketHash, reasoningEnabled = cell.ReasoningEnabled, goldReadBeforeFreeze = cell.GoldReadBeforeFreeze, providerCalls = 0 });
+            }
+        }
+        if (cells.Count != 15) throw new InvalidDataException($"BASELINE_CELL_COUNT:{cells.Count}");
+        if (cells.Select(x => $"{x.Model}|{x.ActualProvider}|{x.SemanticContractVersion}|{x.PromptHash}|{x.SchemaHash}|{x.ReasoningEnabled}").Distinct(StringComparer.Ordinal).Count() != 1)
+            throw new InvalidDataException("BASELINE_FROZEN_CONFIG_MISMATCH");
+        VerifyRevertedInterventionEvidence(repoRoot);
+        var matrix = BuildOccurrenceAttribution(repoRoot, selected, cells);
+        var oracle = BuildOracleResidualAttribution(repoRoot, selected, cells, matrix.Rows);
+        var systemFirstLoss = matrix.Rows.Where(x => x.CurrentClassification == "SYSTEM_AFFECTED").GroupBy(x => x.SystemFirstLossStage, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Count(), StringComparer.Ordinal);
+        var selectedBucket = SelectResidualBucket(systemFirstLoss, oracle);
+        await WriteJson(Path.Combine(output, "occurrence-matrix.v1.json"), new
+        {
+            schemaVersion = "a99-residual-error-attribution-occurrence-matrix-v1", startHead, baselineArtifact = OutputRoot,
+            frozenCellCount = cells.Count, frozenCells = frozenCellHashes, hashVerified = true,
+            rows = matrix.Rows.Select(x => new
+            {
+                x.DocumentId, x.GoldOccurrenceId, x.ExactText, x.SourceId, x.Start, x.End,
+                repeats = x.Repeats, currentClassification = x.CurrentClassification, resolvedClassification = x.ResolvedClassification,
+            }).ToArray(),
+            stability = matrix.Stability, resolutionCounts = matrix.Rows.GroupBy(x => x.ResolvedClassification, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Count(), StringComparer.Ordinal),
+            goldReadBeforeFreeze = false,
+        }, ct);
+        await WriteJson(Path.Combine(output, "first-loss.v1.json"), new
+        {
+            schemaVersion = "a99-residual-error-attribution-first-loss-v1", rows = matrix.Rows.Where(x => x.CurrentClassification == "SYSTEM_AFFECTED" || x.CurrentClassification == "UNRESOLVED").Select(x => new
+            {
+                x.DocumentId, x.GoldOccurrenceId, x.ExactText, currentClassification = x.CurrentClassification, resolvedClassification = x.ResolvedClassification,
+                systemFirstLoss = x.SystemFirstLossStage, perRepeat = x.Repeats.Select(r => new { r.Repeat, r.FirstLoss, r.ModelRawExact, r.ModelRawNear, r.Bound, r.Validated, r.Projected, r.Final, r.ExactFinalKey }).ToArray(),
+            }).ToArray(),
+            systemFirstLossCounts = systemFirstLoss, unresolvedResolutionCounts = matrix.Rows.Where(x => x.CurrentClassification == "UNRESOLVED").GroupBy(x => x.ResolvedClassification, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Count(), StringComparer.Ordinal),
+            goldReadBeforeFreeze = false,
+        }, ct);
+        await WriteJson(Path.Combine(output, "oracle-residual.v1.json"), new
+        {
+            schemaVersion = "a99-residual-error-attribution-oracle-residual-v1", diagnosticOnly = true,
+            union = new { tp = oracle.UnionTp, fp = oracle.UnionFp, fn = oracle.UnionFn },
+            falseNegatives = oracle.FalseNegatives, falsePositiveRows = oracle.FalsePositives,
+            falseNegativeBuckets = oracle.FalseNegatives.GroupBy(x => x.Bucket, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Count(), StringComparer.Ordinal),
+            falsePositiveBuckets = oracle.FalsePositives.GroupBy(x => x.Bucket, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Count(), StringComparer.Ordinal),
+            falsePositiveStability = oracle.FalsePositives.GroupBy(x => x.SupportCount).ToDictionary(x => $"PRESENT_{x.Key}_OF_3", x => x.Count(), StringComparer.Ordinal),
+            goldReadBeforeFreeze = false,
+        }, ct);
+        var baseline = cells.Select(x => x.Metric).ToArray();
+        var baselineMicro = Micro(baseline);
+        var finalClassification = selectedBucket.Count > 0 && selectedBucket.Fixable ? "RESIDUAL_SYSTEM_LOSS_PROVEN" : oracle.FalseNegatives.Count + oracle.FalsePositives.Count > 0 ? "RESIDUAL_MIXED_CAUSES" : "RESIDUAL_ATTRIBUTION_INCOMPLETE";
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-residual-error-attribution-summary-v1", startHead, endHead = GitSha(repoRoot), modelCalls = 0, providerCalls = 0,
+            baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1, systemLoss = baseline.Sum(x => x.SystemLoss) },
+            stability = matrix.Stability, systemFirstLoss = systemFirstLoss, selectedBucket,
+            intervention = "NONE", pairedReplay = (object?)null, currentBest = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1 },
+            gapTo99 = new { additionalTpForRecall = Math.Max(0, (int)Math.Ceiling(.99 * (baselineMicro.Tp + baselineMicro.Fn) - baselineMicro.Tp)), fpToRemoveForPrecision = Math.Max(0, (int)Math.Ceiling(baselineMicro.Tp * (1 / .99 - 1) - baselineMicro.Fp)), f1Gap = Math.Max(0, .99 - baselineMicro.F1) },
+            nextModelAction = "NEXT_MODEL_ACTION_NONE_YET", finalClassification, goldReadBeforeFreeze = false,
+        }, ct);
+        Console.WriteLine($"SYSTEM_FIRST_LOSS={string.Join(',', systemFirstLoss.Select(x => $"{x.Key}:{x.Value}"))}");
+        Console.WriteLine($"ORACLE_FN_9={string.Join(',', oracle.FalseNegatives.GroupBy(x => x.Bucket).Select(x => $"{x.Key}:{x.Count()}"))}");
+        Console.WriteLine($"ORACLE_FP_10={string.Join(',', oracle.FalsePositives.GroupBy(x => x.Bucket).Select(x => $"{x.Key}:{x.Count()}"))}");
+        Console.WriteLine($"SELECTED_BUCKET={selectedBucket.Bucket};COUNT={selectedBucket.Count};FIXABLE={selectedBucket.Fixable}");
+        Console.WriteLine("INTERVENTION=NONE");
+        Console.WriteLine($"FINAL_CLASSIFICATION={finalClassification}");
+        return 0;
+    }
+
+    private static FrozenCellAudit LoadFrozenCellAudit(string repoRoot, DocumentContext context, int repeat)
+    {
+        var dir = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar), context.DocumentId, $"r{repeat}");
+        var predictionPath = Path.Combine(dir, "prediction.v1.json");
+        var resultPath = Path.Combine(dir, "result.v1.json");
+        var freezePath = Path.Combine(dir, "freeze.v1.json");
+        using var prediction = JsonDocument.Parse(File.ReadAllText(predictionPath));
+        using var result = JsonDocument.Parse(File.ReadAllText(resultPath));
+        using var freeze = JsonDocument.Parse(File.ReadAllText(freezePath));
+        var f = freeze.RootElement;
+        var p = prediction.RootElement;
+        var firewall = f.TryGetProperty("goldReadBeforeFreeze", out var gold) && gold.GetBoolean();
+        if (firewall || !string.Equals(f.GetProperty("sourceSha256").GetString(), context.SourceSha256, StringComparison.OrdinalIgnoreCase) ||
+            !string.Equals(Sha256(predictionPath), f.GetProperty("predictionSha256").GetString(), StringComparison.OrdinalIgnoreCase) ||
+            !string.Equals(Sha256(resultPath), f.GetProperty("resultSha256").GetString(), StringComparison.OrdinalIgnoreCase) ||
+            !ConfigMatchesPrediction(f, p) ||
+            !string.Equals(f.GetProperty("model").GetString(), p.GetProperty("model").GetString(), StringComparison.Ordinal) ||
+            !string.Equals(f.GetProperty("semanticContractVersion").GetString(), p.GetProperty("semanticContractVersion").GetString(), StringComparison.Ordinal) ||
+            !string.Equals(f.GetProperty("executionMode").GetString(), p.GetProperty("executionMode").GetString(), StringComparison.Ordinal))
+            throw new InvalidDataException($"BASELINE_FREEZE_AUTHORITY_FAILED:{context.DocumentId}:R{repeat}");
+        var raw = SemanticTextExactBindingContract.Parse(JsonSerializer.Serialize(new { headings = prediction.RootElement.GetProperty("rawModelHeadings") }));
+        var bound = prediction.RootElement.GetProperty("boundHeadings").EnumerateArray().Select(x => Key(x.GetProperty("sourceId").GetString()!, new StructuralSpan(x.GetProperty("start").GetInt32(), x.GetProperty("end").GetInt32()))).ToHashSet(StringComparer.Ordinal);
+        var final = prediction.RootElement.GetProperty("finalHeadings").EnumerateArray().Select(x => new FinalAuditHeading(Key(x.GetProperty("sourceId").GetString()!, new StructuralSpan(x.GetProperty("start").GetInt32(), x.GetProperty("end").GetInt32())), x.GetProperty("text").GetString() ?? "")).ToArray();
+        using var first = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "first-loss.v1.json")));
+        var losses = first.RootElement.TryGetProperty("firstLosses", out var lossArray) ? lossArray.EnumerateArray().ToDictionary(x => x.GetProperty("key").GetString()!, x => x.GetProperty("firstLoss").GetString()!, StringComparer.Ordinal) : new Dictionary<string, string>(StringComparer.Ordinal);
+        using var score = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "score.v1.json")));
+        return new FrozenCellAudit(context.DocumentId, repeat, context.SourceSha256, f.GetProperty("predictionSha256").GetString()!, f.GetProperty("resultSha256").GetString()!, f.GetProperty("model").GetString()!, f.GetProperty("actualProvider").GetString()!, f.GetProperty("semanticContractVersion").GetString()!, f.GetProperty("promptHash").GetString()!, f.GetProperty("schemaHash").GetString()!, f.GetProperty("packetHash").GetString()!, f.GetProperty("reasoningConfiguration").GetProperty("enabled").GetBoolean(), predictionPath, resultPath, freezePath, firewall, raw.Headings, bound, final.ToDictionary(x => x.Key, StringComparer.Ordinal), losses, LoadFrozenMetric(Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar)), context.DocumentId, $"r{repeat}"));
+    }
+
+    private static void VerifyRevertedInterventionEvidence(string repoRoot)
+    {
+        var root = Path.Combine(repoRoot, "eval/a99-closed-loop/model-omission-stability");
+        using var result = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "intervention-result.v1.json")));
+        using var summary = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "summary.v1.json")));
+        var intervention = result.RootElement.GetProperty("intervention");
+        if (intervention.GetProperty("tp").GetInt32() != 426 || intervention.GetProperty("fp").GetInt32() != 39 || intervention.GetProperty("fn").GetInt32() != 33 ||
+            Math.Abs(intervention.GetProperty("f1").GetDouble() - .922077922077922) > 1e-9 || intervention.GetProperty("systemLoss").GetInt32() != 27 || result.RootElement.GetProperty("keepOrRevert").GetString() != "REVERT_INTERVENTION" || summary.RootElement.GetProperty("finalClassification").GetString() != "INTERVENTION_REVERTED")
+            throw new InvalidDataException("REVERTED_INTERVENTION_EVIDENCE_MISMATCH");
+    }
+
+    private static OccurrenceAttribution BuildOccurrenceAttribution(string repoRoot, IReadOnlyList<JsonElement> selected, IReadOnlyList<FrozenCellAudit> cells)
+    {
+        var rows = new List<OccurrenceAuditRow>();
+        foreach (var item in selected)
+        {
+            var context = Prepare(repoRoot, item);
+            var documentId = context.DocumentId;
+            var goldPath = Path.Combine(repoRoot, "eval/a99-closed-loop/strict-gold-occurrence-v1", documentId + ".occurrence-gold-v1.json");
+            var gold = ReasoningGoldArtifactLoader.LoadOccurrence(goldPath).Where(x => x.HeadingSpan is not null).ToArray();
+            foreach (var occurrence in gold)
+            {
+                var key = Key(occurrence.SourceId, occurrence.HeadingSpan!);
+                var alias = context.SourceRows.Single(x => x.SourceId == occurrence.SourceId);
+                var repeats = cells.Where(x => x.DocumentId == documentId).OrderBy(x => x.Repeat).Select(cell =>
+                {
+                    var raw = cell.Raw.Where(x => x.Source == alias.Alias && !string.IsNullOrEmpty(x.Text)).ToArray();
+                    var rawExact = raw.Any(x => x.Text == occurrence.ExactText);
+                    var rawNear = raw.Where(x => x.Text != occurrence.ExactText).Any(x => HasOverlap(alias.RawText, x.Text, occurrence.HeadingSpan!));
+                    var bound = cell.BoundKeys.Contains(key);
+                    var final = cell.FinalKeys.ContainsKey(key);
+                    var firstLoss = cell.Losses.GetValueOrDefault(key, "UNRESOLVED");
+                    var validated = bound && firstLoss != "SYSTEM_VALIDATOR_LOSS";
+                    var projected = final;
+                    return new RepeatOccurrenceAudit($"R{cell.Repeat}", firstLoss, rawExact, rawNear, bound, validated, projected, final, final ? key : null, TraceStage(firstLoss, rawExact, bound, final));
+                }).ToArray();
+                var current = CurrentStabilityClassification(repeats.Select(x => CurrentStatus(x.FirstLoss)).ToArray());
+                var resolved = ResolveAttribution(current, repeats);
+                rows.Add(new(documentId, $"{documentId}:{key}", occurrence.ExactText, occurrence.SourceId, occurrence.HeadingSpan!.Start, occurrence.HeadingSpan.End, repeats, current, resolved, repeats.Select(x => x.Stage).FirstOrDefault(x => x is "BINDER_LOSS" or "VALIDATOR_LOSS" or "PROJECTION_LOSS") ?? "NONE", key, cells.First(x => x.DocumentId == documentId).Metric));
+            }
+        }
+        var stability = new
+        {
+            persistent3of3 = rows.Count(x => x.CurrentClassification == "PERSISTENT_3_OF_3_MISS"),
+            stochastic2of3 = rows.Count(x => x.CurrentClassification == "STOCHASTIC_2_OF_3_MISS"),
+            stochastic1of3 = rows.Count(x => x.CurrentClassification == "STOCHASTIC_1_OF_3_MISS"),
+            alwaysFound = rows.Count(x => x.CurrentClassification == "ALWAYS_FOUND"),
+            systemAffected = rows.Count(x => x.CurrentClassification == "SYSTEM_AFFECTED"),
+            unresolved = rows.Count(x => x.CurrentClassification == "UNRESOLVED"),
+            resolvedModelWrongSpan = rows.Count(x => x.ResolvedClassification == "MODEL_WRONG_SPAN"),
+        };
+        return new OccurrenceAttribution(rows, stability);
+    }
+
+    private static string ResolveAttribution(string current, IReadOnlyList<RepeatOccurrenceAudit> repeats)
+    {
+        if (current == "SYSTEM_AFFECTED") return "SYSTEM_BINDING_LOSS";
+        if (current == "UNRESOLVED" && repeats.Any(x => x.ModelRawNear || x.FirstLoss is "MODEL_WRONG_TEXT" or "MODEL_WRONG_SPAN")) return "MODEL_WRONG_SPAN";
+        return current;
+    }
+
+    private static string CurrentStatus(string firstLoss) => firstLoss switch
+    {
+        "FOUND" => "EXACT_TP",
+        "MODEL_OMISSION" => "MODEL_OMISSION",
+        "MODEL_WRONG_TEXT" or "MODEL_WRONG_SPAN" => "MODEL_WRONG_SPAN",
+        "AMBIGUOUS_DUPLICATE_TEXT" or "SYSTEM_BINDING_LOSS" or "SYSTEM_VALIDATOR_LOSS" or "SYSTEM_PROJECTION_LOSS" => "SYSTEM_LOSS",
+        _ => "UNRESOLVED",
+    };
+
+    private static string CurrentStabilityClassification(IReadOnlyList<string> statuses)
+    {
+        if (statuses.Any(x => x == "SYSTEM_LOSS")) return "SYSTEM_AFFECTED";
+        var omissions = statuses.Count(x => x == "MODEL_OMISSION");
+        if (omissions == 3) return "PERSISTENT_3_OF_3_MISS";
+        if (omissions == 2) return "STOCHASTIC_2_OF_3_MISS";
+        if (omissions == 1 && statuses.Count(x => x == "EXACT_TP") == 2) return "STOCHASTIC_1_OF_3_MISS";
+        if (statuses.All(x => x == "EXACT_TP")) return "ALWAYS_FOUND";
+        return "UNRESOLVED";
+    }
+
+    private static string TraceStage(string firstLoss, bool rawExact, bool bound, bool final) =>
+        final ? "NONE" : firstLoss == "AMBIGUOUS_DUPLICATE_TEXT" || (rawExact && !bound) ? "BINDER_LOSS" : firstLoss == "SYSTEM_VALIDATOR_LOSS" ? "VALIDATOR_LOSS" : firstLoss == "SYSTEM_PROJECTION_LOSS" ? "PROJECTION_LOSS" : "NONE";
+
+    private static bool HasOverlap(string source, string text, StructuralSpan gold)
+    {
+        var offset = 0;
+        while (offset <= source.Length - text.Length)
+        {
+            var start = source.IndexOf(text, offset, StringComparison.Ordinal);
+            if (start < 0) return false;
+            if (start < gold.End && gold.Start < start + text.Length) return true;
+            offset = start + Math.Max(1, text.Length);
+        }
+        return false;
+    }
+
+    private static OracleResidualAttribution BuildOracleResidualAttribution(string repoRoot, IReadOnlyList<JsonElement> selected, IReadOnlyList<FrozenCellAudit> cells, IReadOnlyList<OccurrenceAuditRow> matrix)
+    {
+        var falseNegatives = new List<OracleResidualRow>();
+        var falsePositives = new List<OracleResidualRow>();
+        foreach (var item in selected)
+        {
+            var context = Prepare(repoRoot, item);
+            var documentId = context.DocumentId;
+            var goldPath = Path.Combine(repoRoot, "eval/a99-closed-loop/strict-gold-occurrence-v1", documentId + ".occurrence-gold-v1.json");
+            var gold = ReasoningGoldArtifactLoader.LoadOccurrence(goldPath).Where(x => x.HeadingSpan is not null).ToArray();
+            var goldKeys = gold.Select(x => Key(x.SourceId, x.HeadingSpan!)).ToHashSet(StringComparer.Ordinal);
+            var docCells = cells.Where(x => x.DocumentId == documentId).ToArray();
+            var unionKeys = docCells.SelectMany(x => x.FinalKeys.Keys).ToHashSet(StringComparer.Ordinal);
+            foreach (var occurrence in gold.Where(x => !unionKeys.Contains(Key(x.SourceId, x.HeadingSpan!))))
+            {
+                var key = Key(occurrence.SourceId, occurrence.HeadingSpan!);
+                var row = matrix.Single(x => x.DocumentId == documentId && x.ExactFinalKey == key);
+                var bucket = row.Repeats.Any(x => x.ModelRawExact && !x.Bound) ? "SYSTEM_LOSS" : row.Repeats.Any(x => x.ModelRawNear) ? "MODEL_WRONG_SPAN" : row.Repeats.All(x => x.FirstLoss == "MODEL_OMISSION") ? "PERSISTENT_MODEL_OMISSION" : "UNRESOLVED";
+                falseNegatives.Add(new OracleResidualRow(documentId, key, occurrence.ExactText, bucket, null, row.Repeats.Select(x => x.Repeat).ToArray()));
+            }
+            foreach (var key in unionKeys.Where(x => !goldKeys.Contains(x)))
+            {
+                var supports = docCells.Where(x => x.FinalKeys.ContainsKey(key)).Select(x => $"R{x.Repeat}").OrderBy(x => x, StringComparer.Ordinal).ToArray();
+                var final = docCells.First(x => x.FinalKeys.ContainsKey(key)).FinalKeys[key];
+                var parts = key.Split(':');
+                var sourceId = string.Join(':', parts.Take(parts.Length - 2));
+                var start = int.Parse(parts[^2]);
+                var end = int.Parse(parts[^1]);
+                var goldSameSource = gold.Where(x => x.SourceId == sourceId).ToArray();
+                var sameTextOtherSource = gold.Any(x => x.ExactText == final.Text && x.SourceId != sourceId);
+                var overlap = goldSameSource.FirstOrDefault(x => x.HeadingSpan!.Start < end && start < x.HeadingSpan.End);
+                var bucket = sameTextOtherSource ? "WRONG_SOURCE_DUPLICATE_TEXT" : overlap is not null && start <= overlap.HeadingSpan!.Start && end >= overlap.HeadingSpan.End ? "SUPERSET_GOLD_HEADING" : overlap is not null ? "WRONG_SPAN_SAME_HEADING" : "TRUE_EXTRA";
+                falsePositives.Add(new OracleResidualRow(documentId, key, final.Text, bucket, supports.Length, supports));
+            }
+        }
+        return new OracleResidualAttribution(falseNegatives, falsePositives, matrix.Count - falseNegatives.Count, falsePositives.Count, falseNegatives.Count);
+    }
+
+    private static SelectedResidualBucket SelectResidualBucket(IReadOnlyDictionary<string, int> systemFirstLoss, OracleResidualAttribution oracle)
+    {
+        var system = systemFirstLoss.Sum(x => x.Value);
+        if (system == 0) return new("NONE", 0, false, "No system first-loss stage was proven; no replay is authorized.");
+        return new("SYSTEM_BINDING_LOSS", system, false, "The exact raw proposal is present, but the frozen exact binder rejects ambiguous duplicate text; repairing this requires additional model occurrence evidence and is not a safe post-model fix.");
+    }
+
+    private static bool ConfigMatchesPrediction(JsonElement freeze, JsonElement prediction)
+    {
+        foreach (var property in new[] { "sourceSha256", "promptHash", "schemaHash", "packetHash" })
+            if (!freeze.TryGetProperty(property, out var frozen) || !prediction.TryGetProperty(property, out var current) || !string.Equals(frozen.GetString(), current.GetString(), StringComparison.OrdinalIgnoreCase))
+                return false;
+        return true;
+    }
+
+    private sealed record FrozenCellAudit(string DocumentId, int Repeat, string SourceSha256, string PredictionSha256, string ResultSha256, string Model, string ActualProvider, string SemanticContractVersion, string PromptHash, string SchemaHash, string PacketHash, bool ReasoningEnabled, string PredictionPath, string ResultPath, string FreezePath, bool GoldReadBeforeFreeze, IReadOnlyList<SemanticTextHeading> Raw, IReadOnlySet<string> BoundKeys, IReadOnlyDictionary<string, FinalAuditHeading> FinalKeys, IReadOnlyDictionary<string, string> Losses, RepeatMetric Metric);
+    private sealed record FinalAuditHeading(string Key, string Text);
+    private sealed record RepeatOccurrenceAudit(string Repeat, string FirstLoss, bool ModelRawExact, bool ModelRawNear, bool Bound, bool Validated, bool Projected, bool Final, string? ExactFinalKey, string Stage);
+    private sealed record OccurrenceAuditRow(string DocumentId, string GoldOccurrenceId, string ExactText, string SourceId, int Start, int End, IReadOnlyList<RepeatOccurrenceAudit> Repeats, string CurrentClassification, string ResolvedClassification, string SystemFirstLossStage, string ExactFinalKey, RepeatMetric Metric);
+    private sealed record OccurrenceAttribution(IReadOnlyList<OccurrenceAuditRow> Rows, object Stability);
+    private sealed record OracleResidualRow(string DocumentId, string Key, string Text, string Bucket, int? SupportCount, IReadOnlyList<string> SupportingRepeats);
+    private sealed record OracleResidualAttribution(IReadOnlyList<OracleResidualRow> FalseNegatives, IReadOnlyList<OracleResidualRow> FalsePositives, int UnionTp, int UnionFp, int UnionFn);
+    private sealed record SelectedResidualBucket(string Bucket, int Count, bool Fixable, string WhyFixableGenerically);
+
     private static async Task<RepeatMetric> RunSelfConsistencyRepeatAsync(string repoRoot, string output, DocumentContext context, int repeat, OpenRouterCeilingReasoningModel model, string gitSha, CancellationToken ct)
     {
         var repeatName = $"r{repeat}";

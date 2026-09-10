@@ -1,0 +1,249 @@
+{
+  "schemaVersion": "a99-residual-error-attribution-oracle-residual-v1",
+  "diagnosticOnly": true,
+  "union": {
+    "tp": 144,
+    "fp": 10,
+    "fn": 9
+  },
+  "falseNegatives": [
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "text": "Western Asia",
+      "bucket": "PERSISTENT_MODEL_OMISSION",
+      "supportCount": null,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[158]:56:62",
+      "text": "Agenda",
+      "bucket": "MODEL_WRONG_SPAN",
+      "supportCount": null,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[11]:0:6",
+      "text": "Africa",
+      "bucket": "SYSTEM_LOSS",
+      "supportCount": null,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[17]:0:20",
+      "text": "Asia and the Pacific",
+      "bucket": "SYSTEM_LOSS",
+      "supportCount": null,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "key": "body[1]/p[11]:0:6",
+      "text": "Africa",
+      "bucket": "SYSTEM_LOSS",
+      "supportCount": null,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "key": "body[1]/p[12]:0:20",
+      "text": "Asia and the Pacific",
+      "bucket": "SYSTEM_LOSS",
+      "supportCount": null,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "key": "body[1]/p[18]:0:34",
+      "text": "Commonwealth of Independent States",
+      "bucket": "SYSTEM_LOSS",
+      "supportCount": null,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "key": "body[1]/p[19]:0:31",
+      "text": "Latin America and the Caribbean",
+      "bucket": "SYSTEM_LOSS",
+      "supportCount": null,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "key": "body[1]/p[24]:0:12",
+      "text": "Western Asia",
+      "bucket": "SYSTEM_LOSS",
+      "supportCount": null,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    }
+  ],
+  "falsePositiveRows": [
+    {
+      "documentId": "DOC-0205",
+      "key": "body[1]/p[4]:174:243",
+      "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "bucket": "TRUE_EXTRA",
+      "supportCount": 2,
+      "supportingRepeats": [
+        "R1",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[3]:0:47",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "bucket": "TRUE_EXTRA",
+      "supportCount": 3,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[46]:0:12",
+      "text": "Western Asia",
+      "bucket": "WRONG_SOURCE_DUPLICATE_TEXT",
+      "supportCount": 3,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[175]:0:36",
+      "text": "ICP Technical Advisory Group members",
+      "bucket": "TRUE_EXTRA",
+      "supportCount": 2,
+      "supportingRepeats": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[176]:0:42",
+      "text": "ICP experts, guest speakers, and observers",
+      "bucket": "TRUE_EXTRA",
+      "supportCount": 2,
+      "supportingRepeats": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[177]:0:42",
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "bucket": "TRUE_EXTRA",
+      "supportCount": 2,
+      "supportingRepeats": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[178]:0:10",
+      "text": "World Bank",
+      "bucket": "TRUE_EXTRA",
+      "supportCount": 2,
+      "supportingRepeats": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[4]:0:24",
+      "text": "TECHNICAL ADVISORY GROUP",
+      "bucket": "TRUE_EXTRA",
+      "supportCount": 1,
+      "supportingRepeats": [
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[3]:0:87",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "bucket": "TRUE_EXTRA",
+      "supportCount": 3,
+      "supportingRepeats": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "key": "body[1]/p[115]:0:230",
+      "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "bucket": "SUPERSET_GOLD_HEADING",
+      "supportCount": 2,
+      "supportingRepeats": [
+        "R2",
+        "R3"
+      ]
+    }
+  ],
+  "falseNegativeBuckets": {
+    "PERSISTENT_MODEL_OMISSION": 1,
+    "MODEL_WRONG_SPAN": 1,
+    "SYSTEM_LOSS": 7
+  },
+  "falsePositiveBuckets": {
+    "TRUE_EXTRA": 8,
+    "WRONG_SOURCE_DUPLICATE_TEXT": 1,
+    "SUPERSET_GOLD_HEADING": 1
+  },
+  "falsePositiveStability": {
+    "PRESENT_2_OF_3": 6,
+    "PRESENT_3_OF_3": 3,
+    "PRESENT_1_OF_3": 1
+  },
+  "goldReadBeforeFreeze": false
+}
