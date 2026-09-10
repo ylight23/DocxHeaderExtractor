@@ -229,6 +229,20 @@ public sealed class MultiPassLiveWiringTests
     }
 
     [Fact]
+    public void V4VisualContract_IsFullPageGoldBlindAndDocumentAgnostic()
+    {
+        var prompt = HeadingTargetOntologyV4Contract.SystemPrompt +
+            HeadingTargetOntologyV4Contract.BuildUser("{\"occurrences\":[]}", "ModelCapabilityCeiling");
+
+        Assert.Contains("HEADING_TARGET_ONTOLOGY_V4", OpenRouterQwen37VisualCeilingRunner.VisualPromptContract);
+        Assert.Contains("FULL_PAGE_VISUAL_EVIDENCE", OpenRouterQwen37VisualCeilingRunner.VisualPromptContract);
+        Assert.True(OpenRouterQwen37VisualCeilingRunner.VisualPromptKeepsGoldOut(prompt));
+        Assert.DoesNotContain("DOC-0205", prompt, StringComparison.Ordinal);
+        Assert.DoesNotContain("DOC-0258", prompt, StringComparison.Ordinal);
+        Assert.DoesNotContain("71", prompt, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public async Task PinnedProviderRoute_IsInRequest_WhileCanonicalRequestHashStaysRouteNeutral()
     {
         var first = new CapturingHandler { ResponseContent = "{\"headings\":[]}" };

@@ -1,14 +1,22 @@
 {
-  "schemaVersion": "a99-qwen37-flash-visual-ceiling-contract-v2-v1",
+  "schemaVersion": "a99-qwen37-flash-visual-ceiling-v1",
   "model": "qwen/qwen3.7-flash",
   "provider": "OpenRouter",
   "documentId": "DOC-0205",
+  "visualSource": {
+    "type": "VERIFIED_DERIVED_PDF",
+    "lineage": "DOCX_ONLY",
+    "originalPdf": "NOT_FOUND",
+    "renderMethod": "REUSED_VERIFIED_LIBREOFFICE_PDF_AND_FULL_PAGE_PNG",
+    "renderedPdfSha256": "e740e9b06b55f36396322bf8d4688f547cd7cc89ba66605a049116d9efe50e66"
+  },
   "dataClassification": "PUBLIC",
   "zdrRequested": false,
   "privacyExceptionAuthorized": true,
   "privacyExceptionScope": "FLASH_VISUAL_CEILING_ONLY",
   "modelFallback": "NONE",
-  "visualPromptContract": "CANONICAL_HEADING_TASK_V2;VISUAL_EVIDENCE_SUPPLEMENTS_XML_SOURCE;SOURCE_XML_IS_CANONICAL;NO_GOLD;NO_CANDIDATE_FILTERING;NO_HEURISTIC_HEADING_RULES",
+  "semanticContractVersion": "a99-heading-target-ontology-v4",
+  "visualPromptContract": "HEADING_TARGET_ONTOLOGY_V4;FULL_PAGE_VISUAL_EVIDENCE_SUPPLEMENTS_XML_SOURCE;SOURCE_XML_IS_CANONICAL;NO_GOLD;NO_CANDIDATE_FILTERING;NO_HEURISTIC_HEADING_RULES;REASONING_ENABLED;PUBLIC_NON_ZDR_CAMPAIGN_LOCAL",
   "pageCount": 19,
   "pageCoverage": 1,
   "sourceOwnershipCoverage": 1,
@@ -46,5 +54,5 @@
     }
   },
   "goldReadBeforeFreeze": false,
-  "startedUtc": "2026-09-10T02:03:47.0288715+00:00"
+  "startedUtc": "2026-09-10T04:59:32.3458659+00:00"
 }

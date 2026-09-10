@@ -24,10 +24,10 @@ public static class OpenRouterQwen37VisualCeilingRunner
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string InventoryPath = "eval/a99-dataset/document-inventory.v1.json";
     private const string OutputRoot = "eval/a99-closed-loop/qwen37-flash-visual-ceiling";
-    private const string ControlRoot = "eval/a99-closed-loop/canonical-heading-contract-v2/DOC-0205";
+    private const string ControlRoot = "eval/a99-closed-loop/heading-target-ontology/DOC-0205";
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
-    public const string VisualPromptContract = "CANONICAL_HEADING_TASK_V2;VISUAL_EVIDENCE_SUPPLEMENTS_XML_SOURCE;SOURCE_XML_IS_CANONICAL;NO_GOLD;NO_CANDIDATE_FILTERING;NO_HEURISTIC_HEADING_RULES";
+    public const string VisualPromptContract = "HEADING_TARGET_ONTOLOGY_V4;FULL_PAGE_VISUAL_EVIDENCE_SUPPLEMENTS_XML_SOURCE;SOURCE_XML_IS_CANONICAL;NO_GOLD;NO_CANDIDATE_FILTERING;NO_HEURISTIC_HEADING_RULES;REASONING_ENABLED;PUBLIC_NON_ZDR_CAMPAIGN_LOCAL";
 
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
     {
@@ -36,7 +36,7 @@ public static class OpenRouterQwen37VisualCeilingRunner
         Directory.CreateDirectory(output);
         var item = ReadInventory(Path.Combine(repoRoot, InventoryPath), "DOC-0205");
         var control = VerifyFrozenControl(repoRoot);
-        await WriteJsonAsync(Path.Combine(output, "text-control-reuse.v2.json"), control, ct);
+        await WriteJsonAsync(Path.Combine(output, "text-control-reuse.v1.json"), control, ct);
         if (!control.Valid)
             return await BlockAsync(output, "VLM_EXECUTION_BLOCKED", "TEXT_CONTROL_HASH_OR_SCORE_MISMATCH", control, ct);
 
@@ -45,11 +45,12 @@ public static class OpenRouterQwen37VisualCeilingRunner
             return await BlockAsync(output, "VLM_EXECUTION_BLOCKED", "SOURCE_HASH_MISMATCH", control, ct);
 
         var renderer = DiscoverRenderer();
-        await WriteJsonAsync(Path.Combine(output, "renderer.v2.json"), renderer, ct);
-        var visualRoot = Path.Combine(output, "DOC-0205", "visual-v2");
+        await WriteJsonAsync(Path.Combine(output, "renderer.v1.json"), renderer, ct);
+        var visualRoot = Path.Combine(output, "DOC-0205");
+        var historicalVisualRoot = Path.Combine(output, "DOC-0205", "visual-v2");
         Directory.CreateDirectory(visualRoot);
-        var render = await RenderAndManifestAsync(sourcePath, visualRoot, renderer, ct);
-        await WriteJsonAsync(Path.Combine(visualRoot, "page-manifest.v2.json"), render.Manifest, ct);
+        var render = await LoadVerifiedHistoricalRenderAsync(sourcePath, historicalVisualRoot, renderer, ct);
+        await WriteJsonAsync(Path.Combine(visualRoot, "render-manifest.v1.json"), render.Manifest, ct);
         if (!render.Success)
             return await BlockAsync(output, "DOCX_RENDERER_INSTALLATION_REQUIRED", render.Error ?? "DOCX_LAYOUT_RENDERER_UNAVAILABLE", control, ct,
                 new { renderer, render = render.Manifest });
@@ -61,7 +62,7 @@ public static class OpenRouterQwen37VisualCeilingRunner
         var maxPrompt = 180_000;
         var pack = ReasoningContextBuilder.Build(source, policy, maxPrompt, maxPrompt, expandOwnedPerOccurrence: false);
         var mapping = VisualSourceAlignmentBuilder.Build(pack.Occurrences, render.PageTexts);
-        await WriteJsonAsync(Path.Combine(visualRoot, "visual-source-alignment.v2.json"), mapping, ct);
+        await WriteJsonAsync(Path.Combine(visualRoot, "source-page-alignment.v1.json"), mapping, ct);
         if (!mapping.GatePass)
             return await BlockAsync(output, "VLM_EXECUTION_BLOCKED", "SOURCE_PAGE_ALIGNMENT_GATE_FAILED", control, ct,
                 new { render = render.Manifest, mapping });
@@ -82,10 +83,11 @@ public static class OpenRouterQwen37VisualCeilingRunner
         var capability = await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct);
         await WriteJsonAsync(Path.Combine(output, "campaign-manifest.v1.json"), new
         {
-            schemaVersion = "a99-qwen37-flash-visual-ceiling-contract-v2-v1", model = Model, provider = "OpenRouter",
+            schemaVersion = "a99-qwen37-flash-visual-ceiling-v1", model = Model, provider = "OpenRouter",
             documentId = "DOC-0205", dataClassification = "PUBLIC", zdrRequested = false,
+            visualSource = new { type = "VERIFIED_DERIVED_PDF", lineage = "DOCX_ONLY", originalPdf = "NOT_FOUND", renderMethod = "REUSED_VERIFIED_LIBREOFFICE_PDF_AND_FULL_PAGE_PNG", renderedPdfSha256 = render.Manifest.RenderedPdfSha256 },
             privacyExceptionAuthorized = true, privacyExceptionScope = "FLASH_VISUAL_CEILING_ONLY", modelFallback = "NONE",
-            semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+            semanticContractVersion = HeadingTargetOntologyV4Contract.ProtocolVersion,
             visualPromptContract = VisualPromptContract, pageCount = render.Manifest.PageCount,
             pageCoverage = render.Manifest.Coverage, sourceOwnershipCoverage = mapping.SourceAliasCoverage,
             sourceCharacterCoverage = mapping.SourceCharacterCoverage, alignmentGate = mapping.GateStatus,
@@ -97,12 +99,12 @@ public static class OpenRouterQwen37VisualCeilingRunner
                 new { render = render.Manifest, mapping, capability });
 
         var pages = render.Manifest.Pages.Select(page => new VisualPageEvidence(page.PageIndex, page.ImageHash,
-            File.ReadAllBytes(Path.Combine(visualRoot, "pages", page.FileName)))).ToArray();
+            File.ReadAllBytes(Path.Combine(historicalVisualRoot, "pages", page.FileName)))).ToArray();
         var proposals = new List<ReasoningHeadingProposal>();
         var telemetry = new List<RequestPacketTelemetry>();
         var pageWindows = BuildWindows(pages, mapping, pack.Occurrences);
         var packetAudit = BuildPacketAudit(pageWindows, pages, mapping, pack.Occurrences);
-        await WriteJsonAsync(Path.Combine(visualRoot, "visual-packet-audit.v2.json"), new
+        await WriteJsonAsync(Path.Combine(visualRoot, "visual-packet-audit.v1.json"), new
         {
             invariant = "8_PAGE_WINDOW_TO_1_PAGE_WINDOW_MUST_REDUCE_MODEL_VISIBLE_WORKLOAD",
             windows = packetAudit,
@@ -129,9 +131,9 @@ public static class OpenRouterQwen37VisualCeilingRunner
                 var (response, requestTelemetry) = await model.CompleteVisualSemanticAsync("DOC-0205", ReasoningRoute.ModelCapabilityCeiling.ToString(),
                     requestId, packet.SerializedJson + "\nVISUAL_WINDOW_METADATA=" + metadata, pages.Where(x => window.PageIndices.Contains(x.PageIndex)).ToArray(),
                     packet.SourceTextCharacters, owned.Count, visible.Length,
-                    CanonicalHeadingTaskContractV2.SystemPrompt,
-                    CanonicalHeadingTaskContractV2.BuildUser(packet.SerializedJson, ReasoningRoute.ModelCapabilityCeiling.ToString()),
-                    CanonicalHeadingTaskContractV2.Schema(), "canonical_heading_task_v2", ct);
+                    HeadingTargetOntologyV4Contract.SystemPrompt,
+                    HeadingTargetOntologyV4Contract.BuildUser(packet.SerializedJson, ReasoningRoute.ModelCapabilityCeiling.ToString()),
+                    HeadingTargetOntologyV4Contract.Schema(), "heading_target_ontology_v4_visual", ct);
                 telemetry.Add(requestTelemetry);
                 var bound = 0;
                 foreach (var heading in response.Headings)
@@ -147,7 +149,7 @@ public static class OpenRouterQwen37VisualCeilingRunner
                     bound++;
                 }
                 windowResults.Add(new { window.PageIndices, status = "SUCCESS", packetMetrics, responseCount = response.Headings.Count, boundCount = bound, requestTelemetry });
-                await WriteJsonAsync(Path.Combine(visualRoot, "windows", $"window-{window.PageIndices[0]:0000}-{window.PageIndices[^1]:0000}.v2.json"),
+                await WriteJsonAsync(Path.Combine(visualRoot, "windows", $"window-{window.PageIndices[0]:0000}-{window.PageIndices[^1]:0000}.v1.json"),
                     new { pageIndices = window.PageIndices, sourceOccurrenceIds = window.OccurrenceIds, packetMetrics, response.Headings, boundCount = bound, requestTelemetry, goldReadBeforeFreeze = false }, ct);
             }
             catch (Exception ex) when (ex is ReasoningCompletionException or FormatException or HttpRequestException or JsonException or InvalidOperationException)
@@ -166,7 +168,7 @@ public static class OpenRouterQwen37VisualCeilingRunner
                     unresolvedWindows.Add(new { pageIndices = window.PageIndices, status = "FAILED", error = ex.Message, packetMetrics, failureTelemetry });
                 }
                 windowResults.Add(new { window.PageIndices, status = "FAILED", packetMetrics, error = ex.Message, recovery = window.PageIndices.Count > 1 ? "SPLIT_TO_SINGLE_PAGE" : "UNRESOLVED", failureTelemetry });
-                await WriteJsonAsync(Path.Combine(visualRoot, "windows", $"window-{window.PageIndices[0]:0000}-{window.PageIndices[^1]:0000}.failed.v2.json"),
+                await WriteJsonAsync(Path.Combine(visualRoot, "windows", $"window-{window.PageIndices[0]:0000}-{window.PageIndices[^1]:0000}.failed.v1.json"),
                     new { pageIndices = window.PageIndices, status = "FAILED", packetMetrics, error = ex.Message, recovery = window.PageIndices.Count > 1 ? "SPLIT_TO_SINGLE_PAGE" : "UNRESOLVED", failureTelemetry, goldReadBeforeFreeze = false }, ct);
             }
         }
@@ -178,7 +180,7 @@ public static class OpenRouterQwen37VisualCeilingRunner
             .Select(x => x.OrderByDescending(p => p.Confidence).ThenBy(p => p.SemanticRole, StringComparer.Ordinal).First()).ToArray();
         var materialized = ReasoningProposalMaterializer.Materialize(source, policy, deduped);
         var acceptedIds = materialized.Validated.Where(row => row.Accepted).Select(row => row.ElementId).ToHashSet(StringComparer.Ordinal);
-        var includedIds = deduped.Where(p => CanonicalHeadingTaskContractV2.IsTaskProjectionRole(p.SemanticRole))
+        var includedIds = deduped.Where(p => HeadingTargetOntologyV4Contract.IsTaskRole(p.SemanticRole))
             .Select(ReasoningProposalMaterializer.ElementId).Where(acceptedIds.Contains).ToHashSet(StringComparer.Ordinal);
         var projection = materialized.Structure.Elements.Select(element => new ReasoningProjectionDecision(
             element.Id, includedIds.Contains(element.Id) ? ReasoningTaskProjection.Included : ReasoningTaskProjection.Excluded,
@@ -187,34 +189,37 @@ public static class OpenRouterQwen37VisualCeilingRunner
             .OrderBy(x => x.Sources.Single().SourceOrdinal).ThenBy(x => x.Sources.Single().Span.Start).ThenBy(x => x.Id, StringComparer.Ordinal).ToArray();
         var prediction = new
         {
-            documentId = "DOC-0205", model = Model, semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+            documentId = "DOC-0205", model = Model, semanticContractVersion = HeadingTargetOntologyV4Contract.ProtocolVersion,
             mode = "TEXT_PLUS_VISUAL", executionMode = "PAGE_WINDOW_FULL_COVERAGE",
-            sourceSha256 = item.SourceSha256, pageRenderManifestSha256 = Sha256File(Path.Combine(visualRoot, "page-manifest.v2.json")),
-            mappingSha256 = Sha256File(Path.Combine(visualRoot, "visual-source-alignment.v2.json")), visualPromptContract = VisualPromptContract,
+            sourceSha256 = item.SourceSha256, pageRenderManifestSha256 = Sha256File(Path.Combine(visualRoot, "render-manifest.v1.json")),
+            mappingSha256 = Sha256File(Path.Combine(visualRoot, "source-page-alignment.v1.json")), visualPromptContract = VisualPromptContract,
             rawProposalCount = proposals.Count, validatedSemanticCount = materialized.Validated.Count(x => x.Accepted),
             proposals = deduped, projection, headings = finalElements, goldReadBeforeFreeze = false,
         };
-        var result = new { documentId = "DOC-0205", model = Model, semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+        var result = new { documentId = "DOC-0205", model = Model, semanticContractVersion = HeadingTargetOntologyV4Contract.ProtocolVersion,
             mode = "TEXT_PLUS_VISUAL", headings = finalElements, goldReadBeforeFreeze = false };
-        var predictionPath = Path.Combine(visualRoot, "prediction.v2.json");
-        var resultPath = Path.Combine(visualRoot, "result.v2.json");
+        var predictionPath = Path.Combine(visualRoot, "prediction.v1.json");
+        var resultPath = Path.Combine(visualRoot, "result.v1.json");
         Directory.CreateDirectory(Path.GetDirectoryName(predictionPath)!);
         await WriteJsonAsync(predictionPath, prediction, ct); await WriteJsonAsync(resultPath, result, ct);
         var predictionHash = Sha256File(predictionPath); var resultHash = Sha256File(resultPath);
         var freeze = new
         {
-            documentId = "DOC-0205", model = Model, semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+            documentId = "DOC-0205", model = Model, semanticContractVersion = HeadingTargetOntologyV4Contract.ProtocolVersion,
             actualProvider = telemetry.Select(x => x.ProviderRoute).FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? "NOT_EXPOSED",
-            reasoningConfiguration = new { requested = true, enabled = true, exclude = true }, dataClassification = "PUBLIC", zdrRequested = false,
+            reasoningMode = "R1_CEILING", reasoningConfiguration = new { requested = true, enabled = true, exclude = true }, dataClassification = "PUBLIC", zdrRequested = false,
             privacyExceptionAuthorized = true, privacyExceptionScope = "FLASH_VISUAL_CEILING_ONLY", gitSha = CurrentGitSha(repoRoot),
-            sourceSha256 = item.SourceSha256, pageRenderManifestSha256 = Sha256File(Path.Combine(visualRoot, "page-manifest.v2.json")),
-            mappingSha256 = Sha256File(Path.Combine(visualRoot, "visual-source-alignment.v2.json")), predictionSha256 = predictionHash,
-            resultSha256 = resultHash, promptHash = Sha256Text(CanonicalHeadingTaskContractV2.ProtocolVersion + "\n" + CanonicalHeadingTaskContractV2.SystemPrompt + "\n" + VisualPromptContract),
+            sourceSha256 = item.SourceSha256, visualSourceSha256 = render.Manifest.RenderedPdfSha256,
+            pageCoverage = render.Manifest.Coverage, sourceCoverage = mapping.SourceCharacterCoverage,
+            imageHashes = render.Manifest.Pages.Select(x => new { pageIndex = x.PageIndex, sha256 = x.ImageHash }).ToArray(),
+            pageRenderManifestSha256 = Sha256File(Path.Combine(visualRoot, "render-manifest.v1.json")),
+            mappingSha256 = Sha256File(Path.Combine(visualRoot, "source-page-alignment.v1.json")), predictionSha256 = predictionHash,
+            resultSha256 = resultHash, promptHash = Sha256Text(HeadingTargetOntologyV4Contract.ProtocolVersion + "\n" + HeadingTargetOntologyV4Contract.SystemPrompt + "\n" + VisualPromptContract),
             providerAttempts = model.ProviderCalls, reasoningTokens = telemetry.Sum(x => x.ReportedReasoningTokens ?? 0),
             inputTokens = telemetry.Sum(x => x.ReportedInputTokens ?? 0), outputTokens = telemetry.Sum(x => x.ReportedOutputTokens ?? 0),
             finishReasons = telemetry.Select(x => x.FinishReason).ToArray(), telemetry, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow,
         };
-        var freezePath = Path.Combine(visualRoot, "freeze.v2.json");
+        var freezePath = Path.Combine(visualRoot, "freeze.v1.json");
         await WriteJsonAsync(freezePath, freeze, ct);
         if (Sha256File(predictionPath) != predictionHash || Sha256File(resultPath) != resultHash)
             return await BlockAsync(output, "VLM_EXECUTION_BLOCKED", "FREEZE_HASH_VERIFICATION_FAILED", control, ct);
@@ -226,35 +231,41 @@ public static class OpenRouterQwen37VisualCeilingRunner
         var score = Score(goldKeys, predictionKeys);
         var losses = ClassifyLosses(gold, deduped, materialized, finalElements, projection).GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count(), StringComparer.Ordinal);
         var systemLoss = losses.Where(x => x.Key.StartsWith("SYSTEM_", StringComparison.Ordinal)).Sum(x => x.Value);
-        await WriteJsonAsync(Path.Combine(visualRoot, "score.v2.json"), new
+        await WriteJsonAsync(Path.Combine(visualRoot, "score.v1.json"), new
         {
             documentId = "DOC-0205", exactStatus = "EVALUABLE", tp = score.TP, fp = score.FP, fn = score.FN,
             precision = score.P, recall = score.R, f1 = score.F1, lossCounts = losses, systemVisualAlignmentLoss = 0,
             systemBindingLoss = losses.GetValueOrDefault("SYSTEM_BINDING_LOSS"), systemValidatorLoss = losses.GetValueOrDefault("SYSTEM_VALIDATOR_LOSS"),
             systemProjectionLoss = losses.GetValueOrDefault("SYSTEM_PROJECTION_LOSS"), systemLossCount = systemLoss, goldReadBeforeFreeze = false,
         }, ct);
-        await WriteJsonAsync(Path.Combine(visualRoot, "first-loss.v2.json"), new { documentId = "DOC-0205", losses, goldReadBeforeFreeze = false }, ct);
-        var delta = new { deltaTP = score.TP, deltaFP = score.FP - 101, deltaFN = score.FN - 71, deltaRecall = score.R - 0d, deltaF1 = score.F1, deltaModelOmission = losses.GetValueOrDefault("MODEL_OMISSION") - 51 };
+        await WriteJsonAsync(Path.Combine(visualRoot, "first-loss.v1.json"), new { documentId = "DOC-0205", losses, goldReadBeforeFreeze = false }, ct);
+        var delta = new { deltaTP = score.TP, deltaFP = score.FP - 17, deltaFN = score.FN - 71, deltaRecall = score.R, deltaF1 = score.F1, deltaModelOmission = losses.GetValueOrDefault("MODEL_OMISSION") - 71 };
         var classification = score.TP >= 10 && score.FN + 10 < 71 && score.F1 > 0.1
             ? "VISUAL_EVIDENCE_RECOVERS_STRUCTURE"
-            : score.TP > 0 && score.F1 < .769231 ? "VISUAL_EVIDENCE_RECALL_UP_PRECISION_TRADEOFF" : "VISUAL_EVIDENCE_NO_MATERIAL_GAIN";
-        await WriteJsonAsync(Path.Combine(output, "visual-v2-vs-text-comparison.json"), new
+            : score.TP > 0 && score.R > 0 ? "VISUAL_EVIDENCE_RECALL_UP_PRECISION_TRADEOFF" : "VISUAL_EVIDENCE_NO_MATERIAL_GAIN";
+        await WriteJsonAsync(Path.Combine(output, "comparison.v1.json"), new
         {
-            schemaVersion = "a99-qwen37-flash-visual-ceiling-contract-v2-v1", textControl = new { tp = 0, fp = 101, fn = 71, f1 = 0, modelOmission = 51, spanError = 20, systemLoss = 0, frozen = true },
+            schemaVersion = "a99-qwen37-flash-visual-ceiling-v1", textControl = new { tp = 0, fp = 17, fn = 71, f1 = 0, modelOmission = 71, spanError = 0, systemLoss = 0, frozen = true },
             visual = new { tp = score.TP, fp = score.FP, fn = score.FN, precision = score.P, recall = score.R, f1 = score.F1, lossCounts = losses },
             delta, pageCoverage = render.Manifest.Coverage, sourceOwnershipCoverage = mapping.SourceAliasCoverage,
             sourceCharacterCoverage = mapping.SourceCharacterCoverage, unmappedVisualRegions = 0, providerNotHeldConstant = false,
             classification, goldReadBeforeFreeze = false, windowResults,
         }, ct);
-        await WriteJsonAsync(Path.Combine(output, "summary.v2.json"), new
+        await WriteJsonAsync(Path.Combine(output, "summary.v1.json"), new
         {
             schemaVersion = "a99-qwen37-flash-visual-ceiling-v1", primaryClassification = classification, model = Model,
-            textControl = new { tp = 0, fp = 101, fn = 71, f1 = 0, modelOmission = 51, spanError = 20, systemLoss = 0 },
-            visual = new { tp = score.TP, fp = score.FP, fn = score.FN, precision = score.P, recall = score.R, f1 = score.F1, modelOmission = losses.GetValueOrDefault("MODEL_OMISSION"), spanError = losses.GetValueOrDefault("MODEL_SPAN_ERROR"), systemLoss },
+            textControl = new { tp = 0, fp = 17, fn = 71, f1 = 0, modelOmission = 71, spanError = 0, systemLoss = 0 },
+            visual = new { tp = score.TP, fp = score.FP, fn = score.FN, precision = score.P, recall = score.R, f1 = score.F1, modelOmission = losses.GetValueOrDefault("MODEL_OMISSION"), spanError = losses.GetValueOrDefault("MODEL_WRONG_SPAN"), systemLoss },
             delta, pageCount = render.Manifest.PageCount, pageCoverage = render.Manifest.Coverage, sourceOwnershipCoverage = mapping.SourceAliasCoverage,
             sourceCharacterCoverage = mapping.SourceCharacterCoverage, unmappedVisualRegions = 0,
             reasoningTokens = telemetry.Sum(x => x.ReportedReasoningTokens ?? 0), wallTimeMs = telemetry.Sum(x => x.ElapsedMs),
             goldReadBeforeFreeze = false, completedUtc = DateTimeOffset.UtcNow,
+        }, ct);
+        await WriteJsonAsync(Path.Combine(visualRoot, "execution.v1.json"), new
+        {
+            documentId = "DOC-0205", model = Model, status = "EVALUABLE", mode = "TEXT_PLUS_VISUAL_V4",
+            providerCalls = model.ProviderCalls, telemetry, windowResults, pageCoverage = render.Manifest.Coverage,
+            sourceCoverage = mapping.SourceCharacterCoverage, goldReadBeforeFreeze = false,
         }, ct);
         Console.WriteLine($"FINAL_CLASSIFICATION={classification}");
         return 0;
@@ -326,6 +337,37 @@ public static class OpenRouterQwen37VisualCeilingRunner
         return 0;
     }
 
+    private static async Task<RenderResult> LoadVerifiedHistoricalRenderAsync(string sourcePath, string historicalRoot, RendererAudit renderer, CancellationToken ct)
+    {
+        var manifestPath = Path.Combine(historicalRoot, "page-manifest.v2.json");
+        var pagesPath = Path.Combine(historicalRoot, "pages");
+        var pdfPath = Directory.Exists(Path.Combine(historicalRoot, "render", "pass-1"))
+            ? Directory.EnumerateFiles(Path.Combine(historicalRoot, "render", "pass-1"), "*.pdf").SingleOrDefault()
+            : null;
+        if (!File.Exists(manifestPath) || !File.Exists(sourcePath) || pdfPath is null)
+            return new RenderResult(false, "DOCX_LAYOUT_RENDERER_UNAVAILABLE", EmptyManifest(sourcePath), Array.Empty<string>(), renderer);
+
+        var manifest = JsonSerializer.Deserialize<PageManifest>(await File.ReadAllTextAsync(manifestPath, ct), JsonOptions);
+        if (manifest is null || !manifest.Deterministic || manifest.PageCount != manifest.Pages.Count ||
+            !string.Equals(manifest.SourceDocxSha256, Sha256File(sourcePath), StringComparison.OrdinalIgnoreCase) ||
+            !string.Equals(manifest.RenderedPdfSha256, Sha256File(pdfPath), StringComparison.OrdinalIgnoreCase))
+            return new RenderResult(false, "VISUAL_SOURCE_NOT_FAITHFUL", EmptyManifest(sourcePath), Array.Empty<string>(), renderer);
+
+        foreach (var page in manifest.Pages)
+        {
+            var imagePath = Path.Combine(pagesPath, page.FileName);
+            if (!File.Exists(imagePath) || !string.Equals(page.ImageHash, Sha256File(imagePath), StringComparison.OrdinalIgnoreCase))
+                return new RenderResult(false, "VISUAL_SOURCE_NOT_FAITHFUL", EmptyManifest(sourcePath), Array.Empty<string>(), renderer);
+        }
+
+        using var pdf = PdfDocument.Open(pdfPath);
+        if (pdf.NumberOfPages != manifest.PageCount)
+            return new RenderResult(false, "VISUAL_SOURCE_NOT_FAITHFUL", EmptyManifest(sourcePath), Array.Empty<string>(), renderer);
+        var pageTexts = Enumerable.Range(1, pdf.NumberOfPages).Select(index => pdf.GetPage(index).Text).ToArray();
+        var verified = manifest with { ManifestHash = Sha256File(manifestPath) };
+        return new RenderResult(true, null, verified, pageTexts, renderer with { CapabilityStatus = "AVAILABLE_VERIFIED_HISTORICAL_RENDER" });
+    }
+
     private static async Task<RenderResult> RenderAndManifestAsync(string sourcePath, string output, RendererAudit renderer, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(renderer.Executable))
@@ -389,20 +431,11 @@ public static class OpenRouterQwen37VisualCeilingRunner
 
     private static IReadOnlyList<VisualWindow> BuildWindows(IReadOnlyList<VisualPageEvidence> pages, VisualSourceAlignmentManifest mapping, IReadOnlyList<ReasoningSourceOccurrence> occurrences)
     {
-        var result = new List<VisualWindow>();
-        for (var start = 0; start < pages.Count; start += 8)
-        {
-            var selected = pages.Skip(start).Take(8).ToArray();
-            var entries = mapping.Aliases.Where(x => selected.Any(p => p.PageIndex == x.PageIndex)).ToArray();
-            var ranges = entries.GroupBy(x => x.SourceOccurrenceId, StringComparer.Ordinal)
-                .ToDictionary(g => g.Key, g => (g.Min(x => x.VisibleStartCharacter), g.Max(x => x.VisibleEndCharacter)), StringComparer.Ordinal);
-            var ids = ranges.Keys.OrderBy(id => occurrences.Single(x => x.SourceOccurrenceId == id).SourceOrdinal, Comparer<int>.Default).ToArray();
-            // Keep empty-source pages in the visual schedule as well. They still need to be
-            // observed for pageCoverage=1.0; an empty XML packet makes the model unable to invent
-            // a source heading while preserving the page-level visual audit trail.
-            result.Add(new VisualWindow(selected.Select(x => x.PageIndex).ToArray(), ids, ranges, ranges));
-        }
-        return result;
+        // The verified historical run already established that the 8-page request shape can
+        // return incomplete structured output.  The clean V4 measurement therefore uses one
+        // independent full-page request per page.  This is page partitioning, not a second
+        // semantic/review pass, and preserves pageCoverage=1.0 without candidate crops.
+        return pages.Select(page => BuildSinglePageWindow(page.PageIndex, pages, mapping, occurrences)).ToArray();
     }
 
     private static VisualWindow BuildSinglePageWindow(int pageIndex, IReadOnlyList<VisualPageEvidence> pages, VisualSourceAlignmentManifest mapping, IReadOnlyList<ReasoningSourceOccurrence> occurrences)
@@ -496,13 +529,13 @@ public static class OpenRouterQwen37VisualCeilingRunner
     private static ControlReuse VerifyFrozenControl(string repoRoot)
     {
         var root = Path.Combine(repoRoot, ControlRoot.Replace('/', Path.DirectorySeparatorChar));
-        var freeze = Path.Combine(root, "freeze.v2.json"); var prediction = Path.Combine(root, "prediction.v2.json"); var result = Path.Combine(root, "result.v2.json"); var score = Path.Combine(root, "score.v2.json");
+        var freeze = Path.Combine(root, "freeze.v1.json"); var prediction = Path.Combine(root, "prediction.v1.json"); var result = Path.Combine(root, "result.v1.json"); var score = Path.Combine(root, "score.v1.json");
         if (!File.Exists(freeze) || !File.Exists(prediction) || !File.Exists(result) || !File.Exists(score)) return new(false, "MISSING_CONTROL_ARTIFACT", null, null, null, null, null);
         using var freezeJson = JsonDocument.Parse(File.ReadAllText(freeze)); using var scoreJson = JsonDocument.Parse(File.ReadAllText(score));
         var predHash = freezeJson.RootElement.GetProperty("predictionSha256").GetString(); var resultHash = freezeJson.RootElement.GetProperty("resultSha256").GetString();
         var ok = string.Equals(predHash, Sha256File(prediction), StringComparison.OrdinalIgnoreCase) && string.Equals(resultHash, Sha256File(result), StringComparison.OrdinalIgnoreCase) &&
-            scoreJson.RootElement.GetProperty("tp").GetInt32() == 0 && scoreJson.RootElement.GetProperty("fp").GetInt32() == 101 && scoreJson.RootElement.GetProperty("fn").GetInt32() == 71 && !freezeJson.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean();
-        return new(ok, ok ? "FROZEN_CONTRACT_V2_CONTROL_REUSED" : "CONTROL_MISMATCH", Sha256File(prediction), Sha256File(result), 0, 101, 71);
+            scoreJson.RootElement.GetProperty("tp").GetInt32() == 0 && scoreJson.RootElement.GetProperty("fp").GetInt32() == 17 && scoreJson.RootElement.GetProperty("fn").GetInt32() == 71 && !freezeJson.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean();
+        return new(ok, ok ? "FROZEN_HEADING_TARGET_ONTOLOGY_V4_CONTROL_REUSED" : "CONTROL_MISMATCH", Sha256File(prediction), Sha256File(result), 0, 17, 71);
     }
 
     private static IEnumerable<string> ClassifyLosses(IReadOnlyList<ReasoningGoldOccurrence> gold, IReadOnlyList<ReasoningHeadingProposal> proposals, (ValidatedStructure Structure, IReadOnlyList<ReasoningValidatedProposal> Validated) materialized, IReadOnlyList<ValidatedStructuralElement> finalElements, IReadOnlyList<ReasoningProjectionDecision> projection)
@@ -512,7 +545,7 @@ public static class OpenRouterQwen37VisualCeilingRunner
         {
             var key = Key(item.SourceId, item.HeadingSpan!); if (predicted.Contains(key)) continue;
             var exact = proposals.FirstOrDefault(p => Key(p.SourceId, p.HeadingSpan) == key);
-            if (exact is null) { var near = proposals.Any(p => p.SourceId == item.SourceId && (p.HeadingSpan.Start == item.HeadingSpan!.Start || p.Text.Contains(item.ExactText, StringComparison.Ordinal))); yield return near ? "MODEL_SPAN_ERROR" : "MODEL_OMISSION"; continue; }
+            if (exact is null) { var near = proposals.Any(p => p.SourceId == item.SourceId && (p.HeadingSpan.Start == item.HeadingSpan!.Start || p.Text.Contains(item.ExactText, StringComparison.Ordinal))); yield return near ? "MODEL_WRONG_SPAN" : "MODEL_OMISSION"; continue; }
             var id = ReasoningProposalMaterializer.ElementId(exact); if (!rows.TryGetValue(id, out var row) || !row.Accepted) yield return "SYSTEM_VALIDATOR_LOSS"; else if (projection.Single(x => x.ProposalId == id).Status == ReasoningTaskProjection.Excluded) yield return "SYSTEM_PROJECTION_LOSS"; else yield return "SYSTEM_BINDING_LOSS";
         }
         foreach (var element in finalElements) if (!gold.Any(item => item.HeadingSpan is not null && Key(item.SourceId, item.HeadingSpan!) == Key(element.Sources.Single().SourceId, element.Sources.Single().Span))) yield return proposals.Any(p => Key(p.SourceId, p.HeadingSpan) == Key(element.Sources.Single().SourceId, element.Sources.Single().Span)) ? "MODEL_FALSE_POSITIVE" : "SYSTEM_BINDING_LOSS";

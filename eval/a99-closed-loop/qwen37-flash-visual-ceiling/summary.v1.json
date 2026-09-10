@@ -4,38 +4,39 @@
   "model": "qwen/qwen3.7-flash",
   "textControl": {
     "tp": 0,
-    "fp": 73,
+    "fp": 17,
     "fn": 71,
     "f1": 0,
-    "modelOmission": 70,
-    "spanError": 1,
+    "modelOmission": 71,
+    "spanError": 0,
     "systemLoss": 0
   },
   "visual": {
     "tp": 0,
-    "fp": 32,
+    "fp": 104,
     "fn": 71,
     "precision": 0,
     "recall": 0,
     "f1": 0,
-    "modelOmission": 66,
-    "spanError": 5,
+    "modelOmission": 68,
+    "spanError": 3,
     "systemLoss": 0
   },
   "delta": {
     "deltaTP": 0,
-    "deltaFP": -41,
+    "deltaFP": 87,
     "deltaFN": 0,
     "deltaRecall": 0,
     "deltaF1": 0,
-    "deltaModelOmission": -4
+    "deltaModelOmission": -3
   },
   "pageCount": 19,
   "pageCoverage": 1,
   "sourceOwnershipCoverage": 1,
+  "sourceCharacterCoverage": 1,
   "unmappedVisualRegions": 0,
-  "reasoningTokens": 86344,
-  "wallTimeMs": 1328874,
+  "reasoningTokens": 23220,
+  "wallTimeMs": 500259,
   "goldReadBeforeFreeze": false,
-  "completedUtc": "2026-09-09T18:38:12.9569178+00:00"
+  "completedUtc": "2026-09-10T05:07:53.893816+00:00"
 }
