@@ -1,0 +1,3164 @@
+{
+  "schemaVersion": "a99-doc0205-contract-audit-summary-v1",
+  "documentId": "DOC-0205",
+  "providerCalls": 0,
+  "gold": {
+    "headings": 71,
+    "groups": {
+      "note": "Observable frozen Gold role/shape groups; examples are exact Gold texts.",
+      "groups": [
+        {
+          "role": "chapter",
+          "shape": "PARTIAL_IR_LINE",
+          "count": 5,
+          "examples": [
+            "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+            "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+            "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+            "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+            "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH"
+          ]
+        },
+        {
+          "role": "article",
+          "shape": "WHOLE_IR_LINE",
+          "count": 45,
+          "examples": [
+            "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+            "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+            "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+            "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+            "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u"
+          ]
+        },
+        {
+          "role": "section",
+          "shape": "WHOLE_IR_LINE",
+          "count": 9,
+          "examples": [
+            "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+            "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+            "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+            "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+            "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+          ]
+        },
+        {
+          "role": "article",
+          "shape": "PARTIAL_IR_LINE",
+          "count": 12,
+          "examples": [
+            "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+            "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+            "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+            "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+            "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+          ]
+        }
+      ]
+    }
+  },
+  "flashTextIr": {
+    "raw": 71,
+    "bound": 58,
+    "tp": 1,
+    "fp": 57,
+    "fn": 70,
+    "f1": 0.015503875968992246,
+    "whyRawToBoundLost13": {
+      "kind": "TEXT_IR",
+      "rawProposalCount": 71,
+      "persistedBoundCount": 58,
+      "unboundCount": 13,
+      "validModelProposalLostBySystem": 0,
+      "invalidModelProposal": 0,
+      "unresolved": 13,
+      "status": "UNRESOLVED_RAW_OUTPUT_NOT_PERSISTED",
+      "reason": "Frozen prediction persists bound canonical proposals and the aggregate count, but not the raw rejected line-address objects; no valid-vs-invalid attribution is provable offline.",
+      "systemLossAttribution": "NONE_PROVEN"
+    }
+  },
+  "flashVlm": {
+    "raw": 78,
+    "bound": 61,
+    "tp": 0,
+    "fp": 61,
+    "fn": 71,
+    "f1": 0,
+    "whyRawToBoundLost17": {
+      "kind": "VLM",
+      "rawProposalCount": 78,
+      "persistedBoundCount": 61,
+      "unboundCount": 17,
+      "validModelProposalLostBySystem": 0,
+      "invalidModelProposal": 0,
+      "unresolved": 17,
+      "status": "UNRESOLVED_RAW_OUTPUT_NOT_PERSISTED",
+      "reason": "Frozen prediction persists bound canonical proposals and the aggregate count, but not the raw rejected line-address objects; no valid-vs-invalid attribution is provable offline.",
+      "systemLossAttribution": "NONE_PROVEN"
+    }
+  },
+  "flashGroups": {
+    "textIr": {
+      "note": "Observable frozen Flash prediction role/IR-shape groups; not Gold-derived.",
+      "groups": [
+        {
+          "role": "ARTICLE",
+          "shape": "WHOLE_IR_LINE",
+          "count": 1,
+          "examples": [
+            "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng"
+          ]
+        },
+        {
+          "role": "ARTICLE",
+          "shape": "PARTIAL_IR_LINE",
+          "count": 45,
+          "examples": [
+            "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ",
+            "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0",
+            "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v",
+            "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chi",
+            "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1"
+          ]
+        },
+        {
+          "role": "CHAPTER",
+          "shape": "PARTIAL_IR_LINE",
+          "count": 3,
+          "examples": [
+            "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE ",
+            "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE",
+            "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA"
+          ]
+        },
+        {
+          "role": "SECTION",
+          "shape": "PARTIAL_IR_LINE",
+          "count": 9,
+          "examples": [
+            "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF",
+            "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D",
+            "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 ",
+            "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA",
+            "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6"
+          ]
+        }
+      ]
+    },
+    "vlm": {
+      "note": "Observable frozen Flash prediction role/IR-shape groups; not Gold-derived.",
+      "groups": [
+        {
+          "role": "DOCUMENT_TITLE",
+          "shape": "PARTIAL_IR_LINE",
+          "count": 1,
+          "examples": [
+            "Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________"
+          ]
+        },
+        {
+          "role": "ARTICLE",
+          "shape": "PARTIAL_IR_LINE",
+          "count": 47,
+          "examples": [
+            "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u c",
+            "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p",
+            "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB",
+            "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0",
+            "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 "
+          ]
+        },
+        {
+          "role": "SECTION",
+          "shape": "PARTIAL_IR_LINE",
+          "count": 9,
+          "examples": [
+            "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN",
+            "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1",
+            "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0",
+            "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA ",
+            "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA"
+          ]
+        },
+        {
+          "role": "CHAPTER",
+          "shape": "WHOLE_IR_LINE",
+          "count": 1,
+          "examples": [
+            "Ch\u01B0\u01A1ng III"
+          ]
+        },
+        {
+          "role": "CHAPTER",
+          "shape": "PARTIAL_IR_LINE",
+          "count": 3,
+          "examples": [
+            "TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE",
+            "QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA ",
+            "\u0110I\u1EC0U KHO\u1EA2N THI H\u00C0N"
+          ]
+        }
+      ]
+    }
+  },
+  "roleTaxonomyAudit": {
+    "goldRoleAuthority": {
+      "article": 57,
+      "chapter": 5,
+      "section": 9
+    },
+    "existenceMismatch": "NOT_PROVEN",
+    "roleTaxonomyMismatch": "NOT_PROVEN",
+    "projectionMismatch": "NOT_PROVEN"
+  },
+  "goldIrRoundtrip": {
+    "mapped": 71,
+    "unmapped": 0
+  },
+  "fnCausalBreakdown": {
+    "modeL_WRONG_SPAN": 56,
+    "modeL_TRUE_OMISSION": 14,
+    "modeL_WRONG_OCCURRENCE": 0,
+    "unresolved": 0
+  },
+  "fpCausalBreakdown": {
+    "wronG_SPAN_OF_GOLD": 56,
+    "partiaL_GOLD_HEADING": 0,
+    "superseT_OF_GOLD_HEADING": 0,
+    "samE_TEXT_WRONG_OCCURRENCE": 0,
+    "truE_SEMANTIC_EXTRA": 1,
+    "unresolved": 0
+  },
+  "semanticCorrespondence": {
+    "exactCorrespondence": 1,
+    "wrongSpanCorrespondence": 56,
+    "wrongLineCorrespondence": 0,
+    "wrongOccurrenceCorrespondence": 0,
+    "semanticOnlyCorrespondence": 0,
+    "trueOmission": 14,
+    "trueExtra": 1,
+    "unresolved": 0,
+    "semanticPresenceRecall": 0.8028169014084507,
+    "goldRows": [
+      {
+        "goldOrdinal": 0,
+        "goldText": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+        "goldRole": "chapter",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 645,
+          "end": 668
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 1,
+        "goldText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 669,
+          "end": 695
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 2,
+        "goldText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 1337,
+          "end": 1362
+        },
+        "correspondence": "EXACT_CANONICAL_SPAN",
+        "isExactFn": false,
+        "fnPrimaryFirstLoss": null,
+        "predictionOrdinal": 0,
+        "predictionText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 1337,
+          "end": 1362
+        }
+      },
+      {
+        "goldOrdinal": 3,
+        "goldText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 1629,
+          "end": 1654
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 1,
+        "predictionText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 1629,
+          "end": 1651
+        }
+      },
+      {
+        "goldOrdinal": 4,
+        "goldText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 4361,
+          "end": 4409
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 2,
+        "predictionText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 4361,
+          "end": 4399
+        }
+      },
+      {
+        "goldOrdinal": 5,
+        "goldText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 4626,
+          "end": 4689
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 3,
+        "predictionText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 4626,
+          "end": 4672
+        }
+      },
+      {
+        "goldOrdinal": 6,
+        "goldText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 6603,
+          "end": 6645
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 4,
+        "predictionText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chi",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 6603,
+          "end": 6633
+        }
+      },
+      {
+        "goldOrdinal": 7,
+        "goldText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 8146,
+          "end": 8206
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 5,
+        "predictionText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 8146,
+          "end": 8188
+        }
+      },
+      {
+        "goldOrdinal": 8,
+        "goldText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 9298,
+          "end": 9332
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 6,
+        "predictionText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 9298,
+          "end": 9328
+        }
+      },
+      {
+        "goldOrdinal": 9,
+        "goldText": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "goldRole": "chapter",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 9843,
+          "end": 9978
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 7,
+        "predictionText": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE ",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 9843,
+          "end": 9974
+        }
+      },
+      {
+        "goldOrdinal": 10,
+        "goldText": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+        "goldRole": "section",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 9979,
+          "end": 10039
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 8,
+        "predictionText": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 9979,
+          "end": 10037
+        }
+      },
+      {
+        "goldOrdinal": 11,
+        "goldText": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 10040,
+          "end": 10112
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 12,
+        "goldText": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 10904,
+          "end": 10952
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 9,
+        "predictionText": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 ",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 10904,
+          "end": 10942
+        }
+      },
+      {
+        "goldOrdinal": 13,
+        "goldText": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 11449,
+          "end": 11494
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 10,
+        "predictionText": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 11449,
+          "end": 11491
+        }
+      },
+      {
+        "goldOrdinal": 14,
+        "goldText": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 13065,
+          "end": 13146
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 15,
+        "goldText": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 14829,
+          "end": 14859
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 11,
+        "predictionText": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 14829,
+          "end": 14855
+        }
+      },
+      {
+        "goldOrdinal": 16,
+        "goldText": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+        "goldRole": "section",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 15558,
+          "end": 15618
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 12,
+        "predictionText": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 15558,
+          "end": 15612
+        }
+      },
+      {
+        "goldOrdinal": 17,
+        "goldText": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 15619,
+          "end": 15691
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 18,
+        "goldText": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 16890,
+          "end": 16963
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 19,
+        "goldText": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 17527,
+          "end": 17571
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 13,
+        "predictionText": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy t",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 17527,
+          "end": 17561
+        }
+      },
+      {
+        "goldOrdinal": 20,
+        "goldText": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+        "goldRole": "section",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 19329,
+          "end": 19367
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 14,
+        "predictionText": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 ",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 19329,
+          "end": 19363
+        }
+      },
+      {
+        "goldOrdinal": 21,
+        "goldText": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 19368,
+          "end": 19428
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 15,
+        "predictionText": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 19368,
+          "end": 19414
+        }
+      },
+      {
+        "goldOrdinal": 22,
+        "goldText": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 20463,
+          "end": 20520
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 16,
+        "predictionText": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 20463,
+          "end": 20505
+        }
+      },
+      {
+        "goldOrdinal": 23,
+        "goldText": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 21486,
+          "end": 21553
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 17,
+        "predictionText": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 21486,
+          "end": 21532
+        }
+      },
+      {
+        "goldOrdinal": 24,
+        "goldText": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 22765,
+          "end": 22832
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 18,
+        "predictionText": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 22765,
+          "end": 22807
+        }
+      },
+      {
+        "goldOrdinal": 25,
+        "goldText": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 23401,
+          "end": 23472
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 26,
+        "goldText": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "goldRole": "section",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 23745,
+          "end": 23802
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 19,
+        "predictionText": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 23745,
+          "end": 23791
+        }
+      },
+      {
+        "goldOrdinal": 27,
+        "goldText": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 23803,
+          "end": 23854
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 20,
+        "predictionText": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 23803,
+          "end": 23841
+        }
+      },
+      {
+        "goldOrdinal": 28,
+        "goldText": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 24158,
+          "end": 24194
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 21,
+        "predictionText": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 24158,
+          "end": 24188
+        }
+      },
+      {
+        "goldOrdinal": 29,
+        "goldText": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 25199,
+          "end": 25231
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 22,
+        "predictionText": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 25199,
+          "end": 25229
+        }
+      },
+      {
+        "goldOrdinal": 30,
+        "goldText": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 26019,
+          "end": 26074
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 23,
+        "predictionText": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 ch",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 26019,
+          "end": 26061
+        }
+      },
+      {
+        "goldOrdinal": 31,
+        "goldText": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 27351,
+          "end": 27400
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 24,
+        "predictionText": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB ",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 27351,
+          "end": 27393
+        }
+      },
+      {
+        "goldOrdinal": 32,
+        "goldText": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 28415,
+          "end": 28456
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 25,
+        "predictionText": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB ",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 28415,
+          "end": 28449
+        }
+      },
+      {
+        "goldOrdinal": 33,
+        "goldText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 29974,
+          "end": 30039
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 26,
+        "predictionText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 29974,
+          "end": 30016
+        }
+      },
+      {
+        "goldOrdinal": 34,
+        "goldText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 30572,
+          "end": 30622
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 27,
+        "predictionText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chi",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 30572,
+          "end": 30610
+        }
+      },
+      {
+        "goldOrdinal": 35,
+        "goldText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 32357,
+          "end": 32413
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 28,
+        "predictionText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, c",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 32357,
+          "end": 32399
+        }
+      },
+      {
+        "goldOrdinal": 36,
+        "goldText": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+        "goldRole": "chapter",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 32768,
+          "end": 32822
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 29,
+        "predictionText": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 32768,
+          "end": 32817
+        }
+      },
+      {
+        "goldOrdinal": 37,
+        "goldText": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "goldRole": "section",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 32823,
+          "end": 32862
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 30,
+        "predictionText": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 32823,
+          "end": 32861
+        }
+      },
+      {
+        "goldOrdinal": 38,
+        "goldText": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 32863,
+          "end": 32994
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 31,
+        "predictionText": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 32863,
+          "end": 32977
+        }
+      },
+      {
+        "goldOrdinal": 39,
+        "goldText": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 34108,
+          "end": 34247
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 32,
+        "predictionText": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh p",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 34108,
+          "end": 34223
+        }
+      },
+      {
+        "goldOrdinal": 40,
+        "goldText": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+        "goldRole": "section",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 35467,
+          "end": 35498
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 33,
+        "predictionText": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECAN",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 35467,
+          "end": 35497
+        }
+      },
+      {
+        "goldOrdinal": 41,
+        "goldText": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 35499,
+          "end": 35546
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 34,
+        "predictionText": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 35499,
+          "end": 35537
+        }
+      },
+      {
+        "goldOrdinal": 42,
+        "goldText": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 36126,
+          "end": 36182
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 35,
+        "predictionText": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c ch",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 36126,
+          "end": 36168
+        }
+      },
+      {
+        "goldOrdinal": 43,
+        "goldText": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 36916,
+          "end": 36963
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 36,
+        "predictionText": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 36916,
+          "end": 36954
+        }
+      },
+      {
+        "goldOrdinal": 44,
+        "goldText": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+        "goldRole": "section",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 37929,
+          "end": 37972
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 37,
+        "predictionText": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 37929,
+          "end": 37971
+        }
+      },
+      {
+        "goldOrdinal": 45,
+        "goldText": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 37973,
+          "end": 38029
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 38,
+        "predictionText": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 37973,
+          "end": 38019
+        }
+      },
+      {
+        "goldOrdinal": 46,
+        "goldText": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 38781,
+          "end": 38832
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 39,
+        "predictionText": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 38781,
+          "end": 38823
+        }
+      },
+      {
+        "goldOrdinal": 47,
+        "goldText": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 39241,
+          "end": 39285
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 40,
+        "predictionText": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 39241,
+          "end": 39279
+        }
+      },
+      {
+        "goldOrdinal": 48,
+        "goldText": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 40307,
+          "end": 40359
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 49,
+        "goldText": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "goldRole": "section",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 40706,
+          "end": 40745
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 42,
+        "predictionText": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 40706,
+          "end": 40744
+        }
+      },
+      {
+        "goldOrdinal": 50,
+        "goldText": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 40746,
+          "end": 40793
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 43,
+        "predictionText": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 40746,
+          "end": 40784
+        }
+      },
+      {
+        "goldOrdinal": 51,
+        "goldText": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 41526,
+          "end": 41577
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 44,
+        "predictionText": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau ",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 41526,
+          "end": 41564
+        }
+      },
+      {
+        "goldOrdinal": 52,
+        "goldText": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 42645,
+          "end": 42692
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 45,
+        "predictionText": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 42645,
+          "end": 42675
+        }
+      },
+      {
+        "goldOrdinal": 53,
+        "goldText": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 42984,
+          "end": 43069
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 54,
+        "goldText": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 44921,
+          "end": 44983
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 46,
+        "predictionText": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 44921,
+          "end": 44963
+        }
+      },
+      {
+        "goldOrdinal": 55,
+        "goldText": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 45915,
+          "end": 45955
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 47,
+        "predictionText": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 45915,
+          "end": 45949
+        }
+      },
+      {
+        "goldOrdinal": 56,
+        "goldText": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 46641,
+          "end": 46682
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 48,
+        "predictionText": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF l",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 46641,
+          "end": 46679
+        }
+      },
+      {
+        "goldOrdinal": 57,
+        "goldText": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "goldRole": "section",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 47323,
+          "end": 47375
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 49,
+        "predictionText": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 47323,
+          "end": 47369
+        }
+      },
+      {
+        "goldOrdinal": 58,
+        "goldText": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 47376,
+          "end": 47436
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 50,
+        "predictionText": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 kha",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 47376,
+          "end": 47422
+        }
+      },
+      {
+        "goldOrdinal": 59,
+        "goldText": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 47923,
+          "end": 47974
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 51,
+        "predictionText": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i qu",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 47923,
+          "end": 47961
+        }
+      },
+      {
+        "goldOrdinal": 60,
+        "goldText": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 48627,
+          "end": 48660
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 52,
+        "predictionText": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 48627,
+          "end": 48653
+        }
+      },
+      {
+        "goldOrdinal": 61,
+        "goldText": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 50264,
+          "end": 50342
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 62,
+        "goldText": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "goldRole": "chapter",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 50896,
+          "end": 50955
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 53,
+        "predictionText": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 50896,
+          "end": 50944
+        }
+      },
+      {
+        "goldOrdinal": 63,
+        "goldText": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 50956,
+          "end": 51014
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 54,
+        "predictionText": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan ",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 50956,
+          "end": 50998
+        }
+      },
+      {
+        "goldOrdinal": 64,
+        "goldText": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 52830,
+          "end": 52907
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 65,
+        "goldText": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 53712,
+          "end": 53786
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 66,
+        "goldText": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 56513,
+          "end": 56595
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 67,
+        "goldText": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+        "goldRole": "chapter",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 57453,
+          "end": 57481
+        },
+        "correspondence": "NO_CORRESPONDING_PREDICTION",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_TRUE_OMISSION",
+        "predictionOrdinal": null,
+        "predictionText": null,
+        "predictionSpan": null
+      },
+      {
+        "goldOrdinal": 68,
+        "goldText": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 57482,
+          "end": 57513
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 55,
+        "predictionText": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 57482,
+          "end": 57508
+        }
+      },
+      {
+        "goldOrdinal": 69,
+        "goldText": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 58966,
+          "end": 58992
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 56,
+        "predictionText": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi ",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 58966,
+          "end": 58988
+        }
+      },
+      {
+        "goldOrdinal": 70,
+        "goldText": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh",
+        "goldRole": "article",
+        "goldSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 59240,
+          "end": 59269
+        },
+        "correspondence": "SAME_IR_LINE_DIFFERENT_SPAN",
+        "isExactFn": true,
+        "fnPrimaryFirstLoss": "MODEL_WRONG_SPAN",
+        "predictionOrdinal": 57,
+        "predictionText": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m t",
+        "predictionSpan": {
+          "sourceId": "body[1]/p[4]",
+          "start": 59240,
+          "end": 59262
+        }
+      }
+    ],
+    "fpRows": [
+      {
+        "predictionOrdinal": 1,
+        "predictionText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF"
+      },
+      {
+        "predictionOrdinal": 2,
+        "predictionText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB"
+      },
+      {
+        "predictionOrdinal": 3,
+        "predictionText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 4,
+        "predictionText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chi",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 5,
+        "predictionText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 6,
+        "predictionText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m"
+      },
+      {
+        "predictionOrdinal": 7,
+        "predictionText": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE ",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+      },
+      {
+        "predictionOrdinal": 8,
+        "predictionText": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC"
+      },
+      {
+        "predictionOrdinal": 9,
+        "predictionText": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 ",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 10,
+        "predictionText": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+      },
+      {
+        "predictionOrdinal": 11,
+        "predictionText": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia"
+      },
+      {
+        "predictionOrdinal": 12,
+        "predictionText": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U"
+      },
+      {
+        "predictionOrdinal": 13,
+        "predictionText": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy t",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 14,
+        "predictionText": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 ",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC"
+      },
+      {
+        "predictionOrdinal": 15,
+        "predictionText": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+      },
+      {
+        "predictionOrdinal": 16,
+        "predictionText": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+      },
+      {
+        "predictionOrdinal": 17,
+        "predictionText": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+      },
+      {
+        "predictionOrdinal": 18,
+        "predictionText": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+      },
+      {
+        "predictionOrdinal": 19,
+        "predictionText": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+      },
+      {
+        "predictionOrdinal": 20,
+        "predictionText": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB"
+      },
+      {
+        "predictionOrdinal": 21,
+        "predictionText": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 22,
+        "predictionText": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 23,
+        "predictionText": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 ch",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 24,
+        "predictionText": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB ",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 25,
+        "predictionText": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB ",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 26,
+        "predictionText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 27,
+        "predictionText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chi",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 28,
+        "predictionText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, c",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 29,
+        "predictionText": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U"
+      },
+      {
+        "predictionOrdinal": 30,
+        "predictionText": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+      },
+      {
+        "predictionOrdinal": 31,
+        "predictionText": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng"
+      },
+      {
+        "predictionOrdinal": 32,
+        "predictionText": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh p",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng"
+      },
+      {
+        "predictionOrdinal": 33,
+        "predictionText": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECAN",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH"
+      },
+      {
+        "predictionOrdinal": 34,
+        "predictionText": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 35,
+        "predictionText": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c ch",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh"
+      },
+      {
+        "predictionOrdinal": 36,
+        "predictionText": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 37,
+        "predictionText": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9"
+      },
+      {
+        "predictionOrdinal": 38,
+        "predictionText": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9"
+      },
+      {
+        "predictionOrdinal": 39,
+        "predictionText": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 40,
+        "predictionText": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 41,
+        "predictionText": "11. Ph\u01B0\u01A1ng th\u1EE9c \u0111\u01B0\u1EE3c s\u1EED d\u1EE5ng \u0111\u1EC3 x\u00F3a, h\u1EE7y d",
+        "classification": "TRUE_SEMANTIC_EXTRA",
+        "correspondingGoldText": null
+      },
+      {
+        "predictionOrdinal": 42,
+        "predictionText": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+      },
+      {
+        "predictionOrdinal": 43,
+        "predictionText": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i"
+      },
+      {
+        "predictionOrdinal": 44,
+        "predictionText": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau ",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c"
+      },
+      {
+        "predictionOrdinal": 45,
+        "predictionText": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c"
+      },
+      {
+        "predictionOrdinal": 46,
+        "predictionText": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng"
+      },
+      {
+        "predictionOrdinal": 47,
+        "predictionText": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 48,
+        "predictionText": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF l",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 49,
+        "predictionText": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+      },
+      {
+        "predictionOrdinal": 50,
+        "predictionText": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 kha",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 51,
+        "predictionText": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i qu",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc"
+      },
+      {
+        "predictionOrdinal": 52,
+        "predictionText": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc"
+      },
+      {
+        "predictionOrdinal": 53,
+        "predictionText": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+      },
+      {
+        "predictionOrdinal": 54,
+        "predictionText": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan ",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u"
+      },
+      {
+        "predictionOrdinal": 55,
+        "predictionText": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp"
+      },
+      {
+        "predictionOrdinal": 56,
+        "predictionText": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi ",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh"
+      },
+      {
+        "predictionOrdinal": 57,
+        "predictionText": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m t",
+        "classification": "WRONG_SPAN_OF_GOLD",
+        "correspondingGoldText": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh"
+      }
+    ]
+  },
+  "textVlmAgreement": {
+    "exactAgreementCount": 2,
+    "textOnly": 56,
+    "vlmOnly": 59,
+    "lineAgreementCount": 57,
+    "semanticAgreementCount": 5,
+    "normalizedTextAgreementCount": 5
+  },
+  "historical": {
+    "haiku": {
+      "status": "DIAGNOSTIC_ONLY",
+      "resultStatus": "SUCCESS_BUT_PREDICTION_NOT_FROZEN",
+      "headingCount": 71,
+      "sameNormalizedTextAsGold": 71,
+      "strictDiagnostic": {
+        "tp": 66,
+        "fp": 5,
+        "fn": 5,
+        "f1": 0.9295774648
+      },
+      "matchedGold": [
+        {
+          "ordinal": 0,
+          "text": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+          "goldRole": "chapter",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 645,
+            "end": 668
+          },
+          "irLineAliases": [
+            "L000026",
+            "L000027"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 1,
+          "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 669,
+            "end": 695
+          },
+          "irLineAliases": [
+            "L000029"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 2,
+          "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 1337,
+            "end": 1362
+          },
+          "irLineAliases": [
+            "L000042"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 3,
+          "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 1629,
+            "end": 1654
+          },
+          "irLineAliases": [
+            "L000049"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 4,
+          "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 4361,
+            "end": 4409
+          },
+          "irLineAliases": [
+            "L000104"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 5,
+          "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 4626,
+            "end": 4689
+          },
+          "irLineAliases": [
+            "L000110"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 6,
+          "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 6603,
+            "end": 6645
+          },
+          "irLineAliases": [
+            "L000151"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 7,
+          "text": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 8146,
+            "end": 8206
+          },
+          "irLineAliases": [
+            "L000186"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 8,
+          "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 9298,
+            "end": 9332
+          },
+          "irLineAliases": [
+            "L000213"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 9,
+          "text": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "goldRole": "chapter",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 9843,
+            "end": 9978
+          },
+          "irLineAliases": [
+            "L000229",
+            "L000230",
+            "L000231"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 10,
+          "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "goldRole": "section",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 9979,
+            "end": 10039
+          },
+          "irLineAliases": [
+            "L000233"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 11,
+          "text": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 10040,
+            "end": 10112
+          },
+          "irLineAliases": [
+            "L000235",
+            "L000236"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 12,
+          "text": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 10904,
+            "end": 10952
+          },
+          "irLineAliases": [
+            "L000253"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 13,
+          "text": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 11449,
+            "end": 11494
+          },
+          "irLineAliases": [
+            "L000270"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 14,
+          "text": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 13065,
+            "end": 13146
+          },
+          "irLineAliases": [
+            "L000314",
+            "L000315"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 15,
+          "text": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 14829,
+            "end": 14859
+          },
+          "irLineAliases": [
+            "L000358"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 16,
+          "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+          "goldRole": "section",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 15558,
+            "end": 15618
+          },
+          "irLineAliases": [
+            "L000377"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 17,
+          "text": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 15619,
+            "end": 15691
+          },
+          "irLineAliases": [
+            "L000379",
+            "L000380"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 18,
+          "text": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 16890,
+            "end": 16963
+          },
+          "irLineAliases": [
+            "L000410",
+            "L000411"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 19,
+          "text": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 17527,
+            "end": 17571
+          },
+          "irLineAliases": [
+            "L000424"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 20,
+          "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "goldRole": "section",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 19329,
+            "end": 19367
+          },
+          "irLineAliases": [
+            "L000468"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 21,
+          "text": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 19368,
+            "end": 19428
+          },
+          "irLineAliases": [
+            "L000470"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 22,
+          "text": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 20463,
+            "end": 20520
+          },
+          "irLineAliases": [
+            "L000502"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 23,
+          "text": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 21486,
+            "end": 21553
+          },
+          "irLineAliases": [
+            "L000525"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 24,
+          "text": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 22765,
+            "end": 22832
+          },
+          "irLineAliases": [
+            "L000555"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 25,
+          "text": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 23401,
+            "end": 23472
+          },
+          "irLineAliases": [
+            "L000571",
+            "L000572"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 26,
+          "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "goldRole": "section",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 23745,
+            "end": 23802
+          },
+          "irLineAliases": [
+            "L000584"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 27,
+          "text": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 23803,
+            "end": 23854
+          },
+          "irLineAliases": [
+            "L000586"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 28,
+          "text": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 24158,
+            "end": 24194
+          },
+          "irLineAliases": [
+            "L000595"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 29,
+          "text": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 25199,
+            "end": 25231
+          },
+          "irLineAliases": [
+            "L000622"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 30,
+          "text": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 26019,
+            "end": 26074
+          },
+          "irLineAliases": [
+            "L000643"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 31,
+          "text": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 27351,
+            "end": 27400
+          },
+          "irLineAliases": [
+            "L000669"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 32,
+          "text": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 28415,
+            "end": 28456
+          },
+          "irLineAliases": [
+            "L000697"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 33,
+          "text": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 29974,
+            "end": 30039
+          },
+          "irLineAliases": [
+            "L000735"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 34,
+          "text": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 30572,
+            "end": 30622
+          },
+          "irLineAliases": [
+            "L000748"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 35,
+          "text": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 32357,
+            "end": 32413
+          },
+          "irLineAliases": [
+            "L000786"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 36,
+          "text": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+          "goldRole": "chapter",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 32768,
+            "end": 32822
+          },
+          "irLineAliases": [
+            "L000796",
+            "L000797"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 37,
+          "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "goldRole": "section",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 32823,
+            "end": 32862
+          },
+          "irLineAliases": [
+            "L000799"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 38,
+          "text": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 32863,
+            "end": 32994
+          },
+          "irLineAliases": [
+            "L000801",
+            "L000802"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 39,
+          "text": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 34108,
+            "end": 34247
+          },
+          "irLineAliases": [
+            "L000830",
+            "L000831"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 40,
+          "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+          "goldRole": "section",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 35467,
+            "end": 35498
+          },
+          "irLineAliases": [
+            "L000860"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 41,
+          "text": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 35499,
+            "end": 35546
+          },
+          "irLineAliases": [
+            "L000862"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 42,
+          "text": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 36126,
+            "end": 36182
+          },
+          "irLineAliases": [
+            "L000884"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 43,
+          "text": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 36916,
+            "end": 36963
+          },
+          "irLineAliases": [
+            "L000905"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 44,
+          "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+          "goldRole": "section",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 37929,
+            "end": 37972
+          },
+          "irLineAliases": [
+            "L000934"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 45,
+          "text": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 37973,
+            "end": 38029
+          },
+          "irLineAliases": [
+            "L000936"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 46,
+          "text": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 38781,
+            "end": 38832
+          },
+          "irLineAliases": [
+            "L000956"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 47,
+          "text": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 39241,
+            "end": 39285
+          },
+          "irLineAliases": [
+            "L000970"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 48,
+          "text": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 40307,
+            "end": 40359
+          },
+          "irLineAliases": [
+            "L001004"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 49,
+          "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "goldRole": "section",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 40706,
+            "end": 40745
+          },
+          "irLineAliases": [
+            "L001012"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 50,
+          "text": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 40746,
+            "end": 40793
+          },
+          "irLineAliases": [
+            "L001014"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 51,
+          "text": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 41526,
+            "end": 41577
+          },
+          "irLineAliases": [
+            "L001030"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 52,
+          "text": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 42645,
+            "end": 42692
+          },
+          "irLineAliases": [
+            "L001054"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 53,
+          "text": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 42984,
+            "end": 43069
+          },
+          "irLineAliases": [
+            "L001066",
+            "L001067"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 54,
+          "text": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 44921,
+            "end": 44983
+          },
+          "irLineAliases": [
+            "L001109"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 55,
+          "text": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 45915,
+            "end": 45955
+          },
+          "irLineAliases": [
+            "L001134"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 56,
+          "text": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 46641,
+            "end": 46682
+          },
+          "irLineAliases": [
+            "L001158"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 57,
+          "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "goldRole": "section",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 47323,
+            "end": 47375
+          },
+          "irLineAliases": [
+            "L001173"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 58,
+          "text": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 47376,
+            "end": 47436
+          },
+          "irLineAliases": [
+            "L001175"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 59,
+          "text": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 47923,
+            "end": 47974
+          },
+          "irLineAliases": [
+            "L001194"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 60,
+          "text": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 48627,
+            "end": 48660
+          },
+          "irLineAliases": [
+            "L001211"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 61,
+          "text": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 50264,
+            "end": 50342
+          },
+          "irLineAliases": [
+            "L001242",
+            "L001243"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 62,
+          "text": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "goldRole": "chapter",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 50896,
+            "end": 50955
+          },
+          "irLineAliases": [
+            "L001261",
+            "L001262"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 63,
+          "text": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 50956,
+            "end": 51014
+          },
+          "irLineAliases": [
+            "L001264"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 64,
+          "text": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 52830,
+            "end": 52907
+          },
+          "irLineAliases": [
+            "L001309",
+            "L001310"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 65,
+          "text": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 53712,
+            "end": 53786
+          },
+          "irLineAliases": [
+            "L001334",
+            "L001335"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 66,
+          "text": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 56513,
+            "end": 56595
+          },
+          "irLineAliases": [
+            "L001401",
+            "L001402"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 67,
+          "text": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+          "goldRole": "chapter",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 57453,
+            "end": 57481
+          },
+          "irLineAliases": [
+            "L001421",
+            "L001422"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 68,
+          "text": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 57482,
+            "end": 57513
+          },
+          "irLineAliases": [
+            "L001424"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 69,
+          "text": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 58966,
+            "end": 58992
+          },
+          "irLineAliases": [
+            "L001452"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 70,
+          "text": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 59240,
+            "end": 59269
+          },
+          "irLineAliases": [
+            "L001459"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        }
+      ],
+      "note": "No exact span authority; identity comparison is text diagnostic only."
+    },
+    "luna": {
+      "status": "DIAGNOSTIC_ONLY",
+      "predictionFrozen": true,
+      "headingCount": 18,
+      "exactGoldSpanMatches": 11,
+      "matchedGold": [
+        {
+          "ordinal": 0,
+          "text": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+          "goldRole": "chapter",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 645,
+            "end": 668
+          },
+          "irLineAliases": [
+            "L000026",
+            "L000027"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 1,
+          "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 669,
+            "end": 695
+          },
+          "irLineAliases": [
+            "L000029"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 2,
+          "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 1337,
+            "end": 1362
+          },
+          "irLineAliases": [
+            "L000042"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 4,
+          "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 4361,
+            "end": 4409
+          },
+          "irLineAliases": [
+            "L000104"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 5,
+          "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 4626,
+            "end": 4689
+          },
+          "irLineAliases": [
+            "L000110"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 6,
+          "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 6603,
+            "end": 6645
+          },
+          "irLineAliases": [
+            "L000151"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 8,
+          "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "goldRole": "article",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 9298,
+            "end": 9332
+          },
+          "irLineAliases": [
+            "L000213"
+          ],
+          "irShape": "WHOLE_IR_LINE"
+        },
+        {
+          "ordinal": 9,
+          "text": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "goldRole": "chapter",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 9843,
+            "end": 9978
+          },
+          "irLineAliases": [
+            "L000229",
+            "L000230",
+            "L000231"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 36,
+          "text": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+          "goldRole": "chapter",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 32768,
+            "end": 32822
+          },
+          "irLineAliases": [
+            "L000796",
+            "L000797"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 62,
+          "text": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "goldRole": "chapter",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 50896,
+            "end": 50955
+          },
+          "irLineAliases": [
+            "L001261",
+            "L001262"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        },
+        {
+          "ordinal": 67,
+          "text": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+          "goldRole": "chapter",
+          "goldSpan": {
+            "sourceId": "body[1]/p[4]",
+            "start": 57453,
+            "end": 57481
+          },
+          "irLineAliases": [
+            "L001421",
+            "L001422"
+          ],
+          "irShape": "PARTIAL_IR_LINE"
+        }
+      ],
+      "note": "Historical Luna output is retained as diagnostic-only for this clean benchmark."
+    }
+  },
+  "finalClassification": "MIXED_MODEL_AND_CONTRACT_FAILURE",
+  "vlmFinding": "VISUAL_SIGNAL_NOT_CAUSAL",
+  "nextLane": "PROMPT_CONTRACT_REALIGNMENT",
+  "goldMutation": false
+}
