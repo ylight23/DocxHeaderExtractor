@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "a99-flash-heading-contract-realignment-score-v1",
+  "documentId": "DOC-0205",
+  "contract": "C1_BOUNDARY",
+  "tp": 0,
+  "fp": 0,
+  "fn": 71,
+  "precision": 0,
+  "recall": 0,
+  "f1": 0,
+  "modelWrongSpan": 0,
+  "modelTrueOmission": 71,
+  "modelFalsePositive": 0,
+  "systemAddressingLoss": 0,
+  "systemBindingLoss": 71,
+  "systemValidatorLoss": 0,
+  "systemProjectionLoss": 0,
+  "systemLoss": 71,
+  "semanticCorrespondenceCount": 0,
+  "goldReadBeforeFreeze": false
+}

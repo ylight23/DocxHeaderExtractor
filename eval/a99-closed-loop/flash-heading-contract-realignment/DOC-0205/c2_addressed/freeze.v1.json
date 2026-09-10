@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "a99-flash-heading-contract-realignment-freeze-v1",
+  "documentId": "DOC-0205",
+  "contract": "C2_ADDRESSED",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "promptHash": "41e2d1a0ea3497cb527f66f2b24a5237bfd721de07cecd1d1dba0257e8e3100e",
+  "schemaHash": "d545b95203d19ca99cff6e32b23c417f1d4711d056099fcabba26f28a204d5a6",
+  "packetHash": "2d1035a4db9b8dd85c4487bb4b3a1b16e4667fe26810c7acee9144fc6ff8fc11",
+  "configurationSignature": "c50c61881ae9b108279c90c3b349cb7aa32964b812d96fcfd3388d6681d9836f",
+  "actualProvider": "Alibaba",
+  "reportedModel": "qwen/qwen3.7-flash",
+  "finishReason": "stop",
+  "inputTokens": 78372,
+  "reasoningTokens": 5009,
+  "outputTokens": 9214,
+  "elapsedMs": 42566,
+  "predictionSha256": "36f7895a3c8cade880a6b9548227e55b6bb15bcffb38a5dbec4dc3cc233e996d",
+  "resultSha256": "9ce0b10d77bf63e6db6a9343087f148f05f5b5f088ac35a20e42a322458bc7a5",
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-10T03:53:33.1852811+00:00"
+}
