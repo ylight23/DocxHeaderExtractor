@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "a99-heading-target-ontology-freeze-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "semanticContractVersion": "a99-heading-target-ontology-v4",
+  "actualProvider": "Alibaba",
+  "reasoningConfiguration": {
+    "requested": true,
+    "enabled": true,
+    "exclude": true
+  },
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "promptHash": "e2d98b38894f1f5cf406c936b5bc3a1ff0cdac430ced9c396784df365f03d66a",
+  "schemaHash": "29b1381391e0e5b927fd5742b5371a93154a74871f097387aa841efff35b13d5",
+  "packetHash": "6dd2fb6f790431c8fe33e3d4dbe182fced52dd108e18946a5dc0d3255dc18f45",
+  "configurationSignature": "50a59fe931a4fdde2787a86b1d79fa0504ed6088264ba6b054f63f51920758c3",
+  "predictionSha256": "97e81adc1ec48ba96bfaf3ec5362979509325493360dbf28af34809b345169e8",
+  "resultSha256": "cdbf60b806b6fc48b059181a6d45b3516705ee8daf88a7e2a4e07d8eecbfdb47",
+  "finishReason": "stop",
+  "providerAttempts": 1,
+  "inputTokens": 78171,
+  "reasoningTokens": 9423,
+  "outputTokens": 10224,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-10T04:37:49.6504779+00:00"
+}

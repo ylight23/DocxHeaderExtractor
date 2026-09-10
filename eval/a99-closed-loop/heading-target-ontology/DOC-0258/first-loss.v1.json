@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "a99-heading-target-ontology-first-loss-v1",
+  "documentId": "DOC-0258",
+  "losses": {
+    "MODEL_OMISSION": 6,
+    "MODEL_WRONG_SPAN": 1,
+    "MODEL_FALSE_POSITIVE": 1,
+    "SYSTEM_VALIDATOR_LOSS": 0,
+    "SYSTEM_PROJECTION_LOSS": 0,
+    "SYSTEM_BINDING_LOSS": 0
+  },
+  "goldReadBeforeFreeze": false
+}

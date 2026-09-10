@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "a99-heading-target-ontology-policy-audit-v1",
+  "phase": "OFFLINE_BEFORE_PROVIDER",
+  "startHead": "adacc35ddb5b4c91af960e63e63b85b0793011b5",
+  "providerCalls": 0,
+  "policySources": [
+    "docs/accuracy/hierarchy-human-annotation-guideline.md",
+    "docs/accuracy/accuracy99-strict-gold-authority-policy-v2.md",
+    "docs/accuracy/accuracy99-historical-gold-reconciliation-v3.md",
+    "eval/a99-dataset/reference-authority-policy.v1.json"
+  ],
+  "policyVsInstanceSeparated": true,
+  "policyDefinitions": {
+    "target": "A contiguous textual label organizing substantive document content or outline.",
+    "included": [
+      "document title",
+      "part",
+      "chapter",
+      "section",
+      "subsection",
+      "article",
+      "clause",
+      "annex",
+      "other substantive content heading"
+    ],
+    "excluded": [
+      "navigation",
+      "table of contents",
+      "running header",
+      "caption",
+      "list item",
+      "table label",
+      "metadata/front matter",
+      "decorative text",
+      "body prose or fragment"
+    ],
+    "boundary": "complete contiguous label, meaningful numbering/punctuation included, surrounding whitespace excluded, source-local UTF-16 half-open offsets",
+    "ambiguous": [
+      "The human hierarchy guideline says title/running-header/TOC/appendix/table-only text are context but does not itself redefine heading labels.",
+      "Legal marker inclusion is evidenced by the reviewed legal reference, not a global regex rule.",
+      "Per-document approved projections remain instance evidence and are not copied into the runtime prompt."
+    ]
+  },
+  "currentR1PromptAudit": [
+    {
+      "rule": "every structurally real document heading or structural label",
+      "classification": "PROMPT_TOO_BROAD",
+      "reason": "requests labels outside the projected substantive-heading target"
+    },
+    {
+      "rule": "zero, one, or many elements per occurrence",
+      "classification": "PROMPT_ALIGNED",
+      "reason": "generic cardinality"
+    },
+    {
+      "rule": "formatting, numbering, layout are evidence, not rules",
+      "classification": "PROMPT_ALIGNED",
+      "reason": "does not make a heuristic gate"
+    },
+    {
+      "rule": "return exact spans",
+      "classification": "PROMPT_AMBIGUOUS",
+      "reason": "does not say complete label versus fragment"
+    },
+    {
+      "rule": "extract navigation, TOC, front matter too; projection later",
+      "classification": "PROMPT_TOO_BROAD",
+      "reason": "explicitly broadens the model target beyond projected content headings"
+    },
+    {
+      "rule": "uncertain boundary: omit",
+      "classification": "PROMPT_ALIGNED",
+      "reason": "conservative generic boundary rule"
+    }
+  ],
+  "hypothesis": {
+    "trueExtraCount": 67,
+    "outOfScopeButStructurallyPlausibleCount": 0,
+    "obviousSemanticHallucinationCount": 66,
+    "classification": "MODEL_SEMANTIC_DISCOVERY_FAILURE_SUPPORTED",
+    "note": "The broad prompt is a real ontology defect, but the frozen extras are overwhelmingly fragmented prose/list content rather than legitimate excluded headings."
+  },
+  "goldReadBeforeFreeze": false
+}

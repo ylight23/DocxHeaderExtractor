@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "a99-heading-target-ontology-score-v1",
+  "documentId": "DOC-0205",
+  "exactStatus": "EVALUABLE",
+  "goldCount": 71,
+  "tp": 0,
+  "fp": 17,
+  "fn": 71,
+  "precision": 0,
+  "recall": 0,
+  "f1": 0,
+  "lossCounts": {
+    "MODEL_OMISSION": 68,
+    "MODEL_WRONG_SPAN": 3,
+    "MODEL_FALSE_POSITIVE": 17,
+    "SYSTEM_VALIDATOR_LOSS": 0,
+    "SYSTEM_PROJECTION_LOSS": 0,
+    "SYSTEM_BINDING_LOSS": 0
+  },
+  "systemLossCount": 0,
+  "goldReadBeforeFreeze": false
+}

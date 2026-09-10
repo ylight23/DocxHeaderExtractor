@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "a99-heading-target-ontology-contract-v4",
+  "contractVersion": "a99-heading-target-ontology-v4",
+  "model": "qwen/qwen3.7-flash",
+  "policySources": [
+    "docs/accuracy/hierarchy-human-annotation-guideline.md",
+    "docs/accuracy/accuracy99-strict-gold-authority-policy-v2.md",
+    "docs/accuracy/accuracy99-historical-gold-reconciliation-v3.md",
+    "eval/a99-dataset/reference-authority-policy.v1.json"
+  ],
+  "promptSha256": "e2d98b38894f1f5cf406c936b5bc3a1ff0cdac430ced9c396784df365f03d66a",
+  "contractSha256": "893b4d73f9993173104eb448c8f2f7ae65f81072cc7a4b2fba53f8df8fd7de35",
+  "responseSchemaSha256": "29b1381391e0e5b927fd5742b5371a93154a74871f097387aa841efff35b13d5",
+  "includedRoles": [
+    "DOCUMENT_TITLE",
+    "PART",
+    "CHAPTER",
+    "SECTION",
+    "SUBSECTION",
+    "ARTICLE",
+    "CLAUSE_HEADING",
+    "ANNEX_HEADING",
+    "CONTENT_HEADING"
+  ],
+  "boundary": "complete contiguous heading label; meaningful numbering/punctuation included; surrounding whitespace excluded; source-local UTF-16 half-open [start,end)",
+  "noCandidateHeuristicGate": true,
+  "noDocumentSpecificRules": true,
+  "noDocumentTextExamples": true,
+  "noExpectedCounts": true,
+  "goldLeakageTest": {
+    "passed": true,
+    "forbiddenTokensFound": [],
+    "policyOnly": true,
+    "documentGoldTextHits": 0
+  },
+  "goldReadBeforeFreeze": false,
+  "providerCalls": 0,
+  "frozen": true,
+  "frozenAtHead": "adacc35ddb5b4c91af960e63e63b85b0793011b5",
+  "frozenUtc": "2026-09-10T04:36:39.5411977+00:00"
+}
