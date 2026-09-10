@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-prediction-v1",
+  "documentId": "DOC-0252",
+  "repeat": "r6",
+  "status": "BLOCKED",
+  "failure": "FormatException:ceiling-provider-response-choices-missing",
+  "model": "qwen/qwen3.7-flash",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "FULL_CONTEXT",
+  "goldReadBeforeFreeze": false
+}

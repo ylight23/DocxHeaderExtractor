@@ -1,0 +1,61 @@
+{
+  "documentId": "DOC-0001",
+  "repeat": "r6",
+  "firstLosses": [
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[1]:0:24",
+      "exactSourceText": "Ch\u01B0\u01A1ng 1. Quy \u0111\u1ECBnh chung",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[3]:0:23",
+      "exactSourceText": "1.1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[5]:0:22",
+      "exactSourceText": "1.2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[7]:0:22",
+      "exactSourceText": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[9]:0:24",
+      "exactSourceText": "1.2.2. \u0110\u01A1n v\u1ECB tr\u1EF1c thu\u1ED9c",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[11]:0:27",
+      "exactSourceText": "Ch\u01B0\u01A1ng 2. T\u1ED5 ch\u1EE9c th\u1EF1c hi\u1EC7n",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[13]:0:26",
+      "exactSourceText": "2.1. Ph\u00E2n c\u00F4ng tr\u00E1ch nhi\u1EC7m",
+      "firstLoss": "FOUND",
+      "found": true
+    }
+  ],
+  "falsePositives": [],
+  "firstLossCounts": {
+    "FOUND": 7
+  },
+  "systemLoss": 0,
+  "goldReadBeforeFreeze": false
+}

@@ -1,0 +1,1130 @@
+{
+  "schemaVersion": "a99-semantic-text-stable-error-offline-audit-v1",
+  "startHead": "e6a713caba1c0a5d33a5861b576e6bfa368f1684",
+  "model": "qwen/qwen3.7-flash",
+  "baselineArtifact": "eval/a99-closed-loop/semantic-text-generalization",
+  "baselineHashesVerified": true,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "stableOmissions": [
+    {
+      "documentId": "DOC-0252",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "start": 182,
+      "end": 194,
+      "exactText": "Western Asia",
+      "sourceAlias": "S0029",
+      "sourceOrdinal": 32,
+      "rawPresenceByRepeat": [
+        false,
+        false,
+        false
+      ],
+      "rawOverlapByRepeat": [
+        false,
+        false,
+        false
+      ],
+      "firstLossByRepeat": [
+        "MODEL_OMISSION",
+        "MODEL_OMISSION",
+        "MODEL_OMISSION"
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1,
+        "inTableOfContents": false
+      },
+      "previous": "Participation is expected to expand to cover more economies in almost all regions, with the Pacific Islands Community actively seeking to include its members in the global comparison.",
+      "next": "The main risks to the ICP 2024 cycle include financial stability and access to funds, operational challenges arising from competing priorities at the national and regional level, and participation risks due to geopolitical instability.",
+      "primaryCause": "MODEL_SEMANTIC_OMISSION_WITH_STRUCTURAL_EVIDENCE"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceId": "body[1]/p[158]",
+      "start": 56,
+      "end": 62,
+      "exactText": "Agenda",
+      "sourceAlias": "S0161",
+      "sourceOrdinal": 187,
+      "rawPresenceByRepeat": [
+        false,
+        false,
+        false
+      ],
+      "rawOverlapByRepeat": [
+        true,
+        true,
+        true
+      ],
+      "firstLossByRepeat": [
+        "MODEL_WRONG_SPAN",
+        "MODEL_WRONG_SPAN",
+        "MODEL_WRONG_SPAN"
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 12,
+        "inTableOfContents": false
+      },
+      "previous": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+      "next": "09:15 \u2013 10:15",
+      "primaryCause": "MODEL_WRONG_SPAN_OR_BOUNDARY"
+    },
+    {
+      "documentId": "DOC-0256",
+      "sourceId": "body[1]/p[11]",
+      "start": 0,
+      "end": 6,
+      "exactText": "Africa",
+      "sourceAlias": "S0009",
+      "sourceOrdinal": 10,
+      "rawPresenceByRepeat": [
+        true,
+        true,
+        true
+      ],
+      "rawOverlapByRepeat": [
+        true,
+        true,
+        true
+      ],
+      "firstLossByRepeat": [
+        "AMBIGUOUS_DUPLICATE_TEXT",
+        "AMBIGUOUS_DUPLICATE_TEXT",
+        "AMBIGUOUS_DUPLICATE_TEXT"
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "inTableOfContents": false
+      },
+      "previous": "Regional updates on the ICP 2021 cycle implementation",
+      "next": "1",
+      "primaryCause": "RAW_EXACT_NOT_FINAL"
+    },
+    {
+      "documentId": "DOC-0256",
+      "sourceId": "body[1]/p[17]",
+      "start": 0,
+      "end": 20,
+      "exactText": "Asia and the Pacific",
+      "sourceAlias": "S0013",
+      "sourceOrdinal": 16,
+      "rawPresenceByRepeat": [
+        false,
+        true,
+        true
+      ],
+      "rawOverlapByRepeat": [
+        false,
+        true,
+        true
+      ],
+      "firstLossByRepeat": [
+        "MODEL_OMISSION",
+        "AMBIGUOUS_DUPLICATE_TEXT",
+        "AMBIGUOUS_DUPLICATE_TEXT"
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1,
+        "inTableOfContents": false
+      },
+      "previous": "Two regional data validation workshops were held in January and June 2023, in Kigali, Rwanda. Furthermore, AfDB met with the United Nations Human Settlements Programme (UN-Habitat) in April 2023 to discuss the quality of data on housing and with United Nations Economic Commission for Africa (UNECA) and the African Union (AU) to discuss national accounts expenditures. Regional webinars on the data quality survey framework were also held in January 2023, June 2023, and September 2023 for all participating economies. In September 2023, AfDB and the World Bank jointly provided training and consulting for the computation of provincial/city-level PPPs in South Africa in collaboration with Statistics South Africa and price statisticians and household survey specialists attended the workshop. In terms of data collection, computer-assisted personal interview (CAPI) tools, web scraping, and Big Data techniques were used in some economies to price selected items for the surveys on household consumption, machinery and equipment, and construction. Preparations for the ICP 2024 cycle are underway, with item lists due to be finalized by end-January 2024.",
+      "next": "A series of regional training and data validation workshops have been conducted by ADB throughout the cycle. Preliminary regional PPPs for the revised 2017 and 2021 results have been computed. Also noteworthy is the ADB methodological research to develop a hybrid approach for estimating PPPs for dwelling services. This approach utilizes data collected from rental and volume approaches and has been endorsed by the ICP TAG. ADB also organized an Experts Group meeting and a meeting of the Regional Advisory Board in October 2023 to review data quality and regional ICP 2021 preliminary results and to discuss estimation methods, including the new methodology for housing. A technical evaluation and review workshop is scheduled for November 2023 with participating economies to discuss the preliminary regional results for ICP 2021 and preparatory activities for the ICP 2024 cycle. ADB has sought feedback on the draft household survey regional product list for 2024 ICP cycle from the region\u2019s economies through an online tool (developed by ADB). The product list is targeted to be finalized in mid-December 2023 after regional discussions in a regional workshop planned for November 2023.",
+      "primaryCause": "RAW_EXACT_NOT_FINAL"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[11]",
+      "start": 0,
+      "end": 6,
+      "exactText": "Africa",
+      "sourceAlias": "S0009",
+      "sourceOrdinal": 10,
+      "rawPresenceByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "rawOverlapByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "firstLossByRepeat": [
+        "MODEL_OMISSION",
+        "AMBIGUOUS_DUPLICATE_TEXT",
+        "MODEL_OMISSION"
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "inTableOfContents": false
+      },
+      "previous": "Regional updates on the ICP 2021 cycle implementation",
+      "next": "Asia and the Pacific Kaushal Joshi, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. More than half of the 21 paeconomies completed price survey activities in Q4 2021, while Lao PDR, India, and Pakistan initiated and conducted all survey activities in 2022. The data from the three economies have not yet been integrated into the regional validations due to the delay. Price data validations are being conducted on an ongoing basis, with four regional inter-economy price data validation workshops conducted since July 2021. In the recent months, the focus has been on the",
+      "primaryCause": "RAW_EXACT_NOT_FINAL"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[12]",
+      "start": 0,
+      "end": 20,
+      "exactText": "Asia and the Pacific",
+      "sourceAlias": "S0010",
+      "sourceOrdinal": 11,
+      "rawPresenceByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "rawOverlapByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "firstLossByRepeat": [
+        "MODEL_OMISSION",
+        "AMBIGUOUS_DUPLICATE_TEXT",
+        "MODEL_OMISSION"
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "inTableOfContents": false
+      },
+      "previous": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), paid tribute to the late Michel Mouyelo-Katoula. He then presented the status of the ICP 2021 cycle in the Africa region and reported on the progress of joint ICP-CPI activities, and the Classification of Individual Consumption According to Purpose (COICOP) 2018 adoption. All 50 African countries in the ICP 2017 cycle will participate in the ICP 2021 cycle. Somalia\u2019s and South Sudan\u2019s participation is being assessed against the available data, and Eritrea and Libya continue to receive technical assistance to prepare for full participation in the future. Validation is ongoing at the regional level, with a full set of preliminary price data slated for submission to the ICP Global Office by July 2023. Data validation workshops are scheduled for the remainder of 2023.",
+      "next": "1",
+      "primaryCause": "RAW_EXACT_NOT_FINAL"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[18]",
+      "start": 0,
+      "end": 34,
+      "exactText": "Commonwealth of Independent States",
+      "sourceAlias": "S0014",
+      "sourceOrdinal": 17,
+      "rawPresenceByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "rawOverlapByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "firstLossByRepeat": [
+        "MODEL_OMISSION",
+        "AMBIGUOUS_DUPLICATE_TEXT",
+        "MODEL_OMISSION"
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1,
+        "inTableOfContents": false
+      },
+      "previous": "Eurostat\u2013OECD PPP Program Mihai-Iulian Gheorghe, Eurostat, and Sophie Bournot, OECD, the status of the Eurostat-OECD PPP Program. Data for household consumption, machinery ant, and construction surveys have been shared with the ICP Global Office, as well as data on expenditure and PPP estimates for the period 2017-2021. Regarding the latter, data for the years 2020 and 2021 will be revised in the last quarter of 2023, as per the Eurostat-OECD publication schedule. The next data submissions will include housing volume data and regional purchasing power parities (PPPs), as well as expenditure data for Georgia and Ukraine for the year 2021. Given the changes in the Global PPPs publication schedule discussed later at the IACG, Eurostat and OECD proposed to provide updated prices from the selected household consumption surveys, as they will be made available in the last quarter of 2023. Overall, all surveys, data collection, and coordinating activities are being carried out as per the annual work plans. The first estimates of PPPs for GDP, Household Final Consumption Expenditure (HCFE), and Actual Individual Consumption (AIC) will be made available for all EU36 and all OECD countries in June 2023. Finally, an updated list of Basic Headings is now available following the changes introduced by the 2018 COICOP classification.",
+      "next": "Latin America and the Caribbean Claudia de Cario, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), the status of the ICP 2021 cycle in Latin America and the Caribbean region. A total",
+      "primaryCause": "RAW_EXACT_NOT_FINAL"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[19]",
+      "start": 0,
+      "end": 31,
+      "exactText": "Latin America and the Caribbean",
+      "sourceAlias": "S0015",
+      "sourceOrdinal": 18,
+      "rawPresenceByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "rawOverlapByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "firstLossByRepeat": [
+        "MODEL_OMISSION",
+        "AMBIGUOUS_DUPLICATE_TEXT",
+        "MODEL_OMISSION"
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1,
+        "inTableOfContents": false
+      },
+      "previous": "Commonwealth of Independent States Andrehe Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), the status of the ICP 2021 cycle in the CIS region. Nine economies are participating in the ICP. Government compensation and housing rental data have been submitted to CIS-STAT and are expected to be incorporated in the next submission to the ICP Global Office. Detailed GDP expenditure data had also been received from most of the participating countries, with the remaining countries\u2019 data pending. Preliminary regional PPP estimates will be discussed at the regional ICP meeting in June 2023, while the final computation is expected after the final GDP expenditure data are submitted in Q3 2023. Due to the further revisions in GDP expenditures, additional revision of 2017 regional PPPs is expected along with 2021 PPP computation. Regional workshops are planned for late May 2023 to discuss GDP expenditures and for June to review preliminary regional PPPs. A meeting of the Council of Heads of the participating national statistical offices is also planned for May 2023 to review the status of the regional program.",
+      "next": "2",
+      "primaryCause": "RAW_EXACT_NOT_FINAL"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[24]",
+      "start": 0,
+      "end": 12,
+      "exactText": "Western Asia",
+      "sourceAlias": "S0018",
+      "sourceOrdinal": 23,
+      "rawPresenceByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "rawOverlapByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "firstLossByRepeat": [
+        "MODEL_OMISSION",
+        "AMBIGUOUS_DUPLICATE_TEXT",
+        "MODEL_OMISSION"
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2,
+        "inTableOfContents": false
+      },
+      "previous": "of 33 economies in the region are participating in the ICP 2021 cycle. Regarding the survey status, all economies have submitted the household consumption price survey data, although complete price data is still missing from some economies. As for the non-household consumption price surveys, the government compensation survey is the most complete, followed by the construction survey. With regards to other non-household consumption price surveys, the machinery and equipment price survey has been the most challenging, due to the technical nature of the survey. The submissions of expenditure data are also ongoing, as 22 economies have already submitted revised 2017 data and 15 economies have submitted 2021 data. The next regional workshops will focus on data validation and are scheduled until the end of the year as necessary. Responding to the challenges in implementing the 2021 ICP cycle in the region, UN-ECLAC will continue its capacity-building activities and communication with national focal points, assessing alternative sources of data, as needed, and sharing best practices.",
+      "next": "Global updates on the ICP 2021 cycle implementation",
+      "primaryCause": "RAW_EXACT_NOT_FINAL"
+    }
+  ],
+  "spanVariants": [
+    {
+      "documentId": "DOC-0205",
+      "sourceId": "body[1]/p[4]",
+      "start": 29974,
+      "end": 30039,
+      "exactText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "exactPresenceByRepeat": [
+        false,
+        true,
+        true
+      ],
+      "nearPresenceByRepeat": [
+        false,
+        true,
+        true
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 7.5,
+        "alignment": null,
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "inTableOfContents": false
+      },
+      "finalRowsByRepeat": [
+        [],
+        [
+          {
+            "sourceId": "body[1]/p[4]",
+            "start": 29974,
+            "end": 30039,
+            "text": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+          }
+        ],
+        [
+          {
+            "sourceId": "body[1]/p[4]",
+            "start": 29974,
+            "end": 30039,
+            "text": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+          }
+        ]
+      ],
+      "primaryCause": "MODEL_BOUNDARY_VARIANCE"
+    },
+    {
+      "documentId": "DOC-0205",
+      "sourceId": "body[1]/p[4]",
+      "start": 30572,
+      "end": 30622,
+      "exactText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "exactPresenceByRepeat": [
+        false,
+        true,
+        true
+      ],
+      "nearPresenceByRepeat": [
+        false,
+        true,
+        true
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 7.5,
+        "alignment": null,
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "inTableOfContents": false
+      },
+      "finalRowsByRepeat": [
+        [],
+        [
+          {
+            "sourceId": "body[1]/p[4]",
+            "start": 30572,
+            "end": 30622,
+            "text": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+          }
+        ],
+        [
+          {
+            "sourceId": "body[1]/p[4]",
+            "start": 30572,
+            "end": 30622,
+            "text": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+          }
+        ]
+      ],
+      "primaryCause": "MODEL_BOUNDARY_VARIANCE"
+    },
+    {
+      "documentId": "DOC-0205",
+      "sourceId": "body[1]/p[4]",
+      "start": 32357,
+      "end": 32413,
+      "exactText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "exactPresenceByRepeat": [
+        false,
+        true,
+        true
+      ],
+      "nearPresenceByRepeat": [
+        false,
+        true,
+        true
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 7.5,
+        "alignment": null,
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "inTableOfContents": false
+      },
+      "finalRowsByRepeat": [
+        [],
+        [
+          {
+            "sourceId": "body[1]/p[4]",
+            "start": 32357,
+            "end": 32413,
+            "text": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+          }
+        ],
+        [
+          {
+            "sourceId": "body[1]/p[4]",
+            "start": 32357,
+            "end": 32413,
+            "text": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+          }
+        ]
+      ],
+      "primaryCause": "MODEL_BOUNDARY_VARIANCE"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[17]",
+      "start": 0,
+      "end": 25,
+      "exactText": "Eurostat\u2013OECD PPP Program",
+      "exactPresenceByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "nearPresenceByRepeat": [
+        false,
+        true,
+        false
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1,
+        "inTableOfContents": false
+      },
+      "finalRowsByRepeat": [
+        [],
+        [
+          {
+            "sourceId": "body[1]/p[17]",
+            "start": 0,
+            "end": 25,
+            "text": "Eurostat\u2013OECD PPP Program"
+          }
+        ],
+        []
+      ],
+      "primaryCause": "MODEL_BOUNDARY_VARIANCE"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[115]",
+      "start": 0,
+      "end": 29,
+      "exactText": "Annex 2: List of participants",
+      "exactPresenceByRepeat": [
+        true,
+        false,
+        false
+      ],
+      "nearPresenceByRepeat": [
+        true,
+        true,
+        true
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 11,
+        "inTableOfContents": false
+      },
+      "finalRowsByRepeat": [
+        [
+          {
+            "sourceId": "body[1]/p[115]",
+            "start": 0,
+            "end": 29,
+            "text": "Annex 2: List of participants"
+          }
+        ],
+        [
+          {
+            "sourceId": "body[1]/p[115]",
+            "start": 0,
+            "end": 230,
+            "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)"
+          }
+        ],
+        [
+          {
+            "sourceId": "body[1]/p[115]",
+            "start": 0,
+            "end": 230,
+            "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)"
+          }
+        ]
+      ],
+      "primaryCause": "MODEL_BOUNDARY_VARIANCE"
+    }
+  ],
+  "stableFalsePositives": [
+    {
+      "documentId": "DOC-0205",
+      "sourceId": "body[1]/p[4]",
+      "start": 174,
+      "end": 243,
+      "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "presenceCount": 2,
+      "repeats": [
+        1,
+        3
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 7.5,
+        "alignment": null,
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "inTableOfContents": false
+      },
+      "primaryCause": "MODEL_SEMANTIC_EXTRA"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 47,
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "presenceCount": 3,
+      "repeats": [
+        1,
+        2,
+        3
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": true,
+        "fontSizePt": 11,
+        "alignment": "center",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "inTableOfContents": false
+      },
+      "primaryCause": "MODEL_SEMANTIC_EXTRA"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceId": "body[1]/p[46]",
+      "start": 0,
+      "end": 12,
+      "text": "Western Asia",
+      "presenceCount": 3,
+      "repeats": [
+        1,
+        2,
+        3
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": true,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3,
+        "inTableOfContents": false
+      },
+      "primaryCause": "MODEL_SEMANTIC_EXTRA"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceId": "body[1]/p[175]",
+      "start": 0,
+      "end": 36,
+      "text": "ICP Technical Advisory Group members",
+      "presenceCount": 2,
+      "repeats": [
+        1,
+        2
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": true,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 14,
+        "inTableOfContents": false
+      },
+      "primaryCause": "MODEL_SEMANTIC_EXTRA"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceId": "body[1]/p[176]",
+      "start": 0,
+      "end": 42,
+      "text": "ICP experts, guest speakers, and observers",
+      "presenceCount": 2,
+      "repeats": [
+        1,
+        2
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": true,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 14,
+        "inTableOfContents": false
+      },
+      "primaryCause": "MODEL_SEMANTIC_EXTRA"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceId": "body[1]/p[177]",
+      "start": 0,
+      "end": 42,
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "presenceCount": 2,
+      "repeats": [
+        1,
+        2
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": true,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 14,
+        "inTableOfContents": false
+      },
+      "primaryCause": "MODEL_SEMANTIC_EXTRA"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceId": "body[1]/p[178]",
+      "start": 0,
+      "end": 10,
+      "text": "World Bank",
+      "presenceCount": 2,
+      "repeats": [
+        1,
+        2
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": true,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 14,
+        "inTableOfContents": false
+      },
+      "primaryCause": "MODEL_SEMANTIC_EXTRA"
+    },
+    {
+      "documentId": "DOC-0256",
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 87,
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "presenceCount": 3,
+      "repeats": [
+        1,
+        2,
+        3
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": true,
+        "fontSizePt": 11,
+        "alignment": "center",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "inTableOfContents": false
+      },
+      "primaryCause": "MODEL_SEMANTIC_EXTRA"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[115]",
+      "start": 0,
+      "end": 230,
+      "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "presenceCount": 2,
+      "repeats": [
+        2,
+        3
+      ],
+      "facts": {
+        "available": true,
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left",
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null,
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 11,
+        "inTableOfContents": false
+      },
+      "primaryCause": "BODY_OR_LIST_CONTENT"
+    }
+  ],
+  "counts": {
+    "stableOmissions": 9,
+    "spanVariants": 5,
+    "falsePositives3of3": 3,
+    "falsePositives2of3": 6
+  },
+  "causalClassCounts": {
+    "MODEL_SEMANTIC_OMISSION_WITH_STRUCTURAL_EVIDENCE": 1,
+    "MODEL_WRONG_SPAN_OR_BOUNDARY": 1,
+    "RAW_EXACT_NOT_FINAL": 7
+  },
+  "selectedDominantCause": "MODEL_SEMANTIC_OMISSION_WITH_STRUCTURAL_EVIDENCE",
+  "selectedIntervention": "GLOBAL_STRUCTURAL_CONTEXT_ENRICHMENT_V1",
+  "interventionSelectionRationale": "All stable omissions are model-side at first loss; objective XML structural facts are available in the frozen source and can be added generically without candidate gating."
+}

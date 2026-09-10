@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-freeze-v1",
+  "documentId": "DOC-0252",
+  "repeat": "r5",
+  "gitSha": "e6a713caba1c0a5d33a5861b576e6bfa368f1684",
+  "model": "qwen/qwen3.7-flash",
+  "actualProvider": "AUTO",
+  "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "promptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+  "schemaHash": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
+  "packetHash": "4be60e0fd6175dd0f3fe9a6acd4515e433a9fc975155dcf4676da85b8db1c263",
+  "reasoningConfiguration": {
+    "requested": true,
+    "enabled": true,
+    "excluded": true
+  },
+  "predictionSha256": "10d54600c848ae773aa7987c0969adb9379d5845f29b805f644b20b8b9fe081a",
+  "resultSha256": "0fc71623db7650f52cee288ba153c14f1555d3cbe8c6827dabd5a2143fd36055",
+  "rawProposalCount": 0,
+  "boundProposalCount": 0,
+  "finalCount": 0,
+  "providerAttempts": 2,
+  "inputTokens": null,
+  "reasoningTokens": null,
+  "outputTokens": null,
+  "finishReason": null,
+  "executionMode": "FULL_CONTEXT",
+  "failureClass": "FormatException",
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-10T10:18:19.5401719+00:00"
+}

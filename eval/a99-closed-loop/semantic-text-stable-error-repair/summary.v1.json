@@ -1,0 +1,1674 @@
+{
+  "schemaVersion": "a99-semantic-text-stable-error-repair-summary-v1",
+  "status": "BLOCKED",
+  "blockingRuns": [
+    "DOC-0252/R5",
+    "DOC-0252/R6"
+  ],
+  "startHead": "e6a713caba1c0a5d33a5861b576e6bfa368f1684",
+  "endHead": "e6a713caba1c0a5d33a5861b576e6bfa368f1684",
+  "model": "qwen/qwen3.7-flash",
+  "intervention": "GLOBAL_STRUCTURAL_CONTEXT_ENRICHMENT_V1",
+  "baseline": [
+    {
+      "repeat": "r1",
+      "gold": 153,
+      "tp": 140,
+      "fp": 8,
+      "fn": 13,
+      "precision": 0.9459459459459459,
+      "recall": 0.9150326797385621,
+      "f1": 0.9302325581395349,
+      "systemLoss": 0
+    },
+    {
+      "repeat": "r2",
+      "gold": 153,
+      "tp": 143,
+      "fp": 8,
+      "fn": 10,
+      "precision": 0.9470198675496688,
+      "recall": 0.934640522875817,
+      "f1": 0.9407894736842104,
+      "systemLoss": 0
+    },
+    {
+      "repeat": "r3",
+      "gold": 153,
+      "tp": 142,
+      "fp": 6,
+      "fn": 11,
+      "precision": 0.9594594594594594,
+      "recall": 0.9281045751633987,
+      "f1": 0.9435215946843853,
+      "systemLoss": 0
+    }
+  ],
+  "repaired": [
+    {
+      "repeat": "r4",
+      "gold": 153,
+      "tp": 136,
+      "fp": 11,
+      "fn": 17,
+      "precision": 0.9251700680272109,
+      "recall": 0.8888888888888888,
+      "f1": 0.9066666666666665,
+      "systemLoss": 4
+    },
+    {
+      "repeat": "r5",
+      "gold": 126,
+      "tp": 115,
+      "fp": 10,
+      "fn": 11,
+      "precision": 0.92,
+      "recall": 0.9126984126984127,
+      "f1": 0.9163346613545816,
+      "systemLoss": 4
+    },
+    {
+      "repeat": "r6",
+      "gold": 126,
+      "tp": 112,
+      "fp": 1,
+      "fn": 14,
+      "precision": 0.9911504424778761,
+      "recall": 0.8888888888888888,
+      "f1": 0.9372384937238493,
+      "systemLoss": 4
+    }
+  ],
+  "classification": "GENERIC_CAPABILITY_REPAIR_EXECUTION_BLOCKED",
+  "providerCalls": 4,
+  "modelCalls": 15,
+  "goldReadBeforeFreeze": false,
+  "systemLoss": 12,
+  "stability": {
+    "goldOccurrences": [
+      {
+        "documentId": "DOC-0001",
+        "sourceId": "body[1]/p[1]",
+        "start": 0,
+        "end": 24,
+        "text": "Ch\u01B0\u01A1ng 1. Quy \u0111\u1ECBnh chung",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0001",
+        "sourceId": "body[1]/p[3]",
+        "start": 0,
+        "end": 23,
+        "text": "1.1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0001",
+        "sourceId": "body[1]/p[5]",
+        "start": 0,
+        "end": 22,
+        "text": "1.2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0001",
+        "sourceId": "body[1]/p[7]",
+        "start": 0,
+        "end": 22,
+        "text": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0001",
+        "sourceId": "body[1]/p[9]",
+        "start": 0,
+        "end": 24,
+        "text": "1.2.2. \u0110\u01A1n v\u1ECB tr\u1EF1c thu\u1ED9c",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0001",
+        "sourceId": "body[1]/p[11]",
+        "start": 0,
+        "end": 27,
+        "text": "Ch\u01B0\u01A1ng 2. T\u1ED5 ch\u1EE9c th\u1EF1c hi\u1EC7n",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0001",
+        "sourceId": "body[1]/p[13]",
+        "start": 0,
+        "end": 26,
+        "text": "2.1. Ph\u00E2n c\u00F4ng tr\u00E1ch nhi\u1EC7m",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 645,
+        "end": 668,
+        "text": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 669,
+        "end": 695,
+        "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 1337,
+        "end": 1362,
+        "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 1629,
+        "end": 1654,
+        "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 4361,
+        "end": 4409,
+        "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 4626,
+        "end": 4689,
+        "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 6603,
+        "end": 6645,
+        "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 8146,
+        "end": 8206,
+        "text": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 9298,
+        "end": 9332,
+        "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 9843,
+        "end": 9978,
+        "text": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 9979,
+        "end": 10039,
+        "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 10040,
+        "end": 10112,
+        "text": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 10904,
+        "end": 10952,
+        "text": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 11449,
+        "end": 11494,
+        "text": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 13065,
+        "end": 13146,
+        "text": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 14829,
+        "end": 14859,
+        "text": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 15558,
+        "end": 15618,
+        "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 15619,
+        "end": 15691,
+        "text": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 16890,
+        "end": 16963,
+        "text": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 17527,
+        "end": 17571,
+        "text": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 19329,
+        "end": 19367,
+        "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 19368,
+        "end": 19428,
+        "text": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 20463,
+        "end": 20520,
+        "text": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 21486,
+        "end": 21553,
+        "text": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 22765,
+        "end": 22832,
+        "text": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 23401,
+        "end": 23472,
+        "text": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 23745,
+        "end": 23802,
+        "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 23803,
+        "end": 23854,
+        "text": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 24158,
+        "end": 24194,
+        "text": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 25199,
+        "end": 25231,
+        "text": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 26019,
+        "end": 26074,
+        "text": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 27351,
+        "end": 27400,
+        "text": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 28415,
+        "end": 28456,
+        "text": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 29974,
+        "end": 30039,
+        "text": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 30572,
+        "end": 30622,
+        "text": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 32357,
+        "end": 32413,
+        "text": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 32768,
+        "end": 32822,
+        "text": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 32823,
+        "end": 32862,
+        "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 32863,
+        "end": 32994,
+        "text": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 34108,
+        "end": 34247,
+        "text": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 35467,
+        "end": 35498,
+        "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 35499,
+        "end": 35546,
+        "text": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 36126,
+        "end": 36182,
+        "text": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 36916,
+        "end": 36963,
+        "text": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 37929,
+        "end": 37972,
+        "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 37973,
+        "end": 38029,
+        "text": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 38781,
+        "end": 38832,
+        "text": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 39241,
+        "end": 39285,
+        "text": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 40307,
+        "end": 40359,
+        "text": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 40706,
+        "end": 40745,
+        "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 40746,
+        "end": 40793,
+        "text": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 41526,
+        "end": 41577,
+        "text": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 42645,
+        "end": 42692,
+        "text": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 42984,
+        "end": 43069,
+        "text": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 44921,
+        "end": 44983,
+        "text": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 45915,
+        "end": 45955,
+        "text": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 46641,
+        "end": 46682,
+        "text": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 47323,
+        "end": 47375,
+        "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 47376,
+        "end": 47436,
+        "text": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 47923,
+        "end": 47974,
+        "text": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 48627,
+        "end": 48660,
+        "text": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 50264,
+        "end": 50342,
+        "text": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 50896,
+        "end": 50955,
+        "text": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 50956,
+        "end": 51014,
+        "text": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 52830,
+        "end": 52907,
+        "text": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 53712,
+        "end": 53786,
+        "text": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 56513,
+        "end": 56595,
+        "text": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 57453,
+        "end": 57481,
+        "text": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 57482,
+        "end": 57513,
+        "text": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 58966,
+        "end": 58992,
+        "text": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceId": "body[1]/p[4]",
+        "start": 59240,
+        "end": 59269,
+        "text": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[7]",
+        "start": 0,
+        "end": 41,
+        "text": "Session I: Welcome and meeting objectives",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[11]",
+        "start": 0,
+        "end": 40,
+        "text": "Session II: Update on the ICP 2021 Cycle",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[12]",
+        "start": 0,
+        "end": 22,
+        "text": "1.Global office update",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[22]",
+        "start": 0,
+        "end": 18,
+        "text": "2.Regional updates",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[24]",
+        "start": 0,
+        "end": 6,
+        "text": "Africa",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[27]",
+        "start": 0,
+        "end": 20,
+        "text": "Asia and the Pacific",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[31]",
+        "start": 0,
+        "end": 40,
+        "text": "Commonwealth of Independent States (CIS)",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[39]",
+        "start": 0,
+        "end": 25,
+        "text": "Eurostat\u2013OECD PPP Program",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[42]",
+        "start": 0,
+        "end": 31,
+        "text": "Latin America and the Caribbean",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+        "start": 182,
+        "end": 194,
+        "text": "Western Asia",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[54]",
+        "start": 0,
+        "end": 65,
+        "text": "Session III: Short- and Long-Term Research and Development Agenda",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[55]",
+        "start": 0,
+        "end": 55,
+        "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[62]",
+        "start": 0,
+        "end": 29,
+        "text": "2.Forthcoming Research Topics",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[75]",
+        "start": 0,
+        "end": 66,
+        "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[76]",
+        "start": 0,
+        "end": 40,
+        "text": "1.TAG Composition and Terms of Reference",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[80]",
+        "start": 0,
+        "end": 62,
+        "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[89]",
+        "start": 0,
+        "end": 66,
+        "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[94]",
+        "start": 0,
+        "end": 27,
+        "text": "Session V: Current Research",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[95]",
+        "start": 0,
+        "end": 72,
+        "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[105]",
+        "start": 0,
+        "end": 110,
+        "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[110]",
+        "start": 0,
+        "end": 84,
+        "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[120]",
+        "start": 0,
+        "end": 43,
+        "text": "4.Treatment of Negative Expenditures in ICP",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[125]",
+        "start": 0,
+        "end": 39,
+        "text": "5.Fine Tuning Global Linking Procedures",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[142]",
+        "start": 0,
+        "end": 44,
+        "text": "6.Improving Reliability of Price Comparisons",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[151]",
+        "start": 0,
+        "end": 30,
+        "text": "Session VI: Any Other Business",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[158]",
+        "start": 56,
+        "end": 62,
+        "text": "Agenda",
+        "exactPresenceCount": 0,
+        "classification": "SPAN_VARIANT"
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[174]",
+        "start": 0,
+        "end": 29,
+        "text": "Annex 2: List of Participants",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[6]",
+        "start": 0,
+        "end": 30,
+        "text": "Welcome and meeting objectives",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[10]",
+        "start": 0,
+        "end": 53,
+        "text": "Regional updates on the ICP 2021 cycle implementation",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[11]",
+        "start": 0,
+        "end": 6,
+        "text": "Africa",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[17]",
+        "start": 0,
+        "end": 20,
+        "text": "Asia and the Pacific",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[20]",
+        "start": 0,
+        "end": 34,
+        "text": "Commonwealth of Independent States",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[26]",
+        "start": 0,
+        "end": 25,
+        "text": "Eurostat\u2013OECD PPP Program",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[32]",
+        "start": 0,
+        "end": 31,
+        "text": "Latin America and the Caribbean",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[35]",
+        "start": 0,
+        "end": 12,
+        "text": "Western Asia",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[42]",
+        "start": 0,
+        "end": 51,
+        "text": "Global updates on the ICP 2021 cycle implementation",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[55]",
+        "start": 0,
+        "end": 60,
+        "text": "Data review: Household consumption price and importance data",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[61]",
+        "start": 0,
+        "end": 39,
+        "text": "Data review: Housing prices and volumes",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[67]",
+        "start": 0,
+        "end": 30,
+        "text": "Data review: Private Education",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[73]",
+        "start": 0,
+        "end": 64,
+        "text": "Data review: Government compensation and productivity adjustment",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[76]",
+        "start": 0,
+        "end": 53,
+        "text": "Data review: Machinery and equipment and construction",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[80]",
+        "start": 0,
+        "end": 53,
+        "text": "Data review: 2017-2021 National Accounts expenditures",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[88]",
+        "start": 0,
+        "end": 59,
+        "text": "Data review: 2017-2021 Population and market exchange rates",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[90]",
+        "start": 0,
+        "end": 102,
+        "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[99]",
+        "start": 0,
+        "end": 31,
+        "text": "Planning for the ICP 2024 cycle",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[107]",
+        "start": 0,
+        "end": 23,
+        "text": "Annex 1: Meeting Agenda",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+        "start": 0,
+        "end": 32,
+        "text": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+        "start": 0,
+        "end": 34,
+        "text": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+        "start": 0,
+        "end": 33,
+        "text": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+        "start": 0,
+        "end": 31,
+        "text": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceId": "body[1]/p[124]",
+        "start": 0,
+        "end": 29,
+        "text": "Annex 2: List of participants",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[3]",
+        "start": 0,
+        "end": 87,
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[6]",
+        "start": 0,
+        "end": 30,
+        "text": "Welcome and meeting objectives",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[10]",
+        "start": 0,
+        "end": 53,
+        "text": "Regional updates on the ICP 2021 cycle implementation",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[11]",
+        "start": 0,
+        "end": 6,
+        "text": "Africa",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[12]",
+        "start": 0,
+        "end": 20,
+        "text": "Asia and the Pacific",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[17]",
+        "start": 0,
+        "end": 25,
+        "text": "Eurostat\u2013OECD PPP Program",
+        "exactPresenceCount": 1,
+        "classification": "STOCHASTIC_OMISSION"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[18]",
+        "start": 0,
+        "end": 34,
+        "text": "Commonwealth of Independent States",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[19]",
+        "start": 0,
+        "end": 31,
+        "text": "Latin America and the Caribbean",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[24]",
+        "start": 0,
+        "end": 12,
+        "text": "Western Asia",
+        "exactPresenceCount": 0,
+        "classification": "TRUE_STABLE_OMISSION"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[25]",
+        "start": 0,
+        "end": 51,
+        "text": "Global updates on the ICP 2021 cycle implementation",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[39]",
+        "start": 0,
+        "end": 60,
+        "text": "Data review: Household consumption price and importance data",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[48]",
+        "start": 0,
+        "end": 39,
+        "text": "Data review: Housing prices and volumes",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[50]",
+        "start": 0,
+        "end": 30,
+        "text": "Data review: Private Education",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[56]",
+        "start": 0,
+        "end": 64,
+        "text": "Data review: Government compensation and productivity adjustment",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[59]",
+        "start": 0,
+        "end": 53,
+        "text": "Data review: Machinery and equipment and construction",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[62]",
+        "start": 0,
+        "end": 53,
+        "text": "Data review: 2017-2021 National Accounts expenditures",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[70]",
+        "start": 0,
+        "end": 59,
+        "text": "Data review: 2017-2021 Population and market exchange rates",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[72]",
+        "start": 0,
+        "end": 51,
+        "text": "Results review: draft revised 2017 and 2021 results",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[74]",
+        "start": 0,
+        "end": 31,
+        "text": "Planning for the ICP 2024 cycle",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[84]",
+        "start": 0,
+        "end": 70,
+        "text": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[91]",
+        "start": 0,
+        "end": 68,
+        "text": "Planning for an approach to produce annual ICP results and forecasts",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[96]",
+        "start": 0,
+        "end": 18,
+        "text": "Any other business",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[102]",
+        "start": 0,
+        "end": 23,
+        "text": "Annex 1: Meeting Agenda",
+        "exactPresenceCount": 3,
+        "classification": "EXACT_STABLE"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceId": "body[1]/p[115]",
+        "start": 0,
+        "end": 29,
+        "text": "Annex 2: List of participants",
+        "exactPresenceCount": 2,
+        "classification": "SPAN_VARIANT"
+      }
+    ],
+    "stableOmissions": 12,
+    "spanVariants": 2,
+    "stochasticOmissions": 28,
+    "stableFalsePositives": 1,
+    "falsePositives2of3": 0,
+    "falsePositiveOccurrences": [
+      {
+        "key": "DOC-0252:body[1]/p[3]:0:47",
+        "documentId": "DOC-0252",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0252:body[1]/p[4]:0:24",
+        "documentId": "DOC-0252",
+        "text": "TECHNICAL ADVISORY GROUP",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0252:body[1]/p[5]:0:15",
+        "documentId": "DOC-0252",
+        "text": "MARCH 7-8, 2025",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0252:body[1]/p[6]:0:17",
+        "documentId": "DOC-0252",
+        "text": "New York - Hybrid",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0252:body[1]/p[46]:0:12",
+        "documentId": "DOC-0252",
+        "text": "Western Asia",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0252:body[1]/p[175]:0:36",
+        "documentId": "DOC-0252",
+        "text": "ICP Technical Advisory Group members",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0252:body[1]/p[176]:0:42",
+        "documentId": "DOC-0252",
+        "text": "ICP experts, guest speakers, and observers",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0252:body[1]/p[177]:0:42",
+        "documentId": "DOC-0252",
+        "text": "ICP Inter-Agency Coordination Group (IACG)",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0252:body[1]/p[178]:0:10",
+        "documentId": "DOC-0252",
+        "text": "World Bank",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0256:body[1]/p[3]:0:87",
+        "documentId": "DOC-0256",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "presenceCount": 3
+      },
+      {
+        "key": "DOC-0256:body[1]/p[125]:0:31",
+        "documentId": "DOC-0256",
+        "text": "African Development Bank (AfDB)",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0256:body[1]/p[130]:0:28",
+        "documentId": "DOC-0256",
+        "text": "Asian Development Bank (ADB)",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0256:body[1]/p[133]:0:85",
+        "documentId": "DOC-0256",
+        "text": "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0256:body[1]/p[136]:0:61",
+        "documentId": "DOC-0256",
+        "text": "Organisation for Economic Co-operation and Development (OECD)",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0256:body[1]/p[139]:0:57",
+        "documentId": "DOC-0256",
+        "text": "Statistical Office of the European Communities (Eurostat)",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0256:body[1]/p[142]:0:81",
+        "documentId": "DOC-0256",
+        "text": "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0256:body[1]/p[146]:0:73",
+        "documentId": "DOC-0256",
+        "text": "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0256:body[1]/p[149]:0:33",
+        "documentId": "DOC-0256",
+        "text": "International Monetary Fund (IMF)",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0256:body[1]/p[151]:0:10",
+        "documentId": "DOC-0256",
+        "text": "World Bank",
+        "presenceCount": 1
+      },
+      {
+        "key": "DOC-0258:body[1]/p[115]:0:230",
+        "documentId": "DOC-0258",
+        "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+        "presenceCount": 1
+      }
+    ]
+  },
+  "comparison": {
+    "baseline": [
+      {
+        "repeat": "r1",
+        "gold": 153,
+        "tp": 140,
+        "fp": 8,
+        "fn": 13,
+        "precision": 0.9459459459459459,
+        "recall": 0.9150326797385621,
+        "f1": 0.9302325581395349,
+        "systemLoss": 0
+      },
+      {
+        "repeat": "r2",
+        "gold": 153,
+        "tp": 143,
+        "fp": 8,
+        "fn": 10,
+        "precision": 0.9470198675496688,
+        "recall": 0.934640522875817,
+        "f1": 0.9407894736842104,
+        "systemLoss": 0
+      },
+      {
+        "repeat": "r3",
+        "gold": 153,
+        "tp": 142,
+        "fp": 6,
+        "fn": 11,
+        "precision": 0.9594594594594594,
+        "recall": 0.9281045751633987,
+        "f1": 0.9435215946843853,
+        "systemLoss": 0
+      }
+    ],
+    "repaired": [
+      {
+        "repeat": "r4",
+        "gold": 153,
+        "tp": 136,
+        "fp": 11,
+        "fn": 17,
+        "precision": 0.9251700680272109,
+        "recall": 0.8888888888888888,
+        "f1": 0.9066666666666665,
+        "systemLoss": 4
+      },
+      {
+        "repeat": "r5",
+        "gold": 126,
+        "tp": 115,
+        "fp": 10,
+        "fn": 11,
+        "precision": 0.92,
+        "recall": 0.9126984126984127,
+        "f1": 0.9163346613545816,
+        "systemLoss": 4
+      },
+      {
+        "repeat": "r6",
+        "gold": 126,
+        "tp": 112,
+        "fp": 1,
+        "fn": 14,
+        "precision": 0.9911504424778761,
+        "recall": 0.8888888888888888,
+        "f1": 0.9372384937238493,
+        "systemLoss": 4
+      }
+    ],
+    "delta": {
+      "tp": -62,
+      "fp": 0,
+      "fn": 8,
+      "f1": -0.019202503702461793,
+      "systemLoss": 12
+    }
+  }
+}

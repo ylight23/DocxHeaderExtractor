@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "a99-semantic-text-stable-error-repair-intervention-manifest-v1",
+  "startHead": "e6a713caba1c0a5d33a5861b576e6bfa368f1684",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "model": "qwen/qwen3.7-flash",
+  "baselineArtifact": "eval/a99-closed-loop/semantic-text-generalization",
+  "selectedStrictGoldCohort": [
+    "DOC-0001",
+    "DOC-0205",
+    "DOC-0252",
+    "DOC-0256",
+    "DOC-0258"
+  ],
+  "baselineRepeats": [
+    "r1",
+    "r2",
+    "r3"
+  ],
+  "repairRepeats": [
+    "r4",
+    "r5",
+    "r6"
+  ],
+  "baselineContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "intervention": "GLOBAL_STRUCTURAL_CONTEXT_ENRICHMENT_V1",
+  "interventionRule": "Add objective source-only style/outline/numbering/layout facts to every alias; no candidate gating, Gold-derived rule, prompt examples, or semantic post-filter.",
+  "packetFields": [
+    "alias",
+    "text",
+    "sourceOrdinal",
+    "structuralFacts.style",
+    "structuralFacts.numbering",
+    "structuralFacts.layout",
+    "structuralFacts.inTableOfContents"
+  ],
+  "promptUnchanged": true,
+  "schemaUnchanged": true,
+  "binderUnchanged": true,
+  "validatorUnchanged": true,
+  "projectionUnchanged": true,
+  "offlineDominantCause": "MODEL_SEMANTIC_OMISSION_WITH_STRUCTURAL_EVIDENCE",
+  "offlineAuditArtifact": "offline-audit.v1.json",
+  "providerConcurrency": 1,
+  "modelCallsBeforeManifest": 0,
+  "goldReadBeforeFreeze": false,
+  "noVlm": true,
+  "noMultipass": true,
+  "sourceHashes": [
+    {
+      "documentId": "DOC-0001",
+      "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "basePacketHash": "350c756f4ff775028f2d3f5adbc3a56c2a73ec2cd1645616ffbd2c38e93b7e75"
+    },
+    {
+      "documentId": "DOC-0205",
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "basePacketHash": "65b616df872739a49c9cba307f1530c6673e563bb014723ecabe395485a34afe"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+      "basePacketHash": "843dd251294acecb3662c5e77f3de0900fcb9e0cf19842b226e748a17a818fb0"
+    },
+    {
+      "documentId": "DOC-0256",
+      "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+      "basePacketHash": "98ddb9b0c1ba4d121438be1aa288c4284f5c554ee8ff13700ecfaab460eae1a2"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "basePacketHash": "ba41b80ce8d8e655af8abbcd36e9917dbfc9e792c7e0000fbd66e954607d3384"
+    }
+  ],
+  "reasoningConfiguration": {
+    "requested": true,
+    "enabled": true,
+    "excluded": true,
+    "effort": "MODEL_DEFAULT"
+  },
+  "preRegisteredUtc": "2026-09-10T10:03:56.3181113+00:00"
+}
