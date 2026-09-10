@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "a99-structure-preserving-ir-summary-v1",
+  "documentId": "DOC-0205",
+  "text": {
+    "schemaVersion": "a99-structure-preserving-ir-score-v1",
+    "documentId": "DOC-0205",
+    "exactStatus": "EVALUABLE",
+    "goldCount": 71,
+    "tp": 1,
+    "fp": 57,
+    "fn": 70,
+    "precision": 0.017241379310344827,
+    "recall": 0.014084507042253521,
+    "f1": 0.015503875968992246,
+    "modelOmission": 70,
+    "addressLoss": 0,
+    "systemLoss": 0,
+    "goldReadBeforeFreeze": false
+  },
+  "visual": {
+    "mode": "STRUCTURE_PRESERVING_VLM",
+    "tp": 0,
+    "fp": 61,
+    "fn": 71,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "wallTimeMs": 154162,
+    "raw": 78,
+    "bound": 61,
+    "providerCalls": 1
+  },
+  "finalTable": [
+    { "mode": "FLAT_TEXT_FROZEN", "raw": 0, "bound": 0, "final": 0, "tp": 0, "fp": 73, "fn": 71, "f1": 0 },
+    { "mode": "STRUCTURE_PRESERVING_TEXT", "raw": 71, "bound": 58, "final": 58, "tp": 1, "fp": 57, "fn": 70, "f1": 0.015503875968992246 },
+    { "mode": "STRUCTURE_PRESERVING_VLM", "raw": 78, "bound": 61, "final": 61, "tp": 0, "fp": 61, "fn": 71, "f1": 0 }
+  ],
+  "classification": "STRUCTURE_PRESERVING_IR_NO_MATERIAL_GAIN",
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false
+}

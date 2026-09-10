@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "a99-structure-preserving-ir-manifest-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "canonicalTextSha256": "3630634bd4448f644add961c7cc0cd8be4f534147c69edd029e9dfb9610569b2",
+  "sourceOccurrenceCount": 4,
+  "lineCount": 1499,
+  "atomCount": 2571,
+  "atomKinds": {
+    "w:t": 1059,
+    "w:br": 1512
+  },
+  "sourceTextCharacters": 60919,
+  "packetCharacters": 240980,
+  "allSourceTextVisible": true,
+  "aliases": {
+    "format": "L000001",
+    "semanticMeaning": "NONE",
+    "stable": true
+  },
+  "goldReadBeforeFreeze": false,
+  "providerCalls": 0,
+  "createdUtc": "2026-09-10T02:48:48.3230668+00:00"
+}

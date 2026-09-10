@@ -144,6 +144,65 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         return (response, telemetry);
     }
 
+    public async Task<(StructurePreservingSemanticResponse Response, RequestPacketTelemetry Telemetry)> CompleteStructurePreservingSemanticAsync(
+        string documentId, string route, string requestId, string packetJson, int sourceTextCharacters,
+        int ownedOccurrences, int visibleOccurrences, CancellationToken ct = default)
+    {
+        var maxCompletion = SemanticMaxCompletionTokens;
+        var telemetry = NewTelemetry(documentId, "STRUCTURE_PRESERVING_SEMANTIC", requestId, packetJson,
+            sourceTextCharacters, maxCompletion, ownedOccurrences, visibleOccurrences);
+        var user = StructurePreservingSemanticPrompt.BuildUser(packetJson, route);
+        var (content, finishReason) = await SendAsync(StructurePreservingSemanticPrompt.System, user,
+            maxCompletion, StructurePreservingSemanticPrompt.Schema(), "ceiling_structure_preserving_v1", telemetry, ct).ConfigureAwait(false);
+        if (IsOutputLimit(finishReason))
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
+            _telemetry.Add(telemetry);
+            throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
+                "Structure-preserving semantic pass hit the provider output limit before a complete response.",
+                new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
+        }
+        var response = StructurePreservingSemanticResponseParser.Parse(content);
+        telemetry.StructuredOutputParsed = true;
+        telemetry.HeadingOutputCount = response.Headings.Count;
+        _telemetry.Add(telemetry);
+        return (response, telemetry);
+    }
+
+    public async Task<(StructurePreservingSemanticResponse Response, RequestPacketTelemetry Telemetry)> CompleteStructurePreservingVisualSemanticAsync(
+        string documentId, string route, string requestId, string packetJson, IReadOnlyList<VisualPageEvidence> pages,
+        int sourceTextCharacters, int ownedOccurrences, int visibleOccurrences, CancellationToken ct = default)
+    {
+        if (pages is null || pages.Count == 0) throw new ArgumentException("Visual page evidence is required.", nameof(pages));
+        var maxCompletion = SemanticMaxCompletionTokens;
+        var visualManifest = string.Join('|', pages.Select(page => $"p{page.PageIndex}:{page.ImageHash}"));
+        var telemetry = NewTelemetry(documentId, "STRUCTURE_PRESERVING_VISUAL_SEMANTIC", requestId,
+            packetJson + "\n" + visualManifest, sourceTextCharacters, maxCompletion, ownedOccurrences, visibleOccurrences);
+        var userText = StructurePreservingSemanticPrompt.System + "\nroute=" + route +
+            "\nUse the supplied page images as visual/layout evidence, while the supplied line text remains canonical for exact spans. " +
+            "Return only the structure-preserving line-address JSON schema.\n" + packetJson;
+        var content = new List<object> { new { type = "text", text = userText } };
+        content.AddRange(pages.Select(page => (object)new
+        {
+            type = "image_url", image_url = new { url = "data:image/png;base64," + Convert.ToBase64String(page.PngBytes) },
+        }));
+        var (rawContent, finishReason) = await SendAsync(StructurePreservingSemanticPrompt.System, content,
+            maxCompletion, StructurePreservingSemanticPrompt.Schema(), "ceiling_structure_preserving_visual_v1", telemetry, ct).ConfigureAwait(false);
+        if (IsOutputLimit(finishReason))
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
+            _telemetry.Add(telemetry);
+            throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
+                "Structure-preserving visual semantic pass hit the provider output limit before a complete response.",
+                new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
+        }
+        var response = StructurePreservingSemanticResponseParser.Parse(rawContent);
+        telemetry.StructuredOutputParsed = true;
+        telemetry.HeadingOutputCount = response.Headings.Count;
+        _telemetry.Add(telemetry);
+        return (response, telemetry);
+    }
+
     /// <summary>Contract-v2 semantic entry point. The transport, telemetry, completion-limit
     /// handling, and parser remain identical to the frozen v3 route; only the frozen
     /// model-facing contract and schema are supplied by the caller.</summary>

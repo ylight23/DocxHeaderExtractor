@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-structure-preserving-ir-score-v1",
+  "documentId": "DOC-0205",
+  "exactStatus": "EVALUABLE",
+  "goldCount": 71,
+  "tp": 1,
+  "fp": 57,
+  "fn": 70,
+  "precision": 0.017241379310344827,
+  "recall": 0.014084507042253521,
+  "f1": 0.015503875968992246,
+  "modelOmission": 70,
+  "addressLoss": 0,
+  "systemLoss": 0,
+  "goldReadBeforeFreeze": false
+}

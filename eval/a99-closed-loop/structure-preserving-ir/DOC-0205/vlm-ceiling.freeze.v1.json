@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "a99-structure-preserving-ir-vlm-freeze-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "canonicalTextSha256": "3630634bd4448f644add961c7cc0cd8be4f534147c69edd029e9dfb9610569b2",
+  "packetHash": "5947c9f6c7cb95c8fc81ebe77821978152a05e9957988b0c88ef6d5139c6146e",
+  "pageManifestSha256": "a0629ef1c91fcac12bce89c0d362153a2ccdc66a6eb878d6979ab2ba9c3502c4",
+  "predictionSha256": "031b4977bcaab8aa5fa818c0c1d0d0b1c21f771acea9e17d59c9d8b89ab6c511",
+  "resultSha256": "597740c30b182e57cb8ae6659f4f51dd62d8c1a6823fc8d739d10bf0688cd3ce",
+  "actualProvider": "Alibaba",
+  "finishReason": "stop",
+  "providerAttempts": 1,
+  "reasoningTokens": 5155,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-10T02:55:45.4594258+00:00"
+}
