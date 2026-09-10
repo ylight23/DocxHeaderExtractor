@@ -1,0 +1,4586 @@
+{
+  "schemaVersion": "a99-doc0205-semantic-contract-reconciliation-v1",
+  "documentId": "DOC-0205",
+  "generatedUtc": "2026-09-10T07:01:35.9604342+00:00",
+  "providerCalls": 0,
+  "correspondenceRule": {
+    "officialExactKey": "sourceId \u002B exact start/end",
+    "diagnostic": [
+      "same-source overlap/containment",
+      "exact normalized text",
+      "shared structural occurrence"
+    ],
+    "note": "A corresponding raw proposal is not an omission solely because its span differs."
+  },
+  "runs": [
+    {
+      "label": "Qwen3.5-9B S0",
+      "score": {
+        "tp": 0,
+        "fp": 15,
+        "fn": 71,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "rawProposalCount": 15,
+      "finalProposalCount": 15,
+      "counts": {
+        "SEMANTIC_PRESENT_OFFSET_SHIFT": 2,
+        "TRUE_MODEL_OMISSION": 69
+      },
+      "perGold": [
+        {
+          "goldOrdinal": 0,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 4,
+          "matchedStart": 608,
+          "matchedEnd": 658
+        },
+        {
+          "goldOrdinal": 1,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 5,
+          "matchedStart": 659,
+          "matchedEnd": 689
+        },
+        {
+          "goldOrdinal": 2,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 3,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 4,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 5,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 6,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 7,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 8,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 9,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 10,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 11,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 12,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 13,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 14,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 15,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 16,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 17,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 18,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 19,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 20,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 21,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 22,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 23,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 24,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 25,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 26,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 27,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 28,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 29,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 30,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 31,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 32,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 33,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 34,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 35,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 36,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 37,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 38,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 39,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 40,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 41,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 42,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 43,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 44,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 45,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 46,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 47,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 48,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 49,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 50,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 51,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 52,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 53,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 54,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 55,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 56,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 57,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 58,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 59,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 60,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 61,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 62,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 63,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 64,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 65,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 66,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 67,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 68,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 69,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 70,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        }
+      ]
+    },
+    {
+      "label": "Qwen3.7-Flash S0",
+      "score": {
+        "tp": 0,
+        "fp": 73,
+        "fn": 71,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "rawProposalCount": 73,
+      "finalProposalCount": 73,
+      "counts": {
+        "SEMANTIC_PRESENT_OFFSET_SHIFT": 3,
+        "SEMANTIC_PRESENT_SUPERSET_SPAN": 1,
+        "TRUE_MODEL_OMISSION": 67
+      },
+      "perGold": [
+        {
+          "goldOrdinal": 0,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 3,
+          "matchedStart": 638,
+          "matchedEnd": 661
+        },
+        {
+          "goldOrdinal": 1,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 4,
+          "matchedStart": 662,
+          "matchedEnd": 685
+        },
+        {
+          "goldOrdinal": 2,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 15,
+          "matchedStart": 1278,
+          "matchedEnd": 1358
+        },
+        {
+          "goldOrdinal": 3,
+          "class": "SEMANTIC_PRESENT_SUPERSET_SPAN",
+          "matchedPredictionId": 21,
+          "matchedStart": 1625,
+          "matchedEnd": 1665
+        },
+        {
+          "goldOrdinal": 4,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 5,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 6,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 7,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 8,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 9,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 10,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 11,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 12,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 13,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 14,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 15,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 16,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 17,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 18,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 19,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 20,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 21,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 22,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 23,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 24,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 25,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 26,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 27,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 28,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 29,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 30,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 31,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 32,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 33,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 34,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 35,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 36,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 37,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 38,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 39,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 40,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 41,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 42,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 43,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 44,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 45,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 46,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 47,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 48,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 49,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 50,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 51,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 52,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 53,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 54,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 55,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 56,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 57,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 58,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 59,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 60,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 61,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 62,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 63,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 64,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 65,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 66,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 67,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 68,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 69,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 70,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        }
+      ]
+    },
+    {
+      "label": "C0 structure-preserving",
+      "score": {
+        "tp": 1,
+        "fp": 57,
+        "fn": 70,
+        "precision": 0.017241379310344827,
+        "recall": 0.014084507042253521,
+        "f1": 0.015503875968992246
+      },
+      "rawProposalCount": 71,
+      "finalProposalCount": 58,
+      "counts": {
+        "TRUE_MODEL_OMISSION": 14,
+        "EXACT_MATCH": 1,
+        "SEMANTIC_PRESENT_PARTIAL_SPAN": 56
+      },
+      "perGold": [
+        {
+          "goldOrdinal": 0,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 1,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 2,
+          "class": "EXACT_MATCH",
+          "matchedPredictionId": 0,
+          "matchedStart": 1337,
+          "matchedEnd": 1362
+        },
+        {
+          "goldOrdinal": 3,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 1,
+          "matchedStart": 1629,
+          "matchedEnd": 1651
+        },
+        {
+          "goldOrdinal": 4,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 2,
+          "matchedStart": 4361,
+          "matchedEnd": 4399
+        },
+        {
+          "goldOrdinal": 5,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 3,
+          "matchedStart": 4626,
+          "matchedEnd": 4672
+        },
+        {
+          "goldOrdinal": 6,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 4,
+          "matchedStart": 6603,
+          "matchedEnd": 6633
+        },
+        {
+          "goldOrdinal": 7,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 5,
+          "matchedStart": 8146,
+          "matchedEnd": 8188
+        },
+        {
+          "goldOrdinal": 8,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 6,
+          "matchedStart": 9298,
+          "matchedEnd": 9328
+        },
+        {
+          "goldOrdinal": 9,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 7,
+          "matchedStart": 9843,
+          "matchedEnd": 9974
+        },
+        {
+          "goldOrdinal": 10,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 8,
+          "matchedStart": 9979,
+          "matchedEnd": 10037
+        },
+        {
+          "goldOrdinal": 11,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 12,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 9,
+          "matchedStart": 10904,
+          "matchedEnd": 10942
+        },
+        {
+          "goldOrdinal": 13,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 10,
+          "matchedStart": 11449,
+          "matchedEnd": 11491
+        },
+        {
+          "goldOrdinal": 14,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 15,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 11,
+          "matchedStart": 14829,
+          "matchedEnd": 14855
+        },
+        {
+          "goldOrdinal": 16,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 12,
+          "matchedStart": 15558,
+          "matchedEnd": 15612
+        },
+        {
+          "goldOrdinal": 17,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 18,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 19,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 13,
+          "matchedStart": 17527,
+          "matchedEnd": 17561
+        },
+        {
+          "goldOrdinal": 20,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 14,
+          "matchedStart": 19329,
+          "matchedEnd": 19363
+        },
+        {
+          "goldOrdinal": 21,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 15,
+          "matchedStart": 19368,
+          "matchedEnd": 19414
+        },
+        {
+          "goldOrdinal": 22,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 16,
+          "matchedStart": 20463,
+          "matchedEnd": 20505
+        },
+        {
+          "goldOrdinal": 23,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 17,
+          "matchedStart": 21486,
+          "matchedEnd": 21532
+        },
+        {
+          "goldOrdinal": 24,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 18,
+          "matchedStart": 22765,
+          "matchedEnd": 22807
+        },
+        {
+          "goldOrdinal": 25,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 26,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 19,
+          "matchedStart": 23745,
+          "matchedEnd": 23791
+        },
+        {
+          "goldOrdinal": 27,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 20,
+          "matchedStart": 23803,
+          "matchedEnd": 23841
+        },
+        {
+          "goldOrdinal": 28,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 21,
+          "matchedStart": 24158,
+          "matchedEnd": 24188
+        },
+        {
+          "goldOrdinal": 29,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 22,
+          "matchedStart": 25199,
+          "matchedEnd": 25229
+        },
+        {
+          "goldOrdinal": 30,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 23,
+          "matchedStart": 26019,
+          "matchedEnd": 26061
+        },
+        {
+          "goldOrdinal": 31,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 24,
+          "matchedStart": 27351,
+          "matchedEnd": 27393
+        },
+        {
+          "goldOrdinal": 32,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 25,
+          "matchedStart": 28415,
+          "matchedEnd": 28449
+        },
+        {
+          "goldOrdinal": 33,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 26,
+          "matchedStart": 29974,
+          "matchedEnd": 30016
+        },
+        {
+          "goldOrdinal": 34,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 27,
+          "matchedStart": 30572,
+          "matchedEnd": 30610
+        },
+        {
+          "goldOrdinal": 35,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 28,
+          "matchedStart": 32357,
+          "matchedEnd": 32399
+        },
+        {
+          "goldOrdinal": 36,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 29,
+          "matchedStart": 32768,
+          "matchedEnd": 32817
+        },
+        {
+          "goldOrdinal": 37,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 30,
+          "matchedStart": 32823,
+          "matchedEnd": 32861
+        },
+        {
+          "goldOrdinal": 38,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 31,
+          "matchedStart": 32863,
+          "matchedEnd": 32977
+        },
+        {
+          "goldOrdinal": 39,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 32,
+          "matchedStart": 34108,
+          "matchedEnd": 34223
+        },
+        {
+          "goldOrdinal": 40,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 33,
+          "matchedStart": 35467,
+          "matchedEnd": 35497
+        },
+        {
+          "goldOrdinal": 41,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 34,
+          "matchedStart": 35499,
+          "matchedEnd": 35537
+        },
+        {
+          "goldOrdinal": 42,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 35,
+          "matchedStart": 36126,
+          "matchedEnd": 36168
+        },
+        {
+          "goldOrdinal": 43,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 36,
+          "matchedStart": 36916,
+          "matchedEnd": 36954
+        },
+        {
+          "goldOrdinal": 44,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 37,
+          "matchedStart": 37929,
+          "matchedEnd": 37971
+        },
+        {
+          "goldOrdinal": 45,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 38,
+          "matchedStart": 37973,
+          "matchedEnd": 38019
+        },
+        {
+          "goldOrdinal": 46,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 39,
+          "matchedStart": 38781,
+          "matchedEnd": 38823
+        },
+        {
+          "goldOrdinal": 47,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 40,
+          "matchedStart": 39241,
+          "matchedEnd": 39279
+        },
+        {
+          "goldOrdinal": 48,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 49,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 42,
+          "matchedStart": 40706,
+          "matchedEnd": 40744
+        },
+        {
+          "goldOrdinal": 50,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 43,
+          "matchedStart": 40746,
+          "matchedEnd": 40784
+        },
+        {
+          "goldOrdinal": 51,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 44,
+          "matchedStart": 41526,
+          "matchedEnd": 41564
+        },
+        {
+          "goldOrdinal": 52,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 45,
+          "matchedStart": 42645,
+          "matchedEnd": 42675
+        },
+        {
+          "goldOrdinal": 53,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 54,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 46,
+          "matchedStart": 44921,
+          "matchedEnd": 44963
+        },
+        {
+          "goldOrdinal": 55,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 47,
+          "matchedStart": 45915,
+          "matchedEnd": 45949
+        },
+        {
+          "goldOrdinal": 56,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 48,
+          "matchedStart": 46641,
+          "matchedEnd": 46679
+        },
+        {
+          "goldOrdinal": 57,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 49,
+          "matchedStart": 47323,
+          "matchedEnd": 47369
+        },
+        {
+          "goldOrdinal": 58,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 50,
+          "matchedStart": 47376,
+          "matchedEnd": 47422
+        },
+        {
+          "goldOrdinal": 59,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 51,
+          "matchedStart": 47923,
+          "matchedEnd": 47961
+        },
+        {
+          "goldOrdinal": 60,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 52,
+          "matchedStart": 48627,
+          "matchedEnd": 48653
+        },
+        {
+          "goldOrdinal": 61,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 62,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 53,
+          "matchedStart": 50896,
+          "matchedEnd": 50944
+        },
+        {
+          "goldOrdinal": 63,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 54,
+          "matchedStart": 50956,
+          "matchedEnd": 50998
+        },
+        {
+          "goldOrdinal": 64,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 65,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 66,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 67,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 68,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 55,
+          "matchedStart": 57482,
+          "matchedEnd": 57508
+        },
+        {
+          "goldOrdinal": 69,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 56,
+          "matchedStart": 58966,
+          "matchedEnd": 58988
+        },
+        {
+          "goldOrdinal": 70,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 57,
+          "matchedStart": 59240,
+          "matchedEnd": 59262
+        }
+      ]
+    },
+    {
+      "label": "C1 boundary",
+      "score": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 71,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "rawProposalCount": 71,
+      "finalProposalCount": 0,
+      "counts": {
+        "SYSTEM_BINDING_LOSS": 71
+      },
+      "perGold": [
+        {
+          "goldOrdinal": 0,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 1,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 2,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 3,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 4,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 5,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 6,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 7,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 8,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 9,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 10,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 11,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 12,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 13,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 14,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 15,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 16,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 17,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 18,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 19,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 20,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 21,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 22,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 23,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 24,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 25,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 26,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 27,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 28,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 29,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 30,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 31,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 32,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 33,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 34,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 35,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 36,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 37,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 38,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 39,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 40,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 41,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 42,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 43,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 44,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 45,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 46,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 47,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 48,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 49,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 50,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 51,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 52,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 53,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 54,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 55,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 56,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 57,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 58,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 59,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 60,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 61,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 62,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 63,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 64,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 65,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 66,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 67,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 68,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 69,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 70,
+          "class": "SYSTEM_BINDING_LOSS",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        }
+      ]
+    },
+    {
+      "label": "C2 addressed",
+      "score": {
+        "tp": 0,
+        "fp": 90,
+        "fn": 71,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "rawProposalCount": 90,
+      "finalProposalCount": 90,
+      "counts": {
+        "SEMANTIC_PRESENT_OFFSET_SHIFT": 8,
+        "TRUE_MODEL_OMISSION": 61,
+        "SEMANTIC_PRESENT_SUPERSET_SPAN": 2
+      },
+      "perGold": [
+        {
+          "goldOrdinal": 0,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 0,
+          "matchedStart": 648,
+          "matchedEnd": 672
+        },
+        {
+          "goldOrdinal": 1,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 0,
+          "matchedStart": 648,
+          "matchedEnd": 672
+        },
+        {
+          "goldOrdinal": 2,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 3,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 4,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 5,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 6,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 7,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 8,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 9,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 10,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 11,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 12,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 13,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 14,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 15,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 16,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 17,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 18,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 19,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 20,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 21,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 22,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 23,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 24,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 35,
+          "matchedStart": 22705,
+          "matchedEnd": 22785
+        },
+        {
+          "goldOrdinal": 25,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 36,
+          "matchedStart": 23405,
+          "matchedEnd": 23485
+        },
+        {
+          "goldOrdinal": 26,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 27,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 28,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 37,
+          "matchedStart": 24105,
+          "matchedEnd": 24185
+        },
+        {
+          "goldOrdinal": 29,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 30,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 31,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 32,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 33,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 34,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 35,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 36,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 37,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 38,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 39,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 40,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 41,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 42,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 43,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 44,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 45,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 46,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 58,
+          "matchedStart": 38805,
+          "matchedEnd": 38885
+        },
+        {
+          "goldOrdinal": 47,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 48,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 49,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 50,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 51,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 52,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 53,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 64,
+          "matchedStart": 43005,
+          "matchedEnd": 43085
+        },
+        {
+          "goldOrdinal": 54,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 55,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 56,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 57,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 58,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 59,
+          "class": "SEMANTIC_PRESENT_SUPERSET_SPAN",
+          "matchedPredictionId": 71,
+          "matchedStart": 47905,
+          "matchedEnd": 47985
+        },
+        {
+          "goldOrdinal": 60,
+          "class": "SEMANTIC_PRESENT_SUPERSET_SPAN",
+          "matchedPredictionId": 72,
+          "matchedStart": 48605,
+          "matchedEnd": 48685
+        },
+        {
+          "goldOrdinal": 61,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 62,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 63,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 64,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 78,
+          "matchedStart": 52805,
+          "matchedEnd": 52885
+        },
+        {
+          "goldOrdinal": 65,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 66,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 67,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 68,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 69,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 70,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        }
+      ]
+    },
+    {
+      "label": "Flash text V4",
+      "score": {
+        "tp": 0,
+        "fp": 17,
+        "fn": 71,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "rawProposalCount": 17,
+      "finalProposalCount": 17,
+      "counts": {
+        "TRUE_MODEL_OMISSION": 68,
+        "SEMANTIC_PRESENT_OFFSET_SHIFT": 2,
+        "SEMANTIC_PRESENT_PARTIAL_SPAN": 1
+      },
+      "perGold": [
+        {
+          "goldOrdinal": 0,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 1,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 2,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 3,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 4,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 5,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 1,
+          "matchedStart": 4576,
+          "matchedEnd": 4663
+        },
+        {
+          "goldOrdinal": 6,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 7,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 8,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 9,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 10,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 11,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 3,
+          "matchedStart": 10068,
+          "matchedEnd": 10104
+        },
+        {
+          "goldOrdinal": 12,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 13,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 14,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 15,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 16,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 17,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 4,
+          "matchedStart": 15663,
+          "matchedEnd": 15750
+        },
+        {
+          "goldOrdinal": 18,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 19,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 20,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 21,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 22,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 23,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 24,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 25,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 26,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 27,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 28,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 29,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 30,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 31,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 32,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 33,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 34,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 35,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 36,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 37,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 38,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 39,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 40,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 41,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 42,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 43,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 44,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 45,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 46,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 47,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 48,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 49,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 50,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 51,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 52,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 53,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 54,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 55,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 56,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 57,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 58,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 59,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 60,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 61,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 62,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 63,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 64,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 65,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 66,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 67,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 68,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 69,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 70,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        }
+      ]
+    },
+    {
+      "label": "Flash visual V4",
+      "score": {
+        "tp": 0,
+        "fp": 104,
+        "fn": 71,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "rawProposalCount": 104,
+      "finalProposalCount": 104,
+      "counts": {
+        "TRUE_MODEL_OMISSION": 62,
+        "SEMANTIC_PRESENT_OFFSET_SHIFT": 6,
+        "SEMANTIC_PRESENT_SUPERSET_SPAN": 2,
+        "SEMANTIC_PRESENT_PARTIAL_SPAN": 1
+      },
+      "perGold": [
+        {
+          "goldOrdinal": 0,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 1,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 2,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 3,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 4,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 5,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 6,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 7,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 6,
+          "matchedStart": 8175,
+          "matchedEnd": 8230
+        },
+        {
+          "goldOrdinal": 8,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 10,
+          "matchedStart": 9270,
+          "matchedEnd": 9330
+        },
+        {
+          "goldOrdinal": 9,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 10,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 11,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 12,
+          "class": "SEMANTIC_PRESENT_SUPERSET_SPAN",
+          "matchedPredictionId": 14,
+          "matchedStart": 10868,
+          "matchedEnd": 10963
+        },
+        {
+          "goldOrdinal": 13,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 14,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 15,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 16,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 17,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 18,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 19,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 20,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 21,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 22,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 23,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 24,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 25,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 26,
+          "class": "SEMANTIC_PRESENT_SUPERSET_SPAN",
+          "matchedPredictionId": 30,
+          "matchedStart": 23720,
+          "matchedEnd": 23852
+        },
+        {
+          "goldOrdinal": 27,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 30,
+          "matchedStart": 23720,
+          "matchedEnd": 23852
+        },
+        {
+          "goldOrdinal": 28,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 29,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 30,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 31,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 32,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 33,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 34,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 35,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 36,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 37,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 38,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 39,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 40,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 41,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 42,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 43,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 44,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 45,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 46,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 47,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 48,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 49,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 50,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 51,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 51,
+          "matchedStart": 41518,
+          "matchedEnd": 41558
+        },
+        {
+          "goldOrdinal": 52,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 53,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 54,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 53,
+          "matchedStart": 44901,
+          "matchedEnd": 44941
+        },
+        {
+          "goldOrdinal": 55,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 56,
+          "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+          "matchedPredictionId": 54,
+          "matchedStart": 46641,
+          "matchedEnd": 46676
+        },
+        {
+          "goldOrdinal": 57,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 58,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 59,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 60,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 61,
+          "class": "SEMANTIC_PRESENT_OFFSET_SHIFT",
+          "matchedPredictionId": 56,
+          "matchedStart": 50263,
+          "matchedEnd": 50267
+        },
+        {
+          "goldOrdinal": 62,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 63,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 64,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 65,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 66,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 67,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 68,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 69,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        },
+        {
+          "goldOrdinal": 70,
+          "class": "TRUE_MODEL_OMISSION",
+          "matchedPredictionId": null,
+          "matchedStart": null,
+          "matchedEnd": null
+        }
+      ]
+    }
+  ],
+  "c0WrongSpanReconciliation": {
+    "officialWrongSpanLoss": 56,
+    "semanticCorrespondence": 56,
+    "exact": 1,
+    "trueOmission": 14,
+    "auditorConclusion": "C0\u0027s 56 WrongSpan are semantic correspondences under the canonical same-source overlap rule; the official exact score remains unchanged."
+  },
+  "c0ToC2Transitions": {
+    "TRUE_MODEL_OMISSION\u2192SEMANTIC_PRESENT_OFFSET_SHIFT": 5,
+    "EXACT_MATCH\u2192TRUE_MODEL_OMISSION": 1,
+    "SEMANTIC_PRESENT_PARTIAL_SPAN\u2192TRUE_MODEL_OMISSION": 51,
+    "TRUE_MODEL_OMISSION\u2192TRUE_MODEL_OMISSION": 9,
+    "SEMANTIC_PRESENT_PARTIAL_SPAN\u2192SEMANTIC_PRESENT_OFFSET_SHIFT": 3,
+    "SEMANTIC_PRESENT_PARTIAL_SPAN\u2192SEMANTIC_PRESENT_SUPERSET_SPAN": 2
+  },
+  "c0ToC2OfficialTransitions": {
+    "OMISSION\u2192WRONG_SPAN": 5,
+    "EXACT\u2192OMISSION": 1,
+    "WRONG_SPAN\u2192OMISSION": 51,
+    "OMISSION\u2192OMISSION": 9,
+    "WRONG_SPAN\u2192WRONG_SPAN": 5
+  },
+  "textV4ToVisualV4": {
+    "TRUE_MODEL_OMISSION\u2192TRUE_MODEL_OMISSION": 59,
+    "SEMANTIC_PRESENT_OFFSET_SHIFT\u2192TRUE_MODEL_OMISSION": 2,
+    "TRUE_MODEL_OMISSION\u2192SEMANTIC_PRESENT_OFFSET_SHIFT": 6,
+    "SEMANTIC_PRESENT_PARTIAL_SPAN\u2192TRUE_MODEL_OMISSION": 1,
+    "TRUE_MODEL_OMISSION\u2192SEMANTIC_PRESENT_SUPERSET_SPAN": 2,
+    "TRUE_MODEL_OMISSION\u2192SEMANTIC_PRESENT_PARTIAL_SPAN": 1
+  },
+  "visualOnlyExtras": [
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 225,
+      "end": 237,
+      "text": "a c\u01A1 quan nh",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 3038,
+      "end": 3047,
+      "text": ". Chia s\u1EBB",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 3048,
+      "end": 3049,
+      "text": "d",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 3050,
+      "end": 3051,
+      "text": " ",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 3052,
+      "end": 3053,
+      "text": "i",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 3054,
+      "end": 3055,
+      "text": "u",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 8175,
+      "end": 8230,
+      "text": "\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u C\u01A1 quan nh\u00E0 n\u01B0\u1EDBc th\u1EF1c h",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 8920,
+      "end": 8955,
+      "text": "li\u1EC7u; quy\u1EC1n ri\u00EAng t\u01B0 c\u1EE7a t\u1ED5 ch\u1EE9c, c",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 9090,
+      "end": 9200,
+      "text": "n k\u1EF9 thu\u1EADt v\u1EC1 trao \u0111\u1ED5i d\u1EEF li\u1EC7u, v\u1EC1 \u1EE9ng d\u1EE5ng c\u00F4ng ngh\u1EC7 th\u00F4ng tin trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc v\u00E0 c\u00E1c nguy\u00EAn t\u1EAFc \u0111\u01B0\u1EE3c ",
+      "role": "CHAPTER"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 9210,
+      "end": 9270,
+      "text": "\u1EA1i \u0110i\u1EC1u 5 c\u1EE7a Ngh\u1ECB \u0111\u1ECBnh n\u00E0y. 6. Ph\u00F9 h\u1EE3p v\u1EDBi Khung ki\u1EBFn tr\u00FAc ",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 9270,
+      "end": 9330,
+      "text": "Ch\u00EDnh ph\u1EE7 \u0111i\u1EC7n t\u1EED Vi\u1EC7t Nam. \u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 10708,
+      "end": 10803,
+      "text": "ho\u1EB7c d\u1EEF li\u1EC7u \u0111\u00F3 \u0111\u01B0\u1EE3c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc kh\u00E1c s\u1EB5n s\u00E0ng chia s\u1EBB v\u00E0 \u0111\u00E1p \u1EE9ng \u0111\u01B0\u1EE3c y\u00EAu c\u1EA7u, tr\u1EEB tr\u01B0\u1EDDng",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 10804,
+      "end": 10835,
+      "text": "h\u1EE3p y\u00EAu c\u1EA7u cung c\u1EA5p d\u1EEF li\u1EC7u ph",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 10836,
+      "end": 10867,
+      "text": "c v\u1EE5 c\u1EADp nh\u1EADt ho\u1EB7c s\u1EED d\u1EE5ng cho ",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 10868,
+      "end": 10963,
+      "text": "\u1EE5c \u0111\u00EDch x\u00E1c minh, th\u1EA9m tra d\u1EEF li\u1EC7u. \u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u 1. N\u1ED9i dun",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 14789,
+      "end": 14809,
+      "text": " t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 14887,
+      "end": 14899,
+      "text": "i\u1EC7u m\u1EDF c\u1EE7a c",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 15089,
+      "end": 15159,
+      "text": ", gi\u00E1m s\u00E1t t\u00ECnh h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c h\u1EC7 th\u1ED1ng th\u00F4ng ",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 15167,
+      "end": 15239,
+      "text": "g c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc. 3. C\u01A1 quan nh\u00E0 n\u01B0\u1EDBc c\u00F3 tr\u00E1ch nhi\u1EC7m theo d\u00F5i, \u0111\u0103ng k\u00FD",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 15489,
+      "end": 15549,
+      "text": "\u00E1c y\u00EAu c\u1EA7u kh\u00E1c li\u00EAn quan \u0111\u1EBFn qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u c\u1EE7a c\u01A1 quan n",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 18544,
+      "end": 18619,
+      "text": "ng tin c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, t\u1EC9nh, th\u00E0nh ph\u1ED1 t",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 18624,
+      "end": 18669,
+      "text": "hu\u1ED9c trung \u01B0\u01A1ng tr\u01B0\u1EDBc ng\u00E0y 31 th\u00E1ng 12 h\u00E0ng n",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 19014,
+      "end": 19064,
+      "text": "r\u01B0\u1EDFng c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, C",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 19069,
+      "end": 19119,
+      "text": "ch \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c ",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 20222,
+      "end": 20252,
+      "text": "t\u1ECBch \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh,",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 20254,
+      "end": 20284,
+      "text": "h\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 20286,
+      "end": 20316,
+      "text": "\u00F3 tr\u00E1ch nhi\u1EC7m ban h\u00E0nh danh m\u1EE5",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 20318,
+      "end": 20348,
+      "text": "d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDB",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 20350,
+      "end": 20380,
+      "text": " t\u1ED5 ch\u1EE9c x\u00E2y d\u1EF1ng k\u1EBF ho\u1EA1ch v\u00E0 ",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 20382,
+      "end": 20412,
+      "text": "i\u1EC3n khai c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 23720,
+      "end": 23852,
+      "text": "n C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia. M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U \u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia ",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 23854,
+      "end": 23902,
+      "text": " 1. K\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u c\u1EE7a c\u01A1 qua",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 23904,
+      "end": 23952,
+      "text": "nh\u00E0 n\u01B0\u1EDBc ph\u1EA3i tu\u00E2n th\u1EE7 quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5n",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 23954,
+      "end": 24002,
+      "text": "d\u1EEF li\u1EC7u do c\u01A1 quan ch\u1EE7 qu\u1EA3n ban h\u00E0nh. Quy ch\u1EBF kh",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 24004,
+      "end": 24052,
+      "text": " th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c quy \u0111\u1ECBnh theo nh\u00F3m c",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 27901,
+      "end": 27941,
+      "text": "\u1EEF li\u1EC7u; c) H\u1ED7 tr\u1EE3 c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc t\u00ECm k",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 28299,
+      "end": 28339,
+      "text": "\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u \u0111\u1EC3 th\u1EF1c hi\u1EC7n k",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 28799,
+      "end": 28839,
+      "text": "\u1EADt kh\u00E1c ph\u1EE5c v\u1EE5 k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 29299,
+      "end": 29339,
+      "text": "n c\u00F3 li\u00EAn quan x\u00E2y d\u1EF1ng n\u1EC1n t\u1EA3ng t\u00EDch h\u1EE3",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 31910,
+      "end": 31935,
+      "text": "n s\u00E1ch trung \u01B0\u01A1ng h\u1ED7 tr\u1EE3 ",
+      "role": "CHAPTER"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 32010,
+      "end": 32045,
+      "text": ", v\u1EADn h\u00E0nh, th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 35046,
+      "end": 35062,
+      "text": "\u1ED1i k\u1EBFt n\u1ED1i chia ",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 38145,
+      "end": 38181,
+      "text": "i\u1EC7u m\u1EB7c \u0111\u1ECBnh. 2. C\u01A1 quan cung c\u1EA5p d\u1EEF",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 38183,
+      "end": 38219,
+      "text": "i\u1EC7u v\u00E0 c\u01A1 quan khai th\u00E1c d\u1EEF li\u1EC7u ph\u1EA3",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 38339,
+      "end": 38375,
+      "text": "ia s\u1EBB d\u1EEF li\u1EC7u ph\u1EA3i \u0111\u01B0\u1EE3c ghi nh\u1EADn b\u1EB1n",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 38495,
+      "end": 38531,
+      "text": "theo n\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF ",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 40838,
+      "end": 40890,
+      "text": "c\u1EA7u x\u00E1c th\u1EF1c c\u01A1 quan khai th\u00E1c d\u1EEF li\u1EC7u (\u0111\u00E3 th\u1EC3 hi\u1EC7n ",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 40892,
+      "end": 40932,
+      "text": "ong quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u c",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 41018,
+      "end": 41058,
+      "text": " kho\u1EA3n k\u1EBFt n\u1ED1i v\u1EDBi h\u00ECnh th\u1EE9c \u0111\u1ECBnh \u0111\u1ECBnh d",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 41238,
+      "end": 41278,
+      "text": " li\u1EC7u c\u00F3 th\u1EC3 l\u1EF1a ch\u1ECDn \u1EE7y th\u00E1c cho \u0111\u01A1n v\u1ECB",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 41398,
+      "end": 41438,
+      "text": "i kho\u1EA3n k\u1EBFt n\u1ED1i v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u ph\u1EA3",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 41518,
+      "end": 41558,
+      "text": "hia s\u1EBB. \u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 44301,
+      "end": 44356,
+      "text": "\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u g\u00E2y ra. 4. Trong tr\u01B0\u1EDDng h\u1EE3p b\u1EA5t ",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 44901,
+      "end": 44941,
+      "text": " kh\u00F4i ph\u1EE5c k\u1EBFt n\u1ED1i. \u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBF",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 46641,
+      "end": 46676,
+      "text": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50257,
+      "end": 50261,
+      "text": "quy\u1EBF",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50263,
+      "end": 50267,
+      "text": " \u0110i\u1EC1",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50269,
+      "end": 50273,
+      "text": "50. ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50275,
+      "end": 50279,
+      "text": "\u01B0\u01A1ng",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50281,
+      "end": 50285,
+      "text": "n gi",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50287,
+      "end": 50291,
+      "text": " quy",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50293,
+      "end": 50297,
+      "text": " v\u00E0 ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50299,
+      "end": 50303,
+      "text": "i\u1EC3n ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50305,
+      "end": 50309,
+      "text": "ai t",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50311,
+      "end": 50315,
+      "text": "n th",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50317,
+      "end": 50321,
+      "text": "ph\u01B0\u01A1",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50323,
+      "end": 50327,
+      "text": " \u00E1n ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50329,
+      "end": 50333,
+      "text": " l\u00FD ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50335,
+      "end": 50339,
+      "text": "\u1EDBng ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50341,
+      "end": 50345,
+      "text": "c 1.",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50347,
+      "end": 50351,
+      "text": "guy\u00EA",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50353,
+      "end": 50357,
+      "text": "t\u1EAFc ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50359,
+      "end": 50363,
+      "text": "\u1EA3i q",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50365,
+      "end": 50369,
+      "text": "\u1EBFt v",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50371,
+      "end": 50375,
+      "text": "ng m",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50377,
+      "end": 50381,
+      "text": ": a)",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50383,
+      "end": 50387,
+      "text": "\u1EA3o \u0111",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50389,
+      "end": 50393,
+      "text": " tu\u00E2",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50395,
+      "end": 50399,
+      "text": "th\u1EE7 ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50401,
+      "end": 50405,
+      "text": "c qu",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50407,
+      "end": 50411,
+      "text": "\u0111\u1ECBnh",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50413,
+      "end": 50417,
+      "text": "\u1EE7a p",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50419,
+      "end": 50423,
+      "text": "p lu",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50425,
+      "end": 50429,
+      "text": " c\u00F3 ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50431,
+      "end": 50435,
+      "text": "\u00EAn q",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50437,
+      "end": 50441,
+      "text": "n; b",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50443,
+      "end": 50447,
+      "text": "T\u00F4n ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50449,
+      "end": 50453,
+      "text": "\u1ECDng ",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50455,
+      "end": 50459,
+      "text": "i du",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50461,
+      "end": 50465,
+      "text": " th\u1ED1",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50467,
+      "end": 50471,
+      "text": " nh\u1EA5",
+      "role": "CLAUSE_HEADING"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 53479,
+      "end": 53674,
+      "text": " quan; c) Th\u00F4ng b\u00E1o k\u1ECBp th\u1EDDi cho c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u v\u1EC1 nh\u1EEFng sai s\u00F3t c\u1EE7a d\u1EEF li\u1EC7u \u0111\u00E3 chia s\u1EBB; d) Ph\u1ED1i h\u1EE3p v\u1EDBi c\u01A1 quan c\u00F3 th\u1EA9m quy\u1EC1n, c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u \u0111\u1EC3 gi\u1EA3i quy\u1EBFt c\u00E1c v\u01B0\u1EDBng m\u1EAFc tron",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 53676,
+      "end": 53699,
+      "text": "qu\u00E1 tr\u00ECnh chia s\u1EBB, s\u1EED d",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 53859,
+      "end": 53879,
+      "text": "an h\u00E0nh chi\u1EBFn l\u01B0\u1EE3c d",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 54059,
+      "end": 54076,
+      "text": "i\u1EC7u, qu\u1EA3n tr\u1ECB chi",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 54229,
+      "end": 54249,
+      "text": "p v\u00E0 c\u00F4ng b\u1ED1 danh s\u00E1",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 54379,
+      "end": 54624,
+      "text": "\u1EA3n l\u00FD d\u1EEF li\u1EC7u danh m\u1EE5c d\u00F9ng chung trong ph\u1EA1m vi c\u1EA3 n\u01B0\u1EDBc cung c\u1EA5p cho c\u00E1c c\u01A1 quan c\u00F3 nhu c\u1EA7u; d) Thu th\u1EADp, \u0111\u00E1nh gi\u00E1 c\u00E1c k\u1EBFt n\u1ED1i theo h\u00ECnh th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9 \u0111\u1EC3 y\u00EAu c\u1EA7u c\u00E1c c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u chuy\u1EC3n th\u00E0nh chia s\u1EBB d\u1EEF li",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 54859,
+      "end": 55079,
+      "text": "kinh ph\u00ED \u0111\u1EA7u t\u01B0 ph\u00E1t tri\u1EC3n cho vi\u1EC7c x\u00E2y d\u1EF1ng, n\u00E2ng c\u1EA5p h\u1EC7 th\u1ED1ng th\u00F4ng tin \u0111\u00E1p \u1EE9ng y\u00EAu c\u1EA7u qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u theo c\u00E1c quy \u0111\u1ECBnh t\u1EA1i Ngh\u1ECB \u0111\u1ECBnh n\u00E0y v\u00E0 quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt c\u00F3 li\u00EAn quan. 3. B\u1ED9 T\u00E0i ch\u00EDnh a) H",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 55081,
+      "end": 55104,
+      "text": "ng d\u1EABn c\u00E1c b\u1ED9, c\u01A1 quan ",
+      "role": "SUBSECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 57003,
+      "end": 57010,
+      "text": "d\u00E2n c\u1EA5p",
+      "role": "CHAPTER"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 57012,
+      "end": 57029,
+      "text": "\u1EC9nh b\u1ED1 tr\u00ED kinh p",
+      "role": "SECTION"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 57031,
+      "end": 57055,
+      "text": " \u0111\u1EC3 th\u1EF1c hi\u1EC7n nhi\u1EC7m v\u1EE5 q",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 57147,
+      "end": 57162,
+      "text": "\u1EDBng d\u1EABn li\u00EAn qu",
+      "role": "ARTICLE"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 57255,
+      "end": 57272,
+      "text": "t\u1ED5 ch\u1EE9c h\u1EC7 th\u1ED1ng ",
+      "role": "ARTICLE"
+    }
+  ],
+  "representativeExamples": {
+    "c0WrongSpan": [
+      {
+        "goldOrdinal": 3,
+        "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+        "matchedPredictionId": 1,
+        "matchedStart": 1629,
+        "matchedEnd": 1651
+      },
+      {
+        "goldOrdinal": 4,
+        "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+        "matchedPredictionId": 2,
+        "matchedStart": 4361,
+        "matchedEnd": 4399
+      },
+      {
+        "goldOrdinal": 5,
+        "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+        "matchedPredictionId": 3,
+        "matchedStart": 4626,
+        "matchedEnd": 4672
+      },
+      {
+        "goldOrdinal": 6,
+        "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+        "matchedPredictionId": 4,
+        "matchedStart": 6603,
+        "matchedEnd": 6633
+      },
+      {
+        "goldOrdinal": 7,
+        "class": "SEMANTIC_PRESENT_PARTIAL_SPAN",
+        "matchedPredictionId": 5,
+        "matchedStart": 8146,
+        "matchedEnd": 8188
+      }
+    ],
+    "trueOmissions": [
+      {
+        "goldOrdinal": 0,
+        "class": "TRUE_MODEL_OMISSION",
+        "matchedPredictionId": null,
+        "matchedStart": null,
+        "matchedEnd": null
+      },
+      {
+        "goldOrdinal": 1,
+        "class": "TRUE_MODEL_OMISSION",
+        "matchedPredictionId": null,
+        "matchedStart": null,
+        "matchedEnd": null
+      },
+      {
+        "goldOrdinal": 11,
+        "class": "TRUE_MODEL_OMISSION",
+        "matchedPredictionId": null,
+        "matchedStart": null,
+        "matchedEnd": null
+      },
+      {
+        "goldOrdinal": 14,
+        "class": "TRUE_MODEL_OMISSION",
+        "matchedPredictionId": null,
+        "matchedStart": null,
+        "matchedEnd": null
+      },
+      {
+        "goldOrdinal": 17,
+        "class": "TRUE_MODEL_OMISSION",
+        "matchedPredictionId": null,
+        "matchedStart": null,
+        "matchedEnd": null
+      }
+    ],
+    "c2FalsePositives": [
+      {
+        "id": 1,
+        "sourceId": "body[1]/p[4]",
+        "start": 673,
+        "end": 701,
+        "text": " 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh 1. Ng",
+        "role": "ARTICLE"
+      },
+      {
+        "id": 2,
+        "sourceId": "body[1]/p[4]",
+        "start": 1089,
+        "end": 1115,
+        "text": " \u0111\u1ED1i v\u1EDBi vi\u1EC7c chia s\u1EBB d\u1EEF l",
+        "role": "ARTICLE"
+      },
+      {
+        "id": 3,
+        "sourceId": "body[1]/p[4]",
+        "start": 1582,
+        "end": 1606,
+        "text": " nh\u00E0 n\u01B0\u1EDBc chia s\u1EBB theo q",
+        "role": "ARTICLE"
+      },
+      {
+        "id": 4,
+        "sourceId": "body[1]/p[4]",
+        "start": 2845,
+        "end": 2885,
+        "text": "c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc chu\u1EA9n b\u1ECB s\u1EB5n c\u00E1c d\u1ECBch v",
+        "role": "ARTICLE"
+      },
+      {
+        "id": 5,
+        "sourceId": "body[1]/p[4]",
+        "start": 3582,
+        "end": 3628,
+        "text": "\u1EE5ng chung trong c\u00E1c h\u1EC7 th\u1ED1ng th\u00F4ng tin, c\u01A1 s\u1EDF ",
+        "role": "ARTICLE"
+      }
+    ],
+    "visualOnlyFalsePositives": [
+      {
+        "id": 0,
+        "sourceId": "body[1]/p[4]",
+        "start": 225,
+        "end": 237,
+        "text": "a c\u01A1 quan nh",
+        "role": "SECTION"
+      },
+      {
+        "id": 1,
+        "sourceId": "body[1]/p[4]",
+        "start": 3038,
+        "end": 3047,
+        "text": ". Chia s\u1EBB",
+        "role": "SECTION"
+      },
+      {
+        "id": 2,
+        "sourceId": "body[1]/p[4]",
+        "start": 3048,
+        "end": 3049,
+        "text": "d",
+        "role": "SECTION"
+      },
+      {
+        "id": 3,
+        "sourceId": "body[1]/p[4]",
+        "start": 3050,
+        "end": 3051,
+        "text": " ",
+        "role": "SECTION"
+      },
+      {
+        "id": 4,
+        "sourceId": "body[1]/p[4]",
+        "start": 3052,
+        "end": 3053,
+        "text": "i",
+        "role": "SECTION"
+      }
+    ],
+    "missedByEveryContract": [
+      {
+        "i": 14,
+        "rawText": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+        "start": 13065,
+        "end": 13146
+      },
+      {
+        "i": 18,
+        "rawText": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "start": 16890,
+        "end": 16963
+      },
+      {
+        "i": 48,
+        "rawText": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+        "start": 40307,
+        "end": 40359
+      },
+      {
+        "i": 65,
+        "rawText": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+        "start": 53712,
+        "end": 53786
+      },
+      {
+        "i": 66,
+        "rawText": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+        "start": 56513,
+        "end": 56595
+      }
+    ]
+  }
+}

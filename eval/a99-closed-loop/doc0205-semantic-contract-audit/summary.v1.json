@@ -1,23 +1,28 @@
 {
-  "schema": "a99-doc0205-semantic-contract-audit-v1",
-  "generatedUtc": "2026-09-10T01:34:08.3850488Z",
+  "schemaVersion": "a99-doc0205-semantic-contract-reconciliation-v1",
   "documentId": "DOC-0205",
-  "expectedHead": "4b3f3c8ffaa3af854b3b4de8183e26e0e3a4f169",
+  "generatedUtc": "2026-09-10T07:01:35.9642595+00:00",
+  "expectedStartHead": "f2828fe2315e0466a73a0ac3106bfc84d6231727",
+  "startHead": "cc2a90ca9ce132a74ddb98765a973cb9934ddee2",
+  "startHeadMatchesExpected": false,
+  "endHead": "cc2a90ca9ce132a74ddb98765a973cb9934ddee2",
   "benchmarkMode": "OFFLINE_FROZEN_ARTIFACTS_ONLY",
   "providerCalls": 0,
-  "goldReadByAudit": false,
-  "authority": {
-    "gold": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0205.occurrence-gold-v1.json",
-    "sourcePacket": ".tmp-doc0205-packet.json",
-    "frozenModels": [
-      "Qwen3.5-9B S0",
-      "Qwen3.7-Flash text S0",
-      "Qwen3.7-Flash visual V2"
-    ],
+  "modelCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "sourceAuthority": {
     "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
-    "goldSha256": "fdd4ed7219fda1e6de43693ee6ae431704037e6b9c977b27812388d308fa3e1b"
+    "expectedSourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+    "matches": true
   },
-  "baselineScores": [
+  "goldAuthority": {
+    "status": "PASS",
+    "strictV4FinalAuthority": "USER",
+    "count": 71,
+    "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+    "allExactSubstringsVerified": true
+  },
+  "runTable": [
     {
       "model": "Qwen3.5-9B S0",
       "tp": 0,
@@ -27,12 +32,15 @@
       "recall": 0,
       "f1": 0,
       "modelOmission": 71,
-      "spanError": null,
+      "spanError": 0,
       "systemLoss": 0,
-      "wallTime": null
+      "wallTime": null,
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": null,
+      "packetHash": null
     },
     {
-      "model": "Qwen3.7-Flash text S0",
+      "model": "Qwen3.7-Flash S0",
       "tp": 0,
       "fp": 73,
       "fn": 71,
@@ -40,425 +48,146 @@
       "recall": 0,
       "f1": 0,
       "modelOmission": 70,
-      "spanError": 1,
+      "spanError": 0,
       "systemLoss": 0,
-      "wallTime": null
+      "wallTime": null,
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": "68ea21005b50f43b3c39338152f4a5a640882922a2163735dbe98ef286cfe68d",
+      "packetHash": "6dd2fb6f790431c8fe33e3d4dbe182fced52dd108e18946a5dc0d3255dc18f45"
     },
     {
-      "model": "Qwen3.7-Flash visual V2",
+      "model": "C0 structure-preserving",
+      "tp": 1,
+      "fp": 57,
+      "fn": 70,
+      "precision": 0.017241379310344827,
+      "recall": 0.014084507042253521,
+      "f1": 0.015503875968992246,
+      "modelOmission": 70,
+      "spanError": 0,
+      "systemLoss": 0,
+      "wallTime": null,
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": "297dcf491f8dcafd9655a8cf8b757111dcd03d8109e77970ca0046d76b2bca90",
+      "packetHash": "5947c9f6c7cb95c8fc81ebe77821978152a05e9957988b0c88ef6d5139c6146e"
+    },
+    {
+      "model": "C1 boundary",
       "tp": 0,
-      "fp": 361,
+      "fp": 0,
       "fn": 71,
       "precision": 0,
       "recall": 0,
       "f1": 0,
-      "modelOmission": 37,
-      "spanError": 34,
+      "modelOmission": 0,
+      "spanError": 0,
+      "systemLoss": 71,
+      "wallTime": 45401,
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": "bbd764d3d8c58db2f9edd8965aca664811a669d6d761e9cee8eb619ee67d57e8",
+      "packetHash": "6dd2fb6f790431c8fe33e3d4dbe182fced52dd108e18946a5dc0d3255dc18f45"
+    },
+    {
+      "model": "C2 addressed",
+      "tp": 0,
+      "fp": 90,
+      "fn": 71,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "modelOmission": 0,
+      "spanError": 0,
       "systemLoss": 0,
-      "wallTime": null
+      "wallTime": 42566,
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": "41e2d1a0ea3497cb527f66f2b24a5237bfd721de07cecd1d1dba0257e8e3100e",
+      "packetHash": "2d1035a4db9b8dd85c4487bb4b3a1b16e4667fe26810c7acee9144fc6ff8fc11"
+    },
+    {
+      "model": "Flash text V4",
+      "tp": 0,
+      "fp": 17,
+      "fn": 71,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "modelOmission": 68,
+      "spanError": 3,
+      "systemLoss": 0,
+      "wallTime": null,
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": "e2d98b38894f1f5cf406c936b5bc3a1ff0cdac430ced9c396784df365f03d66a",
+      "packetHash": "6dd2fb6f790431c8fe33e3d4dbe182fced52dd108e18946a5dc0d3255dc18f45"
+    },
+    {
+      "model": "Flash visual V4",
+      "tp": 0,
+      "fp": 104,
+      "fn": 71,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "modelOmission": 68,
+      "spanError": 3,
+      "systemLoss": 0,
+      "wallTime": null,
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "promptHash": "3dfe6d9d2870680a1bf41a1468058305b30f95a616ebd55a9bd4bce8d004aefc",
+      "packetHash": null
     }
   ],
-  "modelGoldCorrespondence": [
-    {
-      "model": "Qwen3.5-9B S0",
-      "goldExact": 0,
-      "goldNearOrEquivalent": 2,
-      "goldNoDirectCorrespondence": 69,
-      "predictionCount": 15,
-      "fpClassCounts": {
-        "GOLD_EQUIVALENT_WRONG_SPAN": 2,
-        "UNRESOLVED_NO_GOLD_CORRESPONDENCE": 13
-      },
-      "rawFpClassCounts": {
-        "GOLD_EQUIVALENT_WRONG_SPAN": 2,
-        "UNRESOLVED_NO_GOLD_CORRESPONDENCE": 13
-      },
-      "roleCounts": {
-        "ARTICLE": 7,
-        "CHAPTER": 5,
-        "DOCUMENT_TITLE": 1,
-        "SUBSECTION": 2
-      },
-      "rawProposalCount": 15,
-      "providerCallsInAudit": 0,
-      "frozenProviderAttempts": null
+  "c0Finding": {
+    "officialScore": {
+      "tp": 1,
+      "fp": 57,
+      "fn": 70,
+      "precision": 0.017241379310344827,
+      "recall": 0.014084507042253521,
+      "f1": 0.015503875968992246
     },
-    {
-      "model": "Qwen3.7-Flash text S0",
-      "goldExact": 0,
-      "goldNearOrEquivalent": 4,
-      "goldNoDirectCorrespondence": 67,
-      "predictionCount": 73,
-      "fpClassCounts": {
-        "GOLD_EQUIVALENT_WRONG_SPAN": 6,
-        "UNRESOLVED_NO_GOLD_CORRESPONDENCE": 67
-      },
-      "rawFpClassCounts": {
-        "GOLD_EQUIVALENT_WRONG_SPAN": 6,
-        "UNRESOLVED_NO_GOLD_CORRESPONDENCE": 67
-      },
-      "roleCounts": {
-        "ARTICLE": 58,
-        "CHAPTER": 5,
-        "DOCUMENT_TITLE": 1,
-        "SECTION": 9
-      },
-      "rawProposalCount": 73,
-      "providerCallsInAudit": 0,
-      "frozenProviderAttempts": 1
-    },
-    {
-      "model": "Qwen3.7-Flash visual V2",
-      "goldExact": 0,
-      "goldNearOrEquivalent": 39,
-      "goldNoDirectCorrespondence": 32,
-      "predictionCount": 363,
-      "fpClassCounts": {
-        "GOLD_EQUIVALENT_WRONG_SPAN": 17,
-        "LIKELY_NON_HEADING_SHORT_FRAGMENT": 35,
-        "UNRESOLVED_NO_GOLD_CORRESPONDENCE": 309
-      },
-      "rawFpClassCounts": {
-        "GOLD_EQUIVALENT_WRONG_SPAN": 17,
-        "LIKELY_NON_HEADING_SHORT_FRAGMENT": 37,
-        "UNRESOLVED_NO_GOLD_CORRESPONDENCE": 309
-      },
-      "roleCounts": {
-        "ARTICLE": 48,
-        "CHAPTER": 4,
-        "DOCUMENT_TITLE": 2,
-        "FRONT_MATTER": 2,
-        "SECTION": 302,
-        "SUBSECTION": 5
-      },
-      "rawProposalCount": 363,
-      "providerCallsInAudit": 0,
-      "frozenProviderAttempts": 3
-    }
-  ],
-  "goldTaxonomy": {
-    "total": 71,
-    "shapeCounts": {
-      "partial paragraph; numbering + title-like prefix": 5,
-      "partial paragraph; title without generic enumeration prefix": 66
-    },
-    "semanticRoleCounts": {
-      "article": 57,
-      "chapter": 5,
-      "section": 9
-    },
-    "basis": "descriptive only; derived from frozen Gold role and source-span shape; no Gold bytes changed"
+    "wrongSpanCorrespondence": 56,
+    "semanticDiscoveryRecall": 0.8028169014084507,
+    "finding": "C0 discovers 57/71 Gold semantic regions (1 exact \u002B 56 same-source span correspondences); exact scorer reports only 1 TP because the official key is exact sourceId/start/end."
   },
-  "spanConventionAudit": [
-    {
-      "model": "Qwen3.5-9B S0",
-      "predictionCount": 15,
-      "invalidSourceOrUtf16SpanCount": 0,
-      "storedTextMismatchCount": 0,
-      "exactGoldSpanCount": 0,
-      "sameSourceOverlapCount": 2,
-      "sameSourceNormalizedTextCount": 0,
-      "sourceConvention": "source-local half-open UTF-16 offsets; reconstructed with .NET String.Substring"
+  "textToVisual": {
+    "textScore": {
+      "tp": 0,
+      "fp": 17,
+      "fn": 71,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0
     },
-    {
-      "model": "Qwen3.7-Flash text S0",
-      "predictionCount": 73,
-      "invalidSourceOrUtf16SpanCount": 0,
-      "storedTextMismatchCount": 0,
-      "exactGoldSpanCount": 0,
-      "sameSourceOverlapCount": 6,
-      "sameSourceNormalizedTextCount": 0,
-      "sourceConvention": "source-local half-open UTF-16 offsets; reconstructed with .NET String.Substring"
+    "visualScore": {
+      "tp": 0,
+      "fp": 104,
+      "fn": 71,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0
     },
-    {
-      "model": "Qwen3.7-Flash visual V2",
-      "predictionCount": 363,
-      "invalidSourceOrUtf16SpanCount": 0,
-      "storedTextMismatchCount": 0,
-      "exactGoldSpanCount": 0,
-      "sameSourceOverlapCount": 17,
-      "sameSourceNormalizedTextCount": 0,
-      "sourceConvention": "source-local half-open UTF-16 offsets; reconstructed with .NET String.Substring"
-    }
-  ],
-  "duplicateSourceIdAudit": {
-    "goldNormalizedTextDuplicateGroups": [],
-    "modelNormalizedTextDuplicateGroups": {
-      "Qwen3.5-9B S0": [],
-      "Qwen3.7-Flash text S0": [],
-      "Qwen3.7-Flash visual V2": [
-        {
-          "normalizedText": "",
-          "count": 7,
-          "ordinals": [
-            6,
-            10,
-            16,
-            20,
-            23,
-            27,
-            31
-          ]
-        },
-        {
-          "normalizedText": "a",
-          "count": 3,
-          "ordinals": [
-            19,
-            22,
-            36
-          ]
-        },
-        {
-          "normalizedText": "c",
-          "count": 2,
-          "ordinals": [
-            12,
-            28
-          ]
-        },
-        {
-          "normalizedText": "g",
-          "count": 2,
-          "ordinals": [
-            15,
-            33
-          ]
-        },
-        {
-          "normalizedText": "h",
-          "count": 7,
-          "ordinals": [
-            2,
-            5,
-            8,
-            17,
-            24,
-            29,
-            34
-          ]
-        },
-        {
-          "normalizedText": "i",
-          "count": 3,
-          "ordinals": [
-            3,
-            26,
-            35
-          ]
-        },
-        {
-          "normalizedText": "n",
-          "count": 3,
-          "ordinals": [
-            4,
-            14,
-            32
-          ]
-        },
-        {
-          "normalizedText": "nhan dan cac tinh,",
-          "count": 2,
-          "ordinals": [
-            259,
-            298
-          ]
-        },
-        {
-          "normalizedText": "o",
-          "count": 4,
-          "ordinals": [
-            1,
-            13,
-            18,
-            25
-          ]
-        },
-        {
-          "normalizedText": "u",
-          "count": 2,
-          "ordinals": [
-            9,
-            30
-          ]
-        }
-      ]
-    }
+    "textSemanticPresent": 3,
+    "visualSemanticPresent": 9,
+    "conclusion": "Visual V4 increases false positives without increasing exact TP; no further visual tuning is justified before semantic/span contract repair."
   },
-  "projectionAudit": [
-    {
-      "model": "Qwen3.5-9B S0",
-      "rawProposalCount": 15,
-      "finalHeadingCount": 15,
-      "projectionRecordCount": 15,
-      "projectionIncludedCount": 15,
-      "projectionRejectedCount": 0,
-      "roleCounts": {
-        "ARTICLE": 7,
-        "CHAPTER": 5,
-        "DOCUMENT_TITLE": 1,
-        "SUBSECTION": 2
-      },
-      "projectionAudit": "Counts are reported separately for raw proposals, projection records, INCLUDED records, and final scored headings; score artifacts report no system alignment/binding/validator/projection loss."
-    },
-    {
-      "model": "Qwen3.7-Flash text S0",
-      "rawProposalCount": 73,
-      "finalHeadingCount": 73,
-      "projectionRecordCount": 73,
-      "projectionIncludedCount": 73,
-      "projectionRejectedCount": 0,
-      "roleCounts": {
-        "ARTICLE": 58,
-        "CHAPTER": 5,
-        "DOCUMENT_TITLE": 1,
-        "SECTION": 9
-      },
-      "projectionAudit": "Counts are reported separately for raw proposals, projection records, INCLUDED records, and final scored headings; score artifacts report no system alignment/binding/validator/projection loss."
-    },
-    {
-      "model": "Qwen3.7-Flash visual V2",
-      "rawProposalCount": 363,
-      "finalHeadingCount": 361,
-      "projectionRecordCount": 363,
-      "projectionIncludedCount": 361,
-      "projectionRejectedCount": 2,
-      "roleCounts": {
-        "ARTICLE": 48,
-        "CHAPTER": 4,
-        "DOCUMENT_TITLE": 2,
-        "FRONT_MATTER": 2,
-        "SECTION": 302,
-        "SUBSECTION": 5
-      },
-      "projectionAudit": "Counts are reported separately for raw proposals, projection records, INCLUDED records, and final scored headings; score artifacts report no system alignment/binding/validator/projection loss."
-    }
-  ],
-  "completionTelemetry": {
-    "Qwen3.5-9B S0": {
-      "persisted": false,
-      "value": null,
-      "outputLimitEvidence": false,
-      "note": "freeze does not persist finishReason; existing audit found no output/transport-limit evidence"
-    },
-    "Qwen3.7-Flash text S0": {
-      "persisted": true,
-      "value": "stop",
-      "outputLimitEvidence": false,
-      "note": "frozen finishReason is stop"
-    },
-    "Qwen3.7-Flash visual V2": {
-      "persisted": true,
-      "value": [
-        "stop",
-        "stop",
-        "stop"
-      ],
-      "outputLimitEvidence": false,
-      "note": "all visual windows persisted stop, content present and structured output parsed"
-    }
+  "promptSemanticComparison": {
+    "s0": "generic structural-heading extraction with source-grounded proposals",
+    "c0": "structure-preserving source IR with line-oriented source anchors",
+    "c2": "addressed source spans plus explicit semantic heading proposals",
+    "v4": "V4 legal-content heading ontology contract; visual V4 adds page-image evidence without changing exact occurrence authority",
+    "interpretation": "Comparison is descriptive of frozen prompt/contracts only; no prompt was rewritten and Gold was not used in runtime logic."
   },
-  "integrity": {
-    "allPass": true,
-    "checks": [
-      {
-        "check": "gold_status_pass",
-        "pass": true,
-        "detail": "PASS"
-      },
-      {
-        "check": "gold_has_71_bindings",
-        "pass": true,
-        "detail": "count=71"
-      },
-      {
-        "check": "gold_exact_substrings_verified",
-        "pass": true,
-        "detail": "all bindings report exactRawSubstringVerified=true"
-      },
-      {
-        "check": "source_sha_matches_gold",
-        "pass": true,
-        "detail": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878 vs b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878"
-      },
-      {
-        "check": "source_sha_matches_expected",
-        "pass": true,
-        "detail": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878"
-      },
-      {
-        "check": "Qwen3.5-9B S0 source_sha",
-        "pass": true,
-        "detail": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878"
-      },
-      {
-        "check": "Qwen3.5-9B S0 prediction_hash",
-        "pass": true,
-        "detail": "87806218db77813629e50fd5ce31a6e38fead71329426d6fce4f2edb37adadd1"
-      },
-      {
-        "check": "Qwen3.5-9B S0 result_hash",
-        "pass": true,
-        "detail": "9fa17ebe58fa322e09f573cb254aa683929ed1010be8979ecfffc09316d61e49"
-      },
-      {
-        "check": "Qwen3.5-9B S0 gold_firewall",
-        "pass": true,
-        "detail": "goldReadBeforeFreeze=False"
-      },
-      {
-        "check": "Qwen3.7-Flash text S0 source_sha",
-        "pass": true,
-        "detail": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878"
-      },
-      {
-        "check": "Qwen3.7-Flash text S0 prediction_hash",
-        "pass": true,
-        "detail": "4c45342f42665c038ddc21b21257b9dfe34e920bfa23e9de79e3375ffabaab92"
-      },
-      {
-        "check": "Qwen3.7-Flash text S0 result_hash",
-        "pass": true,
-        "detail": "3564c6167df4ce4e646a0a3abe24ec996854d6ef289ccb814fc669c199ccff67"
-      },
-      {
-        "check": "Qwen3.7-Flash text S0 gold_firewall",
-        "pass": true,
-        "detail": "goldReadBeforeFreeze=False"
-      },
-      {
-        "check": "Qwen3.7-Flash visual V2 source_sha",
-        "pass": true,
-        "detail": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878"
-      },
-      {
-        "check": "Qwen3.7-Flash visual V2 prediction_hash",
-        "pass": true,
-        "detail": "df38b80ae07ac2d9c5b23593cd8854cc39d5fead2bfaba2f201dbf09923f60b5"
-      },
-      {
-        "check": "Qwen3.7-Flash visual V2 result_hash",
-        "pass": true,
-        "detail": "7815b48fc8830728c8803740e6701d063bf0ec6230d71fc519879d7ed9b0af82"
-      },
-      {
-        "check": "Qwen3.7-Flash visual V2 gold_firewall",
-        "pass": true,
-        "detail": "goldReadBeforeFreeze=False"
-      },
-      {
-        "check": "qwen9b_s0_gold_firewall",
-        "pass": true,
-        "detail": "goldReadBeforeFreeze=False"
-      }
-    ]
-  },
-  "primaryClassification": "TASK_TAXONOMY_TOO_BROAD",
-  "classificationAlternatives": [
-    "MIXED_CONTRACT_AND_MODEL_FAILURE",
-    "MODEL_SEMANTIC_CAPABILITY_FAILURE"
-  ],
-  "conclusion": "The dominant reproducible mismatch is contract scope: the runtime asks the model to enumerate broad structural labels, while Strict Gold contains the narrower legal-content heading projection. The model also emits severe fragmentary spans, especially in visual V2, so model capability remains a contributing factor; this audit does not claim the contract alone explains every false positive.",
-  "prohibitedNextStep": "Do not implement contract V2 or rerun any model until this forensic result is reviewed.",
-  "recommendedNextStep": "Design one generic contract intervention that separates broad semantic discovery from the task-specific legal-content heading projection, then evaluate as a new DEV intervention; keep all frozen authorities immutable."
+  "goldTargetDefinition": "The approved target is the exhaustive 71-row legal-content occurrence set, keyed by sourceId plus exact half-open UTF-16 start/end; role is evaluated separately and does not redefine occurrence identity.",
+  "primaryClassification": "SEMANTIC_DISCOVERY_GOOD_SPAN_CONTRACT_BAD",
+  "rootCause": "C0 evidence shows high semantic discovery with systematic boundary mismatch; C0\u0027s official WrongSpan=56 is not a true omission.",
+  "architectureRecommendation": "Separate semantic discovery from source-anchored span localization, then apply exact canonical scoring. Keep Gold outside runtime logic and evaluate the localization intervention as a new paired DEV experiment.",
+  "crossDocumentRecommendation": "Use existing frozen DOC-0258/DOC-0256/DOC-0252 authority artifacts only for generalization checks; do not infer DOC-0205 rules from them.",
+  "requiredTests": [
+    "classifier exact/partial/superset/overlap/wrong-source",
+    "partial and superset are not omission",
+    "official exact score unchanged",
+    "frozen hashes unchanged",
+    "Gold offline firewall",
+    "role not inferred from span"
+  ]
 }

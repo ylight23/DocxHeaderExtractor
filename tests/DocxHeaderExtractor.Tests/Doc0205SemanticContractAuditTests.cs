@@ -14,19 +14,19 @@ public sealed class Doc0205SemanticContractAuditTests
         using var summary = LoadFromRoot("summary.v1.json");
         var root = summary.RootElement;
 
-        Assert.Equal("a99-doc0205-semantic-contract-audit-v1", root.GetProperty("schema").GetString());
+        Assert.Equal("a99-doc0205-semantic-contract-reconciliation-v1", root.GetProperty("schemaVersion").GetString());
         Assert.Equal(0, root.GetProperty("providerCalls").GetInt32());
-        Assert.False(root.GetProperty("goldReadByAudit").GetBoolean());
-        Assert.Equal("TASK_TAXONOMY_TOO_BROAD", root.GetProperty("primaryClassification").GetString());
-        Assert.True(root.GetProperty("integrity").GetProperty("allPass").GetBoolean());
-        Assert.Equal(SourceSha, root.GetProperty("authority").GetProperty("sourceSha256").GetString());
+        Assert.False(root.GetProperty("goldReadBeforeFreeze").GetBoolean());
+        Assert.Equal("SEMANTIC_DISCOVERY_GOOD_SPAN_CONTRACT_BAD", root.GetProperty("primaryClassification").GetString());
+        Assert.True(root.GetProperty("sourceAuthority").GetProperty("matches").GetBoolean());
+        Assert.Equal(SourceSha, root.GetProperty("sourceAuthority").GetProperty("sourceSha256").GetString());
 
-        var scores = root.GetProperty("baselineScores").EnumerateArray().ToArray();
-        Assert.Equal(3, scores.Length);
+        var scores = root.GetProperty("runTable").EnumerateArray().ToArray();
+        Assert.Equal(7, scores.Length);
         Assert.Equal(0, scores[0].GetProperty("tp").GetInt32());
         Assert.Equal(15, scores[0].GetProperty("fp").GetInt32());
         Assert.Equal(71, scores[0].GetProperty("fn").GetInt32());
-        Assert.Equal(361, scores[2].GetProperty("fp").GetInt32());
+        Assert.Equal(104, scores[6].GetProperty("fp").GetInt32());
     }
 
     [Fact]

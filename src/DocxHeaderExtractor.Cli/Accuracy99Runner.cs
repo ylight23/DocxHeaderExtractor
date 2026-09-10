@@ -67,6 +67,7 @@ internal static class Accuracy99Runner
             "openrouter-qwen37-flash-visual-ceiling" => await RunOpenRouterQwen37FlashVisualCeilingAsync(options, cancellationToken),
             "openrouter-qwen37-flash-visual-audit" => await RunOpenRouterQwen37FlashVisualAuditAsync(options, cancellationToken),
             "doc0205-semantic-taxonomy-audit" => await RunDoc0205SemanticTaxonomyAuditAsync(options, cancellationToken),
+            "doc0205-semantic-contract-reconciliation" => await RunDoc0205SemanticContractReconciliationAsync(options, cancellationToken),
             "canonical-heading-contract-v2" => await RunCanonicalHeadingContractV2Async(options, cancellationToken),
             "heading-target-ontology-v4" => await RunHeadingTargetOntologyV4Async(options, cancellationToken),
             "structure-preserving-ir" => await RunStructurePreservingIrAsync(options, cancellationToken),
@@ -136,6 +137,12 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return Doc0205SemanticTaxonomyAuditRunner.RunAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunDoc0205SemanticContractReconciliationAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return Doc0205SemanticContractReconciliationRunner.RunAsync(repoRoot, cancellationToken);
     }
 
     private static Task<int> RunCanonicalHeadingContractV2Async(CommandLineOptions options, CancellationToken cancellationToken)
