@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "a99-semantic-text-stable-error-repair-clean-completion-summary-v1",
+  "status": "NOT_EVALUABLE_EXECUTION",
+  "startHead": "43e3f38",
+  "endHead": "43e3f383433d9dc60d3b4e3d21be0233d308d13c",
+  "model": "qwen/qwen3.7-flash",
+  "intervention": "GLOBAL_STRUCTURAL_CONTEXT_ENRICHMENT_V1",
+  "decision": "ENRICHMENT_V1_NOT_MEASURED_PROVIDER_BLOCKED",
+  "cellMatrix": "campaign-cell-matrix.v1.json",
+  "systemLossAudit": "system-loss-audit.v1.json",
+  "providerFailureAudit": "provider-failure-audit.v1.json",
+  "pairedComparison": "paired-comparison.v1.json",
+  "packetOverhead": "packet-overhead.v1.json",
+  "stableErrorCensus": "stable-error-census.v1.json",
+  "systemLossFixApplied": false,
+  "replayApplied": false,
+  "providerCallsCurrentRun": 0,
+  "goldFirewall": "PASS",
+  "notes": [
+    "Existing frozen success cells reused byte-for-byte.",
+    "DOC-0252/R5 and DOC-0252/R6 remain provider execution failures with no persisted raw transport envelope.",
+    "The four aggregate R4 losses are DOC-0256 navigation-role projection exclusions, not a generic binder/validator defect."
+  ]
+}

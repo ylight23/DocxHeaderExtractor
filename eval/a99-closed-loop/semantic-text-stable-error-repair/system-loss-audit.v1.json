@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "a99-semantic-text-stable-error-system-loss-audit-v1",
+  "documentId": "DOC-0256",
+  "repeat": "r4",
+  "aggregateAttributionCorrection": "R4_SYSTEM_LOSS=4 is DOC-0256, not DOC-0252; DOC-0252/R4 systemLoss=0.",
+  "rawProposalCount": 41,
+  "boundProposalCount": 40,
+  "validatorAccepted": 38,
+  "projectionDecisionCount": 38,
+  "losses": [
+    {
+      "key": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]:0:32",
+      "sourceAlias": "S0088",
+      "verbatimModelText": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "rawProposalIdentity": "S0088:DAY 1: TUESDAY, OCTOBER 31, 2023:AGENDA_NAVIGATION_HEADING",
+      "binderStatus": "BOUND",
+      "validatorAccepted": true,
+      "firstStageAbsent": "PROJECTION",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY",
+      "classification": "MODEL_ROLE_CONTRACT_EXCLUSION"
+    },
+    {
+      "key": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:34",
+      "sourceAlias": "S0123",
+      "verbatimModelText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "rawProposalIdentity": "S0123:DAY 2: WEDNESDAY, NOVEMBER 1, 2023:AGENDA_NAVIGATION_HEADING",
+      "binderStatus": "BOUND",
+      "validatorAccepted": true,
+      "firstStageAbsent": "PROJECTION",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY",
+      "classification": "MODEL_ROLE_CONTRACT_EXCLUSION"
+    },
+    {
+      "key": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]:0:33",
+      "sourceAlias": "S0138",
+      "verbatimModelText": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "rawProposalIdentity": "S0138:DAY 3: THURSDAY, NOVEMBER 2, 2023:AGENDA_NAVIGATION_HEADING",
+      "binderStatus": "BOUND",
+      "validatorAccepted": true,
+      "firstStageAbsent": "PROJECTION",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY",
+      "classification": "MODEL_ROLE_CONTRACT_EXCLUSION"
+    },
+    {
+      "key": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]:0:31",
+      "sourceAlias": "S0159",
+      "verbatimModelText": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "rawProposalIdentity": "S0159:DAY 4: FRIDAY, NOVEMBER 3, 2023:AGENDA_NAVIGATION_HEADING",
+      "binderStatus": "BOUND",
+      "validatorAccepted": true,
+      "firstStageAbsent": "PROJECTION",
+      "projectionStatus": "EXCLUDED",
+      "projectionReason": "NAVIGATION_ONLY",
+      "classification": "MODEL_ROLE_CONTRACT_EXCLUSION"
+    }
+  ],
+  "counts": {
+    "systemBinding": 0,
+    "systemDedupe": 0,
+    "systemValidator": 0,
+    "systemProjection": 4,
+    "traceAccounting": 0
+  },
+  "genericPostModelDefectProven": false,
+  "replayApplied": false,
+  "conclusion": "All four proposals are exact-bound and validator-accepted, then intentionally excluded as NAVIGATION_ONLY because the model role is AGENDA_NAVIGATION_HEADING. Existing generic projection invariant and focused test confirm this is a role/projection contract exclusion, not a binder/projection implementation bug."
+}

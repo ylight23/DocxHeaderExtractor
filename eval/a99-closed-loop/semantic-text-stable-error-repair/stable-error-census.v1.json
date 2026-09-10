@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "a99-semantic-text-stable-error-census-v1",
+  "before": {
+    "stableOmissions3of3": 9,
+    "spanVariants3of3": 5,
+    "stableFalsePositives3of3": 3,
+    "falsePositives2of3": 6
+  },
+  "after": {
+    "rows": [
+      {
+        "documentId": "DOC-0001",
+        "availableRepeats": [
+          "r4",
+          "r5",
+          "r6"
+        ],
+        "executionStatus": "THREE_REPEAT_EVALUABLE",
+        "stableOmissions3of3": 0,
+        "spanVariants3of3": 0,
+        "stableFalsePositives3of3": 0
+      },
+      {
+        "documentId": "DOC-0205",
+        "availableRepeats": [
+          "r4",
+          "r5",
+          "r6"
+        ],
+        "executionStatus": "THREE_REPEAT_EVALUABLE",
+        "stableOmissions3of3": 0,
+        "spanVariants3of3": 1,
+        "stableFalsePositives3of3": 0
+      },
+      {
+        "documentId": "DOC-0252",
+        "availableRepeats": [
+          "r4"
+        ],
+        "executionStatus": "NOT_EVALUABLE_EXECUTION",
+        "stableOmissions3of3": 0,
+        "spanVariants3of3": 0,
+        "stableFalsePositives3of3": 0
+      },
+      {
+        "documentId": "DOC-0256",
+        "availableRepeats": [
+          "r4",
+          "r5",
+          "r6"
+        ],
+        "executionStatus": "THREE_REPEAT_EVALUABLE",
+        "stableOmissions3of3": 6,
+        "spanVariants3of3": 1,
+        "stableFalsePositives3of3": 1
+      },
+      {
+        "documentId": "DOC-0258",
+        "availableRepeats": [
+          "r4",
+          "r5",
+          "r6"
+        ],
+        "executionStatus": "THREE_REPEAT_EVALUABLE",
+        "stableOmissions3of3": 5,
+        "spanVariants3of3": 2,
+        "stableFalsePositives3of3": 0
+      }
+    ],
+    "completeDocuments": 4,
+    "providerBlockedDocuments": 1,
+    "stableCountsSuppressedForIncompleteDocuments": true
+  },
+  "conclusion": "Stable post-enrichment census is not promotable because DOC-0252 lacks R5/R6 provider-success repeats."
+}

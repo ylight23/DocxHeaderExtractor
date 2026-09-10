@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "a99-semantic-text-packet-overhead-v1",
+  "rows": [
+    {
+      "documentId": "DOC-0001",
+      "aliasCount": 14,
+      "baselinePacketCharacters": 3389,
+      "enrichmentPacketCharacters": 10130,
+      "overheadCharacters": 6741,
+      "overheadRatio": 1.9890823251696665,
+      "basePacketHash": "350c756f4ff775028f2d3f5adbc3a56c2a73ec2cd1645616ffbd2c38e93b7e75",
+      "enrichmentPacketHash": "b4833165c547bf72eb83f61e163e12c4d85416df92cab5a50aa34d7559fe509d",
+      "inputTokens": [
+        4190,
+        4190,
+        4190
+      ],
+      "reasoningTokens": [
+        2173,
+        2154,
+        2339
+      ],
+      "outputTokens": [
+        2480,
+        2391,
+        2576
+      ],
+      "wallTimeMs": [
+        19195,
+        16036,
+        16250
+      ]
+    },
+    {
+      "documentId": "DOC-0205",
+      "aliasCount": 3,
+      "baselinePacketCharacters": 123761,
+      "enrichmentPacketCharacters": 125208,
+      "overheadCharacters": 1447,
+      "overheadRatio": 0.011691890013816954,
+      "basePacketHash": "65b616df872739a49c9cba307f1530c6673e563bb014723ecabe395485a34afe",
+      "enrichmentPacketHash": "bfc03c3ae3511a48a88a1cd6a1e8bbd0bbda2caef5cf5f64b8ebd6308ab06436",
+      "inputTokens": [
+        78558,
+        78558,
+        78558
+      ],
+      "reasoningTokens": [
+        6553,
+        6553,
+        6553
+      ],
+      "outputTokens": [
+        10402,
+        10402,
+        10403
+      ],
+      "wallTimeMs": [
+        60410,
+        52727,
+        53554
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "aliasCount": 210,
+      "baselinePacketCharacters": 60140,
+      "enrichmentPacketCharacters": 162084,
+      "overheadCharacters": 101944,
+      "overheadRatio": 1.6951114067176587,
+      "basePacketHash": "843dd251294acecb3662c5e77f3de0900fcb9e0cf19842b226e748a17a818fb0",
+      "enrichmentPacketHash": "4be60e0fd6175dd0f3fe9a6acd4515e433a9fc975155dcf4676da85b8db1c263",
+      "inputTokens": [
+        41598,
+        null,
+        null
+      ],
+      "reasoningTokens": [
+        8017,
+        null,
+        null
+      ],
+      "outputTokens": [
+        10028,
+        null,
+        null
+      ],
+      "wallTimeMs": [
+        71740,
+        0,
+        0
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "aliasCount": 225,
+      "baselinePacketCharacters": 46211,
+      "enrichmentPacketCharacters": 155459,
+      "overheadCharacters": 109248,
+      "overheadRatio": 2.364112440760858,
+      "basePacketHash": "98ddb9b0c1ba4d121438be1aa288c4284f5c554ee8ff13700ecfaab460eae1a2",
+      "enrichmentPacketHash": "c33a68bb0159f1445357ecbbfa382dd2bef6a4cf06674f639b62b48473aebae7",
+      "inputTokens": [
+        41577,
+        41577,
+        41577
+      ],
+      "reasoningTokens": [
+        8596,
+        10355,
+        7395
+      ],
+      "outputTokens": [
+        10171,
+        13153,
+        9078
+      ],
+      "wallTimeMs": [
+        36639,
+        48120,
+        31755
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "aliasCount": 146,
+      "baselinePacketCharacters": 39055,
+      "enrichmentPacketCharacters": 109890,
+      "overheadCharacters": 70835,
+      "overheadRatio": 1.8137242350531302,
+      "basePacketHash": "ba41b80ce8d8e655af8abbcd36e9917dbfc9e792c7e0000fbd66e954607d3384",
+      "enrichmentPacketHash": "f556744dc748fce26317f11fa43beff513e22e04fbf0e937ca671046330f2990",
+      "inputTokens": [
+        28807,
+        28807,
+        28807
+      ],
+      "reasoningTokens": [
+        6644,
+        4847,
+        5960
+      ],
+      "outputTokens": [
+        7755,
+        5649,
+        6802
+      ],
+      "wallTimeMs": [
+        53854,
+        35867,
+        45129
+      ]
+    }
+  ],
+  "factsAreParserDerived": true,
+  "candidateGating": false,
+  "goldInPacket": false
+}
