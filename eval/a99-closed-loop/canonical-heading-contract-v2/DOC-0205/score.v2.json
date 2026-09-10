@@ -1,0 +1,26 @@
+{
+  "documentId": "DOC-0205",
+  "exactStatus": "EVALUABLE",
+  "goldCount": 71,
+  "tp": 0,
+  "fp": 101,
+  "fn": 71,
+  "precision": 0,
+  "recall": 0,
+  "f1": 0,
+  "lossCounts": {
+    "MODEL_WRONG_SPAN": 20,
+    "MODEL_OMISSION": 51,
+    "MODEL_FALSE_POSITIVE": 101,
+    "MODEL_WRONG_ROLE": 0,
+    "TASK_PROJECTION_EXCLUSION": 0,
+    "SYSTEM_BINDING_LOSS": 0,
+    "SYSTEM_VALIDATOR_LOSS": 0,
+    "SYSTEM_PROJECTION_BUG": 0
+  },
+  "taskProjectionExclusion": 0,
+  "systemBindingLoss": 0,
+  "systemValidatorLoss": 0,
+  "systemProjectionBug": 0,
+  "goldReadBeforeFreeze": false
+}

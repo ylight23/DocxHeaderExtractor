@@ -258,7 +258,8 @@ public static class CeilingSemanticRole
     [
         "DOCUMENT_TITLE", "PART", "CHAPTER", "SECTION", "SUBSECTION", "ARTICLE", "CLAUSE_HEADING",
         "ANNEX_HEADING", "LOCAL_INDEX_TITLE", "AGENDA_NAVIGATION_HEADING", "TOC_ENTRY",
-        "FRONT_MATTER", "CONTENT_HEADING", "OTHER_STRUCTURAL_LABEL",
+        "FRONT_MATTER", "CONTENT_HEADING", "OTHER_STRUCTURAL_LABEL", "RUNNING_HEADER", "CAPTION",
+        "LIST_ITEM", "TABLE_LABEL", "DECORATIVE_TEXT", "BODY_FRAGMENT", "OTHER_NON_TASK_STRUCTURAL",
     ];
 
     public static bool IsAllowed(string? role) => role is not null && AllowedRoles.Contains(role, StringComparer.Ordinal);

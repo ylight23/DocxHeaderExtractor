@@ -1,0 +1,2714 @@
+{
+  "schemaVersion": "a99-doc0205-contract-v2-prediction-gold-map-v1",
+  "documentId": "DOC-0205",
+  "offlineOnly": true,
+  "predictionCount": 101,
+  "goldCount": 71,
+  "predictions": [
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 385,
+        "end": 447
+      },
+      "text": "cứ Luật Giao dịch điện tử ngày 29 tháng 11 năm 2005; Căn cứ Lu",
+      "semanticRole": "DOCUMENT_TITLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 609,
+        "end": 636
+      },
+      "text": "sẻ dữ liệu số của cơ quan n",
+      "semanticRole": "CHAPTER",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 637,
+        "end": 661
+      },
+      "text": "à nước. Chương I QUY ĐỊN",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        0
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 1085,
+        "end": 1109
+      },
+      "text": "dụng đối với việc chia s",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 1538,
+        "end": 1560
+      },
+      "text": "dữ liệu số của cơ quan",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 2685,
+        "end": 2730
+      },
+      "text": "ệu mở của cơ quan nhà nước. 5. Chia sẻ dữ liệ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 3385,
+        "end": 3440
+      },
+      "text": ", công nghệ để xử lý hoặc tạo ra dữ liệu phục vụ chia s",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 4285,
+        "end": 4325
+      },
+      "text": "ụ, ứng dụng xử lý, khai thác dữ liệu đượ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 5185,
+        "end": 5235
+      },
+      "text": "g thông tin; không được thu thập, tổ chức thu thập",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 6085,
+        "end": 6115
+      },
+      "text": "trong Luật Phí và lệ phí. 6. D",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 6585,
+        "end": 6735
+      },
+      "text": "p luật hiện hành. Điều 6. Thực hiện kết nối, chia sẻ dữ liệu 1. Cơ quan nhà nước quản lý dữ liệu có trách nhiệm thực hiện các hoạt động quản lý dữ liệ",
+      "semanticRole": "CHAPTER",
+      "diagnosticCategory": "SUPERSET_GOLD_HEADING",
+      "classificationBasis": "Prediction text contains a Gold heading while its span extends beyond it.",
+      "overlappingGoldOrdinals": [
+        6
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 6736,
+        "end": 6795
+      },
+      "text": ", quản trị dữ liệu và đảm bảo khả năng sẵn sàng kết nối, ch",
+      "semanticRole": "SECTION",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 6796,
+        "end": 6855
+      },
+      "text": "a sẻ dữ liệu cho các cơ quan, tổ chức, cá nhân theo quy địn",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 7285,
+        "end": 7325
+      },
+      "text": "g III của Nghị định này; b) Đối với dữ l",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 7885,
+        "end": 7930
+      },
+      "text": "cấp dữ liệu chấp thuận cho phép kết nối, khai",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 8585,
+        "end": 8650
+      },
+      "text": "uan, đơn vị mình đối với cơ quan, đơn vị bên ngoài. 2. Công khai ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 9585,
+        "end": 9625
+      },
+      "text": "ền bảo vệ thông tin cá nhân khi kết nối,",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 9985,
+        "end": 10045
+      },
+      "text": " QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC Điều ",
+      "semanticRole": "SECTION",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        10,
+        11
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 10046,
+        "end": 10115
+      },
+      "text": ". Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước 1.",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        11
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 10885,
+        "end": 10945
+      },
+      "text": " thẩm tra dữ liệu. Điều 10. Tổ chức, quản lý dữ liệu, cơ sở ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        12
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 11585,
+        "end": 11635
+      },
+      "text": "ệu của bộ, ngành, địa phương bao gồm: cơ sở dữ liệ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 12185,
+        "end": 12240
+      },
+      "text": "các đơn vị có liên quan xây dựng và trình Bộ trưởng, Th",
+      "semanticRole": "SECTION",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 12241,
+        "end": 12300
+      },
+      "text": " trưởng cơ quan ngang bộ, cơ quan thuộc Chính phủ, Chủ tịch",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 13185,
+        "end": 13245
+      },
+      "text": "o danh mục, chỉnh sửa danh mục hoặc rút cơ sở dữ liệu quốc g",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 14085,
+        "end": 14145
+      },
+      "text": "ữ liệu quốc gia đưa vào danh mục phải đáp ứng các yêu cầu sa",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 14885,
+        "end": 14945
+      },
+      "text": " liệu mở của các cơ quan nhà nước trên môi trường mạng nhằm ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 15585,
+        "end": 15645
+      },
+      "text": "ẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU Điều 14. Hoạt động quản tr",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        16,
+        17
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 16185,
+        "end": 16245
+      },
+      "text": " dụng dữ liệu phục vụ hoạt động của cơ quan nhà nước và chia",
+      "semanticRole": "SECTION",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 16246,
+        "end": 16300
+      },
+      "text": "sẻ dữ liệu cho các tổ chức, cá nhân theo quy định của ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 17085,
+        "end": 17135
+      },
+      "text": " quyền; hướng dẫn thanh tra, kiểm tra hoạt động kế",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 17885,
+        "end": 17935
+      },
+      "text": "ữ liệu, dữ liệu bất thường; d) Đánh giá về duy trì",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 18585,
+        "end": 18635
+      },
+      "text": "thuộc Chính phủ, tỉnh, thành phố trực thuộc trung ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 19185,
+        "end": 19235
+      },
+      "text": " đánh giá dữ liệu. 6. Chủ quản cơ sở dữ liệu có tr",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 19785,
+        "end": 19835
+      },
+      "text": "hải đảm bảo khả năng thiết bị số có thể gửi, nhận,",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 20385,
+        "end": 20435
+      },
+      "text": " khai công bố dữ liệu mở của cơ quan nhà nước tron",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 20985,
+        "end": 21035
+      },
+      "text": "ức trình bày và các thông tin phát sinh từ dữ liệu",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 21585,
+        "end": 21635
+      },
+      "text": " bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, Ủy",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 22185,
+        "end": 22235
+      },
+      "text": "ữ liệu mở. 3. Có các biện pháp phòng ngừa cần thiế",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 22785,
+        "end": 22835
+      },
+      "text": "ng việc công bố dữ liệu mở của cơ quan nhà nước 1.",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        24
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 23385,
+        "end": 23435
+      },
+      "text": "t có liên quan. Điều 21. Phương thức, cách thức cô",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        25
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 23985,
+        "end": 24035
+      },
+      "text": " hành. Quy chế khai thác, sử dụng dữ liệu được quy",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 24585,
+        "end": 24635
+      },
+      "text": " liệu được đóng gói và lưu giữ trên các phương tiệ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 25185,
+        "end": 25235
+      },
+      "text": "a sẻ dữ liệu. Điều 24. Dịch vụ chia sẻ dữ liệu 1. ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "SUPERSET_GOLD_HEADING",
+      "classificationBasis": "Prediction text contains a Gold heading while its span extends beyond it.",
+      "overlappingGoldOrdinals": [
+        29
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 25785,
+        "end": 25835
+      },
+      "text": "uẩn kỹ thuật hiện hành; c) Các thông tin cần thiết",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 26385,
+        "end": 26435
+      },
+      "text": "hay đổi, cập nhật các dịch vụ chia sẻ dữ liệu, cơ ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 26985,
+        "end": 27035
+      },
+      "text": "ụ chia sẻ dữ liệu được công khai trên Hệ thống quả",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 27585,
+        "end": 27635
+      },
+      "text": "nhất xây dựng và quản lý để cung cấp cho các cơ qu",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 28185,
+        "end": 28235
+      },
+      "text": "u giữa các cơ quan nhà nước. 3. Cơ quan nhà nước t",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 28785,
+        "end": 28835
+      },
+      "text": "ều kiện kỹ thuật khác phục vụ kết nối, cung cấp dữ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 29385,
+        "end": 29435
+      },
+      "text": "hia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ q",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 29985,
+        "end": 30035
+      },
+      "text": "o đảm an toàn trong quá trình kết nối, chia sẻ dữ ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PARTIAL_GOLD_HEADING",
+      "classificationBasis": "Prediction text is a strict substring of an overlapping Gold heading.",
+      "overlappingGoldOrdinals": [
+        33
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 30585,
+        "end": 30635
+      },
+      "text": " phí bảo đảm kết nối, chia sẻ dữ liệu 1. Đối với k",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        34
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 31185,
+        "end": 31235
+      },
+      "text": " ngân sách theo quy định, nguồn huy động hợp pháp ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 31785,
+        "end": 31835
+      },
+      "text": " hiện từ nguồn thu của dự án; b) Đối với các địa p",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 32385,
+        "end": 32435
+      },
+      "text": "đảm kết nối, chia sẻ dữ liệu 1. Nhân lực bảo đảm k",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        35
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 32985,
+        "end": 33035
+      },
+      "text": "rung ương 1. Thủ tướng Chính phủ chịu trách nhiệm ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        38
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 33585,
+        "end": 33635
+      },
+      "text": " phối việc kết nối, chia sẻ dữ liệu giữa các bộ, c",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 34185,
+        "end": 34235
+      },
+      "text": "uan thuộc Chính phủ, các tỉnh, thành phố trực thuộ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PARTIAL_GOLD_HEADING",
+      "classificationBasis": "Prediction text is a strict substring of an overlapping Gold heading.",
+      "overlappingGoldOrdinals": [
+        39
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 34785,
+        "end": 34835
+      },
+      "text": "hia sẻ dữ liệu giữa các cơ quan, đơn vị trong nội ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 35385,
+        "end": 35435
+      },
+      "text": " bị điều kiện cần thiết để đáp ứng yêu cầu và thực",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 35985,
+        "end": 36035
+      },
+      "text": "vụ chia sẻ dữ liệu, khai thác dữ liệu từ các cơ qu",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 36585,
+        "end": 36635
+      },
+      "text": "cơ quan ngang bộ, cơ quan thuộc Chính phủ, Chủ tịc",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 37185,
+        "end": 37235
+      },
+      "text": "ầu theo hình thức phù hợp được cơ quan cung cấp dữ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 37785,
+        "end": 37835
+      },
+      "text": "liệu có trách nhiệm tạo tài khoản kết nối và thông",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 38385,
+        "end": 38435
+      },
+      "text": " văn bản điện tử hoặc hệ thống thông tin hỗ trợ (n",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 38985,
+        "end": 39035
+      },
+      "text": "iết và các hoạt động cần thực hiện để kết nối và c",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 39585,
+        "end": 39635
+      },
+      "text": "ữ liệu. 7. Các điều kiện, giới hạn trong việc chia",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 40185,
+        "end": 40235
+      },
+      "text": "ng chia sẻ dữ liệu. 12. Các vấn đề khác có ảnh hưở",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 40785,
+        "end": 40835
+      },
+      "text": " kết nối 1. Trừ trường hợp chia sẻ dữ liệu không y",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        50
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 41385,
+        "end": 41435
+      },
+      "text": "à xác thực tài khoản kết nối và khai thác dữ liệu ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 41985,
+        "end": 42035
+      },
+      "text": "ịnh khác; b) Dữ liệu được khai thác theo phương th",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 42585,
+        "end": 42635
+      },
+      "text": ". Hết thời gian hạn định, dữ liệu không có giá trị",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 43185,
+        "end": 43235
+      },
+      "text": "g hợp sau: a) Nâng cấp, mở rộng, bảo trì hệ thống ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 43785,
+        "end": 43835
+      },
+      "text": " báo công khai trên cổng thông tin điện tử ít nhất",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 44385,
+        "end": 44435
+      },
+      "text": " cấp dịch vụ chia sẻ dữ liệu theo điểm b khoản 1 Đ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 44985,
+        "end": 45035
+      },
+      "text": ". Cơ quan cung cấp có quyền chấm dứt việc kết nối,",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 45585,
+        "end": 45635
+      },
+      "text": " thống nhất chia sẻ dữ liệu hết hiệu lực. 2. Cơ qu",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 46185,
+        "end": 46235
+      },
+      "text": "hi khai thác. 2. Nội dung thông tin lịch sử lưu tr",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 46785,
+        "end": 46835
+      },
+      "text": "nh với thứ tự ưu tiên sau: 1. Kết nối qua các hệ t",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 47385,
+        "end": 47435
+      },
+      "text": "Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PARTIAL_GOLD_HEADING",
+      "classificationBasis": "Prediction text is a strict substring of an overlapping Gold heading.",
+      "overlappingGoldOrdinals": [
+        58
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 47985,
+        "end": 48035
+      },
+      "text": " cung cấp dữ liệu có trách nhiệm tiếp nhận, giải q",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 48585,
+        "end": 48635
+      },
+      "text": "ẻ dữ liệu giữa các bộ, ngành, địa phương. Điều 49.",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        60
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 49185,
+        "end": 49235
+      },
+      "text": "khoản 1 Điều này, cơ quan gặp vướng mắc gửi thông ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 49785,
+        "end": 49835
+      },
+      "text": "h phủ, Chủ tịch Ủy ban nhân dân tỉnh, thành phố tr",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 50385,
+        "end": 50435
+      },
+      "text": " đảm tuân thủ các quy định của pháp luật có liên q",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 50985,
+        "end": 51035
+      },
+      "text": " của cơ quan cung cấp dữ liệu 1. Cơ quan cung cấp ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        63
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 51585,
+        "end": 51635
+      },
+      "text": "quy định của pháp luật; c) Tạm dừng hoặc chấm dứt ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 52185,
+        "end": 52235
+      },
+      "text": "hạ tầng thông tin, hạn chế các rào cản về điều kiệ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 52785,
+        "end": 52835
+      },
+      "text": " có nhu cầu khi cá nhân, tổ chức đó đề nghị. Điều ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "CORRECT_STRUCTURE_WRONG_SPAN",
+      "classificationBasis": "Prediction overlaps a Gold heading but has a different boundary/text.",
+      "overlappingGoldOrdinals": [
+        64
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 53385,
+        "end": 53435
+      },
+      "text": "quy chế khai thác, sử dụng dữ liệu, nội dung thống",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 53985,
+        "end": 54035
+      },
+      "text": "rong cơ quan nhà nước; giám sát việc thực hiện các",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "PROSE_FALSE_POSITIVE",
+      "classificationBasis": "Long punctuation-bearing fragment inside the flattened paragraph; generic diagnostic heuristic only.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 54585,
+        "end": 54635
+      },
+      "text": " cấp dữ liệu chuyển thành chia sẻ dữ liệu theo hìn",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 55185,
+        "end": 55235
+      },
+      "text": "n có liên quan cân đối, bố trí kinh phí để thực hi",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 55785,
+        "end": 55835
+      },
+      "text": " các nhiệm vụ với vai trò là cơ quan cung cấp dữ l",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 56385,
+        "end": 56435
+      },
+      "text": " pháp luật để đơn giản hóa các thủ tục hành chính,",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 56985,
+        "end": 57035
+      },
+      "text": "ình Hội đồng nhân dân cấp tỉnh bố trí kinh phí để ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 57585,
+        "end": 57635
+      },
+      "text": "yệt có trách nhiệm rà soát và thực hiện gửi các th",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 58185,
+        "end": 58235
+      },
+      "text": " của bộ, ngành, địa phương mình trong thời hạn 06 ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 58785,
+        "end": 58835
+      },
+      "text": "soát các văn bản, quy định làm hạn chế việc kết nố",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 59385,
+        "end": 59435
+      },
+      "text": "ưởng, Thủ trưởng cơ quan ngang bộ, Thủ trưởng cơ q",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 59985,
+        "end": 60035
+      },
+      "text": "ác bộ, cơ quan ngang bộ, cơ quan thuộc | | |Chính ",
+      "semanticRole": "ARTICLE",
+      "diagnosticCategory": "UNRESOLVED",
+      "classificationBasis": "No deterministic Gold relationship; cannot assert true extra structure from offline evidence alone.",
+      "overlappingGoldOrdinals": []
+    }
+  ],
+  "gold": [
+    {
+      "headingOrdinal": 0,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 645,
+        "end": 668
+      },
+      "rawSourceText": "Chương I QUY ĐỊNH CHUNG",
+      "semanticRole": "chapter",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 1,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 669,
+        "end": 695
+      },
+      "rawSourceText": "Điều 1. Phạm vi điều chỉnh",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 2,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 1337,
+        "end": 1362
+      },
+      "rawSourceText": "Điều 2. Đối tượng áp dụng",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 3,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 1629,
+        "end": 1654
+      },
+      "rawSourceText": "Điều 3. Giải thích từ ngữ",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 4,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 4361,
+        "end": 4409
+      },
+      "rawSourceText": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 5,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 4626,
+        "end": 4689
+      },
+      "rawSourceText": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 6,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 6603,
+        "end": 6645
+      },
+      "rawSourceText": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 7,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 8146,
+        "end": 8206
+      },
+      "rawSourceText": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 8,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 9298,
+        "end": 9332
+      },
+      "rawSourceText": "Điều 8. Các hành vi không được làm",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 9,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 9843,
+        "end": 9978
+      },
+      "rawSourceText": "Chương II QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU, QUẢN TRỊ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC VÀ BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "semanticRole": "chapter",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 6736,
+            "end": 6795
+          },
+          "similarity": 0.52
+        }
+      ],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Semantic-near candidates exist, but no exact/overlap binding; omission remains model-side diagnostic."
+    },
+    {
+      "headingOrdinal": 10,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 9979,
+        "end": 10039
+      },
+      "rawSourceText": "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+      "semanticRole": "section",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 9985,
+            "end": 10045
+          },
+          "similarity": 0.7692
+        },
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 10046,
+            "end": 10115
+          },
+          "similarity": 0.7857
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 11,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 10040,
+        "end": 10112
+      },
+      "rawSourceText": "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 2,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 9985,
+            "end": 10045
+          },
+          "similarity": 0.7857
+        },
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 10046,
+            "end": 10115
+          },
+          "similarity": 0.8
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 12,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 10904,
+        "end": 10952
+      },
+      "rawSourceText": "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 9985,
+            "end": 10045
+          },
+          "similarity": 0.5
+        },
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 10885,
+            "end": 10945
+          },
+          "similarity": 0.8333
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 13,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 11449,
+        "end": 11494
+      },
+      "rawSourceText": "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 9985,
+            "end": 10045
+          },
+          "similarity": 0.75
+        },
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 10046,
+            "end": 10115
+          },
+          "similarity": 0.5333
+        }
+      ],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Semantic-near candidates exist, but no exact/overlap binding; omission remains model-side diagnostic."
+    },
+    {
+      "headingOrdinal": 14,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 13065,
+        "end": 13146
+      },
+      "rawSourceText": "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 15,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 14829,
+        "end": 14859
+      },
+      "rawSourceText": "Điều 13. Cổng dữ liệu quốc gia",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 16,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 15558,
+        "end": 15618
+      },
+      "rawSourceText": "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+      "semanticRole": "section",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 15585,
+            "end": 15645
+          },
+          "similarity": 0.5
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 17,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 15619,
+        "end": 15691
+      },
+      "rawSourceText": "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 15585,
+            "end": 15645
+          },
+          "similarity": 0.8571
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 18,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 16890,
+        "end": 16963
+      },
+      "rawSourceText": "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 19,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 17527,
+        "end": 17571
+      },
+      "rawSourceText": "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 20,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 19329,
+        "end": 19367
+      },
+      "rawSourceText": "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+      "semanticRole": "section",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 20385,
+            "end": 20435
+          },
+          "similarity": 0.5714
+        },
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 22785,
+            "end": 22835
+          },
+          "similarity": 0.5333
+        }
+      ],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Semantic-near candidates exist, but no exact/overlap binding; omission remains model-side diagnostic."
+    },
+    {
+      "headingOrdinal": 21,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 19368,
+        "end": 19428
+      },
+      "rawSourceText": "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 22,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 20463,
+        "end": 20520
+      },
+      "rawSourceText": "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 23,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 21486,
+        "end": 21553
+      },
+      "rawSourceText": "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 24,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 22765,
+        "end": 22832
+      },
+      "rawSourceText": "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 20385,
+            "end": 20435
+          },
+          "similarity": 0.5556
+        },
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 22785,
+            "end": 22835
+          },
+          "similarity": 0.6111
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 25,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 23401,
+        "end": 23472
+      },
+      "rawSourceText": "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 20385,
+            "end": 20435
+          },
+          "similarity": 0.5882
+        },
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 22785,
+            "end": 22835
+          },
+          "similarity": 0.5556
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 26,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 23745,
+        "end": 23802
+      },
+      "rawSourceText": "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "semanticRole": "section",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 6736,
+            "end": 6795
+          },
+          "similarity": 0.5556
+        }
+      ],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Semantic-near candidates exist, but no exact/overlap binding; omission remains model-side diagnostic."
+    },
+    {
+      "headingOrdinal": 27,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 23803,
+        "end": 23854
+      },
+      "rawSourceText": "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 23985,
+            "end": 24035
+          },
+          "similarity": 0.5714
+        },
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 53385,
+            "end": 53435
+          },
+          "similarity": 0.5333
+        }
+      ],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Semantic-near candidates exist, but no exact/overlap binding; omission remains model-side diagnostic."
+    },
+    {
+      "headingOrdinal": 28,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 24158,
+        "end": 24194
+      },
+      "rawSourceText": "Điều 23. Phương thức chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 29,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 25199,
+        "end": 25231
+      },
+      "rawSourceText": "Điều 24. Dịch vụ chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 25185,
+            "end": 25235
+          },
+          "similarity": 0.8
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 30,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 26019,
+        "end": 26074
+      },
+      "rawSourceText": "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 31,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 27351,
+        "end": 27400
+      },
+      "rawSourceText": "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 32,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 28415,
+        "end": 28456
+      },
+      "rawSourceText": "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 33,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 29974,
+        "end": 30039
+      },
+      "rawSourceText": "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 29985,
+            "end": 30035
+          },
+          "similarity": 0.6875
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 34,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 30572,
+        "end": 30622
+      },
+      "rawSourceText": "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 30585,
+            "end": 30635
+          },
+          "similarity": 0.5625
+        },
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 32385,
+            "end": 32435
+          },
+          "similarity": 0.5
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 35,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 32357,
+        "end": 32413
+      },
+      "rawSourceText": "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 32385,
+            "end": 32435
+          },
+          "similarity": 0.6667
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 36,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 32768,
+        "end": 32822
+      },
+      "rawSourceText": "Chương III THỰC HIỆN KẾT NỐI, CHIA SẺ, SỬ DỤNG DỮ LIỆU",
+      "semanticRole": "chapter",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 37,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 32823,
+        "end": 32862
+      },
+      "rawSourceText": "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "semanticRole": "section",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 38,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 32863,
+        "end": 32994
+      },
+      "rawSourceText": "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 39,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 34108,
+        "end": 34247
+      },
+      "rawSourceText": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 40,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 35467,
+        "end": 35498
+      },
+      "rawSourceText": "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+      "semanticRole": "section",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 41,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 35499,
+        "end": 35546
+      },
+      "rawSourceText": "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 42,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 36126,
+        "end": 36182
+      },
+      "rawSourceText": "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 43,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 36916,
+        "end": 36963
+      },
+      "rawSourceText": "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 44,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 37929,
+        "end": 37972
+      },
+      "rawSourceText": "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+      "semanticRole": "section",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 45,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 37973,
+        "end": 38029
+      },
+      "rawSourceText": "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 46,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 38781,
+        "end": 38832
+      },
+      "rawSourceText": "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 47,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 39241,
+        "end": 39285
+      },
+      "rawSourceText": "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 48,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 40307,
+        "end": 40359
+      },
+      "rawSourceText": "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 49,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 40706,
+        "end": 40745
+      },
+      "rawSourceText": "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "semanticRole": "section",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 50,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 40746,
+        "end": 40793
+      },
+      "rawSourceText": "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 51,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 41526,
+        "end": 41577
+      },
+      "rawSourceText": "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 52,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 42645,
+        "end": 42692
+      },
+      "rawSourceText": "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 53,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 42984,
+        "end": 43069
+      },
+      "rawSourceText": "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 54,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 44921,
+        "end": 44983
+      },
+      "rawSourceText": "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 55,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 45915,
+        "end": 45955
+      },
+      "rawSourceText": "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 56,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 46641,
+        "end": 46682
+      },
+      "rawSourceText": "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 57,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 47323,
+        "end": 47375
+      },
+      "rawSourceText": "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "semanticRole": "section",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 58,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 47376,
+        "end": 47436
+      },
+      "rawSourceText": "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 47385,
+            "end": 47435
+          },
+          "similarity": 0.7333
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 59,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 47923,
+        "end": 47974
+      },
+      "rawSourceText": "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 60,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 48627,
+        "end": 48660
+      },
+      "rawSourceText": "Điều 49. Trình tự xử lý vướng mắc",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 61,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 50264,
+        "end": 50342
+      },
+      "rawSourceText": "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 62,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 50896,
+        "end": 50955
+      },
+      "rawSourceText": "Chương IV QUYỀN, TRÁCH NHIỆM TRONG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "semanticRole": "chapter",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 63,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 50956,
+        "end": 51014
+      },
+      "rawSourceText": "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 50985,
+            "end": 51035
+          },
+          "similarity": 0.5
+        }
+      ],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 64,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 52830,
+        "end": 52907
+      },
+      "rawSourceText": "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 1,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "MODEL_SPAN_ERROR",
+      "classificationBasis": "A proposal occupies the Gold source occurrence but not the exact approved boundary."
+    },
+    {
+      "headingOrdinal": 65,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 53712,
+        "end": 53786
+      },
+      "rawSourceText": "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [
+        {
+          "sourceId": "body[1]/p[4]",
+          "span": {
+            "start": 21585,
+            "end": 21635
+          },
+          "similarity": 0.5
+        }
+      ],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Semantic-near candidates exist, but no exact/overlap binding; omission remains model-side diagnostic."
+    },
+    {
+      "headingOrdinal": 66,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 56513,
+        "end": 56595
+      },
+      "rawSourceText": "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 67,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 57453,
+        "end": 57481
+      },
+      "rawSourceText": "Chương V ĐIỀU KHOẢN THI HÀNH",
+      "semanticRole": "chapter",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 68,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 57482,
+        "end": 57513
+      },
+      "rawSourceText": "Điều 55. Điều khoản chuyển tiếp",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 69,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 58966,
+        "end": 58992
+      },
+      "rawSourceText": "Điều 56. Hiệu lực thi hành",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    },
+    {
+      "headingOrdinal": 70,
+      "sourceId": "body[1]/p[4]",
+      "span": {
+        "start": 59240,
+        "end": 59269
+      },
+      "rawSourceText": "Điều 57. Trách nhiệm thi hành",
+      "semanticRole": "article",
+      "sourcePresent": true,
+      "exactProposalCount": 0,
+      "overlapProposalCount": 0,
+      "sameTextProposalCount": 0,
+      "semanticNearProposals": [],
+      "diagnosticCategory": "TRUE_MODEL_OMISSION",
+      "classificationBasis": "Source occurrence is present with no exact, overlap, or semantic-near proposal."
+    }
+  ],
+  "bindingEquality": true
+}

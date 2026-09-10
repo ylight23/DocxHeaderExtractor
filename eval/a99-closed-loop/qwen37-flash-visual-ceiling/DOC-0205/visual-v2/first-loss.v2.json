@@ -1,9 +1,9 @@
 {
   "documentId": "DOC-0205",
   "losses": {
-    "MODEL_OMISSION": 37,
-    "MODEL_SPAN_ERROR": 34,
-    "MODEL_FALSE_POSITIVE": 361
+    "MODEL_SPAN_ERROR": 65,
+    "MODEL_OMISSION": 6,
+    "MODEL_FALSE_POSITIVE": 3
   },
   "goldReadBeforeFreeze": false
 }

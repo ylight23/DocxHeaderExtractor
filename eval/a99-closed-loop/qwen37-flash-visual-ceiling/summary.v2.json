@@ -1,42 +1,42 @@
 {
-  "schemaVersion": "a99-qwen37-flash-visual-ceiling-v1",
+  "schemaVersion": "a99-qwen37-flash-visual-ceiling-contract-v2-v1",
   "primaryClassification": "VISUAL_EVIDENCE_NO_MATERIAL_GAIN",
   "model": "qwen/qwen3.7-flash",
   "textControl": {
     "tp": 0,
-    "fp": 73,
+    "fp": 101,
     "fn": 71,
     "f1": 0,
-    "modelOmission": 70,
-    "spanError": 1,
+    "modelOmission": 51,
+    "spanError": 20,
     "systemLoss": 0
   },
   "visual": {
     "tp": 0,
-    "fp": 361,
+    "fp": 3,
     "fn": 71,
     "precision": 0,
     "recall": 0,
     "f1": 0,
-    "modelOmission": 37,
-    "spanError": 34,
+    "modelOmission": 6,
+    "spanError": 65,
     "systemLoss": 0
   },
   "delta": {
     "deltaTP": 0,
-    "deltaFP": 288,
+    "deltaFP": -98,
     "deltaFN": 0,
     "deltaRecall": 0,
     "deltaF1": 0,
-    "deltaModelOmission": -33
+    "deltaModelOmission": -45
   },
   "pageCount": 19,
   "pageCoverage": 1,
   "sourceOwnershipCoverage": 1,
   "sourceCharacterCoverage": 1,
   "unmappedVisualRegions": 0,
-  "reasoningTokens": 21300,
-  "wallTimeMs": 494684,
+  "reasoningTokens": 6344,
+  "wallTimeMs": 143661,
   "goldReadBeforeFreeze": false,
-  "completedUtc": "2026-09-10T01:00:25.8725388+00:00"
+  "completedUtc": "2026-09-10T02:06:11.1726091+00:00"
 }

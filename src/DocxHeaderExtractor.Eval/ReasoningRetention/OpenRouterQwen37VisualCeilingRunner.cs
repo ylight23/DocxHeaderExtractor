@@ -24,10 +24,10 @@ public static class OpenRouterQwen37VisualCeilingRunner
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string InventoryPath = "eval/a99-dataset/document-inventory.v1.json";
     private const string OutputRoot = "eval/a99-closed-loop/qwen37-flash-visual-ceiling";
-    private const string ControlRoot = "eval/a99-closed-loop/qwen37-flash-reasoning-ceiling/DOC-0205/r1-ceiling";
+    private const string ControlRoot = "eval/a99-closed-loop/canonical-heading-contract-v2/DOC-0205";
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
-    public const string VisualPromptContract = "VISUAL_EVIDENCE_SUPPLEMENTS_XML_SOURCE;SOURCE_XML_IS_CANONICAL;NO_GOLD;NO_CANDIDATE_FILTERING;NO_HEURISTIC_HEADING_RULES";
+    public const string VisualPromptContract = "CANONICAL_HEADING_TASK_V2;VISUAL_EVIDENCE_SUPPLEMENTS_XML_SOURCE;SOURCE_XML_IS_CANONICAL;NO_GOLD;NO_CANDIDATE_FILTERING;NO_HEURISTIC_HEADING_RULES";
 
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
     {
@@ -82,9 +82,10 @@ public static class OpenRouterQwen37VisualCeilingRunner
         var capability = await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct);
         await WriteJsonAsync(Path.Combine(output, "campaign-manifest.v1.json"), new
         {
-            schemaVersion = "a99-qwen37-flash-visual-ceiling-v1", model = Model, provider = "OpenRouter",
+            schemaVersion = "a99-qwen37-flash-visual-ceiling-contract-v2-v1", model = Model, provider = "OpenRouter",
             documentId = "DOC-0205", dataClassification = "PUBLIC", zdrRequested = false,
             privacyExceptionAuthorized = true, privacyExceptionScope = "FLASH_VISUAL_CEILING_ONLY", modelFallback = "NONE",
+            semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
             visualPromptContract = VisualPromptContract, pageCount = render.Manifest.PageCount,
             pageCoverage = render.Manifest.Coverage, sourceOwnershipCoverage = mapping.SourceAliasCoverage,
             sourceCharacterCoverage = mapping.SourceCharacterCoverage, alignmentGate = mapping.GateStatus,
@@ -127,7 +128,10 @@ public static class OpenRouterQwen37VisualCeilingRunner
             {
                 var (response, requestTelemetry) = await model.CompleteVisualSemanticAsync("DOC-0205", ReasoningRoute.ModelCapabilityCeiling.ToString(),
                     requestId, packet.SerializedJson + "\nVISUAL_WINDOW_METADATA=" + metadata, pages.Where(x => window.PageIndices.Contains(x.PageIndex)).ToArray(),
-                    packet.SourceTextCharacters, owned.Count, visible.Length, ct);
+                    packet.SourceTextCharacters, owned.Count, visible.Length,
+                    CanonicalHeadingTaskContractV2.SystemPrompt,
+                    CanonicalHeadingTaskContractV2.BuildUser(packet.SerializedJson, ReasoningRoute.ModelCapabilityCeiling.ToString()),
+                    CanonicalHeadingTaskContractV2.Schema(), "canonical_heading_task_v2", ct);
                 telemetry.Add(requestTelemetry);
                 var bound = 0;
                 foreach (var heading in response.Headings)
@@ -173,20 +177,25 @@ public static class OpenRouterQwen37VisualCeilingRunner
         var deduped = proposals.GroupBy(x => $"{x.SourceId}:{x.HeadingSpan.Start}:{x.HeadingSpan.End}", StringComparer.Ordinal)
             .Select(x => x.OrderByDescending(p => p.Confidence).ThenBy(p => p.SemanticRole, StringComparer.Ordinal).First()).ToArray();
         var materialized = ReasoningProposalMaterializer.Materialize(source, policy, deduped);
-        var structureProjection = ReasoningTaskProjection.Project(materialized.Structure).ToDictionary(x => x.ProposalId, StringComparer.Ordinal);
-        var projection = materialized.Validated.Select(row => structureProjection.GetValueOrDefault(row.ElementId) ??
-            new ReasoningProjectionDecision(row.ElementId, ReasoningTaskProjection.Excluded, "VALIDATION_REJECTED")).ToArray();
-        var finalElements = ReasoningTaskProjection.ProjectContentHeadings(materialized.Structure)
+        var acceptedIds = materialized.Validated.Where(row => row.Accepted).Select(row => row.ElementId).ToHashSet(StringComparer.Ordinal);
+        var includedIds = deduped.Where(p => CanonicalHeadingTaskContractV2.IsTaskProjectionRole(p.SemanticRole))
+            .Select(ReasoningProposalMaterializer.ElementId).Where(acceptedIds.Contains).ToHashSet(StringComparer.Ordinal);
+        var projection = materialized.Structure.Elements.Select(element => new ReasoningProjectionDecision(
+            element.Id, includedIds.Contains(element.Id) ? ReasoningTaskProjection.Included : ReasoningTaskProjection.Excluded,
+            includedIds.Contains(element.Id) ? null : "CANONICAL_ROLE_OUTSIDE_CONTENT_HEADING_TASK")).ToArray();
+        var finalElements = materialized.Structure.Elements.Where(x => includedIds.Contains(x.Id))
             .OrderBy(x => x.Sources.Single().SourceOrdinal).ThenBy(x => x.Sources.Single().Span.Start).ThenBy(x => x.Id, StringComparer.Ordinal).ToArray();
         var prediction = new
         {
-            documentId = "DOC-0205", model = Model, mode = "TEXT_PLUS_VISUAL", executionMode = "PAGE_WINDOW_FULL_COVERAGE",
+            documentId = "DOC-0205", model = Model, semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+            mode = "TEXT_PLUS_VISUAL", executionMode = "PAGE_WINDOW_FULL_COVERAGE",
             sourceSha256 = item.SourceSha256, pageRenderManifestSha256 = Sha256File(Path.Combine(visualRoot, "page-manifest.v2.json")),
             mappingSha256 = Sha256File(Path.Combine(visualRoot, "visual-source-alignment.v2.json")), visualPromptContract = VisualPromptContract,
             rawProposalCount = proposals.Count, validatedSemanticCount = materialized.Validated.Count(x => x.Accepted),
             proposals = deduped, projection, headings = finalElements, goldReadBeforeFreeze = false,
         };
-        var result = new { documentId = "DOC-0205", model = Model, mode = "TEXT_PLUS_VISUAL", headings = finalElements, goldReadBeforeFreeze = false };
+        var result = new { documentId = "DOC-0205", model = Model, semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+            mode = "TEXT_PLUS_VISUAL", headings = finalElements, goldReadBeforeFreeze = false };
         var predictionPath = Path.Combine(visualRoot, "prediction.v2.json");
         var resultPath = Path.Combine(visualRoot, "result.v2.json");
         Directory.CreateDirectory(Path.GetDirectoryName(predictionPath)!);
@@ -194,12 +203,13 @@ public static class OpenRouterQwen37VisualCeilingRunner
         var predictionHash = Sha256File(predictionPath); var resultHash = Sha256File(resultPath);
         var freeze = new
         {
-            documentId = "DOC-0205", model = Model, actualProvider = telemetry.Select(x => x.ProviderRoute).FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? "NOT_EXPOSED",
+            documentId = "DOC-0205", model = Model, semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+            actualProvider = telemetry.Select(x => x.ProviderRoute).FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? "NOT_EXPOSED",
             reasoningConfiguration = new { requested = true, enabled = true, exclude = true }, dataClassification = "PUBLIC", zdrRequested = false,
             privacyExceptionAuthorized = true, privacyExceptionScope = "FLASH_VISUAL_CEILING_ONLY", gitSha = CurrentGitSha(repoRoot),
             sourceSha256 = item.SourceSha256, pageRenderManifestSha256 = Sha256File(Path.Combine(visualRoot, "page-manifest.v2.json")),
             mappingSha256 = Sha256File(Path.Combine(visualRoot, "visual-source-alignment.v2.json")), predictionSha256 = predictionHash,
-            resultSha256 = resultHash, promptHash = Sha256Text(CeilingSemanticPrompt.ProtocolVersion + "\n" + CeilingSemanticPrompt.System + "\n" + VisualPromptContract),
+            resultSha256 = resultHash, promptHash = Sha256Text(CanonicalHeadingTaskContractV2.ProtocolVersion + "\n" + CanonicalHeadingTaskContractV2.SystemPrompt + "\n" + VisualPromptContract),
             providerAttempts = model.ProviderCalls, reasoningTokens = telemetry.Sum(x => x.ReportedReasoningTokens ?? 0),
             inputTokens = telemetry.Sum(x => x.ReportedInputTokens ?? 0), outputTokens = telemetry.Sum(x => x.ReportedOutputTokens ?? 0),
             finishReasons = telemetry.Select(x => x.FinishReason).ToArray(), telemetry, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow,
@@ -224,13 +234,13 @@ public static class OpenRouterQwen37VisualCeilingRunner
             systemProjectionLoss = losses.GetValueOrDefault("SYSTEM_PROJECTION_LOSS"), systemLossCount = systemLoss, goldReadBeforeFreeze = false,
         }, ct);
         await WriteJsonAsync(Path.Combine(visualRoot, "first-loss.v2.json"), new { documentId = "DOC-0205", losses, goldReadBeforeFreeze = false }, ct);
-        var delta = new { deltaTP = score.TP, deltaFP = score.FP - 73, deltaFN = score.FN - 71, deltaRecall = score.R - 0d, deltaF1 = score.F1, deltaModelOmission = losses.GetValueOrDefault("MODEL_OMISSION") - 70 };
+        var delta = new { deltaTP = score.TP, deltaFP = score.FP - 101, deltaFN = score.FN - 71, deltaRecall = score.R - 0d, deltaF1 = score.F1, deltaModelOmission = losses.GetValueOrDefault("MODEL_OMISSION") - 51 };
         var classification = score.TP >= 10 && score.FN + 10 < 71 && score.F1 > 0.1
             ? "VISUAL_EVIDENCE_RECOVERS_STRUCTURE"
             : score.TP > 0 && score.F1 < .769231 ? "VISUAL_EVIDENCE_RECALL_UP_PRECISION_TRADEOFF" : "VISUAL_EVIDENCE_NO_MATERIAL_GAIN";
         await WriteJsonAsync(Path.Combine(output, "visual-v2-vs-text-comparison.json"), new
         {
-            schemaVersion = "a99-qwen37-flash-visual-ceiling-v1", textControl = new { tp = 0, fp = 73, fn = 71, f1 = 0, modelOmission = 70, spanError = 1, systemLoss = 0, frozen = true },
+            schemaVersion = "a99-qwen37-flash-visual-ceiling-contract-v2-v1", textControl = new { tp = 0, fp = 101, fn = 71, f1 = 0, modelOmission = 51, spanError = 20, systemLoss = 0, frozen = true },
             visual = new { tp = score.TP, fp = score.FP, fn = score.FN, precision = score.P, recall = score.R, f1 = score.F1, lossCounts = losses },
             delta, pageCoverage = render.Manifest.Coverage, sourceOwnershipCoverage = mapping.SourceAliasCoverage,
             sourceCharacterCoverage = mapping.SourceCharacterCoverage, unmappedVisualRegions = 0, providerNotHeldConstant = false,
@@ -239,7 +249,7 @@ public static class OpenRouterQwen37VisualCeilingRunner
         await WriteJsonAsync(Path.Combine(output, "summary.v2.json"), new
         {
             schemaVersion = "a99-qwen37-flash-visual-ceiling-v1", primaryClassification = classification, model = Model,
-            textControl = new { tp = 0, fp = 73, fn = 71, f1 = 0, modelOmission = 70, spanError = 1, systemLoss = 0 },
+            textControl = new { tp = 0, fp = 101, fn = 71, f1 = 0, modelOmission = 51, spanError = 20, systemLoss = 0 },
             visual = new { tp = score.TP, fp = score.FP, fn = score.FN, precision = score.P, recall = score.R, f1 = score.F1, modelOmission = losses.GetValueOrDefault("MODEL_OMISSION"), spanError = losses.GetValueOrDefault("MODEL_SPAN_ERROR"), systemLoss },
             delta, pageCount = render.Manifest.PageCount, pageCoverage = render.Manifest.Coverage, sourceOwnershipCoverage = mapping.SourceAliasCoverage,
             sourceCharacterCoverage = mapping.SourceCharacterCoverage, unmappedVisualRegions = 0,
@@ -486,13 +496,13 @@ public static class OpenRouterQwen37VisualCeilingRunner
     private static ControlReuse VerifyFrozenControl(string repoRoot)
     {
         var root = Path.Combine(repoRoot, ControlRoot.Replace('/', Path.DirectorySeparatorChar));
-        var freeze = Path.Combine(root, "freeze.v1.json"); var prediction = Path.Combine(root, "prediction.v1.json"); var result = Path.Combine(root, "result.v1.json"); var score = Path.Combine(root, "score.v1.json");
+        var freeze = Path.Combine(root, "freeze.v2.json"); var prediction = Path.Combine(root, "prediction.v2.json"); var result = Path.Combine(root, "result.v2.json"); var score = Path.Combine(root, "score.v2.json");
         if (!File.Exists(freeze) || !File.Exists(prediction) || !File.Exists(result) || !File.Exists(score)) return new(false, "MISSING_CONTROL_ARTIFACT", null, null, null, null, null);
         using var freezeJson = JsonDocument.Parse(File.ReadAllText(freeze)); using var scoreJson = JsonDocument.Parse(File.ReadAllText(score));
         var predHash = freezeJson.RootElement.GetProperty("predictionSha256").GetString(); var resultHash = freezeJson.RootElement.GetProperty("resultSha256").GetString();
         var ok = string.Equals(predHash, Sha256File(prediction), StringComparison.OrdinalIgnoreCase) && string.Equals(resultHash, Sha256File(result), StringComparison.OrdinalIgnoreCase) &&
-            scoreJson.RootElement.GetProperty("tp").GetInt32() == 0 && scoreJson.RootElement.GetProperty("fp").GetInt32() == 73 && scoreJson.RootElement.GetProperty("fn").GetInt32() == 71 && !freezeJson.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean();
-        return new(ok, ok ? "FROZEN_CONTROL_REUSED" : "CONTROL_MISMATCH", Sha256File(prediction), Sha256File(result), 0, 73, 71);
+            scoreJson.RootElement.GetProperty("tp").GetInt32() == 0 && scoreJson.RootElement.GetProperty("fp").GetInt32() == 101 && scoreJson.RootElement.GetProperty("fn").GetInt32() == 71 && !freezeJson.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean();
+        return new(ok, ok ? "FROZEN_CONTRACT_V2_CONTROL_REUSED" : "CONTROL_MISMATCH", Sha256File(prediction), Sha256File(result), 0, 101, 71);
     }
 
     private static IEnumerable<string> ClassifyLosses(IReadOnlyList<ReasoningGoldOccurrence> gold, IReadOnlyList<ReasoningHeadingProposal> proposals, (ValidatedStructure Structure, IReadOnlyList<ReasoningValidatedProposal> Validated) materialized, IReadOnlyList<ValidatedStructuralElement> finalElements, IReadOnlyList<ReasoningProjectionDecision> projection)

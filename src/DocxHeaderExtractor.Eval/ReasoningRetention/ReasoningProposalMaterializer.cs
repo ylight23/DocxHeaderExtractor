@@ -231,7 +231,9 @@ public static class ReasoningProposalMaterializer
         role.Trim().ToUpperInvariant() switch
         {
             "DOCUMENT_TITLE" or "COVER_TITLE" => StructuralElementType.Title,
-            "LOCAL_INDEX_TITLE" or "AGENDA_NAVIGATION_HEADING" or "TOC_ENTRY" or "FRONT_MATTER" => StructuralElementType.Subtitle,
+            "LOCAL_INDEX_TITLE" or "AGENDA_NAVIGATION_HEADING" or "TOC_ENTRY" or "FRONT_MATTER" or
+                "RUNNING_HEADER" or "CAPTION" or "LIST_ITEM" or "TABLE_LABEL" or "DECORATIVE_TEXT" or
+                "BODY_FRAGMENT" or "OTHER_NON_TASK_STRUCTURAL" => StructuralElementType.Subtitle,
             _ => StructuralElementType.Heading,
         };
 
@@ -241,7 +243,8 @@ public static class ReasoningProposalMaterializer
             "DOCUMENT_TITLE" => ProposedRole.DocumentTitle,
             "COVER_TITLE" => ProposedRole.CoverTitle,
             "LOCAL_INDEX_TITLE" or "AGENDA_NAVIGATION_HEADING" or "TOC_ENTRY" => ProposedRole.LocalSubheading,
-            "FRONT_MATTER" => ProposedRole.Metadata,
+            "FRONT_MATTER" or "RUNNING_HEADER" or "CAPTION" or "LIST_ITEM" or "TABLE_LABEL" or
+                "DECORATIVE_TEXT" or "BODY_FRAGMENT" or "OTHER_NON_TASK_STRUCTURAL" => ProposedRole.Metadata,
             "PART" or "CHAPTER" or "SECTION" or "SUBSECTION" or "ARTICLE" or "CLAUSE_HEADING" or
                 "ANNEX_HEADING" or "CONTENT_HEADING" or "OTHER_STRUCTURAL_LABEL" => ProposedRole.HeadingTopic,
             _ => ProposedRole.Unknown,

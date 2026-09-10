@@ -2,15 +2,15 @@
   "documentId": "DOC-0205",
   "exactStatus": "EVALUABLE",
   "tp": 0,
-  "fp": 361,
+  "fp": 3,
   "fn": 71,
   "precision": 0,
   "recall": 0,
   "f1": 0,
   "lossCounts": {
-    "MODEL_OMISSION": 37,
-    "MODEL_SPAN_ERROR": 34,
-    "MODEL_FALSE_POSITIVE": 361
+    "MODEL_SPAN_ERROR": 65,
+    "MODEL_OMISSION": 6,
+    "MODEL_FALSE_POSITIVE": 3
   },
   "systemVisualAlignmentLoss": 0,
   "systemBindingLoss": 0,

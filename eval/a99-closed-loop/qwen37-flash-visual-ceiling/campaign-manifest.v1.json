@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "a99-qwen37-flash-visual-ceiling-v1",
+  "schemaVersion": "a99-qwen37-flash-visual-ceiling-contract-v2-v1",
   "model": "qwen/qwen3.7-flash",
   "provider": "OpenRouter",
   "documentId": "DOC-0205",
@@ -8,10 +8,12 @@
   "privacyExceptionAuthorized": true,
   "privacyExceptionScope": "FLASH_VISUAL_CEILING_ONLY",
   "modelFallback": "NONE",
-  "visualPromptContract": "VISUAL_EVIDENCE_SUPPLEMENTS_XML_SOURCE;SOURCE_XML_IS_CANONICAL;NO_GOLD;NO_CANDIDATE_FILTERING;NO_HEURISTIC_HEADING_RULES",
+  "visualPromptContract": "CANONICAL_HEADING_TASK_V2;VISUAL_EVIDENCE_SUPPLEMENTS_XML_SOURCE;SOURCE_XML_IS_CANONICAL;NO_GOLD;NO_CANDIDATE_FILTERING;NO_HEURISTIC_HEADING_RULES",
   "pageCount": 19,
   "pageCoverage": 1,
   "sourceOwnershipCoverage": 1,
+  "sourceCharacterCoverage": 1,
+  "alignmentGate": "PASS",
   "capability": {
     "available": true,
     "classification": "",
@@ -44,5 +46,5 @@
     }
   },
   "goldReadBeforeFreeze": false,
-  "startedUtc": "2026-09-09T18:01:37.8003754+00:00"
+  "startedUtc": "2026-09-10T02:03:47.0288715+00:00"
 }

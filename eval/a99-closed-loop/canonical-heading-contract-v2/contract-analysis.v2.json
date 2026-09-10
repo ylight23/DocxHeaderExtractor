@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "a99-canonical-heading-contract-analysis-v2",
+  "phase": "OFFLINE_BEFORE_PROVIDER",
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "canonicalAuthoritySource": [
+    "docs/accuracy/hierarchy-human-annotation-guideline.md",
+    "docs/accuracy/hierarchy-human-authority-packet.md",
+    "docs/accuracy/hierarchy-human-pilot-annotation-execution.md",
+    "docs/accuracy/accuracy99-strict-gold-authority-policy-v2.md",
+    "docs/accuracy/accuracy99-historical-gold-reconciliation-v3.md"
+  ],
+  "derivedDefinition": {
+    "whatCounts": "A contiguous textual label that organizes substantive document content or its outline; the role vocabulary distinguishes title, content hierarchy, and other structural elements.",
+    "whatDoesNotCount": "Navigation, TOC, running-header, caption, list-item, table-label, metadata/front-matter, decorative, body-fragment, and other explicitly non-task structural elements remain rich evidence but are excluded from the final heading projection.",
+    "ambiguity": "Document title treatment is represented as an explicit DOCUMENT_TITLE role; whether it is part of a particular reviewed projection remains an authority/profile decision, never a formatting heuristic.",
+    "spanConvention": "Complete contiguous heading label, meaningful numbering/punctuation included, surrounding whitespace excluded, source-occurrence-local UTF-16 half-open offsets."
+  },
+  "currentPromptSemantics": {
+    "scope": "every structurally real heading or structural label",
+    "includesContextualLabels": true,
+    "taskProjectionMentioned": true,
+    "mismatchClasses": [
+      "TASK_SCOPE_TOO_BROAD",
+      "PROJECTION_AMBIGUITY",
+      "SPAN_CONTRACT_AMBIGUITY"
+    ]
+  },
+  "contractV2": {
+    "semanticRoles": [
+      "DOCUMENT_TITLE",
+      "PART",
+      "CHAPTER",
+      "SECTION",
+      "SUBSECTION",
+      "ARTICLE",
+      "CLAUSE_HEADING",
+      "ANNEX_HEADING",
+      "CONTENT_HEADING",
+      "OTHER_STRUCTURAL_LABEL",
+      "TOC_ENTRY",
+      "AGENDA_NAVIGATION_HEADING",
+      "LOCAL_INDEX_TITLE",
+      "RUNNING_HEADER",
+      "FRONT_MATTER",
+      "CAPTION",
+      "LIST_ITEM",
+      "TABLE_LABEL",
+      "DECORATIVE_TEXT",
+      "BODY_FRAGMENT",
+      "OTHER_NON_TASK_STRUCTURAL"
+    ],
+    "includedProjectionRoles": [
+      "DOCUMENT_TITLE",
+      "PART",
+      "CHAPTER",
+      "SECTION",
+      "SUBSECTION",
+      "ARTICLE",
+      "CLAUSE_HEADING",
+      "ANNEX_HEADING",
+      "CONTENT_HEADING"
+    ],
+    "excludedProjectionRoles": [
+      "TOC_ENTRY",
+      "AGENDA_NAVIGATION_HEADING",
+      "LOCAL_INDEX_TITLE",
+      "RUNNING_HEADER",
+      "FRONT_MATTER",
+      "CAPTION",
+      "LIST_ITEM",
+      "TABLE_LABEL",
+      "DECORATIVE_TEXT",
+      "BODY_FRAGMENT",
+      "OTHER_NON_TASK_STRUCTURAL",
+      "OTHER_STRUCTURAL_LABEL"
+    ],
+    "keepsRichDiscovery": true,
+    "candidateHeuristicsGateVisibility": false
+  },
+  "noDocumentSpecificRules": true
+}

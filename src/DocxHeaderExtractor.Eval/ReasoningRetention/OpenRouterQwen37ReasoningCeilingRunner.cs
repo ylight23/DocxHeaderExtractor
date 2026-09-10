@@ -26,6 +26,144 @@ public static class OpenRouterQwen37ReasoningCeilingRunner
     private static readonly string[] SelectedIds = ["DOC-0205", "DOC-0258"];
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
+    /// <summary>Runs the generic canonical heading contract after writing and verifying its
+    /// offline freeze. This route is intentionally separate from the historical v1 ceiling
+    /// artifacts; no old prompt, prediction, result, or Gold byte is rewritten.</summary>
+    public static async Task<int> RunContractV2Async(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, "eval", "a99-closed-loop", "canonical-heading-contract-v2");
+        Directory.CreateDirectory(output);
+        var contractHash = Sha256Text(CanonicalHeadingTaskContractV2.ContractTextForHash());
+        var roleSchemaHash = Sha256Text(string.Join("\n", CanonicalHeadingTaskContractV2.SemanticRoles));
+        var projectionHash = Sha256Text(string.Join("\n", CanonicalHeadingTaskContractV2.TaskProjectionRoles));
+        var spanContractHash = Sha256Text("complete contiguous heading label; meaningful numbering and punctuation included; surrounding whitespace excluded; source-local UTF-16 half-open [start,end)");
+        var authoritySources = new[]
+        {
+            "docs/accuracy/hierarchy-human-annotation-guideline.md",
+            "docs/accuracy/hierarchy-human-authority-packet.md",
+            "docs/accuracy/hierarchy-human-pilot-annotation-execution.md",
+            "docs/accuracy/accuracy99-strict-gold-authority-policy-v2.md",
+            "docs/accuracy/accuracy99-historical-gold-reconciliation-v3.md",
+        };
+        var contractAnalysis = new
+        {
+            schemaVersion = "a99-canonical-heading-contract-analysis-v2",
+            phase = "OFFLINE_BEFORE_PROVIDER",
+            providerCalls = 0,
+            goldReadBeforeFreeze = false,
+            canonicalAuthoritySource = authoritySources,
+            derivedDefinition = new
+            {
+                whatCounts = "A contiguous textual label that organizes substantive document content or its outline; the role vocabulary distinguishes title, content hierarchy, and other structural elements.",
+                whatDoesNotCount = "Navigation, TOC, running-header, caption, list-item, table-label, metadata/front-matter, decorative, body-fragment, and other explicitly non-task structural elements remain rich evidence but are excluded from the final heading projection.",
+                ambiguity = "Document title treatment is represented as an explicit DOCUMENT_TITLE role; whether it is part of a particular reviewed projection remains an authority/profile decision, never a formatting heuristic.",
+                spanConvention = "Complete contiguous heading label, meaningful numbering/punctuation included, surrounding whitespace excluded, source-occurrence-local UTF-16 half-open offsets.",
+            },
+            currentPromptSemantics = new
+            {
+                scope = "every structurally real heading or structural label",
+                includesContextualLabels = true,
+                taskProjectionMentioned = true,
+                mismatchClasses = new[] { "TASK_SCOPE_TOO_BROAD", "PROJECTION_AMBIGUITY", "SPAN_CONTRACT_AMBIGUITY" },
+            },
+            contractV2 = new
+            {
+                semanticRoles = CanonicalHeadingTaskContractV2.SemanticRoles,
+                includedProjectionRoles = CanonicalHeadingTaskContractV2.TaskProjectionRoles,
+                excludedProjectionRoles = CanonicalHeadingTaskContractV2.NonTaskStructuralRoles,
+                keepsRichDiscovery = true,
+                candidateHeuristicsGateVisibility = false,
+            },
+            noDocumentSpecificRules = true,
+        };
+        await WriteJsonAsync(Path.Combine(output, "contract-analysis.v2.json"), contractAnalysis, ct);
+
+        var freeze = new
+        {
+            schemaVersion = "a99-canonical-heading-contract-freeze-v2",
+            contractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+            contractSha256 = contractHash,
+            roleSchemaSha256 = roleSchemaHash,
+            projectionRulesSha256 = projectionHash,
+            spanContractSha256 = spanContractHash,
+            promptSha256 = Sha256Text(CanonicalHeadingTaskContractV2.SystemPrompt),
+            responseSchemaSha256 = Sha256Text(JsonSerializer.Serialize(CanonicalHeadingTaskContractV2.Schema())),
+            model = Model,
+            sourceAuthority = authoritySources,
+            goldReadBeforeFreeze = false,
+            providerCalls = 0,
+            frozenAtHead = CurrentGitSha(repoRoot),
+            frozenUtc = DateTimeOffset.UtcNow,
+        };
+        var freezePath = Path.Combine(output, "contract-freeze.v2.json");
+        await WriteJsonAsync(freezePath, freeze, ct);
+        using (var frozen = JsonDocument.Parse(await File.ReadAllTextAsync(freezePath, ct)))
+        {
+            if (frozen.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean() ||
+                frozen.RootElement.GetProperty("providerCalls").GetInt32() != 0 ||
+                !string.Equals(frozen.RootElement.GetProperty("contractSha256").GetString(), contractHash, StringComparison.Ordinal))
+                throw new InvalidDataException("CONTRACT_FREEZE_VERIFICATION_FAILED");
+        }
+        Console.WriteLine($"CONTRACT_FREEZE_V2=PASS sha256={contractHash}");
+
+        var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(key))
+        {
+            await WriteJsonAsync(Path.Combine(output, "summary.v2.json"), new { status = "EXECUTION_BLOCKED", reason = "OPENROUTER_API_KEY_MISSING", providerCalls = 0, goldReadBeforeFreeze = false }, ct);
+            return 1;
+        }
+
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, "canonical-heading-contract-v2", "DOC-0205,DOC-0258", ct);
+        var baseOptions = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = key, ContextSize = 1_000_000,
+            MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 0,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capability = (await OpenRouterModelCapabilityResolver.ResolveAsync(baseOptions, http, ct)).Capability;
+        if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) ||
+            !capability.ReasoningSupported || !capability.StructuredOutputSupported)
+        {
+            await WriteJsonAsync(Path.Combine(output, "summary.v2.json"), new { status = "EXECUTION_BLOCKED", reason = "MODEL_CAPABILITY_MISMATCH", providerCalls = 0, goldReadBeforeFreeze = false }, ct);
+            return 1;
+        }
+
+        var selected = ReadInventory(Path.Combine(repoRoot, InventoryPath))
+            .Where(x => SelectedIds.Contains(x.DocumentId, StringComparer.Ordinal)).ToDictionary(x => x.DocumentId, StringComparer.Ordinal);
+        var doc0205 = await RunContractV2ModeAsync(repoRoot, output, selected["DOC-0205"], capability, baseOptions, http, ct);
+        var doc0258 = await RunContractV2ModeAsync(repoRoot, output, selected["DOC-0258"], capability, baseOptions, http, ct);
+        var interpretation = doc0205.ExactStatus != "EVALUABLE" || doc0258.ExactStatus != "EVALUABLE"
+            ? "EXECUTION_BLOCKED"
+            : doc0205.F1 > 0.05 && doc0258.F1 >= 0.70
+                ? "TASK_CONTRACT_ALIGNMENT_RECOVERS_ACCURACY"
+                : doc0205.FP < 73 && doc0205.F1 == 0
+                    ? "TASK_CONTRACT_ALIGNMENT_REDUCES_FP_ONLY"
+                    : "TASK_CONTRACT_ALIGNMENT_NO_MATERIAL_GAIN";
+        await WriteJsonAsync(Path.Combine(output, "comparison.v2.json"), new
+        {
+            schemaVersion = "a99-canonical-heading-contract-comparison-v2",
+            old = new
+            {
+                doc0205 = new { contract = "historical-v1", tp = 0, fp = 73, fn = 71, precision = 0d, recall = 0d, f1 = 0d },
+                doc0258 = new { contract = "historical-v1", tp = 20, fp = 8, fn = 4, precision = 20d / 28d, recall = 20d / 24d, f1 = 0.7692307692307692d },
+            },
+            v2 = new { doc0205, doc0258 }, interpretation, providerCalls = doc0205.ProviderAttempts + doc0258.ProviderAttempts,
+            goldReadBeforeFreeze = false,
+        }, ct);
+        await WriteJsonAsync(Path.Combine(output, "summary.v2.json"), new
+        {
+            schemaVersion = "a99-canonical-heading-contract-v2",
+            startHead = freeze.frozenAtHead, contractFreeze = freeze, doc0205, doc0258,
+            finalClassification = interpretation, providerCalls = doc0205.ProviderAttempts + doc0258.ProviderAttempts,
+            goldReadBeforeFreeze = false, visualRun = "NOT_RUN",
+            completedUtc = DateTimeOffset.UtcNow,
+        }, ct);
+        Console.WriteLine($"FINAL_CLASSIFICATION={interpretation}");
+        return interpretation == "EXECUTION_BLOCKED" ? 1 : 0;
+    }
+
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
     {
         repoRoot = Path.GetFullPath(repoRoot);
@@ -122,6 +260,180 @@ public static class OpenRouterQwen37ReasoningCeilingRunner
         Console.WriteLine($"MODEL_COMPARISON={modelComparison}");
         Console.WriteLine($"VLM_NEXT_STEP={(r1.ExactStatus == "EVALUABLE" ? "VLM_WORTH_TESTING" : "VLM_UNDECIDED")}");
         return primary == "FLASH_REASONING_CEILING_MEASURED" ? 0 : 1;
+    }
+
+    private static async Task<ModeMetric> RunContractV2ModeAsync(string repoRoot, string output, InventoryItem item,
+        OpenRouterModelCapability capability, RemoteInferenceOptions baseOptions, HttpClient http, CancellationToken ct)
+    {
+        var docDir = Path.Combine(output, item.DocumentId);
+        Directory.CreateDirectory(docDir);
+        using var model = new OpenRouterCeilingReasoningModel(Clone(baseOptions, null), capability, http);
+        var stopwatch = Stopwatch.StartNew();
+        try
+        {
+            var sourcePath = Path.Combine(repoRoot, item.SourcePath.Replace('/', Path.DirectorySeparatorChar));
+            if (!File.Exists(sourcePath) || !string.Equals(Sha256File(sourcePath), item.SourceSha256, StringComparison.OrdinalIgnoreCase))
+                throw new InvalidDataException("SOURCE_HASH_MISMATCH");
+            var source = new OpenXmlDocumentSource().Read(sourcePath) with { DocumentId = item.DocumentId };
+            var features = NumberingStyleFeatures.FromSourceDocument(source);
+            var derived = new DocumentFeatureDeriver().Derive(source);
+            var policy = DocxPolicyStateBuilder.Build(source, features, derived, new PipelineOptions { DisableLlm = false }.Extraction);
+            var maxPrompt = model.MaxPromptTokens(model.SemanticMaxCompletionTokens);
+            var pack = ReasoningContextBuilder.Build(source, policy, Math.Max(4_000, maxPrompt), Math.Max(4_000, maxPrompt), expandOwnedPerOccurrence: false);
+            if (pack.Segments.Count != 1) throw new InvalidDataException("FULL_CONTEXT_NOT_AVAILABLE");
+            var segment = pack.Segments.Single();
+            var occurrences = pack.Occurrences.ToDictionary(x => x.SourceOccurrenceId, StringComparer.Ordinal);
+            var owned = segment.OwnedSourceOccurrenceIds.ToHashSet(StringComparer.Ordinal);
+            var visibleWindow = new Dictionary<string, (int, int)>(StringComparer.Ordinal);
+            var ownedWindow = new Dictionary<string, (int, int)>(StringComparer.Ordinal);
+            foreach (var id in segment.SourceOccurrenceIds)
+            {
+                var occurrence = occurrences[id];
+                var visible = segment.VisibleStartCharacter is { } vs && segment.VisibleEndCharacter is { } ve && segment.OwnedSourceOccurrenceId == id
+                    ? (vs, ve) : (0, occurrence.RawText.Length);
+                visibleWindow[id] = visible;
+                ownedWindow[id] = owned.Contains(id)
+                    ? segment.OwnedSourceOccurrenceId == id && segment.OwnedStartCharacter is { } os && segment.OwnedEndCharacter is { } oe
+                        ? (os, oe) : (0, occurrence.RawText.Length)
+                    : (visible.Item1, visible.Item1);
+            }
+            var packet = CeilingPacketBuilder.Build(segment.SourceOccurrenceIds.Select(id => occurrences[id]).ToArray(), owned, visibleWindow, ownedWindow);
+            var promptHash = Sha256Text(CanonicalHeadingTaskContractV2.SystemPrompt);
+            var schemaHash = Sha256Text(JsonSerializer.Serialize(CanonicalHeadingTaskContractV2.Schema()));
+            var packetHash = Sha256Text(packet.SerializedJson);
+            var configurationSignature = Sha256Text($"A99_CANONICAL_HEADING_TASK_V2|{Model}|{CanonicalHeadingTaskContractV2.ProtocolVersion}|{promptHash}|{schemaHash}|{packetHash}|temperature=0|max_completion={model.SemanticMaxCompletionTokens}|zdr=false");
+            var requestId = $"CANONICAL_HEADING_TASK_V2:{item.DocumentId}:{configurationSignature}";
+            var (response, _) = await model.CompleteSemanticAsync(item.DocumentId, ReasoningRoute.ModelCapabilityCeiling.ToString(), requestId,
+                packet.SerializedJson, packet.SourceTextCharacters, owned.Count, segment.SourceOccurrenceIds.Count,
+                CanonicalHeadingTaskContractV2.SystemPrompt,
+                CanonicalHeadingTaskContractV2.BuildUser(packet.SerializedJson, ReasoningRoute.ModelCapabilityCeiling.ToString()),
+                CanonicalHeadingTaskContractV2.Schema(), "canonical_heading_task_v2", ct);
+            var proposals = new List<ReasoningHeadingProposal>();
+            var spanErrors = 0;
+            foreach (var heading in response.Headings)
+            {
+                var binding = CeilingProposalBinder.ResolveBinding(heading.I, packet.Bindings, owned, heading.Alias);
+                if (binding is null || !binding.TryBind(heading.Start, heading.End, out var globalStart, out var globalEnd, out var ownedSpan) || !ownedSpan)
+                { spanErrors++; continue; }
+                var occurrence = occurrences[binding.SourceOccurrenceId];
+                proposals.Add(new ReasoningHeadingProposal
+                {
+                    SourceId = occurrence.SourceId, HeadingSpan = new StructuralSpan(globalStart, globalEnd),
+                    Text = occurrence.RawText[globalStart..globalEnd], SemanticRole = heading.Role, Confidence = 1,
+                });
+            }
+            var materialized = ReasoningProposalMaterializer.Materialize(source, policy, proposals);
+            var acceptedIds = materialized.Validated.Where(row => row.Accepted).Select(row => row.ElementId).ToHashSet(StringComparer.Ordinal);
+            var includedIds = proposals.Where(p => CanonicalHeadingTaskContractV2.IsTaskProjectionRole(p.SemanticRole))
+                .Select(ReasoningProposalMaterializer.ElementId).Where(acceptedIds.Contains).ToHashSet(StringComparer.Ordinal);
+            var finalElements = materialized.Structure.Elements.Where(x => includedIds.Contains(x.Id))
+                .OrderBy(x => x.Sources.Single().SourceOrdinal).ThenBy(x => x.Sources.Single().Span.Start).ThenBy(x => x.Id, StringComparer.Ordinal).ToArray();
+            var projection = materialized.Structure.Elements.Select(element => new ReasoningProjectionDecision(
+                element.Id, includedIds.Contains(element.Id) ? ReasoningTaskProjection.Included : ReasoningTaskProjection.Excluded,
+                includedIds.Contains(element.Id) ? null : "CANONICAL_ROLE_OUTSIDE_CONTENT_HEADING_TASK")).ToArray();
+            var finalKeys = finalElements.Select(Key).ToHashSet(StringComparer.Ordinal);
+            var prediction = new
+            {
+                documentId = item.DocumentId, model = Model, semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+                reasoningMode = "R1_CEILING", executionMode = "FULL_CONTEXT_CEILING", sourceSha256 = item.SourceSha256,
+                sourceCharacters = pack.SourceCharacters, packetCharacters = packet.PacketCharacters, packetHash, promptHash, schemaHash,
+                rawProposalCount = response.Headings.Count, boundProposalCount = proposals.Count, spanErrorCount = spanErrors,
+                validatedSemanticCount = materialized.Validated.Count(x => x.Accepted), taskProjectionIncludedRoles = CanonicalHeadingTaskContractV2.TaskProjectionRoles,
+                proposals, projection, headings = finalElements, goldReadBeforeFreeze = false,
+            };
+            var result = new { documentId = item.DocumentId, model = Model, semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+                reasoningMode = "R1_CEILING", headings = finalElements, goldReadBeforeFreeze = false };
+            var predictionPath = Path.Combine(docDir, "prediction.v2.json");
+            var resultPath = Path.Combine(docDir, "result.v2.json");
+            await WriteJsonAsync(predictionPath, prediction, ct);
+            await WriteJsonAsync(resultPath, result, ct);
+            var predictionHash = Sha256File(predictionPath); var resultHash = Sha256File(resultPath);
+            var telemetry = model.Telemetry.Where(x => x.DocumentId == item.DocumentId).ToArray();
+            var actualProvider = telemetry.Select(x => x.ProviderRoute).FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? "NOT_EXPOSED";
+            var freeze = new
+            {
+                documentId = item.DocumentId, model = Model, semanticContractVersion = CanonicalHeadingTaskContractV2.ProtocolVersion,
+                actualProvider, reasoningConfiguration = new { requested = true, enabled = true, exclude = true }, dataClassification = "PUBLIC",
+                zdrRequested = false, privacyExceptionAuthorized = true, privacyExceptionScope = "CANONICAL_HEADING_TASK_V2",
+                gitSha = CurrentGitSha(repoRoot), sourceSha256 = item.SourceSha256, promptHash, schemaHash, packetHash,
+                configurationSignature, predictionSha256 = predictionHash, resultSha256 = resultHash,
+                finishReason = telemetry.LastOrDefault()?.FinishReason, providerAttempts = model.ProviderCalls,
+                inputTokens = telemetry.Sum(x => x.ReportedInputTokens ?? 0), reasoningTokens = telemetry.Sum(x => x.ReportedReasoningTokens ?? 0),
+                outputTokens = telemetry.Sum(x => x.ReportedOutputTokens ?? 0), goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow,
+            };
+            var freezePath = Path.Combine(docDir, "freeze.v2.json");
+            await WriteJsonAsync(freezePath, freeze, ct);
+            if (Sha256File(predictionPath) != predictionHash || Sha256File(resultPath) != resultHash)
+                throw new InvalidDataException("FREEZE_HASH_VERIFICATION_FAILED");
+
+            var goldPath = Path.Combine(repoRoot, "eval", "a99-closed-loop", "strict-gold-occurrence-v1", $"{item.DocumentId}.occurrence-gold-v1.json");
+            var gold = ReasoningGoldArtifactLoader.LoadOccurrence(goldPath);
+            var goldKeys = gold.Where(x => x.HeadingSpan is not null).Select(x => Key(x.SourceId, x.HeadingSpan!)).ToHashSet(StringComparer.Ordinal);
+            var score = Score(goldKeys.ToArray(), finalKeys.ToArray());
+            var losses = ClassifyContractLosses(gold, proposals, materialized, finalElements, includedIds)
+                .GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count(), StringComparer.Ordinal);
+            losses.TryAdd("MODEL_OMISSION", 0); losses.TryAdd("MODEL_WRONG_SPAN", 0); losses.TryAdd("MODEL_WRONG_ROLE", 0);
+            losses.TryAdd("MODEL_FALSE_POSITIVE", 0); losses.TryAdd("TASK_PROJECTION_EXCLUSION", 0);
+            losses.TryAdd("SYSTEM_BINDING_LOSS", 0); losses.TryAdd("SYSTEM_VALIDATOR_LOSS", 0); losses.TryAdd("SYSTEM_PROJECTION_BUG", 0);
+            var systemLoss = losses.Where(x => x.Key.StartsWith("SYSTEM_", StringComparison.Ordinal)).Sum(x => x.Value);
+            await WriteJsonAsync(Path.Combine(docDir, "score.v2.json"), new
+            {
+                documentId = item.DocumentId, exactStatus = "EVALUABLE", goldCount = goldKeys.Count, tp = score.TP, fp = score.FP, fn = score.FN,
+                precision = score.P, recall = score.R, f1 = score.F1, lossCounts = losses, taskProjectionExclusion = losses["TASK_PROJECTION_EXCLUSION"],
+                systemBindingLoss = losses["SYSTEM_BINDING_LOSS"], systemValidatorLoss = losses["SYSTEM_VALIDATOR_LOSS"], systemProjectionBug = losses["SYSTEM_PROJECTION_BUG"],
+                goldReadBeforeFreeze = false,
+            }, ct);
+            await WriteJsonAsync(Path.Combine(docDir, "first-loss.v2.json"), new { documentId = item.DocumentId, losses, goldReadBeforeFreeze = false }, ct);
+            stopwatch.Stop();
+            var metric = new ModeMetric(item.DocumentId, "R1_CEILING", "FULL_CONTEXT_CEILING", "EVALUABLE", actualProvider,
+                score.TP, score.FP, score.FN, score.P, score.R, score.F1, losses["MODEL_OMISSION"],
+                losses["MODEL_WRONG_SPAN"], systemLoss, model.ProviderCalls,
+                telemetry.Sum(x => x.ReportedReasoningTokens ?? 0), stopwatch.ElapsedMilliseconds, finalElements.Length);
+            await WriteJsonAsync(Path.Combine(docDir, "execution.v2.json"), new { metric, telemetry, goldReadBeforeFreeze = false }, ct);
+            return metric;
+        }
+        catch (Exception ex) when (ex is ReasoningCompletionException or HttpRequestException or InvalidDataException or FormatException or JsonException)
+        {
+            stopwatch.Stop();
+            var telemetry = model.Telemetry.Where(x => x.DocumentId == item.DocumentId).ToArray();
+            var metric = new ModeMetric(item.DocumentId, "R1_CEILING", "FULL_CONTEXT_CEILING", "BLOCKED", telemetry.Select(x => x.ProviderRoute).FirstOrDefault() ?? "NOT_EXPOSED",
+                0, 0, 0, 0, 0, 0, 0, 0, 0, model.ProviderCalls, telemetry.Sum(x => x.ReportedReasoningTokens ?? 0), stopwatch.ElapsedMilliseconds, 0);
+            await WriteJsonAsync(Path.Combine(docDir, "execution.v2.json"), new { documentId = item.DocumentId, status = "BLOCKED", error = ex.Message, metric, telemetry, goldReadBeforeFreeze = false }, ct);
+            Console.Error.WriteLine($"CANONICAL_HEADING_TASK_V2_FAILURE={item.DocumentId}:{ex.Message}");
+            return metric;
+        }
+    }
+
+    private static IEnumerable<string> ClassifyContractLosses(IReadOnlyList<ReasoningGoldOccurrence> gold,
+        IReadOnlyList<ReasoningHeadingProposal> proposals,
+        (ValidatedStructure Structure, IReadOnlyList<ReasoningValidatedProposal> Validated) materialized,
+        IReadOnlyList<ValidatedStructuralElement> finalElements, IReadOnlySet<string> includedIds)
+    {
+        var predicted = finalElements.Select(Key).ToHashSet(StringComparer.Ordinal);
+        var rawByKey = proposals.GroupBy(Key).ToDictionary(x => x.Key, x => x.First(), StringComparer.Ordinal);
+        var validated = materialized.Validated.ToDictionary(x => x.ElementId, StringComparer.Ordinal);
+        foreach (var item in gold.Where(x => x.HeadingSpan is not null))
+        {
+            var key = Key(item.SourceId, item.HeadingSpan!);
+            if (predicted.Contains(key)) continue;
+            if (!rawByKey.TryGetValue(key, out var exact))
+            {
+                var near = proposals.Any(p => p.SourceId == item.SourceId && p.HeadingSpan.Start < item.HeadingSpan!.End && item.HeadingSpan!.Start < p.HeadingSpan.End);
+                yield return near ? "MODEL_WRONG_SPAN" : "MODEL_OMISSION";
+                continue;
+            }
+            var elementId = ReasoningProposalMaterializer.ElementId(exact);
+            if (!CanonicalHeadingTaskContractV2.IsTaskProjectionRole(exact.SemanticRole))
+            {
+                yield return "MODEL_WRONG_ROLE";
+                yield return "TASK_PROJECTION_EXCLUSION";
+            }
+            else if (!validated.TryGetValue(elementId, out var row) || !row.Accepted) yield return "SYSTEM_VALIDATOR_LOSS";
+            else yield return "SYSTEM_PROJECTION_BUG";
+        }
+        foreach (var element in finalElements)
+            if (!gold.Any(item => item.HeadingSpan is not null && Key(item.SourceId, item.HeadingSpan!) == Key(element)))
+                yield return "MODEL_FALSE_POSITIVE";
     }
 
     private static async Task<ModeMetric> RunModeAsync(string repoRoot, string output, InventoryItem item,

@@ -1,0 +1,14 @@
+{
+  "documentId": "DOC-0258",
+  "losses": {
+    "MODEL_OMISSION": 7,
+    "MODEL_WRONG_SPAN": 0,
+    "MODEL_WRONG_ROLE": 0,
+    "MODEL_FALSE_POSITIVE": 0,
+    "TASK_PROJECTION_EXCLUSION": 0,
+    "SYSTEM_BINDING_LOSS": 0,
+    "SYSTEM_VALIDATOR_LOSS": 0,
+    "SYSTEM_PROJECTION_BUG": 0
+  },
+  "goldReadBeforeFreeze": false
+}

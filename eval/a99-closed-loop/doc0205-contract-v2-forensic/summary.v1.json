@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "a99-doc0205-contract-v2-forensic-summary-v1",
+  "documentId": "DOC-0205",
+  "startHead": "0b61d0c6b7804dee2d5147c6199395d1e87d565d",
+  "model": "qwen/qwen3.7-flash",
+  "exactScore": {
+    "tp": 0,
+    "fp": 101,
+    "fn": 71,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0
+  },
+  "frozenContractV2Metric": {
+    "documentId": "DOC-0205",
+    "exactStatus": "EVALUABLE",
+    "goldCount": 71,
+    "tp": 0,
+    "fp": 101,
+    "fn": 71,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "lossCounts": {
+      "MODEL_WRONG_SPAN": 20,
+      "MODEL_OMISSION": 51,
+      "MODEL_FALSE_POSITIVE": 101,
+      "MODEL_WRONG_ROLE": 0,
+      "TASK_PROJECTION_EXCLUSION": 0,
+      "SYSTEM_BINDING_LOSS": 0,
+      "SYSTEM_VALIDATOR_LOSS": 0,
+      "SYSTEM_PROJECTION_BUG": 0
+    },
+    "taskProjectionExclusion": 0,
+    "systemBindingLoss": 0,
+    "systemValidatorLoss": 0,
+    "systemProjectionBug": 0,
+    "goldReadBeforeFreeze": false
+  },
+  "predictionClassificationCounts": {
+    "PROSE_FALSE_POSITIVE": 25,
+    "UNRESOLVED": 57,
+    "CORRECT_STRUCTURE_WRONG_SPAN": 14,
+    "SUPERSET_GOLD_HEADING": 2,
+    "PARTIAL_GOLD_HEADING": 3
+  },
+  "goldClassificationCounts": {
+    "MODEL_SPAN_ERROR": 20,
+    "TRUE_MODEL_OMISSION": 51
+  },
+  "visualSignalCounts": {
+    "TEXT_SEMANTICS_STRONG": 71,
+    "VISUAL_LAYOUT_POTENTIALLY_DECISIVE": 71
+  },
+  "bindingSound": true,
+  "decision": "VLM_VISUAL_EVIDENCE_JUSTIFIED",
+  "vlmOutcome": {
+    "status": "COMPLETED",
+    "tp": 0,
+    "fp": 3,
+    "fn": 71,
+    "f1": 0,
+    "systemLossCount": 0,
+    "providerAttempts": 3,
+    "finishReasons": [
+      "stop",
+      "stop",
+      "stop"
+    ],
+    "goldReadBeforeFreeze": false
+  },
+  "modelCalls": 0,
+  "goldReadBeforeFreeze": false
+}

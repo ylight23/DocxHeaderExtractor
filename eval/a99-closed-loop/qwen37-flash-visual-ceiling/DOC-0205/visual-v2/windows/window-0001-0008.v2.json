@@ -85,264 +85,460 @@
     {
       "i": 0,
       "start": 0,
-      "end": 1,
+      "end": 37,
       "role": "DOCUMENT_TITLE",
       "alias": "P01-O000"
     },
     {
       "i": 1,
-      "start": 1,
-      "end": 2,
+      "start": 37,
+      "end": 113,
       "role": "FRONT_MATTER",
       "alias": "P01-O001"
     },
     {
       "i": 2,
-      "start": 2,
-      "end": 3,
-      "role": "FRONT_MATTER",
+      "start": 113,
+      "end": 26866,
+      "role": "BODY_FRAGMENT",
       "alias": "P01-O003"
     },
     {
       "i": 3,
-      "start": 3,
-      "end": 4,
+      "start": 1038,
+      "end": 1051,
       "role": "CHAPTER",
-      "alias": "P01-O003"
+      "alias": "CH\u01AF\u01A0NG I"
     },
     {
       "i": 4,
-      "start": 4,
-      "end": 5,
+      "start": 1052,
+      "end": 1065,
       "role": "SECTION",
-      "alias": "P01-O003"
+      "alias": "QUY \u0110\u1ECANH CHUNG"
     },
     {
       "i": 5,
-      "start": 5,
-      "end": 6,
+      "start": 1067,
+      "end": 1075,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 1"
     },
     {
       "i": 6,
-      "start": 6,
-      "end": 7,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 1076,
+      "end": 1091,
+      "role": "CLAUSE_HEADING",
+      "alias": "Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh"
     },
     {
       "i": 7,
-      "start": 7,
-      "end": 8,
+      "start": 1193,
+      "end": 1201,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 2"
     },
     {
       "i": 8,
-      "start": 8,
-      "end": 9,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 1202,
+      "end": 1217,
+      "role": "CLAUSE_HEADING",
+      "alias": "\u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng"
     },
     {
       "i": 9,
-      "start": 9,
-      "end": 10,
+      "start": 1269,
+      "end": 1277,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 3"
     },
     {
       "i": 10,
-      "start": 10,
-      "end": 11,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 1278,
+      "end": 1291,
+      "role": "CLAUSE_HEADING",
+      "alias": "Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF"
     },
     {
       "i": 11,
-      "start": 11,
-      "end": 12,
+      "start": 2333,
+      "end": 2341,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 4"
     },
     {
       "i": 12,
-      "start": 12,
-      "end": 13,
-      "role": "CHAPTER",
-      "alias": "P01-O003"
+      "start": 2342,
+      "end": 2378,
+      "role": "CLAUSE_HEADING",
+      "alias": "Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB"
     },
     {
       "i": 13,
-      "start": 13,
-      "end": 14,
-      "role": "SUBSECTION",
-      "alias": "P01-O003"
+      "start": 2430,
+      "end": 2438,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 5"
     },
     {
       "i": 14,
-      "start": 14,
-      "end": 15,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 2439,
+      "end": 2483,
+      "role": "CLAUSE_HEADING",
+      "alias": "Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u"
     },
     {
       "i": 15,
-      "start": 15,
-      "end": 16,
+      "start": 3035,
+      "end": 3043,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 6"
     },
     {
       "i": 16,
-      "start": 16,
-      "end": 17,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 3044,
+      "end": 3072,
+      "role": "CLAUSE_HEADING",
+      "alias": "Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
     },
     {
       "i": 17,
-      "start": 17,
-      "end": 18,
+      "start": 3605,
+      "end": 3613,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 7"
     },
     {
       "i": 18,
-      "start": 18,
-      "end": 19,
-      "role": "SUBSECTION",
-      "alias": "P01-O003"
+      "start": 3614,
+      "end": 3659,
+      "role": "CLAUSE_HEADING",
+      "alias": "Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
     },
     {
       "i": 19,
-      "start": 19,
-      "end": 20,
+      "start": 3711,
+      "end": 3719,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 8"
     },
     {
       "i": 20,
-      "start": 20,
-      "end": 21,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 3720,
+      "end": 3740,
+      "role": "CLAUSE_HEADING",
+      "alias": "C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m"
     },
     {
       "i": 21,
-      "start": 21,
-      "end": 22,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 3792,
+      "end": 3800,
+      "role": "CHAPTER",
+      "alias": "CH\u01AF\u01A0NG II"
     },
     {
       "i": 22,
-      "start": 22,
-      "end": 23,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 3801,
+      "end": 3983,
+      "role": "SECTION",
+      "alias": "QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
     },
     {
       "i": 23,
-      "start": 23,
-      "end": 24,
+      "start": 4035,
+      "end": 4040,
       "role": "SUBSECTION",
-      "alias": "P01-O003"
+      "alias": "M\u1EE5c 1"
     },
     {
       "i": 24,
-      "start": 24,
-      "end": 25,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 4041,
+      "end": 4087,
+      "role": "SUBSECTION",
+      "alias": "QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC"
     },
     {
       "i": 25,
-      "start": 25,
-      "end": 26,
+      "start": 4089,
+      "end": 4097,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 9"
     },
     {
       "i": 26,
-      "start": 26,
-      "end": 27,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 4098,
+      "end": 4148,
+      "role": "CLAUSE_HEADING",
+      "alias": "Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
     },
     {
       "i": 27,
-      "start": 27,
-      "end": 28,
+      "start": 4200,
+      "end": 4208,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 10"
     },
     {
       "i": 28,
-      "start": 28,
-      "end": 29,
-      "role": "SUBSECTION",
-      "alias": "P01-O003"
+      "start": 4209,
+      "end": 4240,
+      "role": "CLAUSE_HEADING",
+      "alias": "T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u"
     },
     {
       "i": 29,
-      "start": 29,
-      "end": 30,
+      "start": 4292,
+      "end": 4300,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 11"
     },
     {
       "i": 30,
-      "start": 30,
-      "end": 31,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 4301,
+      "end": 4334,
+      "role": "CLAUSE_HEADING",
+      "alias": "C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
     },
     {
       "i": 31,
-      "start": 31,
-      "end": 32,
+      "start": 4536,
+      "end": 4544,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 12"
     },
     {
       "i": 32,
-      "start": 32,
-      "end": 33,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 4545,
+      "end": 4611,
+      "role": "CLAUSE_HEADING",
+      "alias": "Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia"
     },
     {
       "i": 33,
-      "start": 33,
-      "end": 34,
-      "role": "SUBSECTION",
-      "alias": "P01-O003"
+      "start": 4713,
+      "end": 4721,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 13"
     },
     {
       "i": 34,
-      "start": 34,
-      "end": 35,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 4722,
+      "end": 4740,
+      "role": "CLAUSE_HEADING",
+      "alias": "C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia"
     },
     {
       "i": 35,
-      "start": 35,
-      "end": 36,
-      "role": "ARTICLE",
-      "alias": "P01-O003"
+      "start": 4842,
+      "end": 4847,
+      "role": "SUBSECTION",
+      "alias": "M\u1EE5c 2"
     },
     {
       "i": 36,
-      "start": 36,
-      "end": 37,
+      "start": 4848,
+      "end": 4893,
+      "role": "SUBSECTION",
+      "alias": "QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U"
+    },
+    {
+      "i": 37,
+      "start": 4895,
+      "end": 4903,
       "role": "ARTICLE",
-      "alias": "P01-O003"
+      "alias": "\u0110i\u1EC1u 14"
+    },
+    {
+      "i": 38,
+      "start": 4904,
+      "end": 4956,
+      "role": "CLAUSE_HEADING",
+      "alias": "Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u"
+    },
+    {
+      "i": 39,
+      "start": 5058,
+      "end": 5066,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 15"
+    },
+    {
+      "i": 40,
+      "start": 5067,
+      "end": 5115,
+      "role": "CLAUSE_HEADING",
+      "alias": "Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "i": 41,
+      "start": 5167,
+      "end": 5175,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 16"
+    },
+    {
+      "i": 42,
+      "start": 5176,
+      "end": 5201,
+      "role": "CLAUSE_HEADING",
+      "alias": "Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u"
+    },
+    {
+      "i": 43,
+      "start": 5353,
+      "end": 5358,
+      "role": "SUBSECTION",
+      "alias": "M\u1EE5c 3"
+    },
+    {
+      "i": 44,
+      "start": 5359,
+      "end": 5388,
+      "role": "SUBSECTION",
+      "alias": "D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC"
+    },
+    {
+      "i": 45,
+      "start": 5390,
+      "end": 5398,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 17"
+    },
+    {
+      "i": 46,
+      "start": 5399,
+      "end": 5443,
+      "role": "CLAUSE_HEADING",
+      "alias": "Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "i": 47,
+      "start": 5550,
+      "end": 5558,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 18"
+    },
+    {
+      "i": 48,
+      "start": 5559,
+      "end": 5599,
+      "role": "CLAUSE_HEADING",
+      "alias": "Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "i": 49,
+      "start": 5651,
+      "end": 5659,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 19"
+    },
+    {
+      "i": 50,
+      "start": 5660,
+      "end": 5708,
+      "role": "CLAUSE_HEADING",
+      "alias": "K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "i": 51,
+      "start": 5760,
+      "end": 5768,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 20"
+    },
+    {
+      "i": 52,
+      "start": 5769,
+      "end": 5817,
+      "role": "CLAUSE_HEADING",
+      "alias": "Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "i": 53,
+      "start": 5869,
+      "end": 5877,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 21"
+    },
+    {
+      "i": 54,
+      "start": 5878,
+      "end": 5930,
+      "role": "CLAUSE_HEADING",
+      "alias": "Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "i": 55,
+      "start": 6032,
+      "end": 6037,
+      "role": "SUBSECTION",
+      "alias": "M\u1EE5c 4"
+    },
+    {
+      "i": 56,
+      "start": 6038,
+      "end": 6080,
+      "role": "SUBSECTION",
+      "alias": "B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "i": 57,
+      "start": 6082,
+      "end": 6090,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 22"
+    },
+    {
+      "i": 58,
+      "start": 6091,
+      "end": 6124,
+      "role": "CLAUSE_HEADING",
+      "alias": "Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB"
+    },
+    {
+      "i": 59,
+      "start": 6176,
+      "end": 6184,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 23"
+    },
+    {
+      "i": 60,
+      "start": 6185,
+      "end": 6205,
+      "role": "CLAUSE_HEADING",
+      "alias": "Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "i": 61,
+      "start": 6286,
+      "end": 6294,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 24"
+    },
+    {
+      "i": 62,
+      "start": 6295,
+      "end": 6315,
+      "role": "CLAUSE_HEADING",
+      "alias": "D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "i": 63,
+      "start": 6367,
+      "end": 6375,
+      "role": "ARTICLE",
+      "alias": "\u0110i\u1EC1u 25"
+    },
+    {
+      "i": 64,
+      "start": 6376,
+      "end": 6408,
+      "role": "CLAUSE_HEADING",
+      "alias": "C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u"
     }
   ],
-  "boundCount": 37,
+  "boundCount": 3,
   "requestTelemetry": {
     "requestIdHash": "c8478ef94897bb932db330c24c9c6418d35a17b9ee4a9196d2f36211e3e225cb",
     "documentId": "DOC-0205",
@@ -360,33 +556,33 @@
     "packetOverheadCharacters": 29244,
     "sourcePayloadRatio": 0.480199075719872,
     "estimatedInputTokens": 16548,
-    "reportedInputTokens": 44240,
-    "reportedOutputTokens": 3882,
-    "reportedReasoningTokens": 1823,
+    "reportedInputTokens": 44204,
+    "reportedOutputTokens": 8147,
+    "reportedReasoningTokens": 4078,
     "cachedInputTokens": 0,
     "cacheMode": "COLD_OR_UNCACHED",
     "segmentCount": 1,
     "ownedOccurrences": 3,
     "visibleOccurrences": 3,
-    "headingOutputCount": 37,
-    "elapsedMs": 56024,
+    "headingOutputCount": 65,
+    "elapsedMs": 108864,
     "finishReason": "stop",
     "httpStatus": 200,
     "failureClass": null,
-    "providerCallId": "gen-1789001530-lvyPb0pB6Z1WM5JfkEjg",
+    "providerCallId": "gen-1789005829-tWxqS0xDgIUXqutEdmwV",
     "providerRoute": "Alibaba",
-    "canonicalRequestHash": "ac00391f241f95c6fbeea7030747603c7c4ab8b790e5f03d9ddc5f7cc511536b",
-    "requestBodyHash": "ac00391f241f95c6fbeea7030747603c7c4ab8b790e5f03d9ddc5f7cc511536b",
+    "canonicalRequestHash": "87677c78b1377cf2861d2b734cba30e5ff7aabf2d2314c2989902c76974b2580",
+    "requestBodyHash": "87677c78b1377cf2861d2b734cba30e5ff7aabf2d2314c2989902c76974b2580",
     "responseContentPresent": true,
     "structuredOutputParsed": true,
     "timeoutDetected": null,
     "streamStallDetected": null,
-    "requestStartedUtc": "2026-09-10T00:52:08.2506988+00:00",
-    "headersReceivedUtc": "2026-09-10T00:52:15.3257476+00:00",
-    "firstResponseByteUtc": "2026-09-10T00:52:15.3313929+00:00",
+    "requestStartedUtc": "2026-09-10T02:03:47.1520539+00:00",
+    "headersReceivedUtc": "2026-09-10T02:03:52.9553602+00:00",
+    "firstResponseByteUtc": "2026-09-10T02:03:52.9623703+00:00",
     "firstModelContentUtc": null,
-    "responseCompletedUtc": "2026-09-10T00:53:04.271872+00:00",
-    "ttfbMs": 7075,
+    "responseCompletedUtc": "2026-09-10T02:05:36.0144104+00:00",
+    "ttfbMs": 5803,
     "ttftMs": null,
     "generationElapsedMs": null
   },
