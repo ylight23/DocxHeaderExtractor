@@ -1,0 +1,111 @@
+{
+  "documentId": "DOC-0001",
+  "repeat": "r3",
+  "firstLosses": [
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[1]:0:24",
+      "exactSourceText": "Ch\u01B0\u01A1ng 1. Quy \u0111\u1ECBnh chung",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[3]:0:23",
+      "exactSourceText": "1.1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[5]:0:22",
+      "exactSourceText": "1.2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[7]:0:22",
+      "exactSourceText": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[9]:0:24",
+      "exactSourceText": "1.2.2. \u0110\u01A1n v\u1ECB tr\u1EF1c thu\u1ED9c",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[11]:0:27",
+      "exactSourceText": "Ch\u01B0\u01A1ng 2. T\u1ED5 ch\u1EE9c th\u1EF1c hi\u1EC7n",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[13]:0:26",
+      "exactSourceText": "2.1. Ph\u00E2n c\u00F4ng tr\u00E1ch nhi\u1EC7m",
+      "firstLoss": "FOUND",
+      "found": true
+    }
+  ],
+  "falsePositives": [
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[2]:0:167",
+      "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[4]:0:147",
+      "exactSourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[6]:0:167",
+      "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[8]:0:147",
+      "exactSourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[10]:0:167",
+      "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[12]:0:147",
+      "exactSourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0001",
+      "key": "body[1]/p[14]:0:167",
+      "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    }
+  ],
+  "firstLossCounts": {
+    "FOUND": 7
+  },
+  "systemLoss": 0,
+  "goldReadBeforeFreeze": false
+}

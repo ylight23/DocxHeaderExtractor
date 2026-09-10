@@ -1,0 +1,980 @@
+{
+  "schemaVersion": "a99-semantic-text-omission-review-summary-v1",
+  "status": "COMPLETE_OFFLINE_REBUILD",
+  "startHead": "d1f850428157001441d65b7955906b99384f66c9",
+  "endHead": "d1f850428157001441d65b7955906b99384f66c9",
+  "intervention": "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
+  "baseContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "reviewPromptHash": "cf1597aed817aa8b5b577ad7dd308be159ecb4bcfaff762eb5a5f9a3f6094b4b",
+  "selectedStrictGoldCohort": [
+    "DOC-0001",
+    "DOC-0205",
+    "DOC-0252",
+    "DOC-0256",
+    "DOC-0258"
+  ],
+  "baselineComplete": true,
+  "baselineProviderAttempts": 15,
+  "passAReused": true,
+  "passAProviderCallsCurrentRun": 0,
+  "reviewProviderAttempts": 16,
+  "modelCalls": 16,
+  "offlineProviderCalls": 0,
+  "goldOccurrencesPerRepeat": 153,
+  "goldReadBeforeFreeze": false,
+  "a99DevMarginMet": false,
+  "classification": "OMISSION_REVIEW_RECALL_UP_PRECISION_TRADEOFF",
+  "keepOrRevert": "REVERT",
+  "dominantBaselineBucket": {
+    "bucket": "MODEL_OMISSION",
+    "count": 16,
+    "affectedDocuments": [
+      "DOC-0252",
+      "DOC-0256",
+      "DOC-0258"
+    ]
+  },
+  "dominantReviewBucket": {
+    "bucket": "AMBIGUOUS_DUPLICATE_TEXT",
+    "count": 15,
+    "affectedDocuments": [
+      "DOC-0256",
+      "DOC-0258"
+    ]
+  },
+  "persistentMovement": {
+    "before": {
+      "schemaVersion": "a99-semantic-text-generalization-persistent-errors-v1",
+      "persistentErrors": [
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+          "exactSourceText": "Western Asia",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[158]:56:62",
+          "exactSourceText": "Agenda",
+          "firstLossClass": "MODEL_WRONG_SPAN",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[11]:0:6",
+          "exactSourceText": "Africa",
+          "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[17]:0:20",
+          "exactSourceText": "Asia and the Pacific",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[11]:0:6",
+          "exactSourceText": "Africa",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[12]:0:20",
+          "exactSourceText": "Asia and the Pacific",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[18]:0:34",
+          "exactSourceText": "Commonwealth of Independent States",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[19]:0:31",
+          "exactSourceText": "Latin America and the Caribbean",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[24]:0:12",
+          "exactSourceText": "Western Asia",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        }
+      ],
+      "intermittentErrors": [
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:29974:30039",
+          "exactSourceText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:30572:30622",
+          "exactSourceText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:32357:32413",
+          "exactSourceText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[17]:0:25",
+          "exactSourceText": "Eurostat\u2013OECD PPP Program",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "010"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[115]:0:29",
+          "exactSourceText": "Annex 2: List of participants",
+          "firstLossClass": "MODEL_WRONG_SPAN",
+          "repeatPresenceMask": "100"
+        }
+      ],
+      "persistentFalsePositives": [],
+      "intermittentFalsePositives": [
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[115]:0:230",
+          "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "011"
+        }
+      ],
+      "persistentErrorCounts": {
+        "MODEL_OMISSION": 7,
+        "MODEL_WRONG_SPAN": 1,
+        "AMBIGUOUS_DUPLICATE_TEXT": 1
+      },
+      "intermittentErrorCounts": {
+        "MODEL_WRONG_TEXT": 3,
+        "MODEL_OMISSION": 1,
+        "MODEL_WRONG_SPAN": 1
+      },
+      "persistentFalsePositiveCount": 0,
+      "intermittentFalsePositiveCount": 1
+    },
+    "after": {
+      "schemaVersion": "a99-semantic-text-generalization-persistent-errors-v1",
+      "persistentErrors": [
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+          "exactSourceText": "Western Asia",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[158]:56:62",
+          "exactSourceText": "Agenda",
+          "firstLossClass": "MODEL_WRONG_SPAN",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[11]:0:6",
+          "exactSourceText": "Africa",
+          "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[17]:0:20",
+          "exactSourceText": "Asia and the Pacific",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[11]:0:6",
+          "exactSourceText": "Africa",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[12]:0:20",
+          "exactSourceText": "Asia and the Pacific",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[18]:0:34",
+          "exactSourceText": "Commonwealth of Independent States",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[19]:0:31",
+          "exactSourceText": "Latin America and the Caribbean",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[24]:0:12",
+          "exactSourceText": "Western Asia",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        }
+      ],
+      "intermittentErrors": [
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:29974:30039",
+          "exactSourceText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:30572:30622",
+          "exactSourceText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:32357:32413",
+          "exactSourceText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[17]:0:25",
+          "exactSourceText": "Eurostat\u2013OECD PPP Program",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[115]:0:29",
+          "exactSourceText": "Annex 2: List of participants",
+          "firstLossClass": "MODEL_WRONG_SPAN",
+          "repeatPresenceMask": "100"
+        }
+      ],
+      "persistentFalsePositives": [
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:174:243",
+          "exactSourceText": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[3]:0:47",
+          "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[46]:0:12",
+          "exactSourceText": "Western Asia",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[3]:0:87",
+          "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[4]:0:29",
+          "exactSourceText": "OCTOBER 31 \u2013 NOVEMBER 3, 2023",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[5]:0:14",
+          "exactSourceText": "Hybrid Meeting",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[4]:0:17",
+          "exactSourceText": "MAY 15 - 18, 2023",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[5]:0:14",
+          "exactSourceText": "Hybrid meeting",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        }
+      ],
+      "intermittentFalsePositives": [
+        {
+          "documentId": "DOC-0001",
+          "goldOrPredictionKey": "body[1]/p[2]:0:167",
+          "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "001"
+        },
+        {
+          "documentId": "DOC-0001",
+          "goldOrPredictionKey": "body[1]/p[4]:0:147",
+          "exactSourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "001"
+        },
+        {
+          "documentId": "DOC-0001",
+          "goldOrPredictionKey": "body[1]/p[6]:0:167",
+          "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "001"
+        },
+        {
+          "documentId": "DOC-0001",
+          "goldOrPredictionKey": "body[1]/p[8]:0:147",
+          "exactSourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "001"
+        },
+        {
+          "documentId": "DOC-0001",
+          "goldOrPredictionKey": "body[1]/p[10]:0:167",
+          "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "001"
+        },
+        {
+          "documentId": "DOC-0001",
+          "goldOrPredictionKey": "body[1]/p[12]:0:147",
+          "exactSourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "001"
+        },
+        {
+          "documentId": "DOC-0001",
+          "goldOrPredictionKey": "body[1]/p[14]:0:167",
+          "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "001"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[4]:0:24",
+          "exactSourceText": "TECHNICAL ADVISORY GROUP",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "101"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[5]:0:15",
+          "exactSourceText": "MARCH 7-8, 2025",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "100"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[6]:0:17",
+          "exactSourceText": "New York - Hybrid",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "100"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[175]:0:36",
+          "exactSourceText": "ICP Technical Advisory Group members",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "110"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[176]:0:42",
+          "exactSourceText": "ICP experts, guest speakers, and observers",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "110"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[177]:0:42",
+          "exactSourceText": "ICP Inter-Agency Coordination Group (IACG)",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "110"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[178]:0:10",
+          "exactSourceText": "World Bank",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "110"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:27",
+          "exactSourceText": "DAY 1: MONDAY, MAY 15, 2023",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "101"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[103]:0:28",
+          "exactSourceText": "DAY 2: TUESDAY, MAY 16, 2023",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "101"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30",
+          "exactSourceText": "DAY 3: WEDNESDAY, MAY 17, 2023",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "101"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[104]:0:29",
+          "exactSourceText": "DAY 4: THURSDAY, MAY 18, 2023",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "101"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[115]:0:230",
+          "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "011"
+        }
+      ],
+      "persistentErrorCounts": {
+        "MODEL_OMISSION": 7,
+        "MODEL_WRONG_SPAN": 1,
+        "AMBIGUOUS_DUPLICATE_TEXT": 1
+      },
+      "intermittentErrorCounts": {
+        "MODEL_WRONG_TEXT": 3,
+        "MODEL_OMISSION": 1,
+        "MODEL_WRONG_SPAN": 1
+      },
+      "persistentFalsePositiveCount": 8,
+      "intermittentFalsePositiveCount": 19
+    }
+  },
+  "performance": {
+    "inputTokens": 405689,
+    "reasoningTokens": 112578,
+    "outputTokens": 119152,
+    "wallTimeMs": 0
+  },
+  "repeatSummary": {
+    "schemaVersion": "a99-semantic-text-generalization-repeat-summary-v1",
+    "cohortSize": 5,
+    "repeatCount": 3,
+    "documents": [
+      {
+        "documentId": "DOC-0001",
+        "repeats": [
+          {
+            "documentId": "DOC-0001",
+            "repeat": "r1",
+            "status": "SUCCESS",
+            "gold": 7,
+            "tp": 7,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 3023,
+            "reasoningTokens": 1483,
+            "outputTokens": 1495,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0001",
+            "repeat": "r2",
+            "status": "SUCCESS",
+            "gold": 7,
+            "tp": 7,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 3023,
+            "reasoningTokens": 971,
+            "outputTokens": 1071,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0001",
+            "repeat": "r3",
+            "status": "SUCCESS",
+            "gold": 7,
+            "tp": 7,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1,
+            "f1": 0.6666666666666666,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 3023,
+            "reasoningTokens": 1581,
+            "outputTokens": 2103,
+            "wallTimeMs": 0
+          }
+        ],
+        "minPrecision": 0.5,
+        "minRecall": 1,
+        "minF1": 0.6666666666666666,
+        "maxPrecision": 1,
+        "maxRecall": 1,
+        "maxF1": 1,
+        "meanF1": 0.8888888888888888,
+        "tpIntersection": 7,
+        "tpUnion": 14,
+        "jaccard": {
+          "r1VsR2": 1,
+          "r1VsR3": 0.5,
+          "r2VsR3": 0.5
+        },
+        "systemLoss": 0
+      },
+      {
+        "documentId": "DOC-0205",
+        "repeats": [
+          {
+            "documentId": "DOC-0205",
+            "repeat": "r1",
+            "status": "SUCCESS",
+            "gold": 71,
+            "tp": 68,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9855072463768116,
+            "recall": 0.9577464788732394,
+            "f1": 0.9714285714285714,
+            "modelOmission": 0,
+            "wrongText": 3,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 87559,
+            "reasoningTokens": 4307,
+            "outputTokens": 4723,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0205",
+            "repeat": "r2",
+            "status": "SUCCESS",
+            "gold": 71,
+            "tp": 71,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9861111111111112,
+            "recall": 1,
+            "f1": 0.993006993006993,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 87403,
+            "reasoningTokens": 2609,
+            "outputTokens": 2678,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0205",
+            "repeat": "r3",
+            "status": "SUCCESS",
+            "gold": 71,
+            "tp": 71,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9861111111111112,
+            "recall": 1,
+            "f1": 0.993006993006993,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 87559,
+            "reasoningTokens": 3589,
+            "outputTokens": 3601,
+            "wallTimeMs": 0
+          }
+        ],
+        "minPrecision": 0.9855072463768116,
+        "minRecall": 0.9577464788732394,
+        "minF1": 0.9714285714285714,
+        "maxPrecision": 0.9861111111111112,
+        "maxRecall": 1,
+        "maxF1": 0.993006993006993,
+        "meanF1": 0.9858141858141858,
+        "tpIntersection": 69,
+        "tpUnion": 72,
+        "jaccard": {
+          "r1VsR2": 0.9583333333333334,
+          "r1VsR3": 0.9583333333333334,
+          "r2VsR3": 1
+        },
+        "systemLoss": 0
+      },
+      {
+        "documentId": "DOC-0252",
+        "repeats": [
+          {
+            "documentId": "DOC-0252",
+            "repeat": "r1",
+            "status": "SUCCESS",
+            "gold": 27,
+            "tp": 25,
+            "fp": 9,
+            "fn": 2,
+            "precision": 0.7352941176470589,
+            "recall": 0.9259259259259259,
+            "f1": 0.819672131147541,
+            "modelOmission": 1,
+            "wrongText": 0,
+            "wrongSpan": 1,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 17472,
+            "reasoningTokens": 8390,
+            "outputTokens": 8534,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0252",
+            "repeat": "r2",
+            "status": "SUCCESS",
+            "gold": 27,
+            "tp": 25,
+            "fp": 6,
+            "fn": 2,
+            "precision": 0.8064516129032258,
+            "recall": 0.9259259259259259,
+            "f1": 0.8620689655172414,
+            "modelOmission": 1,
+            "wrongText": 0,
+            "wrongSpan": 1,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 17472,
+            "reasoningTokens": 29481,
+            "outputTokens": 29681,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0252",
+            "repeat": "r3",
+            "status": "SUCCESS",
+            "gold": 27,
+            "tp": 25,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.8928571428571429,
+            "recall": 0.9259259259259259,
+            "f1": 0.9090909090909091,
+            "modelOmission": 1,
+            "wrongText": 0,
+            "wrongSpan": 1,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 17399,
+            "reasoningTokens": 10458,
+            "outputTokens": 10569,
+            "wallTimeMs": 0
+          }
+        ],
+        "minPrecision": 0.7352941176470589,
+        "minRecall": 0.9259259259259259,
+        "minF1": 0.819672131147541,
+        "maxPrecision": 0.8928571428571429,
+        "maxRecall": 0.9259259259259259,
+        "maxF1": 0.9090909090909091,
+        "meanF1": 0.8636106685852306,
+        "tpIntersection": 27,
+        "tpUnion": 34,
+        "jaccard": {
+          "r1VsR2": 0.9117647058823529,
+          "r1VsR3": 0.8235294117647058,
+          "r2VsR3": 0.84375
+        },
+        "systemLoss": 0
+      },
+      {
+        "documentId": "DOC-0256",
+        "repeats": [
+          {
+            "documentId": "DOC-0256",
+            "repeat": "r1",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 22,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.88,
+            "recall": 0.9166666666666666,
+            "f1": 0.8979591836734694,
+            "modelOmission": 1,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 14375,
+            "reasoningTokens": 11727,
+            "outputTokens": 15548,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0256",
+            "repeat": "r2",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 22,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.88,
+            "recall": 0.9166666666666666,
+            "f1": 0.8979591836734694,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 16133,
+            "reasoningTokens": 9028,
+            "outputTokens": 9134,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0256",
+            "repeat": "r3",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 22,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.88,
+            "recall": 0.9166666666666666,
+            "f1": 0.8979591836734694,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 14438,
+            "reasoningTokens": 7550,
+            "outputTokens": 7656,
+            "wallTimeMs": 0
+          }
+        ],
+        "minPrecision": 0.88,
+        "minRecall": 0.9166666666666666,
+        "minF1": 0.8979591836734694,
+        "maxPrecision": 0.88,
+        "maxRecall": 0.9166666666666666,
+        "maxF1": 0.8979591836734694,
+        "meanF1": 0.8979591836734694,
+        "tpIntersection": 25,
+        "tpUnion": 25,
+        "jaccard": {
+          "r1VsR2": 1,
+          "r1VsR3": 1,
+          "r2VsR3": 1
+        },
+        "systemLoss": 0
+      },
+      {
+        "documentId": "DOC-0258",
+        "repeats": [
+          {
+            "documentId": "DOC-0258",
+            "repeat": "r1",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 18,
+            "fp": 6,
+            "fn": 6,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75,
+            "modelOmission": 6,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 11365,
+            "reasoningTokens": 5531,
+            "outputTokens": 5841,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0258",
+            "repeat": "r2",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 18,
+            "fp": 3,
+            "fn": 6,
+            "precision": 0.8571428571428571,
+            "recall": 0.75,
+            "f1": 0.7999999999999999,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 1,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 14003,
+            "reasoningTokens": 6299,
+            "outputTokens": 6404,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0258",
+            "repeat": "r3",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 18,
+            "fp": 7,
+            "fn": 6,
+            "precision": 0.72,
+            "recall": 0.75,
+            "f1": 0.7346938775510204,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 1,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 11442,
+            "reasoningTokens": 9574,
+            "outputTokens": 10114,
+            "wallTimeMs": 0
+          }
+        ],
+        "minPrecision": 0.72,
+        "minRecall": 0.75,
+        "minF1": 0.7346938775510204,
+        "maxPrecision": 0.8571428571428571,
+        "maxRecall": 0.75,
+        "maxF1": 0.7999999999999999,
+        "meanF1": 0.76156462585034,
+        "tpIntersection": 19,
+        "tpUnion": 26,
+        "jaccard": {
+          "r1VsR2": 0.7307692307692307,
+          "r1VsR3": 0.8846153846153846,
+          "r2VsR3": 0.84
+        },
+        "systemLoss": 0
+      }
+    ],
+    "cohortMicroByRepeat": [
+      {
+        "repeat": "r1",
+        "gold": 153,
+        "tp": 140,
+        "fp": 19,
+        "fn": 13,
+        "precision": 0.8805031446540881,
+        "recall": 0.9150326797385621,
+        "f1": 0.8974358974358974,
+        "systemLoss": 0
+      },
+      {
+        "repeat": "r2",
+        "gold": 153,
+        "tp": 143,
+        "fp": 13,
+        "fn": 10,
+        "precision": 0.9166666666666666,
+        "recall": 0.934640522875817,
+        "f1": 0.9255663430420712,
+        "systemLoss": 0
+      },
+      {
+        "repeat": "r3",
+        "gold": 153,
+        "tp": 143,
+        "fp": 21,
+        "fn": 10,
+        "precision": 0.8719512195121951,
+        "recall": 0.934640522875817,
+        "f1": 0.9022082018927446,
+        "systemLoss": 0
+      }
+    ],
+    "minRepeatMicroPrecision": 0.8719512195121951,
+    "minRepeatMicroRecall": 0.9150326797385621,
+    "minRepeatMicroF1": 0.8974358974358974
+  }
+}

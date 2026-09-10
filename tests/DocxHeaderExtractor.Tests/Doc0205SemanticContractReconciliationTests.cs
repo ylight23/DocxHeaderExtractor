@@ -173,7 +173,7 @@ public sealed class Doc0205SemanticContractReconciliationTests
         Assert.Equal(15, root.GetProperty("providerAttempts").GetInt32());
         Assert.Equal(15, root.GetProperty("modelCalls").GetInt32());
         Assert.False(root.GetProperty("goldReadBeforeFreeze").GetBoolean());
-        Assert.Equal("SEMANTIC_TEXT_GENERALIZATION_EXECUTION_BLOCKED", root.GetProperty("generalizationClassification").GetString());
+        Assert.Equal("SEMANTIC_TEXT_CONTRACT_DOES_NOT_GENERALIZE", root.GetProperty("generalizationClassification").GetString());
 
         var cohort = root.GetProperty("selectedStrictGoldCohort").EnumerateArray().Select(x => x.GetString()!).ToArray();
         Assert.Equal(["DOC-0001", "DOC-0205", "DOC-0252", "DOC-0256", "DOC-0258"], cohort);
@@ -189,7 +189,10 @@ public sealed class Doc0205SemanticContractReconciliationTests
         }
 
         using var r2 = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), GeneralizationRoot, "DOC-0258", "r2", "score.v1.json")));
-        Assert.Equal("BLOCKED", r2.RootElement.GetProperty("status").GetString());
+        Assert.Equal("SUCCESS", r2.RootElement.GetProperty("status").GetString());
+        using var repeats = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), GeneralizationRoot, "repeat-summary.v1.json")));
+        foreach (var repeat in repeats.RootElement.GetProperty("cohortMicroByRepeat").EnumerateArray())
+            Assert.Equal(153, repeat.GetProperty("gold").GetInt32());
     }
 
     [Fact]
@@ -206,6 +209,61 @@ public sealed class Doc0205SemanticContractReconciliationTests
         }
         Assert.Single(hashes);
         Assert.NotEmpty(providers);
+    }
+
+    [Fact]
+    public void Omission_review_is_paired_additive_and_gold_firewalled()
+    {
+        const string rootPath = "eval/a99-closed-loop/semantic-text-omission-review-v1";
+        using var summary = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), rootPath, "summary.v1.json")));
+        var root = summary.RootElement;
+        Assert.Equal(16, root.GetProperty("reviewProviderAttempts").GetInt32());
+        Assert.Equal(16, root.GetProperty("modelCalls").GetInt32());
+        Assert.Equal(0, root.GetProperty("passAProviderCallsCurrentRun").GetInt32());
+        Assert.True(root.GetProperty("passAReused").GetBoolean());
+        Assert.False(root.GetProperty("goldReadBeforeFreeze").GetBoolean());
+        Assert.Equal("OMISSION_REVIEW_RECALL_UP_PRECISION_TRADEOFF", root.GetProperty("classification").GetString());
+
+        using var deltas = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), rootPath, "paired-deltas.v1.json")));
+        Assert.Equal(15, deltas.RootElement.GetProperty("rows").GetArrayLength());
+        foreach (var repeat in deltas.RootElement.GetProperty("cohortByRepeat").EnumerateArray())
+        {
+            Assert.Equal(153, repeat.GetProperty("baseline").GetProperty("gold").GetInt32());
+            Assert.Equal(153, repeat.GetProperty("review").GetProperty("gold").GetInt32());
+        }
+
+        foreach (var documentId in new[] { "DOC-0001", "DOC-0205", "DOC-0252", "DOC-0256", "DOC-0258" })
+        foreach (var repeat in new[] { "r1", "r2", "r3" })
+        {
+            var dir = Path.Combine(RepoRoot(), rootPath, documentId, repeat);
+            using var freeze = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "freeze.v1.json")));
+            Assert.False(freeze.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());
+            Assert.Equal("abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53", freeze.RootElement.GetProperty("baseContractHash").GetString());
+            Assert.True(freeze.RootElement.GetProperty("reviewPromptHash").GetString()!.Length == 64);
+            using var prediction = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "prediction.v1.json")));
+            Assert.True(prediction.RootElement.GetProperty("passAReused").GetBoolean());
+            Assert.Equal(0, prediction.RootElement.GetProperty("passAProviderCallsCurrentRun").GetInt32());
+        }
+    }
+
+    [Fact]
+    public void Omission_review_prompt_is_generic_and_uses_semantic_text_contract()
+    {
+        Assert.DoesNotContain("DOC-", SemanticTextOmissionReviewContract.System, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("semanticHeadingTotal", SemanticTextOmissionReviewContract.System, StringComparison.OrdinalIgnoreCase);
+        var schema = JsonSerializer.Serialize(SemanticTextOmissionReviewContract.Schema());
+        Assert.DoesNotContain("\"start\":", schema, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("\"end\":", schema, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("source", schema, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("verbatim", SemanticTextOmissionReviewContract.System, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Frozen_semantic_text_optional_nulls_replay_without_provider_calls()
+    {
+        var response = SemanticTextExactBindingContract.Parse("{\"headings\":[{\"source\":\"S0001\",\"text\":\"Heading\",\"role\":\"SECTION\",\"occurrence\":null,\"leftExactContext\":null,\"rightExactContext\":null}]}" );
+        Assert.Single(response.Headings);
+        Assert.Null(response.Headings[0].Occurrence);
     }
 
     private static JsonDocument Load(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), Root, name)));

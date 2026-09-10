@@ -84,7 +84,7 @@ Return only the JSON object described by the schema.
                 !item.TryGetProperty("role", out var role) || role.ValueKind != JsonValueKind.String || !CeilingSemanticRole.IsAllowed(role.GetString()))
                 throw new FormatException("semantic-text-response-heading-schema-invalid");
             int? occurrence = null;
-            if (item.TryGetProperty("occurrence", out var occurrenceValue))
+            if (item.TryGetProperty("occurrence", out var occurrenceValue) && occurrenceValue.ValueKind != JsonValueKind.Null)
             {
                 if (!occurrenceValue.TryGetInt32(out var ordinal) || ordinal < 1) throw new FormatException("semantic-text-response-occurrence-invalid");
                 occurrence = ordinal;

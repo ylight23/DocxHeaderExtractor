@@ -1,0 +1,310 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-persistent-errors-v1",
+  "persistentErrors": [
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[158]:56:62",
+      "exactSourceText": "Agenda",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[17]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[12]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[18]:0:34",
+      "exactSourceText": "Commonwealth of Independent States",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[19]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[24]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    }
+  ],
+  "intermittentErrors": [
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:29974:30039",
+      "exactSourceText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:30572:30622",
+      "exactSourceText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:32357:32413",
+      "exactSourceText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[17]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[115]:0:29",
+      "exactSourceText": "Annex 2: List of participants",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "100"
+    }
+  ],
+  "persistentFalsePositives": [
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:174:243",
+      "exactSourceText": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[3]:0:47",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[46]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[3]:0:87",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[4]:0:29",
+      "exactSourceText": "OCTOBER 31 \u2013 NOVEMBER 3, 2023",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[5]:0:14",
+      "exactSourceText": "Hybrid Meeting",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[4]:0:17",
+      "exactSourceText": "MAY 15 - 18, 2023",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[5]:0:14",
+      "exactSourceText": "Hybrid meeting",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    }
+  ],
+  "intermittentFalsePositives": [
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[2]:0:167",
+      "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[4]:0:147",
+      "exactSourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[6]:0:167",
+      "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[8]:0:147",
+      "exactSourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[10]:0:167",
+      "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[12]:0:147",
+      "exactSourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[14]:0:167",
+      "exactSourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[4]:0:24",
+      "exactSourceText": "TECHNICAL ADVISORY GROUP",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "101"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[5]:0:15",
+      "exactSourceText": "MARCH 7-8, 2025",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "100"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[6]:0:17",
+      "exactSourceText": "New York - Hybrid",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "100"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[175]:0:36",
+      "exactSourceText": "ICP Technical Advisory Group members",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[176]:0:42",
+      "exactSourceText": "ICP experts, guest speakers, and observers",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[177]:0:42",
+      "exactSourceText": "ICP Inter-Agency Coordination Group (IACG)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[178]:0:10",
+      "exactSourceText": "World Bank",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "110"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:27",
+      "exactSourceText": "DAY 1: MONDAY, MAY 15, 2023",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "101"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[103]:0:28",
+      "exactSourceText": "DAY 2: TUESDAY, MAY 16, 2023",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "101"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/tbl[3]/tr[5]/tc[1]/p[2]:0:30",
+      "exactSourceText": "DAY 3: WEDNESDAY, MAY 17, 2023",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "101"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[104]:0:29",
+      "exactSourceText": "DAY 4: THURSDAY, MAY 18, 2023",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "101"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[115]:0:230",
+      "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    }
+  ],
+  "persistentErrorCounts": {
+    "MODEL_OMISSION": 7,
+    "MODEL_WRONG_SPAN": 1,
+    "AMBIGUOUS_DUPLICATE_TEXT": 1
+  },
+  "intermittentErrorCounts": {
+    "MODEL_WRONG_TEXT": 3,
+    "MODEL_OMISSION": 1,
+    "MODEL_WRONG_SPAN": 1
+  },
+  "persistentFalsePositiveCount": 8,
+  "intermittentFalsePositiveCount": 19
+}

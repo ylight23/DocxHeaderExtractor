@@ -2,7 +2,7 @@
   "schemaVersion": "a99-semantic-text-generalization-summary-v1",
   "status": "COMPLETE_OFFLINE_REBUILD",
   "startHead": "98ed48fcabf9c2bb617da0fddd269e8e807a9ba0",
-  "endHead": "892a5c96bd1bf4f38aa71e90697eb74555477bc5",
+  "endHead": "d1f850428157001441d65b7955906b99384f66c9",
   "selectedStrictGoldCohort": [
     "DOC-0001",
     "DOC-0205",
@@ -16,7 +16,7 @@
   "modelCalls": 15,
   "offlineProviderCalls": 0,
   "goldReadBeforeFreeze": false,
-  "generalizationClassification": "SEMANTIC_TEXT_GENERALIZATION_EXECUTION_BLOCKED",
+  "generalizationClassification": "SEMANTIC_TEXT_CONTRACT_DOES_NOT_GENERALIZE",
   "a99DevMarginMet": false,
   "nextLargestErrorBucket": {
     "bucket": "MODEL_OMISSION",
@@ -29,10 +29,10 @@
   },
   "performance": {
     "providerAttempts": 15,
-    "inputTokens": 343861,
-    "reasoningTokens": 104290,
-    "outputTokens": 125991,
-    "wallTimeMs": 0
+    "inputTokens": 353964,
+    "reasoningTokens": 113375,
+    "outputTokens": 137054,
+    "wallTimeMs": 69991
   },
   "goldFirewall": "PASS",
   "repeatSummary": {
@@ -425,25 +425,25 @@
           {
             "documentId": "DOC-0258",
             "repeat": "r2",
-            "status": "BLOCKED",
-            "gold": 0,
-            "tp": 0,
-            "fp": 0,
-            "fn": 0,
-            "precision": 0,
-            "recall": 0,
-            "f1": 0,
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 18,
+            "fp": 1,
+            "fn": 6,
+            "precision": 0.9473684210526315,
+            "recall": 0.75,
+            "f1": 0.8372093023255814,
             "modelOmission": 0,
             "wrongText": 0,
-            "wrongSpan": 0,
+            "wrongSpan": 1,
             "systemLoss": 0,
             "executionMode": "FULL_CONTEXT",
-            "actualProvider": null,
-            "finishReason": null,
-            "inputTokens": null,
-            "reasoningTokens": null,
-            "outputTokens": null,
-            "wallTimeMs": 0
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 10103,
+            "reasoningTokens": 9085,
+            "outputTokens": 11063,
+            "wallTimeMs": 69991
           },
           {
             "documentId": "DOC-0258",
@@ -469,19 +469,19 @@
             "wallTimeMs": 0
           }
         ],
-        "minPrecision": 0,
-        "minRecall": 0,
-        "minF1": 0,
+        "minPrecision": 0.9444444444444444,
+        "minRecall": 0.7083333333333334,
+        "minF1": 0.8095238095238096,
         "maxPrecision": 1,
         "maxRecall": 0.75,
         "maxF1": 0.8571428571428571,
-        "meanF1": 0.5555555555555556,
-        "tpIntersection": 0,
-        "tpUnion": 19,
+        "meanF1": 0.834625322997416,
+        "tpIntersection": 17,
+        "tpUnion": 20,
         "jaccard": {
-          "r1VsR2": 0,
+          "r1VsR2": 0.85,
           "r1VsR3": 0.8947368421052632,
-          "r2VsR3": 0
+          "r2VsR3": 0.9473684210526315
         },
         "systemLoss": 0
       }
@@ -489,6 +489,7 @@
     "cohortMicroByRepeat": [
       {
         "repeat": "r1",
+        "gold": 153,
         "tp": 140,
         "fp": 8,
         "fn": 13,
@@ -499,16 +500,18 @@
       },
       {
         "repeat": "r2",
-        "tp": 125,
-        "fp": 7,
-        "fn": 4,
-        "precision": 0.946969696969697,
-        "recall": 0.9689922480620154,
-        "f1": 0.9578544061302682,
+        "gold": 153,
+        "tp": 143,
+        "fp": 8,
+        "fn": 10,
+        "precision": 0.9470198675496688,
+        "recall": 0.934640522875817,
+        "f1": 0.9407894736842104,
         "systemLoss": 0
       },
       {
         "repeat": "r3",
+        "gold": 153,
         "tp": 142,
         "fp": 6,
         "fn": 11,

@@ -45,13 +45,6 @@
     },
     {
       "documentId": "DOC-0258",
-      "goldOrPredictionKey": "body[1]/p[17]:0:25",
-      "exactSourceText": "Eurostat\u2013OECD PPP Program",
-      "firstLossClass": "MODEL_OMISSION",
-      "repeatPresenceMask": "000"
-    },
-    {
-      "documentId": "DOC-0258",
       "goldOrPredictionKey": "body[1]/p[18]:0:34",
       "exactSourceText": "Commonwealth of Independent States",
       "firstLossClass": "MODEL_OMISSION",
@@ -96,6 +89,13 @@
     },
     {
       "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[17]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "010"
+    },
+    {
+      "documentId": "DOC-0258",
       "goldOrPredictionKey": "body[1]/p[115]:0:29",
       "exactSourceText": "Annex 2: List of participants",
       "firstLossClass": "MODEL_WRONG_SPAN",
@@ -103,16 +103,25 @@
     }
   ],
   "persistentFalsePositives": [],
-  "intermittentFalsePositives": [],
+  "intermittentFalsePositives": [
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[115]:0:230",
+      "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    }
+  ],
   "persistentErrorCounts": {
-    "MODEL_OMISSION": 8,
+    "MODEL_OMISSION": 7,
     "MODEL_WRONG_SPAN": 1,
     "AMBIGUOUS_DUPLICATE_TEXT": 1
   },
   "intermittentErrorCounts": {
     "MODEL_WRONG_TEXT": 3,
+    "MODEL_OMISSION": 1,
     "MODEL_WRONG_SPAN": 1
   },
   "persistentFalsePositiveCount": 0,
-  "intermittentFalsePositiveCount": 0
+  "intermittentFalsePositiveCount": 1
 }

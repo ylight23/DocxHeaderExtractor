@@ -31,7 +31,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, gold-occurrence-bindings, reasoning-retention, reasoning-retention-smoke, openrouter-qwen35-smoke, openrouter-qwen9b-true-ceiling, openrouter-qwen37-flash-control, openrouter-qwen37-request-ladder, openrouter-qwen37-flash-reasoning-ceiling, openrouter-qwen37-flash-visual-ceiling, openrouter-qwen37-flash-visual-audit, doc0205-semantic-taxonomy-audit, doc0205-semantic-contract-reconciliation, semantic-text-exact-binding, semantic-text-generalization, canonical-heading-contract-v2, heading-target-ontology-v4, structure-preserving-ir, structure-preserving-ir-vlm, doc0205-contract-audit, flash-heading-contract-realignment, openrouter-qwen9b-executable-ceiling, openrouter-qwen9b-per-segment-recovery, openrouter-qwen9b-provider-diagnosis, openrouter-qwen9b-provider-resume, openrouter-qwen9b-multipass-doc0205, doc-0205-canary, mode-stratification, doc-0027-support-canary");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, gold-occurrence-bindings, reasoning-retention, reasoning-retention-smoke, openrouter-qwen35-smoke, openrouter-qwen9b-true-ceiling, openrouter-qwen37-flash-control, openrouter-qwen37-request-ladder, openrouter-qwen37-flash-reasoning-ceiling, openrouter-qwen37-flash-visual-ceiling, openrouter-qwen37-flash-visual-audit, doc0205-semantic-taxonomy-audit, doc0205-semantic-contract-reconciliation, semantic-text-exact-binding, semantic-text-generalization, semantic-text-generalization-offline, semantic-text-generalization-recover-0258-r2, semantic-text-omission-review, semantic-text-omission-review-offline, semantic-text-omission-review-recover-0001-r1, canonical-heading-contract-v2, heading-target-ontology-v4, structure-preserving-ir, structure-preserving-ir-vlm, doc0205-contract-audit, flash-heading-contract-realignment, openrouter-qwen9b-executable-ceiling, openrouter-qwen9b-per-segment-recovery, openrouter-qwen9b-provider-diagnosis, openrouter-qwen9b-provider-resume, openrouter-qwen9b-multipass-doc0205, doc-0205-canary, mode-stratification, doc-0027-support-canary");
             return 0;
         }
 
@@ -72,6 +72,10 @@ internal static class Accuracy99Runner
             "semantic-text-exact-binding-offline" => await RunSemanticTextExactBindingOfflineAsync(options, cancellationToken),
             "semantic-text-generalization" => await RunSemanticTextGeneralizationAsync(options, cancellationToken),
             "semantic-text-generalization-offline" => await RunSemanticTextGeneralizationOfflineAsync(options, cancellationToken),
+            "semantic-text-generalization-recover-0258-r2" => await RunSemanticTextGeneralizationRecover0258R2Async(options, cancellationToken),
+            "semantic-text-omission-review" => await RunSemanticTextOmissionReviewAsync(options, cancellationToken),
+            "semantic-text-omission-review-offline" => await RunSemanticTextOmissionReviewOfflineAsync(options, cancellationToken),
+            "semantic-text-omission-review-recover-0001-r1" => await RunSemanticTextOmissionReviewRecover0001R1Async(options, cancellationToken),
             "canonical-heading-contract-v2" => await RunCanonicalHeadingContractV2Async(options, cancellationToken),
             "heading-target-ontology-v4" => await RunHeadingTargetOntologyV4Async(options, cancellationToken),
             "structure-preserving-ir" => await RunStructurePreservingIrAsync(options, cancellationToken),
@@ -171,6 +175,30 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return SemanticTextGeneralizationRunner.RunOfflineAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextGeneralizationRecover0258R2Async(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextGeneralizationRunner.RecoverDoc0258R2Async(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextOmissionReviewAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextGeneralizationRunner.RunOmissionReviewAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextOmissionReviewOfflineAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextGeneralizationRunner.RunOmissionReviewOfflineAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextOmissionReviewRecover0001R1Async(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextGeneralizationRunner.RecoverOmissionReviewDoc0001R1Async(repoRoot, cancellationToken);
     }
 
     private static Task<int> RunCanonicalHeadingContractV2Async(CommandLineOptions options, CancellationToken cancellationToken)

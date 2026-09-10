@@ -1,0 +1,1990 @@
+{
+  "schemaVersion": "a99-semantic-text-omission-review-prediction-v1",
+  "documentId": "DOC-0252",
+  "repeat": "r2",
+  "model": "qwen/qwen3.7-flash",
+  "intervention": "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
+  "baseContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "reviewPromptHash": "cf1597aed817aa8b5b577ad7dd308be159ecb4bcfaff762eb5a5f9a3f6094b4b",
+  "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "passAReused": true,
+  "passAProviderCallsCurrentRun": 0,
+  "passAHash": "0b8b85c83e50d4c4c578a09326972fd06d15a5d4f41f2feb5a48092de5ecd2a9",
+  "passAHeadings": [
+    {
+      "source": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "role": "DOCUMENT_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0005",
+      "text": "Session I: Welcome and meeting objectives",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0009",
+      "text": "Session II: Update on the ICP 2021 Cycle",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0010",
+      "text": "1.Global office update",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0034",
+      "text": "2.Regional updates",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0036",
+      "text": "Africa",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0039",
+      "text": "Asia and the Pacific",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0043",
+      "text": "Commonwealth of Independent States (CIS)",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0049",
+      "text": "Eurostat\u2013OECD PPP Program",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0052",
+      "text": "Latin America and the Caribbean",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0056",
+      "text": "Western Asia",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0062",
+      "text": "Session III: Short- and Long-Term Research and Development Agenda",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0063",
+      "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0080",
+      "text": "2.Forthcoming Research Topics",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0091",
+      "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0092",
+      "text": "1.TAG Composition and Terms of Reference",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0096",
+      "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0103",
+      "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0108",
+      "text": "Session V: Current Research",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0109",
+      "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0117",
+      "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0122",
+      "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0130",
+      "text": "4.Treatment of Negative Expenditures in ICP",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0135",
+      "text": "5.Fine Tuning Global Linking Procedures",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0148",
+      "text": "6.Improving Reliability of Price Comparisons",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0157",
+      "text": "Session VI: Any Other Business",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0160",
+      "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+      "role": "RUNNING_HEADER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0164",
+      "text": "SESSION III: Short- and Long-Term Research and Development Agenda",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0169",
+      "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces 14:00 \u2013 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0173",
+      "text": "SESSION V: Current Research",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0176",
+      "text": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0177",
+      "text": "SESSION V: Current Research (Cont\u2019d)",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0192",
+      "text": "SESSION VI: Closing",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0195",
+      "text": "Annex 2: List of Participants",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0196",
+      "text": "ICP Technical Advisory Group members",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0199",
+      "text": "ICP experts, guest speakers, and observers",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0202",
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0207",
+      "text": "World Bank",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ],
+  "passBHeadings": [
+    {
+      "source": "S0160",
+      "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+      "role": "DOCUMENT_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ],
+  "unionHeadings": [
+    {
+      "source": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "role": "DOCUMENT_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0005",
+      "text": "Session I: Welcome and meeting objectives",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0009",
+      "text": "Session II: Update on the ICP 2021 Cycle",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0010",
+      "text": "1.Global office update",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0034",
+      "text": "2.Regional updates",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0036",
+      "text": "Africa",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0039",
+      "text": "Asia and the Pacific",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0043",
+      "text": "Commonwealth of Independent States (CIS)",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0049",
+      "text": "Eurostat\u2013OECD PPP Program",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0052",
+      "text": "Latin America and the Caribbean",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0056",
+      "text": "Western Asia",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0062",
+      "text": "Session III: Short- and Long-Term Research and Development Agenda",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0063",
+      "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0080",
+      "text": "2.Forthcoming Research Topics",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0091",
+      "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0092",
+      "text": "1.TAG Composition and Terms of Reference",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0096",
+      "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0103",
+      "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0108",
+      "text": "Session V: Current Research",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0109",
+      "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0117",
+      "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0122",
+      "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0130",
+      "text": "4.Treatment of Negative Expenditures in ICP",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0135",
+      "text": "5.Fine Tuning Global Linking Procedures",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0148",
+      "text": "6.Improving Reliability of Price Comparisons",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0157",
+      "text": "Session VI: Any Other Business",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0160",
+      "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+      "role": "RUNNING_HEADER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0164",
+      "text": "SESSION III: Short- and Long-Term Research and Development Agenda",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0169",
+      "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces 14:00 \u2013 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0173",
+      "text": "SESSION V: Current Research",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0176",
+      "text": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0177",
+      "text": "SESSION V: Current Research (Cont\u2019d)",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0192",
+      "text": "SESSION VI: Closing",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0195",
+      "text": "Annex 2: List of Participants",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0196",
+      "text": "ICP Technical Advisory Group members",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0199",
+      "text": "ICP experts, guest speakers, and observers",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0202",
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0207",
+      "text": "World Bank",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0160",
+      "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+      "role": "DOCUMENT_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ],
+  "bindingObservations": [
+    {
+      "rawOrdinal": 0,
+      "heading": {
+        "source": "S0001",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "role": "DOCUMENT_TITLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0001",
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 47,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 1,
+      "heading": {
+        "source": "S0005",
+        "text": "Session I: Welcome and meeting objectives",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0005",
+      "sourceId": "body[1]/p[7]",
+      "start": 0,
+      "end": 41,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 2,
+      "heading": {
+        "source": "S0009",
+        "text": "Session II: Update on the ICP 2021 Cycle",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0009",
+      "sourceId": "body[1]/p[11]",
+      "start": 0,
+      "end": 40,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 3,
+      "heading": {
+        "source": "S0010",
+        "text": "1.Global office update",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0010",
+      "sourceId": "body[1]/p[12]",
+      "start": 0,
+      "end": 22,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 4,
+      "heading": {
+        "source": "S0034",
+        "text": "2.Regional updates",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0034",
+      "sourceId": "body[1]/p[22]",
+      "start": 0,
+      "end": 18,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 5,
+      "heading": {
+        "source": "S0036",
+        "text": "Africa",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0036",
+      "sourceId": "body[1]/p[24]",
+      "start": 0,
+      "end": 6,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 6,
+      "heading": {
+        "source": "S0039",
+        "text": "Asia and the Pacific",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0039",
+      "sourceId": "body[1]/p[27]",
+      "start": 0,
+      "end": 20,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 7,
+      "heading": {
+        "source": "S0043",
+        "text": "Commonwealth of Independent States (CIS)",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0043",
+      "sourceId": "body[1]/p[31]",
+      "start": 0,
+      "end": 40,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 8,
+      "heading": {
+        "source": "S0049",
+        "text": "Eurostat\u2013OECD PPP Program",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0049",
+      "sourceId": "body[1]/p[39]",
+      "start": 0,
+      "end": 25,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 9,
+      "heading": {
+        "source": "S0052",
+        "text": "Latin America and the Caribbean",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0052",
+      "sourceId": "body[1]/p[42]",
+      "start": 0,
+      "end": 31,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 10,
+      "heading": {
+        "source": "S0056",
+        "text": "Western Asia",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0056",
+      "sourceId": "body[1]/p[46]",
+      "start": 0,
+      "end": 12,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 11,
+      "heading": {
+        "source": "S0062",
+        "text": "Session III: Short- and Long-Term Research and Development Agenda",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0062",
+      "sourceId": "body[1]/p[54]",
+      "start": 0,
+      "end": 65,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 12,
+      "heading": {
+        "source": "S0063",
+        "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0063",
+      "sourceId": "body[1]/p[55]",
+      "start": 0,
+      "end": 55,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 13,
+      "heading": {
+        "source": "S0080",
+        "text": "2.Forthcoming Research Topics",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0080",
+      "sourceId": "body[1]/p[62]",
+      "start": 0,
+      "end": 29,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 14,
+      "heading": {
+        "source": "S0091",
+        "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0091",
+      "sourceId": "body[1]/p[75]",
+      "start": 0,
+      "end": 66,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 15,
+      "heading": {
+        "source": "S0092",
+        "text": "1.TAG Composition and Terms of Reference",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0092",
+      "sourceId": "body[1]/p[76]",
+      "start": 0,
+      "end": 40,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 16,
+      "heading": {
+        "source": "S0096",
+        "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0096",
+      "sourceId": "body[1]/p[80]",
+      "start": 0,
+      "end": 62,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 17,
+      "heading": {
+        "source": "S0103",
+        "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0103",
+      "sourceId": "body[1]/p[89]",
+      "start": 0,
+      "end": 66,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 18,
+      "heading": {
+        "source": "S0108",
+        "text": "Session V: Current Research",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0108",
+      "sourceId": "body[1]/p[94]",
+      "start": 0,
+      "end": 27,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 19,
+      "heading": {
+        "source": "S0109",
+        "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0109",
+      "sourceId": "body[1]/p[95]",
+      "start": 0,
+      "end": 72,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 20,
+      "heading": {
+        "source": "S0117",
+        "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0117",
+      "sourceId": "body[1]/p[105]",
+      "start": 0,
+      "end": 110,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 21,
+      "heading": {
+        "source": "S0122",
+        "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0122",
+      "sourceId": "body[1]/p[110]",
+      "start": 0,
+      "end": 84,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 22,
+      "heading": {
+        "source": "S0130",
+        "text": "4.Treatment of Negative Expenditures in ICP",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0130",
+      "sourceId": "body[1]/p[120]",
+      "start": 0,
+      "end": 43,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 23,
+      "heading": {
+        "source": "S0135",
+        "text": "5.Fine Tuning Global Linking Procedures",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0135",
+      "sourceId": "body[1]/p[125]",
+      "start": 0,
+      "end": 39,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 24,
+      "heading": {
+        "source": "S0148",
+        "text": "6.Improving Reliability of Price Comparisons",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0148",
+      "sourceId": "body[1]/p[142]",
+      "start": 0,
+      "end": 44,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 25,
+      "heading": {
+        "source": "S0157",
+        "text": "Session VI: Any Other Business",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0157",
+      "sourceId": "body[1]/p[151]",
+      "start": 0,
+      "end": 30,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 26,
+      "heading": {
+        "source": "S0160",
+        "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+        "role": "RUNNING_HEADER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0160",
+      "sourceId": "body[1]/p[157]",
+      "start": 0,
+      "end": 100,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 27,
+      "heading": {
+        "source": "S0161",
+        "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0161",
+      "sourceId": "body[1]/p[158]",
+      "start": 56,
+      "end": 274,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 28,
+      "heading": {
+        "source": "S0164",
+        "text": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0164",
+      "sourceId": "body[1]/p[159]",
+      "start": 0,
+      "end": 65,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 29,
+      "heading": {
+        "source": "S0169",
+        "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces 14:00 \u2013 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0169",
+      "sourceId": "body[1]/p[160]",
+      "start": 0,
+      "end": 133,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 30,
+      "heading": {
+        "source": "S0173",
+        "text": "SESSION V: Current Research",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0173",
+      "sourceId": "body[1]/p[166]",
+      "start": 0,
+      "end": 27,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 31,
+      "heading": {
+        "source": "S0176",
+        "text": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0176",
+      "sourceId": "body[1]/p[167]",
+      "start": 0,
+      "end": 51,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 32,
+      "heading": {
+        "source": "S0177",
+        "text": "SESSION V: Current Research (Cont\u2019d)",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0177",
+      "sourceId": "body[1]/p[168]",
+      "start": 0,
+      "end": 36,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 33,
+      "heading": {
+        "source": "S0192",
+        "text": "SESSION VI: Closing",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0192",
+      "sourceId": "body[1]/p[169]",
+      "start": 0,
+      "end": 19,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 34,
+      "heading": {
+        "source": "S0195",
+        "text": "Annex 2: List of Participants",
+        "role": "ANNEX_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0195",
+      "sourceId": "body[1]/p[174]",
+      "start": 0,
+      "end": 29,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 35,
+      "heading": {
+        "source": "S0196",
+        "text": "ICP Technical Advisory Group members",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0196",
+      "sourceId": "body[1]/p[175]",
+      "start": 0,
+      "end": 36,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 36,
+      "heading": {
+        "source": "S0199",
+        "text": "ICP experts, guest speakers, and observers",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0199",
+      "sourceId": "body[1]/p[176]",
+      "start": 0,
+      "end": 42,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 37,
+      "heading": {
+        "source": "S0202",
+        "text": "ICP Inter-Agency Coordination Group (IACG)",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0202",
+      "sourceId": "body[1]/p[177]",
+      "start": 0,
+      "end": 42,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 38,
+      "heading": {
+        "source": "S0207",
+        "text": "World Bank",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0207",
+      "sourceId": "body[1]/p[178]",
+      "start": 0,
+      "end": 10,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 39,
+      "heading": {
+        "source": "S0160",
+        "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+        "role": "DOCUMENT_TITLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 7,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0160",
+      "sourceId": "body[1]/p[157]",
+      "start": 0,
+      "end": 100,
+      "failureReason": "DUPLICATE_PROPOSAL"
+    },
+    {
+      "rawOrdinal": 40,
+      "heading": {
+        "source": "S0161",
+        "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 7,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0161",
+      "sourceId": "body[1]/p[158]",
+      "start": 56,
+      "end": 274,
+      "failureReason": "DUPLICATE_PROPOSAL"
+    }
+  ],
+  "boundHeadings": [
+    {
+      "alias": "S0001",
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 2,
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "role": "DOCUMENT_TITLE",
+      "start": 0,
+      "end": 47
+    },
+    {
+      "alias": "S0005",
+      "sourceId": "body[1]/p[7]",
+      "sourceOrdinal": 6,
+      "text": "Session I: Welcome and meeting objectives",
+      "role": "SECTION",
+      "start": 0,
+      "end": 41
+    },
+    {
+      "alias": "S0009",
+      "sourceId": "body[1]/p[11]",
+      "sourceOrdinal": 10,
+      "text": "Session II: Update on the ICP 2021 Cycle",
+      "role": "SECTION",
+      "start": 0,
+      "end": 40
+    },
+    {
+      "alias": "S0010",
+      "sourceId": "body[1]/p[12]",
+      "sourceOrdinal": 11,
+      "text": "1.Global office update",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 22
+    },
+    {
+      "alias": "S0034",
+      "sourceId": "body[1]/p[22]",
+      "sourceOrdinal": 39,
+      "text": "2.Regional updates",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 18
+    },
+    {
+      "alias": "S0036",
+      "sourceId": "body[1]/p[24]",
+      "sourceOrdinal": 41,
+      "text": "Africa",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 6
+    },
+    {
+      "alias": "S0039",
+      "sourceId": "body[1]/p[27]",
+      "sourceOrdinal": 44,
+      "text": "Asia and the Pacific",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 20
+    },
+    {
+      "alias": "S0043",
+      "sourceId": "body[1]/p[31]",
+      "sourceOrdinal": 48,
+      "text": "Commonwealth of Independent States (CIS)",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 40
+    },
+    {
+      "alias": "S0049",
+      "sourceId": "body[1]/p[39]",
+      "sourceOrdinal": 56,
+      "text": "Eurostat\u2013OECD PPP Program",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 25
+    },
+    {
+      "alias": "S0052",
+      "sourceId": "body[1]/p[42]",
+      "sourceOrdinal": 59,
+      "text": "Latin America and the Caribbean",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 31
+    },
+    {
+      "alias": "S0056",
+      "sourceId": "body[1]/p[46]",
+      "sourceOrdinal": 63,
+      "text": "Western Asia",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 12
+    },
+    {
+      "alias": "S0062",
+      "sourceId": "body[1]/p[54]",
+      "sourceOrdinal": 71,
+      "text": "Session III: Short- and Long-Term Research and Development Agenda",
+      "role": "SECTION",
+      "start": 0,
+      "end": 65
+    },
+    {
+      "alias": "S0063",
+      "sourceId": "body[1]/p[55]",
+      "sourceOrdinal": 72,
+      "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 55
+    },
+    {
+      "alias": "S0080",
+      "sourceId": "body[1]/p[62]",
+      "sourceOrdinal": 91,
+      "text": "2.Forthcoming Research Topics",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 29
+    },
+    {
+      "alias": "S0091",
+      "sourceId": "body[1]/p[75]",
+      "sourceOrdinal": 104,
+      "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "role": "SECTION",
+      "start": 0,
+      "end": 66
+    },
+    {
+      "alias": "S0092",
+      "sourceId": "body[1]/p[76]",
+      "sourceOrdinal": 105,
+      "text": "1.TAG Composition and Terms of Reference",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 40
+    },
+    {
+      "alias": "S0096",
+      "sourceId": "body[1]/p[80]",
+      "sourceOrdinal": 109,
+      "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 62
+    },
+    {
+      "alias": "S0103",
+      "sourceId": "body[1]/p[89]",
+      "sourceOrdinal": 118,
+      "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 66
+    },
+    {
+      "alias": "S0108",
+      "sourceId": "body[1]/p[94]",
+      "sourceOrdinal": 123,
+      "text": "Session V: Current Research",
+      "role": "SECTION",
+      "start": 0,
+      "end": 27
+    },
+    {
+      "alias": "S0109",
+      "sourceId": "body[1]/p[95]",
+      "sourceOrdinal": 124,
+      "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 72
+    },
+    {
+      "alias": "S0117",
+      "sourceId": "body[1]/p[105]",
+      "sourceOrdinal": 134,
+      "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 110
+    },
+    {
+      "alias": "S0122",
+      "sourceId": "body[1]/p[110]",
+      "sourceOrdinal": 139,
+      "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 84
+    },
+    {
+      "alias": "S0130",
+      "sourceId": "body[1]/p[120]",
+      "sourceOrdinal": 149,
+      "text": "4.Treatment of Negative Expenditures in ICP",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 43
+    },
+    {
+      "alias": "S0135",
+      "sourceId": "body[1]/p[125]",
+      "sourceOrdinal": 154,
+      "text": "5.Fine Tuning Global Linking Procedures",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 39
+    },
+    {
+      "alias": "S0148",
+      "sourceId": "body[1]/p[142]",
+      "sourceOrdinal": 171,
+      "text": "6.Improving Reliability of Price Comparisons",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 44
+    },
+    {
+      "alias": "S0157",
+      "sourceId": "body[1]/p[151]",
+      "sourceOrdinal": 180,
+      "text": "Session VI: Any Other Business",
+      "role": "SECTION",
+      "start": 0,
+      "end": 30
+    },
+    {
+      "alias": "S0160",
+      "sourceId": "body[1]/p[157]",
+      "sourceOrdinal": 186,
+      "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+      "role": "RUNNING_HEADER",
+      "start": 0,
+      "end": 100
+    },
+    {
+      "alias": "S0161",
+      "sourceId": "body[1]/p[158]",
+      "sourceOrdinal": 187,
+      "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "start": 56,
+      "end": 274
+    },
+    {
+      "alias": "S0164",
+      "sourceId": "body[1]/p[159]",
+      "sourceOrdinal": 190,
+      "text": "SESSION III: Short- and Long-Term Research and Development Agenda",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "start": 0,
+      "end": 65
+    },
+    {
+      "alias": "S0169",
+      "sourceId": "body[1]/p[160]",
+      "sourceOrdinal": 195,
+      "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces 14:00 \u2013 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "start": 0,
+      "end": 133
+    },
+    {
+      "alias": "S0173",
+      "sourceId": "body[1]/p[166]",
+      "sourceOrdinal": 201,
+      "text": "SESSION V: Current Research",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "start": 0,
+      "end": 27
+    },
+    {
+      "alias": "S0176",
+      "sourceId": "body[1]/p[167]",
+      "sourceOrdinal": 204,
+      "text": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "start": 0,
+      "end": 51
+    },
+    {
+      "alias": "S0177",
+      "sourceId": "body[1]/p[168]",
+      "sourceOrdinal": 205,
+      "text": "SESSION V: Current Research (Cont\u2019d)",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "start": 0,
+      "end": 36
+    },
+    {
+      "alias": "S0192",
+      "sourceId": "body[1]/p[169]",
+      "sourceOrdinal": 223,
+      "text": "SESSION VI: Closing",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "start": 0,
+      "end": 19
+    },
+    {
+      "alias": "S0195",
+      "sourceId": "body[1]/p[174]",
+      "sourceOrdinal": 228,
+      "text": "Annex 2: List of Participants",
+      "role": "ANNEX_HEADING",
+      "start": 0,
+      "end": 29
+    },
+    {
+      "alias": "S0196",
+      "sourceId": "body[1]/p[175]",
+      "sourceOrdinal": 229,
+      "text": "ICP Technical Advisory Group members",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 36
+    },
+    {
+      "alias": "S0199",
+      "sourceId": "body[1]/p[176]",
+      "sourceOrdinal": 232,
+      "text": "ICP experts, guest speakers, and observers",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 42
+    },
+    {
+      "alias": "S0202",
+      "sourceId": "body[1]/p[177]",
+      "sourceOrdinal": 235,
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 42
+    },
+    {
+      "alias": "S0207",
+      "sourceId": "body[1]/p[178]",
+      "sourceOrdinal": 240,
+      "text": "World Bank",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 10
+    }
+  ],
+  "validatorAccepted": 38,
+  "validatorRejected": 1,
+  "finalHeadings": [
+    {
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 47,
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "role": 3
+    },
+    {
+      "sourceId": "body[1]/p[7]",
+      "start": 0,
+      "end": 41,
+      "text": "Session I: Welcome and meeting objectives",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "start": 0,
+      "end": 40,
+      "text": "Session II: Update on the ICP 2021 Cycle",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[12]",
+      "start": 0,
+      "end": 22,
+      "text": "1.Global office update",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[22]",
+      "start": 0,
+      "end": 18,
+      "text": "2.Regional updates",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[24]",
+      "start": 0,
+      "end": 6,
+      "text": "Africa",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[27]",
+      "start": 0,
+      "end": 20,
+      "text": "Asia and the Pacific",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[31]",
+      "start": 0,
+      "end": 40,
+      "text": "Commonwealth of Independent States (CIS)",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[39]",
+      "start": 0,
+      "end": 25,
+      "text": "Eurostat\u2013OECD PPP Program",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[42]",
+      "start": 0,
+      "end": 31,
+      "text": "Latin America and the Caribbean",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[46]",
+      "start": 0,
+      "end": 12,
+      "text": "Western Asia",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[54]",
+      "start": 0,
+      "end": 65,
+      "text": "Session III: Short- and Long-Term Research and Development Agenda",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[55]",
+      "start": 0,
+      "end": 55,
+      "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[62]",
+      "start": 0,
+      "end": 29,
+      "text": "2.Forthcoming Research Topics",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[75]",
+      "start": 0,
+      "end": 66,
+      "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[76]",
+      "start": 0,
+      "end": 40,
+      "text": "1.TAG Composition and Terms of Reference",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[80]",
+      "start": 0,
+      "end": 62,
+      "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[89]",
+      "start": 0,
+      "end": 66,
+      "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[94]",
+      "start": 0,
+      "end": 27,
+      "text": "Session V: Current Research",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[95]",
+      "start": 0,
+      "end": 72,
+      "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[105]",
+      "start": 0,
+      "end": 110,
+      "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[110]",
+      "start": 0,
+      "end": 84,
+      "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[120]",
+      "start": 0,
+      "end": 43,
+      "text": "4.Treatment of Negative Expenditures in ICP",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[125]",
+      "start": 0,
+      "end": 39,
+      "text": "5.Fine Tuning Global Linking Procedures",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[142]",
+      "start": 0,
+      "end": 44,
+      "text": "6.Improving Reliability of Price Comparisons",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[151]",
+      "start": 0,
+      "end": 30,
+      "text": "Session VI: Any Other Business",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[174]",
+      "start": 0,
+      "end": 29,
+      "text": "Annex 2: List of Participants",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[175]",
+      "start": 0,
+      "end": 36,
+      "text": "ICP Technical Advisory Group members",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[176]",
+      "start": 0,
+      "end": 42,
+      "text": "ICP experts, guest speakers, and observers",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[177]",
+      "start": 0,
+      "end": 42,
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[178]",
+      "start": 0,
+      "end": 10,
+      "text": "World Bank",
+      "role": 0
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

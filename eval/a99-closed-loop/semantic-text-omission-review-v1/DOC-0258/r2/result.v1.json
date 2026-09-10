@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "a99-semantic-text-omission-review-result-v1",
+  "documentId": "DOC-0258",
+  "repeat": "r2",
+  "model": "qwen/qwen3.7-flash",
+  "headings": [
+    {
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 87,
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "role": 3
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 0,
+      "end": 17,
+      "text": "MAY 15 - 18, 2023",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "start": 0,
+      "end": 14,
+      "text": "Hybrid meeting",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[6]",
+      "start": 0,
+      "end": 30,
+      "text": "Welcome and meeting objectives",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[10]",
+      "start": 0,
+      "end": 53,
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[17]",
+      "start": 0,
+      "end": 25,
+      "text": "Eurostat\u2013OECD PPP Program",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[25]",
+      "start": 0,
+      "end": 51,
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[39]",
+      "start": 0,
+      "end": 60,
+      "text": "Data review: Household consumption price and importance data",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[48]",
+      "start": 0,
+      "end": 39,
+      "text": "Data review: Housing prices and volumes",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[50]",
+      "start": 0,
+      "end": 30,
+      "text": "Data review: Private Education",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[56]",
+      "start": 0,
+      "end": 64,
+      "text": "Data review: Government compensation and productivity adjustment",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[59]",
+      "start": 0,
+      "end": 53,
+      "text": "Data review: Machinery and equipment and construction",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[62]",
+      "start": 0,
+      "end": 53,
+      "text": "Data review: 2017-2021 National Accounts expenditures",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[70]",
+      "start": 0,
+      "end": 59,
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[72]",
+      "start": 0,
+      "end": 51,
+      "text": "Results review: draft revised 2017 and 2021 results",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[74]",
+      "start": 0,
+      "end": 31,
+      "text": "Planning for the ICP 2024 cycle",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[84]",
+      "start": 0,
+      "end": 70,
+      "text": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[91]",
+      "start": 0,
+      "end": 68,
+      "text": "Planning for an approach to produce annual ICP results and forecasts",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[96]",
+      "start": 0,
+      "end": 18,
+      "text": "Any other business",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[102]",
+      "start": 0,
+      "end": 23,
+      "text": "Annex 1: Meeting Agenda",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[115]",
+      "start": 0,
+      "end": 230,
+      "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "role": 0
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

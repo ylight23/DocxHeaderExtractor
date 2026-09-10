@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "a99-semantic-text-omission-review-freeze-v1",
+  "documentId": "DOC-0258",
+  "repeat": "r2",
+  "gitSha": "d1f850428157001441d65b7955906b99384f66c9",
+  "model": "qwen/qwen3.7-flash",
+  "actualProvider": "Alibaba",
+  "baseContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "reviewPromptHash": "cf1597aed817aa8b5b577ad7dd308be159ecb4bcfaff762eb5a5f9a3f6094b4b",
+  "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+  "passAHash": "36c0b54a7aadf8fb131174bf8fb27796c278b8a20325970020460a1bdb600987",
+  "passBResponseHash": "69766a9d9a8aec5b143a392120e77f54bc9806ee68b70c470001c4896e72c4bf",
+  "predictionSha256": "98c453f5ded6032c421d367c0a970f4b3850350626fffbf1374309871f698c3e",
+  "resultSha256": "56b55c8d42ac7674c0f8c617f4f065f5b87f2c01088e4b10ccf695f5cefb6135",
+  "rawPassACount": 53,
+  "rawPassBCount": 2,
+  "unionCount": 55,
+  "boundProposalCount": 49,
+  "finalCount": 21,
+  "providerAttempts": 1,
+  "inputTokens": 14003,
+  "reasoningTokens": 6299,
+  "outputTokens": 6404,
+  "finishReason": "stop",
+  "reasoningConfiguration": {
+    "requested": true,
+    "enabled": true,
+    "excluded": true,
+    "effort": "MODEL_DEFAULT"
+  },
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-10T09:10:49.1124433+00:00"
+}

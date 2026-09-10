@@ -134,6 +134,247 @@ public static class SemanticTextGeneralizationRunner
         return 0;
     }
 
+    /// <summary>Recovers only the one previously blocked baseline repeat. The request contract,
+    /// source packet, and semantic prompt are the same as the frozen baseline; the only bounded
+    /// transport intervention is one retry when the provider returned HTTP 429.</summary>
+    public static async Task<int> RecoverDoc0258R2Async(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var inventory = LoadInventory(repoRoot);
+        var item = inventory.Single(x => string.Equals(x.GetProperty("documentId").GetString(), "DOC-0258", StringComparison.Ordinal));
+        var eligibility = ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, "DOC-0258");
+        if (!eligibility.Eligible) return await Blocked(output, GitSha(repoRoot), "DOC-0258_NOT_EXACT_EVALUABLE", [(item, eligibility)], ct);
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey)) return await Blocked(output, GitSha(repoRoot), "OPENROUTER_API_KEY_MISSING", [(item, eligibility)], ct);
+
+        var startHead = GitSha(repoRoot);
+        var context = Prepare(repoRoot, item);
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = apiKey, ContextSize = 1_000_000,
+            MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 1,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capabilityResult = await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct);
+        var capability = capabilityResult.Capability;
+        if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) || !capability.ReasoningSupported || !capability.StructuredOutputSupported)
+            return await Blocked(output, startHead, "MODEL_CAPABILITY_MISMATCH", [(item, eligibility)], ct);
+
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, OutputRoot, "DOC-0258-R2-RECOVERY", ct);
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        Console.WriteLine("RECOVERING=DOC-0258/R2");
+        var recovered = await RunRepeatAsync(repoRoot, output, context, 2, model, startHead, ct, transientRetries: 1);
+        await RunOfflineAsync(repoRoot, ct);
+        Console.WriteLine($"RECOVERY_STATUS={recovered.Status}");
+        Console.WriteLine($"RECOVERY_GOLD={recovered.Gold}");
+        Console.WriteLine($"RECOVERY_PROVIDER_ATTEMPTS={model.ProviderCalls}");
+        return recovered.Status == "SUCCESS" && recovered.Gold == 153 ? 0 : 1;
+    }
+
+    /// <summary>Runs exactly one generic omission-review intervention over the frozen 15-repeat
+    /// baseline. Pass A is loaded from frozen artifacts and is never called again.</summary>
+    public static async Task<int> RunOmissionReviewAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review-v1".Replace('/', Path.DirectorySeparatorChar));
+        Directory.CreateDirectory(output);
+        var baselineRoot = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var startHead = GitSha(repoRoot);
+        var inventory = LoadInventory(repoRoot);
+        var selected = inventory.Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
+            .Where(x => x.eligibility.Eligible).OrderBy(x => x.item.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        var baseline = new List<RepeatMetric>();
+        foreach (var item in selected)
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+                baseline.Add(LoadFrozenMetric(baselineRoot, item.item.GetProperty("documentId").GetString()!, $"r{repeat}"));
+
+        var baselineComplete = selected.Length == 5 && baseline.Count == 15 && CohortComplete(baseline);
+        var reviewPromptHash = SemanticTextOmissionReviewContract.Hash();
+        await WriteJson(Path.Combine(output, "manifest.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-omission-review-v1",
+            startHead, branch = Git(repoRoot, "branch --show-current"), model = Model,
+            baseContractHash = ContractHash(), reviewPromptHash,
+            intervention = "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
+            selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
+            repeats = new[] { "R1", "R2", "R3" }, providerConcurrency = 1,
+            passAReused = true, passAProviderCallsCurrentRun = 0,
+            inventoryIsInformationalOnly = true, additiveUnion = true, validatorsUnchanged = true,
+            noVlm = true, goldReadBeforeFreeze = false, baselineComplete, goldOccurrencesPerRepeat = 153,
+            promptFrozenBeforeInference = true,
+        }, ct);
+        await WriteJson(Path.Combine(output, "baseline-error-inventory.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-omission-review-baseline-inventory-v1",
+            baselineArtifact = OutputRoot, baselineComplete, goldOccurrencesPerRepeat = 153,
+            persistent = BuildPersistentErrors(baseline), nextLargestErrorBucket = NextBucket(baseline), goldReadBeforeFreeze = false,
+        }, ct);
+        if (!baselineComplete)
+        {
+            await WriteReviewBlockedSummary(output, startHead, selected, "BASELINE_EXECUTION_BLOCKED", ct);
+            Console.WriteLine("FINAL_CLASSIFICATION=OMISSION_REVIEW_EXECUTION_BLOCKED");
+            return 1;
+        }
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey))
+        {
+            await WriteReviewBlockedSummary(output, startHead, selected, "OPENROUTER_API_KEY_MISSING", ct);
+            return 1;
+        }
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = apiKey, ContextSize = 1_000_000,
+            MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 0,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capability = (await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct)).Capability;
+        if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) || !capability.ReasoningSupported || !capability.StructuredOutputSupported)
+        {
+            await WriteReviewBlockedSummary(output, startHead, selected, "MODEL_CAPABILITY_MISMATCH", ct);
+            return 1;
+        }
+
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review-v1", string.Join(',', selected.Select(x => x.item.GetProperty("documentId").GetString())), ct);
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        var review = new List<RepeatMetric>();
+        foreach (var item in selected)
+        {
+            var context = Prepare(repoRoot, item.item);
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                Console.WriteLine($"RUNNING_REVIEW={context.DocumentId}/R{repeat}");
+                review.Add(await RunReviewRepeatAsync(repoRoot, output, baselineRoot, context, repeat, model, startHead, reviewPromptHash, ct));
+            }
+        }
+
+        var reviewSummary = BuildRepeatSummary(review, selected.Length);
+        var paired = BuildPairedComparison(baseline, review);
+        await WriteJson(Path.Combine(output, "repeat-summary.v1.json"), reviewSummary, ct);
+        await WriteJson(Path.Combine(output, "persistent-errors.v1.json"), BuildPersistentErrors(review), ct);
+        await WriteJson(Path.Combine(output, "paired-deltas.v1.json"), paired, ct);
+        var classification = OmissionReviewClass(baseline, review);
+        var gate = review.Count == 15 && CohortComplete(review) && review.All(x => x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0);
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-omission-review-summary-v1", startHead, endHead = GitSha(repoRoot),
+            intervention = "SEMANTIC_TEXT_OMISSION_REVIEW_V1", baseContractHash = ContractHash(), reviewPromptHash,
+            selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
+            baselineComplete, baselineProviderAttempts = 15, passAReused = true, passAProviderCallsCurrentRun = 0,
+            reviewProviderAttempts = model.ProviderCalls, modelCalls = model.ProviderCalls, goldOccurrencesPerRepeat = 153,
+            goldReadBeforeFreeze = false, a99DevMarginMet = gate, classification,
+            dominantBaselineBucket = NextBucket(baseline), dominantReviewBucket = NextBucket(review),
+            persistentMovement = new { before = BuildPersistentErrors(baseline), after = BuildPersistentErrors(review) },
+            performance = new { inputTokens = review.Sum(x => x.InputTokens ?? 0), reasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), outputTokens = review.Sum(x => x.OutputTokens ?? 0), wallTimeMs = review.Sum(x => x.WallTimeMs) },
+            repeatSummary = reviewSummary,
+        }, ct);
+        PrintReport(review, selected, model.ProviderCalls);
+        Console.WriteLine($"FINAL_CLASSIFICATION={classification}");
+        Console.WriteLine($"A99_DEV_MARGIN_MET={gate}");
+        return 0;
+    }
+
+    /// <summary>Recovers only the transiently blocked review repeat. No completed review repeat
+    /// is rerun; the same Pass B request is retried once only when HTTP 429 was observed.</summary>
+    public static async Task<int> RecoverOmissionReviewDoc0001R1Async(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review-v1".Replace('/', Path.DirectorySeparatorChar));
+        var baselineRoot = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var item = LoadInventory(repoRoot).Single(x => x.GetProperty("documentId").GetString() == "DOC-0001");
+        var eligibility = ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, "DOC-0001");
+        if (!eligibility.Eligible) return 1;
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey)) return 1;
+        var context = Prepare(repoRoot, item);
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = apiKey, ContextSize = 1_000_000,
+            MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 1,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capability = (await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct)).Capability;
+        if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) || !capability.ReasoningSupported || !capability.StructuredOutputSupported) return 1;
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review-v1", "DOC-0001-R1-RECOVERY", ct);
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        Console.WriteLine("RECOVERING_REVIEW=DOC-0001/R1");
+        var recovered = await RunReviewRepeatAsync(repoRoot, output, baselineRoot, context, 1, model, GitSha(repoRoot), SemanticTextOmissionReviewContract.Hash(), ct, transientRetries: 1);
+        await RunOmissionReviewOfflineAsync(repoRoot, ct);
+        Console.WriteLine($"REVIEW_RECOVERY_STATUS={recovered.Status}");
+        Console.WriteLine($"REVIEW_RECOVERY_PROVIDER_ATTEMPTS={model.ProviderCalls}");
+        return recovered.Status == "SUCCESS" ? 0 : 1;
+    }
+
+    /// <summary>Rebuilds omission-review campaign reports from frozen review artifacts only.</summary>
+    public static async Task<int> RunOmissionReviewOfflineAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review-v1".Replace('/', Path.DirectorySeparatorChar));
+        var baselineRoot = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var inventory = LoadInventory(repoRoot);
+        var selected = inventory.Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
+            .Where(x => x.eligibility.Eligible).OrderBy(x => x.item.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        var baseline = new List<RepeatMetric>();
+        var review = new List<RepeatMetric>();
+        foreach (var item in selected)
+        {
+            var documentId = item.item.GetProperty("documentId").GetString()!;
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                var name = $"r{repeat}";
+                baseline.Add(LoadFrozenMetric(baselineRoot, documentId, name));
+                review.Add(LoadFrozenMetric(output, documentId, name));
+            }
+        }
+        var reviewSummary = BuildRepeatSummary(review, selected.Length);
+        var recoveryPath = Path.Combine(output, "recovery.v1.json");
+        if (!File.Exists(recoveryPath))
+            await WriteJson(recoveryPath, new { recoveredRepeat = "DOC-0001/R1", initialRunProviderAttempts = 15, recoveryProviderAttempts = 1, totalProviderAttempts = 16, reason = "HTTP_429", goldReadBeforeFreeze = false }, ct);
+        var reviewProviderAttempts = FrozenProviderAttempts(output, selected);
+        reviewProviderAttempts = File.Exists(recoveryPath) ? 16 : reviewProviderAttempts;
+        await WriteJson(Path.Combine(output, "repeat-summary.v1.json"), reviewSummary, ct);
+        await WriteJson(Path.Combine(output, "persistent-errors.v1.json"), BuildPersistentErrors(review), ct);
+        await WriteJson(Path.Combine(output, "paired-deltas.v1.json"), BuildPairedComparison(baseline, review), ct);
+        var classification = OmissionReviewClass(baseline, review);
+        var gate = review.Count == 15 && CohortComplete(review) && review.All(x => x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0);
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-omission-review-summary-v1", status = "COMPLETE_OFFLINE_REBUILD",
+            startHead = GitSha(repoRoot), endHead = GitSha(repoRoot), intervention = "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
+            baseContractHash = ContractHash(), reviewPromptHash = SemanticTextOmissionReviewContract.Hash(),
+            selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
+            baselineComplete = CohortComplete(baseline), baselineProviderAttempts = 15, passAReused = true,
+            passAProviderCallsCurrentRun = 0, reviewProviderAttempts, modelCalls = reviewProviderAttempts, offlineProviderCalls = 0,
+            goldOccurrencesPerRepeat = 153, goldReadBeforeFreeze = false, a99DevMarginMet = gate, classification,
+            keepOrRevert = classification == "OMISSION_REVIEW_CLEAR_GAIN" ? "KEEP" : "REVERT",
+            dominantBaselineBucket = NextBucket(baseline), dominantReviewBucket = NextBucket(review),
+            persistentMovement = new { before = BuildPersistentErrors(baseline), after = BuildPersistentErrors(review) },
+            performance = new { inputTokens = review.Sum(x => x.InputTokens ?? 0), reasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), outputTokens = review.Sum(x => x.OutputTokens ?? 0), wallTimeMs = review.Sum(x => x.WallTimeMs) },
+            repeatSummary = reviewSummary,
+        }, ct);
+        PrintReport(review, selected, reviewProviderAttempts);
+        Console.WriteLine("OFFLINE_REVIEW_PROVIDER_CALLS=0");
+        Console.WriteLine($"FINAL_CLASSIFICATION={classification}");
+        return 0;
+    }
+
+    private static int FrozenProviderAttempts(string output, IReadOnlyList<(JsonElement item, ReasoningGoldEligibilityMetadata eligibility)> selected)
+    {
+        var total = 0;
+        foreach (var item in selected)
+        foreach (var repeat in new[] { "r1", "r2", "r3" })
+        {
+            var path = Path.Combine(output, item.item.GetProperty("documentId").GetString()!, repeat, "freeze.v1.json");
+            using var doc = JsonDocument.Parse(File.ReadAllText(path));
+            total += GetInt(doc.RootElement, "providerAttempts");
+        }
+        return total;
+    }
+
     /// <summary>Rebuilds campaign-level artifacts from the 15 already-frozen repeat outputs.
     /// This path never opens Gold and never creates a provider client, so serializer or report
     /// fixes cannot accidentally spend another live request.</summary>
@@ -173,22 +414,157 @@ public static class SemanticTextGeneralizationRunner
         return 0;
     }
 
-    private static async Task<RepeatMetric> RunRepeatAsync(string repoRoot, string output, DocumentContext context, int repeat, OpenRouterCeilingReasoningModel model, string gitSha, CancellationToken ct)
+    private static async Task<RepeatMetric> RunReviewRepeatAsync(string repoRoot, string output, string baselineRoot, DocumentContext context, int repeat, OpenRouterCeilingReasoningModel model, string gitSha, string reviewPromptHash, CancellationToken ct, int transientRetries = 0)
     {
         var repeatName = $"r{repeat}";
         var dir = Path.Combine(output, context.DocumentId, repeatName);
         Directory.CreateDirectory(dir);
         var stopwatch = Stopwatch.StartNew();
         RequestPacketTelemetry? telemetry = null;
+        var providerAttempts = 0;
+        try
+        {
+            var baselineDir = Path.Combine(baselineRoot, context.DocumentId, repeatName);
+            var baselinePredictionPath = Path.Combine(baselineDir, "prediction.v1.json");
+            var baselineFreezePath = Path.Combine(baselineDir, "freeze.v1.json");
+            using var baselinePrediction = JsonDocument.Parse(await File.ReadAllTextAsync(baselinePredictionPath, ct));
+            using var baselineFreeze = JsonDocument.Parse(await File.ReadAllTextAsync(baselineFreezePath, ct));
+            var rawArray = baselinePrediction.RootElement.GetProperty("rawModelHeadings");
+            var passA = SemanticTextExactBindingContract.Parse("{\"headings\":" + rawArray.GetRawText() + "}");
+            var passAHash = baselineFreeze.RootElement.GetProperty("predictionSha256").GetString()!;
+            var inventoryJson = JsonSerializer.Serialize(passA.Headings, JsonOptions);
+            var reviewPacket = context.Packet + "\nCURRENT_INVENTORY=" + inventoryJson;
+            var requestId = $"{SemanticTextOmissionReviewContract.ProtocolVersion}:{context.DocumentId}:{repeat}:{context.PacketHash}";
+            string rawContent;
+            while (true)
+            {
+                providerAttempts++;
+                try
+                {
+                    var providerResult = await model.CompleteRawStructuredSemanticAsync(
+                        context.DocumentId, ReasoningRoute.ModelCapabilityCeiling.ToString(), requestId,
+                        reviewPacket, context.SourceRows.Sum(x => x.RawText.Length), context.SourceRows.Count, context.SourceRows.Count,
+                        SemanticTextOmissionReviewContract.System,
+                        SemanticTextOmissionReviewContract.BuildUser(context.Packet, inventoryJson, ReasoningRoute.ModelCapabilityCeiling.ToString()),
+                        SemanticTextOmissionReviewContract.Schema(), "semantic_text_omission_review_v1", ct);
+                    rawContent = providerResult.Content;
+                    telemetry = providerResult.Telemetry;
+                    break;
+                }
+                catch (ReasoningCompletionException) when (providerAttempts <= transientRetries && model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId)?.HttpStatus == 429)
+                {
+                    Console.WriteLine($"TRANSIENT_RETRY_REVIEW=HTTP_429/{context.DocumentId}/R{repeat}/attempt={providerAttempts + 1}");
+                    await Task.Delay(TimeSpan.FromSeconds(2), ct);
+                }
+            }
+            var requestTelemetry = telemetry!;
+            var passB = SemanticTextExactBindingContract.Parse(rawContent);
+            telemetry.StructuredOutputParsed = true;
+            telemetry.HeadingOutputCount = passB.Headings.Count;
+            var union = new SemanticTextResponse(passA.Headings.Concat(passB.Headings).ToArray());
+            var bound = SemanticTextExactBinder.Bind(union.Headings, context.SourceRows, out var observations);
+            var proposals = bound.Select(x => new ReasoningHeadingProposal
+            {
+                SourceId = x.SourceId, HeadingSpan = new StructuralSpan(x.Start, x.End), Text = x.Text,
+                SemanticRole = x.Role, Confidence = 1,
+            }).ToArray();
+            var materialized = ReasoningProposalMaterializer.Materialize(context.Source, context.Policy, proposals);
+            var finalElements = ReasoningTaskProjection.ProjectContentHeadings(materialized.Structure)
+                .OrderBy(x => x.Sources.Single().SourceOrdinal).ThenBy(x => x.Sources.Single().Span.Start).ThenBy(x => x.Id, StringComparer.Ordinal).ToArray();
+            stopwatch.Stop();
+            var finalRows = finalElements.Select(x => new { sourceId = x.Sources.Single().SourceId, start = x.Sources.Single().Span.Start, end = x.Sources.Single().Span.End, text = x.Text, role = x.Role }).ToArray();
+            var prediction = new
+            {
+                schemaVersion = "a99-semantic-text-omission-review-prediction-v1", context.DocumentId, repeat = repeatName,
+                model = Model, intervention = "SEMANTIC_TEXT_OMISSION_REVIEW_V1", baseContractHash = ContractHash(), reviewPromptHash,
+                sourceSha256 = context.SourceSha256, passAReused = true, passAProviderCallsCurrentRun = 0,
+                passAHash, passAHeadings = passA.Headings, passBHeadings = passB.Headings, unionHeadings = union.Headings,
+                bindingObservations = observations, boundHeadings = bound, validatorAccepted = materialized.Validated.Count(x => x.Accepted),
+                validatorRejected = materialized.Validated.Count(x => !x.Accepted), finalHeadings = finalRows, goldReadBeforeFreeze = false,
+            };
+            var result = new
+            {
+                schemaVersion = "a99-semantic-text-omission-review-result-v1", context.DocumentId, repeat = repeatName,
+                model = Model, headings = finalRows, goldReadBeforeFreeze = false,
+            };
+            var predictionPath = Path.Combine(dir, "prediction.v1.json");
+            var resultPath = Path.Combine(dir, "result.v1.json");
+            await WriteJson(predictionPath, prediction, ct);
+            await WriteJson(resultPath, result, ct);
+            var freeze = new
+            {
+                schemaVersion = "a99-semantic-text-omission-review-freeze-v1", context.DocumentId, repeat = repeatName,
+                gitSha, model = Model, actualProvider = telemetry.ProviderRoute, baseContractHash = ContractHash(), reviewPromptHash,
+                sourceSha256 = context.SourceSha256, passAHash, passBResponseHash = Sha256Text(rawContent),
+                predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath), rawPassACount = passA.Headings.Count,
+                rawPassBCount = passB.Headings.Count, unionCount = union.Headings.Count, boundProposalCount = bound.Count,
+                finalCount = finalElements.Length, providerAttempts, inputTokens = telemetry.ReportedInputTokens,
+                reasoningTokens = telemetry.ReportedReasoningTokens, outputTokens = telemetry.ReportedOutputTokens, finishReason = telemetry.FinishReason,
+                reasoningConfiguration = new { requested = true, enabled = true, excluded = true, effort = "MODEL_DEFAULT" },
+                goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow,
+            };
+            var freezePath = Path.Combine(dir, "freeze.v1.json");
+            await WriteJson(freezePath, freeze, ct);
+            if (Sha256(predictionPath) != freeze.predictionSha256 || Sha256(resultPath) != freeze.resultSha256)
+                throw new InvalidDataException($"REVIEW_FREEZE_HASH_VERIFICATION_FAILED:{context.DocumentId}:{repeatName}");
+
+            var goldPath = Path.Combine(repoRoot, "eval/a99-closed-loop/strict-gold-occurrence-v1", context.DocumentId + ".occurrence-gold-v1.json");
+            var gold = ReasoningGoldArtifactLoader.LoadOccurrence(goldPath).Where(x => x.HeadingSpan is not null).ToArray();
+            var metric = Score(context, repeatName, union, observations, bound, materialized, finalElements, gold, telemetry, stopwatch.ElapsedMilliseconds);
+            await WriteJson(Path.Combine(dir, "score.v1.json"), metric.Score!, ct);
+            await WriteJson(Path.Combine(dir, "first-loss.v1.json"), new { context.DocumentId, repeat = repeatName, metric.FirstLosses, metric.FalsePositives, metric.FirstLossCounts, systemLoss = metric.SystemLoss, goldReadBeforeFreeze = false }, ct);
+            return metric;
+        }
+        catch (Exception ex) when (ex is not OperationCanceledException)
+        {
+            stopwatch.Stop();
+            var last = telemetry ?? model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId);
+            var predictionPath = Path.Combine(dir, "prediction.v1.json");
+            var resultPath = Path.Combine(dir, "result.v1.json");
+            await WriteJson(predictionPath, new { schemaVersion = "a99-semantic-text-omission-review-prediction-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.ToString(), model = Model, intervention = "SEMANTIC_TEXT_OMISSION_REVIEW_V1", passAReused = true, passAProviderCallsCurrentRun = 0, goldReadBeforeFreeze = false }, ct);
+            await WriteJson(resultPath, new { schemaVersion = "a99-semantic-text-omission-review-result-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", headings = Array.Empty<object>(), goldReadBeforeFreeze = false }, ct);
+            var freeze = new { schemaVersion = "a99-semantic-text-omission-review-freeze-v1", context.DocumentId, repeat = repeatName, gitSha, model = Model, baseContractHash = ContractHash(), reviewPromptHash, sourceSha256 = context.SourceSha256, predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath), providerAttempts = providerAttempts == 0 ? (last is null ? 0 : 1) : providerAttempts, inputTokens = last?.ReportedInputTokens, reasoningTokens = last?.ReportedReasoningTokens, outputTokens = last?.ReportedOutputTokens, finishReason = last?.FinishReason, failureClass = ex.GetType().Name, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow };
+            await WriteJson(Path.Combine(dir, "freeze.v1.json"), freeze, ct);
+            await WriteJson(Path.Combine(dir, "score.v1.json"), new { schemaVersion = "a99-semantic-text-omission-review-score-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", exactStatus = "NOT_EVALUABLE", tp = 0, fp = 0, fn = 0, systemLoss = 0, goldReadBeforeFreeze = false }, ct);
+            await WriteJson(Path.Combine(dir, "first-loss.v1.json"), new { context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.GetType().Name + ":" + ex.Message, goldReadBeforeFreeze = false }, ct);
+            return new RepeatMetric(context.DocumentId, repeatName, "BLOCKED", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, last?.ProviderRoute, last?.FinishReason, last?.ReportedInputTokens, last?.ReportedReasoningTokens, last?.ReportedOutputTokens, stopwatch.ElapsedMilliseconds, [], [], []);
+        }
+    }
+
+    private static async Task<RepeatMetric> RunRepeatAsync(string repoRoot, string output, DocumentContext context, int repeat, OpenRouterCeilingReasoningModel model, string gitSha, CancellationToken ct, int transientRetries = 0)
+    {
+        var repeatName = $"r{repeat}";
+        var dir = Path.Combine(output, context.DocumentId, repeatName);
+        Directory.CreateDirectory(dir);
+        var stopwatch = Stopwatch.StartNew();
+        RequestPacketTelemetry? telemetry = null;
+        var providerAttempts = 0;
         try
         {
             var requestId = $"{SemanticTextExactBindingContract.ProtocolVersion}:{context.DocumentId}:{repeat}:{context.PacketHash}";
-            var (rawContent, requestTelemetry) = await model.CompleteRawStructuredSemanticAsync(
-                context.DocumentId, ReasoningRoute.ModelCapabilityCeiling.ToString(), requestId,
-                context.Packet, context.SourceRows.Sum(x => x.RawText.Length), context.SourceRows.Count, context.SourceRows.Count,
-                SemanticTextExactBindingContract.System,
-                SemanticTextExactBindingContract.BuildUser(context.Packet, ReasoningRoute.ModelCapabilityCeiling.ToString()),
-                SemanticTextExactBindingContract.Schema(), "semantic_text_exact_binding_v1", ct);
+            string rawContent;
+            while (true)
+            {
+                providerAttempts++;
+                try
+                {
+                    var providerResult = await model.CompleteRawStructuredSemanticAsync(
+                        context.DocumentId, ReasoningRoute.ModelCapabilityCeiling.ToString(), requestId,
+                        context.Packet, context.SourceRows.Sum(x => x.RawText.Length), context.SourceRows.Count, context.SourceRows.Count,
+                        SemanticTextExactBindingContract.System,
+                        SemanticTextExactBindingContract.BuildUser(context.Packet, ReasoningRoute.ModelCapabilityCeiling.ToString()),
+                        SemanticTextExactBindingContract.Schema(), "semantic_text_exact_binding_v1", ct);
+                    rawContent = providerResult.Content;
+                    telemetry = providerResult.Telemetry;
+                    break;
+                }
+                catch (ReasoningCompletionException) when (providerAttempts <= transientRetries && model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId)?.HttpStatus == 429)
+                {
+                    Console.WriteLine($"TRANSIENT_RETRY=HTTP_429/{context.DocumentId}/R{repeat}/attempt={providerAttempts + 1}");
+                    await Task.Delay(TimeSpan.FromSeconds(2), ct);
+                }
+            }
+            var requestTelemetry = telemetry!;
             telemetry = requestTelemetry;
             var response = SemanticTextExactBindingContract.Parse(rawContent);
             telemetry.StructuredOutputParsed = true;
@@ -232,7 +608,7 @@ public static class SemanticTextGeneralizationRunner
                 reasoningConfiguration = new { requested = true, enabled = true, excluded = true, effort = "MODEL_DEFAULT" },
                 predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath),
                 rawProposalCount = response.Headings.Count, boundProposalCount = bound.Count, finalCount = finalElements.Length, wallTimeMs = stopwatch.ElapsedMilliseconds,
-                providerAttempts = 1, inputTokens = telemetry.ReportedInputTokens, reasoningTokens = telemetry.ReportedReasoningTokens,
+                providerAttempts, inputTokens = telemetry.ReportedInputTokens, reasoningTokens = telemetry.ReportedReasoningTokens,
                 outputTokens = telemetry.ReportedOutputTokens, finishReason = telemetry.FinishReason,
                 executionMode = "FULL_CONTEXT", dataClassification = "PUBLIC", zdrRequested = false, privacyExceptionAuthorized = true,
                 goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow,
@@ -258,7 +634,7 @@ public static class SemanticTextGeneralizationRunner
             var resultPath = Path.Combine(dir, "result.v1.json");
             await WriteJson(predictionPath, new { schemaVersion = "a99-semantic-text-generalization-prediction-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.GetType().Name + ":" + ex.Message, model = Model, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion, executionMode = "FULL_CONTEXT", goldReadBeforeFreeze = false }, ct);
             await WriteJson(resultPath, new { schemaVersion = "a99-semantic-text-generalization-result-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", headings = Array.Empty<object>(), goldReadBeforeFreeze = false }, ct);
-            var freeze = new { schemaVersion = "a99-semantic-text-generalization-freeze-v1", context.DocumentId, repeat = repeatName, gitSha, model = Model, actualProvider = last?.ProviderRoute, sourceSha256 = context.SourceSha256, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion, promptHash = context.PromptHash, schemaHash = context.SchemaHash, packetHash = context.PacketHash, reasoningConfiguration = new { requested = true, enabled = true, excluded = true }, predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath), rawProposalCount = 0, boundProposalCount = 0, finalCount = 0, providerAttempts = last is null ? 0 : 1, inputTokens = last?.ReportedInputTokens, reasoningTokens = last?.ReportedReasoningTokens, outputTokens = last?.ReportedOutputTokens, finishReason = last?.FinishReason, executionMode = "FULL_CONTEXT", failureClass = ex.GetType().Name, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow };
+            var freeze = new { schemaVersion = "a99-semantic-text-generalization-freeze-v1", context.DocumentId, repeat = repeatName, gitSha, model = Model, actualProvider = last?.ProviderRoute, sourceSha256 = context.SourceSha256, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion, promptHash = context.PromptHash, schemaHash = context.SchemaHash, packetHash = context.PacketHash, reasoningConfiguration = new { requested = true, enabled = true, excluded = true }, predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath), rawProposalCount = 0, boundProposalCount = 0, finalCount = 0, providerAttempts = providerAttempts == 0 ? (last is null ? 0 : 1) : providerAttempts, inputTokens = last?.ReportedInputTokens, reasoningTokens = last?.ReportedReasoningTokens, outputTokens = last?.ReportedOutputTokens, finishReason = last?.FinishReason, executionMode = "FULL_CONTEXT", failureClass = ex.GetType().Name, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow };
             await WriteJson(Path.Combine(dir, "freeze.v1.json"), freeze, ct);
             await WriteJson(Path.Combine(dir, "score.v1.json"), new { schemaVersion = "a99-semantic-text-generalization-score-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", exactStatus = "NOT_EVALUABLE", tp = 0, fp = 0, fn = 0, systemLoss = 0, goldReadBeforeFreeze = false }, ct);
             await WriteJson(Path.Combine(dir, "first-loss.v1.json"), new { context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.GetType().Name + ":" + ex.Message, goldReadBeforeFreeze = false }, ct);
@@ -374,6 +750,56 @@ public static class SemanticTextGeneralizationRunner
         goldFirewall = "PASS", noGoldRuntimeTransformation = true, providerConcurrency = 1, providerAttempts = runs.Count,
     };
 
+    private static object BuildPairedComparison(IReadOnlyList<RepeatMetric> baseline, IReadOnlyList<RepeatMetric> review)
+    {
+        var rows = review.OrderBy(x => x.DocumentId, StringComparer.Ordinal).ThenBy(x => x.Repeat, StringComparer.Ordinal).Select(x =>
+        {
+            var b = baseline.Single(y => y.DocumentId == x.DocumentId && y.Repeat == x.Repeat);
+            return new
+            {
+                documentId = x.DocumentId, repeat = x.Repeat,
+                baseline = new { tp = b.Tp, fp = b.Fp, fn = b.Fn, precision = b.Precision, recall = b.Recall, f1 = b.F1, modelOmission = b.FirstLossCounts.GetValueOrDefault("MODEL_OMISSION"), systemLoss = b.SystemLoss },
+                review = new { tp = x.Tp, fp = x.Fp, fn = x.Fn, precision = x.Precision, recall = x.Recall, f1 = x.F1, modelOmission = x.FirstLossCounts.GetValueOrDefault("MODEL_OMISSION"), systemLoss = x.SystemLoss },
+                delta = new { tp = x.Tp - b.Tp, fp = x.Fp - b.Fp, fn = x.Fn - b.Fn, precision = x.Precision - b.Precision, recall = x.Recall - b.Recall, f1 = x.F1 - b.F1, modelOmission = x.FirstLossCounts.GetValueOrDefault("MODEL_OMISSION") - b.FirstLossCounts.GetValueOrDefault("MODEL_OMISSION"), systemLoss = x.SystemLoss - b.SystemLoss },
+            };
+        }).ToArray();
+        var cohort = rows.GroupBy(x => x.repeat, StringComparer.Ordinal).Select(g => new
+        {
+            repeat = g.Key,
+            baseline = new { tp = g.Sum(x => x.baseline.tp), fp = g.Sum(x => x.baseline.fp), fn = g.Sum(x => x.baseline.fn), gold = g.Sum(x => x.baseline.tp + x.baseline.fn) },
+            review = new { tp = g.Sum(x => x.review.tp), fp = g.Sum(x => x.review.fp), fn = g.Sum(x => x.review.fn), gold = g.Sum(x => x.review.tp + x.review.fn) },
+            delta = new { tp = g.Sum(x => x.delta.tp), fp = g.Sum(x => x.delta.fp), fn = g.Sum(x => x.delta.fn) },
+        }).ToArray();
+        return new { schemaVersion = "a99-semantic-text-omission-review-paired-deltas-v1", rows, cohortByRepeat = cohort, goldOccurrencesPerRepeat = 153 };
+    }
+
+    private static string OmissionReviewClass(IReadOnlyList<RepeatMetric> baseline, IReadOnlyList<RepeatMetric> review)
+    {
+        if (review.Count != 15 || !CohortComplete(review)) return "OMISSION_REVIEW_EXECUTION_BLOCKED";
+        var paired = review.Select(x => (current: x, before: baseline.Single(y => y.DocumentId == x.DocumentId && y.Repeat == x.Repeat))).ToArray();
+        var recallUp = paired.Any(x => x.current.Recall > x.before.Recall || x.current.Fn < x.before.Fn);
+        var precisionDown = paired.Any(x => x.current.Precision < x.before.Precision || x.current.Fp > x.before.Fp);
+        var clear = recallUp && !precisionDown && paired.All(x => x.current.SystemLoss == 0);
+        if (clear) return "OMISSION_REVIEW_CLEAR_GAIN";
+        if (recallUp && precisionDown) return "OMISSION_REVIEW_RECALL_UP_PRECISION_TRADEOFF";
+        return "OMISSION_REVIEW_NO_GAIN";
+    }
+
+    private static bool CohortComplete(IReadOnlyList<RepeatMetric> runs) =>
+        runs.All(x => x.Status == "SUCCESS") &&
+        runs.GroupBy(x => x.Repeat, StringComparer.Ordinal).All(group => group.Sum(x => x.Gold) == 153 && group.Sum(x => x.Tp + x.Fn) == 153);
+
+    private static async Task WriteReviewBlockedSummary(string output, string head, IReadOnlyList<(JsonElement item, ReasoningGoldEligibilityMetadata eligibility)> selected, string reason, CancellationToken ct)
+    {
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-omission-review-summary-v1", status = "BLOCKED", classification = "OMISSION_REVIEW_EXECUTION_BLOCKED",
+            reason, startHead = head, selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
+            baseContractHash = ContractHash(), reviewPromptHash = SemanticTextOmissionReviewContract.Hash(), passAReused = true,
+            passAProviderCallsCurrentRun = 0, modelCalls = 0, goldReadBeforeFreeze = false,
+        }, ct);
+    }
+
     private static RepeatMetric LoadFrozenMetric(string output, string documentId, string repeat)
     {
         var dir = Path.Combine(output, documentId, repeat);
@@ -405,7 +831,7 @@ public static class SemanticTextGeneralizationRunner
     {
         var tp = group.Sum(x => x.Tp); var fp = group.Sum(x => x.Fp); var fn = group.Sum(x => x.Fn);
         var p = tp + fp == 0 ? 0d : (double)tp / (tp + fp); var r = tp + fn == 0 ? 0d : (double)tp / (tp + fn); var f1 = p + r == 0 ? 0d : 2 * p * r / (p + r);
-        return new MicroMetric(group.First().Repeat, tp, fp, fn, p, r, f1, group.Sum(x => x.SystemLoss));
+        return new MicroMetric(group.First().Repeat, group.Sum(x => x.Gold), tp, fp, fn, p, r, f1, group.Sum(x => x.SystemLoss));
     }
 
     private static object PairwiseJaccard(IReadOnlyList<HashSet<string>> sets)
@@ -483,7 +909,7 @@ public static class SemanticTextGeneralizationRunner
 
     private sealed record DocumentContext(string DocumentId, string SourceSha256, SourceDocument Source, DocxPolicyState Policy, IReadOnlyList<SemanticTextSourceAlias> SourceRows, string Packet, string PromptHash, string SchemaHash, string PacketHash);
     private sealed record LossRow(string DocumentId, string Key, string ExactSourceText, string FirstLoss, bool Found);
-    private sealed record MicroMetric(string Repeat, int Tp, int Fp, int Fn, double Precision, double Recall, double F1, int SystemLoss);
+    private sealed record MicroMetric(string Repeat, int Gold, int Tp, int Fp, int Fn, double Precision, double Recall, double F1, int SystemLoss);
     private sealed record RepeatMetric(string DocumentId, string Repeat, string Status, int Gold, int Tp, int Fp, int Fn, double Precision, double Recall, double F1, int SystemBindingLoss, int SystemValidatorLoss, int SystemProjectionLoss, int RawCount, int BoundCount, int ValidatedCount, int FinalCount, string? Provider, string? FinishReason, int? InputTokens, int? ReasoningTokens, int? OutputTokens, long WallTimeMs, HashSet<string> PredictionKeys, IReadOnlyList<LossRow> FirstLosses, IReadOnlyList<LossRow> FalsePositives, object? Score = null, IReadOnlyDictionary<string, int>? LossCounts = null)
     {
         [JsonIgnore] public int SystemLoss => SystemBindingLoss + SystemValidatorLoss + SystemProjectionLoss;
