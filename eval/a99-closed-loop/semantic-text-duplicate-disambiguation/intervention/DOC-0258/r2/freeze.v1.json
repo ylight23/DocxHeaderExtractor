@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "a99-semantic-text-duplicate-disambiguation-freeze-v1",
+  "documentId": "DOC-0258",
+  "repeat": "r2",
+  "gitSha": "f2eb6dc535f6f1598d4d79c2e94bb7a117cb5455",
+  "model": "qwen/qwen3.7-flash",
+  "actualProvider": "Alibaba",
+  "semanticContractVersion": "a99-semantic-text-duplicate-disambiguation-v1",
+  "promptHash": "416385a429aa8e99640c2bb4b694ff82b93550f2d3e7681a7f16c5d7d811684a",
+  "schemaHash": "ef5eed018a6b3c7fd467f4edf78291e74bfce1958733a4b55aa7aae508e69001",
+  "packetHash": "ba41b80ce8d8e655af8abbcd36e9917dbfc9e792c7e0000fbd66e954607d3384",
+  "predictionSha256": "d7bcf922cc9181b6ad3a986d42bc4ecf534f4ad56d0156c65d42c2a82a8bcd70",
+  "resultSha256": "af762c84bf7543f7e9934ecb96ef11ca295297735c9058e50e02d56cb8fdd171",
+  "rawProposalCount": 18,
+  "boundProposalCount": 18,
+  "finalCount": 18,
+  "wallTimeMs": 70324,
+  "providerAttempts": 1,
+  "inputTokens": 10157,
+  "reasoningTokens": 6890,
+  "outputTokens": 7781,
+  "finishReason": "stop",
+  "reasoningConfiguration": {
+    "requested": true,
+    "enabled": true,
+    "excluded": true,
+    "effort": "MODEL_DEFAULT"
+  },
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-10T14:20:38.6571605+00:00"
+}

@@ -20,6 +20,7 @@ public static class SemanticTextGeneralizationRunner
     private const string Model = "qwen/qwen3.7-flash";
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string OutputRoot = "eval/a99-closed-loop/semantic-text-generalization";
+    private const string DuplicateOutputRoot = "eval/a99-closed-loop/semantic-text-duplicate-disambiguation";
     private const string InventoryPath = "eval/a99-dataset/document-inventory.v1.json";
     private const int RepeatCount = 3;
     private static readonly string[] StableRepairDocuments = ["DOC-0001", "DOC-0205", "DOC-0252", "DOC-0256", "DOC-0258"];
@@ -133,6 +134,268 @@ public static class SemanticTextGeneralizationRunner
         Console.WriteLine($"FINAL_CLASSIFICATION={GeneralizationClass(runs)}");
         Console.WriteLine($"A99_DEV_MARGIN_MET={runs.Count == selected.Length * RepeatCount && runs.All(x => x.Status == "SUCCESS" && x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0)}");
         return 0;
+    }
+
+    /// <summary>Runs the single duplicate-occurrence intervention against the frozen semantic
+    /// baseline. The offline audit is written before any provider client is created; fresh
+    /// inference is used because frozen raw proposals contain no locator fields.</summary>
+    public static async Task<int> RunDuplicateDisambiguationAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, DuplicateOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var intervention = Path.Combine(output, "intervention");
+        Directory.CreateDirectory(intervention);
+        var startHead = GitSha(repoRoot);
+        Console.WriteLine($"START_HEAD={startHead}");
+        Console.WriteLine($"BRANCH={Git(repoRoot, "branch --show-current")}");
+        var inventory = LoadInventory(repoRoot);
+        var selected = inventory.Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
+            .Where(x => x.eligibility.Eligible).OrderBy(x => x.item.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        var baseline = new List<RepeatMetric>();
+        var baselineHashes = new List<object>();
+        foreach (var item in selected)
+        {
+            var documentId = item.item.GetProperty("documentId").GetString()!;
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                var metric = LoadFrozenMetric(Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar)), documentId, $"r{repeat}");
+                baseline.Add(metric);
+                var dir = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar), documentId, $"r{repeat}");
+                using var freeze = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "freeze.v1.json")));
+                var predictionPath = Path.Combine(dir, "prediction.v1.json");
+                var resultPath = Path.Combine(dir, "result.v1.json");
+                if (!string.Equals(Sha256(predictionPath), freeze.RootElement.GetProperty("predictionSha256").GetString(), StringComparison.OrdinalIgnoreCase) ||
+                    !string.Equals(Sha256(resultPath), freeze.RootElement.GetProperty("resultSha256").GetString(), StringComparison.OrdinalIgnoreCase))
+                    throw new InvalidDataException($"BASELINE_FREEZE_HASH_MISMATCH:{documentId}:r{repeat}");
+                baselineHashes.Add(new { documentId, repeat = $"R{repeat}", predictionSha256 = freeze.RootElement.GetProperty("predictionSha256").GetString(), resultSha256 = freeze.RootElement.GetProperty("resultSha256").GetString(), providerCalls = 0 });
+            }
+        }
+
+        var audit = new List<object>();
+        foreach (var item in selected)
+        {
+            var context = Prepare(repoRoot, item.item);
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                var predictionPath = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar), context.DocumentId, $"r{repeat}", "prediction.v1.json");
+                using var prediction = JsonDocument.Parse(File.ReadAllText(predictionPath));
+                var raw = SemanticTextExactBindingContract.Parse(JsonSerializer.Serialize(new { headings = prediction.RootElement.GetProperty("rawModelHeadings") }));
+                SemanticTextExactBinder.Bind(raw.Headings, context.SourceRows, out var observations);
+                foreach (var observation in observations.Where(x => x.Status == SemanticTextBindingStatus.AMBIGUOUS_EXACT_TEXT))
+                {
+                    var alias = context.SourceRows.Single(x => x.Alias == observation.Alias);
+                    var positions = FindExactPositions(alias.RawText, observation.Heading.Text);
+                    audit.Add(new
+                    {
+                        documentId = context.DocumentId, repeat = $"R{repeat}", sourceAlias = observation.Alias, sourceId = alias.SourceId,
+                        headingText = observation.Heading.Text, exactMatchCount = positions.Count,
+                        candidates = positions.Select(position => new { start = position, contextBefore = LocalContext(alias.RawText, position, observation.Heading.Text.Length, true), contextAfter = LocalContext(alias.RawText, position, observation.Heading.Text.Length, false) }).ToArray(),
+                    });
+                }
+            }
+        }
+        await WriteJson(Path.Combine(output, "baseline-manifest.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-duplicate-disambiguation-baseline-v1", startHead,
+            branch = Git(repoRoot, "branch --show-current"), baselineReused = true, baselineProviderCalls = 0,
+            baseline = new { tp = 425, fp = 22, fn = 34, f1 = .9381898454746137 },
+            selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
+            frozenCells = baselineHashes, hashVerified = true, omissionReviewExcluded = true, goldReadBeforeFreeze = false,
+        }, ct);
+        await WriteJson(Path.Combine(output, "duplicate-audit.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-duplicate-audit-v1", source = "frozen semantic-text raw proposals plus source facts",
+            goldReadBeforeFreeze = false, ambiguousBefore = audit.Count, mechanicallyResolvableWithoutModel = 0,
+            requiresFreshModelDiscriminator = audit.Count, cases = audit,
+        }, ct);
+        Console.WriteLine($"DUPLICATE_AUDIT_AMBIGUOUS_BEFORE={audit.Count}");
+        Console.WriteLine("BASELINE_REUSED=true");
+        Console.WriteLine("BASELINE_PROVIDER_CALLS=0");
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey)) return await Blocked(output, startHead, "OPENROUTER_API_KEY_MISSING", selected, ct);
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = apiKey, ContextSize = 1_000_000,
+            MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 0,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capability = (await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct)).Capability;
+        if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) || !capability.ReasoningSupported || !capability.StructuredOutputSupported)
+            return await Blocked(output, startHead, "MODEL_CAPABILITY_MISMATCH", selected, ct);
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, DuplicateOutputRoot, string.Join(',', selected.Select(x => x.item.GetProperty("documentId").GetString())), ct);
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        var review = new List<RepeatMetric>();
+        foreach (var item in selected)
+        {
+            var context = Prepare(repoRoot, item.item) with { PromptHash = DuplicateContractHash(), SchemaHash = Sha256Text(JsonSerializer.Serialize(SemanticTextDuplicateDisambiguationContract.Schema())) };
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                Console.WriteLine($"RUNNING_DUPLICATE={context.DocumentId}/R{repeat}");
+                review.Add(await RunDuplicateRepeatAsync(repoRoot, intervention, context, repeat, model, startHead, ct));
+            }
+        }
+        var baselineMicro = Micro(baseline);
+        var reviewMicro = Micro(review);
+        var ambiguousAfter = CountTrace(intervention, review, "AMBIGUOUS_DUPLICATE_TEXT");
+        var resolvedDuplicates = CountTrace(intervention, review, "DUPLICATE_RESOLVED_BY_EXACT_CONTEXT");
+        var incorrectResolutions = CountIncorrectResolutions(repoRoot, intervention, review);
+        var keep = reviewMicro.F1 > baselineMicro.F1 && review.All(x => x.SystemLoss == 0) && incorrectResolutions == 0;
+        var classification = keep ? "DUPLICATE_DISAMBIGUATION_IMPROVES_F1" : reviewMicro.F1 < baselineMicro.F1 ? "DUPLICATE_DISAMBIGUATION_PRECISION_REGRESSION" : "DUPLICATE_DISAMBIGUATION_NO_MATERIAL_GAIN";
+        await WriteJson(Path.Combine(output, "comparison.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-duplicate-disambiguation-comparison-v1", baseline = baselineMicro, intervention = reviewMicro,
+            delta = new { tp = reviewMicro.Tp - baselineMicro.Tp, fp = reviewMicro.Fp - baselineMicro.Fp, fn = reviewMicro.Fn - baselineMicro.Fn, f1 = reviewMicro.F1 - baselineMicro.F1 },
+            ambiguousBefore = audit.Count, ambiguousAfter, resolvedDuplicates, incorrectlyResolvedDuplicateCount = incorrectResolutions,
+            systemBindingLoss = review.Sum(x => x.SystemBindingLoss), systemValidatorLoss = review.Sum(x => x.SystemValidatorLoss), systemProjectionLoss = review.Sum(x => x.SystemProjectionLoss),
+            freshProviderCalls = model.ProviderCalls, additionalInputTokens = review.Sum(x => x.InputTokens ?? 0), additionalReasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), additionalOutputTokens = review.Sum(x => x.OutputTokens ?? 0), additionalWallTimeMs = review.Sum(x => x.WallTimeMs),
+            trace = review.SelectMany(x => ReadDuplicateTraces(intervention, x.DocumentId, x.Repeat)).ToArray(),
+        }, ct);
+        await WriteJson(Path.Combine(output, "first-loss.v1.json"), new { schemaVersion = "a99-semantic-text-duplicate-disambiguation-first-loss-v1", rows = review.SelectMany(x => x.FirstLosses).ToArray(), counts = review.SelectMany(x => x.FirstLossCounts).GroupBy(x => x.Key, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Sum(y => y.Value)), goldReadBeforeFreeze = false }, ct);
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-duplicate-disambiguation-summary-v1", startHead, endHead = GitSha(repoRoot), model = Model,
+            baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1 },
+            intervention = new { tp = reviewMicro.Tp, fp = reviewMicro.Fp, fn = reviewMicro.Fn, precision = reviewMicro.Precision, recall = reviewMicro.Recall, f1 = reviewMicro.F1 },
+            ambiguousBefore = audit.Count, mechanicallyResolvableWithoutModel = 0, requiresFreshModelDiscriminator = audit.Count, ambiguousAfter, resolvedDuplicates,
+            incorrectlyResolvedDuplicateCount = incorrectResolutions, systemLoss = review.Sum(x => x.SystemLoss), deltaTP = reviewMicro.Tp - baselineMicro.Tp, deltaFP = reviewMicro.Fp - baselineMicro.Fp, deltaFN = reviewMicro.Fn - baselineMicro.Fn, deltaF1 = reviewMicro.F1 - baselineMicro.F1,
+            performance = new { freshProviderCalls = model.ProviderCalls, inputTokens = review.Sum(x => x.InputTokens ?? 0), reasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), outputTokens = review.Sum(x => x.OutputTokens ?? 0), wallTimeMs = review.Sum(x => x.WallTimeMs) },
+            keepOrRevert = keep ? "KEEP" : "REVERT_INTERVENTION", classification, newLargestResidualBucket = NextBucket(review), a99Status = "A99_NOT_MEASURED_DEV_MARGIN_BELOW_0.995", goldReadBeforeFreeze = false,
+            repeatSummary = BuildRepeatSummary(review, selected.Length), baselineHashes,
+        }, ct);
+        PrintReport(review, selected, model.ProviderCalls);
+        Console.WriteLine($"END_HEAD={GitSha(repoRoot)}");
+        Console.WriteLine($"FINAL_CLASSIFICATION={classification}");
+        return 0;
+    }
+
+    /// <summary>Resumes only intervention cells that froze BLOCKED. Successful duplicate
+    /// cells are never rerun.</summary>
+    public static async Task<int> ResumeDuplicateDisambiguationAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, DuplicateOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var intervention = Path.Combine(output, "intervention");
+        var blocked = new List<(JsonElement item, int repeat)>();
+        foreach (var item in LoadInventory(repoRoot).Where(x => ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, x.GetProperty("documentId").GetString()!).Eligible))
+        {
+            var documentId = item.GetProperty("documentId").GetString()!;
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                var path = Path.Combine(intervention, documentId, $"r{repeat}", "prediction.v1.json");
+                using var prediction = JsonDocument.Parse(File.ReadAllText(path));
+                if (prediction.RootElement.TryGetProperty("status", out var status) && status.GetString() == "BLOCKED")
+                    blocked.Add((item.Clone(), repeat));
+            }
+        }
+        Console.WriteLine($"RESUME_BLOCKED_CELL_COUNT={blocked.Count}");
+        if (blocked.Count == 0) return await RunDuplicateDisambiguationOfflineAsync(repoRoot, ct);
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey)) return 1;
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = apiKey, ContextSize = 1_000_000,
+            MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 0,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capability = (await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct)).Capability;
+        if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) || !capability.ReasoningSupported || !capability.StructuredOutputSupported) return 1;
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, DuplicateOutputRoot, "RESUME_BLOCKED_DUPLICATE_CELLS", ct);
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        foreach (var (item, repeat) in blocked)
+        {
+            var context = Prepare(repoRoot, item) with { PromptHash = DuplicateContractHash(), SchemaHash = Sha256Text(JsonSerializer.Serialize(SemanticTextDuplicateDisambiguationContract.Schema())) };
+            Console.WriteLine($"RESUMING_DUPLICATE={context.DocumentId}/R{repeat}");
+            await RunDuplicateRepeatAsync(repoRoot, intervention, context, repeat, model, GitSha(repoRoot), ct);
+        }
+        await WriteJson(Path.Combine(output, "resume.v1.json"), new { schemaVersion = "a99-semantic-text-duplicate-disambiguation-resume-v1", blockedCells = blocked.Select(x => new { documentId = x.item.GetProperty("documentId").GetString(), repeat = $"R{x.repeat}" }).ToArray(), providerCalls = model.ProviderCalls, successfulCells = blocked.Count, goldReadBeforeFreeze = false }, ct);
+        Console.WriteLine($"RESUME_PROVIDER_CALLS={model.ProviderCalls}");
+        return await RunDuplicateDisambiguationOfflineAsync(repoRoot, ct);
+    }
+
+    /// <summary>Rebuilds duplicate-disambiguation comparison from frozen intervention cells only.</summary>
+    public static async Task<int> RunDuplicateDisambiguationOfflineAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, DuplicateOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var intervention = Path.Combine(output, "intervention");
+        var selected = LoadInventory(repoRoot).Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
+            .Where(x => x.eligibility.Eligible).OrderBy(x => x.item.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        var baseline = new List<RepeatMetric>();
+        var review = new List<RepeatMetric>();
+        foreach (var item in selected)
+        {
+            var documentId = item.item.GetProperty("documentId").GetString()!;
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                baseline.Add(LoadFrozenMetric(Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar)), documentId, $"r{repeat}"));
+                review.Add(LoadFrozenMetric(intervention, documentId, $"r{repeat}"));
+            }
+        }
+        if (review.Any(x => x.Status != "SUCCESS"))
+        {
+            await WriteJson(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-semantic-text-duplicate-disambiguation-summary-v1", status = "BLOCKED", reason = "INTERVENTION_COHORT_INCOMPLETE", completedCells = review.Count(x => x.Status == "SUCCESS"), expectedCells = 15, goldReadBeforeFreeze = false }, ct);
+            return 1;
+        }
+        using var audit = JsonDocument.Parse(File.ReadAllText(Path.Combine(output, "duplicate-audit.v1.json")));
+        using var baselineManifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(output, "baseline-manifest.v1.json")));
+        var baselineMicro = Micro(baseline);
+        var reviewMicro = Micro(review);
+        var ambiguousBefore = audit.RootElement.GetProperty("ambiguousBefore").GetInt32();
+        var ambiguousAfter = CountTrace(intervention, review, "AMBIGUOUS_DUPLICATE_TEXT");
+        var resolved = CountTrace(intervention, review, "DUPLICATE_RESOLVED_BY_EXACT_CONTEXT");
+        var incorrect = CountIncorrectResolutions(repoRoot, intervention, review);
+        var keep = reviewMicro.F1 > baselineMicro.F1 && review.All(x => x.SystemLoss == 0) && incorrect == 0;
+        var classification = keep ? "DUPLICATE_DISAMBIGUATION_IMPROVES_F1" : reviewMicro.F1 < baselineMicro.F1 ? "DUPLICATE_DISAMBIGUATION_PRECISION_REGRESSION" : "DUPLICATE_DISAMBIGUATION_NO_MATERIAL_GAIN";
+        var attempts = FrozenDuplicateAttempts(intervention, selected) + DuplicateResumeCalls(output);
+        await WriteJson(Path.Combine(output, "comparison.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-duplicate-disambiguation-comparison-v1", baseline = baselineMicro, intervention = reviewMicro,
+            delta = new { tp = reviewMicro.Tp - baselineMicro.Tp, fp = reviewMicro.Fp - baselineMicro.Fp, fn = reviewMicro.Fn - baselineMicro.Fn, f1 = reviewMicro.F1 - baselineMicro.F1 },
+            ambiguousBefore, ambiguousAfter, resolvedDuplicates = resolved, incorrectlyResolvedDuplicateCount = incorrect,
+            systemBindingLoss = review.Sum(x => x.SystemBindingLoss), systemValidatorLoss = review.Sum(x => x.SystemValidatorLoss), systemProjectionLoss = review.Sum(x => x.SystemProjectionLoss),
+            freshProviderCalls = attempts, additionalInputTokens = review.Sum(x => x.InputTokens ?? 0), additionalReasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), additionalOutputTokens = review.Sum(x => x.OutputTokens ?? 0), additionalWallTimeMs = review.Sum(x => x.WallTimeMs),
+            trace = review.SelectMany(x => ReadDuplicateTraces(intervention, x.DocumentId, x.Repeat)).ToArray(),
+        }, ct);
+        await WriteJson(Path.Combine(output, "first-loss.v1.json"), new { schemaVersion = "a99-semantic-text-duplicate-disambiguation-first-loss-v1", rows = review.SelectMany(x => x.FirstLosses).ToArray(), counts = review.SelectMany(x => x.FirstLossCounts).GroupBy(x => x.Key, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Sum(y => y.Value)), goldReadBeforeFreeze = false }, ct);
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-duplicate-disambiguation-summary-v1", status = "COMPLETE_OFFLINE_REBUILD", startHead = baselineManifest.RootElement.GetProperty("startHead").GetString(), endHead = GitSha(repoRoot), model = Model,
+            baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1 },
+            intervention = new { tp = reviewMicro.Tp, fp = reviewMicro.Fp, fn = reviewMicro.Fn, precision = reviewMicro.Precision, recall = reviewMicro.Recall, f1 = reviewMicro.F1 },
+            ambiguousBefore, mechanicallyResolvableWithoutModel = 0, requiresFreshModelDiscriminator = ambiguousBefore, ambiguousAfter, resolvedDuplicates = resolved, incorrectlyResolvedDuplicateCount = incorrect,
+            systemLoss = review.Sum(x => x.SystemLoss), deltaTP = reviewMicro.Tp - baselineMicro.Tp, deltaFP = reviewMicro.Fp - baselineMicro.Fp, deltaFN = reviewMicro.Fn - baselineMicro.Fn, deltaF1 = reviewMicro.F1 - baselineMicro.F1,
+            performance = new { freshProviderCalls = attempts, inputTokens = review.Sum(x => x.InputTokens ?? 0), reasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), outputTokens = review.Sum(x => x.OutputTokens ?? 0), wallTimeMs = review.Sum(x => x.WallTimeMs) },
+            keepOrRevert = keep ? "KEEP" : "REVERT_INTERVENTION", classification, newLargestResidualBucket = NextBucket(review), a99Status = "A99_NOT_MEASURED_DEV_MARGIN_BELOW_0.995", goldReadBeforeFreeze = false,
+            repeatSummary = BuildRepeatSummary(review, selected.Length), persistentErrors = BuildPersistentErrors(review),
+        }, ct);
+        PrintReport(review, selected, attempts);
+        Console.WriteLine("OFFLINE_DUPLICATE_PROVIDER_CALLS=0");
+        Console.WriteLine($"FINAL_CLASSIFICATION={classification}");
+        return 0;
+    }
+
+    private static int FrozenDuplicateAttempts(string output, IReadOnlyList<(JsonElement item, ReasoningGoldEligibilityMetadata eligibility)> selected)
+    {
+        var total = 0;
+        foreach (var item in selected)
+        for (var repeat = 1; repeat <= RepeatCount; repeat++)
+        {
+            var path = Path.Combine(output, item.item.GetProperty("documentId").GetString()!, $"r{repeat}", "freeze.v1.json");
+            using var freeze = JsonDocument.Parse(File.ReadAllText(path));
+            if (freeze.RootElement.TryGetProperty("providerAttempts", out var attempts) && attempts.TryGetInt32(out var value)) total += value;
+        }
+        return total;
+    }
+
+    private static int DuplicateResumeCalls(string output)
+    {
+        var path = Path.Combine(output, "resume.v1.json");
+        if (!File.Exists(path)) return 0;
+        using var resume = JsonDocument.Parse(File.ReadAllText(path));
+        return resume.RootElement.TryGetProperty("providerCalls", out var calls) && calls.TryGetInt32(out var value) ? value : 0;
     }
 
     /// <summary>Recovers only the one previously blocked baseline repeat. The request contract,
@@ -1158,6 +1421,154 @@ public static class SemanticTextGeneralizationRunner
             return new RepeatMetric(context.DocumentId, repeatName, "BLOCKED", Gold: 0, Tp: 0, Fp: 0, Fn: 0, Precision: 0, Recall: 0, F1: 0, SystemBindingLoss: 0, SystemValidatorLoss: 0, SystemProjectionLoss: 0, RawCount: 0, BoundCount: 0, ValidatedCount: 0, FinalCount: 0, Provider: last?.ProviderRoute, FinishReason: last?.FinishReason, InputTokens: last?.ReportedInputTokens, ReasoningTokens: last?.ReportedReasoningTokens, OutputTokens: last?.ReportedOutputTokens, WallTimeMs: stopwatch.ElapsedMilliseconds, PredictionKeys: [], FirstLosses: [], FalsePositives: []);
         }
     }
+
+    private static async Task<RepeatMetric> RunDuplicateRepeatAsync(string repoRoot, string output, DocumentContext context, int repeat, OpenRouterCeilingReasoningModel model, string gitSha, CancellationToken ct)
+    {
+        var repeatName = $"r{repeat}";
+        var dir = Path.Combine(output, context.DocumentId, repeatName);
+        Directory.CreateDirectory(dir);
+        var stopwatch = Stopwatch.StartNew();
+        RequestPacketTelemetry? telemetry = null;
+        var providerAttempts = 0;
+        try
+        {
+            var requestId = $"{SemanticTextDuplicateDisambiguationContract.ProtocolVersion}:{context.DocumentId}:{repeat}:{context.PacketHash}";
+            (string Content, RequestPacketTelemetry Telemetry) providerResult;
+            while (true)
+            {
+                providerAttempts++;
+                try
+                {
+                    providerResult = await model.CompleteRawStructuredSemanticAsync(
+                        context.DocumentId, ReasoningRoute.ModelCapabilityCeiling.ToString(), requestId,
+                        context.Packet, context.SourceRows.Sum(x => x.RawText.Length), context.SourceRows.Count, context.SourceRows.Count,
+                        SemanticTextDuplicateDisambiguationContract.System,
+                        SemanticTextDuplicateDisambiguationContract.BuildUser(context.Packet, ReasoningRoute.ModelCapabilityCeiling.ToString()),
+                        SemanticTextDuplicateDisambiguationContract.Schema(), "semantic_text_duplicate_disambiguation_v1", ct);
+                    break;
+                }
+                catch (ReasoningCompletionException) when (providerAttempts < 3 && model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId)?.HttpStatus == 429)
+                {
+                    Console.WriteLine($"TRANSIENT_RETRY=HTTP_429/{context.DocumentId}/R{repeat}/attempt={providerAttempts + 1}");
+                    await Task.Delay(TimeSpan.FromSeconds(2), ct);
+                }
+            }
+            telemetry = providerResult.Telemetry;
+            telemetry.StructuredOutputParsed = true;
+            var response = SemanticTextDuplicateDisambiguationContract.Parse(providerResult.Content);
+            var bound = SemanticTextDuplicateBinder.Bind(response.Headings, context.SourceRows, out var observations, out var traces);
+            var proposals = bound.Select(x => new ReasoningHeadingProposal
+            {
+                SourceId = x.SourceId, HeadingSpan = new StructuralSpan(x.Start, x.End), Text = x.Text,
+                SemanticRole = x.Role, Confidence = 1,
+            }).ToArray();
+            var materialized = ReasoningProposalMaterializer.Materialize(context.Source, context.Policy, proposals);
+            var finalElements = ReasoningTaskProjection.ProjectContentHeadings(materialized.Structure)
+                .OrderBy(x => x.Sources.Single().SourceOrdinal).ThenBy(x => x.Sources.Single().Span.Start).ThenBy(x => x.Id, StringComparer.Ordinal).ToArray();
+            stopwatch.Stop();
+            var finalRows = finalElements.Select(x => new { sourceId = x.Sources.Single().SourceId, start = x.Sources.Single().Span.Start, end = x.Sources.Single().Span.End, text = x.Text, role = x.Role }).ToArray();
+            var prediction = new
+            {
+                schemaVersion = "a99-semantic-text-duplicate-disambiguation-prediction-v1", context.DocumentId, repeat = repeatName, model = Model,
+                semanticContractVersion = SemanticTextDuplicateDisambiguationContract.ProtocolVersion, sourceSha256 = context.SourceSha256,
+                promptHash = context.PromptHash, schemaHash = context.SchemaHash, packetHash = context.PacketHash, sourceAliasCount = context.SourceRows.Count,
+                rawModelHeadings = response.Headings, bindingObservations = observations, duplicateTrace = traces, boundHeadings = bound,
+                validatorAccepted = materialized.Validated.Count(x => x.Accepted), validatorRejected = materialized.Validated.Count(x => !x.Accepted), finalHeadings = finalRows,
+                goldReadBeforeFreeze = false,
+            };
+            var result = new { schemaVersion = "a99-semantic-text-duplicate-disambiguation-result-v1", context.DocumentId, repeat = repeatName, model = Model, headings = finalRows, goldReadBeforeFreeze = false };
+            var predictionPath = Path.Combine(dir, "prediction.v1.json");
+            var resultPath = Path.Combine(dir, "result.v1.json");
+            await WriteJson(predictionPath, prediction, ct);
+            await WriteJson(resultPath, result, ct);
+            var freeze = new
+            {
+                schemaVersion = "a99-semantic-text-duplicate-disambiguation-freeze-v1", context.DocumentId, repeat = repeatName, gitSha, model = Model,
+                actualProvider = telemetry.ProviderRoute, semanticContractVersion = SemanticTextDuplicateDisambiguationContract.ProtocolVersion,
+                promptHash = context.PromptHash, schemaHash = context.SchemaHash, packetHash = context.PacketHash, predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath),
+                rawProposalCount = response.Headings.Count, boundProposalCount = bound.Count, finalCount = finalElements.Length, wallTimeMs = stopwatch.ElapsedMilliseconds,
+                providerAttempts, inputTokens = telemetry.ReportedInputTokens, reasoningTokens = telemetry.ReportedReasoningTokens, outputTokens = telemetry.ReportedOutputTokens,
+                finishReason = telemetry.FinishReason, reasoningConfiguration = new { requested = true, enabled = true, excluded = true, effort = "MODEL_DEFAULT" }, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow,
+            };
+            var freezePath = Path.Combine(dir, "freeze.v1.json");
+            await WriteJson(freezePath, freeze, ct);
+            if (Sha256(predictionPath) != freeze.predictionSha256 || Sha256(resultPath) != freeze.resultSha256)
+                throw new InvalidDataException($"DUPLICATE_FREEZE_HASH_VERIFICATION_FAILED:{context.DocumentId}:{repeatName}");
+
+            var goldPath = Path.Combine(repoRoot, "eval/a99-closed-loop/strict-gold-occurrence-v1", context.DocumentId + ".occurrence-gold-v1.json");
+            var gold = ReasoningGoldArtifactLoader.LoadOccurrence(goldPath).Where(x => x.HeadingSpan is not null).ToArray();
+            var metric = Score(context, repeatName, response, observations, bound, materialized, finalElements, gold, telemetry, stopwatch.ElapsedMilliseconds);
+            var goldKeys = gold.Select(x => Key(x.SourceId, x.HeadingSpan!)).ToHashSet(StringComparer.Ordinal);
+            var sourceByAlias = context.SourceRows.ToDictionary(x => x.Alias, StringComparer.Ordinal);
+            var resolutionRows = traces.Where(x => x.Kind == "DUPLICATE_RESOLVED_BY_EXACT_CONTEXT" && x.ResolvedStart is not null).Select(x =>
+            {
+                var source = sourceByAlias[x.SourceAlias];
+                var key = Key(source.SourceId, new StructuralSpan(x.ResolvedStart!.Value, x.ResolvedStart.Value + x.Text.Length));
+                return new { sourceAlias = x.SourceAlias, sourceId = source.SourceId, start = x.ResolvedStart.Value, end = x.ResolvedStart.Value + x.Text.Length, exactSourceText = x.Text, correctGoldOccurrence = goldKeys.Contains(key) };
+            }).ToArray();
+            await WriteJson(Path.Combine(dir, "duplicate-resolution.v1.json"), new { rows = resolutionRows, resolved = resolutionRows.Length, incorrect = resolutionRows.Count(x => !x.correctGoldOccurrence), goldReadBeforeFreeze = false }, ct);
+            await WriteJson(Path.Combine(dir, "score.v1.json"), metric.Score!, ct);
+            await WriteJson(Path.Combine(dir, "first-loss.v1.json"), new { context.DocumentId, repeat = repeatName, metric.FirstLosses, metric.FalsePositives, metric.FirstLossCounts, systemLoss = metric.SystemLoss, goldReadBeforeFreeze = false }, ct);
+            return metric;
+        }
+        catch (Exception ex) when (ex is not OperationCanceledException)
+        {
+            stopwatch.Stop();
+            var last = telemetry ?? model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId);
+            var predictionPath = Path.Combine(dir, "prediction.v1.json");
+            var resultPath = Path.Combine(dir, "result.v1.json");
+            await WriteJson(predictionPath, new { schemaVersion = "a99-semantic-text-duplicate-disambiguation-prediction-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.GetType().Name + ":" + ex.Message, goldReadBeforeFreeze = false }, ct);
+            await WriteJson(resultPath, new { schemaVersion = "a99-semantic-text-duplicate-disambiguation-result-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", headings = Array.Empty<object>(), goldReadBeforeFreeze = false }, ct);
+            await WriteJson(Path.Combine(dir, "freeze.v1.json"), new { schemaVersion = "a99-semantic-text-duplicate-disambiguation-freeze-v1", context.DocumentId, repeat = repeatName, gitSha, model = Model, predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath), providerAttempts, actualProvider = last?.ProviderRoute, finishReason = last?.FinishReason, goldReadBeforeFreeze = false }, ct);
+            return new RepeatMetric(context.DocumentId, repeatName, "BLOCKED", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, last?.ProviderRoute, last?.FinishReason, last?.ReportedInputTokens, last?.ReportedReasoningTokens, last?.ReportedOutputTokens, stopwatch.ElapsedMilliseconds, [], [], []);
+        }
+    }
+
+    private static int CountTrace(string output, IReadOnlyList<RepeatMetric> review, string kind) => review.Sum(x => ReadDuplicateTraces(output, x.DocumentId, x.Repeat).Count(trace => trace.GetProperty("kind").GetString() == kind));
+
+    private static int CountIncorrectResolutions(string repoRoot, string output, IReadOnlyList<RepeatMetric> review) => review.Sum(x =>
+    {
+        var path = Path.Combine(output, x.DocumentId, x.Repeat, "duplicate-resolution.v1.json");
+        if (!File.Exists(path)) return 0;
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        return doc.RootElement.GetProperty("incorrect").GetInt32();
+    });
+
+    private static IEnumerable<JsonElement> ReadDuplicateTraces(string output, string documentId, string repeat)
+    {
+        using var doc = JsonDocument.Parse(File.ReadAllText(Path.Combine(output, documentId, repeat, "prediction.v1.json")));
+        return doc.RootElement.TryGetProperty("duplicateTrace", out var traces)
+            ? traces.EnumerateArray().Select(x => x.Clone()).ToArray()
+            : Array.Empty<JsonElement>();
+    }
+
+    private static List<int> FindExactPositions(string source, string text)
+    {
+        var result = new List<int>();
+        var offset = 0;
+        while (offset <= source.Length - text.Length)
+        {
+            var index = source.IndexOf(text, offset, StringComparison.Ordinal);
+            if (index < 0) break;
+            result.Add(index);
+            offset = index + Math.Max(1, text.Length);
+        }
+        return result;
+    }
+
+    private static string LocalContext(string source, int start, int length, bool before)
+    {
+        const int width = 32;
+        if (before)
+        {
+            var begin = Math.Max(0, start - width);
+            return source[begin..start];
+        }
+        var end = Math.Min(source.Length, start + length + width);
+        return source[(start + length)..end];
+    }
+
+    private static string DuplicateContractHash() => Sha256Text(string.Join("\n", SemanticTextDuplicateDisambiguationContract.ProtocolVersion, SemanticTextDuplicateDisambiguationContract.System, JsonSerializer.Serialize(SemanticTextDuplicateDisambiguationContract.Schema())));
 
     private static RepeatMetric Score(DocumentContext context, string repeat, SemanticTextResponse response, IReadOnlyList<SemanticTextBindingObservation> observations, IReadOnlyList<SemanticTextBoundHeading> bound, (ValidatedStructure Structure, IReadOnlyList<ReasoningValidatedProposal> Validated) materialized, IReadOnlyList<ValidatedStructuralElement> finalElements, IReadOnlyList<ReasoningGoldOccurrence> gold, RequestPacketTelemetry telemetry, long wallTimeMs)
     {

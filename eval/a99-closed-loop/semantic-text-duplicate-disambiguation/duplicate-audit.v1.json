@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "a99-semantic-text-duplicate-audit-v1",
+  "source": "frozen semantic-text raw proposals plus source facts",
+  "goldReadBeforeFreeze": false,
+  "ambiguousBefore": 10,
+  "mechanicallyResolvableWithoutModel": 0,
+  "requiresFreshModelDiscriminator": 10,
+  "cases": [
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R1",
+      "sourceAlias": "S0009",
+      "sourceId": "body[1]/p[11]",
+      "headingText": "Africa",
+      "exactMatchCount": 3,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Gregoire Mboya de Loubassou, Af"
+        },
+        {
+          "start": 36,
+          "contextBefore": "ca Gregoire Mboya de Loubassou, ",
+          "contextAfter": "n Development Bank (AfDB), the s"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region, which provided informat"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R2",
+      "sourceAlias": "S0009",
+      "sourceId": "body[1]/p[11]",
+      "headingText": "Africa",
+      "exactMatchCount": 3,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Gregoire Mboya de Loubassou, Af"
+        },
+        {
+          "start": 36,
+          "contextBefore": "ca Gregoire Mboya de Loubassou, ",
+          "contextAfter": "n Development Bank (AfDB), the s"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region, which provided informat"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R2",
+      "sourceAlias": "S0013",
+      "sourceId": "body[1]/p[17]",
+      "headingText": "Asia and the Pacific",
+      "exactMatchCount": 2,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Criselda De Dios, Asian Develop"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region. Twenty-one economies ar"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R3",
+      "sourceAlias": "S0009",
+      "sourceId": "body[1]/p[11]",
+      "headingText": "Africa",
+      "exactMatchCount": 3,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Gregoire Mboya de Loubassou, Af"
+        },
+        {
+          "start": 36,
+          "contextBefore": "ca Gregoire Mboya de Loubassou, ",
+          "contextAfter": "n Development Bank (AfDB), the s"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region, which provided informat"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R3",
+      "sourceAlias": "S0013",
+      "sourceId": "body[1]/p[17]",
+      "headingText": "Asia and the Pacific",
+      "exactMatchCount": 2,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Criselda De Dios, Asian Develop"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region. Twenty-one economies ar"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R2",
+      "sourceAlias": "S0009",
+      "sourceId": "body[1]/p[11]",
+      "headingText": "Africa",
+      "exactMatchCount": 4,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Gregoire Mboya de Loubassou, Af"
+        },
+        {
+          "start": 36,
+          "contextBefore": "ca Gregoire Mboya de Loubassou, ",
+          "contextAfter": "n Development Bank (AfDB), paid "
+        },
+        {
+          "start": 176,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region and reported on the prog"
+        },
+        {
+          "start": 349,
+          "contextBefore": " (COICOP) 2018 adoption. All 50 ",
+          "contextAfter": "n countries in the ICP 2017 cycl"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R2",
+      "sourceAlias": "S0010",
+      "sourceId": "body[1]/p[12]",
+      "headingText": "Asia and the Pacific",
+      "exactMatchCount": 2,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Kaushal Joshi, Asian Developmen"
+        },
+        {
+          "start": 106,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region. More than half of the 2"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R2",
+      "sourceAlias": "S0014",
+      "sourceId": "body[1]/p[18]",
+      "headingText": "Commonwealth of Independent States",
+      "exactMatchCount": 2,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Andrehe Interstate Statistical "
+        },
+        {
+          "start": 83,
+          "contextBefore": "te Statistical Committee of the ",
+          "contextAfter": " (CIS-STAT), the status of the I"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R2",
+      "sourceAlias": "S0015",
+      "sourceId": "body[1]/p[19]",
+      "headingText": "Latin America and the Caribbean",
+      "exactMatchCount": 3,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Claudia de Cario, United Nation"
+        },
+        {
+          "start": 89,
+          "contextBefore": "Nations Economic Commission for ",
+          "contextAfter": " (UN-ECLAC), the status of the I"
+        },
+        {
+          "start": 169,
+          "contextBefore": "status of the ICP 2021 cycle in ",
+          "contextAfter": " region. A total"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R2",
+      "sourceAlias": "S0018",
+      "sourceId": "body[1]/p[24]",
+      "headingText": "Western Asia",
+      "exactMatchCount": 3,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Majed Skaini, United Nations Ec"
+        },
+        {
+          "start": 77,
+          "contextBefore": "nomic and Social Commission for ",
+          "contextAfter": " (UN-ESCWA), the status of the I"
+        },
+        {
+          "start": 142,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region. Sixteen economies are p"
+        }
+      ]
+    }
+  ]
+}
