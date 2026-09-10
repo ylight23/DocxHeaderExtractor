@@ -1,0 +1,813 @@
+{
+  "schemaVersion": "a99-semantic-text-stable-error-loop-summary-v1",
+  "status": "TERMINAL_OFFLINE_FORENSIC",
+  "startHead": "8ef8c0024fb90c6bc03cb7b6050cc9307ba3cba6",
+  "endHead": "8ef8c0024fb90c6bc03cb7b6050cc9307ba3cba6",
+  "commitExpected": "feat(a99): close semantic-text stable errors toward 99",
+  "model": "qwen/qwen3.7-flash",
+  "baselineRoot": "eval/a99-closed-loop/semantic-text-generalization",
+  "outputRoot": "eval/a99-closed-loop/semantic-text-stable-error-loop",
+  "documents": [
+    "DOC-0001",
+    "DOC-0205",
+    "DOC-0252",
+    "DOC-0256",
+    "DOC-0258"
+  ],
+  "repeats": [
+    "r1",
+    "r2",
+    "r3"
+  ],
+  "successfulCells": 15,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "canonicalBaseline": {
+    "schemaVersion": "a99-semantic-text-stable-error-loop-baseline-v1",
+    "source": "eval/a99-closed-loop/semantic-text-generalization",
+    "manifestStartHead": "98ed48fcabf9c2bb617da0fddd269e8e807a9ba0",
+    "model": "qwen/qwen3.7-flash",
+    "contract": "a99-semantic-text-exact-binding-v1",
+    "documents": [
+      "DOC-0001",
+      "DOC-0205",
+      "DOC-0252",
+      "DOC-0256",
+      "DOC-0258"
+    ],
+    "repeats": [
+      "r1",
+      "r2",
+      "r3"
+    ],
+    "successfulCells": 15,
+    "goldPerRepeat": [
+      153,
+      153,
+      153
+    ],
+    "cells": [
+      {
+        "documentId": "DOC-0001",
+        "repeat": "r1",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0001",
+        "repeat": "r2",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0001",
+        "repeat": "r3",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0205",
+        "repeat": "r1",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 71,
+        "tp": 68,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.9855072463768116,
+        "recall": 0.9577464788732394,
+        "f1": 0.9714285714285714,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0205",
+        "repeat": "r2",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 71,
+        "tp": 71,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0205",
+        "repeat": "r3",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1,
+        "f1": 0.993006993006993,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0252",
+        "repeat": "r1",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0252",
+        "repeat": "r2",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0252",
+        "repeat": "r3",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 27,
+        "tp": 25,
+        "fp": 3,
+        "fn": 2,
+        "precision": 0.8928571428571429,
+        "recall": 0.9259259259259259,
+        "f1": 0.9090909090909091,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0256",
+        "repeat": "r1",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0256",
+        "repeat": "r2",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0256",
+        "repeat": "r3",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0258",
+        "repeat": "r1",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1,
+        "recall": 0.75,
+        "f1": 0.8571428571428571,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0258",
+        "repeat": "r2",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 24,
+        "tp": 18,
+        "fp": 1,
+        "fn": 6,
+        "precision": 0.9473684210526315,
+        "recall": 0.75,
+        "f1": 0.8372093023255814,
+        "freezeFileSha256": "persisted-and-verified"
+      },
+      {
+        "documentId": "DOC-0258",
+        "repeat": "r3",
+        "state": "FROZEN_SUCCESS",
+        "sourceHashOk": true,
+        "predictionHashOk": true,
+        "resultHashOk": true,
+        "goldFirewall": true,
+        "modelOk": true,
+        "contractOk": true,
+        "configurationSignaturePersisted": false,
+        "gold": 24,
+        "tp": 17,
+        "fp": 1,
+        "fn": 7,
+        "precision": 0.9444444444444444,
+        "recall": 0.7083333333333334,
+        "f1": 0.8095238095238096,
+        "freezeFileSha256": "persisted-and-verified"
+      }
+    ],
+    "perRepeat": [
+      {
+        "gold": 153,
+        "tp": 140,
+        "fp": 8,
+        "fn": 13,
+        "precision": 0.9459459459459459,
+        "recall": 0.9150326797385621,
+        "f1": 0.9302325581395349,
+        "cells": 5
+      },
+      {
+        "gold": 153,
+        "tp": 143,
+        "fp": 8,
+        "fn": 10,
+        "precision": 0.9470198675496688,
+        "recall": 0.934640522875817,
+        "f1": 0.9407894736842104,
+        "cells": 5
+      },
+      {
+        "gold": 153,
+        "tp": 142,
+        "fp": 6,
+        "fn": 11,
+        "precision": 0.9594594594594594,
+        "recall": 0.9281045751633987,
+        "f1": 0.9435215946843853,
+        "cells": 5
+      }
+    ],
+    "aggregate": {
+      "gold": 459,
+      "tp": 425,
+      "fp": 22,
+      "fn": 34,
+      "precision": 0.9507829977628636,
+      "recall": 0.9259259259259259,
+      "f1": 0.9381898454746137,
+      "cells": 15
+    },
+    "verification": {
+      "sourceHashes": true,
+      "predictionHashes": true,
+      "resultHashes": true,
+      "freezeGoldFirewall": true,
+      "model": true,
+      "contract": true,
+      "configurationSignaturePersisted": false,
+      "configurationSignatureNote": "Canonical baseline freeze schema did not persist configurationSignature; absence is recorded, not silently treated as present."
+    },
+    "dynamicGoldEligibility": true,
+    "goldFirewall": "PASS"
+  },
+  "enrichmentV1Status": "REJECTED_REGRESSION",
+  "enrichmentV1Evidence": {
+    "artifactRoot": "eval/a99-closed-loop/semantic-text-stable-error-repair",
+    "baselineF1": 0.9381898454746137,
+    "enrichmentF1": 0.9076923076923077,
+    "decision": "ENRICHMENT_V1_REGRESSION",
+    "noFurtherProviderCalls": true
+  },
+  "errorStability": {
+    "repeatSet": [
+      "r1",
+      "r2",
+      "r3"
+    ],
+    "stableFn": 9,
+    "stableFp": 3,
+    "repeated2Of3": 8,
+    "stochastic1Of3": 4,
+    "fn": [
+      {
+        "key": "DOC-0205:body[1]/p[4]:29974:30039",
+        "documentId": "DOC-0205",
+        "kind": "FN",
+        "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 28. B\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m an to\u00C3\u00A0n trong qu\u00C3\u00A1 tr\u00C3\u00ACnh k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+        "presenceCount": 1,
+        "presenceMask": "100",
+        "causalBuckets": [
+          "MODEL_WRONG_TEXT"
+        ],
+        "stability": "STOCHASTIC_1_OF_3"
+      },
+      {
+        "key": "DOC-0205:body[1]/p[4]:30572:30622",
+        "documentId": "DOC-0205",
+        "kind": "FN",
+        "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 29. Kinh ph\u00C3\u00AD b\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+        "presenceCount": 1,
+        "presenceMask": "100",
+        "causalBuckets": [
+          "MODEL_WRONG_TEXT"
+        ],
+        "stability": "STOCHASTIC_1_OF_3"
+      },
+      {
+        "key": "DOC-0205:body[1]/p[4]:32357:32413",
+        "documentId": "DOC-0205",
+        "kind": "FN",
+        "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 30. Ngu\u00E1\u00BB\u201Cn nh\u00C3\u00A2n l\u00E1\u00BB\u00B1c b\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+        "presenceCount": 1,
+        "presenceMask": "100",
+        "causalBuckets": [
+          "MODEL_WRONG_TEXT"
+        ],
+        "stability": "STOCHASTIC_1_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+        "documentId": "DOC-0252",
+        "kind": "FN",
+        "text": "Western Asia",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[158]:56:62",
+        "documentId": "DOC-0252",
+        "kind": "FN",
+        "text": "Agenda",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_WRONG_TEXT_BOUNDARY"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0256:body[1]/p[11]:0:6",
+        "documentId": "DOC-0256",
+        "kind": "FN",
+        "text": "Africa",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0256:body[1]/p[17]:0:20",
+        "documentId": "DOC-0256",
+        "kind": "FN",
+        "text": "Asia and the Pacific",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[11]:0:6",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Africa",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[12]:0:20",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Asia and the Pacific",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[17]:0:25",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Eurostat-OECD PPP Program",
+        "presenceCount": 2,
+        "presenceMask": "101",
+        "causalBuckets": [
+          "MODEL_OMISSION"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[18]:0:34",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Commonwealth of Independent States",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[19]:0:31",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Latin America and the Caribbean",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[24]:0:12",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Western Asia",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[115]:0:29",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Annex 2: List of participants",
+        "presenceCount": 2,
+        "presenceMask": "011",
+        "causalBuckets": [
+          "MODEL_WRONG_TEXT_BOUNDARY"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      }
+    ],
+    "fp": [
+      {
+        "key": "DOC-0205:body[1]/p[4]:174:243:NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "documentId": "DOC-0205",
+        "kind": "FP",
+        "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "presenceCount": 2,
+        "presenceMask": "101",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[3]:0:47:MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[46]:0:12:Western Asia",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "Western Asia",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[175]:0:36:ICP Technical Advisory Group members",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "ICP Technical Advisory Group members",
+        "presenceCount": 2,
+        "presenceMask": "110",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[176]:0:42:ICP experts, guest speakers, and observers",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "ICP experts, guest speakers, and observers",
+        "presenceCount": 2,
+        "presenceMask": "110",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[177]:0:42:ICP Inter-Agency Coordination Group (IACG)",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "ICP Inter-Agency Coordination Group (IACG)",
+        "presenceCount": 2,
+        "presenceMask": "110",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[178]:0:10:World Bank",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "World Bank",
+        "presenceCount": 2,
+        "presenceMask": "110",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[4]:0:24:TECHNICAL ADVISORY GROUP",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "TECHNICAL ADVISORY GROUP",
+        "presenceCount": 1,
+        "presenceMask": "001",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "STOCHASTIC_1_OF_3"
+      },
+      {
+        "key": "DOC-0256:body[1]/p[3]:0:87:MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "documentId": "DOC-0256",
+        "kind": "FP",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[115]:0:230:Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+        "documentId": "DOC-0258",
+        "kind": "FP",
+        "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+        "presenceCount": 2,
+        "presenceMask": "011",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      }
+    ],
+    "stableBuckets": [
+      {
+        "bucket": "MODEL_TRUE_EXTRA",
+        "count": 3
+      },
+      {
+        "bucket": "MODEL_OMISSION",
+        "count": 1
+      },
+      {
+        "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+        "count": 1
+      },
+      {
+        "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+        "count": 1
+      }
+    ],
+    "largestStableBucket": "MODEL_TRUE_EXTRA",
+    "distinction": "Stable occurrence presence and stable causal bucket are reported separately; mixed first-loss causes are not promoted as a single deterministic intervention target."
+  },
+  "firstLossBuckets": [
+    {
+      "bucket": "MODEL_OMISSION",
+      "count": 16,
+      "affectedCells": 6,
+      "affectedOccurrences": 8
+    },
+    {
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "count": 10,
+      "affectedCells": 4,
+      "affectedOccurrences": 7
+    },
+    {
+      "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "count": 5,
+      "affectedCells": 5,
+      "affectedOccurrences": 2
+    },
+    {
+      "bucket": "MODEL_WRONG_TEXT",
+      "count": 3,
+      "affectedCells": 1,
+      "affectedOccurrences": 3
+    }
+  ],
+  "expectedProjectionExclusion": 0,
+  "systemBugLoss": 0,
+  "iterations": [
+    {
+      "schemaVersion": "a99-semantic-text-stable-error-loop-iteration-v1",
+      "iteration": 0,
+      "targetBucket": "MODEL_TRUE_EXTRA",
+      "intervention": "NONE_OFFLINE_FORENSIC",
+      "freshInference": false,
+      "providerCalls": 0,
+      "before": {
+        "gold": 459,
+        "tp": 425,
+        "fp": 22,
+        "fn": 34,
+        "precision": 0.9507829977628636,
+        "recall": 0.9259259259259259,
+        "f1": 0.9381898454746137,
+        "cells": 15
+      },
+      "after": {
+        "gold": 459,
+        "tp": 425,
+        "fp": 22,
+        "fn": 34,
+        "precision": 0.9507829977628636,
+        "recall": 0.9259259259259259,
+        "f1": 0.9381898454746137,
+        "cells": 15
+      },
+      "disposition": "NO_INTERVENTION_PROVEN",
+      "reason": "The largest stable residual signatures are model-side true extras/omissions or conservative duplicate-text ambiguity. No generic binder, normalization, validator, projection, or lean-contract change is proven safe without risking correct headings.",
+      "enrichmentV1Status": "REJECTED_REGRESSION",
+      "systemBugLoss": {
+        "before": 0,
+        "after": 0
+      }
+    }
+  ],
+  "terminalClassification": "MODEL_CAPABILITY_STABLE_GAP",
+  "a99ClaimLevel": "DEV_ONLY_NOT_REACHED",
+  "rationale": "Lean semantic-text exact binding remains the winning architecture. Residual stable errors are not a proven generic harness defect; expected projection exclusions remain outside SYSTEM_BUG_LOSS.",
+  "goldFirewall": "PASS",
+  "runtimeGoldLeakage": false
+}

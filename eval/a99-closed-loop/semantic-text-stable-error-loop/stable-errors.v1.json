@@ -1,0 +1,4548 @@
+{
+  "schemaVersion": "a99-semantic-text-stable-error-loop-stable-errors-v1",
+  "generatedFrom": {
+    "baselineRoot": "eval/a99-closed-loop/semantic-text-generalization",
+    "goldRoot": "eval/a99-closed-loop/strict-gold-occurrence-v1",
+    "model": "qwen/qwen3.7-flash",
+    "contract": "a99-semantic-text-exact-binding-v1"
+  },
+  "errors": [
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[4]:29974:30039",
+      "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 28. B\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m an to\u00C3\u00A0n trong qu\u00C3\u00A1 tr\u00C3\u00ACnh k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+      "primaryBucket": "MODEL_WRONG_TEXT",
+      "sourceFirstLoss": "MODEL_WRONG_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0003"
+      ],
+      "rawCandidates": [
+        {
+          "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 28. \u0110\u1EA3m b\u1EA3o an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 29. Kinh ph\u00ED \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "3",
+          "failureReason": "TEXT_NOT_FOUND",
+          "exactTextOccurrenceCount": 0
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "3",
+          "failureReason": "TEXT_NOT_FOUND",
+          "exactTextOccurrenceCount": 0
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "3",
+          "failureReason": "TEXT_NOT_FOUND",
+          "exactTextOccurrenceCount": 0
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[4]:30572:30622",
+      "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 29. Kinh ph\u00C3\u00AD b\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+      "primaryBucket": "MODEL_WRONG_TEXT",
+      "sourceFirstLoss": "MODEL_WRONG_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0003"
+      ],
+      "rawCandidates": [
+        {
+          "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 28. \u0110\u1EA3m b\u1EA3o an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 29. Kinh ph\u00ED \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "3",
+          "failureReason": "TEXT_NOT_FOUND",
+          "exactTextOccurrenceCount": 0
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "3",
+          "failureReason": "TEXT_NOT_FOUND",
+          "exactTextOccurrenceCount": 0
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "3",
+          "failureReason": "TEXT_NOT_FOUND",
+          "exactTextOccurrenceCount": 0
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[4]:32357:32413",
+      "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 30. Ngu\u00E1\u00BB\u201Cn nh\u00C3\u00A2n l\u00E1\u00BB\u00B1c b\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+      "primaryBucket": "MODEL_WRONG_TEXT",
+      "sourceFirstLoss": "MODEL_WRONG_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0003"
+      ],
+      "rawCandidates": [
+        {
+          "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 28. \u0110\u1EA3m b\u1EA3o an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 29. Kinh ph\u00ED \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c \u0111\u1EA3m b\u1EA3o k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "SECTION",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+          "role": "CHAPTER",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        },
+        {
+          "text": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh",
+          "role": "ARTICLE",
+          "source": "S0003"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "3",
+          "failureReason": "TEXT_NOT_FOUND",
+          "exactTextOccurrenceCount": 0
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "3",
+          "failureReason": "TEXT_NOT_FOUND",
+          "exactTextOccurrenceCount": 0
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "3",
+          "failureReason": "TEXT_NOT_FOUND",
+          "exactTextOccurrenceCount": 0
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        },
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "kind": "FP",
+      "key": "body[1]/p[4]:174:243",
+      "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0003"
+      ],
+      "rawCandidates": [
+        {
+          "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0003"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[4]"
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r3",
+      "kind": "FP",
+      "key": "body[1]/p[4]:174:243",
+      "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0003"
+      ],
+      "rawCandidates": [
+        {
+          "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0003"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[4]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "text": "Western Asia",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[158]:56:62",
+      "text": "Agenda",
+      "primaryBucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "sourceFirstLoss": "MODEL_WRONG_SPAN",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0161"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+          "role": "AGENDA_NAVIGATION_HEADING",
+          "source": "S0161"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [
+        {
+          "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+          "role": "AGENDA_NAVIGATION_HEADING",
+          "source": "S0161"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0161",
+          "sourceId": "body[1]/p[158]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "key": "body[1]/p[3]:0:47",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0001"
+      ],
+      "rawCandidates": [
+        {
+          "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0001"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "key": "body[1]/p[46]:0:12",
+      "text": "Western Asia",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0056"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Western Asia",
+          "role": "SUBSECTION",
+          "source": "S0056"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[46]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "key": "body[1]/p[175]:0:36",
+      "text": "ICP Technical Advisory Group members",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0196"
+      ],
+      "rawCandidates": [
+        {
+          "text": "ICP Technical Advisory Group members",
+          "role": "SUBSECTION",
+          "source": "S0196"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[175]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "key": "body[1]/p[176]:0:42",
+      "text": "ICP experts, guest speakers, and observers",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0199"
+      ],
+      "rawCandidates": [
+        {
+          "text": "ICP experts, guest speakers, and observers",
+          "role": "SUBSECTION",
+          "source": "S0199"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[176]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "key": "body[1]/p[177]:0:42",
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0202"
+      ],
+      "rawCandidates": [
+        {
+          "text": "ICP Inter-Agency Coordination Group (IACG)",
+          "role": "SUBSECTION",
+          "source": "S0202"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[177]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "kind": "FP",
+      "key": "body[1]/p[178]:0:10",
+      "text": "World Bank",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0207"
+      ],
+      "rawCandidates": [
+        {
+          "text": "World Bank",
+          "role": "SUBSECTION",
+          "source": "S0207"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[178]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FN",
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "text": "Western Asia",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FN",
+      "key": "body[1]/p[158]:56:62",
+      "text": "Agenda",
+      "primaryBucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "sourceFirstLoss": "MODEL_WRONG_SPAN",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0161"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+          "role": "AGENDA_NAVIGATION_HEADING",
+          "source": "S0161"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [
+        {
+          "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+          "role": "AGENDA_NAVIGATION_HEADING",
+          "source": "S0161"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0161",
+          "sourceId": "body[1]/p[158]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "key": "body[1]/p[3]:0:47",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0001"
+      ],
+      "rawCandidates": [
+        {
+          "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0001"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "key": "body[1]/p[46]:0:12",
+      "text": "Western Asia",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0056"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Western Asia",
+          "role": "SUBSECTION",
+          "source": "S0056"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[46]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "key": "body[1]/p[175]:0:36",
+      "text": "ICP Technical Advisory Group members",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0196"
+      ],
+      "rawCandidates": [
+        {
+          "text": "ICP Technical Advisory Group members",
+          "role": "SUBSECTION",
+          "source": "S0196"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[175]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "key": "body[1]/p[176]:0:42",
+      "text": "ICP experts, guest speakers, and observers",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0199"
+      ],
+      "rawCandidates": [
+        {
+          "text": "ICP experts, guest speakers, and observers",
+          "role": "SUBSECTION",
+          "source": "S0199"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[176]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "key": "body[1]/p[177]:0:42",
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0202"
+      ],
+      "rawCandidates": [
+        {
+          "text": "ICP Inter-Agency Coordination Group (IACG)",
+          "role": "SUBSECTION",
+          "source": "S0202"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[177]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "kind": "FP",
+      "key": "body[1]/p[178]:0:10",
+      "text": "World Bank",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0207"
+      ],
+      "rawCandidates": [
+        {
+          "text": "World Bank",
+          "role": "SUBSECTION",
+          "source": "S0207"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[178]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "text": "Western Asia",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/p[158]:56:62",
+      "text": "Agenda",
+      "primaryBucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "sourceFirstLoss": "MODEL_WRONG_SPAN",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0161"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks",
+          "role": "AGENDA_NAVIGATION_HEADING",
+          "source": "S0161"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [
+        {
+          "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks",
+          "role": "AGENDA_NAVIGATION_HEADING",
+          "source": "S0161"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0161",
+          "sourceId": "body[1]/p[158]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "kind": "FP",
+      "key": "body[1]/p[3]:0:47",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0001"
+      ],
+      "rawCandidates": [
+        {
+          "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0001"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "kind": "FP",
+      "key": "body[1]/p[4]:0:24",
+      "text": "TECHNICAL ADVISORY GROUP",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0002"
+      ],
+      "rawCandidates": [
+        {
+          "text": "TECHNICAL ADVISORY GROUP",
+          "role": "PART",
+          "source": "S0002"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[4]"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "kind": "FP",
+      "key": "body[1]/p[46]:0:12",
+      "text": "Western Asia",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0056"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Western Asia",
+          "role": "SUBSECTION",
+          "source": "S0056"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[46]"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[11]:0:6",
+      "text": "Africa",
+      "primaryBucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceFirstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0009"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "exactCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "nearCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0009",
+          "sourceId": "body[1]/p[11]",
+          "status": "4",
+          "failureReason": "AMBIGUOUS_EXACT_TEXT",
+          "exactTextOccurrenceCount": 3
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[17]:0:20",
+      "text": "Asia and the Pacific",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r1",
+      "kind": "FP",
+      "key": "body[1]/p[3]:0:87",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0001"
+      ],
+      "rawCandidates": [
+        {
+          "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0001"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r2",
+      "kind": "FN",
+      "key": "body[1]/p[11]:0:6",
+      "text": "Africa",
+      "primaryBucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceFirstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0009"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "exactCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "nearCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0009",
+          "sourceId": "body[1]/p[11]",
+          "status": "4",
+          "failureReason": "AMBIGUOUS_EXACT_TEXT",
+          "exactTextOccurrenceCount": 3
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r2",
+      "kind": "FN",
+      "key": "body[1]/p[17]:0:20",
+      "text": "Asia and the Pacific",
+      "primaryBucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceFirstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0013"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Asia and the Pacific",
+          "role": "SUBSECTION",
+          "source": "S0013"
+        }
+      ],
+      "exactCandidates": [
+        {
+          "text": "Asia and the Pacific",
+          "role": "SUBSECTION",
+          "source": "S0013"
+        }
+      ],
+      "nearCandidates": [
+        {
+          "text": "Asia and the Pacific",
+          "role": "SUBSECTION",
+          "source": "S0013"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0013",
+          "sourceId": "body[1]/p[17]",
+          "status": "4",
+          "failureReason": "AMBIGUOUS_EXACT_TEXT",
+          "exactTextOccurrenceCount": 2
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r2",
+      "kind": "FP",
+      "key": "body[1]/p[3]:0:87",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0001"
+      ],
+      "rawCandidates": [
+        {
+          "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0001"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/p[11]:0:6",
+      "text": "Africa",
+      "primaryBucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceFirstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0009"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "exactCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "nearCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0009",
+          "sourceId": "body[1]/p[11]",
+          "status": "4",
+          "failureReason": "AMBIGUOUS_EXACT_TEXT",
+          "exactTextOccurrenceCount": 3
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/p[17]:0:20",
+      "text": "Asia and the Pacific",
+      "primaryBucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceFirstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0013"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Asia and the Pacific",
+          "role": "SUBSECTION",
+          "source": "S0013"
+        }
+      ],
+      "exactCandidates": [
+        {
+          "text": "Asia and the Pacific",
+          "role": "SUBSECTION",
+          "source": "S0013"
+        }
+      ],
+      "nearCandidates": [
+        {
+          "text": "Asia and the Pacific",
+          "role": "SUBSECTION",
+          "source": "S0013"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0013",
+          "sourceId": "body[1]/p[17]",
+          "status": "4",
+          "failureReason": "AMBIGUOUS_EXACT_TEXT",
+          "exactTextOccurrenceCount": 2
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r3",
+      "kind": "FP",
+      "key": "body[1]/p[3]:0:87",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0001"
+      ],
+      "rawCandidates": [
+        {
+          "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+          "role": "DOCUMENT_TITLE",
+          "source": "S0001"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[3]"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[11]:0:6",
+      "text": "Africa",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[12]:0:20",
+      "text": "Asia and the Pacific",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[17]:0:25",
+      "text": "Eurostat-OECD PPP Program",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[18]:0:34",
+      "text": "Commonwealth of Independent States",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[19]:0:31",
+      "text": "Latin America and the Caribbean",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "kind": "FN",
+      "key": "body[1]/p[24]:0:12",
+      "text": "Western Asia",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "key": "body[1]/p[11]:0:6",
+      "text": "Africa",
+      "primaryBucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceFirstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0009"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "exactCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "nearCandidates": [
+        {
+          "text": "Africa",
+          "role": "SUBSECTION",
+          "source": "S0009"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0009",
+          "sourceId": "body[1]/p[11]",
+          "status": "4",
+          "failureReason": "AMBIGUOUS_EXACT_TEXT",
+          "exactTextOccurrenceCount": 4
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "key": "body[1]/p[12]:0:20",
+      "text": "Asia and the Pacific",
+      "primaryBucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceFirstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0010"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Asia and the Pacific",
+          "role": "SUBSECTION",
+          "source": "S0010"
+        }
+      ],
+      "exactCandidates": [
+        {
+          "text": "Asia and the Pacific",
+          "role": "SUBSECTION",
+          "source": "S0010"
+        }
+      ],
+      "nearCandidates": [
+        {
+          "text": "Asia and the Pacific",
+          "role": "SUBSECTION",
+          "source": "S0010"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0010",
+          "sourceId": "body[1]/p[12]",
+          "status": "4",
+          "failureReason": "AMBIGUOUS_EXACT_TEXT",
+          "exactTextOccurrenceCount": 2
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "key": "body[1]/p[18]:0:34",
+      "text": "Commonwealth of Independent States",
+      "primaryBucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceFirstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0014"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Commonwealth of Independent States",
+          "role": "SUBSECTION",
+          "source": "S0014"
+        }
+      ],
+      "exactCandidates": [
+        {
+          "text": "Commonwealth of Independent States",
+          "role": "SUBSECTION",
+          "source": "S0014"
+        }
+      ],
+      "nearCandidates": [
+        {
+          "text": "Commonwealth of Independent States",
+          "role": "SUBSECTION",
+          "source": "S0014"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0014",
+          "sourceId": "body[1]/p[18]",
+          "status": "4",
+          "failureReason": "AMBIGUOUS_EXACT_TEXT",
+          "exactTextOccurrenceCount": 2
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "key": "body[1]/p[19]:0:31",
+      "text": "Latin America and the Caribbean",
+      "primaryBucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceFirstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0015"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Latin America and the Caribbean",
+          "role": "SUBSECTION",
+          "source": "S0015"
+        }
+      ],
+      "exactCandidates": [
+        {
+          "text": "Latin America and the Caribbean",
+          "role": "SUBSECTION",
+          "source": "S0015"
+        }
+      ],
+      "nearCandidates": [
+        {
+          "text": "Latin America and the Caribbean",
+          "role": "SUBSECTION",
+          "source": "S0015"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0015",
+          "sourceId": "body[1]/p[19]",
+          "status": "4",
+          "failureReason": "AMBIGUOUS_EXACT_TEXT",
+          "exactTextOccurrenceCount": 3
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "key": "body[1]/p[24]:0:12",
+      "text": "Western Asia",
+      "primaryBucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceFirstLoss": "AMBIGUOUS_DUPLICATE_TEXT",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0018"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Western Asia",
+          "role": "SUBSECTION",
+          "source": "S0018"
+        }
+      ],
+      "exactCandidates": [
+        {
+          "text": "Western Asia",
+          "role": "SUBSECTION",
+          "source": "S0018"
+        }
+      ],
+      "nearCandidates": [
+        {
+          "text": "Western Asia",
+          "role": "SUBSECTION",
+          "source": "S0018"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0018",
+          "sourceId": "body[1]/p[24]",
+          "status": "4",
+          "failureReason": "AMBIGUOUS_EXACT_TEXT",
+          "exactTextOccurrenceCount": 3
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FN",
+      "key": "body[1]/p[115]:0:29",
+      "text": "Annex 2: List of participants",
+      "primaryBucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "sourceFirstLoss": "MODEL_WRONG_SPAN",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0135"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "role": "ANNEX_HEADING",
+          "source": "S0135"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [
+        {
+          "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "role": "ANNEX_HEADING",
+          "source": "S0135"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0135",
+          "sourceId": "body[1]/p[115]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "kind": "FP",
+      "key": "body[1]/p[115]:0:230",
+      "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0135"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "role": "ANNEX_HEADING",
+          "source": "S0135"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[115]"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/p[11]:0:6",
+      "text": "Africa",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/p[12]:0:20",
+      "text": "Asia and the Pacific",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/p[17]:0:25",
+      "text": "Eurostat-OECD PPP Program",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/p[18]:0:34",
+      "text": "Commonwealth of Independent States",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/p[19]:0:31",
+      "text": "Latin America and the Caribbean",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/p[24]:0:12",
+      "text": "Western Asia",
+      "primaryBucket": "MODEL_OMISSION",
+      "sourceFirstLoss": "MODEL_OMISSION",
+      "sourceVisibilityEvidence": true,
+      "aliases": [],
+      "rawCandidates": [],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FN",
+      "key": "body[1]/p[115]:0:29",
+      "text": "Annex 2: List of participants",
+      "primaryBucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "sourceFirstLoss": "MODEL_WRONG_SPAN",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0135"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "role": "ANNEX_HEADING",
+          "source": "S0135"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [
+        {
+          "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "role": "ANNEX_HEADING",
+          "source": "S0135"
+        }
+      ],
+      "bindingObservations": [
+        {
+          "alias": "S0135",
+          "sourceId": "body[1]/p[115]",
+          "status": "2",
+          "failureReason": "",
+          "exactTextOccurrenceCount": 1
+        }
+      ],
+      "finalPrediction": false,
+      "finalRole": null,
+      "finalSourceId": null
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "kind": "FP",
+      "key": "body[1]/p[115]:0:230",
+      "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+      "primaryBucket": "MODEL_TRUE_EXTRA",
+      "sourceFirstLoss": "MODEL_FALSE_POSITIVE",
+      "sourceVisibilityEvidence": true,
+      "aliases": [
+        "S0135"
+      ],
+      "rawCandidates": [
+        {
+          "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "role": "ANNEX_HEADING",
+          "source": "S0135"
+        }
+      ],
+      "exactCandidates": [],
+      "nearCandidates": [],
+      "bindingObservations": [],
+      "finalPrediction": true,
+      "finalRole": "",
+      "finalSourceId": "body[1]/p[115]"
+    }
+  ],
+  "firstLossBuckets": [
+    {
+      "bucket": "MODEL_OMISSION",
+      "count": 16,
+      "affectedCells": 6,
+      "affectedOccurrences": 8
+    },
+    {
+      "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+      "count": 10,
+      "affectedCells": 4,
+      "affectedOccurrences": 7
+    },
+    {
+      "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+      "count": 5,
+      "affectedCells": 5,
+      "affectedOccurrences": 2
+    },
+    {
+      "bucket": "MODEL_WRONG_TEXT",
+      "count": 3,
+      "affectedCells": 1,
+      "affectedOccurrences": 3
+    }
+  ],
+  "stability": {
+    "repeatSet": [
+      "r1",
+      "r2",
+      "r3"
+    ],
+    "stableFn": 9,
+    "stableFp": 3,
+    "repeated2Of3": 8,
+    "stochastic1Of3": 4,
+    "fn": [
+      {
+        "key": "DOC-0205:body[1]/p[4]:29974:30039",
+        "documentId": "DOC-0205",
+        "kind": "FN",
+        "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 28. B\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m an to\u00C3\u00A0n trong qu\u00C3\u00A1 tr\u00C3\u00ACnh k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+        "presenceCount": 1,
+        "presenceMask": "100",
+        "causalBuckets": [
+          "MODEL_WRONG_TEXT"
+        ],
+        "stability": "STOCHASTIC_1_OF_3"
+      },
+      {
+        "key": "DOC-0205:body[1]/p[4]:30572:30622",
+        "documentId": "DOC-0205",
+        "kind": "FN",
+        "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 29. Kinh ph\u00C3\u00AD b\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+        "presenceCount": 1,
+        "presenceMask": "100",
+        "causalBuckets": [
+          "MODEL_WRONG_TEXT"
+        ],
+        "stability": "STOCHASTIC_1_OF_3"
+      },
+      {
+        "key": "DOC-0205:body[1]/p[4]:32357:32413",
+        "documentId": "DOC-0205",
+        "kind": "FN",
+        "text": "\u00C4\u0090i\u00E1\u00BB\u0081u 30. Ngu\u00E1\u00BB\u201Cn nh\u00C3\u00A2n l\u00E1\u00BB\u00B1c b\u00E1\u00BA\u00A3o \u00C4\u2018\u00E1\u00BA\u00A3m k\u00E1\u00BA\u00BFt n\u00E1\u00BB\u2018i, chia s\u00E1\u00BA\u00BB d\u00E1\u00BB\u00AF li\u00E1\u00BB\u2021u",
+        "presenceCount": 1,
+        "presenceMask": "100",
+        "causalBuckets": [
+          "MODEL_WRONG_TEXT"
+        ],
+        "stability": "STOCHASTIC_1_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+        "documentId": "DOC-0252",
+        "kind": "FN",
+        "text": "Western Asia",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[158]:56:62",
+        "documentId": "DOC-0252",
+        "kind": "FN",
+        "text": "Agenda",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_WRONG_TEXT_BOUNDARY"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0256:body[1]/p[11]:0:6",
+        "documentId": "DOC-0256",
+        "kind": "FN",
+        "text": "Africa",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0256:body[1]/p[17]:0:20",
+        "documentId": "DOC-0256",
+        "kind": "FN",
+        "text": "Asia and the Pacific",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[11]:0:6",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Africa",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[12]:0:20",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Asia and the Pacific",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[17]:0:25",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Eurostat-OECD PPP Program",
+        "presenceCount": 2,
+        "presenceMask": "101",
+        "causalBuckets": [
+          "MODEL_OMISSION"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[18]:0:34",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Commonwealth of Independent States",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[19]:0:31",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Latin America and the Caribbean",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[24]:0:12",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Western Asia",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_OMISSION",
+          "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[115]:0:29",
+        "documentId": "DOC-0258",
+        "kind": "FN",
+        "text": "Annex 2: List of participants",
+        "presenceCount": 2,
+        "presenceMask": "011",
+        "causalBuckets": [
+          "MODEL_WRONG_TEXT_BOUNDARY"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      }
+    ],
+    "fp": [
+      {
+        "key": "DOC-0205:body[1]/p[4]:174:243:NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "documentId": "DOC-0205",
+        "kind": "FP",
+        "text": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+        "presenceCount": 2,
+        "presenceMask": "101",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[3]:0:47:MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[46]:0:12:Western Asia",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "Western Asia",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[175]:0:36:ICP Technical Advisory Group members",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "ICP Technical Advisory Group members",
+        "presenceCount": 2,
+        "presenceMask": "110",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[176]:0:42:ICP experts, guest speakers, and observers",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "ICP experts, guest speakers, and observers",
+        "presenceCount": 2,
+        "presenceMask": "110",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[177]:0:42:ICP Inter-Agency Coordination Group (IACG)",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "ICP Inter-Agency Coordination Group (IACG)",
+        "presenceCount": 2,
+        "presenceMask": "110",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[178]:0:10:World Bank",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "World Bank",
+        "presenceCount": 2,
+        "presenceMask": "110",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      },
+      {
+        "key": "DOC-0252:body[1]/p[4]:0:24:TECHNICAL ADVISORY GROUP",
+        "documentId": "DOC-0252",
+        "kind": "FP",
+        "text": "TECHNICAL ADVISORY GROUP",
+        "presenceCount": 1,
+        "presenceMask": "001",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "STOCHASTIC_1_OF_3"
+      },
+      {
+        "key": "DOC-0256:body[1]/p[3]:0:87:MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "documentId": "DOC-0256",
+        "kind": "FP",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "presenceCount": 3,
+        "presenceMask": "111",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "key": "DOC-0258:body[1]/p[115]:0:230:Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+        "documentId": "DOC-0258",
+        "kind": "FP",
+        "text": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+        "presenceCount": 2,
+        "presenceMask": "011",
+        "causalBuckets": [
+          "MODEL_TRUE_EXTRA"
+        ],
+        "stability": "REPEATED_2_OF_3"
+      }
+    ],
+    "stableBuckets": [
+      {
+        "bucket": "MODEL_TRUE_EXTRA",
+        "count": 3
+      },
+      {
+        "bucket": "MODEL_OMISSION",
+        "count": 1
+      },
+      {
+        "bucket": "MODEL_WRONG_TEXT_BOUNDARY",
+        "count": 1
+      },
+      {
+        "bucket": "SYSTEM_AMBIGUOUS_DUPLICATE_TEXT",
+        "count": 1
+      }
+    ],
+    "largestStableBucket": "MODEL_TRUE_EXTRA",
+    "distinction": "Stable occurrence presence and stable causal bucket are reported separately; mixed first-loss causes are not promoted as a single deterministic intervention target."
+  },
+  "systemBugLoss": 0,
+  "expectedProjectionExclusion": 0,
+  "goldFirewall": "PASS",
+  "runtimeGoldLeakage": false
+}

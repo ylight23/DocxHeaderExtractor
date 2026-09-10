@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "a99-semantic-text-stable-error-loop-iteration-v1",
+  "iteration": 0,
+  "targetBucket": "MODEL_TRUE_EXTRA",
+  "intervention": "NONE_OFFLINE_FORENSIC",
+  "freshInference": false,
+  "providerCalls": 0,
+  "before": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "after": {
+    "gold": 459,
+    "tp": 425,
+    "fp": 22,
+    "fn": 34,
+    "precision": 0.9507829977628636,
+    "recall": 0.9259259259259259,
+    "f1": 0.9381898454746137,
+    "cells": 15
+  },
+  "disposition": "NO_INTERVENTION_PROVEN",
+  "reason": "The largest stable residual signatures are model-side true extras/omissions or conservative duplicate-text ambiguity. No generic binder, normalization, validator, projection, or lean-contract change is proven safe without risking correct headings.",
+  "enrichmentV1Status": "REJECTED_REGRESSION",
+  "systemBugLoss": {
+    "before": 0,
+    "after": 0
+  }
+}
