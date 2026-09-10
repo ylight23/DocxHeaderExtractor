@@ -1,0 +1,578 @@
+{
+  "schemaVersion": "a99-semantic-text-omission-review-paired-deltas-v1",
+  "rows": [
+    {
+      "documentId": "DOC-0001",
+      "repeat": "r1",
+      "baseline": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "r2",
+      "baseline": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "r3",
+      "baseline": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "baseline": {
+        "tp": 68,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.9855072463768116,
+        "recall": 0.9577464788732394,
+        "f1": 0.9714285714285714,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 68,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.9855072463768116,
+        "recall": 0.9577464788732394,
+        "f1": 0.9714285714285714,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r2",
+      "baseline": {
+        "tp": 71,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1,
+        "f1": 0.993006993006993,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 0,
+        "precision": -0.01388888888888884,
+        "recall": 0,
+        "f1": -0.006993006993006978,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r3",
+      "baseline": {
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1,
+        "f1": 0.993006993006993,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1,
+        "f1": 0.993006993006993,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "baseline": {
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414,
+        "modelOmission": 1,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 25,
+        "fp": 7,
+        "fn": 2,
+        "precision": 0.78125,
+        "recall": 0.9259259259259259,
+        "f1": 0.847457627118644,
+        "modelOmission": 1,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 0,
+        "precision": -0.025201612903225756,
+        "recall": 0,
+        "f1": -0.014611338398597407,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "baseline": {
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414,
+        "modelOmission": 1,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414,
+        "modelOmission": 1,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "baseline": {
+        "tp": 25,
+        "fp": 3,
+        "fn": 2,
+        "precision": 0.8928571428571429,
+        "recall": 0.9259259259259259,
+        "f1": 0.9090909090909091,
+        "modelOmission": 1,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 25,
+        "fp": 3,
+        "fn": 2,
+        "precision": 0.8928571428571429,
+        "recall": 0.9259259259259259,
+        "f1": 0.9090909090909091,
+        "modelOmission": 1,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r1",
+      "baseline": {
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574,
+        "modelOmission": 1,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 22,
+        "fp": 3,
+        "fn": 2,
+        "precision": 0.88,
+        "recall": 0.9166666666666666,
+        "f1": 0.8979591836734694,
+        "modelOmission": 1,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 0,
+        "precision": -0.07652173913043481,
+        "recall": 0,
+        "f1": -0.03821102909248797,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r2",
+      "baseline": {
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 22,
+        "fp": 3,
+        "fn": 2,
+        "precision": 0.88,
+        "recall": 0.9166666666666666,
+        "f1": 0.8979591836734694,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 0,
+        "precision": -0.07652173913043481,
+        "recall": 0,
+        "f1": -0.03821102909248797,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r3",
+      "baseline": {
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 22,
+        "fp": 3,
+        "fn": 2,
+        "precision": 0.88,
+        "recall": 0.9166666666666666,
+        "f1": 0.8979591836734694,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 0,
+        "precision": -0.07652173913043481,
+        "recall": 0,
+        "f1": -0.03821102909248797,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "baseline": {
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1,
+        "recall": 0.75,
+        "f1": 0.8571428571428571,
+        "modelOmission": 6,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 19,
+        "fp": 2,
+        "fn": 5,
+        "precision": 0.9047619047619048,
+        "recall": 0.7916666666666666,
+        "f1": 0.8444444444444444,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 1,
+        "fp": 2,
+        "fn": -1,
+        "precision": -0.09523809523809523,
+        "recall": 0.04166666666666663,
+        "f1": -0.012698412698412653,
+        "modelOmission": -6,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "baseline": {
+        "tp": 18,
+        "fp": 1,
+        "fn": 6,
+        "precision": 0.9473684210526315,
+        "recall": 0.75,
+        "f1": 0.8372093023255814,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 18,
+        "fp": 1,
+        "fn": 6,
+        "precision": 0.9473684210526315,
+        "recall": 0.75,
+        "f1": 0.8372093023255814,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "modelOmission": 0,
+        "systemLoss": 0
+      }
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "baseline": {
+        "tp": 17,
+        "fp": 1,
+        "fn": 7,
+        "precision": 0.9444444444444444,
+        "recall": 0.7083333333333334,
+        "f1": 0.8095238095238096,
+        "modelOmission": 6,
+        "systemLoss": 0
+      },
+      "review": {
+        "tp": 18,
+        "fp": 1,
+        "fn": 6,
+        "precision": 0.9473684210526315,
+        "recall": 0.75,
+        "f1": 0.8372093023255814,
+        "modelOmission": 0,
+        "systemLoss": 0
+      },
+      "delta": {
+        "tp": 1,
+        "fp": 0,
+        "fn": -1,
+        "precision": 0.0029239766081871066,
+        "recall": 0.04166666666666663,
+        "f1": 0.027685492801771794,
+        "modelOmission": -6,
+        "systemLoss": 0
+      }
+    }
+  ],
+  "cohortByRepeat": [
+    {
+      "repeat": "r1",
+      "baseline": {
+        "tp": 140,
+        "fp": 8,
+        "fn": 13,
+        "gold": 153
+      },
+      "review": {
+        "tp": 141,
+        "fp": 13,
+        "fn": 12,
+        "gold": 153
+      },
+      "delta": {
+        "tp": 1,
+        "fp": 5,
+        "fn": -1
+      }
+    },
+    {
+      "repeat": "r2",
+      "baseline": {
+        "tp": 143,
+        "fp": 8,
+        "fn": 10,
+        "gold": 153
+      },
+      "review": {
+        "tp": 143,
+        "fp": 11,
+        "fn": 10,
+        "gold": 153
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 3,
+        "fn": 0
+      }
+    },
+    {
+      "repeat": "r3",
+      "baseline": {
+        "tp": 142,
+        "fp": 6,
+        "fn": 11,
+        "gold": 153
+      },
+      "review": {
+        "tp": 143,
+        "fp": 8,
+        "fn": 10,
+        "gold": 153
+      },
+      "delta": {
+        "tp": 1,
+        "fp": 2,
+        "fn": -1
+      }
+    }
+  ],
+  "goldOccurrencesPerRepeat": 153
+}

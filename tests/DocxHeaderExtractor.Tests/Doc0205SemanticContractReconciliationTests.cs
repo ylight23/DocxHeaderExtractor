@@ -215,15 +215,33 @@ public sealed class Doc0205SemanticContractReconciliationTests
     [Fact]
     public void Omission_review_is_paired_additive_and_gold_firewalled()
     {
-        const string rootPath = "eval/a99-closed-loop/semantic-text-omission-review-v1";
+        const string rootPath = "eval/a99-closed-loop/semantic-text-omission-review";
         using var summary = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), rootPath, "summary.v1.json")));
         var root = summary.RootElement;
-        Assert.Equal(16, root.GetProperty("reviewProviderAttempts").GetInt32());
-        Assert.Equal(16, root.GetProperty("modelCalls").GetInt32());
+        Assert.Equal("1b1d3317fdb17406321fcc796afa17bb624cc5f1", root.GetProperty("startHead").GetString());
+        Assert.True(root.GetProperty("controlReused").GetBoolean());
+        Assert.Equal(0, root.GetProperty("controlProviderCallsCurrent").GetInt32());
+        Assert.Equal(15, root.GetProperty("reviewProviderAttempts").GetInt32());
+        Assert.Equal(15, root.GetProperty("modelCalls").GetInt32());
         Assert.Equal(0, root.GetProperty("passAProviderCallsCurrentRun").GetInt32());
         Assert.True(root.GetProperty("passAReused").GetBoolean());
         Assert.False(root.GetProperty("goldReadBeforeFreeze").GetBoolean());
         Assert.Equal("OMISSION_REVIEW_RECALL_UP_PRECISION_TRADEOFF", root.GetProperty("classification").GetString());
+        Assert.Equal("REVERT", root.GetProperty("keepOrRevert").GetString());
+        Assert.Equal(2, root.GetProperty("reviewRecoveredGoldCount").GetInt32());
+        Assert.Equal(10, root.GetProperty("reviewIntroducedFpCount").GetInt32());
+        Assert.Equal(4, root.GetProperty("remainingModelOmissions").GetInt32());
+        Assert.Equal(0, root.GetProperty("finalTable").EnumerateArray().Single(x => x.GetProperty("mode").GetString() == "OMISSION_REVIEW").GetProperty("systemLoss").GetInt32());
+        Assert.Equal("A99_NOT_MEASURED_DEV_MARGIN_BELOW_0.995", root.GetProperty("a99DevStatus").GetString());
+
+        var reviewTable = root.GetProperty("finalTable").EnumerateArray().Single(x => x.GetProperty("mode").GetString() == "OMISSION_REVIEW");
+        Assert.Equal(427, reviewTable.GetProperty("tp").GetInt32());
+        Assert.Equal(32, reviewTable.GetProperty("fp").GetInt32());
+        Assert.Equal(32, reviewTable.GetProperty("fn").GetInt32());
+        var baselineTable = root.GetProperty("finalTable").EnumerateArray().Single(x => x.GetProperty("mode").GetString() == "BASELINE");
+        Assert.Equal(425, baselineTable.GetProperty("tp").GetInt32());
+        Assert.Equal(22, baselineTable.GetProperty("fp").GetInt32());
+        Assert.Equal(34, baselineTable.GetProperty("fn").GetInt32());
 
         using var deltas = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), rootPath, "paired-deltas.v1.json")));
         Assert.Equal(15, deltas.RootElement.GetProperty("rows").GetArrayLength());
@@ -241,6 +259,12 @@ public sealed class Doc0205SemanticContractReconciliationTests
             Assert.False(freeze.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());
             Assert.Equal("abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53", freeze.RootElement.GetProperty("baseContractHash").GetString());
             Assert.True(freeze.RootElement.GetProperty("reviewPromptHash").GetString()!.Length == 64);
+            Assert.False(string.IsNullOrWhiteSpace(freeze.RootElement.GetProperty("actualProvider").GetString()));
+            Assert.Equal("stop", freeze.RootElement.GetProperty("finishReason").GetString());
+            Assert.True(freeze.RootElement.GetProperty("reasoningConfiguration").GetProperty("enabled").GetBoolean());
+            Assert.True(freeze.RootElement.GetProperty("reasoningTokens").GetInt32() > 0);
+            Assert.Equal(freeze.RootElement.GetProperty("predictionSha256").GetString(), Sha256(Path.Combine(dir, "prediction.v1.json")));
+            Assert.Equal(freeze.RootElement.GetProperty("resultSha256").GetString(), Sha256(Path.Combine(dir, "result.v1.json")));
             using var prediction = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "prediction.v1.json")));
             Assert.True(prediction.RootElement.GetProperty("passAReused").GetBoolean());
             Assert.Equal(0, prediction.RootElement.GetProperty("passAProviderCallsCurrentRun").GetInt32());

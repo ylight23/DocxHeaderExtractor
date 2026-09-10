@@ -179,7 +179,7 @@ public static class SemanticTextGeneralizationRunner
     public static async Task<int> RunOmissionReviewAsync(string repoRoot, CancellationToken ct = default)
     {
         repoRoot = Path.GetFullPath(repoRoot);
-        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review-v1".Replace('/', Path.DirectorySeparatorChar));
+        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review".Replace('/', Path.DirectorySeparatorChar));
         Directory.CreateDirectory(output);
         var baselineRoot = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
         var startHead = GitSha(repoRoot);
@@ -239,7 +239,7 @@ public static class SemanticTextGeneralizationRunner
             return 1;
         }
 
-        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review-v1", string.Join(',', selected.Select(x => x.item.GetProperty("documentId").GetString())), ct);
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review", string.Join(',', selected.Select(x => x.item.GetProperty("documentId").GetString())), ct);
         using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
         var review = new List<RepeatMetric>();
         foreach (var item in selected)
@@ -283,7 +283,7 @@ public static class SemanticTextGeneralizationRunner
     public static async Task<int> RecoverOmissionReviewDoc0001R1Async(string repoRoot, CancellationToken ct = default)
     {
         repoRoot = Path.GetFullPath(repoRoot);
-        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review-v1".Replace('/', Path.DirectorySeparatorChar));
+        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review".Replace('/', Path.DirectorySeparatorChar));
         var baselineRoot = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
         var item = LoadInventory(repoRoot).Single(x => x.GetProperty("documentId").GetString() == "DOC-0001");
         var eligibility = ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, "DOC-0001");
@@ -300,7 +300,7 @@ public static class SemanticTextGeneralizationRunner
         };
         var capability = (await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct)).Capability;
         if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) || !capability.ReasoningSupported || !capability.StructuredOutputSupported) return 1;
-        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review-v1", "DOC-0001-R1-RECOVERY", ct);
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review", "DOC-0001-R1-RECOVERY", ct);
         using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
         Console.WriteLine("RECOVERING_REVIEW=DOC-0001/R1");
         var recovered = await RunReviewRepeatAsync(repoRoot, output, baselineRoot, context, 1, model, GitSha(repoRoot), SemanticTextOmissionReviewContract.Hash(), ct, transientRetries: 1);
@@ -314,7 +314,7 @@ public static class SemanticTextGeneralizationRunner
     public static async Task<int> RunOmissionReviewOfflineAsync(string repoRoot, CancellationToken ct = default)
     {
         repoRoot = Path.GetFullPath(repoRoot);
-        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review-v1".Replace('/', Path.DirectorySeparatorChar));
+        var output = Path.Combine(repoRoot, "eval/a99-closed-loop/semantic-text-omission-review".Replace('/', Path.DirectorySeparatorChar));
         var baselineRoot = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
         var inventory = LoadInventory(repoRoot);
         var selected = inventory.Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
@@ -332,29 +332,43 @@ public static class SemanticTextGeneralizationRunner
             }
         }
         var reviewSummary = BuildRepeatSummary(review, selected.Length);
-        var recoveryPath = Path.Combine(output, "recovery.v1.json");
-        if (!File.Exists(recoveryPath))
-            await WriteJson(recoveryPath, new { recoveredRepeat = "DOC-0001/R1", initialRunProviderAttempts = 15, recoveryProviderAttempts = 1, totalProviderAttempts = 16, reason = "HTTP_429", goldReadBeforeFreeze = false }, ct);
         var reviewProviderAttempts = FrozenProviderAttempts(output, selected);
-        reviewProviderAttempts = File.Exists(recoveryPath) ? 16 : reviewProviderAttempts;
         await WriteJson(Path.Combine(output, "repeat-summary.v1.json"), reviewSummary, ct);
         await WriteJson(Path.Combine(output, "persistent-errors.v1.json"), BuildPersistentErrors(review), ct);
         await WriteJson(Path.Combine(output, "paired-deltas.v1.json"), BuildPairedComparison(baseline, review), ct);
         var classification = OmissionReviewClass(baseline, review);
         var gate = review.Count == 15 && CohortComplete(review) && review.All(x => x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0);
+        var baselineMicro = Micro(baseline);
+        var reviewMicro = Micro(review);
+        var recoveredGold = Math.Max(0, reviewMicro.Tp - baselineMicro.Tp);
+        var introducedFp = Math.Max(0, reviewMicro.Fp - baselineMicro.Fp);
+        var recoveryPrecision = recoveredGold + introducedFp == 0 ? 0d : (double)recoveredGold / (recoveredGold + introducedFp);
+        var remainingModelOmissions = review.Sum(x => x.FirstLossCounts.GetValueOrDefault("MODEL_OMISSION"));
         await WriteJson(Path.Combine(output, "summary.v1.json"), new
         {
             schemaVersion = "a99-semantic-text-omission-review-summary-v1", status = "COMPLETE_OFFLINE_REBUILD",
             startHead = GitSha(repoRoot), endHead = GitSha(repoRoot), intervention = "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
             baseContractHash = ContractHash(), reviewPromptHash = SemanticTextOmissionReviewContract.Hash(),
             selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
-            baselineComplete = CohortComplete(baseline), baselineProviderAttempts = 15, passAReused = true,
+            baselineComplete = CohortComplete(baseline), baselineProviderAttempts = 15, controlReused = true, controlProviderCallsCurrent = 0, passAReused = true,
             passAProviderCallsCurrentRun = 0, reviewProviderAttempts, modelCalls = reviewProviderAttempts, offlineProviderCalls = 0,
             goldOccurrencesPerRepeat = 153, goldReadBeforeFreeze = false, a99DevMarginMet = gate, classification,
             keepOrRevert = classification == "OMISSION_REVIEW_CLEAR_GAIN" ? "KEEP" : "REVERT",
             dominantBaselineBucket = NextBucket(baseline), dominantReviewBucket = NextBucket(review),
             persistentMovement = new { before = BuildPersistentErrors(baseline), after = BuildPersistentErrors(review) },
             performance = new { inputTokens = review.Sum(x => x.InputTokens ?? 0), reasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), outputTokens = review.Sum(x => x.OutputTokens ?? 0), wallTimeMs = review.Sum(x => x.WallTimeMs) },
+            finalTable = new[]
+            {
+                new { mode = "BASELINE", tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1, modelOmission = baseline.Sum(x => x.FirstLossCounts.GetValueOrDefault("MODEL_OMISSION")), systemLoss = baselineMicro.SystemLoss },
+                new { mode = "OMISSION_REVIEW", tp = reviewMicro.Tp, fp = reviewMicro.Fp, fn = reviewMicro.Fn, precision = reviewMicro.Precision, recall = reviewMicro.Recall, f1 = reviewMicro.F1, modelOmission = remainingModelOmissions, systemLoss = reviewMicro.SystemLoss },
+            },
+            delta = new { tp = reviewMicro.Tp - baselineMicro.Tp, fp = reviewMicro.Fp - baselineMicro.Fp, fn = reviewMicro.Fn - baselineMicro.Fn, precision = reviewMicro.Precision - baselineMicro.Precision, recall = reviewMicro.Recall - baselineMicro.Recall, f1 = reviewMicro.F1 - baselineMicro.F1 },
+            reviewRecoveredGoldCount = recoveredGold,
+            reviewIntroducedFpCount = introducedFp,
+            remainingModelOmissions,
+            recoveryPrecision,
+            reviewTrace = review.Select(x => new { documentId = x.DocumentId, repeat = x.Repeat, reviewRaw = x.RawCount, reviewBound = x.BoundCount, reviewValid = x.ValidatedCount, reviewFinal = x.FinalCount, systemLoss = x.SystemLoss, provider = x.Provider, reasoningTokens = x.ReasoningTokens, outputTokens = x.OutputTokens, finishReason = x.FinishReason, wallTimeMs = x.WallTimeMs }).ToArray(),
+            a99DevStatus = gate ? "A99_DEV_MARGIN_REACHED" : "A99_NOT_MEASURED_DEV_MARGIN_BELOW_0.995",
             repeatSummary = reviewSummary,
         }, ct);
         PrintReport(review, selected, reviewProviderAttempts);

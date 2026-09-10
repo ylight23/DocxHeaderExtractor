@@ -1,0 +1,1139 @@
+{
+  "schemaVersion": "a99-semantic-text-omission-review-summary-v1",
+  "status": "COMPLETE_OFFLINE_REBUILD",
+  "startHead": "1b1d3317fdb17406321fcc796afa17bb624cc5f1",
+  "endHead": "1b1d3317fdb17406321fcc796afa17bb624cc5f1",
+  "intervention": "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
+  "baseContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "reviewPromptHash": "cf1597aed817aa8b5b577ad7dd308be159ecb4bcfaff762eb5a5f9a3f6094b4b",
+  "selectedStrictGoldCohort": [
+    "DOC-0001",
+    "DOC-0205",
+    "DOC-0252",
+    "DOC-0256",
+    "DOC-0258"
+  ],
+  "baselineComplete": true,
+  "baselineProviderAttempts": 15,
+  "controlReused": true,
+  "controlProviderCallsCurrent": 0,
+  "passAReused": true,
+  "passAProviderCallsCurrentRun": 0,
+  "reviewProviderAttempts": 15,
+  "modelCalls": 15,
+  "offlineProviderCalls": 0,
+  "goldOccurrencesPerRepeat": 153,
+  "goldReadBeforeFreeze": false,
+  "a99DevMarginMet": false,
+  "classification": "OMISSION_REVIEW_RECALL_UP_PRECISION_TRADEOFF",
+  "keepOrRevert": "REVERT",
+  "dominantBaselineBucket": {
+    "bucket": "MODEL_OMISSION",
+    "count": 16,
+    "affectedDocuments": [
+      "DOC-0252",
+      "DOC-0256",
+      "DOC-0258"
+    ]
+  },
+  "dominantReviewBucket": {
+    "bucket": "AMBIGUOUS_DUPLICATE_TEXT",
+    "count": 20,
+    "affectedDocuments": [
+      "DOC-0256",
+      "DOC-0258"
+    ]
+  },
+  "persistentMovement": {
+    "before": {
+      "schemaVersion": "a99-semantic-text-generalization-persistent-errors-v1",
+      "persistentErrors": [
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+          "exactSourceText": "Western Asia",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[158]:56:62",
+          "exactSourceText": "Agenda",
+          "firstLossClass": "MODEL_WRONG_SPAN",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[11]:0:6",
+          "exactSourceText": "Africa",
+          "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[17]:0:20",
+          "exactSourceText": "Asia and the Pacific",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[11]:0:6",
+          "exactSourceText": "Africa",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[12]:0:20",
+          "exactSourceText": "Asia and the Pacific",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[18]:0:34",
+          "exactSourceText": "Commonwealth of Independent States",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[19]:0:31",
+          "exactSourceText": "Latin America and the Caribbean",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[24]:0:12",
+          "exactSourceText": "Western Asia",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        }
+      ],
+      "intermittentErrors": [
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:29974:30039",
+          "exactSourceText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:30572:30622",
+          "exactSourceText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:32357:32413",
+          "exactSourceText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[17]:0:25",
+          "exactSourceText": "Eurostat\u2013OECD PPP Program",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "010"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[115]:0:29",
+          "exactSourceText": "Annex 2: List of participants",
+          "firstLossClass": "MODEL_WRONG_SPAN",
+          "repeatPresenceMask": "100"
+        }
+      ],
+      "persistentFalsePositives": [],
+      "intermittentFalsePositives": [
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[115]:0:230",
+          "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "011"
+        }
+      ],
+      "persistentErrorCounts": {
+        "MODEL_OMISSION": 7,
+        "MODEL_WRONG_SPAN": 1,
+        "AMBIGUOUS_DUPLICATE_TEXT": 1
+      },
+      "intermittentErrorCounts": {
+        "MODEL_WRONG_TEXT": 3,
+        "MODEL_OMISSION": 1,
+        "MODEL_WRONG_SPAN": 1
+      },
+      "persistentFalsePositiveCount": 0,
+      "intermittentFalsePositiveCount": 1
+    },
+    "after": {
+      "schemaVersion": "a99-semantic-text-generalization-persistent-errors-v1",
+      "persistentErrors": [
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+          "exactSourceText": "Western Asia",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[158]:56:62",
+          "exactSourceText": "Agenda",
+          "firstLossClass": "MODEL_WRONG_SPAN",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[11]:0:6",
+          "exactSourceText": "Africa",
+          "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[17]:0:20",
+          "exactSourceText": "Asia and the Pacific",
+          "firstLossClass": "MODEL_OMISSION",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[11]:0:6",
+          "exactSourceText": "Africa",
+          "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[12]:0:20",
+          "exactSourceText": "Asia and the Pacific",
+          "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[18]:0:34",
+          "exactSourceText": "Commonwealth of Independent States",
+          "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[19]:0:31",
+          "exactSourceText": "Latin America and the Caribbean",
+          "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
+          "repeatPresenceMask": "000"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[24]:0:12",
+          "exactSourceText": "Western Asia",
+          "firstLossClass": "AMBIGUOUS_DUPLICATE_TEXT",
+          "repeatPresenceMask": "000"
+        }
+      ],
+      "intermittentErrors": [
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:29974:30039",
+          "exactSourceText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:30572:30622",
+          "exactSourceText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:32357:32413",
+          "exactSourceText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "firstLossClass": "MODEL_WRONG_TEXT",
+          "repeatPresenceMask": "011"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[115]:0:29",
+          "exactSourceText": "Annex 2: List of participants",
+          "firstLossClass": "MODEL_WRONG_SPAN",
+          "repeatPresenceMask": "100"
+        }
+      ],
+      "persistentFalsePositives": [
+        {
+          "documentId": "DOC-0205",
+          "goldOrPredictionKey": "body[1]/p[4]:174:243",
+          "exactSourceText": "NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[3]:0:47",
+          "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[46]:0:12",
+          "exactSourceText": "Western Asia",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[3]:0:87",
+          "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[4]:0:29",
+          "exactSourceText": "OCTOBER 31 \u2013 NOVEMBER 3, 2023",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        },
+        {
+          "documentId": "DOC-0256",
+          "goldOrPredictionKey": "body[1]/p[5]:0:14",
+          "exactSourceText": "Hybrid Meeting",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "111"
+        }
+      ],
+      "intermittentFalsePositives": [
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[158]:0:62",
+          "exactSourceText": "Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105 Agenda",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "100"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[175]:0:36",
+          "exactSourceText": "ICP Technical Advisory Group members",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "110"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[176]:0:42",
+          "exactSourceText": "ICP experts, guest speakers, and observers",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "110"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[177]:0:42",
+          "exactSourceText": "ICP Inter-Agency Coordination Group (IACG)",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "110"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[178]:0:10",
+          "exactSourceText": "World Bank",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "110"
+        },
+        {
+          "documentId": "DOC-0252",
+          "goldOrPredictionKey": "body[1]/p[4]:0:24",
+          "exactSourceText": "TECHNICAL ADVISORY GROUP",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "001"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[4]:0:17",
+          "exactSourceText": "MAY 15 - 18, 2023",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "100"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[5]:0:14",
+          "exactSourceText": "Hybrid meeting",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "100"
+        },
+        {
+          "documentId": "DOC-0258",
+          "goldOrPredictionKey": "body[1]/p[115]:0:230",
+          "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+          "firstLossClass": "MODEL_FALSE_POSITIVE",
+          "repeatPresenceMask": "011"
+        }
+      ],
+      "persistentErrorCounts": {
+        "MODEL_OMISSION": 2,
+        "MODEL_WRONG_SPAN": 1,
+        "AMBIGUOUS_DUPLICATE_TEXT": 6
+      },
+      "intermittentErrorCounts": {
+        "MODEL_WRONG_TEXT": 3,
+        "MODEL_WRONG_SPAN": 1
+      },
+      "persistentFalsePositiveCount": 6,
+      "intermittentFalsePositiveCount": 9
+    }
+  },
+  "performance": {
+    "inputTokens": 405689,
+    "reasoningTokens": 93529,
+    "outputTokens": 107999,
+    "wallTimeMs": 0
+  },
+  "finalTable": [
+    {
+      "mode": "BASELINE",
+      "tp": 425,
+      "fp": 22,
+      "fn": 34,
+      "precision": 0.9507829977628636,
+      "recall": 0.9259259259259259,
+      "f1": 0.9381898454746137,
+      "modelOmission": 16,
+      "systemLoss": 0
+    },
+    {
+      "mode": "OMISSION_REVIEW",
+      "tp": 427,
+      "fp": 32,
+      "fn": 32,
+      "precision": 0.9302832244008714,
+      "recall": 0.9302832244008714,
+      "f1": 0.9302832244008713,
+      "modelOmission": 4,
+      "systemLoss": 0
+    }
+  ],
+  "delta": {
+    "tp": 2,
+    "fp": 10,
+    "fn": -2,
+    "precision": -0.020499773361992157,
+    "recall": 0.004357298474945481,
+    "f1": -0.007906621073742404
+  },
+  "reviewRecoveredGoldCount": 2,
+  "reviewIntroducedFpCount": 10,
+  "remainingModelOmissions": 4,
+  "recoveryPrecision": 0.16666666666666666,
+  "reviewTrace": [
+    {
+      "documentId": "DOC-0001",
+      "repeat": "r1",
+      "reviewRaw": 8,
+      "reviewBound": 7,
+      "reviewValid": 7,
+      "reviewFinal": 7,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 2209,
+      "outputTokens": 2289,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "r2",
+      "reviewRaw": 8,
+      "reviewBound": 7,
+      "reviewValid": 7,
+      "reviewFinal": 7,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 1625,
+      "outputTokens": 1704,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "r3",
+      "reviewRaw": 8,
+      "reviewBound": 7,
+      "reviewValid": 7,
+      "reviewFinal": 7,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 1716,
+      "outputTokens": 1795,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r1",
+      "reviewRaw": 144,
+      "reviewBound": 70,
+      "reviewValid": 69,
+      "reviewFinal": 69,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 5454,
+      "outputTokens": 13014,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r2",
+      "reviewRaw": 73,
+      "reviewBound": 72,
+      "reviewValid": 72,
+      "reviewFinal": 72,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 3719,
+      "outputTokens": 4064,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "r3",
+      "reviewRaw": 74,
+      "reviewBound": 72,
+      "reviewValid": 72,
+      "reviewFinal": 72,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 4237,
+      "outputTokens": 4513,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r1",
+      "reviewRaw": 67,
+      "reviewBound": 66,
+      "reviewValid": 65,
+      "reviewFinal": 32,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 8320,
+      "outputTokens": 9840,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r2",
+      "reviewRaw": 64,
+      "reviewBound": 61,
+      "reviewValid": 60,
+      "reviewFinal": 31,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 8017,
+      "outputTokens": 9570,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "r3",
+      "reviewRaw": 41,
+      "reviewBound": 40,
+      "reviewValid": 39,
+      "reviewFinal": 28,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 10353,
+      "outputTokens": 10464,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r1",
+      "reviewRaw": 61,
+      "reviewBound": 60,
+      "reviewValid": 60,
+      "reviewFinal": 25,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 8829,
+      "outputTokens": 10710,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r2",
+      "reviewRaw": 50,
+      "reviewBound": 48,
+      "reviewValid": 25,
+      "reviewFinal": 25,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 7900,
+      "outputTokens": 8006,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "r3",
+      "reviewRaw": 27,
+      "reviewBound": 25,
+      "reviewValid": 25,
+      "reviewFinal": 25,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 9063,
+      "outputTokens": 9171,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r1",
+      "reviewRaw": 26,
+      "reviewBound": 21,
+      "reviewValid": 21,
+      "reviewFinal": 21,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 10161,
+      "outputTokens": 10494,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r2",
+      "reviewRaw": 55,
+      "reviewBound": 49,
+      "reviewValid": 23,
+      "reviewFinal": 19,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 8462,
+      "outputTokens": 8567,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "r3",
+      "reviewRaw": 26,
+      "reviewBound": 21,
+      "reviewValid": 19,
+      "reviewFinal": 19,
+      "systemLoss": 0,
+      "provider": "Alibaba",
+      "reasoningTokens": 3464,
+      "outputTokens": 3798,
+      "finishReason": "stop",
+      "wallTimeMs": 0
+    }
+  ],
+  "a99DevStatus": "A99_NOT_MEASURED_DEV_MARGIN_BELOW_0.995",
+  "repeatSummary": {
+    "schemaVersion": "a99-semantic-text-generalization-repeat-summary-v1",
+    "cohortSize": 5,
+    "repeatCount": 3,
+    "documents": [
+      {
+        "documentId": "DOC-0001",
+        "repeats": [
+          {
+            "documentId": "DOC-0001",
+            "repeat": "r1",
+            "status": "SUCCESS",
+            "gold": 7,
+            "tp": 7,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 3023,
+            "reasoningTokens": 2209,
+            "outputTokens": 2289,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0001",
+            "repeat": "r2",
+            "status": "SUCCESS",
+            "gold": 7,
+            "tp": 7,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 3023,
+            "reasoningTokens": 1625,
+            "outputTokens": 1704,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0001",
+            "repeat": "r3",
+            "status": "SUCCESS",
+            "gold": 7,
+            "tp": 7,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 3023,
+            "reasoningTokens": 1716,
+            "outputTokens": 1795,
+            "wallTimeMs": 0
+          }
+        ],
+        "minPrecision": 1,
+        "minRecall": 1,
+        "minF1": 1,
+        "maxPrecision": 1,
+        "maxRecall": 1,
+        "maxF1": 1,
+        "meanF1": 1,
+        "tpIntersection": 7,
+        "tpUnion": 7,
+        "jaccard": {
+          "r1VsR2": 1,
+          "r1VsR3": 1,
+          "r2VsR3": 1
+        },
+        "systemLoss": 0
+      },
+      {
+        "documentId": "DOC-0205",
+        "repeats": [
+          {
+            "documentId": "DOC-0205",
+            "repeat": "r1",
+            "status": "SUCCESS",
+            "gold": 71,
+            "tp": 68,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9855072463768116,
+            "recall": 0.9577464788732394,
+            "f1": 0.9714285714285714,
+            "modelOmission": 0,
+            "wrongText": 3,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 87559,
+            "reasoningTokens": 5454,
+            "outputTokens": 13014,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0205",
+            "repeat": "r2",
+            "status": "SUCCESS",
+            "gold": 71,
+            "tp": 71,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9861111111111112,
+            "recall": 1,
+            "f1": 0.993006993006993,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 87403,
+            "reasoningTokens": 3719,
+            "outputTokens": 4064,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0205",
+            "repeat": "r3",
+            "status": "SUCCESS",
+            "gold": 71,
+            "tp": 71,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9861111111111112,
+            "recall": 1,
+            "f1": 0.993006993006993,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 87559,
+            "reasoningTokens": 4237,
+            "outputTokens": 4513,
+            "wallTimeMs": 0
+          }
+        ],
+        "minPrecision": 0.9855072463768116,
+        "minRecall": 0.9577464788732394,
+        "minF1": 0.9714285714285714,
+        "maxPrecision": 0.9861111111111112,
+        "maxRecall": 1,
+        "maxF1": 0.993006993006993,
+        "meanF1": 0.9858141858141858,
+        "tpIntersection": 69,
+        "tpUnion": 72,
+        "jaccard": {
+          "r1VsR2": 0.9583333333333334,
+          "r1VsR3": 0.9583333333333334,
+          "r2VsR3": 1
+        },
+        "systemLoss": 0
+      },
+      {
+        "documentId": "DOC-0252",
+        "repeats": [
+          {
+            "documentId": "DOC-0252",
+            "repeat": "r1",
+            "status": "SUCCESS",
+            "gold": 27,
+            "tp": 25,
+            "fp": 7,
+            "fn": 2,
+            "precision": 0.78125,
+            "recall": 0.9259259259259259,
+            "f1": 0.847457627118644,
+            "modelOmission": 1,
+            "wrongText": 0,
+            "wrongSpan": 1,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 17472,
+            "reasoningTokens": 8320,
+            "outputTokens": 9840,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0252",
+            "repeat": "r2",
+            "status": "SUCCESS",
+            "gold": 27,
+            "tp": 25,
+            "fp": 6,
+            "fn": 2,
+            "precision": 0.8064516129032258,
+            "recall": 0.9259259259259259,
+            "f1": 0.8620689655172414,
+            "modelOmission": 1,
+            "wrongText": 0,
+            "wrongSpan": 1,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 17472,
+            "reasoningTokens": 8017,
+            "outputTokens": 9570,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0252",
+            "repeat": "r3",
+            "status": "SUCCESS",
+            "gold": 27,
+            "tp": 25,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.8928571428571429,
+            "recall": 0.9259259259259259,
+            "f1": 0.9090909090909091,
+            "modelOmission": 1,
+            "wrongText": 0,
+            "wrongSpan": 1,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 17399,
+            "reasoningTokens": 10353,
+            "outputTokens": 10464,
+            "wallTimeMs": 0
+          }
+        ],
+        "minPrecision": 0.78125,
+        "minRecall": 0.9259259259259259,
+        "minF1": 0.847457627118644,
+        "maxPrecision": 0.8928571428571429,
+        "maxRecall": 0.9259259259259259,
+        "maxF1": 0.9090909090909091,
+        "meanF1": 0.8728725005755983,
+        "tpIntersection": 27,
+        "tpUnion": 33,
+        "jaccard": {
+          "r1VsR2": 0.96875,
+          "r1VsR3": 0.8181818181818182,
+          "r2VsR3": 0.84375
+        },
+        "systemLoss": 0
+      },
+      {
+        "documentId": "DOC-0256",
+        "repeats": [
+          {
+            "documentId": "DOC-0256",
+            "repeat": "r1",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 22,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.88,
+            "recall": 0.9166666666666666,
+            "f1": 0.8979591836734694,
+            "modelOmission": 1,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 14375,
+            "reasoningTokens": 8829,
+            "outputTokens": 10710,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0256",
+            "repeat": "r2",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 22,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.88,
+            "recall": 0.9166666666666666,
+            "f1": 0.8979591836734694,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 16133,
+            "reasoningTokens": 7900,
+            "outputTokens": 8006,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0256",
+            "repeat": "r3",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 22,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.88,
+            "recall": 0.9166666666666666,
+            "f1": 0.8979591836734694,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 14438,
+            "reasoningTokens": 9063,
+            "outputTokens": 9171,
+            "wallTimeMs": 0
+          }
+        ],
+        "minPrecision": 0.88,
+        "minRecall": 0.9166666666666666,
+        "minF1": 0.8979591836734694,
+        "maxPrecision": 0.88,
+        "maxRecall": 0.9166666666666666,
+        "maxF1": 0.8979591836734694,
+        "meanF1": 0.8979591836734694,
+        "tpIntersection": 25,
+        "tpUnion": 25,
+        "jaccard": {
+          "r1VsR2": 1,
+          "r1VsR3": 1,
+          "r2VsR3": 1
+        },
+        "systemLoss": 0
+      },
+      {
+        "documentId": "DOC-0258",
+        "repeats": [
+          {
+            "documentId": "DOC-0258",
+            "repeat": "r1",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 19,
+            "fp": 2,
+            "fn": 5,
+            "precision": 0.9047619047619048,
+            "recall": 0.7916666666666666,
+            "f1": 0.8444444444444444,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 0,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 11365,
+            "reasoningTokens": 10161,
+            "outputTokens": 10494,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0258",
+            "repeat": "r2",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 18,
+            "fp": 1,
+            "fn": 6,
+            "precision": 0.9473684210526315,
+            "recall": 0.75,
+            "f1": 0.8372093023255814,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 1,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 14003,
+            "reasoningTokens": 8462,
+            "outputTokens": 8567,
+            "wallTimeMs": 0
+          },
+          {
+            "documentId": "DOC-0258",
+            "repeat": "r3",
+            "status": "SUCCESS",
+            "gold": 24,
+            "tp": 18,
+            "fp": 1,
+            "fn": 6,
+            "precision": 0.9473684210526315,
+            "recall": 0.75,
+            "f1": 0.8372093023255814,
+            "modelOmission": 0,
+            "wrongText": 0,
+            "wrongSpan": 1,
+            "systemLoss": 0,
+            "executionMode": "FULL_CONTEXT",
+            "actualProvider": "Alibaba",
+            "finishReason": "stop",
+            "inputTokens": 11442,
+            "reasoningTokens": 3464,
+            "outputTokens": 3798,
+            "wallTimeMs": 0
+          }
+        ],
+        "minPrecision": 0.9047619047619048,
+        "minRecall": 0.75,
+        "minF1": 0.8372093023255814,
+        "maxPrecision": 0.9473684210526315,
+        "maxRecall": 0.7916666666666666,
+        "maxF1": 0.8444444444444444,
+        "meanF1": 0.8396210163652024,
+        "tpIntersection": 18,
+        "tpUnion": 22,
+        "jaccard": {
+          "r1VsR2": 0.8181818181818182,
+          "r1VsR3": 0.8181818181818182,
+          "r2VsR3": 1
+        },
+        "systemLoss": 0
+      }
+    ],
+    "cohortMicroByRepeat": [
+      {
+        "repeat": "r1",
+        "gold": 153,
+        "tp": 141,
+        "fp": 13,
+        "fn": 12,
+        "precision": 0.9155844155844156,
+        "recall": 0.9215686274509803,
+        "f1": 0.9185667752442997,
+        "systemLoss": 0
+      },
+      {
+        "repeat": "r2",
+        "gold": 153,
+        "tp": 143,
+        "fp": 11,
+        "fn": 10,
+        "precision": 0.9285714285714286,
+        "recall": 0.934640522875817,
+        "f1": 0.9315960912052117,
+        "systemLoss": 0
+      },
+      {
+        "repeat": "r3",
+        "gold": 153,
+        "tp": 143,
+        "fp": 8,
+        "fn": 10,
+        "precision": 0.9470198675496688,
+        "recall": 0.934640522875817,
+        "f1": 0.9407894736842104,
+        "systemLoss": 0
+      }
+    ],
+    "minRepeatMicroPrecision": 0.9155844155844156,
+    "minRepeatMicroRecall": 0.9215686274509803,
+    "minRepeatMicroF1": 0.9185667752442997
+  }
+}

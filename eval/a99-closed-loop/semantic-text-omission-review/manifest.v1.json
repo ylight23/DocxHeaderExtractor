@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "a99-semantic-text-omission-review-v1",
+  "startHead": "1b1d3317fdb17406321fcc796afa17bb624cc5f1",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "model": "qwen/qwen3.7-flash",
+  "baseContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "reviewPromptHash": "cf1597aed817aa8b5b577ad7dd308be159ecb4bcfaff762eb5a5f9a3f6094b4b",
+  "intervention": "SEMANTIC_TEXT_OMISSION_REVIEW_V1",
+  "selectedStrictGoldCohort": [
+    "DOC-0001",
+    "DOC-0205",
+    "DOC-0252",
+    "DOC-0256",
+    "DOC-0258"
+  ],
+  "repeats": [
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "providerConcurrency": 1,
+  "passAReused": true,
+  "passAProviderCallsCurrentRun": 0,
+  "inventoryIsInformationalOnly": true,
+  "additiveUnion": true,
+  "validatorsUnchanged": true,
+  "noVlm": true,
+  "goldReadBeforeFreeze": false,
+  "baselineComplete": true,
+  "goldOccurrencesPerRepeat": 153,
+  "promptFrozenBeforeInference": true
+}
