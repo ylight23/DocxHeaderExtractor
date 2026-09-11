@@ -1,0 +1,57 @@
+{
+  "artifactKind": "A99_R2_P2_USER_AUTHORITY_RESOLUTION",
+  "schemaVersion": "a99-r2-p2-user-authority-resolution-v1",
+  "documentId": "DOC-0165",
+  "historicalKey": {
+    "path": "keys/format-driven-human/080_ICP_Governing_Board_Minutes_Feb_2023.key",
+    "sha256": "52afc3868ff47f552af6fcb9d684688c2aa98e19ccee4e99a981ce6aae27d8e5",
+    "originalText": "Asia and the Pacific",
+    "modified": false
+  },
+  "authority": {
+    "documentTitleText": "Asia and Pacific",
+    "semanticMembership": "HEADING",
+    "resolutionAuthority": "USER_FINAL"
+  },
+  "binding": {
+    "bindingText": "Asia and Pacific",
+    "exactMatchCount": 1,
+    "status": "RESOLVED_EXACT_UNIQUE",
+    "occurrence": {
+      "blockId": "b34",
+      "page": 3,
+      "localUtf16Start": 0,
+      "localUtf16End": 16,
+      "globalUtf16Start": 5973,
+      "globalUtf16End": 5989,
+      "matchedSourceText": "Asia and Pacific"
+    },
+    "allExactMatches": [
+      {
+        "blockId": "b34",
+        "page": 3,
+        "localUtf16Start": 0,
+        "localUtf16End": 16,
+        "globalUtf16Start": 5973,
+        "globalUtf16End": 5989,
+        "matchedSourceText": "Asia and Pacific"
+      }
+    ],
+    "matchingMethod": "ordinal exact substring; UTF-16 code-unit offsets",
+    "fuzzyMatchingUsed": false
+  },
+  "source": {
+    "path": "todo10_8/heading_corpus_100/05_bien_ban_hop/080_ICP_Governing_Board_Minutes_Feb_2023.pdf",
+    "sha256": "2b1a4e73ce2df40e46446ff7a772b44284ba6bbcff9e02062f838b5498b4085f",
+    "inventorySha256": "2b1a4e73ce2df40e46446ff7a772b44284ba6bbcff9e02062f838b5498b4085f",
+    "shaMatchesInventory": true,
+    "extractor": "dhx pdf-clusters --no-llm",
+    "pageCount": 7,
+    "sourceRepresentation": "PDF_CLUSTER_SOURCE_TEXT"
+  },
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldCreatedByAutomation": false,
+  "semanticMembershipChanged": false,
+  "note": "User authority override is stored separately; historical .key remains immutable. bindingText preserves the extracted representation needed for deterministic binding."
+}

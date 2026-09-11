@@ -1,0 +1,57 @@
+{
+  "artifactKind": "A99_R2_P2_USER_AUTHORITY_RESOLUTION",
+  "schemaVersion": "a99-r2-p2-user-authority-resolution-v1",
+  "documentId": "DOC-0158",
+  "historicalKey": {
+    "path": "keys/format-driven-human/073_FORTIS_GC_Minutes_Mar_2026.key",
+    "sha256": "9987912ada04ec46de46f028efb3ee6ac5e5826ebf04638e306d258e4595577d",
+    "originalText": "Next Bi-Annual Meeting of the GC.",
+    "modified": false
+  },
+  "authority": {
+    "documentTitleText": "Next Bi-Annual Meeting of the GC",
+    "semanticMembership": "HEADING",
+    "resolutionAuthority": "USER_FINAL"
+  },
+  "binding": {
+    "bindingText": "Next Bi-Annual Meeting ofthe GC.",
+    "exactMatchCount": 1,
+    "status": "RESOLVED_EXACT_UNIQUE",
+    "occurrence": {
+      "blockId": "b25",
+      "page": 2,
+      "localUtf16Start": 0,
+      "localUtf16End": 32,
+      "globalUtf16Start": 2621,
+      "globalUtf16End": 2653,
+      "matchedSourceText": "Next Bi-Annual Meeting ofthe GC. The Governing Committee agreed with the Chair’s proposal,"
+    },
+    "allExactMatches": [
+      {
+        "blockId": "b25",
+        "page": 2,
+        "localUtf16Start": 0,
+        "localUtf16End": 32,
+        "globalUtf16Start": 2621,
+        "globalUtf16End": 2653,
+        "matchedSourceText": "Next Bi-Annual Meeting ofthe GC. The Governing Committee agreed with the Chair’s proposal,"
+      }
+    ],
+    "matchingMethod": "ordinal exact substring; UTF-16 code-unit offsets",
+    "fuzzyMatchingUsed": false
+  },
+  "source": {
+    "path": "todo10_8/heading_corpus_100/05_bien_ban_hop/073_FORTIS_GC_Minutes_Mar_2026.pdf",
+    "sha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+    "inventorySha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+    "shaMatchesInventory": true,
+    "extractor": "dhx pdf-clusters --no-llm",
+    "pageCount": 2,
+    "sourceRepresentation": "PDF_CLUSTER_SOURCE_TEXT"
+  },
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldCreatedByAutomation": false,
+  "semanticMembershipChanged": false,
+  "note": "User authority override is stored separately; historical .key remains immutable. bindingText preserves the extracted representation needed for deterministic binding."
+}

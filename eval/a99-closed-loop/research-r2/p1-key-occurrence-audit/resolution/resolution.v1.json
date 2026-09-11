@@ -1,0 +1,43 @@
+{
+  "artifactKind": "A99_R2_P2_USER_FINAL_AUTHORITY_RESOLUTION",
+  "schemaVersion": "a99-r2-p2-resolution-v1",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldCreatedByAutomation": false,
+  "historicalKeysModified": false,
+  "semanticMembershipChanged": false,
+  "resolutions": [
+    {
+      "documentId": "DOC-0158",
+      "documentTitleText": "Next Bi-Annual Meeting of the GC",
+      "semanticMembership": "HEADING",
+      "resolutionAuthority": "USER_FINAL",
+      "bindingText": "Next Bi-Annual Meeting ofthe GC."
+    },
+    {
+      "documentId": "DOC-0165",
+      "documentTitleText": "Asia and Pacific",
+      "semanticMembership": "HEADING",
+      "resolutionAuthority": "USER_FINAL",
+      "bindingText": "Asia and Pacific"
+    }
+  ],
+  "resolutionStatuses": [
+    {
+      "documentId": "DOC-0158",
+      "bindingStatus": "RESOLVED_EXACT_UNIQUE",
+      "exactMatchCount": 1,
+      "sourceShaMatchesInventory": true
+    },
+    {
+      "documentId": "DOC-0165",
+      "bindingStatus": "RESOLVED_EXACT_UNIQUE",
+      "exactMatchCount": 1,
+      "sourceShaMatchesInventory": true
+    }
+  ],
+  "contract": "semanticMembership=HEADING; authority=USER_FINAL",
+  "historicalKeyPolicy": "Historical .key files are immutable and remain the provenance record.",
+  "decision": "USER_AUTHORITY_RESOLUTION_RECORDED_NO_SEMANTIC_REANNOTATION",
+  "nextAction": "Human review only for any remaining non-unique or mismatched binding; do not alter semantic membership and do not run R2-B until occurrence authority is frozen."
+}
