@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "a99-reusable-gold-cohort-v1",
+  "generatedAt": "2026-09-11T10:28:50.4797332Z",
+  "exclusion": "Current canonical B0 five documents excluded; only valid artifacts with matching source SHA are listed.",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "independentReusableCount": 0,
+  "candidates": [
+    {
+      "documentId": "DOC-0116",
+      "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "sourcePath": "todo10_8\\heading_corpus_100\\02_hop_dong_mua_sam\\031_WB_Framework_Agreement_Consulting_2025.docx",
+      "semanticGold": true,
+      "exhaustive": false,
+      "occurrenceGold": false,
+      "occurrenceEvaluable": false,
+      "sourceHashVerified": true,
+      "provenance": "MODEL_ASSISTED_OR_NOT_PROVEN",
+      "independence": "NOT_PROVEN_INDEPENDENT",
+      "reuseClass": "REUSABLE_SEMANTIC_ONLY_INDEPENDENCE_UNPROVEN",
+      "reason": "Existing artifact is valid at semantic level, but independent lineage is not proven"
+    },
+    {
+      "documentId": "DOC-0122",
+      "sourceSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+      "sourcePath": "todo10_8\\heading_corpus_100\\02_hop_dong_mua_sam\\037_WB_Plant_TwoStage_2025.docx",
+      "semanticGold": true,
+      "exhaustive": false,
+      "occurrenceGold": false,
+      "occurrenceEvaluable": false,
+      "sourceHashVerified": true,
+      "provenance": "MODEL_ASSISTED_OR_NOT_PROVEN",
+      "independence": "NOT_PROVEN_INDEPENDENT",
+      "reuseClass": "REUSABLE_SEMANTIC_ONLY_INDEPENDENCE_UNPROVEN",
+      "reason": "Existing artifact is valid at semantic level, but independent lineage is not proven"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+      "sourcePath": "todo10_8\\heading_corpus_100\\02_hop_dong_mua_sam\\038_WB_Works_DB_SingleStage_NoSEASH_2025.docx",
+      "semanticGold": true,
+      "exhaustive": true,
+      "occurrenceGold": false,
+      "occurrenceEvaluable": false,
+      "sourceHashVerified": true,
+      "provenance": "MODEL_ASSISTED_OR_NOT_PROVEN",
+      "independence": "NOT_INDEPENDENT_FOR_R2",
+      "reuseClass": "REUSABLE_SEMANTIC_ONLY_INDEPENDENCE_UNPROVEN",
+      "reason": "Used or assisted in A99 development history"
+    },
+    {
+      "documentId": "DOC-0216",
+      "sourceSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\036_WB_Plant_SingleStage_2025.docx",
+      "semanticGold": true,
+      "exhaustive": false,
+      "occurrenceGold": false,
+      "occurrenceEvaluable": false,
+      "sourceHashVerified": true,
+      "provenance": "MODEL_ASSISTED_OR_NOT_PROVEN",
+      "independence": "NOT_PROVEN_INDEPENDENT",
+      "reuseClass": "REUSABLE_SEMANTIC_ONLY_INDEPENDENCE_UNPROVEN",
+      "reason": "Existing artifact is valid at semantic level, but independent lineage is not proven"
+    },
+    {
+      "documentId": "DOC-0243",
+      "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\063_Advanced_Linear_Algebra.docx",
+      "semanticGold": true,
+      "exhaustive": true,
+      "occurrenceGold": false,
+      "occurrenceEvaluable": false,
+      "sourceHashVerified": true,
+      "provenance": "MODEL_ASSISTED_OR_NOT_PROVEN",
+      "independence": "NOT_PROVEN_INDEPENDENT",
+      "reuseClass": "REUSABLE_SEMANTIC_ONLY_INDEPENDENCE_UNPROVEN",
+      "reason": "Existing artifact is valid at semantic level, but independent lineage is not proven"
+    },
+    {
+      "documentId": "DOC-0255",
+      "sourceSha256": "f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\075_FORTIS_GC_Minutes_Nov21_2024.docx",
+      "semanticGold": true,
+      "exhaustive": true,
+      "occurrenceGold": true,
+      "occurrenceEvaluable": true,
+      "sourceHashVerified": true,
+      "provenance": "HUMAN_ONLY",
+      "independence": "NOT_INDEPENDENT_FOR_R2",
+      "reuseClass": "REUSABLE_SEMANTIC_ONLY_INDEPENDENCE_UNPROVEN",
+      "reason": "Used or assisted in A99 development history"
+    },
+    {
+      "documentId": "DOC-0259",
+      "sourceSha256": "1c946a0ed13bd27cafb4ef281807ecfed6605340fca51029e72a904cf651c777",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\079_ICP_TAG_Minutes_Apr_2024.docx",
+      "semanticGold": true,
+      "exhaustive": true,
+      "occurrenceGold": true,
+      "occurrenceEvaluable": true,
+      "sourceHashVerified": true,
+      "provenance": "HUMAN_ONLY",
+      "independence": "NOT_INDEPENDENT_FOR_R2",
+      "reuseClass": "REUSABLE_SEMANTIC_ONLY_INDEPENDENCE_UNPROVEN",
+      "reason": "Used or assisted in A99 development history"
+    }
+  ],
+  "candidateCount": 7,
+  "independentCandidates": [],
+  "legacyHumanKeysExcluded": [
+    {
+      "path": "keys/typed-human/054_IBRD_Information_Statement_FY25.key",
+      "logicalKey": "054_IBRD_Information_Statement_FY25",
+      "candidateDocumentIds": [
+        "DOC-0053",
+        "DOC-0139",
+        "DOC-0234",
+        "DOC-0320"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/typed-human/056_OpenStax_Business_Law_I_Essentials.key",
+      "logicalKey": "056_OpenStax_Business_Law_I_Essentials",
+      "candidateDocumentIds": [
+        "DOC-0054",
+        "DOC-0141",
+        "DOC-0236",
+        "DOC-0321"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/typed-human/092_RFC9111_HTTP_Caching.key",
+      "logicalKey": "092_RFC9111_HTTP_Caching",
+      "candidateDocumentIds": [
+        "DOC-0082",
+        "DOC-0177",
+        "DOC-0272",
+        "DOC-0349"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+      "logicalKey": "072_ICP_TAG_Minutes_Mar_2025",
+      "candidateDocumentIds": [
+        "DOC-0064",
+        "DOC-0157",
+        "DOC-0252",
+        "DOC-0331"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/format-driven-human/073_FORTIS_GC_Minutes_Mar_2026.key",
+      "logicalKey": "073_FORTIS_GC_Minutes_Mar_2026",
+      "candidateDocumentIds": [
+        "DOC-0065",
+        "DOC-0158",
+        "DOC-0253",
+        "DOC-0332"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/format-driven-human/074_FORTIS_GC_Minutes_Nov27_2024.key",
+      "logicalKey": "074_FORTIS_GC_Minutes_Nov27_2024",
+      "candidateDocumentIds": [
+        "DOC-0066",
+        "DOC-0159",
+        "DOC-0254",
+        "DOC-0333"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/format-driven-human/075_FORTIS_GC_Minutes_Nov21_2024.key",
+      "logicalKey": "075_FORTIS_GC_Minutes_Nov21_2024",
+      "candidateDocumentIds": [
+        "DOC-0067",
+        "DOC-0160",
+        "DOC-0255",
+        "DOC-0334"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/format-driven-human/080_ICP_Governing_Board_Minutes_Feb_2023.key",
+      "logicalKey": "080_ICP_Governing_Board_Minutes_Feb_2023",
+      "candidateDocumentIds": [
+        "DOC-0072",
+        "DOC-0165",
+        "DOC-0260",
+        "DOC-0339"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/legal-human/010_Luat_An_ninh_mang_24-2018-QH14.key",
+      "logicalKey": "010_Luat_An_ninh_mang_24-2018-QH14",
+      "candidateDocumentIds": [
+        "DOC-0021",
+        "DOC-0095",
+        "DOC-0190",
+        "DOC-0293"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+      "logicalKey": "025_ND_47-2020_Chia_se_du_lieu_so",
+      "candidateDocumentIds": [
+        "DOC-0110",
+        "DOC-0205"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/partial-human/051_WBG_Trust_Fund_FIS_June_2024.key",
+      "logicalKey": "051_WBG_Trust_Fund_FIS_June_2024",
+      "candidateDocumentIds": [
+        "DOC-0050",
+        "DOC-0136",
+        "DOC-0231",
+        "DOC-0317"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/partial-human/052_WBG_Trust_Fund_FIS_December_2025.key",
+      "logicalKey": "052_WBG_Trust_Fund_FIS_December_2025",
+      "candidateDocumentIds": [
+        "DOC-0051",
+        "DOC-0137",
+        "DOC-0232",
+        "DOC-0318"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/partial-human/057_Quantitative_Methods_in_Finance_Lecture_Notes.key",
+      "logicalKey": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "candidateDocumentIds": [
+        "DOC-0142",
+        "DOC-0237",
+        "DOC-0279"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    },
+    {
+      "path": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+      "logicalKey": "063_Advanced_Linear_Algebra",
+      "candidateDocumentIds": [
+        "DOC-0148",
+        "DOC-0243",
+        "DOC-0281"
+      ],
+      "reason": "No embedded source SHA; not eligible for strict occurrence reuse"
+    }
+  ],
+  "conclusion": "Existing source-hash-verified semantic artifacts exist, but none has a proven independent R2 lineage; no strict occurrence holdout is reusable."
+}
