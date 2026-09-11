@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "a99-r2-p3r-completeness-v1",
+  "studyId": "A99-R2",
+  "pilotId": "R2-PILOT-8",
+  "documents": [
+    {
+      "documentId": "DOC-0004",
+      "sourceKind": "NATIVE_DOCX",
+      "status": "COMPLETE_ISOLATED_REVIEW_SOURCE",
+      "truncated": false,
+      "coverage": {
+        "allParagraphsTraversed": true,
+        "allTablesTraversed": true,
+        "truncated": false,
+        "paragraphCount": 15,
+        "tableCellOccurrenceCount": 0
+      }
+    },
+    {
+      "documentId": "DOC-0006",
+      "sourceKind": "NATIVE_DOCX",
+      "status": "COMPLETE_ISOLATED_REVIEW_SOURCE",
+      "truncated": false,
+      "coverage": {
+        "allParagraphsTraversed": true,
+        "allTablesTraversed": true,
+        "truncated": false,
+        "paragraphCount": 10,
+        "tableCellOccurrenceCount": 0
+      }
+    },
+    {
+      "documentId": "DOC-0092",
+      "sourceKind": "PDF",
+      "status": "COMPLETE_ISOLATED_REVIEW_SOURCE",
+      "truncated": false,
+      "coverage": {
+        "pagesTraversed": 94,
+        "pageCount": 94,
+        "lines": 5277,
+        "blocks": 4062,
+        "truncated": false
+      }
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceKind": "PDF",
+      "status": "COMPLETE_ISOLATED_REVIEW_SOURCE",
+      "truncated": false,
+      "coverage": {
+        "pagesTraversed": 67,
+        "pageCount": 67,
+        "lines": 3217,
+        "blocks": 2353,
+        "truncated": false
+      }
+    },
+    {
+      "documentId": "DOC-0171",
+      "sourceKind": "PDF",
+      "status": "COMPLETE_ISOLATED_REVIEW_SOURCE",
+      "truncated": false,
+      "coverage": {
+        "pagesTraversed": 76,
+        "pageCount": 76,
+        "lines": 2735,
+        "blocks": 2144,
+        "truncated": false
+      }
+    },
+    {
+      "documentId": "DOC-0326",
+      "sourceKind": "PDF_CONVERTED_DOCX",
+      "status": "COMPLETE_ISOLATED_REVIEW_SOURCE",
+      "truncated": false,
+      "coverage": {
+        "allParagraphsTraversed": true,
+        "allTablesTraversed": true,
+        "truncated": false,
+        "paragraphCount": 111,
+        "tableCellOccurrenceCount": 0
+      }
+    }
+  ],
+  "allComplete": true,
+  "semanticLabelsCreated": 0,
+  "goldCreated": false,
+  "modelCalls": 0,
+  "providerCalls": 0
+}

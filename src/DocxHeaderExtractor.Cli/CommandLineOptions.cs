@@ -161,7 +161,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-hierarchy-marker-counterfactual" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-shadow-compare" or "pdf-human-audit-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt" or "source-facts" or "accuracy99" or "r18" or "harness-lift" or "local-qwen-preflight" or "local-qwen-large")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-source-review" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-hierarchy-marker-counterfactual" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-shadow-compare" or "pdf-human-audit-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt" or "source-facts" or "accuracy99" or "r18" or "harness-lift" or "local-qwen-preflight" or "local-qwen-large")
         {
             o.Command = args[0];
             i = 1;
@@ -492,6 +492,7 @@ public sealed class CommandLineOptions
           dhx review-key <file.review.json>   # sinh .key + .training.jsonl từ review đã duyệt
           dhx toc-keys <thư-mục|file.docx>    # suy đáp án ỨNG VIÊN từ mục lục Word, mở rộng bench
           dhx pdf-clusters <file.pdf|file.docx> # dump cụm style PDF + mẫu; thêm model để hỏi text analyst
+          dhx pdf-source-review <file.pdf> # dump toàn bộ source PDF cho review độc lập; không filter/candidate/LLM
           dhx pdf-rank-eval <file.docx> # freeze/rank toàn bộ PDF candidate, đo Recall@K; không gọi LLM
           dhx pdf-first-loss-audit <file.docx> --pdf-stage-key-root <keys> # tách representation khỏi retrieval per-gold; không gọi LLM
           dhx pdf-occurrence-eval <file.docx> --pdf-stage-key-root <keys> # evaluation-only gold-anchor occurrence recall; không gọi LLM

@@ -70,6 +70,7 @@ try
         "repair-audit" => await RunRepairAuditAsync(options, cts.Token),
         "repair-key-package" => await RunRepairKeyPackageAsync(options, cts.Token),
         "pdf-clusters" => await RunPdfClustersAsync(options, cts.Token),
+        "pdf-source-review" => RunPdfSourceReview(options),
         "pdf-stage-eval" => await RunPdfStageEvalAsync(options, cts.Token),
         "pdf-hierarchy-facts" => await RunPdfHierarchyFactsAsync(options, cts.Token),
         "pdf-hierarchy-marker-counterfactual" => RunPdfHierarchyMarkerCounterfactual(options),
@@ -2516,6 +2517,29 @@ static async Task<int> RunPdfClustersAsync(CommandLineOptions o, CancellationTok
         if (!o.Quiet) Console.Error.WriteLine($"Đã ghi: {outputPath}");
     }
 
+    return 0;
+}
+
+static int RunPdfSourceReview(CommandLineOptions o)
+{
+    var input = o.Inputs.FirstOrDefault()
+                ?? throw new ArgumentException("pdf-source-review cần một PDF input.");
+    if (!Path.GetExtension(input).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+        throw new ArgumentException("pdf-source-review chỉ nhận PDF gốc; không substitute DOCX/PDF counterpart.");
+
+    var review = DocxHeaderExtractor.Eval.IsolatedPdfSourceBuilder.Build(input);
+    var json = JsonSerializer.Serialize(review, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        File.WriteAllText(output, json, new UTF8Encoding(false));
+    }
     return 0;
 }
 

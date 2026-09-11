@@ -1,0 +1,3032 @@
+{
+  "artifactKind": "A99_R2_P3R_ISOLATED_REVIEW_SOURCE",
+  "schemaVersion": "a99-r2-p3r-review-source-v1",
+  "studyId": "A99-R2",
+  "pilotId": "R2-PILOT-8",
+  "documentId": "DOC-0326",
+  "frozenSourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\04_giao_trinh\\065_Numerical_Linear_Algebra_Lecture_Notes.docx",
+  "frozenSourceSha256": "100b5989cab08dff7f31ad33f26e6fad60cb8a32babf44be03f6ee3364c8dd40",
+  "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "familyId": "PDF_CONVERTED",
+  "reviewSourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\04_giao_trinh\\065_Numerical_Linear_Algebra_Lecture_Notes.docx",
+  "reviewSourceSha256": "100b5989cab08dff7f31ad33f26e6fad60cb8a32babf44be03f6ee3364c8dd40",
+  "reviewSourceMatchesFrozenSource": true,
+  "sourceKind": "PDF_CONVERTED_DOCX",
+  "sourceRepresentation": {
+    "kind": "DOCX_COMPLETE_SOURCE_PARAGRAPHS",
+    "ordering": "sourceOrdinal ascending, including table-cell paragraphs",
+    "paragraphCount": 111,
+    "tableCellOccurrenceCount": 0,
+    "allParagraphsTraversed": true,
+    "allTablesTraversed": true,
+    "truncated": false
+  },
+  "completeSourceCoverage": true,
+  "truncated": false,
+  "occurrences": [
+    {
+      "sourceOccurrenceId": "P000001",
+      "sourceId": "body[1]/p[1]",
+      "sourceOrdinal": 0,
+      "literalSourceText": "065_Numerical_Linear_Algebra_Lecture_Notes.pdf",
+      "sourceTextSha256": "fe1add3f41bf4d1be61ebc6b9bc13b9a7d8c668e3ac2fd5b1b992431c81f8d93",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 12,
+        "bold": true,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000002",
+      "sourceId": "body[1]/p[2]",
+      "sourceOrdinal": 1,
+      "literalSourceText": "Converted to DOCX from PDF text-layout extraction. Source path: 04_giao_trinh/065_Numerical_Linear_Algebra_Lecture_Notes.pdf",
+      "sourceTextSha256": "b052b7f381852972e4d9d5fe07c07209f3f345742ae4a94ecb817b5d2d23ec0c",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 8,
+        "bold": false,
+        "italic": true,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000003",
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 2,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000004",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "literalSourceText": "Lecture Notes Numerical Linear Algebra Least Squares, QR and SVD arXiv:2412.19960v1 [math.HO] 28 Dec 2024 Davoud Mirzaei Uppsala University September 1, 2023 Contents 1 Least squares problem 1 1.1 Existence and uniqueness . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3 1.2 Normal equations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4 1.3 Conditioning of the least squares problem . . . . . . . . . . . . . . . . . . 5 2 Projectors* 8 3 Orthogonality and QR factorization 11 3.1 Householder transformations . . . . . . . . . . . . . . . . . . . . . . . . . . 12 3.2 Plane rotations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15 3.3 QR factorization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18 3.4 QR factorization using Householder transformations . . . . . . . . . . . . . 19 3.5 QR factorization using Givens rotations . . . . . . . . . . . . . . . . . . . . 23 3.6 Other algorithms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24 3.7 QR factorization for solving the least squares problem . . . . . . . . . . . . 24 3.8 QR factorization with column pivoting . . . . . . . . . . . . . . . . . . . . 26 4 Singular Value Decomposition (SVD) 29 4.1 Geometric interpretation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30 4.2 Properties of SVD . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32 4.3 Computation of SVD . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34 4.4 Solving the least squares problem using SVD . . . . . . . . . . . . . . . . . 37 4.5 Pseudoinverse . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39 4.6 Low-rank approximation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40 4.7 Some applications of SVD . . . . . . . . . . . . . . . . . . . . . . . . . . . 41",
+      "sourceTextSha256": "3236c9257fed736c039753de7395bb2ce7fafee489e9a843810b90c72652adb9",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000005",
+      "sourceId": "body[1]/p[5]",
+      "sourceOrdinal": 4,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000006",
+      "sourceId": "body[1]/p[6]",
+      "sourceOrdinal": 5,
+      "literalSourceText": "2",
+      "sourceTextSha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000007",
+      "sourceId": "body[1]/p[7]",
+      "sourceOrdinal": 6,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000008",
+      "sourceId": "body[1]/p[8]",
+      "sourceOrdinal": 7,
+      "literalSourceText": "These lecture notes focus on some numerical linear algebra algorithms in scientific comput- ing. We assume that students are familiar with elementary linear algebra concepts such as vector spaces, systems of equations, matrices, norms, eigenvalues, and eigenvectors. In the numerical part, we do not pursue Gaussian elimination and other LU factorization algorithms for square systems. Instead, we mainly focus on overdetermined systems, least squares solu- tions, orthogonal factorizations, and some applications to data analysis and other areas. The reference textbooks [Datta:2010], [Heath:2018], and [Trefethen-Bau:1997] are our main sources in this lecture. 1 Least squares problem Let A ∈ Rm×n , where m > n. The system Ax = b for a given vector b ∈ Rm and solution x ∈ Rn is termed overdetermined because it contains more equations than unknowns. This system essentially asks whether b can be expressed as a linear combination of the columns of A: b = x1 a·1 + x2 a·2 + · · · + xn a·n . For the square system (the case m = n), the answer is “yes” provided that the column vectors {a·1 , a·2 , . . . , a·n } are linearly independent (or equivalently for a nonsingular matrix A). How- ever, for overdetermined systems (m > n), the answer is usually “no” unless b happens to lie in the span of {a·1 , a·2 , . . . , a·n } (often denoted span(A) or range(A)), which is highly unlikely in most applications. Therefore, in general, such a system has no solution. To illustrate this, consider the case where m = 3 and n = 2. In this scenario, a·1 and a·2 represent two vectors in R3 . If a·1 and a·2 are linearly independent, then their span forms a plane (a 2-dimensional subspace) in R3 . The system Ax = b has a solution if b lies in that plane; otherwise, the system has no solution. The probability of a vector b ∈ R3 lying in a plane is zero. In such situations, one obvious alternative to “solving the linear system exactly” is to min- imize the residual vector r = b − (x1 a·1 + x2 a·2 + · · · + xn a·n ) = b − Ax. The solution to the problem depends on how we measure the length of the residual vector. It is preferred to use the 2-norm, although any norm could be used. The 2-norm is induced by the inner product, thus is related to the notion of orthogonality, and it is smooth and strictly convex. These properties make the theory and computation with this norm much easier than with other norms. With the use of the 2-norm, the solution is the vector x that minimizes the sum of squares of differences between the components of b and Ax. This method is known as least squares. In the least squares method, we seek to find an optimal vector that solves the 1",
+      "sourceTextSha256": "e5e3f856196153b3444d1f3c73fd1b8e12b6e0323831820469f15be39a3cf0ce",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000009",
+      "sourceId": "body[1]/p[9]",
+      "sourceOrdinal": 8,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000010",
+      "sourceId": "body[1]/p[10]",
+      "sourceOrdinal": 9,
+      "literalSourceText": "minimization problem: min ∥Ax − b∥2 . (1.1) x∈Rn As we pointed out, the solution x of this problem (which always exists) may not exactly satisfy Ax = b. To reflect the lack of exact equality, we may write the linear least squares problem as Ax ∼ = b, and approximation is understood in the least square sense. Example 1.1 ([Heath:2018]). A surveyor tries to measure the heights of three hills. Sight- ing first, his/her initial measurements are x1 = 1237 ft, x2 = 1941 ft, and x3 = 2417 ft. To confirm these measurements, the surveyor climbs to the top of the first hill and mea- sures the heights of the second and third hills above the first and obtain x2 − x1 = 711 ft and x3 − x1 = 1177 ft. Then he/she climbs to the top of the second hill and measures x3 − x2 = 475 ft. It is obvious that there exists an inconsistency with measurements. These can be written in an overdetermined linear system of equations:      1 0 0  1237  0 1 0 1941         x     1  0 0 1 2417    ∼ Ax =  =  = b.    x 2 1 0  711   −1       x   3 −1 0 1 1177         0 −1 1 475 The least squares solution of this system (as we will see soon) is x = [1236, 1943, 2416]T which differs slightly from the initial measurements. The last three observations helped to obtain a better measurement. Example 1.2. Data fitting (or curve fitting) is a procedure for finding the curve of best fit to a given set of data points. Trying to find the best curve by minimizing the sum of the squares of the residuals of the points from the curve leads to a linear least squares problem of the form (1.1). Given data (tk , yk ), k = 1, 2, . . . , m, we wish to find a function p ∈ span{ϕ1 (t), ϕ2 (t), . . . , ϕn (t)} such that p is the best fit to data values yk in the sense that n (yk − p(tk ))2 → min . X k=1 By expanding p in terms of basis functions ϕj with coefficients cj , i.e., p(t) = c1 ϕ1 (t) + c2 ϕ2 (t) + · · · + cn ϕn (t), the problem is equivalent with finding a vector c = (c1 , . . . , cn )T ∈ Rn that solves the minimization problem m 2 minn yk − (c1 ϕ1 (tk ) + · · · + cn ϕn (tk )) . X c∈R k=1 2",
+      "sourceTextSha256": "fbb6f1e992c6db34638727071e50d3914b16aa30dfdbf58ef6a6b80dda0e3ffe",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000011",
+      "sourceId": "body[1]/p[11]",
+      "sourceOrdinal": 10,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000012",
+      "sourceId": "body[1]/p[12]",
+      "sourceOrdinal": 11,
+      "literalSourceText": "If we define the m × n matrix A with entries akj = ϕj (tk ) and m-vector b = (y1 , . . . , ym )T , then the above data-fitting problem takes the form min ∥Ac − b∥2 . c∈Rn In the case where the approximation space is the space of polynomials (with basis {1, t, . . . , tn−1 }, or any other basis), the problem is known as polynomial curve fitting. A schematic of a cubic curve fitting (n = 4) is illustrated in Figure 1. data points polynomial fit y t Figure 1: A least squares polynomial fit to a given data set The special case with basis {1, t} is refereed to as linear curve fitting or linear regression. As an example, to find a cubic fit p3 (t) = c1 + c2 t + c3 t2 + c4 t3 to six points (t1 , y1 ), . . . , (t6 , y6 ) the matrix A is 6 × 4 and the problem has the form      1 t1 t21 t31  y  1   1 t2 t22 t32  c1 y2           1 t3 t23 3   t3  c2  ∼ y       Ac =  =  3  = b. 1 t4 t24 t34  c  y4           3   1 t5 t25 t35  c y5        4   1 t6 t26 t36 y6 The matrix A here is a Vandemonde matrix which will be ineffectively ill-conditioned for higher order polynomial curve fittings. 1.1 Existence and uniqueness Assume that y = Ax so y ∈ range(A). The function f (y) = ∥b − y∥2 is continuous and coercive on Rm , so it has at least a minimum on the closed and unbounded set range(A). Moreover, f is strictly convex on the convex set range(A), so the minimum vector y is unique. It does not mean that the solution x of the least square problem (1.1) is unique in general. Suppose x and xe are two solutions for the least square problem and z = x − xe. Then Az = 0 3",
+      "sourceTextSha256": "cfc645ce175e77d1115c265c68c5c015279d29ec108b1e8e137183ef6c908763",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000013",
+      "sourceId": "body[1]/p[13]",
+      "sourceOrdinal": 12,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000014",
+      "sourceId": "body[1]/p[14]",
+      "sourceOrdinal": 13,
+      "literalSourceText": "because Ax = Axe. If the columns of A are linearly independent then z = 0 and x = xe. We conclude that if A has full column rank, i.e., rank(A) = n then the solution of least squares problem is unique (the inverse is also true). If rank(A) < n, then A is said to be rank-deficient. 1.2 Normal equations To find the solution of the least squares problem (1.1), we define the n-variate function f : Rn → R by f (x) := ∥Ax − b∥22 = (Ax − b)T (Ax − b) = xT AT Ax − 2xT AT b + bT b and aim to minimize it on Rn . The function f is quadratic, and a necessary condition for a minimizer x is that ∇f (x) = 0, i.e., 2AT Ax − 2AT b = 0. Therefore, any minimizer of f should satisfy AT Ax = AT b. (1.2) The Hessian of f is 2AT A, which is semi-positive definite in general. However, if the columns of A are linearly independent (meaning A has full rank), then AT A is positive definite (you should prove this!). In this case, (1.2) becomes a sufficient condition as well. The linear system (1.2) is known as the system of normal equations and suggests a method for solving the least squares problem. However, it is advisable to avoid it in favor of other computationally more stable algorithms, as we will describe later. b b − Ax a·2 Ax a·1 Figure 2: Geometric interpretation of the least squares problem. Another approach, equivalent with one we derived above, is as below. The vector Ax = x1 a·1 + · · · + xn a·n out of subspace range(A) closest to b in the Euclidean norm occurs when the residual vector b − Ax is perpendicular to range(A). See Figure 2. Thus, the inner product of b − Ax and any column of A should be zero, equivalently AT (b − Ax) = 0 which is the same system of normal equations (1.2). 4",
+      "sourceTextSha256": "f502256f3c07d745e51cd3e3ff923514d5a41892d21729fe68959e7ff0cfd5f3",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000015",
+      "sourceId": "body[1]/p[15]",
+      "sourceOrdinal": 14,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000016",
+      "sourceId": "body[1]/p[16]",
+      "sourceOrdinal": 15,
+      "literalSourceText": "Example 1.3. Returning to Example 1.1, since A has full rank, we can obtain the least squares solution by solving the normal system AT A = AT b. We have      3 −1 −1  −651 AT A = −1 3 −1 , AT b =  2177          −1 −1 3 4069 Since matrix AT A is positive definite, the solution of the normal system can be obtained by the Cholesky factorization AT A = LLT where L is a lower triangular matrix. We therefore need to solve two triangular systems Lz = AT b (lower triangular) and LT x = z (upper triangular) using forward and backward substitutions for final solution x. In Python write import numpy as np import scipy as sp A = np.array([[1,0,0],[0,1,0],[0,0,1],[-1,1,0],[-1,0,1],[0,-1,1]]) b = np.array([1237,1941,2417,711,1177,475]) L = np.linalg.cholesky(A.T@A) # Cholesky factorization z = sp.linalg.solve_triangular(L, A.T@b, lower = True) # forward x = sp.linalg.solve_triangular(L.T, z, lower = False) # backward print(’Hill heights =’, x) The final solution will be x = [1236, 1943, 2416]T . From a computational point of view, the normal equation is effective for solving this small-sized least squares system. However, in practical scenarios and for larger matrix sizes, solving through the normal equation is strongly discouraged, as we will discuss it later. 1.3 Conditioning of the least squares problem The conditioning of linear system Ax = b for a square and nonsingular matrix A is measured by the condition number cond(A) = ∥A∥∥A−1 ∥. For the overdetermined system Ax ∼ = b, however, the inverse of A can not be defined in the conventional sense, but it is possible to define a pseudoinverse or Moore–Penrose inverse, denoted by A+ , that behaves like an inverse in many respects1 . The pseudoinverse A+ exists for any matrix A, in particular, when A has linearly independent columns then A+ = (AT A)−1 AT which is indeed a left inverse because A+ A = I. On the other hand, P := AA+ is an orthogonal projector onto range(A), so that the solution of the least squares problem can be written as 1 Such definition of inverse matrix was independently described by E. H. Moore in 1920, Arne Bjerhammar in 1951, and Roger Penrose in 1955. Earlier, Erik Ivar Fredholm had introduced the concept of a pseudoinverse of integral operators in 1903. 5",
+      "sourceTextSha256": "9bd9249c3d2ae2b74eabcda5b3913dac1bbf41ef2186960e658c5cb93dc6739b",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000017",
+      "sourceId": "body[1]/p[17]",
+      "sourceOrdinal": 16,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000018",
+      "sourceId": "body[1]/p[18]",
+      "sourceOrdinal": 17,
+      "literalSourceText": "x = A+ b. In Section 4, we explore how the pseudoinverse can be computed for any matrix A using the SVD. Now, for a matrix A ∈ Rm×n with m ⩾ n and rank(A) = n, the condition number is defined as cond2 (A) := ∥A∥2 ∥A+ ∥2 . This definition remains valid even if rank(A) < n, provided that we can compute A+ . While the conditioning of a square system depends solely on A, the conditioning of a least squares problem Ax ∼= b relies on both the coefficient matrix A and the right-hand side vector b. In fact, the closeness of b to range(A) will affect the conditioning. From Figure 2 we observe ∥Ax∥2 = cos θ, ∥b∥2 where θ is the angle between Ax and b. To measure the sensitivity of the least squares solution to input perturbations, we consider perturbations in b and A separately. For the perturbed vector b+δ the least squares solution x+ε is given by the normal equation as AT A(x+ε) = AT (b+δ). Combining with AT Ax = AT b yields AT Aε = AT δ or ε = A+ δ. This gives ∥ε∥2 ⩽ ∥A+ ∥2 ∥δ∥2 . Dividing both sides by ∥x∥ then yields ∥ε∥2 ∥δ∥2 ⩽ ∥A+ ∥2 ∥x∥2 ∥x∥2 ∥b∥2 ∥δ∥2 = cond(A) ∥A∥2 ∥x∥2 ∥b∥2 ∥b∥2 ∥δ∥2 ⩽ cond(A) ∥Ax∥2 ∥b∥2 1 ∥δ∥2 = cond(A) . cos θ ∥b∥2 We observe that the condition number for the least squares solution x with respect to pertur- bations in b depends on both cond(A) and the angle θ between b and Ax. In particular, the condition number is approximately cond(A) when the residual is small (cos θ ≈ 1), however, it can be arbitrarily worse than cond(A) when the residual is large (cos θ ≈ 0). Workout 1.1. Assume that the perturbed least squares solution x + ε is obtained by per- turbing the input matrix A + E, while the right-hand side vector b remains unchanged. Show that ∥ε∥2 ⩽ [cond(A)]2 tan θ + cond(A) ϵA + O(ϵ2A ) (1.3) ∥x∥2 where ϵA = ∥E∥2 ∥A∥2 . Conclude that the condition number is approximately cond(A) when the residual is small. However, the condition number is squared for a moderate residual, and it becomes arbitrarily large when the residual is large. 6",
+      "sourceTextSha256": "5ba0243831ef3a363ff83f9affe615aaa7c7636d2b0bdedb9cf2d094587a48f6",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000019",
+      "sourceId": "body[1]/p[19]",
+      "sourceOrdinal": 18,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000020",
+      "sourceId": "body[1]/p[20]",
+      "sourceOrdinal": 19,
+      "literalSourceText": "The most striking feature of (1.3) is that it depends on the square of cond(A). This implies that even if A is only mildly ill-conditioned, a small perturbation in A can cause a large change in x. An exception occurs in problems where the least squares solution fits the data very well, i.e., tan θ ≈ 0, causing the factor [cond(A)]2 to cancel out. Example 1.4. Let us again consider the height measurements of hills in Example 1.1 with the least squares solution x = [1236, 1943, 2416]T . The pseudoinverse of A is given by   2 1 1 −1 −1 0 1 A+ = (AT A)−1 AT = 1 2 2 1 0 −1 .  4  1 1 2 0 1 1 We have ∥A∥2 = 2 and ∥A ∥2 = 1, so that + cond(A) = ∥A∥2 ∥A+ ∥2 = 2. On the other side, the ratio is computed as ∥Ax∥2 . 3640.8761 . cos θ = = = 0.99999868, ∥b∥2 3640.8809 Hence, the angle between Ax and b is the small value θ = 0.001625, indicating that the norm of the residual r = b − Ax is very small. Given the small condition number and the angle θ, we can conclude that this particular least squares problem is well-conditioned. Example 1.5. Consider a least squares problem with coefficient matrix    1 1 A=  ϵ −ϵ    0 0 and right-hand side vector b = [1, 0, ϵ]T , where ϵ > 0 is a small parameter. The pseudoinverse of A is computed as   1 1 1ϵ 0 A = + . 2 1 − 1ϵ 0 The condition number of A is √ 1 1 cond(A) = ∥A∥2 ∥A+ ∥2 = 2 √ = , ϵ 2 ϵ and the least squares solution is given by x = A+ b = [1/2, 1/2]T . Assume a tiny perturbation    0 0 E=  0 0    −ϵ ϵ for matrix A. The perturbed solution then is obtained as    1  1   1 1 2ϵ1 − 2ϵ1   x + ε = (A + E) b = + 0 =  43  ,   2 1 − 2ϵ1 1 2ϵ   4 ϵ 7",
+      "sourceTextSha256": "15c0b210318a30fe777e140a198a8a4b8d22d4f5d95f24cebbf1daee7626726e",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000021",
+      "sourceId": "body[1]/p[21]",
+      "sourceOrdinal": 20,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000022",
+      "sourceId": "body[1]/p[22]",
+      "sourceOrdinal": 21,
+      "literalSourceText": "∥ε∥2 which shows that ε = [−1/4, 1/4] and ∥x∥2 = 1/2. We can observe this large error from √ stability bound (1.3). We have ∥E∥2 ∥A∥2 = ϵ√22 = ϵ, and θ = cos−1 ∥Ax∥ ∥b∥2 2 = cos−1 √1+ϵ 1 2 ≈ 0 for small values of ϵ. Therefore, the term with the squared condition number in the right-hand ∥ε∥2 side of (1.3) becomes negligible. Consequently, the bound on the output perturbation ∥x∥ 2 is solely determined by cond(A) ∥E∥2 ∥A∥2 ∥ε∥2 = 1, which aligns with the exact value of ∥x∥ 2 . Now, let us change the right-hand side to b = [1, 0, 1]T . For this case, we have     1 1 − 1 x = A+ b =  21  , x + ε = (A + E)+ b =  21 4ϵ , 2 2 + 4ϵ1 ∥ε∥2 and ∥x∥2 = 2ϵ1 . The relative perturbation in the solution is approximately [cond(A)]2 ∥E∥2 ∥A∥2 . In this case, θ = cos−1 √12 = π4 , and tan θ = 1, indicating that the condition-squared term in the perturbation bound is not suppressed. As a result, the solution is highly sensitive to perturbations. 2 Projectors* In Figure 2 we observed that the vector y = Ax ∈ range(A) closest to b in the 2-norm is the orthogonal projection of b onto range(A). This observation leads to an algebraic characterization of least squares solutions via the notion of projectors2 . Definition 2.1. A projector is a square matrix P that satisfies P 2 = P. v Pv − v Pv range(P ) Figure 3: A non-orthogonal projector This definition includes both orthogonal and nonorthogonal projectors. In Figure 3, the vector v ∈ R3 is projected (nonorthogonal) to two-dimensional subspace range(P ). In this figure, P v is the shadow projected by vector v if one shines a light from the north-west direction onto the subspace range(P ). It is clear that if v ∈ range(P ) then P v = v (i.e. v lies exactly on its own shadow). In fact, if v ∈ range(P ) then there exists a vector x such that v = P x and P v = P 2 x = P x = v. We also observe from the figure that if P v ̸= v then the direction in which the light shines is P v − v. Applying P on the light direction we obtain P (P v − v) = P 2 v − P v = P v − P v = 0 2 The reader can skip this section, as the following sections are independent of its content. 8",
+      "sourceTextSha256": "1d052b262c1eb8d594ec1406ea3ff0862b3aed71e5993d96bf4367a953467a15",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000023",
+      "sourceId": "body[1]/p[23]",
+      "sourceOrdinal": 22,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000024",
+      "sourceId": "body[1]/p[24]",
+      "sourceOrdinal": 23,
+      "literalSourceText": "which means P v − v ∈ null(P ). The direction of the light depends on v but it is always described by a vector in null(P ). If P is a projector then (I − P )2 = I − 2P + P 2 = I − P which means that (I − P ) is also a projector. It is called the complementary projector to P . The matrix I − P projects onto range(I − P ) or equivalently onto null(P ) because: Lemma 2.2. If P is a projector then range(I − P ) = null(P ) and null(I − P ) = range(P ). Proof. If v ∈ null(P ) then P v = 0 so (I − P )v = v which means v ∈ range(I − P ). Conversely, for any v, we have (I − P )v = v − P v ∈ null(P ). By writing P = I − (I − P ) we derive the complementary fact null(I − P ) = range(P ). ■ Lemma 2.3. If P is a projector then range(P ) ∩ null(P ) = {0}. Proof. Any vector v in both sets null(I − P ) and null(P ) satisfies v − P v = 0 and P v = 0 which gives v = 0. So, null(I − P ) ∩ null(P ) = {0}. Then the result follows by Lemma 2.2. ■ We conclude that any projector P ∈ Rm×m separates Rm into two spaces range(P ) and null(P ) in the sense that any vector v ∈ Rm can be decomposed to v = x+y where x ∈ range(P ) and y ∈ null(P ). Indeed x = P v and y = (I − P )v because v = P v + (I − P )v. In this scenario we may write Rm = range(P ) + null(P ). Conversely, if S1 and S2 are two subspaces of Rm such that S1 ∩ S2 = {0} and Rm = S1 + S2 then there is a projector P such that range(P ) = S1 and null(P ) = S2 . We say that P is the projector onto S1 along S2 . Definition 2.4. A projector P is called an orthogonal projector if it is symmetric, i.e. P = PT. In Figure 4 an orthogonal projection is illustrated. v Pv − v Pv range(P ) Figure 4: An orthogonal projection For an orthogonal projector P the subspaces range(P ) and null(P ) are orthogonal because the inner product between a vector P x ∈ range(P ) and a vector (I − P )y ∈ range(I − P ) = null(P ) is zero: (P x)T (I − P )y = xT P T (I − P )y = xT P (I − P )y = xT (P − P 2 )y = 0. 9",
+      "sourceTextSha256": "675366a6b31c00fd38c1c63762cb841bfaa55f40e6f5abc19730cbd48a294a34",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000025",
+      "sourceId": "body[1]/p[25]",
+      "sourceOrdinal": 24,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000026",
+      "sourceId": "body[1]/p[26]",
+      "sourceOrdinal": 25,
+      "literalSourceText": "We use the notations P⊥ := (I − P ) and range(P )⊥ := null(P ). Any vector v ∈ Rm then can be expressed as the sum v = (P + (I − P ))v = P v + P⊥ v of mutually orthogonal vectors one in range(P ) and the other in range(P )⊥ . We also have the Pythagorean relation (prove it!) ∥v∥22 = ∥P v∥22 + ∥P⊥ v∥22 . This concept can be applied to find the solution of the least square problem (1.1). If P is an orthogonal projector to range(A) (find P such that range(P ) = range(A)) then we have ∥b − Ax∥22 = ∥P (b − Ax) + P⊥ (b − Ax)∥22 = ∥P (b − Ax)∥22 + ∥P⊥ (b − Ax)∥22 (2.1) = ∥P b − Ax∥22 + ∥P⊥ b)∥22 . The last equality satisfies because P A = A and P⊥ A = 0. Since the second norm on the right does not depend on x, the residual is minimized by minimizing the first norm. But the first norm is minimized by the ideal solution x satisfying the overdetermined, but consistent system Ax = P b. (2.2) If fact, such x exists because P b ∈ range(P ) = range(A). If we multiply both sides by AT we have AT Ax = AT P b = AT P T b = (P A)T b = AT b giving AT Ax = AT b, which is the normal equation we already derived. The norm ∥P⊥ b)∥2 in (2.1) is the norm of residual of the least squares solution. How can we construct the projection P explicitly? If A is a full-rank matrix then AT A is nonsingular and P := A(AT A)−1 AT is an orthogonal projector to range(A). Because it is symmetric and idempotent and range(P ) = range(A) (prove!). This means that the vector y ∈ range(A) closest to b is b̃ = P b = A(AT A)−1 AT = Ax where x is the solution of least squares problem given by the normal equation. We can write b as a sum b = P b + P⊥ b = Ax + (b − Ax) = b̃ + r of two mutual orthogonal vectors b̃ ∈ range(A) and r ∈ range(A)⊥ . Example 2.1. Consider Examples 1.1 and 1.3. For solution x = [1236, 1943, 2416]T , the reminder is r = b − Ax = [1, −2, 1, 4, −3, 2]T which is orthogonal to all columns of A, i.e., AT r = 0. The orthogonal projector on to 10",
+      "sourceTextSha256": "b0e955e9d10ff754502c086b07ac4a94b0d8f1303733a0c9874f2fd0b15ae57f",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000027",
+      "sourceId": "body[1]/p[27]",
+      "sourceOrdinal": 26,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000028",
+      "sourceId": "body[1]/p[28]",
+      "sourceOrdinal": 27,
+      "literalSourceText": "range(A) is    2 1 1 −1 −1 0  1 2 1 1 0 −1     1  1 1 2 0 1 1   P = A(AT A)−1 AT =   4−1 1 0 2 1 −1    −1 0 1 1 2 1     0 −1 1 −1 1 2 and the orthogonal projector on to range(A)⊥ is    2 −1 −1 1 1 0 −1 2 −1 −1 0 1     1−1 −1 2 0 −1 −1   P⊥ = I − P =   , 4 1  −1 0 2 −1 1    1 0 −1 −1 2 −1     0 1 −1 1 −1 2 so that b = P b + P⊥ b = b̃ + r. An alternative way to define P is to let Q ∈ Rm×n be a matrix whose columns form an orthonormal basis (i.e., QT Q = I) for range(A). Then P := QQT is symmetric and idempotent, so it is an orthogonal projector onto range(Q) = range(A). Then from (2.2) we have Ax = QQT b. Multiplying both sides by QT gives the square system QT Ax = QT b. We will see later how to compute the matrix Q in such a way that this system is upper triangular and therefore easy to solve. 3 Orthogonality and QR factorization From several points of view, it is advantageous to use orthogonal vectors as basis vectors in a vector space. As an application, we will obtain an stable algorithm for solving the least squares problem when a specific orthogonal basis is obtained for the subspace range(A). We remind that two nonzero vectors x and y are called orthogonal if xT y = 0. Workout 3.1. If vectors qj , j = 1, 2, . . . , m are mutually orthogonal, i.e. qjT qk = 0 for j ̸= k, then they are linearly independent. If the set of orthogonal vectors qj ∈ Rm , j = 1, 2, . . . , m, be normalized by ∥qj ∥2 = 1 then they are called orthonormal, and form an orthonormal basis for Rm . Definition 3.2. A square matrix whose columns are orthonormal is called an orthogonal matrix. 11",
+      "sourceTextSha256": "aab3115680e7ef3d01daef5941847b5f9868e08df6b4868bc3375838a94c7008",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000029",
+      "sourceId": "body[1]/p[29]",
+      "sourceOrdinal": 28,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000030",
+      "sourceId": "body[1]/p[30]",
+      "sourceOrdinal": 29,
+      "literalSourceText": "It is clear that an orthogonal matrix Q satisfies QT Q = I, it is full rank, and its inverse is equal to Q−1 = QT . The rows of an orthogonal matrix are orthogonal, i.e., QQT = I. It is not difficult to show that the product of two orthogonal matrices is orthogonal. One of the most important properties of orthogonal matrices is that they preserve the length (Euclidian norm) of a vector: ∥Qx∥22 = (Qx)T Qx = xT QT Qx = xT x = ∥x∥22 . This means that Q rotates x but does not change its length. In numerical point of view, this norm-preserving property means that orthogonal matrices do not amplify errors. Workout 3.3. Show that orthogonal matrices preserve the 2-norm and the Frobenius norm of matrices. Here we introduce two classes of elementary orthogonal matrices that will be used in the sequel to transfer the columns of an arbitrary matrix A into an set of orthonormal bases. 3.1 Householder transformations In this section, we consider Householder transformations as a class of orthogonal matrices, which are particularly useful for performing reflections and orthogonal projections in matrix computations. The we will use them to compute the QR factorization of a matrix. Definition 3.4. A matrix of the form 2 H=I− uuT (3.1) uT u where u is a non-zero vector in Rn is called a Householder matrix or a Householder trans- formationa . The vector u determining the Householder matrix H is called the Householder vector. a After the celebrated numerical analyst Alston Scott Householder (5 May 1904 – 4 July 1993) x u(uT x) u U −2u(uT x) w = x − 2uuT x = Hx Figure 5: Geometric interpretation of Householder transformation 12",
+      "sourceTextSha256": "399979394a79edef6b2a2c39ed2cd2e77bacb02b781d02e871d10a06daf1cbfa",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000031",
+      "sourceId": "body[1]/p[31]",
+      "sourceOrdinal": 30,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000032",
+      "sourceId": "body[1]/p[32]",
+      "sourceOrdinal": 31,
+      "literalSourceText": "See Figure 5 for a geometric interpretation of a Householder transformation. In the figure the vector u is assumed to be a normal vector (uT u = 1) of plane U . The vector w = Hx is the reflection of x with respect to plane U . The plane acts as a mirror; the reason why the Householder transformation is also known as elementary reflector. The following properties can be simply proved for a Householder transformation. Theorem 3.5. Let H = I − 2uuT /uT u be a Householder matrix with vector u ∈ Rn . Then 1. H is symmetric and orthogonal. 2. H 2 = I 3. Hu = −u 4. Hv = v if uT v = 0 5. If x, y ∈ Rn are such that x ̸= y and ∥x∥2 = ∥y∥2 , and u is chosen parallel to x − y then Hx = y. Proof. We only prove item (5) because other items are easy to prove. Let u = c(x − y) for a constant c ̸= 0, and write x = 21 (x + y) + 21 (x − y). Then 1 1 Hx = H(x + y) + H(x − y). 2 2 By using property (3) we have H(x − y) = −(x − y). On the other hand (x + y) is orthogonal to x − y because (x + y)T (x − y) = xT x − xT y + y T x − y T y = ∥x∥2 − ∥y∥2 = 0. Thus by property (4) we have H(x + y) = x + y. All these together give Hx = y. ■ Remark 3.1. Properties (3) and (4) show that H has n − 1 eigenvalues 1 and a simple eigenvalue −1 (corresponding to eigenvector u). Theorem 3.6. Given a nonzero vector x ̸= e·1 := [1, 0, . . . , 0]T , the Householder matrix H define by u = x ± ∥x∥2 e·1 is such that Hx = ∓∥x∥2 e·1 . (Take care of signs ± and ∓). Proof. This is a simple consequence of item (5) of Theorem 3.5 by letting y = ∓∥x∥2 e·1 . ■ Here is an illustration (α = ∓∥x∥2 ):     x1 α      x2  0         x =  x3  =⇒ Hx =  0       ..   ..       .  .     xn 0 Given the vector x, we find a reflection matrix H (the mirror) such that Hx = αe·1 (reflect x on x1 -axis). See Figure 6 below. 13",
+      "sourceTextSha256": "7efda4d64e38a52007227687f1cefa11e754d0ba10a2b997b81528f6b970bfba",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000033",
+      "sourceId": "body[1]/p[33]",
+      "sourceOrdinal": 32,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000034",
+      "sourceId": "body[1]/p[34]",
+      "sourceOrdinal": 33,
+      "literalSourceText": "x u     α Hx = αe·1 =  0    0 Figure 6: The mirror H reflects x on x1 -axis. The normal vector u is chosen parallel to x − αe·1 . Theorem 3.6 works with both negative and positive signs. However, to avoid cancelation errors in computing the first component of u, one can get rid of subtraction at all by choosing sign(x1 ) in place of ±. We always form the matrix H via vector u = x + sign(x1 )∥x∥2 e·1 , with sign(0) = +. Here we discuss how the computational costs of matrix-vector and matrix-matrix multiplica- tions can be reduced when the matrix is a Householder reflection. The standard matrix-vector multiplication Hx requires 2n2 flops for a n × n matrix H and a n-vector x. The matrix-matrix multiplication HA for n × m matrix A costs for 2mn2 flops. However, if H is a Householder matrix it is not required forming H explicitly in favour of working with u directly. In this case, letting β = 2/uT u one can write Hx = (I − βuuT )x = x − βu(uT x) = x − βγu, γ = uT x, HA = (I − βuuT )A = A − βu(uT A) = A − βuwT , w = AT u, AH = A(I − βuuT ) = A − β(Au)uT = A − βwuT , w = Au. Workout 3.7. For a Householder matrix H ∈ Rn×n verify that the flop-counts for matrix- vector product Hx is about 6n, and matrix-matrix product HA for A ∈ Rn×m (or AH for A ∈ Rm×n ) is about 4mn. Compare with explicit multiplications. The following Python code computes a Householder vector u for a given vector x. def HouseVec(x): # HouseVec(x) computes the Householder vector u such that # (I-2uu’/u’u)x = |x|_2e_1 n = len(x); u = np.zeros(n) u[1:] = x[1:] s = np.sign(x[1]) if s == 0: s = 1 14",
+      "sourceTextSha256": "cf559aa51af37acf3a68e25b72f4bdfa18d373e303f3804621b9741e456e0cab",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000035",
+      "sourceId": "body[1]/p[35]",
+      "sourceOrdinal": 34,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000036",
+      "sourceId": "body[1]/p[36]",
+      "sourceOrdinal": 35,
+      "literalSourceText": "u[0] = x[0] + s*np.linalg.norm(x,2) return u Multiplication by a Householder transformation is implemented in the following code: def HouseProd(u,A): # HouseProd(u,A) computes the product of Householder matrix # (I-2uu’/u’u) by matrix A b = 2/np.dot(u,u); w = np.matmul(np.transpose(A),u) HA = A - b*np.outer(u,w) return HA Example 3.1. The following script transforms the first column of matrix    2 3 5 1 2 −1   A=  2 5 3     1 −1 0 to a multiple of e·1 . We write A = np.array([[2,3,5],[1,2,-1],[2,5,3],[1,-1,0]]) u = HouseVec(A[:,0]) A = HouseProd(u,A) print (\"Transferred A = \\n\", np.round(A,4)) and get the following output (rounded to 4 decimals places): Transferred A = [[-3.1623 -5.3759 -4.7434] [ 0. 0.3775 -2.8874] [ 0. 1.755 -0.7749] [ 0. -2.6225 -1.8874]] 3.2 Plane rotations Householder transformations are efficient for dense matrices because of a few flops they need. In this section we introduce the plane rotations which are flexible and can be used efficiently for sparse matrices because they produce zeros entry by entry. 15",
+      "sourceTextSha256": "1f1e5a0096d99b712b0136e8e33959e1c04b0885292d99f3f45c775a8824cc45",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000037",
+      "sourceId": "body[1]/p[37]",
+      "sourceOrdinal": 36,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000038",
+      "sourceId": "body[1]/p[38]",
+      "sourceOrdinal": 37,
+      "literalSourceText": "The 2 × 2 skew symmetric matrix   c s J=  , c2 + s2 = 1 (3.2) −s c is an orthogonal matrix. If c = cos θ then Jx is a clockwise rotation of x by angle θ. So the matrix J is a rotation matrix in the (1, 2)-plane. Sometimes J is called Givens rotation after Wallace Givens, who used them for eigenvalue computations around 1960. However, they had been used long before that by Jacobi for the same reason. Let x = (x1 , x2 )T ̸= 0 and c = x1 /∥x∥2 and s = x2 /∥x∥2 then      1  x1 x2  x1  ∥x∥2  Jx = = . ∥x∥2 −x2 x1 x2 0 In this case, the rotation matrix J rotates x and puts it on x1 -axis, i.e. zeros its second component. By embedding a 2 × 2 rotation in a larger identity matrix, one can manipulate vectors and matrices of arbitrary dimensions. q Example 3.2. Let x = (x1 , x2 , x3 , x4 , x5 ) T be given such that α = x23 + x25 ̸= 0. Let c = x3 /α and s = x5 /α. Then we have       1 0 0 0 0 x1  x  1 0 1 0 0 0 x  x2          2   0 0 c 0 s x3  =  α  .           0 0 0 1 0 x4  x4            0 0 −s 0 c x5 0 In fact this matrix is a rotation matrix in (3, 5)-plane which changes x5 to 0, x3 to α and leaves other components unchanged. Using this idea we can construct a sequence of plane rotations to transfer an arbitrary vector x ∈ Rm to a multiple of unit vector e·1 = [1, 0, . . . , 0]T ∈ Rm . Let the rotation matrix in the q (j, k)-plane when applying on vector x with c = xj /α and s = xk /α for α = x2j + x2k be denoted by J(j, k). Then it is easy to show that J(1, 2)J(1, 3) · · · J(1, m) x = ∥x∥2 e·1 | {z } G We note that any rotation matrix J(j, k) with j < k can be used instead of J(1, k) matrices. q Remark 3.2. Possible overflow and underflow in computing c = x1 / x21 + x22 and s = q x2 / x21 + x22 can be avoided by an appropriate scaling. If |x1 | ≥ |x2 | we put √ t = x2 /x1 , c = 1/ 1 + t2 , s = c · t, and if |x1 | < |x2 |, √ t = x1 /x2 , s = 1/ 1 + t2 , c = s · t. In either case, we can avoid squaring any magnitude larger than 1. q q If an elementary plane rotation J(j, k), with c = ajℓ / a2jℓ + a2kℓ and s = akℓ / a2jℓ + a2kℓ is 16",
+      "sourceTextSha256": "915a4dd89006af0699531b022d7f15f79870bb802ea1d105518ef9eb36fca052",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000039",
+      "sourceId": "body[1]/p[39]",
+      "sourceOrdinal": 38,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000040",
+      "sourceId": "body[1]/p[40]",
+      "sourceOrdinal": 39,
+      "literalSourceText": "applied on a matrix A with entries ajℓ then the (k, ℓ) entry of A becomes zero if k > j. It is important to note that only two rows j and k of the matrix are changed. This should be taken into account in programming. Instead of explicitly embedding the 2 × 2 rotation matrix into a matrix of larger dimension, which would require unnecessary computations, we can save operations and storage by implementing the rotation more efficiently. Here are two Python functions that illustrate how to implement the rotation while minimizing computational costs. In the GivensProd function we only operate on two rows of matrix A. def GivensPar(x,y): # GivensPar(x,y) computes Givens parameters to make the second # component of [x,y] zero if abs(x) > abs(y): t = y/x; c = 1/np.sqrt(1+t**2); s = c*t else: t = x/y; s = 1/np.sqrt(1+t**2); c = s*t return c,s def GivensProd(c,s,j,k,A): # GivensProd(c,s,j,k,A) applies a (j,k)-plane rotation to matrix A A[[j,k],:] = np.matmul([[c,s],[-s,c]],A[[j,k],:]) return A Example 3.3. The following script transforms the first column of matrix    2 3 5 1 2 −1   A=  2 5 3     1 −1 0 to a multiple of e·1 . Consider the matrix A in Example 3.1. We use Givens rotations to transfer A into a new matrix that all the components of its first column except the first are annihilated. A = np.array([[2,3,5],[1,2,-1],[2,5,3],[1,-1,0]]) print(\"Original A = \\n\", A) for k in range(3,0,-1): c,s = GivensPar(A[0,0],A[k,0]) A = GivensProd(c, s, 0, k, A) print (\"Transferred A = \\n\", np.round(A,4)) The output with rounding to four decimal places: 17",
+      "sourceTextSha256": "5a5c6562030d4f6a2d97c35c42d1eee776855bb25a7694e756c7faa53d2737b9",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000041",
+      "sourceId": "body[1]/p[41]",
+      "sourceOrdinal": 40,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000042",
+      "sourceId": "body[1]/p[42]",
+      "sourceOrdinal": 41,
+      "literalSourceText": "Original A = [[ 2. 3. 5.] [ 1. 2. -1.] [ 2. 5. 3.] [ 1. -1. 0.]] Transferred A = [[3.1623 5.3759 4.7434] [ 0. 0.3162 -2.6352] [ 0. 2.2361 -0.7454] [ 0. -2.2361 -2.2361]] Comparing with the output of the Householder transformation (Example 3.1), we observe that GA is not necessarily identical with HA. However, in both cases A is transferred to a matrix with zeros under its a11 entry. For a single call the cost of function GivensPar is 6 flops, and for a matrix A ∈ Rm×n the total number of flops in GivensProd is 6n (multiplying a 2 × 2 matrix by a 2 × n matrix.) To zero all off-diagonal entries of the first column of a matrix A ∈ Rm×n , both functions GivensPar and GivensProd should be called in a m − 1 folds loop. The total cost is thus (m − 1)(6n + 6) ≈ 6mn flops. 3.3 QR factorization Matrix decompositions are essential, giving rise to fast and efficient algorithms in matrix computations. Students are typically familiar with LU decompositions (or Gaussian elimina- tion), which factorize a matrix A into a lower triangular matrix L multiplied by an upper triangular matrix U , or its other variant LLT for positive definite matrices. Here, we introduce another useful factorization with numerous applications in efficient linear algebra algorithms. Theorem 3.8. Every matrix A ∈ Rm×n with m ⩾ n (overdetermined) can be factorized as A = QR where Q is a m × m orthogonal matrix and R is a m × n upper triangular matrix.        × × ×  × × × × ×  × × × × × × × × × × × 0 × ×             ×  × ×  =  × × × × ×  0  0 ×        ×× × × × × × × 0 0 0             × × × × × × × × 0 0 0 A Q R Here is an illustration for a case with m = 5 and n = 3. 18",
+      "sourceTextSha256": "2727bbe2cd6294d60b46267e359a41cc707b8d9a9f16cad61fdbf41124f61794",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000043",
+      "sourceId": "body[1]/p[43]",
+      "sourceOrdinal": 42,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000044",
+      "sourceId": "body[1]/p[44]",
+      "sourceOrdinal": 43,
+      "literalSourceText": "In the next section we give a “constructive” proof for this theorem using Householder re- flections. By constructive we mean that the proof also suggests an algorithm to compute the Q and R factors. As we observe, the last m − n rows of R are zeros so the last m − n columns of Q have no contribution to the product (but are still important!).       × × × × × × × × × × × 0     × ×  ×  × ×  × × × × ×        0 0      = ×  × × × × × × × ×           0 0 0   × × ×    × × × × ×         × × × × × × × × 0 0 0   R  1 A = [ Q1 Q2 ] 0 This suggests the reduced QR factorization A = Q1 R1 which is often sufficient for many applications where the Q2 portion is not needed. 3.4 QR factorization using Householder transformations Now we show how the idea of introducing zeros in a vector using a Householder matrix can be used for computing a full QR factorization A = QR of a matrix A ∈ Rm×n , m ⩾ n, where Q ∈ Rm×m is orthogonal and R ∈ Rm×n is upper triangular (entries below the main diagonal are all zero). This process was first introduced by Householder in 1958. The idea is to reduce A to an upper triangular matrix R by successively premultiplying A with a series of orthogonal Householder matrices. The products of House- holder matrices then constitute the orthogonal matrix Q. The process is illustrated for m = 5 and n = 3: Step 1:      × × ×  + + + × × × 0 + +         H1 A = H1 × × = ×  0 + + =: A(1)         × × × 0 + +         × × × 0 + + 19",
+      "sourceTextSha256": "ea86cfe71e2ef2162854487ca14600a03c3392d4cd31f1d96434f5eb884884ea",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000045",
+      "sourceId": "body[1]/p[45]",
+      "sourceOrdinal": 44,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000046",
+      "sourceId": "body[1]/p[46]",
+      "sourceOrdinal": 45,
+      "literalSourceText": "Step 2:      + + +  + + + 0 + + 0 ∗ ∗         H2 A(1) = H2  0 + +  = 0 0 ∗ =: A(2)      0 + + 0 0 ∗         0 + + 0 0 ∗ Step 3:      + + +  + + + 0 ∗ ∗ 0 ∗ ∗        H3 A = H3  (2) 0 0 = ∗     0 0 ⋆ =: A(3) =: R     0 0 ∗ 0 0 0         0 0 ∗ 0 0 0 We have R = A(3) = H3 A(2) = H3 H2 A(1) = H3 H2 H1 A. If we define QT = H3 H2 H1 then R = QT A or A = QR where Q = H1 H2 H3 . Remember that Hk are symmetric and orthogonal. The general case A ∈ Rm×n can be treated similarly. Let A = (aij ). In the first step, the Householder matrix H1 ∈ Rm×m is build upon the first column of A, i.e.,   a11    a2,1  2   x = a·1 =  .  m ∈R , u1 = a·1 − sign(a11 )e·1 , H1 = I − u1 uT1 .  ..   uT1 u1   am,1 Then H1 A annihilates the components below a11 . Other entries of A are changed as well. The new matrix is denoted by H1 A =: A(1) (1) with entries aij . In the second step, a Householder matrix H f ∈ R(m−1)×(m−1) is formed based on the entries 2 from 2 to m of the second column of A(1) , i.e.,  (1)  a  22   (1)  (1)  a3,2  2 x = a2:m,2 =   ..  ∈ R  m−1 , u2 = x − sign(x1 )e·1 , f =I− H2 u2 uT2 ∈ R(m−1)×(m−1)  .  uT2 u2   (1) am,2 Then the Householder matrix H2 is defined by   1 0 H2 =  ∈ Rm×m . 0 H f 2 In the new matrix H2 A(1) =: A(2) (2) the entries below a22 become zero. First row and first column of A(2) are identical with that of A(1) due to the special structure of H2 in its first row and column. Specially, the zeros introduced in the pervious step (in the first column) are not destroyed in the current step. 20",
+      "sourceTextSha256": "9a0f27a9af339aef61f3634a2c94a179cfa20606d70ead9eae565dfe2e2c2f3f",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000047",
+      "sourceId": "body[1]/p[47]",
+      "sourceOrdinal": 46,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000048",
+      "sourceId": "body[1]/p[48]",
+      "sourceOrdinal": 47,
+      "literalSourceText": "Similarly, in step k a Householder matrix H f ∈ R(m−k+1)×(m−k+1) is formed based on the k entries from k to m of the k-th column of A(k−1) , i.e.,  (k−1)  a  k,k   (k−1)  ak+1,k  2 x=  ..  ∈ R  m−k+1 , uk = x − sign(x1 )e·1 , f =I− Hk uk uTk ∈ R(m−k+1)×(m−k+1) .  .  uTk uk   (k−1) am,k Then the Householder matrix Hk is defined by   I  k−1 0 Hk = ∈ Rm×m , 0 H f k where Ik−1 is the identity matrix of size k − 1. In the new matrix Hk A(k−1) =: A(k) (k) the entries below akk are all zero. The first block of Hk (the identity block) ensures that the first k − 1 rows and columns of A(k−1) remains unchanged in A(k) . This means that the zeros introduced in all previous steps are not destroyed. For an economic implementation, the matrix- matrix multiplication should only be done on a submatrix of A(k−1) of size (m − k) × (n − k). This process is continued until step n. In the last step we make zeros below the diagonal in the last column of A(n−1) by multiplying the Householder matrix Hn : Hn A(n−1) =: A(n) . The resulting matrix A(n) is an upper triangular matrix of size m × n, let us denote it by R. We thus have R = A(n) = Hn A(n−1) = · · · = Hn Hn−1 · · · H2 H1 A = QT A | {z } QT where QT is an orthogonal matrix because it is the product of n orthogonal Householder matrices. We simply have A = QR where Q = (Hn · · · H2 H1 )T = H1 H2 · · · Hn . Remark 3.3 (space complexity). To minimize the storage, R is stored over A in the upper triangular part. Householder matrices are not required to be stored at all. Instead the components 2 through end of each vector uk are stored in the respective positions of A (instead of zeros), and the first components of all uk vectors are stored in an auxiliary one- dimensional array. The matrix Q, if it is needed explicitly, can be formed in a postprocessing calculation using the stored uk vectors in a cheap way. See Workout 3.9. We note that, in a majority of practical applications, it is sufficient to have Q in this factored form, and in many applications, Q is not needed at all. Remark 3.4. In step k of the algorithm the entries of the submatrix of A containing row k through m and columns k through n, denoted by A(k : m, k : n), are updated and stored 21",
+      "sourceTextSha256": "d526b9642b7ad1bb8fd09377b8422e31a42a68633bffc9597fcd1ce34a3109e3",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000049",
+      "sourceId": "body[1]/p[49]",
+      "sourceOrdinal": 48,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000050",
+      "sourceId": "body[1]/p[50]",
+      "sourceOrdinal": 49,
+      "literalSourceText": "over the corresponding entries of A via 2 A(k : m, k : n) = (I − uk uTk )A(k : m, k : n) uTk uk (3.3) = A(k : m, k : n) − βuk uTk A(k : m, k : n). In a Python code for QR factorization in step k the subroutine HouseProd can be called with input arguments uk and A(k : m, k : n). Workout 3.9. Show that it requires about 2n2 (m − n/3) flops to compute R in the QR factorization of A ∈ Rm×n , m ⩾ n using Householder transformations. This cost does not include the explicit construction of Q. Show that it is required about 34 m3 flops to compute Q explicitly. The procedure is the same for m < n but is finished after m − 1 steps. In this case the upper triangular matrix R is of the form [R1 R2 ] where R1 is a m × m upper triangular and R2 is a full matrix of size m × (n − m). Here is an illustration for m = 3 and n = 5:        × × × × ×  × × ×  × × × × × × × × × × = × × ×  0 × × × ×             × × × × × × × × 0 0 × × × A Q R The following Python function computes the QR factorization of a m × n matrix A, either m ⩾ n or m < n. The code handles cases where only R, R and uk vectors and both Q and R are demanded. In the second case Householder vectors uk are stored in the lower diagonal part of the output matrix and in additional array u1. def qrfac(A, mode = ’Q&R’): # qrfac(A, mode) computes the QR factorization of a (m x n) matrix A # mode: ’R’, ’R&u’ and ’Q&R’. The default mode is ’Q&R’ m,n = np.shape(A) s = min(m-1,n) if mode == ’R’: for k in range(s): u = HouseVec(A[k:,k]) A[k:,k:] = HouseProd(u,A[k:,k:]) return np.triu(A) elif mode == ’R&u’: u1 = np.zeros(s) for k in range(s): 22",
+      "sourceTextSha256": "d787ca5cad081c72506ddbc06cf41c25c2149b17ebd43c6b315478901413297b",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000051",
+      "sourceId": "body[1]/p[51]",
+      "sourceOrdinal": 50,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000052",
+      "sourceId": "body[1]/p[52]",
+      "sourceOrdinal": 51,
+      "literalSourceText": "u = HouseVec(A[k:,k]) A[k:,k:] = HouseProd(u,A[k:,k:]) A[(k+1):,k] = u[1:] u1[k] = u[0]; return A, u1 elif mode == ’Q&R’: A,u = qrfac(A,’R&u’) Q = np.eye(m) for k in range(s): Q[k:,:] = HouseProd(np.append(u[k],A[(k+1):,k]),Q[k:,:]) return np.transpose(Q), np.triu(A) else: print(\"Input mode types ’R’, ’R&u’ or ’Q&R’ \") 3.5 QR factorization using Givens rotations The QR factorization of a matrix A ∈ Rm×n can also be simply obtained using Givens rotations in s = min{m − 1, n} steps as below: - Step 1: form an orthogonal matrix G1 = J(1, m)J(1, m − 1) · · · J(1, 2) such that A(1) = G1 A has zeros below its (1, 1) entry in the first column. - Step 2: form an orthogonal matrix G2 = J(2, m)J(2, m − 1) · · · J(2, 3) such that A(2) = G2 A(1) has zeros below its (2, 2) entry in the second column. .. . - Step k: form an orthogonal matrix Gk = J(k, m)J(k, m − 1) · · · J(k, k + 1) such that A(k) = Gk A(k−1) has zeros below its (k, k) entry in the k-th column. The final matrix A(s) := R is upper triangular and the matrix Q = GT1 GT2 · · · GTs is orthogonal and A = QR. To optimize the storage used, the matrix R is stored over A, and Q is formed implicitly out of Givens parameters (for example using Python function GivensProd). Lab Exercise 3.10. Implement a Python function for QR factorization using Givens rota- tions. Ask the user for different modes. Call your function for some matrices and print the outputs. Remark 3.5. The QR factorization with Givens rotations requires 3n2 (m − n/3) flops. This does not include the computation of Q. Compared with the Householder method, this 23",
+      "sourceTextSha256": "a00c0ef48f944019d73ae83e9bedbfb3e2ca5218047f508d8520859e03df9b03",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000053",
+      "sourceId": "body[1]/p[53]",
+      "sourceOrdinal": 52,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000054",
+      "sourceId": "body[1]/p[54]",
+      "sourceOrdinal": 53,
+      "literalSourceText": "algorithm is about 1.5 times more expensive. However when the matrix A is sparse or has a special structure with lots of zeros in its lower triangle, the Givens approach is cheaper. For example in several applications (for example in eigenvalue computation) one needs to find the QR factorization of an upper Hessenberg matrix. An upper Hessenberg matrix is similar to an upper triangular matrix with additional nonzero elements on the diagonal right below its main diagonal. Since an upper Hessenberg matrix A ∈ Rn×n has at most (n − 1) nonzero subdiagonal entries, the QR factorization of A can be obtained by only (n − 1) Givens rotations. See the following illustration for n = 4:          × × × ×  × × × ×  × × × ×  × × × × × × × × J(1,2)  0 × × × J(2,3)  0 × × × J(3,4)  0 × × ×          −−→    −   −−−→   −−−→   0 × × ×  0 × × ×  0 0 × ×  0 0 × ×               0 0 × × 0 0 × × 0 0 × × 0 0 0 × Remark 3.6. It was shown by Wilkinson in 1965 that the computed Q b and R b with Givens rotations satisfy b =Q R b T (A + E) where there exists a constant c independent of m and n such that ∥E∥F ⩽ c∥A∥F . This shows that the algorithm is backward stable. 3.6 Other algorithms The Gram-Schmidt algorithms (classical and modified versions) are alternative algorithms for computing the thin QR factorization of A. See [Trefethen-Bau:1997, Heath:2018]. 3.7 QR factorization for solving the least squares problem Solving the linear least squares problems using the normal equations has two significant drawbacks: (1) Forming AT A can lead to loss of information, (2) The condition number AT A is the square of that of A: cond2 (AT A) = [cond2 (A)]2 . We illustrate these points in a couple of examples. Example 3.4. Let    1 1 A =  ϵ 0     0 ϵ where ϵ > 0 is a small real number. Clearly A has full rank and   1 + ϵ2 1  AT A =  1 1 + ϵ2 24",
+      "sourceTextSha256": "1d488ad1d44a61177212aebc455c670eee393e2d1f250c76423fc5a314b3b3f7",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000055",
+      "sourceId": "body[1]/p[55]",
+      "sourceOrdinal": 54,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000056",
+      "sourceId": "body[1]/p[56]",
+      "sourceOrdinal": 55,
+      "literalSourceText": "In the double precision floating point arithmetic if we let ϵ to be smaller that 10−8 then fl(1 + ϵ2 ) = 1 and the computed matrix   1 1 fl(AT A) =  1 1 is indeed singular. Example 3.5. In the matrix A of Example 3.4 assume ϵ = 10−4 . Then we can show that √ cond2 (A) = 2 × 104 while cond2 (AT A) = 2 × 108 . In view of the potential numerical difficulties with the normal equations approach, we need an alternative that does not require formation of the normal system. In this section we will explain the use of QR factorization for this purpose while in the sequel an alternative approach through SVD will be discussed. Consider again the least squares problem min ∥Ax − b∥2 x∈Rn with overdetermined matrix A ∈ R m×n . The QR factorization transforms this linear least squares problem into a triangular least squares problem having the same solution. First assume that A has full rank, i.e., rank(A) = n. Let A = QR be the QR factorization   of A and partition R1 Q = [Q1 Q2 ] where Q1 consists of first n columns of Q, and R =   where R1 ∈ Rn×n is an 0 upper triangular matrix. In the reduced form A = Q1 R1 . Since A has full rank all diagonal entries of R1 are nonzero, so it is nonsingular. We can write     2 R  1 QT b ∥Ax − b∥22 = ∥QRx − b∥22 = ∥Rx − QT b∥22 = x−  1  0 QT2 b 2 = ∥R1 x − QT1 b∥22 + ∥QT2 b∥22 . The minimum is obtained if the first norm on the right-hand side is vanished, i.e., R1 x = QT1 b. Since R1 is upper triangular and nonsingular, a simple backward substitution with O(n2 ) flops gives the least square solution x. The reminder then is r = ∥Ax − b∥2 = ∥QT2 b∥2 . If the reminder is not important to us, a reduced QR factorization is enough for obtaining the least squares solution. Example 3.6. Consider again Example 1.1. The least squares solution to height measure- ments can be computed using the QR factorization as below. 25",
+      "sourceTextSha256": "292b84fdde91ef7b9421a02ac7ffc90ea0e2fd8e6a888e651538202dd3594e24",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000057",
+      "sourceId": "body[1]/p[57]",
+      "sourceOrdinal": 56,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000058",
+      "sourceId": "body[1]/p[58]",
+      "sourceOrdinal": 57,
+      "literalSourceText": "import numpy as np A = np.array([[1.,0,0],[0,1.,0],[0,0,1.],[-1.,1.,0],[-1.,0,1.],[0,-1.,1.]]) b = np.array([1237,1941,2417,711,1177,475]) Q,R = qrfac(A) print(’Q =’, np.round(Q,4), ’\\n R =’, np.round(R,4)) x = BackSub(R[0:3,:],Q[:,0:3].T@b) print(’x =’,np.round(x,4)) Note that we also called the backward substitution algorithm for solving upper triangular systems using the Python function BackSub. The code for this function is left as an exercise for the reader. The outputs are Q = [[-0.5774 -0.2041 -0.3536 0.5113 0.4878 -0.0235] [ 0. -0.6124 -0.3536 -0.4878 0.0235 0.5113] [ 0. 0. -0.7071 -0.0235 -0.5113 -0.4878] [ 0.5774 -0.4082 -0. 0.6664 -0.1786 0.1551] [ 0.5774 0.2041 -0.3536 -0.1551 0.6664 -0.1786] [ 0. 0.6124 -0.3536 0.1786 -0.1551 0.6664]] R =[[-1.7321 0.5774 0.5774] [ 0. -1.633 0.8165] [ 0. 0. -1.4142] [ 0. 0. 0. ] [ 0. 0. 0. ] [ 0. 0. 0. ]] x = [1236. 1943. 2416.] When A is rank-deficient, i.e., rank(A) < n, the solution of the least squares problem in not unique; the problem has infinite number of solutions. In this case, the QR factorization of A still exists, but the upper triangular factor R is singular. This situation usually arises from a poorly designed experiment, insufficient data, or an inadequate model. If one insists on forging ahead as is, a variation of QR factorization with column pivoting (next section) can be used to find all the solutions. See section 4.4 for an alternative approach via SVD. Dealing with rank deficiency also enables us to handle underdetermined problems, where m < n, since the columns of A are necessarily linearly dependent in that case. 3.8 QR factorization with column pivoting In computing the QR factorization, in each step one can interchange the column having the maximum Euclidean norm in the submatrix with the pivot column. This kind of column 26",
+      "sourceTextSha256": "012b02040fb5257e015479e9ce1658887bec5b6e90b9f5e1a83a8caffffd44a4",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000059",
+      "sourceId": "body[1]/p[59]",
+      "sourceOrdinal": 58,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000060",
+      "sourceId": "body[1]/p[60]",
+      "sourceOrdinal": 59,
+      "literalSourceText": "pivoting makes column interchanges so that the zero pivots are moved to the lower right hand corner of R. The resulting factorization then is suitable for solving rank-deficient least squares problems. Let’s describe the algorithm step by step. In step 1, we compute the 2-norm of all columns of A, and interchange the column having maximum norm with the first column by multiplying A with a permutation matrix P1 from right. Then we apply the first step of basic QR factorization on AP1 to transfer its first column to the form [α1 , 0, . . . , 0]T . By either Householder or Givens transformations we have   α1 ã11 ··· ã1n    0 ã22 ··· ã2n  Q1 AP1 =   := A(1) (3.4)   .. .. ..  . . .      0 ãm2 · · · ãmn In step 2, we compute the 2-norm of all columns of the submatrix obtained by ignoring the first row and column of A(1) and interchange the column having maximum norm with the second column by multiplying A(1) with a permutation matrix P2 from right. (Note: when the columns are interchanged the full columns should be swapped, not just the portions that lie in the submatrix). Then we apply the second step of the basic QR factorization on A(1) P2 :   α1 ã11 ã12 ··· ã1n     0 α2 â23 ··· â2n     Q2 A P2 =  (1)  0 0 â33 ···  := A(2) â3n  .. .. .. ..    . . . .      0 0 âm2 · · · âmn We continue in a similar way to higher steps. If the matrix has full rank n, the algorithm terminates after n steps where in the final step we have R = A(n) = Qn A(n−1) Pn = Qn Qn−1 A(n−2) Pn−1 Pn = · · · = Qn Qn−1 · · · Q1 AP1 · · · Pn−1 Pn =: QT AP or AP = QR where Q = QT1 · · · QTn and P = P1 · · · Pn . Here P A is indeed a matrix obtained from A by permuting some of its columns. R is upper triangular and nonsingular. However, if A is rank-deficient there will come a step at which we are forced to take αk = 0. In this step all of the entries of the remaining submatrix are zero. Suppose this occurs after r steps have been completed and   α × ···  1 × × ··· ×  0 α2 · · · × × ··· ×     .. ... .. .. ..    . . . .      R R12    Qr Qr−1 · · · Q1 AP1 · · · Pr−1 Pr =   11 0 0  =: =R   ··· αr × · · · ×  0 0  0 0 0 0 ··· 0     ··· .. .. .. .. ..     . . . . .       0 0 ··· 0 0 ··· 0 where R11 ∈ Rr×r is upper triangular and nonsingular. Its main diagonal entries α1 , α2 , . . . , αr 27",
+      "sourceTextSha256": "cd8669d1a2fbaf7ae2812cafae56c4b2804cb3d3f224da9df0ce4d0e6beecc48",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000061",
+      "sourceId": "body[1]/p[61]",
+      "sourceOrdinal": 60,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000062",
+      "sourceId": "body[1]/p[62]",
+      "sourceOrdinal": 61,
+      "literalSourceText": "are all nonzero. Again we have AP = QR where Q = QT1 · · · QTr and P = P1 · · · Pr . Since rank(R) = r we have rank(A) = r. This result is summarized in the following theorem. Theorem 3.11. Given a matrix A ∈ Rm×n with m ⩾ n and rank(A) = r ⩽ n there exist a permutation matrix P ∈ Rn×n , an  orthogonalmatrix Q ∈ Rm×m , and an upper triangular R11 R12  matrix R ∈ Rm×n of the form R =  with R11 ∈ Rr×r and nonsingular such that 0 0 AP = QR. Now, we address the question of how this factorization can be used to solve the least squares problem. First, we note that the permutation matrix P is orthogonal as it is obtained by swapping the columns of the identity matrix. It is clear that P −1 = P T if is applied from left on a vector x will interchange the corresponding rows in x. Assume that rank(A) = r < n and AP = QR is the QR factorization of A with column pivoting. Partition Q = [Q1 Q2 ] where Q1 consists of first r columns of Q. Using the change of variables y = P T x and letting y = [ye, yb] for ye ∈ Rr , we can write ∥Ax − b∥22 = ∥AP P T x − b∥22 = ∥QRy − b∥22 = ∥Ry − QT b∥22      2 R11 R12  ye QT1 b =  − = ∥R11 ye + R12 yb − QT1 b∥22 + ∥QT2 b∥22 . 0 0 yb T Q2 b 2 There are many choices of y = [ye, yb] for which the first term in the right hand side is zero. The second term is independent of y (and thus x) and determines the reminder of the least squares solutions. Recall that R11 is nonsingular. For any choice of yb ∈ Rn−r there exists a unique ye ∈ Rr such that R11 ye = QT1 b − R12 yb. Since R11 is upper triangular, ye can be calculated using a backward substitution. Finally, x = Py for y = [ye, yb] is a solution to the least squares problem. Since yb is arbitrary, we obtain infinite number of least squares solutions x. Remark 3.7. In practice we often do not know the rank of A in advance. After r steps of  the QRfactorization with column pivoting, A will have been transformed to the form R  11 R12  where R11 is nonsingular. If rank(A) = r, then in principle R22 = 0 and the 0 R22 algorithm terminates. However, in the presence of roundoff errors R22 is not exactly zero. In a practical computation we might assign a numerical rank r to A if the norm of the largest column of R11 is less than a prescribed tolerance. The tolerance should be a small value depending on and the accuracy of the entries and the scale of the original matrix. It is usually set to be δ = 10−t ∥A∥∞ where the entries of A are correct to t decimal digits. This approach generally works well, but unfortunately it is not 100% reliable, because there 28",
+      "sourceTextSha256": "495148a1b9d55e624c521d49a30ac6799c7818a5baef509de6e2b177b41bd8e0",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000063",
+      "sourceId": "body[1]/p[63]",
+      "sourceOrdinal": 62,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000064",
+      "sourceId": "body[1]/p[64]",
+      "sourceOrdinal": 63,
+      "literalSourceText": "exists some nearly rank-deficient triangular matrix with relatively large on-diagonal entries. Search for the well-known Kahan’s matrix as an example. We will address a more reliable approach to detect the rank deficiency using SVD in a forthcoming section. Remark 3.8. Another issue that is worth to be addressed is that if the norms of the columns are computed in the straightforward manner at each step then the total cost is about mn2 − n3 /3 flops. This cost can be reduced substantially for steps 2, 3, . . . , r by using information from previous steps. For example let κ1 , κ2 , . . . , κn denote the squares of the norms of columns of AP1 in the first step (thus κ1 the largest value). Computing all κj values counts 2mn flops. For the second step of factorization recall (3.4). Since Q1 is orthogonal, the Euclidian norm of columns of A(1) are identical with that of AP1 . So the squares of norms of the submatrix can be calculated as (1) κj = κj − ã21j , j = 2, 3, . . . , n using 2(m − 1) flops instead of the 2(m − 1)(n − 1) flops that is required using the straight- forward calculation. One can continue to other steps similarly, but before starting the new step k, the corre- sponding column swapping should be applied on κ(k−1) as well. The total cost then is r 2mn + 2 (m − k) = 2mn + 2m(r − 1) − r(r + 1) + 2 ≈ 2m(n + r) − r2 . X k=2 For case r = n the total cost is about 4mn − n2 which shows a remarkable reduction in the cost of the straightforward algorithm. Workout 3.12. Show that after the QR factorization with column pivoting, the main diag- onal entries of R11 satisfy |α1 | ⩾ |α2 | ⩾ · · · ⩾ |αr |. Lab Exercise 3.13. Develop a Python function for QR factorization with column pivoting. Considers all the aspects described above. Then call your function to factorize some specific matrices, and verify your output by checking the equality P A = QR. Finally use your function for solving the least squares problem Ax ∼ = b for a given matrix A and right-hand side vector b. The coefficient matrix is assumed to be of either full rank or rank-deficient. Assume that the matrix rank is unknown, so compute it numerically by considering the on-diagonals of the R factor. 4 Singular Value Decomposition (SVD) Let us continue with one of the most important and practical matrix decompositions in nu- merical linear algebra. Our geometric presentation here is motivated by [Trefethen-Bau:1997]. 29",
+      "sourceTextSha256": "2ea7c91fc0d7875d1b329cd6b0c44d85d2aa2591f6003ad9da93672411815269",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000065",
+      "sourceId": "body[1]/p[65]",
+      "sourceOrdinal": 64,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000066",
+      "sourceId": "body[1]/p[66]",
+      "sourceOrdinal": 65,
+      "literalSourceText": "4.1 Geometric interpretation The SVD of a matrix A can be described by the following geometric fact: The image of the unit sphere S = {x ∈ Rn : ∥x∥2 = 1} in Rn under any matrix A ∈ Rm×n is the hyperellipsoid E = {Ax : ∥x∥2 = 1} in Rm . Hyperellipsoid is just the m-dimensional generalization of an ellipse, i.e., the surface obtained by stretching the unit sphere in Rm by some factors σ1 , . . . , σm (possibly zero) in some orthonormal directions u1 , . . . , um ∈ Rm . The vectors {σk uk } are the principal semiaxes of the hyperellipse, with lengths σ1 , . . . , σm . If A has rank r, exactly r of the lengths uk will turn out to be nonzero, and in particular, if m ⩾ n, at most n of them will be nonzero. v2 v1 σ2 u2 σ1 u1 S AS Figure 7: SVD of a 2 × 2 matrix A Let S be the unit sphere in Rn and A ∈ Rm×n with m ⩾ n. For simplicity assume that A has full rank n. The image AS is a hyperellipse in Rm . We define n singular values of A as the length of n principal semiaxes of AS, i.e., σ1 , σ2 , . . . , σn . We assume that singular values are numbered in degreasing order, σ1 ⩾ σ2 ⩾ · · · ⩾ σn ⩾ 0. Then we define the left singular vectors of A as the direction of principal semiaxes of AS. These are orthonormal vectors u1 , u2 , . . . , un corresponding to singular values σ1 , . . . , σn . This means that the vector σk uk is the k-th largest semiaxis of AS. The right singular vectors of A are the orthonormal vectors v1 , v2 , . . . , vn that are the preimages of the principal semiaxes of AS, numbered so that Avk = σk uk , k = 1, 2, . . . , n. (4.1) Equations (4.1) in a compact form can be written as AV = U1 Σ1 where V = [v1 v2 · · · vn ] ∈ Rn×n , U1 = [u1 u2 · · · un ] ∈ Rm×n and Σ1 = diag(σ1 , . . . , σn ) ∈ Rn×n . Since V is an orthogonal matrix, we may write A = U1 Σ1 V T (4.2) which is called the reduced SVD of A. Here is an illustration for case m = 5 and n = 3: 30",
+      "sourceTextSha256": "9818b2b84f67e05f298e8beec2775b6d1462b976f8e8bd7be3d9cfe43e41b3f5",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000067",
+      "sourceId": "body[1]/p[67]",
+      "sourceOrdinal": 66,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000068",
+      "sourceId": "body[1]/p[68]",
+      "sourceOrdinal": 67,
+      "literalSourceText": "     × × ×  × × ×     × × × × × × σ 0 0  × × ×          1 × × × = × × ×  0 σ2 0 × × ×                 × × × × × × 0 0 σ3 × × ×         × × × × × × A U1 Σ1 VT The term reduced and tilde symbols on Σ and U are used to distinguish the factorization (4.2) from the more standard full SVD. Since the column of U1 are n orthonormal vectors in Rm and m ⩾ n then (unless when n = m) they do not form a basis for Rm . We can adjoin an additional m − n columns to U1 to extend it to an orthonormal matrix U ∈ Rm×m . For the product to remain unaltered the last m − n columns of U should multiply by zero. So we extend Σ1 by m − n rows of zeros to get the m × n matrix Σ. Now we can write the full SVD as A = U ΣV T (4.3) where U ∈ Rm×m and V ∈ Rn×n are orthonormal matrices and Σ ∈ Rm×n is a diagonal matrix that caries the nonnegative singular values σ1 , . . . , σn on its diagonal. The illustration for m = 5 and n = 3 is shown below.        × × ×  × × × × × σ1 0 0   × × × × × × × ×  0 σ2 0 × × ×              × × × = × × × × × 0 0 σ3  × × ×                 × × × × × × × × 0 0 0 × × ×             × × × × × × × × 0 0 0 A U Σ VT If A is rank deficient, rank(A) = r < n say, then the factorization (4.3) is still valid. The only difference is that now σr+1 = · · · = σn = 0 and m − r columns of U are ‘silent’. This means that r singular values and r left singular vectors of A are determined by the geometry of the hyperellipse. The last r columns of V have no effect in factorization as well. Let us bring the SVD in a formal definition and prove it mathematically. We prove the existence and uniqueness (under some conditions) of SVD for any complex matrix A. Theorem 4.1. Let m and n be two arbitrary positive integers. Every matrix A ∈ Cm×n has a full SVD of the form A = U ΣV ∗ where U ∈ Cm×m and V ∈ Cn×n are unitary matrices and Σ ∈ Rm×n is a real diagonal matrix that carries the singular values σ1 ⩾ σ2 ⩾ · · · ⩾ σn ⩾ 0 on its diagonal. Furthermore, the singular values are uniquely determined and if A is square the left and right singular vectors are uniquely determined up to complex signs. 31",
+      "sourceTextSha256": "41936290469235fa4766c277b6e515d28b6583755e4b4f9081f5a5bf94454d8c",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000069",
+      "sourceId": "body[1]/p[69]",
+      "sourceOrdinal": 68,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000070",
+      "sourceId": "body[1]/p[70]",
+      "sourceOrdinal": 69,
+      "literalSourceText": "Proof. [Trefethen-Bau:1997] For proof of existence, let σ1 := ∥A∥2 . There exists vectors v1 ∈ Cn with ∥v1 ∥2 = 1 such that ∥Av1 ∥2 = σ1 . Let u1 := Av1 ∈ Cm . Consider any extension of v1 to an orthonormal basis {v1 , v2 , . . . , vn } for Cn and any extension of u1 to an orthonormal basis {u1 , u2 , . . . , um } for Cm . Suppose that V1 and U1 denote the unitary matrices with columns vj and uj . We can write       u∗ h i σ1 u∗1 AVe1  σ w∗   1 U1∗ AV1 =  1 A v1 Ve1  =: =: S, Ue1∗ 0 Ue1∗ AVe1 0 B where 0 is column vector of dimension m − 1, w ∈ Cn−1 and B ∈ C(m−1)×(n−1) . Now we show w is indeed zero.  If fact we have     ∗  σ 1 w σ 1    = σ + w w ⩾ σ + w w = (σ + w w) 2 ∗ 2 ∗ 2 ∗ 1/2 σ  1 1 1 1 0 B w 2 w 2 which shows that ∥S∥2 ⩾ (σ12 + w∗ w)1/2 . Since S and A are unitarily equivalent we know that ∥S∥2 = ∥A∥2 = σ1 . This shows that w = 0, and   σ  1 0 U1∗ AV1 = . 0 B The proof is now completed by induction. The proof for case m = n = 1 is obvious. Let B = U2 Σ2 V2∗ is the full SVD of B. We can write       σ  1 0 1 0  σ1 0  1 0 U1∗ AV1 = =  0 U2 Σ2 V2∗ 0 U2 0 Σ2 0 V2∗ which gives the full SVD of A via     1 0  σ1 0  1 0 A = U1  V1∗ , 0 U2 0 Σ2 0 V2∗ | {z }| {z }| {z } U Σ V∗ which completes the proof of existence. On the other hand we have A∗ AV = V ΣT Σ, or A∗ Avk = σk2 vk , k = 1, 2, . . . , n which shows σk2 are eigenvalues of Hermitian matrix A∗ A. This proves the uniqueness of singular values. ■ For the remainder of this lecture we will assume, without loss of generality, that m ⩾ n, because if m < n we consider the SVD of AT , and if the SVD of AT is U ΣV T , then the SVD of A is V ΣT U T . Besides, we will assume A is a real matrix although all results can be simply proved for the a complex SVD. 4.2 Properties of SVD Several matrix properties including rank, norms and condition number can be extracted form SVD. In additions, SVD provides orthonormal bases for range(A) and null(A) and orthogonal projections onto range(A) and null(A). 32",
+      "sourceTextSha256": "9d43f760b228c6fb731ee3fdc45b64b793a399bcb0f823f6f7a51994ca9934fb",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000071",
+      "sourceId": "body[1]/p[71]",
+      "sourceOrdinal": 70,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000072",
+      "sourceId": "body[1]/p[72]",
+      "sourceOrdinal": 71,
+      "literalSourceText": "Theorem 4.2. Let σ1 ⩾ σ2 ⩾ · · · ⩾ σn ⩾ 0 be the singular values of A ∈ Rm×n with m ⩾ n. 1. ∥A∥2 = σ1 , q 2. ∥A∥F = σ12 + · · · + σn2 , 3. ∥A−1 ∥2 = σ1n when m = n and A is nonsingular, 4. cond2 (A) = σσn1 if A is nonsingular, 5. rank(A) = number of nonzeros singular values. Proof. . The proof is left as an exercise. Use the facts that orthogonal matrices preserve norm 2 and norm Frobenius as well as the rank of matrices. See Workout 4.3. Workout 4.3. Prove Theorem 4.2. The condition number of a square and nonsingular matrix A is defined by cond2 (A) = ∥A∥2 ∥A−1 ∥2 . We observed that it can be obtained by dividing the largest singular values by the smallest one. One can generalize this notion to rectangular matrices by defining σ1 cond2 (A) := , A ∈ Rm×n σn provided that A has full rank (σn ̸= 0). The condition number becomes large for nearly rank-deficient matrices, i.e., matrices with very small σn . When A is rank-deficient, i.e., when σn = 0, the condition number can be defined to be infinity. However, in practical application (for example in least squares settings) the true definition of condition number for a rank- deficient matrix A ∈ Rm×n , m ⩾ n is σ1 cond2 (A) := , (4.4) σr where rank(A) = r. (i.e., σr+1 = · · · = σn = 0). This generalizes the definition of condition number for rank-deficient matrices. Remark 4.1. In presence of nosy data and roundoff errors it is more practical to talk about numerical rank rather than just the rank of a matrix. In this cases we should set a criterion to accept a computed singular value to be ‘zero’. For example we may consider the singular values of order eps (machine epsilon) to be zero. However, the norm of the matrix and the errors in data (entries) should also be taken in to account. Here is a practical criterion [Datta:2010, Golub-VanLoan:2010]: A computed singular value is accepted to be zero if it is less than or equal to δ = 10−t ∥A∥∞ where the entries of A are correct to t decimal digits. Using this criterion, A has numerical rank r if the computed singular values σb1 , . . . , σbn satisfy σb1 ⩾ σb2 ⩾ · · · ⩾ σbr > δ ⩾ σbr+1 ⩾ · · · ⩾ σbn . This means that to determine a numerical rank of a matrix one needs to count the large singular values only. 33",
+      "sourceTextSha256": "1ed5f862dfb41503eaab496c96e1f57f7164fb7a1eff294e8fdc18ab29337f82",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000073",
+      "sourceId": "body[1]/p[73]",
+      "sourceOrdinal": 72,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000074",
+      "sourceId": "body[1]/p[74]",
+      "sourceOrdinal": 73,
+      "literalSourceText": "As pointed out, SVD provides orthogonal bases for range(A) and null(A) as well as projec- tions to these subspaces. The following theorem reveals this. Theorem 4.4. Let A = U ΣV T be the SVD of A ∈ Rm×n with m ⩾ n, and let rank(A) = r. Partition U = [U1 U2 ], V = [V1 V2 ] where U1 and V1 consist of first r columns of U and V , respectively. Then 1. The columns of U1 form a basis for range(A). 2. The columns of V2 form a basis for null(A). 3. U1 U1T is a projection onto range(A). 4. U2 U2T is a projection onto null(AT ). 5. V1 V1T is a projection onto range(AT ). 6. V2 V2T is a projection onto null(A). Proof. The proofs are straightforward; however, we refer to [Datta:2010] or similar re- sources. You may skip items 3–6 if you have decided to skip section 2. ■ 4.3 Computation of SVD SVD has a tight connection to the well-known eigendecomposition of symmetric matrices. As we know, if B ∈ Rn×n is a symmetric matrix then all its eigenvalues λk are real and the corresponding eigenvectors vk are orthonormal. From Bvk = λk vk for k = 1, . . . , n, we can write B = V DV T where V = [v1 , v2 , . . . , vn ] is orthogonal and D = diag{λ1 , λ2 , . . . , λn } is diagonal. This decom- position is called eigendecomposition, and has limited applications in practice as it is only available for symmetric matrices3 . The connection to SVD is obtained by computing AT A and AAT as below: | {zU} ΣV = V |Σ{zΣ} V = V DV AT A = (U ΣV T )T (U ΣV T ) = V ΣT U T T T T T I D where D is a n × n diagonal matrix 0   σ12 ..   D = ΣT Σ =  . .     0 σn2 Since V is orthogonal, V DV T is the eigendecomposition of symmetrix matrix AT A. This means that σ12 , . . . , σn2 are eigenvalues and columns of V are corresponding eigenvectors of AT A. 3 If A is not symmetric but has a set of independent eigenvectors then it can be decomposed to A = V DV −1 for nonsingular matrix V . In this case A is called diagonalizable. 34",
+      "sourceTextSha256": "4e2b220390b39a40c059f32908f6b33fe6ba26a995b3f6217c8da5fd71d36cef",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000075",
+      "sourceId": "body[1]/p[75]",
+      "sourceOrdinal": 74,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000076",
+      "sourceId": "body[1]/p[76]",
+      "sourceOrdinal": 75,
+      "literalSourceText": "The same computation for AAT shows that AAT = U ΣΣT U T = U DU T where D is a m × m diagonal matrix   σ2  1 0 .. .          σn2  D = ΣΣ =  T  0        ..    .     0 0 The columns of U are eigenvectors of AA corresponding to the same eigenvalues σ12 , . . . , σn2 T plus m − n zero eigenvalues σn+1 2 = · · · = σm 2 = 0. We conclude that singular values of A are square roots of eigenvalues of AT A. Columns of V are eigenvectors of AT A, and columns of U are eigenvectors of AAT . Example 4.1. To compute the SVD of    3 2 A = 2 3     2 −2 we form   17 8 AT A =  , λ1 = 25, λ2 = 9 8 17 √ √ and compute its eigenvalues λ1 = 25 and λ2 = 9. These give σ1 = λ1 = 25 = 5 and √ √ σ2 = λ2 = 9 = 3. We can also show that eigenvectors of AT A are     1 1 1 1 v1 = √   , v2 = √   2 1 2 −1 which result in   1 1 1 V =√  . 2 1 −1 On the other side, columns of U are eigenvectors of    13 12 2 AAT = 12 13 −2 .     23 −2 8 Without additional computations we know that eigenvalues of this matrix are λ1 = 25, λ2 = 9 and λ3 = 0 (why?). However, the eigenvectors of AAT are different from those of AT A and can be computed as       1 1 2 1     1   1    u1 = √ 1 , u2 = √ −1 , u3 = −2 2  18   3  0 4 1 35",
+      "sourceTextSha256": "d251617b46a9a4789c9852692ab888f4641128d6ad169d05cc9a985b7418487d",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000077",
+      "sourceId": "body[1]/p[77]",
+      "sourceOrdinal": 76,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000078",
+      "sourceId": "body[1]/p[78]",
+      "sourceOrdinal": 77,
+      "literalSourceText": "which show that   √1 √1 2  2 18 3  U =  √12 − √118 − 32  .     0 √4 18 − 31 However, in practice, a different, faster and computationally more stable algorithm is used to compute the SVD factors. The commonly used algorithm is the Golub-Kahan-Reinsch algorithm which consists of two phases. In the first phase the matrix A is reduced to a bidiagonal matrix B using Householder transformations. This step is usually known as the Golub-Kahan bidiagonal procedure. Then in the second phase the matrix B is further reduced to diagonal matrix Σ using an iterative method that successively constructs a sequence of bidiagonal matrices Bk such that each Bk has possibly smaller off-diagonal entries than the previous one. The second procedure is known as the Golub-Reinsch iterative procedure. It thus makes sense to call the combined two-stage procedure the Golub-Kahan-Reinsch algorithm. We refer the reader to chapter 10 of [Datta:2010] for details. This algorithm is proved to be computationally stable. In Python the algorithm is implemented in numpy.linalg (and also in scipy.linalg) module which provides both reduced and full SVD for either real or complex matrices. The default command numpy.linalg.svd(A) is equivalent with numpy.linalg.svd(A, full_matrices=True, compute_uv=True, hermitian=False) If full_matrices=False, the output will be the reduced SVD. Additionally, in the case of compute_uv=False, the unitary matrices U and V are not computed and the output is the vector of singular values only. Finally, by hermitian=True, A is assumed to be Hermitian (symmetric if real-valued), enabling a more efficient method for finding singular values. Here is an example. from numpy.linalg import svd from numpy import array A = array([[1, 3, 2],[4,0,-1],[0.5, 2, 1],[1, 1, 1],[2, 1, -2]]) U,S,Vt = svd(A) print(’Full SVD:’,’\\n U =\\n’,np.round(U,4),’\\n Vt =\\n’,np.round(Vt,4), ’\\n sigma =\\n’,np.round(S,4)) U,S,Vt = svd(A,full_matrices=False) print(’\\n Reduced SVD:’,’\\n U =\\n’,np.round(U,4),’\\n Vt =\\n’,np.round(Vt,4), ’\\n sigma =\\n’,np.round(S,4)) The output of the above script is (note that Python gives V T instead of V ): 36",
+      "sourceTextSha256": "bd4d2138e4078c4b1b6f6e4d4ba43352a368593929ebff162e4f030e77145689",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000079",
+      "sourceId": "body[1]/p[79]",
+      "sourceOrdinal": 78,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000080",
+      "sourceId": "body[1]/p[80]",
+      "sourceOrdinal": 79,
+      "literalSourceText": "Full SVD: U = [[-0.4575 -0.6636 -0.0238 -0.4791 0.3468] [-0.6711 0.4798 0.5011 -0.1833 -0.186 ] [-0.2784 -0.4014 -0.2015 0.2431 -0.8134] [-0.2626 -0.2225 0.2953 0.8113 0.3689] [-0.4403 0.3446 -0.7877 0.1398 0.2176]] Vt = [[-0.8593 -0.5112 0.0186] [ 0.3474 -0.6099 -0.7123] [ 0.3755 -0.6056 0.7016]] sigma = [5.149 4.3804 1.5969] Reduced SVD: U = [[-0.4575 -0.6636 -0.0238] [-0.6711 0.4798 0.5011] [-0.2784 -0.4014 -0.2015] [-0.2626 -0.2225 0.2953] [-0.4403 0.3446 -0.7877]] Vt = [[-0.8593 -0.5112 0.0186] [ 0.3474 -0.6099 -0.7123] [ 0.3755 -0.6056 0.7016]] sigma = [5.149 4.3804 1.5969] We note that for the reduced SVD the command U,S,Vt = svd(A,0) can be used instead. 4.4 Solving the least squares problem using SVD The SVD provides a particularly flexible method for solving linear least squares problems of any shape or rank. Consider again the least squares problem min ∥Ax − b∥2 x∈Rn with overdetermined matrix A ∈ Rm×n . First, we assume that A is full-rank, i.e., rank(A) = n. Let A = U ΣV T be the SVD of A and partition U = [U1 U2 ] where U1 consists of first n columns 37",
+      "sourceTextSha256": "b8d0c4237aeacc47e5d2beaba1c6d061fce891d0d50831d82e6d064eb024607b",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000081",
+      "sourceId": "body[1]/p[81]",
+      "sourceOrdinal": 80,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000082",
+      "sourceId": "body[1]/p[82]",
+      "sourceOrdinal": 81,
+      "literalSourceText": "  Σ  1 of U , and Σ = where Σ1 ∈ Rn×n is a square diagonal matrix with σk on its diagonal. 0 Since A is full-rank, all singular values are positive and Σ is nonsingular. Furthermore, we use the change of variables y = V T x. Then, we can write     2 Σ  1 UT b ∥Ax − b∥22 = ∥U ΣV T x − b∥22 = ∥ΣV T x − U T b∥22 = y−  1  0 U2T b 2 = ∥Σ1 y − U1T b∥22 + ∥U2T b∥22 . Since V is nonsingular, the minimization over x is equivalent to minimization over y. The minimum is obtained if the first norm on the right-hand side is vanished, i.e. y = Σ−1 T 1 U1 b. This gives the least squares solution n uTj b x = V Σ−1 1 U1 b = T (4.5) X vj , j=1 σj and the reminder is r = ∥Ax − b∥2 = ∥U2T b∥2 . Now, let A be a rank-deficient matrix, rank(A) = r < n, say. Partition U = [U1 U2 ] now with U1 consists of first r columns of U , and   σ  1 ...  0           σr   0       Σ 0   .. e Σ= = 1   0 . 0 0     0             0 0       where Σ e ∈ Rr×r is the upper-left square matrix with positive singular values σ , . . . , σ on its 1 1 r diagonal. Also, assume that   ye y = V T x =:   yb where ye ∈ Rr . Similar to the first case, we have      2 Σ e  1 0 ye U1T b ∥Ax − b∥22 = ∥U ΣV T x − b∥22 = ∥ΣV T x − U T b∥22 = − 0 0 yb U2T b 2 = ∥Σ e ye − U T b∥2 + ∥U T b∥2 . 1 1 2 2 2 In this case the least square solution is not unique. Solutions are obtained by putting ye = Σ e −1 U T b and letting yb arbitrary, and then 1 1 r uTj b n x=Vy = vj + (4.6) X X yj vj . j=1 σj j=r+1 A least squares solution x with the minimum norm 2 among others is called the norm-minimal 38",
+      "sourceTextSha256": "4678dbfe89ac93f4e97ad10d25d8c6cc1a0ef295984bbdf2d2f70b10062ff7f3",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000083",
+      "sourceId": "body[1]/p[83]",
+      "sourceOrdinal": 82,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000084",
+      "sourceId": "body[1]/p[84]",
+      "sourceOrdinal": 83,
+      "literalSourceText": "solution. Since ∥x∥22 = ∥y∥22 = ∥ye∥22 + ∥yb∥22 , the norm-minimal solution of the rank-deficient least squares problem is obtained by setting yb = 0, i.e. by dropping the second summation in (4.6). Lab Exercise 4.5. Write a Python function for solving the least squares problem for either full-rank or rank-deficient case using SVD. Assume that the rank of the coefficient matrix is unknown in advance, so compute it numerically. 4.5 Pseudoinverse Assuming A ∈ Rm×n has rank r with r ⩽ n, the SVD of A is represented as   Σ e  1 0 A = [U1 U2 ] [V1 V2 ]T = U1 Σ e VT 1 1 (4.7) 0 0 where U1 and V1 consist of the first r columns of U and V , respectively, and Σ e ∈ Rr×r is a 1 diagonal matrix with positive singular values σ1 , . . . , σr on its diagonal. When m = n (i.e., A is square) and r = n (i.e., A is full-rank), we have the standard representation A = U ΣV T with all matrices square and Σ nonsingular. In this case, the inverse of A is computed as A−1 = (U ΣV T )−1 = V −T Σ−1 U −1 = V Σ−1 U T . This suggests an algorithm to compute the inverse of square and nonsingular matrices. How- ever, this algorithm is more costly than the usual algorithm based on Gaussian elimination, although it is more stable for ill-conditioned matrices. When A is rectangular and even rank-deficient, we can generalize this approach to compute the pseudoinverse of A. In this case, we use the factorization (4.7) and define A+ := V1 Σ e −1 U T 1 which is indeed the Moore–Penrose inverse of matrix A. As a result, we can see from (4.5) that the least squares solution of a full-rank system Ax ∼ = b is given by x = A+ b. This is the counterpart of the exact solution x = A−1 b for square and nonsingular linear system Ax = b. Additionally, from (4.5), we observe that for the rank-deficient problem, x = A+ b is the norm-minimal solution. Example 4.2. The SVD factors of a matrix A are given by    √  √1 −1 √ 0 0 0 2 3 0 0 0 √   2 2    6 0 0 −1 √ 0 0 0 1 0  0 2 0 0  3 3     0 0 1 0       U = 0 0 −1 0 0  , Σ=  0 0 0 0  , V =  . −1 0  1 √1  √ √      0 0 0 0 0 0 0  1 √ √1  6 2 3    0   2 2    √1 √1 √1 0 0 0 0 1 0 0 0 0 6 2 3 39",
+      "sourceTextSha256": "03590342ef14ca0f3de11506e9f6722306672d259dbdaa5f87ea1dc76740e2ef",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000085",
+      "sourceId": "body[1]/p[85]",
+      "sourceOrdinal": 84,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000086",
+      "sourceId": "body[1]/p[86]",
+      "sourceOrdinal": 85,
+      "literalSourceText": "The pseudoinverse of A is computed as √    6 0 1 0 0 1 0  3    6 6 0 0 1 0 √1 0 0 √1 0 0 0 0 0 0   √   A = V1 Σ1 U1 =  + −1 T  2 3  2 2 = . −1   0 0 0 0 1 0 0 0 0  √1 −1 √ 1 √ √1   2   6 2 2 2   √1 6 √1 2 0 0 0 1 0 In addition, if we aim to solve the least square problem min ∥Ax − b∥2 with b = [1, 1, 1, 1, 1]T for the norm-minimal solution, we write    1  1   0  1 0 0 1 6 1 3 6    0 0 0 0 0   0      x=A b= +   1 =  .   1 0 0 0 0   1     1   0 0 0 1 0   1 1 4.6 Low-rank approximation Low-rank approximation is a fundamental concept in linear algebra and numerical analysis that plays a crucial role in various applications. In this approach, we seek to represent a given matrix with a lower-rank approximation that captures its essential structure while reducing its size and complexity. SVD enables us to achieve this kind of approximation. We start with the following theorem whihc addresses the question of how far is a rank r matrix from a matrix of rank k < r. This theorem is generally known as the Eckart-Yaung theorem. Theorem 4.6. Let A = U ΣV T be the SVD of A, and let k ⩽ r = rank(A). Define Ak = U Σk V T where Σk = diag{σ1 , . . . , σk , 0, . . . , 0}, where σ1 ⩾ σ2 ⩾ · · · ⩾ σk > 0. Then the followings hold true: 1. Ak has rank k, 2. The distance between A and Ak is ∥A − Ak ∥2 = σk+1 . 3. Out of all rank k matrices, Ak is the closet to A, that is min ∥A − B∥2 = ∥A − Ak ∥2 . rank(B)=k Proof. The proof of 1 is obvious because rank(Ak ) = rank(U Σk V T ) = rank(Σk ) = k. For the second item we have ∥A − Ak ∥2 = ∥U (Σ − Σk )V T ∥2 = ∥Σ − Σk ∥2 = σk+1 . To prove item 3, we assume that B is another m×n matrix of rank k. So the null space of B has dimension n − k. Consider the space S = span{v1 , . . . vk+1 } where vj are right singular vectors of A. The intersection of null(B) and S must be nonempty because both spaces are subspaces of Rn and the sum of their dimensions is greater than n. Let z be a normal vector (∥z∥2 = 1) 40",
+      "sourceTextSha256": "2c132480ad6969eab84f0c60d348a2de5da24a71caf0dd0afc27d3629c3e7905",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000087",
+      "sourceId": "body[1]/p[87]",
+      "sourceOrdinal": 86,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000088",
+      "sourceId": "body[1]/p[88]",
+      "sourceOrdinal": 87,
+      "literalSourceText": "lying in this intersection. Since z ∈ S there exist scalers cj such that z = c1 v1 + · · · + ck+1 vk+1 . Since {vj } are orthonormal we have |c1 |2 +· · ·+|ck+1 |2 = 1. On the other side, since z ∈ null(B) we have Bz = 0. So (A − B)z = Az = c1 Av1 + · · · + ck+1 Avk+1 = c1 σ1 u1 + · · · + ck+1 σk+1 uk+1 and since {uj } are orthonormal we have ∥(A − B)z∥22 = |c1 σ1 |2 + · · · + |ck+1 σk+1 |2 ⩾ σk+1 2 (|c1 |2 + · · · + |ck+1 |2 ) = σk+1 2 . This shows that ∥A − B∥22 = max ∥(A − B)y∥22 ⩾ ∥(A − B)z∥22 ⩾ σk+1 2 = ∥A − Ak ∥22 ∥y∥2 =1 which completes the proof. ■ Another representation of SVD is A = U ΣV T = σ1 E1 + σ2 E2 + · · · + σn En , Ek = uk vkT . Each Ek is a rank 1 matrix which shows that SVD writes A as a sum of rank 1 matrices. Since σ1 ≥ σ2 ≥ · · · ≥ σn , matrix A is expressed as a list of its “ingredients”, ordered by “importance”. Each elementary matrix Ek can be stored using only m + n storage locations. Moreover, the matrix-vector product Ek x can be formed using only 2n+m flops. As was shown in Theorem 4.6, Ak = U Σk V T = σ1 E1 + σ2 E2 + · · · + σk Ek is k-rank approximation of A with 2-norm error σk+1 . Such an approximation is useful in data dimensionally reduction, image processing, information retrieval, cryptography, and numerous other applications. 4.7 Some applications of SVD We have already studied the use of SVD for computing some norms, condition number, orthogonal bases for some subspaces related to a matrix, and an application for solving the linear least squares problem. In this section more concrete examples are given from different applications. Image compression An image can be represented by an m × n matrix A whose (i, j)-th entry corresponds to the brightness of the pixel (i, j). The storage of this matrix requires mn locations. See Figure 8, The idea of image compression is to compress the image represented by a very large matrix to the one which corresponds to a lower-order approximation of A. SVD provides a simple way if one stores σ1 u1 v1T + · · · + σk uk vkT =: Ak instead in (m + n + 1)k locations (the first k columns of U and V together with the first k singular values). This results a considerable savings when k is small. On the other side k 41",
+      "sourceTextSha256": "0199d1adf1af7297ff9a5e0fdc279b86fc14d085420f6e11b573d132bb72bdf3",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000089",
+      "sourceId": "body[1]/p[89]",
+      "sourceOrdinal": 88,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000090",
+      "sourceId": "body[1]/p[90]",
+      "sourceOrdinal": 89,
+      "literalSourceText": "Figure 8: Representation of an image with a matrix (form pippin.gimp.org/image_processing). should be large enough to keep the quality of the image still acceptable to the user4 . In Figure 9 different low-rank approximations of a cat image obtained from the following Python script are shown. import numpy as np import matplotlib.pyplot as plt from PIL import Image A = Image.open(’cat.jpg’).convert(’L’) # Grayscale read picture sz = np.shape(A) U, S, Vt = np.linalg.svd(A) # Get svd of A k = [sz[1], 100, 50, 20] plt.figure(figsize = (7, 7)) for i in range(4): Ak = U[:, :k[i]] @ np.diag(S[:k[i]]) @ Vt[:k[i],:] if(i == 0): plt.subplot(2, 2, i+1), plt.imshow(Ak, cmap =’gray’), plt.axis(’off’), plt.title(\"Original Image with k = \" + str(k[i])) else: plt.subplot(2, 2, i+1), plt.imshow(Ak, cmap =’gray’), plt.axis(’off’), plt.title(\"k = \" + str(k[i])) plt.savefig(\"cat1.jpg\") Image restoration The aim in image restoration is to restor the original image from a blurry image contaminated by noises. It is known that noises correspond to the small singular values. Thus a simple idea is to compute the SVD of the noisy image and eliminate its last n − k small singular values 4 For image compression, more sophisticated methods like JPG that take human perception into account generally outperform compression using SVD. 42",
+      "sourceTextSha256": "b8971332bc34cf77c8066ef4baa99ad0b7c5127c7ee3384ad5b261c3ca971ef3",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000091",
+      "sourceId": "body[1]/p[91]",
+      "sourceOrdinal": 90,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000092",
+      "sourceId": "body[1]/p[92]",
+      "sourceOrdinal": 91,
+      "literalSourceText": "Original Image with k = 828 k = 100 k = 50 k = 20 Figure 9: Original cat image and compressed images with different values of k. (smaller than a threshold) and consider the low-rank approximation Ak = Uk Σk VkT as a noise-free image. It is left as an exercise giving an example with a Python script. Note that, the literature contains a large number of more sophisticated denosing algorithms; some of them are based on SVD. Principal component analysis (PCA) In PCA the objective is to reduce the dimensionality of a dataset in order to use the trans- ferred data in applications that might not work well with high-dimensional data. The reduction is done by projecting each data point onto only the first few directions (principal components) to obtain lower dimensional data while preserving as much of the data’s variation as possible. The first principal component is a direction that maximizes the variance of the projected data. This direction captures most information of the data. The second principal component is then calculated with the condition that it is uncorrelated with (i.e., perpendicular to) the first prin- cipal component and that it accounts for the next highest variance. We may proceed through other components, similarly. See Figure 10. Let us outline the fundamental principles of PCA within a mathematical framework5 . As- 5 For a history, a review and some recent developments of PCA see the following sources: Ian T. Jolliffe, Jorge Cadima, Principal component analysis: a review and recent developments, Phil. Trans. R. Soc. A 374: 20150202, (2016). 43",
+      "sourceTextSha256": "f6d65d9be05f5b56dd3ea16e9bf8a12d1a8d992611a50349b7cd0ceea5609ca9",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000093",
+      "sourceId": "body[1]/p[93]",
+      "sourceOrdinal": 92,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000094",
+      "sourceId": "body[1]/p[94]",
+      "sourceOrdinal": 93,
+      "literalSourceText": "Figure 10: Cluster of points in R2 with principal components (PCs). sume that we are given a dataset with observations on d variables (dimensions), for each of n entities or individuals. These data values define n vectors x·1 , . . . , x·n each in Rd or, equiva- lently, a d × n data matrix X = [x·1 , x·2 , . . . , x·n ] ∈ Rd×n . We assume that X is row-centred, i.e., the mean value of each row is zero. Otherwise, subtract each row by its mean. We are looking for a new orthonormal basis {v·1 , v·2 , . . . , v·d }, v·j ∈ Rn , for the column space of X T (row space of X) which determines the directions of maximum variances in order of significance (a decreasing order). Any element of the new basis is a linear combination of columns of X T . Such linear combinations can be written as d σj v·j = uℓj xℓ· = X T u·j , j = 1, 2, . . . , d, (4.8) X ℓ=1 where u·j = [u1j , . . . , udj ]T are assumed to be of the unit norm, i.e. ∥u·j ∥2 = 1. The normaliza- tion constants σj are multiplied from left to make this assumption meaningful. The variance of any such linear combination is given by 1 var(X T u) = (X T u)T (X T u) = uT Cu, n−1 where C = n−1 1 XX T ∈ Rd×d is the sample covariance matrix associated with the dataset. Hence, identifying the linear combination with maximum variance is equivalent to obtaining a d- dimensional vector u with uT u = 1 which maximizes the quadratic form uT Cu. By introducing a Lagrange multiplier λ, the problem is equivalent to maximizing uT Cu − λ(uT u − 1). Differentiating with respect to u, and equating to the null vector, produces the equation Cu = λu. This means that u is an eigenvector and λ its corresponding eigenvalue of the covariance matrix Ian T. Jolliffe, Principal component analysis, 2nd ed. New York, NY, Springer-Verlag, (2002). 44",
+      "sourceTextSha256": "3f4b24738de0e5c50c7511a3e88d38861992ba6881a39f2fdb6b572b5e9c76da",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000095",
+      "sourceId": "body[1]/p[95]",
+      "sourceOrdinal": 94,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000096",
+      "sourceId": "body[1]/p[96]",
+      "sourceOrdinal": 95,
+      "literalSourceText": "C. Since C is symmetric and semi-positive definite, all eigenvalues are real and nonnegative and eigenvectors form an orthonormal basis for Rd . The eigenvalue λ corresponding to eigenvector u of C is indeed the variance of the linear combination defined by u, i.e. X T u, because var(X T u) = uT Cu = uT (λu) = λuT u = λ. Let us denote the pair of eigenvalues and eigenvectors of C by (λj , u·j ) for j = 1, 2, . . . , d and sort eigenvalues is such way that λ1 ⩾ λ2 ⩾ · · · ⩾ λd ⩾ 0. The maximum variance is attained at the dominant pair (λ1 , u·1 ). Recalling (4.8), this shows that the maximum variance of the data happens across the direction u·1 with variance σ12 T σ12 λ1 = var(X u·1 ) = var(σ1 v·1 ) = T v v·1 = . n − 1 ·1 n−1 σ2 This means that u·1 is the first principle component of data X and n−1 1 is the highest variance in the data along the direction u1 . A Lagrange multipliers approach, with the added restrictions of orthogonality of different vectors u·j can be used to show that the full set {u·1 , . . . , u·d } are the solutions to the problem of obtaining up to d new linear combinations X T u·j which successively maximize the variance, subject to uncorrelatedness with previous linear combinations. Uncorrelatedness results from the fact that the covariance between two such linear combinations is zero; cov(X T u·j , X T u·k ) = uT·j Cu·k = λk uT·j u·k = 0, j ̸= k. As the above formulation reveals, PCA is essentially connected to the SVD. From (4.8) we have X = U ΣV T (4.9) where U = [u·1 u·2 . . . u·d ] ∈ Rd×d and V = [v·1 v·2 . . . v·d ] ∈ Rd×n have orthonormal columns and Σ = diag(σ1 , σ2 , . . . , σd ). Consequently, the reduced SVD (4.9) gives all principal components as columns of the factor U . The variances in each direction are calculated as the squares of the singular values divided by (n − 1). Figure 11: A dataset in R2 (left) and its 1-rank approximation using SVD. Up to here we have found all the principal components in order of significance. The next 45",
+      "sourceTextSha256": "31f068e399cb138ebef1e41daa8a13908da225bdd1d3f3278d5287ffa6b6e200",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000097",
+      "sourceId": "body[1]/p[97]",
+      "sourceOrdinal": 96,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000098",
+      "sourceId": "body[1]/p[98]",
+      "sourceOrdinal": 97,
+      "literalSourceText": "step is to choose whether to keep all these components or discard those of lesser significance and form with the remaining ones a new data in a lower dimensional subspace. Assume that we decide to keep only k < d principal components. Our new data matrix will be k Xk = Uk Σk VkT = σj u·j v·jT X j=1 which is a k-rank approximation of the original data matrix X, and is called the feather matrix. In fact, the new dataset is located on a k-dimensional subspace of Rd spanned by orthonormal vectors {u·1 , . . . , u·k }. This is a dimensionality reduction algorithm based on SVD. See Figures 11 and 12 for illustrations in 2 and 3 dimensions, respectively . Figure 12: A dataset in R3 (up) and its 1-rank approximation (down-left) and its 2-rank approximation (down-right) using SVD. Keywords and key sentences extraction Development of automatic procedures for text summarization is important because people are overwhelmed by the tremendous amount of online information and documents. The goal of a text summarization algorithm is to extract content from a text document and present the most important content to the user in a condensed form. We follow [Elden:2019] and briefly discuss an algorithm based on SVD for automatically 46",
+      "sourceTextSha256": "af560ae8d2cda4db3867e9553170ccfa845169656d28f7eca635ccca56d8bf7d",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000099",
+      "sourceId": "body[1]/p[99]",
+      "sourceOrdinal": 98,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000100",
+      "sourceId": "body[1]/p[100]",
+      "sourceOrdinal": 99,
+      "literalSourceText": "extracting key words and key sentences from a text. Assume that we are given a text document, for example an article or a chapter of a book. Assume that the text contains m words and n sentences6 . Normally m is much larger than n. We form a m × n term-sentence matrix A where its entry aij is defined as the frequency of term (word) i in sentence j. Let us give the term i the nonnegative score ui and the sentence j the nonnegative score vj . The assignment of scores is made based on the following mutual reinforcement principle: A term should have a high score if it appears in many sentences with high scores. A sentence should have a high score if it contains many words with high scores. Using this criterion the score of term i is proportional to the sum of the scores of the sentences, weighted by frequencies, where it appears, n σui = i = 1, 2, . . . , m, X aij vj , j=1 where σ > 0 is the proportional constant. Similarly, the score of sentence j is proportional to the sum of scores of its words weighted by their frequencies in the sentence, m σvj = j = 1, 2, . . . , n. X aij ui , i=1 In matrix forms we have Av = σu, AT u = σv for u = [u1 , . . . , um ]T (the score vector of words) and v = [v1 , . . . , vn ]T (the score vector of sentences). Collecting both equations we have AAT u = σ 2 u, AT Av = σ 2 v which show that u is an eigenvector of AAT and v is an eigenvector of AT A both corresponding to eigenvalue σ 2 . This means that u is left singular vector and v is a right singular value of A corresponding to the same singular value σ. If we choose the largest singular value, then we are guaranteed that the components of u and v are nonnegative because the matrix A has nonnegative entries. Consequently, a simple algorithm based on SVD consists of the following steps: • Step 1: Apply a stemming and a stoping word algorithm on the text, • Step 2: Construct the term-sentence matrix A, • Step 3: Compute the SVD of A and report the leading vectors u and v (first columns of U and V , respectively) as word and sentence scores. The full SVD is not necessary for this algorithm as the first singular vectors are only required. Moreover, the term-sentence matrix is sparse, so a SVD function for sparse matrices is numer- 6 Usually a couple of preprocessing steps should perform before summarization which are known as stemming and stop words removing. In the stemming step the same word stem with different endings is represented by one token only. For example words {computation, computations, compute, computable, computing, computational} are represented by stem “comput”. Stop words such as {a, an, and, or, if, then, any, as, about, able, . . . } occur frequently in all texts and do not distinguish between different sentences. They should be removed. We assume that special symbols, e.g., mathematics symbols are also removed. 47",
+      "sourceTextSha256": "1f5d19008c9484931968d2fe8a6e407428f87391e3f320d1a3c330f4926c0b20",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000101",
+      "sourceId": "body[1]/p[101]",
+      "sourceOrdinal": 100,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000102",
+      "sourceId": "body[1]/p[102]",
+      "sourceOrdinal": 101,
+      "literalSourceText": "ically more efficient. Classification of handwritten digits Classification of handwritten digits is a standard problem in pattern recognition. A typical application is the automatic reading of zip codes on envelopes. Here we follow the presentation of [Elden:2019] and give a classification technique using SVD. The problem is as follows: Given a set of manually classified digits as a training set, classify a set of unknown digits as the test set. In Figure 13 a sample of handwritten digits 0, 1, . . . , 9 is illustrated. The images are down- loaded from7 . Each image is a 28 × 28 grayscale image but we stack the columns of the image above each other so that each image is represented by a vector of size 784. Figure 13: A sample of handwritten digits 0, 1, . . . , 9. The training set of each kind of digits 0, 1, . . . , 9 can be considered as a matrix A of size m × n with m = 784 and n = ‘the number of training digits of one kind’. Usually, n ⩾ m although the case n < m is also possible. So, we have a total of 10 training matrices, each corresponding to one of the digits 0, 1, . . . , 9. Assume that A is one of them. The columns of A span a linear subspace of R784 . However, this subspace cannot be expected to have a large dimension, because columns of A represent the same digit with different handwritings. One can use SVD A = U ΣV T to obtain an orthogonal basis for the column space of A (or range(A)) via the columns of factor U . Then any test image of that kind can be well represented in terms of the orthogonal basis {u·1 , u·2 , . . . , u·m }. Let us describe it in more detail. We have m A = U ΣV T = σj u·j v·jT , X j=1 thus the ℓ-th column of A (the ℓ-th training digit) can be represented as m a·ℓ = (σj vjℓ )u·j X j=1 which means that the coordinates of image a·ℓ in terms of orthogonal basis {u·1 , u·2 , . . . , u·m } are σj vjℓ =: xj , i.e. m a·ℓ = xj u·j = U x. X j=1 7 https://www.nist.gov/itl/products-and-services/emnist-dataset 48",
+      "sourceTextSha256": "ce8e1751972e50887bb7e71bd7b22a8d0b303d831fe43d0cefa3ee6babf32df4",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000103",
+      "sourceId": "body[1]/p[103]",
+      "sourceOrdinal": 102,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000104",
+      "sourceId": "body[1]/p[104]",
+      "sourceOrdinal": 103,
+      "literalSourceText": "This means, in another point of view, that solving the least squares problem min x ∥U x − a·ℓ ∥2 results in an optimal vector x = [σ1 v1ℓ , . . . , σm vmℓ ]T with residual 0. As we pointed out, most columns of A are nearly linearly dependent as they represent different handwritten for the same digit. If we translate it to columns of U , this means that a few leading columns of U should well capture the subspace. For this reason the orthogonal vectors u·1 , u·2 , . . . , are called singular images. For example, in Figure 14 the singular values and the first three singular images for the training set 3’s (containing the first 200 images of the training set) are illustrated. Singular image u1 Singular image u2 Singular image u3 30000 25000 20000 σk 15000 10000 5000 0 0 100 200 k Figure 14: Rapid decay of singular values, and the first three singular images. We observe that the first singular image looks like a 3, and the following singular images represent the dominating variations of the training set around the first singular image. Con- sequently, we can use a k-rank approximation of A where k ≪ m. In this case each a·ℓ can be well represented by orthogonal basis {u·1 , u·2 , . . . , u·k } in a least squares sense with a small residual. Now, let d ∈ Rm , m = 784, be a digit outside the training set (which is called a test digit). It is reasonable to assume that d can be well represented in terms of singular images {u·1 , u·2 , . . . , u·k } of its own type with a relatively small residual. We must compute how well d can be represented in the 10 different bases, each corresponding to one of the digits 0, 1, . . . , 9. This can be done by computing the residual vector in the least squares problems of the type min x ∥Uk x − d∥2 where d represents a test digit and Uk is a m × k matrix consisting of the first k columns of U . Since the columns of Uk are orthonormal, the solution of this problem is x = UkT d and the residual is ∥(I − UkT Uk )d∥2 . (4.10) Altogether, a SVD-based classification algorithm of handwritten digits consists of two steps: • Step 1 (training): For the training set of known digits, compute the SVD of each set of digits of one kind (Compute ten SVDs for digits 0, 1, . . . , 9). • Step 2 (classification): For a given test digit d, compute its relative residual in all ten bases using equation (4.10). If a residual in a class is smaller than all the others, classify d in that class. 49",
+      "sourceTextSha256": "f850fe5aafb27dd3c1fec4cb823c715cbfa7846b46438f0780bbf8c973ae78ab",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000105",
+      "sourceId": "body[1]/p[105]",
+      "sourceOrdinal": 104,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000106",
+      "sourceId": "body[1]/p[106]",
+      "sourceOrdinal": 105,
+      "literalSourceText": "To test the algorithm, we download the training set consisting of 240000 images (24000 images per any digit), and the test set consisting of 40000 images (4000 images per digit) from the above-mentioned website. The document also contains two label files which are manual classi- fications of training and test sets. The training labels will be used to learn and the test labels to verify the algorithm. For each digit we consider using only the initial 200 images out of the total 24000 training images (ten matrices each of size 784 × 200). However, we test the algorithm on all 40000 test images and compare our classifications with the exact test labels. The percentages of the success of this SVD-based algorithm for each digit with different values k = 3, 6, . . . , 10 (number of basis functions) are plotted in Figure 15. It is left to readers to discuss their insights based on the observations from the figure. 97.5 0 1 Perceentage of success 95.0 2 92.5 3 90.0 4 5 87.5 6 85.0 7 82.5 8 9 80.0 2 4 6 8 10 k (columns of U) Figure 15: Percentages of success (y-axis) in terms of number of basis functions (x-axis) for different digits 0, 1, . . . , 9. Lab Exercise 4.7. Implement your own Python code for the above classification algorithm. Test your algorithm for different number of basis functions. Note that in the statement above, the equations you need are formulated for a single test vector d (one “flattened” test image). However, if you use that approach in your code, it will take a very long time to run. In contrast, matrix-matrix multiplications are much more efficient on modern computers. To take full advantage of that, simply replace vector d in equation (4.10) with the entire test matrix. 50",
+      "sourceTextSha256": "accd7824b39f35d9c424ad828e30664a0c9bb6458b6ab6d02cce9206df1618b7",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000107",
+      "sourceId": "body[1]/p[107]",
+      "sourceOrdinal": 106,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000108",
+      "sourceId": "body[1]/p[108]",
+      "sourceOrdinal": 107,
+      "literalSourceText": "Additional workouts Workout 4.8 (Uniqueness of reduced QR factorization). Assume that A ∈ Rm×n has a full rank. Prove that A possesses a unique reduced QR factorization A = Q1 R1 with the diagonal entries of R1 positive. Workout 4.9. Assume that A ∈ Rm×n has rank r < min{n, m}. Show that for every ϵ > 0 (no matter how much small), there exists a full-rank matrix Aϵ ∈ Rm×n such that ∥A − Aϵ ∥2 ⩽ ϵ. Workout 4.10. Let A ∈ Rn×n be an arbitrary matrix. Find the closet orthogonal matrix Q ∈ Rn×n to A in Frobenius norm, i.e. solve the following problem: min ∥A − Q∥F . QT Q=I Hint: use SVD. Workout 4.11 ([Trefethen-Bau:1997]). Let P ∈ Rn×n be a nonzero projector. Show that ∥P ∥2 ⩾ 1 with equality if and only if P is an orthogonal projector. Workout 4.12 ([Trefethen-Bau:1997]). Suppose that a square matrix A has SVD A = U ΣV T . Find the eigendecomposition of the symmetric matrix   0 AT  B= . A 0 Workout 4.13 ([Trefethen-Bau:1997]). Suppose that A is a m × n matrix with m > n of the form   B A=  C where B is a nonsingular matrix of size n×n and C is an arbitrary matrix of size (m−n)×n. Prove that ∥A+ ∥2 ⩽ ∥B −1 ∥2 . Workout 4.14 ([Datta:2010]). Let A be an m × n matrix of full rank r = min{m, n}. If B is another m × n matrix such that ∥B − A∥2 < σr then show B has also full rank. Workout 4.15 ([Datta:2010]). Show that the relative distance of a nonsingular matrix A to the nearest singular matrix B is ∥A − B∥2 1 = . ∥A∥2 cond2 (A) 51",
+      "sourceTextSha256": "dccfc10bf0182d0f32b85817f51e3cd73fd36181110ac2a3a74f2d1a3dbbf87a",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000109",
+      "sourceId": "body[1]/p[109]",
+      "sourceOrdinal": 108,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000110",
+      "sourceId": "body[1]/p[110]",
+      "sourceOrdinal": 109,
+      "literalSourceText": "References [1] B. N. Datta, Numerical Lienar Algebra and Applications, 2nd edition, SIAM, Philadelphia, PA, 2010. [2] L. Eldén, Matrix Methods in Data Mining and Pattern Recognition, 2nd edition, SIAM, Philadelphia, PA, 2019. [3] M. T. Heath, Scientific Computing, an Introductory Survey, revised 2nd edition, SIAM, Philadelphia, PA, 2018. [4] L. N. Trefethen, D. Bau III, Numerical Linear Algebra, SIAM, 1997. 52",
+      "sourceTextSha256": "09f11f80b8609d0eec43131fdafbb192b14de3679ed9823d722034e0d601e6ea",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 7.5,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000111",
+      "sourceId": "body[1]/p[111]",
+      "sourceOrdinal": 110,
+      "literalSourceText": "",
+      "sourceTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    }
+  ],
+  "semanticLabelsCreated": 0,
+  "goldCreated": false,
+  "containsModelOutputs": false,
+  "containsGoldLabels": false,
+  "containsResidualHints": false,
+  "crossSourceSubstitution": false,
+  "runtimeUse": "PROHIBITED"
+}

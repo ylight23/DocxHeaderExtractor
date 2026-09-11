@@ -1,0 +1,440 @@
+{
+  "artifactKind": "A99_R2_P3R_ISOLATED_REVIEW_SOURCE",
+  "schemaVersion": "a99-r2-p3r-review-source-v1",
+  "studyId": "A99-R2",
+  "pilotId": "R2-PILOT-8",
+  "documentId": "DOC-0004",
+  "frozenSourcePath": "bench\\04-bia-muc-luc-chu-thich.docx",
+  "frozenSourceSha256": "8a0bebf4831d85934724a7b255d42743106ec10daaca3e9adf0a6cbbd7a9c2d8",
+  "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "familyId": "DOCX_NATIVE_STRUCTURED",
+  "reviewSourcePath": "bench\\04-bia-muc-luc-chu-thich.docx",
+  "reviewSourceSha256": "8a0bebf4831d85934724a7b255d42743106ec10daaca3e9adf0a6cbbd7a9c2d8",
+  "reviewSourceMatchesFrozenSource": true,
+  "sourceKind": "NATIVE_DOCX",
+  "sourceRepresentation": {
+    "kind": "DOCX_COMPLETE_SOURCE_PARAGRAPHS",
+    "ordering": "sourceOrdinal ascending, including table-cell paragraphs",
+    "paragraphCount": 15,
+    "tableCellOccurrenceCount": 0,
+    "allParagraphsTraversed": true,
+    "allTablesTraversed": true,
+    "truncated": false
+  },
+  "completeSourceCoverage": true,
+  "truncated": false,
+  "occurrences": [
+    {
+      "sourceOccurrenceId": "P000001",
+      "sourceId": "body[1]/p[1]",
+      "sourceOrdinal": 0,
+      "literalSourceText": "BỘ KHOA HỌC VÀ CÔNG NGHỆ",
+      "sourceTextSha256": "16704517d6ea4b76bde391766f3588203b8c5bfac3c3cc1479551a051d34361c",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 13,
+        "bold": true,
+        "italic": false,
+        "allCaps": true,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000002",
+      "sourceId": "body[1]/p[2]",
+      "sourceOrdinal": 1,
+      "literalSourceText": "VIỆN NGHIÊN CỨU ỨNG DỤNG",
+      "sourceTextSha256": "b74109610254c48639cd309cbe404906094f052db499870588d52c00a6fe3a4f",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 13,
+        "bold": true,
+        "italic": false,
+        "allCaps": true,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000003",
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 2,
+      "literalSourceText": "Hà Nội, tháng 6 năm 2026",
+      "sourceTextSha256": "1c534bf40289764785ce63440ed5fa5634f6783fdf94d42f8441d8609b307093",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": true,
+        "allCaps": false,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000004",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "literalSourceText": "MỤC LỤC",
+      "sourceTextSha256": "e3fd1403ebc5fe0d54dce92dae8745c0914039a6c9b65a1038b2f338b9544110",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 14,
+        "bold": true,
+        "italic": false,
+        "allCaps": true,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000005",
+      "sourceId": "body[1]/p[5]",
+      "sourceOrdinal": 4,
+      "literalSourceText": "Chương 1. Mở đầu 1",
+      "sourceTextSha256": "15b42e384387265c737abfd2fa8abd091194f9deb1ec4484338a4465857e8389",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000006",
+      "sourceId": "body[1]/p[6]",
+      "sourceOrdinal": 5,
+      "literalSourceText": "1.1. Lý do chọn đề tài 2",
+      "sourceTextSha256": "8cc717e9cf4cc5115ec00d12072ccbf97ed402f5097690bae65996ba87af6042",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000007",
+      "sourceId": "body[1]/p[7]",
+      "sourceOrdinal": 6,
+      "literalSourceText": "Chương 2. Nội dung 5",
+      "sourceTextSha256": "2b2f16f0bd64512e42007ef9393a77c9e253656c157ee84ab6bb90e0ded65cbc",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000008",
+      "sourceId": "body[1]/p[8]",
+      "sourceOrdinal": 7,
+      "literalSourceText": "Chương 1. Mở đầu",
+      "sourceTextSha256": "b94cfb75422fc6c9a2f2e87a4e318d796eca8f8cf209e482c69235db435ae413",
+      "style": {
+        "styleId": "Heading1",
+        "styleName": "heading 1",
+        "fontSize": 15,
+        "bold": true,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": true,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000009",
+      "sourceId": "body[1]/p[9]",
+      "sourceOrdinal": 8,
+      "literalSourceText": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+      "sourceTextSha256": "9e5b294fb95470370278faa206aa984c1cd702ef6361975dd603ab32836db40a",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000010",
+      "sourceId": "body[1]/p[10]",
+      "sourceOrdinal": 9,
+      "literalSourceText": "Hình 1.1. Sơ đồ tổng thể của hệ thống quản lý",
+      "sourceTextSha256": "7736321bddb7dab1a05670fb59fcf0c5d831760afa9c6dab6dde137273638f88",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": true,
+        "allCaps": false,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000011",
+      "sourceId": "body[1]/p[11]",
+      "sourceOrdinal": 10,
+      "literalSourceText": "1.1. Lý do chọn đề tài",
+      "sourceTextSha256": "2f8ddf7c5a7d5796e655d02e6f263010b36a17850c52024440b096462a8dc8e7",
+      "style": {
+        "styleId": "Heading2",
+        "styleName": "heading 2",
+        "fontSize": 14,
+        "bold": true,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": true,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000012",
+      "sourceId": "body[1]/p[12]",
+      "sourceOrdinal": 11,
+      "literalSourceText": "Các số liệu dẫn trong mục này được tổng hợp từ báo cáo quý gần nhất và đã được đối chiếu với hệ thống quản lý tập trung trước khi đưa vào tài liệu.",
+      "sourceTextSha256": "34186094160e1e98ef704bbf10b85aaa391e4b55dbf2355f5116860d63d7b1ab",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000013",
+      "sourceId": "body[1]/p[13]",
+      "sourceOrdinal": 12,
+      "literalSourceText": "Bảng 1.2: Thống kê số liệu khảo sát ban đầu",
+      "sourceTextSha256": "9508c8d6cda0b2af695497ffe6ab5dba2ac5fdd5f05e3ee0a820e08094739032",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": true,
+        "allCaps": false,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000014",
+      "sourceId": "body[1]/p[14]",
+      "sourceOrdinal": 13,
+      "literalSourceText": "Chương 2. Nội dung",
+      "sourceTextSha256": "6e3c41ed5666025039cdd31eadc73af3f45ae3347800102164d64c7edc788422",
+      "style": {
+        "styleId": "Heading1",
+        "styleName": "heading 1",
+        "fontSize": 15,
+        "bold": true,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": true,
+        "pageBreakBefore": false
+      }
+    },
+    {
+      "sourceOccurrenceId": "P000015",
+      "sourceId": "body[1]/p[15]",
+      "sourceOrdinal": 14,
+      "literalSourceText": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+      "sourceTextSha256": "9e5b294fb95470370278faa206aa984c1cd702ef6361975dd603ab32836db40a",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "fontSize": 11,
+        "bold": false,
+        "italic": false,
+        "allCaps": false,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberLabel": null,
+        "numberingFormat": null
+      },
+      "layout": {
+        "tableDepth": 0,
+        "sectionIndex": 0,
+        "keepNext": false,
+        "pageBreakBefore": false
+      }
+    }
+  ],
+  "semanticLabelsCreated": 0,
+  "goldCreated": false,
+  "containsModelOutputs": false,
+  "containsGoldLabels": false,
+  "containsResidualHints": false,
+  "crossSourceSubstitution": false,
+  "runtimeUse": "PROHIBITED"
+}
