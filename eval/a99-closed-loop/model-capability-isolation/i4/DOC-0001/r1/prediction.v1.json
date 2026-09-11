@@ -1,0 +1,321 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-prediction-v1",
+  "documentId": "DOC-0001",
+  "repeat": "r1",
+  "model": "qwen/qwen3.5-9b",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "FULL_CONTEXT",
+  "dataClassification": "PUBLIC",
+  "zdrRequested": false,
+  "privacyExceptionAuthorized": true,
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "promptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+  "schemaHash": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
+  "packetHash": "350c756f4ff775028f2d3f5adbc3a56c2a73ec2cd1645616ffbd2c38e93b7e75",
+  "sourceAliasCount": 14,
+  "rawModelHeadings": [
+    {
+      "source": "S0001",
+      "text": "Ch",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "1.1. Ph",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0005",
+      "text": "1.2. ",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0007",
+      "text": "1.2.1. C",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0009",
+      "text": "1.2.2. ",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0011",
+      "text": "Ch",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0013",
+      "text": "2.1. P",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ],
+  "bindingObservations": [
+    {
+      "rawOrdinal": 0,
+      "heading": {
+        "source": "S0001",
+        "text": "Ch",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0001",
+      "sourceId": "body[1]/p[1]",
+      "start": 0,
+      "end": 2,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 1,
+      "heading": {
+        "source": "S0003",
+        "text": "1.1. Ph",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 7,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 2,
+      "heading": {
+        "source": "S0005",
+        "text": "1.2. ",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0005",
+      "sourceId": "body[1]/p[5]",
+      "start": 0,
+      "end": 5,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 3,
+      "heading": {
+        "source": "S0007",
+        "text": "1.2.1. C",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0007",
+      "sourceId": "body[1]/p[7]",
+      "start": 0,
+      "end": 8,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 4,
+      "heading": {
+        "source": "S0009",
+        "text": "1.2.2. ",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0009",
+      "sourceId": "body[1]/p[9]",
+      "start": 0,
+      "end": 7,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 5,
+      "heading": {
+        "source": "S0011",
+        "text": "Ch",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0011",
+      "sourceId": "body[1]/p[11]",
+      "start": 0,
+      "end": 2,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 6,
+      "heading": {
+        "source": "S0013",
+        "text": "2.1. P",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0013",
+      "sourceId": "body[1]/p[13]",
+      "start": 0,
+      "end": 6,
+      "failureReason": null
+    }
+  ],
+  "boundHeadings": [
+    {
+      "alias": "S0001",
+      "sourceId": "body[1]/p[1]",
+      "sourceOrdinal": 0,
+      "text": "Ch",
+      "role": "CHAPTER",
+      "start": 0,
+      "end": 2
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 2,
+      "text": "1.1. Ph",
+      "role": "SECTION",
+      "start": 0,
+      "end": 7
+    },
+    {
+      "alias": "S0005",
+      "sourceId": "body[1]/p[5]",
+      "sourceOrdinal": 4,
+      "text": "1.2. ",
+      "role": "SECTION",
+      "start": 0,
+      "end": 5
+    },
+    {
+      "alias": "S0007",
+      "sourceId": "body[1]/p[7]",
+      "sourceOrdinal": 6,
+      "text": "1.2.1. C",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 8
+    },
+    {
+      "alias": "S0009",
+      "sourceId": "body[1]/p[9]",
+      "sourceOrdinal": 8,
+      "text": "1.2.2. ",
+      "role": "SUBSECTION",
+      "start": 0,
+      "end": 7
+    },
+    {
+      "alias": "S0011",
+      "sourceId": "body[1]/p[11]",
+      "sourceOrdinal": 10,
+      "text": "Ch",
+      "role": "CHAPTER",
+      "start": 0,
+      "end": 2
+    },
+    {
+      "alias": "S0013",
+      "sourceId": "body[1]/p[13]",
+      "sourceOrdinal": 12,
+      "text": "2.1. P",
+      "role": "SECTION",
+      "start": 0,
+      "end": 6
+    }
+  ],
+  "validatorAccepted": 7,
+  "validatorRejected": 0,
+  "finalHeadings": [
+    {
+      "sourceId": "body[1]/p[1]",
+      "start": 0,
+      "end": 2,
+      "text": "Ch",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 7,
+      "text": "1.1. Ph",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "start": 0,
+      "end": 5,
+      "text": "1.2. ",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[7]",
+      "start": 0,
+      "end": 8,
+      "text": "1.2.1. C",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[9]",
+      "start": 0,
+      "end": 7,
+      "text": "1.2.2. ",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "start": 0,
+      "end": 2,
+      "text": "Ch",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[13]",
+      "start": 0,
+      "end": 6,
+      "text": "2.1. P",
+      "role": 0
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

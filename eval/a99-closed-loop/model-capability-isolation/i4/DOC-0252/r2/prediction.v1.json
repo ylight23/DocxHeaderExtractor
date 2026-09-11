@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-prediction-v1",
+  "documentId": "DOC-0252",
+  "repeat": "r2",
+  "status": "BLOCKED",
+  "failure": "ReasoningCompletionException:Ceiling response exceeded its absolute attempt deadline.",
+  "model": "qwen/qwen3.5-9b",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "FULL_CONTEXT",
+  "goldReadBeforeFreeze": false
+}

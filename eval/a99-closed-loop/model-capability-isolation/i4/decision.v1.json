@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "a99-i4-model-capability-isolation-decision-v1",
+  "experimentId": "A99-I4",
+  "decision": "PROVIDER_BLOCKED_INCOMPLETE",
+  "controlModel": "qwen/qwen3.7-flash",
+  "challengerModel": "qwen/qwen3.5-9b",
+  "onlyModelDelta": true,
+  "cohort": "5 docs / 15 cells / 3 repeats / 153 Gold occurrences",
+  "completedCells": 13,
+  "blockedCells": 2,
+  "primaryTarget": {
+    "b0PersistentOmissions": 7,
+    "challengerPersistentOmissions": null,
+    "recoveredCases": null,
+    "status": "NOT_EVALUABLE"
+  },
+  "invariants": {
+    "goldReadBeforeFreeze": false,
+    "goldSuppliedToModel": false,
+    "systemLoss": 0,
+    "bindFailure": 0,
+    "sourcePacketDelta": 0,
+    "promptDelta": 0,
+    "semanticContractDelta": 0,
+    "binderDelta": 0,
+    "validatorDelta": 0
+  },
+  "reason": "DOC-0001/R2 terminated at finishReason=length after consuming the completion budget; DOC-0252/R2 exceeded the absolute attempt deadline. A full-cohort model-only capability gate cannot be scored with either cell missing.",
+  "artifacts": {
+    "manifest": "manifest.v1.json",
+    "summary": "summary.v1.json",
+    "providerBlock": "provider-block.v1.json"
+  }
+}

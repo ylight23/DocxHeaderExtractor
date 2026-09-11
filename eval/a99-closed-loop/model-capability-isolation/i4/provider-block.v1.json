@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "a99-i4-model-capability-provider-block-v1",
+  "experimentId": "A99-I4",
+  "decision": "PROVIDER_BLOCKED_INCOMPLETE",
+  "model": "qwen/qwen3.5-9b",
+  "behavioralParent": "B0@76c4e01",
+  "manifest": "manifest.v1.json",
+  "cohort": {
+    "documents": 5,
+    "cells": 15,
+    "repeats": 3,
+    "goldOccurrences": 153
+  },
+  "execution": {
+    "initialCellAttempts": 15,
+    "resumeRounds": [
+      { "round": 1, "cellAttempts": 6 },
+      { "round": 2, "cellAttempts": 4 },
+      { "round": 3, "cellAttempts": 2 }
+    ],
+    "totalProviderCalls": 27,
+    "completedCells": 13,
+    "blockedCells": 2,
+    "goldReadBeforeFreeze": false,
+    "goldFirewall": "PASS",
+    "systemLoss": 0,
+    "bindFailure": 0
+  },
+  "blockedCells": [
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R2",
+      "actualProvider": "SiliconFlow",
+      "finishReason": "length",
+      "failureClass": "ReasoningCompletionException",
+      "failure": "Reasoning consumed the completion budget before a final response was produced.",
+      "inputTokens": 2376,
+      "reasoningTokens": 40400,
+      "outputTokens": 48000,
+      "wallTimeMs": 485876
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R2",
+      "actualProvider": "AUTO",
+      "finishReason": null,
+      "failureClass": "ReasoningCompletionException",
+      "failure": "Ceiling response exceeded its absolute attempt deadline.",
+      "inputTokens": null,
+      "reasoningTokens": null,
+      "outputTokens": null,
+      "wallTimeMs": 600021
+    }
+  ],
+  "frozenProviderDistribution": {
+    "SiliconFlow": 12,
+    "Together": 2,
+    "AUTO": 1
+  },
+  "measurementScope": {
+    "fullCohortDecision": "NOT_MEASURED",
+    "persistentTargetRecovery": "NOT_EVALUABLE",
+    "pairedF1Gate": "NOT_EVALUABLE",
+    "reason": "Two cells lack terminal predictions; no Gold-based full-cohort model-capability decision is valid."
+  }
+}

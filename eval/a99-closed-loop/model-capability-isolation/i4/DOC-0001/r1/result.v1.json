@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-result-v1",
+  "documentId": "DOC-0001",
+  "repeat": "r1",
+  "model": "qwen/qwen3.5-9b",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "FULL_CONTEXT",
+  "headings": [
+    {
+      "sourceId": "body[1]/p[1]",
+      "start": 0,
+      "end": 2,
+      "text": "Ch",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 7,
+      "text": "1.1. Ph",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "start": 0,
+      "end": 5,
+      "text": "1.2. ",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[7]",
+      "start": 0,
+      "end": 8,
+      "text": "1.2.1. C",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[9]",
+      "start": 0,
+      "end": 7,
+      "text": "1.2.2. ",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "start": 0,
+      "end": 2,
+      "text": "Ch",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[13]",
+      "start": 0,
+      "end": 6,
+      "text": "2.1. P",
+      "role": 0
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-result-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r1",
+  "model": "qwen/qwen3.5-9b",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "FULL_CONTEXT",
+  "headings": [
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 174,
+      "end": 183,
+      "text": "NGH\u1ECA \u0110\u1ECANH",
+      "role": 3
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

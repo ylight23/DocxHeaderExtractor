@@ -16,6 +16,25 @@
       "pairedRegression": true,
       "decision": "REVERT",
       "commit": "3f9e3b5"
+    },
+    {
+      "experimentId": "A99-I4",
+      "parent": "B0@76c4e01",
+      "failureClass": "PROVIDER_BLOCKED",
+      "hypothesis": "A model-only swap from qwen/qwen3.7-flash to qwen/qwen3.5-9b will recover persistent B0 omissions under the frozen semantic-text contract.",
+      "mechanismFamily": "model-capability",
+      "challengerModel": "qwen/qwen3.5-9b",
+      "freshProviderCalls": 27,
+      "attemptedCells": 15,
+      "completedCells": 13,
+      "blockedCells": 2,
+      "targetBefore": 7,
+      "targetAfter": null,
+      "systemLoss": 0,
+      "bindFailure": 0,
+      "pairedRegression": null,
+      "decision": "PROVIDER_BLOCKED_INCOMPLETE",
+      "commit": "7c16ecf"
     }
   ]
 }

@@ -1,0 +1,1767 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-prediction-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r2",
+  "model": "qwen/qwen3.5-9b",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "FULL_CONTEXT",
+  "dataClassification": "PUBLIC",
+  "zdrRequested": false,
+  "privacyExceptionAuthorized": true,
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "promptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+  "schemaHash": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
+  "packetHash": "65b616df872739a49c9cba307f1530c6673e563bb014723ecabe395485a34afe",
+  "sourceAliasCount": 3,
+  "rawModelHeadings": [
+    {
+      "source": "S0003",
+      "text": "Ch\u00C3\u00ACng I QUY \u00C3\u00ACNH CHUNG",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 1. Ph\u00C3\u00ACm vi \u00C3\u00ACu ch\u00C3\u00ACnh",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 2. \u00C3\u00ACi t\u00C3\u00ACng \u00C3\u00ACp d\u00C3\u00ACng",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 3. Gi\u00C3\u00ACi th\u00C3\u00ACch t\u00C3\u00AC ng\u00C3\u00AC",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 4. Gi\u00C3\u00AC tr\u00C3\u00AC ph\u00C3\u00AC l\u00C3\u00AC c\u00C3\u00ACa d\u00C3\u00AC li\u00C3\u00ACu \u00C3\u00AC\u00C3\u00ACc chia s\u00C3\u00AC",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "CH\u00C3\u00ACNG II QU\u00C3\u00ACN L\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU, C\u00C3\u00AC S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU, QU\u00C3\u00ACN TR\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU TRONG C\u00C3\u00AC QUAN NH\u00C3\u00AC N\u00C3\u00ACC V\u00C3\u00AC B\u00C3\u00ACO \u00C3\u00ACM KH\u00C3\u00AC N\u00C3\u00ACNG S\u00C3\u00ACN S\u00C3\u00ACNG K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "M\u00C3\u00ACC 1. QU\u00C3\u00ACN L\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU, C\u00C3\u00AC S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU TRONG C\u00C3\u00AC QUAN NH\u00C3\u00AC N\u00C3\u00ACC",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 9. Nguy\u00C3\u00ACn t\u00C3\u00ACc qu\u00C3\u00ACn l\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu, c\u00C3\u00AC s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu trong c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 10. T\u00C3\u00AC ch\u00C3\u00AC, qu\u00C3\u00ACn l\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu, c\u00C3\u00AC s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 11. C\u00C3\u00AC s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu trong c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 12. Danh m\u00C3\u00ACc c\u00C3\u00AC s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu qu\u00C3\u00ACc gia, duy tr\u00C3\u00AC danh m\u00C3\u00ACc c\u00C3\u00AC s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu qu\u00C3\u00ACc gia",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 13. C\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu qu\u00C3\u00ACc gia",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "M\u00C3\u00ACC 2. QU\u00C3\u00ACN TR\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU, QU\u00C3\u00ACN TR\u00C3\u00AC CHIA S\u00C3\u00AC, KHAI TH\u00C3\u00ACC D\u00C3\u00AC LI\u00C3\u00ACU",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 14. Ho\u00C3\u00ACt \u00C3\u00ACng qu\u00C3\u00ACn tr\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu, qu\u00C3\u00ACn tr\u00C3\u00AC chia s\u00C3\u00AC, khai th\u00C3\u00ACc d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 15. Thanh tra, ki\u00C3\u00ACm tra, gi\u00C3\u00ACm s\u00C3\u00ACt qu\u00C3\u00AC tr\u00C3\u00ACnh k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 16. Ki\u00C3\u00ACm tra, \u00C3\u00ACnh gi\u00C3\u00AC, duy tr\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "M\u00C3\u00ACC 3. D\u00C3\u00AC LI\u00C3\u00ACU M\u00C3\u00AC C\u00C3\u00ACA C\u00C3\u00AC QUAN NH\u00C3\u00AC N\u00C3\u00ACC",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 17. Nguy\u00C3\u00ACn t\u00C3\u00ACc cung c\u00C3\u00ACp d\u00C3\u00AC li\u00C3\u00ACu m\u00C3\u00AC c\u00C3\u00ACa c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 18. Quy \u00C3\u00ACnh s\u00C3\u00AC d\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu m\u00C3\u00AC c\u00C3\u00ACa c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 19. K\u00C3\u00AC ho\u00C3\u00ACch v\u00C3\u00AC tri\u00C3\u00ACn khai d\u00C3\u00AC li\u00C3\u00ACu m\u00C3\u00AC c\u00C3\u00ACa c\u00C3\u00ACc c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 20. Y\u00C3\u00ACu c\u00C3\u00AC trong vi\u00C3\u00ACc c\u00C3\u00ACng b\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu m\u00C3\u00AC c\u00C3\u00ACa c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 21. Ph\u00C3\u00ACng th\u00C3\u00ACc, c\u00C3\u00ACch th\u00C3\u00ACc c\u00C3\u00ACng b\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu m\u00C3\u00AC c\u00C3\u00ACa c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "M\u00C3\u00ACC 4. B\u00C3\u00ACO \u00C3\u00ACM KH\u00C3\u00AC N\u00C3\u00ACNG S\u00C3\u00ACN S\u00C3\u00ACNG K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 22. Quy ch\u00C3\u00AC khai th\u00C3\u00ACc, s\u00C3\u00AC d\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu chia s\u00C3\u00AC",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 23. Ph\u00C3\u00ACng th\u00C3\u00ACc chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 24. D\u00C3\u00ACch v\u00C3\u00AC chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 25. C\u00C3\u00ACng khai th\u00C3\u00ACng tin v\u00C3\u00AC d\u00C3\u00ACch v\u00C3\u00AC chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 26. H\u00C3\u00AC th\u00C3\u00ACng qu\u00C3\u00ACn l\u00C3\u00AC d\u00C3\u00ACch v\u00C3\u00AC chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 27. H\u00C3\u00AC t\u00C3\u00ACng k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 28. B\u00C3\u00ACo \u00C3\u00ACm an to\u00C3\u00ACn trong qu\u00C3\u00AC tr\u00C3\u00ACnh k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 29. Kinh ph\u00C3\u00AC b\u00C3\u00ACo \u00C3\u00ACm k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 30. Ngu\u00C3\u00ACn nh\u00C3\u00ACn l\u00C3\u00ACc b\u00C3\u00ACo \u00C3\u00ACm k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "CH\u00C3\u00ACNG III TH\u00C3\u00ACC HI\u00C3\u00ACN K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC, S\u00C3\u00ACC D\u00C3\u00ACNG D\u00C3\u00AC LI\u00C3\u00ACU",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "M\u00C3\u00ACC 1. T\u00C3\u00AC CH\u00C3\u00ACC K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 31. K\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu gi\u00C3\u00ACa c\u00C3\u00ACc b\u00C3\u00AC, c\u00C3\u00AC quan ngang b\u00C3\u00AC, c\u00C3\u00AC quan thu\u00C3\u00ACc Ch\u00C3\u00ACnh ph\u00C3\u00AC, c\u00C3\u00ACc t\u00C3\u00ACnh, th\u00C3\u00ACnh ph\u00C3\u00AC tr\u00C3\u00ACc thu\u00C3\u00ACc trung \u00C3\u00ACng",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 32. K\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu trong n\u00C3\u00ACi b\u00C3\u00AC c\u00C3\u00ACa b\u00C3\u00AC, c\u00C3\u00AC quan ngang b\u00C3\u00AC, c\u00C3\u00AC quan thu\u00C3\u00ACc Ch\u00C3\u00ACnh ph\u00C3\u00AC, c\u00C3\u00ACc t\u00C3\u00ACnh, th\u00C3\u00ACnh ph\u00C3\u00AC tr\u00C3\u00ACc thu\u00C3\u00ACc trung \u00C3\u00ACng",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "M\u00C3\u00ACC 2. CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU M\u00C3\u00ACC \u00C3\u00ACNH",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 33. Chu\u00C3\u00ACn b\u00C3\u00AC v\u00C3\u00AC th\u00C3\u00ACc hi\u00C3\u00ACn cung c\u00C3\u00ACp d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 34. D\u00C3\u00AC li\u00C3\u00ACu chia s\u00C3\u00AC theo h\u00C3\u00ACnh th\u00C3\u00ACc chia s\u00C3\u00AC m\u00C3\u00ACc \u00C3\u00ACnh",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 35. G\u00C3\u00ACi y\u00C3\u00ACu c\u00C3\u00AC k\u00C3\u00ACt n\u00C3\u00ACi, khai th\u00C3\u00ACc d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "M\u00C3\u00ACC 3. CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU THEO Y\u00C3\u00ACU C\u00C3\u00AC \u00C3\u00ACC TH\u00C3\u00AC",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 36. Nguy\u00C3\u00ACn t\u00C3\u00ACc chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu theo y\u00C3\u00ACu c\u00C3\u00AC \u00C3\u00ACc th\u00C3\u00AC",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 37. Tr\u00C3\u00ACnh t\u00C3\u00AC chu\u00C3\u00ACn b\u00C3\u00AC k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 38. N\u00C3\u00ACi dung th\u00C3\u00ACng nh\u00C3\u00ACt chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 39. Th\u00C3\u00ACc hi\u00C3\u00ACn k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC, s\u00C3\u00AC d\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "M\u00C3\u00ACC 4. QU\u00C3\u00ACN L\u00C3\u00AC K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 40. T\u00C3\u00AC kho\u00C3\u00ACn v\u00C3\u00AC qu\u00C3\u00ACn l\u00C3\u00AC t\u00C3\u00AC kho\u00C3\u00ACn k\u00C3\u00ACt n\u00C3\u00ACi",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 41. Th\u00C3\u00ACi h\u00C3\u00ACn s\u00C3\u00AC d\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu sau khi khai th\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 42. L\u00C3\u00ACu tr\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu khi k\u00C3\u00ACt n\u00C3\u00ACi, khai th\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 43. T\u00C3\u00ACm ng\u00C3\u00ACng k\u00C3\u00ACt n\u00C3\u00ACi, cung c\u00C3\u00ACp d\u00C3\u00AC li\u00C3\u00ACu tr\u00C3\u00ACn m\u00C3\u00ACi tr\u00C3\u00ACng m\u00C3\u00ACng do c\u00C3\u00AC quan cung c\u00C3\u00ACp",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 44. Ch\u00C3\u00ACm d\u00C3\u00ACt k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu qua m\u00C3\u00ACi tr\u00C3\u00ACng m\u00C3\u00ACng",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 45. L\u00C3\u00ACu tr\u00C3\u00AC nh\u00C3\u00ACt k\u00C3\u00AC chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 46. M\u00C3\u00AC h\u00C3\u00ACnh k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "M\u00C3\u00ACC 5. GI\u00C3\u00ACI QUY\u00C3\u00ACT V\u00C3\u00ACNG M\u00C3\u00ACC K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 47. V\u00C3\u00ACng m\u00C3\u00ACc khi k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC v\u00C3\u00AC khai th\u00C3\u00ACc d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 48. Th\u00C3\u00ACm quy\u00C3\u00ACn ti\u00C3\u00ACp nh\u00C3\u00ACn, gi\u00C3\u00ACi quy\u00C3\u00ACt v\u00C3\u00ACng m\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 49. Tr\u00C3\u00ACnh t\u00C3\u00AC x\u00C3\u00AC l\u00C3\u00AC v\u00C3\u00ACng m\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 50. Ph\u00C3\u00ACng \u00C3\u00ACn gi\u00C3\u00ACi quy\u00C3\u00ACt v\u00C3\u00AC tri\u00C3\u00ACn khai tu\u00C3\u00ACn th\u00C3\u00AC ph\u00C3\u00ACng \u00C3\u00ACn x\u00C3\u00AC l\u00C3\u00AC v\u00C3\u00ACng m\u00C3\u00ACc",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "CH\u00C3\u00ACNG IV QUY\u00C3\u00ACN, TR\u00C3\u00ACCH NHI\u00C3\u00ACM TRONG K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 51. Quy\u00C3\u00ACn v\u00C3\u00AC tr\u00C3\u00ACch nhi\u00C3\u00ACm c\u00C3\u00ACa c\u00C3\u00AC quan cung c\u00C3\u00ACp d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 52. Quy\u00C3\u00ACn v\u00C3\u00AC tr\u00C3\u00ACch nhi\u00C3\u00ACm c\u00C3\u00ACa t\u00C3\u00AC ch\u00C3\u00ACc, c\u00C3\u00AC nh\u00C3\u00ACn khai th\u00C3\u00ACc, s\u00C3\u00AC d\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 53. Tr\u00C3\u00ACch nhi\u00C3\u00ACm c\u00C3\u00ACa c\u00C3\u00ACc b\u00C3\u00AC, c\u00C3\u00AC quan ngang b\u00C3\u00AC, c\u00C3\u00AC quan thu\u00C3\u00ACc Ch\u00C3\u00ACnh ph\u00C3\u00AC",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 54. Tr\u00C3\u00ACch nhi\u00C3\u00ACm c\u00C3\u00ACa \u00C3\u00ACy ban nh\u00C3\u00ACn d\u00C3\u00ACn c\u00C3\u00ACc t\u00C3\u00ACnh, th\u00C3\u00ACnh ph\u00C3\u00AC tr\u00C3\u00ACc thu\u00C3\u00ACc trung \u00C3\u00ACng",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "CH\u00C3\u00ACNG V \u00C3\u00ACI\u00C3\u00ACU KHO\u00C3\u00ACN THI H\u00C3\u00ACNH",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 55. \u00C3\u00ACi\u00C3\u00ACu kho\u00C3\u00ACn chuy\u00C3\u00ACn ti\u00C3\u00ACp",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 56. Hi\u00C3\u00ACu l\u00C3\u00ACc thi h\u00C3\u00ACnh",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0003",
+      "text": "\u00C3\u00ACEU 57. Tr\u00C3\u00ACch nhi\u00C3\u00ACm thi h\u00C3\u00ACnh",
+      "role": "ARTICLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ],
+  "bindingObservations": [
+    {
+      "rawOrdinal": 0,
+      "heading": {
+        "source": "S0003",
+        "text": "Ch\u00C3\u00ACng I QUY \u00C3\u00ACNH CHUNG",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 1,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 1. Ph\u00C3\u00ACm vi \u00C3\u00ACu ch\u00C3\u00ACnh",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 2,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 2. \u00C3\u00ACi t\u00C3\u00ACng \u00C3\u00ACp d\u00C3\u00ACng",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 3,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 3. Gi\u00C3\u00ACi th\u00C3\u00ACch t\u00C3\u00AC ng\u00C3\u00AC",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 4,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 4. Gi\u00C3\u00AC tr\u00C3\u00AC ph\u00C3\u00AC l\u00C3\u00AC c\u00C3\u00ACa d\u00C3\u00AC li\u00C3\u00ACu \u00C3\u00AC\u00C3\u00ACc chia s\u00C3\u00AC",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 5,
+      "heading": {
+        "source": "S0003",
+        "text": "CH\u00C3\u00ACNG II QU\u00C3\u00ACN L\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU, C\u00C3\u00AC S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU, QU\u00C3\u00ACN TR\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU TRONG C\u00C3\u00AC QUAN NH\u00C3\u00AC N\u00C3\u00ACC V\u00C3\u00AC B\u00C3\u00ACO \u00C3\u00ACM KH\u00C3\u00AC N\u00C3\u00ACNG S\u00C3\u00ACN S\u00C3\u00ACNG K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 6,
+      "heading": {
+        "source": "S0003",
+        "text": "M\u00C3\u00ACC 1. QU\u00C3\u00ACN L\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU, C\u00C3\u00AC S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU TRONG C\u00C3\u00AC QUAN NH\u00C3\u00AC N\u00C3\u00ACC",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 7,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 9. Nguy\u00C3\u00ACn t\u00C3\u00ACc qu\u00C3\u00ACn l\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu, c\u00C3\u00AC s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu trong c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 8,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 10. T\u00C3\u00AC ch\u00C3\u00AC, qu\u00C3\u00ACn l\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu, c\u00C3\u00AC s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 9,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 11. C\u00C3\u00AC s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu trong c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 10,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 12. Danh m\u00C3\u00ACc c\u00C3\u00AC s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu qu\u00C3\u00ACc gia, duy tr\u00C3\u00AC danh m\u00C3\u00ACc c\u00C3\u00AC s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu qu\u00C3\u00ACc gia",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 11,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 13. C\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu qu\u00C3\u00ACc gia",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 12,
+      "heading": {
+        "source": "S0003",
+        "text": "M\u00C3\u00ACC 2. QU\u00C3\u00ACN TR\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU, QU\u00C3\u00ACN TR\u00C3\u00AC CHIA S\u00C3\u00AC, KHAI TH\u00C3\u00ACC D\u00C3\u00AC LI\u00C3\u00ACU",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 13,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 14. Ho\u00C3\u00ACt \u00C3\u00ACng qu\u00C3\u00ACn tr\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu, qu\u00C3\u00ACn tr\u00C3\u00AC chia s\u00C3\u00AC, khai th\u00C3\u00ACc d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 14,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 15. Thanh tra, ki\u00C3\u00ACm tra, gi\u00C3\u00ACm s\u00C3\u00ACt qu\u00C3\u00AC tr\u00C3\u00ACnh k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 15,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 16. Ki\u00C3\u00ACm tra, \u00C3\u00ACnh gi\u00C3\u00AC, duy tr\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 16,
+      "heading": {
+        "source": "S0003",
+        "text": "M\u00C3\u00ACC 3. D\u00C3\u00AC LI\u00C3\u00ACU M\u00C3\u00AC C\u00C3\u00ACA C\u00C3\u00AC QUAN NH\u00C3\u00AC N\u00C3\u00ACC",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 17,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 17. Nguy\u00C3\u00ACn t\u00C3\u00ACc cung c\u00C3\u00ACp d\u00C3\u00AC li\u00C3\u00ACu m\u00C3\u00AC c\u00C3\u00ACa c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 18,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 18. Quy \u00C3\u00ACnh s\u00C3\u00AC d\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu m\u00C3\u00AC c\u00C3\u00ACa c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 19,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 19. K\u00C3\u00AC ho\u00C3\u00ACch v\u00C3\u00AC tri\u00C3\u00ACn khai d\u00C3\u00AC li\u00C3\u00ACu m\u00C3\u00AC c\u00C3\u00ACa c\u00C3\u00ACc c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 20,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 20. Y\u00C3\u00ACu c\u00C3\u00AC trong vi\u00C3\u00ACc c\u00C3\u00ACng b\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu m\u00C3\u00AC c\u00C3\u00ACa c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 21,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 21. Ph\u00C3\u00ACng th\u00C3\u00ACc, c\u00C3\u00ACch th\u00C3\u00ACc c\u00C3\u00ACng b\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu m\u00C3\u00AC c\u00C3\u00ACa c\u00C3\u00AC quan nh\u00C3\u00AC n\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 22,
+      "heading": {
+        "source": "S0003",
+        "text": "M\u00C3\u00ACC 4. B\u00C3\u00ACO \u00C3\u00ACM KH\u00C3\u00AC N\u00C3\u00ACNG S\u00C3\u00ACN S\u00C3\u00ACNG K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 23,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 22. Quy ch\u00C3\u00AC khai th\u00C3\u00ACc, s\u00C3\u00AC d\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu chia s\u00C3\u00AC",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 24,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 23. Ph\u00C3\u00ACng th\u00C3\u00ACc chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 25,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 24. D\u00C3\u00ACch v\u00C3\u00AC chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 26,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 25. C\u00C3\u00ACng khai th\u00C3\u00ACng tin v\u00C3\u00AC d\u00C3\u00ACch v\u00C3\u00AC chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 27,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 26. H\u00C3\u00AC th\u00C3\u00ACng qu\u00C3\u00ACn l\u00C3\u00AC d\u00C3\u00ACch v\u00C3\u00AC chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 28,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 27. H\u00C3\u00AC t\u00C3\u00ACng k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 29,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 28. B\u00C3\u00ACo \u00C3\u00ACm an to\u00C3\u00ACn trong qu\u00C3\u00AC tr\u00C3\u00ACnh k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 30,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 29. Kinh ph\u00C3\u00AC b\u00C3\u00ACo \u00C3\u00ACm k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 31,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 30. Ngu\u00C3\u00ACn nh\u00C3\u00ACn l\u00C3\u00ACc b\u00C3\u00ACo \u00C3\u00ACm k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 32,
+      "heading": {
+        "source": "S0003",
+        "text": "CH\u00C3\u00ACNG III TH\u00C3\u00ACC HI\u00C3\u00ACN K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC, S\u00C3\u00ACC D\u00C3\u00ACNG D\u00C3\u00AC LI\u00C3\u00ACU",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 33,
+      "heading": {
+        "source": "S0003",
+        "text": "M\u00C3\u00ACC 1. T\u00C3\u00AC CH\u00C3\u00ACC K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 34,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 31. K\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu gi\u00C3\u00ACa c\u00C3\u00ACc b\u00C3\u00AC, c\u00C3\u00AC quan ngang b\u00C3\u00AC, c\u00C3\u00AC quan thu\u00C3\u00ACc Ch\u00C3\u00ACnh ph\u00C3\u00AC, c\u00C3\u00ACc t\u00C3\u00ACnh, th\u00C3\u00ACnh ph\u00C3\u00AC tr\u00C3\u00ACc thu\u00C3\u00ACc trung \u00C3\u00ACng",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 35,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 32. K\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu trong n\u00C3\u00ACi b\u00C3\u00AC c\u00C3\u00ACa b\u00C3\u00AC, c\u00C3\u00AC quan ngang b\u00C3\u00AC, c\u00C3\u00AC quan thu\u00C3\u00ACc Ch\u00C3\u00ACnh ph\u00C3\u00AC, c\u00C3\u00ACc t\u00C3\u00ACnh, th\u00C3\u00ACnh ph\u00C3\u00AC tr\u00C3\u00ACc thu\u00C3\u00ACc trung \u00C3\u00ACng",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 36,
+      "heading": {
+        "source": "S0003",
+        "text": "M\u00C3\u00ACC 2. CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU M\u00C3\u00ACC \u00C3\u00ACNH",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 37,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 33. Chu\u00C3\u00ACn b\u00C3\u00AC v\u00C3\u00AC th\u00C3\u00ACc hi\u00C3\u00ACn cung c\u00C3\u00ACp d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 38,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 34. D\u00C3\u00AC li\u00C3\u00ACu chia s\u00C3\u00AC theo h\u00C3\u00ACnh th\u00C3\u00ACc chia s\u00C3\u00AC m\u00C3\u00ACc \u00C3\u00ACnh",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 39,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 35. G\u00C3\u00ACi y\u00C3\u00ACu c\u00C3\u00AC k\u00C3\u00ACt n\u00C3\u00ACi, khai th\u00C3\u00ACc d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 40,
+      "heading": {
+        "source": "S0003",
+        "text": "M\u00C3\u00ACC 3. CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU THEO Y\u00C3\u00ACU C\u00C3\u00AC \u00C3\u00ACC TH\u00C3\u00AC",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 41,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 36. Nguy\u00C3\u00ACn t\u00C3\u00ACc chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu theo y\u00C3\u00ACu c\u00C3\u00AC \u00C3\u00ACc th\u00C3\u00AC",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 42,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 37. Tr\u00C3\u00ACnh t\u00C3\u00AC chu\u00C3\u00ACn b\u00C3\u00AC k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 43,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 38. N\u00C3\u00ACi dung th\u00C3\u00ACng nh\u00C3\u00ACt chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 44,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 39. Th\u00C3\u00ACc hi\u00C3\u00ACn k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC, s\u00C3\u00AC d\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 45,
+      "heading": {
+        "source": "S0003",
+        "text": "M\u00C3\u00ACC 4. QU\u00C3\u00ACN L\u00C3\u00AC K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 46,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 40. T\u00C3\u00AC kho\u00C3\u00ACn v\u00C3\u00AC qu\u00C3\u00ACn l\u00C3\u00AC t\u00C3\u00AC kho\u00C3\u00ACn k\u00C3\u00ACt n\u00C3\u00ACi",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 47,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 41. Th\u00C3\u00ACi h\u00C3\u00ACn s\u00C3\u00AC d\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu sau khi khai th\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 48,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 42. L\u00C3\u00ACu tr\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu khi k\u00C3\u00ACt n\u00C3\u00ACi, khai th\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 49,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 43. T\u00C3\u00ACm ng\u00C3\u00ACng k\u00C3\u00ACt n\u00C3\u00ACi, cung c\u00C3\u00ACp d\u00C3\u00AC li\u00C3\u00ACu tr\u00C3\u00ACn m\u00C3\u00ACi tr\u00C3\u00ACng m\u00C3\u00ACng do c\u00C3\u00AC quan cung c\u00C3\u00ACp",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 50,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 44. Ch\u00C3\u00ACm d\u00C3\u00ACt k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu qua m\u00C3\u00ACi tr\u00C3\u00ACng m\u00C3\u00ACng",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 51,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 45. L\u00C3\u00ACu tr\u00C3\u00AC nh\u00C3\u00ACt k\u00C3\u00AC chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 52,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 46. M\u00C3\u00AC h\u00C3\u00ACnh k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 53,
+      "heading": {
+        "source": "S0003",
+        "text": "M\u00C3\u00ACC 5. GI\u00C3\u00ACI QUY\u00C3\u00ACT V\u00C3\u00ACNG M\u00C3\u00ACC K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 54,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 47. V\u00C3\u00ACng m\u00C3\u00ACc khi k\u00C3\u00ACt n\u00C3\u00ACi, chia s\u00C3\u00AC v\u00C3\u00AC khai th\u00C3\u00ACc d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 55,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 48. Th\u00C3\u00ACm quy\u00C3\u00ACn ti\u00C3\u00ACp nh\u00C3\u00ACn, gi\u00C3\u00ACi quy\u00C3\u00ACt v\u00C3\u00ACng m\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 56,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 49. Tr\u00C3\u00ACnh t\u00C3\u00AC x\u00C3\u00AC l\u00C3\u00AC v\u00C3\u00ACng m\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 57,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 50. Ph\u00C3\u00ACng \u00C3\u00ACn gi\u00C3\u00ACi quy\u00C3\u00ACt v\u00C3\u00AC tri\u00C3\u00ACn khai tu\u00C3\u00ACn th\u00C3\u00AC ph\u00C3\u00ACng \u00C3\u00ACn x\u00C3\u00AC l\u00C3\u00AC v\u00C3\u00ACng m\u00C3\u00ACc",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 58,
+      "heading": {
+        "source": "S0003",
+        "text": "CH\u00C3\u00ACNG IV QUY\u00C3\u00ACN, TR\u00C3\u00ACCH NHI\u00C3\u00ACM TRONG K\u00C3\u00ACT N\u00C3\u00ACI, CHIA S\u00C3\u00AC D\u00C3\u00AC LI\u00C3\u00ACU",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 59,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 51. Quy\u00C3\u00ACn v\u00C3\u00AC tr\u00C3\u00ACch nhi\u00C3\u00ACm c\u00C3\u00ACa c\u00C3\u00AC quan cung c\u00C3\u00ACp d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 60,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 52. Quy\u00C3\u00ACn v\u00C3\u00AC tr\u00C3\u00ACch nhi\u00C3\u00ACm c\u00C3\u00ACa t\u00C3\u00AC ch\u00C3\u00ACc, c\u00C3\u00AC nh\u00C3\u00ACn khai th\u00C3\u00ACc, s\u00C3\u00AC d\u00C3\u00ACng d\u00C3\u00AC li\u00C3\u00ACu",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 61,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 53. Tr\u00C3\u00ACch nhi\u00C3\u00ACm c\u00C3\u00ACa c\u00C3\u00ACc b\u00C3\u00AC, c\u00C3\u00AC quan ngang b\u00C3\u00AC, c\u00C3\u00AC quan thu\u00C3\u00ACc Ch\u00C3\u00ACnh ph\u00C3\u00AC",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 62,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 54. Tr\u00C3\u00ACch nhi\u00C3\u00ACm c\u00C3\u00ACa \u00C3\u00ACy ban nh\u00C3\u00ACn d\u00C3\u00ACn c\u00C3\u00ACc t\u00C3\u00ACnh, th\u00C3\u00ACnh ph\u00C3\u00AC tr\u00C3\u00ACc thu\u00C3\u00ACc trung \u00C3\u00ACng",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 63,
+      "heading": {
+        "source": "S0003",
+        "text": "CH\u00C3\u00ACNG V \u00C3\u00ACI\u00C3\u00ACU KHO\u00C3\u00ACN THI H\u00C3\u00ACNH",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 64,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 55. \u00C3\u00ACi\u00C3\u00ACu kho\u00C3\u00ACn chuy\u00C3\u00ACn ti\u00C3\u00ACp",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 65,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 56. Hi\u00C3\u00ACu l\u00C3\u00ACc thi h\u00C3\u00ACnh",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    },
+    {
+      "rawOrdinal": 66,
+      "heading": {
+        "source": "S0003",
+        "text": "\u00C3\u00ACEU 57. Tr\u00C3\u00ACch nhi\u00C3\u00ACm thi h\u00C3\u00ACnh",
+        "role": "ARTICLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 3,
+      "exactTextOccurrenceCount": 0,
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "start": null,
+      "end": null,
+      "failureReason": "TEXT_NOT_FOUND"
+    }
+  ],
+  "boundHeadings": [],
+  "validatorAccepted": 0,
+  "validatorRejected": 0,
+  "finalHeadings": [],
+  "goldReadBeforeFreeze": false
+}

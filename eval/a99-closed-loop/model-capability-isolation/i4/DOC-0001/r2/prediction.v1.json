@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-prediction-v1",
+  "documentId": "DOC-0001",
+  "repeat": "r2",
+  "status": "BLOCKED",
+  "failure": "ReasoningCompletionException:Reasoning consumed the completion budget before a final response was produced.",
+  "model": "qwen/qwen3.5-9b",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "FULL_CONTEXT",
+  "goldReadBeforeFreeze": false
+}
