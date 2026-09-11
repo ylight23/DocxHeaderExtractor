@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "a99-a99-i6-first-loss-v1",
+  "documentId": "DOC-0001",
+  "repeat": "r1",
+  "passA": [
+    {
+      "key": "body[1]/p[7]:0:22",
+      "exactSourceText": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    }
+  ],
+  "final": [
+    {
+      "key": "body[1]/p[7]:0:22",
+      "exactSourceText": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    }
+  ],
+  "bindAmbiguous": 0,
+  "bindFailure": 1,
+  "systemLoss": 0,
+  "goldReadBeforeFreeze": false
+}

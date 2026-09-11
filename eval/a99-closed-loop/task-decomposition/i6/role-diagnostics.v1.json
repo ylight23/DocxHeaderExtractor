@@ -1,0 +1,1454 @@
+{
+  "schemaVersion": "a99-a99-i6-role-diagnostics-v1",
+  "rolePassCompleted": 15,
+  "rolePassBlocked": 0,
+  "roleDistribution": {
+    "AGENDA_NAVIGATION_HEADING": 14,
+    "ANNEX_HEADING": 15,
+    "ARTICLE": 186,
+    "CHAPTER": 28,
+    "DOCUMENT_TITLE": 9,
+    "FRONT_MATTER": 4,
+    "LIST_ITEM": 9,
+    "OTHER_NON_TASK_STRUCTURAL": 3,
+    "OTHER_STRUCTURAL_LABEL": 2,
+    "PART": 3,
+    "RUNNING_HEADER": 3,
+    "SECTION": 121,
+    "SUBSECTION": 75,
+    "TOC_ENTRY": 56
+  },
+  "sameHeadingRoleStabilityAcrossRepeats": [
+    {
+      "documentId": "DOC-0001",
+      "headings": [
+        {
+          "headingId": "H0001",
+          "roles": [
+            "CHAPTER"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0002",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0003",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0004",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0005",
+          "roles": [
+            "CHAPTER",
+            "SUBSECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0006",
+          "roles": [
+            "CHAPTER",
+            "SECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0007",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0205",
+      "headings": [
+        {
+          "headingId": "H0001",
+          "roles": [
+            "CHAPTER"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0002",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0003",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0004",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0005",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0006",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0007",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0008",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0009",
+          "roles": [
+            "ARTICLE",
+            "CHAPTER"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0010",
+          "roles": [
+            "CHAPTER",
+            "SECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0011",
+          "roles": [
+            "ARTICLE",
+            "SECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0012",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0013",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0014",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0015",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0016",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0017",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0018",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0019",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0020",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0021",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0022",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0023",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0024",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0025",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0026",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0027",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0028",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0029",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0030",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0031",
+          "roles": [
+            "ARTICLE",
+            "CHAPTER",
+            "SECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0032",
+          "roles": [
+            "ARTICLE",
+            "SECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0033",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0034",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0035",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0036",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0037",
+          "roles": [
+            "ARTICLE",
+            "CHAPTER"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0038",
+          "roles": [
+            "ARTICLE",
+            "SECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0039",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0040",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0041",
+          "roles": [
+            "ARTICLE",
+            "SECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0042",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0043",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0044",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0045",
+          "roles": [
+            "ARTICLE",
+            "SECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0046",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0047",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0048",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0049",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0050",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0051",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0052",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0053",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0054",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0055",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0056",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0057",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0058",
+          "roles": [
+            "ARTICLE",
+            "SECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0059",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0060",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0061",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0062",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0063",
+          "roles": [
+            "CHAPTER"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0064",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0065",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0066",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0067",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0068",
+          "roles": [
+            "CHAPTER"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0069",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0070",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0071",
+          "roles": [
+            "ARTICLE"
+          ],
+          "stable": true
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "headings": [
+        {
+          "headingId": "H0001",
+          "roles": [
+            "DOCUMENT_TITLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0002",
+          "roles": [
+            "PART"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0003",
+          "roles": [
+            "FRONT_MATTER",
+            "OTHER_STRUCTURAL_LABEL"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0004",
+          "roles": [
+            "FRONT_MATTER",
+            "OTHER_STRUCTURAL_LABEL"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0005",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0006",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0007",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0008",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0009",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0010",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0011",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0012",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0013",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0014",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0015",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0016",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0017",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0018",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0019",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0020",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0021",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0022",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0023",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0024",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0025",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0026",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0027",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0028",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0029",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0030",
+          "roles": [
+            "RUNNING_HEADER"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0031",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0032",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0033",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0034",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0035",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0036",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0037",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0038",
+          "roles": [
+            "ANNEX_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0039",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "LIST_ITEM",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0040",
+          "roles": [
+            "LIST_ITEM",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0041",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "LIST_ITEM",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0042",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0043",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0044",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0045",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0046",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0047",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0048",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0049",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0050",
+          "roles": [
+            "AGENDA_NAVIGATION_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0051",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0052",
+          "roles": [
+            "ANNEX_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0053",
+          "roles": [
+            "ANNEX_HEADING",
+            "LIST_ITEM"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0054",
+          "roles": [
+            "LIST_ITEM"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0055",
+          "roles": [
+            "LIST_ITEM"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0056",
+          "roles": [
+            "LIST_ITEM"
+          ],
+          "stable": true
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "headings": [
+        {
+          "headingId": "H0001",
+          "roles": [
+            "DOCUMENT_TITLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0002",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0003",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0004",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0005",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0006",
+          "roles": [
+            "SUBSECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0007",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0008",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0009",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0010",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0011",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0012",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0013",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0014",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0015",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0016",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0017",
+          "roles": [
+            "ANNEX_HEADING"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0018",
+          "roles": [
+            "CHAPTER",
+            "SUBSECTION"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0019",
+          "roles": [
+            "CHAPTER",
+            "SUBSECTION",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0020",
+          "roles": [
+            "CHAPTER",
+            "SUBSECTION",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0021",
+          "roles": [
+            "CHAPTER",
+            "SUBSECTION",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0022",
+          "roles": [
+            "ANNEX_HEADING",
+            "TOC_ENTRY"
+          ],
+          "stable": false
+        },
+        {
+          "headingId": "H0023",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0024",
+          "roles": [
+            "CHAPTER"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0025",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0026",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0027",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0028",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0029",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0030",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0031",
+          "roles": [
+            "CHAPTER"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0032",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0033",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0034",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0035",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0036",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0037",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0038",
+          "roles": [
+            "CHAPTER"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0039",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0040",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0041",
+          "roles": [
+            "TOC_ENTRY"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0042",
+          "roles": [
+            "ANNEX_HEADING"
+          ],
+          "stable": true
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "headings": [
+        {
+          "headingId": "H0001",
+          "roles": [
+            "DOCUMENT_TITLE"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0002",
+          "roles": [
+            "OTHER_NON_TASK_STRUCTURAL"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0003",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0004",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0005",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0006",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0007",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0008",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0009",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0010",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0011",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0012",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0013",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0014",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0015",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0016",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0017",
+          "roles": [
+            "SECTION"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0018",
+          "roles": [
+            "ANNEX_HEADING"
+          ],
+          "stable": true
+        },
+        {
+          "headingId": "H0019",
+          "roles": [
+            "ANNEX_HEADING"
+          ],
+          "stable": true
+        }
+      ]
+    }
+  ],
+  "modelRoleError": "NOT_MEASURED"
+}

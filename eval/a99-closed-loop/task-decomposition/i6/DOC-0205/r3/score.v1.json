@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "a99-a99-i6-score-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r3",
+  "status": "SUCCESS",
+  "passA": {
+    "stage": "PASS_A",
+    "gold": 71,
+    "tp": 71,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "firstLossCounts": {},
+    "firstLosses": [],
+    "falsePositives": []
+  },
+  "final": {
+    "stage": "FINAL",
+    "gold": 71,
+    "tp": 71,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "firstLossCounts": {},
+    "firstLosses": [],
+    "falsePositives": []
+  },
+  "goldReadBeforeFreeze": false
+}

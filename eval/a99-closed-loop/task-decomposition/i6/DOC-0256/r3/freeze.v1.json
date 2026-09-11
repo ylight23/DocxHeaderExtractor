@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-a99-i6-final-freeze-v1",
+  "experimentId": "A99-I6",
+  "documentId": "DOC-0256",
+  "repeat": "r3",
+  "gitSha": "81573a87f3611ee9e7141a7a68ac7c7017075002",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+  "packetHash": "98ddb9b0c1ba4d121438be1aa288c4284f5c554ee8ff13700ecfaab460eae1a2",
+  "predictionSha256": "e46c2efd6fd4067d0f19b41ad2f6d5de20721d745d07366497baaf09479bbf83",
+  "resultSha256": "48ea54b413f60fbfc18d7e5fa1a3802193009cd1dba6554318fbade6580fb9c5",
+  "passAFreeze": "e030198373409da71d2881e056d5d18e534bbe9c6aa4a7b48ed23a0fd12ac310",
+  "passBFreeze": "939688506cb79130399e91181e83e9a696ad98beb8599f79af8a749dd50ef8c4",
+  "passAHeadingCount": 22,
+  "finalCount": 22,
+  "validatorRejected": 0,
+  "passBIdentityMutation": false,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-11T08:42:58.1711394+00:00"
+}

@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "a99-a99-i6-final-prediction-v1",
+  "experimentId": "A99-I6",
+  "documentId": "DOC-0001",
+  "repeat": "r2",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "packetHash": "350c756f4ff775028f2d3f5adbc3a56c2a73ec2cd1645616ffbd2c38e93b7e75",
+  "passAHeadingCount": 7,
+  "passBRoleCount": 7,
+  "passAHeadings": [
+    {
+      "headingId": "H0001",
+      "sourceId": "body[1]/p[1]",
+      "start": 0,
+      "end": 24,
+      "text": "Ch\u01B0\u01A1ng 1. Quy \u0111\u1ECBnh chung"
+    },
+    {
+      "headingId": "H0002",
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 23,
+      "text": "1.1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh"
+    },
+    {
+      "headingId": "H0003",
+      "sourceId": "body[1]/p[5]",
+      "start": 0,
+      "end": 22,
+      "text": "1.2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng"
+    },
+    {
+      "headingId": "H0004",
+      "sourceId": "body[1]/p[7]",
+      "start": 0,
+      "end": 22,
+      "text": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD"
+    },
+    {
+      "headingId": "H0005",
+      "sourceId": "body[1]/p[9]",
+      "start": 0,
+      "end": 24,
+      "text": "1.2.2. \u0110\u01A1n v\u1ECB tr\u1EF1c thu\u1ED9c"
+    },
+    {
+      "headingId": "H0006",
+      "sourceId": "body[1]/p[11]",
+      "start": 0,
+      "end": 27,
+      "text": "Ch\u01B0\u01A1ng 2. T\u1ED5 ch\u1EE9c th\u1EF1c hi\u1EC7n"
+    },
+    {
+      "headingId": "H0007",
+      "sourceId": "body[1]/p[13]",
+      "start": 0,
+      "end": 26,
+      "text": "2.1. Ph\u00E2n c\u00F4ng tr\u00E1ch nhi\u1EC7m"
+    }
+  ],
+  "passBRoles": [
+    {
+      "headingId": "H0001",
+      "role": "CHAPTER"
+    },
+    {
+      "headingId": "H0002",
+      "role": "SECTION"
+    },
+    {
+      "headingId": "H0003",
+      "role": "SECTION"
+    },
+    {
+      "headingId": "H0004",
+      "role": "SUBSECTION"
+    },
+    {
+      "headingId": "H0005",
+      "role": "SUBSECTION"
+    },
+    {
+      "headingId": "H0006",
+      "role": "CHAPTER"
+    },
+    {
+      "headingId": "H0007",
+      "role": "SECTION"
+    }
+  ],
+  "finalHeadings": [
+    {
+      "sourceId": "body[1]/p[1]",
+      "start": 0,
+      "end": 24,
+      "text": "Ch\u01B0\u01A1ng 1. Quy \u0111\u1ECBnh chung",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 23,
+      "text": "1.1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "start": 0,
+      "end": 22,
+      "text": "1.2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[7]",
+      "start": 0,
+      "end": 22,
+      "text": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[9]",
+      "start": 0,
+      "end": 24,
+      "text": "1.2.2. \u0110\u01A1n v\u1ECB tr\u1EF1c thu\u1ED9c",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "start": 0,
+      "end": 27,
+      "text": "Ch\u01B0\u01A1ng 2. T\u1ED5 ch\u1EE9c th\u1EF1c hi\u1EC7n",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[13]",
+      "start": 0,
+      "end": 26,
+      "text": "2.1. Ph\u00E2n c\u00F4ng tr\u00E1ch nhi\u1EC7m",
+      "role": 0
+    }
+  ],
+  "validatorAccepted": 7,
+  "validatorRejected": 0,
+  "passBIdentityMutation": false,
+  "goldReadBeforeFreeze": false
+}

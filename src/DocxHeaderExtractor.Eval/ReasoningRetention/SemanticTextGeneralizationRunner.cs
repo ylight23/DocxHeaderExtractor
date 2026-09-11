@@ -15,7 +15,7 @@ namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 /// <summary>Three-repeat, exact-evaluable Strict Gold generalization campaign for the frozen
 /// semantic-text contract. Cohort eligibility is metadata-only; each exact Gold row is loaded
 /// only after its prediction, result, and freeze hashes have been written and verified.</summary>
-public static class SemanticTextGeneralizationRunner
+public static partial class SemanticTextGeneralizationRunner
 {
     private const string ControlModel = "qwen/qwen3.7-flash";
     private const string ChallengerModel = "qwen/qwen3.5-9b";

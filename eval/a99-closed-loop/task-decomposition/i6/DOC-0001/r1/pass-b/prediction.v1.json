@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "a99-a99-i6-pass-b-prediction-v1",
+  "experimentId": "A99-I6",
+  "documentId": "DOC-0001",
+  "repeat": "r1",
+  "roles": [
+    {
+      "headingId": "H0001",
+      "role": "CHAPTER"
+    },
+    {
+      "headingId": "H0002",
+      "role": "SECTION"
+    },
+    {
+      "headingId": "H0003",
+      "role": "SECTION"
+    },
+    {
+      "headingId": "H0004",
+      "role": "SUBSECTION"
+    },
+    {
+      "headingId": "H0005",
+      "role": "CHAPTER"
+    },
+    {
+      "headingId": "H0006",
+      "role": "SECTION"
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

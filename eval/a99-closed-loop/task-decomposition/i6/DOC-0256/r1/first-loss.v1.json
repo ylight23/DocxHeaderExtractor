@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "a99-a99-i6-first-loss-v1",
+  "documentId": "DOC-0256",
+  "repeat": "r1",
+  "passA": [
+    {
+      "key": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[17]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[26]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    }
+  ],
+  "final": [
+    {
+      "key": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[17]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[26]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    }
+  ],
+  "bindAmbiguous": 0,
+  "bindFailure": 0,
+  "systemLoss": 0,
+  "goldReadBeforeFreeze": false
+}

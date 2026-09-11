@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "a99-a99-i6-score-v1",
+  "documentId": "DOC-0256",
+  "repeat": "r1",
+  "status": "SUCCESS",
+  "passA": {
+    "stage": "PASS_A",
+    "gold": 24,
+    "tp": 21,
+    "fp": 1,
+    "fn": 3,
+    "precision": 0.9545454545454546,
+    "recall": 0.875,
+    "f1": 0.9130434782608695,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 3,
+      "MODEL_FALSE_POSITIVE": 1
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/p[11]:0:6",
+        "exactSourceText": "Africa",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[17]:0:20",
+        "exactSourceText": "Asia and the Pacific",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[26]:0:25",
+        "exactSourceText": "Eurostat\u2013OECD PPP Program",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": [
+      {
+        "key": "body[1]/p[3]:0:87",
+        "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      }
+    ]
+  },
+  "final": {
+    "stage": "FINAL",
+    "gold": 24,
+    "tp": 21,
+    "fp": 1,
+    "fn": 3,
+    "precision": 0.9545454545454546,
+    "recall": 0.875,
+    "f1": 0.9130434782608695,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 3,
+      "MODEL_FALSE_POSITIVE": 1
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/p[11]:0:6",
+        "exactSourceText": "Africa",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[17]:0:20",
+        "exactSourceText": "Asia and the Pacific",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[26]:0:25",
+        "exactSourceText": "Eurostat\u2013OECD PPP Program",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": [
+      {
+        "key": "body[1]/p[3]:0:87",
+        "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      }
+    ]
+  },
+  "goldReadBeforeFreeze": false
+}

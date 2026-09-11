@@ -1,0 +1,265 @@
+{
+  "schemaVersion": "a99-a99-i6-score-v1",
+  "documentId": "DOC-0252",
+  "repeat": "r1",
+  "status": "SUCCESS",
+  "passA": {
+    "stage": "PASS_A",
+    "gold": 27,
+    "tp": 25,
+    "fp": 30,
+    "fn": 2,
+    "precision": 0.45454545454545453,
+    "recall": 0.9259259259259259,
+    "f1": 0.6097560975609756,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 2,
+      "MODEL_FALSE_POSITIVE": 30
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+        "exactSourceText": "Western Asia",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[158]:56:62",
+        "exactSourceText": "Agenda",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": [
+      {
+        "key": "body[1]/p[3]:0:47",
+        "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[4]:0:24",
+        "exactSourceText": "TECHNICAL ADVISORY GROUP",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[5]:0:15",
+        "exactSourceText": "MARCH 7-8, 2025",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[6]:0:17",
+        "exactSourceText": "New York - Hybrid",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[46]:0:12",
+        "exactSourceText": "Western Asia",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[157]:0:100",
+        "exactSourceText": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[158]:56:153",
+        "exactSourceText": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]:0:90",
+        "exactSourceText": "Update on the ICP 2021 and 2024 Cycles [World Bank and ICP Regional Implementing Agencies]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[159]:0:65",
+        "exactSourceText": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]:0:108",
+        "exactSourceText": "Research Topics Emerging from the Previous ICP Cycles [World Bank] Forthcoming Research Topics [Prasada Rao]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[5]/tr[1]/tc[2]/p[2]:0:86",
+        "exactSourceText": "Setting Up a Short- and Long-Term Research and Development Agenda [Co- Chairs and TAG]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[160]:0:133",
+        "exactSourceText": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces 14:00 \u2013 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[164]:0:87",
+        "exactSourceText": "14:15 \u2013 15:00 Terms of Reference for a Task Force on Annual PPP Production [World Bank]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[165]:0:91",
+        "exactSourceText": "15:00 \u2013 15:45 Terms of Reference for a Task Force on ICP Classification Update [World Bank]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[166]:0:27",
+        "exactSourceText": "SESSION V: Current Research",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[6]/tr[1]/tc[2]/p[1]:0:85",
+        "exactSourceText": "The Treatment of Import and Export Prices in International Comparisons [Rob Feenstra]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[167]:0:51",
+        "exactSourceText": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[168]:0:36",
+        "exactSourceText": "SESSION V: Current Research (Cont\u2019d)",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[7]/tr[1]/tc[2]/p[1]:0:138",
+        "exactSourceText": "A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons [Naohito Abe and Prasada Rao]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[7]/tr[1]/tc[2]/p[2]:0:91",
+        "exactSourceText": "Treatment of Scanner (Transaction) Data in the European Comparison Program (ECP) [Eurostat]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[7]/tr[1]/tc[2]/p[3]:0:74",
+        "exactSourceText": "Treatment of Negative Expenditures in ICP [Prasada Rao and Sergey Sergeev]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[7]/tr[1]/tc[2]/p[4]:0:37",
+        "exactSourceText": "Fine Tuning Global Linking Procedures",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[7]/tr[2]/tc[3]/p[1]:0:118",
+        "exactSourceText": "Alternative Global Linking Methods [Robert Hill] Similarity Linking Within and Between Regions [Erwin Diewert and Yuri",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[7]/tr[3]/tc[2]/p[1]:0:120",
+        "exactSourceText": "Dikhanov] Improving Reliability of Price Comparisons \u2013 Basic Heading PPPs and Sparsity of Price Tableaus [Erwin Diewert]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[7]/tr[4]/tc[3]/p[1]:0:65",
+        "exactSourceText": "Alternative Basic Heading PPP Aggregation Methods [Yuri Dikhanov]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[169]:0:19",
+        "exactSourceText": "SESSION VI: Closing",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[170]:0:60",
+        "exactSourceText": "15:00 \u2013 15:15 Any Other Business and Closing [TAG Co-Chairs]",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[175]:0:36",
+        "exactSourceText": "ICP Technical Advisory Group members",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[176]:0:42",
+        "exactSourceText": "ICP experts, guest speakers, and observers",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[177]:0:42",
+        "exactSourceText": "ICP Inter-Agency Coordination Group (IACG)",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      }
+    ]
+  },
+  "final": {
+    "stage": "FINAL",
+    "gold": 27,
+    "tp": 25,
+    "fp": 3,
+    "fn": 2,
+    "precision": 0.8928571428571429,
+    "recall": 0.9259259259259259,
+    "f1": 0.9090909090909091,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 2,
+      "MODEL_FALSE_POSITIVE": 3
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+        "exactSourceText": "Western Asia",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[158]:56:62",
+        "exactSourceText": "Agenda",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": [
+      {
+        "key": "body[1]/p[3]:0:47",
+        "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[4]:0:24",
+        "exactSourceText": "TECHNICAL ADVISORY GROUP",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[46]:0:12",
+        "exactSourceText": "Western Asia",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      }
+    ]
+  },
+  "goldReadBeforeFreeze": false
+}

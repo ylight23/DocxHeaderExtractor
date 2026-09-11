@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "a99-a99-i6-score-v1",
+  "documentId": "DOC-0256",
+  "repeat": "r2",
+  "status": "SUCCESS",
+  "passA": {
+    "stage": "PASS_A",
+    "gold": 24,
+    "tp": 21,
+    "fp": 21,
+    "fn": 3,
+    "precision": 0.5,
+    "recall": 0.875,
+    "f1": 0.6363636363636364,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 3,
+      "MODEL_FALSE_POSITIVE": 21
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/p[11]:0:6",
+        "exactSourceText": "Africa",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[17]:0:20",
+        "exactSourceText": "Asia and the Pacific",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[26]:0:25",
+        "exactSourceText": "Eurostat\u2013OECD PPP Program",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": [
+      {
+        "key": "body[1]/p[3]:0:87",
+        "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[1]/tr[3]/tc[2]/p[1]:0:53",
+        "exactSourceText": "Regional updates on the ICP 2021 cycle implementation",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[1]/tr[9]/tc[2]/p[1]:0:62",
+        "exactSourceText": "Regional updates on the ICP 2021 cycle implementation (Cont\u0027d)",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[1]/tr[11]/tc[2]/p[1]:0:51",
+        "exactSourceText": "Global updates on the ICP 2021 cycle implementation",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[1]/tr[16]/tc[2]/p[1]:0:60",
+        "exactSourceText": "Data review: Household consumption price and importance data",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[1]/tr[18]/tc[2]/p[1]:0:60",
+        "exactSourceText": "Data review: Household consumption price and importance data",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]:0:39",
+        "exactSourceText": "Data review: Housing prices and volumes",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]:0:30",
+        "exactSourceText": "Data review: Private education",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]:0:64",
+        "exactSourceText": "Data review: Government compensation and productivity adjustment",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[113]:0:76",
+        "exactSourceText": "13:00 \u2013 14:00 Data review: Government compensation and productivity (cont\u2019d)",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[114]:0:50",
+        "exactSourceText": "14:00 \u2013 15:30 Data review: Machinery and equipment",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[116]:0:61",
+        "exactSourceText": "15:45 \u2013 17:00 Data review: Construction and civil engineering",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]:0:53",
+        "exactSourceText": "Data review: 2017-2021 National accounts expenditures",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]:0:62",
+        "exactSourceText": "Data review: 2017-2021 National accounts expenditures (cont\u2019d)",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[3]/tr[5]/tc[2]/p[1]:0:59",
+        "exactSourceText": "Data review: 2017-2021 Population and market exchange rates",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]:0:62",
+        "exactSourceText": "Data review: 2017-2021 timeseries data (PPPs, CPIs, deflators)",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[3]/tr[9]/tc[2]/p[1]:0:21",
+        "exactSourceText": "Data reviews (cont\u2019d)",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[3]/tr[11]/tc[2]/p[1]:0:20",
+        "exactSourceText": "Data review (cont\u2019d)",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[4]/tr[2]/tc[2]/p[1]:0:75",
+        "exactSourceText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[4]/tr[5]/tc[2]/p[1]:0:31",
+        "exactSourceText": "Planning for the ICP 2024 cycle",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]:0:31",
+        "exactSourceText": "Planning for the ICP 2024 cycle",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      }
+    ]
+  },
+  "final": {
+    "stage": "FINAL",
+    "gold": 24,
+    "tp": 21,
+    "fp": 1,
+    "fn": 3,
+    "precision": 0.9545454545454546,
+    "recall": 0.875,
+    "f1": 0.9130434782608695,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 3,
+      "MODEL_FALSE_POSITIVE": 1
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/p[11]:0:6",
+        "exactSourceText": "Africa",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[17]:0:20",
+        "exactSourceText": "Asia and the Pacific",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[26]:0:25",
+        "exactSourceText": "Eurostat\u2013OECD PPP Program",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": [
+      {
+        "key": "body[1]/p[3]:0:87",
+        "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      }
+    ]
+  },
+  "goldReadBeforeFreeze": false
+}

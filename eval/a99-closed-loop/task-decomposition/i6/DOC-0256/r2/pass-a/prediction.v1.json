@@ -1,0 +1,1489 @@
+{
+  "schemaVersion": "a99-a99-i6-pass-a-prediction-v1",
+  "experimentId": "A99-I6",
+  "documentId": "DOC-0256",
+  "repeat": "r2",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+  "packetHash": "98ddb9b0c1ba4d121438be1aa288c4284f5c554ee8ff13700ecfaab460eae1a2",
+  "promptHash": "be3866fc5b2077275192970ba06df74c1a3c72e242e18dc417005ccbbb27f638",
+  "schemaHash": "731674f9be474ac059180cd837d2dcd3961cd767d03bb1e3b00bff8323a01dfe",
+  "headings": [
+    {
+      "source": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0004",
+      "text": "Welcome and meeting objectives",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0008",
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0016",
+      "text": "Commonwealth of Independent States",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0024",
+      "text": "Latin America and the Caribbean",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0027",
+      "text": "Western Asia",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0032",
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0043",
+      "text": "Data review: Household consumption price and importance data",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0049",
+      "text": "Data review: Housing prices and volumes",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0053",
+      "text": "Data review: Private Education",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0059",
+      "text": "Data review: Government compensation and productivity adjustment",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0062",
+      "text": "Data review: Machinery and equipment and construction",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0066",
+      "text": "Data review: 2017-2021 National Accounts expenditures",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0072",
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0074",
+      "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0081",
+      "text": "Planning for the ICP 2024 cycle",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0087",
+      "text": "Annex 1: Meeting Agenda",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0088",
+      "text": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0092",
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0104",
+      "text": "Regional updates on the ICP 2021 cycle implementation (Cont\u0027d)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0108",
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0118",
+      "text": "Data review: Household consumption price and importance data",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0122",
+      "text": "Data review: Household consumption price and importance data",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0123",
+      "text": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0125",
+      "text": "Data review: Housing prices and volumes",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0129",
+      "text": "Data review: Private education",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0131",
+      "text": "Data review: Government compensation and productivity adjustment",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0134",
+      "text": "13:00 \u2013 14:00 Data review: Government compensation and productivity (cont\u2019d)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0135",
+      "text": "14:00 \u2013 15:30 Data review: Machinery and equipment",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0137",
+      "text": "15:45 \u2013 17:00 Data review: Construction and civil engineering",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0138",
+      "text": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0140",
+      "text": "Data review: 2017-2021 National accounts expenditures",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0144",
+      "text": "Data review: 2017-2021 National accounts expenditures (cont\u2019d)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0146",
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0150",
+      "text": "Data review: 2017-2021 timeseries data (PPPs, CPIs, deflators)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0154",
+      "text": "Data reviews (cont\u2019d)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0158",
+      "text": "Data review (cont\u2019d)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0159",
+      "text": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0166",
+      "text": "Planning for the ICP 2024 cycle",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0178",
+      "text": "Planning for the ICP 2024 cycle",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0185",
+      "text": "Annex 2: List of participants",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ],
+  "boundHeadings": [
+    {
+      "alias": "S0001",
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 2,
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 87
+    },
+    {
+      "alias": "S0004",
+      "sourceId": "body[1]/p[6]",
+      "sourceOrdinal": 5,
+      "text": "Welcome and meeting objectives",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 30
+    },
+    {
+      "alias": "S0008",
+      "sourceId": "body[1]/p[10]",
+      "sourceOrdinal": 9,
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 53
+    },
+    {
+      "alias": "S0016",
+      "sourceId": "body[1]/p[20]",
+      "sourceOrdinal": 19,
+      "text": "Commonwealth of Independent States",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 34
+    },
+    {
+      "alias": "S0024",
+      "sourceId": "body[1]/p[32]",
+      "sourceOrdinal": 31,
+      "text": "Latin America and the Caribbean",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 31
+    },
+    {
+      "alias": "S0027",
+      "sourceId": "body[1]/p[35]",
+      "sourceOrdinal": 34,
+      "text": "Western Asia",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 12
+    },
+    {
+      "alias": "S0032",
+      "sourceId": "body[1]/p[42]",
+      "sourceOrdinal": 41,
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 51
+    },
+    {
+      "alias": "S0043",
+      "sourceId": "body[1]/p[55]",
+      "sourceOrdinal": 54,
+      "text": "Data review: Household consumption price and importance data",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 60
+    },
+    {
+      "alias": "S0049",
+      "sourceId": "body[1]/p[61]",
+      "sourceOrdinal": 60,
+      "text": "Data review: Housing prices and volumes",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 39
+    },
+    {
+      "alias": "S0053",
+      "sourceId": "body[1]/p[67]",
+      "sourceOrdinal": 66,
+      "text": "Data review: Private Education",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 30
+    },
+    {
+      "alias": "S0059",
+      "sourceId": "body[1]/p[73]",
+      "sourceOrdinal": 72,
+      "text": "Data review: Government compensation and productivity adjustment",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 64
+    },
+    {
+      "alias": "S0062",
+      "sourceId": "body[1]/p[76]",
+      "sourceOrdinal": 75,
+      "text": "Data review: Machinery and equipment and construction",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 53
+    },
+    {
+      "alias": "S0066",
+      "sourceId": "body[1]/p[80]",
+      "sourceOrdinal": 79,
+      "text": "Data review: 2017-2021 National Accounts expenditures",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 53
+    },
+    {
+      "alias": "S0072",
+      "sourceId": "body[1]/p[88]",
+      "sourceOrdinal": 87,
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 59
+    },
+    {
+      "alias": "S0074",
+      "sourceId": "body[1]/p[90]",
+      "sourceOrdinal": 89,
+      "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 102
+    },
+    {
+      "alias": "S0081",
+      "sourceId": "body[1]/p[99]",
+      "sourceOrdinal": 98,
+      "text": "Planning for the ICP 2024 cycle",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 31
+    },
+    {
+      "alias": "S0087",
+      "sourceId": "body[1]/p[107]",
+      "sourceOrdinal": 106,
+      "text": "Annex 1: Meeting Agenda",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 23
+    },
+    {
+      "alias": "S0088",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 107,
+      "text": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 32
+    },
+    {
+      "alias": "S0092",
+      "sourceId": "body[1]/tbl[1]/tr[3]/tc[2]/p[1]",
+      "sourceOrdinal": 111,
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 53
+    },
+    {
+      "alias": "S0104",
+      "sourceId": "body[1]/tbl[1]/tr[9]/tc[2]/p[1]",
+      "sourceOrdinal": 123,
+      "text": "Regional updates on the ICP 2021 cycle implementation (Cont\u0027d)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 62
+    },
+    {
+      "alias": "S0108",
+      "sourceId": "body[1]/tbl[1]/tr[11]/tc[2]/p[1]",
+      "sourceOrdinal": 127,
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 51
+    },
+    {
+      "alias": "S0118",
+      "sourceId": "body[1]/tbl[1]/tr[16]/tc[2]/p[1]",
+      "sourceOrdinal": 137,
+      "text": "Data review: Household consumption price and importance data",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 60
+    },
+    {
+      "alias": "S0122",
+      "sourceId": "body[1]/tbl[1]/tr[18]/tc[2]/p[1]",
+      "sourceOrdinal": 141,
+      "text": "Data review: Household consumption price and importance data",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 60
+    },
+    {
+      "alias": "S0123",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 143,
+      "text": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 34
+    },
+    {
+      "alias": "S0125",
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "sourceOrdinal": 145,
+      "text": "Data review: Housing prices and volumes",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 39
+    },
+    {
+      "alias": "S0129",
+      "sourceId": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+      "sourceOrdinal": 149,
+      "text": "Data review: Private education",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 30
+    },
+    {
+      "alias": "S0131",
+      "sourceId": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+      "sourceOrdinal": 151,
+      "text": "Data review: Government compensation and productivity adjustment",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 64
+    },
+    {
+      "alias": "S0134",
+      "sourceId": "body[1]/p[113]",
+      "sourceOrdinal": 156,
+      "text": "13:00 \u2013 14:00 Data review: Government compensation and productivity (cont\u2019d)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 76
+    },
+    {
+      "alias": "S0135",
+      "sourceId": "body[1]/p[114]",
+      "sourceOrdinal": 157,
+      "text": "14:00 \u2013 15:30 Data review: Machinery and equipment",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 50
+    },
+    {
+      "alias": "S0137",
+      "sourceId": "body[1]/p[116]",
+      "sourceOrdinal": 159,
+      "text": "15:45 \u2013 17:00 Data review: Construction and civil engineering",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 61
+    },
+    {
+      "alias": "S0138",
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 160,
+      "text": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 33
+    },
+    {
+      "alias": "S0140",
+      "sourceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "sourceOrdinal": 162,
+      "text": "Data review: 2017-2021 National accounts expenditures",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 53
+    },
+    {
+      "alias": "S0144",
+      "sourceId": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+      "sourceOrdinal": 166,
+      "text": "Data review: 2017-2021 National accounts expenditures (cont\u2019d)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 62
+    },
+    {
+      "alias": "S0146",
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[2]/p[1]",
+      "sourceOrdinal": 168,
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 59
+    },
+    {
+      "alias": "S0150",
+      "sourceId": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+      "sourceOrdinal": 172,
+      "text": "Data review: 2017-2021 timeseries data (PPPs, CPIs, deflators)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 62
+    },
+    {
+      "alias": "S0154",
+      "sourceId": "body[1]/tbl[3]/tr[9]/tc[2]/p[1]",
+      "sourceOrdinal": 176,
+      "text": "Data reviews (cont\u2019d)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 21
+    },
+    {
+      "alias": "S0158",
+      "sourceId": "body[1]/tbl[3]/tr[11]/tc[2]/p[1]",
+      "sourceOrdinal": 180,
+      "text": "Data review (cont\u2019d)",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 20
+    },
+    {
+      "alias": "S0159",
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 182,
+      "text": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 31
+    },
+    {
+      "alias": "S0161",
+      "sourceId": "body[1]/tbl[4]/tr[2]/tc[2]/p[1]",
+      "sourceOrdinal": 184,
+      "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 75
+    },
+    {
+      "alias": "S0166",
+      "sourceId": "body[1]/tbl[4]/tr[5]/tc[2]/p[1]",
+      "sourceOrdinal": 189,
+      "text": "Planning for the ICP 2024 cycle",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 31
+    },
+    {
+      "alias": "S0178",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]",
+      "sourceOrdinal": 203,
+      "text": "Planning for the ICP 2024 cycle",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 31
+    },
+    {
+      "alias": "S0185",
+      "sourceId": "body[1]/p[124]",
+      "sourceOrdinal": 215,
+      "text": "Annex 2: List of participants",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "start": 0,
+      "end": 29
+    }
+  ],
+  "bindingObservations": [
+    {
+      "rawOrdinal": 0,
+      "heading": {
+        "source": "S0001",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0001",
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 87,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 1,
+      "heading": {
+        "source": "S0004",
+        "text": "Welcome and meeting objectives",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0004",
+      "sourceId": "body[1]/p[6]",
+      "start": 0,
+      "end": 30,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 2,
+      "heading": {
+        "source": "S0008",
+        "text": "Regional updates on the ICP 2021 cycle implementation",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0008",
+      "sourceId": "body[1]/p[10]",
+      "start": 0,
+      "end": 53,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 3,
+      "heading": {
+        "source": "S0016",
+        "text": "Commonwealth of Independent States",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0016",
+      "sourceId": "body[1]/p[20]",
+      "start": 0,
+      "end": 34,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 4,
+      "heading": {
+        "source": "S0024",
+        "text": "Latin America and the Caribbean",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0024",
+      "sourceId": "body[1]/p[32]",
+      "start": 0,
+      "end": 31,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 5,
+      "heading": {
+        "source": "S0027",
+        "text": "Western Asia",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0027",
+      "sourceId": "body[1]/p[35]",
+      "start": 0,
+      "end": 12,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 6,
+      "heading": {
+        "source": "S0032",
+        "text": "Global updates on the ICP 2021 cycle implementation",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0032",
+      "sourceId": "body[1]/p[42]",
+      "start": 0,
+      "end": 51,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 7,
+      "heading": {
+        "source": "S0043",
+        "text": "Data review: Household consumption price and importance data",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0043",
+      "sourceId": "body[1]/p[55]",
+      "start": 0,
+      "end": 60,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 8,
+      "heading": {
+        "source": "S0049",
+        "text": "Data review: Housing prices and volumes",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0049",
+      "sourceId": "body[1]/p[61]",
+      "start": 0,
+      "end": 39,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 9,
+      "heading": {
+        "source": "S0053",
+        "text": "Data review: Private Education",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0053",
+      "sourceId": "body[1]/p[67]",
+      "start": 0,
+      "end": 30,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 10,
+      "heading": {
+        "source": "S0059",
+        "text": "Data review: Government compensation and productivity adjustment",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0059",
+      "sourceId": "body[1]/p[73]",
+      "start": 0,
+      "end": 64,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 11,
+      "heading": {
+        "source": "S0062",
+        "text": "Data review: Machinery and equipment and construction",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0062",
+      "sourceId": "body[1]/p[76]",
+      "start": 0,
+      "end": 53,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 12,
+      "heading": {
+        "source": "S0066",
+        "text": "Data review: 2017-2021 National Accounts expenditures",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0066",
+      "sourceId": "body[1]/p[80]",
+      "start": 0,
+      "end": 53,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 13,
+      "heading": {
+        "source": "S0072",
+        "text": "Data review: 2017-2021 Population and market exchange rates",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0072",
+      "sourceId": "body[1]/p[88]",
+      "start": 0,
+      "end": 59,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 14,
+      "heading": {
+        "source": "S0074",
+        "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0074",
+      "sourceId": "body[1]/p[90]",
+      "start": 0,
+      "end": 102,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 15,
+      "heading": {
+        "source": "S0081",
+        "text": "Planning for the ICP 2024 cycle",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0081",
+      "sourceId": "body[1]/p[99]",
+      "start": 0,
+      "end": 31,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 16,
+      "heading": {
+        "source": "S0087",
+        "text": "Annex 1: Meeting Agenda",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0087",
+      "sourceId": "body[1]/p[107]",
+      "start": 0,
+      "end": 23,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 17,
+      "heading": {
+        "source": "S0088",
+        "text": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0088",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 32,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 18,
+      "heading": {
+        "source": "S0092",
+        "text": "Regional updates on the ICP 2021 cycle implementation",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0092",
+      "sourceId": "body[1]/tbl[1]/tr[3]/tc[2]/p[1]",
+      "start": 0,
+      "end": 53,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 19,
+      "heading": {
+        "source": "S0104",
+        "text": "Regional updates on the ICP 2021 cycle implementation (Cont\u0027d)",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0104",
+      "sourceId": "body[1]/tbl[1]/tr[9]/tc[2]/p[1]",
+      "start": 0,
+      "end": 62,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 20,
+      "heading": {
+        "source": "S0108",
+        "text": "Global updates on the ICP 2021 cycle implementation",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0108",
+      "sourceId": "body[1]/tbl[1]/tr[11]/tc[2]/p[1]",
+      "start": 0,
+      "end": 51,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 21,
+      "heading": {
+        "source": "S0118",
+        "text": "Data review: Household consumption price and importance data",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0118",
+      "sourceId": "body[1]/tbl[1]/tr[16]/tc[2]/p[1]",
+      "start": 0,
+      "end": 60,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 22,
+      "heading": {
+        "source": "S0122",
+        "text": "Data review: Household consumption price and importance data",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0122",
+      "sourceId": "body[1]/tbl[1]/tr[18]/tc[2]/p[1]",
+      "start": 0,
+      "end": 60,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 23,
+      "heading": {
+        "source": "S0123",
+        "text": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0123",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 34,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 24,
+      "heading": {
+        "source": "S0125",
+        "text": "Data review: Housing prices and volumes",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0125",
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "start": 0,
+      "end": 39,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 25,
+      "heading": {
+        "source": "S0129",
+        "text": "Data review: Private education",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0129",
+      "sourceId": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+      "start": 0,
+      "end": 30,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 26,
+      "heading": {
+        "source": "S0131",
+        "text": "Data review: Government compensation and productivity adjustment",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0131",
+      "sourceId": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+      "start": 0,
+      "end": 64,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 27,
+      "heading": {
+        "source": "S0134",
+        "text": "13:00 \u2013 14:00 Data review: Government compensation and productivity (cont\u2019d)",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0134",
+      "sourceId": "body[1]/p[113]",
+      "start": 0,
+      "end": 76,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 28,
+      "heading": {
+        "source": "S0135",
+        "text": "14:00 \u2013 15:30 Data review: Machinery and equipment",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0135",
+      "sourceId": "body[1]/p[114]",
+      "start": 0,
+      "end": 50,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 29,
+      "heading": {
+        "source": "S0137",
+        "text": "15:45 \u2013 17:00 Data review: Construction and civil engineering",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0137",
+      "sourceId": "body[1]/p[116]",
+      "start": 0,
+      "end": 61,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 30,
+      "heading": {
+        "source": "S0138",
+        "text": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0138",
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 33,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 31,
+      "heading": {
+        "source": "S0140",
+        "text": "Data review: 2017-2021 National accounts expenditures",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0140",
+      "sourceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "start": 0,
+      "end": 53,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 32,
+      "heading": {
+        "source": "S0144",
+        "text": "Data review: 2017-2021 National accounts expenditures (cont\u2019d)",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0144",
+      "sourceId": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+      "start": 0,
+      "end": 62,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 33,
+      "heading": {
+        "source": "S0146",
+        "text": "Data review: 2017-2021 Population and market exchange rates",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0146",
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[2]/p[1]",
+      "start": 0,
+      "end": 59,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 34,
+      "heading": {
+        "source": "S0150",
+        "text": "Data review: 2017-2021 timeseries data (PPPs, CPIs, deflators)",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0150",
+      "sourceId": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+      "start": 0,
+      "end": 62,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 35,
+      "heading": {
+        "source": "S0154",
+        "text": "Data reviews (cont\u2019d)",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0154",
+      "sourceId": "body[1]/tbl[3]/tr[9]/tc[2]/p[1]",
+      "start": 0,
+      "end": 21,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 36,
+      "heading": {
+        "source": "S0158",
+        "text": "Data review (cont\u2019d)",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0158",
+      "sourceId": "body[1]/tbl[3]/tr[11]/tc[2]/p[1]",
+      "start": 0,
+      "end": 20,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 37,
+      "heading": {
+        "source": "S0159",
+        "text": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0159",
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 31,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 38,
+      "heading": {
+        "source": "S0161",
+        "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0161",
+      "sourceId": "body[1]/tbl[4]/tr[2]/tc[2]/p[1]",
+      "start": 0,
+      "end": 75,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 39,
+      "heading": {
+        "source": "S0166",
+        "text": "Planning for the ICP 2024 cycle",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0166",
+      "sourceId": "body[1]/tbl[4]/tr[5]/tc[2]/p[1]",
+      "start": 0,
+      "end": 31,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 40,
+      "heading": {
+        "source": "S0178",
+        "text": "Planning for the ICP 2024 cycle",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0178",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]",
+      "start": 0,
+      "end": 31,
+      "failureReason": null
+    },
+    {
+      "rawOrdinal": 41,
+      "heading": {
+        "source": "S0185",
+        "text": "Annex 2: List of participants",
+        "role": "OTHER_STRUCTURAL_LABEL",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 2,
+      "exactTextOccurrenceCount": 1,
+      "alias": "S0185",
+      "sourceId": "body[1]/p[124]",
+      "start": 0,
+      "end": 29,
+      "failureReason": null
+    }
+  ],
+  "roleSentinelHarnessOnly": true,
+  "goldReadBeforeFreeze": false
+}

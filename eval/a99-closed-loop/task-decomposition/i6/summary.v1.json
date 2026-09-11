@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "a99-a99-i6-summary-v1",
+  "experimentId": "A99-I6",
+  "status": "COMPLETE",
+  "classification": "DISCOVERY_ROLE_DECOMPOSITION_REVERT",
+  "startHead": "81573a87f3611ee9e7141a7a68ac7c7017075002",
+  "endHead": "81573a87f3611ee9e7141a7a68ac7c7017075002",
+  "model": "qwen/qwen3.7-flash",
+  "modelCalls": 3,
+  "providerCalls": 3,
+  "expectedProviderCalls": 30,
+  "completedCells": 15,
+  "totalCells": 15,
+  "passACalls": 15,
+  "passBCalls": 15,
+  "persistentB0Omissions": 7,
+  "persistentPassAMisses": 7,
+  "recoveredPersistentTargets": [],
+  "bindAmbiguous": 0,
+  "bindFailure": 6,
+  "systemLoss": 108,
+  "persistentFalsePositives": 0,
+  "modelRoleError": "NOT_MEASURED",
+  "goldFirewall": "PASS",
+  "keepGate": {
+    "targetRecovery": false,
+    "noRegression": false,
+    "systemLoss": 108,
+    "bindFailure": 6,
+    "classification": "DISCOVERY_ROLE_DECOMPOSITION_REVERT"
+  }
+}

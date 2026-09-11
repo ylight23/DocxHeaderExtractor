@@ -71,6 +71,9 @@ internal static class Accuracy99Runner
             "semantic-text-exact-binding" => await RunSemanticTextExactBindingAsync(options, cancellationToken),
             "semantic-text-exact-binding-offline" => await RunSemanticTextExactBindingOfflineAsync(options, cancellationToken),
             "semantic-text-generalization" => await RunSemanticTextGeneralizationAsync(options, cancellationToken),
+            "semantic-text-task-decomposition-e4" => await RunSemanticTextTaskDecompositionE4Async(options, cancellationToken),
+            "semantic-text-task-decomposition-i6" => await RunSemanticTextTaskDecompositionI6Async(options, cancellationToken),
+            "semantic-text-task-decomposition-i6-resume" => await RunSemanticTextTaskDecompositionI6ResumeAsync(options, cancellationToken),
             "semantic-text-source-boundaries" => await RunSemanticTextSourceBoundariesAsync(options, cancellationToken),
             "model-capability-isolation" => await RunModelCapabilityIsolationAsync(options, cancellationToken),
             "model-capability-isolation-resume" => await RunModelCapabilityIsolationResumeAsync(options, cancellationToken),
@@ -188,6 +191,24 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return SemanticTextGeneralizationRunner.RunAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextTaskDecompositionE4Async(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextGeneralizationRunner.RunTaskDecompositionE4Async(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextTaskDecompositionI6Async(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextGeneralizationRunner.RunTaskDecompositionI6Async(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextTaskDecompositionI6ResumeAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextGeneralizationRunner.ResumeTaskDecompositionI6Async(repoRoot, cancellationToken);
     }
 
     private static Task<int> RunSemanticTextSourceBoundariesAsync(CommandLineOptions options, CancellationToken cancellationToken)

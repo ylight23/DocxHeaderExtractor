@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "a99-a99-i6-score-v1",
+  "documentId": "DOC-0001",
+  "repeat": "r1",
+  "status": "SUCCESS",
+  "passA": {
+    "stage": "PASS_A",
+    "gold": 7,
+    "tp": 6,
+    "fp": 0,
+    "fn": 1,
+    "precision": 1,
+    "recall": 0.8571428571428571,
+    "f1": 0.923076923076923,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 1
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/p[7]:0:22",
+        "exactSourceText": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": []
+  },
+  "final": {
+    "stage": "FINAL",
+    "gold": 7,
+    "tp": 6,
+    "fp": 0,
+    "fn": 1,
+    "precision": 1,
+    "recall": 0.8571428571428571,
+    "f1": 0.923076923076923,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 1
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/p[7]:0:22",
+        "exactSourceText": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": []
+  },
+  "goldReadBeforeFreeze": false
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "a99-a99-i6-pass-a-freeze-v1",
+  "experimentId": "A99-I6",
+  "documentId": "DOC-0256",
+  "repeat": "r1",
+  "gitSha": "81573a87f3611ee9e7141a7a68ac7c7017075002",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+  "packetHash": "98ddb9b0c1ba4d121438be1aa288c4284f5c554ee8ff13700ecfaab460eae1a2",
+  "predictionSha256": "0a59c45ab7cd287a393540a3ecddfde8f99c323a7701701318975fcf9c63d30f",
+  "resultSha256": "73d5e0047a9e9af0f3d57fe3eb65ffa60a842b6e61a4b4ee540755c082499230",
+  "headingIdentityCount": 22,
+  "provider": "Alibaba",
+  "finishReason": "stop",
+  "inputTokens": 12593,
+  "reasoningTokens": 5710,
+  "outputTokens": 6536,
+  "roleSentinelHarnessOnly": true,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-11T08:29:31.0253722+00:00"
+}

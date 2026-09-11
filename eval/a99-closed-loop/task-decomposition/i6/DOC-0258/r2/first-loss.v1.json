@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "a99-a99-i6-first-loss-v1",
+  "documentId": "DOC-0258",
+  "repeat": "r2",
+  "passA": [
+    {
+      "key": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[12]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[17]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[18]:0:34",
+      "exactSourceText": "Commonwealth of Independent States",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[19]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[24]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[115]:0:29",
+      "exactSourceText": "Annex 2: List of participants",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    }
+  ],
+  "final": [
+    {
+      "key": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[12]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[17]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[18]:0:34",
+      "exactSourceText": "Commonwealth of Independent States",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[19]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[24]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[115]:0:29",
+      "exactSourceText": "Annex 2: List of participants",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    }
+  ],
+  "bindAmbiguous": 0,
+  "bindFailure": 0,
+  "systemLoss": 2,
+  "goldReadBeforeFreeze": false
+}

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "a99-a99-i6-score-v1",
+  "documentId": "DOC-0258",
+  "repeat": "r3",
+  "status": "SUCCESS",
+  "passA": {
+    "stage": "PASS_A",
+    "gold": 24,
+    "tp": 18,
+    "fp": 1,
+    "fn": 6,
+    "precision": 0.9473684210526315,
+    "recall": 0.75,
+    "f1": 0.8372093023255814,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 6,
+      "MODEL_FALSE_POSITIVE": 1
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/p[11]:0:6",
+        "exactSourceText": "Africa",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[12]:0:20",
+        "exactSourceText": "Asia and the Pacific",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[17]:0:25",
+        "exactSourceText": "Eurostat\u2013OECD PPP Program",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[18]:0:34",
+        "exactSourceText": "Commonwealth of Independent States",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[19]:0:31",
+        "exactSourceText": "Latin America and the Caribbean",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[24]:0:12",
+        "exactSourceText": "Western Asia",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": [
+      {
+        "key": "body[1]/p[4]:0:17",
+        "exactSourceText": "MAY 15 - 18, 2023",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      }
+    ]
+  },
+  "final": {
+    "stage": "FINAL",
+    "gold": 24,
+    "tp": 18,
+    "fp": 0,
+    "fn": 6,
+    "precision": 1,
+    "recall": 0.75,
+    "f1": 0.8571428571428571,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 6
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/p[11]:0:6",
+        "exactSourceText": "Africa",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[12]:0:20",
+        "exactSourceText": "Asia and the Pacific",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[17]:0:25",
+        "exactSourceText": "Eurostat\u2013OECD PPP Program",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[18]:0:34",
+        "exactSourceText": "Commonwealth of Independent States",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[19]:0:31",
+        "exactSourceText": "Latin America and the Caribbean",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[24]:0:12",
+        "exactSourceText": "Western Asia",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": []
+  },
+  "goldReadBeforeFreeze": false
+}

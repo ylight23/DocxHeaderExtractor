@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "a99-a99-i6-first-loss-v1",
+  "documentId": "DOC-0252",
+  "repeat": "r1",
+  "passA": [
+    {
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "exactSourceText": "Western Asia",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[158]:56:62",
+      "exactSourceText": "Agenda",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    }
+  ],
+  "final": [
+    {
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "exactSourceText": "Western Asia",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "key": "body[1]/p[158]:56:62",
+      "exactSourceText": "Agenda",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    }
+  ],
+  "bindAmbiguous": 0,
+  "bindFailure": 0,
+  "systemLoss": 33,
+  "goldReadBeforeFreeze": false
+}

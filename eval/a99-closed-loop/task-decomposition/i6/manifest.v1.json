@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "a99-a99-i6-discovery-role-decomposition-manifest-v1",
+  "experimentId": "A99-I6",
+  "parentCommit": "81573a87f3611ee9e7141a7a68ac7c7017075002",
+  "behavioralParent": "B0@76c4e01",
+  "model": "qwen/qwen3.7-flash",
+  "providerPolicy": {
+    "provider": "OpenRouter",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "route": "MODEL_DEFAULT",
+    "fallback": false,
+    "reasoningEnabled": true,
+    "structuredOutputRequired": true
+  },
+  "sourcePacketHashes": [
+    {
+      "documentId": "DOC-0001",
+      "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "packetHash": "350c756f4ff775028f2d3f5adbc3a56c2a73ec2cd1645616ffbd2c38e93b7e75"
+    },
+    {
+      "documentId": "DOC-0205",
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "packetHash": "65b616df872739a49c9cba307f1530c6673e563bb014723ecabe395485a34afe"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+      "packetHash": "843dd251294acecb3662c5e77f3de0900fcb9e0cf19842b226e748a17a818fb0"
+    },
+    {
+      "documentId": "DOC-0256",
+      "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+      "packetHash": "98ddb9b0c1ba4d121438be1aa288c4284f5c554ee8ff13700ecfaab460eae1a2"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "packetHash": "ba41b80ce8d8e655af8abbcd36e9917dbfc9e792c7e0000fbd66e954607d3384"
+    }
+  ],
+  "sourceSha256": [
+    {
+      "documentId": "DOC-0001",
+      "sha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14"
+    },
+    {
+      "documentId": "DOC-0205",
+      "sha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77"
+    },
+    {
+      "documentId": "DOC-0256",
+      "sha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30"
+    }
+  ],
+  "b0SemanticDefinitionHash": "a9603fe817e4a6ae1eb3085fd86b324e76c42a2aed934692a949d1aee4e68cbb",
+  "b0PromptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+  "b0SchemaHash": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
+  "passAPromptHash": "be3866fc5b2077275192970ba06df74c1a3c72e242e18dc417005ccbbb27f638",
+  "passASchemaHash": "731674f9be474ac059180cd837d2dcd3961cd767d03bb1e3b00bff8323a01dfe",
+  "passBPromptHash": "e70462b8ae7ece4178cb0d28eed729beb755ce75e9a089a81d1100c3a1d348ff",
+  "passBSchemaHash": "52c4cc053a38df96e9dd2e1f000fbebe36452c711e0fd1f76c6b61d2d7f7df92",
+  "binder": {
+    "version": "deterministic-exact-utf16-binder-v1",
+    "hash": "f68a6c4b5deedc5052a07c7e82f319854e1ba41616c3a40664117d1aa5307999"
+  },
+  "validator": {
+    "version": "ReasoningProposalMaterializer-validator-v1",
+    "hash": "aad2766b8696dcd963776dfcfb5989bb393c774eb3f3cdceb178a730075a2a73"
+  },
+  "cohort": {
+    "documents": [
+      "DOC-0001",
+      "DOC-0205",
+      "DOC-0252",
+      "DOC-0256",
+      "DOC-0258"
+    ],
+    "documentCount": 5,
+    "cells": 15,
+    "repeats": 3,
+    "goldOccurrences": 153
+  },
+  "candidateGeneration": false,
+  "recoveryPass": false,
+  "contextExpansion": false,
+  "onlyCausalDelta": "JOINT_DISCOVERY_ROLE_TASK -\u003E DISCOVERY_THEN_ROLE_CLASSIFICATION",
+  "preInferenceInvariants": {
+    "modelDelta": 0,
+    "sourcePacketDelta": 0,
+    "sourceCoverageDelta": 0,
+    "contextDelta": 0,
+    "binderDelta": 0,
+    "goldDelta": 0,
+    "semanticDefinitionDelta": 0,
+    "taskDecompositionDelta": 1
+  },
+  "goldFirewall": {
+    "goldReadBeforeFreeze": false,
+    "goldSuppliedToModel": false,
+    "evaluationAfterFinalFreezeOnly": true
+  },
+  "repeats": 3,
+  "freshProviderCallsExpected": 30,
+  "resumeGranularity": "PASS"
+}

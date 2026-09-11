@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "a99-a99-i6-score-v1",
+  "documentId": "DOC-0258",
+  "repeat": "r2",
+  "status": "SUCCESS",
+  "passA": {
+    "stage": "PASS_A",
+    "gold": 24,
+    "tp": 17,
+    "fp": 2,
+    "fn": 7,
+    "precision": 0.8947368421052632,
+    "recall": 0.7083333333333334,
+    "f1": 0.7906976744186046,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 7,
+      "MODEL_FALSE_POSITIVE": 2
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/p[11]:0:6",
+        "exactSourceText": "Africa",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[12]:0:20",
+        "exactSourceText": "Asia and the Pacific",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[17]:0:25",
+        "exactSourceText": "Eurostat\u2013OECD PPP Program",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[18]:0:34",
+        "exactSourceText": "Commonwealth of Independent States",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[19]:0:31",
+        "exactSourceText": "Latin America and the Caribbean",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[24]:0:12",
+        "exactSourceText": "Western Asia",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[115]:0:29",
+        "exactSourceText": "Annex 2: List of participants",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": [
+      {
+        "key": "body[1]/p[4]:0:17",
+        "exactSourceText": "MAY 15 - 18, 2023",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      },
+      {
+        "key": "body[1]/p[115]:0:230",
+        "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      }
+    ]
+  },
+  "final": {
+    "stage": "FINAL",
+    "gold": 24,
+    "tp": 17,
+    "fp": 1,
+    "fn": 7,
+    "precision": 0.9444444444444444,
+    "recall": 0.7083333333333334,
+    "f1": 0.8095238095238096,
+    "firstLossCounts": {
+      "MODEL_OMISSION": 7,
+      "MODEL_FALSE_POSITIVE": 1
+    },
+    "firstLosses": [
+      {
+        "key": "body[1]/p[11]:0:6",
+        "exactSourceText": "Africa",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[12]:0:20",
+        "exactSourceText": "Asia and the Pacific",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[17]:0:25",
+        "exactSourceText": "Eurostat\u2013OECD PPP Program",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[18]:0:34",
+        "exactSourceText": "Commonwealth of Independent States",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[19]:0:31",
+        "exactSourceText": "Latin America and the Caribbean",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[24]:0:12",
+        "exactSourceText": "Western Asia",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      },
+      {
+        "key": "body[1]/p[115]:0:29",
+        "exactSourceText": "Annex 2: List of participants",
+        "firstLoss": "MODEL_OMISSION",
+        "found": false
+      }
+    ],
+    "falsePositives": [
+      {
+        "key": "body[1]/p[115]:0:230",
+        "exactSourceText": "Annex 2: List of participants African Development Bank (AfDB) \u2212 Ben Paul Mungyereza (by videoconference) \u2212 Gregoire Mboya de Loubassou (in-person) \u2212 Charles Sessede (by videoconference) \u2212 Symphorien Ndang Tabo (by videoconference)",
+        "firstLoss": "MODEL_FALSE_POSITIVE",
+        "found": true
+      }
+    ]
+  },
+  "goldReadBeforeFreeze": false
+}
