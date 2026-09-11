@@ -1,0 +1,295 @@
+{
+  "schemaVersion": "a99-a99-e4-role-pressure-v1",
+  "experimentId": "A99-E4",
+  "status": "COMPLETE_OFFLINE",
+  "behavioralParent": "B0@76c4e01",
+  "model": "qwen/qwen3.7-flash",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "source": "canonical B0 frozen outputs only; Gold used only for offline target labels",
+  "persistentOmissionCount": 7,
+  "targets": [
+    {
+      "documentId": "DOC-0252",
+      "targetSourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "targetText": "Western Asia",
+      "targetSemanticFamily": "REGION_LABEL",
+      "targetEmitted": false,
+      "targetRole": "NOT_AVAILABLE",
+      "targetRoleReason": "B0 omission",
+      "closestEmittedSemanticAnalogues": {
+        "documentId": "DOC-0252",
+        "text": "Western Asia",
+        "sourceOccurrence": {
+          "source": "S0056",
+          "occurrence": null
+        },
+        "role": "SUBSECTION"
+      },
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "documentId": "DOC-0258",
+      "targetSourceId": "body[1]/p[11]",
+      "targetText": "Africa",
+      "targetSemanticFamily": "REGION_LABEL",
+      "targetEmitted": false,
+      "targetRole": "NOT_AVAILABLE",
+      "targetRoleReason": "B0 omission",
+      "closestEmittedSemanticAnalogues": {
+        "documentId": "DOC-0252",
+        "text": "Africa",
+        "sourceOccurrence": {
+          "source": "S0036",
+          "occurrence": null
+        },
+        "role": "SUBSECTION"
+      },
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "documentId": "DOC-0258",
+      "targetSourceId": "body[1]/p[12]",
+      "targetText": "Asia and the Pacific",
+      "targetSemanticFamily": "REGION_LABEL",
+      "targetEmitted": false,
+      "targetRole": "NOT_AVAILABLE",
+      "targetRoleReason": "B0 omission",
+      "closestEmittedSemanticAnalogues": {
+        "documentId": "DOC-0252",
+        "text": "Asia and the Pacific",
+        "sourceOccurrence": {
+          "source": "S0039",
+          "occurrence": null
+        },
+        "role": "SUBSECTION"
+      },
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "documentId": "DOC-0258",
+      "targetSourceId": "body[1]/p[17]",
+      "targetText": "Eurostat–OECD PPP Program",
+      "targetSemanticFamily": "PROGRAM_LABEL",
+      "targetEmitted": false,
+      "targetRole": "NOT_AVAILABLE",
+      "targetRoleReason": "B0 omission",
+      "closestEmittedSemanticAnalogues": {
+        "documentId": "DOC-0252",
+        "text": "Eurostat–OECD PPP Program",
+        "sourceOccurrence": {
+          "source": "S0049",
+          "occurrence": null
+        },
+        "role": "SUBSECTION"
+      },
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "documentId": "DOC-0258",
+      "targetSourceId": "body[1]/p[18]",
+      "targetText": "Commonwealth of Independent States (CIS)",
+      "targetSemanticFamily": "REGION_LABEL",
+      "targetEmitted": false,
+      "targetRole": "NOT_AVAILABLE",
+      "targetRoleReason": "B0 omission",
+      "closestEmittedSemanticAnalogues": {
+        "documentId": "DOC-0252",
+        "text": "Commonwealth of Independent States (CIS)",
+        "sourceOccurrence": {
+          "source": "S0043",
+          "occurrence": null
+        },
+        "role": "SUBSECTION"
+      },
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "documentId": "DOC-0258",
+      "targetSourceId": "body[1]/p[19]",
+      "targetText": "Latin America and the Caribbean",
+      "targetSemanticFamily": "REGION_LABEL",
+      "targetEmitted": false,
+      "targetRole": "NOT_AVAILABLE",
+      "targetRoleReason": "B0 omission",
+      "closestEmittedSemanticAnalogues": {
+        "documentId": "DOC-0252",
+        "text": "Latin America and the Caribbean",
+        "sourceOccurrence": {
+          "source": "S0052",
+          "occurrence": null
+        },
+        "role": "SUBSECTION"
+      },
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "documentId": "DOC-0258",
+      "targetSourceId": "body[1]/p[24]",
+      "targetText": "Western Asia",
+      "targetSemanticFamily": "REGION_LABEL",
+      "targetEmitted": false,
+      "targetRole": "NOT_AVAILABLE",
+      "targetRoleReason": "B0 omission",
+      "closestEmittedSemanticAnalogues": {
+        "documentId": "DOC-0252",
+        "text": "Western Asia",
+        "sourceOccurrence": {
+          "source": "S0056",
+          "occurrence": null
+        },
+        "role": "SUBSECTION"
+      },
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    }
+  ],
+  "analogueAudit": [
+    {
+      "text": "Africa",
+      "sourceOccurrence": {
+        "source": "S0036",
+        "occurrence": null,
+        "role": "SUBSECTION"
+      },
+      "emittedInB0": true,
+      "roles": [
+        "SUBSECTION"
+      ],
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "text": "Asia and the Pacific",
+      "sourceOccurrence": {
+        "source": "S0039",
+        "occurrence": null,
+        "role": "SUBSECTION"
+      },
+      "emittedInB0": true,
+      "roles": [
+        "SUBSECTION"
+      ],
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "text": "Commonwealth of Independent States (CIS)",
+      "sourceOccurrence": {
+        "source": "S0043",
+        "occurrence": null,
+        "role": "SUBSECTION"
+      },
+      "emittedInB0": true,
+      "roles": [
+        "SUBSECTION"
+      ],
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "text": "Eurostat–OECD PPP Program",
+      "sourceOccurrence": {
+        "source": "S0049",
+        "occurrence": null,
+        "role": "SUBSECTION"
+      },
+      "emittedInB0": true,
+      "roles": [
+        "SUBSECTION"
+      ],
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "text": "Latin America and the Caribbean",
+      "sourceOccurrence": {
+        "source": "S0052",
+        "occurrence": null,
+        "role": "SUBSECTION"
+      },
+      "emittedInB0": true,
+      "roles": [
+        "SUBSECTION"
+      ],
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    },
+    {
+      "text": "Western Asia",
+      "sourceOccurrence": {
+        "source": "S0056",
+        "occurrence": null,
+        "role": "SUBSECTION"
+      },
+      "emittedInB0": true,
+      "roles": [
+        "SUBSECTION"
+      ],
+      "sameFamilyRoleConsistency": "CONSISTENT"
+    }
+  ],
+  "roleOntology": {
+    "allowedRoles": [
+      "DOCUMENT_TITLE",
+      "PART",
+      "CHAPTER",
+      "SECTION",
+      "SUBSECTION",
+      "ARTICLE",
+      "CLAUSE_HEADING",
+      "ANNEX_HEADING",
+      "LOCAL_INDEX_TITLE",
+      "AGENDA_NAVIGATION_HEADING",
+      "TOC_ENTRY",
+      "FRONT_MATTER",
+      "CONTENT_HEADING",
+      "OTHER_STRUCTURAL_LABEL",
+      "RUNNING_HEADER",
+      "CAPTION",
+      "LIST_ITEM",
+      "TABLE_LABEL",
+      "DECORATIVE_TEXT",
+      "BODY_FRAGMENT",
+      "OTHER_NON_TASK_STRUCTURAL"
+    ],
+    "targetSemanticClasses": [
+      {
+        "semanticClass": "REGION_LABEL",
+        "plausibleExistingRole": "SUBSECTION",
+        "evidence": "DOC-0252 B0 analogues including Africa, Asia and the Pacific, CIS, Latin America and Western Asia are emitted as SUBSECTION"
+      },
+      {
+        "semanticClass": "PROGRAM_LABEL",
+        "plausibleExistingRole": "SUBSECTION",
+        "evidence": "DOC-0252 B0 analogue Eurostat–OECD PPP Program is emitted as SUBSECTION"
+      },
+      {
+        "semanticClass": "TOPIC_LABEL",
+        "plausibleExistingRole": "CONTENT_HEADING or OTHER_STRUCTURAL_LABEL",
+        "evidence": "existing task vocabulary maps non-level-specific semantic labels to heading roles"
+      }
+    ],
+    "conclusion": "ROLE_ONTOLOGY_SUFFICIENT"
+  },
+  "jointTaskLoad": {
+    "roleRequiredBySchema": true,
+    "roleRequiredByParser": true,
+    "roleUsedByExactBinder": false,
+    "roleUsedByHardValidator": false,
+    "roleUsedByHeadingIdentityScorer": false,
+    "roleCurrentlyMeasured": false,
+    "modelRoleError": "NOT_MEASURED",
+    "notes": [
+      "B0 schema requires role and parser rejects a heading without an allowed role.",
+      "SemanticTextExactBinder resolves source alias and verbatim text; role is carried into the bound DTO but does not affect matching.",
+      "ReasoningHardInvariantValidator checks source/span/text invariants, not semantic role.",
+      "Exact heading identity scoring compares sourceId plus UTF-16 start/end and does not use role.",
+      "Role is consumed later by materialization/projection, so it is a carried pipeline field rather than a discovery identity key."
+    ]
+  },
+  "causalDecision": "DISCOVERY_ROLE_COUPLING_TEST_JUSTIFIED",
+  "decisionBasis": [
+    "Existing roles represent the closest positive analogues; no ontology gap was found.",
+    "The B0 model-facing schema makes role mandatory in the same response as heading discovery.",
+    "Role correctness is not the current measured residual owner: MODEL_ROLE_ERROR remains NOT_MEASURED and heading identity scoring is role-independent.",
+    "This joint discovery/role coupling has not been independently isolated by a discovery-only then role-only experiment."
+  ],
+  "i6Authorized": true,
+  "runtimeGoldLeakage": false
+}

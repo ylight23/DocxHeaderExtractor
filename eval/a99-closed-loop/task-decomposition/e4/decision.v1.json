@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "a99-a99-e4-role-pressure-decision-v1",
+  "experimentId": "A99-E4",
+  "behavioralParent": "B0@76c4e01",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "terminalClassification": "DISCOVERY_ROLE_COUPLING_TEST_JUSTIFIED",
+  "roleOntologyConclusion": "ROLE_ONTOLOGY_SUFFICIENT",
+  "i6Authorized": true,
+  "reason": "Existing roles are sufficient, role is mandatory at discovery time, identity scoring does not depend on role, and coupling has not been independently isolated.",
+  "nextTask": "A99-I6 DISCOVERY / ROLE DECOMPOSITION"
+}
