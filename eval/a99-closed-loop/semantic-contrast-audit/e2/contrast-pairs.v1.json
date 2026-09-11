@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "a99-e2-semantic-contrast-pairs-v1",
+  "experimentId": "A99-E2",
+  "offlineOnly": true,
+  "pairs": [
+    {
+      "pairId": "E2-REGION-SAME-TEXT-OCCURRENCE",
+      "positive": {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+        "verbatimText": "Western Asia",
+        "goldHeading": true,
+        "semanticClass": "REGION_LABEL",
+        "parentContext": "Regional updates / regional comparison table"
+      },
+      "negative": {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[46]",
+        "verbatimText": "Western Asia",
+        "goldHeading": false,
+        "semanticClass": "ORDINARY_PROSE",
+        "parentContext": "Regional update body occurrence"
+      },
+      "modelBehavior": "positive missed; negative emitted",
+      "requiredDistinction": "Same lexical region label, different semantic function and source occurrence context.",
+      "evidenceStrength": "HIGH"
+    },
+    {
+      "pairId": "E2-TOPIC-VS-TABLE-LABEL",
+      "positive": {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[110]",
+        "verbatimText": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "goldHeading": true,
+        "semanticClass": "TOPIC_LABEL",
+        "parentContext": "Session V: Current Research"
+      },
+      "negative": {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[2]",
+        "verbatimText": "Treatment of Scanner (Transaction) Data in the European Comparison Program (ECP) [Eurostat]",
+        "goldHeading": false,
+        "semanticClass": "TABLE_ROW_LABEL",
+        "parentContext": "Agenda/table body"
+      },
+      "modelBehavior": "positive emitted; negative emitted as LIST_ITEM",
+      "requiredDistinction": "Topic heading versus a closely related table/list label; lexical similarity alone is insufficient.",
+      "evidenceStrength": "MEDIUM"
+    },
+    {
+      "pairId": "E2-ANNEX-VS-PARTICIPANT-LABEL",
+      "positive": {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[174]",
+        "verbatimText": "Annex 2: List of Participants",
+        "goldHeading": true,
+        "semanticClass": "NAVIGATION_LABEL",
+        "parentContext": "Document navigation"
+      },
+      "negative": {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[175]",
+        "verbatimText": "ICP Technical Advisory Group members",
+        "goldHeading": false,
+        "semanticClass": "PARTICIPANT_LABEL",
+        "parentContext": "Annex 2 body"
+      },
+      "modelBehavior": "positive emitted; negative emitted",
+      "requiredDistinction": "Enclosing navigation heading versus repeated body category label.",
+      "evidenceStrength": "MEDIUM"
+    }
+  ],
+  "runtimeRuleAuthorized": false,
+  "goldReadBeforeRuntime": false
+}

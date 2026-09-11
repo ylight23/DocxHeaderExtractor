@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "a99-e2-semantic-contrast-audit-manifest-v1",
+  "experimentId": "A99-E2",
+  "parent": "B0@76c4e01",
+  "sourceArtifacts": [
+    "../../semantic-text-generalization/persistent-errors.v1.json",
+    "../../autonomous-completion/b0-residual-authority.v1.json",
+    "../../semantic-text-generalization/{DOC}/r{1,2,3}/prediction.v1.json",
+    "../../strict-gold-occurrence-v1/{DOC}.occurrence-gold-v1.json"
+  ],
+  "offlineOnly": true,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeRuntime": false,
+  "goldUsedOnlyForOfflineAudit": true,
+  "runtimeTransformationChanged": false,
+  "scope": {
+    "persistentOmissions": 7,
+    "persistentFalsePositives": 7,
+    "documents": ["DOC-0205", "DOC-0252", "DOC-0256", "DOC-0258"],
+    "classificationOntology": [
+      "DOCUMENT_TITLE", "PART_TITLE", "CHAPTER_HEADING", "SECTION_HEADING", "SUBSECTION_HEADING",
+      "TOPIC_LABEL", "REGION_LABEL", "PROGRAM_LABEL", "CATEGORY_LABEL", "TABLE_HEADER", "TABLE_ROW_LABEL",
+      "NAVIGATION_LABEL", "AGENDA_LABEL", "PARTICIPANT_LABEL", "CAPTION", "NOTE_LABEL", "ORDINARY_PROSE", "OTHER", "UNKNOWN"
+    ]
+  },
+  "rules": {
+    "noDocumentSpecificRuntimeFix": true,
+    "noLegalMarkerRegex": true,
+    "noPromptChange": true,
+    "noBinderChange": true,
+    "noFuzzyExpansion": true,
+    "noProviderCall": true
+  }
+}

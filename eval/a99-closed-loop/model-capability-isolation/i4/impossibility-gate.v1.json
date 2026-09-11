@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "a99-i4-impossibility-gate-v1",
+  "experimentId": "A99-I4",
+  "completedCells": 13,
+  "blockedCells": 2,
+  "promotionGate": {
+    "requiresNoPairedRegression": true,
+    "promotionPossibleBeforeGate": true,
+    "promotionPossibleAfterObservedRegression": false
+  },
+  "observedPairedRegressions": [
+    { "documentId": "DOC-0001", "repeat": "R1", "controlF1": 1.0, "challengerF1": 0.0, "deltaF1": -1.0, "control": { "tp": 7, "fp": 0, "fn": 0 }, "challenger": { "tp": 0, "fp": 7, "fn": 7 } },
+    { "documentId": "DOC-0205", "repeat": "R1", "controlF1": 0.993006993006993, "challengerF1": 0.0, "deltaF1": -0.993006993006993, "control": { "tp": 71, "fp": 1, "fn": 0 }, "challenger": { "tp": 0, "fp": 1, "fn": 71 } },
+    { "documentId": "DOC-0205", "repeat": "R2", "controlF1": 0.993006993006993, "challengerF1": 0.0, "deltaF1": -0.993006993006993, "control": { "tp": 71, "fp": 1, "fn": 0 }, "challenger": { "tp": 0, "fp": 0, "fn": 71 } },
+    { "documentId": "DOC-0205", "repeat": "R3", "controlF1": 0.993006993006993, "challengerF1": 0.0, "deltaF1": -0.993006993006993, "control": { "tp": 71, "fp": 1, "fn": 0 }, "challenger": { "tp": 0, "fp": 0, "fn": 71 } },
+    { "documentId": "DOC-0252", "repeat": "R1", "controlF1": 0.8771929824561403, "challengerF1": 0.4878048780487805, "deltaF1": -0.3893881044073598, "control": { "tp": 25, "fp": 5, "fn": 2 }, "challenger": { "tp": 10, "fp": 4, "fn": 17 } },
+    { "documentId": "DOC-0252", "repeat": "R3", "controlF1": 0.8620689655172414, "challengerF1": 0.7868852459016393, "deltaF1": -0.07518371961560211, "control": { "tp": 25, "fp": 6, "fn": 2 }, "challenger": { "tp": 24, "fp": 10, "fn": 3 } },
+    { "documentId": "DOC-0256", "repeat": "R1", "controlF1": 0.9361702127659574, "challengerF1": 0.84, "deltaF1": -0.09617021276595727, "control": { "tp": 22, "fp": 1, "fn": 2 }, "challenger": { "tp": 21, "fp": 5, "fn": 3 } },
+    { "documentId": "DOC-0256", "repeat": "R2", "controlF1": 0.9361702127659574, "challengerF1": 0.875, "deltaF1": -0.061170212765957355, "control": { "tp": 22, "fp": 1, "fn": 2 }, "challenger": { "tp": 21, "fp": 3, "fn": 3 } },
+    { "documentId": "DOC-0258", "repeat": "R1", "controlF1": 0.8571428571428571, "challengerF1": 0.7906976744186046, "deltaF1": -0.06644518272425248, "control": { "tp": 18, "fp": 0, "fn": 6 }, "challenger": { "tp": 17, "fp": 2, "fn": 7 } },
+    { "documentId": "DOC-0258", "repeat": "R2", "controlF1": 0.8095238095238096, "challengerF1": 0.7906976744186046, "deltaF1": -0.018826135105205033, "control": { "tp": 17, "fp": 1, "fn": 7 }, "challenger": { "tp": 17, "fp": 2, "fn": 7 } },
+    { "documentId": "DOC-0258", "repeat": "R3", "controlF1": 0.8571428571428571, "challengerF1": 0.7906976744186046, "deltaF1": -0.06644518272425248, "control": { "tp": 18, "fp": 0, "fn": 6 }, "challenger": { "tp": 17, "fp": 2, "fn": 7 } }
+  ],
+  "promotionStillMathematicallyPossible": false,
+  "executionStatus": "PARTIAL_PROVIDER_BLOCK",
+  "causalDecision": "MODEL_SWAP_REJECTED_OBSERVED_REGRESSION",
+  "reason": "The KEEP gate requires no paired-cell F1 regression. Ten completed cells regress, including DOC-0001/R1 and all three completed DOC-0205 repeats. The two blocked cells cannot reverse an already observed violation and are not assigned scores.",
+  "fullCohortMetrics": "NOT_MEASURED_INCOMPLETE",
+  "goldReadBeforeFreeze": false,
+  "systemLoss": 0,
+  "bindFailure": 0
+}

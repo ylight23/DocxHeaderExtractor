@@ -1,6 +1,7 @@
 {
   "schemaVersion": "a99-i4-model-capability-isolation-summary-v1",
-  "status": "PROVIDER_BLOCKED",
+  "status": "CLOSED",
+  "executionStatus": "PARTIAL_PROVIDER_BLOCK",
   "experimentId": "A99-I4",
   "parent": "B0@76c4e01",
   "startHead": "86da2576ca9428aa92c13659176df19c0600eec8",
@@ -255,5 +256,7 @@
   "persistentFalsePositives": null,
   "bindFailure": 0,
   "systemLoss": 0,
-  "decision": "PROVIDER_BLOCKED"
+  "decision": "MODEL_SWAP_REJECTED_OBSERVED_REGRESSION",
+  "promotionPossible": false,
+  "fullCohortMetrics": "NOT_MEASURED_INCOMPLETE"
 }

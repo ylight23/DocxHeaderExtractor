@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "a99-i4-failure-family-v1",
+  "experimentId": "A99-I4",
+  "model": "qwen/qwen3.5-9b",
+  "offlineOnly": true,
+  "providerCompletionFailures": [
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R2",
+      "failureClass": "PROVIDER_COMPLETION_FAILURE",
+      "finishReason": "length",
+      "detail": "Reasoning consumed the completion budget before a final response was produced."
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R2",
+      "failureClass": "PROVIDER_COMPLETION_FAILURE",
+      "finishReason": null,
+      "detail": "Ceiling response exceeded its absolute attempt deadline."
+    }
+  ],
+  "modelSemanticFailures": [
+    {
+      "documentId": "DOC-0205",
+      "completedRepeats": ["R1", "R2", "R3"],
+      "classification": "MODEL_SEMANTIC_FAILURE",
+      "evidence": "TP=0 and F1=0 in all three completed repeats; each repeat missed all 71 B0 Gold headings.",
+      "systemLoss": 0,
+      "bindFailure": 0
+    },
+    {
+      "documentId": "DOC-0258",
+      "completedRepeats": ["R1", "R2", "R3"],
+      "classification": "MODEL_SEMANTIC_FAILURE",
+      "evidence": "The model consistently missed the six region/program leaf headings in the frozen B0 residual set; each repeat had TP=17, FN=7.",
+      "systemLoss": 0,
+      "bindFailure": 0
+    }
+  ],
+  "modelOutputBoundaryFailures": [
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R1",
+      "classification": "MODEL_PREFIX_TRUNCATION",
+      "emittedExactText": ["Ch", "1.1. Ph", "1.2. ", "1.2.1. C", "1.2.2. ", "Ch", "2.1. P"],
+      "evidencePath": "DOC-0001/r1/prediction.v1.json#/rawModelHeadings",
+      "binderBehavior": "CORRECT",
+      "modelOutputBoundary": "WRONG",
+      "scoreImpact": { "tp": 0, "fp": 7, "fn": 7, "wrongSpan": 7 }
+    }
+  ],
+  "binderAudit": {
+    "BINDER_BEHAVIOR": "CORRECT",
+    "exactUtf16BindingAuthoritative": true,
+    "fuzzyExpansion": false,
+    "deterministicInferenceOfMissingText": false,
+    "systemLoss": 0,
+    "bindFailure": 0,
+    "conclusion": "The binder preserved exactly what the model emitted; no binder repair is justified by these failures."
+  },
+  "goldReadBeforeFreeze": false
+}

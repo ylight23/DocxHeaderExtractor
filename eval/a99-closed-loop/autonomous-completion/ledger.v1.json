@@ -33,8 +33,25 @@
       "systemLoss": 0,
       "bindFailure": 0,
       "pairedRegression": null,
-      "decision": "PROVIDER_BLOCKED_INCOMPLETE",
+      "promotionPossible": false,
+      "decision": "MODEL_SWAP_REJECTED_OBSERVED_REGRESSION",
       "commit": "7c16ecf"
+    },
+    {
+      "experimentId": "A99-E2",
+      "parent": "B0@76c4e01",
+      "failureClass": "TASK_CONTRACT_SEMANTIC_CONFUSION",
+      "hypothesis": "Persistent residuals share a repeated distinction between leaf region/program/topic labels and ordinary body or duplicate occurrences.",
+      "mechanismFamily": "task-contract/semantic-classification",
+      "modelCalls": 0,
+      "providerCalls": 0,
+      "persistentOmissions": 7,
+      "persistentFalsePositives": 7,
+      "decision": "SHARED_SEMANTIC_CONFUSION_FOUND",
+      "nextExperiment": "A99-I5 SEMANTIC CONTRAST CONTRACT",
+      "nextExperimentFrozen": true,
+      "runtimeChanged": false,
+      "commit": "PENDING_FINAL_COMMIT"
     }
   ]
 }

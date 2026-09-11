@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "a99-e2-terminal-decision-v1",
+  "experimentId": "A99-E2",
+  "parent": "B0@76c4e01",
+  "classification": "SHARED_SEMANTIC_CONFUSION_FOUND",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "scope": {
+    "persistentOmissions": 7,
+    "persistentFalsePositives": 7,
+    "documents": ["DOC-0205", "DOC-0252", "DOC-0256", "DOC-0258"]
+  },
+  "sharedMechanism": {
+    "name": "LEAF_REGION_OR_PROGRAM_LABEL_AS_HEADING_VS_BODY_OR_OCCURRENCE_CONTEXT",
+    "supportedBy": [
+      "DOC-0252 Western Asia is missed at the Gold table occurrence but emitted at a non-heading body occurrence.",
+      "DOC-0258 misses all five repeated REGION_LABEL siblings and the peer PROGRAM_LABEL.",
+      "The same semantic leaf family is found in DOC-0252 prose occurrences but not uniformly across source contexts."
+    ],
+    "regionLabelGoldCount": 10,
+    "regionLabelModelFound": 4,
+    "regionLabelModelMissed": 6,
+    "regionLabelWithinClassRecall": 0.4,
+    "programLabelGoldCount": 1,
+    "programLabelModelFound": 0,
+    "programLabelModelMissed": 1
+  },
+  "counterevidence": [
+    "DOC-0205 document-title false positive is a separate opening-block issue.",
+    "DOC-0252 participant-label false positives are a separate annex-body over-selection issue.",
+    "The seven omissions are not all one exact ontology class; the shared family is a contract hypothesis, not a proven universal rule."
+  ],
+  "nextExperiment": {
+    "authorized": true,
+    "experimentId": "A99-I5",
+    "name": "SEMANTIC CONTRAST CONTRACT",
+    "owner": "TASK_CONTRACT / SEMANTIC_CLASSIFICATION",
+    "hypothesis": "Make the distinction between leaf region/program/topic labels and ordinary body or duplicate occurrences explicit in the semantic contract, while retaining verbatimText + exact deterministic binding.",
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "freezeBeforeImplementation": true
+  },
+  "runtimeChanges": {
+    "promptChanged": false,
+    "contractChanged": false,
+    "binderChanged": false,
+    "validatorChanged": false,
+    "goldUsedAtRuntime": false
+  },
+  "terminal": true,
+  "reason": "Multiple persistent residuals support one repeated semantic contrast strongly enough to justify freezing an I5 contract hypothesis, but no runtime intervention is implemented in E2."
+}
