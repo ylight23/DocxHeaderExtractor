@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "a99-semantic-text-duplicate-disambiguation-resume-v1",
+  "pendingCells": [
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R1"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R3"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R1"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R2"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R3"
+    }
+  ],
+  "providerCalls": 5,
+  "attemptedCells": 5,
+  "goldReadBeforeFreeze": false
+}

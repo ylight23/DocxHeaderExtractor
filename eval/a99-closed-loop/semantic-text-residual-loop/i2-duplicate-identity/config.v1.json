@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "a99-semantic-text-duplicate-identity-config-v1",
+  "parentStrategy": "B0",
+  "rejectedAncestor": "I1",
+  "targetLossBucket": "AMBIGUOUS_DUPLICATE_TEXT",
+  "model": "qwen/qwen3.7-flash",
+  "selectedStrictGoldCohort": [
+    "DOC-0001",
+    "DOC-0205",
+    "DOC-0252",
+    "DOC-0256",
+    "DOC-0258"
+  ],
+  "expectedCells": 15,
+  "goldOccurrencesPerRepeat": 153,
+  "sourceAliases": "ALL_NONEMPTY_CANONICAL_SOURCE_OCCURRENCES",
+  "candidateGating": false,
+  "numericOffsetsInModelContract": false,
+  "fuzzyBinding": false,
+  "firstMatchGuessing": false,
+  "omissionReview": false,
+  "vlm": false,
+  "goldReadBeforeFreeze": false
+}

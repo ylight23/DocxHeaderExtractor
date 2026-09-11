@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "a99-semantic-text-duplicate-audit-v1",
+  "source": "frozen semantic-text raw proposals plus source facts",
+  "goldReadBeforeFreeze": false,
+  "ambiguousBefore": 6,
+  "mechanicallyResolvableWithoutModel": 0,
+  "requiresFreshModelDiscriminator": 6,
+  "crossOccurrence": 0,
+  "intraOccurrence": 6,
+  "binderLostIdentity": 0,
+  "modelMissingIdentity": 6,
+  "other": 0,
+  "cases": [
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R1",
+      "sourceAlias": "S0009",
+      "sourceId": "body[1]/p[11]",
+      "headingText": "Africa",
+      "exactMatchCount": 3,
+      "caseClassification": "B_INTRA_OCCURRENCE",
+      "frozenModelIdentityPresent": false,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Gregoire Mboya de Loubassou, Af"
+        },
+        {
+          "start": 36,
+          "contextBefore": "ca Gregoire Mboya de Loubassou, ",
+          "contextAfter": "n Development Bank (AfDB), the s"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region, which provided informat"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R1",
+      "sourceAlias": "S0013",
+      "sourceId": "body[1]/p[17]",
+      "headingText": "Asia and the Pacific",
+      "exactMatchCount": 2,
+      "caseClassification": "B_INTRA_OCCURRENCE",
+      "frozenModelIdentityPresent": false,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Criselda De Dios, Asian Develop"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region. Twenty-one economies ar"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R2",
+      "sourceAlias": "S0009",
+      "sourceId": "body[1]/p[11]",
+      "headingText": "Africa",
+      "exactMatchCount": 3,
+      "caseClassification": "B_INTRA_OCCURRENCE",
+      "frozenModelIdentityPresent": false,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Gregoire Mboya de Loubassou, Af"
+        },
+        {
+          "start": 36,
+          "contextBefore": "ca Gregoire Mboya de Loubassou, ",
+          "contextAfter": "n Development Bank (AfDB), the s"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region, which provided informat"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R2",
+      "sourceAlias": "S0013",
+      "sourceId": "body[1]/p[17]",
+      "headingText": "Asia and the Pacific",
+      "exactMatchCount": 2,
+      "caseClassification": "B_INTRA_OCCURRENCE",
+      "frozenModelIdentityPresent": false,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Criselda De Dios, Asian Develop"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region. Twenty-one economies ar"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R3",
+      "sourceAlias": "S0009",
+      "sourceId": "body[1]/p[11]",
+      "headingText": "Africa",
+      "exactMatchCount": 3,
+      "caseClassification": "B_INTRA_OCCURRENCE",
+      "frozenModelIdentityPresent": false,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Gregoire Mboya de Loubassou, Af"
+        },
+        {
+          "start": 36,
+          "contextBefore": "ca Gregoire Mboya de Loubassou, ",
+          "contextAfter": "n Development Bank (AfDB), the s"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region, which provided informat"
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R3",
+      "sourceAlias": "S0013",
+      "sourceId": "body[1]/p[17]",
+      "headingText": "Asia and the Pacific",
+      "exactMatchCount": 2,
+      "caseClassification": "B_INTRA_OCCURRENCE",
+      "frozenModelIdentityPresent": false,
+      "candidates": [
+        {
+          "start": 0,
+          "contextBefore": "",
+          "contextAfter": " Criselda De Dios, Asian Develop"
+        },
+        {
+          "start": 109,
+          "contextBefore": "us of the ICP 2021 cycle in the ",
+          "contextAfter": " region. Twenty-one economies ar"
+        }
+      ]
+    }
+  ]
+}

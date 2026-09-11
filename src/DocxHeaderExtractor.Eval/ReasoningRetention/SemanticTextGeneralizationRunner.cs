@@ -20,7 +20,7 @@ public static class SemanticTextGeneralizationRunner
     private const string Model = "qwen/qwen3.7-flash";
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string OutputRoot = "eval/a99-closed-loop/semantic-text-generalization";
-    private const string DuplicateOutputRoot = "eval/a99-closed-loop/semantic-text-duplicate-disambiguation";
+    private const string DuplicateOutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i2-duplicate-identity";
     private const string ResidualLoopI1OutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i1-omission-review";
     private const string InventoryPath = "eval/a99-dataset/document-inventory.v1.json";
     private const int RepeatCount = 3;
@@ -190,24 +190,39 @@ public static class SemanticTextGeneralizationRunner
                     {
                         documentId = context.DocumentId, repeat = $"R{repeat}", sourceAlias = observation.Alias, sourceId = alias.SourceId,
                         headingText = observation.Heading.Text, exactMatchCount = positions.Count,
+                        caseClassification = "B_INTRA_OCCURRENCE",
+                        frozenModelIdentityPresent = observation.Heading.Occurrence is not null || observation.Heading.LeftExactContext is not null || observation.Heading.RightExactContext is not null,
                         candidates = positions.Select(position => new { start = position, contextBefore = LocalContext(alias.RawText, position, observation.Heading.Text.Length, true), contextAfter = LocalContext(alias.RawText, position, observation.Heading.Text.Length, false) }).ToArray(),
                     });
                 }
             }
         }
+        var baselineMicro = Micro(baseline);
         await WriteJson(Path.Combine(output, "baseline-manifest.v1.json"), new
         {
             schemaVersion = "a99-semantic-text-duplicate-disambiguation-baseline-v1", startHead,
             branch = Git(repoRoot, "branch --show-current"), baselineReused = true, baselineProviderCalls = 0,
-            baseline = new { tp = 425, fp = 22, fn = 34, f1 = .9381898454746137 },
+            parentStrategy = "B0", rejectedAncestor = "I1", targetLossBucket = "AMBIGUOUS_DUPLICATE_TEXT",
+            baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, f1 = baselineMicro.F1 },
             selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
             frozenCells = baselineHashes, hashVerified = true, omissionReviewExcluded = true, goldReadBeforeFreeze = false,
+        }, ct);
+        await WriteJson(Path.Combine(output, "config.v1.json"), new
+        {
+            schemaVersion = "a99-semantic-text-duplicate-identity-config-v1", parentStrategy = "B0", rejectedAncestor = "I1",
+            targetLossBucket = "AMBIGUOUS_DUPLICATE_TEXT", model = Model,
+            selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
+            expectedCells = selected.Length * RepeatCount, goldOccurrencesPerRepeat = selected.Sum(x => x.eligibility.OccurrenceCount),
+            sourceAliases = "ALL_NONEMPTY_CANONICAL_SOURCE_OCCURRENCES", candidateGating = false,
+            numericOffsetsInModelContract = false, fuzzyBinding = false, firstMatchGuessing = false,
+            omissionReview = false, vlm = false, goldReadBeforeFreeze = false,
         }, ct);
         await WriteJson(Path.Combine(output, "duplicate-audit.v1.json"), new
         {
             schemaVersion = "a99-semantic-text-duplicate-audit-v1", source = "frozen semantic-text raw proposals plus source facts",
             goldReadBeforeFreeze = false, ambiguousBefore = audit.Count, mechanicallyResolvableWithoutModel = 0,
-            requiresFreshModelDiscriminator = audit.Count, cases = audit,
+            requiresFreshModelDiscriminator = audit.Count, crossOccurrence = 0, intraOccurrence = audit.Count,
+            binderLostIdentity = 0, modelMissingIdentity = audit.Count, other = 0, cases = audit,
         }, ct);
         Console.WriteLine($"DUPLICATE_AUDIT_AMBIGUOUS_BEFORE={audit.Count}");
         Console.WriteLine("BASELINE_REUSED=true");
@@ -237,18 +252,20 @@ public static class SemanticTextGeneralizationRunner
                 review.Add(await RunDuplicateRepeatAsync(repoRoot, intervention, context, repeat, model, startHead, ct));
             }
         }
-        var baselineMicro = Micro(baseline);
         var reviewMicro = Micro(review);
         var ambiguousAfter = CountTrace(intervention, review, "AMBIGUOUS_DUPLICATE_TEXT");
         var resolvedDuplicates = CountTrace(intervention, review, "DUPLICATE_RESOLVED_BY_EXACT_CONTEXT");
         var incorrectResolutions = CountIncorrectResolutions(repoRoot, intervention, review);
-        var keep = reviewMicro.F1 > baselineMicro.F1 && review.All(x => x.SystemLoss == 0) && incorrectResolutions == 0;
-        var classification = keep ? "DUPLICATE_DISAMBIGUATION_IMPROVES_F1" : reviewMicro.F1 < baselineMicro.F1 ? "DUPLICATE_DISAMBIGUATION_PRECISION_REGRESSION" : "DUPLICATE_DISAMBIGUATION_NO_MATERIAL_GAIN";
+        var noPerRepeatRegression = NoPerRepeatRegression(baseline, review);
+        var keep = ambiguousAfter < audit.Count && resolvedDuplicates > 0 && reviewMicro.F1 > baselineMicro.F1 && review.All(x => x.SystemLoss == 0) && incorrectResolutions == 0 && noPerRepeatRegression;
+        var classification = keep ? "DUPLICATE_DISAMBIGUATION_IMPROVES_F1" : ambiguousAfter > audit.Count || !noPerRepeatRegression ? "DUPLICATE_DISAMBIGUATION_REGRESSION" : "DUPLICATE_DISAMBIGUATION_NO_MATERIAL_GAIN";
+        var decisionReason = keep ? "Ambiguity decreased through exact context with no system loss or per-repeat regression." : ambiguousAfter > audit.Count ? "Ambiguity increased; fresh identity contract did not produce unique exact-context bindings." : !noPerRepeatRegression ? "At least one repeat regressed in precision or F1." : "No coherent ambiguity reduction and F1 gain.";
         await WriteJson(Path.Combine(output, "comparison.v1.json"), new
         {
             schemaVersion = "a99-semantic-text-duplicate-disambiguation-comparison-v1", baseline = baselineMicro, intervention = reviewMicro,
             delta = new { tp = reviewMicro.Tp - baselineMicro.Tp, fp = reviewMicro.Fp - baselineMicro.Fp, fn = reviewMicro.Fn - baselineMicro.Fn, f1 = reviewMicro.F1 - baselineMicro.F1 },
             ambiguousBefore = audit.Count, ambiguousAfter, resolvedDuplicates, incorrectlyResolvedDuplicateCount = incorrectResolutions,
+            noPerRepeatRegression, decisionReason,
             systemBindingLoss = review.Sum(x => x.SystemBindingLoss), systemValidatorLoss = review.Sum(x => x.SystemValidatorLoss), systemProjectionLoss = review.Sum(x => x.SystemProjectionLoss),
             freshProviderCalls = model.ProviderCalls, additionalInputTokens = review.Sum(x => x.InputTokens ?? 0), additionalReasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), additionalOutputTokens = review.Sum(x => x.OutputTokens ?? 0), additionalWallTimeMs = review.Sum(x => x.WallTimeMs),
             trace = review.SelectMany(x => ReadDuplicateTraces(intervention, x.DocumentId, x.Repeat)).ToArray(),
@@ -260,7 +277,7 @@ public static class SemanticTextGeneralizationRunner
             baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1, systemLoss = baseline.Sum(x => x.SystemLoss) },
             intervention = new { tp = reviewMicro.Tp, fp = reviewMicro.Fp, fn = reviewMicro.Fn, precision = reviewMicro.Precision, recall = reviewMicro.Recall, f1 = reviewMicro.F1 },
             ambiguousBefore = audit.Count, mechanicallyResolvableWithoutModel = 0, requiresFreshModelDiscriminator = audit.Count, ambiguousAfter, resolvedDuplicates,
-            incorrectlyResolvedDuplicateCount = incorrectResolutions, systemLoss = review.Sum(x => x.SystemLoss), deltaTP = reviewMicro.Tp - baselineMicro.Tp, deltaFP = reviewMicro.Fp - baselineMicro.Fp, deltaFN = reviewMicro.Fn - baselineMicro.Fn, deltaF1 = reviewMicro.F1 - baselineMicro.F1,
+            incorrectlyResolvedDuplicateCount = incorrectResolutions, noPerRepeatRegression, decisionReason, systemLoss = review.Sum(x => x.SystemLoss), deltaTP = reviewMicro.Tp - baselineMicro.Tp, deltaFP = reviewMicro.Fp - baselineMicro.Fp, deltaFN = reviewMicro.Fn - baselineMicro.Fn, deltaF1 = reviewMicro.F1 - baselineMicro.F1,
             performance = new { freshProviderCalls = model.ProviderCalls, inputTokens = review.Sum(x => x.InputTokens ?? 0), reasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), outputTokens = review.Sum(x => x.OutputTokens ?? 0), wallTimeMs = review.Sum(x => x.WallTimeMs) },
             keepOrRevert = keep ? "KEEP" : "REVERT_INTERVENTION", classification, newLargestResidualBucket = NextBucket(review), a99Status = "A99_NOT_MEASURED_DEV_MARGIN_BELOW_0.995", goldReadBeforeFreeze = false,
             repeatSummary = BuildRepeatSummary(review, selected.Length), baselineHashes,
@@ -285,6 +302,11 @@ public static class SemanticTextGeneralizationRunner
             for (var repeat = 1; repeat <= RepeatCount; repeat++)
             {
                 var path = Path.Combine(intervention, documentId, $"r{repeat}", "prediction.v1.json");
+                if (!File.Exists(path))
+                {
+                    blocked.Add((item.Clone(), repeat));
+                    continue;
+                }
                 using var prediction = JsonDocument.Parse(File.ReadAllText(path));
                 if (prediction.RootElement.TryGetProperty("status", out var status) && status.GetString() == "BLOCKED")
                     blocked.Add((item.Clone(), repeat));
@@ -311,7 +333,7 @@ public static class SemanticTextGeneralizationRunner
             Console.WriteLine($"RESUMING_DUPLICATE={context.DocumentId}/R{repeat}");
             await RunDuplicateRepeatAsync(repoRoot, intervention, context, repeat, model, GitSha(repoRoot), ct);
         }
-        await WriteJson(Path.Combine(output, "resume.v1.json"), new { schemaVersion = "a99-semantic-text-duplicate-disambiguation-resume-v1", blockedCells = blocked.Select(x => new { documentId = x.item.GetProperty("documentId").GetString(), repeat = $"R{x.repeat}" }).ToArray(), providerCalls = model.ProviderCalls, successfulCells = blocked.Count, goldReadBeforeFreeze = false }, ct);
+        await WriteJson(Path.Combine(output, "resume.v1.json"), new { schemaVersion = "a99-semantic-text-duplicate-disambiguation-resume-v1", pendingCells = blocked.Select(x => new { documentId = x.item.GetProperty("documentId").GetString(), repeat = $"R{x.repeat}" }).ToArray(), providerCalls = model.ProviderCalls, attemptedCells = blocked.Count, goldReadBeforeFreeze = false }, ct);
         Console.WriteLine($"RESUME_PROVIDER_CALLS={model.ProviderCalls}");
         return await RunDuplicateDisambiguationOfflineAsync(repoRoot, ct);
     }
@@ -348,14 +370,17 @@ public static class SemanticTextGeneralizationRunner
         var ambiguousAfter = CountTrace(intervention, review, "AMBIGUOUS_DUPLICATE_TEXT");
         var resolved = CountTrace(intervention, review, "DUPLICATE_RESOLVED_BY_EXACT_CONTEXT");
         var incorrect = CountIncorrectResolutions(repoRoot, intervention, review);
-        var keep = reviewMicro.F1 > baselineMicro.F1 && review.All(x => x.SystemLoss == 0) && incorrect == 0;
-        var classification = keep ? "DUPLICATE_DISAMBIGUATION_IMPROVES_F1" : reviewMicro.F1 < baselineMicro.F1 ? "DUPLICATE_DISAMBIGUATION_PRECISION_REGRESSION" : "DUPLICATE_DISAMBIGUATION_NO_MATERIAL_GAIN";
+        var noPerRepeatRegression = NoPerRepeatRegression(baseline, review);
+        var keep = ambiguousAfter < ambiguousBefore && resolved > 0 && reviewMicro.F1 > baselineMicro.F1 && review.All(x => x.SystemLoss == 0) && incorrect == 0 && noPerRepeatRegression;
+        var classification = keep ? "DUPLICATE_DISAMBIGUATION_IMPROVES_F1" : ambiguousAfter > ambiguousBefore || !noPerRepeatRegression ? "DUPLICATE_DISAMBIGUATION_REGRESSION" : "DUPLICATE_DISAMBIGUATION_NO_MATERIAL_GAIN";
+        var decisionReason = keep ? "Ambiguity decreased through exact context with no system loss or per-repeat regression." : ambiguousAfter > ambiguousBefore ? "Ambiguity increased; fresh identity contract did not produce unique exact-context bindings." : !noPerRepeatRegression ? "At least one repeat regressed in precision or F1." : "No coherent ambiguity reduction and F1 gain.";
         var attempts = FrozenDuplicateAttempts(intervention, selected) + DuplicateResumeCalls(output);
         await WriteJson(Path.Combine(output, "comparison.v1.json"), new
         {
             schemaVersion = "a99-semantic-text-duplicate-disambiguation-comparison-v1", baseline = baselineMicro, intervention = reviewMicro,
             delta = new { tp = reviewMicro.Tp - baselineMicro.Tp, fp = reviewMicro.Fp - baselineMicro.Fp, fn = reviewMicro.Fn - baselineMicro.Fn, f1 = reviewMicro.F1 - baselineMicro.F1 },
             ambiguousBefore, ambiguousAfter, resolvedDuplicates = resolved, incorrectlyResolvedDuplicateCount = incorrect,
+            noPerRepeatRegression, decisionReason,
             systemBindingLoss = review.Sum(x => x.SystemBindingLoss), systemValidatorLoss = review.Sum(x => x.SystemValidatorLoss), systemProjectionLoss = review.Sum(x => x.SystemProjectionLoss),
             freshProviderCalls = attempts, additionalInputTokens = review.Sum(x => x.InputTokens ?? 0), additionalReasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), additionalOutputTokens = review.Sum(x => x.OutputTokens ?? 0), additionalWallTimeMs = review.Sum(x => x.WallTimeMs),
             trace = review.SelectMany(x => ReadDuplicateTraces(intervention, x.DocumentId, x.Repeat)).ToArray(),
@@ -367,7 +392,7 @@ public static class SemanticTextGeneralizationRunner
             baseline = new { tp = baselineMicro.Tp, fp = baselineMicro.Fp, fn = baselineMicro.Fn, precision = baselineMicro.Precision, recall = baselineMicro.Recall, f1 = baselineMicro.F1, systemLoss = baseline.Sum(x => x.SystemLoss) },
             intervention = new { tp = reviewMicro.Tp, fp = reviewMicro.Fp, fn = reviewMicro.Fn, precision = reviewMicro.Precision, recall = reviewMicro.Recall, f1 = reviewMicro.F1 },
             ambiguousBefore, mechanicallyResolvableWithoutModel = 0, requiresFreshModelDiscriminator = ambiguousBefore, ambiguousAfter, resolvedDuplicates = resolved, incorrectlyResolvedDuplicateCount = incorrect,
-            systemLoss = review.Sum(x => x.SystemLoss), deltaTP = reviewMicro.Tp - baselineMicro.Tp, deltaFP = reviewMicro.Fp - baselineMicro.Fp, deltaFN = reviewMicro.Fn - baselineMicro.Fn, deltaF1 = reviewMicro.F1 - baselineMicro.F1,
+            systemLoss = review.Sum(x => x.SystemLoss), noPerRepeatRegression, decisionReason, deltaTP = reviewMicro.Tp - baselineMicro.Tp, deltaFP = reviewMicro.Fp - baselineMicro.Fp, deltaFN = reviewMicro.Fn - baselineMicro.Fn, deltaF1 = reviewMicro.F1 - baselineMicro.F1,
             performance = new { freshProviderCalls = attempts, inputTokens = review.Sum(x => x.InputTokens ?? 0), reasoningTokens = review.Sum(x => x.ReasoningTokens ?? 0), outputTokens = review.Sum(x => x.OutputTokens ?? 0), wallTimeMs = review.Sum(x => x.WallTimeMs) },
             keepOrRevert = keep ? "KEEP" : "REVERT_INTERVENTION", classification, newLargestResidualBucket = NextBucket(review), a99Status = "A99_NOT_MEASURED_DEV_MARGIN_BELOW_0.995", goldReadBeforeFreeze = false,
             repeatSummary = BuildRepeatSummary(review, selected.Length), persistentErrors = BuildPersistentErrors(review),
@@ -2393,6 +2418,13 @@ public static class SemanticTextGeneralizationRunner
     private static bool CohortComplete(IReadOnlyList<RepeatMetric> runs, int expectedGoldOccurrences = 153) =>
         runs.All(x => x.Status == "SUCCESS") &&
         runs.GroupBy(x => x.Repeat, StringComparer.Ordinal).All(group => group.Sum(x => x.Gold) == expectedGoldOccurrences && group.Sum(x => x.Tp + x.Fn) == expectedGoldOccurrences);
+
+    private static bool NoPerRepeatRegression(IReadOnlyList<RepeatMetric> baseline, IReadOnlyList<RepeatMetric> intervention) =>
+        intervention.Count == baseline.Count && intervention.All(current =>
+        {
+            var before = baseline.Single(x => x.DocumentId == current.DocumentId && x.Repeat == current.Repeat);
+            return current.Precision >= before.Precision && current.F1 >= before.F1;
+        });
 
     private static async Task WriteReviewBlockedSummary(string output, string head, IReadOnlyList<(JsonElement item, ReasoningGoldEligibilityMetadata eligibility)> selected, string reason, CancellationToken ct)
     {
