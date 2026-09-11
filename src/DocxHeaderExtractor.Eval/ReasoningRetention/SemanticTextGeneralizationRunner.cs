@@ -17,9 +17,13 @@ namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 /// only after its prediction, result, and freeze hashes have been written and verified.</summary>
 public static class SemanticTextGeneralizationRunner
 {
-    private const string Model = "qwen/qwen3.7-flash";
+    private const string ControlModel = "qwen/qwen3.7-flash";
+    private const string ChallengerModel = "qwen/qwen3.5-9b";
+    private static string Model = ControlModel;
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
-    private const string OutputRoot = "eval/a99-closed-loop/semantic-text-generalization";
+    private const string DefaultOutputRoot = "eval/a99-closed-loop/semantic-text-generalization";
+    private static string OutputRoot = DefaultOutputRoot;
+    private const string ModelCapabilityOutputRoot = "eval/a99-closed-loop/model-capability-isolation/i4";
     private const string DuplicateOutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i2-duplicate-identity";
     private const string BoundaryOutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i3-lossless-semantic-boundaries";
     private const string ResidualLoopI1OutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i1-omission-review";
@@ -136,6 +140,170 @@ public static class SemanticTextGeneralizationRunner
         Console.WriteLine($"FINAL_CLASSIFICATION={GeneralizationClass(runs)}");
         Console.WriteLine($"A99_DEV_MARGIN_MET={runs.Count == selected.Length * RepeatCount && runs.All(x => x.Status == "SUCCESS" && x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0)}");
         return 0;
+    }
+
+    /// <summary>Runs I4 with the unchanged B0 semantic-text pipeline and exactly one model delta.
+    /// The manifest is written from source-only metadata and frozen B0 cell hashes before any
+    /// challenger capability lookup or inference request.</summary>
+    public static async Task<int> RunModelCapabilityIsolationAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, ModelCapabilityOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        Directory.CreateDirectory(output);
+        var startHead = GitSha(repoRoot);
+        var inventory = LoadInventory(repoRoot);
+        var selected = inventory.Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
+            .Where(x => x.eligibility.Eligible).OrderBy(x => x.item.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        var contexts = selected.Select(x => Prepare(repoRoot, x.item)).ToArray();
+        var controlRoot = Path.Combine(repoRoot, DefaultOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var controlCells = selected.SelectMany(x => Enumerable.Range(1, RepeatCount).Select(repeat =>
+        {
+            var documentId = x.item.GetProperty("documentId").GetString()!;
+            var freezePath = Path.Combine(controlRoot, documentId, $"r{repeat}", "freeze.v1.json");
+            using var freeze = JsonDocument.Parse(File.ReadAllText(freezePath));
+            return new
+            {
+                documentId, repeat = $"R{repeat}",
+                sourceSha256 = freeze.RootElement.GetProperty("sourceSha256").GetString(),
+                packetHash = freeze.RootElement.GetProperty("packetHash").GetString(),
+                predictionSha256 = freeze.RootElement.GetProperty("predictionSha256").GetString(),
+                resultSha256 = freeze.RootElement.GetProperty("resultSha256").GetString(),
+                freezeSha256 = Sha256(freezePath),
+            };
+        })).ToArray();
+        var packetHashes = contexts.Select(x => new { documentId = x.DocumentId, sourceSha256 = x.SourceSha256, packetHash = x.PacketHash }).ToArray();
+        var promptHash = contexts.Select(x => x.PromptHash).Distinct(StringComparer.Ordinal).Single();
+        var schemaHash = contexts.Select(x => x.SchemaHash).Distinct(StringComparer.Ordinal).Single();
+        var manifest = new
+        {
+            schemaVersion = "a99-i4-model-capability-isolation-manifest-v1",
+            experimentId = "A99-I4",
+            parentCommit = startHead,
+            behavioralParent = "B0@76c4e01",
+            controlModel = ControlModel,
+            challengerModel = ChallengerModel,
+            providerPolicy = new { provider = "OpenRouter", endpoint = Endpoint, route = "MODEL_DEFAULT", fallback = false, reasoningEnabled = true, structuredOutputRequired = true },
+            sourcePacketHashes = packetHashes,
+            controlFrozenCells = controlCells,
+            promptHash,
+            semanticContract = new { version = SemanticTextExactBindingContract.ProtocolVersion, hash = ContractHash() },
+            binder = new { version = "deterministic-exact-utf16-binder-v1", hash = Sha256Text("SemanticTextExactBindingContract|deterministic UTF-16 exact binder|sourceAlias+verbatimText") },
+            validator = new { version = "ReasoningProposalMaterializer-validator-v1", hash = Sha256Text("ReasoningProposalMaterializer|ReasoningTaskProjection|validator-v1") },
+            schemaHash,
+            cohort = new { documents = contexts.Select(x => x.DocumentId).ToArray(), documentCount = contexts.Length, cells = contexts.Length * RepeatCount, repeats = RepeatCount, goldOccurrences = 153 },
+            inferenceParameters = new { contextSize = 1000000, maxOutputTokens = 48000, requestTimeoutSeconds = 600, transientRetries = 0, maxParallelRequests = 1, temperature = 0, reasoningEnabled = true, reasoningEffort = "MODEL_DEFAULT" },
+            goldFirewall = new { goldReadBeforeFreeze = false, goldSuppliedToModel = false, evaluationAfterFreezeOnly = true },
+            invariants = new { sourcePacketDelta = 0, promptDelta = 0, contractDelta = 0, binderDelta = 0, validatorDelta = 0, onlyModelDelta = true },
+            selectionRationale = "No exact B0-contract challenger existed in frozen artifacts. qwen/qwen3.5-9b is the single deterministic challenger selected from the repository-supported OpenRouter models; prior Qwen9B campaigns are non-equivalent and are not reused as I4 outputs."
+        };
+        await WriteJson(Path.Combine(output, "manifest.v1.json"), manifest, ct);
+        Console.WriteLine($"I4_MANIFEST_FROZEN={Path.Combine(ModelCapabilityOutputRoot, "manifest.v1.json")}");
+        Console.WriteLine("SOURCE_PACKET_DELTA=0");
+        Console.WriteLine("PROMPT_DELTA=0");
+        Console.WriteLine("CONTRACT_DELTA=0");
+        Console.WriteLine("BINDER_DELTA=0");
+        Console.WriteLine("VALIDATOR_DELTA=0");
+        Console.WriteLine("ONLY_MODEL_DELTA=TRUE");
+
+        var previousModel = Model;
+        var previousOutputRoot = OutputRoot;
+        Model = ChallengerModel;
+        OutputRoot = ModelCapabilityOutputRoot;
+        try
+        {
+            return await RunModelCapabilityCampaignAsync(repoRoot, output, selected, contexts, startHead, ct);
+        }
+        finally
+        {
+            Model = previousModel;
+            OutputRoot = previousOutputRoot;
+        }
+    }
+
+    private static async Task<int> RunModelCapabilityCampaignAsync(
+        string repoRoot,
+        string output,
+        IReadOnlyList<(JsonElement item, ReasoningGoldEligibilityMetadata eligibility)> selected,
+        IReadOnlyList<DocumentContext> contexts,
+        string startHead,
+        CancellationToken ct)
+    {
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey))
+        {
+            await WriteJson(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-i4-model-capability-isolation-summary-v1", status = "PROVIDER_BLOCKED", reason = "OPENROUTER_API_KEY_MISSING", experimentId = "A99-I4", model = Model, providerCalls = 0, modelCalls = 0, goldReadBeforeFreeze = false }, ct);
+            return 1;
+        }
+
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = apiKey, ContextSize = 1_000_000,
+            MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 0,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capabilityResult = await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct);
+        var capability = capabilityResult.Capability;
+        if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) || !capability.ReasoningSupported || !capability.StructuredOutputSupported)
+        {
+            await WriteJson(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-i4-model-capability-isolation-summary-v1", status = "PROVIDER_BLOCKED", reason = "MODEL_CAPABILITY_MISMATCH", experimentId = "A99-I4", model = Model, capability = capabilityResult, providerCalls = 0, modelCalls = 0, goldReadBeforeFreeze = false }, ct);
+            return 1;
+        }
+
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, ModelCapabilityOutputRoot, string.Join(',', contexts.Select(x => x.DocumentId)), ct);
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        var runs = new List<RepeatMetric>();
+        foreach (var context in contexts.OrderBy(x => x.DocumentId, StringComparer.Ordinal))
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                Console.WriteLine($"RUNNING_I4={context.DocumentId}/R{repeat}");
+                runs.Add(await RunRepeatAsync(repoRoot, output, context, repeat, model, startHead, ct));
+            }
+
+        var complete = runs.Count == selected.Count * RepeatCount && runs.All(x => x.Status == "SUCCESS");
+        await WriteJson(Path.Combine(output, "repeat-summary.v1.json"), BuildRepeatSummary(runs, selected.Count), ct);
+        await WriteJson(Path.Combine(output, "persistent-errors.v1.json"), BuildPersistentErrors(runs), ct);
+        if (complete)
+        {
+            var baselineRoot = Path.Combine(repoRoot, DefaultOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+            var baseline = selected.SelectMany(x => Enumerable.Range(1, RepeatCount).Select(repeat => LoadFrozenMetric(baselineRoot, x.item.GetProperty("documentId").GetString()!, $"r{repeat}"))).ToArray();
+            await WriteJson(Path.Combine(output, "paired-comparison.v1.json"), BuildPairedComparison(baseline, runs), ct);
+            var targetBefore = PersistentModelOmissionKeys(baseline);
+            var targetAfter = PersistentModelOmissionKeys(runs);
+            var persistentFpBefore = PersistentFalsePositiveKeys(baseline).Count;
+            var persistentFpAfter = PersistentFalsePositiveKeys(runs).Count;
+            await WriteJson(Path.Combine(output, "target-forensic.v1.json"), new
+            {
+                schemaVersion = "a99-i4-target-forensic-v1", goldReadBeforeFreeze = false,
+                targetBefore = targetBefore.Select(x => new { x.DocumentId, x.Key }).ToArray(),
+                targetAfter = targetAfter.Select(x => new { x.DocumentId, x.Key }).ToArray(),
+                persistentOmissionBefore = targetBefore.Count, persistentOmissionAfter = targetAfter.Count,
+                persistentFpBefore, persistentFpAfter,
+                cases = targetBefore.Select(target => new
+                {
+                    documentId = target.DocumentId, key = target.Key,
+                    before = baseline.Where(x => x.DocumentId == target.DocumentId).Select(x => new { repeat = x.Repeat, recovered = x.PredictionKeys.Contains(target.Key) }).ToArray(),
+                    after = runs.Where(x => x.DocumentId == target.DocumentId).Select(x => new { repeat = x.Repeat, recovered = x.PredictionKeys.Contains(target.Key) }).ToArray(),
+                }).ToArray()
+            }, ct);
+        }
+        var micro = runs.GroupBy(x => x.Repeat, StringComparer.Ordinal).Select(g => new { repeat = g.Key, tp = g.Sum(x => x.Tp), fp = g.Sum(x => x.Fp), fn = g.Sum(x => x.Fn), systemLoss = g.Sum(x => x.SystemLoss) }).ToArray();
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-i4-model-capability-isolation-summary-v1", status = complete ? "COMPLETE" : "PROVIDER_BLOCKED", experimentId = "A99-I4", parent = "B0@76c4e01", startHead, endHead = GitSha(repoRoot), model = Model,
+            providerAttempts = runs.Count, modelCalls = runs.Count, providerCalls = model.ProviderCalls, goldReadBeforeFreeze = false,
+            goldFirewall = "PASS", completion = new { expectedCells = selected.Count * RepeatCount, completedCells = runs.Count(x => x.Status == "SUCCESS"), blockedCells = runs.Count(x => x.Status != "SUCCESS") },
+            perCell = runs.Select(x => new { x.DocumentId, x.Repeat, x.Status, x.Tp, x.Fp, x.Fn, x.Precision, x.Recall, x.F1, x.SystemLoss, x.Provider, x.FinishReason }).ToArray(),
+            perRepeatMicro = micro,
+            persistentModelOmissions = complete ? PersistentModelOmissionKeys(runs).Count : (int?)null,
+            persistentFalsePositives = complete ? PersistentFalsePositiveKeys(runs).Count : (int?)null,
+            bindFailure = runs.Sum(x => x.FirstLossCounts.GetValueOrDefault("BIND_FAILURE")),
+            systemLoss = runs.Sum(x => x.SystemLoss),
+            decision = complete ? "PENDING_OFFLINE_GATE" : "PROVIDER_BLOCKED"
+        }, ct);
+        Console.WriteLine($"I4_STATUS={(complete ? "COMPLETE" : "PROVIDER_BLOCKED")}");
+        Console.WriteLine($"I4_PROVIDER_CALLS={model.ProviderCalls}");
+        return complete ? 0 : 1;
     }
 
     /// <summary>Runs I3: deterministic, lossless source-boundary presentation over the frozen
