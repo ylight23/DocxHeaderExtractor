@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-autonomous-completion-summary-v1",
+  "terminalStatus": "NO_EVIDENCE_BACKED_INTERVENTION_REMAINS",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "startHead": "3f9e3b5",
+  "acceptedArchitecture": "semantic-text + deterministic exact UTF-16 binder + validator + projection",
+  "behavioralParent": "76c4e01",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "cohort": {"documents": 5, "cells": 15, "repeats": 3, "goldOccurrences": 153},
+  "micro": {"tp": 425, "fp": 22, "fn": 34, "precision": 0.950783, "recall": 0.925926, "f1": 0.93819},
+  "repeatMicro": [
+    {"repeat":"R1","tp":143,"fp":7,"fn":10,"f1":0.943894},
+    {"repeat":"R2","tp":142,"fp":8,"fn":11,"f1":0.937294},
+    {"repeat":"R3","tp":143,"fp":17,"fn":10,"f1":0.913738}
+  ],
+  "residual": {"persistentModelOmissions":7,"persistentFalsePositives":7,"bindAmbiguous":6,"bindFailure":0,"systemLoss":0,"role":"NOT_MEASURED","hierarchy":"NOT_MEASURED"},
+  "verification": {"goldFirewall":"PASS","sourceAuthority":"frozen B0 outputs; Gold offline only","focusedTests":"35/35 PASS","releaseBuild":"PASS","diffCheck":"PASS","fullDeterministicSuite":"not terminal: 2 stale DOC-0205 reconciliation assertions observed (expected 139 vs actual 142; old classification vs current MIXED_RESIDUALS_NO_CLEAR_WINNER); run stopped without changing tests or rebaselining; prior known baseline was 1412 passed, 1 unrelated N15 SHA failure"},
+  "remoteHead": "TO_BE_RECORDED_AFTER_COMMIT"
+}

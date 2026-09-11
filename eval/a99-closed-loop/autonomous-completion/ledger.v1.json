@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "a99-autonomous-completion-ledger-v1",
+  "appendOnly": true,
+  "entries": [
+    {
+      "experimentId": "A99-I3",
+      "parent": "B0@76c4e01",
+      "failureClass": "MODEL_OMISSION",
+      "hypothesis": "Generic lossless semantic source boundaries recover the seven persistent omissions.",
+      "mechanismFamily": "source-presentation",
+      "freshProviderCalls": 15,
+      "targetBefore": 7,
+      "targetAfter": 82,
+      "systemLoss": 0,
+      "bindFailure": 0,
+      "pairedRegression": true,
+      "decision": "REVERT",
+      "commit": "3f9e3b5"
+    }
+  ]
+}

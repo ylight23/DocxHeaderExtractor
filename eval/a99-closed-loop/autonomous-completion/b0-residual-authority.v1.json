@@ -1,0 +1,2859 @@
+﻿{
+    "schemaVersion":  "a99-autonomous-b0-residual-authority-v1",
+    "generatedFrom":  "frozen B0 semantic-text-generalization",
+    "parent":  "B0@76c4e01",
+    "startHead":  "3f9e3b5dcb59fb5d9c95f7f73fa4ca381ca50a9f",
+    "modelCalls":  0,
+    "providerCalls":  0,
+    "goldReadBeforeFreeze":  false,
+    "goldFirewall":  "PASS",
+    "authoritative":  true,
+    "roleMeasurement":  "NOT_MEASURED",
+    "hierarchyMeasurement":  "NOT_MEASURED",
+    "counts":  {
+                   "MODEL_NON_VERBATIM":  0,
+                   "MODEL_WRONG_TEXT_BOUNDARY":  4,
+                   "MODEL_OMISSION":  21,
+                   "BIND_AMBIGUOUS":  6,
+                   "SYSTEM_LOSS":  0,
+                   "MODEL_WRONG_TEXT":  0,
+                   "MODEL_ROLE_ERROR":  0,
+                   "HIERARCHY_ERROR":  0,
+                   "MODEL_FALSE_POSITIVE":  32,
+                   "BIND_FAILURE":  0
+               },
+    "measurementStatus":  {
+                              "MODEL_NON_VERBATIM":  "NOT_MEASURED",
+                              "MODEL_ROLE_ERROR":  "NOT_MEASURED",
+                              "HIERARCHY_ERROR":  "NOT_MEASURED"
+                          },
+    "persistentResidualCount":  17,
+    "persistentResidualKeys":  [
+                                   {
+                                       "documentId":  "DOC-0205",
+                                       "key":  "body[1]/p[4]:1:266",
+                                       "exactSourceText":  "CHÍNH PHỦ |CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM | |________ |Độc lập - Tự do - Hạnh phúc | |Số: 47/2020/NĐ-CP |_______________________ | | |Hà Nội, ngày 09 tháng 4 năm 2020 | NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước ______________________",
+                                       "bucket":  "MODEL_FALSE_POSITIVE"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0252",
+                                       "key":  "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+                                       "exactSourceText":  "Western Asia",
+                                       "bucket":  "MODEL_OMISSION"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0252",
+                                       "key":  "body[1]/p[158]:56:62",
+                                       "exactSourceText":  "Agenda",
+                                       "bucket":  "MODEL_WRONG_TEXT_BOUNDARY"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0252",
+                                       "key":  "body[1]/p[3]:0:47",
+                                       "exactSourceText":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+                                       "bucket":  "MODEL_FALSE_POSITIVE"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0252",
+                                       "key":  "body[1]/p[46]:0:12",
+                                       "exactSourceText":  "Western Asia",
+                                       "bucket":  "MODEL_FALSE_POSITIVE"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0252",
+                                       "key":  "body[1]/p[175]:0:36",
+                                       "exactSourceText":  "ICP Technical Advisory Group members",
+                                       "bucket":  "MODEL_FALSE_POSITIVE"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0252",
+                                       "key":  "body[1]/p[176]:0:42",
+                                       "exactSourceText":  "ICP experts, guest speakers, and observers",
+                                       "bucket":  "MODEL_FALSE_POSITIVE"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0252",
+                                       "key":  "body[1]/p[177]:0:42",
+                                       "exactSourceText":  "ICP Inter-Agency Coordination Group (IACG)",
+                                       "bucket":  "MODEL_FALSE_POSITIVE"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0256",
+                                       "key":  "body[1]/p[11]:0:6",
+                                       "exactSourceText":  "Africa",
+                                       "bucket":  "BIND_AMBIGUOUS"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0256",
+                                       "key":  "body[1]/p[17]:0:20",
+                                       "exactSourceText":  "Asia and the Pacific",
+                                       "bucket":  "BIND_AMBIGUOUS"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0256",
+                                       "key":  "body[1]/p[3]:0:87",
+                                       "exactSourceText":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                                       "bucket":  "MODEL_FALSE_POSITIVE"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0258",
+                                       "key":  "body[1]/p[11]:0:6",
+                                       "exactSourceText":  "Africa",
+                                       "bucket":  "MODEL_OMISSION"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0258",
+                                       "key":  "body[1]/p[12]:0:20",
+                                       "exactSourceText":  "Asia and the Pacific",
+                                       "bucket":  "MODEL_OMISSION"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0258",
+                                       "key":  "body[1]/p[17]:0:25",
+                                       "exactSourceText":  "Eurostat–OECD PPP Program",
+                                       "bucket":  "MODEL_OMISSION"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0258",
+                                       "key":  "body[1]/p[18]:0:34",
+                                       "exactSourceText":  "Commonwealth of Independent States",
+                                       "bucket":  "MODEL_OMISSION"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0258",
+                                       "key":  "body[1]/p[19]:0:31",
+                                       "exactSourceText":  "Latin America and the Caribbean",
+                                       "bucket":  "MODEL_OMISSION"
+                                   },
+                                   {
+                                       "documentId":  "DOC-0258",
+                                       "key":  "body[1]/p[24]:0:12",
+                                       "exactSourceText":  "Western Asia",
+                                       "bucket":  "MODEL_OMISSION"
+                                   }
+                               ],
+    "cells":  [
+                  {
+                      "documentId":  "DOC-0001",
+                      "repeat":  "r1",
+                      "tp":  7,
+                      "fp":  0,
+                      "fn":  0,
+                      "precision":  1,
+                      "recall":  1,
+                      "f1":  1,
+                      "systemLoss":  0,
+                      "residualCount":  0
+                  },
+                  {
+                      "documentId":  "DOC-0001",
+                      "repeat":  "r2",
+                      "tp":  7,
+                      "fp":  0,
+                      "fn":  0,
+                      "precision":  1,
+                      "recall":  1,
+                      "f1":  1,
+                      "systemLoss":  0,
+                      "residualCount":  0
+                  },
+                  {
+                      "documentId":  "DOC-0001",
+                      "repeat":  "r3",
+                      "tp":  7,
+                      "fp":  0,
+                      "fn":  0,
+                      "precision":  1,
+                      "recall":  1,
+                      "f1":  1,
+                      "systemLoss":  0,
+                      "residualCount":  0
+                  },
+                  {
+                      "documentId":  "DOC-0205",
+                      "repeat":  "r1",
+                      "tp":  71,
+                      "fp":  1,
+                      "fn":  0,
+                      "precision":  0.9861111111111112,
+                      "recall":  1,
+                      "f1":  0.993006993006993,
+                      "systemLoss":  0,
+                      "residualCount":  1
+                  },
+                  {
+                      "documentId":  "DOC-0205",
+                      "repeat":  "r2",
+                      "tp":  71,
+                      "fp":  1,
+                      "fn":  0,
+                      "precision":  0.9861111111111112,
+                      "recall":  1,
+                      "f1":  0.993006993006993,
+                      "systemLoss":  0,
+                      "residualCount":  1
+                  },
+                  {
+                      "documentId":  "DOC-0205",
+                      "repeat":  "r3",
+                      "tp":  71,
+                      "fp":  1,
+                      "fn":  0,
+                      "precision":  0.9861111111111112,
+                      "recall":  1,
+                      "f1":  0.993006993006993,
+                      "systemLoss":  0,
+                      "residualCount":  1
+                  },
+                  {
+                      "documentId":  "DOC-0252",
+                      "repeat":  "r1",
+                      "tp":  25,
+                      "fp":  5,
+                      "fn":  2,
+                      "precision":  0.8333333333333334,
+                      "recall":  0.9259259259259259,
+                      "f1":  0.8771929824561403,
+                      "systemLoss":  0,
+                      "residualCount":  7
+                  },
+                  {
+                      "documentId":  "DOC-0252",
+                      "repeat":  "r2",
+                      "tp":  25,
+                      "fp":  5,
+                      "fn":  2,
+                      "precision":  0.8333333333333334,
+                      "recall":  0.9259259259259259,
+                      "f1":  0.8771929824561403,
+                      "systemLoss":  0,
+                      "residualCount":  7
+                  },
+                  {
+                      "documentId":  "DOC-0252",
+                      "repeat":  "r3",
+                      "tp":  25,
+                      "fp":  6,
+                      "fn":  2,
+                      "precision":  0.8064516129032258,
+                      "recall":  0.9259259259259259,
+                      "f1":  0.8620689655172414,
+                      "systemLoss":  0,
+                      "residualCount":  8
+                  },
+                  {
+                      "documentId":  "DOC-0256",
+                      "repeat":  "r1",
+                      "tp":  22,
+                      "fp":  1,
+                      "fn":  2,
+                      "precision":  0.9565217391304348,
+                      "recall":  0.9166666666666666,
+                      "f1":  0.9361702127659574,
+                      "systemLoss":  0,
+                      "residualCount":  3
+                  },
+                  {
+                      "documentId":  "DOC-0256",
+                      "repeat":  "r2",
+                      "tp":  22,
+                      "fp":  1,
+                      "fn":  2,
+                      "precision":  0.9565217391304348,
+                      "recall":  0.9166666666666666,
+                      "f1":  0.9361702127659574,
+                      "systemLoss":  0,
+                      "residualCount":  3
+                  },
+                  {
+                      "documentId":  "DOC-0256",
+                      "repeat":  "r3",
+                      "tp":  22,
+                      "fp":  10,
+                      "fn":  2,
+                      "precision":  0.6875,
+                      "recall":  0.9166666666666666,
+                      "f1":  0.7857142857142857,
+                      "systemLoss":  0,
+                      "residualCount":  12
+                  },
+                  {
+                      "documentId":  "DOC-0258",
+                      "repeat":  "r1",
+                      "tp":  18,
+                      "fp":  0,
+                      "fn":  6,
+                      "precision":  1,
+                      "recall":  0.75,
+                      "f1":  0.8571428571428571,
+                      "systemLoss":  0,
+                      "residualCount":  6
+                  },
+                  {
+                      "documentId":  "DOC-0258",
+                      "repeat":  "r2",
+                      "tp":  17,
+                      "fp":  1,
+                      "fn":  7,
+                      "precision":  0.9444444444444444,
+                      "recall":  0.7083333333333334,
+                      "f1":  0.8095238095238096,
+                      "systemLoss":  0,
+                      "residualCount":  8
+                  },
+                  {
+                      "documentId":  "DOC-0258",
+                      "repeat":  "r3",
+                      "tp":  18,
+                      "fp":  0,
+                      "fn":  6,
+                      "precision":  1,
+                      "recall":  0.75,
+                      "f1":  0.8571428571428571,
+                      "systemLoss":  0,
+                      "residualCount":  6
+                  }
+              ],
+    "rows":  [
+                 {
+                     "documentId":  "DOC-0205",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[4]:1:266",
+                     "sourceId":  "body[1]/p[4]",
+                     "sourceAlias":  "S0003",
+                     "exactSourceText":  "CHÍNH PHỦ |CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM | |________ |Độc lập - Tự do - Hạnh phúc | |Số: 47/2020/NĐ-CP |_______________________ | | |Hà Nội, ngày 09 tháng 4 năm 2020 | NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước ______________________",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0003",
+                                                    "text":  "CHÍNH PHỦ |CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM | |________ |Độc lập - Tự do - Hạnh phúc | |Số: 47/2020/NĐ-CP |_______________________ | | |Hà Nội, ngày 09 tháng 4 năm 2020 | NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước ______________________",
+                                                    "role":  "DOCUMENT_TITLE",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0003",
+                                           "sourceId":  "body[1]/p[4]",
+                                           "sourceOrdinal":  3,
+                                           "text":  "CHÍNH PHỦ |CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM | |________ |Độc lập - Tự do - Hạnh phúc | |Số: 47/2020/NĐ-CP |_______________________ | | |Hà Nội, ngày 09 tháng 4 năm 2020 | NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước ______________________",
+                                           "role":  "DOCUMENT_TITLE",
+                                           "start":  1,
+                                           "end":  266
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  1,
+                     "end":  266
+                 },
+                 {
+                     "documentId":  "DOC-0205",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[4]:1:266",
+                     "sourceId":  "body[1]/p[4]",
+                     "sourceAlias":  "S0003",
+                     "exactSourceText":  "CHÍNH PHỦ |CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM | |________ |Độc lập - Tự do - Hạnh phúc | |Số: 47/2020/NĐ-CP |_______________________ | | |Hà Nội, ngày 09 tháng 4 năm 2020 | NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước ______________________",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0003",
+                                                    "text":  "CHÍNH PHỦ |CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM | |________ |Độc lập - Tự do - Hạnh phúc | |Số: 47/2020/NĐ-CP |_______________________ | | |Hà Nội, ngày 09 tháng 4 năm 2020 | NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước ______________________",
+                                                    "role":  "DOCUMENT_TITLE",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0003",
+                                           "sourceId":  "body[1]/p[4]",
+                                           "sourceOrdinal":  3,
+                                           "text":  "CHÍNH PHỦ |CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM | |________ |Độc lập - Tự do - Hạnh phúc | |Số: 47/2020/NĐ-CP |_______________________ | | |Hà Nội, ngày 09 tháng 4 năm 2020 | NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước ______________________",
+                                           "role":  "DOCUMENT_TITLE",
+                                           "start":  1,
+                                           "end":  266
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  1,
+                     "end":  266
+                 },
+                 {
+                     "documentId":  "DOC-0205",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[4]:1:266",
+                     "sourceId":  "body[1]/p[4]",
+                     "sourceAlias":  "S0003",
+                     "exactSourceText":  "CHÍNH PHỦ |CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM | |________ |Độc lập - Tự do - Hạnh phúc | |Số: 47/2020/NĐ-CP |_______________________ | | |Hà Nội, ngày 09 tháng 4 năm 2020 | NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước ______________________",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0003",
+                                                    "text":  "CHÍNH PHỦ |CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM | |________ |Độc lập - Tự do - Hạnh phúc | |Số: 47/2020/NĐ-CP |_______________________ | | |Hà Nội, ngày 09 tháng 4 năm 2020 | NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước ______________________",
+                                                    "role":  "DOCUMENT_TITLE",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0003",
+                                           "sourceId":  "body[1]/p[4]",
+                                           "sourceOrdinal":  3,
+                                           "text":  "CHÍNH PHỦ |CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM | |________ |Độc lập - Tự do - Hạnh phúc | |Số: 47/2020/NĐ-CP |_______________________ | | |Hà Nội, ngày 09 tháng 4 năm 2020 | NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước ______________________",
+                                           "role":  "DOCUMENT_TITLE",
+                                           "start":  1,
+                                           "end":  266
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  1,
+                     "end":  266
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r1",
+                     "key":  "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+                     "sourceId":  "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+                     "sourceAlias":  "S0056",
+                     "exactSourceText":  "Western Asia",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0056",
+                                                    "text":  "Western Asia",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Western Asia",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  182,
+                     "end":  194
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[158]:56:62",
+                     "sourceId":  "body[1]/p[158]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Agenda",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_WRONG_SPAN",
+                     "bucket":  "MODEL_WRONG_TEXT_BOUNDARY",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Agenda",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  56,
+                     "end":  62
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[3]:0:47",
+                     "sourceId":  "body[1]/p[3]",
+                     "sourceAlias":  "S0001",
+                     "exactSourceText":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0001",
+                                                    "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+                                                    "role":  "DOCUMENT_TITLE",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0001",
+                                           "sourceId":  "body[1]/p[3]",
+                                           "sourceOrdinal":  2,
+                                           "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+                                           "role":  "DOCUMENT_TITLE",
+                                           "start":  0,
+                                           "end":  47
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  47
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[46]:0:12",
+                     "sourceId":  "body[1]/p[46]",
+                     "sourceAlias":  "S0056",
+                     "exactSourceText":  "Western Asia",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0056",
+                                                    "text":  "Western Asia",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0056",
+                                           "sourceId":  "body[1]/p[46]",
+                                           "sourceOrdinal":  63,
+                                           "text":  "Western Asia",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  12
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  12
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[175]:0:36",
+                     "sourceId":  "body[1]/p[175]",
+                     "sourceAlias":  "S0196",
+                     "exactSourceText":  "ICP Technical Advisory Group members",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0196",
+                                                    "text":  "ICP Technical Advisory Group members",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0196",
+                                           "sourceId":  "body[1]/p[175]",
+                                           "sourceOrdinal":  229,
+                                           "text":  "ICP Technical Advisory Group members",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  36
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  36
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[176]:0:42",
+                     "sourceId":  "body[1]/p[176]",
+                     "sourceAlias":  "S0199",
+                     "exactSourceText":  "ICP experts, guest speakers, and observers",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0199",
+                                                    "text":  "ICP experts, guest speakers, and observers",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0199",
+                                           "sourceId":  "body[1]/p[176]",
+                                           "sourceOrdinal":  232,
+                                           "text":  "ICP experts, guest speakers, and observers",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  42
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  42
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[177]:0:42",
+                     "sourceId":  "body[1]/p[177]",
+                     "sourceAlias":  "S0202",
+                     "exactSourceText":  "ICP Inter-Agency Coordination Group (IACG)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0202",
+                                                    "text":  "ICP Inter-Agency Coordination Group (IACG)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0202",
+                                           "sourceId":  "body[1]/p[177]",
+                                           "sourceOrdinal":  235,
+                                           "text":  "ICP Inter-Agency Coordination Group (IACG)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  42
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  42
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r2",
+                     "key":  "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+                     "sourceId":  "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+                     "sourceAlias":  "S0056",
+                     "exactSourceText":  "Western Asia",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0056",
+                                                    "text":  "Western Asia",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Western Asia",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  182,
+                     "end":  194
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[158]:56:62",
+                     "sourceId":  "body[1]/p[158]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Agenda",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_WRONG_SPAN",
+                     "bucket":  "MODEL_WRONG_TEXT_BOUNDARY",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Agenda",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  56,
+                     "end":  62
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[3]:0:47",
+                     "sourceId":  "body[1]/p[3]",
+                     "sourceAlias":  "S0001",
+                     "exactSourceText":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0001",
+                                                    "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+                                                    "role":  "DOCUMENT_TITLE",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0001",
+                                           "sourceId":  "body[1]/p[3]",
+                                           "sourceOrdinal":  2,
+                                           "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+                                           "role":  "DOCUMENT_TITLE",
+                                           "start":  0,
+                                           "end":  47
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  47
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[46]:0:12",
+                     "sourceId":  "body[1]/p[46]",
+                     "sourceAlias":  "S0056",
+                     "exactSourceText":  "Western Asia",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0056",
+                                                    "text":  "Western Asia",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0056",
+                                           "sourceId":  "body[1]/p[46]",
+                                           "sourceOrdinal":  63,
+                                           "text":  "Western Asia",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  12
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  12
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[175]:0:36",
+                     "sourceId":  "body[1]/p[175]",
+                     "sourceAlias":  "S0196",
+                     "exactSourceText":  "ICP Technical Advisory Group members",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0196",
+                                                    "text":  "ICP Technical Advisory Group members",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0196",
+                                           "sourceId":  "body[1]/p[175]",
+                                           "sourceOrdinal":  229,
+                                           "text":  "ICP Technical Advisory Group members",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  36
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  36
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[176]:0:42",
+                     "sourceId":  "body[1]/p[176]",
+                     "sourceAlias":  "S0199",
+                     "exactSourceText":  "ICP experts, guest speakers, and observers",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0199",
+                                                    "text":  "ICP experts, guest speakers, and observers",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0199",
+                                           "sourceId":  "body[1]/p[176]",
+                                           "sourceOrdinal":  232,
+                                           "text":  "ICP experts, guest speakers, and observers",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  42
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  42
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[177]:0:42",
+                     "sourceId":  "body[1]/p[177]",
+                     "sourceAlias":  "S0202",
+                     "exactSourceText":  "ICP Inter-Agency Coordination Group (IACG)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0202",
+                                                    "text":  "ICP Inter-Agency Coordination Group (IACG)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0202",
+                                           "sourceId":  "body[1]/p[177]",
+                                           "sourceOrdinal":  235,
+                                           "text":  "ICP Inter-Agency Coordination Group (IACG)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  42
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  42
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r3",
+                     "key":  "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+                     "sourceId":  "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+                     "sourceAlias":  "S0056",
+                     "exactSourceText":  "Western Asia",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0056",
+                                                    "text":  "Western Asia",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Western Asia",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  182,
+                     "end":  194
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[158]:56:62",
+                     "sourceId":  "body[1]/p[158]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Agenda",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_WRONG_SPAN",
+                     "bucket":  "MODEL_WRONG_TEXT_BOUNDARY",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Agenda",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  56,
+                     "end":  62
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[3]:0:47",
+                     "sourceId":  "body[1]/p[3]",
+                     "sourceAlias":  "S0001",
+                     "exactSourceText":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0001",
+                                                    "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+                                                    "role":  "DOCUMENT_TITLE",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0001",
+                                           "sourceId":  "body[1]/p[3]",
+                                           "sourceOrdinal":  2,
+                                           "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+                                           "role":  "DOCUMENT_TITLE",
+                                           "start":  0,
+                                           "end":  47
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  47
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[46]:0:12",
+                     "sourceId":  "body[1]/p[46]",
+                     "sourceAlias":  "S0056",
+                     "exactSourceText":  "Western Asia",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0056",
+                                                    "text":  "Western Asia",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0056",
+                                           "sourceId":  "body[1]/p[46]",
+                                           "sourceOrdinal":  63,
+                                           "text":  "Western Asia",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  12
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  12
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[175]:0:36",
+                     "sourceId":  "body[1]/p[175]",
+                     "sourceAlias":  "S0196",
+                     "exactSourceText":  "ICP Technical Advisory Group members",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0196",
+                                                    "text":  "ICP Technical Advisory Group members",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0196",
+                                           "sourceId":  "body[1]/p[175]",
+                                           "sourceOrdinal":  229,
+                                           "text":  "ICP Technical Advisory Group members",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  36
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  36
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[176]:0:42",
+                     "sourceId":  "body[1]/p[176]",
+                     "sourceAlias":  "S0199",
+                     "exactSourceText":  "ICP experts, guest speakers, and observers",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0199",
+                                                    "text":  "ICP experts, guest speakers, and observers",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0199",
+                                           "sourceId":  "body[1]/p[176]",
+                                           "sourceOrdinal":  232,
+                                           "text":  "ICP experts, guest speakers, and observers",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  42
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  42
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[177]:0:42",
+                     "sourceId":  "body[1]/p[177]",
+                     "sourceAlias":  "S0202",
+                     "exactSourceText":  "ICP Inter-Agency Coordination Group (IACG)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0202",
+                                                    "text":  "ICP Inter-Agency Coordination Group (IACG)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0202",
+                                           "sourceId":  "body[1]/p[177]",
+                                           "sourceOrdinal":  235,
+                                           "text":  "ICP Inter-Agency Coordination Group (IACG)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  42
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  42
+                 },
+                 {
+                     "documentId":  "DOC-0252",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[178]:0:10",
+                     "sourceId":  "body[1]/p[178]",
+                     "sourceAlias":  "S0207",
+                     "exactSourceText":  "World Bank",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0207",
+                                                    "text":  "World Bank",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0207",
+                                           "sourceId":  "body[1]/p[178]",
+                                           "sourceOrdinal":  240,
+                                           "text":  "World Bank",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  10
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  10
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[11]:0:6",
+                     "sourceId":  "body[1]/p[11]",
+                     "sourceAlias":  "S0009",
+                     "exactSourceText":  "Africa",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0009",
+                                                    "text":  "Africa",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "AMBIGUOUS_EXACT_TEXT"
+                                                },
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "AMBIGUOUS_DUPLICATE_TEXT",
+                     "bucket":  "BIND_AMBIGUOUS",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Africa",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  6
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[17]:0:20",
+                     "sourceId":  "body[1]/p[17]",
+                     "sourceAlias":  "S0013",
+                     "exactSourceText":  "Asia and the Pacific",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0013",
+                                                    "text":  "Asia and the Pacific",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "AMBIGUOUS_EXACT_TEXT"
+                                                },
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "AMBIGUOUS_DUPLICATE_TEXT",
+                     "bucket":  "BIND_AMBIGUOUS",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Asia and the Pacific",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  20
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[3]:0:87",
+                     "sourceId":  "body[1]/p[3]",
+                     "sourceAlias":  "S0001",
+                     "exactSourceText":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0001",
+                                                    "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                                                    "role":  "DOCUMENT_TITLE",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0001",
+                                           "sourceId":  "body[1]/p[3]",
+                                           "sourceOrdinal":  2,
+                                           "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                                           "role":  "DOCUMENT_TITLE",
+                                           "start":  0,
+                                           "end":  87
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  87
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[11]:0:6",
+                     "sourceId":  "body[1]/p[11]",
+                     "sourceAlias":  "S0009",
+                     "exactSourceText":  "Africa",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0009",
+                                                    "text":  "Africa",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "AMBIGUOUS_EXACT_TEXT"
+                                                },
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "AMBIGUOUS_DUPLICATE_TEXT",
+                     "bucket":  "BIND_AMBIGUOUS",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Africa",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  6
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[17]:0:20",
+                     "sourceId":  "body[1]/p[17]",
+                     "sourceAlias":  "S0013",
+                     "exactSourceText":  "Asia and the Pacific",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0013",
+                                                    "text":  "Asia and the Pacific",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "AMBIGUOUS_EXACT_TEXT"
+                                                },
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "AMBIGUOUS_DUPLICATE_TEXT",
+                     "bucket":  "BIND_AMBIGUOUS",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Asia and the Pacific",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  20
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[3]:0:87",
+                     "sourceId":  "body[1]/p[3]",
+                     "sourceAlias":  "S0001",
+                     "exactSourceText":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0001",
+                                                    "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                                                    "role":  "DOCUMENT_TITLE",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0001",
+                                           "sourceId":  "body[1]/p[3]",
+                                           "sourceOrdinal":  2,
+                                           "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                                           "role":  "DOCUMENT_TITLE",
+                                           "start":  0,
+                                           "end":  87
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  87
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[11]:0:6",
+                     "sourceId":  "body[1]/p[11]",
+                     "sourceAlias":  "S0009",
+                     "exactSourceText":  "Africa",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0009",
+                                                    "text":  "Africa",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "AMBIGUOUS_EXACT_TEXT"
+                                                },
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "AMBIGUOUS_DUPLICATE_TEXT",
+                     "bucket":  "BIND_AMBIGUOUS",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Africa",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  6
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[17]:0:20",
+                     "sourceId":  "body[1]/p[17]",
+                     "sourceAlias":  "S0013",
+                     "exactSourceText":  "Asia and the Pacific",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0013",
+                                                    "text":  "Asia and the Pacific",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "AMBIGUOUS_EXACT_TEXT"
+                                                },
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "AMBIGUOUS_DUPLICATE_TEXT",
+                     "bucket":  "BIND_AMBIGUOUS",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Asia and the Pacific",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  20
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[3]:0:87",
+                     "sourceId":  "body[1]/p[3]",
+                     "sourceAlias":  "S0001",
+                     "exactSourceText":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0001",
+                                                    "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                                                    "role":  "DOCUMENT_TITLE",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0001",
+                                           "sourceId":  "body[1]/p[3]",
+                                           "sourceOrdinal":  2,
+                                           "text":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                                           "role":  "DOCUMENT_TITLE",
+                                           "start":  0,
+                                           "end":  87
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  true,
+                     "presentInR2":  true,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  87
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[125]:0:31",
+                     "sourceId":  "body[1]/p[125]",
+                     "sourceAlias":  "S0186",
+                     "exactSourceText":  "African Development Bank (AfDB)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0186",
+                                                    "text":  "African Development Bank (AfDB)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0186",
+                                           "sourceId":  "body[1]/p[125]",
+                                           "sourceOrdinal":  216,
+                                           "text":  "African Development Bank (AfDB)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  31
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  31
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[130]:0:28",
+                     "sourceId":  "body[1]/p[130]",
+                     "sourceAlias":  "S0191",
+                     "exactSourceText":  "Asian Development Bank (ADB)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0191",
+                                                    "text":  "Asian Development Bank (ADB)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0191",
+                                           "sourceId":  "body[1]/p[130]",
+                                           "sourceOrdinal":  221,
+                                           "text":  "Asian Development Bank (ADB)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  28
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  28
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[133]:0:85",
+                     "sourceId":  "body[1]/p[133]",
+                     "sourceAlias":  "S0194",
+                     "exactSourceText":  "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0194",
+                                                    "text":  "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0194",
+                                           "sourceId":  "body[1]/p[133]",
+                                           "sourceOrdinal":  224,
+                                           "text":  "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  85
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  85
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[136]:0:61",
+                     "sourceId":  "body[1]/p[136]",
+                     "sourceAlias":  "S0197",
+                     "exactSourceText":  "Organisation for Economic Co-operation and Development (OECD)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0197",
+                                                    "text":  "Organisation for Economic Co-operation and Development (OECD)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0197",
+                                           "sourceId":  "body[1]/p[136]",
+                                           "sourceOrdinal":  227,
+                                           "text":  "Organisation for Economic Co-operation and Development (OECD)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  61
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  61
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[139]:0:57",
+                     "sourceId":  "body[1]/p[139]",
+                     "sourceAlias":  "S0200",
+                     "exactSourceText":  "Statistical Office of the European Communities (Eurostat)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0200",
+                                                    "text":  "Statistical Office of the European Communities (Eurostat)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0200",
+                                           "sourceId":  "body[1]/p[139]",
+                                           "sourceOrdinal":  230,
+                                           "text":  "Statistical Office of the European Communities (Eurostat)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  57
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  57
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[142]:0:81",
+                     "sourceId":  "body[1]/p[142]",
+                     "sourceAlias":  "S0203",
+                     "exactSourceText":  "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0203",
+                                                    "text":  "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0203",
+                                           "sourceId":  "body[1]/p[142]",
+                                           "sourceOrdinal":  233,
+                                           "text":  "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  81
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  81
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[146]:0:73",
+                     "sourceId":  "body[1]/p[146]",
+                     "sourceAlias":  "S0207",
+                     "exactSourceText":  "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0207",
+                                                    "text":  "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0207",
+                                           "sourceId":  "body[1]/p[146]",
+                                           "sourceOrdinal":  237,
+                                           "text":  "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  73
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  73
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[149]:0:33",
+                     "sourceId":  "body[1]/p[149]",
+                     "sourceAlias":  "S0210",
+                     "exactSourceText":  "International Monetary Fund (IMF)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0210",
+                                                    "text":  "International Monetary Fund (IMF)",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0210",
+                                           "sourceId":  "body[1]/p[149]",
+                                           "sourceOrdinal":  240,
+                                           "text":  "International Monetary Fund (IMF)",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  33
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  33
+                 },
+                 {
+                     "documentId":  "DOC-0256",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[151]:0:10",
+                     "sourceId":  "body[1]/p[151]",
+                     "sourceAlias":  "S0212",
+                     "exactSourceText":  "World Bank",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0212",
+                                                    "text":  "World Bank",
+                                                    "role":  "SUBSECTION",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0212",
+                                           "sourceId":  "body[1]/p[151]",
+                                           "sourceOrdinal":  242,
+                                           "text":  "World Bank",
+                                           "role":  "SUBSECTION",
+                                           "start":  0,
+                                           "end":  10
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  10
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[11]:0:6",
+                     "sourceId":  "body[1]/p[11]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Africa",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Africa",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  6
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[12]:0:20",
+                     "sourceId":  "body[1]/p[12]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Asia and the Pacific",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Asia and the Pacific",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  20
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[17]:0:25",
+                     "sourceId":  "body[1]/p[17]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Eurostat–OECD PPP Program",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Eurostat–OECD PPP Program",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  25
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[18]:0:34",
+                     "sourceId":  "body[1]/p[18]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Commonwealth of Independent States",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Commonwealth of Independent States",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  34
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[19]:0:31",
+                     "sourceId":  "body[1]/p[19]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Latin America and the Caribbean",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Latin America and the Caribbean",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  31
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r1",
+                     "key":  "body[1]/p[24]:0:12",
+                     "sourceId":  "body[1]/p[24]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Western Asia",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Western Asia",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  12
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[11]:0:6",
+                     "sourceId":  "body[1]/p[11]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Africa",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Africa",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  6
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[12]:0:20",
+                     "sourceId":  "body[1]/p[12]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Asia and the Pacific",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Asia and the Pacific",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  20
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[17]:0:25",
+                     "sourceId":  "body[1]/p[17]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Eurostat–OECD PPP Program",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Eurostat–OECD PPP Program",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  25
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[18]:0:34",
+                     "sourceId":  "body[1]/p[18]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Commonwealth of Independent States",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Commonwealth of Independent States",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  34
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[19]:0:31",
+                     "sourceId":  "body[1]/p[19]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Latin America and the Caribbean",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Latin America and the Caribbean",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  31
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[24]:0:12",
+                     "sourceId":  "body[1]/p[24]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Western Asia",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Western Asia",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  12
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[115]:0:29",
+                     "sourceId":  "body[1]/p[115]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Annex 2: List of participants",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_WRONG_SPAN",
+                     "bucket":  "MODEL_WRONG_TEXT_BOUNDARY",
+                     "persistentOrIntermittent":  "INTERMITTENT_OR_RECOVERED",
+                     "presentInR1":  true,
+                     "presentInR2":  false,
+                     "presentInR3":  true,
+                     "semanticNeighborhood":  "Annex 2: List of participants",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  29
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r2",
+                     "key":  "body[1]/p[115]:0:230",
+                     "sourceId":  "body[1]/p[115]",
+                     "sourceAlias":  "S0135",
+                     "exactSourceText":  "Annex 2: List of participants African Development Bank (AfDB) − Ben Paul Mungyereza (by videoconference) − Gregoire Mboya de Loubassou (in-person) − Charles Sessede (by videoconference) − Symphorien Ndang Tabo (by videoconference)",
+                     "modelRawProposalStatus":  {
+                                                    "sourceAlias":  "S0135",
+                                                    "text":  "Annex 2: List of participants African Development Bank (AfDB) − Ben Paul Mungyereza (by videoconference) − Gregoire Mboya de Loubassou (in-person) − Charles Sessede (by videoconference) − Symphorien Ndang Tabo (by videoconference)",
+                                                    "role":  "ANNEX_HEADING",
+                                                    "bindingStatus":  "EXACT_TEXT_FOUND"
+                                                },
+                     "boundIdentity":  {
+                                           "alias":  "S0135",
+                                           "sourceId":  "body[1]/p[115]",
+                                           "sourceOrdinal":  159,
+                                           "text":  "Annex 2: List of participants African Development Bank (AfDB) − Ben Paul Mungyereza (by videoconference) − Gregoire Mboya de Loubassou (in-person) − Charles Sessede (by videoconference) − Symphorien Ndang Tabo (by videoconference)",
+                                           "role":  "ANNEX_HEADING",
+                                           "start":  0,
+                                           "end":  230
+                                       },
+                     "goldStatus":  "NOT_GOLD",
+                     "firstLossOwner":  "MODEL_FALSE_POSITIVE",
+                     "bucket":  "MODEL_FALSE_POSITIVE",
+                     "persistentOrIntermittent":  "INTERMITTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  true,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  null,
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  230
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[11]:0:6",
+                     "sourceId":  "body[1]/p[11]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Africa",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Africa",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  6
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[12]:0:20",
+                     "sourceId":  "body[1]/p[12]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Asia and the Pacific",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Asia and the Pacific",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  20
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[17]:0:25",
+                     "sourceId":  "body[1]/p[17]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Eurostat–OECD PPP Program",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Eurostat–OECD PPP Program",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  25
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[18]:0:34",
+                     "sourceId":  "body[1]/p[18]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Commonwealth of Independent States",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Commonwealth of Independent States",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  34
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[19]:0:31",
+                     "sourceId":  "body[1]/p[19]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Latin America and the Caribbean",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Latin America and the Caribbean",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  31
+                 },
+                 {
+                     "documentId":  "DOC-0258",
+                     "repeat":  "r3",
+                     "key":  "body[1]/p[24]:0:12",
+                     "sourceId":  "body[1]/p[24]",
+                     "sourceAlias":  null,
+                     "exactSourceText":  "Western Asia",
+                     "modelRawProposalStatus":  "NONE",
+                     "boundIdentity":  null,
+                     "goldStatus":  "MISSING",
+                     "firstLossOwner":  "MODEL_OMISSION",
+                     "bucket":  "MODEL_OMISSION",
+                     "persistentOrIntermittent":  "PERSISTENT",
+                     "presentInR1":  false,
+                     "presentInR2":  false,
+                     "presentInR3":  false,
+                     "semanticNeighborhood":  "Western Asia",
+                     "structuralFactsAlreadyVisibleToModel":  [
+                                                                  "sourceAlias",
+                                                                  "verbatimText",
+                                                                  "sourceOrdinal"
+                                                              ],
+                     "structuralFactsNotVisibleInB0Packet":  [
+                                                                 "style",
+                                                                 "numbering",
+                                                                 "layout",
+                                                                 "hierarchy"
+                                                             ],
+                     "roleError":  "NOT_MEASURED",
+                     "hierarchyError":  "NOT_MEASURED",
+                     "start":  0,
+                     "end":  12
+                 }
+             ]
+}

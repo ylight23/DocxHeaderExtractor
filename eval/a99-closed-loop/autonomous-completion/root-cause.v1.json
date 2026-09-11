@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "a99-autonomous-root-cause-v1",
+  "parent": "B0@76c4e01",
+  "modelCalls": 0,
+  "goldUsedOnlyOffline": true,
+  "genericMechanismSupported": false,
+  "classification": "SEMANTIC_REASONING_FAILURE_OR_UNKNOWN",
+  "cases": [
+    {"documentId":"DOC-0252","sourceId":"body[1]/tbl[2]/tr[1]/tc[2]/p[6]","text":"Western Asia","bucket":"MODEL_OMISSION","classification":"SEMANTIC_REASONING_FAILURE","inputAvailability":"PRESENT_IN_B0_PACKET","representation":"verbatim semantic source with sourceAlias","role":"NOT_MEASURED","hierarchy":"NOT_MEASURED","persistence":"3/3","confidence":"MEDIUM"},
+    {"documentId":"DOC-0258","sourceId":"body[1]/p[11]","text":"Africa","bucket":"MODEL_OMISSION","classification":"SEMANTIC_REASONING_FAILURE","inputAvailability":"PRESENT_IN_B0_PACKET","representation":"verbatim semantic source with sourceAlias","role":"NOT_MEASURED","hierarchy":"NOT_MEASURED","persistence":"3/3","confidence":"MEDIUM"},
+    {"documentId":"DOC-0258","sourceId":"body[1]/p[12]","text":"Asia and the Pacific","bucket":"MODEL_OMISSION","classification":"SEMANTIC_REASONING_FAILURE","inputAvailability":"PRESENT_IN_B0_PACKET","representation":"verbatim semantic source with sourceAlias","role":"NOT_MEASURED","hierarchy":"NOT_MEASURED","persistence":"3/3","confidence":"MEDIUM"},
+    {"documentId":"DOC-0258","sourceId":"body[1]/p[17]","text":"Eurostat–OECD PPP Program","bucket":"MODEL_OMISSION","classification":"SEMANTIC_REASONING_FAILURE","inputAvailability":"PRESENT_IN_B0_PACKET","representation":"verbatim semantic source with sourceAlias","role":"NOT_MEASURED","hierarchy":"NOT_MEASURED","persistence":"3/3","confidence":"MEDIUM"},
+    {"documentId":"DOC-0258","sourceId":"body[1]/p[18]","text":"Commonwealth of Independent States","bucket":"MODEL_OMISSION","classification":"SEMANTIC_REASONING_FAILURE","inputAvailability":"PRESENT_IN_B0_PACKET","representation":"verbatim semantic source with sourceAlias","role":"NOT_MEASURED","hierarchy":"NOT_MEASURED","persistence":"3/3","confidence":"MEDIUM"},
+    {"documentId":"DOC-0258","sourceId":"body[1]/p[19]","text":"Latin America and the Caribbean","bucket":"MODEL_OMISSION","classification":"SEMANTIC_REASONING_FAILURE","inputAvailability":"PRESENT_IN_B0_PACKET","representation":"verbatim semantic source with sourceAlias","role":"NOT_MEASURED","hierarchy":"NOT_MEASURED","persistence":"3/3","confidence":"MEDIUM"},
+    {"documentId":"DOC-0258","sourceId":"body[1]/p[24]","text":"Western Asia","bucket":"MODEL_OMISSION","classification":"SEMANTIC_REASONING_FAILURE","inputAvailability":"PRESENT_IN_B0_PACKET","representation":"verbatim semantic source with sourceAlias","role":"NOT_MEASURED","hierarchy":"NOT_MEASURED","persistence":"3/3","confidence":"MEDIUM"}
+  ],
+  "reasonNoI4": "The omissions are stable and model-owned, but no single generic mechanism is supported by the offline evidence. Boundary representation was rejected with a large paired regression; omission review was already rejected; role and hierarchy are not measurable in this authority. Opening another intervention would be a representation/prompt variant without new causal evidence."
+}
