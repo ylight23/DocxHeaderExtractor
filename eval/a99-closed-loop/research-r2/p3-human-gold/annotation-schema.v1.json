@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "a99-r2-p3a-human-annotation-schema-v1",
+  "title": "P3A Human A/B semantic heading annotation",
+  "runtimeUse": "PROHIBITED",
+  "required": [
+    "studyId",
+    "pilotId",
+    "documentId",
+    "sourceSha256",
+    "annotatorId",
+    "annotationStatus",
+    "rows"
+  ],
+  "properties": {
+    "studyId": {
+      "const": "A99-R2"
+    },
+    "pilotId": {
+      "const": "R2-PILOT-8"
+    },
+    "documentId": {
+      "type": "string",
+      "pattern": "^DOC-[0-9]{4}$"
+    },
+    "sourceSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "annotatorId": {
+      "enum": [
+        "A",
+        "B"
+      ]
+    },
+    "annotationStatus": {
+      "enum": [
+        "EMPTY_TEMPLATE_AWAITING_HUMAN",
+        "HUMAN_FROZEN"
+      ]
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "documentId",
+          "humanHeadingOrdinal",
+          "documentTitleText",
+          "semanticMembership",
+          "semanticFamily",
+          "confidence"
+        ],
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "pattern": "^DOC-[0-9]{4}$"
+          },
+          "humanHeadingOrdinal": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "documentTitleText": {
+            "type": "string",
+            "minLength": 1
+          },
+          "semanticMembership": {
+            "const": "HEADING"
+          },
+          "semanticFamily": {
+            "enum": [
+              "DOCUMENT_TITLE",
+              "PART_CHAPTER",
+              "SECTION",
+              "SUBSECTION",
+              "REGION_OR_GEOGRAPHIC_LABEL",
+              "PROGRAM_OR_TOPIC_LABEL",
+              "TABLE_OR_LOCAL_LABEL",
+              "NAVIGATION_OR_AGENDA",
+              "ANNEX",
+              "CAPTION",
+              "OTHER_STRUCTURAL_LABEL",
+              "UNKNOWN"
+            ]
+          },
+          "optionalRole": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceOccurrenceHint": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reviewNote": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "CERTAIN",
+              "REVIEW_REQUIRED"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

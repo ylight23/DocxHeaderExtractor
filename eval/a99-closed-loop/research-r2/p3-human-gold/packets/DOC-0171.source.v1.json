@@ -1,0 +1,1708 @@
+{
+  "artifactKind": "A99_R2_P3A_HUMAN_SOURCE_ONLY_PACKET",
+  "schemaVersion": "a99-r2-p3a-source-packet-v1",
+  "studyId": "A99-R2",
+  "pilotId": "R2-PILOT-8",
+  "documentId": "DOC-0171",
+  "documentGroupId": "GROUP-0065",
+  "familyId": "PDF_NATIVE_LAYOUT",
+  "sourcePath": "todo10_8\\heading_corpus_100\\06_dich_song_ngu\\086_Luat_Dau_tu_2020_EN_alt.pdf",
+  "sourceSha256": "46c95bde68c1e38d7ca1ff88c2be9dea55252eaa7dff66578484a78d37437e26",
+  "sourceHashVerified": true,
+  "mediaType": "PDF",
+  "sourceRepresentation": {
+    "kind": "PDF_DETERMINISTIC_BLOCKS",
+    "ordering": "page ascending, numeric block id ascending",
+    "pageCount": 76,
+    "blockCount": 80,
+    "pageNumbersAvailable": true,
+    "extractor": "dhx pdf-clusters --no-llm"
+  },
+  "occurrences": [
+    {
+      "sourceOccurrenceId": "B000001",
+      "blockId": "b1",
+      "sourceOrdinal": 0,
+      "pageNumber": 1,
+      "literalSourceText": "THE PRESIDENT THE SOCIALIST REPUBLIC OF VIETNAM",
+      "sourceTextSha256": "e932035ed9ce60a337945c00de243fb29ed294c0879db30b4dfb4b5c9f0fce3a",
+      "lineCount": 1,
+      "layout": {
+        "topY": 688.9,
+        "bottomY": 688.9,
+        "left": 104.9,
+        "right": 519.4,
+        "style": {
+          "fontSize": 13,
+          "font": "times new roman,bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "THE PRESIDENT THE SOCIALIST REPUBLIC OF VIETNAM"
+    },
+    {
+      "sourceOccurrenceId": "B000002",
+      "blockId": "b2",
+      "sourceOrdinal": 1,
+      "pageNumber": 1,
+      "literalSourceText": "Independence - Freedom - Happiness",
+      "sourceTextSha256": "38b7bc1bdac154b18cc8abdd17f3b14d2c75440d1f4a2a1138f0fb58f8fe8fe5",
+      "lineCount": 1,
+      "layout": {
+        "topY": 672.7,
+        "bottomY": 672.7,
+        "left": 287.2,
+        "right": 492.9,
+        "style": {
+          "fontSize": 13,
+          "font": "times new roman,bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Independence-Freedom-Happiness"
+    },
+    {
+      "sourceOccurrenceId": "B000003",
+      "blockId": "b3",
+      "sourceOrdinal": 2,
+      "pageNumber": 1,
+      "literalSourceText": "ORDER",
+      "sourceTextSha256": "05d3799e8d57826848dafee94fadf9f5c9ff5a3939aa76cf77307fca530ffed7",
+      "lineCount": 1,
+      "layout": {
+        "topY": 600.1,
+        "bottomY": 600.1,
+        "left": 285,
+        "right": 342.2,
+        "style": {
+          "fontSize": 16,
+          "font": "times new roman,bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "ORDER"
+    },
+    {
+      "sourceOccurrenceId": "B000004",
+      "blockId": "b4",
+      "sourceOrdinal": 3,
+      "pageNumber": 1,
+      "literalSourceText": "On the promulgation of law",
+      "sourceTextSha256": "a8f2634b92229f67d1231b97c9eca416eee329ce7c18fc815de17e2ca9204fe3",
+      "lineCount": 1,
+      "layout": {
+        "topY": 574.9,
+        "bottomY": 574.9,
+        "left": 219.2,
+        "right": 407.5,
+        "style": {
+          "fontSize": 16,
+          "font": "times new roman,bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "On the promulgation of law"
+    },
+    {
+      "sourceOccurrenceId": "B000005",
+      "blockId": "b5",
+      "sourceOrdinal": 4,
+      "pageNumber": 1,
+      "literalSourceText": "THE PRESIDENT OF THE SOCIALIST REPUBLIC OF VIETNAM",
+      "sourceTextSha256": "295590a7b35bd4f2292d1401a8fa9f2a05a929fc6126f6c60635e0a2dec0cf90",
+      "lineCount": 1,
+      "layout": {
+        "topY": 531,
+        "bottomY": 531,
+        "left": 116.6,
+        "right": 509.8,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "THE PRESIDENT OF THE SOCIALIST REPUBLIC OF VIETNAM"
+    },
+    {
+      "sourceOccurrenceId": "B000006",
+      "blockId": "b6",
+      "sourceOrdinal": 5,
+      "pageNumber": 1,
+      "literalSourceText": "Pursuant to Articles 88 and 91 ofthe Constitution ofthe Socialist Republic",
+      "sourceTextSha256": "1f8fd8ca9e4df661059e4670a3749333b8836194e42c25b2264a6f088dfbf9da",
+      "lineCount": 1,
+      "layout": {
+        "topY": 508,
+        "bottomY": 508,
+        "left": 113.4,
+        "right": 541.3,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Pursuant to Articles 88 and 91 ofthe Constitution ofthe Socialist Republic"
+    },
+    {
+      "sourceOccurrenceId": "B000007",
+      "blockId": "b7",
+      "sourceOrdinal": 6,
+      "pageNumber": 1,
+      "literalSourceText": "of Vietnam;",
+      "sourceTextSha256": "43ba3d2d1de9a242f9bfcf0070f964d5658bc67d02f577f702225c85097e2495",
+      "lineCount": 1,
+      "layout": {
+        "topY": 491.6,
+        "bottomY": 491.6,
+        "left": 85.4,
+        "right": 149.7,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "of Vietnam;"
+    },
+    {
+      "sourceOccurrenceId": "B000008",
+      "blockId": "b8",
+      "sourceOrdinal": 7,
+      "pageNumber": 1,
+      "literalSourceText": "Pursuant to Article 80 ofthe Law on Promulgation of Legal Documents,",
+      "sourceTextSha256": "f185d72da4871e7c8ce18484aaf2b77be75fdf19e1330c312a1cda1a514db490",
+      "lineCount": 1,
+      "layout": {
+        "topY": 469.6,
+        "bottomY": 469.6,
+        "left": 113.4,
+        "right": 517.9,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Pursuant to Article 80 ofthe Law on Promulgation of Legal Documents,"
+    },
+    {
+      "sourceOccurrenceId": "B000009",
+      "blockId": "b9",
+      "sourceOrdinal": 8,
+      "pageNumber": 1,
+      "literalSourceText": "vvnn",
+      "sourceTextSha256": "220723e35c84b8853381c7b1a520f503e780f7444c613c045c1924ef7543eaa3",
+      "lineCount": 1,
+      "layout": {
+        "topY": 448.9,
+        "bottomY": 448.9,
+        "left": 413.4,
+        "right": 452.9,
+        "style": {
+          "fontSize": 36,
+          "font": "arial",
+          "color": "0.75,0.75,0.75"
+        }
+      },
+      "extractedText": "vvnn"
+    },
+    {
+      "sourceOccurrenceId": "B000010",
+      "blockId": "b10",
+      "sourceOrdinal": 9,
+      "pageNumber": 1,
+      "literalSourceText": "aamm..",
+      "sourceTextSha256": "90cb9639b63a3134b54ccb7ab558251f8ded35019a0f7c73a2c8f6e06dc63077",
+      "lineCount": 1,
+      "layout": {
+        "topY": 434.7,
+        "bottomY": 434.7,
+        "left": 356.1,
+        "right": 415,
+        "style": {
+          "fontSize": 36,
+          "font": "arial",
+          "color": "0.75,0.75,0.75"
+        }
+      },
+      "extractedText": "aamm .."
+    },
+    {
+      "sourceOccurrenceId": "B000011",
+      "blockId": "b11",
+      "sourceOrdinal": 10,
+      "pageNumber": 1,
+      "literalSourceText": "PVVROii Mee ULtt Gnn ATES:",
+      "sourceTextSha256": "925b477662740fb0888026f3e0889db1132b91ea3c5e2217d6e241e08fbdb900",
+      "lineCount": 1,
+      "layout": {
+        "topY": 423.5,
+        "bottomY": 423.5,
+        "left": 274.1,
+        "right": 380,
+        "style": {
+          "fontSize": 24,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "PVVROii Mee ULtt Gnn ATES:"
+    },
+    {
+      "sourceOccurrenceId": "B000012",
+      "blockId": "b12",
+      "sourceOrdinal": 11,
+      "pageNumber": 1,
+      "literalSourceText": "tt",
+      "sourceTextSha256": "0e07cf830957701d43c183f1515f63e6b68027e528f43ef52b1527a520ddec82",
+      "lineCount": 1,
+      "layout": {
+        "topY": 409.1,
+        "bottomY": 409.1,
+        "left": 265.5,
+        "right": 280.9,
+        "style": {
+          "fontSize": 36,
+          "font": "arial",
+          "color": "0.75,0.75,0.75"
+        }
+      },
+      "extractedText": "tt"
+    },
+    {
+      "sourceOccurrenceId": "B000013",
+      "blockId": "b13",
+      "sourceOrdinal": 12,
+      "pageNumber": 1,
+      "literalSourceText": "The Law on Inv LLestmuuenaat,",
+      "sourceTextSha256": "f487b00f6a2017e751afbc7b25fe3375f6581eaf36b8dbda0f5a8878b3228fef",
+      "lineCount": 1,
+      "layout": {
+        "topY": 401.8,
+        "bottomY": 401.8,
+        "left": 114.3,
+        "right": 269.8,
+        "style": {
+          "fontSize": 19.5,
+          "font": "times new roman,bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "The Law on Inv LLestmuuenaat,"
+    },
+    {
+      "sourceOccurrenceId": "B000014",
+      "blockId": "b14",
+      "sourceOrdinal": 13,
+      "pageNumber": 1,
+      "literalSourceText": "which was passed on June 17 2020 by the XIVth National Assembly of the",
+      "sourceTextSha256": "601e111bb771b26488d1bb281796b3262f5705b038088b650525cd28c5bb0f26",
+      "lineCount": 1,
+      "layout": {
+        "topY": 381.7,
+        "bottomY": 381.7,
+        "left": 113.9,
+        "right": 541.1,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "whichwas passed on June 17 2020 by the XIVth National Assembly of the"
+    },
+    {
+      "sourceOccurrenceId": "B000015",
+      "blockId": "b15",
+      "sourceOrdinal": 14,
+      "pageNumber": 1,
+      "literalSourceText": "Socialist Republic of Vietnam at its 9 th session.",
+      "sourceTextSha256": "0d30f78ca024b84787668e16c11a27c9bd727bdfe0911ff229a4b428547c2d18",
+      "lineCount": 1,
+      "layout": {
+        "topY": 365.5,
+        "bottomY": 365.5,
+        "left": 85.9,
+        "right": 348.6,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Socialist Republic of Vietnam at its 9 th session."
+    },
+    {
+      "sourceOccurrenceId": "B000016",
+      "blockId": "b16",
+      "sourceOrdinal": 15,
+      "pageNumber": 1,
+      "literalSourceText": "President ofthe Socialist Republic of Vietnam",
+      "sourceTextSha256": "3787a47558e7c07457cb61eff866a79b4e04dadbb1277ba05df261f0a059f220",
+      "lineCount": 1,
+      "layout": {
+        "topY": 331.2,
+        "bottomY": 331.2,
+        "left": 197.8,
+        "right": 455.8,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "President ofthe Socialist Republic of Vietnam"
+    },
+    {
+      "sourceOccurrenceId": "B000017",
+      "blockId": "b17",
+      "sourceOrdinal": 16,
+      "pageNumber": 1,
+      "literalSourceText": "NGUYEN PHU TRONG",
+      "sourceTextSha256": "ec073cf476361ca257d28a3d479c5d1f73533d6504ceb77c8029911f8e5b1316",
+      "lineCount": 1,
+      "layout": {
+        "topY": 316.1,
+        "bottomY": 316.1,
+        "left": 255.8,
+        "right": 398.1,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "NGUYEN PHU TRONG"
+    },
+    {
+      "sourceOccurrenceId": "B000018",
+      "blockId": "b18",
+      "sourceOrdinal": 17,
+      "pageNumber": 2,
+      "literalSourceText": "THE NATIONAL THE SOCIALIST REPUBLIC OF VIETNAM ASSEMBLY Independence - Freedom - Happiness",
+      "sourceTextSha256": "912b46ae41968af062a49292ed7aa8c752612ccbc7b65b2f7507340cebd8b25d",
+      "lineCount": 2,
+      "layout": {
+        "topY": 689,
+        "bottomY": 673.1,
+        "left": 104.8,
+        "right": 519.3,
+        "style": {
+          "fontSize": 13,
+          "font": "times new roman,bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "THE NATIONAL THE SOCIALIST REPUBLIC OF VIETNAM ASSEMBLY Independence-Freedom-Happiness"
+    },
+    {
+      "sourceOccurrenceId": "B000019",
+      "blockId": "b19",
+      "sourceOrdinal": 18,
+      "pageNumber": 2,
+      "literalSourceText": "Pursuant to the Constitution ofthe Socialist Republic of Vietnam;",
+      "sourceTextSha256": "0dce8ee4d2e152d14c77c3045a9867ec310541ecac1bf2a59b6d6e670297a29d",
+      "lineCount": 1,
+      "layout": {
+        "topY": 568.5,
+        "bottomY": 568.5,
+        "left": 113.4,
+        "right": 481,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Pursuant to the Constitution ofthe Socialist Republic of Vietnam;"
+    },
+    {
+      "sourceOccurrenceId": "B000020",
+      "blockId": "b20",
+      "sourceOrdinal": 19,
+      "pageNumber": 2,
+      "literalSourceText": "The National Assemblypromulgates the Law on Investment.",
+      "sourceTextSha256": "66c4398227a018ce7f25340c81fb3becd83ac19fa27b080b21b436a1e81874f2",
+      "lineCount": 1,
+      "layout": {
+        "topY": 546.2,
+        "bottomY": 546.2,
+        "left": 114.8,
+        "right": 448.8,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "The National Assemblypromulgates the Law on Investment."
+    },
+    {
+      "sourceOccurrenceId": "B000021",
+      "blockId": "b21",
+      "sourceOrdinal": 20,
+      "pageNumber": 2,
+      "literalSourceText": "Chapter I",
+      "sourceTextSha256": "e9bb4a2354ecf6a95f1b4d9a8d0a44960c86288deff44b070cf286c6997125c4",
+      "lineCount": 1,
+      "layout": {
+        "topY": 518.4,
+        "bottomY": 518.4,
+        "left": 301.9,
+        "right": 353.6,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Chapter I"
+    },
+    {
+      "sourceOccurrenceId": "B000022",
+      "blockId": "b22",
+      "sourceOrdinal": 21,
+      "pageNumber": 2,
+      "literalSourceText": "GENERAL PROVISIONS",
+      "sourceTextSha256": "6095d55e5cb94a08fa9f8e74503fa06b28cd47526d6c17a3274f5ec529993b93",
+      "lineCount": 1,
+      "layout": {
+        "topY": 497.3,
+        "bottomY": 497.3,
+        "left": 252.4,
+        "right": 402.5,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "GENERAL PROVISIONS"
+    },
+    {
+      "sourceOccurrenceId": "B000023",
+      "blockId": "b23",
+      "sourceOrdinal": 22,
+      "pageNumber": 2,
+      "literalSourceText": "Article 1. Scope ofregulation",
+      "sourceTextSha256": "c6e6842c5f8f64178654f078421a8cd586679541f58ec7a1d8c6c677bf4d8c87",
+      "lineCount": 1,
+      "layout": {
+        "topY": 474.1,
+        "bottomY": 474.1,
+        "left": 113.9,
+        "right": 282,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Article 1. Scope ofregulation"
+    },
+    {
+      "sourceOccurrenceId": "B000024",
+      "blockId": "b24",
+      "sourceOrdinal": 23,
+      "pageNumber": 2,
+      "literalSourceText": "This Law prescribes business investment activities invv Vienntnam and offshore",
+      "sourceTextSha256": "b17a7990ac948b8fa89adc87ab548bffec88e7ffe91b400f30ed014390bfa883",
+      "lineCount": 1,
+      "layout": {
+        "topY": 451.9,
+        "bottomY": 451.9,
+        "left": 114.2,
+        "right": 540.7,
+        "style": {
+          "fontSize": 15.5,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "This Law prescribes business investment activities invv Vienntnam and offshore"
+    },
+    {
+      "sourceOccurrenceId": "B000025",
+      "blockId": "b25",
+      "sourceOrdinal": 24,
+      "pageNumber": 2,
+      "literalSourceText": "business investment activities from Vietnamtt.nnaamm..",
+      "sourceTextSha256": "a22fb0b6336fdc46720dc319c3a7ba8e2b22aebfe7d0aed5146f731e00e10377",
+      "lineCount": 1,
+      "layout": {
+        "topY": 434.9,
+        "bottomY": 434.9,
+        "left": 84.9,
+        "right": 415,
+        "style": {
+          "fontSize": 18.5,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "business investment activities from Vietnamtt. nnaamm .."
+    },
+    {
+      "sourceOccurrenceId": "B000026",
+      "blockId": "b26",
+      "sourceOrdinal": 25,
+      "pageNumber": 2,
+      "literalSourceText": "Article 2. Subjects ofapplittca VVtioniiee",
+      "sourceTextSha256": "8070d6b6b374943394e86fe567183c704c77132e85cd19522c6a0987699f3f5b",
+      "lineCount": 1,
+      "layout": {
+        "topY": 414,
+        "bottomY": 414,
+        "left": 113.9,
+        "right": 329.3,
+        "style": {
+          "fontSize": 18.5,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Article 2. Subjects ofapplittca VVtioniiee"
+    },
+    {
+      "sourceOccurrenceId": "B000027",
+      "blockId": "b27",
+      "sourceOrdinal": 26,
+      "pageNumber": 2,
+      "literalSourceText": "LLuuaa",
+      "sourceTextSha256": "e3a5d13f39bd1942e9065448cd2361f4e89d2be2f5d872c5506c9d71488d21d3",
+      "lineCount": 1,
+      "layout": {
+        "topY": 397.9,
+        "bottomY": 397.9,
+        "left": 208.6,
+        "right": 269.8,
+        "style": {
+          "fontSize": 36,
+          "font": "arial",
+          "color": "0.75,0.75,0.75"
+        }
+      },
+      "extractedText": "LLuuaa"
+    },
+    {
+      "sourceOccurrenceId": "B000028",
+      "blockId": "b28",
+      "sourceOrdinal": 27,
+      "pageNumber": 2,
+      "literalSourceText": "This Law applies to investors and agencies, organizations and individuals",
+      "sourceTextSha256": "36c8ec47d086ba60cd55677ae1c6c258339b05c6ea87ba62be15aabc4263b626",
+      "lineCount": 1,
+      "layout": {
+        "topY": 391.7,
+        "bottomY": 391.7,
+        "left": 114.2,
+        "right": 540.6,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "This Law applies to investors and agencies, organizations and individuals"
+    },
+    {
+      "sourceOccurrenceId": "B000029",
+      "blockId": "b29",
+      "sourceOrdinal": 28,
+      "pageNumber": 2,
+      "literalSourceText": "involved in business investment activities.",
+      "sourceTextSha256": "87339125102fa16f96756ecdb91774da163828217727423fef26c668cfafcdb6",
+      "lineCount": 1,
+      "layout": {
+        "topY": 375.7,
+        "bottomY": 375.7,
+        "left": 85.4,
+        "right": 320.7,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "involved in business investment activities."
+    },
+    {
+      "sourceOccurrenceId": "B000030",
+      "blockId": "b30",
+      "sourceOrdinal": 29,
+      "pageNumber": 2,
+      "literalSourceText": "Article 3. Interpretation ofterms",
+      "sourceTextSha256": "7e215a8a8c41ca71f1db8e9ba99223cfee92dd04ae3c3be0893980c3bbe2c124",
+      "lineCount": 1,
+      "layout": {
+        "topY": 353.6,
+        "bottomY": 353.6,
+        "left": 113.9,
+        "right": 297.7,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Article 3. Interpretation ofterms"
+    },
+    {
+      "sourceOccurrenceId": "B000031",
+      "blockId": "b31",
+      "sourceOrdinal": 30,
+      "pageNumber": 2,
+      "literalSourceText": "In this Law, the terms below are construed as follows:",
+      "sourceTextSha256": "d8f29b07063eb0fd73a0e79fd4a2f3d13c3d267d835432c2c3c3c2b7f4ee5b2a",
+      "lineCount": 1,
+      "layout": {
+        "topY": 331.5,
+        "bottomY": 331.5,
+        "left": 114.1,
+        "right": 415.9,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "In this Law, the termsbeloware construed as follows:"
+    },
+    {
+      "sourceOccurrenceId": "B000032",
+      "blockId": "b32",
+      "sourceOrdinal": 31,
+      "pageNumber": 2,
+      "literalSourceText": "1 . Approval ofinvestmentpolicy means a competent state agency’s approval",
+      "sourceTextSha256": "9486bec23e2e67cc35e6555688f097e2b9ce28345f188be6b412ee57e3d06c7f",
+      "lineCount": 1,
+      "layout": {
+        "topY": 308.9,
+        "bottomY": 308.9,
+        "left": 115.4,
+        "right": 541.1,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1. Approval ofinvestmentpolicy means a competent state agency’s approval"
+    },
+    {
+      "sourceOccurrenceId": "B000033",
+      "blockId": "b33",
+      "sourceOrdinal": 32,
+      "pageNumber": 2,
+      "literalSourceText": "of the objectives, site, scope, and implementation schedule and duration of an investment project; investor or form of investor selection and special mechanisms and policies (if any) to implement the project.",
+      "sourceTextSha256": "418f593091fcaffb010fc472c465c9ea7e0145c9a517f2fc9cb06fa6e2f444fa",
+      "lineCount": 3,
+      "layout": {
+        "topY": 293.1,
+        "bottomY": 260.9,
+        "left": 85.1,
+        "right": 541,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "of the objectives, site, scope, and implementation schedule and duration of an investment project; investor or form of investor selection and special mechanisms and policies (ifany) to implement the project."
+    },
+    {
+      "sourceOccurrenceId": "B000034",
+      "blockId": "b34",
+      "sourceOrdinal": 33,
+      "pageNumber": 2,
+      "literalSourceText": "2. Investment registration agency means a state agency competent to grant,",
+      "sourceTextSha256": "bd5e17878c271eb5f09334808e09256444a126a20ab473e5d4c28c3fa4f145ac",
+      "lineCount": 1,
+      "layout": {
+        "topY": 238.5,
+        "bottomY": 238.5,
+        "left": 114.1,
+        "right": 540.7,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "2. Investment registration agency means a state agency competent to grant,"
+    },
+    {
+      "sourceOccurrenceId": "B000035",
+      "blockId": "b35",
+      "sourceOrdinal": 34,
+      "pageNumber": 2,
+      "literalSourceText": "modify and revoke investment registration certificates.",
+      "sourceTextSha256": "7c1478aea02cbdf76ab5892aba91d98c612c5ae86ca4a44c317865388c08fc97",
+      "lineCount": 1,
+      "layout": {
+        "topY": 222.8,
+        "bottomY": 222.8,
+        "left": 85.1,
+        "right": 390.3,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "modify and revoke investment registration certificates."
+    },
+    {
+      "sourceOccurrenceId": "B000036",
+      "blockId": "b36",
+      "sourceOrdinal": 35,
+      "pageNumber": 2,
+      "literalSourceText": "3. National database on investment means a collection of data on",
+      "sourceTextSha256": "9d7d89f0b0e8794698b6e2b77df36a2f9272142739f31cf95d8753999e3d2faf",
+      "lineCount": 1,
+      "layout": {
+        "topY": 200.6,
+        "bottomY": 200.6,
+        "left": 114.3,
+        "right": 541.3,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "3. National database on investment means a collection of data on"
+    },
+    {
+      "sourceOccurrenceId": "B000037",
+      "blockId": "b37",
+      "sourceOrdinal": 36,
+      "pageNumber": 2,
+      "literalSourceText": "investment projects nationwide which is linked with databases of related agencies.",
+      "sourceTextSha256": "fab72c0adbd1acb15a742dc2425e141f94412aea7cd127ea76fe44e1d9072b04",
+      "lineCount": 2,
+      "layout": {
+        "topY": 184.7,
+        "bottomY": 167.8,
+        "left": 85.4,
+        "right": 541.4,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "investment projects nationwide which is linked with databases of related agencies."
+    },
+    {
+      "sourceOccurrenceId": "B000038",
+      "blockId": "b38",
+      "sourceOrdinal": 37,
+      "pageNumber": 2,
+      "literalSourceText": "4. Investment project means a set of proposals on using medium- or long-",
+      "sourceTextSha256": "9ca831962be3c460e5b9893b0d1d83e61541d51dabc7d892b8d3175a85efc7ca",
+      "lineCount": 1,
+      "layout": {
+        "topY": 146.1,
+        "bottomY": 146.1,
+        "left": 114,
+        "right": 541.2,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "4. Investment project means a set of proposals on using medium-or long -"
+    },
+    {
+      "sourceOccurrenceId": "B000039",
+      "blockId": "b39",
+      "sourceOrdinal": 38,
+      "pageNumber": 2,
+      "literalSourceText": "term capital to conduct business investment activities in a specific geographical area within a specified period oftime.",
+      "sourceTextSha256": "f060b2be18c4c99676f41d3ce9e96d5ccf22293d4632d22685ae491ae2e504b3",
+      "lineCount": 2,
+      "layout": {
+        "topY": 130.3,
+        "bottomY": 114.3,
+        "left": 85.1,
+        "right": 540.8,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "term capital to conduct business investment activities in a specific geographical area within a specified period oftime."
+    },
+    {
+      "sourceOccurrenceId": "B000040",
+      "blockId": "b40",
+      "sourceOrdinal": 39,
+      "pageNumber": 2,
+      "literalSourceText": "1 Công Báo Nos 715-716 (24/7/2020)",
+      "sourceTextSha256": "467e833604887155b283b6f205e9a56cc4c00f0d12de33717f956b8a1db45215",
+      "lineCount": 1,
+      "layout": {
+        "topY": 76.5,
+        "bottomY": 76.5,
+        "left": 85.4,
+        "right": 248.8,
+        "style": {
+          "fontSize": 11,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 Công Báo Nos 715 - 716 (24 / 7 / 2020)"
+    },
+    {
+      "sourceOccurrenceId": "B000041",
+      "blockId": "b41",
+      "sourceOrdinal": 40,
+      "pageNumber": 3,
+      "literalSourceText": "5. Expanded investment project means an investment project to develop an",
+      "sourceTextSha256": "9423dbcf0093e61290e25756b70ee3a120154db81e23c83bcbb890c7e7913eab",
+      "lineCount": 1,
+      "layout": {
+        "topY": 712,
+        "bottomY": 712,
+        "left": 114.5,
+        "right": 541.3,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "5. Expanded investment project means an investment project to develop an"
+    },
+    {
+      "sourceOccurrenceId": "B000042",
+      "blockId": "b42",
+      "sourceOrdinal": 41,
+      "pageNumber": 3,
+      "literalSourceText": "operating investment project by expanding its scope, raising its capacity, renewing technologies, reducing pollution or improving the environment.",
+      "sourceTextSha256": "0d42a9879bdd16801554c568ecb1bdc6b20db1cbbcca6b593a01ad961efd6bf3",
+      "lineCount": 2,
+      "layout": {
+        "topY": 695.8,
+        "bottomY": 679.9,
+        "left": 85.1,
+        "right": 540.3,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "operating investment project by expandingitsscope, raising its capacity, renewing technologies, reducing pollution or improving the environment."
+    },
+    {
+      "sourceOccurrenceId": "B000043",
+      "blockId": "b43",
+      "sourceOrdinal": 42,
+      "pageNumber": 3,
+      "literalSourceText": "6. New investment project means an investment project which is",
+      "sourceTextSha256": "5cb0ef57f9fbb11cf17ad5f9842ca4b969d3113bdd4f115b877db931f8390608",
+      "lineCount": 1,
+      "layout": {
+        "topY": 657.8,
+        "bottomY": 657.8,
+        "left": 114.4,
+        "right": 541,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "6. New investment project means an investment project which is"
+    },
+    {
+      "sourceOccurrenceId": "B000044",
+      "blockId": "b44",
+      "sourceOrdinal": 43,
+      "pageNumber": 3,
+      "literalSourceText": "implemented for the first time or an investment project which is independent from operating business investment projects.",
+      "sourceTextSha256": "49f2d68c87ae994f9efc0ca2b404a163ba27ceecfe6a57f21676e0751e21ea63",
+      "lineCount": 2,
+      "layout": {
+        "topY": 641.9,
+        "bottomY": 625.5,
+        "left": 85.4,
+        "right": 541.1,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "implemented for the firsttime or an investment project which is independent from operating business investment projects."
+    },
+    {
+      "sourceOccurrenceId": "B000045",
+      "blockId": "b45",
+      "sourceOrdinal": 44,
+      "pageNumber": 3,
+      "literalSourceText": "7. Innovative startup investment project means an investment project to",
+      "sourceTextSha256": "19a622630b951fbcd4096d89148ee32c83ec044b5e83be1d09aaa46f183ef873",
+      "lineCount": 1,
+      "layout": {
+        "topY": 603.3,
+        "bottomY": 603.3,
+        "left": 114.3,
+        "right": 540.9,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "7. Innovative startup investment project means an investment project to"
+    },
+    {
+      "sourceOccurrenceId": "B000046",
+      "blockId": "b46",
+      "sourceOrdinal": 45,
+      "pageNumber": 3,
+      "literalSourceText": "realize an idea on the basis of exploiting new intellectual assets, technologies or business models and is capable ofgrowing fast.",
+      "sourceTextSha256": "c71b729358bcd80a069e79094695f53613634c58d93d63b2fd9a532a6dd05f5f",
+      "lineCount": 2,
+      "layout": {
+        "topY": 587.6,
+        "bottomY": 571.4,
+        "left": 84.9,
+        "right": 541.5,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "realize an idea on the basis of exploiting new intellectual assets, technologies or business models and is capable ofgrowing fast."
+    },
+    {
+      "sourceOccurrenceId": "B000047",
+      "blockId": "b47",
+      "sourceOrdinal": 46,
+      "pageNumber": 3,
+      "literalSourceText": "8. Business investment means investors’ use of investment capital to carry",
+      "sourceTextSha256": "5e4f2c4fc4e6cb2e7692ee605e40335fa99f31c6fc731dd43509ee2ded63263e",
+      "lineCount": 1,
+      "layout": {
+        "topY": 549.3,
+        "bottomY": 549.3,
+        "left": 114.6,
+        "right": 541.3,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "8. Business investment means investors’use of investment capital to carry"
+    },
+    {
+      "sourceOccurrenceId": "B000048",
+      "blockId": "b48",
+      "sourceOrdinal": 47,
+      "pageNumber": 3,
+      "literalSourceText": "out business activities.",
+      "sourceTextSha256": "4f924be3809aaee9525636b60df26ab402199edd67d0aa19a1a46cd4d3447a0c",
+      "lineCount": 1,
+      "layout": {
+        "topY": 533.3,
+        "bottomY": 533.3,
+        "left": 85.5,
+        "right": 210.4,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "out business activities."
+    },
+    {
+      "sourceOccurrenceId": "B000049",
+      "blockId": "b49",
+      "sourceOrdinal": 48,
+      "pageNumber": 3,
+      "literalSourceText": "9. Business investment conditions means conditions which individuals and",
+      "sourceTextSha256": "0e27854510f08fa433a2fef54b3664dca7d8a9a6e5a10931af4afb571e377680",
+      "lineCount": 1,
+      "layout": {
+        "topY": 511.2,
+        "bottomY": 511.2,
+        "left": 114.3,
+        "right": 541.6,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "9. Business investment conditions means conditions which individuals and"
+    },
+    {
+      "sourceOccurrenceId": "B000050",
+      "blockId": "b50",
+      "sourceOrdinal": 49,
+      "pageNumber": 3,
+      "literalSourceText": "organizations must satisfy when carrying out business investment activities in sectors and trades subject to conditional business investment.",
+      "sourceTextSha256": "49b91372f72083f4b8b770073ac46032cc58d67c87e710d72dc0a6c8da01de36",
+      "lineCount": 2,
+      "layout": {
+        "topY": 495,
+        "bottomY": 478.9,
+        "left": 85.5,
+        "right": 541,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "organizations must satisfy when carrying out business investment activities in sectors and trades subject to conditional business investment."
+    },
+    {
+      "sourceOccurrenceId": "B000051",
+      "blockId": "b51",
+      "sourceOrdinal": 50,
+      "pageNumber": 3,
+      "literalSourceText": "10. Market access conditions applicable to forevvignnninvestors means",
+      "sourceTextSha256": "5e8586bb1f17ace573e128e558ccda443502ffef95033e27f5913eb8fac77227",
+      "lineCount": 1,
+      "layout": {
+        "topY": 456.2,
+        "bottomY": 456.2,
+        "left": 115.4,
+        "right": 541.1,
+        "style": {
+          "fontSize": 15.5,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "10. Market access conditions applicable to forevvignnninvestors means"
+    },
+    {
+      "sourceOccurrenceId": "B000052",
+      "blockId": "b52",
+      "sourceOrdinal": 51,
+      "pageNumber": 3,
+      "literalSourceText": "conditions which foreign investors must satisfyaain ommrder t..o invest in sectors and trades on the List of sectors and t VVradeiiseein ttwhnnich foreign investors are subject to",
+      "sourceTextSha256": "b9beaa97546264620d6f7d989a4d9716581f4e8f8ce7b7910aca570e162526d5",
+      "lineCount": 2,
+      "layout": {
+        "topY": 440.3,
+        "bottomY": 424.2,
+        "left": 85.1,
+        "right": 541.4,
+        "style": {
+          "fontSize": 17,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "conditions which foreign investors must satisfyaain ommrdert .. o invest in sectors and trades on the List of sectors and t VVradeiiseein ttwhnnich foreign investors are subject to"
+    },
+    {
+      "sourceOccurrenceId": "B000053",
+      "blockId": "b53",
+      "sourceOrdinal": 52,
+      "pageNumber": 3,
+      "literalSourceText": "market access restrictions speaacifttied in Clause 2, Article 9 ofthis Law.",
+      "sourceTextSha256": "caa210452cad4f1557b8232c4365547d14049091d7d818580549e91112308142",
+      "lineCount": 1,
+      "layout": {
+        "topY": 408.4,
+        "bottomY": 408.4,
+        "left": 85.1,
+        "right": 475.1,
+        "style": {
+          "fontSize": 15.5,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "market access restrictions speaacifttied in Clause 2, Article 9 ofthis Law."
+    },
+    {
+      "sourceOccurrenceId": "B000054",
+      "blockId": "b54",
+      "sourceOrdinal": 53,
+      "pageNumber": 3,
+      "literalSourceText": "LLuu",
+      "sourceTextSha256": "33643eb63036cfb2d277a4cdba912e1ab0f43ecd2ef40eacc34f75372aeaf9ef",
+      "lineCount": 1,
+      "layout": {
+        "topY": 395.9,
+        "bottomY": 395.9,
+        "left": 208.6,
+        "right": 249.2,
+        "style": {
+          "fontSize": 36,
+          "font": "arial",
+          "color": "0.75,0.75,0.75"
+        }
+      },
+      "extractedText": "LLuu"
+    },
+    {
+      "sourceOccurrenceId": "B000055",
+      "blockId": "b55",
+      "sourceOrdinal": 54,
+      "pageNumber": 3,
+      "literalSourceText": "1 1 . Investment registration certificate means a paper document or an",
+      "sourceTextSha256": "432e7eb1ad3003ba75282a2fc8cd68d7fdfd065f6f888e36efcc6260039cd956",
+      "lineCount": 1,
+      "layout": {
+        "topY": 386.2,
+        "bottomY": 386.2,
+        "left": 115.4,
+        "right": 541.5,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 1. Investment registration certificate means a paper document or an"
+    },
+    {
+      "sourceOccurrenceId": "B000056",
+      "blockId": "b56",
+      "sourceOrdinal": 55,
+      "pageNumber": 3,
+      "literalSourceText": "electronic document acknowledging information on an investment project registered by an investor.",
+      "sourceTextSha256": "7d42a276f22bbd0bf2db0c3ad1b3e50a52c43c264bc0db009a67000f4919b9d2",
+      "lineCount": 2,
+      "layout": {
+        "topY": 370.3,
+        "bottomY": 354,
+        "left": 85.1,
+        "right": 541.1,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "electronic document acknowledging information on an investment project registered by an investor."
+    },
+    {
+      "sourceOccurrenceId": "B000057",
+      "blockId": "b57",
+      "sourceOrdinal": 56,
+      "pageNumber": 3,
+      "literalSourceText": "12. National investment information systems means professional",
+      "sourceTextSha256": "823b1edae248d8337265e045a82c0c3ed00982f59187933fc8e8607565dd3852",
+      "lineCount": 1,
+      "layout": {
+        "topY": 332,
+        "bottomY": 332,
+        "left": 115.4,
+        "right": 541.2,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "12. National investment information systems means professional"
+    },
+    {
+      "sourceOccurrenceId": "B000058",
+      "blockId": "b58",
+      "sourceOrdinal": 57,
+      "pageNumber": 3,
+      "literalSourceText": "information systems used to monitor, assess and analyze the situation of investment nationwide to serve state management work and support investors in carrying out business investment activities.",
+      "sourceTextSha256": "4ee988b0be57d3ee6a85174b6a192b42a35fff9094b236ed0c2aa814560518c6",
+      "lineCount": 3,
+      "layout": {
+        "topY": 316,
+        "bottomY": 283.7,
+        "left": 85.4,
+        "right": 542.5,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "information systems used to monitor, assess and analyze the situation of investment nationwide to servestate management work and support investors in carrying out business investment activities."
+    },
+    {
+      "sourceOccurrenceId": "B000059",
+      "blockId": "b59",
+      "sourceOrdinal": 58,
+      "pageNumber": 3,
+      "literalSourceText": "13. Offshore investment activities means investors’ transfer of investment",
+      "sourceTextSha256": "4767a875b4e43619739b3eb49eb7df53e2cef3d03da1f7850e2d232efedf135f",
+      "lineCount": 1,
+      "layout": {
+        "topY": 261.7,
+        "bottomY": 261.7,
+        "left": 115.4,
+        "right": 541.2,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "13. Offshore investment activities means investors’transfer of investment"
+    },
+    {
+      "sourceOccurrenceId": "B000060",
+      "blockId": "b60",
+      "sourceOrdinal": 59,
+      "pageNumber": 3,
+      "literalSourceText": "capital abroad from Vietnam and use of profits earned from such investment capital sources to carry out business investment activities in foreign countries.",
+      "sourceTextSha256": "7175705a924b3ebc39fdfee15a4e857349b7e9b459e05ef1753092a8242d25c5",
+      "lineCount": 2,
+      "layout": {
+        "topY": 245.7,
+        "bottomY": 229.5,
+        "left": 85.5,
+        "right": 541.6,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "capital abroad from Vietnam and use of profits earned from such investment capital sources to carryout business investment activities in foreign countries."
+    },
+    {
+      "sourceOccurrenceId": "B000061",
+      "blockId": "b61",
+      "sourceOrdinal": 60,
+      "pageNumber": 3,
+      "literalSourceText": "14. Business cooperation contract (BCC) means a contract signed between",
+      "sourceTextSha256": "2506b0f2fdf2492c72bbb8c8ef92e5e3796e20c95554a0b1feecd24e77660fa0",
+      "lineCount": 1,
+      "layout": {
+        "topY": 207.3,
+        "bottomY": 207.3,
+        "left": 115.4,
+        "right": 541.3,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "14. Business cooperation contract (BCC) means a contract signed between"
+    },
+    {
+      "sourceOccurrenceId": "B000062",
+      "blockId": "b62",
+      "sourceOrdinal": 61,
+      "pageNumber": 3,
+      "literalSourceText": "investors for business cooperation or profit or product distribution in accordance with law without establishing an economic organization.",
+      "sourceTextSha256": "1a421e98e15558f1dc48c28c0b9d82a4d31fff26f4ff4c5c620be6e8ece9f249",
+      "lineCount": 2,
+      "layout": {
+        "topY": 191.4,
+        "bottomY": 175.2,
+        "left": 85.1,
+        "right": 540.8,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "investors for business cooperation or profit or product distribution in accordance with law without establishing an economic organization."
+    },
+    {
+      "sourceOccurrenceId": "B000063",
+      "blockId": "b63",
+      "sourceOrdinal": 62,
+      "pageNumber": 3,
+      "literalSourceText": "15. Export processing zone means an industrial park specialized in",
+      "sourceTextSha256": "a52d4254fb271869a149345be71e9401c66348a7bfad729b8e1986d624da43cb",
+      "lineCount": 1,
+      "layout": {
+        "topY": 152.9,
+        "bottomY": 152.9,
+        "left": 115.4,
+        "right": 541.2,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "15. Export processingzonemeans an industrial park specialized in"
+    },
+    {
+      "sourceOccurrenceId": "B000064",
+      "blockId": "b64",
+      "sourceOrdinal": 63,
+      "pageNumber": 3,
+      "literalSourceText": "producing exports and providing services for export production and export activities.",
+      "sourceTextSha256": "d5c589c9a449badf15d557cae5bdbe890237134d08cbaa3a1de2147ec0a7045c",
+      "lineCount": 2,
+      "layout": {
+        "topY": 136.8,
+        "bottomY": 120.9,
+        "left": 84.9,
+        "right": 541.1,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "producing exports and providing services for export production and export activities."
+    },
+    {
+      "sourceOccurrenceId": "B000065",
+      "blockId": "b65",
+      "sourceOrdinal": 64,
+      "pageNumber": 4,
+      "literalSourceText": "16. Industrial park means an area which has a delimited geographical",
+      "sourceTextSha256": "165826f64765e334f5ae22c931bf4e572dad49d49930269e444dc059953ba24e",
+      "lineCount": 1,
+      "layout": {
+        "topY": 712.3,
+        "bottomY": 712.3,
+        "left": 115.4,
+        "right": 541.3,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "16. Industrialparkmeans an areawhichhas a delimited geographical"
+    },
+    {
+      "sourceOccurrenceId": "B000066",
+      "blockId": "b66",
+      "sourceOrdinal": 65,
+      "pageNumber": 4,
+      "literalSourceText": "boundary and is specialized in producing industrial goods and providing services for industrial production.",
+      "sourceTextSha256": "d5e0c67b9c706503ded84015a950f64b56b4912706dd0e748cf603ef7d4f60ec",
+      "lineCount": 2,
+      "layout": {
+        "topY": 696.1,
+        "bottomY": 680.1,
+        "left": 84.9,
+        "right": 540.6,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "boundary and is specialized in producing industrial goods and providing services for industrial production."
+    },
+    {
+      "sourceOccurrenceId": "B000067",
+      "blockId": "b67",
+      "sourceOrdinal": 66,
+      "pageNumber": 4,
+      "literalSourceText": "17. Economic zone means an area which has a delimited geographical",
+      "sourceTextSha256": "947801d29e61951c189be477149d2c124d00685b084ec4d195ba13a469115445",
+      "lineCount": 1,
+      "layout": {
+        "topY": 658,
+        "bottomY": 658,
+        "left": 115.4,
+        "right": 540.9,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "17. Economiczonemeans an areawhichhas a delimited geographical"
+    },
+    {
+      "sourceOccurrenceId": "B000068",
+      "blockId": "b68",
+      "sourceOrdinal": 67,
+      "pageNumber": 4,
+      "literalSourceText": "boundary, consists of various functional sub-zones and is established for the purposes of investment attraction, socio-economic development and national defense and security safeguarding.",
+      "sourceTextSha256": "4a7bf6a452c185912e36ff6bfce64d016e95507353714ad7e40139a720d218e6",
+      "lineCount": 3,
+      "layout": {
+        "topY": 641.8,
+        "bottomY": 609.4,
+        "left": 84.9,
+        "right": 541.3,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "boundary, consists of various functional sub-zones and is established for the purposes of investment attraction, socio-economic development and national defense and security safeguarding."
+    },
+    {
+      "sourceOccurrenceId": "B000069",
+      "blockId": "b69",
+      "sourceOrdinal": 68,
+      "pageNumber": 4,
+      "literalSourceText": "1 8. Investor means an organization or individual carrying out business",
+      "sourceTextSha256": "23f17c7f1638c239d899f2d12127a5137a4d1db3b2ffe452cfa920ccca76db4a",
+      "lineCount": 1,
+      "layout": {
+        "topY": 587.5,
+        "bottomY": 587.5,
+        "left": 115.4,
+        "right": 540.7,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 8. Investor means an organization or individual carrying out business"
+    },
+    {
+      "sourceOccurrenceId": "B000070",
+      "blockId": "b70",
+      "sourceOrdinal": 69,
+      "pageNumber": 4,
+      "literalSourceText": "investment activities. Investors include domestic investors, foreign investors and foreign-invested economic organizations.",
+      "sourceTextSha256": "293bd76cc401f7b5667dd34ffba36777d2d67328de1b2206e98c480583706e05",
+      "lineCount": 2,
+      "layout": {
+        "topY": 571.4,
+        "bottomY": 555.2,
+        "left": 85.4,
+        "right": 541.6,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "investment activities. Investors include domestic investors, foreign investors and foreign-invested economic organizations."
+    },
+    {
+      "sourceOccurrenceId": "B000071",
+      "blockId": "b71",
+      "sourceOrdinal": 70,
+      "pageNumber": 4,
+      "literalSourceText": "19. Foreign investor means a foreign national or an organization established",
+      "sourceTextSha256": "f6adef72fc5f5d061fab88d86e9608e27615f0e942bd1d04f42aa7d332939b3e",
+      "lineCount": 1,
+      "layout": {
+        "topY": 533.2,
+        "bottomY": 533.2,
+        "left": 115.4,
+        "right": 541.3,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "19. Foreign investor means a foreign national or an organization established"
+    },
+    {
+      "sourceOccurrenceId": "B000072",
+      "blockId": "b72",
+      "sourceOrdinal": 71,
+      "pageNumber": 4,
+      "literalSourceText": "under a foreign law that carries out business investment activities in Vietnam.",
+      "sourceTextSha256": "a37cee1d67e4395dd5c02dd6fa844504bac7483604d58b8f4ac9ac53c662b48c",
+      "lineCount": 1,
+      "layout": {
+        "topY": 517.1,
+        "bottomY": 517.1,
+        "left": 85,
+        "right": 518.9,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "under a foreign law that carries out business investment activities in Vietnam."
+    },
+    {
+      "sourceOccurrenceId": "B000073",
+      "blockId": "b73",
+      "sourceOrdinal": 72,
+      "pageNumber": 4,
+      "literalSourceText": "20. Domestic investor means a Vietnamese national or an economic",
+      "sourceTextSha256": "3879d8b8c5dccd39c92fdd4edf53eded81f5cc7815a5a288a17083bac9f44d6b",
+      "lineCount": 1,
+      "layout": {
+        "topY": 494.9,
+        "bottomY": 494.9,
+        "left": 114.1,
+        "right": 540.9,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "20. Domestic investor means a Vietnamese national or an economic"
+    },
+    {
+      "sourceOccurrenceId": "B000074",
+      "blockId": "b74",
+      "sourceOrdinal": 73,
+      "pageNumber": 4,
+      "literalSourceText": "organization without any members or shareholders being foreign investors.",
+      "sourceTextSha256": "ff0cac817e698b982d3c6f08a08ac7c60bf66d1e3075ed8d97b77ec72099483a",
+      "lineCount": 1,
+      "layout": {
+        "topY": 478.8,
+        "bottomY": 478.8,
+        "left": 85.5,
+        "right": 504,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "organization without any members or shareholders being foreign investors."
+    },
+    {
+      "sourceOccurrenceId": "B000075",
+      "blockId": "b75",
+      "sourceOrdinal": 74,
+      "pageNumber": 4,
+      "literalSourceText": "21 . Economic organization means an organization estvvablinnshed and operating",
+      "sourceTextSha256": "89e52a679845c44a3e13c823b5a803040f0d553632c53019933bbe19970e1d64",
+      "lineCount": 1,
+      "layout": {
+        "topY": 456.3,
+        "bottomY": 456.3,
+        "left": 114.1,
+        "right": 541,
+        "style": {
+          "fontSize": 15.5,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "21. Economic organization means an organization estvvablinnshed and operating"
+    },
+    {
+      "sourceOccurrenceId": "B000076",
+      "blockId": "b76",
+      "sourceOrdinal": 75,
+      "pageNumber": 4,
+      "literalSourceText": "under Vietnam’s law. Economic organizations iaanclummde en..terprises, cooperatives,",
+      "sourceTextSha256": "e4c88b1ddc363481a46fed0a99f9d35ddaec307ef910d394a2e8cd6329cf7915",
+      "lineCount": 1,
+      "layout": {
+        "topY": 440.2,
+        "bottomY": 440.2,
+        "left": 85,
+        "right": 540.5,
+        "style": {
+          "fontSize": 16,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "under Vietnam’slaw. Economic organizations iaanclummde en .. terprises, cooperatives,"
+    },
+    {
+      "sourceOccurrenceId": "B000077",
+      "blockId": "b77",
+      "sourceOrdinal": 76,
+      "pageNumber": 4,
+      "literalSourceText": "unions of cooperatives and oth VVer iioreegattniznnations which carry out business investment activities. aatt",
+      "sourceTextSha256": "69ab263f422d0776d087704ac14e84351587a831e109af228ac58acb8be32d8a",
+      "lineCount": 2,
+      "layout": {
+        "topY": 424,
+        "bottomY": 408,
+        "left": 85,
+        "right": 540.7,
+        "style": {
+          "fontSize": 17,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "unions of cooperatives and oth VVer iioreegattniznnationswhichcarryout business investment activities. aatt"
+    },
+    {
+      "sourceOccurrenceId": "B000078",
+      "blockId": "b78",
+      "sourceOrdinal": 77,
+      "pageNumber": 4,
+      "literalSourceText": "LLuu",
+      "sourceTextSha256": "33643eb63036cfb2d277a4cdba912e1ab0f43ecd2ef40eacc34f75372aeaf9ef",
+      "lineCount": 1,
+      "layout": {
+        "topY": 395.9,
+        "bottomY": 395.9,
+        "left": 208.6,
+        "right": 249.2,
+        "style": {
+          "fontSize": 36,
+          "font": "arial",
+          "color": "0.75,0.75,0.75"
+        }
+      },
+      "extractedText": "LLuu"
+    },
+    {
+      "sourceOccurrenceId": "B000079",
+      "blockId": "b79",
+      "sourceOrdinal": 78,
+      "pageNumber": 4,
+      "literalSourceText": "22. Foreign-invested economic organization means an economic",
+      "sourceTextSha256": "f66a78b04752235dc9a05a54255cc60e6b14eb95877cd90addc2bac9cecf53c9",
+      "lineCount": 1,
+      "layout": {
+        "topY": 386.2,
+        "bottomY": 386.2,
+        "left": 114.1,
+        "right": 540.9,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman,italic",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "22. Foreign-invested economic organization means an economic"
+    },
+    {
+      "sourceOccurrenceId": "B000080",
+      "blockId": "b80",
+      "sourceOrdinal": 79,
+      "pageNumber": 4,
+      "literalSourceText": "organization having members or shareholders being foreign investors.",
+      "sourceTextSha256": "4d08c784f1615e400b52d863429ced9ab9945ddcbb4f562ebc79fbada0cc97b1",
+      "lineCount": 1,
+      "layout": {
+        "topY": 370.2,
+        "bottomY": 370.2,
+        "left": 85.5,
+        "right": 475.7,
+        "style": {
+          "fontSize": 14,
+          "font": "times new roman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "organization having members or shareholders being foreign investors."
+    }
+  ],
+  "contentPurpose": "complete deterministic source evidence for independent human annotation only",
+  "containsModelPredictions": false,
+  "containsGoldLabels": false,
+  "containsResidualHints": false,
+  "runtimeUse": "PROHIBITED"
+}

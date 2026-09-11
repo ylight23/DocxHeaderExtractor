@@ -1,0 +1,1708 @@
+{
+  "artifactKind": "A99_R2_P3A_HUMAN_SOURCE_ONLY_PACKET",
+  "schemaVersion": "a99-r2-p3a-source-packet-v1",
+  "studyId": "A99-R2",
+  "pilotId": "R2-PILOT-8",
+  "documentId": "DOC-0133",
+  "documentGroupId": "GROUP-0012",
+  "familyId": "PDF_NATIVE_LAYOUT",
+  "sourcePath": "todo10_8\\heading_corpus_100\\03_tai_chinh_ke_toan\\048_IBRD_Financial_Statements_March_2025.pdf",
+  "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+  "sourceHashVerified": true,
+  "mediaType": "PDF",
+  "sourceRepresentation": {
+    "kind": "PDF_DETERMINISTIC_BLOCKS",
+    "ordering": "page ascending, numeric block id ascending",
+    "pageCount": 66,
+    "blockCount": 80,
+    "pageNumbersAvailable": true,
+    "extractor": "dhx pdf-clusters --no-llm"
+  },
+  "occurrences": [
+    {
+      "sourceOccurrenceId": "B000001",
+      "blockId": "b1",
+      "sourceOrdinal": 0,
+      "pageNumber": 1,
+      "literalSourceText": "International Bank for Reconstruction and",
+      "sourceTextSha256": "5e7cb157b7ab26376e15d40b388500d7a389b2236ddb6549ce0578eb34d734cc",
+      "lineCount": 1,
+      "layout": {
+        "topY": 674.8,
+        "bottomY": 674.8,
+        "left": 104,
+        "right": 508.8,
+        "style": {
+          "fontSize": 24,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "International Bank for Reconstruction and"
+    },
+    {
+      "sourceOccurrenceId": "B000002",
+      "blockId": "b2",
+      "sourceOrdinal": 1,
+      "pageNumber": 1,
+      "literalSourceText": "Development",
+      "sourceTextSha256": "21b6a798321a49f75b9c3827fa3cfdb7efe2c4e05c3d13aefe1c825b9774a158",
+      "lineCount": 1,
+      "layout": {
+        "topY": 639.6,
+        "bottomY": 639.6,
+        "left": 241.8,
+        "right": 370.7,
+        "style": {
+          "fontSize": 24,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Development"
+    },
+    {
+      "sourceOccurrenceId": "B000003",
+      "blockId": "b3",
+      "sourceOrdinal": 2,
+      "pageNumber": 1,
+      "literalSourceText": "Management’s Discussion & Analysis",
+      "sourceTextSha256": "b5804d348e003ce76bd86fa6a7c70a3f2e1a19a17bd2f0c0d8ef99bd7aff64d7",
+      "lineCount": 1,
+      "layout": {
+        "topY": 308.6,
+        "bottomY": 308.6,
+        "left": 122.2,
+        "right": 489.6,
+        "style": {
+          "fontSize": 24,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Management’s Discussion & Analysis"
+    },
+    {
+      "sourceOccurrenceId": "B000004",
+      "blockId": "b4",
+      "sourceOrdinal": 3,
+      "pageNumber": 1,
+      "literalSourceText": "and",
+      "sourceTextSha256": "6201111b83a0cb5b0922cb37cc442b9a40e24e3b1ce100a4bb204f4c63fd2ac0",
+      "lineCount": 1,
+      "layout": {
+        "topY": 273.9,
+        "bottomY": 273.9,
+        "left": 289.5,
+        "right": 323.4,
+        "style": {
+          "fontSize": 24,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "and"
+    },
+    {
+      "sourceOccurrenceId": "B000005",
+      "blockId": "b5",
+      "sourceOrdinal": 4,
+      "pageNumber": 1,
+      "literalSourceText": "Condensed Quarterly Financial Statements",
+      "sourceTextSha256": "c0a1fd262b6ee9bc7e7ad701b003ead3bb796386392ec39b35ebbe4e971955fc",
+      "lineCount": 1,
+      "layout": {
+        "topY": 239,
+        "bottomY": 239,
+        "left": 101.3,
+        "right": 510.9,
+        "style": {
+          "fontSize": 24,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Condensed Quarterly Financial Statements"
+    },
+    {
+      "sourceOccurrenceId": "B000006",
+      "blockId": "b6",
+      "sourceOrdinal": 5,
+      "pageNumber": 1,
+      "literalSourceText": "March 3 1 2025",
+      "sourceTextSha256": "7074676d6e81f0adeaa3119a8ec904dce1b9bce07e9265af17db76c33ad4025f",
+      "lineCount": 1,
+      "layout": {
+        "topY": 211.2,
+        "bottomY": 211.2,
+        "left": 230.1,
+        "right": 380.7,
+        "style": {
+          "fontSize": 24,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "March 3 1 2025"
+    },
+    {
+      "sourceOccurrenceId": "B000007",
+      "blockId": "b7",
+      "sourceOrdinal": 6,
+      "pageNumber": 1,
+      "literalSourceText": "(Unaudited)",
+      "sourceTextSha256": "f9aa17ccb15e3a675fca6f8c1e57bf3db93b3cf876860608fe8d12b3aa8a8174",
+      "lineCount": 1,
+      "layout": {
+        "topY": 181.6,
+        "bottomY": 181.6,
+        "left": 249,
+        "right": 363,
+        "style": {
+          "fontSize": 24,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "(Unaudited)"
+    },
+    {
+      "sourceOccurrenceId": "B000008",
+      "blockId": "b8",
+      "sourceOrdinal": 7,
+      "pageNumber": 3,
+      "literalSourceText": "Management’s Discussion and Analysis",
+      "sourceTextSha256": "e64d4b8a1ce293d56ea54f0017f83c77a91e497ec6761f63013b09ade54e4938",
+      "lineCount": 1,
+      "layout": {
+        "topY": 759.3,
+        "bottomY": 759.3,
+        "left": 78,
+        "right": 248,
+        "style": {
+          "fontSize": 9,
+          "font": "arial-boldmt",
+          "color": "1.00,1.00,1.00"
+        }
+      },
+      "extractedText": "Management’s Discussion and Analysis"
+    },
+    {
+      "sourceOccurrenceId": "B000009",
+      "blockId": "b9",
+      "sourceOrdinal": 8,
+      "pageNumber": 3,
+      "literalSourceText": "Contents",
+      "sourceTextSha256": "437aea62a5bd6ad4762e494c81b88532809a231477c82bdecf6fd6636908b7ab",
+      "lineCount": 1,
+      "layout": {
+        "topY": 731.9,
+        "bottomY": 731.9,
+        "left": 72.7,
+        "right": 132,
+        "style": {
+          "fontSize": 14,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Contents"
+    },
+    {
+      "sourceOccurrenceId": "B000010",
+      "blockId": "b10",
+      "sourceOrdinal": 9,
+      "pageNumber": 3,
+      "literalSourceText": "Section I: Executive Summary Summary Financial Results 4 Section I I: Overview Financial Business Model 6",
+      "sourceTextSha256": "5c0e8cc6990d6f7ccea791f7e287920346b1a0d82682f6be8eca220948ff3f5a",
+      "lineCount": 2,
+      "layout": {
+        "topY": 699.2,
+        "bottomY": 685.1,
+        "left": 75.1,
+        "right": 536.2,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Section I: Executive Summary Summary Financial Results 4 Section I I: Overview Financial Business Model 6"
+    },
+    {
+      "sourceOccurrenceId": "B000011",
+      "blockId": "b11",
+      "sourceOrdinal": 10,
+      "pageNumber": 3,
+      "literalSourceText": "Section I I I: Financial Results Financial Results and Portfolio Performance 9",
+      "sourceTextSha256": "e47649952387bd67543437c50106a9b8c040b7490df279ab2d2816e5e8160ff3",
+      "lineCount": 1,
+      "layout": {
+        "topY": 656.6,
+        "bottomY": 656.6,
+        "left": 75.1,
+        "right": 536.2,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Section I I I: Financial Results Financial Results and Portfolio Performance 9"
+    },
+    {
+      "sourceOccurrenceId": "B000012",
+      "blockId": "b12",
+      "sourceOrdinal": 11,
+      "pageNumber": 3,
+      "literalSourceText": "Section IV: Risk Management Risk Governance 1 8",
+      "sourceTextSha256": "7564cee0ab398865c93d7c2801a01a8c14e4b8f27716214c84b58814090fd4e6",
+      "lineCount": 1,
+      "layout": {
+        "topY": 628,
+        "bottomY": 628,
+        "left": 75.1,
+        "right": 536.2,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Section IV: Risk Management Risk Governance 1 8"
+    },
+    {
+      "sourceOccurrenceId": "B000013",
+      "blockId": "b13",
+      "sourceOrdinal": 12,
+      "pageNumber": 3,
+      "literalSourceText": "Management of IBRD's Risks 1 8",
+      "sourceTextSha256": "0586b04a72f31a260e7348aff2da95da1aae5e4c9c7494b2eb9775511ca6d3af",
+      "lineCount": 1,
+      "layout": {
+        "topY": 614,
+        "bottomY": 614,
+        "left": 286.9,
+        "right": 536.2,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Management of IBRD's Risks 1 8"
+    },
+    {
+      "sourceOccurrenceId": "B000014",
+      "blockId": "b14",
+      "sourceOrdinal": 13,
+      "pageNumber": 3,
+      "literalSourceText": "Section V: Governance Senior Management Changes 27",
+      "sourceTextSha256": "9ddbb711ae20c530228437bebd15bc056aa4049eadee0f2ed92ee636ac5533bb",
+      "lineCount": 1,
+      "layout": {
+        "topY": 599.4,
+        "bottomY": 599.4,
+        "left": 75.1,
+        "right": 536.2,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Section V: Governance Senior Management Changes 27"
+    },
+    {
+      "sourceOccurrenceId": "B000015",
+      "blockId": "b15",
+      "sourceOrdinal": 14,
+      "pageNumber": 3,
+      "literalSourceText": "Tables",
+      "sourceTextSha256": "e3fe2a3fe52c9c35874478d22328281ebf754f1b35747152c13e441a9eed92df",
+      "lineCount": 1,
+      "layout": {
+        "topY": 558.1,
+        "bottomY": 558.1,
+        "left": 72.3,
+        "right": 115.7,
+        "style": {
+          "fontSize": 14,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Tables"
+    },
+    {
+      "sourceOccurrenceId": "B000016",
+      "blockId": "b16",
+      "sourceOrdinal": 15,
+      "pageNumber": 3,
+      "literalSourceText": "Table 1 : Selected Financial Data 2 Table 2: Condensed Statements of Income 9 Table 3: Condensed Balance Sheets 9 Table 4: Gross Disbursements by Region 1 1",
+      "sourceTextSha256": "c6a7bcbda543f32b09df47952bb4fb12bd9491dcac256b3236c71ddb32475c38",
+      "lineCount": 4,
+      "layout": {
+        "topY": 540.3,
+        "bottomY": 497.4,
+        "left": 74.9,
+        "right": 536.9,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Table 1: Selected Financial Data 2 Table 2: Condensed Statements of Income 9 Table 3: Condensed Balance Sheets 9 Table 4: Gross Disbursements by Region 1 1"
+    },
+    {
+      "sourceOccurrenceId": "B000017",
+      "blockId": "b17",
+      "sourceOrdinal": 16,
+      "pageNumber": 3,
+      "literalSourceText": "Table 5: Net Commitments by Region 1 2 Table 6: Net Other Revenue 1 4 Table 7: Net Non-Interest Expenses 1 5 Table 8: Unrealized Mark-to-market Gains / (Losses) on Non-trading Portfolios 1 5",
+      "sourceTextSha256": "544a8a54d670709dfffdb485bd54993046f4f44064380c7563fce8ce9b306c56",
+      "lineCount": 4,
+      "layout": {
+        "topY": 483.2,
+        "bottomY": 440.4,
+        "left": 74.9,
+        "right": 537,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Table 5: Net Commitments by Region 1 2 Table 6: Net Other Revenue 1 4 Table 7: Net Non-Interest Expenses 1 5 Table 8: Unrealized Mark-to-market Gains / (Losses) on Non-trading Portfolios 1 5"
+    },
+    {
+      "sourceOccurrenceId": "B000018",
+      "blockId": "b18",
+      "sourceOrdinal": 17,
+      "pageNumber": 3,
+      "literalSourceText": "Table 9: Equity-to-Loans Ratio 20 Table 1 0: Usable Paid-In Capital 20 Table 1 1 : Credit Enhancements Received 22 Table 1 2: Commercial Credit Exposure Net of Collateral Held by Counterparty Rating 23",
+      "sourceTextSha256": "8254e3337a6e7e67e6ef6b5189b98df697193280ff404dfc4b797958ed6a7ffb",
+      "lineCount": 4,
+      "layout": {
+        "topY": 426.2,
+        "bottomY": 383.4,
+        "left": 74.9,
+        "right": 536.9,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Table 9: Equity-to-Loans Ratio 20 Table 1 0: Usable Paid-In Capital 20 Table 1 1: Credit Enhancements Received 22 Table 1 2: Commercial Credit Exposure Net of Collateral Held by Counterparty Rating 23"
+    },
+    {
+      "sourceOccurrenceId": "B000019",
+      "blockId": "b19",
+      "sourceOrdinal": 18,
+      "pageNumber": 3,
+      "literalSourceText": "Table 1 3: Non-Commercial Counterparty Credit Risk 24 Table 1 4: Liquidity Levels for FY 25 25",
+      "sourceTextSha256": "e3e43e63ecbbdaa8f1b3701724cc2fb5c0bebd56783d8cc049463c6735250d9d",
+      "lineCount": 2,
+      "layout": {
+        "topY": 369.2,
+        "bottomY": 355.1,
+        "left": 74.9,
+        "right": 537,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Table 1 3: Non-Commercial Counterparty Credit Risk 24 Table 1 4: Liquidity Levels for FY 25 25"
+    },
+    {
+      "sourceOccurrenceId": "B000020",
+      "blockId": "b20",
+      "sourceOrdinal": 19,
+      "pageNumber": 3,
+      "literalSourceText": "Figures",
+      "sourceTextSha256": "f2f410e7009e9a31dcc7c971e662285f4071150ef1e211f76e838efb35082d1e",
+      "lineCount": 1,
+      "layout": {
+        "topY": 330.3,
+        "bottomY": 330.3,
+        "left": 73,
+        "right": 121.9,
+        "style": {
+          "fontSize": 14,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Figures"
+    },
+    {
+      "sourceOccurrenceId": "B000021",
+      "blockId": "b21",
+      "sourceOrdinal": 20,
+      "pageNumber": 3,
+      "literalSourceText": "Figure 1 : Sources and Uses of Revenue 7 Figure 2: Loans interest revenue and funding cost (including related derivatives) 1 0 Figure 3: Loan interest revenue net of funding costs 1 0 Figure 4: Change in Net Loans Outstanding 1 1",
+      "sourceTextSha256": "9a97477b5a1216ae744c48ff7de5ef44c980bcf099fa23977a7fdc39a4b26966",
+      "lineCount": 4,
+      "layout": {
+        "topY": 312.8,
+        "bottomY": 270.1,
+        "left": 75.5,
+        "right": 536.9,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Figure 1: Sources and Uses of Revenue 7 Figure 2: Loans interest revenue and funding cost (including related derivatives) 1 0 Figure 3: Loan interest revenue net of funding costs 1 0 Figure 4: Change in Net Loans Outstanding 1 1"
+    },
+    {
+      "sourceOccurrenceId": "B000022",
+      "blockId": "b22",
+      "sourceOrdinal": 21,
+      "pageNumber": 3,
+      "literalSourceText": "Figure 5: Net Loans Outstanding 1 1 Figure 6: Net Investment Portfolio 1 3 Figure 7: Investment Revenue net 1 3 Figure 8: Borrowing Portfolio (original maturities) 1 3",
+      "sourceTextSha256": "7199c81aea92764ee462e48ade276ade07fbbf11def2c1d6e9a64e7e76b5e4cd",
+      "lineCount": 4,
+      "layout": {
+        "topY": 255.9,
+        "bottomY": 213.1,
+        "left": 75.5,
+        "right": 536.9,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Figure 5: Net Loans Outstanding 1 1 Figure 6: Net Investment Portfolio 1 3 Figure 7: Investment Revenue net 1 3 Figure 8: Borrowing Portfolio (original maturities) 1 3"
+    },
+    {
+      "sourceOccurrenceId": "B000023",
+      "blockId": "b23",
+      "sourceOrdinal": 22,
+      "pageNumber": 3,
+      "literalSourceText": "Figure 9: Net Non-Interest Expenses (GAAP basis) 1 4 Figure 1 0: Country Exposures as of March 31 2025 21",
+      "sourceTextSha256": "a03d9317a02f4fe685a446d53fb5b5318a2501c1235b850b05f6a60f41892e62",
+      "lineCount": 2,
+      "layout": {
+        "topY": 198.9,
+        "bottomY": 184.6,
+        "left": 75.5,
+        "right": 536.9,
+        "style": {
+          "fontSize": 10,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Figure 9: Net Non-Interest Expenses (GAAPbasis) 1 4 Figure 1 0: Country Exposures as of March 31 2025 21"
+    },
+    {
+      "sourceOccurrenceId": "B000024",
+      "blockId": "b24",
+      "sourceOrdinal": 23,
+      "pageNumber": 4,
+      "literalSourceText": "Management’s Discussion and Analysis Section I: Executive Summary",
+      "sourceTextSha256": "3f9249710d128b06f44d1c07e7a9b4e9807082533f12fa83373ecb42ec46e0e5",
+      "lineCount": 1,
+      "layout": {
+        "topY": 752.9,
+        "bottomY": 752.9,
+        "left": 78,
+        "right": 405.8,
+        "style": {
+          "fontSize": 9.5,
+          "font": "arial-boldmt",
+          "color": "1.00,1.00,1.00"
+        }
+      },
+      "extractedText": "Management’s Discussion and Analysis Section I: Executive Summary"
+    },
+    {
+      "sourceOccurrenceId": "B000025",
+      "blockId": "b25",
+      "sourceOrdinal": 24,
+      "pageNumber": 4,
+      "literalSourceText": "Section I: Executive Summary",
+      "sourceTextSha256": "16a78b0972341a4510bf6e1c7ddfb17ba05dc336c1705f4e05843002a4a214ab",
+      "lineCount": 1,
+      "layout": {
+        "topY": 728.4,
+        "bottomY": 728.4,
+        "left": 75.1,
+        "right": 274.4,
+        "style": {
+          "fontSize": 14,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Section I: Executive Summary"
+    },
+    {
+      "sourceOccurrenceId": "B000026",
+      "blockId": "b26",
+      "sourceOrdinal": 25,
+      "pageNumber": 4,
+      "literalSourceText": "This Management’s Discussion and Analysis (MD&A) reflects the results of the International Bank for Reconstruction and Development’s (IBRD’s) financial performance for the nine months ended March 3 1 2025 (FY 25 YTD). This document should be read in conjunction with IBRD’s Financial Statements and MD&A for the fiscal year ended June 30, 2024 (FY 24). IBRD undertakes no obligation to update any forward-looking statements.",
+      "sourceTextSha256": "701a55ed415652bcac2c8122e2f8a9df8f37f78418a59cb1189b9bcd9cf954d9",
+      "lineCount": 4,
+      "layout": {
+        "topY": 704.8,
+        "bottomY": 668.6,
+        "left": 72.2,
+        "right": 540.1,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "This Management’s Discussion and Analysis (MD & A) reflects the results of the International Bank for Reconstruction and Development’s (IBRD’s) financial performance for the nine months ended March 3 1 2025 (FY 25 YTD ). This document should beread in conjunction with IBRD’s Financial Statements and MD & A for the fiscalyearended June 30, 2024 (FY 24 ). IBRD undertakes no obligation to update any forward-looking statements."
+    },
+    {
+      "sourceOccurrenceId": "B000027",
+      "blockId": "b27",
+      "sourceOrdinal": 26,
+      "pageNumber": 4,
+      "literalSourceText": "Certain reclassifications ofprior years’ information have been made to conform with the current year’s presentation.",
+      "sourceTextSha256": "51d47890f3a9f1f0df3303472c008b2fafc80e38919fe0472cad797703c5ed35",
+      "lineCount": 1,
+      "layout": {
+        "topY": 656.6,
+        "bottomY": 656.6,
+        "left": 72.4,
+        "right": 536.8,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Certain reclassifications ofprior years’informationhavebeenmade to conform with the current year’s presentation."
+    },
+    {
+      "sourceOccurrenceId": "B000028",
+      "blockId": "b28",
+      "sourceOrdinal": 27,
+      "pageNumber": 4,
+      "literalSourceText": "Table 1 : Selected Financial Data",
+      "sourceTextSha256": "568a722d63394b726e3a12d56538702d1a6c21aa6e5d7046008f25ca1b2482bf",
+      "lineCount": 1,
+      "layout": {
+        "topY": 632,
+        "bottomY": 632,
+        "left": 72.3,
+        "right": 254.3,
+        "style": {
+          "fontSize": 12,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Table 1: Selected Financial Data"
+    },
+    {
+      "sourceOccurrenceId": "B000029",
+      "blockId": "b29",
+      "sourceOrdinal": 28,
+      "pageNumber": 4,
+      "literalSourceText": "In millions of U.S. dollars except ratios which are in percentages",
+      "sourceTextSha256": "c83c9d13458002dc19a70c908db7affa1f8062a4c6039910406497052bdd34f2",
+      "lineCount": 1,
+      "layout": {
+        "topY": 618.1,
+        "bottomY": 618.1,
+        "left": 72.6,
+        "right": 358,
+        "style": {
+          "fontSize": 10,
+          "font": "arial-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "In millions of U. S. dollars except ratioswhichare in percentages"
+    },
+    {
+      "sourceOccurrenceId": "B000030",
+      "blockId": "b30",
+      "sourceOrdinal": 29,
+      "pageNumber": 4,
+      "literalSourceText": "As of and for the",
+      "sourceTextSha256": "d444c1a3cbc578f9d32bb2957dd8ef351380b12297040c0b8bfb2fe471782e08",
+      "lineCount": 1,
+      "layout": {
+        "topY": 591.2,
+        "bottomY": 591.2,
+        "left": 475.7,
+        "right": 534.3,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-italicmt",
+          "color": "0.43,0.43,0.43"
+        }
+      },
+      "extractedText": "As of and for the"
+    },
+    {
+      "sourceOccurrenceId": "B000031",
+      "blockId": "b31",
+      "sourceOrdinal": 30,
+      "pageNumber": 4,
+      "literalSourceText": "As of and for the nine months fiscal year ended",
+      "sourceTextSha256": "b4eff17d833deb4a51a6608d45868aabac8eeedf26faf66a462de47fc489d0b7",
+      "lineCount": 1,
+      "layout": {
+        "topY": 581.5,
+        "bottomY": 581.5,
+        "left": 358.7,
+        "right": 535.7,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-italicmt",
+          "color": "0.43,0.43,0.43"
+        }
+      },
+      "extractedText": "As of and for the nine months fiscalyearended"
+    },
+    {
+      "sourceOccurrenceId": "B000032",
+      "blockId": "b32",
+      "sourceOrdinal": 31,
+      "pageNumber": 4,
+      "literalSourceText": "Lending Highlights (Section III) Loans and Guarantees",
+      "sourceTextSha256": "9f40db6d2cbbcbcb4937f38c149d2fa678f2c45dd0fb050e83e13f69dbf9ec45",
+      "lineCount": 2,
+      "layout": {
+        "topY": 548.1,
+        "bottomY": 536,
+        "left": 75.2,
+        "right": 191.9,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Lending Highlights (Section III) Loans and Guarantees"
+    },
+    {
+      "sourceOccurrenceId": "B000033",
+      "blockId": "b33",
+      "sourceOrdinal": 32,
+      "pageNumber": 4,
+      "literalSourceText": "Income Statement (Section III)",
+      "sourceTextSha256": "7d4befb4b95d17f20ede9ae1841a4da4da8439cc2cbb63a793415c91cd36cb9d",
+      "lineCount": 1,
+      "layout": {
+        "topY": 476.9,
+        "bottomY": 476.9,
+        "left": 75.2,
+        "right": 188.4,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Income Statement (Section III)"
+    },
+    {
+      "sourceOccurrenceId": "B000034",
+      "blockId": "b34",
+      "sourceOrdinal": 33,
+      "pageNumber": 4,
+      "literalSourceText": "Balance Sheet (Section III)",
+      "sourceTextSha256": "e9d09475b8600dd03d7e19c12d2a867b7f7a3a7fa27ec5de3de96f3ae0ef6252",
+      "lineCount": 1,
+      "layout": {
+        "topY": 429.7,
+        "bottomY": 429.7,
+        "left": 75.2,
+        "right": 174.2,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Balance Sheet (Section III)"
+    },
+    {
+      "sourceOccurrenceId": "B000035",
+      "blockId": "b35",
+      "sourceOrdinal": 34,
+      "pageNumber": 4,
+      "literalSourceText": "b",
+      "sourceTextSha256": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+      "lineCount": 1,
+      "layout": {
+        "topY": 408.7,
+        "bottomY": 408.7,
+        "left": 170.1,
+        "right": 172.4,
+        "style": {
+          "fontSize": 5,
+          "font": "arialmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "b"
+    },
+    {
+      "sourceOccurrenceId": "B000036",
+      "blockId": "b36",
+      "sourceOrdinal": 35,
+      "pageNumber": 4,
+      "literalSourceText": "Non-GAAP Measures",
+      "sourceTextSha256": "a1dbc5b9526056b51d5bfe5983af7b613228911742f49880df488d8b5b07be35",
+      "lineCount": 1,
+      "layout": {
+        "topY": 346.3,
+        "bottomY": 346.3,
+        "left": 75.2,
+        "right": 154.6,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Non-GAAP Measures"
+    },
+    {
+      "sourceOccurrenceId": "B000037",
+      "blockId": "b37",
+      "sourceOrdinal": 36,
+      "pageNumber": 4,
+      "literalSourceText": "a. Commitments that have been approved by the Executive Directors (referred to as “the Board” in this document) and are net of full terminations and cancellations relating to commitments approved in the same fiscal year.",
+      "sourceTextSha256": "d18d58b8b4a044eee34630e352a195d0e1ab5b05731fb0764a358f680749b0e6",
+      "lineCount": 2,
+      "layout": {
+        "topY": 286.2,
+        "bottomY": 276.6,
+        "left": 75,
+        "right": 537.7,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "a. Commitments that havebeen approved by the Executive Directors (referred to as “ the Board ” in this document) and arenet of full terminations and cancellations relating to commitments approved in the same fiscal year."
+    },
+    {
+      "sourceOccurrenceId": "B000038",
+      "blockId": "b38",
+      "sourceOrdinal": 37,
+      "pageNumber": 4,
+      "literalSourceText": "b. For the composition of the net investment portfolio see Notes to the Condensed Quarterly Financial Statements Note C - Investments - Table C 3.",
+      "sourceTextSha256": "84c37dbb463017e7bde41a1a52f6155a21cb5fbc78e33dc6bf4c69638962564a",
+      "lineCount": 2,
+      "layout": {
+        "topY": 264.5,
+        "bottomY": 254.8,
+        "left": 74.9,
+        "right": 536.7,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "b. For the composition of the net investment portfolio see Notes to the Condensed Quarterly Financial Statements Note C-Investments-Table C 3."
+    },
+    {
+      "sourceOccurrenceId": "B000039",
+      "blockId": "b39",
+      "sourceOrdinal": 38,
+      "pageNumber": 4,
+      "literalSourceText": "c. Includes associated derivatives.",
+      "sourceTextSha256": "8cd02dbb11c60ad952ce3629d99b7379fb622c8250a4490952265d05e556f5d0",
+      "lineCount": 1,
+      "layout": {
+        "topY": 242.7,
+        "bottomY": 242.7,
+        "left": 75.1,
+        "right": 195.1,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "c. Includes associated derivatives."
+    },
+    {
+      "sourceOccurrenceId": "B000040",
+      "blockId": "b40",
+      "sourceOrdinal": 39,
+      "pageNumber": 5,
+      "literalSourceText": "Management’s Discussion and Analysis Section I: Executive Summary",
+      "sourceTextSha256": "3f9249710d128b06f44d1c07e7a9b4e9807082533f12fa83373ecb42ec46e0e5",
+      "lineCount": 1,
+      "layout": {
+        "topY": 752.9,
+        "bottomY": 752.9,
+        "left": 78,
+        "right": 405.8,
+        "style": {
+          "fontSize": 9.5,
+          "font": "arial-boldmt",
+          "color": "1.00,1.00,1.00"
+        }
+      },
+      "extractedText": "Management’s Discussion and Analysis Section I: Executive Summary"
+    },
+    {
+      "sourceOccurrenceId": "B000041",
+      "blockId": "b41",
+      "sourceOrdinal": 40,
+      "pageNumber": 5,
+      "literalSourceText": "IBRD's mission is to end extreme poverty and boost shared prosperity on a livable planet by providing countries with loans, guarantees, advisory services, analytical support and other products.",
+      "sourceTextSha256": "b2ffd605abb3f94eaca6ce64208cd61015b67bc58886a3ea406dbc5bf886ca99",
+      "lineCount": 2,
+      "layout": {
+        "topY": 733.6,
+        "bottomY": 721.4,
+        "left": 72.1,
+        "right": 539.6,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "IBRD's mission is to end extreme poverty and boost shared prosperity on a livable planet by providing countries with loans, guarantees, advisory services, analytical support and other products."
+    },
+    {
+      "sourceOccurrenceId": "B000042",
+      "blockId": "b42",
+      "sourceOrdinal": 41,
+      "pageNumber": 5,
+      "literalSourceText": "IBRD and its affiliated institutions seek to help countries in reducing poverty and inequality, and achieve improvements in economic growth, job creation, governance, human capital, infrastructure, and debt transparency, among others. To meet its development goals, the World Bank Group (WBG 1) supports client countries' efforts to implement programs to improve growth and development outcomes with a vision to create a world free of poverty",
+      "sourceTextSha256": "f0bd255145a3d877abcc5bb7a9d5b3e5a19eefd7fcd7691a5219a7b85b575990",
+      "lineCount": 4,
+      "layout": {
+        "topY": 703.7,
+        "bottomY": 669.9,
+        "left": 72.2,
+        "right": 539.8,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "IBRD and its affiliated institutions seek to help countries in reducing poverty and inequality, and achieve improvements in economic growth, job creation, governance, human capital, infrastructure, and debt transparency, among others. To meetits development goals, the World Bank Group (WBG 1) supports client countries'efforts to implement programs to improve growth and development outcomes with a vision to create a worldfree of poverty"
+    },
+    {
+      "sourceOccurrenceId": "B000043",
+      "blockId": "b43",
+      "sourceOrdinal": 42,
+      "pageNumber": 5,
+      "literalSourceText": "on a livable planet. Further, new and ongoing factors continue to influence the global outlook, including: global market uncertainties, migration surges, youth unemployment, energy access, climate adaptation and mitigation, and growing fragility. IBRD continues to work with partners at global and country levels and its borrowing countries to maximize impact for development by efficiently channeling resources into projects that create jobs, drive growth,",
+      "sourceTextSha256": "d165ea815d42d4d6fd6f4bd7a6fbab0fb7e2fb0765436d13f3613f0da935da1a",
+      "lineCount": 4,
+      "layout": {
+        "topY": 658.8,
+        "bottomY": 625.1,
+        "left": 72.1,
+        "right": 539.9,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "on a livable planet. Further, new and ongoing factors continue to influence the global outlook, including: global market uncertainties, migration surges, youth unemployment, energy access, climate adaptation and mitigation, and growing fragility. IBRD continues to work with partners at global and country levels and its borrowing countries to maximize impact for development by efficiently channeling resources into projects that create jobs, drive growth,"
+    },
+    {
+      "sourceOccurrenceId": "B000044",
+      "blockId": "b44",
+      "sourceOrdinal": 43,
+      "pageNumber": 5,
+      "literalSourceText": "reduce poverty, and improve living standards. To further support these efforts, the Board and Management have been reforming the WBG to better address the scale of development needs. This process includes initiatives to increase impact, expand financing capacity, support projects that address global challenges with cross border externalities, and modernize the approach to delivery.",
+      "sourceTextSha256": "f44b713395e551bf451a44671931b20a798c8da8289f08dcf22baf5e6f40ff88",
+      "lineCount": 4,
+      "layout": {
+        "topY": 613.9,
+        "bottomY": 580.3,
+        "left": 72,
+        "right": 540,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "reduce poverty, and improve living standards. To further support these efforts, the Board and Managementhavebeen reforming the WBG to better address the scale of development needs. This process includes initiatives to increase impact, expand financing capacity, support projects that address global challenges with cross border externalities, and modernize the approach to delivery."
+    },
+    {
+      "sourceOccurrenceId": "B000045",
+      "blockId": "b45",
+      "sourceOrdinal": 44,
+      "pageNumber": 5,
+      "literalSourceText": "The other WBG institutions are the International Development Association (IDA) the International Finance Corporation (IFC) the Multilateral Investment Guarantee Agency (MIGA) and the International Centre for Settlement of Investment Disputes (ICSID). The World Bank consists of IBRD and IDA.",
+      "sourceTextSha256": "d12771d321549f4fe4c295cf41c5187b5d8496ff7fbac1efcf08894865369135",
+      "lineCount": 3,
+      "layout": {
+        "topY": 79.4,
+        "bottomY": 60.2,
+        "left": 76.9,
+        "right": 540,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "The other WBG institutions are the International Development Association (IDA) the International Finance Corporation (IFC) the Multilateral Investment Guarantee Agency (MIGA) and the International Centre for Settlement of Investment Disputes (ICSID ). The World Bank consists of IBRD and IDA."
+    },
+    {
+      "sourceOccurrenceId": "B000046",
+      "blockId": "b46",
+      "sourceOrdinal": 45,
+      "pageNumber": 6,
+      "literalSourceText": "Management’s Discussion and Analysis Section I: Executive Summary",
+      "sourceTextSha256": "3f9249710d128b06f44d1c07e7a9b4e9807082533f12fa83373ecb42ec46e0e5",
+      "lineCount": 1,
+      "layout": {
+        "topY": 752.9,
+        "bottomY": 752.9,
+        "left": 78,
+        "right": 405.8,
+        "style": {
+          "fontSize": 9.5,
+          "font": "arial-boldmt",
+          "color": "1.00,1.00,1.00"
+        }
+      },
+      "extractedText": "Management’s Discussion and Analysis Section I: Executive Summary"
+    },
+    {
+      "sourceOccurrenceId": "B000047",
+      "blockId": "b47",
+      "sourceOrdinal": 46,
+      "pageNumber": 6,
+      "literalSourceText": "Summary Financial Results",
+      "sourceTextSha256": "0dbead2f6f19a8d64117ea48baa10a134426937740acc611f41553ad0d3609e2",
+      "lineCount": 1,
+      "layout": {
+        "topY": 732.7,
+        "bottomY": 732.7,
+        "left": 72.4,
+        "right": 228.1,
+        "style": {
+          "fontSize": 12,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Summary Financial Results"
+    },
+    {
+      "sourceOccurrenceId": "B000048",
+      "blockId": "b48",
+      "sourceOrdinal": 47,
+      "pageNumber": 6,
+      "literalSourceText": "Net Income",
+      "sourceTextSha256": "f0b8bc44623fea26e4525b899b19fa12f6459a5e5d09e7df9c104f83036e6bd9",
+      "lineCount": 1,
+      "layout": {
+        "topY": 713,
+        "bottomY": 713,
+        "left": 72.2,
+        "right": 125.8,
+        "style": {
+          "fontSize": 11,
+          "font": "timesnewroman-bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Net Income"
+    },
+    {
+      "sourceOccurrenceId": "B000049",
+      "blockId": "b49",
+      "sourceOrdinal": 48,
+      "pageNumber": 6,
+      "literalSourceText": "IBRD's net income was $1 236 million for the first nine months of FY 25 compared with net income of $1 1 85 million during the same period in FY 24. The $5 1 million increase was primarily due to unrealized mark-to-market gains on IBRD’s non-trading portfolios in FY 25 YTD as compared to unrealized mark-to-market losses in FY 24 YTD, and an increase in net revenue on interest earning assets. These were partially offset by higher Board of",
+      "sourceTextSha256": "ce7976ba84ef0ea1ae1f577faf82dafd094186a20307120b4d73a5e7cab4dfd1",
+      "lineCount": 4,
+      "layout": {
+        "topY": 697.3,
+        "bottomY": 660.9,
+        "left": 72.1,
+        "right": 540.9,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "IBRD'snet income was $ 1 236 million for the firstnine months of FY 25 compared with net income of $ 1 1 85 million during the same period in FY 24. The $ 5 1 million increase was primarily due to unrealized mark-to-market gains on IBRD’snon-trading portfolios in FY 25 YTD as compared to unrealized mark-to-market losses in FY 24 YTD, and an increase in net revenue on interest earning assets. These were partially offset by higher Board of"
+    },
+    {
+      "sourceOccurrenceId": "B000050",
+      "blockId": "b50",
+      "sourceOrdinal": 49,
+      "pageNumber": 6,
+      "literalSourceText": "Governors-approved transfers of $444 million. The $815 million of Board of Governors-approved transfers were expensed as grants upon approval by the Board of Governors in FY 25 YTD, and were funded from IBRD's prior years' allocable income.",
+      "sourceTextSha256": "bff8ea7c513b5299ce1f4904ec732064565cb48efb77d5dc57fae3dbcf744ab3",
+      "lineCount": 3,
+      "layout": {
+        "topY": 649,
+        "bottomY": 625,
+        "left": 72.1,
+        "right": 540,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Governors-approved transfers of $ 444 million. The $ 815 million of Board of Governors-approved transfers were expensed as grants upon approval by the Board of Governors in FY 25 YTD, and were funded from IBRD'sprioryears'allocable income."
+    },
+    {
+      "sourceOccurrenceId": "B000051",
+      "blockId": "b51",
+      "sourceOrdinal": 50,
+      "pageNumber": 6,
+      "literalSourceText": "Allocable Income",
+      "sourceTextSha256": "232ab908dbba2b61645858056bd85472bc51a1da442b4a8f34116da5c0d684f6",
+      "lineCount": 1,
+      "layout": {
+        "topY": 606.9,
+        "bottomY": 606.9,
+        "left": 72.1,
+        "right": 153.3,
+        "style": {
+          "fontSize": 11,
+          "font": "timesnewroman-bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Allocable Income"
+    },
+    {
+      "sourceOccurrenceId": "B000052",
+      "blockId": "b52",
+      "sourceOrdinal": 51,
+      "pageNumber": 6,
+      "literalSourceText": "Allocable income is the measure IBRD uses for making net income allocation decisions. Given IBRD’s intention to maintain its non-trading portfolio positions to maturity, unrealized mark-to-market gains and losses for these portfolios are not included in IBRD’s allocable income. In addition, Board of Governors-approved and other transfers are also excluded from IBRD's allocable income since these amounts relate to allocations out of prior year",
+      "sourceTextSha256": "079c0afc0d6aca97d4316b47bed663441b6b3258ce0eb173fd71ee5d3c1ce890",
+      "lineCount": 4,
+      "layout": {
+        "topY": 590.9,
+        "bottomY": 554.9,
+        "left": 72,
+        "right": 540,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Allocable income is the measure IBRDuses for making net income allocation decisions. Given IBRD’s intention to maintainitsnon-trading portfolio positions to maturity, unrealized mark-to-market gains and losses for these portfolios are not included in IBRD’s allocable income. In addition, Board of Governors-approved and other transfersarealso excluded from IBRD's allocable income since these amounts relate to allocations out of prioryear"
+    },
+    {
+      "sourceOccurrenceId": "B000053",
+      "blockId": "b53",
+      "sourceOrdinal": 52,
+      "pageNumber": 6,
+      "literalSourceText": "allocable income, surplus, or restricted retained earnings.",
+      "sourceTextSha256": "42a7844b271b1e4ac3a48ae0796fbc7816274b409416c5de06fd4c14612bcf3a",
+      "lineCount": 1,
+      "layout": {
+        "topY": 542.6,
+        "bottomY": 542.6,
+        "left": 72.4,
+        "right": 299.6,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "allocable income, surplus, or restricted retained earnings."
+    },
+    {
+      "sourceOccurrenceId": "B000054",
+      "blockId": "b54",
+      "sourceOrdinal": 53,
+      "pageNumber": 6,
+      "literalSourceText": "During FY 25 YTD allocable income was $1 790 million an increase of $375 million from the same period in FY 24. The increase was primarily due to the increase in net revenue on interest earning assets in FY 25 YTD, compared to FY 24 YTD (Section III and Section IV).",
+      "sourceTextSha256": "260e5815d9474178be47bc423995087d8237cc6ab51aa98386a1af4e287966fb",
+      "lineCount": 3,
+      "layout": {
+        "topY": 525,
+        "bottomY": 501,
+        "left": 72.2,
+        "right": 539.9,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "During FY 25 YTD allocable income was $ 1 790 million an increase of $ 375 million from the same period in FY 24. The increase was primarily due to the increase in net revenue on interest earning assets in FY 25 YTD, compared to FY 24 YTD (Section III and Section IV )."
+    },
+    {
+      "sourceOccurrenceId": "B000055",
+      "blockId": "b55",
+      "sourceOrdinal": 54,
+      "pageNumber": 6,
+      "literalSourceText": "In millions of U.S. dollars - YTD",
+      "sourceTextSha256": "914a75847af44f00aad3d0460e11b8c0d05a0d1bf5e40f8f09607c6250c60b40",
+      "lineCount": 1,
+      "layout": {
+        "topY": 483.7,
+        "bottomY": 483.7,
+        "left": 72.5,
+        "right": 183,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "In millions of U. S. dollars-YTD"
+    },
+    {
+      "sourceOccurrenceId": "B000056",
+      "blockId": "b56",
+      "sourceOrdinal": 55,
+      "pageNumber": 6,
+      "literalSourceText": "Allocable Income Net Income Unrealized Gains (Losses) on non-trading portfolios",
+      "sourceTextSha256": "9d00921326c19114de9cc4b738f1682d2c4632dc99804822ca6e8dd95d2c181c",
+      "lineCount": 3,
+      "layout": {
+        "topY": 469.3,
+        "bottomY": 452.7,
+        "left": 117,
+        "right": 276.6,
+        "style": {
+          "fontSize": 9.5,
+          "font": "arialmt",
+          "color": "0.35,0.35,0.35"
+        }
+      },
+      "extractedText": "Allocable Income Net Income Unrealized Gains (Losses) on non-trading portfolios"
+    },
+    {
+      "sourceOccurrenceId": "B000057",
+      "blockId": "b57",
+      "sourceOrdinal": 56,
+      "pageNumber": 6,
+      "literalSourceText": "FY 21 FY 22 FY 23 FY 24 FY 25",
+      "sourceTextSha256": "0bcc5a6c07a63ff06bfc25608865a7e5a429af8b172bd12b5de22e85e60c6ee6",
+      "lineCount": 1,
+      "layout": {
+        "topY": 335.5,
+        "bottomY": 335.5,
+        "left": 117.1,
+        "right": 288.2,
+        "style": {
+          "fontSize": 10.5,
+          "font": "arialmt",
+          "color": "0.35,0.35,0.35"
+        }
+      },
+      "extractedText": "FY 21 FY 22 FY 23 FY 24 FY 25"
+    },
+    {
+      "sourceOccurrenceId": "B000058",
+      "blockId": "b58",
+      "sourceOrdinal": 57,
+      "pageNumber": 6,
+      "literalSourceText": "Lending Operations",
+      "sourceTextSha256": "891cb6194048db97ba0aa9f1e38a9714fb4aefd2ced8499cb2bb2557e8358940",
+      "lineCount": 1,
+      "layout": {
+        "topY": 316.8,
+        "bottomY": 316.8,
+        "left": 72.2,
+        "right": 166,
+        "style": {
+          "fontSize": 11,
+          "font": "timesnewroman-bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Lending Operations"
+    },
+    {
+      "sourceOccurrenceId": "B000059",
+      "blockId": "b59",
+      "sourceOrdinal": 58,
+      "pageNumber": 6,
+      "literalSourceText": "IBRD’s lending operations during the first nine months of FY 25 provided $27.7 billion of net commitments $22. 1 billion of gross loan disbursements (Table 4), and $1 1 .9 billion of net loan disbursements. Net loans outstanding",
+      "sourceTextSha256": "22a8045d8882ef20efb2918b234029265f2ef1439ce4bbb9231f898f94617802",
+      "lineCount": 2,
+      "layout": {
+        "topY": 298,
+        "bottomY": 285.9,
+        "left": 72,
+        "right": 539.7,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "IBRD’s lending operations during the firstnine months of FY 25 provided $ 27. 7 billion of net commitments $ 22. 1 billion of grossloan disbursements (Table 4 ), and $ 1 1. 9 billion of netloan disbursements. Netloans outstanding"
+    },
+    {
+      "sourceOccurrenceId": "B000060",
+      "blockId": "b60",
+      "sourceOrdinal": 59,
+      "pageNumber": 6,
+      "literalSourceText": "In billions of U.S. dollars",
+      "sourceTextSha256": "c8c7c09bd676585f274c80554977789edf33559704247337336799ee2c01ee8b",
+      "lineCount": 1,
+      "layout": {
+        "topY": 256.7,
+        "bottomY": 256.7,
+        "left": 72.5,
+        "right": 157.8,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "In billions of U. S. dollars"
+    },
+    {
+      "sourceOccurrenceId": "B000061",
+      "blockId": "b61",
+      "sourceOrdinal": 60,
+      "pageNumber": 6,
+      "literalSourceText": "Net Commitments YTD Disbursements YTD Net Loans outstanding",
+      "sourceTextSha256": "f79f2f123671b8327d680cfd79c50e1c09f80b716e086af5b2e914a7653972bc",
+      "lineCount": 1,
+      "layout": {
+        "topY": 235.8,
+        "bottomY": 235.8,
+        "left": 103.6,
+        "right": 507.1,
+        "style": {
+          "fontSize": 10,
+          "font": "arial-boldmt",
+          "color": "0.35,0.35,0.35"
+        }
+      },
+      "extractedText": "Net Commitments YTD Disbursements YTD Net Loans outstanding"
+    },
+    {
+      "sourceOccurrenceId": "B000062",
+      "blockId": "b62",
+      "sourceOrdinal": 61,
+      "pageNumber": 6,
+      "literalSourceText": "FY 21 FY 22 FY 23 FY 24 FY 25 FY 21 FY 22 FY 23 FY 24 FY 25 Jun 21 Jun 22 Jun 23 Jun 24 Mar 25",
+      "sourceTextSha256": "f1ad26752542653619c869fc5f9fb22a855009719087436a589863a0b3fc9328",
+      "lineCount": 1,
+      "layout": {
+        "topY": 132.7,
+        "bottomY": 132.7,
+        "left": 104.7,
+        "right": 530.8,
+        "style": {
+          "fontSize": 9.5,
+          "font": "arialmt",
+          "color": "0.35,0.35,0.35"
+        }
+      },
+      "extractedText": "FY 21 FY 22 FY 23 FY 24 FY 25 FY 21 FY 22 FY 23 FY 24 FY 25 Jun 21 Jun 22 Jun 23 Jun 24 Mar 25"
+    },
+    {
+      "sourceOccurrenceId": "B000063",
+      "blockId": "b63",
+      "sourceOrdinal": 62,
+      "pageNumber": 6,
+      "literalSourceText": "Gross Net",
+      "sourceTextSha256": "564bad9d82863d55a1131e2422366bbd42c2fa9b18f6137bc4e4b4e8cfc6c1c9",
+      "lineCount": 1,
+      "layout": {
+        "topY": 116.3,
+        "bottomY": 116.3,
+        "left": 293.5,
+        "right": 338.8,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-boldmt",
+          "color": "0.35,0.35,0.35"
+        }
+      },
+      "extractedText": "Gross Net"
+    },
+    {
+      "sourceOccurrenceId": "B000064",
+      "blockId": "b64",
+      "sourceOrdinal": 63,
+      "pageNumber": 6,
+      "literalSourceText": "Net commitments were higher by $3.0 billion compared with the same period in FY 24 (Table 5). The regions with the largest share of commitments in the first nine months of FY 25 were Europe and Central Asia with 32% and Latin America and the Caribbean with 3 1%.",
+      "sourceTextSha256": "6ee9c25f6aaf422919d2ab2e5581f4b5b32a60e4ba74e02c6f5bb6c366a7e594",
+      "lineCount": 3,
+      "layout": {
+        "topY": 90,
+        "bottomY": 66.2,
+        "left": 71.9,
+        "right": 539.9,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Net commitments were higher by $ 3. 0 billion compared with the same period in FY 24 (Table 5 ). The regions with the largest share of commitments in the firstnine months of FY 25 were Europe and Central Asia with 32 % and Latin America and the Caribbean with 3 1 %."
+    },
+    {
+      "sourceOccurrenceId": "B000065",
+      "blockId": "b65",
+      "sourceOrdinal": 64,
+      "pageNumber": 7,
+      "literalSourceText": "Management’s Discussion and Analysis Section I: Executive Summary",
+      "sourceTextSha256": "3f9249710d128b06f44d1c07e7a9b4e9807082533f12fa83373ecb42ec46e0e5",
+      "lineCount": 1,
+      "layout": {
+        "topY": 752.9,
+        "bottomY": 752.9,
+        "left": 78,
+        "right": 405.8,
+        "style": {
+          "fontSize": 9.5,
+          "font": "arial-boldmt",
+          "color": "1.00,1.00,1.00"
+        }
+      },
+      "extractedText": "Management’s Discussion and Analysis Section I: Executive Summary"
+    },
+    {
+      "sourceOccurrenceId": "B000066",
+      "blockId": "b66",
+      "sourceOrdinal": 65,
+      "pageNumber": 7,
+      "literalSourceText": "Net Investment Portfolio",
+      "sourceTextSha256": "df999fdd5a7eb654d6bf7b5c3fcf73b7427179968d25b6d3ecacb26d09b4b82c",
+      "lineCount": 1,
+      "layout": {
+        "topY": 733.6,
+        "bottomY": 733.6,
+        "left": 72.2,
+        "right": 187.7,
+        "style": {
+          "fontSize": 11,
+          "font": "timesnewroman-bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Net Investment Portfolio"
+    },
+    {
+      "sourceOccurrenceId": "B000067",
+      "blockId": "b67",
+      "sourceOrdinal": 66,
+      "pageNumber": 7,
+      "literalSourceText": "In billions of U.S. dollars",
+      "sourceTextSha256": "c8c7c09bd676585f274c80554977789edf33559704247337336799ee2c01ee8b",
+      "lineCount": 1,
+      "layout": {
+        "topY": 724.9,
+        "bottomY": 724.9,
+        "left": 333.5,
+        "right": 418.8,
+        "style": {
+          "fontSize": 8,
+          "font": "arial-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "In billions of U. S. dollars"
+    },
+    {
+      "sourceOccurrenceId": "B000068",
+      "blockId": "b68",
+      "sourceOrdinal": 67,
+      "pageNumber": 7,
+      "literalSourceText": "IBRD’s net investment portfolio increased by $20.0",
+      "sourceTextSha256": "0f2d70b4eb68d48af36edfa312ecf84e304142d30035f63f91379bb9b838b257",
+      "lineCount": 1,
+      "layout": {
+        "topY": 714.6,
+        "bottomY": 714.6,
+        "left": 72.2,
+        "right": 287.6,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "IBRD’snet investment portfolio increased by $ 20. 0"
+    },
+    {
+      "sourceOccurrenceId": "B000069",
+      "blockId": "b69",
+      "sourceOrdinal": 68,
+      "pageNumber": 7,
+      "literalSourceText": "Net Investment Portfolio",
+      "sourceTextSha256": "df999fdd5a7eb654d6bf7b5c3fcf73b7427179968d25b6d3ecacb26d09b4b82c",
+      "lineCount": 1,
+      "layout": {
+        "topY": 709,
+        "bottomY": 709,
+        "left": 333.7,
+        "right": 436.7,
+        "style": {
+          "fontSize": 9,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Net Investment Portfolio"
+    },
+    {
+      "sourceOccurrenceId": "B000070",
+      "blockId": "b70",
+      "sourceOrdinal": 69,
+      "pageNumber": 7,
+      "literalSourceText": "billion from $82.7 billion as of June 30 2024 to",
+      "sourceTextSha256": "81aa2df2005110f72c556a27957067e7574c1d310f8d3fa139a76b9c9604ef69",
+      "lineCount": 1,
+      "layout": {
+        "topY": 702.8,
+        "bottomY": 702.8,
+        "left": 72,
+        "right": 287.6,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "billion from $ 82. 7 billion as of June 30 2024 to"
+    },
+    {
+      "sourceOccurrenceId": "B000071",
+      "blockId": "b71",
+      "sourceOrdinal": 70,
+      "pageNumber": 7,
+      "literalSourceText": "was primarily due to net new debt issuances that were higher than net loan disbursements during the period, and is consistent with the higher target liquidity level 60 in FY 25 compared to FY 24. As of March 3 1 2025",
+      "sourceTextSha256": "1b6932ba8003cc67cee49401b6b850e0d528b41a674f25e30c49bf10da43e009",
+      "lineCount": 4,
+      "layout": {
+        "topY": 678.4,
+        "bottomY": 642.7,
+        "left": 72.1,
+        "right": 346.9,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "was primarily due to netnewdebt issuances that were higherthannetloan disbursements during the period, and is consistent with the higher target liquidity level 60 in FY 25 compared to FY 24. As of March 3 1 2025"
+    },
+    {
+      "sourceOccurrenceId": "B000072",
+      "blockId": "b72",
+      "sourceOrdinal": 71,
+      "pageNumber": 7,
+      "literalSourceText": "73% of the investments are rated AA or above (77% 30 as of June 30 2024) (Table 12) reflecting IBRD’s objective of principal protection and its preference Jun 21 Jun 22 Jun 23 Jun 24 Mar 25 for high-quality investments.",
+      "sourceTextSha256": "872252a95fa4b53ae72c796dc420e359b199998ea500fbc2934711a9cd85e8c0",
+      "lineCount": 4,
+      "layout": {
+        "topY": 630.7,
+        "bottomY": 594.3,
+        "left": 72.3,
+        "right": 504.2,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "73 % of the investmentsarerated AA or above (77 % 30 as of June 30 2024) (Table 12) reflecting IBRD’s objective of principal protection and its preference Jun 21 Jun 22 Jun 23 Jun 24 Mar 25 for high-quality investments."
+    },
+    {
+      "sourceOccurrenceId": "B000073",
+      "blockId": "b73",
+      "sourceOrdinal": 72,
+      "pageNumber": 7,
+      "literalSourceText": "Borrowing Portfolio In billions of U.S. dollars",
+      "sourceTextSha256": "fbe80701b66d9e009a097079c9b8b723d9eeeb8d1da70578aea832d506db2144",
+      "lineCount": 1,
+      "layout": {
+        "topY": 540.9,
+        "bottomY": 540.9,
+        "left": 72.2,
+        "right": 418.8,
+        "style": {
+          "fontSize": 9.5,
+          "font": "arial-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Borrowing Portfolio In billions of U. S. dollars"
+    },
+    {
+      "sourceOccurrenceId": "B000074",
+      "blockId": "b74",
+      "sourceOrdinal": 73,
+      "pageNumber": 7,
+      "literalSourceText": "Borrowing Portfolio",
+      "sourceTextSha256": "5ce50f21210f4daafdfa62839a0836e95a4d78ea7224e5269dc652fb6afcf232",
+      "lineCount": 1,
+      "layout": {
+        "topY": 525.3,
+        "bottomY": 525.3,
+        "left": 333.7,
+        "right": 417.2,
+        "style": {
+          "fontSize": 9,
+          "font": "arial-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Borrowing Portfolio"
+    },
+    {
+      "sourceOccurrenceId": "B000075",
+      "blockId": "b75",
+      "sourceOrdinal": 74,
+      "pageNumber": 7,
+      "literalSourceText": "Borrowings reported at fair value: As of March 3 1, 2025, the borrowings reported at fair value and the 350 related derivatives were $3 15.9 billion $28.8 billion higher than June 30, 2024. The increase was mainly",
+      "sourceTextSha256": "b20e9ed3dfa1daa922729004b874d1ddaeb176da3be283f431ba6889a47ba115",
+      "lineCount": 4,
+      "layout": {
+        "topY": 521.2,
+        "bottomY": 485.2,
+        "left": 72.1,
+        "right": 346.9,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Borrowings reported at fairvalue: As of March 3 1, 2025, the borrowings reported at fairvalue and the 350 related derivatives were $ 3 15. 9 billion $ 28. 8 billion higher than June 30, 2024. The increase was mainly"
+    },
+    {
+      "sourceOccurrenceId": "B000076",
+      "blockId": "b76",
+      "sourceOrdinal": 75,
+      "pageNumber": 7,
+      "literalSourceText": "due to net new debt issuances that financed the 210 growing development and lending operations, and 140 satisfied liquidity requirements.",
+      "sourceTextSha256": "e27bf0df8aa856d19ab5d0854cafdec48e933220cd058391f5182c32b4763c08",
+      "lineCount": 3,
+      "layout": {
+        "topY": 473.5,
+        "bottomY": 449.2,
+        "left": 72.3,
+        "right": 346.9,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "due to netnewdebt issuances that financed the 210 growing development and lending operations, and 140 satisfied liquidity requirements."
+    },
+    {
+      "sourceOccurrenceId": "B000077",
+      "blockId": "b77",
+      "sourceOrdinal": 76,
+      "pageNumber": 7,
+      "literalSourceText": "Borrowings reported at amortized cost: As of 0 March 3 1 2025 the borrowings reported at Jun 21 Jun 22 Jun 23 Jun 24 Mar 25 amortized cost were $476 million all related to IBRD's first issuances of hybrid capital (Section III",
+      "sourceTextSha256": "4a418923e1427f4aad49126a586458c7c20f24b532a1fd1ced7e51225fbe7145",
+      "lineCount": 4,
+      "layout": {
+        "topY": 431.1,
+        "bottomY": 395.5,
+        "left": 72.2,
+        "right": 504.2,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Borrowings reported at amortized cost: As of 0 March 3 1 2025 the borrowings reported at Jun 21 Jun 22 Jun 23 Jun 24 Mar 25 amortizedcostwere $ 476 million all related to IBRD'sfirst issuances of hybrid capital (Section III"
+    },
+    {
+      "sourceOccurrenceId": "B000078",
+      "blockId": "b78",
+      "sourceOrdinal": 77,
+      "pageNumber": 7,
+      "literalSourceText": "and Section IV).",
+      "sourceTextSha256": "ec311ab24dc6ceb734e149653bff989e855e1e042259d0107319a0c424e7b432",
+      "lineCount": 1,
+      "layout": {
+        "topY": 383.2,
+        "bottomY": 383.2,
+        "left": 72.4,
+        "right": 137.1,
+        "style": {
+          "fontSize": 10,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "and Section IV )."
+    },
+    {
+      "sourceOccurrenceId": "B000079",
+      "blockId": "b79",
+      "sourceOrdinal": 78,
+      "pageNumber": 7,
+      "literalSourceText": "Equity-to-Loans Ratio",
+      "sourceTextSha256": "17c573500940d00b919396fa9bedd800ae6d3f09fdc2409fdc27af4eea98e26f",
+      "lineCount": 1,
+      "layout": {
+        "topY": 337.4,
+        "bottomY": 337.4,
+        "left": 72.2,
+        "right": 177,
+        "style": {
+          "fontSize": 11,
+          "font": "timesnewroman-bold",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Equity-to-Loans Ratio"
+    },
+    {
+      "sourceOccurrenceId": "B000080",
+      "blockId": "b80",
+      "sourceOrdinal": 79,
+      "pageNumber": 7,
+      "literalSourceText": "The Equity-to-Loans ratio decreased from 21 .5% as Ratio in percentages",
+      "sourceTextSha256": "3b5d76313ff353f2b883f5b00a562daef32bbdebe3da32aaec10962dbc9722f8",
+      "lineCount": 1,
+      "layout": {
+        "topY": 319,
+        "bottomY": 319,
+        "left": 72.3,
+        "right": 406.3,
+        "style": {
+          "fontSize": 9.5,
+          "font": "timesnewroman",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "The Equity-to-Loansratio decreased from 21. 5 % as Ratio in percentages"
+    }
+  ],
+  "contentPurpose": "complete deterministic source evidence for independent human annotation only",
+  "containsModelPredictions": false,
+  "containsGoldLabels": false,
+  "containsResidualHints": false,
+  "runtimeUse": "PROHIBITED"
+}

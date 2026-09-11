@@ -1,0 +1,1708 @@
+{
+  "artifactKind": "A99_R2_P3A_HUMAN_SOURCE_ONLY_PACKET",
+  "schemaVersion": "a99-r2-p3a-source-packet-v1",
+  "studyId": "A99-R2",
+  "pilotId": "R2-PILOT-8",
+  "documentId": "DOC-0092",
+  "documentGroupId": "GROUP-0199",
+  "familyId": "VN_LEGAL_MARKER",
+  "sourcePath": "todo10_8\\heading_corpus_100\\01_phap_quy\\007_Luat_Nha_o_27-2023-QH15.pdf",
+  "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+  "sourceHashVerified": true,
+  "mediaType": "PDF",
+  "sourceRepresentation": {
+    "kind": "PDF_DETERMINISTIC_BLOCKS",
+    "ordering": "page ascending, numeric block id ascending",
+    "pageCount": 93,
+    "blockCount": 80,
+    "pageNumbersAvailable": true,
+    "extractor": "dhx pdf-clusters --no-llm"
+  },
+  "occurrences": [
+    {
+      "sourceOccurrenceId": "B000001",
+      "blockId": "b1",
+      "sourceOrdinal": 0,
+      "pageNumber": 1,
+      "literalSourceText": "g y - -",
+      "sourceTextSha256": "c4e9b4c3f8b0ee5c88fd80e731368caf23ac6332c35937e5d1dd9fafa16a4f14",
+      "lineCount": 1,
+      "layout": {
+        "topY": 779.6,
+        "bottomY": 779.6,
+        "left": 329.8,
+        "right": 389.9,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "gy - -"
+    },
+    {
+      "sourceOccurrenceId": "B000002",
+      "blockId": "b2",
+      "sourceOrdinal": 1,
+      "pageNumber": 1,
+      "literalSourceText": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+      "sourceTextSha256": "8925995325295dd7dd119bf4427cf62d7ee2ac5e86bae3c1d0a7983cfe761ee4",
+      "lineCount": 1,
+      "layout": {
+        "topY": 746.7,
+        "bottomY": 746.7,
+        "left": 108.9,
+        "right": 519.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "sourceOccurrenceId": "B000003",
+      "blockId": "b3",
+      "sourceOrdinal": 2,
+      "pageNumber": 1,
+      "literalSourceText": "Độc lập - Tự do - Hạnh phúc",
+      "sourceTextSha256": "8e46c62a028e53556f9d84ae6baf54194ffe9d22afdfc89e393694bad7f1b434",
+      "lineCount": 1,
+      "layout": {
+        "topY": 727.5,
+        "bottomY": 727.5,
+        "left": 304.8,
+        "right": 463.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Độclập-Tựdo-Hạnhphúc"
+    },
+    {
+      "sourceOccurrenceId": "B000004",
+      "blockId": "b4",
+      "sourceOrdinal": 3,
+      "pageNumber": 1,
+      "literalSourceText": "LUẬT NHÀ Ở",
+      "sourceTextSha256": "fb9cdcbf69e5424062088e41d923cb90ac6816fce12034a9a4d778ad305f2166",
+      "lineCount": 2,
+      "layout": {
+        "topY": 678.1,
+        "bottomY": 663,
+        "left": 275.1,
+        "right": 320.6,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "LUẬT NHÀ Ở"
+    },
+    {
+      "sourceOccurrenceId": "B000005",
+      "blockId": "b5",
+      "sourceOrdinal": 4,
+      "pageNumber": 1,
+      "literalSourceText": "Căn cứ Hiến pháp nước Cộng hòa xã hội chủ nghĩa Việt Nam;",
+      "sourceTextSha256": "a91dee0d778acabf16299a1ce935353bb4ca77d133436660cc2b303acfc9981d",
+      "lineCount": 1,
+      "layout": {
+        "topY": 629.2,
+        "bottomY": 629.2,
+        "left": 87.7,
+        "right": 436.9,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Căncứ Hiếnphápnước Cộnghòaxãhộichủnghĩa Việt Nam;"
+    },
+    {
+      "sourceOccurrenceId": "B000006",
+      "blockId": "b6",
+      "sourceOrdinal": 5,
+      "pageNumber": 1,
+      "literalSourceText": "Quốc hội ban hành Luật Nhà ở",
+      "sourceTextSha256": "abeed693c93c8b866c4f647d7c89a57810a631b76756230277b6f641c8e84bf3",
+      "lineCount": 1,
+      "layout": {
+        "topY": 605.5,
+        "bottomY": 605.5,
+        "left": 87.4,
+        "right": 262.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Quốchộibanhành Luật Nhàở"
+    },
+    {
+      "sourceOccurrenceId": "B000007",
+      "blockId": "b7",
+      "sourceOrdinal": 6,
+      "pageNumber": 1,
+      "literalSourceText": "Chương I",
+      "sourceTextSha256": "8e52da5a7bb5b02a0ceee81a0e6648784a59455afd8ce8a7b782a9fd8f4038ef",
+      "lineCount": 1,
+      "layout": {
+        "topY": 572.1,
+        "bottomY": 572.1,
+        "left": 269.2,
+        "right": 326.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Chương I"
+    },
+    {
+      "sourceOccurrenceId": "B000008",
+      "blockId": "b8",
+      "sourceOrdinal": 7,
+      "pageNumber": 1,
+      "literalSourceText": "NHỮNG QUY ĐỊNH CHUNG",
+      "sourceTextSha256": "72f4e1480b1735ef987d602b789350a207722e3175cb23ad3777f6f98c409793",
+      "lineCount": 1,
+      "layout": {
+        "topY": 553,
+        "bottomY": 553,
+        "left": 206.2,
+        "right": 389.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "NHỮNG QUY ĐỊNH CHUNG"
+    },
+    {
+      "sourceOccurrenceId": "B000009",
+      "blockId": "b9",
+      "sourceOrdinal": 8,
+      "pageNumber": 1,
+      "literalSourceText": "Điều 1 Phạm vi điều chỉnh",
+      "sourceTextSha256": "3e4d0fe14de4f7dab870b0c6a2091dad6a14b751b71d4fdcacb01304ec0ef983",
+      "lineCount": 1,
+      "layout": {
+        "topY": 515.6,
+        "bottomY": 515.6,
+        "left": 87,
+        "right": 247.5,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Điều 1 Phạmviđiềuchỉnh"
+    },
+    {
+      "sourceOccurrenceId": "B000010",
+      "blockId": "b10",
+      "sourceOrdinal": 9,
+      "pageNumber": 1,
+      "literalSourceText": "1 Luật này quy định về sở hữu phát triển quản lý vận hành sử dụng nhà ở giao dịch về nhà ở và quản lý nhà nước về nhà ở tại Việt Nam trừ trường hợp quy định tại khoản 2 Điều này",
+      "sourceTextSha256": "50d62dde555404c17fee9d632469ac56c99b825d445966835c2b09e728b112d6",
+      "lineCount": 3,
+      "layout": {
+        "topY": 492,
+        "bottomY": 454.3,
+        "left": 64.3,
+        "right": 531.6,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 Luậtnàyquyđịnhvềsởhữupháttriểnquảnlývậnhànhsửdụngnhàởgiaodịchvềnhàởvàquảnlýnhànướcvềnhàởtại Việt Namtrừ trườnghợpquyđịnhtạikhoản 2 Điềunày"
+    },
+    {
+      "sourceOccurrenceId": "B000011",
+      "blockId": "b11",
+      "sourceOrdinal": 10,
+      "pageNumber": 1,
+      "literalSourceText": "2 Giao dịch mua bán cho thuê mua cho thuê nhà ở thương mại của doanh nghiệp hợp tác xã liên hiệp hợp tác xã có chức năng kinh doanh bất động sản giao dịch chuyển nhượng hợp đồng mua bán nhà ở được thực hiện theo quy định của pháp luật về kinh doanh bất động sản",
+      "sourceTextSha256": "b82c80b6ba3e9b31d8611fcab762f13d7679bd608e0909ca2c43bfad6267e20b",
+      "lineCount": 4,
+      "layout": {
+        "topY": 431,
+        "bottomY": 374.1,
+        "left": 64.2,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "2 Giaodịchmuabánchothuêmuachothuênhàở thươngmạicủadoanh nghiệphợptácxãliênhiệphợptácxãcóchứcnăngkinhdoanhbấtđộngsảngiaodịch chuyển nhượnghợpđồngmuabánnhàởđượcthựchiệntheoquyđịnhcủaphápluậtvềkinhdoanhbấtđộngsản"
+    },
+    {
+      "sourceOccurrenceId": "B000012",
+      "blockId": "b12",
+      "sourceOrdinal": 11,
+      "pageNumber": 1,
+      "literalSourceText": "Điều 2 Giải thích từ ngữ",
+      "sourceTextSha256": "3ada933e1c33d7628427e45279c767313f385a5a6d67a704ad8283e70ad2a3c0",
+      "lineCount": 1,
+      "layout": {
+        "topY": 351.6,
+        "bottomY": 351.6,
+        "left": 87,
+        "right": 235.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Điều 2 Giảithíchtừngữ"
+    },
+    {
+      "sourceOccurrenceId": "B000013",
+      "blockId": "b13",
+      "sourceOrdinal": 12,
+      "pageNumber": 1,
+      "literalSourceText": "Trong Luật này các từ ngữ dưới đây được hiểu như sau:",
+      "sourceTextSha256": "6ae93d35ce97ef33d9fd87e9faccc884cae866d46b8c99ee0f66dbd6935cc4c8",
+      "lineCount": 1,
+      "layout": {
+        "topY": 327.9,
+        "bottomY": 327.9,
+        "left": 87.2,
+        "right": 402,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Trong Luậtnàycáctừngữdướiđâyđượchiểunhưsau:"
+    },
+    {
+      "sourceOccurrenceId": "B000014",
+      "blockId": "b14",
+      "sourceOrdinal": 13,
+      "pageNumber": 1,
+      "literalSourceText": "1 Nhà ở là công trình xây dựng với mục đích để ở và phục vụ nhu cầu sinh",
+      "sourceTextSha256": "71e436fbea9ba226432b2f3aac48df6244ef42b0678247adb52b78189fa6febf",
+      "lineCount": 1,
+      "layout": {
+        "topY": 305,
+        "bottomY": 305,
+        "left": 88.4,
+        "right": 531.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 Nhàởlàcôngtrìnhxâydựngvớimụcđíchđểởvàphụcvụnhucầusinh"
+    },
+    {
+      "sourceOccurrenceId": "B000015",
+      "blockId": "b15",
+      "sourceOrdinal": 14,
+      "pageNumber": 1,
+      "literalSourceText": "hoạt của gia đình cá nhân Nhà ở được sử dụng vào mục đích để ở và mục đích không phải để ở mà pháp luật không cấm là nhà ở có mục đích sử dụng hỗn hợp",
+      "sourceTextSha256": "1d1b7cee472923d7dc73345b6bcacf7862d4591eb24386cfa2e5656f822665ce",
+      "lineCount": 2,
+      "layout": {
+        "topY": 286,
+        "bottomY": 267,
+        "left": 64.2,
+        "right": 531.2,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "hoạtcủagiađìnhcánhân Nhàởđượcsửdụngvàomụcđíchđểởvàmụcđíchkhôngphảiđểởmàphápluậtkhôngcấmlànhàởcómụcđíchsửdụnghỗnhợp"
+    },
+    {
+      "sourceOccurrenceId": "B000016",
+      "blockId": "b16",
+      "sourceOrdinal": 15,
+      "pageNumber": 1,
+      "literalSourceText": "2 Nhà ở riêng lẻ là nhà ở được xây dựng trên thửa đất ở riêng biệt thuộc quyền sử dụng của tổ chức cá nhân hoặc trên đất thuê đất mượn của tổ chức cá nhân bao gồm nhà biệt thự nhà ở liền kề và nhà ở độc lập được xây dựng với mục đích để ở hoặc mục đích sử dụng hỗn hợp",
+      "sourceTextSha256": "a55cb0e834f3fe920a801107461d3ddee347098fbf1a34a7ad17d7b4fb235f3a",
+      "lineCount": 4,
+      "layout": {
+        "topY": 244,
+        "bottomY": 186.4,
+        "left": 64.2,
+        "right": 531.5,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "2 Nhàởriênglẻlànhàởđượcxâydựngtrênthửađấtởriêngbiệtthuộcquyềnsửdụngcủatổchứccánhânhoặctrênđấtthuêđấtmượncủatổchứccánhânbaogồmnhàbiệtthựnhàởliềnkềvànhàởđộclậpđượcxâydựngvớimụcđíchđểởhoặcmụcđíchsửdụnghỗnhợp"
+    },
+    {
+      "sourceOccurrenceId": "B000017",
+      "blockId": "b17",
+      "sourceOrdinal": 16,
+      "pageNumber": 1,
+      "literalSourceText": "3 Nhà chung cư là nhà ở có từ 02 tầng trở lên có nhiều căn hộ có lối đi cầu thang chung có phần sở hữu riêng phần sở hữu chung và hệ thống công trình hạ tầng sử dụng chung cho gia đình cá nhân tổ chức bao gồm nhà chung cư được xây dựng với mục đích để ở và nhà chung cư được xây dựng có mục đích sử dụng",
+      "sourceTextSha256": "6233b2a89c1a14f81591fed9883dd59714128cb4196597eadbf08e3bb9ed77fa",
+      "lineCount": 4,
+      "layout": {
+        "topY": 163.5,
+        "bottomY": 105.3,
+        "left": 64.2,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "3 Nhàchungcưlànhàởcótừ 02 tầngtrởlêncónhiềucănhộcólốiđicầuthangchungcóphầnsởhữuriêngphầnsởhữuchungvàhệthốngcôngtrìnhhạtầngsửdụngchungchogiađìnhcánhântổchứcbaogồmnhàchungcưđượcxâydựngvớimụcđíchđểởvànhàchungcưđượcxâydựngcómụcđíchsửdụng"
+    },
+    {
+      "sourceOccurrenceId": "B000018",
+      "blockId": "b18",
+      "sourceOrdinal": 17,
+      "pageNumber": 1,
+      "literalSourceText": "hỗ h n ợp",
+      "sourceTextSha256": "d519df6efef9e9b187e51f9d048db291afd30ec68d2261ddd2f1bd27c430b4a7",
+      "lineCount": 2,
+      "layout": {
+        "topY": 87.7,
+        "bottomY": 84.9,
+        "left": 64.2,
+        "right": 109.6,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "hỗhnợp"
+    },
+    {
+      "sourceOccurrenceId": "B000019",
+      "blockId": "b19",
+      "sourceOrdinal": 18,
+      "pageNumber": 2,
+      "literalSourceText": "g y - -",
+      "sourceTextSha256": "c4e9b4c3f8b0ee5c88fd80e731368caf23ac6332c35937e5d1dd9fafa16a4f14",
+      "lineCount": 1,
+      "layout": {
+        "topY": 779.6,
+        "bottomY": 779.6,
+        "left": 329.8,
+        "right": 389.9,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "gy - -"
+    },
+    {
+      "sourceOccurrenceId": "B000020",
+      "blockId": "b20",
+      "sourceOrdinal": 19,
+      "pageNumber": 2,
+      "literalSourceText": "4 Nhà ở thương mại là nhà ở được đầu tư xây dựng để bán cho thuê mua cho thuê theo cơ chế thị trường",
+      "sourceTextSha256": "de642ee0246d3116fe5bd9df38c4dbda9f26c667d715c2e8ab6584e1efa50067",
+      "lineCount": 2,
+      "layout": {
+        "topY": 746.7,
+        "bottomY": 728.2,
+        "left": 64.2,
+        "right": 531,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "4 Nhàở thươngmạilànhàởđượcđầutưxâydựngđểbánchothuêmuachothuêtheocơchếthị trường"
+    },
+    {
+      "sourceOccurrenceId": "B000021",
+      "blockId": "b21",
+      "sourceOrdinal": 20,
+      "pageNumber": 2,
+      "literalSourceText": "5 Nhà ở công vụ là nhà ở được dùng để bố trí cho đối tượng thuộc trường hợp được ở nhà ở công vụ thuê trong thời gian đảm nhận chức vụ công tác theo quy định của Luật này",
+      "sourceTextSha256": "c1754a5d02f6a274419ee691dea64df18731d5f4389470a87a3c1b448801d043",
+      "lineCount": 3,
+      "layout": {
+        "topY": 705.7,
+        "bottomY": 668.6,
+        "left": 64.3,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "5 Nhàởcôngvụlànhàởđượcdùngđểbốtríchođốitượngthuộc trườnghợpđượcởnhàởcôngvụthuêtrongthờigianđảmnhậnchứcvụcôngtáctheoquyđịnhcủa Luậtnày"
+    },
+    {
+      "sourceOccurrenceId": "B000022",
+      "blockId": "b22",
+      "sourceOrdinal": 21,
+      "pageNumber": 2,
+      "literalSourceText": "6 Nhà ởphục vụ tái định cư là nhà ở để bố trí cho đối tượng thuộc trường hợp được tái định cư khi Nhà nước thu hồi đất ở giải tỏa nhà ở theo quy định của pháp luật",
+      "sourceTextSha256": "cef96aec75069ce65c78a606a08f4b4a352e0f9307e2708e9d754d496598e22c",
+      "lineCount": 2,
+      "layout": {
+        "topY": 646.2,
+        "bottomY": 627.9,
+        "left": 64.2,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "6 Nhàởphụcvụtáiđịnhcưlànhàởđểbốtríchođốitượngthuộc trườnghợpđượctáiđịnhcưkhi Nhànướcthuhồiđấtởgiảitỏanhàởtheoquyđịnhcủaphápluật"
+    },
+    {
+      "sourceOccurrenceId": "B000023",
+      "blockId": "b23",
+      "sourceOrdinal": 22,
+      "pageNumber": 2,
+      "literalSourceText": "7 Nhà ở xã hội là nhà ở có sự hỗ trợ của Nhà nước cho đối tượng được hưởng chính sách hỗ trợ nhà ở theo quy định của Luật này",
+      "sourceTextSha256": "2d9fc6edc2a8791fd58f4ec2d5c0c08bf1087a915a9db3a6bd19b809de6fc1bf",
+      "lineCount": 2,
+      "layout": {
+        "topY": 605.3,
+        "bottomY": 586.6,
+        "left": 64.6,
+        "right": 531.2,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "7 Nhàởxãhộilànhàởcósựhỗtrợcủa Nhànướcchođốitượngđượchưởngchínhsáchhỗtrợnhàởtheoquyđịnhcủa Luậtnày"
+    },
+    {
+      "sourceOccurrenceId": "B000024",
+      "blockId": "b24",
+      "sourceOrdinal": 23,
+      "pageNumber": 2,
+      "literalSourceText": "8 Nhà lưu trú công nhân trong khu công nghiệp là công trình xây dựng được",
+      "sourceTextSha256": "17fdd5e6ae4b10e0f22de7e77e915fc9b49720c934f4993481d1df98022f56c0",
+      "lineCount": 1,
+      "layout": {
+        "topY": 563.9,
+        "bottomY": 563.9,
+        "left": 87.6,
+        "right": 530.9,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "8 Nhàlưutrúcôngnhântrongkhucông nghiệplàcôngtrìnhxâydựngđược"
+    },
+    {
+      "sourceOccurrenceId": "B000025",
+      "blockId": "b25",
+      "sourceOrdinal": 24,
+      "pageNumber": 2,
+      "literalSourceText": "đầu tư xây dựng trên phần diện tích đất thương mại dịch vụ thuộc phạm vi khu công nghiệp theo quy định của pháp luật về quản lý khu công nghiệp để bố trí cho cá nhân là công nhân thuê trong thời gian làm việc tại khu công nghiệp đó theo quy định của Luật này",
+      "sourceTextSha256": "7e4d5eeed2b78b97f588a1c46b07eb40cb58ce50a41b31a571625cb3e72e279a",
+      "lineCount": 4,
+      "layout": {
+        "topY": 545.6,
+        "bottomY": 489.8,
+        "left": 64.3,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "đầutưxâydựngtrênphầndiệntíchđất thươngmạidịchvụthuộcphạmvikhucông nghiệptheoquyđịnhcủaphápluậtvềquảnlýkhucông nghiệpđểbốtríchocánhânlàcôngnhânthuêtrongthờigianlàmviệctạikhucông nghiệpđótheoquyđịnhcủa Luậtnày"
+    },
+    {
+      "sourceOccurrenceId": "B000026",
+      "blockId": "b26",
+      "sourceOrdinal": 25,
+      "pageNumber": 2,
+      "literalSourceText": "9 Nhà ở cho lực lượng vũ trang nhân dân là nhà ở xã hội để bán cho thuê",
+      "sourceTextSha256": "fc717a8310af0f60050ba43d1b56005bc625ce066bb45aac9e83937d9376248b",
+      "lineCount": 1,
+      "layout": {
+        "topY": 467.8,
+        "bottomY": 467.8,
+        "left": 87.3,
+        "right": 531,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "9 Nhàởcholựclượngvũtrangnhândânlànhàởxãhộiđểbánchothuê"
+    },
+    {
+      "sourceOccurrenceId": "B000027",
+      "blockId": "b27",
+      "sourceOrdinal": 26,
+      "pageNumber": 2,
+      "literalSourceText": "mua cho thuê cho đối tượng thuộc lực lượng vũ trang nhân dân theo quy định của Luật này",
+      "sourceTextSha256": "09777bfdbde2f74c50388c4bcf91ab9abdc5a8987cb99b727f32894bba85fa03",
+      "lineCount": 2,
+      "layout": {
+        "topY": 448.9,
+        "bottomY": 430.4,
+        "left": 64.2,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "muachothuêchođốitượngthuộclựclượngvũtrangnhândântheoquyđịnhcủa Luậtnày"
+    },
+    {
+      "sourceOccurrenceId": "B000028",
+      "blockId": "b28",
+      "sourceOrdinal": 27,
+      "pageNumber": 2,
+      "literalSourceText": "1 0 Nhà ở cũ là nhà ở được đầu tư xây dựng từ năm 1 994 trở về trước bao gồm cả nhà chung cư",
+      "sourceTextSha256": "6dd6b39675049ffa086837c53fa4678b5bd4e14b63519b6271414514625cffc2",
+      "lineCount": 2,
+      "layout": {
+        "topY": 408.4,
+        "bottomY": 389.5,
+        "left": 64.5,
+        "right": 530.8,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 0 Nhàởcũlànhàởđượcđầutưxâydựngtừnăm 1 994 trởvềtrướcbaogồmcảnhàchungcư"
+    },
+    {
+      "sourceOccurrenceId": "B000029",
+      "blockId": "b29",
+      "sourceOrdinal": 28,
+      "pageNumber": 2,
+      "literalSourceText": "1 1 Nhà ở thuộc tài sản công là nhà ở thuộc sở hữu toàn dân do Nhà nước làm",
+      "sourceTextSha256": "4f23eecbc8de099fc727af8ee20497c96efadd9c7b49ae70b356e0b9c93312f8",
+      "lineCount": 1,
+      "layout": {
+        "topY": 367.4,
+        "bottomY": 367.4,
+        "left": 88.4,
+        "right": 531.5,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 1 Nhàởthuộctàisảncônglànhàởthuộcsởhữutoàndândo Nhànướclàm"
+    },
+    {
+      "sourceOccurrenceId": "B000030",
+      "blockId": "b30",
+      "sourceOrdinal": 29,
+      "pageNumber": 2,
+      "literalSourceText": "đại diện chủ sở hữu và thống nhất quản lý",
+      "sourceTextSha256": "bc3fe9d11b83ed55b5bfbf5e9cf97b5a20f2fffeb290fea526b4ee6ccc69161f",
+      "lineCount": 1,
+      "layout": {
+        "topY": 348.8,
+        "bottomY": 348.8,
+        "left": 64.3,
+        "right": 298.8,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "đạidiệnchủsởhữuvàthốngnhấtquảnlý"
+    },
+    {
+      "sourceOccurrenceId": "B000031",
+      "blockId": "b31",
+      "sourceOrdinal": 30,
+      "pageNumber": 2,
+      "literalSourceText": "1 2 Dự án đầu tư xây dựng nhà ở là tập hợp đề xuất có liên quan đến việc sử dụng",
+      "sourceTextSha256": "ca1665979effdc78d9d02fe9b2c3e82fdcef9abd6bf44539edfffb7d3c44beca",
+      "lineCount": 1,
+      "layout": {
+        "topY": 326.2,
+        "bottomY": 326.2,
+        "left": 88.4,
+        "right": 531.2,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 2 Dựánđầutưxâydựngnhàởlàtậphợpđềxuấtcóliênquanđếnviệcsửdụng"
+    },
+    {
+      "sourceOccurrenceId": "B000032",
+      "blockId": "b32",
+      "sourceOrdinal": 31,
+      "pageNumber": 2,
+      "literalSourceText": "vốn để tiến hành hoạt động xây dựng mới xây dựng lại cải tạo hoặc sửa chữa nhà ở công trình hạ tầng kỹ thuật hạ tầng xã hội phục vụ nhu cầu ở trên một địa điểm nhất định trong thời hạn và chi phí xác định",
+      "sourceTextSha256": "09f18b8552599502b3ba6da43fda6b879fa66dc906449539495c184d67c2a62e",
+      "lineCount": 3,
+      "layout": {
+        "topY": 307.6,
+        "bottomY": 270.8,
+        "left": 64.2,
+        "right": 531.5,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "vốnđểtiếnhànhhoạtđộngxâydựngmớixâydựnglạicảitạohoặcsửachữanhàởcôngtrìnhhạtầngkỹthuậthạtầngxãhộiphụcvụnhucầuởtrênmộtđịađiểmnhấtđịnhtrongthờihạnvàchiphíxácđịnh"
+    },
+    {
+      "sourceOccurrenceId": "B000033",
+      "blockId": "b33",
+      "sourceOrdinal": 32,
+      "pageNumber": 2,
+      "literalSourceText": "1 3 Tổ chức trong nước bao gồm cơ quan nhà nước đơn vị thuộc lực lượng vũ",
+      "sourceTextSha256": "a3d263ee3e00eca1ba6e4390d981fa6b40ec2b21bbc6a6736d86f3f1d2134af1",
+      "lineCount": 1,
+      "layout": {
+        "topY": 247.6,
+        "bottomY": 247.6,
+        "left": 88.4,
+        "right": 531.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 3 Tổchứctrongnướcbaogồmcơquannhànướcđơnvịthuộclựclượngvũ"
+    },
+    {
+      "sourceOccurrenceId": "B000034",
+      "blockId": "b34",
+      "sourceOrdinal": 33,
+      "pageNumber": 2,
+      "literalSourceText": "trang nhân dân đơn vị sự nghiệp công lập tổ chức chính trị tổ chức chính trị - xã hội tổ chức chính trị xã hội - nghề nghiệp tổ chức xã hội tổ chức xã hội - nghề nghiệp tổ chức kinh tế và tổ chức khác theo quy định của pháp luật về dân sự (sau đây gọi chung là tổ chức)",
+      "sourceTextSha256": "68a19b4cfb9f616bf58bcdc71dcf51027463f7ea5f9ed5b0b3e7df83155fc7bf",
+      "lineCount": 4,
+      "layout": {
+        "topY": 228.8,
+        "bottomY": 171.9,
+        "left": 64.2,
+        "right": 531.1,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "trangnhândânđơnvịsự nghiệpcônglậptổchứcchínhtrịtổchứcchínhtrị-xãhộitổchứcchínhtrịxãhội-nghề nghiệptổchứcxãhộitổchứcxãhội-nghề nghiệptổchứckinhtếvàtổchứckháctheoquyđịnhcủaphápluậtvềdânsự (sauđâygọichunglàtổchức)"
+    },
+    {
+      "sourceOccurrenceId": "B000035",
+      "blockId": "b35",
+      "sourceOrdinal": 34,
+      "pageNumber": 2,
+      "literalSourceText": "1 4 Chủ đầu tư dự án đầu tư xây dựng nhà ở là tổ chức được lựa chọn để thực",
+      "sourceTextSha256": "6edceb11e48991e8fbe37128fda271dc7d122b72dada07d542442ed48f4c6c83",
+      "lineCount": 1,
+      "layout": {
+        "topY": 149,
+        "bottomY": 149,
+        "left": 88.4,
+        "right": 530.9,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-italicmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 4 Chủđầutưdựánđầutưxâydựngnhàởlàtổchứcđượclựachọnđểthực"
+    },
+    {
+      "sourceOccurrenceId": "B000036",
+      "blockId": "b36",
+      "sourceOrdinal": 35,
+      "pageNumber": 2,
+      "literalSourceText": "hiện dự án đầu tư xây dựng nhà ở theo quy định của Luật này",
+      "sourceTextSha256": "6baff392313c9a471fd08154369229907b9367678e0f0976e1fb3ea44c0ce16b",
+      "lineCount": 1,
+      "layout": {
+        "topY": 129.6,
+        "bottomY": 129.6,
+        "left": 64.2,
+        "right": 408.5,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "hiệndựánđầutưxâydựngnhàởtheoquyđịnhcủa Luậtnày"
+    },
+    {
+      "sourceOccurrenceId": "B000037",
+      "blockId": "b37",
+      "sourceOrdinal": 36,
+      "pageNumber": 2,
+      "literalSourceText": "1 5 Phát triển nhà ở là việc đầu tư xây dựng mới xây dựng lại hoặc c ải tạo",
+      "sourceTextSha256": "2a1f27d53b5c191d3515845358072e58ab6628e74545857ec27352752d42f73c",
+      "lineCount": 1,
+      "layout": {
+        "topY": 106.9,
+        "bottomY": 106.9,
+        "left": 88.4,
+        "right": 530.7,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 5 Pháttriểnnhàởlàviệcđầutưxâydựngmớixâydựnglạihoặccảitạo"
+    },
+    {
+      "sourceOccurrenceId": "B000038",
+      "blockId": "b38",
+      "sourceOrdinal": 37,
+      "pageNumber": 2,
+      "literalSourceText": "nhà ở làm tăng diện tích nhà ở",
+      "sourceTextSha256": "a91a2427eaf7e531a9453d9652cb146e93b3f4981aaa2ea0b16e7879540ae97c",
+      "lineCount": 1,
+      "layout": {
+        "topY": 88.1,
+        "bottomY": 88.1,
+        "left": 64.2,
+        "right": 234.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "nhàởlàmtăngdiệntíchnhàở"
+    },
+    {
+      "sourceOccurrenceId": "B000039",
+      "blockId": "b39",
+      "sourceOrdinal": 38,
+      "pageNumber": 3,
+      "literalSourceText": "g y - -",
+      "sourceTextSha256": "c4e9b4c3f8b0ee5c88fd80e731368caf23ac6332c35937e5d1dd9fafa16a4f14",
+      "lineCount": 1,
+      "layout": {
+        "topY": 779.6,
+        "bottomY": 779.6,
+        "left": 329.8,
+        "right": 389.9,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "gy - -"
+    },
+    {
+      "sourceOccurrenceId": "B000040",
+      "blockId": "b40",
+      "sourceOrdinal": 39,
+      "pageNumber": 3,
+      "literalSourceText": "1 6 Cải tạo nhà ở là việc nâng cấp chất lượng tăng diện tích hoặc điều chỉnh cơ cấu diện tích của nhà ở hiện có",
+      "sourceTextSha256": "363c0e94f2e280643f072b65d804509fcf7e060137290058e198a2bbda975835",
+      "lineCount": 2,
+      "layout": {
+        "topY": 745.9,
+        "bottomY": 726.2,
+        "left": 64.6,
+        "right": 531.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 6 Cảitạonhàởlàviệcnângcấpchấtlượngtăngdiệntíchhoặcđiềuchỉnhcơcấudiệntíchcủanhàởhiệncó"
+    },
+    {
+      "sourceOccurrenceId": "B000041",
+      "blockId": "b41",
+      "sourceOrdinal": 40,
+      "pageNumber": 3,
+      "literalSourceText": "1 7 Bảo trì nhà ở là việc duy tu bảo dưỡng theo định kỳ và sửa chữa nhà ở khi có hư hỏng nhằm duy trì chất lượng hoạt động bình thường an toàn của nhà ở trong quá trình khai thác sử dụng",
+      "sourceTextSha256": "ba0b0944b35c52e86ce3b8c32e2417d528bcc98fa6a95d1209024e3ec614ed27",
+      "lineCount": 3,
+      "layout": {
+        "topY": 702.4,
+        "bottomY": 662.3,
+        "left": 64.2,
+        "right": 531.6,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 7 Bảotrìnhàởlàviệcduytubảodưỡngtheođịnhkỳvàsửachữanhàởkhicóhưhỏngnhằmduytrìchấtlượnghoạtđộngbình thường an toàncủanhàởtrongquátrìnhkhaithácsửdụng"
+    },
+    {
+      "sourceOccurrenceId": "B000042",
+      "blockId": "b42",
+      "sourceOrdinal": 41,
+      "pageNumber": 3,
+      "literalSourceText": "1 8 Chủ sở hữu nhà ở là tổ chức cá nhân có quyền sở hữu nhà ở theo quy định của Luật này",
+      "sourceTextSha256": "c1798524003b4496643478f6ab737bf9a956c2082bd13f13db5d6102021f0b5b",
+      "lineCount": 2,
+      "layout": {
+        "topY": 638.9,
+        "bottomY": 618.7,
+        "left": 64.6,
+        "right": 531.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 8 Chủsởhữunhàởlàtổchứccánhâncóquyềnsởhữunhàởtheoquyđịnhcủa Luậtnày"
+    },
+    {
+      "sourceOccurrenceId": "B000043",
+      "blockId": "b43",
+      "sourceOrdinal": 42,
+      "pageNumber": 3,
+      "literalSourceText": "1 9 Chủ sở hữu nhà chung cư là chủ sở hữu căn hộ chung cư chủ sở hữu phần diện tích khác không phải là căn hộ trong nhà chung cư",
+      "sourceTextSha256": "4561840778486518fc3e95f82d9a4450be52f5111961f3a6a2969dcdf4a300c0",
+      "lineCount": 2,
+      "layout": {
+        "topY": 595.2,
+        "bottomY": 575.4,
+        "left": 64.5,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 9 Chủsởhữunhàchungcưlàchủsởhữucănhộchungcưchủsởhữuphầndiệntíchkháckhôngphảilàcănhộtrongnhàchungcư"
+    },
+    {
+      "sourceOccurrenceId": "B000044",
+      "blockId": "b44",
+      "sourceOrdinal": 43,
+      "pageNumber": 3,
+      "literalSourceText": "20 Phần sở hữu riêng trong nhà chung cư là phần diện tích trong căn hộ hoặc",
+      "sourceTextSha256": "51b35f6dc6a7ed4eeadc7d69a7ac3db1e2e759dcad47e95b76eb5090e85cfeda",
+      "lineCount": 1,
+      "layout": {
+        "topY": 551.5,
+        "bottomY": 551.5,
+        "left": 87.1,
+        "right": 531,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "20 Phầnsởhữuriêngtrongnhàchungcưlàphầndiệntíchtrongcănhộhoặc"
+    },
+    {
+      "sourceOccurrenceId": "B000045",
+      "blockId": "b45",
+      "sourceOrdinal": 44,
+      "pageNumber": 3,
+      "literalSourceText": "trong phần diện tích không phải là căn hộ trong nhà chung cư được công nhận là sở hữu riêng của chủ sở hữu nhà chung cư và trang thiết bị sử dụng riêng trong căn hộ hoặc trong phần diện tích không phải là căn hộ của chủ sở hữu nhà chung cư theo quy định của Luật này",
+      "sourceTextSha256": "d8064f9bca3600b6afe6da2c87bb050b82864cb841e1cf3e16305fad4d65c2e3",
+      "lineCount": 4,
+      "layout": {
+        "topY": 531.6,
+        "bottomY": 472,
+        "left": 64.2,
+        "right": 531.6,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "trongphầndiệntíchkhôngphảilàcănhộtrongnhàchungcưđượccôngnhậnlàsởhữuriêngcủachủsởhữunhàchungcưvàtrangthiếtbịsửdụngriêngtrongcănhộhoặctrongphầndiệntíchkhôngphảilàcănhộcủachủsởhữunhàchungcưtheoquyđịnhcủa Luậtnày"
+    },
+    {
+      "sourceOccurrenceId": "B000046",
+      "blockId": "b46",
+      "sourceOrdinal": 45,
+      "pageNumber": 3,
+      "literalSourceText": "2 1 Phần sở hữu chung của nhà chung cư là phần diện tích còn lại của nhà",
+      "sourceTextSha256": "90c72bc3f3b8fcc1871ed4397693270f1a728f30af39c1659d597dd961ab7fc2",
+      "lineCount": 1,
+      "layout": {
+        "topY": 448.6,
+        "bottomY": 448.6,
+        "left": 87.1,
+        "right": 531.5,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "2 1 Phầnsởhữuchungcủanhàchungcưlàphầndiệntíchcònlạicủanhà"
+    },
+    {
+      "sourceOccurrenceId": "B000047",
+      "blockId": "b47",
+      "sourceOrdinal": 46,
+      "pageNumber": 3,
+      "literalSourceText": "chung cư ngoài phần diện tích thuộc sở hữu riêng của chủ sở hữu nhà chung cư và trang thiết bị sử dụng chung cho nhà chung cư đó theo quy định của Luật này",
+      "sourceTextSha256": "931926443db8082b24bd975174606a948052eb86cb8a285ddb75506c8031eb0c",
+      "lineCount": 2,
+      "layout": {
+        "topY": 428.6,
+        "bottomY": 408.7,
+        "left": 64.2,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "chungcưngoàiphầndiệntíchthuộcsởhữuriêngcủachủsởhữunhàchungcưvàtrangthiếtbịsửdụngchungchonhàchungcưđótheoquyđịnhcủa Luậtnày"
+    },
+    {
+      "sourceOccurrenceId": "B000048",
+      "blockId": "b48",
+      "sourceOrdinal": 47,
+      "pageNumber": 3,
+      "literalSourceText": "22 Thuê mua nhà ở là việc người thuê mua thanh toán trước cho bên cho thuê mua một tỷ lệ phần trăm nhất định của giá trị nhà ở thuê mua theo thỏa thuận nhưng không quá 50% giá trị hợp đồng thuê mua nhà ở; số tiền còn lại được tính thành tiền thuê nhà để trả hằng tháng cho bên cho thuê mua trong một thời hạn",
+      "sourceTextSha256": "5bf978524b5b45e8b512ee19c50a410b96ba42ab794cf99382f2b1ff4bc35065",
+      "lineCount": 4,
+      "layout": {
+        "topY": 385.2,
+        "bottomY": 325.9,
+        "left": 64.2,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "22 Thuêmuanhàởlàviệcngườithuêmuathanhtoántrướcchobênchothuêmuamộttỷlệphầntrămnhấtđịnhcủagiátrịnhàởthuêmuatheothỏathuậnnhưngkhôngquá 50 % giátrịhợpđồngthuêmuanhàở; sốtiềncònlạiđượctínhthànhtiềnthuênhàđểtrảhằngthángchobênchothuêmuatrongmộtthờihạn"
+    },
+    {
+      "sourceOccurrenceId": "B000049",
+      "blockId": "b49",
+      "sourceOrdinal": 48,
+      "pageNumber": 3,
+      "literalSourceText": "nhất định do các bên thỏa thuận; sau khi hết thời hạn thuê mua nhà ở và khi đã trả hết số tiền còn lại thì người thuê mua có quyền sở hữu đối với nhà ở đó",
+      "sourceTextSha256": "f773aaa26e5406f312f9306c869130235dba4b11997c7b2bbbd12b504b1d3dc5",
+      "lineCount": 2,
+      "layout": {
+        "topY": 306.2,
+        "bottomY": 286.4,
+        "left": 64.2,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "nhấtđịnhdocácbênthỏathuận; saukhihếtthờihạnthuêmuanhàởvàkhiđãtrảhếtsốtiềncònlạithìngườithuêmuacóquyềnsởhữuđốivớinhàởđó"
+    },
+    {
+      "sourceOccurrenceId": "B000050",
+      "blockId": "b50",
+      "sourceOrdinal": 49,
+      "pageNumber": 3,
+      "literalSourceText": "23 Nhà ở có sẵn là nhà ở đã hoàn thành việc xây dựng và đã được nghiệm thu đưa vào sử dụng theo quy định của pháp luật về xây dựng",
+      "sourceTextSha256": "19bde2488d032d2af7c3ff1cddcb53b3899f38fa53e51937c5ce9a630296f5f6",
+      "lineCount": 2,
+      "layout": {
+        "topY": 262.5,
+        "bottomY": 242.1,
+        "left": 64.3,
+        "right": 531.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "23 Nhàởcósẵnlànhàởđãhoànthànhviệcxâydựngvàđãđược nghiệmthuđưavàosửdụngtheoquyđịnhcủaphápluậtvềxâydựng"
+    },
+    {
+      "sourceOccurrenceId": "B000051",
+      "blockId": "b51",
+      "sourceOrdinal": 50,
+      "pageNumber": 3,
+      "literalSourceText": "24 Nhà ở hình thành trong tương lai là nhà ở đang trong quá trình đầu tư xây",
+      "sourceTextSha256": "6005e3491a8fe1be58a53404e0638c0b2ff4df0489731ff683c3a7b69b528944",
+      "lineCount": 1,
+      "layout": {
+        "topY": 218.7,
+        "bottomY": 218.7,
+        "left": 87.1,
+        "right": 531.5,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "24 Nhàởhìnhthànhtrongtươnglailànhàởđangtrongquátrìnhđầutưxây"
+    },
+    {
+      "sourceOccurrenceId": "B000052",
+      "blockId": "b52",
+      "sourceOrdinal": 51,
+      "pageNumber": 3,
+      "literalSourceText": "dựng hoặc chưa được nghiệm thu đưa vào sử dụng theo quy định của pháp luật về xây dựng",
+      "sourceTextSha256": "ca1fc066d043a524b6ceafcc483372b1cd69b028c1be2f42ef61ffa9fd6ea419",
+      "lineCount": 2,
+      "layout": {
+        "topY": 198.6,
+        "bottomY": 178.3,
+        "left": 64.3,
+        "right": 531.1,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "dựnghoặcchưađược nghiệmthuđưavàosửdụngtheoquyđịnhcủaphápluậtvềxâydựng"
+    },
+    {
+      "sourceOccurrenceId": "B000053",
+      "blockId": "b53",
+      "sourceOrdinal": 52,
+      "pageNumber": 3,
+      "literalSourceText": "Điều 3 Các hành vi bị nghiêm cấm",
+      "sourceTextSha256": "8fa8d8bd90fc77941ebc6a2389036128ccfb197fa8bd9273cf9a85e04ef9be2a",
+      "lineCount": 1,
+      "layout": {
+        "topY": 155.7,
+        "bottomY": 155.7,
+        "left": 87,
+        "right": 295,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Điều 3 Cáchànhvibị nghiêm cấm"
+    },
+    {
+      "sourceOccurrenceId": "B000054",
+      "blockId": "b54",
+      "sourceOrdinal": 53,
+      "pageNumber": 3,
+      "literalSourceText": "1 Xâm phạm quyền sở hữu nhà ở của tổ chức cá nhân",
+      "sourceTextSha256": "c9a8c87f60470938372d42880d79c22f88ca6e8e21de897b54c8c42083cafab3",
+      "lineCount": 1,
+      "layout": {
+        "topY": 131.6,
+        "bottomY": 131.6,
+        "left": 88.4,
+        "right": 394.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 Xâmphạmquyềnsởhữunhàởcủatổchứccánhân"
+    },
+    {
+      "sourceOccurrenceId": "B000055",
+      "blockId": "b55",
+      "sourceOrdinal": 54,
+      "pageNumber": 3,
+      "literalSourceText": "2 Cản trở việc thực hiện trách nhiệm quản lý nhà nước về nhà ở việc thực hiện quyền nghĩa vụ về sở hữu sử dụng và giao dịch về nhà ở của tổ chức cá nhân",
+      "sourceTextSha256": "a5edfcedcdd31a45941e5a30732253cbe2bf858c6d3511fd7a0b03a19c489f3f",
+      "lineCount": 2,
+      "layout": {
+        "topY": 107.8,
+        "bottomY": 87.9,
+        "left": 64.5,
+        "right": 531.5,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "2 Cảntrởviệcthựchiệntráchnhiệmquảnlýnhànướcvềnhàởviệcthựchiệnquyềnnghĩavụvềsởhữusửdụngvàgiaodịchvềnhàởcủatổchứccánhân"
+    },
+    {
+      "sourceOccurrenceId": "B000056",
+      "blockId": "b56",
+      "sourceOrdinal": 55,
+      "pageNumber": 4,
+      "literalSourceText": "g y - -",
+      "sourceTextSha256": "c4e9b4c3f8b0ee5c88fd80e731368caf23ac6332c35937e5d1dd9fafa16a4f14",
+      "lineCount": 1,
+      "layout": {
+        "topY": 779.6,
+        "bottomY": 779.6,
+        "left": 329.8,
+        "right": 389.9,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "gy - -"
+    },
+    {
+      "sourceOccurrenceId": "B000057",
+      "blockId": "b57",
+      "sourceOrdinal": 56,
+      "pageNumber": 4,
+      "literalSourceText": "3 Quyết định hoặc chấp thuận chủ trương đầu tư hoặc phê duyệt dự án đầu tư xây dựng nhà ở không phù hợp với quy hoạch sử dụng đất quy hoạch xây dựng quy hoạch đô thị chương trình kế hoạch phát triển nhà ở đã được phê duyệt",
+      "sourceTextSha256": "208dfa9dbe81e01e50615dc2db03ee1a1260b89787ee33bc6890018411709be0",
+      "lineCount": 3,
+      "layout": {
+        "topY": 745.3,
+        "bottomY": 704.6,
+        "left": 64.3,
+        "right": 531.6,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "3 Quyếtđịnhhoặcchấpthuậnchủ trươngđầutưhoặcphêduyệtdựánđầutưxâydựngnhàởkhôngphùhợpvớiquyhoạchsửdụngđấtquyhoạchxâydựngquyhoạchđôthị chươngtrìnhkếhoạchpháttriểnnhàởđãđượcphêduyệt"
+    },
+    {
+      "sourceOccurrenceId": "B000058",
+      "blockId": "b58",
+      "sourceOrdinal": 57,
+      "pageNumber": 4,
+      "literalSourceText": "4 Xây dựng nhà ở trên đất không được đầu tư xây dựng nhà ở theo quy định của Luật này; xây dựng cải tạo nhà ở không phù hợp với quy hoạch sử dụng đất quy hoạch xây dựng quy hoạch đô thị không đúng tiêu chuẩn thiết kế tiêu chuẩn diện tích đối với từng loại nhà ở mà cơ quan nhà nước có thẩm quyền có quy định",
+      "sourceTextSha256": "960a3da6b2e198da9f55a774c16a7738c0aac1f042ac8eb28b4c843e27a321cc",
+      "lineCount": 4,
+      "layout": {
+        "topY": 680.3,
+        "bottomY": 619.4,
+        "left": 64.5,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "4 Xâydựngnhàởtrênđấtkhôngđượcđầutưxâydựngnhàởtheoquyđịnhcủa Luậtnày; xâydựngcảitạonhàởkhôngphùhợpvớiquyhoạchsửdụngđấtquyhoạchxâydựngquyhoạchđôthịkhôngđúngtiêuchuẩnthiếtkếtiêuchuẩndiệntíchđốivớitừngloạinhàởmàcơquannhànướccóthẩmquyềncóquyđịnh"
+    },
+    {
+      "sourceOccurrenceId": "B000059",
+      "blockId": "b59",
+      "sourceOrdinal": 58,
+      "pageNumber": 4,
+      "literalSourceText": "phải áp dụng tiêu chuẩn thiết kế tiêu chuẩn diện tích nhà ở Áp dụng cách tính sai diện tích sử dụng nhà ở được quy định trong Luật này Phát triển nhà ở nhiều tầng nhiều căn hộ của cá nhân trái quy định của Luật này",
+      "sourceTextSha256": "276caa7ac3062dda33287b424c0bfa66106dac4f8b877ee4cf1400e77627998d",
+      "lineCount": 3,
+      "layout": {
+        "topY": 599.3,
+        "bottomY": 558.5,
+        "left": 64,
+        "right": 531.2,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "phảiápdụngtiêuchuẩnthiếtkếtiêuchuẩndiệntíchnhàở Ápdụngcáchtínhsaidiệntíchsửdụngnhàởđượcquyđịnhtrong Luậtnày Pháttriểnnhàởnhiềutầngnhiềucănhộcủacánhântráiquyđịnhcủa Luậtnày"
+    },
+    {
+      "sourceOccurrenceId": "B000060",
+      "blockId": "b60",
+      "sourceOrdinal": 59,
+      "pageNumber": 4,
+      "literalSourceText": "5 Chiếm dụng diện tích nhà ở trái pháp luật; lấn chiếm không gian và phần diện tích thuộc sở hữu chung hoặc của chủ sở hữu khác dưới mọi hình thức ; cải tạo cơi nới phá dỡ xây dựng lại nhà ở đang thuê thuê mua mượn ở nhờ được ủy quyền quản lý mà không được chủ sở hữu đồng ý",
+      "sourceTextSha256": "f897e0289a554c3d55d361cb25590e8641537c4a5c7bdbbcf5b32b73d3cd5c05",
+      "lineCount": 4,
+      "layout": {
+        "topY": 534.5,
+        "bottomY": 473.2,
+        "left": 64.1,
+        "right": 531.2,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "5 Chiếmdụngdiệntíchnhàởtráiphápluật; lấnchiếmkhônggianvàphầndiệntíchthuộcsởhữuchunghoặccủachủsởhữukhácdướimọihìnhthức; cảitạocơinớiphádỡxâydựnglạinhàởđangthuêthuêmuamượnởnhờđượcủyquyềnquảnlýmàkhôngđượcchủsởhữuđồngý"
+    },
+    {
+      "sourceOccurrenceId": "B000061",
+      "blockId": "b61",
+      "sourceOrdinal": 60,
+      "pageNumber": 4,
+      "literalSourceText": "6 Ký kết văn bản huy động vốn thực hiện huy động vốn phục vụ cho phát triển nhà ở khi chưa đủ điều kiện theo quy định của Luật này và quy định khác của pháp luật có liên quan; sử dụng sai mục đích nguồn vốn huy động hoặc tiền mua nhà ở trả trước cho phát triển nhà ở",
+      "sourceTextSha256": "c66ae38a90efad40c754bd0d6058bf89994b15baf3a765cd60d6e476d0a07f48",
+      "lineCount": 4,
+      "layout": {
+        "topY": 449,
+        "bottomY": 388.4,
+        "left": 64,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "6 Kýkếtvănbảnhuyđộngvốnthựchiệnhuyđộngvốnphụcvụchopháttriểnnhàởkhichưađủđiềukiệntheoquyđịnhcủa Luậtnàyvàquyđịnhkháccủaphápluậtcóliênquan; sửdụngsaimụcđíchnguồnvốnhuyđộnghoặctiềnmuanhàởtrảtrướcchopháttriểnnhàở"
+    },
+    {
+      "sourceOccurrenceId": "B000062",
+      "blockId": "b62",
+      "sourceOrdinal": 61,
+      "pageNumber": 4,
+      "literalSourceText": "7 Thực hiện giao dịch mua bán thuê mua thuê cho thuê lưu trú tặng cho đổi thế chấp góp vốn cho mượn cho ở nhờ ủy quyền quản lý nhà ở không đúng quy định của Luật này và quy định khác của pháp luật có liên quan; bàn giao nhà ở cho người mua thuê mua nhà ở khi chưa đủ điều kiện theo quy định của Luật này",
+      "sourceTextSha256": "e9cc895625bb9f3bf58e89b3d9973eb7fd001b3033e2c0e1ae9f340cedcfccb6",
+      "lineCount": 4,
+      "layout": {
+        "topY": 363.9,
+        "bottomY": 303,
+        "left": 64.3,
+        "right": 531.6,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "7 Thựchiệngiaodịchmuabánthuêmuathuêchothuêlưutrútặngchođổithếchấpgópvốnchomượnchoởnhờủyquyềnquảnlýnhàởkhôngđúngquyđịnhcủa Luậtnàyvàquyđịnhkháccủaphápluậtcóliênquan; bàngiaonhàởchongườimuathuêmuanhàởkhichưađủđiềukiệntheoquyđịnhcủa Luậtnày"
+    },
+    {
+      "sourceOccurrenceId": "B000063",
+      "blockId": "b63",
+      "sourceOrdinal": 62,
+      "pageNumber": 4,
+      "literalSourceText": "và pháp luật về xây dựng",
+      "sourceTextSha256": "4c4ce215baab1c11e55428fa183d8029e0fc23945e52ae677b77ae880c56edb9",
+      "lineCount": 1,
+      "layout": {
+        "topY": 282.4,
+        "bottomY": 282.4,
+        "left": 64.2,
+        "right": 204.9,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "vàphápluậtvềxâydựng"
+    },
+    {
+      "sourceOccurrenceId": "B000064",
+      "blockId": "b64",
+      "sourceOrdinal": 63,
+      "pageNumber": 4,
+      "literalSourceText": "8 Các hành vi trong quản lý sử dụng nhà chung cư bao gồm:",
+      "sourceTextSha256": "4611467a2359f963c94755ffcf268e8bb34dc7c3c8647134a1c7dbd9f9854f33",
+      "lineCount": 1,
+      "layout": {
+        "topY": 258.1,
+        "bottomY": 258.1,
+        "left": 87.6,
+        "right": 430.9,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "8 Cáchànhvitrongquảnlýsửdụngnhàchungcưbaogồm:"
+    },
+    {
+      "sourceOccurrenceId": "B000065",
+      "blockId": "b65",
+      "sourceOrdinal": 64,
+      "pageNumber": 4,
+      "literalSourceText": "a) Không đóng kinh phí bảo trì phần sở hữu chung của nhà chung cư (sau đây gọi chung là kinh phí bảo trì); quản lý sử dụng kinh phí quản lý vận hành kinh phí bảo trì không đúng quy định của pháp luật về nhà ở;",
+      "sourceTextSha256": "a71f47a15ac257c1a6fa849e09f4ba1a7a6a14968dbf89370846f0b90be4bf88",
+      "lineCount": 3,
+      "layout": {
+        "topY": 234,
+        "bottomY": 193.3,
+        "left": 64,
+        "right": 531.5,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "a) Khôngđóngkinhphíbảotrìphầnsởhữuchungcủanhàchungcư (sauđâygọichunglàkinhphíbảotrì ); quảnlýsửdụngkinhphíquảnlývậnhànhkinhphíbảotrìkhôngđúngquyđịnhcủaphápluậtvềnhàở;"
+    },
+    {
+      "sourceOccurrenceId": "B000066",
+      "blockId": "b66",
+      "sourceOrdinal": 65,
+      "pageNumber": 4,
+      "literalSourceText": "b) Cố ý gây thấm dột; gây tiếng ồn độ rung quá mức quy định; xả rác thải nước thải khí thải chất độc hại không đúng quy định của pháp luật về bảo vệ môi trường hoặc không đúng nội quy quản lý sử dụng nhà chung cư; sơn trang trí mặt ngoài căn hộ nhà chung cư không đúng quy định về thiết kế kiến trúc ; chăn thả",
+      "sourceTextSha256": "7ca399622d238ce1f7a69931e1329e5c26245e2593bb425b3bc4ef620407768f",
+      "lineCount": 4,
+      "layout": {
+        "topY": 169,
+        "bottomY": 108.3,
+        "left": 64.2,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "b) Cốýgâythấmdột; gâytiếngồnđộrungquámứcquyđịnh; xảrácthảinướcthảikhíthảichấtđộchạikhôngđúngquyđịnhcủaphápluậtvềbảovệmôi trườnghoặckhôngđúngnộiquyquảnlýsửdụngnhàchungcư; sơntrangtrímặtngoàicănhộnhàchungcưkhôngđúngquyđịnhvềthiếtkếkiếntrúc; chănthả"
+    },
+    {
+      "sourceOccurrenceId": "B000067",
+      "blockId": "b67",
+      "sourceOrdinal": 66,
+      "pageNumber": 4,
+      "literalSourceText": "gia súc gia cầm; giết mổ gia súc trong khu vực nhà chung cư;",
+      "sourceTextSha256": "a4a10e6c87002398c2e7d13aa0d95801b8b3d1a34ab985b5204ae74bcb2f1296",
+      "lineCount": 1,
+      "layout": {
+        "topY": 87.6,
+        "bottomY": 87.6,
+        "left": 64.5,
+        "right": 410.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "giasúcgiacầm; giếtmổgiasúctrongkhuvựcnhàchungcư;"
+    },
+    {
+      "sourceOccurrenceId": "B000068",
+      "blockId": "b68",
+      "sourceOrdinal": 67,
+      "pageNumber": 5,
+      "literalSourceText": "g y - -",
+      "sourceTextSha256": "c4e9b4c3f8b0ee5c88fd80e731368caf23ac6332c35937e5d1dd9fafa16a4f14",
+      "lineCount": 1,
+      "layout": {
+        "topY": 779.6,
+        "bottomY": 779.6,
+        "left": 329.8,
+        "right": 389.9,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "gy - -"
+    },
+    {
+      "sourceOccurrenceId": "B000069",
+      "blockId": "b69",
+      "sourceOrdinal": 68,
+      "pageNumber": 5,
+      "literalSourceText": "c) Tự ý chuyển đổi công năng mục đích sử dụng phần sở hữu chung sử dụng chung của nhà chung cư; sử dụng căn hộ chung cư vào mục đích không phải để ở;",
+      "sourceTextSha256": "a56f1983b6c95ed3c4cc8a69f1d5398b0109443e1e584862605538a45cc1ff2f",
+      "lineCount": 2,
+      "layout": {
+        "topY": 746.9,
+        "bottomY": 728.9,
+        "left": 64.6,
+        "right": 531.2,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "c) Tựý chuyểnđổicôngnăngmụcđíchsửdụngphầnsởhữuchungsửdụngchungcủanhàchungcư; sửdụngcănhộchungcưvàomụcđíchkhôngphảiđểở;"
+    },
+    {
+      "sourceOccurrenceId": "B000070",
+      "blockId": "b70",
+      "sourceOrdinal": 69,
+      "pageNumber": 5,
+      "literalSourceText": "thay đổi làm hư hại kết c ấu chịu lực ; chia tách c ăn hộ không được cơ quan nhà nước có thẩm quyền cho phép;",
+      "sourceTextSha256": "d699e394de47942ca47165fa80e8260e27afa53217a597440e2be00dad023925",
+      "lineCount": 2,
+      "layout": {
+        "topY": 711.3,
+        "bottomY": 693.3,
+        "left": 64.2,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "thayđổilàmhưhạikếtcấuchịulực; chiatáchcănhộkhôngđượccơquannhànướccóthẩmquyềnchophép;"
+    },
+    {
+      "sourceOccurrenceId": "B000071",
+      "blockId": "b71",
+      "sourceOrdinal": 70,
+      "pageNumber": 5,
+      "literalSourceText": "d) Tự ý sử dụng phần diện tích và trang thiết bị thuộc quyền sở hữu chung sử dụng chung vào sử dụng riêng; thay đổi mục đích sử dụng phần diện tích làm dịch vụ trong nhà chung cư có mục đích sử dụng hỗn hợp mà không được cơ quan nhà nước có thẩm quyền cho phép chuyển đổi mục đích sử dụng;",
+      "sourceTextSha256": "f7856421880c8967452300765c94d07e66969e632aaf2a3913c77c094be8203f",
+      "lineCount": 4,
+      "layout": {
+        "topY": 671.5,
+        "bottomY": 617.7,
+        "left": 64.2,
+        "right": 531.6,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "d) Tựýsửdụngphầndiệntíchvàtrangthiếtbịthuộcquyềnsởhữuchungsửdụngchungvàosửdụngriêng; thayđổimụcđíchsửdụngphầndiệntíchlàmdịchvụtrongnhàchungcưcómụcđíchsửdụnghỗnhợpmàkhôngđượccơquannhànướccóthẩmquyềnchophép chuyểnđổimụcđíchsửdụng;"
+    },
+    {
+      "sourceOccurrenceId": "B000072",
+      "blockId": "b72",
+      "sourceOrdinal": 71,
+      "pageNumber": 5,
+      "literalSourceText": "đ) Gây mất trật tự an toàn cháy nổ trong nhà chung cư; kinh doanh vật liệu gây cháy nổ và ngành nghề gây nguy hiểm đến tính mạng tài sản của người sử dụng nhà chung cư theo quy định của pháp luật về phòng cháy chữa cháy và quy định khác của pháp luật có liên quan;",
+      "sourceTextSha256": "1ac819b130fcbbd7be3312e8879ca83674b435b5b4eb4fb99f5702eb9d3b7880",
+      "lineCount": 4,
+      "layout": {
+        "topY": 595.9,
+        "bottomY": 542.1,
+        "left": 64.2,
+        "right": 531.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "đ) Gâymấttrậttự an toàncháynổtrongnhàchungcư; kinhdoanhvậtliệugâycháynổvàngànhnghềgâynguyhiểmđếntínhmạngtàisảncủangườisửdụngnhàchungcưtheoquyđịnhcủaphápluậtvềphòngcháychữacháyvàquyđịnhkháccủaphápluậtcóliênquan;"
+    },
+    {
+      "sourceOccurrenceId": "B000073",
+      "blockId": "b73",
+      "sourceOrdinal": 72,
+      "pageNumber": 5,
+      "literalSourceText": "e) Kinh doanh vũ trường karaoke quán bar; kinh doanh sửa chữa xe có động cơ; hoạt động kinh doanh dịch vụ gây ô nhiễm khác theo quy định của pháp luật về bảo vệ môi trường; kinh doanh dịch vụ nhà hàng mà không bảo đảm tuân thủ yêu cầu về phòng cháy chữa cháy có nơi thoát hiểm và chấp hành các điều kiện kinh",
+      "sourceTextSha256": "c01082a8a9400928dbbb37d750f3016df62de2e791881b5dde4d5751e1f97eb4",
+      "lineCount": 4,
+      "layout": {
+        "topY": 520.2,
+        "bottomY": 466.9,
+        "left": 64,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "e) Kinhdoanhvũ trường karaokequánbar; kinhdoanhsửachữaxecóđộngcơ; hoạtđộngkinhdoanhdịchvụgâyônhiễmkháctheoquyđịnhcủaphápluậtvềbảovệmôi trường; kinhdoanhdịchvụnhàhàngmàkhôngbảođảmtuânthủyêucầuvềphòngcháychữacháycónơithoáthiểmvàchấphànhcácđiềukiệnkinh"
+    },
+    {
+      "sourceOccurrenceId": "B000074",
+      "blockId": "b74",
+      "sourceOrdinal": 73,
+      "pageNumber": 5,
+      "literalSourceText": "doanh khác theo quy định của pháp luật 9 Sử dụng nhà ở riêng lẻ vào mục đích kinh doanh vật liệu gây cháy nổ kinh doanh dịch vụ gây ô nhiễm môi trường tiếng ồn ảnh hưởng đến trật tự an toàn xã hội sinh hoạt của khu dân cư mà không tuân thủ quy định của pháp luật về điều",
+      "sourceTextSha256": "bf4a4a5e64e29116f90ea074acf9cdeb85dac65500cb6db7ae049fd69472c64b",
+      "lineCount": 4,
+      "layout": {
+        "topY": 448.6,
+        "bottomY": 391.1,
+        "left": 64.2,
+        "right": 531.4,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "doanhkháctheoquyđịnhcủaphápluật 9 Sửdụngnhàởriênglẻvàomụcđíchkinhdoanhvậtliệugâycháynổkinhdoanhdịchvụgâyônhiễmmôi trườngtiếngồnảnhhưởngđếntrậttự an toànxãhộisinhhoạtcủakhudâncưmàkhôngtuânthủquyđịnhcủaphápluậtvềđiều"
+    },
+    {
+      "sourceOccurrenceId": "B000075",
+      "blockId": "b75",
+      "sourceOrdinal": 74,
+      "pageNumber": 5,
+      "literalSourceText": "kiện kinh doanh",
+      "sourceTextSha256": "76a7ae21e7b87010440342aa9e5f9f47909bcefb23525fb1f07ec31db3ff18a7",
+      "lineCount": 1,
+      "layout": {
+        "topY": 373.4,
+        "bottomY": 373.4,
+        "left": 64.2,
+        "right": 154.3,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "kiệnkinhdoanh"
+    },
+    {
+      "sourceOccurrenceId": "B000076",
+      "blockId": "b76",
+      "sourceOrdinal": 75,
+      "pageNumber": 5,
+      "literalSourceText": "Điều 4 Chính sách phát triển và quản lý sử dụng nhà ở",
+      "sourceTextSha256": "f9fb533b3456b6a5d6ab57f4d87e890bdb6e041f7ac62faa351164f429abcd16",
+      "lineCount": 1,
+      "layout": {
+        "topY": 351.5,
+        "bottomY": 351.5,
+        "left": 87,
+        "right": 420.7,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanps-boldmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "Điều 4 Chínhsáchpháttriểnvàquảnlýsửdụngnhàở"
+    },
+    {
+      "sourceOccurrenceId": "B000077",
+      "blockId": "b77",
+      "sourceOrdinal": 76,
+      "pageNumber": 5,
+      "literalSourceText": "1 Nhà nước có chính sách phát triển nhà ở tạo điều kiện để mọi người đều có chỗ ở thông qua việc thúc đẩy phát triển đa dạng các loại hình nhà ở bao gồm nhà ở để bán cho thuê mua cho thuê phù hợp với nhu cầu và khả năng tài chính của cá nhân gia đình hỗ trợ vốn để cải tạo xây dựng lại nhà ở; Nhà nước đầu tư xây",
+      "sourceTextSha256": "bd28085356c7de0afa646e5a49aef23c0d1d660be5ed6bd2516dc81d407991a0",
+      "lineCount": 4,
+      "layout": {
+        "topY": 329.6,
+        "bottomY": 275.6,
+        "left": 64.2,
+        "right": 531.5,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "1 Nhànướccóchínhsáchpháttriểnnhàởtạođiềukiệnđểmọingườiđềucóchỗởthôngquaviệcthúcđẩypháttriểnđadạngcácloạihìnhnhàởbaogồmnhàởđểbánchothuêmuachothuêphùhợpvớinhucầuvàkhảnăngtàichínhcủacánhângiađìnhhỗtrợvốnđểcảitạoxâydựnglạinhàở; Nhànướcđầutưxây"
+    },
+    {
+      "sourceOccurrenceId": "B000078",
+      "blockId": "b78",
+      "sourceOrdinal": 77,
+      "pageNumber": 5,
+      "literalSourceText": "dựng nhà ở xã hội bằng một phần hoặc toàn bộ vốn đầu tư công (sau đây gọi chung là vốn đầu tư công) để cho thuê cho thuê mua",
+      "sourceTextSha256": "b84c595064f8530c710ce48291edb557547366cd3c3ee93b1d29364b44bd7a1c",
+      "lineCount": 2,
+      "layout": {
+        "topY": 257.6,
+        "bottomY": 240,
+        "left": 64.5,
+        "right": 531.2,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "dựngnhàởxãhộibằngmộtphầnhoặctoànbộvốnđầutưcông (sauđâygọichunglàvốnđầutưcông) đểchothuêchothuêmua"
+    },
+    {
+      "sourceOccurrenceId": "B000079",
+      "blockId": "b79",
+      "sourceOrdinal": 78,
+      "pageNumber": 5,
+      "literalSourceText": "2 Nhà nước có trách nhiệm tạo quỹ đất ở thông qua phê duyệt quy hoạch sử dụng đất kế hoạch sử dụng đất quy hoạch xây dựng quy hoạch đô thị quy hoạch xây dựng khu chức năng 3 Nhà nước ban hành cơ chế chính sách về quy hoạch đất đai tài chính tín",
+      "sourceTextSha256": "986b954b22cbd286d7b0b230358766292256b6abc05cd2c66b3348de7b349a97",
+      "lineCount": 4,
+      "layout": {
+        "topY": 217.8,
+        "bottomY": 160.5,
+        "left": 64.3,
+        "right": 531.6,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "2 Nhànướccótráchnhiệmtạoquỹđấtởthôngquaphêduyệtquyhoạchsửdụngđấtkếhoạchsửdụngđấtquyhoạchxâydựngquyhoạchđôthịquyhoạchxâydựngkhuchứcnăng 3 Nhànướcbanhànhcơchếchínhsáchvềquyhoạchđấtđaitàichínhtín"
+    },
+    {
+      "sourceOccurrenceId": "B000080",
+      "blockId": "b80",
+      "sourceOrdinal": 79,
+      "pageNumber": 5,
+      "literalSourceText": "dụng về nghiên cứu ứng dụng khoa học và công nghệ vật liệu xây dựng mới để khuyến khích các thành phần kinh tế tham gia đầu tư phát triển nhà ở và khuyến khích các tổ chức cá nhân tham gia phát triển nhà ở để bán cho thuê mua cho thuê theo cơ chế thị trường",
+      "sourceTextSha256": "5cde516a5d1b4901c46f4ebfd395d0f437e72022be35857a4756925062b5e199",
+      "lineCount": 4,
+      "layout": {
+        "topY": 142.1,
+        "bottomY": 88.7,
+        "left": 64.2,
+        "right": 531.2,
+        "style": {
+          "fontSize": 1,
+          "font": "timesnewromanpsmt",
+          "color": "0.00,0.00,0.00"
+        }
+      },
+      "extractedText": "dụngvề nghiêncứuứngdụngkhoahọcvàcôngnghệvậtliệuxâydựngmớiđể khuyếnkhíchcácthànhphầnkinhtếthamgiađầutưpháttriểnnhàởvà khuyếnkhíchcáctổchứccánhânthamgiapháttriểnnhàởđểbánchothuêmuachothuêtheocơchếthị trường"
+    }
+  ],
+  "contentPurpose": "complete deterministic source evidence for independent human annotation only",
+  "containsModelPredictions": false,
+  "containsGoldLabels": false,
+  "containsResidualHints": false,
+  "runtimeUse": "PROHIBITED"
+}

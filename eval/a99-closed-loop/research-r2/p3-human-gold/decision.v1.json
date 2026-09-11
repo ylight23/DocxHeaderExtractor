@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "a99-r2-p3a-decision-v1",
+  "decision": "R2_P3_AWAITING_SIX_DOCUMENT_HUMAN_GOLD",
+  "rationale": "P2B authority is reusable for exactly two pilot documents; six documents have source-only packets and empty independent A/B templates.",
+  "r2BInferenceAuthorized": false,
+  "authorizationGate": [
+    "all 8 pilot documents have frozen semantic Gold",
+    "all Gold source SHA values match frozen pilot source SHA",
+    "all semantic disagreements are human-adjudicated",
+    "required occurrence identities are frozen",
+    "unresolved semantic count is 0",
+    "Gold freeze commit predates first R2-B inference"
+  ],
+  "laterR2BContract": {
+    "behavioralSystem": "canonical B0@76c4e01a10577b1c6069255646843cbaef729a1f",
+    "model": "canonical B0 model/config",
+    "prompt": "canonical B0",
+    "runtime": "canonical B0",
+    "inferenceCount": "one fresh inference per pilot document; 8 total",
+    "automaticRepeats": false,
+    "postGoldTuning": false
+  },
+  "modelCalls": 0,
+  "providerCalls": 0
+}

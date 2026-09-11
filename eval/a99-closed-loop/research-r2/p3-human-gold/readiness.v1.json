@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "a99-r2-p3a-readiness-v1",
+  "terminal": "R2_P3_AWAITING_SIX_DOCUMENT_HUMAN_GOLD",
+  "pilotDocuments": 8,
+  "strictReadyDocuments": 2,
+  "awaitingIndependentHumanGold": 6,
+  "humanATemplates": 6,
+  "humanBTemplates": 6,
+  "p2bAuthorityUnchanged": true,
+  "p2bFreezeSha256": "3b62436c4f1795405f69fed67aee8e3a3c18bfcffa66b4edfc931c98c4f998f6",
+  "p2bGoldSha256": {
+    "DOC-0165": "428bdbd4880d789032f2b16b958e266cd832afc5c49aa2c6372516b6b3c10ec6",
+    "DOC-0158": "64311acc0d405a9b4b96fe453d18d0552edfcefbaef50f03fc5f4a5f2569df1c"
+  },
+  "reserveUntouched": true,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "r2BInferenceAuthorized": false,
+  "sourcePacketDocuments": 6,
+  "sourcePacketsContainPredictions": false,
+  "sourcePacketsContainGold": false,
+  "semanticLabelsGeneratedByAutomation": false
+}
