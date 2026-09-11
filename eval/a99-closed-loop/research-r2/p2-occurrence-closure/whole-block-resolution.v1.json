@@ -1,0 +1,362 @@
+[
+  {
+    "documentId": "DOC-0158",
+    "sourceSha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+    "rows": [],
+    "wholeBlockResolvedCount": 0,
+    "unresolvedCount": 0
+  },
+  {
+    "documentId": "DOC-0165",
+    "sourceSha256": "2b1a4e73ce2df40e46446ff7a772b44284ba6bbcff9e02062f838b5498b4085f",
+    "rows": [
+      {
+        "documentId": "DOC-0165",
+        "semanticHeadingText": "Africa",
+        "bindingText": "Africa",
+        "priorExactMatchCount": 4,
+        "wholeBlockExactCandidateCount": 1,
+        "selected": {
+          "blockId": "b31",
+          "page": 3,
+          "sourceOrdinal": 31,
+          "localUtf16Start": 0,
+          "localUtf16End": 6,
+          "globalUtf16Start": 5405,
+          "globalUtf16End": 5411
+        },
+        "resolutionMethod": "DETERMINISTIC_UNIQUE_WHOLE_BLOCK_EXACT",
+        "resolved": true,
+        "candidates": [
+          {
+            "blockId": "b31",
+            "page": 3,
+            "sourceOrdinal": 31,
+            "localUtf16Start": 0,
+            "localUtf16End": 6,
+            "globalUtf16Start": 5405,
+            "globalUtf16End": 5411,
+            "classification": "WHOLE_BLOCK_EXACT",
+            "matchedSourceText": "Africa"
+          },
+          {
+            "blockId": "b32",
+            "page": 3,
+            "sourceOrdinal": 32,
+            "localUtf16Start": 59,
+            "localUtf16End": 65,
+            "globalUtf16Start": 5471,
+            "globalUtf16End": 5477,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Louis Kouakou, Acting Director, Statistics Department, African Development Bank (Af DB), briefed the Board on the implementation of the 2021 cycle in the Africa region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He emphasized the need to have a sufficient lead time for each cycle to ensure countries had sufficient time"
+          },
+          {
+            "blockId": "b32",
+            "page": 3,
+            "sourceOrdinal": 32,
+            "localUtf16Start": 158,
+            "localUtf16End": 164,
+            "globalUtf16Start": 5570,
+            "globalUtf16End": 5576,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Louis Kouakou, Acting Director, Statistics Department, African Development Bank (Af DB), briefed the Board on the implementation of the 2021 cycle in the Africa region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He emphasized the need to have a sufficient lead time for each cycle to ensure countries had sufficient time"
+          },
+          {
+            "blockId": "b78",
+            "page": 6,
+            "sourceOrdinal": 78,
+            "localUtf16Start": 0,
+            "localUtf16End": 6,
+            "globalUtf16Start": 11551,
+            "globalUtf16End": 11557,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "African Development Bank Kouakou K. Louis, Acting Director, Statistics Department"
+          }
+        ],
+        "rejectedCandidates": [
+          {
+            "blockId": "b32",
+            "page": 3,
+            "sourceOrdinal": 32,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Louis Kouakou, Acting Director, Statistics Department, African Development Bank (Af DB), briefed the Board on the implementation of the 2021 cycle in the Africa region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He emphasized the need to have a sufficient lead time for each cycle to ensure countries had sufficient time"
+          },
+          {
+            "blockId": "b32",
+            "page": 3,
+            "sourceOrdinal": 32,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Louis Kouakou, Acting Director, Statistics Department, African Development Bank (Af DB), briefed the Board on the implementation of the 2021 cycle in the Africa region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He emphasized the need to have a sufficient lead time for each cycle to ensure countries had sufficient time"
+          },
+          {
+            "blockId": "b78",
+            "page": 6,
+            "sourceOrdinal": 78,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "African Development Bank Kouakou K. Louis, Acting Director, Statistics Department"
+          }
+        ]
+      },
+      {
+        "documentId": "DOC-0165",
+        "semanticHeadingText": "Commonwealth of Independent States",
+        "bindingText": "Commonwealth of Independent States",
+        "priorExactMatchCount": 3,
+        "wholeBlockExactCandidateCount": 1,
+        "selected": {
+          "blockId": "b38",
+          "page": 3,
+          "sourceOrdinal": 38,
+          "localUtf16Start": 0,
+          "localUtf16End": 34,
+          "globalUtf16Start": 6740,
+          "globalUtf16End": 6774
+        },
+        "resolutionMethod": "DETERMINISTIC_UNIQUE_WHOLE_BLOCK_EXACT",
+        "resolved": true,
+        "candidates": [
+          {
+            "blockId": "b20",
+            "page": 2,
+            "sourceOrdinal": 20,
+            "localUtf16Start": 230,
+            "localUtf16End": 264,
+            "globalUtf16Start": 3513,
+            "globalUtf16End": 3547,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Schreyer noted a negligible effect on annual average prices, but a more pronounced effect on expenditure weights. Furthermore, as Russia is no longer participating in the OECD comparison, and thereby preventing the linking of the Commonwealth of Independent States (CIS) region through Russia, experiments are underway to link the CIS region directly to the global program, following the standard ICP"
+          },
+          {
+            "blockId": "b38",
+            "page": 3,
+            "sourceOrdinal": 38,
+            "localUtf16Start": 0,
+            "localUtf16End": 34,
+            "globalUtf16Start": 6740,
+            "globalUtf16End": 6774,
+            "classification": "WHOLE_BLOCK_EXACT",
+            "matchedSourceText": "Commonwealth of Independent States"
+          },
+          {
+            "blockId": "b39",
+            "page": 3,
+            "sourceOrdinal": 39,
+            "localUtf16Start": 77,
+            "localUtf16End": 111,
+            "globalUtf16Start": 6852,
+            "globalUtf16End": 6886,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Andrey Kosarev, Deputy Chairman, Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), briefed the Board on the implementation of the 2021 cycle in the CIS region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted the need for the CIS linking to the global program to"
+          }
+        ],
+        "rejectedCandidates": [
+          {
+            "blockId": "b20",
+            "page": 2,
+            "sourceOrdinal": 20,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Schreyer noted a negligible effect on annual average prices, but a more pronounced effect on expenditure weights. Furthermore, as Russia is no longer participating in the OECD comparison, and thereby preventing the linking of the Commonwealth of Independent States (CIS) region through Russia, experiments are underway to link the CIS region directly to the global program, following the standard ICP"
+          },
+          {
+            "blockId": "b39",
+            "page": 3,
+            "sourceOrdinal": 39,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Andrey Kosarev, Deputy Chairman, Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), briefed the Board on the implementation of the 2021 cycle in the CIS region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted the need for the CIS linking to the global program to"
+          }
+        ]
+      },
+      {
+        "documentId": "DOC-0165",
+        "semanticHeadingText": "Latin America and the Caribbean",
+        "bindingText": "Latin America and the Caribbean",
+        "priorExactMatchCount": 3,
+        "wholeBlockExactCandidateCount": 1,
+        "selected": {
+          "blockId": "b41",
+          "page": 3,
+          "sourceOrdinal": 41,
+          "localUtf16Start": 0,
+          "localUtf16End": 31,
+          "globalUtf16Start": 7375,
+          "globalUtf16End": 7406
+        },
+        "resolutionMethod": "DETERMINISTIC_UNIQUE_WHOLE_BLOCK_EXACT",
+        "resolved": true,
+        "candidates": [
+          {
+            "blockId": "b41",
+            "page": 3,
+            "sourceOrdinal": 41,
+            "localUtf16Start": 0,
+            "localUtf16End": 31,
+            "globalUtf16Start": 7375,
+            "globalUtf16End": 7406,
+            "classification": "WHOLE_BLOCK_EXACT",
+            "matchedSourceText": "Latin America and the Caribbean"
+          },
+          {
+            "blockId": "b42",
+            "page": 3,
+            "sourceOrdinal": 42,
+            "localUtf16Start": 90,
+            "localUtf16End": 121,
+            "globalUtf16Start": 7497,
+            "globalUtf16End": 7528,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Ronaldo Ocampo, Director, Statistics Division, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), briefed the Board on the implementation of the 2021 cycle in the Latin America and the Caribbean region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that some economies have faced"
+          },
+          {
+            "blockId": "b42",
+            "page": 3,
+            "sourceOrdinal": 42,
+            "localUtf16Start": 199,
+            "localUtf16End": 230,
+            "globalUtf16Start": 7606,
+            "globalUtf16End": 7637,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Ronaldo Ocampo, Director, Statistics Division, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), briefed the Board on the implementation of the 2021 cycle in the Latin America and the Caribbean region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that some economies have faced"
+          }
+        ],
+        "rejectedCandidates": [
+          {
+            "blockId": "b42",
+            "page": 3,
+            "sourceOrdinal": 42,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Ronaldo Ocampo, Director, Statistics Division, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), briefed the Board on the implementation of the 2021 cycle in the Latin America and the Caribbean region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that some economies have faced"
+          },
+          {
+            "blockId": "b42",
+            "page": 3,
+            "sourceOrdinal": 42,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Ronaldo Ocampo, Director, Statistics Division, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), briefed the Board on the implementation of the 2021 cycle in the Latin America and the Caribbean region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that some economies have faced"
+          }
+        ]
+      },
+      {
+        "documentId": "DOC-0165",
+        "semanticHeadingText": "Western Asia",
+        "bindingText": "Western Asia",
+        "priorExactMatchCount": 3,
+        "wholeBlockExactCandidateCount": 1,
+        "selected": {
+          "blockId": "b44",
+          "page": 3,
+          "sourceOrdinal": 44,
+          "localUtf16Start": 0,
+          "localUtf16End": 12,
+          "globalUtf16Start": 8184,
+          "globalUtf16End": 8196
+        },
+        "resolutionMethod": "DETERMINISTIC_UNIQUE_WHOLE_BLOCK_EXACT",
+        "resolved": true,
+        "candidates": [
+          {
+            "blockId": "b44",
+            "page": 3,
+            "sourceOrdinal": 44,
+            "localUtf16Start": 0,
+            "localUtf16End": 12,
+            "globalUtf16Start": 8184,
+            "globalUtf16End": 8196,
+            "classification": "WHOLE_BLOCK_EXACT",
+            "matchedSourceText": "Western Asia"
+          },
+          {
+            "blockId": "b45",
+            "page": 3,
+            "sourceOrdinal": 45,
+            "localUtf16Start": 103,
+            "localUtf16End": 115,
+            "globalUtf16Start": 8300,
+            "globalUtf16End": 8312,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Majed Skaini, Statistician, Statistics Division, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), briefed the Board on the implementation of the 2021 cycle in the Western Asia region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that advocacy to integrate the ICP with other"
+          },
+          {
+            "blockId": "b45",
+            "page": 3,
+            "sourceOrdinal": 45,
+            "localUtf16Start": 193,
+            "localUtf16End": 205,
+            "globalUtf16Start": 8390,
+            "globalUtf16End": 8402,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Majed Skaini, Statistician, Statistics Division, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), briefed the Board on the implementation of the 2021 cycle in the Western Asia region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that advocacy to integrate the ICP with other"
+          }
+        ],
+        "rejectedCandidates": [
+          {
+            "blockId": "b45",
+            "page": 3,
+            "sourceOrdinal": 45,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Majed Skaini, Statistician, Statistics Division, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), briefed the Board on the implementation of the 2021 cycle in the Western Asia region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that advocacy to integrate the ICP with other"
+          },
+          {
+            "blockId": "b45",
+            "page": 3,
+            "sourceOrdinal": 45,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Mr. Majed Skaini, Statistician, Statistics Division, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), briefed the Board on the implementation of the 2021 cycle in the Western Asia region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that advocacy to integrate the ICP with other"
+          }
+        ]
+      },
+      {
+        "documentId": "DOC-0165",
+        "semanticHeadingText": "Eurostat-OECD PPP Programme",
+        "bindingText": "Eurostat-OECD PPP Programme",
+        "priorExactMatchCount": 2,
+        "wholeBlockExactCandidateCount": 1,
+        "selected": {
+          "blockId": "b48",
+          "page": 4,
+          "sourceOrdinal": 48,
+          "localUtf16Start": 0,
+          "localUtf16End": 27,
+          "globalUtf16Start": 9087,
+          "globalUtf16End": 9114
+        },
+        "resolutionMethod": "DETERMINISTIC_UNIQUE_WHOLE_BLOCK_EXACT",
+        "resolved": true,
+        "candidates": [
+          {
+            "blockId": "b48",
+            "page": 4,
+            "sourceOrdinal": 48,
+            "localUtf16Start": 0,
+            "localUtf16End": 27,
+            "globalUtf16Start": 9087,
+            "globalUtf16End": 9114,
+            "classification": "WHOLE_BLOCK_EXACT",
+            "matchedSourceText": "Eurostat-OECD PPP Programme"
+          },
+          {
+            "blockId": "b49",
+            "page": 4,
+            "sourceOrdinal": 49,
+            "localUtf16Start": 87,
+            "localUtf16End": 114,
+            "globalUtf16Start": 9202,
+            "globalUtf16End": 9229,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Ms. Mariana Kotzeva, Director General, Eurostat, reported on two aspects regarding the Eurostat-OECD PPP Programme. First, an update of the Eurostat-OECD methodological manual on PPPs is currently underway and will be published in 2023. Second, Georgia and Ukraine are participating in the Programme under Eurostat’s coordination. Efforts are underway to secure all required datasets for Ukraine’s full"
+          }
+        ],
+        "rejectedCandidates": [
+          {
+            "blockId": "b49",
+            "page": 4,
+            "sourceOrdinal": 49,
+            "classification": "EMBEDDED_EXACT_OCCURRENCE",
+            "matchedSourceText": "Ms. Mariana Kotzeva, Director General, Eurostat, reported on two aspects regarding the Eurostat-OECD PPP Programme. First, an update of the Eurostat-OECD methodological manual on PPPs is currently underway and will be published in 2023. Second, Georgia and Ukraine are participating in the Programme under Eurostat’s coordination. Efforts are underway to secure all required datasets for Ukraine’s full"
+          }
+        ]
+      }
+    ],
+    "wholeBlockResolvedCount": 5,
+    "unresolvedCount": 0
+  }
+]

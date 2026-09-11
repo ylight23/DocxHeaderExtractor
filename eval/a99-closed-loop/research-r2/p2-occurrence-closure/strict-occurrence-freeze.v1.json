@@ -1,0 +1,30 @@
+{
+  "artifactKind": "A99_R2_STRICT_OCCURRENCE_FREEZE",
+  "schemaVersion": "a99-r2-strict-occurrence-freeze-v1",
+  "documents": [
+    {
+      "documentId": "DOC-0158",
+      "semanticCount": 7,
+      "occurrenceResolved": 7,
+      "sha256": "b0a04c3c358432bfb38e5e763c88c2d42c2a58dd65d5f572b1a1b989d61e9855"
+    },
+    {
+      "documentId": "DOC-0165",
+      "semanticCount": 12,
+      "occurrenceResolved": 12,
+      "sha256": "ee4cb1d820bd60aa341d76d78953b4d993ccf0c2e0fcd77e16ff1d2fe48c540b"
+    }
+  ],
+  "totalSemanticHeadings": 19.0,
+  "totalOccurrenceResolved": 19.0,
+  "P1_EXACT_UNIQUE": 12,
+  "USER_FINAL_RESOLVED": 2,
+  "DETERMINISTIC_UNIQUE_WHOLE_BLOCK_EXACT": 5,
+  "unresolved": 0,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "strictOccurrenceGoldFrozen": true,
+  "r2BInferenceAuthorized": false,
+  "semanticMembershipChanged": false,
+  "historicalGoldModified": false
+}

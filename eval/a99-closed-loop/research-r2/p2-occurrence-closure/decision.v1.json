@@ -1,0 +1,21 @@
+{
+  "artifactKind": "A99_R2_P2B_DECISION",
+  "schemaVersion": "a99-r2-p2b-decision-v1",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "fiveAmbiguousHeadings": [
+    "Africa",
+    "Commonwealth of Independent States",
+    "Latin America and the Caribbean",
+    "Western Asia",
+    "Eurostat-OECD PPP Programme"
+  ],
+  "wholeBlockResolvedCount": 5,
+  "humanReviewRemainingCount": 0,
+  "doc0158ReadyCount": 7,
+  "doc0165ReadyCount": 12,
+  "strictOccurrenceGoldFrozen": true,
+  "terminal": "R2_P2_TWO_DOCUMENTS_STRICT_OCCURRENCE_READY",
+  "r2BInferenceAuthorized": false,
+  "noAutomaticP3": true
+}
