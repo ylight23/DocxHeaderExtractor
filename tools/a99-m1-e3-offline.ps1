@@ -156,8 +156,8 @@ foreach ($doc in $Docs) {
         $aKeys = @{}; $bKeys = @{}
         foreach ($h in $aPred.finalHeadings) { $aKeys[(Get-Key $h)] = $true }
         foreach ($h in $bPred.finalHeadings) { $bKeys[(Get-Key $h)] = $true }
-        foreach ($k in $bKeys.Keys) { if (!$aKeys.ContainsKey($k)) { if ($goldKeys.ContainsKey($k)) { $concrete.addedTruePositiveKeys += $k } else { $concrete.addedFalsePositiveKeys += $k } } }
-        foreach ($k in $aKeys.Keys) { if (!$bKeys.ContainsKey($k)) { if ($goldKeys.ContainsKey($k)) { $concrete.removedTruePositiveKeys += $k } else { $concrete.removedFalsePositiveKeys += $k } } }
+        foreach ($k in ($bKeys.Keys | Sort-Object)) { if (!$aKeys.ContainsKey($k)) { if ($goldKeys.ContainsKey($k)) { $concrete.addedTruePositiveKeys += $k } else { $concrete.addedFalsePositiveKeys += $k } } }
+        foreach ($k in ($aKeys.Keys | Sort-Object)) { if (!$bKeys.ContainsKey($k)) { if ($goldKeys.ContainsKey($k)) { $concrete.removedTruePositiveKeys += $k } else { $concrete.removedFalsePositiveKeys += $k } } }
         if ($null -eq $firstDivergence -and $classification -ne 'NONE') { $firstDivergence = $key }
         $cellRows += [ordered]@{
             documentId = $doc; repeat = "R$repeat"; a = $a.score; b = $b.score; delta = $delta; classification = $classification
@@ -182,7 +182,7 @@ Write-Json (Join-Path $M1Root 'cell-diff.v1.json') ([ordered]@{
     conservation = [ordered]@{ expected = [ordered]@{ tp = 3; fp = 10; fn = -3 }; observed = $deltaTotals; pass = ($deltaTotals.tp -eq 3 -and $deltaTotals.fp -eq 10 -and $deltaTotals.fn -eq -3) }
 })
 
-$i5Rows = @(); $i5Root = Join-Path $RepoRoot $I5Root
+$i5Rows = @(); $i5AbsoluteRoot = Join-Path $RepoRoot $I5Root
 $canonicalByCell = $bByCell
 $canonicalTp = 0; $canonicalFp = 0; $canonicalFn = 0; $i5Tp = 0; $i5Fp = 0; $i5Fn = 0
 foreach ($doc in $Docs) {
