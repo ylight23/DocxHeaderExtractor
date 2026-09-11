@@ -1,0 +1,708 @@
+{
+  "schemaVersion": "a99-baseline-cell-diff-v1",
+  "offlineOnly": true,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "firstScoreDivergence": "DOC-0205/R1",
+  "rows": [
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R1",
+      "a": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "b": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "classification": "NONE",
+      "predictionShaSame": false,
+      "resultShaSame": true,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0001.occurrence-gold-v1.json",
+      "goldSha256": "64bbcdb9cef4bbafefadeffcc60d208c0d5891fa95eb1e14b3caf28b8b458070",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [],
+        "removedFalsePositiveKeys": []
+      }
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R2",
+      "a": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "b": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "classification": "NONE",
+      "predictionShaSame": false,
+      "resultShaSame": true,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0001.occurrence-gold-v1.json",
+      "goldSha256": "64bbcdb9cef4bbafefadeffcc60d208c0d5891fa95eb1e14b3caf28b8b458070",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [],
+        "removedFalsePositiveKeys": []
+      }
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R3",
+      "a": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "b": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "classification": "NONE",
+      "predictionShaSame": false,
+      "resultShaSame": true,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0001.occurrence-gold-v1.json",
+      "goldSha256": "64bbcdb9cef4bbafefadeffcc60d208c0d5891fa95eb1e14b3caf28b8b458070",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [],
+        "removedFalsePositiveKeys": []
+      }
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "R1",
+      "a": {
+        "gold": 71,
+        "tp": 68,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.9855072463768116,
+        "recall": 0.9577464788732394,
+        "f1": 0.9714285714285714
+      },
+      "b": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "delta": {
+        "tp": 3,
+        "fp": 0,
+        "fn": -3
+      },
+      "classification": "PREDICTION_DIFFERENCE",
+      "predictionShaSame": false,
+      "resultShaSame": false,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0205.occurrence-gold-v1.json",
+      "goldSha256": "fdd4ed7219fda1e6de43693ee6ae431704037e6b9c977b27812388d308fa3e1b",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [
+          "body[1]/p[4]@29974:30039",
+          "body[1]/p[4]@32357:32413",
+          "body[1]/p[4]@30572:30622"
+        ],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [
+          "body[1]/p[4]@1:266"
+        ],
+        "removedFalsePositiveKeys": [
+          "body[1]/p[4]@174:243"
+        ]
+      }
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "R2",
+      "a": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "b": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 0
+      },
+      "classification": "PREDICTION_DIFFERENCE",
+      "predictionShaSame": false,
+      "resultShaSame": false,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0205.occurrence-gold-v1.json",
+      "goldSha256": "fdd4ed7219fda1e6de43693ee6ae431704037e6b9c977b27812388d308fa3e1b",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [
+          "body[1]/p[4]@1:266"
+        ],
+        "removedFalsePositiveKeys": []
+      }
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "R3",
+      "a": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "b": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "classification": "NONE",
+      "predictionShaSame": false,
+      "resultShaSame": false,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0205.occurrence-gold-v1.json",
+      "goldSha256": "fdd4ed7219fda1e6de43693ee6ae431704037e6b9c977b27812388d308fa3e1b",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [
+          "body[1]/p[4]@1:266"
+        ],
+        "removedFalsePositiveKeys": [
+          "body[1]/p[4]@174:243"
+        ]
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R1",
+      "a": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414
+      },
+      "b": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 5,
+        "fn": 2,
+        "precision": 0.8333333333333334,
+        "recall": 0.9259259259259259,
+        "f1": 0.8771929824561403
+      },
+      "delta": {
+        "tp": 0,
+        "fp": -1,
+        "fn": 0
+      },
+      "classification": "PREDICTION_DIFFERENCE",
+      "predictionShaSame": false,
+      "resultShaSame": false,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0252.occurrence-gold-v1.json",
+      "goldSha256": "a603acf2588fdb2832c13dd05342d72c8a676ae2efb26c06441ad55a7771653c",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [],
+        "removedFalsePositiveKeys": [
+          "body[1]/p[178]@0:10"
+        ]
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R2",
+      "a": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414
+      },
+      "b": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 5,
+        "fn": 2,
+        "precision": 0.8333333333333334,
+        "recall": 0.9259259259259259,
+        "f1": 0.8771929824561403
+      },
+      "delta": {
+        "tp": 0,
+        "fp": -1,
+        "fn": 0
+      },
+      "classification": "PREDICTION_DIFFERENCE",
+      "predictionShaSame": false,
+      "resultShaSame": false,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0252.occurrence-gold-v1.json",
+      "goldSha256": "a603acf2588fdb2832c13dd05342d72c8a676ae2efb26c06441ad55a7771653c",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [],
+        "removedFalsePositiveKeys": [
+          "body[1]/p[178]@0:10"
+        ]
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R3",
+      "a": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 3,
+        "fn": 2,
+        "precision": 0.8928571428571429,
+        "recall": 0.9259259259259259,
+        "f1": 0.9090909090909091
+      },
+      "b": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 3,
+        "fn": 0
+      },
+      "classification": "PREDICTION_DIFFERENCE",
+      "predictionShaSame": false,
+      "resultShaSame": false,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0252.occurrence-gold-v1.json",
+      "goldSha256": "a603acf2588fdb2832c13dd05342d72c8a676ae2efb26c06441ad55a7771653c",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [
+          "body[1]/p[177]@0:42",
+          "body[1]/p[176]@0:42",
+          "body[1]/p[175]@0:36",
+          "body[1]/p[178]@0:10"
+        ],
+        "removedFalsePositiveKeys": [
+          "body[1]/p[4]@0:24"
+        ]
+      }
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R1",
+      "a": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "b": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "classification": "NONE",
+      "predictionShaSame": false,
+      "resultShaSame": true,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0256.occurrence-gold-v1.json",
+      "goldSha256": "b0666f211b8748009403841927042ec94458b0d458ff2bda98777710e12d7826",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [],
+        "removedFalsePositiveKeys": []
+      }
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R2",
+      "a": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "b": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "classification": "NONE",
+      "predictionShaSame": false,
+      "resultShaSame": true,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0256.occurrence-gold-v1.json",
+      "goldSha256": "b0666f211b8748009403841927042ec94458b0d458ff2bda98777710e12d7826",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [],
+        "removedFalsePositiveKeys": []
+      }
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R3",
+      "a": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "b": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 10,
+        "fn": 2,
+        "precision": 0.6875,
+        "recall": 0.9166666666666666,
+        "f1": 0.7857142857142857
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 9,
+        "fn": 0
+      },
+      "classification": "PREDICTION_DIFFERENCE",
+      "predictionShaSame": false,
+      "resultShaSame": false,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0256.occurrence-gold-v1.json",
+      "goldSha256": "b0666f211b8748009403841927042ec94458b0d458ff2bda98777710e12d7826",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [
+          "body[1]/p[130]@0:28",
+          "body[1]/p[125]@0:31",
+          "body[1]/p[139]@0:57",
+          "body[1]/p[149]@0:33",
+          "body[1]/p[142]@0:81",
+          "body[1]/p[133]@0:85",
+          "body[1]/p[151]@0:10",
+          "body[1]/p[146]@0:73",
+          "body[1]/p[136]@0:61"
+        ],
+        "removedFalsePositiveKeys": []
+      }
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R1",
+      "a": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "b": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "classification": "NONE",
+      "predictionShaSame": true,
+      "resultShaSame": true,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0258.occurrence-gold-v1.json",
+      "goldSha256": "19120156f87e5abf922ac98e6bddc9edad3041387ef5ecd107ef0bad5e1a4193",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [],
+        "removedFalsePositiveKeys": []
+      }
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R2",
+      "a": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 1,
+        "fn": 6,
+        "precision": 0.9473684210526315,
+        "recall": 0.75,
+        "f1": 0.8372093023255814
+      },
+      "b": {
+        "gold": 24,
+        "tp": 17,
+        "fp": 1,
+        "fn": 7,
+        "precision": 0.9444444444444444,
+        "recall": 0.7083333333333334,
+        "f1": 0.8095238095238096
+      },
+      "delta": {
+        "tp": -1,
+        "fp": 0,
+        "fn": 1
+      },
+      "classification": "PREDICTION_DIFFERENCE",
+      "predictionShaSame": false,
+      "resultShaSame": false,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0258.occurrence-gold-v1.json",
+      "goldSha256": "19120156f87e5abf922ac98e6bddc9edad3041387ef5ecd107ef0bad5e1a4193",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [],
+        "removedTruePositiveKeys": [
+          "body[1]/p[17]@0:25"
+        ],
+        "addedFalsePositiveKeys": [],
+        "removedFalsePositiveKeys": []
+      }
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R3",
+      "a": {
+        "gold": 24,
+        "tp": 17,
+        "fp": 1,
+        "fn": 7,
+        "precision": 0.9444444444444444,
+        "recall": 0.7083333333333334,
+        "f1": 0.8095238095238096
+      },
+      "b": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "delta": {
+        "tp": 1,
+        "fp": -1,
+        "fn": -1
+      },
+      "classification": "PREDICTION_DIFFERENCE",
+      "predictionShaSame": false,
+      "resultShaSame": false,
+      "goldSame": true,
+      "goldPath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0258.occurrence-gold-v1.json",
+      "goldSha256": "19120156f87e5abf922ac98e6bddc9edad3041387ef5ecd107ef0bad5e1a4193",
+      "scorerSame": true,
+      "contractSame": true,
+      "promptSame": true,
+      "packetSame": true,
+      "concreteDeltaKeys": {
+        "addedTruePositiveKeys": [
+          "body[1]/p[115]@0:29"
+        ],
+        "removedTruePositiveKeys": [],
+        "addedFalsePositiveKeys": [],
+        "removedFalsePositiveKeys": [
+          "body[1]/p[115]@0:230"
+        ]
+      }
+    }
+  ],
+  "conservation": {
+    "expected": {
+      "tp": 3,
+      "fp": 10,
+      "fn": -3
+    },
+    "observed": {
+      "tp": 3.0,
+      "fp": 10.0,
+      "fn": -3.0
+    },
+    "pass": true
+  }
+}

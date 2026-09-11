@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "a99-m1-e3-offline-summary-v1",
+  "taskHead": "55b5b0b0cfb4735586187f7eac0baf844c9d6d8d",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldFirewall": "PASS",
+  "m1": {
+    "classification": "CANONICAL_B0_428_32_31",
+    "canonicalLineage": "lineage-b.v1.json",
+    "canonicalMetric": {
+      "gold": 459,
+      "tp": 428,
+      "fp": 32,
+      "fn": 31,
+      "precision": 0.9304347826086956,
+      "recall": 0.9324618736383442,
+      "f1": 0.9314472252448313
+    },
+    "alternate425Source": "lineage-a.v1.json",
+    "alternateViewType": "ALTERNATE_FROZEN_PRIOR_RUN",
+    "firstScoreDivergence": "DOC-0205/R1",
+    "conservation": {
+      "tp": 3.0,
+      "fp": 10.0,
+      "fn": -3.0
+    },
+    "i5DecisionStability": "REVERT_STABLE",
+    "canonicalRationale": "B is the frozen campaign explicitly named by the I5 behavioral parent B0@76c4e01 and its residual target family exactly matches the I5 seven-case target set. A is an earlier same-contract frozen run whose persistent omission set differs, so its 425 aggregate cannot be silently used as the I5 comparator."
+  },
+  "e3": {
+    "classification": "NO_GENERIC_OCCURRENCE_DISCRIMINATOR",
+    "targetCount": 7,
+    "i6Authorized": false,
+    "artifactRoot": "eval/a99-closed-loop/baseline-authority-reconciliation/e3"
+  },
+  "preservedArtifacts": [
+    "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\semantic-contrast-contract\\i5/decision.v1.json",
+    "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\semantic-contrast-contract\\i5/summary.v1.json"
+  ]
+}

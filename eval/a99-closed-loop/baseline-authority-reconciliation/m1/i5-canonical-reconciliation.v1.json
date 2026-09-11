@@ -1,0 +1,932 @@
+{
+  "schemaVersion": "a99-i5-canonical-reconciliation-v1",
+  "experimentId": "A99-I5",
+  "offlineOnly": true,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "canonicalBaseline": {
+    "lineage": "B_428_32_31",
+    "artifact": "eval/a99-closed-loop/baseline-authority-reconciliation/m1/lineage-b.v1.json",
+    "metric": {
+      "gold": 459,
+      "tp": 428,
+      "fp": 32,
+      "fn": 31,
+      "precision": 0.9304347826086956,
+      "recall": 0.9324618736383442,
+      "f1": 0.9314472252448313
+    }
+  },
+  "previousReportedBaseline": {
+    "artifact": "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\semantic-contrast-contract\\i5/decision.v1.json",
+    "metric": {
+      "gold": 459,
+      "tp": 428,
+      "fp": 32,
+      "fn": 31,
+      "precision": 0.9304347826086956,
+      "recall": 0.9324618736383442,
+      "f1": 0.9314472252448314
+    },
+    "parent": "B0@76c4e01"
+  },
+  "i5Micro": {
+    "gold": 459,
+    "tp": 428,
+    "fp": 21,
+    "fn": 31,
+    "precision": 0.9532293986636972,
+    "recall": 0.9324618736383442,
+    "f1": 0.9427312775330396
+  },
+  "perCell": [
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R1",
+      "canonicalB0": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "i5": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R2",
+      "canonicalB0": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "i5": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R3",
+      "canonicalB0": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "i5": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "R1",
+      "canonicalB0": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "i5": {
+        "gold": 71,
+        "tp": 70,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.9859154929577465,
+        "recall": 0.9859154929577465,
+        "f1": 0.9859154929577465
+      },
+      "delta": {
+        "tp": -1,
+        "fp": 0,
+        "fn": 1,
+        "f1": -0.007091500049246524
+      },
+      "classification": "REGRESSION"
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "R2",
+      "canonicalB0": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "i5": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "R3",
+      "canonicalB0": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "i5": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R1",
+      "canonicalB0": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 5,
+        "fn": 2,
+        "precision": 0.8333333333333334,
+        "recall": 0.9259259259259259,
+        "f1": 0.8771929824561403
+      },
+      "i5": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 0,
+        "f1": -0.015124016938898865
+      },
+      "classification": "REGRESSION"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R2",
+      "canonicalB0": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 5,
+        "fn": 2,
+        "precision": 0.8333333333333334,
+        "recall": 0.9259259259259259,
+        "f1": 0.8771929824561403
+      },
+      "i5": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 3,
+        "fn": 2,
+        "precision": 0.8928571428571429,
+        "recall": 0.9259259259259259,
+        "f1": 0.9090909090909091
+      },
+      "delta": {
+        "tp": 0,
+        "fp": -2,
+        "fn": 0,
+        "f1": 0.03189792663476876
+      },
+      "classification": "IMPROVEMENT"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R3",
+      "canonicalB0": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414
+      },
+      "i5": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R1",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R2",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R3",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 10,
+        "fn": 2,
+        "precision": 0.6875,
+        "recall": 0.9166666666666666,
+        "f1": 0.7857142857142857
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "delta": {
+        "tp": 0,
+        "fp": -9,
+        "fn": 0,
+        "f1": 0.15045592705167166
+      },
+      "classification": "IMPROVEMENT"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R1",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R2",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 17,
+        "fp": 1,
+        "fn": 7,
+        "precision": 0.9444444444444444,
+        "recall": 0.7083333333333334,
+        "f1": 0.8095238095238096
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "delta": {
+        "tp": 1,
+        "fp": -1,
+        "fn": -1,
+        "f1": 0.04761904761904745
+      },
+      "classification": "IMPROVEMENT"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R3",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    }
+  ],
+  "pairedCellRegressions": [
+    {
+      "documentId": "DOC-0205",
+      "repeat": "R1",
+      "canonicalB0": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "i5": {
+        "gold": 71,
+        "tp": 70,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.9859154929577465,
+        "recall": 0.9859154929577465,
+        "f1": 0.9859154929577465
+      },
+      "delta": {
+        "tp": -1,
+        "fp": 0,
+        "fn": 1,
+        "f1": -0.007091500049246524
+      },
+      "classification": "REGRESSION"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R1",
+      "canonicalB0": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 5,
+        "fn": 2,
+        "precision": 0.8333333333333334,
+        "recall": 0.9259259259259259,
+        "f1": 0.8771929824561403
+      },
+      "i5": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 0,
+        "f1": -0.015124016938898865
+      },
+      "classification": "REGRESSION"
+    }
+  ],
+  "pairedCellImprovements": [
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R2",
+      "canonicalB0": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 5,
+        "fn": 2,
+        "precision": 0.8333333333333334,
+        "recall": 0.9259259259259259,
+        "f1": 0.8771929824561403
+      },
+      "i5": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 3,
+        "fn": 2,
+        "precision": 0.8928571428571429,
+        "recall": 0.9259259259259259,
+        "f1": 0.9090909090909091
+      },
+      "delta": {
+        "tp": 0,
+        "fp": -2,
+        "fn": 0,
+        "f1": 0.03189792663476876
+      },
+      "classification": "IMPROVEMENT"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R3",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 10,
+        "fn": 2,
+        "precision": 0.6875,
+        "recall": 0.9166666666666666,
+        "f1": 0.7857142857142857
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "delta": {
+        "tp": 0,
+        "fp": -9,
+        "fn": 0,
+        "f1": 0.15045592705167166
+      },
+      "classification": "IMPROVEMENT"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R2",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 17,
+        "fp": 1,
+        "fn": 7,
+        "precision": 0.9444444444444444,
+        "recall": 0.7083333333333334,
+        "f1": 0.8095238095238096
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "delta": {
+        "tp": 1,
+        "fp": -1,
+        "fn": -1,
+        "f1": 0.04761904761904745
+      },
+      "classification": "IMPROVEMENT"
+    }
+  ],
+  "pairedCellEqual": [
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R1",
+      "canonicalB0": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "i5": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R2",
+      "canonicalB0": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "i5": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0001",
+      "repeat": "R3",
+      "canonicalB0": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "i5": {
+        "gold": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "R2",
+      "canonicalB0": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "i5": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0205",
+      "repeat": "R3",
+      "canonicalB0": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "i5": {
+        "gold": 71,
+        "tp": 71,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9861111111111112,
+        "recall": 1.0,
+        "f1": 0.993006993006993
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": "R3",
+      "canonicalB0": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414
+      },
+      "i5": {
+        "gold": 27,
+        "tp": 25,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8064516129032258,
+        "recall": 0.9259259259259259,
+        "f1": 0.8620689655172414
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R1",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0256",
+      "repeat": "R2",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 22,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9565217391304348,
+        "recall": 0.9166666666666666,
+        "f1": 0.9361702127659574
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R1",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    },
+    {
+      "documentId": "DOC-0258",
+      "repeat": "R3",
+      "canonicalB0": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "i5": {
+        "gold": 24,
+        "tp": 18,
+        "fp": 0,
+        "fn": 6,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      "delta": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": 0.0
+      },
+      "classification": "EQUAL"
+    }
+  ],
+  "persistentTargetBefore": 7,
+  "persistentTargetAfter": 7,
+  "targetRecovered": 0,
+  "persistentFpBefore": 7,
+  "persistentFpAfter": 3,
+  "bindAmbiguousBefore": 2,
+  "bindAmbiguousAfter": 1,
+  "systemLoss": 0,
+  "bindFailure": 0,
+  "decisionStability": "REVERT_STABLE",
+  "originalI5DecisionPreserved": true,
+  "goldFirewall": "PASS"
+}

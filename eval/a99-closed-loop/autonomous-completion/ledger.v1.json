@@ -78,6 +78,23 @@
       "goldReadBeforeFreeze": false,
       "decision": "SEMANTIC_CONTRAST_CONTRACT_REVERT",
       "commit": "PENDING_FINAL_COMMIT"
+    },
+    {
+      "experimentId": "A99-M1",
+      "parent": "B0@76c4e01",
+      "failureClass": "BASELINE_AUTHORITY_RECONCILIATION",
+      "mechanismFamily": "measurement-lineage",
+      "modelCalls": 0,
+      "providerCalls": 0,
+      "lineageA": "425/22/34 at e4b7173",
+      "lineageB": "428/32/31 at 76c4e01",
+      "canonical": "CANONICAL_B0_428_32_31",
+      "conservationDelta": "+3 TP, +10 FP, -3 FN",
+      "firstScoreDivergence": "DOC-0205/R1",
+      "i5DecisionStability": "REVERT_STABLE",
+      "goldReadBeforeFreeze": false,
+      "decision": "CANONICAL_B0_428_32_31",
+      "commit": "PENDING_FINAL_COMMIT"
     }
   ]
 }
