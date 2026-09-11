@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "a99-a99-c1-new-evidence-admission-gate-v1",
+  "status": "FROZEN_FOR_FUTURE_RESEARCH",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "admissionRule": "A future experiment may start only when every criterion is true.",
+  "requiredCriteria": [
+    "targets an observed residual",
+    "identifies one causal owner",
+    "evidence is distinct from rejected mechanism families",
+    "changes exactly one causal variable",
+    "is generic across documents",
+    "requires no Gold-derived runtime rules",
+    "has a measurable pre-registered target metric",
+    "freezes KEEP/REVERT gate before inference"
+  ],
+  "insufficientEvidence": [
+    "another wording variant",
+    "another prompt example",
+    "larger context window",
+    "another boundary syntax",
+    "another generic second pass",
+    "another random model",
+    "higher aggregate F1 on unrelated cases",
+    "manual observation that it looks better"
+  ],
+  "prohibited": [
+    "Gold-derived runtime rules",
+    "document-specific fixes",
+    "silent authority changes",
+    "reopening I1-I6 without new causal evidence",
+    "production/default behavior changes during evidence generation"
+  ]
+}

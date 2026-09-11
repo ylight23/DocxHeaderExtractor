@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "a99-a99-c1-terminal-summary-v1",
+  "phase": "A99-C1",
+  "terminalStatus": "A99_DEV_TARGET_NOT_REACHED",
+  "optimizationLoop": "CLOSED",
+  "causalSpaceStatus": "NO_EVIDENCE_BACKED_INTERVENTION_REMAINS",
+  "canonicalB0": {
+    "tp": 428,
+    "fp": 32,
+    "fn": 31,
+    "precision": 0.9304347826,
+    "recall": 0.9324618736,
+    "f1": 0.931447225
+  },
+  "systemLoss": 0,
+  "bindFailure": 0,
+  "releaseCandidate": "HOLD",
+  "acceptedArchitecture": "B0",
+  "acceptedModel": "qwen/qwen3.7-flash",
+  "persistentTargetOmissions": 7,
+  "roleMeasurement": "NOT_MEASURED",
+  "hierarchyMeasurement": "NOT_MEASURED",
+  "nextResearchPhase": "A99-R2_INDEPENDENT_RESIDUAL_GENERALIZATION_STUDY",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "currentHead": "213475a17cb498df19114dfd3f6ebdfe55e706d3",
+  "remoteExpectedHead": "213475a17cb498df19114dfd3f6ebdfe55e706d3",
+  "authorityArtifact": "eval/a99-closed-loop/closure/c1/canonical-authority.v1.json",
+  "causalLedger": "eval/a99-closed-loop/closure/c1/causal-ledger.v1.json",
+  "newEvidenceGate": "eval/a99-closed-loop/closure/c1/new-evidence-gate.v1.json",
+  "researchProtocol": "eval/a99-closed-loop/research-r2/manifest.v1.json"
+}

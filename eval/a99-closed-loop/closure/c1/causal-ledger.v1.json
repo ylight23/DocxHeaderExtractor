@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "a99-a99-c1-causal-ledger-v1",
+  "experimentGeneration": "A99-current-generation",
+  "behavioralParent": "B0@76c4e01",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "entries": [
+    {
+      "id": "I1",
+      "family": "GENERIC_OMISSION_REVIEW",
+      "hypothesis": "A generic second review pass would recover stable model omissions",
+      "target": "7 persistent omissions",
+      "result": "No persistent target recovery",
+      "decision": "REJECTED",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: independent residual class showing omission review is the owner"
+    },
+    {
+      "id": "I2",
+      "family": "DUPLICATE_IDENTITY",
+      "hypothesis": "Duplicate identity/disambiguation is suppressing target headings",
+      "target": "stable duplicate/identity residuals",
+      "result": "No target recovery under deterministic disambiguation",
+      "decision": "REJECTED",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: new generic ambiguity mechanism not present in the audited cases"
+    },
+    {
+      "id": "I3",
+      "family": "LOSSLESS_SOURCE_BOUNDARIES",
+      "hypothesis": "Generic lossless boundaries improve semantic discovery",
+      "target": "7 persistent omissions",
+      "result": "Persistent omissions unchanged",
+      "decision": "REJECTED",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: independent evidence that missing boundaries, not representation syntax, causes the residual"
+    },
+    {
+      "id": "I4",
+      "family": "MODEL_CAPABILITY_QWEN35_9B",
+      "hypothesis": "A model capability swap removes the residual",
+      "target": "paired B0 capability",
+      "result": "No generic promotion evidence / challenger path closed",
+      "decision": "CLOSED",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: challenger specifically addresses the observed failure and passes pre-registered paired gate"
+    },
+    {
+      "id": "I5",
+      "family": "SEMANTIC_CONTRAST_CONTRACT",
+      "hypothesis": "Generic occurrence-level semantic contrast wording recovers omissions",
+      "target": "7 persistent omissions",
+      "result": "No target recovery; prompt reverted",
+      "decision": "REVERTED",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: distinct causal mechanism beyond another wording/example variant"
+    },
+    {
+      "id": "E3",
+      "family": "OCCURRENCE_CONTEXT",
+      "hypothesis": "Generic occurrence context/discriminator resolves the residual",
+      "target": "same-lexeme and sibling contrasts",
+      "result": "NO_GENERIC_OCCURRENCE_DISCRIMINATOR",
+      "decision": "CLOSED_NOT_AUTHORIZED",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: new source fact demonstrably separates positive and negative occurrences"
+    },
+    {
+      "id": "I6",
+      "family": "DISCOVERY_ROLE_DECOMPOSITION",
+      "hypothesis": "Mandatory role classification suppresses heading discovery",
+      "target": "7 persistent omissions",
+      "result": "Pass A 423/105/36 F1 .857142857; persistent misses 7/7; recovery 0",
+      "decision": "REVERTED",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: independent evidence that role pressure, rather than task decomposition itself, is the owner"
+    },
+    {
+      "id": "V1",
+      "family": "STRUCTURAL_CONTEXT_ENRICHMENT",
+      "hypothesis": "Objective structural facts improve discovery",
+      "target": "stable semantic residuals",
+      "result": "Provider-blocked/incomplete measurement; no architecture promotion",
+      "decision": "CLOSED_PROVIDER_BLOCKED",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: new generic residual class plus deterministic absent source fact"
+    },
+    {
+      "id": "VLM",
+      "family": "VLM_VISUAL_PATH",
+      "hypothesis": "Visual/layout evidence is necessary for unresolved heading truth",
+      "target": "visual capability ceiling",
+      "result": "Not admitted as current semantic-text intervention owner",
+      "decision": "CLOSED_FOR_GENERATION",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: independent cases prove text representation cannot resolve heading truth"
+    },
+    {
+      "id": "CANDIDATE",
+      "family": "CANDIDATE_FIRST",
+      "hypothesis": "Harness-generated candidates can recover recall",
+      "target": "semantic discovery",
+      "result": "Not an admissible architecture for this causal lane",
+      "decision": "CLOSED_PROHIBITED",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: explicit authorization and evidence that candidate generation is not hiding the target class"
+    },
+    {
+      "id": "OFFSET",
+      "family": "NUMERIC_OFFSET_CONTRACT",
+      "hypothesis": "Model-generated numeric offsets are a reliable discovery contract",
+      "target": "exact binding",
+      "result": "Superseded by semantic text + deterministic binder",
+      "decision": "REJECTED_AS_CONTRACT",
+      "reopenCondition": "REOPEN_ONLY_WITH_NEW_CAUSAL_EVIDENCE: independent proof that numeric coordinates improve discovery without binding regression"
+    }
+  ]
+}

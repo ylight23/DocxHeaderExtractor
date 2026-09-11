@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-a99-r2-independent-residual-generalization-study-manifest-v1",
+  "studyId": "A99-R2",
+  "status": "PREPARATION_ONLY_NOT_EXECUTED",
+  "parentGeneration": "A99-C1",
+  "behavioralParent": "B0@76c4e01",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "runtimeChanges": 0,
+  "goldReadBeforeFreeze": false,
+  "purpose": "Determine whether the seven-case failure represents a generic semantic class across unseen documents or is cohort-specific.",
+  "notAnIntervention": true,
+  "noModelChanges": true,
+  "noPromptChanges": true,
+  "noTuning": true,
+  "documentSelection": {
+    "criteriaFrozenBeforeLabels": true,
+    "documentLevelSampling": true,
+    "independentOfCurrentGoldErrors": true,
+    "excludeCurrentDevCohort": true,
+    "doNotSearchKnownTargetStrings": true,
+    "knownTargetStrings": [
+      "Africa",
+      "Western Asia",
+      "Eurostat–OECD PPP Program"
+    ],
+    "selectionBasis": "fixed document metadata/domain/length/structure strata, sampled before heading labels are inspected",
+    "selectedDocuments": []
+  },
+  "goldProtocol": {
+    "humanReviewRequired": true,
+    "exactSourceBackedSpans": true,
+    "independentDoubleReview": true,
+    "adjudicationForDisagreement": true,
+    "semanticClassAnnotation": [
+      "heading presence",
+      "semantic family",
+      "source occurrence identity",
+      "exact UTF-16 span",
+      "role if independently authorized"
+    ]
+  },
+  "blindness": {
+    "annotatorsBlindToModelOutputs": true,
+    "annotatorsBlindToCurrentSevenCases": true,
+    "runtimeGoldUnavailable": true,
+    "analysisUnblindedOnlyAfterFreeze": true
+  },
+  "measurement": {
+    "primary": "prevalence and reproducibility of the residual semantic class",
+    "secondary": [
+      "exact occurrence agreement",
+      "semantic-family agreement",
+      "text-only resolvability",
+      "negative opportunity rate"
+    ],
+    "noOptimizationMetric": true,
+    "noKeepRevertUntilNewGeneration": true
+  },
+  "admissionPrerequisite": "A99-C1 new-evidence admission gate must pass before any intervention generation is proposed."
+}
