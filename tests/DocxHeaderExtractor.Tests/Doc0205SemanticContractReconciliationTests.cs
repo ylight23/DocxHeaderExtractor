@@ -301,8 +301,8 @@ public sealed class Doc0205SemanticContractReconciliationTests
         Assert.False(root.GetProperty("goldReadBeforeFreeze").GetBoolean());
         Assert.Equal(153, root.GetProperty("goldTotal").GetInt32());
         Assert.Equal(0, root.GetProperty("systemLoss").GetInt32());
-        Assert.Equal("STABLE_MODEL_ERRORS_DOMINATE", root.GetProperty("finalClassification").GetString());
-        Assert.Equal("STABLE_OMISSION", root.GetProperty("largestResidualBucket").GetString());
+        Assert.Equal("MIXED_RESIDUALS_NO_CLEAR_WINNER", root.GetProperty("finalClassification").GetString());
+        Assert.Equal("STOCHASTIC_FP", root.GetProperty("largestResidualBucket").GetString());
 
         using var matrix = LoadStability("baseline-matrix.v1.json");
         Assert.False(matrix.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());
@@ -325,23 +325,23 @@ public sealed class Doc0205SemanticContractReconciliationTests
     {
         using var stability = LoadStability("gold-stability.v1.json");
         var root = stability.RootElement;
-        Assert.Equal(139, root.GetProperty("found3of3").GetInt32());
-        Assert.Equal(3, root.GetProperty("found2of3").GetInt32());
-        Assert.Equal(2, root.GetProperty("found1of3").GetInt32());
-        Assert.Equal(9, root.GetProperty("found0of3").GetInt32());
-        Assert.Equal(139, root.GetProperty("stableExact").GetInt32());
-        Assert.Equal(5, root.GetProperty("spanVariant").GetInt32());
-        Assert.Equal(9, root.GetProperty("stableOmission").GetInt32());
+        Assert.Equal(142, root.GetProperty("found3of3").GetInt32());
+        Assert.Equal(1, root.GetProperty("found2of3").GetInt32());
+        Assert.Equal(0, root.GetProperty("found1of3").GetInt32());
+        Assert.Equal(10, root.GetProperty("found0of3").GetInt32());
+        Assert.Equal(142, root.GetProperty("stableExact").GetInt32());
+        Assert.Equal(1, root.GetProperty("spanVariant").GetInt32());
+        Assert.Equal(10, root.GetProperty("stableOmission").GetInt32());
         Assert.Equal(0, root.GetProperty("stochasticOmission").GetInt32());
-        Assert.Equal(3, root.GetProperty("fpStability").GetProperty("fp3of3").GetInt32());
-        Assert.Equal(6, root.GetProperty("fpStability").GetProperty("fp2of3").GetInt32());
-        Assert.Equal(1, root.GetProperty("fpStability").GetProperty("fp1of3").GetInt32());
+        Assert.Equal(7, root.GetProperty("fpStability").GetProperty("fp3of3").GetInt32());
+        Assert.Equal(0, root.GetProperty("fpStability").GetProperty("fp2of3").GetInt32());
+        Assert.Equal(11, root.GetProperty("fpStability").GetProperty("fp1of3").GetInt32());
 
         using var summary = LoadStability("summary.v1.json");
         var metrics = summary.RootElement.GetProperty("consensus").EnumerateArray().ToDictionary(x => x.GetProperty("label").GetString()!);
-        Assert.Equal((139, 3, 14), (metrics["INTERSECTION_3_OF_3"].GetProperty("tp").GetInt32(), metrics["INTERSECTION_3_OF_3"].GetProperty("fp").GetInt32(), metrics["INTERSECTION_3_OF_3"].GetProperty("fn").GetInt32()));
-        Assert.Equal((142, 9, 11), (metrics["MAJORITY_2_OF_3"].GetProperty("tp").GetInt32(), metrics["MAJORITY_2_OF_3"].GetProperty("fp").GetInt32(), metrics["MAJORITY_2_OF_3"].GetProperty("fn").GetInt32()));
-        Assert.Equal((144, 10, 9), (metrics["UNION_1_OF_3"].GetProperty("tp").GetInt32(), metrics["UNION_1_OF_3"].GetProperty("fp").GetInt32(), metrics["UNION_1_OF_3"].GetProperty("fn").GetInt32()));
+        Assert.Equal((142, 7, 11), (metrics["INTERSECTION_3_OF_3"].GetProperty("tp").GetInt32(), metrics["INTERSECTION_3_OF_3"].GetProperty("fp").GetInt32(), metrics["INTERSECTION_3_OF_3"].GetProperty("fn").GetInt32()));
+        Assert.Equal((143, 7, 10), (metrics["MAJORITY_2_OF_3"].GetProperty("tp").GetInt32(), metrics["MAJORITY_2_OF_3"].GetProperty("fp").GetInt32(), metrics["MAJORITY_2_OF_3"].GetProperty("fn").GetInt32()));
+        Assert.Equal((143, 18, 10), (metrics["UNION_1_OF_3"].GetProperty("tp").GetInt32(), metrics["UNION_1_OF_3"].GetProperty("fp").GetInt32(), metrics["UNION_1_OF_3"].GetProperty("fn").GetInt32()));
     }
 
     private static JsonDocument Load(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), Root, name)));
