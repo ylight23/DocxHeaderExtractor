@@ -95,6 +95,20 @@
       "goldReadBeforeFreeze": false,
       "decision": "CANONICAL_B0_428_32_31",
       "commit": "PENDING_FINAL_COMMIT"
+    },
+    {
+      "experimentId": "A99-E3",
+      "parent": "B0@76c4e01",
+      "failureClass": "NO_GENERIC_OCCURRENCE_DISCRIMINATOR",
+      "mechanismFamily": "source-occurrence-context",
+      "modelCalls": 0,
+      "providerCalls": 0,
+      "targetCount": 7,
+      "i6Authorized": false,
+      "goldReadBeforeFreeze": false,
+      "decision": "NO_GENERIC_OCCURRENCE_DISCRIMINATOR",
+      "nextOwner": "MODEL_TASK_CAPABILITY / residual semantic classification",
+      "commit": "PENDING_FINAL_COMMIT"
     }
   ]
 }

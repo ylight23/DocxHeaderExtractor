@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "a99-e3-feature-availability-matrix-v1",
+  "offlineOnly": true,
+  "canonicalB0": "B_428_32_31",
+  "rows": [
+    {
+      "feature": "container type",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "NO_EXPLICIT_FIELD",
+      "correlatesWithTarget": "mixed: table target versus paragraph family"
+    },
+    {
+      "feature": "table row/column",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "NO",
+      "correlatesWithTarget": "only DOC-0252 target"
+    },
+    {
+      "feature": "cell identity",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "NO",
+      "correlatesWithTarget": "only DOC-0252 target"
+    },
+    {
+      "feature": "paragraph sibling relation",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "PARTIAL_LEXICAL_ORDER_ONLY",
+      "correlatesWithTarget": "DOC-0258 family, but not a unique heading discriminator"
+    },
+    {
+      "feature": "list/numbering relation",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "NO",
+      "correlatesWithTarget": "not measured as a causal separator"
+    },
+    {
+      "feature": "style id",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "NO",
+      "correlatesWithTarget": "not measured as a causal separator"
+    },
+    {
+      "feature": "indentation",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "NO",
+      "correlatesWithTarget": "not measured as a causal separator"
+    },
+    {
+      "feature": "bold",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "NO",
+      "correlatesWithTarget": "not measured as a causal separator"
+    },
+    {
+      "feature": "font size",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "NO",
+      "correlatesWithTarget": "not measured as a causal separator"
+    },
+    {
+      "feature": "preceding/following block relation",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "PARTIAL_LEXICAL_ORDER_ONLY",
+      "correlatesWithTarget": "parent/body ordering visible, block relation not explicit"
+    },
+    {
+      "feature": "empty-line boundaries",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "NO",
+      "correlatesWithTarget": "not measured as a causal separator"
+    },
+    {
+      "feature": "repeated sibling pattern",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "YES_AS_ORDERED_TEXT",
+      "correlatesWithTarget": "shared by DOC-0258 misses and already visible"
+    },
+    {
+      "feature": "parent heading relation",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "PARTIAL_LEXICAL_ORDER_ONLY",
+      "correlatesWithTarget": "explicit hierarchy absent"
+    },
+    {
+      "feature": "document section",
+      "availableInSource": "YES",
+      "visibleInB0Packet": "PARTIAL_LEXICAL_ORDER_ONLY",
+      "correlatesWithTarget": "no single cross-target separator"
+    }
+  ],
+  "noFormattingRuleIntroduced": true
+}

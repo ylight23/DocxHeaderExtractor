@@ -1,0 +1,546 @@
+{
+  "schemaVersion": "a99-e3-target-occurrence-context-v1",
+  "experimentId": "A99-E3",
+  "offlineOnly": true,
+  "canonicalB0": "B_428_32_31",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "targets": [
+    {
+      "documentId": "DOC-0252",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "sourceAlias": null,
+      "verbatimText": "Western Asia",
+      "goldRole": "heading",
+      "goldLevel": 3,
+      "goldStatus": "STRICT_GOLD_HEADING",
+      "b0EmissionByRepeat": [
+        {
+          "repeat": "R1",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R2",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R3",
+          "emitted": false,
+          "bound": false
+        }
+      ],
+      "exactModelVisiblePacketEntry": {
+        "persisted": false,
+        "packetHash": "843dd251294acecb3662c5e77f3de0900fcb9e0cf19842b226e748a17a818fb0",
+        "contract": "sourceAlias + verbatimText + role",
+        "sourceAlias": null,
+        "verbatimText": "Western Asia",
+        "role": "not emitted; no model role persisted for omission",
+        "sourceOrdinal": "not persisted in target audit"
+      },
+      "previousPacketEntry": {
+        "sourceId": "same table: preceding parallel cell (exact text not persisted in B0 packet)",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "nextPacketEntry": {
+        "sourceId": "same table: following parallel cell (exact text not persisted in B0 packet)",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "containerType": "table cell",
+      "tableCoordinates": {
+        "tableIndex": 2,
+        "row": 1,
+        "cell": 2,
+        "paragraph": 6
+      },
+      "sameTextOtherOccurrences": {
+        "sourceId": "body[1]/p[46]",
+        "sourceAlias": "S0056",
+        "goldStatus": "NOT_GOLD",
+        "modelBehavior": "emitted",
+        "exactText": "Western Asia"
+      },
+      "siblingSourceOccurrences": [
+        "body[1]/p[24]",
+        "body[1]/p[27]",
+        "body[1]/p[31]",
+        "body[1]/p[39]",
+        "body[1]/p[42]",
+        "body[1]/tbl[2]/tr[1]/tc[2]/p[6]"
+      ],
+      "parentOrContainerContext": "Regional updates / table of regional results",
+      "localContext": "Regional comparison table cell; neighboring cells contain the parallel regional/program labels.",
+      "siblingPattern": "Africa, Asia and the Pacific, Commonwealth of Independent States, Eurostat–OECD PPP Program, and Latin America and the Caribbean are parallel labels in the same agenda block.",
+      "factsVisibleInB0": [
+        "sourceAlias",
+        "verbatimText",
+        "sourceOrdinal",
+        "ordered source position / neighboring lexical labels"
+      ],
+      "factsPresentInSourceButNotB0": [
+        "container type",
+        "table row/column/cell identity",
+        "style id and outline level",
+        "indentation/bold/font size",
+        "numbering",
+        "explicit hierarchy",
+        "layout/page relation"
+      ],
+      "evidence": "E2 residual audit plus frozen B0 packet hash; exact serialized packet body was not persisted, so packet-entry text is marked non-persisted rather than invented."
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[11]",
+      "sourceAlias": "S0009",
+      "verbatimText": "Africa",
+      "goldRole": "heading",
+      "goldLevel": 2,
+      "goldStatus": "STRICT_GOLD_HEADING",
+      "b0EmissionByRepeat": [
+        {
+          "repeat": "R1",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R2",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R3",
+          "emitted": false,
+          "bound": false
+        }
+      ],
+      "exactModelVisiblePacketEntry": {
+        "persisted": false,
+        "packetHash": "ba41b80ce8d8e655af8abbcd36e9917dbfc9e792c7e0000fbd66e954607d3384",
+        "contract": "sourceAlias + verbatimText + role",
+        "sourceAlias": "S0009",
+        "verbatimText": "Africa",
+        "role": "not emitted; no model role persisted for omission",
+        "sourceOrdinal": "not persisted in target audit"
+      },
+      "previousPacketEntry": {
+        "sourceId": "body[1]/p[10]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "nextPacketEntry": {
+        "sourceId": "body[1]/p[17]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "containerType": "paragraph",
+      "tableCoordinates": null,
+      "sameTextOtherOccurrences": null,
+      "siblingSourceOccurrences": [
+        "body[1]/p[11]",
+        "body[1]/p[12]",
+        "body[1]/p[17]",
+        "body[1]/p[18]",
+        "body[1]/p[19]",
+        "body[1]/p[24]"
+      ],
+      "parentOrContainerContext": "Regional updates on the ICP 2021 cycle implementation",
+      "localContext": "First leaf under the regional-updates section.",
+      "siblingPattern": "Africa, Asia and the Pacific, Commonwealth of Independent States, Latin America and the Caribbean, and Western Asia form a contiguous repeated leaf-label family.",
+      "factsVisibleInB0": [
+        "sourceAlias",
+        "verbatimText",
+        "sourceOrdinal",
+        "ordered source position / neighboring lexical labels"
+      ],
+      "factsPresentInSourceButNotB0": [
+        "container type",
+        "table row/column/cell identity",
+        "style id and outline level",
+        "indentation/bold/font size",
+        "numbering",
+        "explicit hierarchy",
+        "layout/page relation"
+      ],
+      "evidence": "E2 residual audit plus frozen B0 packet hash; exact serialized packet body was not persisted, so packet-entry text is marked non-persisted rather than invented."
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[12]",
+      "sourceAlias": "S0010",
+      "verbatimText": "Asia and the Pacific",
+      "goldRole": "heading",
+      "goldLevel": 2,
+      "goldStatus": "STRICT_GOLD_HEADING",
+      "b0EmissionByRepeat": [
+        {
+          "repeat": "R1",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R2",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R3",
+          "emitted": false,
+          "bound": false
+        }
+      ],
+      "exactModelVisiblePacketEntry": {
+        "persisted": false,
+        "packetHash": "ba41b80ce8d8e655af8abbcd36e9917dbfc9e792c7e0000fbd66e954607d3384",
+        "contract": "sourceAlias + verbatimText + role",
+        "sourceAlias": "S0010",
+        "verbatimText": "Asia and the Pacific",
+        "role": "not emitted; no model role persisted for omission",
+        "sourceOrdinal": "not persisted in target audit"
+      },
+      "previousPacketEntry": {
+        "sourceId": "body[1]/p[11]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "nextPacketEntry": {
+        "sourceId": "body[1]/p[17]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "containerType": "paragraph",
+      "tableCoordinates": null,
+      "sameTextOtherOccurrences": null,
+      "siblingSourceOccurrences": [
+        "body[1]/p[11]",
+        "body[1]/p[12]",
+        "body[1]/p[17]",
+        "body[1]/p[18]",
+        "body[1]/p[19]",
+        "body[1]/p[24]"
+      ],
+      "parentOrContainerContext": "Regional updates on the ICP 2021 cycle implementation",
+      "localContext": "Second leaf in the same contiguous regional-updates block.",
+      "siblingPattern": "Same five-member region-label family as DOC-0258/p11 and p17–p24.",
+      "factsVisibleInB0": [
+        "sourceAlias",
+        "verbatimText",
+        "sourceOrdinal",
+        "ordered source position / neighboring lexical labels"
+      ],
+      "factsPresentInSourceButNotB0": [
+        "container type",
+        "table row/column/cell identity",
+        "style id and outline level",
+        "indentation/bold/font size",
+        "numbering",
+        "explicit hierarchy",
+        "layout/page relation"
+      ],
+      "evidence": "E2 residual audit plus frozen B0 packet hash; exact serialized packet body was not persisted, so packet-entry text is marked non-persisted rather than invented."
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[17]",
+      "sourceAlias": null,
+      "verbatimText": "Eurostat–OECD PPP Program",
+      "goldRole": "heading",
+      "goldLevel": 2,
+      "goldStatus": "STRICT_GOLD_HEADING",
+      "b0EmissionByRepeat": [
+        {
+          "repeat": "R1",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R2",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R3",
+          "emitted": false,
+          "bound": false
+        }
+      ],
+      "exactModelVisiblePacketEntry": {
+        "persisted": false,
+        "packetHash": "ba41b80ce8d8e655af8abbcd36e9917dbfc9e792c7e0000fbd66e954607d3384",
+        "contract": "sourceAlias + verbatimText + role",
+        "sourceAlias": null,
+        "verbatimText": "Eurostat–OECD PPP Program",
+        "role": "not emitted; no model role persisted for omission",
+        "sourceOrdinal": "not persisted in target audit"
+      },
+      "previousPacketEntry": {
+        "sourceId": "body[1]/p[12]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "nextPacketEntry": {
+        "sourceId": "body[1]/p[18]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "containerType": "paragraph",
+      "tableCoordinates": null,
+      "sameTextOtherOccurrences": null,
+      "siblingSourceOccurrences": [
+        "body[1]/p[11]",
+        "body[1]/p[12]",
+        "body[1]/p[17]",
+        "body[1]/p[18]",
+        "body[1]/p[19]",
+        "body[1]/p[24]"
+      ],
+      "parentOrContainerContext": "Regional updates on the ICP 2021 cycle implementation",
+      "localContext": "Program leaf in the same regional/program update block.",
+      "siblingPattern": "Interleaved with region labels and presented as a peer leaf, despite naming a program rather than a geography.",
+      "factsVisibleInB0": [
+        "sourceAlias",
+        "verbatimText",
+        "sourceOrdinal",
+        "ordered source position / neighboring lexical labels"
+      ],
+      "factsPresentInSourceButNotB0": [
+        "container type",
+        "table row/column/cell identity",
+        "style id and outline level",
+        "indentation/bold/font size",
+        "numbering",
+        "explicit hierarchy",
+        "layout/page relation"
+      ],
+      "evidence": "E2 residual audit plus frozen B0 packet hash; exact serialized packet body was not persisted, so packet-entry text is marked non-persisted rather than invented."
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[18]",
+      "sourceAlias": "S0014",
+      "verbatimText": "Commonwealth of Independent States",
+      "goldRole": "heading",
+      "goldLevel": 2,
+      "goldStatus": "STRICT_GOLD_HEADING",
+      "b0EmissionByRepeat": [
+        {
+          "repeat": "R1",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R2",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R3",
+          "emitted": false,
+          "bound": false
+        }
+      ],
+      "exactModelVisiblePacketEntry": {
+        "persisted": false,
+        "packetHash": "ba41b80ce8d8e655af8abbcd36e9917dbfc9e792c7e0000fbd66e954607d3384",
+        "contract": "sourceAlias + verbatimText + role",
+        "sourceAlias": "S0014",
+        "verbatimText": "Commonwealth of Independent States",
+        "role": "not emitted; no model role persisted for omission",
+        "sourceOrdinal": "not persisted in target audit"
+      },
+      "previousPacketEntry": {
+        "sourceId": "body[1]/p[17]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "nextPacketEntry": {
+        "sourceId": "body[1]/p[19]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "containerType": "paragraph",
+      "tableCoordinates": null,
+      "sameTextOtherOccurrences": null,
+      "siblingSourceOccurrences": [
+        "body[1]/p[11]",
+        "body[1]/p[12]",
+        "body[1]/p[17]",
+        "body[1]/p[18]",
+        "body[1]/p[19]",
+        "body[1]/p[24]"
+      ],
+      "parentOrContainerContext": "Regional updates on the ICP 2021 cycle implementation",
+      "localContext": "Middle leaf in the contiguous regional/program update block.",
+      "siblingPattern": "Same repeated peer sequence as Africa, Asia and the Pacific, Latin America and the Caribbean, and Western Asia.",
+      "factsVisibleInB0": [
+        "sourceAlias",
+        "verbatimText",
+        "sourceOrdinal",
+        "ordered source position / neighboring lexical labels"
+      ],
+      "factsPresentInSourceButNotB0": [
+        "container type",
+        "table row/column/cell identity",
+        "style id and outline level",
+        "indentation/bold/font size",
+        "numbering",
+        "explicit hierarchy",
+        "layout/page relation"
+      ],
+      "evidence": "E2 residual audit plus frozen B0 packet hash; exact serialized packet body was not persisted, so packet-entry text is marked non-persisted rather than invented."
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[19]",
+      "sourceAlias": "S0015",
+      "verbatimText": "Latin America and the Caribbean",
+      "goldRole": "heading",
+      "goldLevel": 2,
+      "goldStatus": "STRICT_GOLD_HEADING",
+      "b0EmissionByRepeat": [
+        {
+          "repeat": "R1",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R2",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R3",
+          "emitted": false,
+          "bound": false
+        }
+      ],
+      "exactModelVisiblePacketEntry": {
+        "persisted": false,
+        "packetHash": "ba41b80ce8d8e655af8abbcd36e9917dbfc9e792c7e0000fbd66e954607d3384",
+        "contract": "sourceAlias + verbatimText + role",
+        "sourceAlias": "S0015",
+        "verbatimText": "Latin America and the Caribbean",
+        "role": "not emitted; no model role persisted for omission",
+        "sourceOrdinal": "not persisted in target audit"
+      },
+      "previousPacketEntry": {
+        "sourceId": "body[1]/p[17]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "nextPacketEntry": {
+        "sourceId": "body[1]/p[24]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "containerType": "paragraph",
+      "tableCoordinates": null,
+      "sameTextOtherOccurrences": null,
+      "siblingSourceOccurrences": [
+        "body[1]/p[11]",
+        "body[1]/p[12]",
+        "body[1]/p[17]",
+        "body[1]/p[18]",
+        "body[1]/p[19]",
+        "body[1]/p[24]"
+      ],
+      "parentOrContainerContext": "Regional updates on the ICP 2021 cycle implementation",
+      "localContext": "Regional leaf immediately following the program and CIS leaves.",
+      "siblingPattern": "Same five-member repeated region-label family.",
+      "factsVisibleInB0": [
+        "sourceAlias",
+        "verbatimText",
+        "sourceOrdinal",
+        "ordered source position / neighboring lexical labels"
+      ],
+      "factsPresentInSourceButNotB0": [
+        "container type",
+        "table row/column/cell identity",
+        "style id and outline level",
+        "indentation/bold/font size",
+        "numbering",
+        "explicit hierarchy",
+        "layout/page relation"
+      ],
+      "evidence": "E2 residual audit plus frozen B0 packet hash; exact serialized packet body was not persisted, so packet-entry text is marked non-persisted rather than invented."
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceId": "body[1]/p[24]",
+      "sourceAlias": "S0018",
+      "verbatimText": "Western Asia",
+      "goldRole": "heading",
+      "goldLevel": 2,
+      "goldStatus": "STRICT_GOLD_HEADING",
+      "b0EmissionByRepeat": [
+        {
+          "repeat": "R1",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R2",
+          "emitted": false,
+          "bound": false
+        },
+        {
+          "repeat": "R3",
+          "emitted": false,
+          "bound": false
+        }
+      ],
+      "exactModelVisiblePacketEntry": {
+        "persisted": false,
+        "packetHash": "ba41b80ce8d8e655af8abbcd36e9917dbfc9e792c7e0000fbd66e954607d3384",
+        "contract": "sourceAlias + verbatimText + role",
+        "sourceAlias": "S0018",
+        "verbatimText": "Western Asia",
+        "role": "not emitted; no model role persisted for omission",
+        "sourceOrdinal": "not persisted in target audit"
+      },
+      "previousPacketEntry": {
+        "sourceId": "body[1]/p[17]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "nextPacketEntry": {
+        "sourceId": "body[1]/p[25]",
+        "exactTextPersisted": false,
+        "evidence": "E2/residual context and ordered source identity only"
+      },
+      "containerType": "paragraph",
+      "tableCoordinates": null,
+      "sameTextOtherOccurrences": null,
+      "siblingSourceOccurrences": [
+        "body[1]/p[11]",
+        "body[1]/p[12]",
+        "body[1]/p[17]",
+        "body[1]/p[18]",
+        "body[1]/p[19]",
+        "body[1]/p[24]"
+      ],
+      "parentOrContainerContext": "Regional updates on the ICP 2021 cycle implementation",
+      "localContext": "Final leaf in the regional-updates block before the next top-level section.",
+      "siblingPattern": "Same five-member repeated region-label family; terminal position does not change the omission.",
+      "factsVisibleInB0": [
+        "sourceAlias",
+        "verbatimText",
+        "sourceOrdinal",
+        "ordered source position / neighboring lexical labels"
+      ],
+      "factsPresentInSourceButNotB0": [
+        "container type",
+        "table row/column/cell identity",
+        "style id and outline level",
+        "indentation/bold/font size",
+        "numbering",
+        "explicit hierarchy",
+        "layout/page relation"
+      ],
+      "evidence": "E2 residual audit plus frozen B0 packet hash; exact serialized packet body was not persisted, so packet-entry text is marked non-persisted rather than invented."
+    }
+  ]
+}

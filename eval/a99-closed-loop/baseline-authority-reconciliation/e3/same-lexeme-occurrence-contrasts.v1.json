@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "a99-e3-same-lexeme-occurrence-contrasts-v1",
+  "offlineOnly": true,
+  "canonicalB0": "B_428_32_31",
+  "pairs": [
+    {
+      "pairId": "E3-WESTERN-ASIA-SAME-LEXEME",
+      "text": "Western Asia",
+      "positive": {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+        "sourceAlias": "S0056",
+        "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+        "goldHeading": true,
+        "b0EmittedAllRepeats": false,
+        "container": "table cell",
+        "context": "regional comparison table cell"
+      },
+      "negative": {
+        "documentId": "DOC-0252",
+        "sourceId": "body[1]/p[46]",
+        "sourceAlias": "S0056",
+        "key": "body[1]/p[46]:0:12",
+        "goldHeading": false,
+        "b0EmittedAllRepeats": true,
+        "container": "paragraph",
+        "context": "regional update prose/body occurrence"
+      },
+      "structuralDifference": [
+        "table-cell occurrence versus paragraph occurrence",
+        "different parent/container context"
+      ],
+      "lexicalDifference": "none",
+      "visibleInB0": [
+        "sourceAlias",
+        "verbatimText",
+        "sourceOrdinal",
+        "ordered lexical source"
+      ],
+      "hiddenFromB0": [
+        "container type",
+        "table coordinates",
+        "explicit hierarchy/style/layout"
+      ],
+      "causalStrength": "HIGH_FOR_THIS_PAIR_ONLY",
+      "genericAcrossSeven": false
+    }
+  ],
+  "note": "DOC-0258 stable misses form a repeated multi-lexeme family; no second exact Western Asia occurrence was persisted for that document, so no unsupported same-text pair is fabricated."
+}

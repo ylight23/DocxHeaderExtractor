@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "a99-e3-sibling-pattern-audit-v1",
+  "documentId": "DOC-0258",
+  "canonicalB0": "B_428_32_31",
+  "family": [
+    {
+      "sourceOrder": 11,
+      "sourceId": "body[1]/p[11]",
+      "sourceAlias": "S0009",
+      "text": "Africa",
+      "container": "paragraph",
+      "previousSemanticSibling": "body[1]/p[10] (parent heading)",
+      "nextSemanticSibling": "body[1]/p[12]",
+      "modelVisibleNeighboringRecords": true,
+      "goldHeading": true,
+      "b0Emitted": false,
+      "note": "Repeated peer sequence is visible lexically; paragraph/container metadata is not serialized."
+    },
+    {
+      "sourceOrder": 12,
+      "sourceId": "body[1]/p[12]",
+      "sourceAlias": "S0010",
+      "text": "Asia and the Pacific",
+      "container": "paragraph",
+      "previousSemanticSibling": "body[1]/p[11]",
+      "nextSemanticSibling": "body[1]/p[17]",
+      "modelVisibleNeighboringRecords": true,
+      "goldHeading": true,
+      "b0Emitted": false,
+      "note": "Repeated peer sequence is visible lexically; paragraph/container metadata is not serialized."
+    },
+    {
+      "sourceOrder": 17,
+      "sourceId": "body[1]/p[17]",
+      "sourceAlias": null,
+      "text": "Eurostat–OECD PPP Program",
+      "container": "paragraph",
+      "previousSemanticSibling": "body[1]/p[12]",
+      "nextSemanticSibling": "body[1]/p[18]",
+      "modelVisibleNeighboringRecords": true,
+      "goldHeading": true,
+      "b0Emitted": false,
+      "note": "Repeated peer sequence is visible lexically; paragraph/container metadata is not serialized."
+    },
+    {
+      "sourceOrder": 18,
+      "sourceId": "body[1]/p[18]",
+      "sourceAlias": "S0014",
+      "text": "Commonwealth of Independent States",
+      "container": "paragraph",
+      "previousSemanticSibling": "body[1]/p[17]",
+      "nextSemanticSibling": "body[1]/p[19]",
+      "modelVisibleNeighboringRecords": true,
+      "goldHeading": true,
+      "b0Emitted": false,
+      "note": "Repeated peer sequence is visible lexically; paragraph/container metadata is not serialized."
+    },
+    {
+      "sourceOrder": 19,
+      "sourceId": "body[1]/p[19]",
+      "sourceAlias": "S0015",
+      "text": "Latin America and the Caribbean",
+      "container": "paragraph",
+      "previousSemanticSibling": "body[1]/p[18]",
+      "nextSemanticSibling": "body[1]/p[24]",
+      "modelVisibleNeighboringRecords": true,
+      "goldHeading": true,
+      "b0Emitted": false,
+      "note": "Repeated peer sequence is visible lexically; paragraph/container metadata is not serialized."
+    },
+    {
+      "sourceOrder": 24,
+      "sourceId": "body[1]/p[24]",
+      "sourceAlias": "S0018",
+      "text": "Western Asia",
+      "container": "paragraph",
+      "previousSemanticSibling": "body[1]/p[19]",
+      "nextSemanticSibling": "body[1]/p[25] (next top-level heading)",
+      "modelVisibleNeighboringRecords": true,
+      "goldHeading": true,
+      "b0Emitted": false,
+      "note": "Repeated peer sequence is visible lexically; paragraph/container metadata is not serialized."
+    }
+  ],
+  "conclusion": "All six stable omissions share a repeated peer sequence, but that sequence is already represented by ordered source text; the table-cell target is a different container mechanism."
+}

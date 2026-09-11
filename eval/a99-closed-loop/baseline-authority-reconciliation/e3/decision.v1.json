@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "a99-e3-occurrence-context-discrimination-decision-v1",
+  "experimentId": "A99-E3",
+  "offlineOnly": true,
+  "canonicalB0": "B_428_32_31",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "targetCount": 7,
+  "targetPersistentAcrossB0": 7,
+  "classification": "NO_GENERIC_OCCURRENCE_DISCRIMINATOR",
+  "rationale": [
+    "The seven targets do not share one source-context family: one is a table-cell occurrence and six are paragraph peers in a repeated lexical sequence.",
+    "The DOC-0258 repeated sibling labels and ordered lexical neighborhood are already represented in B0 semantic text.",
+    "Container/style/layout facts are absent, but no single absent fact is shown to separate all seven target omissions from non-heading occurrences.",
+    "The exact serialized B0 packet body was not persisted; the audit records that limitation and does not infer missing packet fields beyond the frozen contract and residual audit."
+  ],
+  "i6Authorized": false,
+  "i6Owner": null,
+  "i6InformationDelta": null,
+  "rejectAsI3Equivalent": true,
+  "nextCausalOwner": "MODEL_TASK_CAPABILITY / residual semantic classification",
+  "goldFirewall": "PASS"
+}
