@@ -220,13 +220,46 @@ public static class SemanticTextGeneralizationRunner
         }
     }
 
+    public static async Task<int> ResumeModelCapabilityIsolationAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, ModelCapabilityOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var manifestPath = Path.Combine(output, "manifest.v1.json");
+        if (!File.Exists(manifestPath)) return 1;
+        using var manifest = JsonDocument.Parse(File.ReadAllText(manifestPath));
+        var root = manifest.RootElement;
+        if (root.GetProperty("experimentId").GetString() != "A99-I4" ||
+            root.GetProperty("challengerModel").GetString() != ChallengerModel ||
+            root.GetProperty("invariants").GetProperty("onlyModelDelta").GetBoolean() != true)
+            return 1;
+        var startHead = root.GetProperty("parentCommit").GetString()!;
+        var inventory = LoadInventory(repoRoot);
+        var selected = inventory.Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
+            .Where(x => x.eligibility.Eligible).OrderBy(x => x.item.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        var contexts = selected.Select(x => Prepare(repoRoot, x.item)).ToArray();
+        var previousModel = Model;
+        var previousOutputRoot = OutputRoot;
+        Model = ChallengerModel;
+        OutputRoot = ModelCapabilityOutputRoot;
+        try
+        {
+            return await RunModelCapabilityCampaignAsync(repoRoot, output, selected, contexts, startHead, ct, resumeExistingSuccesses: true);
+        }
+        finally
+        {
+            Model = previousModel;
+            OutputRoot = previousOutputRoot;
+        }
+    }
+
     private static async Task<int> RunModelCapabilityCampaignAsync(
         string repoRoot,
         string output,
         IReadOnlyList<(JsonElement item, ReasoningGoldEligibilityMetadata eligibility)> selected,
         IReadOnlyList<DocumentContext> contexts,
         string startHead,
-        CancellationToken ct)
+        CancellationToken ct,
+        bool resumeExistingSuccesses = false)
     {
         var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
         if (string.IsNullOrWhiteSpace(apiKey))
@@ -256,6 +289,12 @@ public static class SemanticTextGeneralizationRunner
         foreach (var context in contexts.OrderBy(x => x.DocumentId, StringComparer.Ordinal))
             for (var repeat = 1; repeat <= RepeatCount; repeat++)
             {
+                if (resumeExistingSuccesses && TryLoadSuccessfulFrozenMetric(output, context.DocumentId, $"r{repeat}", out var frozenMetric))
+                {
+                    Console.WriteLine($"REUSE_I4_FROZEN={context.DocumentId}/R{repeat}");
+                    runs.Add(frozenMetric);
+                    continue;
+                }
                 Console.WriteLine($"RUNNING_I4={context.DocumentId}/R{repeat}");
                 runs.Add(await RunRepeatAsync(repoRoot, output, context, repeat, model, startHead, ct));
             }
