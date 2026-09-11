@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "a99-a99-e5-remaining-causal-space-decision-v1",
+  "experimentId": "A99-E5",
+  "status": "TERMINAL_OFFLINE",
+  "behavioralParent": "B0@76c4e01",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "terminalClassification": "NO_EVIDENCE_BACKED_INTERVENTION_REMAINS",
+  "evidence": [
+    "I6 failed its pre-registered keep gate: target recovery=0 and persistent target misses remained 7/7.",
+    "The major generic families in scope are either rejected, reverted, closed, or provider-blocked without authorization to change architecture.",
+    "No remaining candidate is both generic, untested, and supported by a distinct causal mechanism in the current evidence."
+  ],
+  "action": "STOP_RANDOM_WALK",
+  "releaseCandidate": "HOLD",
+  "nextAllowedWork": "offline residual/authority audit or explicitly authorized new causal hypothesis"
+}

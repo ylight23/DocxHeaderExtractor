@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "a99-a99-e5-causal-space-matrix-v1",
+  "experimentId": "A99-E5",
+  "status": "COMPLETE_OFFLINE",
+  "behavioralParent": "B0@76c4e01",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "e4Decision": "DISCOVERY_ROLE_COUPLING_TEST_JUSTIFIED",
+  "i6Decision": "DISCOVERY_ROLE_DECOMPOSITION_REVERT",
+  "testedFamilies": [
+    {
+      "family": "MODEL_TASK_DECOMPOSITION",
+      "evidence": "A99-I6",
+      "terminal": "REJECTED",
+      "result": "7 persistent Pass-A omissions remained; Pass-A micro F1=.857142857 and FP=105 versus B0 F1=.931447225 and FP=32"
+    },
+    {
+      "family": "SEMANTIC_CONTRAST_CONTRACT",
+      "evidence": "A99-I5",
+      "terminal": "REVERTED",
+      "result": "No persistent target recovery; contract reverted"
+    },
+    {
+      "family": "GENERIC_OMISSION_REVIEW",
+      "evidence": "A99-I1",
+      "terminal": "REJECTED",
+      "result": "No evidence-backed recall gain"
+    },
+    {
+      "family": "LOSSLESS_SOURCE_BOUNDARIES",
+      "evidence": "A99-I3",
+      "terminal": "REJECTED",
+      "result": "Persistent omissions remained unchanged"
+    },
+    {
+      "family": "DUPLICATE_IDENTITY",
+      "evidence": "A99-I2",
+      "terminal": "REJECTED",
+      "result": "No target recovery under deterministic duplicate disambiguation"
+    },
+    {
+      "family": "OCCURRENCE_CONTEXT",
+      "evidence": "A99-E3",
+      "terminal": "CLOSED",
+      "result": "NO_GENERIC_OCCURRENCE_DISCRIMINATOR; not authorized"
+    },
+    {
+      "family": "MODEL_CAPABILITY_SWAP",
+      "evidence": "A99-I4",
+      "terminal": "CLOSED",
+      "result": "No evidence to promote a second model as a generic fix"
+    },
+    {
+      "family": "STRUCTURAL_CONTEXT_ENRICHMENT",
+      "evidence": "A99-V1",
+      "terminal": "CLOSED",
+      "result": "Provider-blocked cells prevented measurement; no architecture change authorized"
+    },
+    {
+      "family": "VLM_OR_VISUAL_RECOVERY",
+      "evidence": "A99-VLM",
+      "terminal": "CLOSED",
+      "result": "Not a remaining semantic-text intervention for the current residual owner"
+    }
+  ],
+  "remainingCandidates": [
+    {
+      "candidate": "PROMPT_WORDING_VARIANTS",
+      "status": "NO_EVIDENCE_BACKED_OPENING",
+      "reason": "Previous contract interventions are already closed and wording-only search would be random-walk"
+    },
+    {
+      "candidate": "SECOND_MODEL_SWAP",
+      "status": "NO_EVIDENCE_BACKED_OPENING",
+      "reason": "I4 did not establish a generic model replacement gate"
+    },
+    {
+      "candidate": "GENERIC_RECALL_OR_SELF_CRITIQUE_PASS",
+      "status": "NO_EVIDENCE_BACKED_OPENING",
+      "reason": "Would reopen rejected omission-review/multipass family without a new mechanism"
+    },
+    {
+      "candidate": "DOCUMENT_SPECIFIC_RULES_OR_GOLD_DERIVED_FILTERS",
+      "status": "PROHIBITED",
+      "reason": "Violates no-document-specific-fixes and Gold firewall"
+    }
+  ],
+  "conclusion": "NO_EVIDENCE_BACKED_INTERVENTION_REMAINS"
+}
