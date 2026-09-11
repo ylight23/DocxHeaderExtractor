@@ -1,0 +1,201 @@
+{
+  "documentId": "DOC-0252",
+  "repeat": "r1",
+  "firstLosses": [
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[7]:0:41",
+      "exactSourceText": "Session I: Welcome and meeting objectives",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[11]:0:40",
+      "exactSourceText": "Session II: Update on the ICP 2021 Cycle",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[12]:0:22",
+      "exactSourceText": "1.Global office update",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[22]:0:18",
+      "exactSourceText": "2.Regional updates",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[24]:0:6",
+      "exactSourceText": "Africa",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[27]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[31]:0:40",
+      "exactSourceText": "Commonwealth of Independent States (CIS)",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[39]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[42]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "exactSourceText": "Western Asia",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[54]:0:65",
+      "exactSourceText": "Session III: Short- and Long-Term Research and Development Agenda",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[55]:0:55",
+      "exactSourceText": "1.Research Topics Emerging from the Previous ICP Cycles",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[62]:0:29",
+      "exactSourceText": "2.Forthcoming Research Topics",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[75]:0:66",
+      "exactSourceText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[76]:0:40",
+      "exactSourceText": "1.TAG Composition and Terms of Reference",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[80]:0:62",
+      "exactSourceText": "2.Terms of Reference for a Task Force on Annual PPP Production",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[89]:0:66",
+      "exactSourceText": "3.Terms of Reference for a Task Force on ICP Classification Update",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[94]:0:27",
+      "exactSourceText": "Session V: Current Research",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[95]:0:72",
+      "exactSourceText": "1.The Treatment of Import and Export Prices in International Comparisons",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[105]:0:110",
+      "exactSourceText": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[110]:0:84",
+      "exactSourceText": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[120]:0:43",
+      "exactSourceText": "4.Treatment of Negative Expenditures in ICP",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[125]:0:39",
+      "exactSourceText": "5.Fine Tuning Global Linking Procedures",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[142]:0:44",
+      "exactSourceText": "6.Improving Reliability of Price Comparisons",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[151]:0:30",
+      "exactSourceText": "Session VI: Any Other Business",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[158]:56:62",
+      "exactSourceText": "Agenda",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0252",
+      "key": "body[1]/p[174]:0:29",
+      "exactSourceText": "Annex 2: List of Participants",
+      "firstLoss": "MODEL_OMISSION",
+      "found": false
+    }
+  ],
+  "falsePositives": [],
+  "firstLossCounts": {
+    "MODEL_OMISSION": 27
+  },
+  "systemLoss": 0,
+  "goldReadBeforeFreeze": false
+}

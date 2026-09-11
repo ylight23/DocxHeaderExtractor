@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-result-v1",
+  "documentId": "DOC-0252",
+  "repeat": "r2",
+  "model": "qwen/qwen3.7-flash",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "LOSSLESS_SOURCE_BOUNDARIES",
+  "headings": [],
+  "goldReadBeforeFreeze": false
+}

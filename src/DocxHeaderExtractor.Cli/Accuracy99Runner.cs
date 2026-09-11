@@ -71,6 +71,7 @@ internal static class Accuracy99Runner
             "semantic-text-exact-binding" => await RunSemanticTextExactBindingAsync(options, cancellationToken),
             "semantic-text-exact-binding-offline" => await RunSemanticTextExactBindingOfflineAsync(options, cancellationToken),
             "semantic-text-generalization" => await RunSemanticTextGeneralizationAsync(options, cancellationToken),
+            "semantic-text-source-boundaries" => await RunSemanticTextSourceBoundariesAsync(options, cancellationToken),
             "semantic-text-generalization-offline" => await RunSemanticTextGeneralizationOfflineAsync(options, cancellationToken),
             "semantic-text-generalization-recover-0258-r2" => await RunSemanticTextGeneralizationRecover0258R2Async(options, cancellationToken),
             "semantic-text-omission-review" => await RunSemanticTextOmissionReviewAsync(options, cancellationToken),
@@ -183,6 +184,12 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return SemanticTextGeneralizationRunner.RunAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunSemanticTextSourceBoundariesAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return SemanticTextGeneralizationRunner.RunSourceBoundaryAsync(repoRoot, cancellationToken);
     }
 
     private static Task<int> RunSemanticTextGeneralizationOfflineAsync(CommandLineOptions options, CancellationToken cancellationToken)

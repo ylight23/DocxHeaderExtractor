@@ -1,0 +1,836 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-persistent-errors-v1",
+  "persistentErrors": [
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[1]:0:24",
+      "exactSourceText": "Ch\u01B0\u01A1ng 1. Quy \u0111\u1ECBnh chung",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[3]:0:23",
+      "exactSourceText": "1.1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[5]:0:22",
+      "exactSourceText": "1.2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[7]:0:22",
+      "exactSourceText": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[9]:0:24",
+      "exactSourceText": "1.2.2. \u0110\u01A1n v\u1ECB tr\u1EF1c thu\u1ED9c",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[11]:0:27",
+      "exactSourceText": "Ch\u01B0\u01A1ng 2. T\u1ED5 ch\u1EE9c th\u1EF1c hi\u1EC7n",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0001",
+      "goldOrPredictionKey": "body[1]/p[13]:0:26",
+      "exactSourceText": "2.1. Ph\u00E2n c\u00F4ng tr\u00E1ch nhi\u1EC7m",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:645:668",
+      "exactSourceText": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:9843:9978",
+      "exactSourceText": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:10040:10112",
+      "exactSourceText": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:11449:11494",
+      "exactSourceText": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:13065:13146",
+      "exactSourceText": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:15619:15691",
+      "exactSourceText": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:16890:16963",
+      "exactSourceText": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:19329:19367",
+      "exactSourceText": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:23401:23472",
+      "exactSourceText": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:32768:32822",
+      "exactSourceText": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:32863:32994",
+      "exactSourceText": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:34108:34247",
+      "exactSourceText": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:35467:35498",
+      "exactSourceText": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:40307:40359",
+      "exactSourceText": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:40706:40745",
+      "exactSourceText": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:42984:43069",
+      "exactSourceText": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:50264:50342",
+      "exactSourceText": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:50896:50955",
+      "exactSourceText": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:52830:52907",
+      "exactSourceText": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:53712:53786",
+      "exactSourceText": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:56513:56595",
+      "exactSourceText": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:57453:57481",
+      "exactSourceText": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[7]:0:41",
+      "exactSourceText": "Session I: Welcome and meeting objectives",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[11]:0:40",
+      "exactSourceText": "Session II: Update on the ICP 2021 Cycle",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[12]:0:22",
+      "exactSourceText": "1.Global office update",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[22]:0:18",
+      "exactSourceText": "2.Regional updates",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[24]:0:6",
+      "exactSourceText": "Africa",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[27]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[31]:0:40",
+      "exactSourceText": "Commonwealth of Independent States (CIS)",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[39]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[42]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[54]:0:65",
+      "exactSourceText": "Session III: Short- and Long-Term Research and Development Agenda",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[55]:0:55",
+      "exactSourceText": "1.Research Topics Emerging from the Previous ICP Cycles",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[62]:0:29",
+      "exactSourceText": "2.Forthcoming Research Topics",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[75]:0:66",
+      "exactSourceText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[76]:0:40",
+      "exactSourceText": "1.TAG Composition and Terms of Reference",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[80]:0:62",
+      "exactSourceText": "2.Terms of Reference for a Task Force on Annual PPP Production",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[89]:0:66",
+      "exactSourceText": "3.Terms of Reference for a Task Force on ICP Classification Update",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[94]:0:27",
+      "exactSourceText": "Session V: Current Research",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[95]:0:72",
+      "exactSourceText": "1.The Treatment of Import and Export Prices in International Comparisons",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[105]:0:110",
+      "exactSourceText": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[110]:0:84",
+      "exactSourceText": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[120]:0:43",
+      "exactSourceText": "4.Treatment of Negative Expenditures in ICP",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[125]:0:39",
+      "exactSourceText": "5.Fine Tuning Global Linking Procedures",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[142]:0:44",
+      "exactSourceText": "6.Improving Reliability of Price Comparisons",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[151]:0:30",
+      "exactSourceText": "Session VI: Any Other Business",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[158]:56:62",
+      "exactSourceText": "Agenda",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[174]:0:29",
+      "exactSourceText": "Annex 2: List of Participants",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[6]:0:30",
+      "exactSourceText": "Welcome and meeting objectives",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[10]:0:53",
+      "exactSourceText": "Regional updates on the ICP 2021 cycle implementation",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[17]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[20]:0:34",
+      "exactSourceText": "Commonwealth of Independent States",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[26]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[32]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[35]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[42]:0:51",
+      "exactSourceText": "Global updates on the ICP 2021 cycle implementation",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[55]:0:60",
+      "exactSourceText": "Data review: Household consumption price and importance data",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[61]:0:39",
+      "exactSourceText": "Data review: Housing prices and volumes",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[67]:0:30",
+      "exactSourceText": "Data review: Private Education",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[73]:0:64",
+      "exactSourceText": "Data review: Government compensation and productivity adjustment",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[76]:0:53",
+      "exactSourceText": "Data review: Machinery and equipment and construction",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[80]:0:53",
+      "exactSourceText": "Data review: 2017-2021 National Accounts expenditures",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[88]:0:59",
+      "exactSourceText": "Data review: 2017-2021 Population and market exchange rates",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[90]:0:102",
+      "exactSourceText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[99]:0:31",
+      "exactSourceText": "Planning for the ICP 2024 cycle",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[107]:0:23",
+      "exactSourceText": "Annex 1: Meeting Agenda",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]:0:32",
+      "exactSourceText": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:34",
+      "exactSourceText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]:0:33",
+      "exactSourceText": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]:0:31",
+      "exactSourceText": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[124]:0:29",
+      "exactSourceText": "Annex 2: List of participants",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[3]:0:87",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[6]:0:30",
+      "exactSourceText": "Welcome and meeting objectives",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[10]:0:53",
+      "exactSourceText": "Regional updates on the ICP 2021 cycle implementation",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[12]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[17]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[18]:0:34",
+      "exactSourceText": "Commonwealth of Independent States",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[19]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[24]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[25]:0:51",
+      "exactSourceText": "Global updates on the ICP 2021 cycle implementation",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[39]:0:60",
+      "exactSourceText": "Data review: Household consumption price and importance data",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[48]:0:39",
+      "exactSourceText": "Data review: Housing prices and volumes",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[50]:0:30",
+      "exactSourceText": "Data review: Private Education",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[56]:0:64",
+      "exactSourceText": "Data review: Government compensation and productivity adjustment",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[59]:0:53",
+      "exactSourceText": "Data review: Machinery and equipment and construction",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[62]:0:53",
+      "exactSourceText": "Data review: 2017-2021 National Accounts expenditures",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[70]:0:59",
+      "exactSourceText": "Data review: 2017-2021 Population and market exchange rates",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[72]:0:51",
+      "exactSourceText": "Results review: draft revised 2017 and 2021 results",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[74]:0:31",
+      "exactSourceText": "Planning for the ICP 2024 cycle",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[84]:0:70",
+      "exactSourceText": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[91]:0:68",
+      "exactSourceText": "Planning for an approach to produce annual ICP results and forecasts",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[96]:0:18",
+      "exactSourceText": "Any other business",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[102]:0:23",
+      "exactSourceText": "Annex 1: Meeting Agenda",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[115]:0:29",
+      "exactSourceText": "Annex 2: List of participants",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    }
+  ],
+  "intermittentErrors": [],
+  "persistentFalsePositives": [
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:174:183",
+      "exactSourceText": "NGH\u1ECA \u0110\u1ECANH",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:184:243",
+      "exactSourceText": "Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:645:653",
+      "exactSourceText": "Ch\u01B0\u01A1ng I",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:654:668",
+      "exactSourceText": "QUY \u0110\u1ECANH CHUNG",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:9843:9852",
+      "exactSourceText": "Ch\u01B0\u01A1ng II",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:9853:9927",
+      "exactSourceText": "QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:9928:9978",
+      "exactSourceText": "B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:32768:32778",
+      "exactSourceText": "Ch\u01B0\u01A1ng III",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:32779:32822",
+      "exactSourceText": "TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:50896:50905",
+      "exactSourceText": "Ch\u01B0\u01A1ng IV",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:50906:50955",
+      "exactSourceText": "QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:57453:57461",
+      "exactSourceText": "Ch\u01B0\u01A1ng V",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:57462:57481",
+      "exactSourceText": "\u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    }
+  ],
+  "intermittentFalsePositives": [],
+  "persistentErrorCounts": {
+    "MODEL_OMISSION": 82,
+    "MODEL_WRONG_SPAN": 5,
+    "MODEL_WRONG_TEXT": 17
+  },
+  "intermittentErrorCounts": {},
+  "persistentFalsePositiveCount": 13,
+  "intermittentFalsePositiveCount": 0
+}

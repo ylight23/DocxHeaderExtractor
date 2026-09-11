@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "a99-i3-lossless-semantic-source-boundaries-config-v1",
+  "taskId": "A99-I3",
+  "parent": "B0@76c4e01",
+  "startHead": "86c24303f8a87e28675c7fb5069049df42d30acc",
+  "model": "qwen/qwen3.7-flash",
+  "expectedCells": 15,
+  "goldOccurrencesPerRepeat": 153,
+  "repeats": [
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "sourcePresentation": "LOSSLESS_GENERIC_LEAF_BOUNDARIES",
+  "modelContract": "sourceAlias\u002BverbatimText\u002Brole",
+  "sourceTextDuplicated": false,
+  "candidateGating": false,
+  "numericOffsetsInModelContract": false,
+  "goldReadBeforeFreeze": false,
+  "doNotChange": [
+    "model/provider",
+    "temperature/reasoning",
+    "prompt semantic instructions",
+    "role ontology",
+    "binder",
+    "validator",
+    "comparator",
+    "Gold",
+    "candidate logic",
+    "duplicate identity",
+    "omission review",
+    "VLM",
+    "hierarchy",
+    "context-budget/truncation policy"
+  ]
+}

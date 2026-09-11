@@ -21,6 +21,7 @@ public static class SemanticTextGeneralizationRunner
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string OutputRoot = "eval/a99-closed-loop/semantic-text-generalization";
     private const string DuplicateOutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i2-duplicate-identity";
+    private const string BoundaryOutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i3-lossless-semantic-boundaries";
     private const string ResidualLoopI1OutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i1-omission-review";
     private const string InventoryPath = "eval/a99-dataset/document-inventory.v1.json";
     private const int RepeatCount = 3;
@@ -134,6 +135,108 @@ public static class SemanticTextGeneralizationRunner
         Console.WriteLine($"END_HEAD={GitSha(repoRoot)}");
         Console.WriteLine($"FINAL_CLASSIFICATION={GeneralizationClass(runs)}");
         Console.WriteLine($"A99_DEV_MARGIN_MET={runs.Count == selected.Length * RepeatCount && runs.All(x => x.Status == "SUCCESS" && x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0)}");
+        return 0;
+    }
+
+    /// <summary>Runs I3: deterministic, lossless source-boundary presentation over the frozen
+    /// B0 semantic-text contract. The model sees each source paragraph partitioned into ordered
+    /// leaf records; binding is performed against those leaves and then rebased to the original
+    /// UTF-16 source span before the unchanged materializer, validator, and projection run.</summary>
+    public static async Task<int> RunSourceBoundaryAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, BoundaryOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        Directory.CreateDirectory(output);
+        var startHead = GitSha(repoRoot);
+        var inventory = LoadInventory(repoRoot);
+        var selected = inventory.Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
+            .Where(x => x.eligibility.Eligible).OrderBy(x => x.item.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        var contexts = selected.ToDictionary(x => x.item.GetProperty("documentId").GetString()!, x => PrepareBoundary(repoRoot, x.item), StringComparer.Ordinal);
+        var preflightRows = contexts.Values.OrderBy(x => x.DocumentId, StringComparer.Ordinal).Select(ValidateBoundary).ToArray();
+        var preflightPass = preflightRows.All(x => x.EverySourceCharacterRepresented && x.NoSourceTextDuplication && x.LeafOrderDeterministic && x.AliasGenerationDeterministic && x.ReconstructedSourceMatchesB0 && x.NoTailTruncation);
+        await WriteJson(Path.Combine(output, "config.v1.json"), new
+        {
+            schemaVersion = "a99-i3-lossless-semantic-source-boundaries-config-v1", taskId = "A99-I3", parent = "B0@76c4e01", startHead,
+            model = Model, expectedCells = 15, goldOccurrencesPerRepeat = 153, repeats = new[] { "R1", "R2", "R3" },
+            sourcePresentation = "LOSSLESS_GENERIC_LEAF_BOUNDARIES", modelContract = "sourceAlias+verbatimText+role",
+            sourceTextDuplicated = false, candidateGating = false, numericOffsetsInModelContract = false, goldReadBeforeFreeze = false,
+            doNotChange = new[] { "model/provider", "temperature/reasoning", "prompt semantic instructions", "role ontology", "binder", "validator", "comparator", "Gold", "candidate logic", "duplicate identity", "omission review", "VLM", "hierarchy", "context-budget/truncation policy" },
+        }, ct);
+        await WriteJson(Path.Combine(output, "preflight.v1.json"), new { schemaVersion = "a99-i3-lossless-semantic-source-boundaries-preflight-v1", status = preflightPass ? "PASS" : "BLOCKED", rows = preflightRows, goldReadBeforeFreeze = false }, ct);
+        Console.WriteLine($"START_HEAD={startHead}");
+        Console.WriteLine($"SELECTED_STRICT_GOLD_COHORT={string.Join(',', contexts.Keys.Order(StringComparer.Ordinal))}");
+        Console.WriteLine($"I3_PREFLIGHT={(preflightPass ? "PASS" : "BLOCKED")}");
+        if (!preflightPass)
+        {
+            await WriteJson(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-i3-lossless-semantic-source-boundaries-summary-v1", status = "BLOCKED", taskId = "A99-I3", startHead, reason = "PRE_INFERENCE_INVARIANT_FAILED", modelCalls = 0, providerCalls = 0, goldReadBeforeFreeze = false }, ct);
+            return 1;
+        }
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey))
+        {
+            await WriteJson(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-i3-lossless-semantic-source-boundaries-summary-v1", status = "BLOCKED", taskId = "A99-I3", startHead, reason = "OPENROUTER_API_KEY_MISSING", modelCalls = 0, providerCalls = 0, goldReadBeforeFreeze = false }, ct);
+            return 1;
+        }
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = apiKey, ContextSize = 1_000_000,
+            MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 0,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capabilityResult = await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct);
+        var capability = capabilityResult.Capability;
+        if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) || !capability.ReasoningSupported || !capability.StructuredOutputSupported)
+        {
+            await WriteJson(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-i3-lossless-semantic-source-boundaries-summary-v1", status = "BLOCKED", taskId = "A99-I3", startHead, reason = "MODEL_CAPABILITY_MISMATCH", modelCalls = 0, providerCalls = 0, goldReadBeforeFreeze = false }, ct);
+            return 1;
+        }
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, BoundaryOutputRoot, string.Join(',', contexts.Keys.Order(StringComparer.Ordinal)), ct);
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        var runs = new List<RepeatMetric>();
+        foreach (var context in contexts.Values.OrderBy(x => x.DocumentId, StringComparer.Ordinal))
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                if (TryLoadSuccessfulFrozenMetric(output, context.DocumentId, $"r{repeat}", out var frozenMetric))
+                {
+                    Console.WriteLine($"REUSE_FROZEN={context.DocumentId}/R{repeat}");
+                    runs.Add(frozenMetric);
+                    continue;
+                }
+                Console.WriteLine($"RUNNING={context.DocumentId}/R{repeat}");
+                runs.Add(await RunRepeatAsync(repoRoot, output, context, repeat, model, startHead, ct, transientRetries: 1, boundaryPresentation: true));
+            }
+
+        var baselineRoot = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var baseline = selected.SelectMany(x => Enumerable.Range(1, RepeatCount).Select(repeat => LoadFrozenMetric(baselineRoot, x.item.GetProperty("documentId").GetString()!, $"r{repeat}"))).ToArray();
+        var targetBefore = PersistentModelOmissionKeys(baseline);
+        var targetAfter = PersistentModelOmissionKeys(runs);
+        var ambiguousBefore = baseline.Sum(x => x.FirstLossCounts.GetValueOrDefault("AMBIGUOUS_DUPLICATE_TEXT"));
+        var ambiguousAfter = runs.Sum(x => x.FirstLossCounts.GetValueOrDefault("AMBIGUOUS_DUPLICATE_TEXT"));
+        var persistentFpBefore = PersistentFalsePositiveKeys(baseline).Count;
+        var persistentFpAfter = PersistentFalsePositiveKeys(runs).Count;
+        var noRegression = NoPerRepeatRegression(baseline, runs);
+        var targetRecovered = targetBefore.Any(target => runs.Any(run => run.DocumentId == target.DocumentId && run.PredictionKeys.Contains(target.Key)));
+        var keep = runs.Count == selected.Length * RepeatCount && runs.All(x => x.Status == "SUCCESS") && targetAfter.Count < 7 && targetRecovered && runs.All(x => x.SystemLoss == 0) && ambiguousAfter <= ambiguousBefore && persistentFpAfter <= persistentFpBefore && noRegression && preflightPass;
+        var classification = keep ? "LOSSLESS_SOURCE_BOUNDARIES_KEEP" : "LOSSLESS_SOURCE_BOUNDARIES_REVERT";
+        var comparison = BuildBoundaryComparison(baseline, runs, selected, startHead, targetBefore, targetAfter, ambiguousBefore, ambiguousAfter, persistentFpBefore, persistentFpAfter, noRegression, targetRecovered, classification);
+        await WriteJson(Path.Combine(output, "repeat-summary.v1.json"), BuildRepeatSummary(runs, selected.Length), ct);
+        await WriteJson(Path.Combine(output, "persistent-errors.v1.json"), BuildPersistentErrors(runs), ct);
+        await WriteJson(Path.Combine(output, "comparison.v1.json"), comparison, ct);
+        await WriteJson(Path.Combine(output, "target-forensic.v1.json"), BuildBoundaryTargetForensic(baseline, runs, targetBefore), ct);
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-i3-lossless-semantic-source-boundaries-summary-v1", status = runs.Count == selected.Length * RepeatCount && runs.All(x => x.Status == "SUCCESS") ? "COMPLETE" : "PROVIDER_BLOCKED", taskId = "A99-I3", parent = "B0@76c4e01", startHead, endHead = GitSha(repoRoot), model = Model,
+            expectedCells = 15, completedCells = runs.Count, providerCalls = model.ProviderCalls, modelCalls = model.ProviderCalls, goldReadBeforeFreeze = false,
+            preflight = new { status = "PASS", path = "preflight.v1.json" }, b0MicroByRepeat = baseline.GroupBy(x => x.Repeat).OrderBy(x => x.Key, StringComparer.Ordinal).Select(x => Micro(x.ToArray())).ToArray(), i3MicroByRepeat = runs.GroupBy(x => x.Repeat).OrderBy(x => x.Key, StringComparer.Ordinal).Select(x => Micro(x.ToArray())).ToArray(),
+            persistentModelOmissionsBefore = targetBefore.Count, persistentModelOmissionsAfter = targetAfter.Count, targetRecovered, ambiguousBefore, ambiguousAfter,
+            persistentFalsePositivesBefore = persistentFpBefore, persistentFalsePositivesAfter = persistentFpAfter, systemLoss = runs.Sum(x => x.SystemLoss), noPerRepeatRegression = noRegression,
+            decision = keep ? "KEEP" : "REVERT", classification,
+        }, ct);
+        PrintReport(runs, selected, model.ProviderCalls);
+        Console.WriteLine($"I3_DECISION={classification}");
+        Console.WriteLine($"END_HEAD={GitSha(repoRoot)}");
         return 0;
     }
 
@@ -2008,7 +2111,7 @@ public static class SemanticTextGeneralizationRunner
         }
     }
 
-    private static async Task<RepeatMetric> RunRepeatAsync(string repoRoot, string output, DocumentContext context, int repeat, OpenRouterCeilingReasoningModel model, string gitSha, CancellationToken ct, int transientRetries = 0, bool flatRepeatLayout = false, bool retryMalformedProviderResponse = false)
+    private static async Task<RepeatMetric> RunRepeatAsync(string repoRoot, string output, DocumentContext context, int repeat, OpenRouterCeilingReasoningModel model, string gitSha, CancellationToken ct, int transientRetries = 0, bool flatRepeatLayout = false, bool retryMalformedProviderResponse = false, bool boundaryPresentation = false)
     {
         var repeatName = $"r{repeat}";
         var dir = flatRepeatLayout ? Path.Combine(output, repeatName, context.DocumentId) : Path.Combine(output, context.DocumentId, repeatName);
@@ -2050,7 +2153,13 @@ public static class SemanticTextGeneralizationRunner
             telemetry = requestTelemetry;
             var response = SemanticTextExactBindingContract.Parse(rawContent);
             telemetry.StructuredOutputParsed = true;
-            var bound = SemanticTextExactBinder.Bind(response.Headings, context.SourceRows, out var observations);
+            var localBound = SemanticTextExactBinder.Bind(response.Headings, context.SourceRows, out var observations);
+            var bound = localBound.Select(x => x with
+            {
+                SourceId = context.AliasOriginalSourceIds?.GetValueOrDefault(x.Alias) ?? x.SourceId,
+                Start = x.Start + (context.AliasBaseOffsets?.GetValueOrDefault(x.Alias) ?? 0),
+                End = x.End + (context.AliasBaseOffsets?.GetValueOrDefault(x.Alias) ?? 0),
+            }).ToArray();
             var proposals = bound.Select(x => new ReasoningHeadingProposal
             {
                 SourceId = x.SourceId, HeadingSpan = new StructuralSpan(x.Start, x.End), Text = x.Text,
@@ -2065,7 +2174,7 @@ public static class SemanticTextGeneralizationRunner
             {
                 schemaVersion = "a99-semantic-text-generalization-prediction-v1", context.DocumentId, repeat = repeatName,
                 model = Model, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion,
-                executionMode = "FULL_CONTEXT", dataClassification = "PUBLIC", zdrRequested = false, privacyExceptionAuthorized = true,
+                executionMode = context.PresentationMode, dataClassification = "PUBLIC", zdrRequested = false, privacyExceptionAuthorized = true,
                 sourceSha256 = context.SourceSha256, promptHash = context.PromptHash, schemaHash = context.SchemaHash, packetHash = context.PacketHash,
                 sourceAliasCount = context.SourceRows.Count, rawModelHeadings = response.Headings, bindingObservations = observations,
                 boundHeadings = bound, validatorAccepted = materialized.Validated.Count(x => x.Accepted), validatorRejected = materialized.Validated.Count(x => !x.Accepted),
@@ -2075,7 +2184,7 @@ public static class SemanticTextGeneralizationRunner
             {
                 schemaVersion = "a99-semantic-text-generalization-result-v1", context.DocumentId, repeat = repeatName,
                 model = Model, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion,
-                executionMode = "FULL_CONTEXT", headings = finalRows, goldReadBeforeFreeze = false,
+                executionMode = context.PresentationMode, headings = finalRows, goldReadBeforeFreeze = false,
             };
             var predictionPath = Path.Combine(dir, "prediction.v1.json");
             var resultPath = Path.Combine(dir, "result.v1.json");
@@ -2089,10 +2198,10 @@ public static class SemanticTextGeneralizationRunner
                 promptHash = context.PromptHash, schemaHash = context.SchemaHash, packetHash = context.PacketHash,
                 reasoningConfiguration = new { requested = true, enabled = true, excluded = true, effort = "MODEL_DEFAULT" },
                 predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath),
-                rawProposalCount = response.Headings.Count, boundProposalCount = bound.Count, finalCount = finalElements.Length, wallTimeMs = stopwatch.ElapsedMilliseconds,
+                rawProposalCount = response.Headings.Count, boundProposalCount = bound.Length, finalCount = finalElements.Length, wallTimeMs = stopwatch.ElapsedMilliseconds,
                 providerAttempts, inputTokens = telemetry.ReportedInputTokens, reasoningTokens = telemetry.ReportedReasoningTokens,
                 outputTokens = telemetry.ReportedOutputTokens, finishReason = telemetry.FinishReason,
-                executionMode = "FULL_CONTEXT", dataClassification = "PUBLIC", zdrRequested = false, privacyExceptionAuthorized = true,
+                executionMode = context.PresentationMode, dataClassification = "PUBLIC", zdrRequested = false, privacyExceptionAuthorized = true,
                 goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow,
             };
             var freezePath = Path.Combine(dir, "freeze.v1.json");
@@ -2114,9 +2223,9 @@ public static class SemanticTextGeneralizationRunner
             var last = telemetry ?? model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId);
             var predictionPath = Path.Combine(dir, "prediction.v1.json");
             var resultPath = Path.Combine(dir, "result.v1.json");
-            await WriteJson(predictionPath, new { schemaVersion = "a99-semantic-text-generalization-prediction-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.GetType().Name + ":" + ex.Message, model = Model, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion, executionMode = "FULL_CONTEXT", goldReadBeforeFreeze = false }, ct);
+            await WriteJson(predictionPath, new { schemaVersion = "a99-semantic-text-generalization-prediction-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.GetType().Name + ":" + ex.Message, model = Model, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion, executionMode = context.PresentationMode, goldReadBeforeFreeze = false }, ct);
             await WriteJson(resultPath, new { schemaVersion = "a99-semantic-text-generalization-result-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", headings = Array.Empty<object>(), goldReadBeforeFreeze = false }, ct);
-            var freeze = new { schemaVersion = "a99-semantic-text-generalization-freeze-v1", context.DocumentId, repeat = repeatName, gitSha, model = Model, actualProvider = last?.ProviderRoute, sourceSha256 = context.SourceSha256, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion, promptHash = context.PromptHash, schemaHash = context.SchemaHash, packetHash = context.PacketHash, reasoningConfiguration = new { requested = true, enabled = true, excluded = true }, predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath), rawProposalCount = 0, boundProposalCount = 0, finalCount = 0, providerAttempts = providerAttempts == 0 ? (last is null ? 0 : 1) : providerAttempts, inputTokens = last?.ReportedInputTokens, reasoningTokens = last?.ReportedReasoningTokens, outputTokens = last?.ReportedOutputTokens, finishReason = last?.FinishReason, executionMode = "FULL_CONTEXT", failureClass = ex.GetType().Name, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow };
+            var freeze = new { schemaVersion = "a99-semantic-text-generalization-freeze-v1", context.DocumentId, repeat = repeatName, gitSha, model = Model, actualProvider = last?.ProviderRoute, sourceSha256 = context.SourceSha256, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion, promptHash = context.PromptHash, schemaHash = context.SchemaHash, packetHash = context.PacketHash, reasoningConfiguration = new { requested = true, enabled = true, excluded = true }, predictionSha256 = Sha256(predictionPath), resultSha256 = Sha256(resultPath), rawProposalCount = 0, boundProposalCount = 0, finalCount = 0, providerAttempts = providerAttempts == 0 ? (last is null ? 0 : 1) : providerAttempts, inputTokens = last?.ReportedInputTokens, reasoningTokens = last?.ReportedReasoningTokens, outputTokens = last?.ReportedOutputTokens, finishReason = last?.FinishReason, executionMode = context.PresentationMode, failureClass = ex.GetType().Name, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow };
             await WriteJson(Path.Combine(dir, "freeze.v1.json"), freeze, ct);
             await WriteJson(Path.Combine(dir, "score.v1.json"), new { schemaVersion = "a99-semantic-text-generalization-score-v1", context.DocumentId, repeat = repeatName, status = "BLOCKED", exactStatus = "NOT_EVALUABLE", tp = 0, fp = 0, fn = 0, systemLoss = 0, goldReadBeforeFreeze = false }, ct);
             await WriteJson(Path.Combine(dir, "first-loss.v1.json"), new { context.DocumentId, repeat = repeatName, status = "BLOCKED", failure = ex.GetType().Name + ":" + ex.Message, goldReadBeforeFreeze = false }, ct);
@@ -2283,7 +2392,10 @@ public static class SemanticTextGeneralizationRunner
         var p = tp + fp == 0 ? 0d : (double)tp / (tp + fp);
         var r = tp + fn == 0 ? 0d : (double)tp / (tp + fn);
         var f1 = p + r == 0 ? 0d : 2 * p * r / (p + r);
-        var losses = gold.Select(g => LossFor(g, context.SourceRows, response.Headings, observations, boundKeys, finalKeys, materialized.Validated)).ToArray();
+        var auditRows = context.AuditRows ?? context.SourceRows;
+        var baseOffsets = context.AliasBaseOffsets ?? new Dictionary<string, int>(StringComparer.Ordinal);
+        var originalSourceIds = context.AliasOriginalSourceIds ?? new Dictionary<string, string>(StringComparer.Ordinal);
+        var losses = gold.Select(g => LossFor(g, auditRows, context.SourceRows, originalSourceIds, baseOffsets, response.Headings, observations, boundKeys, finalKeys, materialized.Validated)).ToArray();
         var firstLossCounts = losses.GroupBy(x => x.FirstLoss, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Count(), StringComparer.Ordinal);
         var systemBindingLoss = losses.Count(x => x.FirstLoss == "SYSTEM_BINDING_LOSS");
         var systemValidatorLoss = losses.Count(x => x.FirstLoss == "SYSTEM_VALIDATOR_LOSS");
@@ -2305,7 +2417,7 @@ public static class SemanticTextGeneralizationRunner
         return new RepeatMetric(context.DocumentId, repeat, "SUCCESS", gold.Count, tp, fp, fn, p, r, f1, systemBindingLoss, systemValidatorLoss, systemProjectionLoss, response.Headings.Count, bound.Count, materialized.Validated.Count(x => x.Accepted), finalElements.Count, telemetry.ProviderRoute, telemetry.FinishReason, telemetry.ReportedInputTokens, telemetry.ReportedReasoningTokens, telemetry.ReportedOutputTokens, wallTimeMs, finalKeys, losses, falsePositives, score, firstLossCounts);
     }
 
-    private static LossRow LossFor(ReasoningGoldOccurrence gold, IReadOnlyList<SemanticTextSourceAlias> aliases, IReadOnlyList<SemanticTextHeading> raw, IReadOnlyList<SemanticTextBindingObservation> observations, IReadOnlySet<string> boundKeys, IReadOnlySet<string> finalKeys, IReadOnlyList<ReasoningValidatedProposal> validated)
+    private static LossRow LossFor(ReasoningGoldOccurrence gold, IReadOnlyList<SemanticTextSourceAlias> auditAliases, IReadOnlyList<SemanticTextSourceAlias> bindingAliases, IReadOnlyDictionary<string, string> originalSourceIds, IReadOnlyDictionary<string, int> baseOffsets, IReadOnlyList<SemanticTextHeading> raw, IReadOnlyList<SemanticTextBindingObservation> observations, IReadOnlySet<string> boundKeys, IReadOnlySet<string> finalKeys, IReadOnlyList<ReasoningValidatedProposal> validated)
     {
         var span = gold.HeadingSpan!;
         var key = Key(gold.SourceId, span);
@@ -2315,9 +2427,9 @@ public static class SemanticTextGeneralizationRunner
             var row = validated.FirstOrDefault(x => Key(x.Proposal.SourceId, x.Proposal.HeadingSpan) == key);
             return row?.Accepted == true ? new(gold.DocumentId, key, gold.ExactText, "SYSTEM_PROJECTION_LOSS", false) : new(gold.DocumentId, key, gold.ExactText, "SYSTEM_VALIDATOR_LOSS", false);
         }
-        var alias = aliases.FirstOrDefault(x => x.SourceId == gold.SourceId);
-        var candidates = raw.Where(x => alias is not null && x.Source == alias.Alias).ToArray();
-        var exact = candidates.Where(x => x.Text == gold.ExactText).ToArray();
+        var aliases = bindingAliases.Where(x => originalSourceIds.GetValueOrDefault(x.Alias, x.SourceId) == gold.SourceId).ToArray();
+        var candidates = raw.Where(x => aliases.Any(alias => x.Source == alias.Alias)).ToArray();
+        var exact = candidates.Where(x => x.Text == gold.ExactText && bindingAliases.FirstOrDefault(alias => alias.Alias == x.Source) is { } sourceAlias && FindExactPositions(sourceAlias.RawText, x.Text).Count > 0).ToArray();
         if (exact.Length > 0)
         {
             var ambiguous = exact.Any(x => observations.Any(o => ReferenceEquals(o.Heading, x) && o.Status == SemanticTextBindingStatus.AMBIGUOUS_EXACT_TEXT));
@@ -2325,7 +2437,14 @@ public static class SemanticTextGeneralizationRunner
         }
         if (candidates.Any(x => !string.IsNullOrEmpty(x.Text)))
         {
-            var overlap = candidates.Any(x => x.Text.Length > 0 && alias!.RawText.IndexOf(x.Text, StringComparison.Ordinal) >= 0 && alias.RawText.IndexOf(x.Text, StringComparison.Ordinal) < span.End && span.Start < alias.RawText.IndexOf(x.Text, StringComparison.Ordinal) + x.Text.Length);
+            var overlap = candidates.Any(candidate =>
+            {
+                var alias = bindingAliases.FirstOrDefault(x => x.Alias == candidate.Source);
+                if (alias is null || candidate.Text.Length == 0) return false;
+                var offset = baseOffsets.GetValueOrDefault(alias.Alias);
+                return FindExactPositions(alias.RawText, candidate.Text).Any(start =>
+                    offset + start < span.End && span.Start < offset + start + candidate.Text.Length);
+            });
             return new(gold.DocumentId, key, gold.ExactText, overlap ? "MODEL_WRONG_SPAN" : "MODEL_WRONG_TEXT", false);
         }
         return new(gold.DocumentId, key, gold.ExactText, "MODEL_OMISSION", false);
@@ -2442,6 +2561,26 @@ public static class SemanticTextGeneralizationRunner
         return LoadMetricAtDir(Path.Combine(output, documentId, repeat));
     }
 
+    private static bool TryLoadSuccessfulFrozenMetric(string output, string documentId, string repeat, out RepeatMetric metric)
+    {
+        var dir = Path.Combine(output, documentId, repeat);
+        if (!File.Exists(Path.Combine(dir, "score.v1.json")) || !File.Exists(Path.Combine(dir, "freeze.v1.json")))
+        {
+            metric = default!;
+            return false;
+        }
+        try
+        {
+            metric = LoadMetricAtDir(dir);
+            return metric.Status == "SUCCESS" && metric.Gold > 0;
+        }
+        catch
+        {
+            metric = default!;
+            return false;
+        }
+    }
+
     private static RepeatMetric LoadRepairMetric(string output, string documentId, string repeat)
     {
         return LoadMetricAtDir(Path.Combine(output, repeat, documentId));
@@ -2474,7 +2613,8 @@ public static class SemanticTextGeneralizationRunner
             GetInt(score, "goldCount"), GetInt(score, "tp"), GetInt(score, "fp"), GetInt(score, "fn"), GetDouble(score, "precision"), GetDouble(score, "recall"), GetDouble(score, "f1"), GetInt(score, "systemBindingLoss"), GetInt(score, "systemValidatorLoss"), GetInt(score, "systemProjectionLoss"), GetInt(score, "rawProposalCount"), GetInt(score, "boundProposalCount"), GetInt(score, "validatedCount"), GetInt(score, "finalCount"), GetString(score, "actualProvider"), GetString(score, "finishReason"), GetNullableInt(score, "inputTokens"), GetNullableInt(score, "reasoningTokens"), GetNullableInt(score, "outputTokens"), GetNullableLong(freeze, "wallTimeMs"), finalKeys, losses, falsePositives, score.Clone(), counts);
     }
 
-    private static object RepeatTable(RepeatMetric x) => new { documentId = x.DocumentId, repeat = x.Repeat, status = x.Status, gold = x.Gold, tp = x.Tp, fp = x.Fp, fn = x.Fn, precision = x.Precision, recall = x.Recall, f1 = x.F1, modelOmission = x.FirstLossCounts.GetValueOrDefault("MODEL_OMISSION"), wrongText = x.FirstLossCounts.GetValueOrDefault("MODEL_WRONG_TEXT"), wrongSpan = x.FirstLossCounts.GetValueOrDefault("MODEL_WRONG_SPAN"), systemLoss = x.SystemLoss, executionMode = "FULL_CONTEXT", actualProvider = x.Provider, finishReason = x.FinishReason, inputTokens = x.InputTokens, reasoningTokens = x.ReasoningTokens, outputTokens = x.OutputTokens, wallTimeMs = x.WallTimeMs };
+    private static object RepeatTable(RepeatMetric x) => RepeatTable(x, "FULL_CONTEXT");
+    private static object RepeatTable(RepeatMetric x, string executionMode) => new { documentId = x.DocumentId, repeat = x.Repeat, status = x.Status, gold = x.Gold, tp = x.Tp, fp = x.Fp, fn = x.Fn, precision = x.Precision, recall = x.Recall, f1 = x.F1, modelOmission = x.FirstLossCounts.GetValueOrDefault("MODEL_OMISSION"), wrongText = x.FirstLossCounts.GetValueOrDefault("MODEL_WRONG_TEXT"), wrongSpan = x.FirstLossCounts.GetValueOrDefault("MODEL_WRONG_SPAN"), systemLoss = x.SystemLoss, executionMode, actualProvider = x.Provider, finishReason = x.FinishReason, inputTokens = x.InputTokens, reasoningTokens = x.ReasoningTokens, outputTokens = x.OutputTokens, wallTimeMs = x.WallTimeMs };
     private static MicroMetric Micro(IReadOnlyList<RepeatMetric> group)
     {
         var tp = group.Sum(x => x.Tp); var fp = group.Sum(x => x.Fp); var fn = group.Sum(x => x.Fn);
@@ -2528,6 +2668,150 @@ public static class SemanticTextGeneralizationRunner
         return new DocumentContext(documentId, sourceSha, source, policy, rows, packet, ContractHashForPrompt(), Sha256Text(JsonSerializer.Serialize(SemanticTextExactBindingContract.Schema())), Sha256Text(packet));
     }
 
+    private static DocumentContext PrepareBoundary(string repoRoot, JsonElement item)
+    {
+        var baseContext = Prepare(repoRoot, item);
+        var leaves = new List<SemanticTextSourceAlias>();
+        var baseOffsets = new Dictionary<string, int>(StringComparer.Ordinal);
+        var originalSourceIds = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var row in baseContext.SourceRows)
+        {
+            var paragraph = baseContext.Source.Paragraphs.Single(x => x.SourceId == row.SourceId);
+            var points = BoundaryPoints(paragraph);
+            var leafOrdinal = 0;
+            for (var i = 0; i + 1 < points.Count; i++)
+            {
+                var start = points[i];
+                var end = points[i + 1];
+                if (end <= start) continue;
+                leafOrdinal++;
+                var alias = $"[{row.Alias}:L{leafOrdinal:0000}]";
+                var bindingSourceId = $"{row.SourceId}#I3L{leafOrdinal:0000}";
+                leaves.Add(new SemanticTextSourceAlias(alias, bindingSourceId, row.SourceOrdinal, paragraph.Text[start..end]));
+                baseOffsets.Add(alias, start);
+                originalSourceIds.Add(alias, row.SourceId);
+            }
+        }
+        var packet = JsonSerializer.Serialize(new
+        {
+            sourceLeaves = leaves.Select((x, i) => new { alias = x.Alias, sourceAlias = x.Alias[1..x.Alias.IndexOf(':')], leafOrdinal = i + 1, text = x.RawText, sourceOrdinal = x.SourceOrdinal }).ToArray(),
+        });
+        return baseContext with
+        {
+            SourceRows = leaves,
+            Packet = packet,
+            PacketHash = Sha256Text(packet),
+            AuditRows = baseContext.SourceRows,
+            AliasBaseOffsets = baseOffsets,
+            AliasOriginalSourceIds = originalSourceIds,
+            PresentationMode = "LOSSLESS_SOURCE_BOUNDARIES",
+        };
+    }
+
+    private static List<int> BoundaryPoints(SourceParagraph paragraph)
+    {
+        var length = paragraph.Text.Length;
+        var points = new HashSet<int> { 0, length };
+        foreach (var span in paragraph.SourceSegments) { points.Add(Math.Clamp(span.Start, 0, length)); points.Add(Math.Clamp(span.End, 0, length)); }
+        foreach (var span in paragraph.TextSpans) { points.Add(Math.Clamp(span.Start, 0, length)); points.Add(Math.Clamp(span.End, 0, length)); }
+        foreach (var offset in paragraph.LineBreakOffsets) points.Add(Math.Clamp(offset, 0, length));
+        return points.OrderBy(x => x).ToList();
+    }
+
+    private static BoundaryPreflight ValidateBoundary(DocumentContext context)
+    {
+        var original = context.AuditRows ?? throw new InvalidOperationException("BOUNDARY_AUDIT_ROWS_MISSING");
+        var leaves = context.SourceRows;
+        var originalSourceIds = context.AliasOriginalSourceIds ?? new Dictionary<string, string>(StringComparer.Ordinal);
+        var grouped = leaves.GroupBy(x => originalSourceIds.GetValueOrDefault(x.Alias, x.SourceId), StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.ToArray(), StringComparer.Ordinal);
+        var everyCharacter = true;
+        var noDuplication = true;
+        var reconstructed = true;
+        var leafCount = 0;
+        var sourceChars = 0;
+        var leafChars = 0;
+        var rows = new List<object>();
+        foreach (var row in original)
+        {
+            var rowLeaves = grouped.GetValueOrDefault(row.SourceId, Array.Empty<SemanticTextSourceAlias>()).OrderBy(x => x.Alias, StringComparer.Ordinal).ToArray();
+            var text = string.Concat(rowLeaves.Select(x => x.RawText));
+            var sourceRowOk = text == row.RawText;
+            everyCharacter &= sourceRowOk;
+            noDuplication &= rowLeaves.Sum(x => x.RawText.Length) == row.RawText.Length;
+            reconstructed &= sourceRowOk;
+            leafCount += rowLeaves.Length;
+            sourceChars += row.RawText.Length;
+            leafChars += rowLeaves.Sum(x => x.RawText.Length);
+            rows.Add(new { sourceId = row.SourceId, sourceAlias = row.Alias, sourceChars = row.RawText.Length, leafCount = rowLeaves.Length, leafChars = rowLeaves.Sum(x => x.RawText.Length), reconstructed = sourceRowOk, leafAliases = rowLeaves.Select(x => x.Alias).ToArray() });
+        }
+        var second = PrepareBoundaryFromContext(context);
+        var aliasDeterministic = leaves.Select(x => x.Alias).SequenceEqual(second.SourceRows.Select(x => x.Alias), StringComparer.Ordinal) && leaves.Select(x => x.RawText).SequenceEqual(second.SourceRows.Select(x => x.RawText), StringComparer.Ordinal);
+        var sourceHash = BoundarySourceHash(original);
+        var reconstructedHash = BoundarySourceHash(original.Select(row => string.Concat(grouped.GetValueOrDefault(row.SourceId, Array.Empty<SemanticTextSourceAlias>()).OrderBy(x => x.Alias, StringComparer.Ordinal).Select(x => x.RawText))).Select(x => x));
+        return new BoundaryPreflight(
+            context.DocumentId, everyCharacter, noDuplication,
+            leaves.Select(x => x.Alias).SequenceEqual(leaves.OrderBy(x => x.SourceOrdinal).ThenBy(x => x.Alias, StringComparer.Ordinal).Select(x => x.Alias), StringComparer.Ordinal),
+            aliasDeterministic, reconstructed && sourceHash == reconstructedHash, sourceChars == leafChars && reconstructed,
+            sourceChars, leafChars, leafCount, context.Packet.Length, sourceHash, reconstructedHash, rows.ToArray());
+    }
+
+    private static DocumentContext PrepareBoundaryFromContext(DocumentContext context)
+    {
+        var leaves = new List<SemanticTextSourceAlias>();
+        var offsets = new Dictionary<string, int>(StringComparer.Ordinal);
+        var originalSourceIds = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var row in context.AuditRows ?? context.SourceRows.Where(x => !x.Alias.Contains(":L", StringComparison.Ordinal)))
+        {
+            var paragraph = context.Source.Paragraphs.Single(x => x.SourceId == row.SourceId);
+            var points = BoundaryPoints(paragraph);
+            var leafOrdinal = 0;
+            for (var i = 0; i + 1 < points.Count; i++)
+            {
+                if (points[i + 1] <= points[i]) continue;
+                var alias = $"[{row.Alias}:L{++leafOrdinal:0000}]";
+                var bindingSourceId = $"{row.SourceId}#I3L{leafOrdinal:0000}";
+                leaves.Add(new SemanticTextSourceAlias(alias, bindingSourceId, row.SourceOrdinal, paragraph.Text[points[i]..points[i + 1]]));
+                offsets.Add(alias, points[i]);
+                originalSourceIds.Add(alias, row.SourceId);
+            }
+        }
+        var packet = JsonSerializer.Serialize(new { sourceLeaves = leaves.Select((x, i) => new { alias = x.Alias, sourceAlias = x.Alias[1..x.Alias.IndexOf(':')], leafOrdinal = i + 1, text = x.RawText, sourceOrdinal = x.SourceOrdinal }).ToArray() });
+        return context with { SourceRows = leaves, Packet = packet, PacketHash = Sha256Text(packet), AliasBaseOffsets = offsets, AliasOriginalSourceIds = originalSourceIds, PresentationMode = "LOSSLESS_SOURCE_BOUNDARIES" };
+    }
+
+    private static string BoundarySourceHash(IEnumerable<SemanticTextSourceAlias> rows) => Sha256Text(string.Join("\u001f", rows.Select(x => x.RawText)));
+    private static string BoundarySourceHash(IEnumerable<string> rows) => Sha256Text(string.Join("\u001f", rows));
+
+    private static IReadOnlyList<(string DocumentId, string Key)> PersistentModelOmissionKeys(IReadOnlyList<RepeatMetric> runs) => runs
+        .SelectMany(run => run.FirstLosses.Where(x => x.FirstLoss == "MODEL_OMISSION").Select(x => (run.DocumentId, x.Key)))
+        .Distinct()
+        .Where(key => runs.Where(x => x.DocumentId == key.DocumentId).Count(x => x.PredictionKeys.Contains(key.Key)) == 0)
+        .OrderBy(x => x.DocumentId, StringComparer.Ordinal).ThenBy(x => x.Key, StringComparer.Ordinal).ToArray();
+
+    private static IReadOnlySet<(string DocumentId, string Key)> PersistentFalsePositiveKeys(IReadOnlyList<RepeatMetric> runs) => runs
+        .SelectMany(run => run.FalsePositives.Select(x => (run.DocumentId, x.Key)))
+        .Distinct()
+        .Where(key => runs.Where(x => x.DocumentId == key.DocumentId).Count(x => x.FalsePositives.Any(fp => fp.Key == key.Key)) == RepeatCount)
+        .ToHashSet();
+
+    private static object BuildBoundaryComparison(IReadOnlyList<RepeatMetric> baseline, IReadOnlyList<RepeatMetric> runs, IReadOnlyList<(JsonElement item, ReasoningGoldEligibilityMetadata eligibility)> selected, string startHead, IReadOnlyList<(string DocumentId, string Key)> targetBefore, IReadOnlyList<(string DocumentId, string Key)> targetAfter, int ambiguousBefore, int ambiguousAfter, int persistentFpBefore, int persistentFpAfter, bool noRegression, bool targetRecovered, string classification) => new
+    {
+        schemaVersion = "a99-i3-lossless-semantic-source-boundaries-comparison-v1", taskId = "A99-I3", parent = "B0@76c4e01", startHead, model = Model,
+        selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
+        perCell = baseline.OrderBy(x => x.DocumentId, StringComparer.Ordinal).ThenBy(x => x.Repeat, StringComparer.Ordinal).Zip(runs.OrderBy(x => x.DocumentId, StringComparer.Ordinal).ThenBy(x => x.Repeat, StringComparer.Ordinal), (b, i) => new { documentId = b.DocumentId, repeat = b.Repeat, b0 = RepeatTable(b, "FULL_CONTEXT"), i3 = RepeatTable(i, "LOSSLESS_SOURCE_BOUNDARIES") }).ToArray(),
+        b0MicroByRepeat = baseline.GroupBy(x => x.Repeat).OrderBy(x => x.Key, StringComparer.Ordinal).Select(x => Micro(x.ToArray())).ToArray(),
+        i3MicroByRepeat = runs.GroupBy(x => x.Repeat).OrderBy(x => x.Key, StringComparer.Ordinal).Select(x => Micro(x.ToArray())).ToArray(),
+        persistentModelOmissionsBefore = targetBefore, persistentModelOmissionsAfter = targetAfter, targetRecovered, ambiguousBefore, ambiguousAfter, persistentFpBefore, persistentFpAfter, noPerRepeatRegression = noRegression, classification,
+    };
+
+    private static object BuildBoundaryTargetForensic(IReadOnlyList<RepeatMetric> baseline, IReadOnlyList<RepeatMetric> runs, IReadOnlyList<(string DocumentId, string Key)> targets) => targets.Select(target =>
+    {
+        var b0 = baseline.Where(x => x.DocumentId == target.DocumentId).OrderBy(x => x.Repeat, StringComparer.Ordinal).ToArray();
+        var i3 = runs.Where(x => x.DocumentId == target.DocumentId).OrderBy(x => x.Repeat, StringComparer.Ordinal).ToArray();
+        var sample = b0.SelectMany(x => x.FirstLosses).Concat(i3.SelectMany(x => x.FirstLosses)).FirstOrDefault(x => x.Key == target.Key);
+        return new { documentId = target.DocumentId, key = target.Key, exactSourceText = sample?.ExactSourceText, repeats = Enumerable.Range(0, RepeatCount).Select(index => new { repeat = $"R{index + 1}", b0FirstLoss = b0[index].FirstLosses.FirstOrDefault(x => x.Key == target.Key)?.FirstLoss ?? "FOUND", i3FirstLoss = i3[index].FirstLosses.FirstOrDefault(x => x.Key == target.Key)?.FirstLoss ?? "FOUND", b0Found = b0[index].PredictionKeys.Contains(target.Key), i3Found = i3[index].PredictionKeys.Contains(target.Key) }).ToArray() };
+    }).ToArray();
+
     private static JsonElement[] LoadInventory(string repoRoot)
     {
         using var doc = JsonDocument.Parse(File.ReadAllText(Path.Combine(repoRoot, InventoryPath.Replace('/', Path.DirectorySeparatorChar))));
@@ -2555,7 +2839,8 @@ public static class SemanticTextGeneralizationRunner
     private static string Git(string root, string args) { try { using var p = Process.Start(new ProcessStartInfo("git", args) { WorkingDirectory = root, RedirectStandardOutput = true, UseShellExecute = false }); return p?.StandardOutput.ReadToEnd().Trim() ?? "NOT_PERSISTED"; } catch { return "NOT_PERSISTED"; } }
     private static async Task WriteJson(string path, object value, CancellationToken ct) => await File.WriteAllTextAsync(path, JsonSerializer.Serialize(value, JsonOptions) + Environment.NewLine, ct);
 
-    private sealed record DocumentContext(string DocumentId, string SourceSha256, SourceDocument Source, DocxPolicyState Policy, IReadOnlyList<SemanticTextSourceAlias> SourceRows, string Packet, string PromptHash, string SchemaHash, string PacketHash);
+    private sealed record DocumentContext(string DocumentId, string SourceSha256, SourceDocument Source, DocxPolicyState Policy, IReadOnlyList<SemanticTextSourceAlias> SourceRows, string Packet, string PromptHash, string SchemaHash, string PacketHash, IReadOnlyList<SemanticTextSourceAlias>? AuditRows = null, IReadOnlyDictionary<string, int>? AliasBaseOffsets = null, IReadOnlyDictionary<string, string>? AliasOriginalSourceIds = null, string PresentationMode = "FULL_CONTEXT");
+    private sealed record BoundaryPreflight(string DocumentId, bool EverySourceCharacterRepresented, bool NoSourceTextDuplication, bool LeafOrderDeterministic, bool AliasGenerationDeterministic, bool ReconstructedSourceMatchesB0, bool NoTailTruncation, int SourceChars, int LeafChars, int LeafCount, int PacketChars, string SourceHash, string ReconstructedHash, IReadOnlyList<object> Rows);
     private sealed record LossRow(string DocumentId, string Key, string ExactSourceText, string FirstLoss, bool Found);
     private sealed record MicroMetric(string Repeat, int Gold, int Tp, int Fp, int Fn, double Precision, double Recall, double F1, int SystemLoss);
     private sealed record RepeatMetric(string DocumentId, string Repeat, string Status, int Gold, int Tp, int Fp, int Fn, double Precision, double Recall, double F1, int SystemBindingLoss, int SystemValidatorLoss, int SystemProjectionLoss, int RawCount, int BoundCount, int ValidatedCount, int FinalCount, string? Provider, string? FinishReason, int? InputTokens, int? ReasoningTokens, int? OutputTokens, long WallTimeMs, HashSet<string> PredictionKeys, IReadOnlyList<LossRow> FirstLosses, IReadOnlyList<LossRow> FalsePositives, object? Score = null, IReadOnlyDictionary<string, int>? LossCounts = null)

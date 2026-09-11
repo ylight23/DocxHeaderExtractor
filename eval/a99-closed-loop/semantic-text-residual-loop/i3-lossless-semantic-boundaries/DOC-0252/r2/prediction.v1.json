@@ -1,0 +1,1767 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-prediction-v1",
+  "documentId": "DOC-0252",
+  "repeat": "r2",
+  "model": "qwen/qwen3.7-flash",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "LOSSLESS_SOURCE_BOUNDARIES",
+  "dataClassification": "PUBLIC",
+  "zdrRequested": false,
+  "privacyExceptionAuthorized": true,
+  "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "promptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+  "schemaHash": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
+  "packetHash": "2c975d121be7fc627747aa02b7efb5303e19db22ea795175a2960715feb1ff7a",
+  "sourceAliasCount": 748,
+  "rawModelHeadings": [
+    {
+      "source": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "role": "DOCUMENT_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0002",
+      "text": "TECHNICAL ADVISORY GROUP",
+      "role": "PART",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0005",
+      "text": "Session I: Welcome and meeting objectives",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0009",
+      "text": "Session II: Update on the ICP 2021 Cycle",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0010",
+      "text": "Global office update",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0034",
+      "text": "Regional updates",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0036",
+      "text": "Africa",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0039",
+      "text": "Asia and the Pacific",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0043",
+      "text": "Commonwealth of Independent States (CIS)",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0049",
+      "text": "Eurostat\u2013OECD PPP Program",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0052",
+      "text": "Latin America and the Caribbean",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0056",
+      "text": "Western Asia",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0062",
+      "text": "Session III: Short- and Long-Term Research and Development Agenda",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0063",
+      "text": "Research Topics Emerging from the Previous ICP Cycles",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0071",
+      "text": "Treatment of dual participation economies",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0072",
+      "text": "Productivity adjustment factors",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0073",
+      "text": "Subsidized prices",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0074",
+      "text": "Global linking procedure of private education PPPs",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0075",
+      "text": "Construction Wages",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0076",
+      "text": "Reference PPPs",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0080",
+      "text": "Forthcoming Research Topics",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0091",
+      "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0092",
+      "text": "TAG Composition and Terms of Reference",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0093",
+      "text": "The Co-Chairs",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0096",
+      "text": "Terms of Reference for a Task Force on Annual PPP Production",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0103",
+      "text": "Terms of Reference for a Task Force on ICP Classification Update",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0108",
+      "text": "Session V: Current Research",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0109",
+      "text": "The Treatment of Import and Export Prices in International Comparisons",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0117",
+      "text": "A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0122",
+      "text": "Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0130",
+      "text": "Treatment of Negative Expenditures in ICP",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0135",
+      "text": "Fine Tuning Global Linking Procedures",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0148",
+      "text": "Improving Reliability of Price Comparisons",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0157",
+      "text": "Session VI: Any Other Business",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "Agenda",
+      "role": "TOC_ENTRY",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "SESSION I: Welcome and Opening Remarks",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "Welcome and Opening Remarks",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0163",
+      "text": "Update on the ICP 2021 and 2024 Cycles",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0164",
+      "text": "SESSION III: Short- and Long-Term Research and Development Agenda",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0167",
+      "text": "Research Topics Emerging from the Previous ICP Cycles",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0167",
+      "text": "Forthcoming Research Topics",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0168",
+      "text": "Setting Up a Short- and Long-Term Research and Development Agenda",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0169",
+      "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0169",
+      "text": "TAG Composition and Terms of Reference",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0171",
+      "text": "Terms of Reference for a Task Force on Annual PPP Production",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0172",
+      "text": "Terms of Reference for a Task Force on ICP Classification Update",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0173",
+      "text": "SESSION V: Current Research",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0175",
+      "text": "The Treatment of Import and Export Prices in International Comparisons",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0176",
+      "text": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0177",
+      "text": "SESSION V: Current Research (Cont\u2019d)",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0183",
+      "text": "A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0184",
+      "text": "Treatment of Scanner (Transaction) Data in the European Comparison Program (ECP)",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0185",
+      "text": "Treatment of Negative Expenditures in ICP",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0186",
+      "text": "Fine Tuning Global Linking Procedures",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0188",
+      "text": "Alternative Global Linking Methods",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0188",
+      "text": "Similarity Linking Within and Between Regions",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0189",
+      "text": "Improving Reliability of Price Comparisons",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0189",
+      "text": "Basic Heading PPPs and Sparsity of Price Tableaus",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0191",
+      "text": "Alternative Basic Heading PPP Aggregation Methods",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0192",
+      "text": "SESSION VI: Closing",
+      "role": "AGENDA_NAVIGATION_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0193",
+      "text": "Any Other Business and Closing",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0195",
+      "text": "Annex 2: List of Participants",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0196",
+      "text": "ICP Technical Advisory Group members",
+      "role": "LOCAL_INDEX_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0199",
+      "text": "ICP experts, guest speakers, and observers",
+      "role": "LOCAL_INDEX_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0202",
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "role": "LOCAL_INDEX_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ],
+  "bindingObservations": [
+    {
+      "rawOrdinal": 0,
+      "heading": {
+        "source": "S0001",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "role": "DOCUMENT_TITLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 1,
+      "heading": {
+        "source": "S0002",
+        "text": "TECHNICAL ADVISORY GROUP",
+        "role": "PART",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 2,
+      "heading": {
+        "source": "S0005",
+        "text": "Session I: Welcome and meeting objectives",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 3,
+      "heading": {
+        "source": "S0009",
+        "text": "Session II: Update on the ICP 2021 Cycle",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 4,
+      "heading": {
+        "source": "S0010",
+        "text": "Global office update",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 5,
+      "heading": {
+        "source": "S0034",
+        "text": "Regional updates",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 6,
+      "heading": {
+        "source": "S0036",
+        "text": "Africa",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 7,
+      "heading": {
+        "source": "S0039",
+        "text": "Asia and the Pacific",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 8,
+      "heading": {
+        "source": "S0043",
+        "text": "Commonwealth of Independent States (CIS)",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 9,
+      "heading": {
+        "source": "S0049",
+        "text": "Eurostat\u2013OECD PPP Program",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 10,
+      "heading": {
+        "source": "S0052",
+        "text": "Latin America and the Caribbean",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 11,
+      "heading": {
+        "source": "S0056",
+        "text": "Western Asia",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 12,
+      "heading": {
+        "source": "S0062",
+        "text": "Session III: Short- and Long-Term Research and Development Agenda",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 13,
+      "heading": {
+        "source": "S0063",
+        "text": "Research Topics Emerging from the Previous ICP Cycles",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 14,
+      "heading": {
+        "source": "S0071",
+        "text": "Treatment of dual participation economies",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 15,
+      "heading": {
+        "source": "S0072",
+        "text": "Productivity adjustment factors",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 16,
+      "heading": {
+        "source": "S0073",
+        "text": "Subsidized prices",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 17,
+      "heading": {
+        "source": "S0074",
+        "text": "Global linking procedure of private education PPPs",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 18,
+      "heading": {
+        "source": "S0075",
+        "text": "Construction Wages",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 19,
+      "heading": {
+        "source": "S0076",
+        "text": "Reference PPPs",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 20,
+      "heading": {
+        "source": "S0080",
+        "text": "Forthcoming Research Topics",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 21,
+      "heading": {
+        "source": "S0091",
+        "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 22,
+      "heading": {
+        "source": "S0092",
+        "text": "TAG Composition and Terms of Reference",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 23,
+      "heading": {
+        "source": "S0093",
+        "text": "The Co-Chairs",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 24,
+      "heading": {
+        "source": "S0096",
+        "text": "Terms of Reference for a Task Force on Annual PPP Production",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 25,
+      "heading": {
+        "source": "S0103",
+        "text": "Terms of Reference for a Task Force on ICP Classification Update",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 26,
+      "heading": {
+        "source": "S0108",
+        "text": "Session V: Current Research",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 27,
+      "heading": {
+        "source": "S0109",
+        "text": "The Treatment of Import and Export Prices in International Comparisons",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 28,
+      "heading": {
+        "source": "S0117",
+        "text": "A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 29,
+      "heading": {
+        "source": "S0122",
+        "text": "Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 30,
+      "heading": {
+        "source": "S0130",
+        "text": "Treatment of Negative Expenditures in ICP",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 31,
+      "heading": {
+        "source": "S0135",
+        "text": "Fine Tuning Global Linking Procedures",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 32,
+      "heading": {
+        "source": "S0148",
+        "text": "Improving Reliability of Price Comparisons",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 33,
+      "heading": {
+        "source": "S0157",
+        "text": "Session VI: Any Other Business",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 34,
+      "heading": {
+        "source": "S0161",
+        "text": "Agenda",
+        "role": "TOC_ENTRY",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 35,
+      "heading": {
+        "source": "S0161",
+        "text": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 36,
+      "heading": {
+        "source": "S0161",
+        "text": "SESSION I: Welcome and Opening Remarks",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 37,
+      "heading": {
+        "source": "S0161",
+        "text": "Welcome and Opening Remarks",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 38,
+      "heading": {
+        "source": "S0161",
+        "text": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 39,
+      "heading": {
+        "source": "S0163",
+        "text": "Update on the ICP 2021 and 2024 Cycles",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 40,
+      "heading": {
+        "source": "S0164",
+        "text": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 41,
+      "heading": {
+        "source": "S0167",
+        "text": "Research Topics Emerging from the Previous ICP Cycles",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 42,
+      "heading": {
+        "source": "S0167",
+        "text": "Forthcoming Research Topics",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 43,
+      "heading": {
+        "source": "S0168",
+        "text": "Setting Up a Short- and Long-Term Research and Development Agenda",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 44,
+      "heading": {
+        "source": "S0169",
+        "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 45,
+      "heading": {
+        "source": "S0169",
+        "text": "TAG Composition and Terms of Reference",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 46,
+      "heading": {
+        "source": "S0171",
+        "text": "Terms of Reference for a Task Force on Annual PPP Production",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 47,
+      "heading": {
+        "source": "S0172",
+        "text": "Terms of Reference for a Task Force on ICP Classification Update",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 48,
+      "heading": {
+        "source": "S0173",
+        "text": "SESSION V: Current Research",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 49,
+      "heading": {
+        "source": "S0175",
+        "text": "The Treatment of Import and Export Prices in International Comparisons",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 50,
+      "heading": {
+        "source": "S0176",
+        "text": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 51,
+      "heading": {
+        "source": "S0177",
+        "text": "SESSION V: Current Research (Cont\u2019d)",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 52,
+      "heading": {
+        "source": "S0183",
+        "text": "A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 53,
+      "heading": {
+        "source": "S0184",
+        "text": "Treatment of Scanner (Transaction) Data in the European Comparison Program (ECP)",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 54,
+      "heading": {
+        "source": "S0185",
+        "text": "Treatment of Negative Expenditures in ICP",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 55,
+      "heading": {
+        "source": "S0186",
+        "text": "Fine Tuning Global Linking Procedures",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 56,
+      "heading": {
+        "source": "S0188",
+        "text": "Alternative Global Linking Methods",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 57,
+      "heading": {
+        "source": "S0188",
+        "text": "Similarity Linking Within and Between Regions",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 58,
+      "heading": {
+        "source": "S0189",
+        "text": "Improving Reliability of Price Comparisons",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 59,
+      "heading": {
+        "source": "S0189",
+        "text": "Basic Heading PPPs and Sparsity of Price Tableaus",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 60,
+      "heading": {
+        "source": "S0191",
+        "text": "Alternative Basic Heading PPP Aggregation Methods",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 61,
+      "heading": {
+        "source": "S0192",
+        "text": "SESSION VI: Closing",
+        "role": "AGENDA_NAVIGATION_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 62,
+      "heading": {
+        "source": "S0193",
+        "text": "Any Other Business and Closing",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 63,
+      "heading": {
+        "source": "S0195",
+        "text": "Annex 2: List of Participants",
+        "role": "ANNEX_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 64,
+      "heading": {
+        "source": "S0196",
+        "text": "ICP Technical Advisory Group members",
+        "role": "LOCAL_INDEX_TITLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 65,
+      "heading": {
+        "source": "S0199",
+        "text": "ICP experts, guest speakers, and observers",
+        "role": "LOCAL_INDEX_TITLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 66,
+      "heading": {
+        "source": "S0202",
+        "text": "ICP Inter-Agency Coordination Group (IACG)",
+        "role": "LOCAL_INDEX_TITLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    }
+  ],
+  "boundHeadings": [],
+  "validatorAccepted": 0,
+  "validatorRejected": 0,
+  "finalHeadings": [],
+  "goldReadBeforeFreeze": false
+}

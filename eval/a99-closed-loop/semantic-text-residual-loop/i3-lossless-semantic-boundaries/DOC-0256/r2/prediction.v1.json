@@ -1,0 +1,2131 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-prediction-v1",
+  "documentId": "DOC-0256",
+  "repeat": "r2",
+  "model": "qwen/qwen3.7-flash",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "LOSSLESS_SOURCE_BOUNDARIES",
+  "dataClassification": "PUBLIC",
+  "zdrRequested": false,
+  "privacyExceptionAuthorized": true,
+  "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+  "promptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+  "schemaHash": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
+  "packetHash": "f011ef0b09199ffd261e7ca92eac1d3b977b801ab19eaeb620de9896f4a33193",
+  "sourceAliasCount": 636,
+  "rawModelHeadings": [
+    {
+      "source": "S0001",
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM ",
+      "role": "DOCUMENT_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0002",
+      "text": "INTER-AGENCY COORDINATION GROUP MEETING",
+      "role": "DOCUMENT_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0004",
+      "text": "Welcome and meeting objectives",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0008",
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0009",
+      "text": "Africa",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0013",
+      "text": "Asia and the Pacific",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0016",
+      "text": "Commonwealth of Independent States",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0020",
+      "text": "Eurostat\u2013OECD PPP Program",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0024",
+      "text": "Latin America and the Caribbean",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0027",
+      "text": "Western Asia",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0032",
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0033",
+      "text": "The ICP Global Office",
+      "role": "SUBSECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0043",
+      "text": "Data review: Household consumption price and importance data",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0049",
+      "text": "Data review: Housing prices and volumes",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0053",
+      "text": "Data review: Private Education",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0059",
+      "text": "Data review: Government compensation and productivity adjustment",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0062",
+      "text": "Data review: Machinery and equipment and construction",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0066",
+      "text": "Data review: 2017-2021 National Accounts expenditures",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0072",
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0074",
+      "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0081",
+      "text": "Planning for the ICP 2024 cycle",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0087",
+      "text": "Annex 1: Meeting Agenda",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0088",
+      "text": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0090",
+      "text": "Opening remarks",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0092",
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0094",
+      "text": "Country participation status",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0096",
+      "text": "Implementation status",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0098:L0002",
+      "text": "Survey status ",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0098:L0004",
+      "text": "Expenditure compilation status ",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0098:L0006",
+      "text": "Data and metadata submission and validation status ",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0098:L0008",
+      "text": "Metadata questionnaire submission status ",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0098:L0010",
+      "text": "PPP estimation status (2021, 2017, timeseries) ",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0098:L0011",
+      "text": "Recent and forthcoming workshops and meetings",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0100",
+      "text": "Outreach activities and announcements",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0102",
+      "text": "Break",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0104",
+      "text": "Regional updates on the ICP 2021 cycle implementation (Cont\u2019d)",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0106",
+      "text": "Lunch",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0108",
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0110",
+      "text": "Overall ICP 2021 cycle timetable and production roadmap",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0112",
+      "text": "Data submission and validation status",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0114",
+      "text": "Risk assessment",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0116",
+      "text": "Outreach activities and announcement",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0118",
+      "text": "Data review: Household consumption price and importance data",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0120",
+      "text": "Break",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0122",
+      "text": "Data review: Household consumption price and importance data",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0123",
+      "text": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0125",
+      "text": "Data review: Housing prices and volumes",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0127",
+      "text": "Break",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0129",
+      "text": "Data review: Private education",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0131",
+      "text": "Data review: Government compensation and productivity adjustment",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0133:L0002",
+      "text": "Lunch",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0134:L0002",
+      "text": "Data review: Government compensation and productivity (cont\u2019d)",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0135:L0002",
+      "text": "Data review: Machinery and equipment",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0136:L0002",
+      "text": "Break",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0137:L0002",
+      "text": "Data review: Construction and civil engineering",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0138",
+      "text": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0140",
+      "text": "Data review: 2017-2021 National accounts expenditures",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0142",
+      "text": "Break",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0144",
+      "text": "Data review: 2017-2021 National accounts expenditures (cont\u2019d)",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0146",
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0148",
+      "text": "Lunch",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0150",
+      "text": "Data review: 2017-2021 timeseries data (PPPs, CPIs, deflators)",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0152",
+      "text": "Break",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0154",
+      "text": "Data reviews (cont\u2019d)",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0156",
+      "text": "Break",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0158",
+      "text": "Data review (cont\u2019d)",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0159",
+      "text": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "role": "CHAPTER",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0161",
+      "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0162",
+      "text": "regional and global levels",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0164",
+      "text": "Break",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0166",
+      "text": "Planning for the ICP 2024 cycle",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0168",
+      "text": "Timetable",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0170",
+      "text": "Operational materials",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0172",
+      "text": "Lunch",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0178",
+      "text": "Planning for the ICP 2024 cycle",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0180",
+      "text": "Timetable",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0182",
+      "text": "Operational materials",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0183:L0001",
+      "text": "Break ",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0183:L0002",
+      "text": "Planning for an approach to produce annual ICP results and forecasts ",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0183:L0003",
+      "text": "Any other business and closing",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0185",
+      "text": "Annex 2: List of participants",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ],
+  "bindingObservations": [
+    {
+      "rawOrdinal": 0,
+      "heading": {
+        "source": "S0001",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM ",
+        "role": "DOCUMENT_TITLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 1,
+      "heading": {
+        "source": "S0002",
+        "text": "INTER-AGENCY COORDINATION GROUP MEETING",
+        "role": "DOCUMENT_TITLE",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 2,
+      "heading": {
+        "source": "S0004",
+        "text": "Welcome and meeting objectives",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 3,
+      "heading": {
+        "source": "S0008",
+        "text": "Regional updates on the ICP 2021 cycle implementation",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 4,
+      "heading": {
+        "source": "S0009",
+        "text": "Africa",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 5,
+      "heading": {
+        "source": "S0013",
+        "text": "Asia and the Pacific",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 6,
+      "heading": {
+        "source": "S0016",
+        "text": "Commonwealth of Independent States",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 7,
+      "heading": {
+        "source": "S0020",
+        "text": "Eurostat\u2013OECD PPP Program",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 8,
+      "heading": {
+        "source": "S0024",
+        "text": "Latin America and the Caribbean",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 9,
+      "heading": {
+        "source": "S0027",
+        "text": "Western Asia",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 10,
+      "heading": {
+        "source": "S0032",
+        "text": "Global updates on the ICP 2021 cycle implementation",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 11,
+      "heading": {
+        "source": "S0033",
+        "text": "The ICP Global Office",
+        "role": "SUBSECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 12,
+      "heading": {
+        "source": "S0043",
+        "text": "Data review: Household consumption price and importance data",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 13,
+      "heading": {
+        "source": "S0049",
+        "text": "Data review: Housing prices and volumes",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 14,
+      "heading": {
+        "source": "S0053",
+        "text": "Data review: Private Education",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 15,
+      "heading": {
+        "source": "S0059",
+        "text": "Data review: Government compensation and productivity adjustment",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 16,
+      "heading": {
+        "source": "S0062",
+        "text": "Data review: Machinery and equipment and construction",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 17,
+      "heading": {
+        "source": "S0066",
+        "text": "Data review: 2017-2021 National Accounts expenditures",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 18,
+      "heading": {
+        "source": "S0072",
+        "text": "Data review: 2017-2021 Population and market exchange rates",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 19,
+      "heading": {
+        "source": "S0074",
+        "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 20,
+      "heading": {
+        "source": "S0081",
+        "text": "Planning for the ICP 2024 cycle",
+        "role": "SECTION",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 21,
+      "heading": {
+        "source": "S0087",
+        "text": "Annex 1: Meeting Agenda",
+        "role": "ANNEX_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 22,
+      "heading": {
+        "source": "S0088",
+        "text": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 23,
+      "heading": {
+        "source": "S0090",
+        "text": "Opening remarks",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 24,
+      "heading": {
+        "source": "S0092",
+        "text": "Regional updates on the ICP 2021 cycle implementation",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 25,
+      "heading": {
+        "source": "S0094",
+        "text": "Country participation status",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 26,
+      "heading": {
+        "source": "S0096",
+        "text": "Implementation status",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 27,
+      "heading": {
+        "source": "S0098:L0002",
+        "text": "Survey status ",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 28,
+      "heading": {
+        "source": "S0098:L0004",
+        "text": "Expenditure compilation status ",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 29,
+      "heading": {
+        "source": "S0098:L0006",
+        "text": "Data and metadata submission and validation status ",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 30,
+      "heading": {
+        "source": "S0098:L0008",
+        "text": "Metadata questionnaire submission status ",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 31,
+      "heading": {
+        "source": "S0098:L0010",
+        "text": "PPP estimation status (2021, 2017, timeseries) ",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 32,
+      "heading": {
+        "source": "S0098:L0011",
+        "text": "Recent and forthcoming workshops and meetings",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 33,
+      "heading": {
+        "source": "S0100",
+        "text": "Outreach activities and announcements",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 34,
+      "heading": {
+        "source": "S0102",
+        "text": "Break",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 35,
+      "heading": {
+        "source": "S0104",
+        "text": "Regional updates on the ICP 2021 cycle implementation (Cont\u2019d)",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 36,
+      "heading": {
+        "source": "S0106",
+        "text": "Lunch",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 37,
+      "heading": {
+        "source": "S0108",
+        "text": "Global updates on the ICP 2021 cycle implementation",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 38,
+      "heading": {
+        "source": "S0110",
+        "text": "Overall ICP 2021 cycle timetable and production roadmap",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 39,
+      "heading": {
+        "source": "S0112",
+        "text": "Data submission and validation status",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 40,
+      "heading": {
+        "source": "S0114",
+        "text": "Risk assessment",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 41,
+      "heading": {
+        "source": "S0116",
+        "text": "Outreach activities and announcement",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 42,
+      "heading": {
+        "source": "S0118",
+        "text": "Data review: Household consumption price and importance data",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 43,
+      "heading": {
+        "source": "S0120",
+        "text": "Break",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 44,
+      "heading": {
+        "source": "S0122",
+        "text": "Data review: Household consumption price and importance data",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 45,
+      "heading": {
+        "source": "S0123",
+        "text": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 46,
+      "heading": {
+        "source": "S0125",
+        "text": "Data review: Housing prices and volumes",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 47,
+      "heading": {
+        "source": "S0127",
+        "text": "Break",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 48,
+      "heading": {
+        "source": "S0129",
+        "text": "Data review: Private education",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 49,
+      "heading": {
+        "source": "S0131",
+        "text": "Data review: Government compensation and productivity adjustment",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 50,
+      "heading": {
+        "source": "S0133:L0002",
+        "text": "Lunch",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 51,
+      "heading": {
+        "source": "S0134:L0002",
+        "text": "Data review: Government compensation and productivity (cont\u2019d)",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 52,
+      "heading": {
+        "source": "S0135:L0002",
+        "text": "Data review: Machinery and equipment",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 53,
+      "heading": {
+        "source": "S0136:L0002",
+        "text": "Break",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 54,
+      "heading": {
+        "source": "S0137:L0002",
+        "text": "Data review: Construction and civil engineering",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 55,
+      "heading": {
+        "source": "S0138",
+        "text": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 56,
+      "heading": {
+        "source": "S0140",
+        "text": "Data review: 2017-2021 National accounts expenditures",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 57,
+      "heading": {
+        "source": "S0142",
+        "text": "Break",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 58,
+      "heading": {
+        "source": "S0144",
+        "text": "Data review: 2017-2021 National accounts expenditures (cont\u2019d)",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 59,
+      "heading": {
+        "source": "S0146",
+        "text": "Data review: 2017-2021 Population and market exchange rates",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 60,
+      "heading": {
+        "source": "S0148",
+        "text": "Lunch",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 61,
+      "heading": {
+        "source": "S0150",
+        "text": "Data review: 2017-2021 timeseries data (PPPs, CPIs, deflators)",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 62,
+      "heading": {
+        "source": "S0152",
+        "text": "Break",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 63,
+      "heading": {
+        "source": "S0154",
+        "text": "Data reviews (cont\u2019d)",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 64,
+      "heading": {
+        "source": "S0156",
+        "text": "Break",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 65,
+      "heading": {
+        "source": "S0158",
+        "text": "Data review (cont\u2019d)",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 66,
+      "heading": {
+        "source": "S0159",
+        "text": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+        "role": "CHAPTER",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 67,
+      "heading": {
+        "source": "S0161",
+        "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 68,
+      "heading": {
+        "source": "S0162",
+        "text": "regional and global levels",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 69,
+      "heading": {
+        "source": "S0164",
+        "text": "Break",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 70,
+      "heading": {
+        "source": "S0166",
+        "text": "Planning for the ICP 2024 cycle",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 71,
+      "heading": {
+        "source": "S0168",
+        "text": "Timetable",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 72,
+      "heading": {
+        "source": "S0170",
+        "text": "Operational materials",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 73,
+      "heading": {
+        "source": "S0172",
+        "text": "Lunch",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 74,
+      "heading": {
+        "source": "S0178",
+        "text": "Planning for the ICP 2024 cycle",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 75,
+      "heading": {
+        "source": "S0180",
+        "text": "Timetable",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 76,
+      "heading": {
+        "source": "S0182",
+        "text": "Operational materials",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 77,
+      "heading": {
+        "source": "S0183:L0001",
+        "text": "Break ",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 78,
+      "heading": {
+        "source": "S0183:L0002",
+        "text": "Planning for an approach to produce annual ICP results and forecasts ",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 79,
+      "heading": {
+        "source": "S0183:L0003",
+        "text": "Any other business and closing",
+        "role": "LIST_ITEM",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    },
+    {
+      "rawOrdinal": 80,
+      "heading": {
+        "source": "S0185",
+        "text": "Annex 2: List of participants",
+        "role": "ANNEX_HEADING",
+        "occurrence": null,
+        "leftExactContext": null,
+        "rightExactContext": null
+      },
+      "status": 5,
+      "exactTextOccurrenceCount": 0,
+      "alias": null,
+      "sourceId": null,
+      "start": null,
+      "end": null,
+      "failureReason": "INVALID_SOURCE_ALIAS"
+    }
+  ],
+  "boundHeadings": [],
+  "validatorAccepted": 0,
+  "validatorRejected": 0,
+  "finalHeadings": [],
+  "goldReadBeforeFreeze": false
+}
