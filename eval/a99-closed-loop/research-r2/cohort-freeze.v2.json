@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "a99-r2a-cohort-freeze-v2",
+  "studyId": "A99-R2",
+  "status": "COHORT_FROZEN_AWAITING_INDEPENDENT_HUMAN_GOLD",
+  "behavioralParent": "B0@76c4e01a10577b1c6069255646843cbaef729a1f",
+  "selectionParentCheckpoint": "6a72a4ceb3c6ef9465a4d4d651d3f4ef09edade6",
+  "cohortFreezeArtifactCommit": "99f66b1ff5d73fb2e8d8d6f4753707c59f5b8dd9",
+  "historicalArtifact": "cohort-freeze.v1.json",
+  "selectionAlgorithmHash": "7388a9b6eadee291511366d124f32fe063d153a9e131e7f89efb53111c70ea46",
+  "selectedDocuments": [
+    {
+      "documentId": "DOC-0002",
+      "sourceSha256": "8e649d78dab6d6ea2304053abfac4222a612b00580c82218fe28a53dce549862",
+      "sourcePath": "bench\\02-dinh-dang-thu-cong.docx",
+      "familyId": "DOCX_NATIVE_STRUCTURED"
+    },
+    {
+      "documentId": "DOC-0003",
+      "sourceSha256": "d97c62a01336cec6c7681d728238f4cdbd83900e6a582a9bb51ea6e6db8f42a9",
+      "sourcePath": "bench\\03-bang-ma-hieu.docx",
+      "familyId": "DOCX_NATIVE_STRUCTURED"
+    },
+    {
+      "documentId": "DOC-0004",
+      "sourceSha256": "8a0bebf4831d85934724a7b255d42743106ec10daaca3e9adf0a6cbbd7a9c2d8",
+      "sourcePath": "bench\\04-bia-muc-luc-chu-thich.docx",
+      "familyId": "DOCX_NATIVE_STRUCTURED"
+    },
+    {
+      "documentId": "DOC-0006",
+      "sourceSha256": "e03a316450f9867054605810e2aaab55f078be6f744df47a9bfe0afb186ff60a",
+      "sourcePath": "bench\\06-style-ban-dia.docx",
+      "familyId": "DOCX_NATIVE_STRUCTURED"
+    },
+    {
+      "documentId": "DOC-0086",
+      "sourceSha256": "b8703906de3ae5149335b00aba17d02eca1b6f408b6308de51d1d920420ff603",
+      "sourcePath": "todo10_8\\heading_corpus_100\\01_phap_quy\\001_Bo_luat_Dan_su_91-2015-QH13.pdf",
+      "familyId": "VN_LEGAL_MARKER"
+    },
+    {
+      "documentId": "DOC-0092",
+      "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+      "sourcePath": "todo10_8\\heading_corpus_100\\01_phap_quy\\007_Luat_Nha_o_27-2023-QH15.pdf",
+      "familyId": "VN_LEGAL_MARKER"
+    },
+    {
+      "documentId": "DOC-0097",
+      "sourceSha256": "03c86fc385f17dd102550f5dcf4c82df5904bad30cbd73bb38a7058fa716abc9",
+      "sourcePath": "todo10_8\\heading_corpus_100\\01_phap_quy\\012_Luat_Ke_toan_hop_nhat_2026.pdf",
+      "familyId": "VN_LEGAL_MARKER"
+    },
+    {
+      "documentId": "DOC-0126",
+      "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+      "sourcePath": "todo10_8\\heading_corpus_100\\03_tai_chinh_ke_toan\\041_IBRD_Financial_Statements_June_2025.pdf",
+      "familyId": "PDF_NATIVE_LAYOUT"
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "sourcePath": "todo10_8\\heading_corpus_100\\03_tai_chinh_ke_toan\\048_IBRD_Financial_Statements_March_2025.pdf",
+      "familyId": "PDF_NATIVE_LAYOUT"
+    },
+    {
+      "documentId": "DOC-0154",
+      "sourceSha256": "0106d65c6a7bb9aa0f44e39526946ca9e432d42fe9379d76fd57d1d8df903498",
+      "sourcePath": "todo10_8\\heading_corpus_100\\04_giao_trinh\\069_Course_in_Dynamic_Optimization.pdf",
+      "familyId": "PDF_NATIVE_LAYOUT"
+    },
+    {
+      "documentId": "DOC-0156",
+      "sourceSha256": "fe99f544b10e690812acb1362c067c520968a7e1d2cddc232c24db2d3ba790e4",
+      "sourcePath": "todo10_8\\heading_corpus_100\\05_bien_ban_hop\\071_ICP_IACG_Minutes_Oct_2025.pdf",
+      "familyId": "VN_ADMIN_TYPED"
+    },
+    {
+      "documentId": "DOC-0158",
+      "sourceSha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+      "sourcePath": "todo10_8\\heading_corpus_100\\05_bien_ban_hop\\073_FORTIS_GC_Minutes_Mar_2026.pdf",
+      "familyId": "VN_ADMIN_TYPED"
+    },
+    {
+      "documentId": "DOC-0165",
+      "sourceSha256": "2b1a4e73ce2df40e46446ff7a772b44284ba6bbcff9e02062f838b5498b4085f",
+      "sourcePath": "todo10_8\\heading_corpus_100\\05_bien_ban_hop\\080_ICP_Governing_Board_Minutes_Feb_2023.pdf",
+      "familyId": "VN_ADMIN_TYPED"
+    },
+    {
+      "documentId": "DOC-0171",
+      "sourceSha256": "46c95bde68c1e38d7ca1ff88c2be9dea55252eaa7dff66578484a78d37437e26",
+      "sourcePath": "todo10_8\\heading_corpus_100\\06_dich_song_ngu\\086_Luat_Dau_tu_2020_EN_alt.pdf",
+      "familyId": "PDF_NATIVE_LAYOUT"
+    },
+    {
+      "documentId": "DOC-0176",
+      "sourceSha256": "60b30efa1048900833d1758440247fe8ac85a3134f2327388dcb24e07d814c89",
+      "sourcePath": "todo10_8\\heading_corpus_100\\07_system_generated\\091_RFC9110_HTTP_Semantics.pdf",
+      "familyId": "PDF_NATIVE_LAYOUT"
+    },
+    {
+      "documentId": "DOC-0282",
+      "sourceSha256": "504a399645c123c7b4524d56c69b309532605e839cef08633c228984146451c2",
+      "sourcePath": "todo10_8\\heading_corpus_95_word.pre-manual-docx-backup\\04_giao_trinh\\064_Machine_Learning_with_Neural_Networks.docx",
+      "familyId": "PDF_CONVERTED"
+    },
+    {
+      "documentId": "DOC-0292",
+      "sourceSha256": "d9cee5d1149cd4d4ddd559f156d866fe9f15107f342eb74cd32920e59487ca11",
+      "sourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\01_phap_quy\\009_Luat_Giao_dich_dien_tu_20-2023-QH15.docx",
+      "familyId": "VN_LEGAL_MARKER"
+    },
+    {
+      "documentId": "DOC-0295",
+      "sourceSha256": "d684386450f587444c775dfeeb72ad576046bfd780e9ced77c638e7dc8132767",
+      "sourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\01_phap_quy\\013_Luat_Quan_ly_thue_38-2019-QH14.docx",
+      "familyId": "VN_LEGAL_MARKER"
+    },
+    {
+      "documentId": "DOC-0321",
+      "sourceSha256": "49ba398c7509256ff171572ec459b23f8e213cdb8359fd976396f0d77917f117",
+      "sourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\04_giao_trinh\\056_OpenStax_Business_Law_I_Essentials.docx",
+      "familyId": "PDF_CONVERTED"
+    },
+    {
+      "documentId": "DOC-0326",
+      "sourceSha256": "100b5989cab08dff7f31ad33f26e6fad60cb8a32babf44be03f6ee3364c8dd40",
+      "sourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\04_giao_trinh\\065_Numerical_Linear_Algebra_Lecture_Notes.docx",
+      "familyId": "PDF_CONVERTED"
+    },
+    {
+      "documentId": "DOC-0330",
+      "sourceSha256": "1d60ab4feed1747e3d387c5ed65f5b914419fc8ffd4808eb2fbff32d4adc5864",
+      "sourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\05_bien_ban_hop\\071_ICP_IACG_Minutes_Oct_2025.docx",
+      "familyId": "VN_ADMIN_TYPED"
+    },
+    {
+      "documentId": "DOC-0332",
+      "sourceSha256": "26198ff13fba87ac65c0107ef949793584e91652c45b081834cc2b5cfa7ca9e9",
+      "sourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\05_bien_ban_hop\\073_FORTIS_GC_Minutes_Mar_2026.docx",
+      "familyId": "VN_ADMIN_TYPED"
+    },
+    {
+      "documentId": "DOC-0341",
+      "sourceSha256": "e69c9b5435793370f7e73a01a1a3217f0b4c4206a81ced4735b8c64a0201e479",
+      "sourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\06_dich_song_ngu\\083_Luat_An_ninh_mang_2018_EN.docx",
+      "familyId": "PDF_CONVERTED"
+    },
+    {
+      "documentId": "DOC-0342",
+      "sourceSha256": "cf4866e47f028c68f17855df8640681bc12477fa1839aaa407f84d3731b1b8ce",
+      "sourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\06_dich_song_ngu\\085_Luat_Nha_o_2023_EN.docx",
+      "familyId": "PDF_CONVERTED"
+    }
+  ],
+  "labelsInspectedBeforeSelection": false,
+  "modelOutputsInspectedBeforeSelection": false,
+  "knownResidualStringSelection": false,
+  "currentDevOverlap": 0,
+  "membershipImmutableAfterCommit": true,
+  "metadataCorrection": "v1 freezeCommit was historically the selection parent checkpoint; v2 names the two lineage meanings explicitly"
+}
