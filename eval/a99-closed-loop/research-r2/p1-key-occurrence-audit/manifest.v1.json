@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "a99-r2-p1-pilot-key-occurrence-manifest-v1",
+  "parentAuditCommit": "a5bf94df2fcc990e6188731a77d573ce3258ff34",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "semanticMembershipInput": "legacy human keys only",
+  "goldFirewall": "No model predictions, residuals, or Gold scoring artifacts were read.",
+  "sourceMethod": "deterministic PDF cluster sourceText; exact ordinal substring matching only",
+  "cases": [
+    {
+      "documentId": "DOC-0158",
+      "keyPath": "keys/format-driven-human/073_FORTIS_GC_Minutes_Mar_2026.key",
+      "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/073_FORTIS_GC_Minutes_Mar_2026.pdf",
+      "sourceSha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+      "keySha256": "9987912ada04ec46de46f028efb3ee6ac5e5826ebf04638e306d258e4595577d"
+    },
+    {
+      "documentId": "DOC-0165",
+      "keyPath": "keys/format-driven-human/080_ICP_Governing_Board_Minutes_Feb_2023.key",
+      "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/080_ICP_Governing_Board_Minutes_Feb_2023.pdf",
+      "sourceSha256": "2b1a4e73ce2df40e46446ff7a772b44284ba6bbcff9e02062f838b5498b4085f",
+      "keySha256": "52afc3868ff47f552af6fcb9d684688c2aa98e19ccee4e99a981ce6aae27d8e5"
+    }
+  ],
+  "noFuzzyMatching": true,
+  "noModel": true,
+  "noMembershipMutation": true
+}

@@ -1,0 +1,261 @@
+{
+  "artifactKind": "A99_R2_P1_PILOT_KEY_OCCURRENCE_AUDIT",
+  "documentId": "DOC-0158",
+  "keyPath": "keys/format-driven-human/073_FORTIS_GC_Minutes_Mar_2026.key",
+  "keySha256": "9987912ada04ec46de46f028efb3ee6ac5e5826ebf04638e306d258e4595577d",
+  "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/073_FORTIS_GC_Minutes_Mar_2026.pdf",
+  "sourceSha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+  "inventorySourceSha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+  "sourceShaMatchesInventory": true,
+  "sourceFileExists": true,
+  "expectedHumanHeadingCount": 7,
+  "keyHeadingCount": 7,
+  "headingMembershipChanged": false,
+  "fuzzyMatchingUsed": false,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "deterministicExtractor": "dhx pdf-clusters --no-llm",
+  "extractorBinary": "src/DocxHeaderExtractor.Cli/bin/Debug/net9.0/dhx.dll",
+  "extractorBinarySha256": "81c353e12ffc2496c00348840041a79709c95d2dbfabb9baa0622bee3189ba60",
+  "sourceRepresentation": {
+    "kind": "PDF_CLUSTER_SOURCE_TEXT",
+    "pageCount": 2,
+    "blockCount": 28,
+    "joinedSourceUtf16Length": 3284,
+    "joinedSourceSha256": "e8b1fa3835c527749ca1a8d0363e4b0d6b588683a668f90cb78e091f4a1c701c",
+    "separator": "LF",
+    "blockOrder": "page ascending, numeric block id ascending"
+  },
+  "provenance": {
+    "keyClaimsDirectHumanPdfReview": true,
+    "keyClaimsFullReview": true,
+    "keyCreationCommit": "2e1881c332c805b4d387e0585c91a69a4f579b3c",
+    "keyCreationHistoryLine": "2e1881c332c805b4d387e0585c91a69a4f579b3c|2026-08-17T08:18:54+07:00|Phùng Dũng|feat(pipeline): route auto:part-section-text-toc cho 030, fallback PdfBoldLabelOutline cho biên bản họp",
+    "keyCommitFiles": [
+      "docs/llm-boundary-few-shot-retrieval.md",
+      "handoff.md",
+      "keys/README.md",
+      "keys/format-driven-human/073_FORTIS_GC_Minutes_Mar_2026.key",
+      "keys/format-driven-human/074_FORTIS_GC_Minutes_Nov27_2024.key",
+      "src/DocxHeaderExtractor.Cli/CommandLineOptions.cs",
+      "src/DocxHeaderExtractor.Core/Pipeline/HeaderExtractionPipeline.cs",
+      "src/DocxHeaderExtractor.Core/Pipeline/InlineHeadingSplitter.cs",
+      "src/DocxHeaderExtractor.Core/Pipeline/PartSectionOutline.cs",
+      "src/DocxHeaderExtractor.Core/Pipeline/PdfBoldLabelOutline.cs",
+      "src/DocxHeaderExtractor.Core/Pipeline/PdfLineExtraction.cs",
+      "src/DocxHeaderExtractor.Core/Pipeline/PdfTextbookOutline.cs",
+      "src/DocxHeaderExtractor.Web/Program.cs",
+      "tests/DocxHeaderExtractor.Tests/AutoDocumentModePipelineTests.cs",
+      "tests/DocxHeaderExtractor.Tests/PartSectionOutlineTests.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfBoldLabelOutlineTests.cs"
+    ],
+    "modelOutputFilesInKeyCreationCommit": [],
+    "modelOutputUsedToCreateKey": "NOT_EVIDENCED_BY_KEY_CREATION_COMMIT",
+    "a99HistoryEarliestObserved": "c49b8e19c8cfb56c7635502710a1dd15741443fb|2026-09-06T00:37:15+07:00|docs: record A99 observability baseline",
+    "keyPredatesA99ClosedLoopHistory": true,
+    "independenceConclusion": "PRE_A99_HUMAN_KEY; no model-output file in key creation commit; absolute historical independence cannot be proven from Git alone"
+  },
+  "rows": [
+    {
+      "stableId": "@body[1]/p[4]",
+      "level": 1,
+      "exactHeadingText": "Opening:",
+      "exactMatchCount": 1,
+      "status": "EXACT_UNIQUE",
+      "selectedOccurrence": {
+        "blockId": "b4",
+        "page": 1,
+        "sourceOrdinal": 4,
+        "localUtf16Start": 0,
+        "localUtf16End": 8,
+        "globalUtf16Start": 190,
+        "globalUtf16End": 198,
+        "matchedSourceText": "Opening:"
+      },
+      "allExactMatches": [
+        {
+          "blockId": "b4",
+          "page": 1,
+          "sourceOrdinal": 4,
+          "localUtf16Start": 0,
+          "localUtf16End": 8,
+          "globalUtf16Start": 190,
+          "globalUtf16End": 198,
+          "matchedSourceText": "Opening:"
+        }
+      ]
+    },
+    {
+      "stableId": "@body[1]/p[4]",
+      "level": 1,
+      "exactHeadingText": "Present:",
+      "exactMatchCount": 1,
+      "status": "EXACT_UNIQUE",
+      "selectedOccurrence": {
+        "blockId": "b6",
+        "page": 1,
+        "sourceOrdinal": 6,
+        "localUtf16Start": 0,
+        "localUtf16End": 8,
+        "globalUtf16Start": 307,
+        "globalUtf16End": 315,
+        "matchedSourceText": "Present:"
+      },
+      "allExactMatches": [
+        {
+          "blockId": "b6",
+          "page": 1,
+          "sourceOrdinal": 6,
+          "localUtf16Start": 0,
+          "localUtf16End": 8,
+          "globalUtf16Start": 307,
+          "globalUtf16End": 315,
+          "matchedSourceText": "Present:"
+        }
+      ]
+    },
+    {
+      "stableId": "@body[1]/p[4]",
+      "level": 1,
+      "exactHeadingText": "Report on Currently Available Resources in the F.O.R.T.I.S. Ukraine FIF.",
+      "exactMatchCount": 1,
+      "status": "EXACT_UNIQUE",
+      "selectedOccurrence": {
+        "blockId": "b15",
+        "page": 1,
+        "sourceOrdinal": 15,
+        "localUtf16Start": 0,
+        "localUtf16End": 72,
+        "globalUtf16Start": 816,
+        "globalUtf16End": 888,
+        "matchedSourceText": "Report on Currently Available Resources in the F.O.R.T.I.S. Ukraine FIF. The Trustee"
+      },
+      "allExactMatches": [
+        {
+          "blockId": "b15",
+          "page": 1,
+          "sourceOrdinal": 15,
+          "localUtf16Start": 0,
+          "localUtf16End": 72,
+          "globalUtf16Start": 816,
+          "globalUtf16End": 888,
+          "matchedSourceText": "Report on Currently Available Resources in the F.O.R.T.I.S. Ukraine FIF. The Trustee"
+        }
+      ]
+    },
+    {
+      "stableId": "@body[1]/p[4]",
+      "level": 1,
+      "exactHeadingText": "Operating Context.",
+      "exactMatchCount": 1,
+      "status": "EXACT_UNIQUE",
+      "selectedOccurrence": {
+        "blockId": "b17",
+        "page": 1,
+        "sourceOrdinal": 17,
+        "localUtf16Start": 0,
+        "localUtf16End": 18,
+        "globalUtf16Start": 992,
+        "globalUtf16End": 1010,
+        "matchedSourceText": "Operating Context. The Governing Committee welcomed the overview from the Ukrainian GC Member on the importance ofthe F.O.R.T.I.S. FIF as a stable and predictable source of financing to help meet the needs for the 2026 budget, which assumes another full year of war; the Government’s priority to broaden the revenue base; its commitment to strengthen investment"
+      },
+      "allExactMatches": [
+        {
+          "blockId": "b17",
+          "page": 1,
+          "sourceOrdinal": 17,
+          "localUtf16Start": 0,
+          "localUtf16End": 18,
+          "globalUtf16Start": 992,
+          "globalUtf16End": 1010,
+          "matchedSourceText": "Operating Context. The Governing Committee welcomed the overview from the Ukrainian GC Member on the importance ofthe F.O.R.T.I.S. FIF as a stable and predictable source of financing to help meet the needs for the 2026 budget, which assumes another full year of war; the Government’s priority to broaden the revenue base; its commitment to strengthen investment"
+        }
+      ]
+    },
+    {
+      "stableId": "@body[1]/p[4]",
+      "level": 1,
+      "exactHeadingText": "Funding Request for Eighth Additional Financing to Public Expenditures for Administrative Capacity Endurance (PEACE) in Ukraine Investment Project Financing.",
+      "exactMatchCount": 1,
+      "status": "EXACT_UNIQUE",
+      "selectedOccurrence": {
+        "blockId": "b19",
+        "page": 1,
+        "sourceOrdinal": 19,
+        "localUtf16Start": 0,
+        "localUtf16End": 157,
+        "globalUtf16Start": 1688,
+        "globalUtf16End": 1845,
+        "matchedSourceText": "Funding Request for Eighth Additional Financing to Public Expenditures for Administrative Capacity Endurance (PEACE) in Ukraine Investment Project Financing. The Governing"
+      },
+      "allExactMatches": [
+        {
+          "blockId": "b19",
+          "page": 1,
+          "sourceOrdinal": 19,
+          "localUtf16Start": 0,
+          "localUtf16End": 157,
+          "globalUtf16Start": 1688,
+          "globalUtf16End": 1845,
+          "matchedSourceText": "Funding Request for Eighth Additional Financing to Public Expenditures for Administrative Capacity Endurance (PEACE) in Ukraine Investment Project Financing. The Governing"
+        }
+      ]
+    },
+    {
+      "stableId": "@body[1]/p[6]",
+      "level": 1,
+      "exactHeadingText": "Next Bi-Annual Meeting of the GC.",
+      "exactMatchCount": 0,
+      "status": "SOURCE_KEY_MISMATCH",
+      "selectedOccurrence": null,
+      "allExactMatches": []
+    },
+    {
+      "stableId": "@body[1]/p[6]",
+      "level": 1,
+      "exactHeadingText": "Next Steps.",
+      "exactMatchCount": 1,
+      "status": "EXACT_UNIQUE",
+      "selectedOccurrence": {
+        "blockId": "b28",
+        "page": 2,
+        "sourceOrdinal": 28,
+        "localUtf16Start": 0,
+        "localUtf16End": 11,
+        "globalUtf16Start": 3179,
+        "globalUtf16End": 3190,
+        "matchedSourceText": "Next Steps. The Secretariat will issue Award Letters for the Approved PEACE Additional Financing Project."
+      },
+      "allExactMatches": [
+        {
+          "blockId": "b28",
+          "page": 2,
+          "sourceOrdinal": 28,
+          "localUtf16Start": 0,
+          "localUtf16End": 11,
+          "globalUtf16Start": 3179,
+          "globalUtf16End": 3190,
+          "matchedSourceText": "Next Steps. The Secretariat will issue Award Letters for the Approved PEACE Additional Financing Project."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "exactUniqueCount": 6,
+    "humanOccurrenceReviewRequiredCount": 0,
+    "sourceKeyMismatchCount": 1,
+    "exactUniqueStableIds": [
+      "@body[1]/p[4]",
+      "@body[1]/p[4]",
+      "@body[1]/p[4]",
+      "@body[1]/p[4]",
+      "@body[1]/p[4]",
+      "@body[1]/p[6]"
+    ],
+    "reviewStableIds": [],
+    "mismatchStableIds": [
+      "@body[1]/p[6]"
+    ],
+    "finalStatus": "HUMAN_REVIEW_OR_KEY_REPAIR_REQUIRED"
+  }
+}

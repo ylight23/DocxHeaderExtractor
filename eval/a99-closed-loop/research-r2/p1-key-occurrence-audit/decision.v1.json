@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "a99-r2-p1-pilot-key-occurrence-decision-v1",
+  "artifactKind": "A99_R2_P1_OFFLINE_DECISION",
+  "generatedAt": "2026-09-11T10:38:51.5834526Z",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldCreatedByAutomation": false,
+  "existingGoldModified": false,
+  "documents": [
+    "DOC-0158",
+    "DOC-0165"
+  ],
+  "sourceShaMatchesInventory": true,
+  "keyProvenance": [
+    {
+      "documentId": "DOC-0158",
+      "keyPath": "keys/format-driven-human/073_FORTIS_GC_Minutes_Mar_2026.key",
+      "keySha256": "9987912ada04ec46de46f028efb3ee6ac5e5826ebf04638e306d258e4595577d",
+      "creationCommit": "2e1881c332c805b4d387e0585c91a69a4f579b3c",
+      "keyPredatesA99ClosedLoopHistory": true,
+      "modelOutputUsedToCreateKey": "NOT_EVIDENCED_BY_KEY_CREATION_COMMIT",
+      "conclusion": "PRE_A99_HUMAN_KEY; no model-output file in key creation commit; absolute historical independence cannot be proven from Git alone"
+    },
+    {
+      "documentId": "DOC-0165",
+      "keyPath": "keys/format-driven-human/080_ICP_Governing_Board_Minutes_Feb_2023.key",
+      "keySha256": "52afc3868ff47f552af6fcb9d684688c2aa98e19ccee4e99a981ce6aae27d8e5",
+      "creationCommit": "084037dddc081e2a1b78087f0f00bac39466c197",
+      "keyPredatesA99ClosedLoopHistory": true,
+      "modelOutputUsedToCreateKey": "NOT_EVIDENCED_BY_KEY_CREATION_COMMIT",
+      "conclusion": "PRE_A99_HUMAN_KEY; no model-output file in key creation commit; absolute historical independence cannot be proven from Git alone"
+    }
+  ],
+  "exactUniqueTotal": 12.0,
+  "humanOccurrenceReviewRequiredTotal": 5.0,
+  "sourceKeyMismatchTotal": 2.0,
+  "headingMembershipChanged": false,
+  "fuzzyMatchingUsed": false,
+  "decision": "R2_P1_PARTIAL_REUSE_NO_SEMANTIC_REANNOTATION",
+  "strictOccurrenceReadyDocuments": [],
+  "humanOccurrenceReviewDocuments": [
+    "DOC-0165"
+  ],
+  "sourceKeyMismatchDocuments": [
+    "DOC-0158",
+    "DOC-0165"
+  ],
+  "nextAction": "Do not change semantic membership. Human occurrence review is required for ambiguous repeated text and any source-key mismatch must be resolved by a human; no R2-B until strict occurrence authority is frozen."
+}
