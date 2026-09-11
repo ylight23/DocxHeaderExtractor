@@ -16,5 +16,5 @@
   ],
   "residual": {"persistentModelOmissions":7,"persistentFalsePositives":7,"bindAmbiguous":6,"bindFailure":0,"systemLoss":0,"role":"NOT_MEASURED","hierarchy":"NOT_MEASURED"},
   "verification": {"goldFirewall":"PASS","sourceAuthority":"frozen B0 outputs; Gold offline only","focusedTests":"35/35 PASS","releaseBuild":"PASS","diffCheck":"PASS","fullDeterministicSuite":"not terminal: 2 stale DOC-0205 reconciliation assertions observed (expected 139 vs actual 142; old classification vs current MIXED_RESIDUALS_NO_CLEAR_WINNER); run stopped without changing tests or rebaselining; prior known baseline was 1412 passed, 1 unrelated N15 SHA failure"},
-  "remoteHead": "TO_BE_RECORDED_AFTER_COMMIT"
+  "remoteHead": "15205bfc2e4ff0451b7361d4877b5ba8ea391bb6"
 }
