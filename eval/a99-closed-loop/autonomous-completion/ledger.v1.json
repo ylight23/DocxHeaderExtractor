@@ -52,6 +52,32 @@
       "nextExperimentFrozen": true,
       "runtimeChanged": false,
       "commit": "PENDING_FINAL_COMMIT"
+    },
+    {
+      "experimentId": "A99-I5",
+      "parent": "B0@76c4e01",
+      "failureClass": "TASK_CONTRACT_SEMANTIC_CONFUSION",
+      "hypothesis": "An occurrence-level semantic contrast contract will recover persistent region/program/topic leaf omissions without changing source, binder, validator, or projection.",
+      "mechanismFamily": "task-contract/semantic-classification",
+      "model": "qwen/qwen3.7-flash",
+      "freshProviderCalls": 15,
+      "attemptedCells": 15,
+      "completedCells": 15,
+      "blockedCells": 0,
+      "targetFamilyGold": 11,
+      "targetFamilyPersistentMissesBefore": 7,
+      "targetFamilyPersistentMissesAfter": 7,
+      "recoveredPersistentTargetCases": 0,
+      "persistentModelOmissionsBefore": 7,
+      "persistentModelOmissionsAfter": 8,
+      "persistentFalsePositivesBefore": 7,
+      "persistentFalsePositivesAfter": 3,
+      "pairedF1Regressions": 2,
+      "systemLoss": 0,
+      "bindFailure": 0,
+      "goldReadBeforeFreeze": false,
+      "decision": "SEMANTIC_CONTRAST_CONTRACT_REVERT",
+      "commit": "PENDING_FINAL_COMMIT"
     }
   ]
 }

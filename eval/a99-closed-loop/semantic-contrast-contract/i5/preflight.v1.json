@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "a99-i5-semantic-contrast-preflight-v1",
+  "status": "PASS",
+  "checks": [
+    {
+      "documentId": "DOC-0001",
+      "sourceSha256Equal": true,
+      "packetHashEqual": true,
+      "sourceRowCountEqual": true,
+      "schemaHashEqual": true,
+      "oldPromptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+      "newPromptHash": "dafce664130574ac1c8a95760681fe1e84d180c6b75eb952159b915dea43c7f6"
+    },
+    {
+      "documentId": "DOC-0205",
+      "sourceSha256Equal": true,
+      "packetHashEqual": true,
+      "sourceRowCountEqual": true,
+      "schemaHashEqual": true,
+      "oldPromptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+      "newPromptHash": "dafce664130574ac1c8a95760681fe1e84d180c6b75eb952159b915dea43c7f6"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceSha256Equal": true,
+      "packetHashEqual": true,
+      "sourceRowCountEqual": true,
+      "schemaHashEqual": true,
+      "oldPromptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+      "newPromptHash": "dafce664130574ac1c8a95760681fe1e84d180c6b75eb952159b915dea43c7f6"
+    },
+    {
+      "documentId": "DOC-0256",
+      "sourceSha256Equal": true,
+      "packetHashEqual": true,
+      "sourceRowCountEqual": true,
+      "schemaHashEqual": true,
+      "oldPromptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+      "newPromptHash": "dafce664130574ac1c8a95760681fe1e84d180c6b75eb952159b915dea43c7f6"
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourceSha256Equal": true,
+      "packetHashEqual": true,
+      "sourceRowCountEqual": true,
+      "schemaHashEqual": true,
+      "oldPromptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+      "newPromptHash": "dafce664130574ac1c8a95760681fe1e84d180c6b75eb952159b915dea43c7f6"
+    }
+  ],
+  "modelDelta": 0,
+  "sourcePacketDelta": 0,
+  "schemaDelta": 0,
+  "binderDelta": 0,
+  "validatorDelta": 0,
+  "taskContractDelta": 1,
+  "goldReadBeforeFreeze": false
+}

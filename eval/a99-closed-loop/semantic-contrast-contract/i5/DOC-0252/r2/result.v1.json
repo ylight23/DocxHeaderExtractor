@@ -1,0 +1,207 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-result-v1",
+  "documentId": "DOC-0252",
+  "repeat": "r2",
+  "model": "qwen/qwen3.7-flash",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "executionMode": "FULL_CONTEXT",
+  "headings": [
+    {
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 47,
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "role": 3
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 0,
+      "end": 24,
+      "text": "TECHNICAL ADVISORY GROUP",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[7]",
+      "start": 0,
+      "end": 41,
+      "text": "Session I: Welcome and meeting objectives",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "start": 0,
+      "end": 40,
+      "text": "Session II: Update on the ICP 2021 Cycle",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[12]",
+      "start": 0,
+      "end": 22,
+      "text": "1.Global office update",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[22]",
+      "start": 0,
+      "end": 18,
+      "text": "2.Regional updates",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[24]",
+      "start": 0,
+      "end": 6,
+      "text": "Africa",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[27]",
+      "start": 0,
+      "end": 20,
+      "text": "Asia and the Pacific",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[31]",
+      "start": 0,
+      "end": 40,
+      "text": "Commonwealth of Independent States (CIS)",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[39]",
+      "start": 0,
+      "end": 25,
+      "text": "Eurostat\u2013OECD PPP Program",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[42]",
+      "start": 0,
+      "end": 31,
+      "text": "Latin America and the Caribbean",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[46]",
+      "start": 0,
+      "end": 12,
+      "text": "Western Asia",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[54]",
+      "start": 0,
+      "end": 65,
+      "text": "Session III: Short- and Long-Term Research and Development Agenda",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[55]",
+      "start": 0,
+      "end": 55,
+      "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[62]",
+      "start": 0,
+      "end": 29,
+      "text": "2.Forthcoming Research Topics",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[75]",
+      "start": 0,
+      "end": 66,
+      "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[76]",
+      "start": 0,
+      "end": 40,
+      "text": "1.TAG Composition and Terms of Reference",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[80]",
+      "start": 0,
+      "end": 62,
+      "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[89]",
+      "start": 0,
+      "end": 66,
+      "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[94]",
+      "start": 0,
+      "end": 27,
+      "text": "Session V: Current Research",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[95]",
+      "start": 0,
+      "end": 72,
+      "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[105]",
+      "start": 0,
+      "end": 110,
+      "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[110]",
+      "start": 0,
+      "end": 84,
+      "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[120]",
+      "start": 0,
+      "end": 43,
+      "text": "4.Treatment of Negative Expenditures in ICP",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[125]",
+      "start": 0,
+      "end": 39,
+      "text": "5.Fine Tuning Global Linking Procedures",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[142]",
+      "start": 0,
+      "end": 44,
+      "text": "6.Improving Reliability of Price Comparisons",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[151]",
+      "start": 0,
+      "end": 30,
+      "text": "Session VI: Any Other Business",
+      "role": 0
+    },
+    {
+      "sourceId": "body[1]/p[174]",
+      "start": 0,
+      "end": 29,
+      "text": "Annex 2: List of Participants",
+      "role": 0
+    }
+  ],
+  "goldReadBeforeFreeze": false
+}

@@ -1,0 +1,41 @@
+﻿{
+    "schemaVersion":  "a99-i5-false-positive-safety-v1",
+    "goldReadBeforeFreeze":  false,
+    "newFalsePositives":  [
+                              {
+                                  "documentId":  "DOC-0205",
+                                  "repeat":  "r2",
+                                  "key":  "body[1]/p[4]:174:243",
+                                  "text":  "NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+                                  "classification":  "OTHER_NON_GOLD_OCCURRENCE",
+                                  "persistentCandidate":  false
+                              },
+                              {
+                                  "documentId":  "DOC-0205",
+                                  "repeat":  "r3",
+                                  "key":  "body[1]/p[4]:174:243",
+                                  "text":  "NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+                                  "classification":  "OTHER_NON_GOLD_OCCURRENCE",
+                                  "persistentCandidate":  false
+                              },
+                              {
+                                  "documentId":  "DOC-0252",
+                                  "repeat":  "r1",
+                                  "key":  "body[1]/p[178]:0:10",
+                                  "text":  "World Bank",
+                                  "classification":  "OTHER_NON_GOLD_OCCURRENCE",
+                                  "persistentCandidate":  false
+                              },
+                              {
+                                  "documentId":  "DOC-0252",
+                                  "repeat":  "r2",
+                                  "key":  "body[1]/p[4]:0:24",
+                                  "text":  "TECHNICAL ADVISORY GROUP",
+                                  "classification":  "OTHER_NON_GOLD_OCCURRENCE",
+                                  "persistentCandidate":  false
+                              }
+                          ],
+    "newPersistentFalsePositives":  [
+
+                                    ]
+}

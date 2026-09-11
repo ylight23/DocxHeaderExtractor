@@ -1,0 +1,745 @@
+﻿{
+    "schemaVersion":  "a99-i5-offline-decision-v1",
+    "experimentId":  "A99-I5",
+    "parent":  "B0@76c4e01",
+    "model":  "qwen/qwen3.7-flash",
+    "offlineOnly":  true,
+    "decision":  "REVERT",
+    "decisionReasons":  [
+                            "TARGET_FAMILY_PERSISTENT_MISSES_NOT_REDUCED",
+                            "NO_TARGET_CASE_RECOVERED",
+                            "PAIRED_CELL_F1_REGRESSION"
+                        ],
+    "goldReadBeforeFreeze":  false,
+    "goldFirewall":  "PASS",
+    "freshProviderCalls":  15,
+    "contractDelta":  1,
+    "modelDelta":  0,
+    "sourcePacketDelta":  0,
+    "schemaDelta":  0,
+    "binderDelta":  0,
+    "validatorDelta":  0,
+    "micro":  {
+                  "baseline":  {
+                                   "tp":  428,
+                                   "fp":  32,
+                                   "fn":  31,
+                                   "gold":  459,
+                                   "precision":  0.93043478260869561,
+                                   "recall":  0.93246187363834421,
+                                   "f1":  0.93144722524483137
+                               },
+                  "i5":  {
+                             "tp":  428,
+                             "fp":  21,
+                             "fn":  31,
+                             "gold":  459,
+                             "precision":  0.95322939866369716,
+                             "recall":  0.93246187363834421,
+                             "f1":  0.94273127753303965
+                         }
+              },
+    "perCell":  [
+                    {
+                        "documentId":  "DOC-0001",
+                        "repeat":  "r1",
+                        "baseline":  {
+                                         "tp":  7,
+                                         "fp":  0,
+                                         "fn":  0,
+                                         "f1":  1
+                                     },
+                        "i5":  {
+                                   "tp":  7,
+                                   "fp":  0,
+                                   "fn":  0,
+                                   "f1":  1
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0001",
+                        "repeat":  "r2",
+                        "baseline":  {
+                                         "tp":  7,
+                                         "fp":  0,
+                                         "fn":  0,
+                                         "f1":  1
+                                     },
+                        "i5":  {
+                                   "tp":  7,
+                                   "fp":  0,
+                                   "fn":  0,
+                                   "f1":  1
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0001",
+                        "repeat":  "r3",
+                        "baseline":  {
+                                         "tp":  7,
+                                         "fp":  0,
+                                         "fn":  0,
+                                         "f1":  1
+                                     },
+                        "i5":  {
+                                   "tp":  7,
+                                   "fp":  0,
+                                   "fn":  0,
+                                   "f1":  1
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0205",
+                        "repeat":  "r1",
+                        "baseline":  {
+                                         "tp":  71,
+                                         "fp":  1,
+                                         "fn":  0,
+                                         "f1":  0.993006993006993
+                                     },
+                        "i5":  {
+                                   "tp":  70,
+                                   "fp":  1,
+                                   "fn":  1,
+                                   "f1":  0.9859154929577465
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0205",
+                        "repeat":  "r2",
+                        "baseline":  {
+                                         "tp":  71,
+                                         "fp":  1,
+                                         "fn":  0,
+                                         "f1":  0.993006993006993
+                                     },
+                        "i5":  {
+                                   "tp":  71,
+                                   "fp":  1,
+                                   "fn":  0,
+                                   "f1":  0.993006993006993
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0205",
+                        "repeat":  "r3",
+                        "baseline":  {
+                                         "tp":  71,
+                                         "fp":  1,
+                                         "fn":  0,
+                                         "f1":  0.993006993006993
+                                     },
+                        "i5":  {
+                                   "tp":  71,
+                                   "fp":  1,
+                                   "fn":  0,
+                                   "f1":  0.993006993006993
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0252",
+                        "repeat":  "r1",
+                        "baseline":  {
+                                         "tp":  25,
+                                         "fp":  5,
+                                         "fn":  2,
+                                         "f1":  0.8771929824561403
+                                     },
+                        "i5":  {
+                                   "tp":  25,
+                                   "fp":  6,
+                                   "fn":  2,
+                                   "f1":  0.86206896551724133
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0252",
+                        "repeat":  "r2",
+                        "baseline":  {
+                                         "tp":  25,
+                                         "fp":  5,
+                                         "fn":  2,
+                                         "f1":  0.8771929824561403
+                                     },
+                        "i5":  {
+                                   "tp":  25,
+                                   "fp":  3,
+                                   "fn":  2,
+                                   "f1":  0.90909090909090906
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0252",
+                        "repeat":  "r3",
+                        "baseline":  {
+                                         "tp":  25,
+                                         "fp":  6,
+                                         "fn":  2,
+                                         "f1":  0.86206896551724133
+                                     },
+                        "i5":  {
+                                   "tp":  25,
+                                   "fp":  6,
+                                   "fn":  2,
+                                   "f1":  0.86206896551724133
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0256",
+                        "repeat":  "r1",
+                        "baseline":  {
+                                         "tp":  22,
+                                         "fp":  1,
+                                         "fn":  2,
+                                         "f1":  0.93617021276595747
+                                     },
+                        "i5":  {
+                                   "tp":  22,
+                                   "fp":  1,
+                                   "fn":  2,
+                                   "f1":  0.93617021276595747
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0256",
+                        "repeat":  "r2",
+                        "baseline":  {
+                                         "tp":  22,
+                                         "fp":  1,
+                                         "fn":  2,
+                                         "f1":  0.93617021276595747
+                                     },
+                        "i5":  {
+                                   "tp":  22,
+                                   "fp":  1,
+                                   "fn":  2,
+                                   "f1":  0.93617021276595747
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0256",
+                        "repeat":  "r3",
+                        "baseline":  {
+                                         "tp":  22,
+                                         "fp":  10,
+                                         "fn":  2,
+                                         "f1":  0.7857142857142857
+                                     },
+                        "i5":  {
+                                   "tp":  22,
+                                   "fp":  1,
+                                   "fn":  2,
+                                   "f1":  0.93617021276595747
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0258",
+                        "repeat":  "r1",
+                        "baseline":  {
+                                         "tp":  18,
+                                         "fp":  0,
+                                         "fn":  6,
+                                         "f1":  0.8571428571428571
+                                     },
+                        "i5":  {
+                                   "tp":  18,
+                                   "fp":  0,
+                                   "fn":  6,
+                                   "f1":  0.8571428571428571
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0258",
+                        "repeat":  "r2",
+                        "baseline":  {
+                                         "tp":  17,
+                                         "fp":  1,
+                                         "fn":  7,
+                                         "f1":  0.80952380952380953
+                                     },
+                        "i5":  {
+                                   "tp":  18,
+                                   "fp":  0,
+                                   "fn":  6,
+                                   "f1":  0.8571428571428571
+                               }
+                    },
+                    {
+                        "documentId":  "DOC-0258",
+                        "repeat":  "r3",
+                        "baseline":  {
+                                         "tp":  18,
+                                         "fp":  0,
+                                         "fn":  6,
+                                         "f1":  0.8571428571428571
+                                     },
+                        "i5":  {
+                                   "tp":  18,
+                                   "fp":  0,
+                                   "fn":  6,
+                                   "f1":  0.8571428571428571
+                               }
+                    }
+                ],
+    "primaryFamily":  {
+                          "gold":  11,
+                          "baselineFound":  4,
+                          "baselinePersistentMisses":  7,
+                          "i5Found":  4,
+                          "i5PersistentMisses":  7,
+                          "recoveredPersistentTargetCases":  0,
+                          "targetCasesPresentInAnyRepeat":  4,
+                          "cases":  [
+                                        {
+                                            "documentId":  "DOC-0252",
+                                            "key":  "body[1]/p[24]:0:6",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  true
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  true
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  true
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  true
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  true
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  true
+                                                          }
+                                                      ],
+                                            "recovered":  true,
+                                            "persistentAfter":  false
+                                        },
+                                        {
+                                            "documentId":  "DOC-0252",
+                                            "key":  "body[1]/p[27]:0:20",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  true
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  true
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  true
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  true
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  true
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  true
+                                                          }
+                                                      ],
+                                            "recovered":  true,
+                                            "persistentAfter":  false
+                                        },
+                                        {
+                                            "documentId":  "DOC-0252",
+                                            "key":  "body[1]/p[31]:0:40",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  true
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  true
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  true
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  true
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  true
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  true
+                                                          }
+                                                      ],
+                                            "recovered":  true,
+                                            "persistentAfter":  false
+                                        },
+                                        {
+                                            "documentId":  "DOC-0252",
+                                            "key":  "body[1]/p[42]:0:31",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  true
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  true
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  true
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  true
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  true
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  true
+                                                          }
+                                                      ],
+                                            "recovered":  true,
+                                            "persistentAfter":  false
+                                        },
+                                        {
+                                            "documentId":  "DOC-0252",
+                                            "key":  "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  false
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  false
+                                                          }
+                                                      ],
+                                            "recovered":  false,
+                                            "persistentAfter":  true
+                                        },
+                                        {
+                                            "documentId":  "DOC-0258",
+                                            "key":  "body[1]/p[11]:0:6",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  false
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  false
+                                                          }
+                                                      ],
+                                            "recovered":  false,
+                                            "persistentAfter":  true
+                                        },
+                                        {
+                                            "documentId":  "DOC-0258",
+                                            "key":  "body[1]/p[12]:0:20",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  false
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  false
+                                                          }
+                                                      ],
+                                            "recovered":  false,
+                                            "persistentAfter":  true
+                                        },
+                                        {
+                                            "documentId":  "DOC-0258",
+                                            "key":  "body[1]/p[17]:0:25",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  false
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  false
+                                                          }
+                                                      ],
+                                            "recovered":  false,
+                                            "persistentAfter":  true
+                                        },
+                                        {
+                                            "documentId":  "DOC-0258",
+                                            "key":  "body[1]/p[18]:0:34",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  false
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  false
+                                                          }
+                                                      ],
+                                            "recovered":  false,
+                                            "persistentAfter":  true
+                                        },
+                                        {
+                                            "documentId":  "DOC-0258",
+                                            "key":  "body[1]/p[19]:0:31",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  false
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  false
+                                                          }
+                                                      ],
+                                            "recovered":  false,
+                                            "persistentAfter":  true
+                                        },
+                                        {
+                                            "documentId":  "DOC-0258",
+                                            "key":  "body[1]/p[24]:0:12",
+                                            "before":  [
+                                                           {
+                                                               "repeat":  "r1",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r2",
+                                                               "present":  false
+                                                           },
+                                                           {
+                                                               "repeat":  "r3",
+                                                               "present":  false
+                                                           }
+                                                       ],
+                                            "after":  [
+                                                          {
+                                                              "repeat":  "r1",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r2",
+                                                              "present":  false
+                                                          },
+                                                          {
+                                                              "repeat":  "r3",
+                                                              "present":  false
+                                                          }
+                                                      ],
+                                            "recovered":  false,
+                                            "persistentAfter":  true
+                                        }
+                                    ]
+                      },
+    "pairedGate":  {
+                       "f1Regressions":  [
+                                             {
+                                                 "documentId":  "DOC-0205",
+                                                 "repeat":  "r1",
+                                                 "baselineF1":  0.993006993006993,
+                                                 "i5F1":  0.9859154929577465,
+                                                 "deltaF1":  -0.0070915000492465241,
+                                                 "tpDelta":  -1,
+                                                 "fpDelta":  0,
+                                                 "fnDelta":  1
+                                             },
+                                             {
+                                                 "documentId":  "DOC-0252",
+                                                 "repeat":  "r1",
+                                                 "baselineF1":  0.8771929824561403,
+                                                 "i5F1":  0.86206896551724133,
+                                                 "deltaF1":  -0.015124016938898976,
+                                                 "tpDelta":  0,
+                                                 "fpDelta":  1,
+                                                 "fnDelta":  0
+                                             }
+                                         ],
+                       "regressionCount":  2,
+                       "persistentFalsePositiveBefore":  7,
+                       "persistentFalsePositiveAfter":  3,
+                       "newPersistentFalsePositives":  [
+
+                                                       ]
+                   },
+    "falsePositiveSafety":  {
+                                "newFalsePositives":  [
+                                                          {
+                                                              "documentId":  "DOC-0205",
+                                                              "repeat":  "r2",
+                                                              "key":  "body[1]/p[4]:174:243",
+                                                              "text":  "NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+                                                              "classification":  "OTHER_NON_GOLD_OCCURRENCE",
+                                                              "persistentCandidate":  false
+                                                          },
+                                                          {
+                                                              "documentId":  "DOC-0205",
+                                                              "repeat":  "r3",
+                                                              "key":  "body[1]/p[4]:174:243",
+                                                              "text":  "NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+                                                              "classification":  "OTHER_NON_GOLD_OCCURRENCE",
+                                                              "persistentCandidate":  false
+                                                          },
+                                                          {
+                                                              "documentId":  "DOC-0252",
+                                                              "repeat":  "r1",
+                                                              "key":  "body[1]/p[178]:0:10",
+                                                              "text":  "World Bank",
+                                                              "classification":  "OTHER_NON_GOLD_OCCURRENCE",
+                                                              "persistentCandidate":  false
+                                                          },
+                                                          {
+                                                              "documentId":  "DOC-0252",
+                                                              "repeat":  "r2",
+                                                              "key":  "body[1]/p[4]:0:24",
+                                                              "text":  "TECHNICAL ADVISORY GROUP",
+                                                              "classification":  "OTHER_NON_GOLD_OCCURRENCE",
+                                                              "persistentCandidate":  false
+                                                          }
+                                                      ],
+                                "newPersistentFalsePositives":  {
+
+                                                                }
+                            },
+    "diagnostics":  {
+                        "bindFailure":  0,
+                        "systemLoss":  0,
+                        "lexicalGlobalPromotion":  false,
+                        "ambiguousPersistentBefore":  2,
+                        "ambiguousPersistentAfter":  1
+                    }
+}

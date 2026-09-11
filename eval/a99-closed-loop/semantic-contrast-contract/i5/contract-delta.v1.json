@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "a99-i5-semantic-contract-delta-v1",
+  "experimentId": "A99-I5",
+  "oldPromptHash": "dd680b4a0af2f90ce44b61cc4f4af2b4957d691572b336398264d2a9ec7f67b5",
+  "newPromptHash": "dafce664130574ac1c8a95760681fe1e84d180c6b75eb952159b915dea43c7f6",
+  "changedInstruction": "Judge each source occurrence by its function in that occurrence; a short leaf region/program/topic/category label may organize following content, while a similar phrase in prose, metadata, navigation, participant information, or another non-organizing occurrence is not a heading.",
+  "unchanged": [
+    "model",
+    "provider policy",
+    "temperature",
+    "reasoning configuration",
+    "source text",
+    "source aliases",
+    "source ordering",
+    "output JSON schema",
+    "role ontology",
+    "exact binder",
+    "UTF-16 reconstruction",
+    "validator",
+    "projection",
+    "dedupe",
+    "hierarchy",
+    "candidate policy",
+    "Gold",
+    "cohort",
+    "repeat protocol"
+  ],
+  "prohibitedRuntimeExamples": [
+    "Africa",
+    "Western Asia",
+    "Asia and the Pacific",
+    "Eurostat\u2013OECD PPP Program"
+  ],
+  "modelDelta": 0,
+  "sourcePacketDelta": 0,
+  "schemaDelta": 0,
+  "binderDelta": 0,
+  "validatorDelta": 0,
+  "taskContractDelta": 1,
+  "goldReadBeforeFreeze": false
+}
