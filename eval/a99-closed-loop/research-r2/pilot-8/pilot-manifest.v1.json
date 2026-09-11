@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "a99-r2-pilot-8-manifest-v1",
+  "studyId": "A99-R2",
+  "pilotId": "R2-PILOT-8",
+  "status": "PILOT_FROZEN_AWAITING_INDEPENDENT_HUMAN_GOLD",
+  "preparedFromCheckpoint": "960aa10a9feae02f31014df416142981591a4926",
+  "reserveCohortFreeze": "../cohort-freeze.v2.json",
+  "reserveCohortFreezeArtifactCommit": "99f66b1ff5d73fb2e8d8d6f4753707c59f5b8dd9",
+  "preferredFullCohortSize": 24,
+  "pilotSize": 8,
+  "quotaByStratum": {
+    "DOCX_NATIVE_STRUCTURED": 2,
+    "PDF_NATIVE_LAYOUT": 2,
+    "PDF_CONVERTED": 1,
+    "VN_LEGAL_MARKER": 1,
+    "VN_ADMIN_TYPED": 2
+  },
+  "selectionSeedSource": "SHA256(\"A99-R2-PILOT-8\" + canonical B0 commit + reserve cohort freeze artifact commit)",
+  "seedInput": "A99-R2-PILOT-876c4e01a10577b1c6069255646843cbaef729a1f99f66b1ff5d73fb2e8d8d6f4753707c59f5b8dd9",
+  "seed": "8bf62f7cceabddcd9ad9cbf1840a332ee70814639b945fb9303916facdc3160e",
+  "selectionAlgorithm": "SHA256(seed + documentId + sourceSha256); sort ascending within the frozen 24-document familyId stratum; select the pre-registered quota",
+  "selectionAlgorithmHash": "097c3e0eaddec38232aadba81e5ece32825163c213e5e6cd99de4cdde87924ef",
+  "selectedDocuments": [
+    {
+      "documentId": "DOC-0004",
+      "sourceSha256": "8a0bebf4831d85934724a7b255d42743106ec10daaca3e9adf0a6cbbd7a9c2d8",
+      "sourcePath": "bench\\04-bia-muc-luc-chu-thich.docx",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "sourceArtifact": "../annotation/sources/DOC-0004.source.v1.json",
+      "rank": "34fd0eae839c9e3d555db22dc93b28f610b7fdbd3340dfc82c99dc6ae2c1a290"
+    },
+    {
+      "documentId": "DOC-0006",
+      "sourceSha256": "e03a316450f9867054605810e2aaab55f078be6f744df47a9bfe0afb186ff60a",
+      "sourcePath": "bench\\06-style-ban-dia.docx",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "sourceArtifact": "../annotation/sources/DOC-0006.source.v1.json",
+      "rank": "2274fc7a5a532a390660721f2d2ef4906ab48c80243a2f006b4aa474762cf0a4"
+    },
+    {
+      "documentId": "DOC-0092",
+      "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+      "sourcePath": "todo10_8\\heading_corpus_100\\01_phap_quy\\007_Luat_Nha_o_27-2023-QH15.pdf",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourceArtifact": "../annotation/sources/DOC-0092.source.v1.json",
+      "rank": "39e66c6f691477eb94e1fc9247b490d2c74d17a557639f73649bc3cb0d7ad64c"
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "sourcePath": "todo10_8\\heading_corpus_100\\03_tai_chinh_ke_toan\\048_IBRD_Financial_Statements_March_2025.pdf",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "sourceArtifact": "../annotation/sources/DOC-0133.source.v1.json",
+      "rank": "5a682d16fbd14150fb6c3ce1db507a6b19564d829b2d6b69f00e02b686bb6e3f"
+    },
+    {
+      "documentId": "DOC-0158",
+      "sourceSha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+      "sourcePath": "todo10_8\\heading_corpus_100\\05_bien_ban_hop\\073_FORTIS_GC_Minutes_Mar_2026.pdf",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourceArtifact": "../annotation/sources/DOC-0158.source.v1.json",
+      "rank": "272f1fe38b7ba320408ffce06be018ed99cfc9121aa01e74c02bbd3669033289"
+    },
+    {
+      "documentId": "DOC-0165",
+      "sourceSha256": "2b1a4e73ce2df40e46446ff7a772b44284ba6bbcff9e02062f838b5498b4085f",
+      "sourcePath": "todo10_8\\heading_corpus_100\\05_bien_ban_hop\\080_ICP_Governing_Board_Minutes_Feb_2023.pdf",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourceArtifact": "../annotation/sources/DOC-0165.source.v1.json",
+      "rank": "12b1ff1114e74767b75ced871892d4d3f34ae72c6489163f84535a020201b90c"
+    },
+    {
+      "documentId": "DOC-0171",
+      "sourceSha256": "46c95bde68c1e38d7ca1ff88c2be9dea55252eaa7dff66578484a78d37437e26",
+      "sourcePath": "todo10_8\\heading_corpus_100\\06_dich_song_ngu\\086_Luat_Dau_tu_2020_EN_alt.pdf",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "sourceArtifact": "../annotation/sources/DOC-0171.source.v1.json",
+      "rank": "8f5429d066d9f03d4e676cf21ea2ebca73cfc66698e8db06c95cc9bed5e54a32"
+    },
+    {
+      "documentId": "DOC-0326",
+      "sourceSha256": "100b5989cab08dff7f31ad33f26e6fad60cb8a32babf44be03f6ee3364c8dd40",
+      "sourcePath": "todo10_8\\heading_corpus_95_word.pre-pdf2docx-backup\\04_giao_trinh\\065_Numerical_Linear_Algebra_Lecture_Notes.docx",
+      "familyId": "PDF_CONVERTED",
+      "sourceArtifact": "../annotation/sources/DOC-0326.source.v1.json",
+      "rank": "1128dbf2f5c0c02aba5c55ee1a6d8d5fa64b97741b042cb3e7a8c1ea17e13578"
+    }
+  ],
+  "reserveCohortUnchanged": true,
+  "labelsInspectedBeforeSelection": false,
+  "modelOutputsInspectedBeforeSelection": false,
+  "goldInspectedBeforeSelection": false,
+  "knownResidualStringSelection": false,
+  "currentDevOverlap": 0,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "r2BInferenceAuthorized": false,
+  "nextHumanAction": "independent double annotation of these 8 documents, then human adjudication",
+  "annotation": {
+    "instructions": "../annotation/instructions.md",
+    "schema": "../annotation/schema.v1.json",
+    "annotatorA": "annotation/annotator-a/",
+    "annotatorB": "annotation/annotator-b/",
+    "adjudication": "annotation/adjudication/",
+    "noAnnotationFilesCreatedByAutomation": true
+  }
+}

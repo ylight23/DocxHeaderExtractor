@@ -1,0 +1,1 @@
+R2-PILOT-8 annotation workspace. Automation created no annotation rows. Human A and Human B must independently annotate only the eight documents listed in pilot-freeze.v1.json. Do not open model outputs or residual artifacts. Adjudication is human-only.
