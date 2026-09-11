@@ -24,6 +24,8 @@ public static class SemanticTextGeneralizationRunner
     private const string DefaultOutputRoot = "eval/a99-closed-loop/semantic-text-generalization";
     private static string OutputRoot = DefaultOutputRoot;
     private const string ModelCapabilityOutputRoot = "eval/a99-closed-loop/model-capability-isolation/i4";
+    private const string SemanticContrastOutputRoot = "eval/a99-closed-loop/semantic-contrast-contract/i5";
+    private static string ActiveSemanticSystemPrompt = SemanticTextExactBindingContract.System;
     private const string DuplicateOutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i2-duplicate-identity";
     private const string BoundaryOutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i3-lossless-semantic-boundaries";
     private const string ResidualLoopI1OutputRoot = "eval/a99-closed-loop/semantic-text-residual-loop/i1-omission-review";
@@ -250,6 +252,231 @@ public static class SemanticTextGeneralizationRunner
             Model = previousModel;
             OutputRoot = previousOutputRoot;
         }
+    }
+
+    /// <summary>Runs I5 with the B0 source packet, schema, binder, validator, and model frozen.
+    /// The only model-visible delta is the generic occurrence-level semantic contrast in
+    /// SemanticContrastContract.System. The I5 manifest is written before capability lookup or
+    /// inference, and Gold remains behind the existing post-freeze firewall.</summary>
+    public static async Task<int> RunSemanticContrastContractAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, SemanticContrastOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        Directory.CreateDirectory(output);
+        var startHead = GitSha(repoRoot);
+        var inventory = LoadInventory(repoRoot);
+        var selected = inventory.Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
+            .Where(x => x.eligibility.Eligible).OrderBy(x => x.item.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        var previousPrompt = ActiveSemanticSystemPrompt;
+        var previousModel = Model;
+        var previousOutputRoot = OutputRoot;
+        try
+        {
+            ActiveSemanticSystemPrompt = SemanticTextExactBindingContract.System;
+            var baselineContexts = selected.Select(x => Prepare(repoRoot, x.item)).ToArray();
+            var oldPromptHash = baselineContexts.Select(x => x.PromptHash).Distinct(StringComparer.Ordinal).Single();
+            ActiveSemanticSystemPrompt = SemanticContrastContract.System;
+            var contrastContexts = selected.Select(x => Prepare(repoRoot, x.item)).ToArray();
+            var newPromptHash = contrastContexts.Select(x => x.PromptHash).Distinct(StringComparer.Ordinal).Single();
+            var preflight = baselineContexts.Zip(contrastContexts).Select(x => new
+            {
+                documentId = x.First.DocumentId,
+                sourceSha256Equal = x.First.SourceSha256 == x.Second.SourceSha256,
+                packetHashEqual = x.First.PacketHash == x.Second.PacketHash,
+                sourceRowCountEqual = x.First.SourceRows.Count == x.Second.SourceRows.Count,
+                schemaHashEqual = x.First.SchemaHash == x.Second.SchemaHash,
+                oldPromptHash = x.First.PromptHash,
+                newPromptHash = x.Second.PromptHash,
+            }).ToArray();
+            var preflightPass = preflight.All(x => x.sourceSha256Equal && x.packetHashEqual && x.sourceRowCountEqual && x.schemaHashEqual)
+                && !string.Equals(oldPromptHash, newPromptHash, StringComparison.Ordinal);
+            await WriteJson(Path.Combine(output, "preflight.v1.json"), new
+            {
+                schemaVersion = "a99-i5-semantic-contrast-preflight-v1",
+                status = preflightPass ? "PASS" : "PRECHECK_FAIL",
+                checks = preflight,
+                modelDelta = 0,
+                sourcePacketDelta = 0,
+                schemaDelta = 0,
+                binderDelta = 0,
+                validatorDelta = 0,
+                taskContractDelta = 1,
+                goldReadBeforeFreeze = false,
+            }, ct);
+            var packetHashes = contrastContexts.Select(x => new { documentId = x.DocumentId, sourceSha256 = x.SourceSha256, packetHash = x.PacketHash }).ToArray();
+            var manifest = new
+            {
+                schemaVersion = "a99-i5-semantic-contrast-contract-manifest-v1",
+                experimentId = "A99-I5",
+                repositoryHead = startHead,
+                behavioralParent = "B0@76c4e01",
+                model = ControlModel,
+                providerPolicy = new { provider = "OpenRouter", endpoint = Endpoint, route = "MODEL_DEFAULT", fallback = false, reasoningEnabled = true, structuredOutputRequired = true },
+                oldPromptHash,
+                newPromptHash,
+                sourcePacketHashes = packetHashes,
+                schemaHash = contrastContexts.Select(x => x.SchemaHash).Distinct(StringComparer.Ordinal).Single(),
+                binder = new { version = "deterministic-exact-utf16-binder-v1", hash = Sha256Text("SemanticTextExactBindingContract|deterministic UTF-16 exact binder|sourceAlias+verbatimText") },
+                validator = new { version = "ReasoningProposalMaterializer-validator-v1", hash = Sha256Text("ReasoningProposalMaterializer|ReasoningTaskProjection|validator-v1") },
+                cohort = new { documents = contrastContexts.Select(x => x.DocumentId).ToArray(), documentCount = contrastContexts.Length, cells = contrastContexts.Length * RepeatCount, repeats = RepeatCount, goldOccurrences = 153 },
+                onlyTaskContractDelta = true,
+                goldReadBeforeFreeze = false,
+                preflightStatus = preflightPass ? "PASS" : "PRECHECK_FAIL",
+            };
+            await WriteJson(Path.Combine(output, "manifest.v1.json"), manifest, ct);
+            await WriteJson(Path.Combine(output, "contract-delta.v1.json"), new
+            {
+                schemaVersion = "a99-i5-semantic-contract-delta-v1",
+                experimentId = "A99-I5",
+                oldPromptHash,
+                newPromptHash,
+                changedInstruction = "Judge each source occurrence by its function in that occurrence; a short leaf region/program/topic/category label may organize following content, while a similar phrase in prose, metadata, navigation, participant information, or another non-organizing occurrence is not a heading.",
+                unchanged = new[] { "model", "provider policy", "temperature", "reasoning configuration", "source text", "source aliases", "source ordering", "output JSON schema", "role ontology", "exact binder", "UTF-16 reconstruction", "validator", "projection", "dedupe", "hierarchy", "candidate policy", "Gold", "cohort", "repeat protocol" },
+                prohibitedRuntimeExamples = new[] { "Africa", "Western Asia", "Asia and the Pacific", "Eurostat–OECD PPP Program" },
+                modelDelta = 0,
+                sourcePacketDelta = 0,
+                schemaDelta = 0,
+                binderDelta = 0,
+                validatorDelta = 0,
+                taskContractDelta = 1,
+                goldReadBeforeFreeze = false,
+            }, ct);
+            Console.WriteLine($"I5_MANIFEST_FROZEN={Path.Combine(SemanticContrastOutputRoot, "manifest.v1.json")}");
+            Console.WriteLine($"I5_PREFLIGHT={(preflightPass ? "PASS" : "PRECHECK_FAIL")}");
+            if (!preflightPass)
+            {
+                await WriteJson(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-i5-semantic-contrast-contract-summary-v1", executionStatus = "PRECHECK_FAIL", decision = "I5_PRECHECK_FAIL_MULTIPLE_CAUSAL_VARIABLES", modelCalls = 0, providerCalls = 0, goldReadBeforeFreeze = false }, ct);
+                return 1;
+            }
+            Model = ControlModel;
+            OutputRoot = SemanticContrastOutputRoot;
+            return await RunSemanticContrastCampaignAsync(repoRoot, output, selected, contrastContexts, startHead, oldPromptHash, newPromptHash, ct);
+        }
+        finally
+        {
+            ActiveSemanticSystemPrompt = previousPrompt;
+            Model = previousModel;
+            OutputRoot = previousOutputRoot;
+        }
+    }
+
+    public static async Task<int> ResumeSemanticContrastContractAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, SemanticContrastOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var manifestPath = Path.Combine(output, "manifest.v1.json");
+        if (!File.Exists(manifestPath)) return 1;
+        using var manifest = JsonDocument.Parse(File.ReadAllText(manifestPath));
+        var root = manifest.RootElement;
+        if (root.GetProperty("experimentId").GetString() != "A99-I5" || !root.GetProperty("onlyTaskContractDelta").GetBoolean()) return 1;
+        var inventory = LoadInventory(repoRoot);
+        var selected = inventory.Select(item => (item, eligibility: ReasoningGoldEligibilityEvaluator.EvaluateMetadataOnly(repoRoot, item.GetProperty("documentId").GetString()!)))
+            .Where(x => x.eligibility.Eligible).OrderBy(x => x.item.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
+        var previousPrompt = ActiveSemanticSystemPrompt;
+        var previousModel = Model;
+        var previousOutputRoot = OutputRoot;
+        try
+        {
+            ActiveSemanticSystemPrompt = SemanticContrastContract.System;
+            var contexts = selected.Select(x => Prepare(repoRoot, x.item)).ToArray();
+            Model = ControlModel;
+            OutputRoot = SemanticContrastOutputRoot;
+            return await RunSemanticContrastCampaignAsync(repoRoot, output, selected, contexts, root.GetProperty("repositoryHead").GetString()!, root.GetProperty("oldPromptHash").GetString()!, root.GetProperty("newPromptHash").GetString()!, ct, resumeExistingSuccesses: true);
+        }
+        finally
+        {
+            ActiveSemanticSystemPrompt = previousPrompt;
+            Model = previousModel;
+            OutputRoot = previousOutputRoot;
+        }
+    }
+
+    private static async Task<int> RunSemanticContrastCampaignAsync(
+        string repoRoot,
+        string output,
+        IReadOnlyList<(JsonElement item, ReasoningGoldEligibilityMetadata eligibility)> selected,
+        IReadOnlyList<DocumentContext> contexts,
+        string startHead,
+        string oldPromptHash,
+        string newPromptHash,
+        CancellationToken ct,
+        bool resumeExistingSuccesses = false)
+    {
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey))
+        {
+            await WriteJson(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-i5-semantic-contrast-contract-summary-v1", executionStatus = "PROVIDER_BLOCKED", decision = "PROVIDER_BLOCKED", modelCalls = 0, providerCalls = 0, goldReadBeforeFreeze = false }, ct);
+            return 1;
+        }
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), Model = Model, ApiKey = apiKey, ContextSize = 1_000_000,
+            MaxOutputTokens = 48_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 0,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capabilityResult = await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct);
+        var capability = capabilityResult.Capability;
+        if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) || !capability.ReasoningSupported || !capability.StructuredOutputSupported)
+        {
+            await WriteJson(Path.Combine(output, "summary.v1.json"), new { schemaVersion = "a99-i5-semantic-contrast-contract-summary-v1", executionStatus = "PROVIDER_BLOCKED", decision = "PROVIDER_BLOCKED", capability = capabilityResult, modelCalls = 0, providerCalls = 0, goldReadBeforeFreeze = false }, ct);
+            return 1;
+        }
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(repoRoot, SemanticContrastOutputRoot, string.Join(',', contexts.Select(x => x.DocumentId)), ct);
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        var runs = new List<RepeatMetric>();
+        foreach (var context in contexts.OrderBy(x => x.DocumentId, StringComparer.Ordinal))
+            for (var repeat = 1; repeat <= RepeatCount; repeat++)
+            {
+                if (resumeExistingSuccesses && TryLoadSuccessfulFrozenMetric(output, context.DocumentId, $"r{repeat}", out var frozenMetric))
+                {
+                    Console.WriteLine($"REUSE_I5_FROZEN={context.DocumentId}/R{repeat}");
+                    runs.Add(frozenMetric);
+                    continue;
+                }
+                Console.WriteLine($"RUNNING_I5={context.DocumentId}/R{repeat}");
+                runs.Add(await RunRepeatAsync(repoRoot, output, context, repeat, model, startHead, ct));
+            }
+        var complete = runs.Count == selected.Count * RepeatCount && runs.All(x => x.Status == "SUCCESS");
+        await WriteJson(Path.Combine(output, "repeat-summary.v1.json"), BuildRepeatSummary(runs, selected.Count), ct);
+        await WriteJson(Path.Combine(output, "persistent-errors.v1.json"), BuildPersistentErrors(runs), ct);
+        if (complete)
+        {
+            var baselineRoot = Path.Combine(repoRoot, DefaultOutputRoot.Replace('/', Path.DirectorySeparatorChar));
+            var baseline = selected.SelectMany(x => Enumerable.Range(1, RepeatCount).Select(repeat => LoadFrozenMetric(baselineRoot, x.item.GetProperty("documentId").GetString()!, $"r{repeat}"))).ToArray();
+            await WriteJson(Path.Combine(output, "paired-comparison.v1.json"), BuildPairedComparison(baseline, runs), ct);
+            var targetBefore = PersistentModelOmissionKeys(baseline);
+            await WriteJson(Path.Combine(output, "target-forensic.v1.json"), new
+            {
+                schemaVersion = "a99-i5-target-forensic-v1", goldReadBeforeFreeze = false,
+                targetBefore = targetBefore.Select(x => new { x.DocumentId, x.Key }).ToArray(),
+                cases = targetBefore.Select(target => new
+                {
+                    documentId = target.DocumentId, key = target.Key,
+                    before = baseline.Where(x => x.DocumentId == target.DocumentId).Select(x => new { repeat = x.Repeat, recovered = x.PredictionKeys.Contains(target.Key) }).ToArray(),
+                    after = runs.Where(x => x.DocumentId == target.DocumentId).Select(x => new { repeat = x.Repeat, recovered = x.PredictionKeys.Contains(target.Key) }).ToArray(),
+                }).ToArray(),
+            }, ct);
+        }
+        await WriteJson(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-i5-semantic-contrast-contract-summary-v1",
+            executionStatus = complete ? "COMPLETE" : "PROVIDER_BLOCKED",
+            decision = complete ? "PENDING_OFFLINE_GATE" : "PROVIDER_BLOCKED",
+            experimentId = "A99-I5", parent = "B0@76c4e01", startHead, endHead = GitSha(repoRoot), model = Model,
+            oldPromptHash, newPromptHash, providerAttempts = runs.Count, modelCalls = runs.Count, providerCalls = model.ProviderCalls,
+            goldReadBeforeFreeze = false, goldFirewall = "PASS",
+            completion = new { expectedCells = selected.Count * RepeatCount, completedCells = runs.Count(x => x.Status == "SUCCESS"), blockedCells = runs.Count(x => x.Status != "SUCCESS") },
+            perCell = runs.Select(x => new { x.DocumentId, x.Repeat, x.Status, x.Tp, x.Fp, x.Fn, x.Precision, x.Recall, x.F1, x.SystemLoss, bindFailure = x.FirstLossCounts.GetValueOrDefault("BIND_FAILURE"), ambiguous = x.FirstLossCounts.GetValueOrDefault("AMBIGUOUS_DUPLICATE_TEXT"), x.Provider, x.FinishReason }).ToArray(),
+            perRepeatMicro = runs.GroupBy(x => x.Repeat, StringComparer.Ordinal).Select(g => new { repeat = g.Key, tp = g.Sum(x => x.Tp), fp = g.Sum(x => x.Fp), fn = g.Sum(x => x.Fn), systemLoss = g.Sum(x => x.SystemLoss) }).ToArray(),
+            persistentTargetMisses = complete ? PersistentModelOmissionKeys(runs).Count : (int?)null,
+            persistentFalsePositives = complete ? PersistentFalsePositiveKeys(runs).Count : (int?)null,
+            bindFailure = runs.Sum(x => x.FirstLossCounts.GetValueOrDefault("BIND_FAILURE")),
+            systemLoss = runs.Sum(x => x.SystemLoss),
+        }, ct);
+        Console.WriteLine($"I5_STATUS={(complete ? "COMPLETE" : "PROVIDER_BLOCKED")}");
+        Console.WriteLine($"I5_PROVIDER_CALLS={model.ProviderCalls}");
+        return complete ? 0 : 1;
     }
 
     private static async Task<int> RunModelCapabilityCampaignAsync(
@@ -3032,8 +3259,8 @@ public static class SemanticTextGeneralizationRunner
         return 1;
     }
 
-    private static string ContractHash() => Sha256Text(string.Join("\n", SemanticTextExactBindingContract.ProtocolVersion, SemanticTextExactBindingContract.System, JsonSerializer.Serialize(SemanticTextExactBindingContract.Schema())));
-    private static string ContractHashForPrompt() => Sha256Text(SemanticTextExactBindingContract.ProtocolVersion + "\n" + SemanticTextExactBindingContract.System);
+    private static string ContractHash() => Sha256Text(string.Join("\n", SemanticTextExactBindingContract.ProtocolVersion, ActiveSemanticSystemPrompt, JsonSerializer.Serialize(SemanticTextExactBindingContract.Schema())));
+    private static string ContractHashForPrompt() => Sha256Text(SemanticTextExactBindingContract.ProtocolVersion + "\n" + ActiveSemanticSystemPrompt);
     private static string Key(string sourceId, StructuralSpan span) => $"{sourceId}:{span.Start}:{span.End}";
     private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
     private static string Sha256Text(string value) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();
