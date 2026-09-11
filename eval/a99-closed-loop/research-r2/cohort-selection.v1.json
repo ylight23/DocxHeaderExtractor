@@ -1,0 +1,924 @@
+{
+  "schemaVersion": "a99-r2a-cohort-selection-v1",
+  "studyId": "A99-R2",
+  "behavioralParent": "B0@76c4e01a10577b1c6069255646843cbaef729a1f",
+  "c1Commit": "6a72a4ceb3c6ef9465a4d4d651d3f4ef09edade6",
+  "preferredSampleSize": 24,
+  "selectedCount": 24,
+  "seedSource": "SHA256(\"A99-R2-INDEPENDENT-COHORT\" + canonical B0 commit + C1 commit)",
+  "seedInput": "A99-R2-INDEPENDENT-COHORT76c4e01a10577b1c6069255646843cbaef729a1f6a72a4ceb3c6ef9465a4d4d651d3f4ef09edade6",
+  "seed": "9e5b5d7b8f27f6f7cf884226ab6320283b34f56064e5ee89604c92be65d78ea7",
+  "algorithm": "SHA256(seed + documentId + sourceSha256); sort ascending within familyId stratum; allocate floor(24/strataCount) then distribute remainder by descending eligible stratum count and familyId; select quota per stratum",
+  "algorithmHash": "7388a9b6eadee291511366d124f32fe063d153a9e131e7f89efb53111c70ea46",
+  "knownResidualStringSelection": false,
+  "goldInspectedBeforeSelection": false,
+  "modelOutputsInspectedBeforeSelection": false,
+  "currentDevOverlap": 0,
+  "quotaByStratum": {
+    "PDF_CONVERTED": 5,
+    "PDF_NATIVE_LAYOUT": 5,
+    "VN_ADMIN_TYPED": 5,
+    "DOCX_NATIVE_STRUCTURED": 4,
+    "VN_LEGAL_MARKER": 5
+  },
+  "selectedDocuments": [
+    {
+      "documentId": "DOC-0002",
+      "sourceSha256": "8e649d78dab6d6ea2304053abfac4222a612b00580c82218fe28a53dce549862",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "documentGroupId": "GROUP-0132",
+      "rank": "95c0326083b5dbdce989c0becffe5b203ed53c542aace530a0e8b386ea35a1e6"
+    },
+    {
+      "documentId": "DOC-0003",
+      "sourceSha256": "d97c62a01336cec6c7681d728238f4cdbd83900e6a582a9bb51ea6e6db8f42a9",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "documentGroupId": "GROUP-0219",
+      "rank": "80783a9efbdd69194c03f0aaed88afa669c56d04112b48f8453b68602dc03e4c"
+    },
+    {
+      "documentId": "DOC-0004",
+      "sourceSha256": "8a0bebf4831d85934724a7b255d42743106ec10daaca3e9adf0a6cbbd7a9c2d8",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "documentGroupId": "GROUP-0128",
+      "rank": "09d05a05fd2d68c487f53026bd46a813dae7500049cd28551aca8616c01edb17"
+    },
+    {
+      "documentId": "DOC-0006",
+      "sourceSha256": "e03a316450f9867054605810e2aaab55f078be6f744df47a9bfe0afb186ff60a",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "documentGroupId": "GROUP-0228",
+      "rank": "97a00646849dea68db8cdfbd0381ce02b64b297779774221fd570a93acdabacb"
+    },
+    {
+      "documentId": "DOC-0086",
+      "sourceSha256": "b8703906de3ae5149335b00aba17d02eca1b6f408b6308de51d1d920420ff603",
+      "familyId": "VN_LEGAL_MARKER",
+      "documentGroupId": "GROUP-0182",
+      "rank": "0adbeab69289d61ab7cede0c6c1cf5286ecf8c984c5f46b3ce27a8832a6b3fe2"
+    },
+    {
+      "documentId": "DOC-0092",
+      "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+      "familyId": "VN_LEGAL_MARKER",
+      "documentGroupId": "GROUP-0199",
+      "rank": "0b91404ec604928ce545d96ea6e1d3084df4a56beba09e4abc26beec4727c8d6"
+    },
+    {
+      "documentId": "DOC-0097",
+      "sourceSha256": "03c86fc385f17dd102550f5dcf4c82df5904bad30cbd73bb38a7058fa716abc9",
+      "familyId": "VN_LEGAL_MARKER",
+      "documentGroupId": "GROUP-0008",
+      "rank": "0537eb5bc6831723ded84021a1299c69e096bebbf59f2f2e0d8d757bc75b0ecc"
+    },
+    {
+      "documentId": "DOC-0126",
+      "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "documentGroupId": "GROUP-0184",
+      "rank": "08adffd59fafbe1475be57471542bb3544742f13a2181e45c267a2f10b2f1fcb"
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "documentGroupId": "GROUP-0012",
+      "rank": "1568204c59d7fbed7d6799abbfb05be0ec50e18e493eea1d7850b9b074914b15"
+    },
+    {
+      "documentId": "DOC-0154",
+      "sourceSha256": "0106d65c6a7bb9aa0f44e39526946ca9e432d42fe9379d76fd57d1d8df903498",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "documentGroupId": "GROUP-0002",
+      "rank": "21b5d8a81dff79c13b07fdfb816770e56b451f811fbe5fc60d24b9507d74ea3a"
+    },
+    {
+      "documentId": "DOC-0156",
+      "sourceSha256": "fe99f544b10e690812acb1362c067c520968a7e1d2cddc232c24db2d3ba790e4",
+      "familyId": "VN_ADMIN_TYPED",
+      "documentGroupId": "GROUP-0264",
+      "rank": "082db7d649b76904c66728dde52235d1c16fd8b4d7a8256a2bfe46a33b92a433"
+    },
+    {
+      "documentId": "DOC-0158",
+      "sourceSha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+      "familyId": "VN_ADMIN_TYPED",
+      "documentGroupId": "GROUP-0236",
+      "rank": "0156c583db1ce1951b53c5bd2b9b070a2fd7b689945ee34b881b65158e7ce57c"
+    },
+    {
+      "documentId": "DOC-0165",
+      "sourceSha256": "2b1a4e73ce2df40e46446ff7a772b44284ba6bbcff9e02062f838b5498b4085f",
+      "familyId": "VN_ADMIN_TYPED",
+      "documentGroupId": "GROUP-0050",
+      "rank": "061d4301cc252508ea7a89d46a04cdebc180bc3a1abb7b47eeeaa8cadc6f5567"
+    },
+    {
+      "documentId": "DOC-0171",
+      "sourceSha256": "46c95bde68c1e38d7ca1ff88c2be9dea55252eaa7dff66578484a78d37437e26",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "documentGroupId": "GROUP-0065",
+      "rank": "21b9433d730f92938355a5d955ef9d8b6f9aca5f46ab56e0afb76fd07777dc56"
+    },
+    {
+      "documentId": "DOC-0176",
+      "sourceSha256": "60b30efa1048900833d1758440247fe8ac85a3134f2327388dcb24e07d814c89",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "documentGroupId": "GROUP-0091",
+      "rank": "1e6714c95d22620adee14c405ac0c21a6ba48c6802b4beb2f4365f254887f06d"
+    },
+    {
+      "documentId": "DOC-0282",
+      "sourceSha256": "504a399645c123c7b4524d56c69b309532605e839cef08633c228984146451c2",
+      "familyId": "PDF_CONVERTED",
+      "documentGroupId": "GROUP-0071",
+      "rank": "06545db3adeb872858021cc65a9c77701977179c4e879a4029879cf86220028d"
+    },
+    {
+      "documentId": "DOC-0292",
+      "sourceSha256": "d9cee5d1149cd4d4ddd559f156d866fe9f15107f342eb74cd32920e59487ca11",
+      "familyId": "VN_LEGAL_MARKER",
+      "documentGroupId": "GROUP-0220",
+      "rank": "095a5283c4c4df3b04f4b595948e3a09d6b522a272e7f1929552ffec009f67ab"
+    },
+    {
+      "documentId": "DOC-0295",
+      "sourceSha256": "d684386450f587444c775dfeeb72ad576046bfd780e9ced77c638e7dc8132767",
+      "familyId": "VN_LEGAL_MARKER",
+      "documentGroupId": "GROUP-0214",
+      "rank": "01c7c5fc7981f8edb75629ef2897a7bd9bb91ed2175a41da51880b361a37f6c8"
+    },
+    {
+      "documentId": "DOC-0321",
+      "sourceSha256": "49ba398c7509256ff171572ec459b23f8e213cdb8359fd976396f0d77917f117",
+      "familyId": "PDF_CONVERTED",
+      "documentGroupId": "GROUP-0067",
+      "rank": "046255939cb6d51fc196795e32dbb59d54083b2c44e5d22b45f33cf8edae3e46"
+    },
+    {
+      "documentId": "DOC-0326",
+      "sourceSha256": "100b5989cab08dff7f31ad33f26e6fad60cb8a32babf44be03f6ee3364c8dd40",
+      "familyId": "PDF_CONVERTED",
+      "documentGroupId": "GROUP-0019",
+      "rank": "000245ced6b71b95104915d7d18309626bfa60acebb8795f3559b2829cbd6988"
+    },
+    {
+      "documentId": "DOC-0330",
+      "sourceSha256": "1d60ab4feed1747e3d387c5ed65f5b914419fc8ffd4808eb2fbff32d4adc5864",
+      "familyId": "VN_ADMIN_TYPED",
+      "documentGroupId": "GROUP-0031",
+      "rank": "11b702dded514c97d86995270f393ae41db028fba020077cc3926da227bc972d"
+    },
+    {
+      "documentId": "DOC-0332",
+      "sourceSha256": "26198ff13fba87ac65c0107ef949793584e91652c45b081834cc2b5cfa7ca9e9",
+      "familyId": "VN_ADMIN_TYPED",
+      "documentGroupId": "GROUP-0042",
+      "rank": "0c27af9808f332bb25e49b24ad828f57abf957d9815b188445a897cc09c8a72d"
+    },
+    {
+      "documentId": "DOC-0341",
+      "sourceSha256": "e69c9b5435793370f7e73a01a1a3217f0b4c4206a81ced4735b8c64a0201e479",
+      "familyId": "PDF_CONVERTED",
+      "documentGroupId": "GROUP-0235",
+      "rank": "0528b9a21cb1f7eadc1757637cf98a32a72cf8b09c58f997a00f9f37201a8d56"
+    },
+    {
+      "documentId": "DOC-0342",
+      "sourceSha256": "cf4866e47f028c68f17855df8640681bc12477fa1839aaa407f84d3731b1b8ce",
+      "familyId": "PDF_CONVERTED",
+      "documentGroupId": "GROUP-0209",
+      "rank": "0033fc537ed35e20f872a63bf467e5ac565d07b82d65f6f01501f7ace9a04913"
+    }
+  ],
+  "excludedDocuments": [
+    {
+      "documentId": "DOC-0001",
+      "reason": "CURRENT_DEV_COHORT"
+    },
+    {
+      "documentId": "DOC-0007",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0008",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0009",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0010",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0011",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0012",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0013",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0014",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0015",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0016",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0017",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0018",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0019",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0020",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0021",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0022",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0023",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0024",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0025",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0026",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0027",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0028",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0029",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0030",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0031",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0032",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0033",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0034",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0035",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0036",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0037",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0038",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0039",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0040",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0041",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0042",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0043",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0044",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0045",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0046",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0047",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0048",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0049",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0050",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0051",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0052",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0053",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0054",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0055",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0056",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0057",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0058",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0059",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0060",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0061",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0062",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0063",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0064",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0065",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0066",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0067",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0068",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0069",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0070",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0071",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0072",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0073",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0074",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0075",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0076",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0077",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0078",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0079",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0080",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0081",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0082",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0083",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0084",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0085",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0111",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0112",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0116",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0118",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0121",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0122",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0123",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0124",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0125",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0167",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0169",
+      "reason": "UNKNOWN_FAMILY_STRATUM"
+    },
+    {
+      "documentId": "DOC-0181",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0182",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0183",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0184",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0185",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0186",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0187",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0188",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0189",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0190",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0191",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0192",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0193",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0194",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0195",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0196",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0197",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0198",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0199",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0200",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0201",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0202",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0203",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0204",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0205",
+      "reason": "CURRENT_DEV_COHORT"
+    },
+    {
+      "documentId": "DOC-0206",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0207",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0208",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0209",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0210",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0211",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0212",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0213",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0215",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0216",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0217",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0218",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0219",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0220",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0221",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0222",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0223",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0224",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0225",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0226",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0227",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0228",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0229",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0230",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0231",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0232",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0233",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0234",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0235",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0236",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0237",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0238",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0239",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0240",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0241",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0243",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0245",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0246",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0248",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0249",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0250",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0251",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0252",
+      "reason": "CURRENT_DEV_COHORT"
+    },
+    {
+      "documentId": "DOC-0253",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0254",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0255",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0256",
+      "reason": "CURRENT_DEV_COHORT"
+    },
+    {
+      "documentId": "DOC-0257",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0258",
+      "reason": "CURRENT_DEV_COHORT"
+    },
+    {
+      "documentId": "DOC-0259",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0260",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0261",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0262",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0263",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0264",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0265",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0266",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0267",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0268",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0269",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0270",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0271",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0272",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0273",
+      "reason": "A99_REFERENCE_OR_HOLDOUT_ARTIFACT_HISTORY"
+    },
+    {
+      "documentId": "DOC-0274",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    },
+    {
+      "documentId": "DOC-0275",
+      "reason": "NON_UNIQUE_SOURCE_GROUP"
+    }
+  ]
+}

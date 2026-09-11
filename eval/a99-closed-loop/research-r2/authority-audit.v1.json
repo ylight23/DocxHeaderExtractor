@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "a99-r2a-authority-audit-v1",
+  "studyId": "A99-R2",
+  "auditCommit": "6a72a4ceb3c6ef9465a4d4d651d3f4ef09edade6",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldPayloadsInspected": false,
+  "candidates": [
+    {
+      "artifact": "eval/a99-dataset/document-inventory.v1.json",
+      "commit": "e9f702099ac9249d8b791abfbf2b135d859cd512",
+      "documents": 352,
+      "annotationOrigin": "deterministic inventory metadata",
+      "annotationDate": null,
+      "modelOutputsVisibleToAnnotators": false,
+      "participatedInI1I6": false,
+      "labelsInfluencedRuntime": false,
+      "classification": "INSUFFICIENT_PROVENANCE",
+      "reason": "inventory has no human heading labels and cannot itself establish independent Gold"
+    },
+    {
+      "artifact": "eval/a99-closed-loop/review/holdout-manifest.v1.json",
+      "commit": "4c471723930a7af1f535cfc3c977e2fd1b3e9dbf",
+      "documents": 23,
+      "annotationOrigin": "sealed source review packets, no final exhaustive heading Gold",
+      "annotationDate": null,
+      "modelOutputsVisibleToAnnotators": false,
+      "participatedInI1I6": false,
+      "labelsInfluencedRuntime": false,
+      "classification": "INSUFFICIENT_PROVENANCE",
+      "reason": "holdout-result remains TRUE_BLIND_REQUIRED and no independent Gold authority is frozen"
+    },
+    {
+      "artifact": "eval/a99-closed-loop/strict-gold-authority.v1.json",
+      "commit": "b7bfce18564e4161fbf965ac6030106f793c4ea1",
+      "documents": 19,
+      "annotationOrigin": "mixed pending human review and user-finalized model-assisted references",
+      "annotationDate": null,
+      "modelOutputsVisibleToAnnotators": true,
+      "participatedInI1I6": true,
+      "labelsInfluencedRuntime": true,
+      "classification": "CONTAMINATED_BY_DEV",
+      "reason": "contains current DEV/history and model-assisted references; not an independent blind Gold set"
+    },
+    {
+      "artifact": "eval/a99-closed-loop/strict-gold-manifest.v4.json",
+      "commit": "a7db1b8b163c0061fe636656c7c938c9b60e14ab",
+      "documents": 19,
+      "annotationOrigin": "user-finalized strict references, including model-assisted and current cohort history",
+      "annotationDate": null,
+      "modelOutputsVisibleToAnnotators": true,
+      "participatedInI1I6": true,
+      "labelsInfluencedRuntime": true,
+      "classification": "CONTAMINATED_BY_TUNING",
+      "reason": "not an independently selected blind cohort for R2"
+    },
+    {
+      "artifact": "eval/accuracy/hierarchy-human-pilot-annotation.v1.json",
+      "commit": "5a124393974694eaa511027f3f696ebf0c9d4e7d",
+      "documents": 24,
+      "annotationOrigin": "pilot schema ready for blind annotation, zero reviewed",
+      "annotationDate": null,
+      "modelOutputsVisibleToAnnotators": false,
+      "participatedInI1I6": false,
+      "labelsInfluencedRuntime": false,
+      "classification": "INSUFFICIENT_PROVENANCE",
+      "reason": "no completed annotation and no second annotator/agreement"
+    },
+    {
+      "artifact": "eval/benchmark-n0 and eval/benchmark-n3 source-packets",
+      "commit": "6a72a4ceb3c6ef9465a4d4d651d3f4ef09edade6",
+      "documents": null,
+      "annotationOrigin": "blind source review packets",
+      "annotationDate": null,
+      "modelOutputsVisibleToAnnotators": false,
+      "participatedInI1I6": false,
+      "labelsInfluencedRuntime": false,
+      "classification": "INSUFFICIENT_PROVENANCE",
+      "reason": "source packets are not independent human heading Gold authority"
+    }
+  ],
+  "validIndependentGoldExists": false,
+  "terminalStatus": "R2_AWAITING_INDEPENDENT_HUMAN_GOLD"
+}

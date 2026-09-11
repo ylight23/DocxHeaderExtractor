@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "a99-r2-study-manifest-v2",
+  "studyId": "A99-R2",
+  "status": "R2_AWAITING_INDEPENDENT_HUMAN_GOLD",
+  "parentGeneration": "A99-C1",
+  "behavioralParent": "B0@76c4e01a10577b1c6069255646843cbaef729a1f",
+  "preparedAtCommit": "6a72a4ceb3c6ef9465a4d4d651d3f4ef09edade6",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "runtimeChanges": 0,
+  "currentDevDocuments": [
+    "DOC-0001",
+    "DOC-0205",
+    "DOC-0252",
+    "DOC-0256",
+    "DOC-0258"
+  ],
+  "currentDevOverlap": 0,
+  "purpose": "Test whether residual semantic failure patterns generalize to an independently selected document cohort.",
+  "notAnIntervention": true,
+  "goldInspectedBeforeSelection": false,
+  "modelOutputsInspectedBeforeSelection": false,
+  "knownResidualStringSelection": false,
+  "cohort": {
+    "selectedCount": 24,
+    "cohortFreeze": "cohort-freeze.v1.json",
+    "selection": "cohort-selection.v1.json",
+    "samplingFrame": "sampling-frame.v1.json",
+    "membershipImmutableAfterCommit": true
+  },
+  "annotation": {
+    "instructions": "annotation/instructions.md",
+    "schema": "annotation/schema.v1.json",
+    "sourceArtifacts": "annotation/sources/",
+    "annotatorA": "annotation/annotator-a/",
+    "annotatorB": "annotation/annotator-b/",
+    "adjudication": "annotation/adjudication/",
+    "twoIndependentAnnotators": true,
+    "modelOutputsVisible": false,
+    "currentResidualsVisible": false,
+    "finalGoldRule": "Annotator A + Annotator B + explicit adjudication; never silent union"
+  },
+  "r2BInferenceAuthorized": false,
+  "authorizationRequires": [
+    "cohort-freeze.v1.json",
+    "gold-authority.v1.json",
+    "study-manifest.v2.json",
+    "completed independent human annotation and adjudication"
+  ],
+  "terminalReason": "No valid independent human Gold exists in repository; actual independent annotation is required."
+}

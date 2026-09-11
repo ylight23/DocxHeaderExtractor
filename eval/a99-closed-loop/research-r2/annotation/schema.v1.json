@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "a99-r2a-annotation-schema-v1",
+  "type": "object",
+  "required": [
+    "studyId",
+    "documentId",
+    "sourceSha256",
+    "annotatorId",
+    "rows"
+  ],
+  "properties": {
+    "studyId": {
+      "const": "A99-R2"
+    },
+    "documentId": {
+      "type": "string"
+    },
+    "sourceSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "annotatorId": {
+      "enum": [
+        "A",
+        "B",
+        "ADJUDICATED"
+      ]
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sourceOccurrenceId",
+          "exactHeadingText",
+          "utf16Start",
+          "utf16End",
+          "headingPresence",
+          "semanticFamily"
+        ],
+        "properties": {
+          "sourceOccurrenceId": {
+            "type": "string"
+          },
+          "exactHeadingText": {
+            "type": "string"
+          },
+          "utf16Start": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "utf16End": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "headingPresence": {
+            "type": "boolean"
+          },
+          "semanticFamily": {
+            "enum": [
+              "DOCUMENT_TITLE",
+              "PART_CHAPTER",
+              "SECTION",
+              "SUBSECTION",
+              "REGION_OR_GEOGRAPHIC_LABEL",
+              "PROGRAM_OR_TOPIC_LABEL",
+              "TABLE_OR_LOCAL_LABEL",
+              "NAVIGATION_OR_AGENDA",
+              "ANNEX",
+              "CAPTION",
+              "OTHER_STRUCTURAL_LABEL",
+              "UNKNOWN"
+            ]
+          },
+          "role": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "negativeClass": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "exactSpanEnd": "exclusive UTF-16 code-unit offset",
+  "runtimeUse": "PROHIBITED"
+}
