@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "a99-v6-production-vnext-lane-status-v1",
+  "lane": "B_CANONICAL_VNEXT_SEMANTIC_ONLY",
+  "status": "OCCURRENCE_LEVEL_NOT_EVALUABLE",
+  "authority": "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+  "trackedSources": 21,
+  "semanticHeadingTotal": 3955,
+  "exactOccurrenceFrozenSources": 0,
+  "exactOccurrenceFrozenHeadings": 0,
+  "historicalStrictLane": {
+    "sources": 5,
+    "occurrences": 153,
+    "artifact": "summary.v1.json",
+    "independentOfCanonicalVnextTotals": true
+  },
+  "policy": "Do not derive occurrence precision/recall/F1 from semantic totals. Materialize source-backed occurrence Gold before opening a vNext occurrence evaluator.",
+  "goldReadBeforePredictionFreeze": false
+}
