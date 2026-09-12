@@ -13,7 +13,8 @@ public sealed record SemanticSourceAlias(
     [property: JsonPropertyName("sourceId")] string SourceId,
     [property: JsonPropertyName("sourceOrdinal")] int SourceOrdinal,
     [property: JsonPropertyName("text")] string Text,
-    [property: JsonPropertyName("sourceSpan")] StructuralSpan SourceSpan)
+    [property: JsonPropertyName("sourceSpan")] StructuralSpan SourceSpan,
+    [property: JsonIgnore] SourceAnchor? SourceAnchor = null)
 {
     public bool Contains(StructuralSpan span) =>
         span.Start >= 0 && span.End <= Text.Length && span.IsValidFor(Text);
@@ -29,7 +30,8 @@ public static class SemanticSourceAliasCatalog
             .OrderBy(unit => unit.SourceOrdinal)
             .ThenBy(unit => unit.SourceId, StringComparer.Ordinal)
             .Select((unit, index) => new SemanticSourceAlias(
-                $"S{index + 1:0000}", unit.SourceId, unit.SourceOrdinal, unit.Text, unit.SourceSpan))
+                $"S{index + 1:0000}", unit.SourceId, unit.SourceOrdinal, unit.Text, unit.SourceSpan,
+                unit.SourceAnchor))
             .ToArray();
     }
 }
@@ -321,7 +323,13 @@ public sealed record CanonicalSemanticGraphOccurrence(
     /// <summary>Coordinate authority for this canonical occurrence. Text occurrences use
     /// UTF-16; visual-only occurrences use a visual-region identity.</summary>
     public string BindingMode { get; init; } = "TEXT_UTF16";
+
+    /// <summary>Parser/render-owned order used to merge text and visual occurrences.</summary>
+    [JsonIgnore]
+    public CanonicalSemanticDocumentOrder? DocumentOrder { get; init; }
 }
+
+public sealed record CanonicalSemanticDocumentOrder(int Page, double Top, double Left, int Layer, int LocalOrdinal);
 
 public sealed record CanonicalSemanticGraph(
     IReadOnlyList<CanonicalSemanticGraphOccurrence> Occurrences,
@@ -333,6 +341,14 @@ public sealed record CanonicalSemanticGraph(
 /// </summary>
 public static class CanonicalSemanticGraphResolver
 {
+    /// <summary>
+    /// Visual identity is anchored to parser/render-owned physical evidence. Text, role, and
+    /// display spelling are intentionally not used as a node key because repeated headings can
+    /// be distinct nodes in different regions or sections.
+    /// </summary>
+    public static string CreatePhysicalNodeId(CanonicalSemanticVisualBinding binding) =>
+        $"visual-node:{binding.PageId}:{binding.ImageSha256}:{binding.RegionSha256}";
+
     public static CanonicalSemanticGraph Resolve(IReadOnlyList<CanonicalSemanticBoundHeading> bound)
     {
         ArgumentNullException.ThrowIfNull(bound);
@@ -341,7 +357,16 @@ public static class CanonicalSemanticGraphResolver
         var occurrences = new List<CanonicalSemanticGraphOccurrence>(ordered.Length);
         foreach (var (item, index) in ordered.Select((item, index) => (item, index)))
         {
-            var nodeKey = $"{item.Text}\u001f{item.SemanticRole}\u001f{item.StructuralType}";
+            // Text/role alone is not a semantic identity. Explicit structural context keeps
+            // same-label headings in different sections distinct while preserving repeats that
+            // genuinely share the same resolved context.
+            var parentHint = item.RelationHints.FirstOrDefault(hint =>
+                hint.StartsWith("parent-node:", StringComparison.Ordinal));
+            var scope = item.Scope.Contains("continuation", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(item.Scope, "document_body", StringComparison.OrdinalIgnoreCase)
+                ? string.Empty
+                : item.Scope;
+            var nodeKey = $"{item.Text}\u001f{item.SemanticRole}\u001f{item.StructuralType}\u001f{scope}\u001f{parentHint}";
             if (!nodes.TryGetValue(nodeKey, out var nodeId))
             {
                 nodeId = $"semantic-node:{nodes.Count + 1:0000}";
@@ -362,13 +387,20 @@ public static class CanonicalSemanticGraphResolver
             occurrences.Add(new(occurrenceId, nodeId, item.Alias, item.SourceId, item.SourceOrdinal,
                 item.Text, item.SemanticRole, item.StructuralType, item.Scope, item.Start, item.End, kind, parentOccurrence)
             {
-                Level = level
+                Level = level,
+                DocumentOrder = new CanonicalSemanticDocumentOrder(
+                    item.SourceOrdinal, 0, 0, 0, item.Start)
             });
         }
         var projection = occurrences
             .GroupBy(item => item.SemanticNodeId, StringComparer.Ordinal)
             .Select(group => group.First())
-            .OrderBy(item => item.SourceOrdinal).ThenBy(item => item.Start)
+            .OrderBy(item => item.DocumentOrder?.Page ?? item.SourceOrdinal)
+            .ThenBy(item => item.DocumentOrder?.Top ?? 0)
+            .ThenBy(item => item.DocumentOrder?.Left ?? 0)
+            .ThenBy(item => item.DocumentOrder?.Layer ?? 0)
+            .ThenBy(item => item.DocumentOrder?.LocalOrdinal ?? item.Start)
+            .ThenBy(item => item.OccurrenceId, StringComparer.Ordinal)
             .ToArray();
         return new CanonicalSemanticGraph(occurrences, projection);
     }

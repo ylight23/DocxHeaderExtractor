@@ -99,7 +99,11 @@ public static class CanonicalSemanticVisualRecovery
         IReadOnlyList<CanonicalSemanticVisualBlock> blocks)
     {
         ArgumentNullException.ThrowIfNull(blocks);
-        return blocks.OrderBy(block => block.PageId, StringComparer.Ordinal).ThenBy(block => block.BlockOrdinal)
+        return blocks.OrderBy(block => ParsePage(block.PageId))
+            .ThenBy(block => block.BoundingBox.Top)
+            .ThenBy(block => block.BoundingBox.Left)
+            .ThenBy(block => block.BlockOrdinal)
+            .ThenBy(block => block.PageId, StringComparer.Ordinal)
             .Select((block, index) =>
             {
                 if (!block.BoundingBox.IsValid) throw new InvalidOperationException("VISUAL_GEOMETRY_INVALID");
@@ -110,6 +114,9 @@ public static class CanonicalSemanticVisualRecovery
                     block.BoundingBox, block.Transcript, regionHash, transcriptHash);
             }).ToArray();
     }
+
+    private static int ParsePage(string pageId) =>
+        int.TryParse(pageId.TrimStart('P', 'p'), out var page) ? page : int.MaxValue;
 
     internal static string HashText(string value) =>
         Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();
@@ -139,7 +146,8 @@ public sealed record CanonicalSemanticVisualBinding(
     string RecoveredTranscript,
     string RegionSha256,
     string TranscriptHash,
-    string CoordinateSystem = "VISUAL_REGION");
+    string CoordinateSystem = "VISUAL_REGION",
+    int BlockOrdinal = 0);
 
 public sealed record CanonicalSemanticVisualBoundHeading(
     CanonicalSemanticVisualBinding Binding,
@@ -177,7 +185,8 @@ public static class CanonicalSemanticVisualBinder
                     break;
                 }
                 bindings.Add(new CanonicalSemanticVisualBinding(occurrence.VisualAlias, occurrence.PageId, occurrence.ImageSha256,
-                    occurrence.BoundingBox, occurrence.Transcript, occurrence.RegionSha256, occurrence.TranscriptSha256));
+                    occurrence.BoundingBox, occurrence.Transcript, occurrence.RegionSha256, occurrence.TranscriptSha256,
+                    BlockOrdinal: occurrence.BlockOrdinal));
             }
             if (!valid || bindings.Count == 0) continue;
             bound.Add(new(bindings[0], proposal.SemanticRole ?? "OTHER_STRUCTURAL_LABEL",
@@ -223,7 +232,15 @@ public static class CanonicalSemanticVisualBindingValidator
     }
 }
 
-public sealed record CanonicalSemanticTextEvidenceBinding(string SourceId, int Start, int End, string Text);
+public sealed record CanonicalSemanticTextEvidenceBinding(
+    string SourceId,
+    int Start,
+    int End,
+    string Text,
+    string? PhysicalOccurrenceId = null,
+    string? PageId = null,
+    string? ImageSha256 = null,
+    CanonicalSemanticVisualBoundingBox? BoundingBox = null);
 
 public sealed record CanonicalSemanticUnifiedOccurrence(
     string UnifiedId,
@@ -231,7 +248,11 @@ public sealed record CanonicalSemanticUnifiedOccurrence(
     IReadOnlyList<CanonicalSemanticTextEvidenceBinding> TextEvidence,
     IReadOnlyList<CanonicalSemanticVisualBinding> VisualEvidence);
 
-/// <summary>Reconciles evidence for one physical heading without letting one modality duplicate it.</summary>
+/// <summary>
+/// Reconciles evidence for one physical heading without letting one modality duplicate it.
+/// Transcript equality alone is deliberately insufficient: a cross-modal match requires an
+/// explicit shared page/region identity and compatible transcript.
+/// </summary>
 public static class CanonicalSemanticCrossModalReconciler
 {
     public static IReadOnlyList<CanonicalSemanticUnifiedOccurrence> Reconcile(
@@ -240,25 +261,67 @@ public static class CanonicalSemanticCrossModalReconciler
     {
         ArgumentNullException.ThrowIfNull(text);
         ArgumentNullException.ThrowIfNull(visual);
-        var groups = new Dictionary<string, (List<CanonicalSemanticTextEvidenceBinding> Text, List<CanonicalSemanticVisualBinding> Visual)>(StringComparer.Ordinal);
+        var groups = new List<(List<CanonicalSemanticTextEvidenceBinding> Text, List<CanonicalSemanticVisualBinding> Visual)>();
         foreach (var item in text)
-        {
-            var key = $"text:{item.Text}";
-            if (!groups.TryGetValue(key, out var group)) group = ([], []);
-            group.Text.Add(item);
-            groups[key] = group;
-        }
+            groups.Add(([item], []));
         foreach (var item in visual)
         {
-            var key = $"text:{item.RecoveredTranscript}";
-            if (!groups.TryGetValue(key, out var group)) group = ([], []);
-            group.Visual.Add(item);
-            groups[key] = group;
+            var match = groups.FirstOrDefault(group =>
+                group.Visual.Any(existing => SameVisualOccurrence(existing, item)) ||
+                group.Text.Any(existing => SamePhysicalOccurrence(existing, item)));
+            if (match.Text is not null)
+            {
+                match.Visual.Add(item);
+                continue;
+            }
+            groups.Add(([], [item]));
         }
-        return groups.OrderBy(item => item.Key, StringComparer.Ordinal)
-            .Select((item, index) => new CanonicalSemanticUnifiedOccurrence(
-                $"U{index + 1:0000}", item.Value.Text.FirstOrDefault()?.Text ?? item.Value.Visual[0].RecoveredTranscript,
-                item.Value.Text, item.Value.Visual)).ToArray();
+        return groups
+            .OrderBy(group => group.Text.Count > 0
+                ? $"T:{group.Text[0].SourceId}:{group.Text[0].Start:D12}"
+                : VisualOrderKey(group.Visual[0]), StringComparer.Ordinal)
+            .ThenBy(group => group.Visual.Count == 0 ? string.Empty : VisualOrderKey(group.Visual[0]), StringComparer.Ordinal)
+            .Select((group, index) => new CanonicalSemanticUnifiedOccurrence(
+                $"U{index + 1:0000}", group.Text.FirstOrDefault()?.Text ?? group.Visual[0].RecoveredTranscript,
+                group.Text, group.Visual)).ToArray();
+    }
+
+    private static bool SamePhysicalOccurrence(
+        CanonicalSemanticTextEvidenceBinding text,
+        CanonicalSemanticVisualBinding visual) =>
+        string.Equals(text.Text, visual.RecoveredTranscript, StringComparison.Ordinal) &&
+        text.PageId is not null &&
+        string.Equals(text.PageId, visual.PageId, StringComparison.OrdinalIgnoreCase) &&
+        text.BoundingBox is { } textBox &&
+        textBox.Overlaps(visual.BoundingBox) &&
+        (text.ImageSha256 is null || string.Equals(text.ImageSha256, visual.ImageSha256, StringComparison.OrdinalIgnoreCase));
+
+    private static bool SameVisualOccurrence(
+        CanonicalSemanticVisualBinding left,
+        CanonicalSemanticVisualBinding right) =>
+        string.Equals(left.PageId, right.PageId, StringComparison.OrdinalIgnoreCase) &&
+        string.Equals(left.ImageSha256, right.ImageSha256, StringComparison.OrdinalIgnoreCase) &&
+        left.BoundingBox.Overlaps(right.BoundingBox) &&
+        string.Equals(left.RecoveredTranscript, right.RecoveredTranscript, StringComparison.Ordinal);
+
+    private static string VisualOrderKey(CanonicalSemanticVisualBinding binding)
+    {
+        var page = ParsePage(binding.PageId);
+        return $"V:{page:D8}:{binding.BoundingBox.Top:R}:{binding.BoundingBox.Left:R}:{binding.BlockOrdinal:D8}";
+    }
+
+    private static int ParsePage(string pageId) =>
+        int.TryParse(pageId.TrimStart('P', 'p'), out var page) ? page : int.MaxValue;
+
+    private static bool Overlaps(this CanonicalSemanticVisualBoundingBox left,
+        CanonicalSemanticVisualBoundingBox right)
+    {
+        var leftRight = left.Left + left.Width;
+        var rightRight = right.Left + right.Width;
+        var leftBottom = left.Top + left.Height;
+        var rightBottom = right.Top + right.Height;
+        return left.Left < rightRight && right.Left < leftRight &&
+            left.Top < rightBottom && right.Top < leftBottom;
     }
 }
 

@@ -50,11 +50,100 @@ public sealed class CanonicalSemanticVisualRecoveryTests
         ], visual);
 
         var unified = CanonicalSemanticCrossModalReconciler.Reconcile(
-            [new("source-1", 0, 9, "Article 1")], [visualBinding[0].Binding]);
+            [new("source-1", 0, 9, "Article 1", "source-1:0:9", "p1", "image-a",
+                new CanonicalSemanticVisualBoundingBox(10, 20, 100, 20))], [visualBinding[0].Binding]);
 
         var item = Assert.Single(unified);
         Assert.Single(item.TextEvidence);
         Assert.Single(item.VisualEvidence);
+    }
+
+    [Fact]
+    public void Repeated_same_text_visual_headings_in_different_regions_remain_two_occurrences()
+    {
+        var result = Production(
+            Catalog(("p1", "body")),
+            [new CanonicalSemanticPageEvidence("P0001", false, 1, "scan")],
+            [
+                new CanonicalSemanticVisualBlock("P0001", 1, "image-a", new(10, 10, 100, 20), "RESULTS"),
+                new CanonicalSemanticVisualBlock("P0001", 2, "image-a", new(10, 50, 100, 20), "RESULTS")
+            ],
+            [
+                new CanonicalSemanticVisualProposal("V0001", true, "RESULTS", "SECTION"),
+                new CanonicalSemanticVisualProposal("V0002", true, "RESULTS", "SECTION")
+            ]);
+
+        Assert.Equal(2, result.CanonicalOccurrences.Count);
+        Assert.Equal(2, result.Projection.Count);
+        Assert.NotEqual(result.CanonicalOccurrences[0].SemanticNodeId,
+            result.CanonicalOccurrences[1].SemanticNodeId);
+    }
+
+    [Fact]
+    public void Same_physical_text_and_visual_heading_is_one_occurrence()
+    {
+        var result = Production(
+            Catalog(("p1", "Article 1", page: 1, box: new(10, 20, 110, 40))),
+            [new CanonicalSemanticPageEvidence("P0001", true, 1, "hybrid")],
+            [new CanonicalSemanticVisualBlock("P0001", 1, "image-a", new(10, 20, 100, 20), "Article 1")],
+            [new CanonicalSemanticVisualProposal("V0001", true, "Article 1", "ARTICLE")],
+            new CanonicalSemanticProposal("S0001", true, "Article 1", SemanticRole: "ARTICLE"));
+
+        Assert.Single(result.UnifiedOccurrences);
+        Assert.Single(result.UnifiedOccurrences[0].TextEvidence);
+        Assert.Single(result.UnifiedOccurrences[0].VisualEvidence);
+        Assert.Single(result.CanonicalOccurrences);
+    }
+
+    [Fact]
+    public void Same_text_on_different_pages_is_not_cross_modal_deduped()
+    {
+        var result = Production(
+            Catalog(("p1", "RESULTS", page: 1, box: new(10, 20, 110, 40))),
+            [
+                new CanonicalSemanticPageEvidence("P0001", true, 0, "text"),
+                new CanonicalSemanticPageEvidence("P0002", false, 1, "scan")
+            ],
+            [new CanonicalSemanticVisualBlock("P0002", 1, "image-b", new(10, 20, 100, 20), "RESULTS")],
+            [new CanonicalSemanticVisualProposal("V0001", true, "RESULTS", "SECTION")],
+            new CanonicalSemanticProposal("S0001", true, "RESULTS", SemanticRole: "SECTION"));
+
+        Assert.Equal(2, result.CanonicalOccurrences.Count);
+        Assert.DoesNotContain(result.UnifiedOccurrences, item =>
+            item.TextEvidence.Count > 0 && item.VisualEvidence.Count > 0);
+    }
+
+    [Fact]
+    public void Visual_document_order_is_page_ascending_then_region_position()
+    {
+        var result = Production(
+            Catalog(("p1", "body")),
+            [
+                new CanonicalSemanticPageEvidence("P0001", false, 1, "scan"),
+                new CanonicalSemanticPageEvidence("P0002", false, 1, "scan")
+            ],
+            [
+                new CanonicalSemanticVisualBlock("P0002", 1, "image-2", new(10, 10, 100, 20), "PAGE TWO"),
+                new CanonicalSemanticVisualBlock("P0001", 1, "image-1", new(10, 10, 100, 20), "PAGE ONE")
+            ],
+            [
+                new CanonicalSemanticVisualProposal("V0001", true, "PAGE ONE", "SECTION"),
+                new CanonicalSemanticVisualProposal("V0002", true, "PAGE TWO", "SECTION")
+            ]);
+
+        Assert.Equal(["visual:P0001", "visual:P0002"], result.CanonicalOccurrences.Select(item => item.SourceId));
+    }
+
+    [Fact]
+    public void Same_role_and_text_in_different_sections_get_distinct_semantic_nodes()
+    {
+        var graph = Graph(
+            new CanonicalSemanticProposal("S0001", true, "RESULTS", SemanticRole: "SECTION", Scope: "section-a"),
+            new CanonicalSemanticProposal("S0002", true, "RESULTS", SemanticRole: "SECTION", Scope: "section-b"));
+
+        Assert.Equal(2, graph.Occurrences.Count);
+        Assert.Equal(2, graph.OutlineProjection.Count);
+        Assert.NotEqual(graph.Occurrences[0].SemanticNodeId, graph.Occurrences[1].SemanticNodeId);
     }
 
     [Fact]
@@ -127,4 +216,48 @@ public sealed class CanonicalSemanticVisualRecoveryTests
         Assert.Equal(362, firstJson.RootElement.GetProperty("semanticHeadingTotal").GetInt32());
         Assert.Equal(111, secondJson.RootElement.GetProperty("semanticHeadingTotal").GetInt32());
     }
+
+    private static CanonicalSemanticProductionResult Production(
+        DocumentSourceCatalog catalog,
+        IReadOnlyList<CanonicalSemanticPageEvidence> pages,
+        IReadOnlyList<CanonicalSemanticVisualBlock> blocks,
+        IReadOnlyList<CanonicalSemanticVisualProposal> visualProposals,
+        params CanonicalSemanticProposal[] textProposals)
+    {
+        return CanonicalSemanticProductionEntryPoint.Run(new(
+            catalog,
+            textProposals,
+            "source-hash",
+            pages,
+            [], [], [], [],
+            blocks,
+            visualProposals));
+    }
+
+    private static CanonicalSemanticGraph Graph(params CanonicalSemanticProposal[] proposals)
+    {
+        var catalog = new DocumentSourceCatalog(proposals.Select((proposal, index) =>
+            new DocumentSourceUnit(
+                $"p{index + 1}", index + 1, proposal.VerbatimText ?? "RESULTS",
+                new SourceAnchor { SourceType = "test", ParagraphId = $"p{index + 1}" },
+                new StructuralSpan(0, (proposal.VerbatimText ?? "RESULTS").Length))));
+        return CanonicalSemanticPipeline.Run(catalog, proposals, "source-hash").Graph;
+    }
+
+    private static DocumentSourceCatalog Catalog(params (string Id, string Text, int? page, PdfBoundingBox? box)[] units) =>
+        new(units.Select((unit, index) => new DocumentSourceUnit(
+            unit.Id,
+            index + 1,
+            unit.Text,
+            new SourceAnchor
+            {
+                SourceType = "test",
+                ParagraphId = unit.Id,
+                Page = unit.page,
+                BoundingBox = unit.box
+            },
+            new StructuralSpan(0, unit.Text.Length))));
+
+    private static DocumentSourceCatalog Catalog(params (string Id, string Text)[] units) =>
+        Catalog(units.Select(unit => (unit.Id, unit.Text, (int?)null, (PdfBoundingBox?)null)).ToArray());
 }

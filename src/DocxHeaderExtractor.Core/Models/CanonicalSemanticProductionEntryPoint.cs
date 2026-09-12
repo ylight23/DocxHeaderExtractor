@@ -157,19 +157,19 @@ public static class CanonicalSemanticProductionEntryPoint
                 visualProposals, visualOccurrences)
             : [];
 
+        var aliasesBySourceId = aliases.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
         var textEvidence = text.BoundHeadings
             .SelectMany(heading => heading.Parts.Count == 0
-                ? [new CanonicalSemanticTextEvidenceBinding(
-                    heading.SourceId, heading.Start, heading.End, heading.Text)]
-                : heading.Parts.Select(part => new CanonicalSemanticTextEvidenceBinding(
-                    part.SourceId, part.Start, part.End, part.Text)))
+                ? [CreateTextEvidence(heading.SourceId, heading.Start, heading.End, heading.Text, aliasesBySourceId)]
+                : heading.Parts.Select(part => CreateTextEvidence(
+                    part.SourceId, part.Start, part.End, part.Text, aliasesBySourceId)))
             .ToArray();
         var visualEvidence = visualHeadings
             .SelectMany(heading => heading.Bindings)
             .ToArray();
         var unified = CanonicalSemanticCrossModalReconciler.Reconcile(
             textEvidence, visualEvidence);
-        var canonicalGraph = CombineGraphs(text.Graph, visualHeadings, textEvidence);
+        var canonicalGraph = CombineGraphs(text.Graph, visualHeadings, unified, aliases);
 
         var ledger = new[]
         {
@@ -198,31 +198,88 @@ public static class CanonicalSemanticProductionEntryPoint
     private static CanonicalSemanticGraph CombineGraphs(
         CanonicalSemanticGraph textGraph,
         IReadOnlyList<CanonicalSemanticVisualBoundHeading> visualHeadings,
-        IReadOnlyList<CanonicalSemanticTextEvidenceBinding> textEvidence)
+        IReadOnlyList<CanonicalSemanticUnifiedOccurrence> unified,
+        IReadOnlyList<SemanticSourceAlias> aliases)
     {
-        var occurrences = textGraph.Occurrences.ToList();
-        var textKeys = textEvidence.Select(item => item.Text).ToHashSet(StringComparer.Ordinal);
-        foreach (var heading in visualHeadings)
-        {
-            foreach (var binding in heading.Bindings)
+        var aliasesBySourceId = aliases.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
+        var occurrences = textGraph.Occurrences
+            .Select(item => item with
             {
-                if (textKeys.Contains(binding.RecoveredTranscript)) continue;
-                var pageNumber = int.TryParse(binding.PageId.TrimStart('P', 'p'), out var parsedPage) ? parsedPage : 0;
-                var ordinal = int.MaxValue - pageNumber;
-                var occurrence = new CanonicalSemanticGraphOccurrence(
-                    $"visual-occurrence:{occurrences.Count + 1:0000}",
-                    $"visual-node:{heading.SemanticRole}:{binding.RecoveredTranscript}",
-                    binding.VisualAlias, $"visual:{binding.PageId}", ordinal,
-                    binding.RecoveredTranscript, heading.SemanticRole, heading.StructuralType,
-                    heading.Scope, 0, 0, "PRIMARY", null)
-                { BindingMode = "VISUAL_REGION" };
-                occurrences.Add(occurrence);
-            }
+                DocumentOrder = TextDocumentOrder(item, aliasesBySourceId)
+            })
+            .ToList();
+        var reconciledVisualAliases = unified
+            .Where(item => item.TextEvidence.Count > 0 && item.VisualEvidence.Count > 0)
+            .SelectMany(item => item.VisualEvidence)
+            .Select(item => item.VisualAlias)
+            .ToHashSet(StringComparer.Ordinal);
+        var visualBindings = visualHeadings
+            .SelectMany(heading => heading.Bindings.Select(binding => (heading, binding)))
+            .Where(item => !reconciledVisualAliases.Contains(item.binding.VisualAlias))
+            .OrderBy(item => ParsePage(item.binding.PageId))
+            .ThenBy(item => item.binding.BoundingBox.Top)
+            .ThenBy(item => item.binding.BoundingBox.Left)
+            .ThenBy(item => item.binding.BlockOrdinal)
+            .ThenBy(item => item.binding.VisualAlias, StringComparer.Ordinal)
+            .ToArray();
+        foreach (var (heading, binding) in visualBindings)
+        {
+            var pageNumber = ParsePage(binding.PageId);
+            var occurrence = new CanonicalSemanticGraphOccurrence(
+                $"visual-occurrence:{occurrences.Count + 1:0000}",
+                CanonicalSemanticGraphResolver.CreatePhysicalNodeId(binding),
+                binding.VisualAlias, $"visual:{binding.PageId}", pageNumber,
+                binding.RecoveredTranscript, heading.SemanticRole, heading.StructuralType,
+                heading.Scope, binding.BlockOrdinal, binding.BlockOrdinal, "PRIMARY", null)
+            {
+                BindingMode = "VISUAL_REGION",
+                DocumentOrder = new CanonicalSemanticDocumentOrder(
+                    pageNumber, binding.BoundingBox.Top, binding.BoundingBox.Left, 1, binding.BlockOrdinal)
+            };
+            occurrences.Add(occurrence);
         }
-        var ordered = occurrences.OrderBy(item => item.SourceOrdinal).ThenBy(item => item.Start)
+        var ordered = occurrences
+            .OrderBy(item => item.DocumentOrder?.Page ?? item.SourceOrdinal)
+            .ThenBy(item => item.DocumentOrder?.Top ?? 0)
+            .ThenBy(item => item.DocumentOrder?.Left ?? 0)
+            .ThenBy(item => item.DocumentOrder?.Layer ?? 0)
+            .ThenBy(item => item.DocumentOrder?.LocalOrdinal ?? item.Start)
             .ThenBy(item => item.OccurrenceId, StringComparer.Ordinal).ToArray();
         var projection = ordered.GroupBy(item => item.SemanticNodeId, StringComparer.Ordinal)
             .Select(group => group.First()).ToArray();
         return new CanonicalSemanticGraph(ordered, projection);
     }
+
+    private static CanonicalSemanticTextEvidenceBinding CreateTextEvidence(
+        string sourceId,
+        int start,
+        int end,
+        string text,
+        IReadOnlyDictionary<string, SemanticSourceAlias> aliases)
+    {
+        aliases.TryGetValue(sourceId, out var alias);
+        var page = alias?.SourceAnchor?.Page is { } pageNumber
+            ? $"P{pageNumber:0000}"
+            : TryParsePage(sourceId) is { } sourcePage ? $"P{sourcePage:0000}" : null;
+        var box = alias?.SourceAnchor?.BoundingBox is { } sourceBox
+            ? new CanonicalSemanticVisualBoundingBox(sourceBox.Left, sourceBox.Bottom,
+                sourceBox.Right - sourceBox.Left, sourceBox.Top - sourceBox.Bottom)
+            : null;
+        return new(sourceId, start, end, text, $"{sourceId}:{start}:{end}", page, null, box);
+    }
+
+    private static CanonicalSemanticDocumentOrder TextDocumentOrder(
+        CanonicalSemanticGraphOccurrence item,
+        IReadOnlyDictionary<string, SemanticSourceAlias> aliases)
+    {
+        aliases.TryGetValue(item.SourceId, out var alias);
+        var page = alias?.SourceAnchor?.Page ?? TryParsePage(item.SourceId) ?? item.SourceOrdinal;
+        var box = alias?.SourceAnchor?.BoundingBox;
+        return new(page, box?.Bottom ?? 0, box?.Left ?? 0, 0, item.Start);
+    }
+
+    private static int ParsePage(string pageId) => TryParsePage(pageId) ?? int.MaxValue;
+
+    private static int? TryParsePage(string value) =>
+        int.TryParse(value.TrimStart('P', 'p'), out var page) ? page : null;
 }
