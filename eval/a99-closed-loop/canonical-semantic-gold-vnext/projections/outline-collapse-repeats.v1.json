@@ -1,0 +1,15 @@
+{
+  "artifactKind": "a99_canonical_projection_policy",
+  "schemaVersion": "a99-canonical-projection-policy-vnext-v1",
+  "policyId": "OUTLINE_COLLAPSE_REPEATS_AFTER_CANONICAL_GRAPH",
+  "input": "canonical semantic graph occurrences",
+  "preserve": [
+    "every true heading occurrence",
+    "PRIMARY",
+    "REPEAT",
+    "CONTINUATION"
+  ],
+  "collapseKey": "semanticNodeId",
+  "semanticTruthMutation": false,
+  "taskMembershipMutation": false
+}

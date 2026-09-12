@@ -1,0 +1,14 @@
+{
+  "artifactKind": "a99_canonical_occurrence_gold",
+  "schemaVersion": "a99-canonical-occurrence-gold-vnext-v1",
+  "documentId": "DOC-0001",
+  "sourcePath": "bench/01-style-chuan.docx",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "semanticHeadingTotal": 7,
+  "exactOccurrenceFreeze": false,
+  "status": "REVIEW_REQUIRED",
+  "bindings": [],
+  "unresolvedExpectedBindings": 7,
+  "bindingCoordinateSystem": "UTF-16",
+  "reason": "Semantic freeze is authoritative; no exact occurrence/span freeze is implied or fabricated by migration."
+}

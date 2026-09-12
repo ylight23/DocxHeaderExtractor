@@ -1,0 +1,1579 @@
+{
+  "artifactKind": "a99_canonical_semantic_gold_vnext_lineage_inventory",
+  "schemaVersion": "a99-canonical-semantic-gold-vnext-lineage-v1",
+  "sourceInventory": "eval/a99-dataset/document-inventory.v1.json",
+  "sourceInventorySha256": "0c80035f5c7f7948533c909552a480818ea14b26983de438e0567709d26505e1",
+  "roots": [
+    "eval/a99-closed-loop/strict-gold-v3",
+    "eval/a99-closed-loop/strict-gold-v4",
+    "eval/a99-closed-loop/strict-gold-occurrence-v1",
+    "eval/harness-lift/review-packets",
+    "eval/harness-lift/review-packets-v2",
+    "eval/benchmark-n0/source-packets",
+    "eval/a99-closed-loop/research-r2"
+  ],
+  "fileCount": 260,
+  "files": [
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v3/DOC-0001.strict-gold-v3.json",
+      "sha256": "92fedbec42763179fffdab5de4f286d5f798c41f3ddae1674dee6d3b02048df5",
+      "byteLength": 5795,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v3/DOC-0205.strict-gold-v3.json",
+      "sha256": "f0f95251a70e0f9dcac350c8f15540f4108fef6f188b837502862e69030c27a7",
+      "byteLength": 49774,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v3/DOC-0252.strict-gold-v3.json",
+      "sha256": "f79f9d8556ae2f1608316f01c8f990deddfedcbdd36ca24c0644eac3c324fc37",
+      "byteLength": 19149,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v3/DOC-0256.strict-gold-v3.json",
+      "sha256": "6bf31da2255b691ca377ef5313be983a2bf3a834694c8041703d810df9ac461b",
+      "byteLength": 17095,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v3/DOC-0258.strict-gold-v3.json",
+      "sha256": "80a21a492494541b03d54f8ffdd4302fb3c578b911d4f74931bcb1c6b7ca4a4f",
+      "byteLength": 17486,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v3/MATERIALIZATION-BLOCKERS.json",
+      "sha256": "23acc3ceccaa46acfd5c41be5c5173b2728bfdc061dc10b34d0427cfb4731e57",
+      "byteLength": 835,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
+      "sha256": "5ac30a82db551a8149ed777390eeca0dc6c6d0bafd9e82468dde32777808dfc8",
+      "byteLength": 6863,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0116.strict-gold-v4.json",
+      "sha256": "9076c5f079a781d5c91923fe4e6bbb73108ae6a5bb47e1096a1d939023b9b6f5",
+      "byteLength": 17553,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0122.strict-gold-v4.json",
+      "sha256": "b6169d95efd89ed534e6666694f6b3a7ecc1f2e4e67c6e1a8406ee9e729d7b69",
+      "byteLength": 85958,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0185.strict-gold-v4.json",
+      "sha256": "9bccd22b5de98c7512af47854496cf7e07479298bbad8278eac0019bcc18058c",
+      "byteLength": 2733,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0200.strict-gold-v4.json",
+      "sha256": "19ed8530a76afd3f37691b24fc6d2019783c0fd4245764d8cc05711be48d50ea",
+      "byteLength": 2734,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0201.strict-gold-v4.json",
+      "sha256": "0ad3545669bb18def454b16174634454639c91ae43cff7bd8f89270bb0844536",
+      "byteLength": 2730,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0205.strict-gold-v4.json",
+      "sha256": "160c9cd3daeab79700b5411337fe6ecb666edbdbda61066d47372b5c3df10418",
+      "byteLength": 53302,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0216.strict-gold-v4.json",
+      "sha256": "347d57204be3e5a3bfeb6e26e97054ac33aab89252d11b92d84bb60b48bf14ce",
+      "byteLength": 80566,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0219.strict-gold-v4.json",
+      "sha256": "e12cd98a59526d6ee8bdddaa0772eb3c86d346629bae0f6291ea6112d95a5343",
+      "byteLength": 2732,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0243.strict-gold-v4.json",
+      "sha256": "df4808f0b03e550834f4b16a3c9085c550dae452881fbec0df1773277d3bfd38",
+      "byteLength": 66409,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0252.strict-gold-v4.json",
+      "sha256": "8dc3a2512ce73dbcc84e045a7f84b6d4996e782638949a68af0254946886e325",
+      "byteLength": 20123,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0256.strict-gold-v4.json",
+      "sha256": "f12a4a407deddf9d6f1039510d8b2ee4965db091901e2e1b3e806b97344c92e2",
+      "byteLength": 18306,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0258.strict-gold-v4.json",
+      "sha256": "4519e267a0f04e0f4a3486e53425058252b98de035631a50ebd4fd7751ddb61b",
+      "byteLength": 18502,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0264.strict-gold-v4.json",
+      "sha256": "d98bf12ca536f1193cc216b8636e7f384e6ac30912becd451e2e993171262e74",
+      "byteLength": 2818,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0265.strict-gold-v4.json",
+      "sha256": "0406e060471c7b77d27be8b476d50d16336cf8915e980406a8d0ace226f02cf7",
+      "byteLength": 2722,
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0001.occurrence-gold-v1.json",
+      "sha256": "64bbcdb9cef4bbafefadeffcc60d208c0d5891fa95eb1e14b3caf28b8b458070",
+      "byteLength": 6435,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0205.occurrence-gold-v1.json",
+      "sha256": "fdd4ed7219fda1e6de43693ee6ae431704037e6b9c977b27812388d308fa3e1b",
+      "byteLength": 74849,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0252.occurrence-gold-v1.json",
+      "sha256": "a603acf2588fdb2832c13dd05342d72c8a676ae2efb26c06441ad55a7771653c",
+      "byteLength": 23196,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0256.occurrence-gold-v1.json",
+      "sha256": "b0666f211b8748009403841927042ec94458b0d458ff2bda98777710e12d7826",
+      "byteLength": 19593,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0258.occurrence-gold-v1.json",
+      "sha256": "19120156f87e5abf922ac98e6bddc9edad3041387ef5ecd107ef0bad5e1a4193",
+      "byteLength": 19747,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0264.occurrence-gold-v1.json",
+      "sha256": "9caf3fc84bd2dbb73037cebbda164d0962911c596bbc9cf6d7a7c852cec45c66",
+      "byteLength": 986,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0012.v1.json",
+      "sha256": "95dcb45c10fef9f71d4a082155e3f1e096bf81610ceec37e36fd2c6816de988f",
+      "byteLength": 3487318,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0013.v1.json",
+      "sha256": "78c1a54ed1cb7e6494e1988d90c2c02b528f2368ae926cd66905e86dc9057b06",
+      "byteLength": 153101,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0014.v1.json",
+      "sha256": "3e569985651178c540b30edcf206840b8d8860f670f8bcb83da7d6fc38031c96",
+      "byteLength": 2560691,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0015.v1.json",
+      "sha256": "d1e4a273ba717edfa44d5c961a2ff87240eca4da94da29a1dde9bbfe5e8a30f4",
+      "byteLength": 1566078,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0016.v1.json",
+      "sha256": "9c3f9ff239e920689b5e46ccdea014bd17e2074e90136cfeab77afb3d6cfeab2",
+      "byteLength": 1413018,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0017.v1.json",
+      "sha256": "a4f9e6b873c6b3e5372729e6f81d75ddafd7da5ad17ac8711d43d26b1e3dabfc",
+      "byteLength": 1609990,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0018.v1.json",
+      "sha256": "fcb59594057de01e62fd242087abe6c076a161fe0458a0734d0f252635822138",
+      "byteLength": 1770851,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0019.v1.json",
+      "sha256": "c0b7d335db84ae99c6e63c09c7c0fc78b5d576f63b2609c8cd1a646453de70e4",
+      "byteLength": 1223258,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0020.v1.json",
+      "sha256": "15fc7d1b299af0bb74132255b29a6d86f9887618a4f448aef04ecbdded222141",
+      "byteLength": 556422,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0021.v1.json",
+      "sha256": "f6272d0732ac74986d94ddd9265e2008b0c1b3fa6b183a444626909ee93e7328",
+      "byteLength": 581299,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0022.v1.json",
+      "sha256": "a207aa550c421efb22a0bdbfa90755faf5a96012c19862cb0f704f9c6b4e8ebc",
+      "byteLength": 51065,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0023.v1.json",
+      "sha256": "6303b467f07617c1241ce7316693d8987cca582f12712b89c3cd7cbb57b6a94c",
+      "byteLength": 813258,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0024.v1.json",
+      "sha256": "f452264e34cb93c9abf678139d3c352e01345743403cc3e822379c0099a32f82",
+      "byteLength": 1496674,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0025.v1.json",
+      "sha256": "92df6146f7688600df2e2a9b5ea7ac4130002face409fcd9f799ecdf00bcb46c",
+      "byteLength": 171461,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0026.v1.json",
+      "sha256": "59d4ab2bd3ad086930840881134b6a2d38519d69e56003c684b8366ea36f55a5",
+      "byteLength": 2328680,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0027.v1.json",
+      "sha256": "383a3ac35ad1f93732769205cacb7672d6ddf2ab2ae2baa538fe786229f5823d",
+      "byteLength": 67553,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0028.v1.json",
+      "sha256": "1bc2e3936c072e817d24e8104827311c7dd096472b4aaa920fc155715c323249",
+      "byteLength": 3880891,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0029.v1.json",
+      "sha256": "0f29005b48e255835e7c8f56df4b61498362340e98c6b3c1dbea55a8cfe3ba16",
+      "byteLength": 670542,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0030.v1.json",
+      "sha256": "12420903034866be7c8b72bf5bcb12d0b979631ddfa5ac88ae071aa5e983fb05",
+      "byteLength": 11610783,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0031.v1.json",
+      "sha256": "1a4c42ff3e283560a6266b8a3efbb7eb7920c842d0cf1d838d266803425824b6",
+      "byteLength": 11523143,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0032.v1.json",
+      "sha256": "03a0fb564e814bdffa3d1711302dfd82cb9ae947e871a02793fa57d36ee5f0da",
+      "byteLength": 1099069,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0033.v1.json",
+      "sha256": "5326f64143013da9ac60826d167051ac8dad0245f9c6cb6c179d7bc1ab919f2e",
+      "byteLength": 156780,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0034.v1.json",
+      "sha256": "297a9773209439879aba20746d6256052e09c231d427150daabd79a90357c5c6",
+      "byteLength": 94275,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0035.v1.json",
+      "sha256": "074fd65ba6f89311f97396f81c14bbb3647be42a14e640b15f980b1654874389",
+      "byteLength": 2236849,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0036.v1.json",
+      "sha256": "ea2986397a0c7971a0e55a4622501b09a47875fef09d0ea1fc4b8037d992af12",
+      "byteLength": 7560745,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0037.v1.json",
+      "sha256": "ca511b7edfe9b188f5c18812a6f5e6d8993cfd92a5f55664ae1371d04fedc5dd",
+      "byteLength": 5254570,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0038.v1.json",
+      "sha256": "df5dd80528ac4f69fc250882896c37f5388fc26bc3c37167da5acdb14baacb7c",
+      "byteLength": 5009038,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0039.v1.json",
+      "sha256": "b3700139dea22096b050bc02f30c5db8be56eef8f94186467eaaab9494799f6d",
+      "byteLength": 5608863,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0040.v1.json",
+      "sha256": "24132071f74da02d9440eabe503ada2c555eb193f12c75510a8e4445e6457895",
+      "byteLength": 5480272,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0041.v1.json",
+      "sha256": "3e69a72a15d9a455916274ed2302f42a078dcd2b0fad7c974a4214a3847bfd93",
+      "byteLength": 13567075,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0042.v1.json",
+      "sha256": "ebe34826bcc81f40ae1e2f89ba24ed17ecf1851088a3e834a0135ff5c36382d2",
+      "byteLength": 9325618,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0043.v1.json",
+      "sha256": "c0a2bafb08bb84741528890117608fac073690a929d9914a67287698593712ea",
+      "byteLength": 12699440,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0044.v1.json",
+      "sha256": "1e04a98f0e87696aa32e852a95888edf2c58ac4d2abe0305bc3b604112d3e275",
+      "byteLength": 8593107,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0045.v1.json",
+      "sha256": "9acded1a1464d47b58c20dc47bb9746483a1ba699b031275c0f8dbeebc024589",
+      "byteLength": 5433862,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0046.v1.json",
+      "sha256": "6e30a4291c60ddb7644979a93dee4c0f6bb5c47acfd1462593ac71d309f1229b",
+      "byteLength": 6283851,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0047.v1.json",
+      "sha256": "2ffadb1cb981ddffb004f3ff1a0283a5bc7cb4d727a66c32323377d880cccd80",
+      "byteLength": 6336436,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0048.v1.json",
+      "sha256": "d2749655eeacbf4707a8ff0b6af466d2ddde09791d1f48f005fc9e54bf52eb67",
+      "byteLength": 4768815,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0049.v1.json",
+      "sha256": "9406ba07f38eac5d27e4344118b71f6764cb31969b566dcec22850d8f837f43f",
+      "byteLength": 4934644,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0050.v1.json",
+      "sha256": "39fc6eaefe68b9218432083c399925d60186d0ccacb5df9f3009bc4f3fccddc5",
+      "byteLength": 1109386,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0051.v1.json",
+      "sha256": "92d4a22a91bcf7b53b748a25158c8b016c0a0c3fbcd73cf8a805da797b61c142",
+      "byteLength": 1097631,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0052.v1.json",
+      "sha256": "46ff2794de085e17b781a8ea8270922491380ab99bd816a13808b70ffb958ac4",
+      "byteLength": 8519860,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0053.v1.json",
+      "sha256": "e2107d4a5f128b9a35d10fd9d5d9d5fa7942f413b0f5f62152d95916ad6d10c3",
+      "byteLength": 11281172,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0054.v1.json",
+      "sha256": "2f80db6def1391585facbd82e9c6bcf684605e1b949c944797ab28f926001044",
+      "byteLength": 3278678,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0055.v1.json",
+      "sha256": "85a2db82ab7933d8c43651169c61aa812081709b0be1b3ab324bcc8ce4d90b7f",
+      "byteLength": 4884602,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0056.v1.json",
+      "sha256": "8071a74f49af81bad31d885830c5661d52a417ca8977f6b7d20f5b13a7ff828c",
+      "byteLength": 2206605,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0057.v1.json",
+      "sha256": "d701a4f57d3b32b9c25a68779e163a985eb131ceceeaa59bcc37a1c585db8cd2",
+      "byteLength": 1577910,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0058.v1.json",
+      "sha256": "d672255a3937be7609a2fdd33560eae5a822cc45d789618eedba652f36e124a2",
+      "byteLength": 2759703,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0059.v1.json",
+      "sha256": "334845259dbece1e89ff70ccfb8c3954773a2971a95da84c536be3088e6c48f4",
+      "byteLength": 4030629,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0060.v1.json",
+      "sha256": "e3c2f8f14f1043b7c335b58811ce220d361a6c18c2f029ac28595a736bc31fd9",
+      "byteLength": 1054801,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0061.v1.json",
+      "sha256": "eba35ae3fc50d5ad125104b9149d9d86f9fa2e510f9017139803fe82e372da03",
+      "byteLength": 3492199,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0062.v1.json",
+      "sha256": "de7a429e6deb1857de65dfb9556a2d82835de5a6106dc6e4001970ecb2eb80d3",
+      "byteLength": 5973719,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0063.v1.json",
+      "sha256": "c468e9562b42dd63ab967327cd01cd3ff50e82f63baad1842cb3f08cc194ba4c",
+      "byteLength": 404826,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0064.v1.json",
+      "sha256": "8e62ca6f1c5742ebbcc2e000e5244239c34a5d107a60f0414551132516c35248",
+      "byteLength": 275841,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0065.v1.json",
+      "sha256": "b1c8f662ff38b067e27357c690d9e7dcd1cbeeda7ae2ee03fce4b115a45df3ba",
+      "byteLength": 26924,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0066.v1.json",
+      "sha256": "28992eefafeb3f9aa96bb7dd5c285ae51cdd471ff14f2a46a47f512375a0f593",
+      "byteLength": 26346,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0067.v1.json",
+      "sha256": "1d8ffce5013e2e0b5977aeb3b33642f4abc4d1477a7e7cc2e81ca255b6097fbc",
+      "byteLength": 62525,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0068.v1.json",
+      "sha256": "34ad7f672c4062a0973b40506e56c99c9fe7a29b7f0ef108654d8edb772f6ca2",
+      "byteLength": 274488,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0069.v1.json",
+      "sha256": "d6bae947d053989c97b4a35f3baa1291b0a662863976f7a37297baa0a6d0f8d1",
+      "byteLength": 219870,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0070.v1.json",
+      "sha256": "c598bd784acc46ff55078967e3b07b54e98bab2dab1c6f0387aeb4abd9cefb8a",
+      "byteLength": 192204,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0071.v1.json",
+      "sha256": "1fb6cf09f8464abff9fc35fda02c5a19e0b01f844f8edc2f72be821cb5a0cbed",
+      "byteLength": 128395,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0072.v1.json",
+      "sha256": "449125c1577fd0932e9541697d564ae3cc2ec5b06fbd95be875fb57996d9c2ca",
+      "byteLength": 139638,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0073.v1.json",
+      "sha256": "68b3c1d0b74351c08f184f8c07a11fb6c350fdc972ad77bdf32108db20818032",
+      "byteLength": 2567204,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0074.v1.json",
+      "sha256": "22c0391fd1e4bf1f4ef288991e17cba56fd4b0677a165fc5bdbfc2f1c9458822",
+      "byteLength": 663083,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0075.v1.json",
+      "sha256": "353320f819bbd28a081cd5b7636f55a4611c307e2b3cdd407b02d103e3314d23",
+      "byteLength": 2401058,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0076.v1.json",
+      "sha256": "6e47e6b409d1e6f71cfcb6bcc4a006e2cf6152166204bfc4e91e05574b9ee944",
+      "byteLength": 1863090,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0077.v1.json",
+      "sha256": "e31ae45a0639b2f242208d06b55f7d9b6b8df64dc3f2e3cb55613b34c9d641fa",
+      "byteLength": 726331,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0078.v1.json",
+      "sha256": "75dcec63688424839ed9240b0433b4e8141666102533587400c26c13e498a97b",
+      "byteLength": 3009850,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0079.v1.json",
+      "sha256": "8d2fce747fccd2234bee73b4d8dcb0696dc5f48f9334f1c64d69b43a70f08157",
+      "byteLength": 308455,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0080.v1.json",
+      "sha256": "27ce50edd05209cf5daa28fdf74422d22d2fc08411628bb394b18e5f9bc7c2aa",
+      "byteLength": 1098653,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0081.v1.json",
+      "sha256": "9b17684447d88c416508473383648f851f28dea532d789b6df078e49faf74b1c",
+      "byteLength": 8920677,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0082.v1.json",
+      "sha256": "2d9de7088ee7242cbdf255e12b044cc920bac6dda68e1e9cc925fbf23da5cda5",
+      "byteLength": 1527792,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0083.v1.json",
+      "sha256": "ede564ad880e2ed2b9c962dc6308a68aeaedaf3ef4de118579b969b9c56b557a",
+      "byteLength": 2163776,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0084.v1.json",
+      "sha256": "eeb57d049f15dcba0e7e21e8b6770d6446cf2b4558c91ce08c882c23019348da",
+      "byteLength": 3432361,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0085.v1.json",
+      "sha256": "bc2e3fb2b0d96e41ce7eb040373f3d6ba75ca6b1fa15c8b3601d865f4cf9086d",
+      "byteLength": 2619705,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0111.v1.json",
+      "sha256": "17f6c82390aff743a3c982097725f5dbc9ce03a1f6466a98d1ced420dcdcb84b",
+      "byteLength": 2489975,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0112.v1.json",
+      "sha256": "ea4d8369b869c7702d07a735b44d6191d5fbcb5444ef790894fc1ee6f3876c6c",
+      "byteLength": 2711675,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0116.v1.json",
+      "sha256": "5c453dcfcfe7e946b9f5ee88a44fcb55ada3c463e9ddd42d3860d3d04176c93c",
+      "byteLength": 3564734,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0118.v1.json",
+      "sha256": "9e846099fb923c4c2481da50299db631c56d597e028de9e85d396814bcde3e40",
+      "byteLength": 5293565,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0121.v1.json",
+      "sha256": "b16db043c0e3961fd9fb19d192617e9f4c2480dd481b0825b26b98ec6c8acce4",
+      "byteLength": 5852868,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0122.v1.json",
+      "sha256": "aa9bc89643a73bb7ab2d11e569977296506382083dccb4560f73bd0ead321bd9",
+      "byteLength": 6068719,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0123.v1.json",
+      "sha256": "1067fd25b39f806e956e338778a92a573881ec28123df92b4df39f5f56a1759a",
+      "byteLength": 4545486,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0124.v1.json",
+      "sha256": "b578245c7d13537ad0436ff0bc1036f110d43cac80d773cf945822f06292d999",
+      "byteLength": 4954864,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0125.v1.json",
+      "sha256": "e0b21a8ba91ed7848ec258198f4184a3890d3b1e0b6ce64072a3387231d47840",
+      "byteLength": 4596461,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0167.v1.json",
+      "sha256": "31f3ffedffba66c579cf2f87b61030dba9e814c7f0427c94dfdf07e4db1db9c8",
+      "byteLength": 1463859,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0205.v1.json",
+      "sha256": "1a0839080576bdcd8a7d5d7853ed9e3607a0af3ad97667e9b541fbd217f4707b",
+      "byteLength": 127975,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0214.v1.json",
+      "sha256": "15315eb2404f1942e0081c416ddc39d846e79e10380c286831348e1d2a62e35e",
+      "byteLength": 6701130,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0225.v1.json",
+      "sha256": "d0245be0bf122900420c551af546abb8b3b555f1ff52454405dd899bcfada93b",
+      "byteLength": 12944810,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0235.v1.json",
+      "sha256": "8636c24a85928056852128f870470270e4043183e9f32d15e4ba2224257b1620",
+      "byteLength": 22733750,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0237.v1.json",
+      "sha256": "67b55fbcc71044d66d527038706e84355a6f2d7f5440f7730e2b7bade37968f6",
+      "byteLength": 27158655,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0242.v1.json",
+      "sha256": "7a7b38e99739621ead2ed93f78b24830dc9cfa4c29f2ec9bcbdfe170a574e098",
+      "byteLength": 13346846,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0243.v1.json",
+      "sha256": "bac82873f76f8fe26f97153c5438474e051d54715384c9ce037f81d7f1d787b0",
+      "byteLength": 19635532,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0244.v1.json",
+      "sha256": "9cad55257973ab8f0d08d5e1d0abea9091400c1a7a06e6220c4cf9db4e03082a",
+      "byteLength": 8523171,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0247.v1.json",
+      "sha256": "345d6e3777507c47da0862db011dfcaa93f6e90016b080d80b10be19b36a9439",
+      "byteLength": 7323636,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0248.v1.json",
+      "sha256": "7ed44802411b8c602822de1ba75ab2fab249d5bbcb4fbf4c3c595a232efc4fc8",
+      "byteLength": 6311890,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets/DOC-0264.v1.json",
+      "sha256": "f4637ba518d98f23ba7578261e6c8741626155a4130461fe00c28bff3941ffb8",
+      "byteLength": 230083,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0013.v2.json",
+      "sha256": "a8cfcbe880d061e869bc05c6e56c187bdb0fb7e681ff8afd47a388fd46a5644f",
+      "byteLength": 167099,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0014.v2.json",
+      "sha256": "df218bbed3f5a553e24ea084bef19a9d170c035891e386d5f1a681cab1fa748e",
+      "byteLength": 2739078,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0016.v2.json",
+      "sha256": "1f780388d7e2320070ec9cf8a159d05a30a324aa501e53e0b9866d6920953449",
+      "byteLength": 1527421,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0017.v2.json",
+      "sha256": "226763cd164e453abfdc6ae9e586f48c29961b9c19a8820c4732eaa1babddb0b",
+      "byteLength": 1730355,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0018.v2.json",
+      "sha256": "3f5044ec7957fbf24ef59ac425c90b50296f38a1a5e53483293e40b66272805d",
+      "byteLength": 1902512,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0019.v2.json",
+      "sha256": "937c7d5e49c1016f10b357fdaa9a2a42a993ec69b245fffb903c2c691bf08f71",
+      "byteLength": 1315080,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0020.v2.json",
+      "sha256": "4d1366078638175d347baf7e4f397d5a1a7246c33c7a014e1e2c823eb342771d",
+      "byteLength": 599040,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0024.v2.json",
+      "sha256": "2c8e85e4e5a3df3726bbf0f819f834de259be658cb1acb3cb084587549a3b389",
+      "byteLength": 1598213,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0027.v2.json",
+      "sha256": "9a031071744095e4e3dd6af014e269aa57b5a102022a08e141a6e15b3a5a6b81",
+      "byteLength": 73606,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0029.v2.json",
+      "sha256": "d81502e1ad11ee38099a4a98f4b413980fde6f4211a271d8d5dff749ca7b7a4f",
+      "byteLength": 722236,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0030.v2.json",
+      "sha256": "2281867be2b1564540f1062012306a08a537f7dfd527843a779abbbf10c5b9f1",
+      "byteLength": 12696824,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0031.v2.json",
+      "sha256": "14f4cb12d5df28e4df1e5d5eca9e30b533c00641647a5910e8dc1968bbbd17e1",
+      "byteLength": 12712006,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0032.v2.json",
+      "sha256": "4513e86bed42a1ce441740b8d45f92f4d935d54541ae508a399ee19d12719c31",
+      "byteLength": 1226805,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0033.v2.json",
+      "sha256": "18f9a69a585a16c5a390ce9d76388c661c77ab9fc45fd5284032a22fc1e0a5a9",
+      "byteLength": 171122,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0034.v2.json",
+      "sha256": "91ff9c358f22fe25020504c6aa7d6777a787b7c091a00f5b955a73e2276e40f6",
+      "byteLength": 102769,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0036.v2.json",
+      "sha256": "e5abc978377fc42e1913daa021b2f2238ff60ec7b2da54903fdbf90c67030cc7",
+      "byteLength": 8387968,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0037.v2.json",
+      "sha256": "5300aa5c0b2d876d20e9e1e9cee33148c6f4180bf8496a4f9d02e580c69f1a20",
+      "byteLength": 5820849,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0038.v2.json",
+      "sha256": "4a4a305d399df0e1a8ab4946075548fac875dde218dd97b198043f5562f24806",
+      "byteLength": 5569215,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0039.v2.json",
+      "sha256": "1dc4b9c1d8cb6bb06b7fd6ff299f6cf1a0b74a941d8b9bbf8b8e347388315272",
+      "byteLength": 6174446,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0040.v2.json",
+      "sha256": "e11cf945ff57c51ebe37973440bd9a27f40ca96b8cb39dd98f270853e519ad69",
+      "byteLength": 6105081,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0044.v2.json",
+      "sha256": "5050f29b79987814491591d792bd1c655dd274b3f2a3e9e02ff32501129d9eca",
+      "byteLength": 9636066,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0045.v2.json",
+      "sha256": "f60361014b52a858eef353ef17a4e0ec6291474a1bf52e141f57c08c65f5ba83",
+      "byteLength": 6102990,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0048.v2.json",
+      "sha256": "5dec0155fd9a1475b00ce0bc141842c8750c38d9c1d14c826f2956f01c9de223",
+      "byteLength": 5349089,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0049.v2.json",
+      "sha256": "4a3862a1ac1837a0572d61fe9edf5e3290fcfff39ab50d352abc7faeadfdd3f8",
+      "byteLength": 5535596,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0054.v2.json",
+      "sha256": "2d47a3bb4ac7df3bf47c007c46a4b687ef369d0567df166de3b3406a0c89402e",
+      "byteLength": 3586343,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0055.v2.json",
+      "sha256": "f768ae283f4d09d05612255c8da14af5111c44de1824a34276491f1bc232249c",
+      "byteLength": 5448741,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0056.v2.json",
+      "sha256": "4df1edc301130b44182f71e00fe7fd8cd9768245ef606cec46d314d6619a6b2f",
+      "byteLength": 2417584,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0057.v2.json",
+      "sha256": "d89e36912f9e7fa653ff0639232dc083db9cc68539470fc1e4713ada18ba8590",
+      "byteLength": 1739072,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0058.v2.json",
+      "sha256": "b23c0631bd7ea15066c7293ff78619c6d8d1f954f571c1fad5601e51d3557490",
+      "byteLength": 3049364,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0059.v2.json",
+      "sha256": "6cb64abbfc33b7519ec95cd05a71744389c264c800dc8b858517587e29a6cb4c",
+      "byteLength": 4525971,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0060.v2.json",
+      "sha256": "5b96a75e5fd239a93e05ae677697804f46c5d74b1db3bb2502c148cf294834ee",
+      "byteLength": 1169055,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0062.v2.json",
+      "sha256": "8d1db96debe3367886fadc2423918c4e80fe4b1b8501439a6b485ea1fbf97b0a",
+      "byteLength": 6625880,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0071.v2.json",
+      "sha256": "82f1a5f2bdd33ee5781c3bf78e54aa4425bb9cf246e288cc197204e6ce9de507",
+      "byteLength": 138980,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0073.v2.json",
+      "sha256": "7e308808ae66cb0cbc3dbdfc83ef87178d2d822c1af6f49bdcc3b3cc8135c846",
+      "byteLength": 2777355,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0074.v2.json",
+      "sha256": "3d1a49d4955e5f2e0efaed66b2cda20db46fe0a242e699721b33487e67f8757e",
+      "byteLength": 720975,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0075.v2.json",
+      "sha256": "2ad2eb47f8cdee18850a4326b9501b94a87efb849f8e192d41a2dd32ec78c6aa",
+      "byteLength": 2593531,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0076.v2.json",
+      "sha256": "79dd69e195a0eb3b7ce511e3c0c6dbf953b272e4288c6f7d4760d0c2d6e31420",
+      "byteLength": 2049995,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0077.v2.json",
+      "sha256": "5b8b3a2b2017f4fcfcafb217e3d17e23f6a394ac72fcddd9ccc14f12413bb99e",
+      "byteLength": 790055,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0079.v2.json",
+      "sha256": "b0f664453d6c07bd8ee5f485e4692b3da39d3b5038b75ff04da324b9ce5268f3",
+      "byteLength": 333045,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0084.v2.json",
+      "sha256": "d4a615eafff3d963e7b7b7a42cd6752925f3959f8b76e9cc961a4671c83a09c2",
+      "byteLength": 3826550,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0085.v2.json",
+      "sha256": "f63ef73f0a61f2c454c5799530527f48b5e6a9698ff943c8233cafed36b2100d",
+      "byteLength": 2949849,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/harness-lift/review-packets-v2/DOC-0264.v2.json",
+      "sha256": "d55ce4d47b8b2114d9bc506e5f9672907d9d500c119285803952de3379a0671e",
+      "byteLength": 230349,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/benchmark-n0/source-packets/003-blind-source-review.v1.json",
+      "sha256": "a837c07d64353a7abe3aec659ed6e47d45d6c4ff0e02bced71a5ea3e62b9563c",
+      "byteLength": 13577693,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/benchmark-n0/source-packets/029-blind-source-review.v1.json",
+      "sha256": "86b786ce162403ceeba7cf43ce18665ff633714cd29f2d743e4c62b7acad165d",
+      "byteLength": 12038182,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/benchmark-n0/source-packets/042-blind-source-review.v1.json",
+      "sha256": "b07f815f0637dbf37a6acb3b945334a6fc7ed5bdda35f6975bec6bfb6523e927",
+      "byteLength": 10832957,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/benchmark-n0/source-packets/057-blind-source-review.v1.json",
+      "sha256": "abf4af12d0a38f60b81cd1bf35a196fd6d871a9cbee288a4313e4c7202b42cff",
+      "byteLength": 38110636,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/authority-audit.v1.json",
+      "sha256": "a1751d224818c200f4a3ce19e171707bbbc8f6ad043031f8664f22e91429a11b",
+      "byteLength": 3695,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+      "sha256": "3571fa81d49a99f41bba6f81929dcda30c7fcf8447e5abc588cb894622008534",
+      "byteLength": 7471,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+      "sha256": "95f8bfeb6e5e70979d60fbe1e0f9e96b31fb6385233756cb4a8c6a9bf5f96d8a",
+      "byteLength": 7750,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/cohort-selection.v1.json",
+      "sha256": "683732e0d30ef200c236b20c4dde53d032236fe24dc710a619f35040925a9555",
+      "byteLength": 25674,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/manifest.v1.json",
+      "sha256": "6b02186378a7e4153fbe4e33b4f0fce3e3354db4075ba35b4056ae53b90a231b",
+      "byteLength": 2143,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+      "sha256": "e4f660e3e5fa9287f0205d6059b0c2b7f040d5750ecb922ce8652967dd0a8eb2",
+      "byteLength": 209432,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/study-manifest.v2.json",
+      "sha256": "58513825ace61412037057587ab2edbeed05bef1b9f45f58260e67fa2abe2f15",
+      "byteLength": 1890,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/instructions.md",
+      "sha256": "afbecbbaeeb97d60ddb4769badcf67ce06f2789ad6f4b71d36481fa6410c7c71",
+      "byteLength": 1879,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/schema.v1.json",
+      "sha256": "b7bed745c558b4315921e97d903f06c355db8bca89230cf39e381574379dff4f",
+      "byteLength": 2223,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/adjudication/README.md",
+      "sha256": "3620f8b65b63177a404ae5ed9d8c23ac73615413980a7618fed4fc2997e89665",
+      "byteLength": 118,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/annotator-a/README.md",
+      "sha256": "3620f8b65b63177a404ae5ed9d8c23ac73615413980a7618fed4fc2997e89665",
+      "byteLength": 118,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/annotator-b/README.md",
+      "sha256": "3620f8b65b63177a404ae5ed9d8c23ac73615413980a7618fed4fc2997e89665",
+      "byteLength": 118,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0002.source.v1.json",
+      "sha256": "55090b71a1bfe123c83e806de878489a68c2e10273a099596b7b4ce0b9dd9f78",
+      "byteLength": 594,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0003.source.v1.json",
+      "sha256": "d63b229064fbac7ae255cc59c51d2fb9c4b3d20391d185ef876e29db2a8911e1",
+      "byteLength": 588,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0004.source.v1.json",
+      "sha256": "b9f1d624e8256080f55ddf141bfc6956f4bafc21dd0c435ff0d452bd2f5cab4e",
+      "byteLength": 597,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0006.source.v1.json",
+      "sha256": "8c498dd13625bc7520559aa5d8790f9cadb85a7ce6c2dd77cb095109089a4f84",
+      "byteLength": 589,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0086.source.v1.json",
+      "sha256": "bea222deb3246f7d5b64087283529faf89a6ac0a231fe421502293295014964f",
+      "byteLength": 631,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0092.source.v1.json",
+      "sha256": "6b624b2a5bf35a7c1c33cb2488e8636c74c947b001f10fc7f0fe1493628a6f1d",
+      "byteLength": 627,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0097.source.v1.json",
+      "sha256": "ef2b759750faeaab0be7e35fac40a0db35fe3da82b01dd81c242601491bff40f",
+      "byteLength": 630,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0126.source.v1.json",
+      "sha256": "37106a7a99e6cc52a9b2fa6c18206414947bece8d7a13382bd5ba675ea80f201",
+      "byteLength": 650,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0133.source.v1.json",
+      "sha256": "4726dc84738c39270ec83e3ac91a1c50cda15c8e7790c7f5b0438fdd998d6839",
+      "byteLength": 651,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0154.source.v1.json",
+      "sha256": "7013c7ec040e6f44a288dc659fd361b81658bd2be57b23d9796016a43916d6a6",
+      "byteLength": 638,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0156.source.v1.json",
+      "sha256": "085a1157e487c5eea962da275d1a3d1e1c55029534dd07601c2dab8fc6c30229",
+      "byteLength": 632,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0158.source.v1.json",
+      "sha256": "817fbc4b89f60481b13e701b664de2328d4c8a6af249e641874115f932773246",
+      "byteLength": 633,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0165.source.v1.json",
+      "sha256": "e8861117c7d622401c07e34261417148e6835b06571ff851d5b33a36324c0eaa",
+      "byteLength": 643,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0171.source.v1.json",
+      "sha256": "5d244e84d6819e7f2ec7317d1e0af514699a25812bebb611b5c4d51da14ae490",
+      "byteLength": 634,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0176.source.v1.json",
+      "sha256": "4bddb7e7838dca0602f221e9941e74025bc996601f9f6c103340928caf2024a8",
+      "byteLength": 636,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0282.source.v1.json",
+      "sha256": "910fe6b1a40068f55474e33e9ee2df2f7986a10454f2b73cacc422288f22d645",
+      "byteLength": 670,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0292.source.v1.json",
+      "sha256": "5b20824d7641607672cedd2bf7c3fa3cdc8ee210d19a7a81fb7abad2e38f1a2b",
+      "byteLength": 665,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0295.source.v1.json",
+      "sha256": "953f0b46f83191901ca18cf50aa6534841e42ee46e62c6d641132f59f51715e6",
+      "byteLength": 660,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0321.source.v1.json",
+      "sha256": "c599d982068c6642a7cd3e66edf779b4eb8ec228300e92217a3d37e2bae623cb",
+      "byteLength": 664,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0326.source.v1.json",
+      "sha256": "ddfa25bcb2bba80bae7825b8a00ee6528e155527fdc6ff1349ea85e645daa6de",
+      "byteLength": 668,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0330.source.v1.json",
+      "sha256": "9b765ee680e894bbd399f71525007e7c67d9ca5c339ba58458c5216eb0a9232d",
+      "byteLength": 658,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0332.source.v1.json",
+      "sha256": "075faf5220d2ef825b95418148d36b959789f156332fd1f84a1d26f36a9c16f1",
+      "byteLength": 659,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0341.source.v1.json",
+      "sha256": "a9084498244043b6764dc3fcc9d24904e14bf10fdb755a4130b05ed8bfac7963",
+      "byteLength": 658,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0342.source.v1.json",
+      "sha256": "683e505f331eeb1737826f2b6705578dc75b1f21f39adabe63ce6772917ec449",
+      "byteLength": 651,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/existing-gold-audit/decision.v1.json",
+      "sha256": "0fe99403bd9d23837a8d615124c460494b6b48b602cd715ffd8465e59040c3ac",
+      "byteLength": 6891,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+      "sha256": "90aa088d80b0564bd36c4b7fc8cd653ce32335d70abe8a062b217da227f00060",
+      "byteLength": 428444,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+      "sha256": "a6741f4aa46f3025f8ac84281cab1c6dc124a3e418dbce64fd0397d3b3d35422",
+      "byteLength": 70453,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/existing-gold-audit/pilot8-overlap.v1.json",
+      "sha256": "52e2e8749972c03d5168b9b90ac187d63baf27e76683b7875dc4dfc978f8e19a",
+      "byteLength": 10502,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/existing-gold-audit/reusable-gold-cohort.v1.json",
+      "sha256": "7fc14f083926b362c8b0df4fe32c70eb642bcd7c625f92bea6f726d608b62e74",
+      "byteLength": 10198,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/decision.v1.json",
+      "sha256": "b2fead58c35e276ea93ce064a829d002176d84f6005b21c63f7abb158280f106",
+      "byteLength": 2188,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/manifest.v1.json",
+      "sha256": "41e0451e9b6aa35596801f68644809949548d6aa41532e3796b04daef4e22446",
+      "byteLength": 1368,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/DOC-0158/occurrence-materialization.v1.json",
+      "sha256": "fdfdaff80aa81a402a8c6f48430bdeae446e8f3c3efeb1d51e0ac03fbd47feae",
+      "byteLength": 10253,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/DOC-0165/occurrence-materialization.v1.json",
+      "sha256": "e3088c814584edb0346cf294c5bfcd8cf13099ad0e641801a203ffc3de1fa780",
+      "byteLength": 17966,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/resolution/resolution.v1.json",
+      "sha256": "fb5f38c7abbe346360c21a2dd211e9db73dfd58d34675fb9dc0a0cdd17fdc15e",
+      "byteLength": 1561,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/resolution/DOC-0158/resolved-occurrence.v1.json",
+      "sha256": "729f1e02cf98b66ffbf6643027be99733216c9e732b18a616cf45d13e15477a5",
+      "byteLength": 2256,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/resolution/DOC-0165/resolved-occurrence.v1.json",
+      "sha256": "d0692b59f4ef637bd7702c576441738b9bc8e7d863134cc0cf7ef22405538028",
+      "byteLength": 2079,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p2-occurrence-closure/decision.v1.json",
+      "sha256": "fd63b6c5c6e36761c9fd208a5a3011b8852a3785ee574828e76f86b63c4a55d7",
+      "byteLength": 612,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p2-occurrence-closure/strict-occurrence-freeze.v1.json",
+      "sha256": "3b62436c4f1795405f69fed67aee8e3a3c18bfcffa66b4edfc931c98c4f998f6",
+      "byteLength": 910,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p2-occurrence-closure/unresolved-review.v1.json",
+      "sha256": "55af298419a732dfd7f73a7a3f2022a4e83adbc013008145f20a474130feb6b5",
+      "byteLength": 240,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p2-occurrence-closure/whole-block-resolution.v1.json",
+      "sha256": "9b723e4dce502c9d2af9a2b2056d185c791bdc13a22214c7235640e0001b0774",
+      "byteLength": 18845,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p2-occurrence-closure/strict-occurrence/DOC-0158.strict-occurrence-gold.v1.json",
+      "sha256": "64311acc0d405a9b4b96fe453d18d0552edfcefbaef50f03fc5f4a5f2569df1c",
+      "byteLength": 5525,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p2-occurrence-closure/strict-occurrence/DOC-0165.strict-occurrence-gold.v1.json",
+      "sha256": "428bdbd4880d789032f2b16b958e266cd832afc5c49aa2c6372516b6b3c10ec6",
+      "byteLength": 8753,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotation-instructions.v1.md",
+      "sha256": "ee2d22e93516edd83f9d40896b59a6a90b1ca65e80602e16b81c93f1c48822d8",
+      "byteLength": 2050,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotation-schema.v1.json",
+      "sha256": "43cbbf6fcf4e4a737985969773662ee076a6d662d37fa56c03c3da9fcdf741ad",
+      "byteLength": 2633,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotation-scope.v1.json",
+      "sha256": "8d308c732e5658ea008c230a835aec5f689e3008e43403685d7aecd2859edd61",
+      "byteLength": 3223,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/decision.v1.json",
+      "sha256": "5b103a076870fba8e5a4f3b9465658c4f7dac72fbca1d155a57952f32ee06822",
+      "byteLength": 1050,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/pilot-authority.v1.json",
+      "sha256": "39b1897d41f85805d99fcd08d1fdf84c32978d5742146cf65363afbbadc95291",
+      "byteLength": 5618,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/readiness.v1.json",
+      "sha256": "82fdb10bb6d8d6c8a2f1401ca5829943ccb3d8fb600d9cbf4540412cc1dcb05e",
+      "byteLength": 843,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/A/DOC-0004.annotation.v1.json",
+      "sha256": "144b2c29aca1fffcea61b39eeac9b5cef06b202b496555ca4b68e2c7433b06a8",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/A/DOC-0006.annotation.v1.json",
+      "sha256": "37b22c6b9980b4506c72f02c292782d2729f9d4d583157aac94159a68368ca1c",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/A/DOC-0092.annotation.v1.json",
+      "sha256": "485b8063f27cfd1f83bd2a73022d6e99d0bc351bec58c90a34f30f69b8279887",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/A/DOC-0133.annotation.v1.json",
+      "sha256": "671ba4a0c296e1b652f643ea8c8dfc6bee8ca22cd5d9a8103363e9821bcba2ff",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/A/DOC-0171.annotation.v1.json",
+      "sha256": "ab6e88f8863364d75cf6ba9e9ff79de341331d85d48dec442777f43d1011b36f",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/A/DOC-0326.annotation.v1.json",
+      "sha256": "0c4126bb746d1f6e22cf90514af9f9488e8107f20c5fc0a21e56f214fe9acae8",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/B/DOC-0004.annotation.v1.json",
+      "sha256": "c46deb85f7d5f5715757ef552fe0c4c37f4442a7b26981ec9e9c7c7232cec87d",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/B/DOC-0006.annotation.v1.json",
+      "sha256": "5e747eeb3ea56d6d9a342556bd5733c90b53b2ac109b8ed5eabde1fe5d547600",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/B/DOC-0092.annotation.v1.json",
+      "sha256": "7ad83b1a83dbcf25f25af392c4294d2576651d46e8807905e2c7e103c3287d23",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/B/DOC-0133.annotation.v1.json",
+      "sha256": "2004a904aed09a85b86f881717e3308189eefeca629f06150b3b660cc094b6e9",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/B/DOC-0171.annotation.v1.json",
+      "sha256": "f8ebccbc2f4815e1035ca0e98cdea83aaf6e17128b96a94086f7658a4e1d03e7",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/B/DOC-0326.annotation.v1.json",
+      "sha256": "361f7e1c6c243f375a09e4b5279c3bdf28274409a3fb3eeb2f5d5759e9cd1b7d",
+      "byteLength": 483,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/packets/DOC-0004.source.v1.json",
+      "sha256": "b890242ecb15d26e232d321cac1c811bed400f871c62488f544c619c089a7205",
+      "byteLength": 17010,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/packets/DOC-0006.source.v1.json",
+      "sha256": "5668a341f403fc6a62181f57a548c826a09ee2d91c7dbffc72fffee67dc42e5d",
+      "byteLength": 12149,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/packets/DOC-0092.source.v1.json",
+      "sha256": "110ed1e90173513719ae7f6f24fca8c333f35903766937dc4bd9b68e595a58e9",
+      "byteLength": 72497,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/packets/DOC-0133.source.v1.json",
+      "sha256": "84e0a8f492d185b892a64390630222ac3a029feed687ec69d2246142295e94f7",
+      "byteLength": 63664,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/packets/DOC-0171.source.v1.json",
+      "sha256": "e8b6fd713a7c99bf38eb960d224eab8630ee1031fa3b90f142e3d3c6e094f007",
+      "byteLength": 57795,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-human-gold/packets/DOC-0326.source.v1.json",
+      "sha256": "97e23ec9c0fb1b2a53162b6a982156ccbef2ae350a535098191d2826cc7f049a",
+      "byteLength": 217647,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-isolated-review/completeness.v1.json",
+      "sha256": "8828be3e5a812f583cab630651fe889095e0ca257ca92dc3e88d73e092d12d54",
+      "byteLength": 2328,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-isolated-review/cross-source-firewall.v1.json",
+      "sha256": "90236b610771bfb75fccec232849a0a73c9cf98c93bc81a435bd7eb1bd6575eb",
+      "byteLength": 724,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-isolated-review/decision.v1.json",
+      "sha256": "baccd451400a957a42e2fad41770521f92005ad428806436bac4989e2ee1dfc3",
+      "byteLength": 4888,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0004.review-source.v1.json",
+      "sha256": "026daea4c2bcd516d4ead0e0a18d9d3ef0b19b9255569d292c0da128dd574c9b",
+      "byteLength": 13383,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0006.review-source.v1.json",
+      "sha256": "ba3eafcb0f7d2e60f407d0ee58645e23b4d89b74b97fb3322e12ab9861982035",
+      "byteLength": 9861,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0092.review-source.v1.json",
+      "sha256": "1cb4b0a9e7e5d8636932515e7332b0370d2d224b9e4eb8982406d349600fdbda",
+      "byteLength": 5078818,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0133.review-source.v1.json",
+      "sha256": "68b3218a3a4610ed7983a57f7bb53213ac8f849f8bde88bf8bd148406b0a0a62",
+      "byteLength": 2962968,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0171.review-source.v1.json",
+      "sha256": "684c8cecaf045461f495ffdd7d38036e1c726b0da149c1154bcc5037a02ac23b",
+      "byteLength": 2717727,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0326.review-source.v1.json",
+      "sha256": "2d887b954026efeaeb0de895aafbbc7422ef18ec27ff8ac3fcf33d07b06cc202",
+      "byteLength": 188128,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/pilot-8/pilot-freeze.v1.json",
+      "sha256": "ec199d67a5b6d93b42e834c036ee3c00dcd2987719a4ac1430f341bc560b0403",
+      "byteLength": 3059,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/pilot-8/pilot-manifest.v1.json",
+      "sha256": "b7c6d61f2073d54d40ea9bc26238756c3a1e98c1a98cdfb952e36840f0f429dc",
+      "byteLength": 5421,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/pilot-8/annotation/adjudication/README.md",
+      "sha256": "f58c6567142cc13b939416631d2448ccfc37f17531c967adeb46a1117d153bd2",
+      "byteLength": 255,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/pilot-8/annotation/annotator-a/README.md",
+      "sha256": "f58c6567142cc13b939416631d2448ccfc37f17531c967adeb46a1117d153bd2",
+      "byteLength": 255,
+      "authority": "PROVENANCE_ONLY"
+    },
+    {
+      "path": "eval/a99-closed-loop/research-r2/pilot-8/annotation/annotator-b/README.md",
+      "sha256": "f58c6567142cc13b939416631d2448ccfc37f17531c967adeb46a1117d153bd2",
+      "byteLength": 255,
+      "authority": "PROVENANCE_ONLY"
+    }
+  ],
+  "note": "Historical Gold, occurrence Gold, review packets and blind source packets are provenance only; registry v3 is the sole current semantic authority."
+}

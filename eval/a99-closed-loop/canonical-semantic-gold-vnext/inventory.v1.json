@@ -1,0 +1,153 @@
+{
+  "artifactKind": "a99_canonical_semantic_gold_vnext_inventory",
+  "schemaVersion": "a99-canonical-semantic-gold-vnext-inventory-v1",
+  "authority": "freeze-registry.v3.final.json",
+  "totalTracked": 13,
+  "frozenSemanticVnext": 13,
+  "exactOccurrenceFrozen": 0,
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "fileName": "01-style-chuan.docx",
+      "sourcePath": "bench/01-style-chuan.docx",
+      "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "registrySourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "semanticHeadingTotal": 7,
+      "semanticArtifact": "semantic/DOC-0001.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/DOC-0001.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/DOC-0001.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "DOC-0092",
+      "fileName": "007_Luat_Nha_o_27-2023-QH15.pdf",
+      "sourcePath": "todo10_8/heading_corpus_100/01_phap_quy/007_Luat_Nha_o_27-2023-QH15.pdf",
+      "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+      "registrySourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+      "semanticHeadingTotal": 145,
+      "semanticArtifact": "semantic/DOC-0092.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/DOC-0092.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/DOC-0092.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "DOC-0133",
+      "fileName": "048_IBRD_Financial_Statements_March_2025.pdf",
+      "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/048_IBRD_Financial_Statements_March_2025.pdf",
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "registrySourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "semanticHeadingTotal": 123,
+      "semanticArtifact": "semantic/DOC-0133.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/DOC-0133.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/DOC-0133.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "DOC-0205",
+      "fileName": "025_ND_47-2020_Chia_se_du_lieu_so.docx",
+      "sourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "registrySourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "semanticHeadingTotal": 72,
+      "semanticArtifact": "semantic/DOC-0205.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/DOC-0205.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/DOC-0205.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "DOC-0252",
+      "fileName": "072_ICP_TAG_Minutes_Mar_2025.pdf",
+      "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "registrySourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "semanticHeadingTotal": 41,
+      "semanticArtifact": "semantic/DOC-0252.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/DOC-0252.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/DOC-0252.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "DOC-0255",
+      "fileName": "075_FORTIS_GC_Minutes_Nov21_2024.docx",
+      "sourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/075_FORTIS_GC_Minutes_Nov21_2024.docx",
+      "sourceSha256": "f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+      "registrySourceSha256": "f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+      "semanticHeadingTotal": 18,
+      "semanticArtifact": "semantic/DOC-0255.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/DOC-0255.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/DOC-0255.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "DOC-0256",
+      "fileName": "076_ICP_IACG08_Minutes_2023.pdf",
+      "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf",
+      "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+      "registrySourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+      "semanticHeadingTotal": 34,
+      "semanticArtifact": "semantic/DOC-0256.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/DOC-0256.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/DOC-0256.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "DOC-0258",
+      "fileName": "078_ICP_IACG07_Minutes_May_2023.docx",
+      "sourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
+      "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "registrySourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "semanticHeadingTotal": 37,
+      "semanticArtifact": "semantic/DOC-0258.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/DOC-0258.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/DOC-0258.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "DOC-0259",
+      "fileName": "079_ICP_TAG_Minutes_Apr_2024.docx",
+      "sourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/079_ICP_TAG_Minutes_Apr_2024.docx",
+      "sourceSha256": "1c946a0ed13bd27cafb4ef281807ecfed6605340fca51029e72a904cf651c777",
+      "registrySourceSha256": "1c946a0ed13bd27cafb4ef281807ecfed6605340fca51029e72a904cf651c777",
+      "semanticHeadingTotal": 18,
+      "semanticArtifact": "semantic/DOC-0259.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/DOC-0259.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/DOC-0259.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "DOC-0264",
+      "fileName": "084_Luat_Chung_khoan_2019_EN.docx",
+      "sourcePath": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
+      "sourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+      "registrySourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+      "semanticHeadingTotal": 159,
+      "semanticArtifact": "semantic/DOC-0264.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/DOC-0264.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/DOC-0264.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "SRC-003",
+      "fileName": "003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+      "sourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+      "sourceSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "registrySourceSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "semanticHeadingTotal": 231,
+      "semanticArtifact": "semantic/SRC-003.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/SRC-003.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/SRC-003.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "SRC-029",
+      "fileName": "029_WB_RFP_Works_DesignBuild_2021.docx",
+      "sourcePath": "todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.docx",
+      "sourceSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "registrySourceSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "semanticHeadingTotal": 356,
+      "semanticArtifact": "semantic/SRC-029.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/SRC-029.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/SRC-029.exact-bindings.v1.json"
+    },
+    {
+      "documentId": "SRC-042",
+      "fileName": "042_IDA_Financial_Statements_June_2025.pdf",
+      "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+      "sourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+      "registrySourceSha256": null,
+      "semanticHeadingTotal": 262,
+      "semanticArtifact": "semantic/SRC-042.semantic-gold.v1.json",
+      "occurrenceArtifact": "occurrence/SRC-042.occurrence-gold.v1.json",
+      "bindingArtifact": "bindings/SRC-042.exact-bindings.v1.json"
+    }
+  ]
+}

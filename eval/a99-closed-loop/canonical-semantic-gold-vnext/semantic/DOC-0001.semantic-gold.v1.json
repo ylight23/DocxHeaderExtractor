@@ -1,0 +1,79 @@
+{
+  "artifactKind": "a99_canonical_semantic_gold",
+  "schemaVersion": "a99-canonical-semantic-gold-vnext-v1",
+  "policyVersion": "ALL_TRUE_HEADING_OCCURRENCES_VNEXT",
+  "documentId": "DOC-0001",
+  "fileName": "01-style-chuan.docx",
+  "sourcePath": "bench/01-style-chuan.docx",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "registrySourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "semanticHeadingTotal": 7,
+  "status": "FROZEN_SEMANTIC_VNEXT",
+  "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+  "semanticMembership": "HEADING",
+  "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+  "promptAffectsSemanticTruth": false,
+  "repeatedOrContinuationMayBeHeading": true,
+  "semanticNodePerOccurrence": false,
+  "exactOccurrenceFreeze": false,
+  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_S0001_ORDERED_SOURCE_CATALOG",
+  "headingsMaterializedFromHistoricalReference": true,
+  "headings": [
+    {
+      "sourceId": "paragraph[0]",
+      "exactText": "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung",
+      "semanticRole": "heading",
+      "semanticMembership": "HEADING",
+      "sourceOccurrenceAuthority": "HISTORICAL_V4_REFERENCE"
+    },
+    {
+      "sourceId": "paragraph[2]",
+      "exactText": "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh",
+      "semanticRole": "heading",
+      "semanticMembership": "HEADING",
+      "sourceOccurrenceAuthority": "HISTORICAL_V4_REFERENCE"
+    },
+    {
+      "sourceId": "paragraph[4]",
+      "exactText": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng",
+      "semanticRole": "heading",
+      "semanticMembership": "HEADING",
+      "sourceOccurrenceAuthority": "HISTORICAL_V4_REFERENCE"
+    },
+    {
+      "sourceId": "paragraph[6]",
+      "exactText": "1.2.1. CÆ¡ quan quáº£n lÃ½",
+      "semanticRole": "heading",
+      "semanticMembership": "HEADING",
+      "sourceOccurrenceAuthority": "HISTORICAL_V4_REFERENCE"
+    },
+    {
+      "sourceId": "paragraph[8]",
+      "exactText": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c",
+      "semanticRole": "heading",
+      "semanticMembership": "HEADING",
+      "sourceOccurrenceAuthority": "HISTORICAL_V4_REFERENCE"
+    },
+    {
+      "sourceId": "paragraph[10]",
+      "exactText": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n",
+      "semanticRole": "heading",
+      "semanticMembership": "HEADING",
+      "sourceOccurrenceAuthority": "HISTORICAL_V4_REFERENCE"
+    },
+    {
+      "sourceId": "paragraph[12]",
+      "exactText": "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m",
+      "semanticRole": "heading",
+      "semanticMembership": "HEADING",
+      "sourceOccurrenceAuthority": "HISTORICAL_V4_REFERENCE"
+    }
+  ],
+  "historicalProvenance": {
+    "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
+    "sha256": "5ac30a82db551a8149ed777390eeca0dc6c6d0bafd9e82468dde32777808dfc8",
+    "status": "NON_AUTHORITATIVE_HISTORICAL_REFERENCE"
+  },
+  "migrationAuthority": "freeze-registry.v3.final.json",
+  "migrationNote": "Semantic rows copied without numeric coordinates; exact occurrence binding remains a separate unresolved freeze."
+}

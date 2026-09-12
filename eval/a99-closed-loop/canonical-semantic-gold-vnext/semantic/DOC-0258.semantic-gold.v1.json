@@ -1,0 +1,29 @@
+{
+  "artifactKind": "a99_canonical_semantic_gold",
+  "schemaVersion": "a99-canonical-semantic-gold-vnext-v1",
+  "policyVersion": "ALL_TRUE_HEADING_OCCURRENCES_VNEXT",
+  "documentId": "DOC-0258",
+  "fileName": "078_ICP_IACG07_Minutes_May_2023.docx",
+  "sourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
+  "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+  "registrySourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+  "semanticHeadingTotal": 37,
+  "status": "FROZEN_SEMANTIC_VNEXT",
+  "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+  "semanticMembership": "HEADING",
+  "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+  "promptAffectsSemanticTruth": false,
+  "repeatedOrContinuationMayBeHeading": true,
+  "semanticNodePerOccurrence": false,
+  "exactOccurrenceFreeze": false,
+  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_S0001_ORDERED_SOURCE_CATALOG",
+  "headingsMaterializedFromHistoricalReference": false,
+  "headings": [],
+  "historicalProvenance": {
+    "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0258.strict-gold-v4.json",
+    "sha256": "4519e267a0f04e0f4a3486e53425058252b98de035631a50ebd4fd7751ddb61b",
+    "status": "NON_AUTHORITATIVE_HISTORICAL_REFERENCE"
+  },
+  "migrationAuthority": "freeze-registry.v3.final.json",
+  "migrationNote": "Registry-approved semantic total migrated; row-level semantic source review is represented by the registry and exact occurrence remains REVIEW_REQUIRED."
+}
