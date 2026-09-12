@@ -538,8 +538,8 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         var canonicalBody = BuildRequestBody(_options.Model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning,
             null, _options.OpenRouterAllowNonZdrPublicBenchmark);
         telemetry.ProviderRoute = _options.OpenRouterProviderRoute ?? "AUTO";
-        telemetry.CanonicalRequestHash = Sha256Bytes(JsonSerializer.SerializeToUtf8Bytes(canonicalBody));
-        telemetry.RequestBodyHash = Sha256Bytes(JsonSerializer.SerializeToUtf8Bytes(body));
+        telemetry.CanonicalRequestHash = Sha256Bytes(SerializeRequestBodyForAudit(canonicalBody));
+        telemetry.RequestBodyHash = Sha256Bytes(SerializeRequestBodyForAudit(body));
 
         using var message = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint) { Content = JsonContent.Create(body) };
         message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
@@ -747,6 +747,12 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
 
     private static string? ReadString(JsonElement parent, string name) =>
         parent.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String ? value.GetString() : null;
+
+    internal static object BuildRequestBodyForAudit(string model, string systemPrompt, object userPrompt, int maxCompletionTokens,
+        object schema, string schemaName, object? reasoning, string? providerRoute, bool allowNonZdrPublicBenchmark) =>
+        BuildRequestBody(model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning, providerRoute, allowNonZdrPublicBenchmark);
+
+    internal static byte[] SerializeRequestBodyForAudit(object body) => JsonSerializer.SerializeToUtf8Bytes(body);
 
     private static object BuildRequestBody(string model, string systemPrompt, object userPrompt, int maxCompletionTokens,
         object schema, string schemaName, object? reasoning, string? providerRoute, bool allowNonZdrPublicBenchmark)
