@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "a99-v6-deterministic-replay-score-v1",
+  "documentId": "DOC-0001",
+  "repeat": "r1",
+  "oldControl": {
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1
+  },
+  "v6": {
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1
+  },
+  "delta": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "f1": 0
+  },
+  "goldReadBeforeFreeze": false
+}

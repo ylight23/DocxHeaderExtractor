@@ -1,0 +1,1277 @@
+{
+  "schemaVersion": "a99-v6-deterministic-replay-prediction-v1",
+  "documentId": "DOC-0252",
+  "repeat": "r1",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "rawProposalSha256": "0eb1e403e1ca5f7d73c47e774e488c1b36a9da5388429f895c5470ef6c735485",
+  "rawProposalCount": 54,
+  "oldControl": {
+    "boundHeadings": [
+      {
+        "sourceId": "body[1]/p[3]",
+        "start": 0,
+        "end": 47,
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "role": "DOCUMENT_TITLE"
+      },
+      {
+        "sourceId": "body[1]/p[4]",
+        "start": 0,
+        "end": 24,
+        "text": "TECHNICAL ADVISORY GROUP",
+        "role": "PART"
+      },
+      {
+        "sourceId": "body[1]/p[7]",
+        "start": 0,
+        "end": 41,
+        "text": "Session I: Welcome and meeting objectives",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[11]",
+        "start": 0,
+        "end": 40,
+        "text": "Session II: Update on the ICP 2021 Cycle",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[12]",
+        "start": 0,
+        "end": 22,
+        "text": "1.Global office update",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[22]",
+        "start": 0,
+        "end": 18,
+        "text": "2.Regional updates",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[24]",
+        "start": 0,
+        "end": 6,
+        "text": "Africa",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[27]",
+        "start": 0,
+        "end": 20,
+        "text": "Asia and the Pacific",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[31]",
+        "start": 0,
+        "end": 40,
+        "text": "Commonwealth of Independent States (CIS)",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[39]",
+        "start": 0,
+        "end": 25,
+        "text": "Eurostat\u2013OECD PPP Program",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[42]",
+        "start": 0,
+        "end": 31,
+        "text": "Latin America and the Caribbean",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[46]",
+        "start": 0,
+        "end": 12,
+        "text": "Western Asia",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[54]",
+        "start": 0,
+        "end": 65,
+        "text": "Session III: Short- and Long-Term Research and Development Agenda",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[55]",
+        "start": 0,
+        "end": 55,
+        "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[62]",
+        "start": 0,
+        "end": 29,
+        "text": "2.Forthcoming Research Topics",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[75]",
+        "start": 0,
+        "end": 66,
+        "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[76]",
+        "start": 0,
+        "end": 40,
+        "text": "1.TAG Composition and Terms of Reference",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[80]",
+        "start": 0,
+        "end": 62,
+        "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[89]",
+        "start": 0,
+        "end": 66,
+        "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[94]",
+        "start": 0,
+        "end": 27,
+        "text": "Session V: Current Research",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[95]",
+        "start": 0,
+        "end": 72,
+        "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[105]",
+        "start": 0,
+        "end": 110,
+        "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[110]",
+        "start": 0,
+        "end": 84,
+        "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[120]",
+        "start": 0,
+        "end": 43,
+        "text": "4.Treatment of Negative Expenditures in ICP",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[125]",
+        "start": 0,
+        "end": 39,
+        "text": "5.Fine Tuning Global Linking Procedures",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[142]",
+        "start": 0,
+        "end": 44,
+        "text": "6.Improving Reliability of Price Comparisons",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[151]",
+        "start": 0,
+        "end": 30,
+        "text": "Session VI: Any Other Business",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[157]",
+        "start": 0,
+        "end": 100,
+        "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+        "role": "RUNNING_HEADER"
+      },
+      {
+        "sourceId": "body[1]/p[158]",
+        "start": 56,
+        "end": 274,
+        "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+        "start": 0,
+        "end": 90,
+        "text": "Update on the ICP 2021 and 2024 Cycles [World Bank and ICP Regional Implementing Agencies]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[159]",
+        "start": 0,
+        "end": 65,
+        "text": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]",
+        "start": 0,
+        "end": 108,
+        "text": "Research Topics Emerging from the Previous ICP Cycles [World Bank] Forthcoming Research Topics [Prasada Rao]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[2]",
+        "start": 0,
+        "end": 86,
+        "text": "Setting Up a Short- and Long-Term Research and Development Agenda [Co- Chairs and TAG]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[160]",
+        "start": 0,
+        "end": 133,
+        "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces 14:00 \u2013 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/p[164]",
+        "start": 0,
+        "end": 87,
+        "text": "14:15 \u2013 15:00 Terms of Reference for a Task Force on Annual PPP Production [World Bank]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[165]",
+        "start": 0,
+        "end": 91,
+        "text": "15:00 \u2013 15:45 Terms of Reference for a Task Force on ICP Classification Update [World Bank]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[166]",
+        "start": 0,
+        "end": 27,
+        "text": "SESSION V: Current Research",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/tbl[6]/tr[1]/tc[2]/p[1]",
+        "start": 0,
+        "end": 85,
+        "text": "The Treatment of Import and Export Prices in International Comparisons [Rob Feenstra]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[167]",
+        "start": 0,
+        "end": 51,
+        "text": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/p[168]",
+        "start": 0,
+        "end": 36,
+        "text": "SESSION V: Current Research (Cont\u2019d)",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[1]",
+        "start": 0,
+        "end": 138,
+        "text": "A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons [Naohito Abe and Prasada Rao]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[2]",
+        "start": 0,
+        "end": 91,
+        "text": "Treatment of Scanner (Transaction) Data in the European Comparison Program (ECP) [Eurostat]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[3]",
+        "start": 0,
+        "end": 74,
+        "text": "Treatment of Negative Expenditures in ICP [Prasada Rao and Sergey Sergeev]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[4]",
+        "start": 0,
+        "end": 37,
+        "text": "Fine Tuning Global Linking Procedures",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[2]/tc[3]/p[1]",
+        "start": 0,
+        "end": 118,
+        "text": "Alternative Global Linking Methods [Robert Hill] Similarity Linking Within and Between Regions [Erwin Diewert and Yuri",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[3]/tc[2]/p[1]",
+        "start": 0,
+        "end": 120,
+        "text": "Dikhanov] Improving Reliability of Price Comparisons \u2013 Basic Heading PPPs and Sparsity of Price Tableaus [Erwin Diewert]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[4]/tc[3]/p[1]",
+        "start": 0,
+        "end": 65,
+        "text": "Alternative Basic Heading PPP Aggregation Methods [Yuri Dikhanov]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[169]",
+        "start": 0,
+        "end": 19,
+        "text": "SESSION VI: Closing",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/p[170]",
+        "start": 0,
+        "end": 60,
+        "text": "15:00 \u2013 15:15 Any Other Business and Closing [TAG Co-Chairs]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[174]",
+        "start": 0,
+        "end": 29,
+        "text": "Annex 2: List of Participants",
+        "role": "ANNEX_HEADING"
+      },
+      {
+        "sourceId": "body[1]/p[175]",
+        "start": 0,
+        "end": 36,
+        "text": "ICP Technical Advisory Group members",
+        "role": "LOCAL_INDEX_TITLE"
+      },
+      {
+        "sourceId": "body[1]/p[176]",
+        "start": 0,
+        "end": 42,
+        "text": "ICP experts, guest speakers, and observers",
+        "role": "LOCAL_INDEX_TITLE"
+      },
+      {
+        "sourceId": "body[1]/p[177]",
+        "start": 0,
+        "end": 42,
+        "text": "ICP Inter-Agency Coordination Group (IACG)",
+        "role": "LOCAL_INDEX_TITLE"
+      },
+      {
+        "sourceId": "body[1]/p[178]",
+        "start": 0,
+        "end": 10,
+        "text": "World Bank",
+        "role": "LOCAL_INDEX_TITLE"
+      }
+    ],
+    "finalHeadings": [
+      {
+        "sourceId": "body[1]/p[3]",
+        "start": 0,
+        "end": 47,
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "role": "3"
+      },
+      {
+        "sourceId": "body[1]/p[4]",
+        "start": 0,
+        "end": 24,
+        "text": "TECHNICAL ADVISORY GROUP",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[7]",
+        "start": 0,
+        "end": 41,
+        "text": "Session I: Welcome and meeting objectives",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[11]",
+        "start": 0,
+        "end": 40,
+        "text": "Session II: Update on the ICP 2021 Cycle",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[12]",
+        "start": 0,
+        "end": 22,
+        "text": "1.Global office update",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[22]",
+        "start": 0,
+        "end": 18,
+        "text": "2.Regional updates",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[24]",
+        "start": 0,
+        "end": 6,
+        "text": "Africa",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[27]",
+        "start": 0,
+        "end": 20,
+        "text": "Asia and the Pacific",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[31]",
+        "start": 0,
+        "end": 40,
+        "text": "Commonwealth of Independent States (CIS)",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[39]",
+        "start": 0,
+        "end": 25,
+        "text": "Eurostat\u2013OECD PPP Program",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[42]",
+        "start": 0,
+        "end": 31,
+        "text": "Latin America and the Caribbean",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[46]",
+        "start": 0,
+        "end": 12,
+        "text": "Western Asia",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[54]",
+        "start": 0,
+        "end": 65,
+        "text": "Session III: Short- and Long-Term Research and Development Agenda",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[55]",
+        "start": 0,
+        "end": 55,
+        "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[62]",
+        "start": 0,
+        "end": 29,
+        "text": "2.Forthcoming Research Topics",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[75]",
+        "start": 0,
+        "end": 66,
+        "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[76]",
+        "start": 0,
+        "end": 40,
+        "text": "1.TAG Composition and Terms of Reference",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[80]",
+        "start": 0,
+        "end": 62,
+        "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[89]",
+        "start": 0,
+        "end": 66,
+        "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[94]",
+        "start": 0,
+        "end": 27,
+        "text": "Session V: Current Research",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[95]",
+        "start": 0,
+        "end": 72,
+        "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[105]",
+        "start": 0,
+        "end": 110,
+        "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[110]",
+        "start": 0,
+        "end": 84,
+        "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[120]",
+        "start": 0,
+        "end": 43,
+        "text": "4.Treatment of Negative Expenditures in ICP",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[125]",
+        "start": 0,
+        "end": 39,
+        "text": "5.Fine Tuning Global Linking Procedures",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[142]",
+        "start": 0,
+        "end": 44,
+        "text": "6.Improving Reliability of Price Comparisons",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[151]",
+        "start": 0,
+        "end": 30,
+        "text": "Session VI: Any Other Business",
+        "role": "0"
+      },
+      {
+        "sourceId": "body[1]/p[174]",
+        "start": 0,
+        "end": 29,
+        "text": "Annex 2: List of Participants",
+        "role": "0"
+      }
+    ]
+  },
+  "v6": {
+    "boundHeadings": [
+      {
+        "sourceId": "body[1]/p[3]",
+        "start": 0,
+        "end": 47,
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "role": "DOCUMENT_TITLE"
+      },
+      {
+        "sourceId": "body[1]/p[4]",
+        "start": 0,
+        "end": 24,
+        "text": "TECHNICAL ADVISORY GROUP",
+        "role": "PART"
+      },
+      {
+        "sourceId": "body[1]/p[7]",
+        "start": 0,
+        "end": 41,
+        "text": "Session I: Welcome and meeting objectives",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[11]",
+        "start": 0,
+        "end": 40,
+        "text": "Session II: Update on the ICP 2021 Cycle",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[12]",
+        "start": 0,
+        "end": 22,
+        "text": "1.Global office update",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[22]",
+        "start": 0,
+        "end": 18,
+        "text": "2.Regional updates",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[24]",
+        "start": 0,
+        "end": 6,
+        "text": "Africa",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[27]",
+        "start": 0,
+        "end": 20,
+        "text": "Asia and the Pacific",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[31]",
+        "start": 0,
+        "end": 40,
+        "text": "Commonwealth of Independent States (CIS)",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[39]",
+        "start": 0,
+        "end": 25,
+        "text": "Eurostat\u2013OECD PPP Program",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[42]",
+        "start": 0,
+        "end": 31,
+        "text": "Latin America and the Caribbean",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[46]",
+        "start": 0,
+        "end": 12,
+        "text": "Western Asia",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[54]",
+        "start": 0,
+        "end": 65,
+        "text": "Session III: Short- and Long-Term Research and Development Agenda",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[55]",
+        "start": 0,
+        "end": 55,
+        "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[62]",
+        "start": 0,
+        "end": 29,
+        "text": "2.Forthcoming Research Topics",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[75]",
+        "start": 0,
+        "end": 66,
+        "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[76]",
+        "start": 0,
+        "end": 40,
+        "text": "1.TAG Composition and Terms of Reference",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[80]",
+        "start": 0,
+        "end": 62,
+        "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[89]",
+        "start": 0,
+        "end": 66,
+        "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[94]",
+        "start": 0,
+        "end": 27,
+        "text": "Session V: Current Research",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[95]",
+        "start": 0,
+        "end": 72,
+        "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[105]",
+        "start": 0,
+        "end": 110,
+        "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[110]",
+        "start": 0,
+        "end": 84,
+        "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[120]",
+        "start": 0,
+        "end": 43,
+        "text": "4.Treatment of Negative Expenditures in ICP",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[125]",
+        "start": 0,
+        "end": 39,
+        "text": "5.Fine Tuning Global Linking Procedures",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[142]",
+        "start": 0,
+        "end": 44,
+        "text": "6.Improving Reliability of Price Comparisons",
+        "role": "SUBSECTION"
+      },
+      {
+        "sourceId": "body[1]/p[151]",
+        "start": 0,
+        "end": 30,
+        "text": "Session VI: Any Other Business",
+        "role": "SECTION"
+      },
+      {
+        "sourceId": "body[1]/p[157]",
+        "start": 0,
+        "end": 100,
+        "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Hybrid Meeting March 7-8, 2025",
+        "role": "RUNNING_HEADER"
+      },
+      {
+        "sourceId": "body[1]/p[158]",
+        "start": 56,
+        "end": 274,
+        "text": "Agenda DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER SESSION I: Welcome and Opening Remarks 09:00 \u2013 09:15 Welcome and Opening Remarks [TAG Co-Chairs, World Bank] SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+        "start": 0,
+        "end": 90,
+        "text": "Update on the ICP 2021 and 2024 Cycles [World Bank and ICP Regional Implementing Agencies]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[159]",
+        "start": 0,
+        "end": 65,
+        "text": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]",
+        "start": 0,
+        "end": 108,
+        "text": "Research Topics Emerging from the Previous ICP Cycles [World Bank] Forthcoming Research Topics [Prasada Rao]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[2]",
+        "start": 0,
+        "end": 86,
+        "text": "Setting Up a Short- and Long-Term Research and Development Agenda [Co- Chairs and TAG]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[160]",
+        "start": 0,
+        "end": 133,
+        "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces 14:00 \u2013 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/p[164]",
+        "start": 0,
+        "end": 87,
+        "text": "14:15 \u2013 15:00 Terms of Reference for a Task Force on Annual PPP Production [World Bank]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[165]",
+        "start": 0,
+        "end": 91,
+        "text": "15:00 \u2013 15:45 Terms of Reference for a Task Force on ICP Classification Update [World Bank]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[166]",
+        "start": 0,
+        "end": 27,
+        "text": "SESSION V: Current Research",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/tbl[6]/tr[1]/tc[2]/p[1]",
+        "start": 0,
+        "end": 85,
+        "text": "The Treatment of Import and Export Prices in International Comparisons [Rob Feenstra]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[167]",
+        "start": 0,
+        "end": 51,
+        "text": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/p[168]",
+        "start": 0,
+        "end": 36,
+        "text": "SESSION V: Current Research (Cont\u2019d)",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[1]",
+        "start": 0,
+        "end": 138,
+        "text": "A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons [Naohito Abe and Prasada Rao]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[2]",
+        "start": 0,
+        "end": 91,
+        "text": "Treatment of Scanner (Transaction) Data in the European Comparison Program (ECP) [Eurostat]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[3]",
+        "start": 0,
+        "end": 74,
+        "text": "Treatment of Negative Expenditures in ICP [Prasada Rao and Sergey Sergeev]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[1]/tc[2]/p[4]",
+        "start": 0,
+        "end": 37,
+        "text": "Fine Tuning Global Linking Procedures",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[2]/tc[3]/p[1]",
+        "start": 0,
+        "end": 118,
+        "text": "Alternative Global Linking Methods [Robert Hill] Similarity Linking Within and Between Regions [Erwin Diewert and Yuri",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[3]/tc[2]/p[1]",
+        "start": 0,
+        "end": 120,
+        "text": "Dikhanov] Improving Reliability of Price Comparisons \u2013 Basic Heading PPPs and Sparsity of Price Tableaus [Erwin Diewert]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/tbl[7]/tr[4]/tc[3]/p[1]",
+        "start": 0,
+        "end": 65,
+        "text": "Alternative Basic Heading PPP Aggregation Methods [Yuri Dikhanov]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[169]",
+        "start": 0,
+        "end": 19,
+        "text": "SESSION VI: Closing",
+        "role": "AGENDA_NAVIGATION_HEADING"
+      },
+      {
+        "sourceId": "body[1]/p[170]",
+        "start": 0,
+        "end": 60,
+        "text": "15:00 \u2013 15:15 Any Other Business and Closing [TAG Co-Chairs]",
+        "role": "LIST_ITEM"
+      },
+      {
+        "sourceId": "body[1]/p[174]",
+        "start": 0,
+        "end": 29,
+        "text": "Annex 2: List of Participants",
+        "role": "ANNEX_HEADING"
+      },
+      {
+        "sourceId": "body[1]/p[175]",
+        "start": 0,
+        "end": 36,
+        "text": "ICP Technical Advisory Group members",
+        "role": "LOCAL_INDEX_TITLE"
+      },
+      {
+        "sourceId": "body[1]/p[176]",
+        "start": 0,
+        "end": 42,
+        "text": "ICP experts, guest speakers, and observers",
+        "role": "LOCAL_INDEX_TITLE"
+      },
+      {
+        "sourceId": "body[1]/p[177]",
+        "start": 0,
+        "end": 42,
+        "text": "ICP Inter-Agency Coordination Group (IACG)",
+        "role": "LOCAL_INDEX_TITLE"
+      },
+      {
+        "sourceId": "body[1]/p[178]",
+        "start": 0,
+        "end": 10,
+        "text": "World Bank",
+        "role": "LOCAL_INDEX_TITLE"
+      }
+    ],
+    "finalHeadings": [
+      {
+        "sourceId": "body[1]/p[3]",
+        "start": 0,
+        "end": 47,
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "role": "DocumentTitle"
+      },
+      {
+        "sourceId": "body[1]/p[4]",
+        "start": 0,
+        "end": 24,
+        "text": "TECHNICAL ADVISORY GROUP",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[7]",
+        "start": 0,
+        "end": 41,
+        "text": "Session I: Welcome and meeting objectives",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[11]",
+        "start": 0,
+        "end": 40,
+        "text": "Session II: Update on the ICP 2021 Cycle",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[12]",
+        "start": 0,
+        "end": 22,
+        "text": "1.Global office update",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[22]",
+        "start": 0,
+        "end": 18,
+        "text": "2.Regional updates",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[24]",
+        "start": 0,
+        "end": 6,
+        "text": "Africa",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[27]",
+        "start": 0,
+        "end": 20,
+        "text": "Asia and the Pacific",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[31]",
+        "start": 0,
+        "end": 40,
+        "text": "Commonwealth of Independent States (CIS)",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[39]",
+        "start": 0,
+        "end": 25,
+        "text": "Eurostat\u2013OECD PPP Program",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[42]",
+        "start": 0,
+        "end": 31,
+        "text": "Latin America and the Caribbean",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[46]",
+        "start": 0,
+        "end": 12,
+        "text": "Western Asia",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[54]",
+        "start": 0,
+        "end": 65,
+        "text": "Session III: Short- and Long-Term Research and Development Agenda",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[55]",
+        "start": 0,
+        "end": 55,
+        "text": "1.Research Topics Emerging from the Previous ICP Cycles",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[62]",
+        "start": 0,
+        "end": 29,
+        "text": "2.Forthcoming Research Topics",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[75]",
+        "start": 0,
+        "end": 66,
+        "text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[76]",
+        "start": 0,
+        "end": 40,
+        "text": "1.TAG Composition and Terms of Reference",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[80]",
+        "start": 0,
+        "end": 62,
+        "text": "2.Terms of Reference for a Task Force on Annual PPP Production",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[89]",
+        "start": 0,
+        "end": 66,
+        "text": "3.Terms of Reference for a Task Force on ICP Classification Update",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[94]",
+        "start": 0,
+        "end": 27,
+        "text": "Session V: Current Research",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[95]",
+        "start": 0,
+        "end": 72,
+        "text": "1.The Treatment of Import and Export Prices in International Comparisons",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[105]",
+        "start": 0,
+        "end": 110,
+        "text": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[110]",
+        "start": 0,
+        "end": 84,
+        "text": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[120]",
+        "start": 0,
+        "end": 43,
+        "text": "4.Treatment of Negative Expenditures in ICP",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[125]",
+        "start": 0,
+        "end": 39,
+        "text": "5.Fine Tuning Global Linking Procedures",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[142]",
+        "start": 0,
+        "end": 44,
+        "text": "6.Improving Reliability of Price Comparisons",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[151]",
+        "start": 0,
+        "end": 30,
+        "text": "Session VI: Any Other Business",
+        "role": "HeadingTopic"
+      },
+      {
+        "sourceId": "body[1]/p[174]",
+        "start": 0,
+        "end": 29,
+        "text": "Annex 2: List of Participants",
+        "role": "HeadingTopic"
+      }
+    ],
+    "modality": "Hybrid",
+    "visualRecoveredCount": 0,
+    "unifiedOccurrenceCount": 54,
+    "canonicalOccurrenceCount": 54,
+    "projectedCount": 54,
+    "stageLedger": [
+      {
+        "stage": "SOURCE_IDENTITY",
+        "status": "PRESERVED",
+        "inputCount": 210,
+        "outputCount": 210,
+        "firstLossCode": null
+      },
+      {
+        "stage": "MODALITY_PROFILER",
+        "status": "PRESERVED",
+        "inputCount": 1,
+        "outputCount": 1,
+        "firstLossCode": null
+      },
+      {
+        "stage": "SOURCE_EVIDENCE",
+        "status": "PRESERVED",
+        "inputCount": 210,
+        "outputCount": 210,
+        "firstLossCode": null
+      },
+      {
+        "stage": "CANDIDATE_ATTENTION",
+        "status": "PRESERVED",
+        "inputCount": 210,
+        "outputCount": 210,
+        "firstLossCode": null
+      },
+      {
+        "stage": "CONTEXT_PACKING",
+        "status": "PRESERVED",
+        "inputCount": 211,
+        "outputCount": 211,
+        "firstLossCode": null
+      },
+      {
+        "stage": "SEMANTIC_CONTRACT",
+        "status": "PRESERVED",
+        "inputCount": 54,
+        "outputCount": 54,
+        "firstLossCode": null
+      },
+      {
+        "stage": "TEXT_UTF16_BINDING",
+        "status": "PRESERVED",
+        "inputCount": 54,
+        "outputCount": 54,
+        "firstLossCode": null
+      },
+      {
+        "stage": "VISUAL_RECOVERY",
+        "status": "PRESERVED",
+        "inputCount": 0,
+        "outputCount": 0,
+        "firstLossCode": null
+      },
+      {
+        "stage": "VISUAL_REGION_BINDING",
+        "status": "PRESERVED",
+        "inputCount": 0,
+        "outputCount": 0,
+        "firstLossCode": null
+      },
+      {
+        "stage": "CROSS_MODAL_RECONCILIATION",
+        "status": "PRESERVED",
+        "inputCount": 54,
+        "outputCount": 54,
+        "firstLossCode": null
+      },
+      {
+        "stage": "GLOBAL_RESOLUTION",
+        "status": "PRESERVED",
+        "inputCount": 54,
+        "outputCount": 54,
+        "firstLossCode": null
+      },
+      {
+        "stage": "CANONICAL_GRAPH",
+        "status": "PRESERVED",
+        "inputCount": 54,
+        "outputCount": 54,
+        "firstLossCode": null
+      },
+      {
+        "stage": "SEMANTIC_BOUNDARY",
+        "status": "PRESERVED",
+        "inputCount": 54,
+        "outputCount": 54,
+        "firstLossCode": null
+      },
+      {
+        "stage": "TASK_PROJECTION",
+        "status": "PRESERVED",
+        "inputCount": 54,
+        "outputCount": 54,
+        "firstLossCode": null
+      }
+    ]
+  },
+  "stageAttribution": "IDENTICAL",
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false
+}

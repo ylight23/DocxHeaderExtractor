@@ -72,6 +72,7 @@ internal static class Accuracy99Runner
             "semantic-text-exact-binding-offline" => await RunSemanticTextExactBindingOfflineAsync(options, cancellationToken),
             "semantic-text-generalization" => await RunSemanticTextGeneralizationAsync(options, cancellationToken),
             "a99-v6-production-accuracy" => await RunA99V6ProductionAccuracyAsync(options, cancellationToken),
+            "a99-v6-deterministic-replay" => await RunA99V6DeterministicReplayAsync(options, cancellationToken),
             "semantic-text-task-decomposition-e4" => await RunSemanticTextTaskDecompositionE4Async(options, cancellationToken),
             "semantic-text-task-decomposition-i6" => await RunSemanticTextTaskDecompositionI6Async(options, cancellationToken),
             "semantic-text-task-decomposition-i6-resume" => await RunSemanticTextTaskDecompositionI6ResumeAsync(options, cancellationToken),
@@ -198,6 +199,12 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return SemanticTextGeneralizationRunner.RunV6ProductionAccuracyAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunA99V6DeterministicReplayAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return A99V6DeterministicReplayRunner.RunAsync(repoRoot, cancellationToken);
     }
 
     private static Task<int> RunSemanticTextTaskDecompositionE4Async(CommandLineOptions options, CancellationToken cancellationToken)
