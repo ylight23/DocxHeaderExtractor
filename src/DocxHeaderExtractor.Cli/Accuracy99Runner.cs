@@ -75,6 +75,7 @@ internal static class Accuracy99Runner
             "a99-v6-visual-e2e" => await RunA99V6VisualE2EAsync(options, cancellationToken),
             "a99-v6-deterministic-replay" => await RunA99V6DeterministicReplayAsync(options, cancellationToken),
             "a99-v6-request-equivalence" => await RunA99V6RequestEquivalenceAsync(options, cancellationToken),
+            "a99-v6-response-diff" => await RunA99V6ResponseDiffAsync(options, cancellationToken),
             "semantic-text-task-decomposition-e4" => await RunSemanticTextTaskDecompositionE4Async(options, cancellationToken),
             "semantic-text-task-decomposition-i6" => await RunSemanticTextTaskDecompositionI6Async(options, cancellationToken),
             "semantic-text-task-decomposition-i6-resume" => await RunSemanticTextTaskDecompositionI6ResumeAsync(options, cancellationToken),
@@ -132,6 +133,12 @@ internal static class Accuracy99Runner
     {
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         return A99V6RequestEquivalenceAuditRunner.RunAsync(repoRoot, cancellationToken);
+    }
+
+    private static Task<int> RunA99V6ResponseDiffAsync(CommandLineOptions options, CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return A99V6ResponseDiffRunner.RunAsync(repoRoot, cancellationToken);
     }
 
     private static Task<int> RunOpenRouterQwen9BTrueCeilingAsync(CommandLineOptions options, CancellationToken cancellationToken)
