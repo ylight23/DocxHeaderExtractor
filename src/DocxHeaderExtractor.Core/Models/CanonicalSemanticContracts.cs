@@ -49,7 +49,14 @@ public sealed record CanonicalSemanticProposal(
     [property: JsonPropertyName("sourceAliases")] IReadOnlyList<string>? SourceAliases = null,
     [property: JsonPropertyName("occurrence")] int? Occurrence = null,
     [property: JsonPropertyName("leftExactContext")] string? LeftExactContext = null,
-    [property: JsonPropertyName("rightExactContext")] string? RightExactContext = null);
+    [property: JsonPropertyName("rightExactContext")] string? RightExactContext = null,
+    [property: JsonPropertyName("selectionMode")] string? SelectionMode = null);
+
+public static class CanonicalSemanticSelectionMode
+{
+    public const string VerbatimText = "VERBATIM_TEXT";
+    public const string WholeAlias = "WHOLE_ALIAS";
+}
 
 public static class CanonicalSemanticContract
 {
@@ -83,6 +90,7 @@ public static class CanonicalSemanticContract
                         occurrence = new { type = "integer", minimum = 1 },
                         leftExactContext = new { type = "string" },
                         rightExactContext = new { type = "string" },
+                        selectionMode = new { type = "string", @enum = new[] { CanonicalSemanticSelectionMode.VerbatimText, CanonicalSemanticSelectionMode.WholeAlias } },
                     },
                     required = new[] { "sourceAlias", "isHeading" },
                 },
@@ -178,6 +186,48 @@ public static class CanonicalSemanticExactBinder
                 continue;
             }
             var aliasesForProposal = ResolveAliases(proposal);
+            if (proposal.SelectionMode is not null &&
+                !string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.VerbatimText, StringComparison.Ordinal) &&
+                !string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal))
+            {
+                audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.NonVerbatimText, alias.SourceId, null, null, "INVALID_SELECTION_MODE"));
+                continue;
+            }
+            if (string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal))
+            {
+                if (aliasesForProposal.Count != 1)
+                {
+                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.NonVerbatimText, alias.SourceId, null, null, "WHOLE_ALIAS_REQUIRES_ONE_ALIAS"));
+                    continue;
+                }
+                if (!byAlias.TryGetValue(aliasesForProposal[0], out var wholeAlias))
+                {
+                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.UnknownAlias, null, null, null, "UNKNOWN_ALIAS"));
+                    continue;
+                }
+                if (ownedAliases is not null && !ownedAliases.Contains(wholeAlias.Alias))
+                {
+                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.OutOfOwnedSegment, wholeAlias.SourceId, null, null, "OUT_OF_OWNED_SEGMENT"));
+                    continue;
+                }
+                var wholeStart = wholeAlias.SourceSpan.Start;
+                var wholeEnd = wholeStart + wholeAlias.Text.Length;
+                var wholeIdentity = $"{wholeAlias.SourceId}:{wholeStart}:{wholeEnd}";
+                if (!seen.Add(wholeIdentity))
+                {
+                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.DuplicateBinding, wholeAlias.SourceId, wholeStart, wholeEnd, "DUPLICATE_BINDING"));
+                    continue;
+                }
+                var wholePart = new CanonicalSemanticBoundPart(wholeAlias.Alias, wholeAlias.SourceId, wholeAlias.SourceOrdinal, wholeAlias.Text, wholeStart, wholeEnd);
+                audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.Bound, wholeAlias.SourceId, wholeStart, wholeEnd, null));
+                result.Add(new(wholeAlias.Alias, wholeAlias.SourceId, wholeAlias.SourceOrdinal, wholeAlias.Text,
+                    proposal.SemanticRole ?? "OTHER_STRUCTURAL_LABEL", proposal.StructuralType ?? "Heading",
+                    proposal.Scope ?? "document_body", proposal.RelationHints ?? [], wholeStart, wholeEnd)
+                {
+                    Parts = [wholePart]
+                });
+                continue;
+            }
             var parts = ComposeVerbatimParts(proposal);
             if (parts.Count == 0)
             {
