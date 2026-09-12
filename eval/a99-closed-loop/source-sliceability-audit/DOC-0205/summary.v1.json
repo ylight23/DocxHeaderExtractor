@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "a99-v6-source-sliceability-audit-summary-v1",
+  "documentId": "DOC-0205",
+  "sourceAlias": "S0003",
+  "sourceId": "body[1]/p[4]",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "sourceLength": 60769,
+  "sliceCount": 3004,
+  "boundaryCount": 3005,
+  "losslessSourceReconstruction": true,
+  "goldSpecificBoundaries": 0,
+  "modelTextRequiredForRepresentableSliceCases": 0,
+  "frozenRawProposalCount": 72,
+  "proposalCounts": {
+    "exactSingleSlice": 37,
+    "exactMultiSlice": 12,
+    "unresolved": 22,
+    "ambiguous": 0,
+    "unrepresentableBoundary": 1
+  },
+  "goldRepresentability": {
+    "total": 71,
+    "exactSingleSlice": 54,
+    "exactMultiSlice": 17,
+    "unrepresentableBoundary": 0,
+    "unresolved": 0,
+    "ambiguous": 0
+  },
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldFirewall": "PASS",
+  "decision": "SOURCE_SLICEABILITY_PARTIAL_REQUIRES_GENERIC_ELIGIBILITY_REPLAY"
+}

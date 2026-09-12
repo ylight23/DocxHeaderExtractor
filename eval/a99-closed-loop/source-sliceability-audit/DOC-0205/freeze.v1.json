@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "a99-v6-source-sliceability-audit-freeze-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "sourceArtifactSha256": "975e76f34faf905e4744d285664cf66df99c2254b1f50d6441f423d082d28fe3",
+  "sourceAlias": "S0003",
+  "sourceId": "body[1]/p[4]",
+  "boundaryPolicy": "PARSER_OWNED_ONLY",
+  "goldSpecificBoundaries": 0,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-12T16:31:25.5912377+00:00"
+}
