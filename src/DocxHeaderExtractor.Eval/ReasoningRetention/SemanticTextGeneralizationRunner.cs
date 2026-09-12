@@ -37,6 +37,8 @@ public static partial class SemanticTextGeneralizationRunner
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
     {
         repoRoot = Path.GetFullPath(repoRoot);
+        var configuredOutputRoot = Environment.GetEnvironmentVariable("A99_SEMANTIC_TEXT_OUTPUT_ROOT");
+        OutputRoot = string.IsNullOrWhiteSpace(configuredOutputRoot) ? DefaultOutputRoot : configuredOutputRoot.Trim();
         var output = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
         Directory.CreateDirectory(output);
         var startHead = GitSha(repoRoot);
