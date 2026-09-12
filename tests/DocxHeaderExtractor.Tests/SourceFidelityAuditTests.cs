@@ -127,5 +127,49 @@ public sealed class SourceFidelityAuditTests
         Assert.Equal(new[] { 9, 62, 62 }, wholeAliasRecall);
     }
 
+    [Fact]
+    public void FaithfulWholeAliasProviderProbeSeparatesRawVarianceFromAliasSelection()
+    {
+        var root = TestRoot();
+        var artifact = Path.Combine(root, "eval", "a99-closed-loop", "source-fidelity-whole-alias-provider-probe", "DOC-0205", "probe-summary.v1.json");
+        if (!File.Exists(artifact)) return;
+
+        using var json = System.Text.Json.JsonDocument.Parse(File.ReadAllText(artifact));
+        var summary = json.RootElement;
+        Assert.Equal(181928, summary.GetProperty("requestBodyBytes").GetInt32());
+        Assert.Equal("c84538be36adb82c0f3a26a33590596890177ddb4ed5b02463aff539f543ecf5", summary.GetProperty("requestBodySha256").GetString());
+        Assert.True(summary.GetProperty("requestBodyStableAcrossCalls").GetBoolean());
+        Assert.Equal(8, summary.GetProperty("probeCalls").GetInt32());
+        Assert.Equal(8, summary.GetProperty("modelCalls").GetInt32());
+        Assert.Equal(8, summary.GetProperty("providerCalls").GetInt32());
+        Assert.Equal(8, summary.GetProperty("distinctRawResponseHashes").GetInt32());
+        Assert.Equal(1, summary.GetProperty("distinctParsedAliasSetHashes").GetInt32());
+        Assert.Equal("RAW_RESPONSE_NONDETERMINISM_ALIAS_SELECTION_STABLE", summary.GetProperty("classification").GetString());
+        Assert.False(summary.GetProperty("goldRead").GetBoolean());
+
+        var family = Assert.Single(summary.GetProperty("observedRawProposalCountFamilies").EnumerateArray());
+        Assert.Equal(78, family.GetProperty("rawProposalCount").GetInt32());
+        Assert.Equal(8, family.GetProperty("calls").GetInt32());
+    }
+
+    [Fact]
+    public void WholeAliasBindingFailureIsTheSameDuplicateAliasInR2AndR3()
+    {
+        var root = TestRoot();
+        var artifact = Path.Combine(root, "eval", "a99-closed-loop", "source-fidelity-whole-alias-live", "DOC-0205", "binding-failure-diagnosis.v1.json");
+        if (!File.Exists(artifact)) return;
+
+        using var json = System.Text.Json.JsonDocument.Parse(File.ReadAllText(artifact));
+        var summary = json.RootElement;
+        Assert.False(summary.GetProperty("goldRead").GetBoolean());
+        Assert.Equal("DUPLICATE_ALIAS_SELECTION_FAIL_CLOSED", summary.GetProperty("classification").GetString());
+        foreach (var observation in summary.GetProperty("observations").EnumerateArray())
+        {
+            Assert.Equal(1, observation.GetProperty("bindingFailure").GetInt32());
+            Assert.Equal(0, observation.GetProperty("unknownAliasSelections").GetInt32());
+            Assert.Equal("S0239", observation.GetProperty("duplicateSelection").GetProperty("sourceAlias").GetString());
+        }
+    }
+
     private static string TestRoot() => Directory.GetParent(AppContext.BaseDirectory)!.Parent!.Parent!.Parent!.FullName;
 }

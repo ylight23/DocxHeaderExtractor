@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "a99-v6-faithful-whole-alias-binding-failure-diagnosis-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "goldRead": false,
+  "predictionArtifactsRead": [
+    "r2/whole-alias/prediction.v1.json",
+    "r3/whole-alias/prediction.v1.json"
+  ],
+  "observations": [
+    {
+      "repeat": "r2",
+      "bindingFailure": 1,
+      "unknownAliasSelections": 0,
+      "duplicateSelection": {
+        "sourceAlias": "S0239",
+        "sourceId": "body[1]/p[250]",
+        "sourceOrdinal": 253,
+        "start": 0,
+        "end": 10,
+        "text": "Chương III",
+        "proposals": [
+          { "semanticRole": "ARTICLE", "selectionMode": "WHOLE_ALIAS" },
+          { "semanticRole": "CHAPTER", "selectionMode": "WHOLE_ALIAS" }
+        ]
+      }
+    },
+    {
+      "repeat": "r3",
+      "bindingFailure": 1,
+      "unknownAliasSelections": 0,
+      "duplicateSelection": {
+        "sourceAlias": "S0239",
+        "sourceId": "body[1]/p[250]",
+        "sourceOrdinal": 253,
+        "start": 0,
+        "end": 10,
+        "text": "Chương III",
+        "proposals": [
+          { "semanticRole": "ARTICLE", "selectionMode": "WHOLE_ALIAS" },
+          { "semanticRole": "CHAPTER", "selectionMode": "WHOLE_ALIAS" }
+        ]
+      }
+    }
+  ],
+  "classification": "DUPLICATE_ALIAS_SELECTION_FAIL_CLOSED",
+  "systemLoss": 0
+}

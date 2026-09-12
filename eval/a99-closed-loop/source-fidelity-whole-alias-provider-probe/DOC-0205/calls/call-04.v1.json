@@ -1,0 +1,23 @@
+{
+  "callNumber": 4,
+  "requestBodyBytes": 181928,
+  "requestBodySha256": "c84538be36adb82c0f3a26a33590596890177ddb4ed5b02463aff539f543ecf5",
+  "httpStatus": 200,
+  "rawResponseBytes": 12344,
+  "rawResponseSha256": "cf95ee59ab73254112154e1d5512cf552bcd80d1b6654be232ae3bd8f6191065",
+  "parsedAliasSetSha256": "9b80fc59fc3aaa8dc20c05a4897b2bc2ce569713b0e0a806e89d64d8ec96f837",
+  "rawProposalCount": 78,
+  "actualProvider": "Alibaba",
+  "responseModel": "qwen/qwen3.7-flash",
+  "responseId": "gen-1789241341-yOzJVID9pIFhAYZ2atSJ",
+  "created": "1789241341",
+  "finishReason": "stop",
+  "inputTokens": 85557,
+  "reasoningTokens": 7587,
+  "outputTokens": 11172,
+  "latencyMs": 54836,
+  "safeResponseHeaders": {
+    "Server-Timing": "cfEdge;dur=18,cfOrigin;dur=0,cfWorker;dur=1297"
+  },
+  "parseError": null
+}
