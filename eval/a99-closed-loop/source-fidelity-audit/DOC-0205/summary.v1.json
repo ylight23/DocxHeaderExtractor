@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v6-source-fidelity-audit-summary-v1",
+  "documentId": "DOC-0205",
+  "sourceFreeze": "source-freeze.v1.json",
+  "goldRepresentability": "gold-representability.v1.json",
+  "current": {
+    "normalizedSourceModel": {
+      "totalParagraphs": 4,
+      "nonEmptyParagraphs": 3,
+      "maxParagraphLength": 60769,
+      "medianParagraphLength": 113,
+      "chapterParagraphs": 0,
+      "sectionParagraphs": 0,
+      "articleParagraphs": 0,
+      "goldSubstringMatches": 71
+    },
+    "rawOoxml": {
+      "totalParagraphs": 4,
+      "nonEmptyParagraphs": 3,
+      "maxParagraphLength": 65277,
+      "medianParagraphLength": 113,
+      "chapterParagraphs": 0,
+      "sectionParagraphs": 0,
+      "articleParagraphs": 0
+    }
+  },
+  "converted": {
+    "normalizedSourceModel": {
+      "totalParagraphs": 485,
+      "nonEmptyParagraphs": 452,
+      "maxParagraphLength": 742,
+      "medianParagraphLength": 98,
+      "chapterParagraphs": 5,
+      "sectionParagraphs": 9,
+      "articleParagraphs": 57,
+      "goldSubstringMatches": 66
+    },
+    "rawOoxml": {
+      "totalParagraphs": 476,
+      "nonEmptyParagraphs": 445,
+      "maxParagraphLength": 680,
+      "medianParagraphLength": 101,
+      "chapterParagraphs": 5,
+      "sectionParagraphs": 9,
+      "articleParagraphs": 57
+    }
+  },
+  "exactParagraphRepresentation": {
+    "total": 71,
+    "singleUnit": 66,
+    "contiguousMultiUnit": 5,
+    "ambiguous": 0,
+    "unresolved": 0,
+    "exactSingleUtf16SpanAvailable": 66,
+    "crossParagraphSpanRequiresExplicitPolicy": 5
+  },
+  "sourceFidelityDecision": "FAITHFUL_PARAGRAPH_SOURCE_REPRESENTS_ALL_71",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldFirewall": "PASS"
+}

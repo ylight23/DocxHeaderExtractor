@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "a99-v6-source-fidelity-audit-source-freeze-v1",
+  "documentId": "DOC-0205",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "currentSource": {
+    "kind": "DOCX",
+    "path": "todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "absolutePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\01_phap_quy\\025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "sha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+    "totalParagraphs": 4,
+    "nonEmptyParagraphs": 3,
+    "rawOoxml": {
+      "totalParagraphs": 4,
+      "nonEmptyParagraphs": 3,
+      "maxParagraphLength": 65277,
+      "medianParagraphLength": 113,
+      "chapterParagraphs": 0,
+      "sectionParagraphs": 0,
+      "articleParagraphs": 0
+    }
+  },
+  "originalSource": {
+    "kind": "DOC",
+    "path": "C:/Users/btdba/DocxHeaderExtractor/todo10_8/heading_corpus_100/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.doc",
+    "availableAtAudit": true,
+    "sha256": "128e10058b6648a316c864c49c4a4015098b6b4dad07c4ea95996a50bf5b5004"
+  },
+  "convertedSource": {
+    "kind": "DOCX",
+    "path": "eval/a99-closed-loop/source-fidelity-audit/DOC-0205/converted-docx/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "absolutePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\source-fidelity-audit\\DOC-0205\\converted-docx\\025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "sha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "totalParagraphs": 485,
+    "nonEmptyParagraphs": 452,
+    "rawOoxml": {
+      "totalParagraphs": 476,
+      "nonEmptyParagraphs": 445,
+      "maxParagraphLength": 680,
+      "medianParagraphLength": 101,
+      "chapterParagraphs": 5,
+      "sectionParagraphs": 9,
+      "articleParagraphs": 57
+    }
+  },
+  "conversion": {
+    "tool": "LibreOffice",
+    "command": "soffice --headless --convert-to docx --outdir \u003Coutput\u003E \u003Coriginal.doc\u003E",
+    "sourceType": "DOC",
+    "outputType": "DOCX",
+    "fidelityHypothesis": "preserve paragraph boundaries from original DOC"
+  },
+  "invariant": {
+    "productionSourceUnchanged": true,
+    "goldUnchanged": true,
+    "modelContractUnchanged": true,
+    "noCandidateGeneration": true
+  }
+}
