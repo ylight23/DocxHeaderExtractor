@@ -36,6 +36,10 @@ public static class CanonicalSemanticPipeline
 
         var aliases = SemanticSourceAliasCatalog.FromCatalog(sourceCatalog);
         var bound = CanonicalSemanticExactBinder.Bind(proposals, aliases, out var observations);
+        var bindingValidation = CanonicalSemanticHardBindingValidator.Validate(
+            bound, aliases, sourceSha256, expectedSourceSha256 ?? sourceSha256);
+        if (!bindingValidation.IsValid)
+            throw new InvalidOperationException(string.Join(",", bindingValidation.Errors));
         var graph = CanonicalSemanticGraphResolver.Resolve(bound);
         return new CanonicalSemanticPipelineResult(
             aliases, bound, observations, graph, sourceSha256, sourceHashVerified);

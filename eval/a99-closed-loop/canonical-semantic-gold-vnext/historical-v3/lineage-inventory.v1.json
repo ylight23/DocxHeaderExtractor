@@ -1,8 +1,6 @@
 {
   "artifactKind": "a99_canonical_semantic_gold_vnext_lineage_inventory",
-  "schemaVersion": "a99-canonical-semantic-gold-vnext-lineage-v2",
-  "authorityRegistry": "freeze-registry.v4.checked.json",
-  "authorityRegistrySha256": "4de876b5f91d740da9217ee484e099125383283f1f4ce55ef77a97319592317b",
+  "schemaVersion": "a99-canonical-semantic-gold-vnext-lineage-v1",
   "sourceInventory": "eval/a99-dataset/document-inventory.v1.json",
   "sourceInventorySha256": "0c80035f5c7f7948533c909552a480818ea14b26983de438e0567709d26505e1",
   "roots": [
@@ -56,91 +54,91 @@
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
       "sha256": "5ac30a82db551a8149ed777390eeca0dc6c6d0bafd9e82468dde32777808dfc8",
       "byteLength": 6863,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0116.strict-gold-v4.json",
       "sha256": "9076c5f079a781d5c91923fe4e6bbb73108ae6a5bb47e1096a1d939023b9b6f5",
       "byteLength": 17553,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0122.strict-gold-v4.json",
       "sha256": "b6169d95efd89ed534e6666694f6b3a7ecc1f2e4e67c6e1a8406ee9e729d7b69",
       "byteLength": 85958,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0185.strict-gold-v4.json",
       "sha256": "9bccd22b5de98c7512af47854496cf7e07479298bbad8278eac0019bcc18058c",
       "byteLength": 2733,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0200.strict-gold-v4.json",
       "sha256": "19ed8530a76afd3f37691b24fc6d2019783c0fd4245764d8cc05711be48d50ea",
       "byteLength": 2734,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0201.strict-gold-v4.json",
       "sha256": "0ad3545669bb18def454b16174634454639c91ae43cff7bd8f89270bb0844536",
       "byteLength": 2730,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0205.strict-gold-v4.json",
       "sha256": "160c9cd3daeab79700b5411337fe6ecb666edbdbda61066d47372b5c3df10418",
       "byteLength": 53302,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0216.strict-gold-v4.json",
       "sha256": "347d57204be3e5a3bfeb6e26e97054ac33aab89252d11b92d84bb60b48bf14ce",
       "byteLength": 80566,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0219.strict-gold-v4.json",
       "sha256": "e12cd98a59526d6ee8bdddaa0772eb3c86d346629bae0f6291ea6112d95a5343",
       "byteLength": 2732,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0243.strict-gold-v4.json",
       "sha256": "df4808f0b03e550834f4b16a3c9085c550dae452881fbec0df1773277d3bfd38",
       "byteLength": 66409,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0252.strict-gold-v4.json",
       "sha256": "8dc3a2512ce73dbcc84e045a7f84b6d4996e782638949a68af0254946886e325",
       "byteLength": 20123,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0256.strict-gold-v4.json",
       "sha256": "f12a4a407deddf9d6f1039510d8b2ee4965db091901e2e1b3e806b97344c92e2",
       "byteLength": 18306,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0258.strict-gold-v4.json",
       "sha256": "4519e267a0f04e0f4a3486e53425058252b98de035631a50ebd4fd7751ddb61b",
       "byteLength": 18502,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0264.strict-gold-v4.json",
       "sha256": "d98bf12ca536f1193cc216b8636e7f384e6ac30912becd451e2e993171262e74",
       "byteLength": 2818,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0265.strict-gold-v4.json",
       "sha256": "0406e060471c7b77d27be8b476d50d16336cf8915e980406a8d0ace226f02cf7",
       "byteLength": 2722,
-      "authority": "PROVENANCE_ONLY"
+      "authority": "HISTORICAL_NON_AUTHORITATIVE"
     },
     {
       "path": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0001.occurrence-gold-v1.json",
@@ -1577,5 +1575,5 @@
       "authority": "PROVENANCE_ONLY"
     }
   ],
-  "note": "Legacy Gold and review artifacts are provenance only; the v4 checked registry is the current semantic authority."
+  "note": "Historical Gold, occurrence Gold, review packets and blind source packets are provenance only; registry v3 is the sole current semantic authority."
 }

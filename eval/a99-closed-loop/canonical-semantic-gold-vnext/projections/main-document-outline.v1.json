@@ -1,0 +1,16 @@
+{
+  "artifactKind": "a99_canonical_projection_policy",
+  "schemaVersion": "a99-canonical-projection-policy-vnext-v2",
+  "input": "canonical semantic graph",
+  "semanticTruthMutation": false,
+  "taskMembershipMutation": false,
+  "preserve": [
+    "every true heading occurrence",
+    "PRIMARY",
+    "REPEAT",
+    "CONTINUATION"
+  ],
+  "policyId": "MAIN_DOCUMENT_OUTLINE",
+  "output": "one occurrence per semanticNodeId",
+  "collapseKey": "semanticNodeId"
+}

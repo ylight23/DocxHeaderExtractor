@@ -1,0 +1,201 @@
+using System.Text.Json;
+using DocxHeaderExtractor.Core.Models;
+
+namespace DocxHeaderExtractor.Tests;
+
+public sealed class CanonicalSemanticVnextRuntimeTests
+{
+    [Fact]
+    public void Prompt_cannot_change_canonical_heading_membership_but_can_change_projection()
+    {
+        var graph = Graph(
+            new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION"),
+            new CanonicalSemanticProposal("S0002", true, "Heading", SemanticRole: "SECTION", Scope: "continuation"));
+
+        var all = CanonicalSemanticProjection.Project(graph, new SemanticIntent("all-true-headings", false));
+        var outline = CanonicalSemanticProjection.Project(graph, new SemanticIntent("main-document-outline", true));
+
+        Assert.Equal(2, all.Count);
+        Assert.Single(outline);
+        Assert.Equal(2, graph.Occurrences.Count);
+    }
+
+    [Fact]
+    public void Repeat_and_continuation_survive_even_when_semantic_node_already_exists()
+    {
+        var graph = Graph(
+            new CanonicalSemanticProposal("S0001", true, "STATEMENTS OF CASH FLOWS", SemanticRole: "SECTION"),
+            new CanonicalSemanticProposal("S0002", true, "STATEMENTS OF CASH FLOWS", SemanticRole: "SECTION", Scope: "continuation"));
+
+        Assert.Equal(2, graph.Occurrences.Count);
+        Assert.Equal("CONTINUATION", graph.Occurrences[1].OccurrenceKind);
+        Assert.Single(CanonicalSemanticProjection.Project(graph, new SemanticIntent("outline", true)));
+    }
+
+    [Fact]
+    public void Candidate_miss_does_not_cap_owned_semantic_discovery()
+    {
+        Assert.True(SemanticCandidatePolicy.CanAcceptOwnedOccurrence("S0001", [
+            new SemanticCandidateAttentionHint("S0001", false, "heuristic-miss")
+        ]));
+    }
+
+    [Fact]
+    public void Unknown_and_out_of_owned_aliases_fail_closed()
+    {
+        var catalog = Catalog(("p1", "Heading"), ("p2", "Other"));
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
+        var unknown = CanonicalSemanticExactBinder.Bind(
+            [new CanonicalSemanticProposal("S9999", true, "Heading")], aliases, out var unknownAudit);
+        var overlapOnly = CanonicalSemanticExactBinder.Bind(
+            [new CanonicalSemanticProposal("S0002", true, "Other")], aliases, new HashSet<string>(["S0001"]), out var ownedAudit);
+
+        Assert.Empty(unknown);
+        Assert.Equal(CanonicalSemanticBindingStatus.UnknownAlias, unknownAudit[0].Status);
+        Assert.Empty(overlapOnly);
+        Assert.Equal(CanonicalSemanticBindingStatus.OutOfOwnedSegment, ownedAudit[0].Status);
+    }
+
+    [Fact]
+    public void Non_verbatim_and_ambiguous_text_fail_closed()
+    {
+        var catalog = Catalog(("p1", "Heading Heading"));
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Heading"),
+            new CanonicalSemanticProposal("S0001", true, "Not in source")
+        ], aliases, out var audit);
+
+        Assert.Empty(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.AmbiguousBinding, audit[0].Status);
+        Assert.Equal(CanonicalSemanticBindingStatus.NonVerbatimText, audit[1].Status);
+    }
+
+    [Fact]
+    public void Multipart_heading_binds_every_ordered_alias_and_part()
+    {
+        var catalog = Catalog(("p1", "SESSION V:"), ("p2", "Current Research (Cont'd)"));
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
+        var proposal = new CanonicalSemanticProposal(
+            "S0001", true, null, ["SESSION V:", "Current Research (Cont'd)"], "SECTION", SourceAliases: ["S0001", "S0002"]);
+
+        var bound = CanonicalSemanticExactBinder.Bind([proposal], aliases, out var audit);
+
+        var item = Assert.Single(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+        Assert.Equal(2, item.Parts.Count);
+        Assert.Equal(["S0001", "S0002"], item.Parts.Select(part => part.Alias));
+    }
+
+    [Fact]
+    public void Contract_validator_rejects_numeric_fields_without_reading_gold()
+    {
+        using var json = JsonDocument.Parse("{\"headings\":[{\"sourceAlias\":\"S0001\",\"isHeading\":true,\"verbatimText\":\"H\",\"start\":0}]}");
+
+        var issues = CanonicalSemanticContractValidator.ValidateJson(json.RootElement);
+
+        Assert.Contains(issues, issue => issue.Code == "NUMERIC_COORDINATE_REJECTED");
+        Assert.DoesNotContain("start", JsonSerializer.Serialize(CanonicalSemanticContract.Schema()), StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Hard_binding_validator_checks_utf16_source_text_and_hash_lineage()
+    {
+        var catalog = Catalog(("p1", "😀 Heading"));
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Heading")
+        ], aliases, out _);
+
+        var result = CanonicalSemanticHardBindingValidator.Validate(bound, aliases, "abc", "abc");
+
+        Assert.True(result.IsValid);
+        Assert.Equal(3, bound[0].Start);
+        Assert.Equal(10, bound[0].End);
+    }
+
+    [Fact]
+    public void Hard_binding_validator_fails_closed_on_source_hash_mismatch()
+    {
+        var catalog = Catalog(("p1", "Heading"));
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Heading")
+        ], aliases, out _);
+
+        var result = CanonicalSemanticHardBindingValidator.Validate(bound, aliases, "actual", "expected");
+
+        Assert.False(result.IsValid);
+        Assert.Contains("SOURCE_HASH_MISMATCH", result.Errors);
+    }
+
+    [Fact]
+    public void Global_resolution_accepts_explicit_parent_and_level_without_inferring_them_from_text()
+    {
+        var first = new CanonicalSemanticProposal("S0001", true, "Chapter", SemanticRole: "CHAPTER");
+        var second = new CanonicalSemanticProposal("S0002", true, "Article", SemanticRole: "ARTICLE",
+            RelationHints: ["parent-node:semantic-node:0001", "level:2"]);
+        var graph = Graph(first, second);
+
+        Assert.Equal(2, graph.Occurrences.Count);
+        Assert.Equal(2, graph.Occurrences[1].Level);
+        Assert.Equal(graph.Occurrences[0].OccurrenceId, graph.Occurrences[1].ParentOccurrenceId);
+    }
+
+    [Fact]
+    public void V4_registry_artifacts_are_semantic_only_and_have_full_authority_totals()
+    {
+        var root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "eval", "a99-closed-loop", "canonical-semantic-gold-vnext"));
+        if (!File.Exists(Path.Combine(root, "freeze-registry.v4.checked.json"))) return;
+
+        using var registry = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "freeze-registry.v4.checked.json")));
+        using var inventory = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "inventory.v1.json")));
+        Assert.Equal(4, registry.RootElement.GetProperty("registryRevision").GetInt32());
+        Assert.Equal(1503, registry.RootElement.GetProperty("summary").GetProperty("semanticHeadingTotalAcrossTrackedSources").GetInt32());
+        Assert.Equal(13, inventory.RootElement.GetProperty("frozenSemanticVnext").GetInt32());
+        Assert.Equal(0, inventory.RootElement.GetProperty("exactOccurrenceFrozen").GetInt32());
+        Assert.Equal(13, Directory.GetFiles(Path.Combine(root, "semantic"), "*.semantic-freeze.v1.json").Length);
+        Assert.False(Directory.Exists(Path.Combine(root, "occurrence")));
+        Assert.False(Directory.Exists(Path.Combine(root, "bindings")));
+    }
+
+    [Fact]
+    public void Semantic_cache_key_is_prompt_independent_and_projection_does_not_mutate_graph()
+    {
+        var first = CanonicalSemanticGraphCacheKey.Create("ABC", "schema", "model", "extractor");
+        var second = CanonicalSemanticGraphCacheKey.Create("abc", "schema", "model", "extractor");
+        var graph = Graph(new CanonicalSemanticProposal("S0001", true, "Heading"));
+        var before = graph.Occurrences.Count;
+
+        _ = CanonicalSemanticProjection.Project(graph, new SemanticIntent("collapse", true));
+
+        Assert.Equal(first, second);
+        Assert.Equal(before, graph.Occurrences.Count);
+    }
+
+    [Fact]
+    public void Three_layer_context_and_optional_visual_route_are_explicit()
+    {
+        var packet = SemanticContextPacker.Pack(["target"], ["local"], ["global"]);
+
+        Assert.Equal(["target"], packet.TargetEvidence);
+        Assert.Equal(["local"], packet.LocalContext);
+        Assert.Equal(["global"], packet.GlobalContext);
+        Assert.True(SemanticVisualEscalation.IsOptional);
+    }
+
+    private static CanonicalSemanticGraph Graph(params CanonicalSemanticProposal[] proposals)
+    {
+        var units = proposals.Select((proposal, index) => (
+            "p" + (index + 1),
+            proposal.VerbatimText ?? proposal.VerbatimParts?.FirstOrDefault() ?? "Heading"));
+        var result = CanonicalSemanticPipeline.Run(Catalog(units.ToArray()), proposals, "hash");
+        return result.Graph;
+    }
+
+    private static DocumentSourceCatalog Catalog(params (string Id, string Text)[] units) =>
+        new(units.Select((unit, index) => new DocumentSourceUnit(
+            unit.Id, index + 1, unit.Text,
+            new SourceAnchor { SourceType = "test", ParagraphId = unit.Id },
+            new StructuralSpan(0, unit.Text.Length))));
+}

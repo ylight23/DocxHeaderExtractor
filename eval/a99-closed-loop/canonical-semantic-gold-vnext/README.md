@@ -1,18 +1,18 @@
 # A99 canonical semantic Gold vNext
 
-Canonical semantic authority migrated from freeze-registry.v3.final.json.
-Registry authority: 13 tracked sources, 13 FROZEN_SEMANTIC_VNEXT, 0 pending approval.
+Current authority: `freeze-registry.v4.checked.json`.
 
-CanonicalGold = ALL TRUE HEADING OCCURRENCES. Semantic freeze and exact occurrence/span
-freeze are separate. Occurrence and binding files are REVIEW_REQUIRED until parser-owned
-aliases plus verbatim exact UTF-16 binding are materialized; migration never fabricates
-coordinates or imports model output into Gold.
+The registry freezes semantic document totals for 13 sources (aggregate 1503). It does not
+freeze an exhaustive occurrence list or character spans: every source currently has
+`exactOccurrenceFreeze=false`. Therefore this directory intentionally contains no occurrence
+or binding artifact. Coordinates may be materialized later only from authoritative source-backed
+lists through the exact UTF-16 binder.
 
-Runtime contract:
-source -> evidence -> aliases -> semantic reasoning -> exact binder -> hard validator -> global structural resolution -> canonical semantic graph -> task projection -> output
+Runtime boundary:
 
-The model supplies meaning (sourceAlias, isHeading, verbatim text/parts, semantic role/type,
-scope and relation hints). The harness supplies coordinates. Repeated/continuation display
-titles remain occurrences; only the final outline projection may collapse a repeated node.
+`source -> source-faithful evidence -> stable aliases -> candidate attention hints -> route/context packing -> semantic proposal -> semantic validation -> exact UTF-16 binding -> hard binding validation -> global graph -> semantic boundary -> intent normalization -> deterministic projection`
 
-Historical v4 artifacts remain immutable and are referenced as non-authoritative provenance.
+The model supplies meaning (`sourceAlias/sourceAliases`, `isHeading`, exact verbatim text/parts,
+role/type/scope and optional relation hints). The harness supplies coordinates. Repeated and
+continuation headings remain canonical occurrences; projection may collapse them without changing
+canonical truth. Legacy strict Gold and review artifacts are provenance only and are preserved.

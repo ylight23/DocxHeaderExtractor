@@ -1,14 +1,17 @@
 {
   "artifactKind": "a99_canonical_semantic_gold_vnext_migration",
-  "schemaVersion": "a99-canonical-semantic-gold-vnext-migration-v1",
-  "authorityRegistry": "freeze-registry.v3.final.json",
-  "authorityRegistrySha256": "5b2416f08f92ce2ace606d41da62e993c7ea1ff03521b3a4c3b978db2fa49ed7",
-  "executionTask": "TASK-a99-vnext-EXECUTE-final.v3.md",
-  "executionTaskSha256": "1decc9acd93f50d0e453a34a33f81f0bd36450201c9eaf870c748d9145b2836c",
+  "schemaVersion": "a99-canonical-semantic-gold-vnext-migration-v2",
+  "authorityRegistry": "freeze-registry.v4.checked.json",
+  "authorityRegistrySha256": "4de876b5f91d740da9217ee484e099125383283f1f4ce55ef77a97319592317b",
+  "executionTask": "TASK-a99-vnext-EXECUTE-final.v4.checked.md",
+  "executionTaskSha256": "ea134c00c50c900706d6b1e94fb78ccc6ebb916098bb69677f22a5584054155a",
   "providerCalls": 0,
   "modelCalls": 0,
   "totalTracked": 13,
   "frozenSemanticVnext": 13,
+  "aggregateSemanticHeadingTotal": 1503,
   "exactOccurrenceFrozen": 0,
+  "occurrenceArtifactsCreated": 0,
+  "bindingArtifactsCreated": 0,
   "goldRuntimeInputs": false
 }

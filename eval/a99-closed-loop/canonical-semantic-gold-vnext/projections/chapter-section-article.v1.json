@@ -1,0 +1,21 @@
+{
+  "artifactKind": "a99_canonical_projection_policy",
+  "schemaVersion": "a99-canonical-projection-policy-vnext-v2",
+  "input": "canonical semantic graph",
+  "semanticTruthMutation": false,
+  "taskMembershipMutation": false,
+  "preserve": [
+    "every true heading occurrence",
+    "PRIMARY",
+    "REPEAT",
+    "CONTINUATION"
+  ],
+  "policyId": "CHAPTER_SECTION_ARTICLE",
+  "output": "filtered task view after canonical semantic boundary",
+  "collapseKey": "semanticNodeId",
+  "allowedStructuralTypes": [
+    "Chapter",
+    "Section",
+    "Article"
+  ]
+}

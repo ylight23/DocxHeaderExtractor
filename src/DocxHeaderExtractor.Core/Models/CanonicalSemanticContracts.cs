@@ -43,7 +43,8 @@ public sealed record CanonicalSemanticProposal(
     [property: JsonPropertyName("semanticRole")] string? SemanticRole = null,
     [property: JsonPropertyName("structuralType")] string? StructuralType = null,
     [property: JsonPropertyName("scope")] string? Scope = null,
-    [property: JsonPropertyName("relationHints")] IReadOnlyList<string>? RelationHints = null);
+    [property: JsonPropertyName("relationHints")] IReadOnlyList<string>? RelationHints = null,
+    [property: JsonPropertyName("sourceAliases")] IReadOnlyList<string>? SourceAliases = null);
 
 public static class CanonicalSemanticContract
 {
@@ -66,6 +67,7 @@ public static class CanonicalSemanticContract
                     properties = new
                     {
                         sourceAlias = new { type = "string", minLength = 1 },
+                        sourceAliases = new { type = "array", minItems = 1, items = new { type = "string", minLength = 1 } },
                         isHeading = new { type = "boolean" },
                         verbatimText = new { type = "string" },
                         verbatimParts = new { type = "array", items = new { type = "string" } },
@@ -114,7 +116,20 @@ public sealed record CanonicalSemanticBoundHeading(
     IReadOnlyList<string> RelationHints,
     int Start,
     int End,
-    bool IsHeading = true);
+    bool IsHeading = true)
+{
+    /// <summary>All exact source pieces for a composite heading, in model-declared order.</summary>
+    [JsonPropertyName("parts")]
+    public IReadOnlyList<CanonicalSemanticBoundPart> Parts { get; init; } = [];
+}
+
+public sealed record CanonicalSemanticBoundPart(
+    string Alias,
+    string SourceId,
+    int SourceOrdinal,
+    string Text,
+    int Start,
+    int End);
 
 /// <summary>
 /// Exact source binder for vNext. .NET string indexes are UTF-16 code-unit offsets; no other
@@ -125,6 +140,13 @@ public static class CanonicalSemanticExactBinder
     public static IReadOnlyList<CanonicalSemanticBoundHeading> Bind(
         IReadOnlyList<CanonicalSemanticProposal> proposals,
         IReadOnlyList<SemanticSourceAlias> aliases,
+        out IReadOnlyList<CanonicalSemanticBindingObservation> observations) =>
+        Bind(proposals, aliases, null, out observations);
+
+    public static IReadOnlyList<CanonicalSemanticBoundHeading> Bind(
+        IReadOnlyList<CanonicalSemanticProposal> proposals,
+        IReadOnlyList<SemanticSourceAlias> aliases,
+        IReadOnlySet<string>? ownedAliases,
         out IReadOnlyList<CanonicalSemanticBindingObservation> observations)
     {
         ArgumentNullException.ThrowIfNull(proposals);
@@ -147,55 +169,91 @@ public static class CanonicalSemanticExactBinder
                 audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.UnknownAlias, null, null, null, "UNKNOWN_ALIAS"));
                 continue;
             }
-            var text = ComposeVerbatimText(proposal);
-            if (string.IsNullOrEmpty(text))
+            var aliasesForProposal = ResolveAliases(proposal);
+            var parts = ComposeVerbatimParts(proposal);
+            if (parts.Count == 0)
             {
                 audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.MissingVerbatimText, alias.SourceId, null, null, "MISSING_VERBATIM_TEXT"));
                 continue;
             }
-            var positions = FindExact(alias.Text, text);
-            if (positions.Count == 0)
+
+            if (aliasesForProposal.Count != parts.Count)
             {
                 audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.NonVerbatimText, alias.SourceId, null, null, "NON_VERBATIM_TEXT"));
                 continue;
             }
-            if (positions.Count > 1)
+
+            var boundParts = new List<CanonicalSemanticBoundPart>(parts.Count);
+            var failed = false;
+            foreach (var (partText, partIndex) in parts.Select((part, partIndex) => (part, partIndex)))
             {
-                audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.AmbiguousBinding, alias.SourceId, null, null, "AMBIGUOUS_BINDING"));
-                continue;
+                if (!byAlias.TryGetValue(aliasesForProposal[partIndex], out var partAlias))
+                {
+                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.UnknownAlias, null, null, null, "UNKNOWN_ALIAS"));
+                    failed = true;
+                    break;
+                }
+                if (ownedAliases is not null && !ownedAliases.Contains(partAlias.Alias))
+                {
+                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.OutOfOwnedSegment, partAlias.SourceId, null, null, "OUT_OF_OWNED_SEGMENT"));
+                    failed = true;
+                    break;
+                }
+                var positions = FindExact(partAlias.Text, partText);
+                if (positions.Count == 0)
+                {
+                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.NonVerbatimText, partAlias.SourceId, null, null, "NON_VERBATIM_TEXT"));
+                    failed = true;
+                    break;
+                }
+                if (positions.Count > 1)
+                {
+                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.AmbiguousBinding, partAlias.SourceId, null, null, "AMBIGUOUS_BINDING"));
+                    failed = true;
+                    break;
+                }
+                var partStart = positions[0] + partAlias.SourceSpan.Start;
+                var partEnd = partStart + partText.Length;
+                if (!partAlias.Contains(new StructuralSpan(positions[0], positions[0] + partText.Length)))
+                {
+                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.OutOfOwnedSegment, partAlias.SourceId, partStart, partEnd, "OUT_OF_OWNED_SEGMENT"));
+                    failed = true;
+                    break;
+                }
+                var identity = $"{partAlias.SourceId}:{partStart}:{partEnd}";
+                if (!seen.Add(identity))
+                {
+                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.DuplicateBinding, partAlias.SourceId, partStart, partEnd, "DUPLICATE_BINDING"));
+                    failed = true;
+                    break;
+                }
+                boundParts.Add(new(partAlias.Alias, partAlias.SourceId, partAlias.SourceOrdinal, partText, partStart, partEnd));
             }
-            var start = positions[0] + alias.SourceSpan.Start;
-            var end = start + text.Length;
-            var span = new StructuralSpan(start, end);
-            if (!alias.Contains(new StructuralSpan(positions[0], positions[0] + text.Length)))
-            {
-                audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.OutOfOwnedSegment, alias.SourceId, start, end, "OUT_OF_OWNED_SEGMENT"));
-                continue;
-            }
-            var identity = $"{alias.SourceId}:{start}:{end}";
-            if (!seen.Add(identity))
-            {
-                audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.DuplicateBinding, alias.SourceId, start, end, "DUPLICATE_BINDING"));
-                continue;
-            }
-            audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.Bound, alias.SourceId, start, end, null));
+            if (failed) continue;
+            var first = boundParts[0];
+            var text = string.Concat(boundParts.Select(part => part.Text));
+            audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.Bound, first.SourceId, first.Start, boundParts[^1].End, null));
             result.Add(new(alias.Alias, alias.SourceId, alias.SourceOrdinal, text,
                 proposal.SemanticRole ?? "OTHER_STRUCTURAL_LABEL",
                 proposal.StructuralType ?? "Heading",
                 proposal.Scope ?? "document_body",
-                proposal.RelationHints ?? [], start, end));
+                proposal.RelationHints ?? [], first.Start, boundParts[^1].End)
+            {
+                Parts = boundParts
+            });
         }
         observations = new ReadOnlyCollection<CanonicalSemanticBindingObservation>(audit);
         return new ReadOnlyCollection<CanonicalSemanticBoundHeading>(result);
     }
 
-    private static string? ComposeVerbatimText(CanonicalSemanticProposal proposal)
+    private static IReadOnlyList<string> ComposeVerbatimParts(CanonicalSemanticProposal proposal)
     {
-        if (!string.IsNullOrEmpty(proposal.VerbatimText)) return proposal.VerbatimText;
-        return proposal.VerbatimParts is { Count: > 0 }
-            ? string.Concat(proposal.VerbatimParts)
-            : null;
+        if (proposal.VerbatimParts is { Count: > 0 }) return proposal.VerbatimParts;
+        return !string.IsNullOrEmpty(proposal.VerbatimText) ? [proposal.VerbatimText] : [];
     }
+
+    private static IReadOnlyList<string> ResolveAliases(CanonicalSemanticProposal proposal) =>
+        proposal.SourceAliases is { Count: > 0 } ? proposal.SourceAliases : [proposal.SourceAlias];
 
     private static IReadOnlyList<int> FindExact(string source, string text)
     {
@@ -225,7 +283,11 @@ public sealed record CanonicalSemanticGraphOccurrence(
     int Start,
     int End,
     string OccurrenceKind,
-    string? ParentOccurrenceId);
+    string? ParentOccurrenceId)
+{
+    /// <summary>Optional structural facts resolved after semantic binding; absent means unresolved.</summary>
+    public int? Level { get; init; }
+}
 
 public sealed record CanonicalSemanticGraph(
     IReadOnlyList<CanonicalSemanticGraphOccurrence> Occurrences,
@@ -255,8 +317,19 @@ public static class CanonicalSemanticGraphResolver
             var kind = occurrences.Any(existing => existing.SemanticNodeId == nodeId)
                 ? (item.Scope.Contains("continuation", StringComparison.OrdinalIgnoreCase) ? "CONTINUATION" : "REPEAT")
                 : "PRIMARY";
+            var parentNodeHint = item.RelationHints.FirstOrDefault(hint => hint.StartsWith("parent-node:", StringComparison.Ordinal));
+            var parentNodeId = parentNodeHint is null ? null : parentNodeHint["parent-node:".Length..];
+            var parentOccurrence = parentNodeId is null
+                ? null
+                : occurrences.LastOrDefault(existing => existing.SemanticNodeId == parentNodeId)?.OccurrenceId;
+            var levelHint = item.RelationHints.FirstOrDefault(hint => hint.StartsWith("level:", StringComparison.Ordinal));
+            var level = levelHint is not null && int.TryParse(levelHint["level:".Length..], out var parsedLevel)
+                ? parsedLevel : (int?)null;
             occurrences.Add(new(occurrenceId, nodeId, item.Alias, item.SourceId, item.SourceOrdinal,
-                item.Text, item.SemanticRole, item.StructuralType, item.Scope, item.Start, item.End, kind, null));
+                item.Text, item.SemanticRole, item.StructuralType, item.Scope, item.Start, item.End, kind, parentOccurrence)
+            {
+                Level = level
+            });
         }
         var projection = occurrences
             .GroupBy(item => item.SemanticNodeId, StringComparer.Ordinal)
