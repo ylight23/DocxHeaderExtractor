@@ -2,7 +2,7 @@
   "artifactKind": "a99_canonical_semantic_gold_vnext_migration",
   "schemaVersion": "a99-canonical-semantic-gold-vnext-migration-v3",
   "authorityRegistry": "freeze-registry.v6.visual-unified.json",
-  "authorityRegistrySha256": "1ffd780dced497f6554e6a545a6df7bf5038207107a643e66fe225e19a9c6805",
+  "authorityRegistrySha256": "c3fb1fa036d786538d3b6049e4d62967d7721ed729493c3769fc7d9d220d7a88",
   "executionTask": "TASK-a99-vnext-EXECUTE-final.v6.visual-recovery.md",
   "executionTaskSha256": "8c52ca8b5cfd89ac892de7fdb4688b4bd5ab9bc86debe792f7a96a18d69c2cd2",
   "semanticInputArtifacts": [
@@ -17,13 +17,6 @@
   "exactOccurrenceFrozen": 0,
   "occurrenceArtifactsCreated": 0,
   "bindingArtifactsCreated": 0,
-  "sourceLineageDrift": [
-    {
-      "authorityKey": "SRC-057",
-      "expected": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
-      "actual": "70b83a17627c35408ff240cb3a7395b0c110b5658c1f3022ca2df2199446c319",
-      "status": "SOURCE_DRIFT_BLOCKED"
-    }
-  ],
+  "sourceLineageDrift": [],
   "goldRuntimeInputs": false
 }

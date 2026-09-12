@@ -24,6 +24,10 @@ function Write-Json([string]$Path, $Value) {
 }
 
 function Find-Source($entry) {
+    if (-not [string]::IsNullOrWhiteSpace($entry.authoritySourcePath)) {
+        $authorityPath = Join-Path $RepoRoot ($entry.authoritySourcePath.Replace('/', '\'))
+        if (Test-Path -LiteralPath $authorityPath -PathType Leaf) { return Get-Item -LiteralPath $authorityPath }
+    }
     $matches = @(Get-ChildItem -Path $RepoRoot -Recurse -File -Filter $entry.fileName |
         Where-Object { $_.FullName -notlike '*\.claude\worktrees\*' -and $_.FullName -notlike '*\.git\*' })
     if ($matches.Count -eq 0) { throw "SOURCE_NOT_FOUND:$($entry.key):$($entry.fileName)" }
@@ -39,16 +43,21 @@ foreach ($entry in $approved) {
     $source = Find-Source $entry
     $sourcePath = $source.FullName.Substring($RepoRoot.Length).TrimStart('\').Replace('\', '/')
     $sourceHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $source.FullName).Hash.ToLowerInvariant()
-    $hashVerified = [string]::IsNullOrWhiteSpace($entry.sourceSha256) -or $sourceHash -eq $entry.sourceSha256.ToLowerInvariant()
-    if (-not $hashVerified) { $drift += [ordered]@{ authorityKey = $entry.key; expected = $entry.sourceSha256; actual = $sourceHash; status = 'SOURCE_DRIFT_BLOCKED' } }
+    $authorityHash = if ([string]::IsNullOrWhiteSpace($entry.authoritySourceSha256)) { $entry.sourceSha256 } else { $entry.authoritySourceSha256 }
+    $hashVerified = [string]::IsNullOrWhiteSpace($authorityHash) -or $sourceHash -eq $authorityHash.ToLowerInvariant()
+    if (-not $hashVerified) { $drift += [ordered]@{ authorityKey = $entry.key; authoritySourcePath = $entry.authoritySourcePath; expected = $authorityHash; actual = $sourceHash; status = 'SOURCE_DRIFT_BLOCKED' } }
     $semantic = [ordered]@{
         artifactKind = 'a99_canonical_semantic_freeze'
         schemaVersion = 'a99-canonical-semantic-freeze-vnext-visual-unified-v1'
         authorityKey = $entry.key
         fileName = $entry.fileName
+        mediaType = if ([string]::IsNullOrWhiteSpace($entry.mediaType)) { $source.Extension.TrimStart('.').ToUpperInvariant() } else { $entry.mediaType }
+        authoritySourcePath = if ([string]::IsNullOrWhiteSpace($entry.authoritySourcePath)) { $sourcePath } else { $entry.authoritySourcePath }
         sourcePath = $sourcePath
         sourceSha256 = $sourceHash
-        registrySourceSha256 = $entry.sourceSha256
+        registrySourceSha256 = $authorityHash
+        authoritySourceSha256 = $authorityHash
+        currentSourceSha256 = $sourceHash
         sourceLineageVerified = $hashVerified
         sourceLineageStatus = if ($hashVerified) { 'VERIFIED' } else { 'SOURCE_DRIFT_BLOCKED' }
         semanticHeadingTotal = [int]$entry.semanticHeadingTotal
@@ -60,6 +69,7 @@ foreach ($entry in $approved) {
         repeatedOrContinuationMayBeHeading = $true
         newSemanticNodeRequiredForHeading = $false
         exactOccurrenceFreeze = $false
+        bindingAllowed = $hashVerified
         modalityHints = [ordered]@{
             visualRecoveryRequired = [bool]($entry.key -eq 'DOC-0202')
             visualAdjudicationAvailable = $true
@@ -80,7 +90,7 @@ foreach ($entry in $approved) {
         notes = @('Semantic total is authoritative; no occurrence list or span was synthesized from the total.', 'Visual sources use VISUAL_REGION binding when exact occurrence authority is later materialized.')
     }
     Write-Json (Join-Path $target "semantic\$($entry.key).semantic-freeze.v1.json") $semantic
-    $resolved += [ordered]@{ authorityKey = $entry.key; fileName = $entry.fileName; sourcePath = $sourcePath; sourceSha256 = $sourceHash; registrySourceSha256 = $entry.sourceSha256; sourceLineageVerified = $hashVerified; semanticHeadingTotal = [int]$entry.semanticHeadingTotal; semanticArtifact = "semantic/$($entry.key).semantic-freeze.v1.json"; occurrenceEvaluable = $false; characterSpanEvaluable = $false; visualBindingEvaluable = $false }
+    $resolved += [ordered]@{ authorityKey = $entry.key; fileName = $entry.fileName; mediaType = if ([string]::IsNullOrWhiteSpace($entry.mediaType)) { $source.Extension.TrimStart('.').ToUpperInvariant() } else { $entry.mediaType }; authoritySourcePath = if ([string]::IsNullOrWhiteSpace($entry.authoritySourcePath)) { $sourcePath } else { $entry.authoritySourcePath }; sourcePath = $sourcePath; sourceSha256 = $sourceHash; registrySourceSha256 = $authorityHash; authoritySourceSha256 = $authorityHash; currentSourceSha256 = $sourceHash; sourceLineageVerified = $hashVerified; lineageStatus = if ($hashVerified) { 'VERIFIED' } else { 'SOURCE_DRIFT_BLOCKED' }; bindingAllowed = $hashVerified; semanticHeadingTotal = [int]$entry.semanticHeadingTotal; semanticArtifact = "semantic/$($entry.key).semantic-freeze.v1.json"; occurrenceEvaluable = [bool]$entry.occurrenceEvaluable; characterSpanEvaluable = [bool]$entry.characterSpanEvaluable; visualBindingEvaluable = $false }
 }
 
 foreach ($input in @(@{ Key = 'DOC-0123'; Path = $Doc0123Input }, @{ Key = 'DOC-0202'; Path = $Doc0202Input })) {
@@ -164,9 +174,11 @@ page, image, region and transcript hashes; it never fabricates UTF-16 offsets fo
 visual evidence are reconciled before semantic adjudication, while task projection remains after
 the canonical semantic boundary.
 
-`SRC-057` has a source-hash drift recorded in `inventory.v1.json`; its approved semantic total is
-retained without pretending that the current source is lineage-verified. Resolve that drift before
-materializing exact occurrence or binding authority.
+`SRC-057` is authoritative as the DOCX at
+`todo10_8/heading_corpus_95_word/04_giao_trinh/057_Quantitative_Methods_in_Finance_Lecture_Notes.docx`
+with authority and current repository hash `f7a09e...`. The prior PDF metadata was a type/path
+misattribution; the semantic total 831 is retained and no exact occurrence list is synthesized
+from that total. Exact occurrence freeze remains a separate, later authority step.
 '@
 [System.IO.File]::WriteAllText((Join-Path $target 'README.md'), $readme.TrimEnd() + [Environment]::NewLine, [System.Text.UTF8Encoding]::new($false))
 Write-Output "MIGRATED_V6=$($resolved.Count) AGGREGATE=3955 SOURCE_DRIFT=$($drift.Count) TARGET=$target"

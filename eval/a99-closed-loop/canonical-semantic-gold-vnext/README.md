@@ -11,6 +11,8 @@ page, image, region and transcript hashes; it never fabricates UTF-16 offsets fo
 visual evidence are reconciled before semantic adjudication, while task projection remains after
 the canonical semantic boundary.
 
-`SRC-057` has a source-hash drift recorded in `inventory.v1.json`; its approved semantic total is
-retained without pretending that the current source is lineage-verified. Resolve that drift before
-materializing exact occurrence or binding authority.
+`SRC-057` is authoritative as the DOCX at
+`todo10_8/heading_corpus_95_word/04_giao_trinh/057_Quantitative_Methods_in_Finance_Lecture_Notes.docx`
+with authority and current repository hash `f7a09e...`. The prior PDF metadata was a type/path
+misattribution; the semantic total 831 is retained and no exact occurrence list is synthesized
+from that total. Exact occurrence freeze remains a separate, later authority step.
