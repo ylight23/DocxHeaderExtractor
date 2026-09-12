@@ -2592,8 +2592,12 @@ public static partial class SemanticTextGeneralizationRunner
                     try
                     {
                         var client = new OpenRouterCanonicalSemanticTextModel(model);
+                        var productionInput = await BuildProductionInputAsync(context, ct);
+                        var visualClient = productionInput.VisualPages is { Count: > 0 }
+                            ? new OpenRouterCanonicalSemanticVisualModel(model)
+                            : null;
                         production = await CanonicalSemanticProductionEntryPoint.RunAsync(
-                            BuildProductionInput(context), client, null, requestId, ct);
+                            productionInput, client, visualClient, requestId, ct);
                         telemetry = model.Telemetry.LastOrDefault(item => item.DocumentId == context.DocumentId);
                         if (telemetry is null) throw new InvalidOperationException("PRODUCTION_TELEMETRY_MISSING");
                         response = new SemanticTextResponse(production.ModelProposals.Select(item =>
@@ -2980,40 +2984,24 @@ public static partial class SemanticTextGeneralizationRunner
         return new { schemaVersion = "a99-semantic-text-generalization-repeat-summary-v1", cohortSize, repeatCount = RepeatCount, documents = docs, cohortMicroByRepeat = cohort, minRepeatMicroPrecision = cohort.Min(x => x.Precision), minRepeatMicroRecall = cohort.Min(x => x.Recall), minRepeatMicroF1 = cohort.Min(x => x.F1) };
     }
 
-    private static CanonicalSemanticProductionInput BuildProductionInput(
-        DocumentContext context, IReadOnlyList<CanonicalSemanticProposal>? proposals = null)
+    private static async Task<CanonicalSemanticProductionInput> BuildProductionInputAsync(
+        DocumentContext context, CancellationToken ct)
     {
-        var catalog = new DocumentSourceCatalog(context.SourceRows.Select(row =>
-            new DocumentSourceUnit(row.SourceId, row.SourceOrdinal, row.RawText,
-                new SourceAnchor
-                {
-                    SourceType = "DOCX_TEXT",
-                    ParagraphId = row.SourceId,
-                    ParagraphIndex = row.SourceOrdinal,
-                },
-                new StructuralSpan(0, row.RawText.Length))));
-        var mediaCount = 0;
-        if (context.SourcePath.EndsWith(".docx", StringComparison.OrdinalIgnoreCase))
-        {
-            mediaCount = CanonicalSemanticDocxMediaInventory.Inspect(context.SourcePath).Count;
-        }
-        var pages = new[]
-        {
-            new CanonicalSemanticPageEvidence(
-                "P0001", context.SourceRows.Count > 0, mediaCount, "OOXML_TEXT_AND_MEDIA_INVENTORY")
-        };
-        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
+        var prepared = await VisualSourceEvidenceBuilder.BuildAsync(context.SourcePath, int.MaxValue, ct);
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(prepared.Catalog);
         var hints = aliases.Select(alias =>
             new SemanticCandidateAttentionHint(alias.Alias, false, "ATTENTION_ONLY_NOT_RECALL_GATE")).ToArray();
         return new CanonicalSemanticProductionInput(
-            catalog,
-            proposals,
+            prepared.Catalog,
+            null,
             context.SourceSha256,
-            pages,
+            prepared.Pages,
             hints,
             context.SourceRows.Select(row => $"{row.Alias}: {row.RawText}").ToArray(),
             [],
             [context.Packet],
+            VisualPages: prepared.VisualPages,
+            ExpectedSourceSha256: context.SourceSha256,
             DocumentId: context.DocumentId);
     }
 
