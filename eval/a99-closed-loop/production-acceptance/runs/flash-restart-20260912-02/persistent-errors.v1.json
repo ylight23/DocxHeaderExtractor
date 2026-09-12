@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-persistent-errors-v1",
+  "persistentErrors": [
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[158]:56:62",
+      "exactSourceText": "Agenda",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[17]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[26]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[12]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[17]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[18]:0:34",
+      "exactSourceText": "Commonwealth of Independent States",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[19]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[24]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    }
+  ],
+  "intermittentErrors": [],
+  "persistentFalsePositives": [
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:1:266",
+      "exactSourceText": "CH\u00CDNH PH\u1EE6 |C\u1ED8NG H\u00D2A X\u00C3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM | |________ |\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc | |S\u1ED1: 47/2020/N\u0110-CP |_______________________ | | |H\u00E0 N\u1ED9i, ng\u00E0y 09 th\u00E1ng 4 n\u0103m 2020 | NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[3]:0:47",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[46]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[3]:0:87",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    }
+  ],
+  "intermittentFalsePositives": [
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[4]:0:24",
+      "exactSourceText": "TECHNICAL ADVISORY GROUP",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "110"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[175]:0:36",
+      "exactSourceText": "ICP Technical Advisory Group members",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[176]:0:42",
+      "exactSourceText": "ICP experts, guest speakers, and observers",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[177]:0:42",
+      "exactSourceText": "ICP Inter-Agency Coordination Group (IACG)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[178]:0:10",
+      "exactSourceText": "World Bank",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    }
+  ],
+  "persistentErrorCounts": {
+    "MODEL_OMISSION": 10,
+    "MODEL_WRONG_SPAN": 1
+  },
+  "intermittentErrorCounts": {},
+  "persistentFalsePositiveCount": 4,
+  "intermittentFalsePositiveCount": 5
+}
