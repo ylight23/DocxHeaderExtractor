@@ -73,6 +73,31 @@ public sealed record CanonicalSemanticProductionResult(
 {
     public CanonicalSemanticGraph CanonicalGraph { get; init; } = new([], []);
 
+    /// <summary>Raw model proposals retained for forensic telemetry and provenance.</summary>
+    public SemanticConflictNormalizationResult ConflictNormalization { get; init; } =
+        new([], [], 0, 0, 0, 0);
+
+    public IReadOnlyList<CanonicalSemanticProposal> NormalizedModelProposals =>
+        ConflictNormalization.NormalizedProposals;
+
+    public IReadOnlyList<SemanticProposalConflict> SemanticConflicts =>
+        ConflictNormalization.Conflicts;
+
+    public int SemanticProposalInputCount =>
+        ConflictNormalization.SemanticProposalInputCount;
+
+    public int SemanticProposalNormalizedCount =>
+        ConflictNormalization.SemanticProposalNormalizedCount;
+
+    public int ExactSemanticDuplicatesCollapsed =>
+        ConflictNormalization.ExactSemanticDuplicatesCollapsed;
+
+    public int SemanticConflictProposalCount =>
+        ConflictNormalization.SemanticConflictProposalCount;
+
+    public int SemanticConflictCount =>
+        ConflictNormalization.Conflicts.Count;
+
     public IReadOnlyList<CanonicalSemanticGraphOccurrence> CanonicalOccurrences =>
         CanonicalGraph.Occurrences;
 
@@ -146,7 +171,8 @@ public static class CanonicalSemanticProductionEntryPoint
         foreach (var alias in aliases)
             _ = SemanticCandidatePolicy.CanAcceptOwnedOccurrence(alias.Alias, input.CandidateHints);
         var context = SemanticContextPacker.Pack(input.TargetEvidence, input.LocalContext, input.GlobalContext);
-        var text = CanonicalSemanticPipeline.Run(input.SourceCatalog, semanticProposals,
+        var normalization = SemanticConflictNormalizer.Normalize(semanticProposals, aliases);
+        var text = CanonicalSemanticPipeline.Run(input.SourceCatalog, normalization.NormalizedProposals,
             input.SourceSha256, input.ExpectedSourceSha256);
 
         var visualOccurrences = input.VisualBlocks is { Count: > 0 }
@@ -179,8 +205,13 @@ public static class CanonicalSemanticProductionEntryPoint
             new SemanticTransitionLedgerEntry("SOURCE_EVIDENCE", "PRESERVED", aliases.Count, aliases.Count),
             new SemanticTransitionLedgerEntry("CANDIDATE_ATTENTION", "PRESERVED", aliases.Count, aliases.Count),
             new SemanticTransitionLedgerEntry("CONTEXT_PACKING", "PRESERVED", context.VisibleEvidence.Count, context.VisibleEvidence.Count),
+            new SemanticTransitionLedgerEntry("SEMANTIC_CONFLICT_CHECK",
+                normalization.Conflicts.Count == 0 ? "PRESERVED" : "CONFLICTS_WITHHELD",
+                normalization.SemanticProposalInputCount,
+                normalization.SemanticProposalNormalizedCount,
+                normalization.Conflicts.Count == 0 ? null : "SEMANTIC_PROPOSAL_CONFLICT"),
             new SemanticTransitionLedgerEntry("SEMANTIC_CONTRACT", "PRESERVED", semanticProposals.Count, semanticProposals.Count),
-            new SemanticTransitionLedgerEntry("TEXT_UTF16_BINDING", "PRESERVED", semanticProposals.Count, text.BoundHeadings.Count),
+            new SemanticTransitionLedgerEntry("TEXT_UTF16_BINDING", "PRESERVED", normalization.SemanticProposalNormalizedCount, text.BoundHeadings.Count),
             new SemanticTransitionLedgerEntry("VISUAL_RECOVERY", "PRESERVED", input.VisualBlocks?.Count ?? 0, visualOccurrences.Count),
             new SemanticTransitionLedgerEntry("VISUAL_REGION_BINDING", "PRESERVED", visualProposals.Count, visualHeadings.Count),
             new SemanticTransitionLedgerEntry("CROSS_MODAL_RECONCILIATION", "PRESERVED", textEvidence.Length + visualEvidence.Length, unified.Count),
@@ -193,7 +224,7 @@ public static class CanonicalSemanticProductionEntryPoint
         return new(profile, context, input.CandidateHints, text,
             visualOccurrences, visualHeadings, unified, ledger, semanticProposals,
             textTelemetry, visualTelemetry, textModelCalls, visualModelCalls)
-        { CanonicalGraph = canonicalGraph };
+        { CanonicalGraph = canonicalGraph, ConflictNormalization = normalization };
     }
 
     private static CanonicalSemanticGraph CombineGraphs(
