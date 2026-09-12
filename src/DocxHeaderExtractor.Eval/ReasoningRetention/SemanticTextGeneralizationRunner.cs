@@ -2582,47 +2582,71 @@ public static partial class SemanticTextGeneralizationRunner
         try
         {
             var requestId = $"{SemanticTextExactBindingContract.ProtocolVersion}:{context.DocumentId}:{repeat}:{context.PacketHash}";
-            string rawContent;
-            while (true)
-            {
-                providerAttempts++;
-                try
-                {
-                    var providerResult = await model.CompleteRawStructuredSemanticAsync(
-                        context.DocumentId, ReasoningRoute.ModelCapabilityCeiling.ToString(), requestId,
-                        context.Packet, context.SourceRows.Sum(x => x.RawText.Length), context.SourceRows.Count, context.SourceRows.Count,
-                        SemanticTextExactBindingContract.System,
-                        SemanticTextExactBindingContract.BuildUser(context.Packet, ReasoningRoute.ModelCapabilityCeiling.ToString()),
-                        SemanticTextExactBindingContract.Schema(), "semantic_text_exact_binding_v1", ct);
-                    rawContent = providerResult.Content;
-                    telemetry = providerResult.Telemetry;
-                    break;
-                }
-                catch (ReasoningCompletionException) when (providerAttempts <= transientRetries && model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId)?.HttpStatus == 429)
-                {
-                    Console.WriteLine($"TRANSIENT_RETRY=HTTP_429/{context.DocumentId}/R{repeat}/attempt={providerAttempts + 1}");
-                    await Task.Delay(TimeSpan.FromSeconds(2), ct);
-                }
-                catch (FormatException ex) when (retryMalformedProviderResponse && providerAttempts <= 1 && ex.Message.Contains("choices-missing", StringComparison.OrdinalIgnoreCase))
-                {
-                    Console.WriteLine($"TRANSIENT_RETRY=PROVIDER_CHOICES_MISSING/{context.DocumentId}/R{repeat}/attempt={providerAttempts + 1}");
-                    await Task.Delay(TimeSpan.FromSeconds(2), ct);
-                }
-            }
-            var requestTelemetry = telemetry!;
-            telemetry = requestTelemetry;
-            var response = SemanticTextExactBindingContract.Parse(rawContent);
-            telemetry.StructuredOutputParsed = true;
-            IReadOnlyList<SemanticTextBoundHeading> localBound;
-            IReadOnlyList<SemanticTextBindingObservation> observations;
+            SemanticTextResponse response;
             CanonicalSemanticProductionResult? production = null;
             if (productionV6)
             {
-                var canonicalProposals = response.Headings.Select(heading => new CanonicalSemanticProposal(
-                    heading.Source, true, heading.Text, SemanticRole: heading.Role,
-                    Occurrence: heading.Occurrence, LeftExactContext: heading.LeftExactContext,
-                    RightExactContext: heading.RightExactContext)).ToArray();
-                production = CanonicalSemanticProductionEntryPoint.Run(BuildProductionInput(context, canonicalProposals));
+                while (true)
+                {
+                    providerAttempts++;
+                    try
+                    {
+                        var client = new OpenRouterCanonicalSemanticTextModel(model);
+                        production = await CanonicalSemanticProductionEntryPoint.RunAsync(
+                            BuildProductionInput(context), client, null, requestId, ct);
+                        telemetry = model.Telemetry.LastOrDefault(item => item.DocumentId == context.DocumentId);
+                        if (telemetry is null) throw new InvalidOperationException("PRODUCTION_TELEMETRY_MISSING");
+                        response = new SemanticTextResponse(production.ModelProposals.Select(item =>
+                            new SemanticTextHeading(item.SourceAlias, item.VerbatimText ?? string.Empty,
+                                item.SemanticRole ?? "OTHER_STRUCTURAL_LABEL", item.Occurrence,
+                                item.LeftExactContext, item.RightExactContext)).ToArray());
+                        break;
+                    }
+                    catch (ReasoningCompletionException) when (providerAttempts <= transientRetries && model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId)?.HttpStatus == 429)
+                    {
+                        Console.WriteLine($"TRANSIENT_RETRY=HTTP_429/{context.DocumentId}/R{repeat}/attempt={providerAttempts + 1}");
+                        await Task.Delay(TimeSpan.FromSeconds(2), ct);
+                    }
+                }
+            }
+            else
+            {
+                string rawContent;
+                while (true)
+                {
+                    providerAttempts++;
+                    try
+                    {
+                        var providerResult = await model.CompleteRawStructuredSemanticAsync(
+                            context.DocumentId, ReasoningRoute.ModelCapabilityCeiling.ToString(), requestId,
+                            context.Packet, context.SourceRows.Sum(x => x.RawText.Length), context.SourceRows.Count, context.SourceRows.Count,
+                            SemanticTextExactBindingContract.System,
+                            SemanticTextExactBindingContract.BuildUser(context.Packet, ReasoningRoute.ModelCapabilityCeiling.ToString()),
+                            SemanticTextExactBindingContract.Schema(), "semantic_text_exact_binding_v1", ct);
+                        rawContent = providerResult.Content;
+                        telemetry = providerResult.Telemetry;
+                        break;
+                    }
+                    catch (ReasoningCompletionException) when (providerAttempts <= transientRetries && model.Telemetry.LastOrDefault(x => x.DocumentId == context.DocumentId)?.HttpStatus == 429)
+                    {
+                        Console.WriteLine($"TRANSIENT_RETRY=HTTP_429/{context.DocumentId}/R{repeat}/attempt={providerAttempts + 1}");
+                        await Task.Delay(TimeSpan.FromSeconds(2), ct);
+                    }
+                    catch (FormatException ex) when (retryMalformedProviderResponse && providerAttempts <= 1 && ex.Message.Contains("choices-missing", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.WriteLine($"TRANSIENT_RETRY=PROVIDER_CHOICES_MISSING/{context.DocumentId}/R{repeat}/attempt={providerAttempts + 1}");
+                        await Task.Delay(TimeSpan.FromSeconds(2), ct);
+                    }
+                }
+                response = SemanticTextExactBindingContract.Parse(rawContent);
+            }
+            if (telemetry is null) throw new InvalidOperationException("PRODUCTION_TELEMETRY_MISSING");
+            telemetry.StructuredOutputParsed = true;
+            IReadOnlyList<SemanticTextBoundHeading> localBound;
+            IReadOnlyList<SemanticTextBindingObservation> observations;
+            if (productionV6)
+            {
+                if (production is null) throw new InvalidOperationException("PRODUCTION_RESULT_MISSING");
                 localBound = production.TextPipeline.BoundHeadings.Select(heading =>
                     new SemanticTextBoundHeading(heading.Alias, heading.SourceId, heading.SourceOrdinal,
                         heading.Text, heading.SemanticRole, heading.Start, heading.End)).ToArray();
@@ -2957,7 +2981,7 @@ public static partial class SemanticTextGeneralizationRunner
     }
 
     private static CanonicalSemanticProductionInput BuildProductionInput(
-        DocumentContext context, IReadOnlyList<CanonicalSemanticProposal> proposals)
+        DocumentContext context, IReadOnlyList<CanonicalSemanticProposal>? proposals = null)
     {
         var catalog = new DocumentSourceCatalog(context.SourceRows.Select(row =>
             new DocumentSourceUnit(row.SourceId, row.SourceOrdinal, row.RawText,
@@ -2989,7 +3013,8 @@ public static partial class SemanticTextGeneralizationRunner
             hints,
             context.SourceRows.Select(row => $"{row.Alias}: {row.RawText}").ToArray(),
             [],
-            [context.Packet]);
+            [context.Packet],
+            DocumentId: context.DocumentId);
     }
 
     private static IReadOnlyList<SemanticTextBindingObservation> MapProductionObservations(

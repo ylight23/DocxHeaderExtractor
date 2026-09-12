@@ -226,6 +226,36 @@ public sealed class CanonicalSemanticVnextRuntimeTests
         Assert.Equal("VISUAL_REGION", result.VisualHeadings[0].Binding.CoordinateSystem);
     }
 
+    [Fact]
+    public async Task Async_production_entry_point_owns_text_inference_before_binding()
+    {
+        var result = await CanonicalSemanticProductionEntryPoint.RunAsync(new(
+            Catalog(("p1", "😀 Heading")),
+            null,
+            "source-hash",
+            [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
+            [], ["Heading"], [], ["source-context"],
+            DocumentId: "DOC-TEST"),
+            new FakeTextModel());
+
+        Assert.Equal(1, result.TextModelCalls);
+        Assert.Equal("S0001", result.ModelProposals[0].SourceAlias);
+        Assert.Single(result.TextPipeline.BoundHeadings);
+        Assert.Equal(3, result.TextPipeline.BoundHeadings[0].Start);
+    }
+
+    private sealed class FakeTextModel : ICanonicalSemanticTextModel
+    {
+        public Task<CanonicalSemanticTextInferenceResult> InferAsync(
+            CanonicalSemanticProductionInput input,
+            SemanticContextPacket packedContext,
+            string requestId,
+            CancellationToken cancellationToken = default) =>
+            Task.FromResult(new CanonicalSemanticTextInferenceResult(
+                [new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION")],
+                new CanonicalSemanticInferenceTelemetry("fake", "stop")));
+    }
+
     private static CanonicalSemanticGraph Graph(params CanonicalSemanticProposal[] proposals)
     {
         var units = proposals.Select((proposal, index) => (
