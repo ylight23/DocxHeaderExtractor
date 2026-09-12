@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "a99-v6-source-fidelity-paired-manifest-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "executionOrder": [
+    "CONTROL_R1",
+    "FAITHFUL_R1",
+    "CONTROL_R2",
+    "FAITHFUL_R2",
+    "CONTROL_R3",
+    "FAITHFUL_R3"
+  ],
+  "repeats": 3,
+  "interleaved": true,
+  "causalDelta": "SOURCE_PREPARATION_ONLY",
+  "control": {
+    "mode": "CONTROL_CURRENT_MERGED_DOCX",
+    "sourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+    "sourceAliasCount": 3,
+    "maxAliasChars": 60769,
+    "sourceTextCharacters": 60919,
+    "packetCharacters": 123761,
+    "packetSha256": "65b616df872739a49c9cba307f1530c6673e563bb014723ecabe395485a34afe"
+  },
+  "faithful": {
+    "mode": "FAITHFUL_LIBREOFFICE_DOCX",
+    "sourcePath": "eval/a99-closed-loop/source-fidelity-audit/DOC-0205/converted-docx/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "sourceAliasCount": 452,
+    "maxAliasChars": 742,
+    "sourceTextCharacters": 60176,
+    "packetCharacters": 144477,
+    "packetSha256": "209dbffcbcf8060c3dd665e3eb9f2f3f37674df2a0dfba8167cd4073d277fcd3"
+  },
+  "semanticContract": "a99-semantic-text-exact-binding-v1",
+  "semanticPromptSha256": "a9603fe817e4a6ae1eb3085fd86b324e76c42a2aed934692a949d1aee4e68cbb",
+  "semanticSchemaSha256": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
+  "sameModel": true,
+  "sameProviderSetup": true,
+  "sameGoldAuthority": true,
+  "candidateGeneration": false,
+  "candidateRecallGate": false,
+  "modelTextRequiredForBinding": true,
+  "modelNumericOffsets": false,
+  "multiParagraphGoldPolicy": "NOT_SINGLE_UTF16_SPAN;REPORT_SEPARATELY",
+  "goldReadBeforeFreeze": false,
+  "expectedProviderCalls": 6
+}

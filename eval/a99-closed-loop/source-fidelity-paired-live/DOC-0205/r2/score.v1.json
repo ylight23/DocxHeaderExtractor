@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "a99-v6-source-fidelity-paired-score-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r2",
+  "controlFullStrict71": {
+    "tp": 71,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "excludedPredictions": 0
+  },
+  "controlComparable66": {
+    "tp": 66,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "excludedPredictions": 5
+  },
+  "faithfulComparable66": {
+    "tp": 28,
+    "fp": 8,
+    "fn": 38,
+    "precision": 0.7777777777777778,
+    "recall": 0.42424242424242425,
+    "f1": 0.5490196078431373,
+    "excludedPredictions": 9
+  },
+  "faithfulCrossParagraphGold": 5,
+  "diagnostics": {
+    "control": {
+      "sourceAliasCount": 3,
+      "maxAliasChars": 60769,
+      "packetCharacters": 123761,
+      "providerRequestBytes": "NOT_EXPOSED_BY_ADAPTER",
+      "inputTokens": 78175,
+      "rawProposalCount": 72,
+      "modelTextDrift": 1,
+      "modelOmission": 0,
+      "bindFailure": 1,
+      "systemLoss": 0,
+      "finishReason": "stop"
+    },
+    "faithful": {
+      "sourceAliasCount": 452,
+      "maxAliasChars": 742,
+      "packetCharacters": 144477,
+      "providerRequestBytes": "NOT_EXPOSED_BY_ADAPTER",
+      "inputTokens": 85628,
+      "rawProposalCount": 84,
+      "modelTextDrift": 39,
+      "modelOmission": 3,
+      "bindFailure": 39,
+      "systemLoss": 38,
+      "finishReason": "stop"
+    }
+  },
+  "goldReadBeforeFreeze": false
+}

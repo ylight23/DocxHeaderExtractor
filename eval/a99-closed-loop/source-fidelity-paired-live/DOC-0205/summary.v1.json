@@ -1,0 +1,248 @@
+{
+  "schemaVersion": "a99-v6-source-fidelity-paired-summary-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "startHead": "6a95a85c97d097a68007f5687d13ec5df384e915",
+  "endHead": "6a95a85c97d097a68007f5687d13ec5df384e915",
+  "interleaved": true,
+  "repeats": 3,
+  "modelCalls": 6,
+  "providerCalls": 6,
+  "providerCallsExecutedThisProcess": 0,
+  "frozenBranchesReused": 6,
+  "fullControlStrict71": {
+    "tp": 210,
+    "fp": 1,
+    "fn": 3,
+    "precision": 0.995260663507109,
+    "recall": 0.9859154929577465,
+    "f1": 0.9905660377358492,
+    "excludedPredictions": 0
+  },
+  "pairedComparable66": {
+    "control": {
+      "tp": 195,
+      "fp": 1,
+      "fn": 3,
+      "precision": 0.9948979591836735,
+      "recall": 0.9848484848484849,
+      "f1": 0.9898477157360407,
+      "excludedPredictions": 15
+    },
+    "faithful": {
+      "tp": 84,
+      "fp": 24,
+      "fn": 114,
+      "precision": 0.7777777777777778,
+      "recall": 0.42424242424242425,
+      "f1": 0.5490196078431373,
+      "excludedPredictions": 27
+    }
+  },
+  "faithfulCrossParagraphGold": 5,
+  "rows": [
+    {
+      "repeat": "r1",
+      "control": {
+        "mode": "CONTROL_CURRENT_MERGED_DOCX",
+        "score": {
+          "tp": 71,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "excludedPredictions": 0
+        },
+        "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+        "sourceAliasCount": 3,
+        "maxAliasChars": 60769,
+        "packetCharacters": 123761,
+        "providerRequestBytes": "NOT_EXPOSED_BY_ADAPTER",
+        "rawProposalCount": 72,
+        "boundCount": 71,
+        "finalCount": 71,
+        "modelTextDrift": 1,
+        "bindFailure": 1,
+        "systemLoss": 0
+      },
+      "faithful": {
+        "mode": "FAITHFUL_LIBREOFFICE_DOCX",
+        "score": {
+          "tp": 28,
+          "fp": 8,
+          "fn": 38,
+          "precision": 0.7777777777777778,
+          "recall": 0.42424242424242425,
+          "f1": 0.5490196078431373,
+          "excludedPredictions": 9
+        },
+        "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+        "sourceAliasCount": 452,
+        "maxAliasChars": 742,
+        "packetCharacters": 144477,
+        "providerRequestBytes": "NOT_EXPOSED_BY_ADAPTER",
+        "rawProposalCount": 84,
+        "boundCount": 45,
+        "finalCount": 45,
+        "modelTextDrift": 39,
+        "bindFailure": 39,
+        "systemLoss": 0
+      },
+      "controlComparable": {
+        "tp": 66,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "excludedPredictions": 5
+      },
+      "faithfulComparable": {
+        "tp": 28,
+        "fp": 8,
+        "fn": 38,
+        "precision": 0.7777777777777778,
+        "recall": 0.42424242424242425,
+        "f1": 0.5490196078431373,
+        "excludedPredictions": 9
+      }
+    },
+    {
+      "repeat": "r2",
+      "control": {
+        "mode": "CONTROL_CURRENT_MERGED_DOCX",
+        "score": {
+          "tp": 71,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "excludedPredictions": 0
+        },
+        "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+        "sourceAliasCount": 3,
+        "maxAliasChars": 60769,
+        "packetCharacters": 123761,
+        "providerRequestBytes": "NOT_EXPOSED_BY_ADAPTER",
+        "rawProposalCount": 72,
+        "boundCount": 71,
+        "finalCount": 71,
+        "modelTextDrift": 1,
+        "bindFailure": 1,
+        "systemLoss": 0
+      },
+      "faithful": {
+        "mode": "FAITHFUL_LIBREOFFICE_DOCX",
+        "score": {
+          "tp": 28,
+          "fp": 8,
+          "fn": 38,
+          "precision": 0.7777777777777778,
+          "recall": 0.42424242424242425,
+          "f1": 0.5490196078431373,
+          "excludedPredictions": 9
+        },
+        "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+        "sourceAliasCount": 452,
+        "maxAliasChars": 742,
+        "packetCharacters": 144477,
+        "providerRequestBytes": "NOT_EXPOSED_BY_ADAPTER",
+        "rawProposalCount": 84,
+        "boundCount": 45,
+        "finalCount": 45,
+        "modelTextDrift": 39,
+        "bindFailure": 39,
+        "systemLoss": 0
+      },
+      "controlComparable": {
+        "tp": 66,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "excludedPredictions": 5
+      },
+      "faithfulComparable": {
+        "tp": 28,
+        "fp": 8,
+        "fn": 38,
+        "precision": 0.7777777777777778,
+        "recall": 0.42424242424242425,
+        "f1": 0.5490196078431373,
+        "excludedPredictions": 9
+      }
+    },
+    {
+      "repeat": "r3",
+      "control": {
+        "mode": "CONTROL_CURRENT_MERGED_DOCX",
+        "score": {
+          "tp": 68,
+          "fp": 1,
+          "fn": 3,
+          "precision": 0.9855072463768116,
+          "recall": 0.9577464788732394,
+          "f1": 0.9714285714285714,
+          "excludedPredictions": 0
+        },
+        "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+        "sourceAliasCount": 3,
+        "maxAliasChars": 60769,
+        "packetCharacters": 123761,
+        "providerRequestBytes": "NOT_EXPOSED_BY_ADAPTER",
+        "rawProposalCount": 72,
+        "boundCount": 69,
+        "finalCount": 69,
+        "modelTextDrift": 3,
+        "bindFailure": 3,
+        "systemLoss": 0
+      },
+      "faithful": {
+        "mode": "FAITHFUL_LIBREOFFICE_DOCX",
+        "score": {
+          "tp": 28,
+          "fp": 8,
+          "fn": 38,
+          "precision": 0.7777777777777778,
+          "recall": 0.42424242424242425,
+          "f1": 0.5490196078431373,
+          "excludedPredictions": 9
+        },
+        "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+        "sourceAliasCount": 452,
+        "maxAliasChars": 742,
+        "packetCharacters": 144477,
+        "providerRequestBytes": "NOT_EXPOSED_BY_ADAPTER",
+        "rawProposalCount": 84,
+        "boundCount": 45,
+        "finalCount": 45,
+        "modelTextDrift": 39,
+        "bindFailure": 39,
+        "systemLoss": 0
+      },
+      "controlComparable": {
+        "tp": 63,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.984375,
+        "recall": 0.9545454545454546,
+        "f1": 0.9692307692307692,
+        "excludedPredictions": 5
+      },
+      "faithfulComparable": {
+        "tp": 28,
+        "fp": 8,
+        "fn": 38,
+        "precision": 0.7777777777777778,
+        "recall": 0.42424242424242425,
+        "f1": 0.5490196078431373,
+        "excludedPredictions": 9
+      }
+    }
+  ],
+  "decision": "FAITHFUL_SOURCE_NO_PAIRED_LIFT",
+  "goldFirewall": "PASS"
+}

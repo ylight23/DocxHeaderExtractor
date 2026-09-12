@@ -40,5 +40,33 @@ public sealed class SourceFidelityAuditTests
         Assert.NotEqual("Chương I QUY ĐỊNH CHUNG", paragraph.Text);
     }
 
+    [Fact]
+    public void PairedLiveScoreExcludesOnlyTheFiveNonComparableMultiParagraphGoldRows()
+    {
+        var root = TestRoot();
+        var artifact = Path.Combine(root, "eval", "a99-closed-loop", "source-fidelity-paired-live", "DOC-0205", "summary.v1.json");
+        if (!File.Exists(artifact)) return;
+
+        using var json = System.Text.Json.JsonDocument.Parse(File.ReadAllText(artifact));
+        var summary = json.RootElement;
+        Assert.Equal("FAITHFUL_SOURCE_NO_PAIRED_LIFT", summary.GetProperty("decision").GetString());
+        Assert.Equal(5, summary.GetProperty("faithfulCrossParagraphGold").GetInt32());
+
+        var comparable = summary.GetProperty("pairedComparable66");
+        var control = comparable.GetProperty("control");
+        var faithful = comparable.GetProperty("faithful");
+        Assert.Equal(195, control.GetProperty("tp").GetInt32());
+        Assert.Equal(1, control.GetProperty("fp").GetInt32());
+        Assert.Equal(3, control.GetProperty("fn").GetInt32());
+        Assert.Equal(15, control.GetProperty("excludedPredictions").GetInt32());
+        Assert.Equal(84, faithful.GetProperty("tp").GetInt32());
+        Assert.Equal(24, faithful.GetProperty("fp").GetInt32());
+        Assert.Equal(114, faithful.GetProperty("fn").GetInt32());
+        Assert.Equal(27, faithful.GetProperty("excludedPredictions").GetInt32());
+        Assert.Equal(6, summary.GetProperty("modelCalls").GetInt32());
+        Assert.Equal(6, summary.GetProperty("providerCalls").GetInt32());
+        Assert.Equal("PASS", summary.GetProperty("goldFirewall").GetString());
+    }
+
     private static string TestRoot() => Directory.GetParent(AppContext.BaseDirectory)!.Parent!.Parent!.Parent!.FullName;
 }

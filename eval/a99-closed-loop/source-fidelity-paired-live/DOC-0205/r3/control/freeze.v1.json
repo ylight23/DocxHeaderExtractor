@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "a99-v6-source-fidelity-paired-freeze-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r3",
+  "mode": "CONTROL_CURRENT_MERGED_DOCX",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "packetSha256": "65b616df872739a49c9cba307f1530c6673e563bb014723ecabe395485a34afe",
+  "predictionSha256": "2c275d57bb2cfe42e8ddf88a88fe20f43aa6d6f06efc745de3db3c0862009970",
+  "rawProposalCount": 72,
+  "boundCount": 69,
+  "finalCount": 69,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-12T17:54:50.8538899+00:00"
+}

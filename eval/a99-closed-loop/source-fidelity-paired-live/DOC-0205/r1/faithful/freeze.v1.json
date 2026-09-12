@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "a99-v6-source-fidelity-paired-freeze-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r1",
+  "mode": "FAITHFUL_LIBREOFFICE_DOCX",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "packetSha256": "209dbffcbcf8060c3dd665e3eb9f2f3f37674df2a0dfba8167cd4073d277fcd3",
+  "predictionSha256": "801c6d27e399587dcbff43da93b94cc11448ca8b93184c1d3e576ff1af68ee05",
+  "rawProposalCount": 84,
+  "boundCount": 45,
+  "finalCount": 45,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-12T17:49:32.7620846+00:00"
+}
