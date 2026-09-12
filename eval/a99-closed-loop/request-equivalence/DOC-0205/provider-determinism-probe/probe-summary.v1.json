@@ -1,0 +1,313 @@
+{
+  "schemaVersion": "a99-v6-provider-determinism-probe-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "providerRoute": "MODEL_DEFAULT",
+  "providerPinAdded": false,
+  "seedAdded": false,
+  "automaticRetries": false,
+  "requestRebuilt": false,
+  "requestBodyBytes": 139212,
+  "requestBodySha256": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+  "expectedRequestBodySha256": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+  "requestBodyStableAcrossCalls": true,
+  "probeCalls": 8,
+  "modelCalls": 8,
+  "providerCalls": 8,
+  "goldRead": false,
+  "predictionRead": true,
+  "referencePredictions": {
+    "oldRawSha256": "17165ca4754d2d614c76d894a0eece444174abf34d887591a04f1991c085d76c",
+    "newRawSha256": "7494da93a666dc0deec3bfb0d81148e2ebe759c7463ed2f6d0afd4222c760474",
+    "referenceRepeat": "r1",
+    "note": "Only frozen raw reference arrays were read; no Gold or score artifact was opened."
+  },
+  "distinctRawResponseHashes": 8,
+  "distinctParsedHeadingHashes": 2,
+  "rawResponseDeterminism": "RAW_RESPONSES_VARY",
+  "parsedHeadingDeterminism": "PARSED_HEADINGS_VARY",
+  "calls": [
+    {
+      "callNumber": 1,
+      "requestBodyBytes": 139212,
+      "requestBodySha256": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+      "httpStatus": 200,
+      "rawResponseBytes": 13566,
+      "rawResponseSha256": "db629a4977bdcfab5e12425883d37bc92a58497b3a2d7f791360dabf3d29411b",
+      "parsedHeadingSha256": "b8f001d178f592a13b6b4c3030083fc4412bfa5543f889261d58b25f88e927f9",
+      "rawHeadingCount": 72,
+      "actualProvider": "Alibaba",
+      "responseModel": "qwen/qwen3.7-flash",
+      "responseId": "gen-1789219436-kjCzDMOiWvXAUGpg6eIh",
+      "created": "1789219436",
+      "finishReason": "stop",
+      "inputTokens": 78175,
+      "reasoningTokens": 6828,
+      "outputTokens": 10678,
+      "latencyMs": 65244,
+      "comparisonVsOld": {
+        "sameAliasSameText": 72,
+        "textDrift": 0,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "comparisonVsNew": {
+        "sameAliasSameText": 49,
+        "textDrift": 23,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "safeResponseHeaders": {
+        "Server-Timing": "cfCacheStatus;desc=\u0022DYNAMIC\u0022,cfEdge;dur=79,cfOrigin;dur=0,cfWorker;dur=7498"
+      },
+      "parseError": null
+    },
+    {
+      "callNumber": 2,
+      "requestBodyBytes": 139212,
+      "requestBodySha256": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+      "httpStatus": 200,
+      "rawResponseBytes": 16970,
+      "rawResponseSha256": "640f9bfd38405580052f498047721560d8ed449bcf2eeff2ab3e35de5211e1ab",
+      "parsedHeadingSha256": "78135217dc70d51c81a233f9212fda6830a340e8ce0c2e0ecfc177582ac219dc",
+      "rawHeadingCount": 72,
+      "actualProvider": "Alibaba",
+      "responseModel": "qwen/qwen3.7-flash",
+      "responseId": "gen-1789219502-nj0hWb9tMya76UvNmNEP",
+      "created": "1789219502",
+      "finishReason": "stop",
+      "inputTokens": 78175,
+      "reasoningTokens": 6333,
+      "outputTokens": 13832,
+      "latencyMs": 76069,
+      "comparisonVsOld": {
+        "sameAliasSameText": 59,
+        "textDrift": 13,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "comparisonVsNew": {
+        "sameAliasSameText": 56,
+        "textDrift": 16,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "safeResponseHeaders": {
+        "Server-Timing": "cfCacheStatus;desc=\u0022DYNAMIC\u0022,cfEdge;dur=36,cfOrigin;dur=0,cfWorker;dur=7373"
+      },
+      "parseError": null
+    },
+    {
+      "callNumber": 3,
+      "requestBodyBytes": 139212,
+      "requestBodySha256": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+      "httpStatus": 200,
+      "rawResponseBytes": 16959,
+      "rawResponseSha256": "93301f49a42c8bd5bb222ad4c45f3746946651756125644759dd90e132f95bb4",
+      "parsedHeadingSha256": "78135217dc70d51c81a233f9212fda6830a340e8ce0c2e0ecfc177582ac219dc",
+      "rawHeadingCount": 72,
+      "actualProvider": "Alibaba",
+      "responseModel": "qwen/qwen3.7-flash",
+      "responseId": "gen-1789219578-PWPDb00RC99rujhcuetn",
+      "created": "1789219578",
+      "finishReason": "stop",
+      "inputTokens": 78175,
+      "reasoningTokens": 6828,
+      "outputTokens": 14327,
+      "latencyMs": 72960,
+      "comparisonVsOld": {
+        "sameAliasSameText": 59,
+        "textDrift": 13,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "comparisonVsNew": {
+        "sameAliasSameText": 56,
+        "textDrift": 16,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "safeResponseHeaders": {
+        "Server-Timing": "cfCacheStatus;desc=\u0022DYNAMIC\u0022,cfEdge;dur=12,cfOrigin;dur=0,cfWorker;dur=3488"
+      },
+      "parseError": null
+    },
+    {
+      "callNumber": 4,
+      "requestBodyBytes": 139212,
+      "requestBodySha256": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+      "httpStatus": 200,
+      "rawResponseBytes": 16959,
+      "rawResponseSha256": "ef4530e4c0158c58210a9be6b4d3b3140a998d585700034161005b9e4faf453e",
+      "parsedHeadingSha256": "78135217dc70d51c81a233f9212fda6830a340e8ce0c2e0ecfc177582ac219dc",
+      "rawHeadingCount": 72,
+      "actualProvider": "Alibaba",
+      "responseModel": "qwen/qwen3.7-flash",
+      "responseId": "gen-1789219651-2HOBwKXI50FDSlG3RRww",
+      "created": "1789219651",
+      "finishReason": "stop",
+      "inputTokens": 78175,
+      "reasoningTokens": 6828,
+      "outputTokens": 14327,
+      "latencyMs": 72338,
+      "comparisonVsOld": {
+        "sameAliasSameText": 59,
+        "textDrift": 13,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "comparisonVsNew": {
+        "sameAliasSameText": 56,
+        "textDrift": 16,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "safeResponseHeaders": {
+        "Server-Timing": "cfCacheStatus;desc=\u0022DYNAMIC\u0022,cfEdge;dur=24,cfOrigin;dur=0,cfWorker;dur=3241"
+      },
+      "parseError": null
+    },
+    {
+      "callNumber": 5,
+      "requestBodyBytes": 139212,
+      "requestBodySha256": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+      "httpStatus": 200,
+      "rawResponseBytes": 16959,
+      "rawResponseSha256": "8c88bcfd3cac99bd807568d603864a906d409d21f868b71d19289d42b550b0e3",
+      "parsedHeadingSha256": "78135217dc70d51c81a233f9212fda6830a340e8ce0c2e0ecfc177582ac219dc",
+      "rawHeadingCount": 72,
+      "actualProvider": "Alibaba",
+      "responseModel": "qwen/qwen3.7-flash",
+      "responseId": "gen-1789219723-3WaNwvo65dOMycSbz7zE",
+      "created": "1789219723",
+      "finishReason": "stop",
+      "inputTokens": 78175,
+      "reasoningTokens": 6828,
+      "outputTokens": 14327,
+      "latencyMs": 73027,
+      "comparisonVsOld": {
+        "sameAliasSameText": 59,
+        "textDrift": 13,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "comparisonVsNew": {
+        "sameAliasSameText": 56,
+        "textDrift": 16,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "safeResponseHeaders": {
+        "Server-Timing": "cfCacheStatus;desc=\u0022DYNAMIC\u0022,cfEdge;dur=18,cfOrigin;dur=0,cfWorker;dur=2671"
+      },
+      "parseError": null
+    },
+    {
+      "callNumber": 6,
+      "requestBodyBytes": 139212,
+      "requestBodySha256": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+      "httpStatus": 200,
+      "rawResponseBytes": 16959,
+      "rawResponseSha256": "83886c5463a6f70edd752a91fbd0da0c58954e3b4d9a344b452aae6237aa1efd",
+      "parsedHeadingSha256": "78135217dc70d51c81a233f9212fda6830a340e8ce0c2e0ecfc177582ac219dc",
+      "rawHeadingCount": 72,
+      "actualProvider": "Alibaba",
+      "responseModel": "qwen/qwen3.7-flash",
+      "responseId": "gen-1789219796-UXAYJrYyY3pmAa9fAW1S",
+      "created": "1789219796",
+      "finishReason": "stop",
+      "inputTokens": 78175,
+      "reasoningTokens": 6828,
+      "outputTokens": 14327,
+      "latencyMs": 71792,
+      "comparisonVsOld": {
+        "sameAliasSameText": 59,
+        "textDrift": 13,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "comparisonVsNew": {
+        "sameAliasSameText": 56,
+        "textDrift": 16,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "safeResponseHeaders": {
+        "Server-Timing": "cfCacheStatus;desc=\u0022DYNAMIC\u0022,cfEdge;dur=13,cfOrigin;dur=0,cfWorker;dur=2288"
+      },
+      "parseError": null
+    },
+    {
+      "callNumber": 7,
+      "requestBodyBytes": 139212,
+      "requestBodySha256": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+      "httpStatus": 200,
+      "rawResponseBytes": 16970,
+      "rawResponseSha256": "daf2acfa51a0185bd042cd8621cab20c743681decfb0d8a38c7773f1e9f4640b",
+      "parsedHeadingSha256": "78135217dc70d51c81a233f9212fda6830a340e8ce0c2e0ecfc177582ac219dc",
+      "rawHeadingCount": 72,
+      "actualProvider": "Alibaba",
+      "responseModel": "qwen/qwen3.7-flash",
+      "responseId": "gen-1789219868-KOTFDk3s5AjlCVLcHShc",
+      "created": "1789219868",
+      "finishReason": "stop",
+      "inputTokens": 78175,
+      "reasoningTokens": 6828,
+      "outputTokens": 14327,
+      "latencyMs": 73963,
+      "comparisonVsOld": {
+        "sameAliasSameText": 59,
+        "textDrift": 13,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "comparisonVsNew": {
+        "sameAliasSameText": 56,
+        "textDrift": 16,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "safeResponseHeaders": {
+        "Server-Timing": "cfCacheStatus;desc=\u0022DYNAMIC\u0022,cfEdge;dur=15,cfOrigin;dur=0,cfWorker;dur=3712"
+      },
+      "parseError": null
+    },
+    {
+      "callNumber": 8,
+      "requestBodyBytes": 139212,
+      "requestBodySha256": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+      "httpStatus": 200,
+      "rawResponseBytes": 16959,
+      "rawResponseSha256": "48e2c81ce52db5e8731ed3de9670b671b08315c4cea4e081a8eccf0bf758b2ac",
+      "parsedHeadingSha256": "78135217dc70d51c81a233f9212fda6830a340e8ce0c2e0ecfc177582ac219dc",
+      "rawHeadingCount": 72,
+      "actualProvider": "Alibaba",
+      "responseModel": "qwen/qwen3.7-flash",
+      "responseId": "gen-1789219942-YGvp3vOa3tkcWd6GW9CE",
+      "created": "1789219942",
+      "finishReason": "stop",
+      "inputTokens": 78175,
+      "reasoningTokens": 6828,
+      "outputTokens": 14327,
+      "latencyMs": 73007,
+      "comparisonVsOld": {
+        "sameAliasSameText": 59,
+        "textDrift": 13,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "comparisonVsNew": {
+        "sameAliasSameText": 56,
+        "textDrift": 16,
+        "aliasPresentAbsent": 0,
+        "newExtraAlias": 0
+      },
+      "safeResponseHeaders": {
+        "Server-Timing": "cfCacheStatus;desc=\u0022DYNAMIC\u0022,cfEdge;dur=13,cfOrigin;dur=0,cfWorker;dur=1567"
+      },
+      "parseError": null
+    }
+  ],
+  "classification": "INFERENCE_OR_PROVIDER_RESPONSE_NONDETERMINISM"
+}
