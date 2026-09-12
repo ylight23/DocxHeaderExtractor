@@ -96,6 +96,23 @@ public sealed class CanonicalSemanticVisualRecoveryTests
     }
 
     [Fact]
+    public void Pdf_points_are_normalized_to_raster_pixels_with_inverted_y_axis()
+    {
+        var result = Production(
+            Catalog(("p1", "Article 1", page: 1, box: new(10, 20, 110, 40))),
+            [new CanonicalSemanticPageEvidence("P0001", true, 1, "hybrid",
+                SourceWidth: 200, SourceHeight: 100, RasterWidth: 400, RasterHeight: 200,
+                CoordinateSystem: "PDF_POINTS_BOTTOM_LEFT_TO_RASTER_PIXELS_TOP_LEFT")],
+            [new CanonicalSemanticVisualBlock("P0001", 1, "image-a", new(20, 120, 200, 40), "Article 1")],
+            [new CanonicalSemanticVisualProposal("V0001", true, "Article 1", "ARTICLE")],
+            new CanonicalSemanticProposal("S0001", true, "Article 1", SemanticRole: "ARTICLE"));
+
+        var text = Assert.Single(result.UnifiedOccurrences).TextEvidence[0];
+        Assert.Equal(new CanonicalSemanticVisualBoundingBox(20, 120, 200, 40), text.BoundingBox);
+        Assert.Single(result.CanonicalOccurrences);
+    }
+
+    [Fact]
     public void Same_text_on_different_pages_is_not_cross_modal_deduped()
     {
         var result = Production(

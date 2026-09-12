@@ -134,10 +134,103 @@ public static class CanonicalSemanticVisualE2ERunner
             crossModalInput = result.UnifiedOccurrences.Count(item => item.TextEvidence.Count > 0 && item.VisualEvidence.Count > 0),
             canonicalOccurrences = result.CanonicalOccurrences.Count, projectionCount = result.Projection.Count,
             textTelemetry = result.TextModelTelemetry, visualTelemetry = result.VisualModelTelemetry,
+            coordinateAudit = BuildCoordinateAudit(result, prepared.Catalog),
             stageLedger = result.StageLedger, goldReadBeforeFreeze = false,
         };
         await WriteJson(requestRoot, "freeze.v1.json", final, ct);
         return final;
+    }
+
+    private static object BuildCoordinateAudit(
+        CanonicalSemanticProductionResult result,
+        DocumentSourceCatalog catalog)
+    {
+        var text = result.UnifiedOccurrences.SelectMany(item => item.TextEvidence)
+            .Select(item =>
+            {
+                var unit = catalog.Units.SingleOrDefault(source => source.SourceId == item.SourceId);
+                return new
+                {
+                    item.SourceId,
+                    item.PageId,
+                    pdfBox = unit?.SourceAnchor.BoundingBox,
+                    normalizedRasterBox = item.BoundingBox,
+                    transcriptText = item.Text,
+                };
+            }).ToArray();
+        var visual = result.UnifiedOccurrences.SelectMany(item => item.VisualEvidence)
+            .Select(item => new
+            {
+                item.VisualAlias,
+                item.PageId,
+                visualBox = item.BoundingBox,
+                transcriptVisual = item.RecoveredTranscript,
+            }).ToArray();
+        var comparisons = text.SelectMany(textItem => visual
+            .Where(visualItem => string.Equals(textItem.PageId, visualItem.PageId, StringComparison.OrdinalIgnoreCase))
+            .Select(visualItem => new
+            {
+                page = textItem.PageId,
+                textItem.pdfBox,
+                textItem.normalizedRasterBox,
+                visualItem.visualBox,
+                textItem.transcriptText,
+                visualItem.transcriptVisual,
+                transcriptCompatible = string.Equals(textItem.transcriptText, visualItem.transcriptVisual, StringComparison.Ordinal),
+                overlapIoU = IntersectionOverUnion(textItem.normalizedRasterBox, visualItem.visualBox),
+                samePhysicalOccurrence = string.Equals(textItem.transcriptText, visualItem.transcriptVisual, StringComparison.Ordinal) &&
+                    IntersectionOverUnion(textItem.normalizedRasterBox, visualItem.visualBox) > 0,
+            })).ToArray();
+        var physicalGroups = result.UnifiedOccurrences
+            .Where(item => item.TextEvidence.Count > 0 && item.VisualEvidence.Count > 0)
+            .Select((item, index) => new
+            {
+                group = index + 1,
+                textSourceIds = item.TextEvidence.Select(evidence => evidence.SourceId).ToArray(),
+                textTranscript = string.Concat(item.TextEvidence.Select(evidence => evidence.Text)),
+                normalizedRasterBoxes = item.TextEvidence.Select(evidence => evidence.BoundingBox).ToArray(),
+                visualAliases = item.VisualEvidence.Select(evidence => evidence.VisualAlias).ToArray(),
+                visualTranscript = string.Concat(item.VisualEvidence.Select(evidence => evidence.RecoveredTranscript)),
+                visualBoxes = item.VisualEvidence.Select(evidence => evidence.BoundingBox).ToArray(),
+                pageIds = item.TextEvidence.Select(evidence => evidence.PageId)
+                    .Concat(item.VisualEvidence.Select(evidence => evidence.PageId))
+                    .Where(pageId => pageId is not null)
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .ToArray(),
+                overlapIoU = IntersectionOverUnion(
+                    UnionBoxes(item.TextEvidence.Select(evidence => evidence.BoundingBox)),
+                    UnionBoxes(item.VisualEvidence.Select(evidence => evidence.BoundingBox))),
+                samePhysicalOccurrence = true,
+            }).ToArray();
+        return new { text, visual, comparisons, physicalGroups };
+    }
+
+    private static CanonicalSemanticVisualBoundingBox? UnionBoxes(
+        IEnumerable<CanonicalSemanticVisualBoundingBox?> boxes)
+    {
+        var valid = boxes.Where(box => box is not null).Select(box => box!).ToArray();
+        if (valid.Length == 0) return null;
+        var left = valid.Min(box => box.Left);
+        var top = valid.Min(box => box.Top);
+        var right = valid.Max(box => box.Left + box.Width);
+        var bottom = valid.Max(box => box.Top + box.Height);
+        return new(left, top, right - left, bottom - top);
+    }
+
+    private static double IntersectionOverUnion(
+        CanonicalSemanticVisualBoundingBox? left,
+        CanonicalSemanticVisualBoundingBox? right)
+    {
+        if (left is null || right is null) return 0;
+        var leftRight = left.Left + left.Width;
+        var rightRight = right.Left + right.Width;
+        var leftBottom = left.Top + left.Height;
+        var rightBottom = right.Top + right.Height;
+        var intersectionWidth = Math.Max(0, Math.Min(leftRight, rightRight) - Math.Max(left.Left, right.Left));
+        var intersectionHeight = Math.Max(0, Math.Min(leftBottom, rightBottom) - Math.Max(left.Top, right.Top));
+        var intersection = intersectionWidth * intersectionHeight;
+        var union = left.Width * left.Height + right.Width * right.Height - intersection;
+        return union <= 0 ? 0 : intersection / union;
     }
 
     private static int JsonInt(object value, string name) =>
@@ -239,8 +332,12 @@ internal static class VisualSourceEvidenceBuilder
             var bounds = PdfRegionRasterizer.GetPageBounds(path, pageNumber);
             var png = PdfRegionRasterizer.RenderCropPng(path, pageNumber, 0, 0, bounds.Width, bounds.Height, 110);
             var imageHash = Convert.ToHexString(SHA256.HashData(png)).ToLowerInvariant();
-            pages.Add(new CanonicalSemanticPageEvidence(pageRows[i].PageId, pageRows[i].Usable, hasImageObjects ? 1 : 0, "PDF_TEXT_AND_RENDER"));
-            visualPages.Add(new CanonicalSemanticVisualPageEvidence(pageRows[i].PageId, imageHash, png, Math.Max(1, (int)Math.Round(bounds.Width * 110 / 72)), Math.Max(1, (int)Math.Round(bounds.Height * 110 / 72))));
+            var rasterWidth = Math.Max(1, (int)Math.Round(bounds.Width * 110 / 72));
+            var rasterHeight = Math.Max(1, (int)Math.Round(bounds.Height * 110 / 72));
+            pages.Add(new CanonicalSemanticPageEvidence(pageRows[i].PageId, pageRows[i].Usable,
+                hasImageObjects ? 1 : 0, "PDF_TEXT_AND_RENDER", bounds.Width, bounds.Height,
+                rasterWidth, rasterHeight, "PDF_POINTS_BOTTOM_LEFT_TO_RASTER_PIXELS_TOP_LEFT"));
+            visualPages.Add(new CanonicalSemanticVisualPageEvidence(pageRows[i].PageId, imageHash, png, rasterWidth, rasterHeight));
         }
         return new VisualSourcePreparation(catalog, pages, visualPages);
     }

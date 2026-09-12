@@ -15,7 +15,12 @@ public sealed record CanonicalSemanticPageEvidence(
     string PageId,
     bool HasUsableText,
     int EmbeddedImageCount,
-    string EvidenceSource);
+    string EvidenceSource,
+    double? SourceWidth = null,
+    double? SourceHeight = null,
+    int? RasterWidth = null,
+    int? RasterHeight = null,
+    string CoordinateSystem = "UNSPECIFIED");
 
 public sealed record CanonicalSemanticPageRoute(
     string PageId,
@@ -108,7 +113,7 @@ public static class CanonicalSemanticVisualRecovery
             {
                 if (!block.BoundingBox.IsValid) throw new InvalidOperationException("VISUAL_GEOMETRY_INVALID");
                 var transcriptHash = HashText(block.Transcript);
-                var regionHash = HashText($"{block.ImageSha256}\n{block.BoundingBox}\n{block.Transcript}");
+                var regionHash = HashText($"{block.ImageSha256}\n{block.BoundingBox}\n{block.BlockOrdinal}\n{block.Transcript}");
                 return new CanonicalSemanticVisualOccurrence(
                     $"V{index + 1:0000}", block.PageId, block.BlockOrdinal, block.ImageSha256,
                     block.BoundingBox, block.Transcript, regionHash, transcriptHash);
@@ -261,20 +266,35 @@ public static class CanonicalSemanticCrossModalReconciler
     {
         ArgumentNullException.ThrowIfNull(text);
         ArgumentNullException.ThrowIfNull(visual);
-        var groups = new List<(List<CanonicalSemanticTextEvidenceBinding> Text, List<CanonicalSemanticVisualBinding> Visual)>();
-        foreach (var item in text)
-            groups.Add(([item], []));
+        var groups = text.Select(item => new ReconciliationGroup([item], [])).ToList();
         foreach (var item in visual)
         {
-            var match = groups.FirstOrDefault(group =>
-                group.Visual.Any(existing => SameVisualOccurrence(existing, item)) ||
-                group.Text.Any(existing => SamePhysicalOccurrence(existing, item)));
-            if (match.Text is not null)
+            var visualMatch = groups.FirstOrDefault(group =>
+                group.Visual.Any(existing => SameVisualOccurrence(existing, item)));
+            if (visualMatch is not null)
             {
-                match.Visual.Add(item);
+                visualMatch.Visual.Add(item);
                 continue;
             }
-            groups.Add(([], [item]));
+
+            var orderedText = groups.SelectMany(group => group.Text)
+                .OrderBy(candidate => candidate.PageId, StringComparer.Ordinal)
+                .ThenBy(candidate => candidate.Start)
+                .ToArray();
+            var sequence = FindCompatibleTextSequence(orderedText, item);
+            if (sequence.Count > 0)
+            {
+                var target = groups.Single(group => group.Text.Contains(sequence[0]));
+                foreach (var candidate in sequence.Skip(1))
+                {
+                    var owner = groups.Single(group => group.Text.Contains(candidate));
+                    target.Text.Add(candidate);
+                    if (!ReferenceEquals(owner, target)) groups.Remove(owner);
+                }
+                target.Visual.Add(item);
+                continue;
+            }
+            groups.Add(new([], [item]));
         }
         return groups
             .OrderBy(group => group.Text.Count > 0
@@ -286,10 +306,30 @@ public static class CanonicalSemanticCrossModalReconciler
                 group.Text, group.Visual)).ToArray();
     }
 
-    private static bool SamePhysicalOccurrence(
+    private static IReadOnlyList<CanonicalSemanticTextEvidenceBinding> FindCompatibleTextSequence(
+        IReadOnlyList<CanonicalSemanticTextEvidenceBinding> text,
+        CanonicalSemanticVisualBinding visual)
+    {
+        for (var start = 0; start < text.Count; start++)
+        {
+            var sequence = new List<CanonicalSemanticTextEvidenceBinding>();
+            for (var end = start; end < text.Count; end++)
+            {
+                var candidate = text[end];
+                if (!SamePhysicalRegion(candidate, visual)) break;
+                sequence.Add(candidate);
+                var joined = string.Concat(sequence.Select(item => item.Text));
+                if (CompatibleTranscript(joined, visual.RecoveredTranscript)) return sequence;
+                if (!NormalizeTranscript(visual.RecoveredTranscript).StartsWith(
+                        NormalizeTranscript(joined), StringComparison.Ordinal)) break;
+            }
+        }
+        return [];
+    }
+
+    private static bool SamePhysicalRegion(
         CanonicalSemanticTextEvidenceBinding text,
         CanonicalSemanticVisualBinding visual) =>
-        string.Equals(text.Text, visual.RecoveredTranscript, StringComparison.Ordinal) &&
         text.PageId is not null &&
         string.Equals(text.PageId, visual.PageId, StringComparison.OrdinalIgnoreCase) &&
         text.BoundingBox is { } textBox &&
@@ -301,8 +341,15 @@ public static class CanonicalSemanticCrossModalReconciler
         CanonicalSemanticVisualBinding right) =>
         string.Equals(left.PageId, right.PageId, StringComparison.OrdinalIgnoreCase) &&
         string.Equals(left.ImageSha256, right.ImageSha256, StringComparison.OrdinalIgnoreCase) &&
-        left.BoundingBox.Overlaps(right.BoundingBox) &&
-        string.Equals(left.RecoveredTranscript, right.RecoveredTranscript, StringComparison.Ordinal);
+        left.BlockOrdinal == right.BlockOrdinal &&
+        string.Equals(left.RegionSha256, right.RegionSha256, StringComparison.OrdinalIgnoreCase) &&
+        CompatibleTranscript(left.RecoveredTranscript, right.RecoveredTranscript);
+
+    private static bool CompatibleTranscript(string left, string right) =>
+        string.Equals(NormalizeTranscript(left), NormalizeTranscript(right), StringComparison.Ordinal);
+
+    private static string NormalizeTranscript(string value) =>
+        string.Concat(value.Where(char.IsLetterOrDigit).Select(char.ToUpperInvariant));
 
     private static string VisualOrderKey(CanonicalSemanticVisualBinding binding)
     {
@@ -322,6 +369,14 @@ public static class CanonicalSemanticCrossModalReconciler
         var rightBottom = right.Top + right.Height;
         return left.Left < rightRight && right.Left < leftRight &&
             left.Top < rightBottom && right.Top < leftBottom;
+    }
+
+    private sealed class ReconciliationGroup(
+        List<CanonicalSemanticTextEvidenceBinding> text,
+        List<CanonicalSemanticVisualBinding> visual)
+    {
+        public List<CanonicalSemanticTextEvidenceBinding> Text { get; } = text;
+        public List<CanonicalSemanticVisualBinding> Visual { get; } = visual;
     }
 }
 

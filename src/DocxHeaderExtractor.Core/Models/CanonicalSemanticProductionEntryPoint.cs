@@ -158,11 +158,12 @@ public static class CanonicalSemanticProductionEntryPoint
             : [];
 
         var aliasesBySourceId = aliases.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
+        var pagesById = pages.ToDictionary(item => item.PageId, StringComparer.OrdinalIgnoreCase);
         var textEvidence = text.BoundHeadings
             .SelectMany(heading => heading.Parts.Count == 0
-                ? [CreateTextEvidence(heading.SourceId, heading.Start, heading.End, heading.Text, aliasesBySourceId)]
+                ? [CreateTextEvidence(heading.SourceId, heading.Start, heading.End, heading.Text, aliasesBySourceId, pagesById)]
                 : heading.Parts.Select(part => CreateTextEvidence(
-                    part.SourceId, part.Start, part.End, part.Text, aliasesBySourceId)))
+                    part.SourceId, part.Start, part.End, part.Text, aliasesBySourceId, pagesById)))
             .ToArray();
         var visualEvidence = visualHeadings
             .SelectMany(heading => heading.Bindings)
@@ -255,17 +256,40 @@ public static class CanonicalSemanticProductionEntryPoint
         int start,
         int end,
         string text,
-        IReadOnlyDictionary<string, SemanticSourceAlias> aliases)
+        IReadOnlyDictionary<string, SemanticSourceAlias> aliases,
+        IReadOnlyDictionary<string, CanonicalSemanticPageEvidence> pages)
     {
         aliases.TryGetValue(sourceId, out var alias);
         var page = alias?.SourceAnchor?.Page is { } pageNumber
             ? $"P{pageNumber:0000}"
             : TryParsePage(sourceId) is { } sourcePage ? $"P{sourcePage:0000}" : null;
         var box = alias?.SourceAnchor?.BoundingBox is { } sourceBox
-            ? new CanonicalSemanticVisualBoundingBox(sourceBox.Left, sourceBox.Bottom,
-                sourceBox.Right - sourceBox.Left, sourceBox.Top - sourceBox.Bottom)
+            ? NormalizePdfBox(sourceBox, page, pages)
             : null;
         return new(sourceId, start, end, text, $"{sourceId}:{start}:{end}", page, null, box);
+    }
+
+    private static CanonicalSemanticVisualBoundingBox NormalizePdfBox(
+        PdfBoundingBox sourceBox,
+        string? pageId,
+        IReadOnlyDictionary<string, CanonicalSemanticPageEvidence> pages)
+    {
+        if (pageId is not null && pages.TryGetValue(pageId, out var page) &&
+            page.SourceWidth is > 0 and var sourceWidth &&
+            page.SourceHeight is > 0 and var sourceHeight &&
+            page.RasterWidth is > 0 and var rasterWidth &&
+            page.RasterHeight is > 0 and var rasterHeight)
+        {
+            var scaleX = rasterWidth / sourceWidth;
+            var scaleY = rasterHeight / sourceHeight;
+            return new(
+                sourceBox.Left * scaleX,
+                (sourceHeight - sourceBox.Top) * scaleY,
+                (sourceBox.Right - sourceBox.Left) * scaleX,
+                (sourceBox.Top - sourceBox.Bottom) * scaleY);
+        }
+        return new(sourceBox.Left, sourceBox.Bottom,
+            sourceBox.Right - sourceBox.Left, sourceBox.Top - sourceBox.Bottom);
     }
 
     private static CanonicalSemanticDocumentOrder TextDocumentOrder(
