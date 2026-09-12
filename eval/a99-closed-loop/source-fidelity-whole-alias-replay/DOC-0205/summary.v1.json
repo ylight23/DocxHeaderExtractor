@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "a99-v6-faithful-whole-alias-replay-summary-v1",
+  "documentId": "DOC-0205",
+  "startHead": "96b36e9f745f17a5abc107b7e237bc21d319db4e",
+  "endHead": "96b36e9f745f17a5abc107b7e237bc21d319db4e",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "frozenRepeats": 3,
+  "comparableGoldCount": 66,
+  "faithfulCrossParagraphGold": 5,
+  "aggregate": {
+    "tp": 189,
+    "fp": 33,
+    "fn": 9,
+    "precision": 0.8513513513513513,
+    "recall": 0.9545454545454546,
+    "f1": 0.9,
+    "excludedPredictions": 30
+  },
+  "rows": [
+    {
+      "replay": {
+        "repeat": "r1",
+        "rawProposalCount": 84,
+        "selectedAliasCount": 84,
+        "boundCount": 84,
+        "finalCount": 84,
+        "bindingFailure": 0,
+        "unknownAliasSelections": 0
+      },
+      "score": {
+        "tp": 63,
+        "fp": 11,
+        "fn": 3,
+        "precision": 0.8513513513513513,
+        "recall": 0.9545454545454546,
+        "f1": 0.9,
+        "excludedPredictions": 10
+      }
+    },
+    {
+      "replay": {
+        "repeat": "r2",
+        "rawProposalCount": 84,
+        "selectedAliasCount": 84,
+        "boundCount": 84,
+        "finalCount": 84,
+        "bindingFailure": 0,
+        "unknownAliasSelections": 0
+      },
+      "score": {
+        "tp": 63,
+        "fp": 11,
+        "fn": 3,
+        "precision": 0.8513513513513513,
+        "recall": 0.9545454545454546,
+        "f1": 0.9,
+        "excludedPredictions": 10
+      }
+    },
+    {
+      "replay": {
+        "repeat": "r3",
+        "rawProposalCount": 84,
+        "selectedAliasCount": 84,
+        "boundCount": 84,
+        "finalCount": 84,
+        "bindingFailure": 0,
+        "unknownAliasSelections": 0
+      },
+      "score": {
+        "tp": 63,
+        "fp": 11,
+        "fn": 3,
+        "precision": 0.8513513513513513,
+        "recall": 0.9545454545454546,
+        "f1": 0.9,
+        "excludedPredictions": 10
+      }
+    }
+  ],
+  "diagnostics": {
+    "selectedAliasCount": 252,
+    "boundCount": 252,
+    "finalCount": 252,
+    "bindingFailure": 0,
+    "unknownAliasSelections": 0,
+    "modelTextIgnored": true
+  },
+  "goldFirewall": "PASS",
+  "decision": "WHOLE_ALIAS_ON_FAITHFUL_SOURCE_RECOVERS_BIND_FAILURES"
+}

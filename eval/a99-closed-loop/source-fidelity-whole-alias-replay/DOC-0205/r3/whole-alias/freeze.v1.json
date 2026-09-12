@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "a99-v6-faithful-whole-alias-replay-freeze-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r3",
+  "mode": "FAITHFUL_WHOLE_ALIAS_COUNTERFACTUAL",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "rawProposalSha256": "09c001f2e5962a85cfbe58bfcb5fba4866c4126c7a53b7f9e55801dd7072d0ac",
+  "predictionSha256": "23acfde0fd655853183283dd640186c3fd5f4fa17389e015ad42f76eca830e90",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-12T18:21:34.3209712+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "a99-v6-faithful-whole-alias-replay-manifest-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "faithfulSourcePath": "eval/a99-closed-loop/source-fidelity-audit/DOC-0205/converted-docx/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+  "frozenInputRoot": "eval/a99-closed-loop/source-fidelity-paired-live/DOC-0205",
+  "repeats": 3,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "causalDelta": "BINDING_MODE_ONLY",
+  "control": "FAITHFUL_FROZEN_VERBATIM_TEXT_PROPOSALS",
+  "challenger": "FAITHFUL_FROZEN_PROPOSALS_WHOLE_ALIAS_BINDING",
+  "modelTextIgnored": true,
+  "modelNumericOffsets": false,
+  "goldReadBeforeFreeze": false,
+  "multiParagraphGoldPolicy": "EXCLUDED_FROM_COMPARABLE_66_AND_REPORTED_SEPARATELY"
+}

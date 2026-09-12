@@ -68,5 +68,32 @@ public sealed class SourceFidelityAuditTests
         Assert.Equal("PASS", summary.GetProperty("goldFirewall").GetString());
     }
 
+    [Fact]
+    public void FaithfulWholeAliasReplayRemovesTextEchoBindingFailuresWithoutProviderCalls()
+    {
+        var root = TestRoot();
+        var artifact = Path.Combine(root, "eval", "a99-closed-loop", "source-fidelity-whole-alias-replay", "DOC-0205", "summary.v1.json");
+        if (!File.Exists(artifact)) return;
+
+        using var json = System.Text.Json.JsonDocument.Parse(File.ReadAllText(artifact));
+        var summary = json.RootElement;
+        Assert.Equal(0, summary.GetProperty("modelCalls").GetInt32());
+        Assert.Equal(0, summary.GetProperty("providerCalls").GetInt32());
+        Assert.Equal(66, summary.GetProperty("comparableGoldCount").GetInt32());
+        Assert.Equal(5, summary.GetProperty("faithfulCrossParagraphGold").GetInt32());
+        Assert.Equal("PASS", summary.GetProperty("goldFirewall").GetString());
+
+        var aggregate = summary.GetProperty("aggregate");
+        Assert.Equal(189, aggregate.GetProperty("tp").GetInt32());
+        Assert.Equal(33, aggregate.GetProperty("fp").GetInt32());
+        Assert.Equal(9, aggregate.GetProperty("fn").GetInt32());
+        Assert.Equal(30, aggregate.GetProperty("excludedPredictions").GetInt32());
+
+        var diagnostics = summary.GetProperty("diagnostics");
+        Assert.Equal(0, diagnostics.GetProperty("bindingFailure").GetInt32());
+        Assert.Equal(0, diagnostics.GetProperty("unknownAliasSelections").GetInt32());
+        Assert.True(diagnostics.GetProperty("modelTextIgnored").GetBoolean());
+    }
+
     private static string TestRoot() => Directory.GetParent(AppContext.BaseDirectory)!.Parent!.Parent!.Parent!.FullName;
 }
