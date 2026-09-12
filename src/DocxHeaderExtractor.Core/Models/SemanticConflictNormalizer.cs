@@ -108,7 +108,9 @@ public static class SemanticConflictNormalizer
             structuralType = proposal.StructuralType,
             scope = proposal.Scope,
             occurrence = proposal.Occurrence,
-            relationHints = proposal.RelationHints ?? [],
+            // Hierarchy/relationship reconstruction is a later graph stage, not semantic
+            // adjudication. In particular, a different level must not create a role conflict.
+            relationHints = SemanticRelationHints(proposal.RelationHints),
             verbatimText = includeSourceText ? proposal.VerbatimText : null,
             verbatimParts = includeSourceText ? (proposal.VerbatimParts ?? []) : [],
         });
@@ -116,6 +118,18 @@ public static class SemanticConflictNormalizer
 
     private static IReadOnlyList<string> ResolveAliases(CanonicalSemanticProposal proposal) =>
         proposal.SourceAliases is { Count: > 0 } ? proposal.SourceAliases : [proposal.SourceAlias];
+
+    private static IReadOnlyList<string> SemanticRelationHints(IReadOnlyList<string>? hints) =>
+        (hints ?? [])
+            .Where(hint => !IsHierarchyHint(hint))
+            .ToArray();
+
+    private static bool IsHierarchyHint(string hint) =>
+        hint.StartsWith("level:", StringComparison.OrdinalIgnoreCase) ||
+        hint.StartsWith("parent-node:", StringComparison.OrdinalIgnoreCase) ||
+        hint.StartsWith("sibling-node:", StringComparison.OrdinalIgnoreCase) ||
+        hint.StartsWith("continuation-node:", StringComparison.OrdinalIgnoreCase) ||
+        hint.StartsWith("same-node:", StringComparison.OrdinalIgnoreCase);
 
     private sealed record Candidate(
         CanonicalSemanticProposal Proposal,
