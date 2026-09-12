@@ -73,6 +73,16 @@ public sealed record CanonicalSemanticVisualBlock(
     CanonicalSemanticVisualBoundingBox BoundingBox,
     string Transcript);
 
+/// <summary>Runtime-owned page image evidence. The bytes are transient request input; the
+/// persisted identity is the page/image hash, never a model-supplied coordinate.</summary>
+public sealed record CanonicalSemanticVisualPageEvidence(
+    string PageId,
+    string ImageSha256,
+    byte[] ImageBytes,
+    int Width,
+    int Height,
+    string MimeType = "image/png");
+
 public sealed record CanonicalSemanticVisualOccurrence(
     string VisualAlias,
     string PageId,

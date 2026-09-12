@@ -244,6 +244,26 @@ public sealed class CanonicalSemanticVnextRuntimeTests
         Assert.Equal(3, result.TextPipeline.BoundHeadings[0].Start);
     }
 
+    [Fact]
+    public async Task Async_production_entry_point_owns_visual_recovery_before_region_binding()
+    {
+        var result = await CanonicalSemanticProductionEntryPoint.RunAsync(new(
+            Catalog(("p1", "text")),
+            null,
+            "source-hash",
+            [new CanonicalSemanticPageEvidence("P0001", false, 1, "docx-image")],
+            [], [], [], [],
+            VisualPages: [new CanonicalSemanticVisualPageEvidence("P0001", "image-hash", [1, 2, 3], 10, 10)],
+            DocumentId: "DOC-VISUAL-TEST"),
+            new FakeTextModel(), new FakeVisualModel());
+
+        Assert.Equal(1, result.TextModelCalls);
+        Assert.Equal(1, result.VisualModelCalls);
+        Assert.Single(result.VisualOccurrences);
+        Assert.Single(result.VisualHeadings);
+        Assert.True(CanonicalSemanticVisualBindingValidator.IsValid(result.VisualHeadings[0], result.VisualOccurrences));
+    }
+
     private sealed class FakeTextModel : ICanonicalSemanticTextModel
     {
         public Task<CanonicalSemanticTextInferenceResult> InferAsync(
@@ -254,6 +274,23 @@ public sealed class CanonicalSemanticVnextRuntimeTests
             Task.FromResult(new CanonicalSemanticTextInferenceResult(
                 [new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION")],
                 new CanonicalSemanticInferenceTelemetry("fake", "stop")));
+    }
+
+    private sealed class FakeVisualModel : ICanonicalSemanticVisualModel
+    {
+        public Task<CanonicalSemanticVisualInferenceResult> InferAsync(
+            CanonicalSemanticProductionInput input,
+            SemanticContextPacket packedContext,
+            IReadOnlyList<CanonicalSemanticVisualOccurrence> recoveredOccurrences,
+            string requestId,
+            CancellationToken cancellationToken = default)
+        {
+            var block = new CanonicalSemanticVisualBlock("P0001", 0, "image-hash",
+                new CanonicalSemanticVisualBoundingBox(0, 0, 10, 10), "Visual heading");
+            return Task.FromResult(new CanonicalSemanticVisualInferenceResult(
+                [block], [new CanonicalSemanticVisualProposal("V0001", true, "Visual heading", "SECTION")],
+                new CanonicalSemanticInferenceTelemetry("fake", "stop")));
+        }
     }
 
     private static CanonicalSemanticGraph Graph(params CanonicalSemanticProposal[] proposals)

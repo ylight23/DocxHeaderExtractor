@@ -17,6 +17,7 @@ public sealed record CanonicalSemanticProductionInput(
     IReadOnlyList<string> GlobalContext,
     IReadOnlyList<CanonicalSemanticVisualBlock>? VisualBlocks = null,
     IReadOnlyList<CanonicalSemanticVisualProposal>? VisualProposals = null,
+    IReadOnlyList<CanonicalSemanticVisualPageEvidence>? VisualPages = null,
     string? ExpectedSourceSha256 = null,
     string? DocumentId = null);
 
@@ -41,6 +42,7 @@ public interface ICanonicalSemanticTextModel
 }
 
 public sealed record CanonicalSemanticVisualInferenceResult(
+    IReadOnlyList<CanonicalSemanticVisualBlock> Blocks,
     IReadOnlyList<CanonicalSemanticVisualProposal> Proposals,
     CanonicalSemanticInferenceTelemetry Telemetry);
 
@@ -69,11 +71,13 @@ public sealed record CanonicalSemanticProductionResult(
     int TextModelCalls,
     int VisualModelCalls)
 {
+    public CanonicalSemanticGraph CanonicalGraph { get; init; } = new([], []);
+
     public IReadOnlyList<CanonicalSemanticGraphOccurrence> CanonicalOccurrences =>
-        TextPipeline.Graph.Occurrences;
+        CanonicalGraph.Occurrences;
 
     public IReadOnlyList<CanonicalSemanticGraphOccurrence> Projection =>
-        TextPipeline.Graph.OutlineProjection;
+        CanonicalGraph.OutlineProjection;
 }
 
 public static class CanonicalSemanticProductionEntryPoint
@@ -110,7 +114,7 @@ public static class CanonicalSemanticProductionEntryPoint
         var visualBlocks = input.VisualBlocks is { Count: > 0 }
             ? VisualRecovery.Recover(input.VisualBlocks)
             : [];
-        CanonicalSemanticVisualInferenceResult visualInference = new([], new());
+        CanonicalSemanticVisualInferenceResult visualInference = new([], [], new());
         if (profile.Pages.Any(page => page.UseVisualRecovery))
         {
             if (visualModel is null)
@@ -118,7 +122,10 @@ public static class CanonicalSemanticProductionEntryPoint
             visualInference = await visualModel.InferAsync(
                 input, context, visualBlocks, requestId + ":visual", cancellationToken);
         }
-        return RunPostInference(input with { SemanticProposals = textInference.Proposals },
+        var visualInput = visualInference.Blocks.Count > 0
+            ? input with { VisualBlocks = visualInference.Blocks }
+            : input;
+        return RunPostInference(visualInput with { SemanticProposals = textInference.Proposals },
             textInference.Proposals, visualInference.Proposals,
             textInference.Telemetry, visualInference.Telemetry, 1,
             profile.Pages.Any(page => page.UseVisualRecovery) ? 1 : 0);
@@ -162,6 +169,7 @@ public static class CanonicalSemanticProductionEntryPoint
             .ToArray();
         var unified = CanonicalSemanticCrossModalReconciler.Reconcile(
             textEvidence, visualEvidence);
+        var canonicalGraph = CombineGraphs(text.Graph, visualHeadings, textEvidence);
 
         var ledger = new[]
         {
@@ -175,14 +183,46 @@ public static class CanonicalSemanticProductionEntryPoint
             new SemanticTransitionLedgerEntry("VISUAL_RECOVERY", "PRESERVED", input.VisualBlocks?.Count ?? 0, visualOccurrences.Count),
             new SemanticTransitionLedgerEntry("VISUAL_REGION_BINDING", "PRESERVED", visualProposals.Count, visualHeadings.Count),
             new SemanticTransitionLedgerEntry("CROSS_MODAL_RECONCILIATION", "PRESERVED", textEvidence.Length + visualEvidence.Length, unified.Count),
-            new SemanticTransitionLedgerEntry("GLOBAL_RESOLUTION", "PRESERVED", text.BoundHeadings.Count, text.Graph.Occurrences.Count),
-            new SemanticTransitionLedgerEntry("CANONICAL_GRAPH", "PRESERVED", text.Graph.Occurrences.Count, text.Graph.Occurrences.Count),
-            new SemanticTransitionLedgerEntry("SEMANTIC_BOUNDARY", "PRESERVED", text.Graph.Occurrences.Count, text.Graph.Occurrences.Count),
-            new SemanticTransitionLedgerEntry("TASK_PROJECTION", "PRESERVED", text.Graph.Occurrences.Count, text.Graph.OutlineProjection.Count),
+            new SemanticTransitionLedgerEntry("GLOBAL_RESOLUTION", "PRESERVED", text.BoundHeadings.Count + visualHeadings.Count, canonicalGraph.Occurrences.Count),
+            new SemanticTransitionLedgerEntry("CANONICAL_GRAPH", "PRESERVED", canonicalGraph.Occurrences.Count, canonicalGraph.Occurrences.Count),
+            new SemanticTransitionLedgerEntry("SEMANTIC_BOUNDARY", "PRESERVED", canonicalGraph.Occurrences.Count, canonicalGraph.Occurrences.Count),
+            new SemanticTransitionLedgerEntry("TASK_PROJECTION", "PRESERVED", canonicalGraph.Occurrences.Count, canonicalGraph.OutlineProjection.Count),
         };
 
         return new(profile, context, input.CandidateHints, text,
             visualOccurrences, visualHeadings, unified, ledger, semanticProposals,
-            textTelemetry, visualTelemetry, textModelCalls, visualModelCalls);
+            textTelemetry, visualTelemetry, textModelCalls, visualModelCalls)
+        { CanonicalGraph = canonicalGraph };
+    }
+
+    private static CanonicalSemanticGraph CombineGraphs(
+        CanonicalSemanticGraph textGraph,
+        IReadOnlyList<CanonicalSemanticVisualBoundHeading> visualHeadings,
+        IReadOnlyList<CanonicalSemanticTextEvidenceBinding> textEvidence)
+    {
+        var occurrences = textGraph.Occurrences.ToList();
+        var textKeys = textEvidence.Select(item => item.Text).ToHashSet(StringComparer.Ordinal);
+        foreach (var heading in visualHeadings)
+        {
+            foreach (var binding in heading.Bindings)
+            {
+                if (textKeys.Contains(binding.RecoveredTranscript)) continue;
+                var pageNumber = int.TryParse(binding.PageId.TrimStart('P', 'p'), out var parsedPage) ? parsedPage : 0;
+                var ordinal = int.MaxValue - pageNumber;
+                var occurrence = new CanonicalSemanticGraphOccurrence(
+                    $"visual-occurrence:{occurrences.Count + 1:0000}",
+                    $"visual-node:{heading.SemanticRole}:{binding.RecoveredTranscript}",
+                    binding.VisualAlias, $"visual:{binding.PageId}", ordinal,
+                    binding.RecoveredTranscript, heading.SemanticRole, heading.StructuralType,
+                    heading.Scope, 0, 0, "PRIMARY", null)
+                { BindingMode = "VISUAL_REGION" };
+                occurrences.Add(occurrence);
+            }
+        }
+        var ordered = occurrences.OrderBy(item => item.SourceOrdinal).ThenBy(item => item.Start)
+            .ThenBy(item => item.OccurrenceId, StringComparer.Ordinal).ToArray();
+        var projection = ordered.GroupBy(item => item.SemanticNodeId, StringComparer.Ordinal)
+            .Select(group => group.First()).ToArray();
+        return new CanonicalSemanticGraph(ordered, projection);
     }
 }

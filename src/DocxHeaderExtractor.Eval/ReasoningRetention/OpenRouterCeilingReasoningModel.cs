@@ -212,7 +212,7 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         var content = new List<object> { new { type = "text", text = userText } };
         content.AddRange(pages.Select(page => (object)new
         {
-            type = "image_url", image_url = new { url = "data:image/png;base64," + Convert.ToBase64String(page.PngBytes) },
+            type = "image_url", image_url = new { url = "data:" + page.MimeType + ";base64," + Convert.ToBase64String(page.PngBytes) },
         }));
         var (rawContent, finishReason) = await SendAsync(StructurePreservingSemanticPrompt.System, content,
             maxCompletion, StructurePreservingSemanticPrompt.Schema(), "ceiling_structure_preserving_visual_v1", telemetry, ct).ConfigureAwait(false);
@@ -320,7 +320,7 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         content.AddRange(pages.Select(page => (object)new
         {
             type = "image_url",
-            image_url = new { url = "data:image/png;base64," + Convert.ToBase64String(page.PngBytes) },
+            image_url = new { url = "data:" + page.MimeType + ";base64," + Convert.ToBase64String(page.PngBytes) },
         }));
         var (rawContent, finishReason) = await SendAsync(systemPrompt, content, maxCompletion,
             schema, schemaName, telemetry, ct).ConfigureAwait(false);
@@ -348,6 +348,45 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         telemetry.HeadingOutputCount = response.Headings.Count;
         _telemetry.Add(telemetry);
         return (response, telemetry);
+    }
+
+    /// <summary>Raw visual recovery transport. Unlike semantic visual inference this endpoint
+    /// deliberately does not parse a heading contract: the caller supplies the recovery schema,
+    /// while this class still owns the real image request, output-limit handling, and telemetry.</summary>
+    public async Task<(string Content, RequestPacketTelemetry Telemetry)> CompleteRawVisualStructuredAsync(
+        string documentId, string route, string requestId, string packetJson,
+        IReadOnlyList<VisualPageEvidence> pages, int sourceTextCharacters,
+        int ownedOccurrences, int visibleOccurrences, string systemPrompt,
+        string userPrompt, object schema, string schemaName, CancellationToken ct = default)
+    {
+        if (pages is null || pages.Count == 0) throw new ArgumentException("Visual page evidence is required.", nameof(pages));
+        ArgumentException.ThrowIfNullOrWhiteSpace(systemPrompt);
+        ArgumentException.ThrowIfNullOrWhiteSpace(userPrompt);
+        ArgumentNullException.ThrowIfNull(schema);
+        var maxCompletion = SemanticMaxCompletionTokens;
+        var visualManifest = string.Join('|', pages.Select(page => $"p{page.PageIndex}:{page.ImageHash}"));
+        var telemetry = NewTelemetry(documentId, "VISUAL_RECOVERY", requestId,
+            packetJson + "\n" + visualManifest, sourceTextCharacters, maxCompletion,
+            ownedOccurrences, visibleOccurrences);
+        var content = new List<object> { new { type = "text", text = userPrompt } };
+        content.AddRange(pages.Select(page => (object)new
+        {
+            type = "image_url",
+            image_url = new { url = "data:" + page.MimeType + ";base64," + Convert.ToBase64String(page.PngBytes) },
+        }));
+        var (rawContent, finishReason) = await SendAsync(systemPrompt, content, maxCompletion,
+            schema, schemaName, telemetry, ct).ConfigureAwait(false);
+        if (IsOutputLimit(finishReason))
+        {
+            telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
+            _telemetry.Add(telemetry);
+            throw new ReasoningCompletionException(ReasoningCompletionFailureClass.ProviderOutputLimit,
+                "Visual recovery pass hit the provider output limit before a complete response.",
+                new ReasoningCompletionTelemetry { RequestId = requestId, DocumentId = documentId, FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit });
+        }
+        telemetry.ResponseContentPresent = !string.IsNullOrWhiteSpace(rawContent);
+        _telemetry.Add(telemetry);
+        return (rawContent, telemetry);
     }
 
     /// <summary>Strategy S1's omission-review pass (Pass B). Same reasoning route/model/effort as
@@ -537,7 +576,8 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
             {
                 telemetry.FailureClass = response.StatusCode is System.Net.HttpStatusCode.Unauthorized or System.Net.HttpStatusCode.Forbidden
                     ? ReasoningCompletionFailureClass.ProviderAuthFailure : ReasoningCompletionFailureClass.ProviderUnavailable;
-                throw new ReasoningCompletionException(telemetry.FailureClass, $"OpenRouter returned {(int)response.StatusCode}",
+                var errorBody = raw.Length <= 600 ? raw : raw[..600];
+                throw new ReasoningCompletionException(telemetry.FailureClass, $"OpenRouter returned {(int)response.StatusCode}: {errorBody}",
                     new ReasoningCompletionTelemetry { RequestId = telemetry.RequestIdHash, DocumentId = telemetry.DocumentId, FailureClass = telemetry.FailureClass });
             }
             using var document = JsonDocument.Parse(raw);
@@ -745,4 +785,4 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
 
 /// <summary>Persistable-free in-memory page evidence. The image bytes are sent only for the
 /// request; artifacts persist its hash, never the model's private reasoning.</summary>
-public sealed record VisualPageEvidence(int PageIndex, string ImageHash, byte[] PngBytes);
+public sealed record VisualPageEvidence(int PageIndex, string ImageHash, byte[] PngBytes, string MimeType = "image/png");
