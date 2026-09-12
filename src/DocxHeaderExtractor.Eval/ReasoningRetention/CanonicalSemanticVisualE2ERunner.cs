@@ -202,8 +202,34 @@ internal static class VisualSourceEvidenceBuilder
             var usable = text.Trim().Length >= 80;
             return (PageId: $"P{index + 1:0000}", Text: text, Usable: usable);
         }).ToArray();
-        var catalog = new DocumentSourceCatalog(pageRows.Where(row => row.Text.Length > 0).Select((row, index) =>
-            new DocumentSourceUnit(row.PageId, index, row.Text, new SourceAnchor { SourceType = "PDF", ParagraphId = row.PageId, ParagraphIndex = index }, new StructuralSpan(0, row.Text.Length))));
+        var sourceUnits = new List<DocumentSourceUnit>();
+        foreach (var page in pdf.GetPages().Take(maxPages))
+        {
+            var pageId = $"P{page.Number:0000}";
+            var lines = ExtractPdfLineEvidence(page);
+            if (lines.Count == 0 && page.Text.Trim().Length > 0)
+                lines = [new PdfLineEvidence(page.Text, 0, 0, 1, 1)];
+            var lineOrdinal = 0;
+            foreach (var line in lines)
+            {
+                lineOrdinal++;
+                var sourceId = $"{pageId}:L{lineOrdinal:0000}";
+                sourceUnits.Add(new DocumentSourceUnit(
+                    sourceId,
+                    sourceUnits.Count,
+                    line.Text,
+                    new SourceAnchor
+                    {
+                        SourceType = "PDF",
+                        ParagraphId = sourceId,
+                        ParagraphIndex = sourceUnits.Count,
+                        Page = page.Number,
+                        BoundingBox = new PdfBoundingBox(line.Left, line.Bottom, line.Right, line.Top)
+                    },
+                    new StructuralSpan(0, line.Text.Length)));
+            }
+        }
+        var catalog = new DocumentSourceCatalog(sourceUnits);
         var pages = new List<CanonicalSemanticPageEvidence>();
         var visualPages = new List<CanonicalSemanticVisualPageEvidence>();
         for (var i = 0; i < pageRows.Length; i++)
@@ -217,6 +243,39 @@ internal static class VisualSourceEvidenceBuilder
             visualPages.Add(new CanonicalSemanticVisualPageEvidence(pageRows[i].PageId, imageHash, png, Math.Max(1, (int)Math.Round(bounds.Width * 110 / 72)), Math.Max(1, (int)Math.Round(bounds.Height * 110 / 72))));
         }
         return new VisualSourcePreparation(catalog, pages, visualPages);
+    }
+
+    private static IReadOnlyList<PdfLineEvidence> ExtractPdfLineEvidence(UglyToad.PdfPig.Content.Page page)
+    {
+        var words = page.GetWords()
+            .Where(word => !string.IsNullOrWhiteSpace(word.Text))
+            .Select(word => new PdfWordEvidence(
+                word.Text,
+                word.BoundingBox.Left,
+                word.BoundingBox.Bottom,
+                word.BoundingBox.Right,
+                word.BoundingBox.Top,
+                (word.BoundingBox.Bottom + word.BoundingBox.Top) / 2.0))
+            .OrderByDescending(word => word.MidY)
+            .ThenBy(word => word.Left)
+            .ToArray();
+        var buckets = new List<List<PdfWordEvidence>>();
+        foreach (var word in words)
+        {
+            var bucket = buckets.LastOrDefault(existing => Math.Abs(existing[0].MidY - word.MidY) <= 3.0);
+            if (bucket is null) buckets.Add([word]);
+            else bucket.Add(word);
+        }
+        return buckets
+            .Select(bucket => bucket.OrderBy(word => word.Left).ToArray())
+            .Select(bucket => new PdfLineEvidence(
+                string.Join(" ", bucket.Select(word => word.Text)),
+                bucket.Min(word => word.Left),
+                bucket.Min(word => word.Bottom),
+                bucket.Max(word => word.Right),
+                bucket.Max(word => word.Top)))
+            .Where(line => line.Text.Length > 0)
+            .ToArray();
     }
 
     private static IEnumerable<MediaPage> ReadMedia(string path)
@@ -255,4 +314,6 @@ internal static class VisualSourceEvidenceBuilder
     private static int ReadBigEndian(byte[] bytes, int offset) =>
         (bytes[offset] << 24) | (bytes[offset + 1] << 16) | (bytes[offset + 2] << 8) | bytes[offset + 3];
     private sealed record MediaPage(string PageId, string Hash, byte[] Bytes, int Width, int Height, string MimeType);
+    private sealed record PdfWordEvidence(string Text, double Left, double Bottom, double Right, double Top, double MidY);
+    private sealed record PdfLineEvidence(string Text, double Left, double Bottom, double Right, double Top);
 }
