@@ -1,0 +1,32 @@
+{
+  "artifactKind": "a99_canonical_semantic_freeze",
+  "schemaVersion": "a99-canonical-semantic-freeze-vnext-v1",
+  "authorityKey": "SRC-042",
+  "fileName": "042_IDA_Financial_Statements_June_2025.pdf",
+  "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+  "sourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+  "registrySourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+  "semanticHeadingTotal": 262,
+  "status": "FROZEN_SEMANTIC_VNEXT",
+  "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+  "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+  "semanticMembership": "HEADING",
+  "promptAffectsSemanticTruth": false,
+  "repeatedOrContinuationMayBeHeading": true,
+  "newSemanticNodeRequiredForHeading": false,
+  "exactOccurrenceFreeze": false,
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_S0001_ORDERED_SOURCE_CATALOG",
+  "occurrenceArtifact": null,
+  "bindingArtifact": null,
+  "historicalArtifactsAreProvenanceOnly": true,
+  "notes": [
+    "Registry is authoritative for semantic total only.",
+    "No heading rows, spans, parentage or semantic nodes synthesized from the total."
+  ]
+}

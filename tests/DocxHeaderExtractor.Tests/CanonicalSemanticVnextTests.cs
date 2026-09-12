@@ -59,7 +59,7 @@ public sealed class CanonicalSemanticVnextTests
     }
 
     [Fact]
-    public void Migrated_registry_has_thirteen_frozen_semantic_sources_and_no_exact_freeze()
+    public void Migrated_registry_has_v6_frozen_semantic_sources_and_no_exact_freeze()
     {
         var root = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "eval", "a99-closed-loop", "canonical-semantic-gold-vnext");
         root = Path.GetFullPath(root);
@@ -68,9 +68,9 @@ public sealed class CanonicalSemanticVnextTests
 
         using var inventory = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "inventory.v1.json")));
         var result = inventory.RootElement;
-        Assert.Equal(13, result.GetProperty("totalTracked").GetInt32());
-        Assert.Equal(13, result.GetProperty("frozenSemanticVnext").GetInt32());
+        Assert.Equal(21, result.GetProperty("totalTracked").GetInt32());
+        Assert.Equal(21, result.GetProperty("frozenSemanticVnext").GetInt32());
         Assert.Equal(0, result.GetProperty("exactOccurrenceFrozen").GetInt32());
-        Assert.Equal(13, result.GetProperty("documents").GetArrayLength());
+        Assert.Equal(21, result.GetProperty("documents").GetArrayLength());
     }
 }

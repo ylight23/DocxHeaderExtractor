@@ -42,6 +42,13 @@ public static class SemanticCandidatePolicy
         // Hints influence routing only. Semantic discovery always retains the owned occurrence.
         return true;
     }
+
+    public static bool CanAcceptVisualOccurrence(string visualAlias, IReadOnlyCollection<SemanticCandidateAttentionHint> hints)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(visualAlias);
+        ArgumentNullException.ThrowIfNull(hints);
+        return true;
+    }
 }
 
 public sealed record SemanticVisualEvidence(string SourceAlias, string EvidenceId, string EvidenceKind);
@@ -85,7 +92,8 @@ public static class CanonicalSemanticContractValidator
 {
     private static readonly HashSet<string> NumericCoordinateNames = new(StringComparer.OrdinalIgnoreCase)
     {
-        "start", "end", "offset", "startOffset", "endOffset", "page", "bbox"
+        "start", "end", "offset", "startOffset", "endOffset", "page", "pageNumber", "bbox",
+        "boundingBox", "imageSha256", "regionSha256", "transcriptHash"
     };
 
     public static IReadOnlyList<SemanticContractIssue> ValidateJson(JsonElement payload)

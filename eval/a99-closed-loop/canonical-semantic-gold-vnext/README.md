@@ -1,18 +1,16 @@
-# A99 canonical semantic Gold vNext
+# A99 canonical semantic Gold vNext — visual unified
 
-Current authority: `freeze-registry.v4.checked.json`.
+Current authority: `freeze-registry.v6.visual-unified.json`.
 
-The registry freezes semantic document totals for 13 sources (aggregate 1503). It does not
-freeze an exhaustive occurrence list or character spans: every source currently has
-`exactOccurrenceFreeze=false`. Therefore this directory intentionally contains no occurrence
-or binding artifact. Coordinates may be materialized later only from authoritative source-backed
-lists through the exact UTF-16 binder.
+The registry freezes 21 semantic sources with 3,955 approved true heading occurrences and zero
+pending approvals. Four records remain explicitly deferred/blocked. This semantic freeze is not
+an exact occurrence freeze: no occurrence or binding files are created from totals alone.
 
-Runtime boundary:
+Visual recovery is a first-class evidence route for scan/image pages. It uses parser/render-owned
+page, image, region and transcript hashes; it never fabricates UTF-16 offsets for pixels. Text and
+visual evidence are reconciled before semantic adjudication, while task projection remains after
+the canonical semantic boundary.
 
-`source -> source-faithful evidence -> stable aliases -> candidate attention hints -> route/context packing -> semantic proposal -> semantic validation -> exact UTF-16 binding -> hard binding validation -> global graph -> semantic boundary -> intent normalization -> deterministic projection`
-
-The model supplies meaning (`sourceAlias/sourceAliases`, `isHeading`, exact verbatim text/parts,
-role/type/scope and optional relation hints). The harness supplies coordinates. Repeated and
-continuation headings remain canonical occurrences; projection may collapse them without changing
-canonical truth. Legacy strict Gold and review artifacts are provenance only and are preserved.
+`SRC-057` has a source-hash drift recorded in `inventory.v1.json`; its approved semantic total is
+retained without pretending that the current source is lineage-verified. Resolve that drift before
+materializing exact occurrence or binding authority.

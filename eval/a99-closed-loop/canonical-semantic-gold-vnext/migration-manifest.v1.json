@@ -1,17 +1,29 @@
 {
   "artifactKind": "a99_canonical_semantic_gold_vnext_migration",
-  "schemaVersion": "a99-canonical-semantic-gold-vnext-migration-v2",
-  "authorityRegistry": "freeze-registry.v4.checked.json",
-  "authorityRegistrySha256": "4de876b5f91d740da9217ee484e099125383283f1f4ce55ef77a97319592317b",
-  "executionTask": "TASK-a99-vnext-EXECUTE-final.v4.checked.md",
-  "executionTaskSha256": "ea134c00c50c900706d6b1e94fb78ccc6ebb916098bb69677f22a5584054155a",
+  "schemaVersion": "a99-canonical-semantic-gold-vnext-migration-v3",
+  "authorityRegistry": "freeze-registry.v6.visual-unified.json",
+  "authorityRegistrySha256": "1ffd780dced497f6554e6a545a6df7bf5038207107a643e66fe225e19a9c6805",
+  "executionTask": "TASK-a99-vnext-EXECUTE-final.v6.visual-recovery.md",
+  "executionTaskSha256": "8c52ca8b5cfd89ac892de7fdb4688b4bd5ab9bc86debe792f7a96a18d69c2cd2",
+  "semanticInputArtifacts": [
+    "inputs/DOC-0123.semantic-freeze.v1.json",
+    "inputs/DOC-0202.semantic-freeze.v1.json"
+  ],
   "providerCalls": 0,
   "modelCalls": 0,
-  "totalTracked": 13,
-  "frozenSemanticVnext": 13,
-  "aggregateSemanticHeadingTotal": 1503,
+  "totalTracked": 21,
+  "frozenSemanticVnext": 21,
+  "aggregateSemanticHeadingTotal": 3955,
   "exactOccurrenceFrozen": 0,
   "occurrenceArtifactsCreated": 0,
   "bindingArtifactsCreated": 0,
+  "sourceLineageDrift": [
+    {
+      "authorityKey": "SRC-057",
+      "expected": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "actual": "70b83a17627c35408ff240cb3a7395b0c110b5658c1f3022ca2df2199446c319",
+      "status": "SOURCE_DRIFT_BLOCKED"
+    }
+  ],
   "goldRuntimeInputs": false
 }

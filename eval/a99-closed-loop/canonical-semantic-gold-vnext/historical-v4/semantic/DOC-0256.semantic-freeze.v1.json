@@ -1,13 +1,11 @@
 {
   "artifactKind": "a99_canonical_semantic_freeze",
-  "schemaVersion": "a99-canonical-semantic-freeze-vnext-visual-unified-v1",
+  "schemaVersion": "a99-canonical-semantic-freeze-vnext-v1",
   "authorityKey": "DOC-0256",
   "fileName": "076_ICP_IACG08_Minutes_2023.pdf",
   "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf",
   "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
   "registrySourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
-  "sourceLineageVerified": true,
-  "sourceLineageStatus": "VERIFIED",
   "semanticHeadingTotal": 34,
   "status": "FROZEN_SEMANTIC_VNEXT",
   "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
@@ -17,35 +15,18 @@
   "repeatedOrContinuationMayBeHeading": true,
   "newSemanticNodeRequiredForHeading": false,
   "exactOccurrenceFreeze": false,
-  "modalityHints": {
-    "visualRecoveryRequired": false,
-    "visualAdjudicationAvailable": true,
-    "machineTextMayBeInsufficient": false
-  },
   "capabilities": {
     "semanticEvaluable": true,
     "occurrenceEvaluable": false,
     "characterSpanEvaluable": false,
-    "hierarchyEvaluable": false,
-    "visualBindingEvaluable": false
+    "hierarchyEvaluable": false
   },
-  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_TEXT_OR_VISUAL_ALIAS_CATALOG",
+  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_S0001_ORDERED_SOURCE_CATALOG",
   "occurrenceArtifact": null,
   "bindingArtifact": null,
   "historicalArtifactsAreProvenanceOnly": true,
-  "authorityRecord": {
-    "key": "DOC-0256",
-    "fileName": "076_ICP_IACG08_Minutes_2023.pdf",
-    "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
-    "semanticHeadingTotal": 34,
-    "status": "FROZEN_SEMANTIC_VNEXT",
-    "exactOccurrenceFreeze": false,
-    "userFinalApproval": true,
-    "finalAuthority": "USER",
-    "approvedAt": "2026-09-12"
-  },
   "notes": [
-    "Semantic total is authoritative; no occurrence list or span was synthesized from the total.",
-    "Visual sources use VISUAL_REGION binding when exact occurrence authority is later materialized."
+    "Registry is authoritative for semantic total only.",
+    "No heading rows, spans, parentage or semantic nodes synthesized from the total."
   ]
 }

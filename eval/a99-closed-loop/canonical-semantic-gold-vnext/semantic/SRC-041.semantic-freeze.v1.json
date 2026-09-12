@@ -1,0 +1,72 @@
+{
+  "artifactKind": "a99_canonical_semantic_freeze",
+  "schemaVersion": "a99-canonical-semantic-freeze-vnext-visual-unified-v1",
+  "authorityKey": "SRC-041",
+  "fileName": "041_IBRD_Financial_Statements_June_2025.pdf",
+  "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf",
+  "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+  "registrySourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+  "sourceLineageVerified": true,
+  "sourceLineageStatus": "VERIFIED",
+  "semanticHeadingTotal": 297,
+  "status": "FROZEN_SEMANTIC_VNEXT",
+  "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+  "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+  "semanticMembership": "HEADING",
+  "promptAffectsSemanticTruth": false,
+  "repeatedOrContinuationMayBeHeading": true,
+  "newSemanticNodeRequiredForHeading": false,
+  "exactOccurrenceFreeze": false,
+  "modalityHints": {
+    "visualRecoveryRequired": false,
+    "visualAdjudicationAvailable": true,
+    "machineTextMayBeInsufficient": false
+  },
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "hierarchyEvaluable": false,
+    "visualBindingEvaluable": false
+  },
+  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_TEXT_OR_VISUAL_ALIAS_CATALOG",
+  "occurrenceArtifact": null,
+  "bindingArtifact": null,
+  "historicalArtifactsAreProvenanceOnly": true,
+  "authorityRecord": {
+    "key": "SRC-041",
+    "fileName": "041_IBRD_Financial_Statements_June_2025.pdf",
+    "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+    "semanticHeadingTotal": 297,
+    "status": "FROZEN_SEMANTIC_VNEXT",
+    "exactOccurrenceFreeze": false,
+    "userFinalApproval": true,
+    "finalAuthority": "USER",
+    "approvedAt": "2026-09-12",
+    "approvalBasis": "User instructed to freeze the remaining completed Gold reviews under the unified vNext policy.",
+    "vnextReauditResult": {
+      "previousProposal": 292,
+      "delta": 5,
+      "result": 297,
+      "addedTrueHeadingOccurrences": [
+        {
+          "text": "Independent Auditor's Report",
+          "countAdded": 1
+        },
+        {
+          "text": "SUMMARY STATEMENT OF LOANS (CONTINUED)",
+          "countAdded": 1
+        },
+        {
+          "text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCK AND VOTING POWER (CONTINUED)",
+          "countAdded": 3
+        }
+      ],
+      "notes": "Repeated/continuation display titles are distinct true heading occurrences; later note-level uses such as 'Statements of Cash Flows' are separate note subheadings and were already adjudicated in their own semantic context."
+    }
+  },
+  "notes": [
+    "Semantic total is authoritative; no occurrence list or span was synthesized from the total.",
+    "Visual sources use VISUAL_REGION binding when exact occurrence authority is later materialized."
+  ]
+}

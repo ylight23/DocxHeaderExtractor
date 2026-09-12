@@ -1,0 +1,63 @@
+{
+  "artifactKind": "a99_canonical_semantic_freeze",
+  "schemaVersion": "a99-canonical-semantic-freeze-vnext-visual-unified-v1",
+  "authorityKey": "SRC-057",
+  "fileName": "057_Quantitative_Methods_in_Finance_Lecture_Notes.pdf",
+  "sourcePath": "todo10_8/heading_corpus_100/04_giao_trinh/057_Quantitative_Methods_in_Finance_Lecture_Notes.pdf",
+  "sourceSha256": "70b83a17627c35408ff240cb3a7395b0c110b5658c1f3022ca2df2199446c319",
+  "registrySourceSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+  "sourceLineageVerified": false,
+  "sourceLineageStatus": "SOURCE_DRIFT_BLOCKED",
+  "semanticHeadingTotal": 831,
+  "status": "FROZEN_SEMANTIC_VNEXT",
+  "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+  "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+  "semanticMembership": "HEADING",
+  "promptAffectsSemanticTruth": false,
+  "repeatedOrContinuationMayBeHeading": true,
+  "newSemanticNodeRequiredForHeading": false,
+  "exactOccurrenceFreeze": false,
+  "modalityHints": {
+    "visualRecoveryRequired": false,
+    "visualAdjudicationAvailable": true,
+    "machineTextMayBeInsufficient": false
+  },
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "hierarchyEvaluable": false,
+    "visualBindingEvaluable": false
+  },
+  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_TEXT_OR_VISUAL_ALIAS_CATALOG",
+  "occurrenceArtifact": null,
+  "bindingArtifact": null,
+  "historicalArtifactsAreProvenanceOnly": true,
+  "authorityRecord": {
+    "key": "SRC-057",
+    "fileName": "057_Quantitative_Methods_in_Finance_Lecture_Notes.pdf",
+    "sourceSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+    "sourceReviewPacketSha256": "abf4af12d0a38f60b81cd1bf35a196fd6d871a9cbee288a4313e4c7202b42cff",
+    "semanticHeadingTotal": 831,
+    "status": "FROZEN_SEMANTIC_VNEXT",
+    "exactOccurrenceFreeze": false,
+    "userFinalApproval": true,
+    "finalAuthority": "USER",
+    "approvedAt": "2026-09-12",
+    "approvalBasis": "User instructed to freeze the remaining completed Gold reviews under the unified vNext policy.",
+    "sourceOnlyAudit": {
+      "documentTitle": 1,
+      "contentsRegionHeading": 1,
+      "topLevelNumberedBodyHeadings": 85,
+      "secondLevelNumberedBodyHeadings": 442,
+      "thirdLevelNumberedBodyHeadings": 301,
+      "referencesHeading": 1,
+      "total": 831,
+      "boundary": "Individual Contents entries are navigation rows, not duplicate body headings. Run-in labels, equation identifiers, figure/table captions, bullets, theorem/example prose lead-ins, author/date metadata and page furniture are non-headings. 'References' is an additional unnumbered structural region heading."
+    }
+  },
+  "notes": [
+    "Semantic total is authoritative; no occurrence list or span was synthesized from the total.",
+    "Visual sources use VISUAL_REGION binding when exact occurrence authority is later materialized."
+  ]
+}

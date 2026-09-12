@@ -1,0 +1,531 @@
+{
+  "artifactKind": "a99_canonical_semantic_gold_freeze_registry",
+  "schemaVersion": "a99-canonical-semantic-gold-vnext-v1",
+  "policyVersion": "ALL_TRUE_HEADING_OCCURRENCES_VNEXT_VISUAL_RECOVERY",
+  "createdAt": "2026-09-12",
+  "authority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+  "semanticContract": {
+    "goldTruth": "ALL_TRUE_HEADING_OCCURRENCES",
+    "promptAffectsSemanticTruth": false,
+    "repeatedOrContinuationMayBeHeading": true,
+    "newSemanticNodeRequiredForHeading": false,
+    "modelReturnsNumericOffsets": false,
+    "modelReturns": [
+      "sourceAlias/sourceAliases",
+      "isHeading",
+      "verbatimText/verbatimParts",
+      "semanticRole",
+      "structuralType",
+      "scope",
+      "relationHints"
+    ],
+    "binderOwnsExactCoordinates": true,
+    "bindingCoordinateSystem": "UTF-16",
+    "rule": "LLM decides meaning; harness decides coordinates."
+  },
+  "freezeSemantics": {
+    "semanticFreezeIsNotExactOccurrenceFreeze": true,
+    "exactOccurrenceFreezeRequires": [
+      "authoritative source-backed aliases",
+      "verbatim exact-text binding",
+      "binder-materialized UTF-16 spans",
+      "binding count consistent with canonical heading occurrences",
+      "no unresolved expected bindings",
+      "verified source hash lineage"
+    ]
+  },
+  "entries": [
+    {
+      "key": "DOC-0001",
+      "fileName": "01-style-chuan.docx",
+      "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "semanticHeadingTotal": 7,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "DOC-0092",
+      "fileName": "007_Luat_Nha_o_27-2023-QH15.pdf",
+      "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+      "semanticHeadingTotal": 145,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "DOC-0133",
+      "fileName": "048_IBRD_Financial_Statements_March_2025.pdf",
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "reason": "Occurrence-first vNext re-audit completed; user explicitly approved 123.",
+      "exactOccurrenceFreeze": false,
+      "semanticHeadingTotal": 123,
+      "vnextReauditResult": {
+        "deltaFromPreviousApprovedTotal": 0,
+        "result": "123 remains semantically exhaustive under occurrence-first review",
+        "checks": [
+          "Condensed Balance Sheets spans two pages but the display title occurs only on the opening page; the next page continues with date/table content.",
+          "Condensed Statements of Income, Comprehensive Income, Changes in Retained Earnings, and Cash Flows each have one body display-title occurrence.",
+          "The financial-statements CONTENTS entries remain navigation rows, not body occurrences.",
+          "The outer INDEPENDENT AUDITOR'S REVIEW REPORT and the embedded Deloitte INDEPENDENT AUDITOR’S REVIEW REPORT are both true heading occurrences and were already represented in the approved 123.",
+          "No additional repeated/continuation display-title occurrence was found that had previously been collapsed."
+        ]
+      },
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "DOC-0205",
+      "fileName": "025_ND_47-2020_Chia_se_du_lieu_so.docx",
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "semanticHeadingTotal": 72,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "DOC-0252",
+      "fileName": "072_ICP_TAG_Minutes_Mar_2025.pdf",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "semanticHeadingTotal": 41,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "notes": "Continuation agenda occurrence was already treated as a distinct true heading occurrence.",
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "DOC-0255",
+      "fileName": "075_FORTIS_GC_Minutes_Nov21_2024.docx",
+      "sourceSha256": "f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+      "semanticHeadingTotal": 18,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "DOC-0256",
+      "fileName": "076_ICP_IACG08_Minutes_2023.pdf",
+      "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+      "semanticHeadingTotal": 34,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "DOC-0258",
+      "fileName": "078_ICP_IACG07_Minutes_May_2023.docx",
+      "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "semanticHeadingTotal": 37,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "notes": "Historical 24-occurrence task-specific artifact is retired for canonical ALL_TRUE_HEADINGS truth.",
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "DOC-0259",
+      "fileName": "079_ICP_TAG_Minutes_Apr_2024.docx",
+      "sourceSha256": "1c946a0ed13bd27cafb4ef281807ecfed6605340fca51029e72a904cf651c777",
+      "semanticHeadingTotal": 18,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "DOC-0264",
+      "fileName": "084_Luat_Chung_khoan_2019_EN.docx",
+      "sourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+      "semanticHeadingTotal": 159,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "notes": "Supersedes historical strict-gold-v4 semantic total 158.",
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "SRC-003",
+      "fileName": "003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+      "sourceSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceOriginalPdfSha256": "909d1da77ead7b5db5e4c3ddcae5e9aeb74405af75ed5a56c30eb7a24ca39060",
+      "semanticHeadingTotal": 231,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "SRC-029",
+      "fileName": "029_WB_RFP_Works_DesignBuild_2021.docx",
+      "sourceSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "semanticHeadingTotal": 356,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "notes": "Running headers/page furniture remain non-headings; no known vNext contradiction in approved source-only review.",
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12"
+    },
+    {
+      "key": "SRC-042",
+      "fileName": "042_IDA_Financial_Statements_June_2025.pdf",
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "vnextDeltaEvidence": {
+        "delta": 8,
+        "occurrencesPreviouslyCollapsed": [
+          "Independent Auditor's Report repeated display title: +1",
+          "STATEMENTS OF CASH FLOWS repeated display title: +1",
+          "SUMMARY STATEMENT OF LOANS repeated display titles: +2",
+          "STATEMENT OF VOTING POWER AND SUBSCRIPTIONS AND CONTRIBUTIONS repeated display titles: +4"
+        ]
+      },
+      "reason": "Occurrence-first vNext re-audit completed; user explicitly approved revised total 262.",
+      "semanticHeadingTotal": 262,
+      "vnextReauditResult": {
+        "previousApprovedTotal": 254,
+        "delta": 8,
+        "result": 262,
+        "addedTrueHeadingOccurrences": [
+          {
+            "text": "Independent Auditor's Report",
+            "countAdded": 1,
+            "reason": "Repeated display title at continuation page; same semantic node, distinct true heading occurrence."
+          },
+          {
+            "text": "STATEMENTS OF CASH FLOWS",
+            "countAdded": 1,
+            "reason": "Second page re-displays the title above continuation content."
+          },
+          {
+            "text": "SUMMARY STATEMENT OF LOANS",
+            "countAdded": 2,
+            "reason": "Three body display-title occurrences total; old count collapsed the two continuation pages."
+          },
+          {
+            "text": "STATEMENT OF VOTING POWER AND SUBSCRIPTIONS AND CONTRIBUTIONS",
+            "countAdded": 4,
+            "reason": "Five body display-title occurrences total; old count collapsed four continuation pages."
+          }
+        ],
+        "semanticNodeRule": "Repeated/continuation occurrences remain headings; projection may collapse them to one logical outline node."
+      },
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12",
+      "sourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf"
+    },
+    {
+      "key": "SRC-041",
+      "fileName": "041_IBRD_Financial_Statements_June_2025.pdf",
+      "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+      "semanticHeadingTotal": 297,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12",
+      "approvalBasis": "User instructed to freeze the remaining completed Gold reviews under the unified vNext policy.",
+      "vnextReauditResult": {
+        "previousProposal": 292,
+        "delta": 5,
+        "result": 297,
+        "addedTrueHeadingOccurrences": [
+          {
+            "text": "Independent Auditor's Report",
+            "countAdded": 1
+          },
+          {
+            "text": "SUMMARY STATEMENT OF LOANS (CONTINUED)",
+            "countAdded": 1
+          },
+          {
+            "text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCK AND VOTING POWER (CONTINUED)",
+            "countAdded": 3
+          }
+        ],
+        "notes": "Repeated/continuation display titles are distinct true heading occurrences; later note-level uses such as 'Statements of Cash Flows' are separate note subheadings and were already adjudicated in their own semantic context."
+      }
+    },
+    {
+      "key": "SRC-044",
+      "fileName": "044_IDA_Financial_Statements_June_2024.pdf",
+      "sourceSha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b",
+      "semanticHeadingTotal": 254,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12",
+      "approvalBasis": "User instructed to freeze the remaining completed Gold reviews under the unified vNext policy.",
+      "vnextReauditResult": {
+        "previousProposal": 246,
+        "delta": 8,
+        "result": 254,
+        "addedTrueHeadingOccurrences": [
+          {
+            "text": "Independent Auditor's Report",
+            "countAdded": 1
+          },
+          {
+            "text": "STATEMENTS OF CASH FLOWS",
+            "countAdded": 1
+          },
+          {
+            "text": "SUMMARY STATEMENT OF LOANS",
+            "countAdded": 2
+          },
+          {
+            "text": "STATEMENT OF VOTING POWER AND SUBSCRIPTIONS AND CONTRIBUTIONS",
+            "countAdded": 4
+          }
+        ]
+      }
+    },
+    {
+      "key": "SRC-053",
+      "fileName": "053_IDA_Information_Statement_FY25.pdf",
+      "sourceSha256": "6d3cd46d6297031fd3fd4c2afd066f8d947f18d55ef1418a185e5ef9e0a344da",
+      "semanticHeadingTotal": 277,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12",
+      "approvalBasis": "User instructed to freeze the remaining completed Gold reviews under the unified vNext policy.",
+      "vnextReauditResult": {
+        "previousProposal": 271,
+        "delta": 6,
+        "result": 277,
+        "addedTrueHeadingOccurrences": [
+          {
+            "text": "SUMMARY STATEMENT OF LOANS (Continued)",
+            "countAdded": 2
+          },
+          {
+            "text": "STATEMENT OF VOTING POWER AND SUBSCRIPTIONS AND CONTRIBUTIONS (Continued)",
+            "countAdded": 4
+          }
+        ],
+        "notes": "The embedded auditor report has one body title occurrence in this layout; no extra continuation title was added there."
+      }
+    },
+    {
+      "key": "SRC-054",
+      "fileName": "054_IBRD_Information_Statement_FY25.pdf",
+      "sourceSha256": "02c949f22700a2ba84c0f9719c8c2e9d1ffff407cc5d21c89d34bc660cd480ac",
+      "semanticHeadingTotal": 316,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12",
+      "approvalBasis": "User instructed to freeze the remaining completed Gold reviews under the unified vNext policy.",
+      "vnextReauditResult": {
+        "previousProposal": 308,
+        "delta": 8,
+        "result": 316,
+        "addedTrueHeadingOccurrences": [
+          {
+            "text": "Independent Auditor’s Report",
+            "countAdded": 2
+          },
+          {
+            "text": "SUMMARY STATEMENT OF LOANS (Continued)",
+            "countAdded": 1
+          },
+          {
+            "text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCK AND VOTING POWER (Continued)",
+            "countAdded": 5
+          }
+        ]
+      }
+    },
+    {
+      "key": "SRC-055",
+      "fileName": "055_IDA_External_Review_FY25.pdf",
+      "sourceSha256": "3b9d4317f2e8ca32ff9288d5f7c653fefd7231d5656a5b8a996be656b1dee455",
+      "semanticHeadingTotal": 4,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12",
+      "approvalBasis": "User instructed to freeze the remaining completed Gold reviews under the unified vNext policy.",
+      "vnextReauditResult": {
+        "previousProposal": 4,
+        "delta": 0,
+        "result": 4,
+        "headingSummary": [
+          "INDEPENDENT ACCOUNTANT’S REPORT",
+          "Management’s Assertion Regarding Commitments and Disbursements for IDA Projects",
+          "IDA Projects Commitment and Disbursement Schedule",
+          "Notes on the IDA Projects Commitment and Disbursement Schedule"
+        ],
+        "notes": "The 1,375 project rows and repeated table column headers are tabular data, not headings."
+      }
+    },
+    {
+      "key": "SRC-057",
+      "fileName": "057_Quantitative_Methods_in_Finance_Lecture_Notes.pdf",
+      "sourceSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceReviewPacketSha256": "abf4af12d0a38f60b81cd1bf35a196fd6d871a9cbee288a4313e4c7202b42cff",
+      "semanticHeadingTotal": 831,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12",
+      "approvalBasis": "User instructed to freeze the remaining completed Gold reviews under the unified vNext policy.",
+      "sourceOnlyAudit": {
+        "documentTitle": 1,
+        "contentsRegionHeading": 1,
+        "topLevelNumberedBodyHeadings": 85,
+        "secondLevelNumberedBodyHeadings": 442,
+        "thirdLevelNumberedBodyHeadings": 301,
+        "referencesHeading": 1,
+        "total": 831,
+        "boundary": "Individual Contents entries are navigation rows, not duplicate body headings. Run-in labels, equation identifiers, figure/table captions, bullets, theorem/example prose lead-ins, author/date metadata and page furniture are non-headings. 'References' is an additional unnumbered structural region heading."
+      }
+    },
+    {
+      "key": "DOC-0123",
+      "fileName": "038_WB_Works_DB_SingleStage_NoSEASH_2025.docx",
+      "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+      "packetSha256": "c2a037fc61244d3bc0e88b089ddd84dac2cb6ae23451c66e7f17b6f3e9e85852",
+      "semanticHeadingTotal": 362,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12",
+      "approvalBasis": "User instructed to freeze the final two files under the unified occurrence-first ALL_TRUE_HEADINGS policy.",
+      "sourceOnlyAudit": {
+        "frontMatter": 25,
+        "part1": 1,
+        "sectionI": 69,
+        "sectionII": 11,
+        "sectionIII": 20,
+        "sectionIV": 59,
+        "sectionV": 2,
+        "sectionVI": 3,
+        "part2": 1,
+        "sectionVII": 25,
+        "part3": 1,
+        "sectionVIII": 1,
+        "sectionIX": 125,
+        "sectionX": 19,
+        "total": 362
+      },
+      "vnextDeltaFromPriorSourceOnly317": {
+        "delta": 45,
+        "prior317Status": "RETIRED_PRE_VNEXT_POLICY",
+        "reasons": [
+          "Front matter +10: Section I-X labels in the Summary each head their own explanatory block.",
+          "Section I +1: repeated body Section I title after its local Table of Content remains a true heading occurrence.",
+          "Section III +1: local Contents heading is a true TOC-region heading.",
+          "Section IV +10: restore Table of Forms (+1); add Daywork local headings General/Labour/Materials/Contractor's Equipment (+4); Code of Conduct local headings Required Conduct/Raising Concerns/Consequences/Attachment 1 composite (+4); Declaration (+1).",
+          "Section V +1: Eligibility for the Provision of Goods, Works and non-consulting Services in Bank-Financed Procurement.",
+          "Section VII +7: Resource efficiency; Pollution prevention and management; two SPECIFIED PROVISIONAL SUMS for ES OUTCOMES occurrences; repeated Contractor's Representative and Key Personnel table heading; Key Personnel for Design; Key Personnel for Construction.",
+          "Section IX +6: 4.24.1 Forced Labour; 4.24.2 Child labour; 4.24.3 Serious Safety Issues; 4.24.4 Obtaining natural resource materials in relation to supplier; Metrics for regular reporting; SEA and/or SH Declaration.",
+          "Section X +9: restore Table of Forms (+1); six numbered local headings inside Notification of Intention to Award (+6); Beneficial Ownership Disclosure Form (+1); Details of beneficial ownership (+1)."
+        ]
+      },
+      "capabilities": {
+        "semanticEvaluable": true,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "hierarchyEvaluable": false
+      }
+    },
+    {
+      "key": "DOC-0202",
+      "fileName": "022_ND_01-2021_Dang_ky_doanh_nghiep.docx",
+      "sourceSha256": "f8197a069ea9dfbd6e6c8f6ddb5af9c49fafe3328d7fae90544abe3a3dc86a81",
+      "semanticHeadingTotal": 111,
+      "status": "FROZEN_SEMANTIC_VNEXT",
+      "exactOccurrenceFreeze": false,
+      "userFinalApproval": true,
+      "finalAuthority": "USER",
+      "approvedAt": "2026-09-12",
+      "approvalBasis": "User instructed to freeze the final two files; source was visually reviewed because document body is scan/image based.",
+      "visualSourceAudit": {
+        "embeddedFullPageImages": 85,
+        "documentTitle": 1,
+        "chapters": 9,
+        "articles": 101,
+        "total": 111,
+        "boundary": "Count the decree title, Chapter I-IX, and Article 1-101. Signer/issuer metadata, dates, page numbers, Nơi nhận, signature block and page furniture are non-headings."
+      },
+      "capabilities": {
+        "machineTextEvaluable": false,
+        "visualSourceEvaluable": true,
+        "semanticEvaluable": true,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "visualBindingEvaluable": false,
+        "hierarchyEvaluable": true
+      },
+      "bindingNote": "Exact Gold for this source must use VISUAL_REGION bindings (page/image hash + bbox + recovered transcript); do not fabricate UTF-16 offsets in the original DOCX text layer."
+    }
+  ],
+  "summary": {
+    "frozenSemanticVnext": 21,
+    "readyForUserApprovalVnext": 0,
+    "semanticHeadingTotalAcrossFrozenSources": 3955,
+    "deferredOrSkipped": 4,
+    "totalAuthorityRecords": 25
+  },
+  "registryRevision": 6,
+  "authorityCoverage": {
+    "semanticFreezeCompleteForReviewedSources": true,
+    "semanticFrozenSources": 21,
+    "semanticHeadingTotalAcrossFrozenSources": 3955,
+    "pendingUserApproval": 0,
+    "exactOccurrenceFreezeComplete": false,
+    "exactOccurrenceFrozenSources": 0,
+    "deferredOrSkippedCount": 4,
+    "visualRecoverySemanticFrozenSources": 1,
+    "note": "Unified semantic authority now includes machine-text and visual-only sources. Exact source binding remains modality-aware and separate from semantic freeze."
+  },
+  "deferredOrSkipped": [
+    {
+      "key": "DOC-0004",
+      "status": "SKIP_SOURCE_UNAVAILABLE",
+      "reason": "Authoritative source/packet unavailable; prior user instruction was to skip rather than infer."
+    },
+    {
+      "key": "DOC-0006",
+      "status": "SKIP_SOURCE_UNAVAILABLE",
+      "reason": "Authoritative source/packet unavailable; prior user instruction was to skip rather than infer."
+    },
+    {
+      "key": "DOC-0171",
+      "status": "REVIEW_REQUIRED_LINEAGE",
+      "reason": "Candidate source mapping exists only by inference; authoritative document-to-source lineage is not verified."
+    },
+    {
+      "key": "DOC-0326",
+      "status": "REVIEW_REQUIRED_LINEAGE",
+      "reason": "Must use the frozen authoritative DOCX only; no PDF substitution and exact DOCX mapping/lineage is not yet verified."
+    }
+  ]
+}

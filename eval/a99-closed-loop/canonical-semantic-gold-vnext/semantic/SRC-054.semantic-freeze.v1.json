@@ -1,14 +1,14 @@
 {
   "artifactKind": "a99_canonical_semantic_freeze",
   "schemaVersion": "a99-canonical-semantic-freeze-vnext-visual-unified-v1",
-  "authorityKey": "DOC-0092",
-  "fileName": "007_Luat_Nha_o_27-2023-QH15.pdf",
-  "sourcePath": "todo10_8/heading_corpus_100/01_phap_quy/007_Luat_Nha_o_27-2023-QH15.pdf",
-  "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
-  "registrySourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+  "authorityKey": "SRC-054",
+  "fileName": "054_IBRD_Information_Statement_FY25.pdf",
+  "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/054_IBRD_Information_Statement_FY25.pdf",
+  "sourceSha256": "02c949f22700a2ba84c0f9719c8c2e9d1ffff407cc5d21c89d34bc660cd480ac",
+  "registrySourceSha256": "02c949f22700a2ba84c0f9719c8c2e9d1ffff407cc5d21c89d34bc660cd480ac",
   "sourceLineageVerified": true,
   "sourceLineageStatus": "VERIFIED",
-  "semanticHeadingTotal": 145,
+  "semanticHeadingTotal": 316,
   "status": "FROZEN_SEMANTIC_VNEXT",
   "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
   "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
@@ -34,15 +34,35 @@
   "bindingArtifact": null,
   "historicalArtifactsAreProvenanceOnly": true,
   "authorityRecord": {
-    "key": "DOC-0092",
-    "fileName": "007_Luat_Nha_o_27-2023-QH15.pdf",
-    "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
-    "semanticHeadingTotal": 145,
+    "key": "SRC-054",
+    "fileName": "054_IBRD_Information_Statement_FY25.pdf",
+    "sourceSha256": "02c949f22700a2ba84c0f9719c8c2e9d1ffff407cc5d21c89d34bc660cd480ac",
+    "semanticHeadingTotal": 316,
     "status": "FROZEN_SEMANTIC_VNEXT",
     "exactOccurrenceFreeze": false,
     "userFinalApproval": true,
     "finalAuthority": "USER",
-    "approvedAt": "2026-09-12"
+    "approvedAt": "2026-09-12",
+    "approvalBasis": "User instructed to freeze the remaining completed Gold reviews under the unified vNext policy.",
+    "vnextReauditResult": {
+      "previousProposal": 308,
+      "delta": 8,
+      "result": 316,
+      "addedTrueHeadingOccurrences": [
+        {
+          "text": "Independent Auditor’s Report",
+          "countAdded": 2
+        },
+        {
+          "text": "SUMMARY STATEMENT OF LOANS (Continued)",
+          "countAdded": 1
+        },
+        {
+          "text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCK AND VOTING POWER (Continued)",
+          "countAdded": 5
+        }
+      ]
+    }
   },
   "notes": [
     "Semantic total is authoritative; no occurrence list or span was synthesized from the total.",

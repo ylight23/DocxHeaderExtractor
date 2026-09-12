@@ -1,8 +1,10 @@
 {
   "artifactKind": "a99_canonical_semantic_gold_vnext_lineage_inventory",
-  "schemaVersion": "a99-canonical-semantic-gold-vnext-lineage-v3",
-  "authorityRegistry": "freeze-registry.v6.visual-unified.json",
-  "authorityRegistrySha256": "1ffd780dced497f6554e6a545a6df7bf5038207107a643e66fe225e19a9c6805",
+  "schemaVersion": "a99-canonical-semantic-gold-vnext-lineage-v2",
+  "authorityRegistry": "freeze-registry.v4.checked.json",
+  "authorityRegistrySha256": "4de876b5f91d740da9217ee484e099125383283f1f4ce55ef77a97319592317b",
+  "sourceInventory": "eval/a99-dataset/document-inventory.v1.json",
+  "sourceInventorySha256": "0c80035f5c7f7948533c909552a480818ea14b26983de438e0567709d26505e1",
   "roots": [
     "eval/a99-closed-loop/strict-gold-v3",
     "eval/a99-closed-loop/strict-gold-v4",
@@ -1575,5 +1577,5 @@
       "authority": "PROVENANCE_ONLY"
     }
   ],
-  "note": "Legacy Gold, occurrence Gold and review artifacts remain provenance only; v6 registry is current semantic authority."
+  "note": "Legacy Gold and review artifacts are provenance only; the v4 checked registry is the current semantic authority."
 }

@@ -1,11 +1,13 @@
 {
   "artifactKind": "a99_canonical_semantic_freeze",
-  "schemaVersion": "a99-canonical-semantic-freeze-vnext-v1",
+  "schemaVersion": "a99-canonical-semantic-freeze-vnext-visual-unified-v1",
   "authorityKey": "DOC-0133",
   "fileName": "048_IBRD_Financial_Statements_March_2025.pdf",
   "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/048_IBRD_Financial_Statements_March_2025.pdf",
   "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
   "registrySourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+  "sourceLineageVerified": true,
+  "sourceLineageStatus": "VERIFIED",
   "semanticHeadingTotal": 123,
   "status": "FROZEN_SEMANTIC_VNEXT",
   "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
@@ -15,18 +17,47 @@
   "repeatedOrContinuationMayBeHeading": true,
   "newSemanticNodeRequiredForHeading": false,
   "exactOccurrenceFreeze": false,
+  "modalityHints": {
+    "visualRecoveryRequired": false,
+    "visualAdjudicationAvailable": true,
+    "machineTextMayBeInsufficient": false
+  },
   "capabilities": {
     "semanticEvaluable": true,
     "occurrenceEvaluable": false,
     "characterSpanEvaluable": false,
-    "hierarchyEvaluable": false
+    "hierarchyEvaluable": false,
+    "visualBindingEvaluable": false
   },
-  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_S0001_ORDERED_SOURCE_CATALOG",
+  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_TEXT_OR_VISUAL_ALIAS_CATALOG",
   "occurrenceArtifact": null,
   "bindingArtifact": null,
   "historicalArtifactsAreProvenanceOnly": true,
+  "authorityRecord": {
+    "key": "DOC-0133",
+    "fileName": "048_IBRD_Financial_Statements_March_2025.pdf",
+    "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+    "status": "FROZEN_SEMANTIC_VNEXT",
+    "reason": "Occurrence-first vNext re-audit completed; user explicitly approved 123.",
+    "exactOccurrenceFreeze": false,
+    "semanticHeadingTotal": 123,
+    "vnextReauditResult": {
+      "deltaFromPreviousApprovedTotal": 0,
+      "result": "123 remains semantically exhaustive under occurrence-first review",
+      "checks": [
+        "Condensed Balance Sheets spans two pages but the display title occurs only on the opening page; the next page continues with date/table content.",
+        "Condensed Statements of Income, Comprehensive Income, Changes in Retained Earnings, and Cash Flows each have one body display-title occurrence.",
+        "The financial-statements CONTENTS entries remain navigation rows, not body occurrences.",
+        "The outer INDEPENDENT AUDITOR'S REVIEW REPORT and the embedded Deloitte INDEPENDENT AUDITOR’S REVIEW REPORT are both true heading occurrences and were already represented in the approved 123.",
+        "No additional repeated/continuation display-title occurrence was found that had previously been collapsed."
+      ]
+    },
+    "userFinalApproval": true,
+    "finalAuthority": "USER",
+    "approvedAt": "2026-09-12"
+  },
   "notes": [
-    "Registry is authoritative for semantic total only.",
-    "No heading rows, spans, parentage or semantic nodes synthesized from the total."
+    "Semantic total is authoritative; no occurrence list or span was synthesized from the total.",
+    "Visual sources use VISUAL_REGION binding when exact occurrence authority is later materialized."
   ]
 }

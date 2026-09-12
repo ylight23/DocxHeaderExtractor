@@ -1,0 +1,30 @@
+{
+  "key": "DOC-0202",
+  "fileName": "022_ND_01-2021_Dang_ky_doanh_nghiep.docx",
+  "sourceSha256": "f8197a069ea9dfbd6e6c8f6ddb5af9c49fafe3328d7fae90544abe3a3dc86a81",
+  "semanticHeadingTotal": 111,
+  "status": "FROZEN_SEMANTIC_VNEXT",
+  "exactOccurrenceFreeze": false,
+  "userFinalApproval": true,
+  "finalAuthority": "USER",
+  "approvedAt": "2026-09-12",
+  "approvalBasis": "User instructed to freeze the final two files; source was visually reviewed because document body is scan/image based.",
+  "visualSourceAudit": {
+    "embeddedFullPageImages": 85,
+    "documentTitle": 1,
+    "chapters": 9,
+    "articles": 101,
+    "total": 111,
+    "boundary": "Count the decree title, Chapter I-IX, and Article 1-101. Signer/issuer metadata, dates, page numbers, Nơi nhận, signature block and page furniture are non-headings."
+  },
+  "capabilities": {
+    "machineTextEvaluable": false,
+    "visualSourceEvaluable": true,
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": true
+  },
+  "bindingNote": "Exact Gold for this source must use VISUAL_REGION bindings (page/image hash + bbox + recovered transcript); do not fabricate UTF-16 offsets in the original DOCX text layer."
+}

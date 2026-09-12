@@ -1,14 +1,14 @@
 {
   "artifactKind": "a99_canonical_semantic_freeze",
   "schemaVersion": "a99-canonical-semantic-freeze-vnext-visual-unified-v1",
-  "authorityKey": "DOC-0092",
-  "fileName": "007_Luat_Nha_o_27-2023-QH15.pdf",
-  "sourcePath": "todo10_8/heading_corpus_100/01_phap_quy/007_Luat_Nha_o_27-2023-QH15.pdf",
-  "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
-  "registrySourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+  "authorityKey": "SRC-055",
+  "fileName": "055_IDA_External_Review_FY25.pdf",
+  "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/055_IDA_External_Review_FY25.pdf",
+  "sourceSha256": "3b9d4317f2e8ca32ff9288d5f7c653fefd7231d5656a5b8a996be656b1dee455",
+  "registrySourceSha256": "3b9d4317f2e8ca32ff9288d5f7c653fefd7231d5656a5b8a996be656b1dee455",
   "sourceLineageVerified": true,
   "sourceLineageStatus": "VERIFIED",
-  "semanticHeadingTotal": 145,
+  "semanticHeadingTotal": 4,
   "status": "FROZEN_SEMANTIC_VNEXT",
   "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
   "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
@@ -34,15 +34,28 @@
   "bindingArtifact": null,
   "historicalArtifactsAreProvenanceOnly": true,
   "authorityRecord": {
-    "key": "DOC-0092",
-    "fileName": "007_Luat_Nha_o_27-2023-QH15.pdf",
-    "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
-    "semanticHeadingTotal": 145,
+    "key": "SRC-055",
+    "fileName": "055_IDA_External_Review_FY25.pdf",
+    "sourceSha256": "3b9d4317f2e8ca32ff9288d5f7c653fefd7231d5656a5b8a996be656b1dee455",
+    "semanticHeadingTotal": 4,
     "status": "FROZEN_SEMANTIC_VNEXT",
     "exactOccurrenceFreeze": false,
     "userFinalApproval": true,
     "finalAuthority": "USER",
-    "approvedAt": "2026-09-12"
+    "approvedAt": "2026-09-12",
+    "approvalBasis": "User instructed to freeze the remaining completed Gold reviews under the unified vNext policy.",
+    "vnextReauditResult": {
+      "previousProposal": 4,
+      "delta": 0,
+      "result": 4,
+      "headingSummary": [
+        "INDEPENDENT ACCOUNTANT’S REPORT",
+        "Management’s Assertion Regarding Commitments and Disbursements for IDA Projects",
+        "IDA Projects Commitment and Disbursement Schedule",
+        "Notes on the IDA Projects Commitment and Disbursement Schedule"
+      ],
+      "notes": "The 1,375 project rows and repeated table column headers are tabular data, not headings."
+    }
   },
   "notes": [
     "Semantic total is authoritative; no occurrence list or span was synthesized from the total.",

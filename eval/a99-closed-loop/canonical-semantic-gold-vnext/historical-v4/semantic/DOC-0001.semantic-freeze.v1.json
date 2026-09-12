@@ -1,0 +1,32 @@
+{
+  "artifactKind": "a99_canonical_semantic_freeze",
+  "schemaVersion": "a99-canonical-semantic-freeze-vnext-v1",
+  "authorityKey": "DOC-0001",
+  "fileName": "01-style-chuan.docx",
+  "sourcePath": "bench/01-style-chuan.docx",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "registrySourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "semanticHeadingTotal": 7,
+  "status": "FROZEN_SEMANTIC_VNEXT",
+  "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+  "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+  "semanticMembership": "HEADING",
+  "promptAffectsSemanticTruth": false,
+  "repeatedOrContinuationMayBeHeading": true,
+  "newSemanticNodeRequiredForHeading": false,
+  "exactOccurrenceFreeze": false,
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_S0001_ORDERED_SOURCE_CATALOG",
+  "occurrenceArtifact": null,
+  "bindingArtifact": null,
+  "historicalArtifactsAreProvenanceOnly": true,
+  "notes": [
+    "Registry is authoritative for semantic total only.",
+    "No heading rows, spans, parentage or semantic nodes synthesized from the total."
+  ]
+}
