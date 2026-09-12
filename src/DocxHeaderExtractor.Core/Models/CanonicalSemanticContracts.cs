@@ -44,7 +44,10 @@ public sealed record CanonicalSemanticProposal(
     [property: JsonPropertyName("structuralType")] string? StructuralType = null,
     [property: JsonPropertyName("scope")] string? Scope = null,
     [property: JsonPropertyName("relationHints")] IReadOnlyList<string>? RelationHints = null,
-    [property: JsonPropertyName("sourceAliases")] IReadOnlyList<string>? SourceAliases = null);
+    [property: JsonPropertyName("sourceAliases")] IReadOnlyList<string>? SourceAliases = null,
+    [property: JsonPropertyName("occurrence")] int? Occurrence = null,
+    [property: JsonPropertyName("leftExactContext")] string? LeftExactContext = null,
+    [property: JsonPropertyName("rightExactContext")] string? RightExactContext = null);
 
 public static class CanonicalSemanticContract
 {
@@ -75,6 +78,9 @@ public static class CanonicalSemanticContract
                         structuralType = new { type = "string" },
                         scope = new { type = "string" },
                         relationHints = new { type = "array", items = new { type = "string" } },
+                        occurrence = new { type = "integer", minimum = 1 },
+                        leftExactContext = new { type = "string" },
+                        rightExactContext = new { type = "string" },
                     },
                     required = new[] { "sourceAlias", "isHeading" },
                 },
@@ -200,21 +206,21 @@ public static class CanonicalSemanticExactBinder
                     break;
                 }
                 var positions = FindExact(partAlias.Text, partText);
-                if (positions.Count == 0)
+                var selectedPosition = SelectExact(partAlias.Text, partText, positions, proposal);
+                if (selectedPosition is null)
                 {
-                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.NonVerbatimText, partAlias.SourceId, null, null, "NON_VERBATIM_TEXT"));
+                    audit.Add(new(index, proposal,
+                        positions.Count == 0
+                            ? CanonicalSemanticBindingStatus.NonVerbatimText
+                            : CanonicalSemanticBindingStatus.AmbiguousBinding,
+                        partAlias.SourceId, null, null,
+                        positions.Count == 0 ? "NON_VERBATIM_TEXT" : "AMBIGUOUS_BINDING"));
                     failed = true;
                     break;
                 }
-                if (positions.Count > 1)
-                {
-                    audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.AmbiguousBinding, partAlias.SourceId, null, null, "AMBIGUOUS_BINDING"));
-                    failed = true;
-                    break;
-                }
-                var partStart = positions[0] + partAlias.SourceSpan.Start;
+                var partStart = selectedPosition.Value + partAlias.SourceSpan.Start;
                 var partEnd = partStart + partText.Length;
-                if (!partAlias.Contains(new StructuralSpan(positions[0], positions[0] + partText.Length)))
+                if (!partAlias.Contains(new StructuralSpan(selectedPosition.Value, selectedPosition.Value + partText.Length)))
                 {
                     audit.Add(new(index, proposal, CanonicalSemanticBindingStatus.OutOfOwnedSegment, partAlias.SourceId, partStart, partEnd, "OUT_OF_OWNED_SEGMENT"));
                     failed = true;
@@ -267,6 +273,30 @@ public static class CanonicalSemanticExactBinder
             offset = position + Math.Max(1, text.Length);
         }
         return positions;
+    }
+
+    private static int? SelectExact(
+        string source, string text, IReadOnlyList<int> positions, CanonicalSemanticProposal proposal)
+    {
+        if (positions.Count == 0) return null;
+        if (positions.Count == 1 && proposal.Occurrence is null &&
+            proposal.LeftExactContext is null && proposal.RightExactContext is null)
+            return positions[0];
+        if (proposal.Occurrence is { } ordinal)
+            return ordinal >= 1 && ordinal <= positions.Count ? positions[ordinal - 1] : null;
+        if (proposal.LeftExactContext is null && proposal.RightExactContext is null)
+            return null;
+        return positions.Where(position =>
+        {
+            var left = proposal.LeftExactContext is null ||
+                (position >= proposal.LeftExactContext.Length &&
+                 source.Substring(position - proposal.LeftExactContext.Length, proposal.LeftExactContext.Length) == proposal.LeftExactContext);
+            var end = position + text.Length;
+            var right = proposal.RightExactContext is null ||
+                (end + proposal.RightExactContext.Length <= source.Length &&
+                 source.Substring(end, proposal.RightExactContext.Length) == proposal.RightExactContext);
+            return left && right;
+        }).Select(position => (int?)position).FirstOrDefault();
     }
 }
 

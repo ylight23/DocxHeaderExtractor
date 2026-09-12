@@ -184,6 +184,48 @@ public sealed class CanonicalSemanticVnextRuntimeTests
         Assert.True(SemanticVisualEscalation.IsOptional);
     }
 
+    [Fact]
+    public void Production_entry_point_runs_the_vnext_stage_order_without_gold()
+    {
+        var catalog = Catalog(("p1", "😀 Heading"), ("p2", "Other"));
+        var result = CanonicalSemanticProductionEntryPoint.Run(new(
+            catalog,
+            [new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION")],
+            "source-hash",
+            [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
+            [new SemanticCandidateAttentionHint("S0001", false, "heuristic-miss")],
+            ["Heading"], ["local"], ["global"]));
+
+        Assert.Equal(CanonicalSemanticModality.Text, result.ModalityProfile.DocumentModality);
+        Assert.Single(result.TextPipeline.BoundHeadings);
+        Assert.Single(result.CanonicalOccurrences);
+        Assert.Single(result.UnifiedOccurrences);
+        Assert.Equal("SOURCE_IDENTITY", result.StageLedger[0].Stage);
+        Assert.Equal("TASK_PROJECTION", result.StageLedger[^1].Stage);
+        Assert.All(result.StageLedger, entry => Assert.NotEqual("LOSS_OBSERVED", entry.Status));
+    }
+
+    [Fact]
+    public void Production_entry_point_recovers_and_binds_visual_evidence_without_text_offsets()
+    {
+        var result = CanonicalSemanticProductionEntryPoint.Run(new(
+            Catalog(("p1", "text")),
+            [],
+            "source-hash",
+            [new CanonicalSemanticPageEvidence("P0001", false, 1, "docx-image")],
+            [], [], [], [],
+            [new CanonicalSemanticVisualBlock(
+                "P0001", 1, "image-hash",
+                new CanonicalSemanticVisualBoundingBox(0, 0, 10, 10), "Visual heading")],
+            [new CanonicalSemanticVisualProposal("V0001", true, "Visual heading", "SECTION")]));
+
+        Assert.Equal(CanonicalSemanticModality.VisualOnly, result.ModalityProfile.DocumentModality);
+        Assert.Single(result.VisualOccurrences);
+        Assert.Single(result.VisualHeadings);
+        Assert.Single(result.UnifiedOccurrences);
+        Assert.Equal("VISUAL_REGION", result.VisualHeadings[0].Binding.CoordinateSystem);
+    }
+
     private static CanonicalSemanticGraph Graph(params CanonicalSemanticProposal[] proposals)
     {
         var units = proposals.Select((proposal, index) => (

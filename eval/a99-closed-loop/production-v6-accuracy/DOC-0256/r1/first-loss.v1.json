@@ -1,0 +1,231 @@
+{
+  "documentId": "DOC-0256",
+  "repeat": "r1",
+  "firstLosses": [
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[6]:0:30",
+      "exactSourceText": "Welcome and meeting objectives",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[10]:0:53",
+      "exactSourceText": "Regional updates on the ICP 2021 cycle implementation",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLoss": "MODEL_WRONG_SPAN",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[17]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLoss": "MODEL_WRONG_SPAN",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[20]:0:34",
+      "exactSourceText": "Commonwealth of Independent States",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[26]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLoss": "MODEL_WRONG_SPAN",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[32]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[35]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[42]:0:51",
+      "exactSourceText": "Global updates on the ICP 2021 cycle implementation",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[55]:0:60",
+      "exactSourceText": "Data review: Household consumption price and importance data",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[61]:0:39",
+      "exactSourceText": "Data review: Housing prices and volumes",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[67]:0:30",
+      "exactSourceText": "Data review: Private Education",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[73]:0:64",
+      "exactSourceText": "Data review: Government compensation and productivity adjustment",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[76]:0:53",
+      "exactSourceText": "Data review: Machinery and equipment and construction",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[80]:0:53",
+      "exactSourceText": "Data review: 2017-2021 National Accounts expenditures",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[88]:0:59",
+      "exactSourceText": "Data review: 2017-2021 Population and market exchange rates",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[90]:0:102",
+      "exactSourceText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[99]:0:31",
+      "exactSourceText": "Planning for the ICP 2024 cycle",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[107]:0:23",
+      "exactSourceText": "Annex 1: Meeting Agenda",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]:0:32",
+      "exactSourceText": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]:0:34",
+      "exactSourceText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]:0:33",
+      "exactSourceText": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]:0:31",
+      "exactSourceText": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "firstLoss": "FOUND",
+      "found": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[124]:0:29",
+      "exactSourceText": "Annex 2: List of participants",
+      "firstLoss": "FOUND",
+      "found": true
+    }
+  ],
+  "falsePositives": [
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[3]:0:87",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[11]:0:803",
+      "exactSourceText": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), the status of the ICP 2021 cycle in the Africa region, which provided information on the surveynditure compilation status, the data and metadata submission and validation status, the PPP estimation status, and forthcoming activities and meetings. Fifty-two economies are participating in the ICP 2021 cycle with capacity-building efforts in South Sudan and Somalia, resulting in their participation as an additional two economies compared with the 2017 cycle. Technical assistance has also been extended to Libya and Eritrea. Surveys were conducted from July 2022 to March 2023, following an assessment of the impact of COVID-19 on ICP processes and data collection. On expenditure data compilation, it was noted that 38 countries had",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[17]:0:877",
+      "exactSourceText": "Asia and the Pacific Criselda De Dios, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. Twenty-one economies aring in the ICP 2021 cycle. Most economies conducted price surveys in 2021. Surveys in some economies were delayed due to COVID-19, with the data collection period extended until Q4, 2022 to accommodate the completion of surveys in all economies. For prices collected in periods outside the reference year 2021, a standard method for extrapolation was utilized, employing tools developed by ADB to facilitate this process. Price survey data, national accounts expenditure data, and required metadata questionnaires have been submitted by most economies as of November 2023, and the data validation process is in its final stages. Bilateral engagement with economies is ongoing to address specific data quality issues.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[24]:0:1030",
+      "exactSourceText": "Andrehe Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), the status of the ICP 2021 cycle in the CIS region. Nine economies are participating in the ICe. CIS-STAT is providing support to Turkmenistan in anticipation of its participation in future ICP cycles. The majority of the ICP 2021 cycle price surveys were completed in 2021, with validation at the regional level completed and data submitted to the Global Office in 2023. The survey for construction was provided using two approaches: the regional Resource and Technological Models Method (RTM) approach and the ICP construction and civil engineering approach. The validation of data for the RTM approach was completed in April 2023; data validation on construction and civil engineering is underway as of November 2023. Metadata questionnaires were submitted in May 2023 to the Global Office. Regional PPPs have been computed for all survey categories, and PPPs for national accounts expenditures will be finalized by the end of 2023.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[26]:0:1257",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program Mihai-Iulian Gheorghe, Eurostat, and Sophie Bournot, OECD, the status of the Eurostat-OECD PPP Program. Forty-eight economies are participating in the ECD PPP programme for the ICP 2021 cycle. Of those, 36 are coordinated by Eurostat, while twelve economies are coordinated by OECD. Georgia and Ukraine are participating in the ICP 2021 cycle and are linked to the global comparison through the Eurostat comparison. Russia is not participating in the OECD comparison for the ICP 2021 cycle. Surveys for the ICP 2021 cycle were integrated into the established Eurostat and OECD\u2019s regular programme to produce annual PPP estimates. A specific ICP survey on construction was conducted by eleven Eurostat economies, the United States of America, Ukraine, and Georgia. Validation of outstanding data will be completed by the end of November 2023. Selected metadata will be submitted to the Global Office by early 2024. Annual PPPs and expenditures have been submitted to the Global Office for most economies, while 2017 and 2021 estimates are available for Ukraine and Georgia. Data for 2020 and 2021 will be revised in December 2023. Data for 2019 for non-European economies will be recalculated due to a correction to PPPs for health.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[33]:0:1132",
+      "exactSourceText": "Claudia de Cario, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), the status of the ICP 2021 cycle in Latin America and the Caribbean region. Thirty-two economicipating in the 2021 cycle, consisting of thirteen from Latin America and nineteen from the Caribbean. The majority of household consumption price surveys were conducted in 2021, although some surveys were conducted in 2019 and 2020, and data subsequently extrapolated to 2021. Regarding non-household surveys, these were also conducted in 2021, but in some economies, price collection was extended into 2022 and 2023 due to staffing and resource impacts arising from the COVID-19 pandemic. As of November 2023, some economies are yet to submit a complete set of data for non-household surveys and national accounts expenditures. Preliminary PPP estimates at the basic heading level have been computed for household surveys, private education surveys, and housing rental surveys. The incorporation of validated data from non-household surveys and expenditures is underway. At the same time, the revision of 2017 results is also underway.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    },
+    {
+      "documentId": "DOC-0256",
+      "key": "body[1]/p[36]:0:1005",
+      "exactSourceText": "Majed Skaini, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), the status of the ICP 2021 cycle in the Western Asia region. Sixteen economies are participaregional program. Data was primarily collected in 2021, with some economies extending collection into 2022 and data being backcasted to 2021 using detailed-level CPIs. Some of the non-household surveys are being collected on an annual basis. Updates were made at the end of October 2023 after review and collaboration with the AfDB for consistency in dual participating economies\u2019 data, and assessment of outstanding issues with some economies. Expenditure data was received from most economies, while UN-ESCWA provided estimates for missing economies. Data validation and verification will be finalized in 2023. Revised regional annual PPPs for 2017 to 2020, preliminary PPPs for 2021 and 2022, and forecasted PPPs for 2023 will be computed in November 2023, with a final time series computed and released in December 2023.",
+      "firstLoss": "MODEL_FALSE_POSITIVE",
+      "found": false
+    }
+  ],
+  "firstLossCounts": {
+    "FOUND": 21,
+    "MODEL_WRONG_SPAN": 3
+  },
+  "systemLoss": 0,
+  "goldReadBeforeFreeze": false
+}

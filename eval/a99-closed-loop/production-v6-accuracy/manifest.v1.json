@@ -1,0 +1,3903 @@
+{
+  "schemaVersion": "a99-v6-production-accuracy-manifest-v1",
+  "entryPoint": "CanonicalSemanticProductionEntryPoint",
+  "startHead": "55a1ec274846b109589a3df2426a351be82a87a3",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "OpenRouter",
+  "semanticContractVersion": "a99-semantic-text-exact-binding-v1",
+  "semanticContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "repeats": [
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "providerConcurrency": 1,
+  "executionPolicy": "FULL_CONTEXT_ONLY;SEGMENTED_EXECUTABLE_IF_TRUE_EXECUTION_FAILURE",
+  "noVlm": true,
+  "noMultipass": true,
+  "noCandidateGating": true,
+  "noPromptTuning": true,
+  "eligibilityPolicy": "canonical strict-gold metadata-only evaluator",
+  "selectedCohort": [
+    {
+      "documentId": "DOC-0001",
+      "eligibility": {
+        "documentId": "DOC-0001",
+        "eligible": true,
+        "reason": "EXACT_APPROVED_SOURCE_BACKED_GOLD_METADATA",
+        "occurrenceCount": 7,
+        "occurrenceEvaluable": true,
+        "characterSpanEvaluable": true
+      }
+    },
+    {
+      "documentId": "DOC-0205",
+      "eligibility": {
+        "documentId": "DOC-0205",
+        "eligible": true,
+        "reason": "EXACT_APPROVED_SOURCE_BACKED_GOLD_METADATA",
+        "occurrenceCount": 71,
+        "occurrenceEvaluable": true,
+        "characterSpanEvaluable": true
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "eligibility": {
+        "documentId": "DOC-0252",
+        "eligible": true,
+        "reason": "EXACT_APPROVED_SOURCE_BACKED_GOLD_METADATA",
+        "occurrenceCount": 27,
+        "occurrenceEvaluable": true,
+        "characterSpanEvaluable": true
+      }
+    },
+    {
+      "documentId": "DOC-0256",
+      "eligibility": {
+        "documentId": "DOC-0256",
+        "eligible": true,
+        "reason": "EXACT_APPROVED_SOURCE_BACKED_GOLD_METADATA",
+        "occurrenceCount": 24,
+        "occurrenceEvaluable": true,
+        "characterSpanEvaluable": true
+      }
+    },
+    {
+      "documentId": "DOC-0258",
+      "eligibility": {
+        "documentId": "DOC-0258",
+        "eligible": true,
+        "reason": "EXACT_APPROVED_SOURCE_BACKED_GOLD_METADATA",
+        "occurrenceCount": 24,
+        "occurrenceEvaluable": true,
+        "characterSpanEvaluable": true
+      }
+    }
+  ],
+  "excludedDocuments": [
+    {
+      "documentId": "DOC-0002",
+      "eligibility": {
+        "documentId": "DOC-0002",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0003",
+      "eligibility": {
+        "documentId": "DOC-0003",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0004",
+      "eligibility": {
+        "documentId": "DOC-0004",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0005",
+      "eligibility": {
+        "documentId": "DOC-0005",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0006",
+      "eligibility": {
+        "documentId": "DOC-0006",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0007",
+      "eligibility": {
+        "documentId": "DOC-0007",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0008",
+      "eligibility": {
+        "documentId": "DOC-0008",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0009",
+      "eligibility": {
+        "documentId": "DOC-0009",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0010",
+      "eligibility": {
+        "documentId": "DOC-0010",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0011",
+      "eligibility": {
+        "documentId": "DOC-0011",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0012",
+      "eligibility": {
+        "documentId": "DOC-0012",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0013",
+      "eligibility": {
+        "documentId": "DOC-0013",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0014",
+      "eligibility": {
+        "documentId": "DOC-0014",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0015",
+      "eligibility": {
+        "documentId": "DOC-0015",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0016",
+      "eligibility": {
+        "documentId": "DOC-0016",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0017",
+      "eligibility": {
+        "documentId": "DOC-0017",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0018",
+      "eligibility": {
+        "documentId": "DOC-0018",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0019",
+      "eligibility": {
+        "documentId": "DOC-0019",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0020",
+      "eligibility": {
+        "documentId": "DOC-0020",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0021",
+      "eligibility": {
+        "documentId": "DOC-0021",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0022",
+      "eligibility": {
+        "documentId": "DOC-0022",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0023",
+      "eligibility": {
+        "documentId": "DOC-0023",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0024",
+      "eligibility": {
+        "documentId": "DOC-0024",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0025",
+      "eligibility": {
+        "documentId": "DOC-0025",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0026",
+      "eligibility": {
+        "documentId": "DOC-0026",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0027",
+      "eligibility": {
+        "documentId": "DOC-0027",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0028",
+      "eligibility": {
+        "documentId": "DOC-0028",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0029",
+      "eligibility": {
+        "documentId": "DOC-0029",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0030",
+      "eligibility": {
+        "documentId": "DOC-0030",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0031",
+      "eligibility": {
+        "documentId": "DOC-0031",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0032",
+      "eligibility": {
+        "documentId": "DOC-0032",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0033",
+      "eligibility": {
+        "documentId": "DOC-0033",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0034",
+      "eligibility": {
+        "documentId": "DOC-0034",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0035",
+      "eligibility": {
+        "documentId": "DOC-0035",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0036",
+      "eligibility": {
+        "documentId": "DOC-0036",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0037",
+      "eligibility": {
+        "documentId": "DOC-0037",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0038",
+      "eligibility": {
+        "documentId": "DOC-0038",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0039",
+      "eligibility": {
+        "documentId": "DOC-0039",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0040",
+      "eligibility": {
+        "documentId": "DOC-0040",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0041",
+      "eligibility": {
+        "documentId": "DOC-0041",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0042",
+      "eligibility": {
+        "documentId": "DOC-0042",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0043",
+      "eligibility": {
+        "documentId": "DOC-0043",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0044",
+      "eligibility": {
+        "documentId": "DOC-0044",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0045",
+      "eligibility": {
+        "documentId": "DOC-0045",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0046",
+      "eligibility": {
+        "documentId": "DOC-0046",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0047",
+      "eligibility": {
+        "documentId": "DOC-0047",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0048",
+      "eligibility": {
+        "documentId": "DOC-0048",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0049",
+      "eligibility": {
+        "documentId": "DOC-0049",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0050",
+      "eligibility": {
+        "documentId": "DOC-0050",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0051",
+      "eligibility": {
+        "documentId": "DOC-0051",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0052",
+      "eligibility": {
+        "documentId": "DOC-0052",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0053",
+      "eligibility": {
+        "documentId": "DOC-0053",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0054",
+      "eligibility": {
+        "documentId": "DOC-0054",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0055",
+      "eligibility": {
+        "documentId": "DOC-0055",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0056",
+      "eligibility": {
+        "documentId": "DOC-0056",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0057",
+      "eligibility": {
+        "documentId": "DOC-0057",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0058",
+      "eligibility": {
+        "documentId": "DOC-0058",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0059",
+      "eligibility": {
+        "documentId": "DOC-0059",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0060",
+      "eligibility": {
+        "documentId": "DOC-0060",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0061",
+      "eligibility": {
+        "documentId": "DOC-0061",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0062",
+      "eligibility": {
+        "documentId": "DOC-0062",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0063",
+      "eligibility": {
+        "documentId": "DOC-0063",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0064",
+      "eligibility": {
+        "documentId": "DOC-0064",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0065",
+      "eligibility": {
+        "documentId": "DOC-0065",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0066",
+      "eligibility": {
+        "documentId": "DOC-0066",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0067",
+      "eligibility": {
+        "documentId": "DOC-0067",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0068",
+      "eligibility": {
+        "documentId": "DOC-0068",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0069",
+      "eligibility": {
+        "documentId": "DOC-0069",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0070",
+      "eligibility": {
+        "documentId": "DOC-0070",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0071",
+      "eligibility": {
+        "documentId": "DOC-0071",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0072",
+      "eligibility": {
+        "documentId": "DOC-0072",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0073",
+      "eligibility": {
+        "documentId": "DOC-0073",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0074",
+      "eligibility": {
+        "documentId": "DOC-0074",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0075",
+      "eligibility": {
+        "documentId": "DOC-0075",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0076",
+      "eligibility": {
+        "documentId": "DOC-0076",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0077",
+      "eligibility": {
+        "documentId": "DOC-0077",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0078",
+      "eligibility": {
+        "documentId": "DOC-0078",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0079",
+      "eligibility": {
+        "documentId": "DOC-0079",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0080",
+      "eligibility": {
+        "documentId": "DOC-0080",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0081",
+      "eligibility": {
+        "documentId": "DOC-0081",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0082",
+      "eligibility": {
+        "documentId": "DOC-0082",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0083",
+      "eligibility": {
+        "documentId": "DOC-0083",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0084",
+      "eligibility": {
+        "documentId": "DOC-0084",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0085",
+      "eligibility": {
+        "documentId": "DOC-0085",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0086",
+      "eligibility": {
+        "documentId": "DOC-0086",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0087",
+      "eligibility": {
+        "documentId": "DOC-0087",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0088",
+      "eligibility": {
+        "documentId": "DOC-0088",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0089",
+      "eligibility": {
+        "documentId": "DOC-0089",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0090",
+      "eligibility": {
+        "documentId": "DOC-0090",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0091",
+      "eligibility": {
+        "documentId": "DOC-0091",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0092",
+      "eligibility": {
+        "documentId": "DOC-0092",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0093",
+      "eligibility": {
+        "documentId": "DOC-0093",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0094",
+      "eligibility": {
+        "documentId": "DOC-0094",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0095",
+      "eligibility": {
+        "documentId": "DOC-0095",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0096",
+      "eligibility": {
+        "documentId": "DOC-0096",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0097",
+      "eligibility": {
+        "documentId": "DOC-0097",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0098",
+      "eligibility": {
+        "documentId": "DOC-0098",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0099",
+      "eligibility": {
+        "documentId": "DOC-0099",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0100",
+      "eligibility": {
+        "documentId": "DOC-0100",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0101",
+      "eligibility": {
+        "documentId": "DOC-0101",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0102",
+      "eligibility": {
+        "documentId": "DOC-0102",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0103",
+      "eligibility": {
+        "documentId": "DOC-0103",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0104",
+      "eligibility": {
+        "documentId": "DOC-0104",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0105",
+      "eligibility": {
+        "documentId": "DOC-0105",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0106",
+      "eligibility": {
+        "documentId": "DOC-0106",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0107",
+      "eligibility": {
+        "documentId": "DOC-0107",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0108",
+      "eligibility": {
+        "documentId": "DOC-0108",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0109",
+      "eligibility": {
+        "documentId": "DOC-0109",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0110",
+      "eligibility": {
+        "documentId": "DOC-0110",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0111",
+      "eligibility": {
+        "documentId": "DOC-0111",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0112",
+      "eligibility": {
+        "documentId": "DOC-0112",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0113",
+      "eligibility": {
+        "documentId": "DOC-0113",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0114",
+      "eligibility": {
+        "documentId": "DOC-0114",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0115",
+      "eligibility": {
+        "documentId": "DOC-0115",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0116",
+      "eligibility": {
+        "documentId": "DOC-0116",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0117",
+      "eligibility": {
+        "documentId": "DOC-0117",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0118",
+      "eligibility": {
+        "documentId": "DOC-0118",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0119",
+      "eligibility": {
+        "documentId": "DOC-0119",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0120",
+      "eligibility": {
+        "documentId": "DOC-0120",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0121",
+      "eligibility": {
+        "documentId": "DOC-0121",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0122",
+      "eligibility": {
+        "documentId": "DOC-0122",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "eligibility": {
+        "documentId": "DOC-0123",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0124",
+      "eligibility": {
+        "documentId": "DOC-0124",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0125",
+      "eligibility": {
+        "documentId": "DOC-0125",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0126",
+      "eligibility": {
+        "documentId": "DOC-0126",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0127",
+      "eligibility": {
+        "documentId": "DOC-0127",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0128",
+      "eligibility": {
+        "documentId": "DOC-0128",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0129",
+      "eligibility": {
+        "documentId": "DOC-0129",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0130",
+      "eligibility": {
+        "documentId": "DOC-0130",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0131",
+      "eligibility": {
+        "documentId": "DOC-0131",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0132",
+      "eligibility": {
+        "documentId": "DOC-0132",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0133",
+      "eligibility": {
+        "documentId": "DOC-0133",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0134",
+      "eligibility": {
+        "documentId": "DOC-0134",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0135",
+      "eligibility": {
+        "documentId": "DOC-0135",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0136",
+      "eligibility": {
+        "documentId": "DOC-0136",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0137",
+      "eligibility": {
+        "documentId": "DOC-0137",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0138",
+      "eligibility": {
+        "documentId": "DOC-0138",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0139",
+      "eligibility": {
+        "documentId": "DOC-0139",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0140",
+      "eligibility": {
+        "documentId": "DOC-0140",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0141",
+      "eligibility": {
+        "documentId": "DOC-0141",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0142",
+      "eligibility": {
+        "documentId": "DOC-0142",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0143",
+      "eligibility": {
+        "documentId": "DOC-0143",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0144",
+      "eligibility": {
+        "documentId": "DOC-0144",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0145",
+      "eligibility": {
+        "documentId": "DOC-0145",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0146",
+      "eligibility": {
+        "documentId": "DOC-0146",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0147",
+      "eligibility": {
+        "documentId": "DOC-0147",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0148",
+      "eligibility": {
+        "documentId": "DOC-0148",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0149",
+      "eligibility": {
+        "documentId": "DOC-0149",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0150",
+      "eligibility": {
+        "documentId": "DOC-0150",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0151",
+      "eligibility": {
+        "documentId": "DOC-0151",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0152",
+      "eligibility": {
+        "documentId": "DOC-0152",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0153",
+      "eligibility": {
+        "documentId": "DOC-0153",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0154",
+      "eligibility": {
+        "documentId": "DOC-0154",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0155",
+      "eligibility": {
+        "documentId": "DOC-0155",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0156",
+      "eligibility": {
+        "documentId": "DOC-0156",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0157",
+      "eligibility": {
+        "documentId": "DOC-0157",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0158",
+      "eligibility": {
+        "documentId": "DOC-0158",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0159",
+      "eligibility": {
+        "documentId": "DOC-0159",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0160",
+      "eligibility": {
+        "documentId": "DOC-0160",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0161",
+      "eligibility": {
+        "documentId": "DOC-0161",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0162",
+      "eligibility": {
+        "documentId": "DOC-0162",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0163",
+      "eligibility": {
+        "documentId": "DOC-0163",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0164",
+      "eligibility": {
+        "documentId": "DOC-0164",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0165",
+      "eligibility": {
+        "documentId": "DOC-0165",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0166",
+      "eligibility": {
+        "documentId": "DOC-0166",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0167",
+      "eligibility": {
+        "documentId": "DOC-0167",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0168",
+      "eligibility": {
+        "documentId": "DOC-0168",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0169",
+      "eligibility": {
+        "documentId": "DOC-0169",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0170",
+      "eligibility": {
+        "documentId": "DOC-0170",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0171",
+      "eligibility": {
+        "documentId": "DOC-0171",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0172",
+      "eligibility": {
+        "documentId": "DOC-0172",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0173",
+      "eligibility": {
+        "documentId": "DOC-0173",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0174",
+      "eligibility": {
+        "documentId": "DOC-0174",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0175",
+      "eligibility": {
+        "documentId": "DOC-0175",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0176",
+      "eligibility": {
+        "documentId": "DOC-0176",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0177",
+      "eligibility": {
+        "documentId": "DOC-0177",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0178",
+      "eligibility": {
+        "documentId": "DOC-0178",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0179",
+      "eligibility": {
+        "documentId": "DOC-0179",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0180",
+      "eligibility": {
+        "documentId": "DOC-0180",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0181",
+      "eligibility": {
+        "documentId": "DOC-0181",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0182",
+      "eligibility": {
+        "documentId": "DOC-0182",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0183",
+      "eligibility": {
+        "documentId": "DOC-0183",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0184",
+      "eligibility": {
+        "documentId": "DOC-0184",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0185",
+      "eligibility": {
+        "documentId": "DOC-0185",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0186",
+      "eligibility": {
+        "documentId": "DOC-0186",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0187",
+      "eligibility": {
+        "documentId": "DOC-0187",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0188",
+      "eligibility": {
+        "documentId": "DOC-0188",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0189",
+      "eligibility": {
+        "documentId": "DOC-0189",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0190",
+      "eligibility": {
+        "documentId": "DOC-0190",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0191",
+      "eligibility": {
+        "documentId": "DOC-0191",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0192",
+      "eligibility": {
+        "documentId": "DOC-0192",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0193",
+      "eligibility": {
+        "documentId": "DOC-0193",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0194",
+      "eligibility": {
+        "documentId": "DOC-0194",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0195",
+      "eligibility": {
+        "documentId": "DOC-0195",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0196",
+      "eligibility": {
+        "documentId": "DOC-0196",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0197",
+      "eligibility": {
+        "documentId": "DOC-0197",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0198",
+      "eligibility": {
+        "documentId": "DOC-0198",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0199",
+      "eligibility": {
+        "documentId": "DOC-0199",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0200",
+      "eligibility": {
+        "documentId": "DOC-0200",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0201",
+      "eligibility": {
+        "documentId": "DOC-0201",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0202",
+      "eligibility": {
+        "documentId": "DOC-0202",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0203",
+      "eligibility": {
+        "documentId": "DOC-0203",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0204",
+      "eligibility": {
+        "documentId": "DOC-0204",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0206",
+      "eligibility": {
+        "documentId": "DOC-0206",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0207",
+      "eligibility": {
+        "documentId": "DOC-0207",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0208",
+      "eligibility": {
+        "documentId": "DOC-0208",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0209",
+      "eligibility": {
+        "documentId": "DOC-0209",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0210",
+      "eligibility": {
+        "documentId": "DOC-0210",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0211",
+      "eligibility": {
+        "documentId": "DOC-0211",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0212",
+      "eligibility": {
+        "documentId": "DOC-0212",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0213",
+      "eligibility": {
+        "documentId": "DOC-0213",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0214",
+      "eligibility": {
+        "documentId": "DOC-0214",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0215",
+      "eligibility": {
+        "documentId": "DOC-0215",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0216",
+      "eligibility": {
+        "documentId": "DOC-0216",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0217",
+      "eligibility": {
+        "documentId": "DOC-0217",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0218",
+      "eligibility": {
+        "documentId": "DOC-0218",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0219",
+      "eligibility": {
+        "documentId": "DOC-0219",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0220",
+      "eligibility": {
+        "documentId": "DOC-0220",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0221",
+      "eligibility": {
+        "documentId": "DOC-0221",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0222",
+      "eligibility": {
+        "documentId": "DOC-0222",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0223",
+      "eligibility": {
+        "documentId": "DOC-0223",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0224",
+      "eligibility": {
+        "documentId": "DOC-0224",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0225",
+      "eligibility": {
+        "documentId": "DOC-0225",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0226",
+      "eligibility": {
+        "documentId": "DOC-0226",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0227",
+      "eligibility": {
+        "documentId": "DOC-0227",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0228",
+      "eligibility": {
+        "documentId": "DOC-0228",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0229",
+      "eligibility": {
+        "documentId": "DOC-0229",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0230",
+      "eligibility": {
+        "documentId": "DOC-0230",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0231",
+      "eligibility": {
+        "documentId": "DOC-0231",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0232",
+      "eligibility": {
+        "documentId": "DOC-0232",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0233",
+      "eligibility": {
+        "documentId": "DOC-0233",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0234",
+      "eligibility": {
+        "documentId": "DOC-0234",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0235",
+      "eligibility": {
+        "documentId": "DOC-0235",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0236",
+      "eligibility": {
+        "documentId": "DOC-0236",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0237",
+      "eligibility": {
+        "documentId": "DOC-0237",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0238",
+      "eligibility": {
+        "documentId": "DOC-0238",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0239",
+      "eligibility": {
+        "documentId": "DOC-0239",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0240",
+      "eligibility": {
+        "documentId": "DOC-0240",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0241",
+      "eligibility": {
+        "documentId": "DOC-0241",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0242",
+      "eligibility": {
+        "documentId": "DOC-0242",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0243",
+      "eligibility": {
+        "documentId": "DOC-0243",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0244",
+      "eligibility": {
+        "documentId": "DOC-0244",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0245",
+      "eligibility": {
+        "documentId": "DOC-0245",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0246",
+      "eligibility": {
+        "documentId": "DOC-0246",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0247",
+      "eligibility": {
+        "documentId": "DOC-0247",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0248",
+      "eligibility": {
+        "documentId": "DOC-0248",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0249",
+      "eligibility": {
+        "documentId": "DOC-0249",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0250",
+      "eligibility": {
+        "documentId": "DOC-0250",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0251",
+      "eligibility": {
+        "documentId": "DOC-0251",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0253",
+      "eligibility": {
+        "documentId": "DOC-0253",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0254",
+      "eligibility": {
+        "documentId": "DOC-0254",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0255",
+      "eligibility": {
+        "documentId": "DOC-0255",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0257",
+      "eligibility": {
+        "documentId": "DOC-0257",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0259",
+      "eligibility": {
+        "documentId": "DOC-0259",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0260",
+      "eligibility": {
+        "documentId": "DOC-0260",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0261",
+      "eligibility": {
+        "documentId": "DOC-0261",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0262",
+      "eligibility": {
+        "documentId": "DOC-0262",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0263",
+      "eligibility": {
+        "documentId": "DOC-0263",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0264",
+      "eligibility": {
+        "documentId": "DOC-0264",
+        "eligible": false,
+        "reason": "STRICT_GOLD_AUTHORITY_INCOMPLETE",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0265",
+      "eligibility": {
+        "documentId": "DOC-0265",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0266",
+      "eligibility": {
+        "documentId": "DOC-0266",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0267",
+      "eligibility": {
+        "documentId": "DOC-0267",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0268",
+      "eligibility": {
+        "documentId": "DOC-0268",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0269",
+      "eligibility": {
+        "documentId": "DOC-0269",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0270",
+      "eligibility": {
+        "documentId": "DOC-0270",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0271",
+      "eligibility": {
+        "documentId": "DOC-0271",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0272",
+      "eligibility": {
+        "documentId": "DOC-0272",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0273",
+      "eligibility": {
+        "documentId": "DOC-0273",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0274",
+      "eligibility": {
+        "documentId": "DOC-0274",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0275",
+      "eligibility": {
+        "documentId": "DOC-0275",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0276",
+      "eligibility": {
+        "documentId": "DOC-0276",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0277",
+      "eligibility": {
+        "documentId": "DOC-0277",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0278",
+      "eligibility": {
+        "documentId": "DOC-0278",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0279",
+      "eligibility": {
+        "documentId": "DOC-0279",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0280",
+      "eligibility": {
+        "documentId": "DOC-0280",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0281",
+      "eligibility": {
+        "documentId": "DOC-0281",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0282",
+      "eligibility": {
+        "documentId": "DOC-0282",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0283",
+      "eligibility": {
+        "documentId": "DOC-0283",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0284",
+      "eligibility": {
+        "documentId": "DOC-0284",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0285",
+      "eligibility": {
+        "documentId": "DOC-0285",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0286",
+      "eligibility": {
+        "documentId": "DOC-0286",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0287",
+      "eligibility": {
+        "documentId": "DOC-0287",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0288",
+      "eligibility": {
+        "documentId": "DOC-0288",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0289",
+      "eligibility": {
+        "documentId": "DOC-0289",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0290",
+      "eligibility": {
+        "documentId": "DOC-0290",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0291",
+      "eligibility": {
+        "documentId": "DOC-0291",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0292",
+      "eligibility": {
+        "documentId": "DOC-0292",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0293",
+      "eligibility": {
+        "documentId": "DOC-0293",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0294",
+      "eligibility": {
+        "documentId": "DOC-0294",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0295",
+      "eligibility": {
+        "documentId": "DOC-0295",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0296",
+      "eligibility": {
+        "documentId": "DOC-0296",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0297",
+      "eligibility": {
+        "documentId": "DOC-0297",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0298",
+      "eligibility": {
+        "documentId": "DOC-0298",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0299",
+      "eligibility": {
+        "documentId": "DOC-0299",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0300",
+      "eligibility": {
+        "documentId": "DOC-0300",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0301",
+      "eligibility": {
+        "documentId": "DOC-0301",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0302",
+      "eligibility": {
+        "documentId": "DOC-0302",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0303",
+      "eligibility": {
+        "documentId": "DOC-0303",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0304",
+      "eligibility": {
+        "documentId": "DOC-0304",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0305",
+      "eligibility": {
+        "documentId": "DOC-0305",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0306",
+      "eligibility": {
+        "documentId": "DOC-0306",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0307",
+      "eligibility": {
+        "documentId": "DOC-0307",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0308",
+      "eligibility": {
+        "documentId": "DOC-0308",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0309",
+      "eligibility": {
+        "documentId": "DOC-0309",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0310",
+      "eligibility": {
+        "documentId": "DOC-0310",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0311",
+      "eligibility": {
+        "documentId": "DOC-0311",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0312",
+      "eligibility": {
+        "documentId": "DOC-0312",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0313",
+      "eligibility": {
+        "documentId": "DOC-0313",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0314",
+      "eligibility": {
+        "documentId": "DOC-0314",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0315",
+      "eligibility": {
+        "documentId": "DOC-0315",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0316",
+      "eligibility": {
+        "documentId": "DOC-0316",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0317",
+      "eligibility": {
+        "documentId": "DOC-0317",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0318",
+      "eligibility": {
+        "documentId": "DOC-0318",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0319",
+      "eligibility": {
+        "documentId": "DOC-0319",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0320",
+      "eligibility": {
+        "documentId": "DOC-0320",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0321",
+      "eligibility": {
+        "documentId": "DOC-0321",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0322",
+      "eligibility": {
+        "documentId": "DOC-0322",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0323",
+      "eligibility": {
+        "documentId": "DOC-0323",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0324",
+      "eligibility": {
+        "documentId": "DOC-0324",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0325",
+      "eligibility": {
+        "documentId": "DOC-0325",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0326",
+      "eligibility": {
+        "documentId": "DOC-0326",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0327",
+      "eligibility": {
+        "documentId": "DOC-0327",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0328",
+      "eligibility": {
+        "documentId": "DOC-0328",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0329",
+      "eligibility": {
+        "documentId": "DOC-0329",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0330",
+      "eligibility": {
+        "documentId": "DOC-0330",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0331",
+      "eligibility": {
+        "documentId": "DOC-0331",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0332",
+      "eligibility": {
+        "documentId": "DOC-0332",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0333",
+      "eligibility": {
+        "documentId": "DOC-0333",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0334",
+      "eligibility": {
+        "documentId": "DOC-0334",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0335",
+      "eligibility": {
+        "documentId": "DOC-0335",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0336",
+      "eligibility": {
+        "documentId": "DOC-0336",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0337",
+      "eligibility": {
+        "documentId": "DOC-0337",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0338",
+      "eligibility": {
+        "documentId": "DOC-0338",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0339",
+      "eligibility": {
+        "documentId": "DOC-0339",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0340",
+      "eligibility": {
+        "documentId": "DOC-0340",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0341",
+      "eligibility": {
+        "documentId": "DOC-0341",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0342",
+      "eligibility": {
+        "documentId": "DOC-0342",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0343",
+      "eligibility": {
+        "documentId": "DOC-0343",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0344",
+      "eligibility": {
+        "documentId": "DOC-0344",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0345",
+      "eligibility": {
+        "documentId": "DOC-0345",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0346",
+      "eligibility": {
+        "documentId": "DOC-0346",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0347",
+      "eligibility": {
+        "documentId": "DOC-0347",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0348",
+      "eligibility": {
+        "documentId": "DOC-0348",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0349",
+      "eligibility": {
+        "documentId": "DOC-0349",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0350",
+      "eligibility": {
+        "documentId": "DOC-0350",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0351",
+      "eligibility": {
+        "documentId": "DOC-0351",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    },
+    {
+      "documentId": "DOC-0352",
+      "eligibility": {
+        "documentId": "DOC-0352",
+        "eligible": false,
+        "reason": "CANONICAL_ARTIFACT_MISSING",
+        "occurrenceCount": 0,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false
+      }
+    }
+  ],
+  "goldExactRowsReadBeforeFreeze": false,
+  "dataClassification": "PUBLIC",
+  "zdrRequested": false,
+  "privacyExceptionAuthorized": true,
+  "privacyExceptionScope": "THIS_SEMANTIC_TEXT_GENERALIZATION_CAMPAIGN_ONLY"
+}

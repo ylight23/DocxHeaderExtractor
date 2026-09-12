@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "a99-semantic-text-generalization-persistent-errors-v1",
+  "persistentErrors": [
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]:182:194",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[158]:56:62",
+      "exactSourceText": "Agenda",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[17]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[26]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLossClass": "MODEL_WRONG_SPAN",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[11]:0:6",
+      "exactSourceText": "Africa",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[12]:0:20",
+      "exactSourceText": "Asia and the Pacific",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[18]:0:34",
+      "exactSourceText": "Commonwealth of Independent States",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[19]:0:31",
+      "exactSourceText": "Latin America and the Caribbean",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[24]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "000"
+    }
+  ],
+  "intermittentErrors": [
+    {
+      "documentId": "DOC-0205",
+      "goldOrPredictionKey": "body[1]/p[4]:47323:47375",
+      "exactSourceText": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "firstLossClass": "MODEL_WRONG_TEXT",
+      "repeatPresenceMask": "001"
+    },
+    {
+      "documentId": "DOC-0258",
+      "goldOrPredictionKey": "body[1]/p[17]:0:25",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program",
+      "firstLossClass": "MODEL_OMISSION",
+      "repeatPresenceMask": "001"
+    }
+  ],
+  "persistentFalsePositives": [
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[3]:0:47",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[4]:0:24",
+      "exactSourceText": "TECHNICAL ADVISORY GROUP",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[46]:0:12",
+      "exactSourceText": "Western Asia",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[175]:0:36",
+      "exactSourceText": "ICP Technical Advisory Group members",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[176]:0:42",
+      "exactSourceText": "ICP experts, guest speakers, and observers",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[177]:0:42",
+      "exactSourceText": "ICP Inter-Agency Coordination Group (IACG)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldOrPredictionKey": "body[1]/p[178]:0:10",
+      "exactSourceText": "World Bank",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[3]:0:87",
+      "exactSourceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[11]:0:803",
+      "exactSourceText": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), the status of the ICP 2021 cycle in the Africa region, which provided information on the surveynditure compilation status, the data and metadata submission and validation status, the PPP estimation status, and forthcoming activities and meetings. Fifty-two economies are participating in the ICP 2021 cycle with capacity-building efforts in South Sudan and Somalia, resulting in their participation as an additional two economies compared with the 2017 cycle. Technical assistance has also been extended to Libya and Eritrea. Surveys were conducted from July 2022 to March 2023, following an assessment of the impact of COVID-19 on ICP processes and data collection. On expenditure data compilation, it was noted that 38 countries had",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[17]:0:877",
+      "exactSourceText": "Asia and the Pacific Criselda De Dios, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. Twenty-one economies aring in the ICP 2021 cycle. Most economies conducted price surveys in 2021. Surveys in some economies were delayed due to COVID-19, with the data collection period extended until Q4, 2022 to accommodate the completion of surveys in all economies. For prices collected in periods outside the reference year 2021, a standard method for extrapolation was utilized, employing tools developed by ADB to facilitate this process. Price survey data, national accounts expenditure data, and required metadata questionnaires have been submitted by most economies as of November 2023, and the data validation process is in its final stages. Bilateral engagement with economies is ongoing to address specific data quality issues.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[26]:0:1257",
+      "exactSourceText": "Eurostat\u2013OECD PPP Program Mihai-Iulian Gheorghe, Eurostat, and Sophie Bournot, OECD, the status of the Eurostat-OECD PPP Program. Forty-eight economies are participating in the ECD PPP programme for the ICP 2021 cycle. Of those, 36 are coordinated by Eurostat, while twelve economies are coordinated by OECD. Georgia and Ukraine are participating in the ICP 2021 cycle and are linked to the global comparison through the Eurostat comparison. Russia is not participating in the OECD comparison for the ICP 2021 cycle. Surveys for the ICP 2021 cycle were integrated into the established Eurostat and OECD\u2019s regular programme to produce annual PPP estimates. A specific ICP survey on construction was conducted by eleven Eurostat economies, the United States of America, Ukraine, and Georgia. Validation of outstanding data will be completed by the end of November 2023. Selected metadata will be submitted to the Global Office by early 2024. Annual PPPs and expenditures have been submitted to the Global Office for most economies, while 2017 and 2021 estimates are available for Ukraine and Georgia. Data for 2020 and 2021 will be revised in December 2023. Data for 2019 for non-European economies will be recalculated due to a correction to PPPs for health.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "111"
+    }
+  ],
+  "intermittentFalsePositives": [
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[24]:0:1030",
+      "exactSourceText": "Andrehe Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), the status of the ICP 2021 cycle in the CIS region. Nine economies are participating in the ICe. CIS-STAT is providing support to Turkmenistan in anticipation of its participation in future ICP cycles. The majority of the ICP 2021 cycle price surveys were completed in 2021, with validation at the regional level completed and data submitted to the Global Office in 2023. The survey for construction was provided using two approaches: the regional Resource and Technological Models Method (RTM) approach and the ICP construction and civil engineering approach. The validation of data for the RTM approach was completed in April 2023; data validation on construction and civil engineering is underway as of November 2023. Metadata questionnaires were submitted in May 2023 to the Global Office. Regional PPPs have been computed for all survey categories, and PPPs for national accounts expenditures will be finalized by the end of 2023.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "100"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[33]:0:1132",
+      "exactSourceText": "Claudia de Cario, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), the status of the ICP 2021 cycle in Latin America and the Caribbean region. Thirty-two economicipating in the 2021 cycle, consisting of thirteen from Latin America and nineteen from the Caribbean. The majority of household consumption price surveys were conducted in 2021, although some surveys were conducted in 2019 and 2020, and data subsequently extrapolated to 2021. Regarding non-household surveys, these were also conducted in 2021, but in some economies, price collection was extended into 2022 and 2023 due to staffing and resource impacts arising from the COVID-19 pandemic. As of November 2023, some economies are yet to submit a complete set of data for non-household surveys and national accounts expenditures. Preliminary PPP estimates at the basic heading level have been computed for household surveys, private education surveys, and housing rental surveys. The incorporation of validated data from non-household surveys and expenditures is underway. At the same time, the revision of 2017 results is also underway.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "101"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[36]:0:1005",
+      "exactSourceText": "Majed Skaini, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), the status of the ICP 2021 cycle in the Western Asia region. Sixteen economies are participaregional program. Data was primarily collected in 2021, with some economies extending collection into 2022 and data being backcasted to 2021 using detailed-level CPIs. Some of the non-household surveys are being collected on an annual basis. Updates were made at the end of October 2023 after review and collaboration with the AfDB for consistency in dual participating economies\u2019 data, and assessment of outstanding issues with some economies. Expenditure data was received from most economies, while UN-ESCWA provided estimates for missing economies. Data validation and verification will be finalized in 2023. Revised regional annual PPPs for 2017 to 2020, preliminary PPPs for 2021 and 2022, and forecasted PPPs for 2023 will be computed in November 2023, with a final time series computed and released in December 2023.",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "101"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[125]:0:31",
+      "exactSourceText": "African Development Bank (AfDB)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[130]:0:28",
+      "exactSourceText": "Asian Development Bank (ADB)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[133]:0:85",
+      "exactSourceText": "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[136]:0:61",
+      "exactSourceText": "Organisation for Economic Co-operation and Development (OECD)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[139]:0:57",
+      "exactSourceText": "Statistical Office of the European Communities (Eurostat)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[142]:0:81",
+      "exactSourceText": "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[146]:0:73",
+      "exactSourceText": "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[149]:0:33",
+      "exactSourceText": "International Monetary Fund (IMF)",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    },
+    {
+      "documentId": "DOC-0256",
+      "goldOrPredictionKey": "body[1]/p[151]:0:10",
+      "exactSourceText": "World Bank",
+      "firstLossClass": "MODEL_FALSE_POSITIVE",
+      "repeatPresenceMask": "011"
+    }
+  ],
+  "persistentErrorCounts": {
+    "MODEL_OMISSION": 6,
+    "MODEL_WRONG_SPAN": 4
+  },
+  "intermittentErrorCounts": {
+    "MODEL_WRONG_TEXT": 1,
+    "MODEL_OMISSION": 1
+  },
+  "persistentFalsePositiveCount": 11,
+  "intermittentFalsePositiveCount": 12
+}

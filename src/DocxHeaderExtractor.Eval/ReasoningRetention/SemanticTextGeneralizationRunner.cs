@@ -22,7 +22,9 @@ public static partial class SemanticTextGeneralizationRunner
     private static string Model = ControlModel;
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string DefaultOutputRoot = "eval/a99-closed-loop/semantic-text-generalization";
+    private const string V6ProductionOutputRoot = "eval/a99-closed-loop/production-v6-accuracy";
     private static string OutputRoot = DefaultOutputRoot;
+    private static bool UseV6ProductionEntryPoint;
     private const string ModelCapabilityOutputRoot = "eval/a99-closed-loop/model-capability-isolation/i4";
     private const string SemanticContrastOutputRoot = "eval/a99-closed-loop/semantic-contrast-contract/i5";
     private static string ActiveSemanticSystemPrompt = SemanticTextExactBindingContract.System;
@@ -37,8 +39,11 @@ public static partial class SemanticTextGeneralizationRunner
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
     {
         repoRoot = Path.GetFullPath(repoRoot);
-        var configuredOutputRoot = Environment.GetEnvironmentVariable("A99_SEMANTIC_TEXT_OUTPUT_ROOT");
-        OutputRoot = string.IsNullOrWhiteSpace(configuredOutputRoot) ? DefaultOutputRoot : configuredOutputRoot.Trim();
+        var configuredOutputRoot = Environment.GetEnvironmentVariable(
+            UseV6ProductionEntryPoint ? "A99_V6_PRODUCTION_OUTPUT_ROOT" : "A99_SEMANTIC_TEXT_OUTPUT_ROOT");
+        OutputRoot = string.IsNullOrWhiteSpace(configuredOutputRoot)
+            ? (UseV6ProductionEntryPoint ? V6ProductionOutputRoot : DefaultOutputRoot)
+            : configuredOutputRoot.Trim();
         var output = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
         Directory.CreateDirectory(output);
         var startHead = GitSha(repoRoot);
@@ -55,7 +60,8 @@ public static partial class SemanticTextGeneralizationRunner
         Console.WriteLine($"COHORT_DOCUMENT_COUNT={selected.Length}");
         await WriteJson(Path.Combine(output, "manifest.v1.json"), new
         {
-            schemaVersion = "a99-semantic-text-generalization-manifest-v1",
+            schemaVersion = UseV6ProductionEntryPoint ? "a99-v6-production-accuracy-manifest-v1" : "a99-semantic-text-generalization-manifest-v1",
+            entryPoint = UseV6ProductionEntryPoint ? "CanonicalSemanticProductionEntryPoint" : "SemanticTextGeneralizationRunner",
             startHead,
             branch = Git(repoRoot, "branch --show-current"),
             model = Model,
@@ -65,9 +71,10 @@ public static partial class SemanticTextGeneralizationRunner
             repeats = new[] { "R1", "R2", "R3" },
             providerConcurrency = 1,
             executionPolicy = "FULL_CONTEXT_ONLY;SEGMENTED_EXECUTABLE_IF_TRUE_EXECUTION_FAILURE",
-            noVlm = true,
+            noVlm = !UseV6ProductionEntryPoint,
             noMultipass = true,
             noCandidateGating = true,
+            visualRecoveryRoute = UseV6ProductionEntryPoint ? "ENABLED_WHEN_MODALITY_PROFILE_REQUIRES" : "NOT_IN_CONTROL",
             noPromptTuning = true,
             eligibilityPolicy = "canonical strict-gold metadata-only evaluator",
             selectedCohort = selected.Select(x => new { documentId = x.item.GetProperty("documentId").GetString(), x.eligibility }).ToArray(),
@@ -105,7 +112,7 @@ public static partial class SemanticTextGeneralizationRunner
             for (var repeat = 1; repeat <= RepeatCount; repeat++)
             {
                 Console.WriteLine($"RUNNING={context.DocumentId}/R{repeat}");
-                runs.Add(await RunRepeatAsync(repoRoot, output, context, repeat, model, startHead, ct));
+                runs.Add(await RunRepeatAsync(repoRoot, output, context, repeat, model, startHead, ct, productionV6: UseV6ProductionEntryPoint));
             }
         }
 
@@ -117,10 +124,11 @@ public static partial class SemanticTextGeneralizationRunner
         await WriteJson(Path.Combine(output, "comparison.v1.json"), comparison, ct);
         await WriteJson(Path.Combine(output, "summary.v1.json"), new
         {
-            schemaVersion = "a99-semantic-text-generalization-summary-v1",
+            schemaVersion = UseV6ProductionEntryPoint ? "a99-v6-production-accuracy-summary-v1" : "a99-semantic-text-generalization-summary-v1",
+            entryPoint = UseV6ProductionEntryPoint ? "CanonicalSemanticProductionEntryPoint" : "SemanticTextGeneralizationRunner",
             startHead, endHead = GitSha(repoRoot), commitExpected = "eval(a99): validate semantic text contract across strict gold",
             selectedStrictGoldCohort = selected.Select(x => x.item.GetProperty("documentId").GetString()).ToArray(),
-            totalGoldOccurrences = runs.SelectMany(x => x.FirstLosses.Select(loss => $"{x.DocumentId}:{loss.Key}")).Distinct(StringComparer.Ordinal).Count(),
+            totalGoldOccurrences = selected.Sum(x => x.eligibility.OccurrenceCount),
             semanticContractHash = ContractHash(),
             providerAttempts = runs.Count,
             modelCalls = runs.Count,
@@ -144,6 +152,22 @@ public static partial class SemanticTextGeneralizationRunner
         Console.WriteLine($"FINAL_CLASSIFICATION={GeneralizationClass(runs)}");
         Console.WriteLine($"A99_DEV_MARGIN_MET={runs.Count == selected.Length * RepeatCount && runs.All(x => x.Status == "SUCCESS" && x.Precision >= .995 && x.Recall >= .995 && x.F1 >= .995 && x.SystemLoss == 0)}");
         return 0;
+    }
+
+    /// <summary>Runs the real-provider cohort through the executable v6 production entry point.
+    /// The existing semantic-text operation remains the historical control.</summary>
+    public static async Task<int> RunV6ProductionAccuracyAsync(string repoRoot, CancellationToken ct = default)
+    {
+        var previous = UseV6ProductionEntryPoint;
+        UseV6ProductionEntryPoint = true;
+        try
+        {
+            return await RunAsync(repoRoot, ct);
+        }
+        finally
+        {
+            UseV6ProductionEntryPoint = previous;
+        }
     }
 
     /// <summary>Runs I4 with the unchanged B0 semantic-text pipeline and exactly one model delta.
@@ -2547,7 +2571,7 @@ public static partial class SemanticTextGeneralizationRunner
         }
     }
 
-    private static async Task<RepeatMetric> RunRepeatAsync(string repoRoot, string output, DocumentContext context, int repeat, OpenRouterCeilingReasoningModel model, string gitSha, CancellationToken ct, int transientRetries = 0, bool flatRepeatLayout = false, bool retryMalformedProviderResponse = false, bool boundaryPresentation = false)
+    private static async Task<RepeatMetric> RunRepeatAsync(string repoRoot, string output, DocumentContext context, int repeat, OpenRouterCeilingReasoningModel model, string gitSha, CancellationToken ct, int transientRetries = 0, bool flatRepeatLayout = false, bool retryMalformedProviderResponse = false, bool boundaryPresentation = false, bool productionV6 = false)
     {
         var repeatName = $"r{repeat}";
         var dir = flatRepeatLayout ? Path.Combine(output, repeatName, context.DocumentId) : Path.Combine(output, context.DocumentId, repeatName);
@@ -2589,7 +2613,25 @@ public static partial class SemanticTextGeneralizationRunner
             telemetry = requestTelemetry;
             var response = SemanticTextExactBindingContract.Parse(rawContent);
             telemetry.StructuredOutputParsed = true;
-            var localBound = SemanticTextExactBinder.Bind(response.Headings, context.SourceRows, out var observations);
+            IReadOnlyList<SemanticTextBoundHeading> localBound;
+            IReadOnlyList<SemanticTextBindingObservation> observations;
+            CanonicalSemanticProductionResult? production = null;
+            if (productionV6)
+            {
+                var canonicalProposals = response.Headings.Select(heading => new CanonicalSemanticProposal(
+                    heading.Source, true, heading.Text, SemanticRole: heading.Role,
+                    Occurrence: heading.Occurrence, LeftExactContext: heading.LeftExactContext,
+                    RightExactContext: heading.RightExactContext)).ToArray();
+                production = CanonicalSemanticProductionEntryPoint.Run(BuildProductionInput(context, canonicalProposals));
+                localBound = production.TextPipeline.BoundHeadings.Select(heading =>
+                    new SemanticTextBoundHeading(heading.Alias, heading.SourceId, heading.SourceOrdinal,
+                        heading.Text, heading.SemanticRole, heading.Start, heading.End)).ToArray();
+                observations = MapProductionObservations(response, production.TextPipeline.BindingObservations);
+            }
+            else
+            {
+                localBound = SemanticTextExactBinder.Bind(response.Headings, context.SourceRows, out observations);
+            }
             var bound = localBound.Select(x => x with
             {
                 SourceId = context.AliasOriginalSourceIds?.GetValueOrDefault(x.Alias) ?? x.SourceId,
@@ -2608,17 +2650,29 @@ public static partial class SemanticTextGeneralizationRunner
             var finalRows = finalElements.Select(x => new { sourceId = x.Sources.Single().SourceId, start = x.Sources.Single().Span.Start, end = x.Sources.Single().Span.End, text = x.Text, role = x.Role }).ToArray();
             var prediction = new
             {
-                schemaVersion = "a99-semantic-text-generalization-prediction-v1", context.DocumentId, repeat = repeatName,
+                schemaVersion = productionV6 ? "a99-v6-production-accuracy-prediction-v1" : "a99-semantic-text-generalization-prediction-v1", context.DocumentId, repeat = repeatName,
                 model = Model, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion,
                 executionMode = context.PresentationMode, dataClassification = "PUBLIC", zdrRequested = false, privacyExceptionAuthorized = true,
                 sourceSha256 = context.SourceSha256, promptHash = context.PromptHash, schemaHash = context.SchemaHash, packetHash = context.PacketHash,
                 sourceAliasCount = context.SourceRows.Count, rawModelHeadings = response.Headings, bindingObservations = observations,
                 boundHeadings = bound, validatorAccepted = materialized.Validated.Count(x => x.Accepted), validatorRejected = materialized.Validated.Count(x => !x.Accepted),
-                finalHeadings = finalRows, goldReadBeforeFreeze = false,
+                finalHeadings = finalRows, productionEntryPoint = production is null ? null : new
+                {
+                    name = "CanonicalSemanticProductionEntryPoint",
+                    modality = production.ModalityProfile.DocumentModality.ToString(),
+                    packedContextEvidenceCount = production.ContextPacket.VisibleEvidence.Count,
+                    candidateHintCount = production.CandidateHints.Count,
+                    visualRecoveredCount = production.VisualOccurrences.Count,
+                    visualBoundCount = production.VisualHeadings.Count,
+                    unifiedOccurrenceCount = production.UnifiedOccurrences.Count,
+                    canonicalOccurrenceCount = production.CanonicalOccurrences.Count,
+                    projectedCount = production.Projection.Count,
+                    stageLedger = production.StageLedger,
+                }, goldReadBeforeFreeze = false,
             };
             var result = new
             {
-                schemaVersion = "a99-semantic-text-generalization-result-v1", context.DocumentId, repeat = repeatName,
+                schemaVersion = productionV6 ? "a99-v6-production-accuracy-result-v1" : "a99-semantic-text-generalization-result-v1", context.DocumentId, repeat = repeatName,
                 model = Model, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion,
                 executionMode = context.PresentationMode, headings = finalRows, goldReadBeforeFreeze = false,
             };
@@ -2628,7 +2682,7 @@ public static partial class SemanticTextGeneralizationRunner
             await WriteJson(resultPath, result, ct);
             var freeze = new
             {
-                schemaVersion = "a99-semantic-text-generalization-freeze-v1", context.DocumentId, repeat = repeatName,
+                schemaVersion = productionV6 ? "a99-v6-production-accuracy-freeze-v1" : "a99-semantic-text-generalization-freeze-v1", context.DocumentId, repeat = repeatName,
                 gitSha, model = Model, actualProvider = telemetry.ProviderRoute,
                 sourceSha256 = context.SourceSha256, semanticContractVersion = SemanticTextExactBindingContract.ProtocolVersion,
                 promptHash = context.PromptHash, schemaHash = context.SchemaHash, packetHash = context.PacketHash,
@@ -2637,8 +2691,8 @@ public static partial class SemanticTextGeneralizationRunner
                 rawProposalCount = response.Headings.Count, boundProposalCount = bound.Length, finalCount = finalElements.Length, wallTimeMs = stopwatch.ElapsedMilliseconds,
                 providerAttempts, inputTokens = telemetry.ReportedInputTokens, reasoningTokens = telemetry.ReportedReasoningTokens,
                 outputTokens = telemetry.ReportedOutputTokens, finishReason = telemetry.FinishReason,
-                executionMode = context.PresentationMode, dataClassification = "PUBLIC", zdrRequested = false, privacyExceptionAuthorized = true,
-                goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow,
+                executionMode = context.PresentationMode, productionEntryPoint = productionV6 ? "CanonicalSemanticProductionEntryPoint" : null, dataClassification = "PUBLIC", zdrRequested = false, privacyExceptionAuthorized = true,
+                productionStageCount = production?.StageLedger.Count, goldReadBeforeFreeze = false, frozenUtc = DateTimeOffset.UtcNow,
             };
             var freezePath = Path.Combine(dir, "freeze.v1.json");
             await WriteJson(freezePath, freeze, ct);
@@ -2648,7 +2702,7 @@ public static partial class SemanticTextGeneralizationRunner
             // Gold is intentionally opened only after the freeze hash verification above.
             var goldPath = Path.Combine(repoRoot, "eval/a99-closed-loop/strict-gold-occurrence-v1", context.DocumentId + ".occurrence-gold-v1.json");
             var gold = ReasoningGoldArtifactLoader.LoadOccurrence(goldPath).Where(x => x.HeadingSpan is not null).ToArray();
-            var metric = Score(context, repeatName, response, observations, bound, materialized, finalElements, gold, telemetry, stopwatch.ElapsedMilliseconds);
+            var metric = Score(context, repeatName, response, observations, bound, materialized, finalElements, gold, telemetry, stopwatch.ElapsedMilliseconds, productionV6);
             await WriteJson(Path.Combine(dir, "score.v1.json"), metric.Score!, ct);
             await WriteJson(Path.Combine(dir, "first-loss.v1.json"), new { context.DocumentId, repeat = repeatName, metric.FirstLosses, metric.FalsePositives, metric.FirstLossCounts, systemLoss = metric.SystemLoss, goldReadBeforeFreeze = false }, ct);
             return metric;
@@ -2817,7 +2871,7 @@ public static partial class SemanticTextGeneralizationRunner
 
     private static string DuplicateContractHash() => Sha256Text(string.Join("\n", SemanticTextDuplicateDisambiguationContract.ProtocolVersion, SemanticTextDuplicateDisambiguationContract.System, JsonSerializer.Serialize(SemanticTextDuplicateDisambiguationContract.Schema())));
 
-    private static RepeatMetric Score(DocumentContext context, string repeat, SemanticTextResponse response, IReadOnlyList<SemanticTextBindingObservation> observations, IReadOnlyList<SemanticTextBoundHeading> bound, (ValidatedStructure Structure, IReadOnlyList<ReasoningValidatedProposal> Validated) materialized, IReadOnlyList<ValidatedStructuralElement> finalElements, IReadOnlyList<ReasoningGoldOccurrence> gold, RequestPacketTelemetry telemetry, long wallTimeMs)
+    private static RepeatMetric Score(DocumentContext context, string repeat, SemanticTextResponse response, IReadOnlyList<SemanticTextBindingObservation> observations, IReadOnlyList<SemanticTextBoundHeading> bound, (ValidatedStructure Structure, IReadOnlyList<ReasoningValidatedProposal> Validated) materialized, IReadOnlyList<ValidatedStructuralElement> finalElements, IReadOnlyList<ReasoningGoldOccurrence> gold, RequestPacketTelemetry telemetry, long wallTimeMs, bool productionV6 = false)
     {
         var goldKeys = gold.Select(x => Key(x.SourceId, x.HeadingSpan!)).ToHashSet(StringComparer.Ordinal);
         var boundKeys = bound.Select(x => Key(x.SourceId, new StructuralSpan(x.Start, x.End))).ToHashSet(StringComparer.Ordinal);
@@ -2840,7 +2894,7 @@ public static partial class SemanticTextGeneralizationRunner
         var falsePositives = finalElements.Where(x => !goldKeys.Contains(Key(x.Sources.Single().SourceId, x.Sources.Single().Span))).Select(x => new LossRow(context.DocumentId, Key(x.Sources.Single().SourceId, x.Sources.Single().Span), x.Text, "MODEL_FALSE_POSITIVE", false)).ToArray();
         var score = new
         {
-            schemaVersion = "a99-semantic-text-generalization-score-v1", documentId = context.DocumentId, repeat,
+            schemaVersion = productionV6 ? "a99-v6-production-accuracy-score-v1" : "a99-semantic-text-generalization-score-v1", documentId = context.DocumentId, repeat,
             status = "SUCCESS", exactStatus = "EVALUABLE", goldCount = gold.Count,
             rawProposalCount = response.Headings.Count, boundProposalCount = bound.Count, validatedCount = materialized.Validated.Count(x => x.Accepted), finalCount = finalElements.Count,
             tp, fp, fn, precision = p, recall = r, f1, semanticCorrespondence = semanticPresence,
@@ -2900,6 +2954,70 @@ public static partial class SemanticTextGeneralizationRunner
         }).ToArray();
         var cohort = runs.OrderBy(x => x.Repeat).GroupBy(x => x.Repeat, StringComparer.Ordinal).Select(group => Micro(group.ToArray())).ToArray();
         return new { schemaVersion = "a99-semantic-text-generalization-repeat-summary-v1", cohortSize, repeatCount = RepeatCount, documents = docs, cohortMicroByRepeat = cohort, minRepeatMicroPrecision = cohort.Min(x => x.Precision), minRepeatMicroRecall = cohort.Min(x => x.Recall), minRepeatMicroF1 = cohort.Min(x => x.F1) };
+    }
+
+    private static CanonicalSemanticProductionInput BuildProductionInput(
+        DocumentContext context, IReadOnlyList<CanonicalSemanticProposal> proposals)
+    {
+        var catalog = new DocumentSourceCatalog(context.SourceRows.Select(row =>
+            new DocumentSourceUnit(row.SourceId, row.SourceOrdinal, row.RawText,
+                new SourceAnchor
+                {
+                    SourceType = "DOCX_TEXT",
+                    ParagraphId = row.SourceId,
+                    ParagraphIndex = row.SourceOrdinal,
+                },
+                new StructuralSpan(0, row.RawText.Length))));
+        var mediaCount = 0;
+        if (context.SourcePath.EndsWith(".docx", StringComparison.OrdinalIgnoreCase))
+        {
+            mediaCount = CanonicalSemanticDocxMediaInventory.Inspect(context.SourcePath).Count;
+        }
+        var pages = new[]
+        {
+            new CanonicalSemanticPageEvidence(
+                "P0001", context.SourceRows.Count > 0, mediaCount, "OOXML_TEXT_AND_MEDIA_INVENTORY")
+        };
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
+        var hints = aliases.Select(alias =>
+            new SemanticCandidateAttentionHint(alias.Alias, false, "ATTENTION_ONLY_NOT_RECALL_GATE")).ToArray();
+        return new CanonicalSemanticProductionInput(
+            catalog,
+            proposals,
+            context.SourceSha256,
+            pages,
+            hints,
+            context.SourceRows.Select(row => $"{row.Alias}: {row.RawText}").ToArray(),
+            [],
+            [context.Packet]);
+    }
+
+    private static IReadOnlyList<SemanticTextBindingObservation> MapProductionObservations(
+        SemanticTextResponse response,
+        IReadOnlyList<CanonicalSemanticBindingObservation> observations)
+    {
+        return observations.Select(observation =>
+        {
+            var heading = observation.Ordinal < response.Headings.Count
+                ? response.Headings[observation.Ordinal]
+                : new SemanticTextHeading(observation.Proposal.SourceAlias,
+                    observation.Proposal.VerbatimText ?? string.Empty,
+                    observation.Proposal.SemanticRole ?? "OTHER_STRUCTURAL_LABEL");
+            var status = observation.Status switch
+            {
+                CanonicalSemanticBindingStatus.Bound => SemanticTextBindingStatus.BOUND,
+                CanonicalSemanticBindingStatus.AmbiguousBinding => SemanticTextBindingStatus.AMBIGUOUS_EXACT_TEXT,
+                CanonicalSemanticBindingStatus.DuplicateBinding => SemanticTextBindingStatus.DUPLICATE_PROPOSAL,
+                CanonicalSemanticBindingStatus.UnknownAlias => SemanticTextBindingStatus.INVALID_SOURCE_ALIAS,
+                CanonicalSemanticBindingStatus.MissingVerbatimText => SemanticTextBindingStatus.EMPTY_TEXT,
+                _ => SemanticTextBindingStatus.TEXT_NOT_FOUND,
+            };
+            var exactCount = observation.Status == CanonicalSemanticBindingStatus.AmbiguousBinding ? 2 :
+                observation.Status == CanonicalSemanticBindingStatus.Bound ? 1 : 0;
+            return new SemanticTextBindingObservation(
+                observation.Ordinal, heading, status, exactCount, heading.Source,
+                observation.SourceId, observation.Start, observation.End, observation.Reason);
+        }).ToArray();
     }
 
     private static object BuildPersistentErrors(IReadOnlyList<RepeatMetric> runs)
@@ -3101,7 +3219,10 @@ public static partial class SemanticTextGeneralizationRunner
         var policy = DocxPolicyStateBuilder.Build(source, features, derived, new PipelineOptions { DisableLlm = false }.Extraction);
         var rows = source.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.Text)).Select((p, i) => new SemanticTextSourceAlias($"S{i + 1:0000}", p.SourceId, p.SourceOrdinal, p.Text)).ToArray();
         var packet = JsonSerializer.Serialize(new { sourceAliases = rows.Select(x => new { alias = x.Alias, text = x.RawText, sourceOrdinal = x.SourceOrdinal }).ToArray() });
-        return new DocumentContext(documentId, sourceSha, source, policy, rows, packet, ContractHashForPrompt(), Sha256Text(JsonSerializer.Serialize(SemanticTextExactBindingContract.Schema())), Sha256Text(packet));
+        return new DocumentContext(documentId, sourceSha, source, policy, rows, packet, ContractHashForPrompt(), Sha256Text(JsonSerializer.Serialize(SemanticTextExactBindingContract.Schema())), Sha256Text(packet))
+        {
+            SourcePath = sourcePath,
+        };
     }
 
     private static DocumentContext PrepareBoundary(string repoRoot, JsonElement item)
@@ -3275,7 +3396,7 @@ public static partial class SemanticTextGeneralizationRunner
     private static string Git(string root, string args) { try { using var p = Process.Start(new ProcessStartInfo("git", args) { WorkingDirectory = root, RedirectStandardOutput = true, UseShellExecute = false }); return p?.StandardOutput.ReadToEnd().Trim() ?? "NOT_PERSISTED"; } catch { return "NOT_PERSISTED"; } }
     private static async Task WriteJson(string path, object value, CancellationToken ct) => await File.WriteAllTextAsync(path, JsonSerializer.Serialize(value, JsonOptions) + Environment.NewLine, ct);
 
-    private sealed record DocumentContext(string DocumentId, string SourceSha256, SourceDocument Source, DocxPolicyState Policy, IReadOnlyList<SemanticTextSourceAlias> SourceRows, string Packet, string PromptHash, string SchemaHash, string PacketHash, IReadOnlyList<SemanticTextSourceAlias>? AuditRows = null, IReadOnlyDictionary<string, int>? AliasBaseOffsets = null, IReadOnlyDictionary<string, string>? AliasOriginalSourceIds = null, string PresentationMode = "FULL_CONTEXT");
+    private sealed record DocumentContext(string DocumentId, string SourceSha256, SourceDocument Source, DocxPolicyState Policy, IReadOnlyList<SemanticTextSourceAlias> SourceRows, string Packet, string PromptHash, string SchemaHash, string PacketHash, IReadOnlyList<SemanticTextSourceAlias>? AuditRows = null, IReadOnlyDictionary<string, int>? AliasBaseOffsets = null, IReadOnlyDictionary<string, string>? AliasOriginalSourceIds = null, string PresentationMode = "FULL_CONTEXT", string SourcePath = "");
     private sealed record BoundaryPreflight(string DocumentId, bool EverySourceCharacterRepresented, bool NoSourceTextDuplication, bool LeafOrderDeterministic, bool AliasGenerationDeterministic, bool ReconstructedSourceMatchesB0, bool NoTailTruncation, int SourceChars, int LeafChars, int LeafCount, int PacketChars, string SourceHash, string ReconstructedHash, IReadOnlyList<object> Rows);
     private sealed record LossRow(string DocumentId, string Key, string ExactSourceText, string FirstLoss, bool Found);
     private sealed record MicroMetric(string Repeat, int Gold, int Tp, int Fp, int Fn, double Precision, double Recall, double F1, int SystemLoss);
