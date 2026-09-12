@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "a99-v6-source-slice-challenger-freeze-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r3",
+  "mode": "CHALLENGER_SOURCE_SLICE",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "predictionSha256": "6f516663eb18fdb92956e2108c0a16c227d93a04181a0187d45b06efdcf58261",
+  "model": "qwen/qwen3.7-flash",
+  "providerCalls": 1,
+  "modelCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-12T17:05:10.2639516+00:00"
+}

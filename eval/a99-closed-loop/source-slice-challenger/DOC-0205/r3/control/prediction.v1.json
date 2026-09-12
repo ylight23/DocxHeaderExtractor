@@ -1,0 +1,3236 @@
+{
+  "schemaVersion": "a99-v6-source-slice-challenger-prediction-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r3",
+  "mode": "CONTROL_VERBATIM_TEXT",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "rawResponseSha256": "63b888f1fca4c5b54eea911672777c64b1a91e0653a6197f1e4a1498cee283e5",
+  "rawProposalCount": 72,
+  "proposals": [
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "CH\u00CDNH PH\u1EE6 |C\u1ED8NG H\u00D2A X\u00C3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM | |________ |\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc | |S\u1ED1: 47/2020/N\u0110-CP |_______________________ | | |H\u00E0 N\u1ED9i, ng\u00E0y 09 th\u00E1ng 4 n\u0103m 2020 | NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________",
+      "verbatimParts": null,
+      "semanticRole": "DOCUMENT_TITLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+      "verbatimParts": null,
+      "semanticRole": "PART",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "verbatimParts": null,
+      "semanticRole": "PART",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+      "verbatimParts": null,
+      "semanticRole": "PART",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "verbatimParts": null,
+      "semanticRole": "PART",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+      "verbatimParts": null,
+      "semanticRole": "PART",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "isHeading": true,
+      "verbatimText": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh",
+      "verbatimParts": null,
+      "semanticRole": "ARTICLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": null
+    }
+  ],
+  "sliceBindingObservations": [],
+  "boundHeadings": [
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "CH\u00CDNH PH\u1EE6 |C\u1ED8NG H\u00D2A X\u00C3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM | |________ |\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc | |S\u1ED1: 47/2020/N\u0110-CP |_______________________ | | |H\u00E0 N\u1ED9i, ng\u00E0y 09 th\u00E1ng 4 n\u0103m 2020 | NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________",
+      "semanticRole": "DOCUMENT_TITLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 1,
+      "end": 266,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "CH\u00CDNH PH\u1EE6 |C\u1ED8NG H\u00D2A X\u00C3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM | |________ |\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc | |S\u1ED1: 47/2020/N\u0110-CP |_______________________ | | |H\u00E0 N\u1ED9i, ng\u00E0y 09 th\u00E1ng 4 n\u0103m 2020 | NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________",
+          "start": 1,
+          "end": 266
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+      "semanticRole": "PART",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 645,
+      "end": 668,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG",
+          "start": 645,
+          "end": 668
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 669,
+      "end": 695,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "start": 669,
+          "end": 695
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 1337,
+      "end": 1362,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "start": 1337,
+          "end": 1362
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 1629,
+      "end": 1654,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "start": 1629,
+          "end": 1654
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 4361,
+      "end": 4409,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "start": 4361,
+          "end": 4409
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 4626,
+      "end": 4689,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 4626,
+          "end": 4689
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 6603,
+      "end": 6645,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 6603,
+          "end": 6645
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 8146,
+      "end": 8206,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 8146,
+          "end": 8206
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 9298,
+      "end": 9332,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "start": 9298,
+          "end": 9332
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "PART",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 9843,
+      "end": 9978,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 9843,
+          "end": 9978
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 9979,
+      "end": 10039,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "start": 9979,
+          "end": 10039
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 10040,
+      "end": 10112,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "start": 10040,
+          "end": 10112
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 10904,
+      "end": 10952,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u",
+          "start": 10904,
+          "end": 10952
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 11449,
+      "end": 11494,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "start": 11449,
+          "end": 11494
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 13065,
+      "end": 13146,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia",
+          "start": 13065,
+          "end": 13146
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 14829,
+      "end": 14859,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia",
+          "start": 14829,
+          "end": 14859
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 15558,
+      "end": 15618,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+          "start": 15558,
+          "end": 15618
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 15619,
+      "end": 15691,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u",
+          "start": 15619,
+          "end": 15691
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 16890,
+      "end": 16963,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 16890,
+          "end": 16963
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 17527,
+      "end": 17571,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u",
+          "start": 17527,
+          "end": 17571
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 19329,
+      "end": 19367,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "start": 19329,
+          "end": 19367
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 19368,
+      "end": 19428,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "start": 19368,
+          "end": 19428
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 20463,
+      "end": 20520,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "start": 20463,
+          "end": 20520
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 21486,
+      "end": 21553,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "start": 21486,
+          "end": 21553
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 22765,
+      "end": 22832,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "start": 22765,
+          "end": 22832
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 23401,
+      "end": 23472,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "start": 23401,
+          "end": 23472
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 23745,
+      "end": 23802,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 23745,
+          "end": 23802
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 23803,
+      "end": 23854,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB",
+          "start": 23803,
+          "end": 23854
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 24158,
+      "end": 24194,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 24158,
+          "end": 24194
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 25199,
+      "end": 25231,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 25199,
+          "end": 25231
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 26019,
+      "end": 26074,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 26019,
+          "end": 26074
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 27351,
+      "end": 27400,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 27351,
+          "end": 27400
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 28415,
+      "end": 28456,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 28415,
+          "end": 28456
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 29974,
+      "end": 30039,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 29974,
+          "end": 30039
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 30572,
+      "end": 30622,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 30572,
+          "end": 30622
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 32357,
+      "end": 32413,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 32357,
+          "end": 32413
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+      "semanticRole": "PART",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 32768,
+      "end": 32822,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+          "start": 32768,
+          "end": 32822
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 32823,
+      "end": 32862,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 32823,
+          "end": 32862
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 32863,
+      "end": 32994,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "start": 32863,
+          "end": 32994
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 34108,
+      "end": 34247,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "start": 34108,
+          "end": 34247
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 35467,
+      "end": 35498,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+          "start": 35467,
+          "end": 35498
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 35499,
+      "end": 35546,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u",
+          "start": 35499,
+          "end": 35546
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 36126,
+      "end": 36182,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh",
+          "start": 36126,
+          "end": 36182
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 36916,
+      "end": 36963,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u",
+          "start": 36916,
+          "end": 36963
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 37929,
+      "end": 37972,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+          "start": 37929,
+          "end": 37972
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 37973,
+      "end": 38029,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9",
+          "start": 37973,
+          "end": 38029
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 38781,
+      "end": 38832,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 38781,
+          "end": 38832
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 39241,
+      "end": 39285,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 39241,
+          "end": 39285
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 40307,
+      "end": 40359,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+          "start": 40307,
+          "end": 40359
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 40706,
+      "end": 40745,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 40706,
+          "end": 40745
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 40746,
+      "end": 40793,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i",
+          "start": 40746,
+          "end": 40793
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 41526,
+      "end": 41577,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c",
+          "start": 41526,
+          "end": 41577
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 42645,
+      "end": 42692,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c",
+          "start": 42645,
+          "end": 42692
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 42984,
+      "end": 43069,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p",
+          "start": 42984,
+          "end": 43069
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 44921,
+      "end": 44983,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng",
+          "start": 44921,
+          "end": 44983
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 45915,
+      "end": 45955,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 45915,
+          "end": 45955
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 46641,
+      "end": 46682,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "start": 46641,
+          "end": 46682
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 47323,
+      "end": 47375,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 47323,
+          "end": 47375
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 47376,
+      "end": 47436,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u",
+          "start": 47376,
+          "end": 47436
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 47923,
+      "end": 47974,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc",
+          "start": 47923,
+          "end": 47974
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 48627,
+      "end": 48660,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+          "start": 48627,
+          "end": 48660
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 50264,
+      "end": 50342,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc",
+          "start": 50264,
+          "end": 50342
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "PART",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 50896,
+      "end": 50955,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 50896,
+          "end": 50955
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 50956,
+      "end": 51014,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u",
+          "start": 50956,
+          "end": 51014
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 52830,
+      "end": 52907,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u",
+          "start": 52830,
+          "end": 52907
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 53712,
+      "end": 53786,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7",
+          "start": 53712,
+          "end": 53786
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 56513,
+      "end": 56595,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng",
+          "start": 56513,
+          "end": 56595
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+      "semanticRole": "PART",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 57453,
+      "end": 57481,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+          "start": 57453,
+          "end": 57481
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 57482,
+      "end": 57513,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp",
+          "start": 57482,
+          "end": 57513
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 58966,
+      "end": 58992,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+          "start": 58966,
+          "end": 58992
+        }
+      ]
+    },
+    {
+      "alias": "S0003",
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "text": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh",
+      "semanticRole": "ARTICLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 59240,
+      "end": 59269,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0003",
+          "sourceId": "body[1]/p[4]",
+          "sourceOrdinal": 3,
+          "text": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh",
+          "start": 59240,
+          "end": 59269
+        }
+      ]
+    }
+  ],
+  "finalHeadings": [
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 1,
+      "end": 266,
+      "text": "CH\u00CDNH PH\u1EE6 |C\u1ED8NG H\u00D2A X\u00C3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM | |________ |\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc | |S\u1ED1: 47/2020/N\u0110-CP |_______________________ | | |H\u00E0 N\u1ED9i, ng\u00E0y 09 th\u00E1ng 4 n\u0103m 2020 | NGH\u1ECA \u0110\u1ECANH Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ______________________"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 645,
+      "end": 668,
+      "text": "Ch\u01B0\u01A1ng I QUY \u0110\u1ECANH CHUNG"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 669,
+      "end": 695,
+      "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 1337,
+      "end": 1362,
+      "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 1629,
+      "end": 1654,
+      "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 4361,
+      "end": 4409,
+      "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 4626,
+      "end": 4689,
+      "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 6603,
+      "end": 6645,
+      "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 8146,
+      "end": 8206,
+      "text": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 9298,
+      "end": 9332,
+      "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 9843,
+      "end": 9978,
+      "text": "Ch\u01B0\u01A1ng II QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 9979,
+      "end": 10039,
+      "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 10040,
+      "end": 10112,
+      "text": "\u0110i\u1EC1u 9. Nguy\u00EAn t\u1EAFc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 10904,
+      "end": 10952,
+      "text": "\u0110i\u1EC1u 10. T\u1ED5 ch\u1EE9c, qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, c\u01A1 s\u1EDF d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 11449,
+      "end": 11494,
+      "text": "\u0110i\u1EC1u 11. C\u01A1 s\u1EDF d\u1EEF li\u1EC7u trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 13065,
+      "end": 13146,
+      "text": "\u0110i\u1EC1u 12. Danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia, duy tr\u00EC danh m\u1EE5c c\u01A1 s\u1EDF d\u1EEF li\u1EC7u qu\u1ED1c gia"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 14829,
+      "end": 14859,
+      "text": "\u0110i\u1EC1u 13. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 15558,
+      "end": 15618,
+      "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 15619,
+      "end": 15691,
+      "text": "\u0110i\u1EC1u 14. Ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB chia s\u1EBB, khai th\u00E1c d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 16890,
+      "end": 16963,
+      "text": "\u0110i\u1EC1u 15. Thanh tra, ki\u1EC3m tra, gi\u00E1m s\u00E1t qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 17527,
+      "end": 17571,
+      "text": "\u0110i\u1EC1u 16. Ki\u1EC3m tra, \u0111\u00E1nh gi\u00E1, duy tr\u00EC d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 19329,
+      "end": 19367,
+      "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 19368,
+      "end": 19428,
+      "text": "\u0110i\u1EC1u 17. Nguy\u00EAn t\u1EAFc cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 20463,
+      "end": 20520,
+      "text": "\u0110i\u1EC1u 18. Quy \u0111\u1ECBnh s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 21486,
+      "end": 21553,
+      "text": "\u0110i\u1EC1u 19. K\u1EBF ho\u1EA1ch v\u00E0 tri\u1EC3n khai d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 22765,
+      "end": 22832,
+      "text": "\u0110i\u1EC1u 20. Y\u00EAu c\u1EA7u trong vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 23401,
+      "end": 23472,
+      "text": "\u0110i\u1EC1u 21. Ph\u01B0\u01A1ng th\u1EE9c, c\u00E1ch th\u1EE9c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 23745,
+      "end": 23802,
+      "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 23803,
+      "end": 23854,
+      "text": "\u0110i\u1EC1u 22. Quy ch\u1EBF khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u chia s\u1EBB"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 24158,
+      "end": 24194,
+      "text": "\u0110i\u1EC1u 23. Ph\u01B0\u01A1ng th\u1EE9c chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 25199,
+      "end": 25231,
+      "text": "\u0110i\u1EC1u 24. D\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 26019,
+      "end": 26074,
+      "text": "\u0110i\u1EC1u 25. C\u00F4ng khai th\u00F4ng tin v\u1EC1 d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 27351,
+      "end": 27400,
+      "text": "\u0110i\u1EC1u 26. H\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 28415,
+      "end": 28456,
+      "text": "\u0110i\u1EC1u 27. H\u1EA1 t\u1EA7ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 29974,
+      "end": 30039,
+      "text": "\u0110i\u1EC1u 28. B\u1EA3o \u0111\u1EA3m an to\u00E0n trong qu\u00E1 tr\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 30572,
+      "end": 30622,
+      "text": "\u0110i\u1EC1u 29. Kinh ph\u00ED b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 32357,
+      "end": 32413,
+      "text": "\u0110i\u1EC1u 30. Ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o \u0111\u1EA3m k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 32768,
+      "end": 32822,
+      "text": "Ch\u01B0\u01A1ng III TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 32823,
+      "end": 32862,
+      "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 32863,
+      "end": 32994,
+      "text": "\u0110i\u1EC1u 31. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 34108,
+      "end": 34247,
+      "text": "\u0110i\u1EC1u 32. K\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u trong n\u1ED9i b\u1ED9 c\u1EE7a b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 35467,
+      "end": 35498,
+      "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 35499,
+      "end": 35546,
+      "text": "\u0110i\u1EC1u 33. Chu\u1EA9n b\u1ECB v\u00E0 th\u1EF1c hi\u1EC7n cung c\u1EA5p d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 36126,
+      "end": 36182,
+      "text": "\u0110i\u1EC1u 34. D\u1EEF li\u1EC7u chia s\u1EBB theo h\u00ECnh th\u1EE9c chia s\u1EBB m\u1EB7c \u0111\u1ECBnh"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 36916,
+      "end": 36963,
+      "text": "\u0110i\u1EC1u 35. G\u1EEDi y\u00EAu c\u1EA7u k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 37929,
+      "end": 37972,
+      "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 37973,
+      "end": 38029,
+      "text": "\u0110i\u1EC1u 36. Nguy\u00EAn t\u1EAFc chia s\u1EBB d\u1EEF li\u1EC7u theo y\u00EAu c\u1EA7u \u0111\u1EB7c th\u00F9"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 38781,
+      "end": 38832,
+      "text": "\u0110i\u1EC1u 37. Tr\u00ECnh t\u1EF1 chu\u1EA9n b\u1ECB k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 39241,
+      "end": 39285,
+      "text": "\u0110i\u1EC1u 38. N\u1ED9i dung th\u1ED1ng nh\u1EA5t chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 40307,
+      "end": 40359,
+      "text": "\u0110i\u1EC1u 39. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 40706,
+      "end": 40745,
+      "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 40746,
+      "end": 40793,
+      "text": "\u0110i\u1EC1u 40. T\u00E0i kho\u1EA3n v\u00E0 qu\u1EA3n l\u00FD t\u00E0i kho\u1EA3n k\u1EBFt n\u1ED1i"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 41526,
+      "end": 41577,
+      "text": "\u0110i\u1EC1u 41. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u sau khi khai th\u00E1c"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 42645,
+      "end": 42692,
+      "text": "\u0110i\u1EC1u 42. L\u01B0u tr\u1EEF d\u1EEF li\u1EC7u khi k\u1EBFt n\u1ED1i, khai th\u00E1c"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 42984,
+      "end": 43069,
+      "text": "\u0110i\u1EC1u 43. T\u1EA1m ng\u1EEBng k\u1EBFt n\u1ED1i, cung c\u1EA5p d\u1EEF li\u1EC7u tr\u00EAn m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng do c\u01A1 quan cung c\u1EA5p"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 44921,
+      "end": 44983,
+      "text": "\u0110i\u1EC1u 44. Ch\u1EA5m d\u1EE9t k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u qua m\u00F4i tr\u01B0\u1EDDng m\u1EA1ng"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 45915,
+      "end": 45955,
+      "text": "\u0110i\u1EC1u 45. L\u01B0u tr\u1EEF nh\u1EADt k\u00FD chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 46641,
+      "end": 46682,
+      "text": "\u0110i\u1EC1u 46. M\u00F4 h\u00ECnh k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 47323,
+      "end": 47375,
+      "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 47376,
+      "end": 47436,
+      "text": "\u0110i\u1EC1u 47. V\u01B0\u1EDBng m\u1EAFc khi k\u1EBFt n\u1ED1i, chia s\u1EBB v\u00E0 khai th\u00E1c d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 47923,
+      "end": 47974,
+      "text": "\u0110i\u1EC1u 48. Th\u1EA9m quy\u1EC1n ti\u1EBFp nh\u1EADn, gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 48627,
+      "end": 48660,
+      "text": "\u0110i\u1EC1u 49. Tr\u00ECnh t\u1EF1 x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50264,
+      "end": 50342,
+      "text": "\u0110i\u1EC1u 50. Ph\u01B0\u01A1ng \u00E1n gi\u1EA3i quy\u1EBFt v\u00E0 tri\u1EC3n khai tu\u00E2n th\u1EE7 ph\u01B0\u01A1ng \u00E1n x\u1EED l\u00FD v\u01B0\u1EDBng m\u1EAFc"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50896,
+      "end": 50955,
+      "text": "Ch\u01B0\u01A1ng IV QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 50956,
+      "end": 51014,
+      "text": "\u0110i\u1EC1u 51. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan cung c\u1EA5p d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 52830,
+      "end": 52907,
+      "text": "\u0110i\u1EC1u 52. Quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 53712,
+      "end": 53786,
+      "text": "\u0110i\u1EC1u 53. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 56513,
+      "end": 56595,
+      "text": "\u0110i\u1EC1u 54. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c t\u1EC9nh, th\u00E0nh ph\u1ED1 tr\u1EF1c thu\u1ED9c trung \u01B0\u01A1ng"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 57453,
+      "end": 57481,
+      "text": "Ch\u01B0\u01A1ng V \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 57482,
+      "end": 57513,
+      "text": "\u0110i\u1EC1u 55. \u0110i\u1EC1u kho\u1EA3n chuy\u1EC3n ti\u1EBFp"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 58966,
+      "end": 58992,
+      "text": "\u0110i\u1EC1u 56. Hi\u1EC7u l\u1EF1c thi h\u00E0nh"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "start": 59240,
+      "end": 59269,
+      "text": "\u0110i\u1EC1u 57. Tr\u00E1ch nhi\u1EC7m thi h\u00E0nh"
+    }
+  ],
+  "selectedSingleSlice": 0,
+  "selectedMultiSlice": 0,
+  "telemetry": {
+    "requestIdHash": "79a43d447433576e058d22d97fc4f0a115ba66ee5c351ac85c85c2b8a96c7cc0",
+    "documentId": "DOC-0205",
+    "passType": "SEMANTIC",
+    "model": "qwen/qwen3.7-flash",
+    "reasoningEffort": "enabled",
+    "reasoningExcludedFromResponse": true,
+    "reasoningRequested": true,
+    "reasoningAccepted": true,
+    "contextLength": 1000000,
+    "maxPromptTokens": 948000,
+    "maxCompletionTokens": 48000,
+    "sourceTextCharacters": 60919,
+    "packetCharacters": 123761,
+    "packetOverheadCharacters": 62842,
+    "sourcePayloadRatio": 0.4922309936086489,
+    "estimatedInputTokens": 36401,
+    "reportedInputTokens": 78175,
+    "reportedOutputTokens": 10413,
+    "reportedReasoningTokens": 6563,
+    "cachedInputTokens": 77184,
+    "cacheMode": "WARM_OR_PARTIAL",
+    "segmentCount": 1,
+    "ownedOccurrences": 3,
+    "visibleOccurrences": 3,
+    "headingOutputCount": 0,
+    "elapsedMs": 53809,
+    "finishReason": "stop",
+    "httpStatus": 200,
+    "failureClass": null,
+    "providerCallId": "gen-1789232587-VhYbBotz4xJspZCv2zyh",
+    "providerRoute": "Alibaba",
+    "canonicalRequestHash": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+    "requestBodyHash": "9fdc41f9cefa8cc20d92423441479c5bcbc772585e9e2d3416d2fa8cd2905769",
+    "responseContentPresent": true,
+    "structuredOutputParsed": null,
+    "timeoutDetected": null,
+    "streamStallDetected": null,
+    "requestStartedUtc": "2026-09-12T17:03:06.5860624+00:00",
+    "headersReceivedUtc": "2026-09-12T17:03:07.9945516+00:00",
+    "firstResponseByteUtc": "2026-09-12T17:03:07.9945972+00:00",
+    "firstModelContentUtc": null,
+    "responseCompletedUtc": "2026-09-12T17:04:00.3949038+00:00",
+    "ttfbMs": 1408,
+    "ttftMs": null,
+    "generationElapsedMs": null
+  },
+  "modelEchoTextRequiredForBinding": false,
+  "goldReadBeforeFreeze": false
+}

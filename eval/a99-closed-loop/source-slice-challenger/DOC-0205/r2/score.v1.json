@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "a99-v6-source-slice-challenger-score-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r2",
+  "control": {
+    "tp": 71,
+    "fp": 1,
+    "fn": 0,
+    "precision": 0.9861111111111112,
+    "recall": 1,
+    "f1": 0.993006993006993
+  },
+  "challenger": {
+    "tp": 54,
+    "fp": 12,
+    "fn": 17,
+    "precision": 0.8181818181818182,
+    "recall": 0.7605633802816901,
+    "f1": 0.7883211678832117
+  },
+  "challengerDiagnostics": {
+    "selectedSingleSlice": 66,
+    "selectedMultiSlice": 0,
+    "invalidSliceSelection": 0,
+    "ambiguousSliceSelection": 0,
+    "goldRepresentableButNotSelected": 17
+  },
+  "delta": {
+    "tp": -17,
+    "fp": 11,
+    "fn": 17,
+    "f1": -0.2046858251237813
+  },
+  "goldReadBeforeFreeze": false
+}

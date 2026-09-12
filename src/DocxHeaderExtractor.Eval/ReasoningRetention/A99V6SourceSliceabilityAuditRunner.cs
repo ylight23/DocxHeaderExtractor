@@ -10,6 +10,7 @@ public sealed record SourceSliceBoundary(int Offset, IReadOnlyList<string> Kinds
 
 public sealed record SourceSlice(
     string SliceId,
+    string SourceAlias,
     string SourceId,
     int Ordinal,
     int Start,
@@ -217,7 +218,7 @@ public static class A99V6SourceSliceabilityAuditRunner
             var end = boundaries[index + 1].Offset;
             if (end <= start) continue;
             var address = sourceAlias ?? paragraph.SourceId.Replace("/", "_");
-            slices.Add(new($"{address}.{slices.Count + 1:0000}", paragraph.SourceId,
+            slices.Add(new($"{address}.{slices.Count + 1:0000}", address, paragraph.SourceId,
                 slices.Count + 1, start, end, paragraph.Text[start..end], boundaries[index].Kinds, boundaries[index + 1].Kinds));
         }
         var reconstructed = string.Concat(slices.Select(slice => slice.Text));

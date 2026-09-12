@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "a99-v6-source-slice-challenger-manifest-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+  "repeats": 3,
+  "executionOrder": [
+    "CONTROL_R1",
+    "CHALLENGER_R1",
+    "CONTROL_R2",
+    "CHALLENGER_R2",
+    "CONTROL_R3",
+    "CHALLENGER_R3"
+  ],
+  "controlContract": "a99-semantic-text-exact-binding-v1",
+  "challengerContract": "a99-source-slice-semantic-v1",
+  "controlPacketSha256": "65b616df872739a49c9cba307f1530c6673e563bb014723ecabe395485a34afe",
+  "challengerPacketSha256": "be44fa071dfa0a76e3874688fc29d3025994b764bb2a187371872f3e0966f638",
+  "controlSchemaSha256": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
+  "challengerSchemaSha256": "32d66b630bc26c14fd9ba0c718a81d7d933856c633e00e08741fef3ed027662d",
+  "sourceSliceCount": 3006,
+  "losslessSliceReconstruction": true,
+  "candidateGeneration": false,
+  "candidateRecallGate": false,
+  "numericOffsetsInModelContract": false,
+  "modelEchoTextRequiredForBinding": false,
+  "providerCallsExpected": 6,
+  "goldReadBeforeFreeze": false
+}
