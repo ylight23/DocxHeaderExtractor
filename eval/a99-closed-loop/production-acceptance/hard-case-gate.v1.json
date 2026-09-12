@@ -1,0 +1,16 @@
+{
+  "artifactKind": "a99_v6_hard_case_release_gate",
+  "schemaVersion": "a99-v6-hard-case-gate-v1",
+  "generatedAt": "2026-09-12T05:14:34.2341887+00:00",
+  "repositoryHead": "2ad08d6f11be9478a2f45799a4e2b984aa68a825",
+  "focusedCommand": "dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj --configuration Release --no-restore --filter A99 v6 hard-case focused classes",
+  "focusedPassed": 124,
+  "focusedFailed": 0,
+  "focusedSkipped": 0,
+  "releaseBuild": "PASS",
+  "gitDiffCheck": "PASS",
+  "goldReadDuringGate": false,
+  "modelCallsDuringGate": 0,
+  "providerCallsDuringGate": 0,
+  "status": "PASS"
+}

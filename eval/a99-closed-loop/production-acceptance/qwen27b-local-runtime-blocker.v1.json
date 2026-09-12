@@ -1,0 +1,37 @@
+{
+  "artifactKind": "a99_qwen27b_local_runtime_blocker",
+  "schemaVersion": "a99-qwen27b-local-runtime-blocker-v1",
+  "generatedAt": "2026-09-12T05:14:34.2395976+00:00",
+  "modelRequired": "Qwen 27B local multimodal OpenAI-compatible endpoint",
+  "endpointChecks": [
+    {
+      "endpoint": "http://127.0.0.1:1234/v1/models",
+      "result": "CONNECTION_REFUSED"
+    },
+    {
+      "endpoint": "http://127.0.0.1:30000/v1/models",
+      "result": "CONNECTION_REFUSED"
+    },
+    {
+      "endpoint": "http://127.0.0.1:8000/v1/models",
+      "result": "TIMEOUT"
+    },
+    {
+      "endpoint": "http://127.0.0.1:8080/v1/models",
+      "result": "TIMEOUT"
+    },
+    {
+      "endpoint": "http://192.168.11.22:8881/v1/models",
+      "result": "TIMEOUT"
+    },
+    {
+      "endpoint": "http://192.168.68.20/v1/models",
+      "result": "TIMEOUT"
+    }
+  ],
+  "textModelCalls": 0,
+  "vlmCalls": 0,
+  "cloudFallback": "NONE",
+  "status": "HARD_BLOCKER_LOCAL_ENDPOINT_UNAVAILABLE",
+  "consequence": "Do not claim Qwen27B accuracy, baseline, post-fix regression, or production readiness until a local endpoint responds and exact model identity is verified."
+}
