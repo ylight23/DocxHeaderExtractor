@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "a99-v6-faithful-whole-alias-live-score-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r1",
+  "mode": "WHOLE_ALIAS",
+  "comparableGoldCount": 66,
+  "faithfulCrossParagraphGold": 5,
+  "score": {
+    "tp": 9,
+    "fp": 2,
+    "fn": 57,
+    "precision": 0.8181818181818182,
+    "recall": 0.13636363636363635,
+    "f1": 0.23376623376623376,
+    "excludedPredictions": 10,
+    "bindingFailure": 0,
+    "unknownAliasSelections": 0,
+    "systemLoss": 0
+  },
+  "goldReadBeforeFreeze": false
+}

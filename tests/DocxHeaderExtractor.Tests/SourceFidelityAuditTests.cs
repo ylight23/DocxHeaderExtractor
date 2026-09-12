@@ -95,5 +95,37 @@ public sealed class SourceFidelityAuditTests
         Assert.True(diagnostics.GetProperty("modelTextIgnored").GetBoolean());
     }
 
+    [Fact]
+    public void FaithfulWholeAliasLivePreservesInterleavedProviderEvidenceAndRejectsUnstableGate()
+    {
+        var root = TestRoot();
+        var artifact = Path.Combine(root, "eval", "a99-closed-loop", "source-fidelity-whole-alias-live", "DOC-0205", "summary.v1.json");
+        if (!File.Exists(artifact)) return;
+
+        Assert.True(new FileInfo(artifact).Length < 1_000_000, "Summary must not duplicate the full execution packet.");
+        using var json = System.Text.Json.JsonDocument.Parse(File.ReadAllText(artifact));
+        var summary = json.RootElement;
+        Assert.Equal(6, summary.GetProperty("modelCalls").GetInt32());
+        Assert.Equal(6, summary.GetProperty("providerCalls").GetInt32());
+        Assert.True(summary.GetProperty("interleaved").GetBoolean());
+        Assert.Equal(452, summary.GetProperty("sourceAliasCount").GetInt32());
+        Assert.Equal("PASS", summary.GetProperty("goldFirewall").GetString());
+        Assert.Equal("WHOLE_ALIAS_LIVE_REQUIRES_REVIEW", summary.GetProperty("decision").GetString());
+
+        var challenger = summary.GetProperty("challenger").GetProperty("aggregate");
+        Assert.Equal(133, challenger.GetProperty("tp").GetInt32());
+        Assert.Equal(12, challenger.GetProperty("fp").GetInt32());
+        Assert.Equal(65, challenger.GetProperty("fn").GetInt32());
+        Assert.Equal(2, challenger.GetProperty("bindingFailure").GetInt32());
+        Assert.Equal(0, challenger.GetProperty("unknownAliasSelections").GetInt32());
+        Assert.Equal(0, challenger.GetProperty("systemLoss").GetInt32());
+
+        var wholeAliasRecall = summary.GetProperty("rows").EnumerateArray()
+            .Where(row => row.GetProperty("isWholeAlias").GetBoolean())
+            .Select(row => row.GetProperty("score").GetProperty("tp").GetInt32())
+            .ToArray();
+        Assert.Equal(new[] { 9, 62, 62 }, wholeAliasRecall);
+    }
+
     private static string TestRoot() => Directory.GetParent(AppContext.BaseDirectory)!.Parent!.Parent!.Parent!.FullName;
 }

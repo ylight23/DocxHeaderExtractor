@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "a99-v6-faithful-whole-alias-live-freeze-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r2",
+  "mode": "WHOLE_ALIAS",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "predictionSha256": "f229d3d08e819701ca0e5bd36d15e5540df7e3c5c2d3324570449784871d94b9",
+  "rawResponseSha256": "48cc1611bcc9cce4142812233443696d3aac91141969768e4d06d9425f1ea535",
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "frozenUtc": "2026-09-12T18:58:37.1967201+00:00"
+}

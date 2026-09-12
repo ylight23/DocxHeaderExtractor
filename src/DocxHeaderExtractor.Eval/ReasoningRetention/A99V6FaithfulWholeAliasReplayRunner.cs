@@ -128,6 +128,7 @@ public static class A99V6FaithfulWholeAliasReplayRunner
         }
 
         var aggregate = Aggregate(scored.Select(item => item.Score));
+        await WriteAliasDiagnosis(repoRoot, output, context, gold, ct);
         await WriteJson(Path.Combine(output, "summary.v1.json"), new
         {
             schemaVersion = "a99-v6-faithful-whole-alias-replay-summary-v1",
@@ -244,6 +245,74 @@ public static class A99V6FaithfulWholeAliasReplayRunner
         return new(gold, crossParagraph, excludedSourceIds);
     }
 
+    private static async Task WriteAliasDiagnosis(string repoRoot, string output, SourceContext context, GoldScope gold, CancellationToken ct)
+    {
+        var goldKeys = gold.Rows.Select(row => Key(row.SourceId, row.Start, row.End)).ToHashSet(StringComparer.Ordinal);
+        var repeats = new List<object>();
+        var tpSets = new List<object[]>();
+        var fnSets = new List<object[]>();
+        var fpSets = new List<object[]>();
+        for (var repeat = 1; repeat <= 3; repeat++)
+        {
+            var path = Path.Combine(output, $"r{repeat}", "whole-alias", "prediction.v1.json");
+            using var prediction = JsonDocument.Parse(await File.ReadAllTextAsync(path, ct));
+            var bound = prediction.RootElement.GetProperty("boundHeadings").EnumerateArray()
+                .Select(item => new DiagnosticBound(
+                    item.GetProperty("alias").GetString()!, item.GetProperty("sourceId").GetString()!,
+                    item.GetProperty("start").GetInt32(), item.GetProperty("end").GetInt32(),
+                    item.GetProperty("text").GetString()!, item.GetProperty("semanticRole").GetString()!)).ToArray();
+            var selectedKeys = bound.Select(item => Key(item.SourceId, item.Start, item.End)).ToHashSet(StringComparer.Ordinal);
+            var tp = bound.Where(item => goldKeys.Contains(Key(item.SourceId, item.Start, item.End)))
+                .Select(item => AliasDiagnostic(context.Aliases, item.Alias, item.SourceId, item.Text, item.Role, "TP")).ToArray();
+            var fn = gold.Rows.Where(row => !selectedKeys.Contains(Key(row.SourceId, row.Start, row.End)))
+                .Select(row => AliasDiagnostic(context.Aliases, AliasFor(context.Aliases, row.SourceId), row.SourceId, row.Text, "NOT_EMITTED", "FN")).ToArray();
+            var fp = bound.Where(item => !goldKeys.Contains(Key(item.SourceId, item.Start, item.End)) && !gold.ExcludedSourceIds.Contains(item.SourceId))
+                .Select(item => AliasDiagnostic(context.Aliases, item.Alias, item.SourceId, item.Text, item.Role, "HISTORICAL_LANE_FP_UNRESOLVED")).ToArray();
+            var ignored = bound.Where(item => gold.ExcludedSourceIds.Contains(item.SourceId))
+                .Select(item => AliasDiagnostic(context.Aliases, item.Alias, item.SourceId, item.Text, item.Role, "MULTI_PARAGRAPH_GOLD_EXCLUDED")).ToArray();
+            tpSets.Add(tp); fnSets.Add(fn); fpSets.Add(fp);
+            repeats.Add(new { repeat = $"r{repeat}", tp, fn, fp, ignored });
+        }
+        await WriteJson(Path.Combine(output, "alias-selection-diagnosis.v1.json"), new
+        {
+            schemaVersion = "a99-v6-faithful-whole-alias-diagnosis-v1",
+            documentId = "DOC-0205", sourceSha256 = context.SourceSha256,
+            comparableGoldCount = gold.Rows.Count, crossParagraphGold = gold.CrossParagraphCount,
+            sourceAliasCount = context.Aliases.Count,
+            classification = new
+            {
+                tp = "historical-comparable-occurrence-match",
+                fn = "historical-comparable-occurrence-not-selected",
+                fp = "not-in-historical-comparable-scope; semantic validity remains UNRESOLVED",
+                ignored = "multi-paragraph Gold excluded from comparable-66",
+            },
+            stableAcrossRepeats = new { tp = StableAliasSet(tpSets), fn = StableAliasSet(fnSets), fp = StableAliasSet(fpSets) },
+            repeats,
+            modelCalls = 0, providerCalls = 0,
+            goldFirewall = "PREDICTIONS_FROZEN_BEFORE_DIAGNOSIS_GOLD_READ",
+        }, ct);
+    }
+
+    private static object AliasDiagnostic(IReadOnlyList<SemanticSourceAlias> aliases, string alias, string sourceId, string text, string role, string status)
+    {
+        var index = aliases.Select((item, position) => (item, position)).Single(value => value.item.Alias == alias).position;
+        return new
+        {
+            status, sourceAlias = alias, sourceId, paragraphText = text, semanticRole = role,
+            neighbors = Enumerable.Range(Math.Max(0, index - 2), Math.Min(aliases.Count - 1, index + 2) - Math.Max(0, index - 2) + 1)
+                .Select(position => new { offset = position - index, aliases[position].Alias, aliases[position].SourceId, paragraphText = aliases[position].Text }).ToArray(),
+        };
+    }
+
+    private static string AliasFor(IReadOnlyList<SemanticSourceAlias> aliases, string sourceId) =>
+        aliases.Single(alias => alias.SourceId == sourceId).Alias;
+
+    private static object StableAliasSet(IEnumerable<object[]> rows)
+    {
+        var sets = rows.Select(row => row.Select(item => JsonSerializer.Serialize(item, JsonOptions)).ToHashSet(StringComparer.Ordinal)).ToArray();
+        return new { sameAcrossRepeats = sets.Length > 0 && sets.All(set => set.SetEquals(sets[0])), count = sets.Length == 0 ? 0 : sets[0].Count };
+    }
+
     private static ScoreRow ScoreComparable(IReadOnlyList<ExactRow> prediction, IReadOnlyList<ExactRow> gold, IReadOnlySet<string> excludedSourceIds)
     {
         var p = prediction.Where(row => !excludedSourceIds.Contains(row.SourceId)).Select(row => Key(row.SourceId, row.Start, row.End)).ToHashSet(StringComparer.Ordinal);
@@ -276,4 +345,5 @@ public static class A99V6FaithfulWholeAliasReplayRunner
     private sealed record ScoreRow(int Tp, int Fp, int Fn, double Precision, double Recall, double F1, int ExcludedPredictions);
     private sealed record ReplayRow(string Repeat, int RawProposalCount, int SelectedAliasCount, int BoundCount, int FinalCount, int BindingFailure, int UnknownAliasSelections);
     private sealed record ScoredRow(ReplayRow Replay, ScoreRow Score);
+    private sealed record DiagnosticBound(string Alias, string SourceId, int Start, int End, string Text, string Role);
 }

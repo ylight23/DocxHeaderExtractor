@@ -1,0 +1,1003 @@
+{
+  "schemaVersion": "a99-v6-faithful-whole-alias-live-prediction-v1",
+  "documentId": "DOC-0205",
+  "repeat": "r1",
+  "mode": "WHOLE_ALIAS",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "sourceAliasCount": 452,
+  "packetCharacters": 144477,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "rawResponseSha256": "d9407d53fe8854405d1c2ffe566a9700cd5845719811a93155144998964ab7f2",
+  "rawProposalCount": 21,
+  "modelTextRequiredForBinding": false,
+  "modelNumericOffsets": false,
+  "proposals": [
+    {
+      "sourceAlias": "S0001",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "DOCUMENT_TITLE",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0005",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "PART",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0014",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "CHAPTER",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0015",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0066",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "CHAPTER",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0067",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0068",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SUBSECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0114",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SUBSECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0142",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SUBSECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0178",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SUBSECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0239",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "CHAPTER",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0240",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0241",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SUBSECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0257",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SUBSECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0284",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SUBSECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0312",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SUBSECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0361",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SUBSECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0388",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "CHAPTER",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0389",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0437",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "CHAPTER",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    },
+    {
+      "sourceAlias": "S0438",
+      "isHeading": true,
+      "verbatimText": null,
+      "verbatimParts": null,
+      "semanticRole": "SECTION",
+      "structuralType": null,
+      "scope": null,
+      "relationHints": null,
+      "sourceAliases": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "selectionMode": "WHOLE_ALIAS"
+    }
+  ],
+  "boundHeadings": [
+    {
+      "alias": "S0001",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 0,
+      "text": "CH\u00CDNH PH\u1EE6 ________",
+      "semanticRole": "DOCUMENT_TITLE",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 18,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0001",
+          "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+          "sourceOrdinal": 0,
+          "text": "CH\u00CDNH PH\u1EE6 ________",
+          "start": 0,
+          "end": 18
+        }
+      ]
+    },
+    {
+      "alias": "S0005",
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 6,
+      "text": "NGH\u1ECA \u0110\u1ECANH",
+      "semanticRole": "PART",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 9,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0005",
+          "sourceId": "body[1]/p[3]",
+          "sourceOrdinal": 6,
+          "text": "NGH\u1ECA \u0110\u1ECANH",
+          "start": 0,
+          "end": 9
+        }
+      ]
+    },
+    {
+      "alias": "S0014",
+      "sourceId": "body[1]/p[14]",
+      "sourceOrdinal": 17,
+      "text": "Ch\u01B0\u01A1ng I",
+      "semanticRole": "CHAPTER",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 8,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0014",
+          "sourceId": "body[1]/p[14]",
+          "sourceOrdinal": 17,
+          "text": "Ch\u01B0\u01A1ng I",
+          "start": 0,
+          "end": 8
+        }
+      ]
+    },
+    {
+      "alias": "S0015",
+      "sourceId": "body[1]/p[15]",
+      "sourceOrdinal": 18,
+      "text": "QUY \u0110\u1ECANH CHUNG",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 14,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0015",
+          "sourceId": "body[1]/p[15]",
+          "sourceOrdinal": 18,
+          "text": "QUY \u0110\u1ECANH CHUNG",
+          "start": 0,
+          "end": 14
+        }
+      ]
+    },
+    {
+      "alias": "S0066",
+      "sourceId": "body[1]/p[68]",
+      "sourceOrdinal": 71,
+      "text": "Ch\u01B0\u01A1ng II",
+      "semanticRole": "CHAPTER",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 9,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0066",
+          "sourceId": "body[1]/p[68]",
+          "sourceOrdinal": 71,
+          "text": "Ch\u01B0\u01A1ng II",
+          "start": 0,
+          "end": 9
+        }
+      ]
+    },
+    {
+      "alias": "S0067",
+      "sourceId": "body[1]/p[69]",
+      "sourceOrdinal": 72,
+      "text": "QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 125,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0067",
+          "sourceId": "body[1]/p[69]",
+          "sourceOrdinal": 72,
+          "text": "QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 0,
+          "end": 125
+        }
+      ]
+    },
+    {
+      "alias": "S0068",
+      "sourceId": "body[1]/p[71]",
+      "sourceOrdinal": 74,
+      "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+      "semanticRole": "SUBSECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 60,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0068",
+          "sourceId": "body[1]/p[71]",
+          "sourceOrdinal": 74,
+          "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "start": 0,
+          "end": 60
+        }
+      ]
+    },
+    {
+      "alias": "S0114",
+      "sourceId": "body[1]/p[119]",
+      "sourceOrdinal": 122,
+      "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+      "semanticRole": "SUBSECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 60,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0114",
+          "sourceId": "body[1]/p[119]",
+          "sourceOrdinal": 122,
+          "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U",
+          "start": 0,
+          "end": 60
+        }
+      ]
+    },
+    {
+      "alias": "S0142",
+      "sourceId": "body[1]/p[149]",
+      "sourceOrdinal": 152,
+      "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+      "semanticRole": "SUBSECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 38,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0142",
+          "sourceId": "body[1]/p[149]",
+          "sourceOrdinal": 152,
+          "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC",
+          "start": 0,
+          "end": 38
+        }
+      ]
+    },
+    {
+      "alias": "S0178",
+      "sourceId": "body[1]/p[187]",
+      "sourceOrdinal": 190,
+      "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "SUBSECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 57,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0178",
+          "sourceId": "body[1]/p[187]",
+          "sourceOrdinal": 190,
+          "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 0,
+          "end": 57
+        }
+      ]
+    },
+    {
+      "alias": "S0239",
+      "sourceId": "body[1]/p[250]",
+      "sourceOrdinal": 253,
+      "text": "Ch\u01B0\u01A1ng III",
+      "semanticRole": "CHAPTER",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 10,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0239",
+          "sourceId": "body[1]/p[250]",
+          "sourceOrdinal": 253,
+          "text": "Ch\u01B0\u01A1ng III",
+          "start": 0,
+          "end": 10
+        }
+      ]
+    },
+    {
+      "alias": "S0240",
+      "sourceId": "body[1]/p[251]",
+      "sourceOrdinal": 254,
+      "text": "TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 43,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0240",
+          "sourceId": "body[1]/p[251]",
+          "sourceOrdinal": 254,
+          "text": "TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U",
+          "start": 0,
+          "end": 43
+        }
+      ]
+    },
+    {
+      "alias": "S0241",
+      "sourceId": "body[1]/p[253]",
+      "sourceOrdinal": 256,
+      "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "SUBSECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 39,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0241",
+          "sourceId": "body[1]/p[253]",
+          "sourceOrdinal": 256,
+          "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 0,
+          "end": 39
+        }
+      ]
+    },
+    {
+      "alias": "S0257",
+      "sourceId": "body[1]/p[271]",
+      "sourceOrdinal": 274,
+      "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+      "semanticRole": "SUBSECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 31,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0257",
+          "sourceId": "body[1]/p[271]",
+          "sourceOrdinal": 274,
+          "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH",
+          "start": 0,
+          "end": 31
+        }
+      ]
+    },
+    {
+      "alias": "S0284",
+      "sourceId": "body[1]/p[300]",
+      "sourceOrdinal": 303,
+      "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+      "semanticRole": "SUBSECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 43,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0284",
+          "sourceId": "body[1]/p[300]",
+          "sourceOrdinal": 303,
+          "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9",
+          "start": 0,
+          "end": 43
+        }
+      ]
+    },
+    {
+      "alias": "S0312",
+      "sourceId": "body[1]/p[330]",
+      "sourceOrdinal": 333,
+      "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "SUBSECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 39,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0312",
+          "sourceId": "body[1]/p[330]",
+          "sourceOrdinal": 333,
+          "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 0,
+          "end": 39
+        }
+      ]
+    },
+    {
+      "alias": "S0361",
+      "sourceId": "body[1]/p[381]",
+      "sourceOrdinal": 384,
+      "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "SUBSECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 52,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0361",
+          "sourceId": "body[1]/p[381]",
+          "sourceOrdinal": 384,
+          "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 0,
+          "end": 52
+        }
+      ]
+    },
+    {
+      "alias": "S0388",
+      "sourceId": "body[1]/p[410]",
+      "sourceOrdinal": 413,
+      "text": "Ch\u01B0\u01A1ng IV",
+      "semanticRole": "CHAPTER",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 9,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0388",
+          "sourceId": "body[1]/p[410]",
+          "sourceOrdinal": 413,
+          "text": "Ch\u01B0\u01A1ng IV",
+          "start": 0,
+          "end": 9
+        }
+      ]
+    },
+    {
+      "alias": "S0389",
+      "sourceId": "body[1]/p[411]",
+      "sourceOrdinal": 414,
+      "text": "QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 49,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0389",
+          "sourceId": "body[1]/p[411]",
+          "sourceOrdinal": 414,
+          "text": "QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U",
+          "start": 0,
+          "end": 49
+        }
+      ]
+    },
+    {
+      "alias": "S0437",
+      "sourceId": "body[1]/p[461]",
+      "sourceOrdinal": 464,
+      "text": "Ch\u01B0\u01A1ng V",
+      "semanticRole": "CHAPTER",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 8,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0437",
+          "sourceId": "body[1]/p[461]",
+          "sourceOrdinal": 464,
+          "text": "Ch\u01B0\u01A1ng V",
+          "start": 0,
+          "end": 8
+        }
+      ]
+    },
+    {
+      "alias": "S0438",
+      "sourceId": "body[1]/p[462]",
+      "sourceOrdinal": 465,
+      "text": "\u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+      "semanticRole": "SECTION",
+      "structuralType": "Heading",
+      "scope": "document_body",
+      "relationHints": [],
+      "start": 0,
+      "end": 19,
+      "isHeading": true,
+      "parts": [
+        {
+          "alias": "S0438",
+          "sourceId": "body[1]/p[462]",
+          "sourceOrdinal": 465,
+          "text": "\u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+          "start": 0,
+          "end": 19
+        }
+      ]
+    }
+  ],
+  "finalHeadings": [
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 18,
+      "text": "CH\u00CDNH PH\u1EE6 ________"
+    },
+    {
+      "sourceId": "body[1]/p[3]",
+      "start": 0,
+      "end": 9,
+      "text": "NGH\u1ECA \u0110\u1ECANH"
+    },
+    {
+      "sourceId": "body[1]/p[14]",
+      "start": 0,
+      "end": 8,
+      "text": "Ch\u01B0\u01A1ng I"
+    },
+    {
+      "sourceId": "body[1]/p[15]",
+      "start": 0,
+      "end": 14,
+      "text": "QUY \u0110\u1ECANH CHUNG"
+    },
+    {
+      "sourceId": "body[1]/p[68]",
+      "start": 0,
+      "end": 9,
+      "text": "Ch\u01B0\u01A1ng II"
+    },
+    {
+      "sourceId": "body[1]/p[69]",
+      "start": 0,
+      "end": 125,
+      "text": "QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC V\u00C0 B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[71]",
+      "start": 0,
+      "end": 60,
+      "text": "M\u1EE5c 1. QU\u1EA2N L\u00DD D\u1EEE LI\u1EC6U, C\u01A0 S\u1EDE D\u1EEE LI\u1EC6U TRONG C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC"
+    },
+    {
+      "sourceId": "body[1]/p[119]",
+      "start": 0,
+      "end": 60,
+      "text": "M\u1EE5c 2. QU\u1EA2N TR\u1ECA D\u1EEE LI\u1EC6U, QU\u1EA2N TR\u1ECA CHIA S\u1EBA, KHAI TH\u00C1C D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[149]",
+      "start": 0,
+      "end": 38,
+      "text": "M\u1EE5c 3. D\u1EEE LI\u1EC6U M\u1EDE C\u1EE6A C\u01A0 QUAN NH\u00C0 N\u01AF\u1EDAC"
+    },
+    {
+      "sourceId": "body[1]/p[187]",
+      "start": 0,
+      "end": 57,
+      "text": "M\u1EE5c 4. B\u1EA2O \u0110\u1EA2M KH\u1EA2 N\u0102NG S\u1EB4N S\u00C0NG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[250]",
+      "start": 0,
+      "end": 10,
+      "text": "Ch\u01B0\u01A1ng III"
+    },
+    {
+      "sourceId": "body[1]/p[251]",
+      "start": 0,
+      "end": 43,
+      "text": "TH\u1EF0C HI\u1EC6N K\u1EBET N\u1ED0I, CHIA S\u1EBA, S\u1EEC D\u1EE4NG D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[253]",
+      "start": 0,
+      "end": 39,
+      "text": "M\u1EE5c 1. T\u1ED4 CH\u1EE8C K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[271]",
+      "start": 0,
+      "end": 31,
+      "text": "M\u1EE5c 2. CHIA S\u1EBA D\u1EEE LI\u1EC6U M\u1EB6C \u0110\u1ECANH"
+    },
+    {
+      "sourceId": "body[1]/p[300]",
+      "start": 0,
+      "end": 43,
+      "text": "M\u1EE5c 3. CHIA S\u1EBA D\u1EEE LI\u1EC6U THEO Y\u00CAU C\u1EA6U \u0110\u1EB6C TH\u00D9"
+    },
+    {
+      "sourceId": "body[1]/p[330]",
+      "start": 0,
+      "end": 39,
+      "text": "M\u1EE5c 4. QU\u1EA2N L\u00DD K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[381]",
+      "start": 0,
+      "end": 52,
+      "text": "M\u1EE5c 5. GI\u1EA2I QUY\u1EBET V\u01AF\u1EDANG M\u1EAEC K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[410]",
+      "start": 0,
+      "end": 9,
+      "text": "Ch\u01B0\u01A1ng IV"
+    },
+    {
+      "sourceId": "body[1]/p[411]",
+      "start": 0,
+      "end": 49,
+      "text": "QUY\u1EC0N, TR\u00C1CH NHI\u1EC6M TRONG K\u1EBET N\u1ED0I, CHIA S\u1EBA D\u1EEE LI\u1EC6U"
+    },
+    {
+      "sourceId": "body[1]/p[461]",
+      "start": 0,
+      "end": 8,
+      "text": "Ch\u01B0\u01A1ng V"
+    },
+    {
+      "sourceId": "body[1]/p[462]",
+      "start": 0,
+      "end": 19,
+      "text": "\u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH"
+    }
+  ],
+  "telemetry": {
+    "requestIdHash": "e4a5c67f83f480bc3fa10a5c2261eff3f249105a19a659dfe43f25eeaaa1bbcc",
+    "documentId": "DOC-0205",
+    "passType": "SEMANTIC",
+    "model": "qwen/qwen3.7-flash",
+    "reasoningEffort": "enabled",
+    "reasoningExcludedFromResponse": true,
+    "reasoningRequested": true,
+    "reasoningAccepted": true,
+    "contextLength": 1000000,
+    "maxPromptTokens": 948000,
+    "maxCompletionTokens": 48000,
+    "sourceTextCharacters": 60176,
+    "packetCharacters": 144477,
+    "packetOverheadCharacters": 84301,
+    "sourcePayloadRatio": 0.4165092021567447,
+    "estimatedInputTokens": 42494,
+    "reportedInputTokens": 85557,
+    "reportedOutputTokens": 10768,
+    "reportedReasoningTokens": 9797,
+    "cachedInputTokens": 0,
+    "cacheMode": "COLD_OR_UNCACHED",
+    "segmentCount": 1,
+    "ownedOccurrences": 452,
+    "visibleOccurrences": 452,
+    "headingOutputCount": 0,
+    "elapsedMs": 61264,
+    "finishReason": "stop",
+    "httpStatus": 200,
+    "failureClass": null,
+    "providerCallId": "gen-1789239313-RwvmGXQwYICdglKZJZCw",
+    "providerRoute": "Alibaba",
+    "canonicalRequestHash": "c84538be36adb82c0f3a26a33590596890177ddb4ed5b02463aff539f543ecf5",
+    "requestBodyHash": "c84538be36adb82c0f3a26a33590596890177ddb4ed5b02463aff539f543ecf5",
+    "responseContentPresent": true,
+    "structuredOutputParsed": null,
+    "timeoutDetected": null,
+    "streamStallDetected": null,
+    "requestStartedUtc": "2026-09-12T18:55:12.4019406+00:00",
+    "headersReceivedUtc": "2026-09-12T18:55:20.2679008+00:00",
+    "firstResponseByteUtc": "2026-09-12T18:55:20.2679717+00:00",
+    "firstModelContentUtc": null,
+    "responseCompletedUtc": "2026-09-12T18:56:13.6656758+00:00",
+    "ttfbMs": 7865,
+    "ttftMs": null,
+    "generationElapsedMs": null
+  },
+  "metrics": {
+    "rawProposalCount": 21,
+    "boundCount": 21,
+    "finalCount": 21,
+    "bindingFailure": 0,
+    "unknownAliasSelections": 0,
+    "systemLoss": 0,
+    "modelTextDrift": 0
+  },
+  "goldReadBeforeFreeze": false
+}

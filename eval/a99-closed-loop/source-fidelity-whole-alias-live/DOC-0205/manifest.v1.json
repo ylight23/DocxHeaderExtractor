@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "a99-v6-faithful-whole-alias-live-manifest-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "sourceAliasCount": 452,
+  "packetCharacters": 144477,
+  "executionOrder": [
+    "V1",
+    "W1",
+    "V2",
+    "W2",
+    "V3",
+    "W3"
+  ],
+  "repeats": 3,
+  "interleaved": true,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "causalDelta": "OUTPUT_CONTRACT_ONLY",
+  "controlContract": "VERBATIM_TEXT",
+  "challengerContract": "WHOLE_ALIAS",
+  "modelTextRequiredForBinding": {
+    "control": true,
+    "challenger": false
+  },
+  "modelNumericOffsets": false,
+  "candidateGeneration": false,
+  "recoveryPass": false,
+  "goldReadBeforeFreeze": false,
+  "semanticDefinitionControlSha256": "a9603fe817e4a6ae1eb3085fd86b324e76c42a2aed934692a949d1aee4e68cbb",
+  "semanticDefinitionChallengerSha256": "9fed3f33561abdae237897ae280291bf71ea584f84ea7b8e713930b748c60cc5",
+  "controlSchemaSha256": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3",
+  "challengerSchemaSha256": "92e70b3bdc73dc045f0439760a2cf5feb505147cfb97e14e87e9766046b8892f"
+}
