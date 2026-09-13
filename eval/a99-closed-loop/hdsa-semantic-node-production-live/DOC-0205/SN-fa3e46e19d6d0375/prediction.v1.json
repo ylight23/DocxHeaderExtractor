@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-node-parent-prediction-v1",
+  "documentId": "DOC-0205",
+  "childSemanticNodeId": "SN-fa3e46e19d6d0375",
+  "requestSha256": "13e148f9241de31404d642e3c01041f9db75c4251b0b696f871c69eeef0b8a1f",
+  "responseSha256": "33d8c5ee06ca346c0a9b8186874d6291c6d152c704e7aa5661fa3e11514488ce",
+  "rawResponse": "{\n  \u0022catalogFingerprint\u0022: \u00225948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e\u0022,\n  \u0022childSemanticNodeId\u0022: \u0022SN-fa3e46e19d6d0375\u0022,\n  \u0022decision\u0022: \u0022SELECT_PARENT\u0022,\n  \u0022parentSemanticNodeId\u0022: \u0022SN-d53681cb67def23d\u0022\n}",
+  "decision": {
+    "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+    "childSemanticNodeId": "SN-fa3e46e19d6d0375",
+    "decision": "SELECT_PARENT",
+    "parentSemanticNodeId": "SN-d53681cb67def23d"
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "parentWasOutsideAttentionHints": false
+  },
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}

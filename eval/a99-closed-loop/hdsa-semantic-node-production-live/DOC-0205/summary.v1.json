@@ -1,0 +1,358 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-node-production-live-summary-v1",
+  "status": "COMPLETE",
+  "documentId": "DOC-0205",
+  "benchmarkCode": "4bc70a76435a541e2bbc311bd21b6201cd5d5c49",
+  "behavioralParent": "8ab4310",
+  "model": "qwen/qwen3.7-flash",
+  "source": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "occurrenceCount": 12
+  },
+  "semanticCatalog": {
+    "resolverVersion": "repeat-continuation-evidence-v3",
+    "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+    "nodeCount": 12,
+    "goldUsed": false
+  },
+  "parentInference": {
+    "requestCount": 12,
+    "selectParent": 11,
+    "root": 1,
+    "unresolved": 0,
+    "invalidRejected": 0
+  },
+  "tree": {
+    "valid": true,
+    "rootCount": 1,
+    "maxDepth": 4,
+    "cyclesRejected": false
+  },
+  "evaluation": {
+    "semanticResolution": {
+      "predictedSemanticNodes": 12,
+      "goldSemanticNodes": 10,
+      "splitErrors": 1,
+      "mergeErrors": 0,
+      "exactMembershipMatches": 9,
+      "splitGoldNodeIds": [
+        "N0002"
+      ],
+      "evaluationAdapter": "predicted-member-occurrences-to-Gold-semantic-node; evaluation-only"
+    },
+    "parent": {
+      "tp": 8,
+      "fp": 3,
+      "fn": 1,
+      "precision": 0.7272727272727273,
+      "recall": 0.8888888888888888,
+      "f1": 0.7999999999999999,
+      "predictedEdgeCount": 11,
+      "mappedPredictedEdgeCount": 9,
+      "unmappablePredictedEdges": 2,
+      "goldEdgeCount": 9,
+      "diagnostics": [
+        {
+          "childSemanticNodeId": "SN-d53681cb67def23d",
+          "predictedParentSemanticNodeId": null,
+          "goldParentSemanticNodeId": null,
+          "candidateSet": [],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "UNMAPPABLE",
+          "classification": "SEMANTIC_RESOLUTION_ERROR"
+        },
+        {
+          "childSemanticNodeId": "SN-aca084dc03ba6e31",
+          "predictedParentSemanticNodeId": "SN-d53681cb67def23d",
+          "goldParentSemanticNodeId": null,
+          "candidateSet": [
+            "SN-d53681cb67def23d"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "EXACT_MEMBERSHIP",
+          "classification": "MODEL_PARENT_SELECTION_ERROR"
+        },
+        {
+          "childSemanticNodeId": "SN-fa3e46e19d6d0375",
+          "predictedParentSemanticNodeId": "SN-d53681cb67def23d",
+          "goldParentSemanticNodeId": "N0001",
+          "candidateSet": [
+            "SN-aca084dc03ba6e31",
+            "SN-d53681cb67def23d"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "SPLIT_OR_NONEXACT_EVALUATION_MAPPING",
+          "classification": "MODEL_PARENT_SELECTION_ERROR"
+        },
+        {
+          "childSemanticNodeId": "SN-2ddcbcfd14c02240",
+          "predictedParentSemanticNodeId": "SN-fa3e46e19d6d0375",
+          "goldParentSemanticNodeId": "N0001",
+          "candidateSet": [
+            "SN-fa3e46e19d6d0375",
+            "SN-aca084dc03ba6e31",
+            "SN-d53681cb67def23d"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "SPLIT_OR_NONEXACT_EVALUATION_MAPPING",
+          "classification": "MODEL_PARENT_SELECTION_ERROR"
+        },
+        {
+          "childSemanticNodeId": "SN-a34a97ca83b456e6",
+          "predictedParentSemanticNodeId": "SN-2ddcbcfd14c02240",
+          "goldParentSemanticNodeId": "N0002",
+          "candidateSet": [
+            "SN-2ddcbcfd14c02240",
+            "SN-fa3e46e19d6d0375",
+            "SN-aca084dc03ba6e31",
+            "SN-d53681cb67def23d"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "EXACT_MEMBERSHIP",
+          "classification": "TP"
+        },
+        {
+          "childSemanticNodeId": "SN-ad0f647090b35dae",
+          "predictedParentSemanticNodeId": "SN-2ddcbcfd14c02240",
+          "goldParentSemanticNodeId": "N0002",
+          "candidateSet": [
+            "SN-a34a97ca83b456e6",
+            "SN-2ddcbcfd14c02240",
+            "SN-fa3e46e19d6d0375",
+            "SN-aca084dc03ba6e31",
+            "SN-d53681cb67def23d"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "EXACT_MEMBERSHIP",
+          "classification": "TP"
+        },
+        {
+          "childSemanticNodeId": "SN-2a07dbe2240718e3",
+          "predictedParentSemanticNodeId": "SN-2ddcbcfd14c02240",
+          "goldParentSemanticNodeId": "N0002",
+          "candidateSet": [
+            "SN-ad0f647090b35dae",
+            "SN-a34a97ca83b456e6",
+            "SN-2ddcbcfd14c02240",
+            "SN-fa3e46e19d6d0375",
+            "SN-aca084dc03ba6e31",
+            "SN-d53681cb67def23d"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "EXACT_MEMBERSHIP",
+          "classification": "TP"
+        },
+        {
+          "childSemanticNodeId": "SN-1767abb75196945e",
+          "predictedParentSemanticNodeId": "SN-fa3e46e19d6d0375",
+          "goldParentSemanticNodeId": "N0002",
+          "candidateSet": [
+            "SN-2a07dbe2240718e3",
+            "SN-ad0f647090b35dae",
+            "SN-a34a97ca83b456e6",
+            "SN-2ddcbcfd14c02240",
+            "SN-fa3e46e19d6d0375",
+            "SN-aca084dc03ba6e31",
+            "SN-d53681cb67def23d"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "EXACT_MEMBERSHIP",
+          "classification": "TP"
+        },
+        {
+          "childSemanticNodeId": "SN-35572ea4edd05ce3",
+          "predictedParentSemanticNodeId": "SN-2ddcbcfd14c02240",
+          "goldParentSemanticNodeId": "N0002",
+          "candidateSet": [
+            "SN-1767abb75196945e",
+            "SN-2a07dbe2240718e3",
+            "SN-ad0f647090b35dae",
+            "SN-a34a97ca83b456e6",
+            "SN-2ddcbcfd14c02240",
+            "SN-fa3e46e19d6d0375",
+            "SN-aca084dc03ba6e31",
+            "SN-d53681cb67def23d"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "EXACT_MEMBERSHIP",
+          "classification": "TP"
+        },
+        {
+          "childSemanticNodeId": "SN-7e35948f55ab193e",
+          "predictedParentSemanticNodeId": "SN-fa3e46e19d6d0375",
+          "goldParentSemanticNodeId": "N0002",
+          "candidateSet": [
+            "SN-35572ea4edd05ce3",
+            "SN-1767abb75196945e",
+            "SN-2a07dbe2240718e3",
+            "SN-ad0f647090b35dae",
+            "SN-a34a97ca83b456e6",
+            "SN-2ddcbcfd14c02240",
+            "SN-fa3e46e19d6d0375",
+            "SN-aca084dc03ba6e31"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "EXACT_MEMBERSHIP",
+          "classification": "TP"
+        },
+        {
+          "childSemanticNodeId": "SN-04a6519cc7d08d60",
+          "predictedParentSemanticNodeId": "SN-fa3e46e19d6d0375",
+          "goldParentSemanticNodeId": "N0002",
+          "candidateSet": [
+            "SN-7e35948f55ab193e",
+            "SN-35572ea4edd05ce3",
+            "SN-1767abb75196945e",
+            "SN-2a07dbe2240718e3",
+            "SN-ad0f647090b35dae",
+            "SN-a34a97ca83b456e6",
+            "SN-2ddcbcfd14c02240",
+            "SN-fa3e46e19d6d0375"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "EXACT_MEMBERSHIP",
+          "classification": "TP"
+        },
+        {
+          "childSemanticNodeId": "SN-9a8cf82ed4783b6d",
+          "predictedParentSemanticNodeId": "SN-2ddcbcfd14c02240",
+          "goldParentSemanticNodeId": "N0002",
+          "candidateSet": [
+            "SN-04a6519cc7d08d60",
+            "SN-7e35948f55ab193e",
+            "SN-35572ea4edd05ce3",
+            "SN-1767abb75196945e",
+            "SN-2a07dbe2240718e3",
+            "SN-ad0f647090b35dae",
+            "SN-a34a97ca83b456e6",
+            "SN-2ddcbcfd14c02240"
+          ],
+          "validated": true,
+          "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+          "semanticMembershipStatus": "EXACT_MEMBERSHIP",
+          "classification": "TP"
+        }
+      ],
+      "metricsPolicy": "mapped semantic parent edges plus predicted edges with an evaluated child and unmappable parent; unresolved is not a correct edge"
+    },
+    "level": {
+      "exact": 4,
+      "evaluated": 11,
+      "rows": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "goldSemanticNodeId": null,
+          "predictedLevel": 1,
+          "goldLevel": 0,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "goldSemanticNodeId": "N0001",
+          "predictedLevel": 2,
+          "goldLevel": 1,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "goldSemanticNodeId": "N0002",
+          "predictedLevel": 2,
+          "goldLevel": 2,
+          "exact": true
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "goldSemanticNodeId": "N0002",
+          "predictedLevel": 3,
+          "goldLevel": 2,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "goldSemanticNodeId": "N0003",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "goldSemanticNodeId": "N0004",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "goldSemanticNodeId": "N0005",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "goldSemanticNodeId": "N0006",
+          "predictedLevel": 3,
+          "goldLevel": 3,
+          "exact": true
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "goldSemanticNodeId": "N0007",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "goldSemanticNodeId": "N0008",
+          "predictedLevel": 3,
+          "goldLevel": 3,
+          "exact": true
+        },
+        {
+          "semanticNodeId": "SN-04a6519cc7d08d60",
+          "goldSemanticNodeId": "N0009",
+          "predictedLevel": 3,
+          "goldLevel": 3,
+          "exact": true
+        },
+        {
+          "semanticNodeId": "SN-9a8cf82ed4783b6d",
+          "goldSemanticNodeId": "N0010",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        }
+      ]
+    },
+    "endToEnd": {
+      "isValid": true,
+      "catalogWasMutated": false,
+      "treeErrors": []
+    },
+    "gold": {
+      "goldOpenedAfterPredictionFreeze": true,
+      "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9"
+    }
+  },
+  "calls": {
+    "modelCalls": 12,
+    "providerCalls": 12
+  },
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false,
+  "productionBenchmark": true,
+  "legacyHierarchyConsumed": false,
+  "levelSource": "HDSA_TREE_DEPTH"
+}

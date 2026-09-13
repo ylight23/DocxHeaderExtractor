@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-node-parent-request-v1",
+  "request": {
+    "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+    "childSemanticNodeId": "SN-aca084dc03ba6e31",
+    "candidateParentSemanticNodeIds": [
+      "SN-d53681cb67def23d"
+    ],
+    "authoritativeParentUniverse": [
+      {
+        "semanticNodeId": "SN-d53681cb67def23d",
+        "memberOccurrenceIds": [
+          "S0001"
+        ],
+        "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+        "sourceOrder": 0
+      }
+    ],
+    "evidence": {
+      "documentOrder": "semantic-node-order=6",
+      "numbering": null,
+      "styles": null,
+      "semanticRoles": null,
+      "localContext": "NGH\u1ECA \u0110\u1ECANH",
+      "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    "goldDerivedInput": false
+  },
+  "requestSha256": "fa8cef262649e6dfa65d3a268fae654ad9375bd37df04e87938f3a26c096c096",
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}

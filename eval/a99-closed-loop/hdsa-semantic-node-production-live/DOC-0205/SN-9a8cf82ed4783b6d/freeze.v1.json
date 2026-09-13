@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-node-parent-freeze-v1",
+  "documentId": "DOC-0205",
+  "childSemanticNodeId": "SN-9a8cf82ed4783b6d",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "requestSha256": "e8a8f527d49c073a21ceb7b712960b8e1fa2d4c434b6a71a27b8a2011f201abe",
+  "predictionSha256": "f6c95bf581c9c589109fe3da8d2e61a76c4c5d36fac93efc504de17035500ec2",
+  "responseSha256": "5dc9c919b3f2a2ed86135643f088f399ae9192d8354c429e18bff4293c48463c",
+  "provider": "Alibaba",
+  "finishReason": "stop",
+  "inputTokens": 1859,
+  "reasoningTokens": 1068,
+  "outputTokens": 1195,
+  "elapsedMs": 14538,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}

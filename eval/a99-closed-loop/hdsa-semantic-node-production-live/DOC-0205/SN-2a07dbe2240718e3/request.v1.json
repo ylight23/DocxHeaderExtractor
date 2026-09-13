@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-node-parent-request-v1",
+  "request": {
+    "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+    "childSemanticNodeId": "SN-2a07dbe2240718e3",
+    "candidateParentSemanticNodeIds": [
+      "SN-ad0f647090b35dae",
+      "SN-a34a97ca83b456e6",
+      "SN-2ddcbcfd14c02240",
+      "SN-fa3e46e19d6d0375",
+      "SN-aca084dc03ba6e31",
+      "SN-d53681cb67def23d"
+    ],
+    "authoritativeParentUniverse": [
+      {
+        "semanticNodeId": "SN-d53681cb67def23d",
+        "memberOccurrenceIds": [
+          "S0001"
+        ],
+        "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+        "sourceOrder": 0
+      },
+      {
+        "semanticNodeId": "SN-aca084dc03ba6e31",
+        "memberOccurrenceIds": [
+          "S0005"
+        ],
+        "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+        "sourceOrder": 6
+      },
+      {
+        "semanticNodeId": "SN-fa3e46e19d6d0375",
+        "memberOccurrenceIds": [
+          "S0014"
+        ],
+        "canonicalText": "Ch\u01B0\u01A1ng I",
+        "sourceOrder": 17
+      },
+      {
+        "semanticNodeId": "SN-2ddcbcfd14c02240",
+        "memberOccurrenceIds": [
+          "S0015"
+        ],
+        "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+        "sourceOrder": 18
+      },
+      {
+        "semanticNodeId": "SN-a34a97ca83b456e6",
+        "memberOccurrenceIds": [
+          "S0016"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "sourceOrder": 20
+      },
+      {
+        "semanticNodeId": "SN-ad0f647090b35dae",
+        "memberOccurrenceIds": [
+          "S0019"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "sourceOrder": 23
+      }
+    ],
+    "evidence": {
+      "documentOrder": "semantic-node-order=25",
+      "numbering": null,
+      "styles": null,
+      "semanticRoles": null,
+      "localContext": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+      "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    "goldDerivedInput": false
+  },
+  "requestSha256": "a6c575fa102a33ece20d36d55047e2e52e8f089536ddef3f6cc5beb8bfca96bb",
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}

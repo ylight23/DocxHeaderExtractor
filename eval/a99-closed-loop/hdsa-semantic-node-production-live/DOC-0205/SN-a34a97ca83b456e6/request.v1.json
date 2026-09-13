@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-node-parent-request-v1",
+  "request": {
+    "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+    "childSemanticNodeId": "SN-a34a97ca83b456e6",
+    "candidateParentSemanticNodeIds": [
+      "SN-2ddcbcfd14c02240",
+      "SN-fa3e46e19d6d0375",
+      "SN-aca084dc03ba6e31",
+      "SN-d53681cb67def23d"
+    ],
+    "authoritativeParentUniverse": [
+      {
+        "semanticNodeId": "SN-d53681cb67def23d",
+        "memberOccurrenceIds": [
+          "S0001"
+        ],
+        "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+        "sourceOrder": 0
+      },
+      {
+        "semanticNodeId": "SN-aca084dc03ba6e31",
+        "memberOccurrenceIds": [
+          "S0005"
+        ],
+        "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+        "sourceOrder": 6
+      },
+      {
+        "semanticNodeId": "SN-fa3e46e19d6d0375",
+        "memberOccurrenceIds": [
+          "S0014"
+        ],
+        "canonicalText": "Ch\u01B0\u01A1ng I",
+        "sourceOrder": 17
+      },
+      {
+        "semanticNodeId": "SN-2ddcbcfd14c02240",
+        "memberOccurrenceIds": [
+          "S0015"
+        ],
+        "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+        "sourceOrder": 18
+      }
+    ],
+    "evidence": {
+      "documentOrder": "semantic-node-order=20",
+      "numbering": null,
+      "styles": null,
+      "semanticRoles": null,
+      "localContext": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    "goldDerivedInput": false
+  },
+  "requestSha256": "e87e4ca86e757b2cdb348e8358f1ccd216f6af6595c88cc18872bc5719893fe7",
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}
