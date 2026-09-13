@@ -28,6 +28,28 @@ public enum HdsaRelationType
     Follows,
 }
 
+public enum HdsaRelationSpace
+{
+    Order,
+    Structural,
+    SemanticIdentity,
+    Derived,
+}
+
+public static class HdsaRelationSemantics
+{
+    public static HdsaRelationSpace Space(HdsaRelationType relation) => relation switch
+    {
+        HdsaRelationType.Precedes or HdsaRelationType.Follows => HdsaRelationSpace.Order,
+        HdsaRelationType.ParentOf => HdsaRelationSpace.Structural,
+        HdsaRelationType.ContinuationOf or HdsaRelationType.SameSemanticNode => HdsaRelationSpace.SemanticIdentity,
+        HdsaRelationType.SiblingOf or HdsaRelationType.SameParent => HdsaRelationSpace.Derived,
+        _ => throw new ArgumentOutOfRangeException(nameof(relation), relation, null),
+    };
+
+    public static bool DeterminesTreeDepth(HdsaRelationType relation) => relation == HdsaRelationType.ParentOf;
+}
+
 /// <summary>Untrusted relation output. IDs must already be source-backed occurrence identities.</summary>
 public sealed record HdsaRelationProposal(
     [property: JsonPropertyName("from")] string From,
