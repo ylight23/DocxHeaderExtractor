@@ -156,6 +156,44 @@ public sealed record HdsaSemanticNodeParentDecisionValidation(
 
 public static class HdsaSemanticNodeParentReasoningContract
 {
+    public static object Schema() => new
+    {
+        type = "object",
+        additionalProperties = false,
+        properties = new
+        {
+            catalogFingerprint = new { type = "string", minLength = 1 },
+            childSemanticNodeId = new { type = "string", minLength = 1 },
+            decision = new { type = "string", @enum = new[] { "SELECT_PARENT", "ROOT", "UNRESOLVED" } },
+            parentSemanticNodeId = new { type = new[] { "string", "null" } },
+        },
+        required = new[] { "catalogFingerprint", "childSemanticNodeId", "decision", "parentSemanticNodeId" },
+    };
+
+    public static HdsaSemanticNodeParentDecision Parse(string raw)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(raw);
+        using var document = JsonDocument.Parse(raw);
+        var root = document.RootElement;
+        if (root.ValueKind != JsonValueKind.Object) throw new FormatException("HDSA_SEMANTIC_PARENT_RESPONSE_NOT_OBJECT");
+        var allowed = new HashSet<string>(["catalogFingerprint", "childSemanticNodeId", "decision", "parentSemanticNodeId"], StringComparer.Ordinal);
+        foreach (var property in root.EnumerateObject())
+            if (!allowed.Contains(property.Name)) throw new FormatException("HDSA_SEMANTIC_PARENT_RESPONSE_EXTRA_PROPERTY");
+        var fingerprint = RequiredString(root, "catalogFingerprint");
+        var child = RequiredString(root, "childSemanticNodeId");
+        var decision = RequiredString(root, "decision") switch
+        {
+            "SELECT_PARENT" => HdsaParentDecision.SelectParent,
+            "ROOT" => HdsaParentDecision.Root,
+            "UNRESOLVED" => HdsaParentDecision.Unresolved,
+            _ => throw new FormatException("HDSA_SEMANTIC_PARENT_RESPONSE_DECISION_INVALID"),
+        };
+        if (!root.TryGetProperty("parentSemanticNodeId", out var parent) ||
+            (parent.ValueKind != JsonValueKind.Null && parent.ValueKind != JsonValueKind.String))
+            throw new FormatException("HDSA_SEMANTIC_PARENT_RESPONSE_PARENT_INVALID");
+        return new(fingerprint, child, decision, parent.ValueKind == JsonValueKind.Null ? null : parent.GetString());
+    }
+
     public static HdsaSemanticNodeParentReasoningRequest CreateRequest(
         HdsaFrozenSemanticNodeCatalog catalog,
         string childSemanticNodeId,
@@ -227,6 +265,12 @@ public static class HdsaSemanticNodeParentReasoningContract
             ? new(false, "PARENT_OUTSIDE_ATTENTION_CANDIDATES", true)
             : new(true, null, false);
     }
+
+    private static string RequiredString(JsonElement root, string name) =>
+        root.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String &&
+        !string.IsNullOrWhiteSpace(value.GetString())
+            ? value.GetString()!
+            : throw new FormatException($"HDSA_SEMANTIC_PARENT_RESPONSE_{name.ToUpperInvariant()}_MISSING");
 }
 
 public sealed record HdsaSemanticHierarchyRunResult(

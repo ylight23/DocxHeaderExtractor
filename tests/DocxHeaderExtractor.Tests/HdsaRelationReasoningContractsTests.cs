@@ -495,4 +495,19 @@ public sealed class HdsaRelationReasoningContractsTests
         Assert.Equal("DECISION_CATALOG_FINGERPRINT_MISMATCH", HdsaSemanticNodeParentReasoningContract.Validate(request, mutated, catalog).RejectionReason);
         Assert.Equal("CATALOG_FINGERPRINT_MISMATCH_OR_GOLD_INPUT", HdsaSemanticNodeParentReasoningContract.Validate(goldRequest, goldDecision, catalog).RejectionReason);
     }
+
+    [Fact]
+    public void Semantic_node_parent_contract_is_catalog_bound_and_has_no_level_output()
+    {
+        var schema = JsonSerializer.Serialize(HdsaSemanticNodeParentReasoningContract.Schema());
+        var decision = HdsaSemanticNodeParentReasoningContract.Parse(
+            "{\"catalogFingerprint\":\"fp\",\"childSemanticNodeId\":\"N2\",\"decision\":\"ROOT\",\"parentSemanticNodeId\":null}");
+
+        Assert.DoesNotContain("level", schema, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("depth", schema, StringComparison.OrdinalIgnoreCase);
+        Assert.Equal("fp", decision.CatalogFingerprint);
+        Assert.Equal("N2", decision.ChildSemanticNodeId);
+        Assert.Equal(HdsaParentDecision.Root, decision.Decision);
+        Assert.Null(decision.ParentSemanticNodeId);
+    }
 }
