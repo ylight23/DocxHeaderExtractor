@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "a99-hdsa-root-v2-live-probe-lineage-v1",
+  "targetAlias": "S0005",
+  "targetSemanticNodeId": "SN-aca084dc03ba6e31",
+  "executions": [
+    {
+      "attempt": 1,
+      "status": "INVALID_CATALOG_RECONSTRUCTION",
+      "catalogFingerprint": "e89c9206fd376e387af0641b720ef70ac832930510a2a3930d0d80e700a50e3a",
+      "requestSha256": "f3c53227dc3dd4f79513075d5b6e8c0363a57a00161c7ec961eb43ed5d4fd593",
+      "responseSha256": "cc1e62a946712b704b32020a65729cdc3bb8aa9236df251ebf697767780f9faa",
+      "observedDecision": "SELECT_PARENT",
+      "modelCalls": 1,
+      "providerCalls": 1,
+      "goldReadBeforeFreeze": false,
+      "includedInBenchmark": false,
+      "reason": "Full source catalog was supplied instead of the frozen 12-node mini-tree catalog."
+    },
+    {
+      "attempt": 2,
+      "status": "AUTHORITATIVE",
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "requestSha256": "51e62cf1d903d79fba914155be1056bb6bf745595a2f5577390bc1155d918e83",
+      "responseSha256": "670a05ff857672b95e7e8395cc34a557ea909f41a678f1a233e42d876bd7beb0",
+      "observedDecision": "SELECT_PARENT",
+      "selectedParentSemanticNodeId": "SN-d53681cb67def23d",
+      "goldParentKind": "ROOT",
+      "classification": "MODEL_WRONG_ROOT_DECISION_CONFIRMED_UNDER_ROOT_V2",
+      "modelCalls": 1,
+      "providerCalls": 1,
+      "goldReadBeforeFreeze": false,
+      "frozenBeforeGold": true,
+      "includedInBenchmark": true
+    }
+  ],
+  "thirdCall": "FORBIDDEN"
+}

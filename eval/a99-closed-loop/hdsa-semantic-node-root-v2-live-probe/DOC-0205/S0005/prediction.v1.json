@@ -3,13 +3,13 @@
   "documentId": "DOC-0205",
   "targetAlias": "S0005",
   "childSemanticNodeId": "SN-aca084dc03ba6e31",
-  "probeValidity": "INVALID_CATALOG_RECONSTRUCTION",
-  "catalogMatchesFrozenHistorical": false,
-  "requestSha256": "f3c53227dc3dd4f79513075d5b6e8c0363a57a00161c7ec961eb43ed5d4fd593",
-  "responseSha256": "cc1e62a946712b704b32020a65729cdc3bb8aa9236df251ebf697767780f9faa",
-  "rawResponse": "{\n  \u0022catalogFingerprint\u0022: \u0022e89c9206fd376e387af0641b720ef70ac832930510a2a3930d0d80e700a50e3a\u0022,\n  \u0022childSemanticNodeId\u0022: \u0022SN-aca084dc03ba6e31\u0022,\n  \u0022decision\u0022: \u0022SELECT_PARENT\u0022,\n  \u0022parentSemanticNodeId\u0022: \u0022SN-d53681cb67def23d\u0022\n}",
+  "probeValidity": "AUTHORITATIVE",
+  "authoritativeBenchmarkResult": true,
+  "requestSha256": "51e62cf1d903d79fba914155be1056bb6bf745595a2f5577390bc1155d918e83",
+  "responseSha256": "670a05ff857672b95e7e8395cc34a557ea909f41a678f1a233e42d876bd7beb0",
+  "rawResponse": "{\n  \u0022catalogFingerprint\u0022: \u00225948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e\u0022,\n  \u0022childSemanticNodeId\u0022: \u0022SN-aca084dc03ba6e31\u0022,\n  \u0022decision\u0022: \u0022SELECT_PARENT\u0022,\n  \u0022parentSemanticNodeId\u0022: \u0022SN-d53681cb67def23d\u0022\n}",
   "decision": {
-    "catalogFingerprint": "e89c9206fd376e387af0641b720ef70ac832930510a2a3930d0d80e700a50e3a",
+    "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
     "childSemanticNodeId": "SN-aca084dc03ba6e31",
     "decision": "SELECT_PARENT",
     "parentSemanticNodeId": "SN-d53681cb67def23d"
@@ -20,6 +20,5 @@
     "parentWasOutsideAttentionHints": false
   },
   "goldReadBeforeFreeze": false,
-  "goldDerivedInput": false,
-  "authoritativeBenchmarkResult": false
+  "goldDerivedInput": false
 }

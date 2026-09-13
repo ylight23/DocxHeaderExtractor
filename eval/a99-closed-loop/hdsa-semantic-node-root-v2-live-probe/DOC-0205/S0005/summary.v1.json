@@ -1,16 +1,17 @@
 {
   "schemaVersion": "a99-hdsa-root-v2-live-probe-summary-v1",
-  "status": "INVALID",
+  "status": "COMPLETE",
   "documentId": "DOC-0205",
   "targetAlias": "S0005",
   "targetSemanticNodeId": "SN-aca084dc03ba6e31",
-  "probeValidity": "INVALID_CATALOG_RECONSTRUCTION",
-  "catalogMatchesFrozenHistorical": false,
-  "invalidReason": "The first live call was made by a runner that supplied the full source catalog instead of the frozen 12-node mini-tree catalog. No ROOT-v2 classification is authoritative.",
+  "probeValidity": "AUTHORITATIVE",
+  "authoritativeBenchmarkResult": true,
   "model": "qwen/qwen3.7-flash",
-  "catalogFingerprint": "e89c9206fd376e387af0641b720ef70ac832930510a2a3930d0d80e700a50e3a",
-  "requestSha256": "f3c53227dc3dd4f79513075d5b6e8c0363a57a00161c7ec961eb43ed5d4fd593",
-  "responseSha256": "cc1e62a946712b704b32020a65729cdc3bb8aa9236df251ebf697767780f9faa",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "historicalFrozenCatalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "catalogMatchesFrozenHistorical": true,
+  "requestSha256": "51e62cf1d903d79fba914155be1056bb6bf745595a2f5577390bc1155d918e83",
+  "responseSha256": "670a05ff857672b95e7e8395cc34a557ea909f41a678f1a233e42d876bd7beb0",
   "frozenDecision": {
     "decision": "SELECT_PARENT",
     "parentSemanticNodeId": "SN-d53681cb67def23d"
@@ -19,10 +20,9 @@
     "goldOpenedAfterFreeze": true,
     "goldParentKind": "ROOT"
   },
-  "classification": null,
+  "classification": "FRAMING_IMPROVEMENT_INSUFFICIENT_MODEL_ROOT_REASONING_FAILURE",
   "modelCalls": 1,
   "providerCalls": 1,
   "goldReadBeforeFreeze": false,
-  "goldDerivedInput": false,
-  "authoritativeBenchmarkResult": false
+  "goldDerivedInput": false
 }

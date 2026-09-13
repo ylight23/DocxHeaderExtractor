@@ -75,6 +75,9 @@ Do not return level, depth, offsets, text spans, legacy hierarchy fields, Gold I
             endpoint = Endpoint,
             sourceSha256 = context.SourceSha256,
             catalogFingerprint = catalog.CatalogFingerprint,
+            historicalFrozenCatalogFingerprint = HistoricalCatalogFingerprint,
+            catalogMatchesFrozenHistorical = true,
+            probeValidity = "AUTHORITATIVE",
             resolverVersion = catalog.ResolverVersion,
             candidateSemanticNodeIds = request.CandidateParentSemanticNodeIds,
             decisionOptions = request.DecisionOptions,
@@ -196,6 +199,8 @@ Do not return level, depth, offsets, text spans, legacy hierarchy fields, Gold I
             targetAlias = TargetAlias,
             childSemanticNodeId = target.SemanticNodeId,
             catalogFingerprint = catalog.CatalogFingerprint,
+            probeValidity = "AUTHORITATIVE",
+            authoritativeBenchmarkResult = true,
             requestSha256 = requestHash,
             predictionSha256 = Sha256(predictionPath),
             responseSha256 = responseHash,
@@ -225,6 +230,9 @@ Do not return level, depth, offsets, text spans, legacy hierarchy fields, Gold I
             targetSemanticNodeId = target.SemanticNodeId,
             model = Model,
             catalogFingerprint = catalog.CatalogFingerprint,
+            historicalFrozenCatalogFingerprint = HistoricalCatalogFingerprint,
+            catalogMatchesFrozenHistorical = true,
+            probeValidity = "AUTHORITATIVE",
             requestSha256 = requestHash,
             responseSha256 = responseHash,
             frozenDecision = new { decision = DecisionName(decision.Decision), parentSemanticNodeId = decision.ParentSemanticNodeId },
@@ -236,6 +244,7 @@ Do not return level, depth, offsets, text spans, legacy hierarchy fields, Gold I
             providerCalls = Math.Max(1, model.ProviderCalls),
             goldReadBeforeFreeze = false,
             goldDerivedInput = false,
+            authoritativeBenchmarkResult = true,
         };
         await WriteJsonAsync(Path.Combine(output, "summary.v1.json"), summary, ct);
         Console.WriteLine("HDSA_ROOT_V2_LIVE_PROBE_STATUS=COMPLETE");
