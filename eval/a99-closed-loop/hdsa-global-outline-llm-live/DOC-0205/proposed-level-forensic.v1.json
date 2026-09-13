@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "a99-hdsa-global-outline-proposed-level-forensic-v1",
+  "experiment": "GLOBAL_OUTLINE_PROPOSED_LEVEL_AND_DEPTH_OFFSET_FORENSIC",
+  "documentId": "DOC-0205",
+  "requestSha256": "ab111b93359de368c1af7d30d4c2091655649daee44948939e32a39a81146eb0",
+  "responseSha256": "d44586d3904364f0fbce63eb7843690376e0652ac25786eb76fd3c1384453de3",
+  "predictionFreezeVerified": true,
+  "goldOpenedAfterPredictionFreeze": true,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "scope": {
+    "evaluatedRows": 11,
+    "modelProposedLevelExact": 0,
+    "derivedTreeLevelExact": 0,
+    "modelAndDerivedLevelsIdentical": true
+  },
+  "hypothesis": {
+    "question": "Is every level error one global depth offset caused by S0005 selecting the masthead S0001?",
+    "singleGlobalOffset": false,
+    "conclusion": "TWO_UPSTREAM_DEPTH_OFFSETS",
+    "details": [
+      "The non-structural masthead edge SN-d53681cb67def23d -> SN-aca084dc03ba6e31 adds one depth level to the S0005 branch.",
+      "The S0014/S0015 semantic split creates a second structural edge inside the same Gold semantic node and adds one additional depth level from S0015 onward.",
+      "The nearest first divergent ancestor for article rows is the split node SN-2ddcbcfd14c02240; the masthead error still contributes to the upstream branch but is masked by that nearer divergence."
+    ]
+  },
+  "offsetGroups": [
+    {
+      "proposedMinusGold": 1,
+      "derivedMinusGold": 1,
+      "rowCount": 2,
+      "nodes": [
+        "SN-aca084dc03ba6e31",
+        "SN-fa3e46e19d6d0375"
+      ],
+      "explanation": "Masthead/document-framing edge is retained above Gold root."
+    },
+    {
+      "proposedMinusGold": 2,
+      "derivedMinusGold": 2,
+      "rowCount": 9,
+      "nodes": [
+        "SN-2ddcbcfd14c02240",
+        "SN-a34a97ca83b456e6",
+        "SN-ad0f647090b35dae",
+        "SN-2a07dbe2240718e3",
+        "SN-1767abb75196945e",
+        "SN-35572ea4edd05ce3",
+        "SN-7e35948f55ab193e",
+        "SN-04a6519cc7d08d60",
+        "SN-9a8cf82ed4783b6d"
+      ],
+      "explanation": "The S0014/S0015 false split adds a second edge before the article descendants."
+    }
+  ],
+  "nodes": [
+    {
+      "nodeId": "SN-aca084dc03ba6e31",
+      "sourceAlias": "S0005",
+      "structuralText": "NGHỊ ĐỊNH",
+      "modelParent": "SN-d53681cb67def23d",
+      "goldParent": null,
+      "parentCorrect": false,
+      "modelProposedLevel": 2,
+      "derivedLevel": 2,
+      "goldLevel": 1,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-d53681cb67def23d",
+      "classification": "DIRECT_ROOT_FRAMING_DIVERGENCE"
+    },
+    {
+      "nodeId": "SN-fa3e46e19d6d0375",
+      "sourceAlias": "S0014",
+      "structuralText": "Chương I",
+      "modelParent": "SN-aca084dc03ba6e31",
+      "goldParent": "N0001",
+      "parentCorrect": true,
+      "modelProposedLevel": 3,
+      "derivedLevel": 3,
+      "goldLevel": 2,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-d53681cb67def23d",
+      "classification": "ANCESTOR_CASCADE_FROM_ROOT_FRAMING_DIVERGENCE"
+    },
+    {
+      "nodeId": "SN-2ddcbcfd14c02240",
+      "sourceAlias": "S0015",
+      "structuralText": "QUY ĐỊNH CHUNG",
+      "modelParent": "SN-fa3e46e19d6d0375",
+      "goldParent": "N0001",
+      "parentCorrect": false,
+      "modelProposedLevel": 4,
+      "derivedLevel": 4,
+      "goldLevel": 2,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "classification": "DIRECT_SEMANTIC_SPLIT_DIVERGENCE"
+    },
+    {
+      "nodeId": "SN-a34a97ca83b456e6",
+      "sourceAlias": "S0016",
+      "structuralText": "Điều 1. Phạm vi điều chỉnh",
+      "modelParent": "SN-2ddcbcfd14c02240",
+      "goldParent": "N0002",
+      "parentCorrect": true,
+      "modelProposedLevel": 5,
+      "derivedLevel": 5,
+      "goldLevel": 3,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "classification": "ANCESTOR_CASCADE_FROM_SEMANTIC_SPLIT"
+    },
+    {
+      "nodeId": "SN-ad0f647090b35dae",
+      "sourceAlias": "S0019",
+      "structuralText": "Điều 2. Đối tượng áp dụng",
+      "modelParent": "SN-2ddcbcfd14c02240",
+      "goldParent": "N0002",
+      "parentCorrect": true,
+      "modelProposedLevel": 5,
+      "derivedLevel": 5,
+      "goldLevel": 3,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "classification": "ANCESTOR_CASCADE_FROM_SEMANTIC_SPLIT"
+    },
+    {
+      "nodeId": "SN-2a07dbe2240718e3",
+      "sourceAlias": "S0021",
+      "structuralText": "Điều 3. Giải thích từ ngữ",
+      "modelParent": "SN-2ddcbcfd14c02240",
+      "goldParent": "N0002",
+      "parentCorrect": true,
+      "modelProposedLevel": 5,
+      "derivedLevel": 5,
+      "goldLevel": 3,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "classification": "ANCESTOR_CASCADE_FROM_SEMANTIC_SPLIT"
+    },
+    {
+      "nodeId": "SN-1767abb75196945e",
+      "sourceAlias": "S0033",
+      "structuralText": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+      "modelParent": "SN-2ddcbcfd14c02240",
+      "goldParent": "N0002",
+      "parentCorrect": true,
+      "modelProposedLevel": 5,
+      "derivedLevel": 5,
+      "goldLevel": 3,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "classification": "ANCESTOR_CASCADE_FROM_SEMANTIC_SPLIT"
+    },
+    {
+      "nodeId": "SN-35572ea4edd05ce3",
+      "sourceAlias": "S0035",
+      "structuralText": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+      "modelParent": "SN-2ddcbcfd14c02240",
+      "goldParent": "N0002",
+      "parentCorrect": true,
+      "modelProposedLevel": 5,
+      "derivedLevel": 5,
+      "goldLevel": 3,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "classification": "ANCESTOR_CASCADE_FROM_SEMANTIC_SPLIT"
+    },
+    {
+      "nodeId": "SN-7e35948f55ab193e",
+      "sourceAlias": "S0044",
+      "structuralText": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+      "modelParent": "SN-2ddcbcfd14c02240",
+      "goldParent": "N0002",
+      "parentCorrect": true,
+      "modelProposedLevel": 5,
+      "derivedLevel": 5,
+      "goldLevel": 3,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "classification": "ANCESTOR_CASCADE_FROM_SEMANTIC_SPLIT"
+    },
+    {
+      "nodeId": "SN-04a6519cc7d08d60",
+      "sourceAlias": "S0052",
+      "structuralText": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+      "modelParent": "SN-2ddcbcfd14c02240",
+      "goldParent": "N0002",
+      "parentCorrect": true,
+      "modelProposedLevel": 5,
+      "derivedLevel": 5,
+      "goldLevel": 3,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "classification": "ANCESTOR_CASCADE_FROM_SEMANTIC_SPLIT"
+    },
+    {
+      "nodeId": "SN-9a8cf82ed4783b6d",
+      "sourceAlias": "S0060",
+      "structuralText": "Điều 8. Các hành vi không được làm",
+      "modelParent": "SN-2ddcbcfd14c02240",
+      "goldParent": "N0002",
+      "parentCorrect": true,
+      "modelProposedLevel": 5,
+      "derivedLevel": 5,
+      "goldLevel": 3,
+      "proposedLevelCorrect": false,
+      "derivedLevelCorrect": false,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "classification": "ANCESTOR_CASCADE_FROM_SEMANTIC_SPLIT"
+    }
+  ],
+  "result": {
+    "rootFramingError": "PERSISTS",
+    "semanticSplitError": "PERSISTS",
+    "proposedLevelProvidesIndependentRecovery": false,
+    "derivedLevelProjectionBug": false,
+    "nextHypothesis": "STRUCTURAL_ROLE_AWARE_GLOBAL_OUTLINE_REASONING",
+    "decoderJustified": false
+  }
+}
