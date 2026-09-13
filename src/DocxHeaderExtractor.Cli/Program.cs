@@ -76,6 +76,7 @@ try
         "a99-hdsa-semantic-node-production-forensic" => await HdsaSemanticNodeProductionForensicRunner.RunAsync(Directory.GetCurrentDirectory(), cts.Token),
         "a99-hdsa-root-v2-live-probe" => await HdsaRootV2LiveProbeRunner.RunAsync(Directory.GetCurrentDirectory(), cts.Token),
         "a99-hdsa-semantic-identity-v4-live" => await HdsaSemanticIdentityInferenceV4LiveRunner.RunAsync(Directory.GetCurrentDirectory(), cts.Token),
+        "a99-hdsa-semantic-node-v4-production-live" => await HdsaSemanticNodeProductionV4BenchmarkRunner.RunAsync(Directory.GetCurrentDirectory(), cts.Token),
         "review" => await RunReviewAsync(options, cts.Token),
         "review-key" => RunReviewKey(options),
         "toc-keys" => RunTocKeys(options),

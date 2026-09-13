@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-identity-v4-live-evaluation-v1",
+  "documentId": "DOC-0205",
+  "pairId": "IP-282afcc38f8d89b8",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "predictionFreezePath": "eval/a99-closed-loop/hdsa-semantic-identity-inference-v4-live/DOC-0205/S0014-S0015/freeze.v1.json",
+  "structuralGoldPath": "eval/a99-closed-loop/hdsa-parent-relation-live/DOC-0205/structural-gold.v1.json",
+  "goldOpenedAfterPredictionFreeze": true,
+  "goldReadBeforeFreeze": false,
+  "predictedDecision": "DISTINCT",
+  "goldRelation": "CONTINUATION_OF",
+  "goldSemanticNodeId": "N0002",
+  "classification": "SEMANTIC_IDENTITY_MISSED_RELATION",
+  "productionMutation": false,
+  "tuningPerformed": false,
+  "diagnosticOnly": true
+}

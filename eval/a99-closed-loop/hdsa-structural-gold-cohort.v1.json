@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "a99-hdsa-structural-gold-cohort-v1",
+  "policy": "A99_STRUCTURAL_PARENT_V1",
+  "selectionRule": "all repository structural-Gold freeze artifacts discovered offline; no model output, residual, or difficulty inspection",
+  "partitionRule": "source/document identity only; previously exposed sources remain DEV_DIAGNOSTIC_ONLY and cannot form an untouched holdout",
+  "selectedBeforeCurrentV4PredictionEvaluation": true,
+  "documents": [
+    {
+      "documentId": "DOC-0205",
+      "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+      "goldAuthority": "eval/a99-closed-loop/hdsa-parent-relation-live/DOC-0205/structural-gold-freeze.v1.json",
+      "semanticMembershipGold": true,
+      "parentGold": true,
+      "levelGold": true,
+      "previouslyExposed": true,
+      "eligibleForDev": true,
+      "eligibleForHoldout": false,
+      "partition": "PREVIOUSLY_EXPOSED_DEV_DIAGNOSTIC_ONLY"
+    }
+  ],
+  "dev": ["DOC-0205"],
+  "holdout": [],
+  "holdoutAvailable": false,
+  "limitation": "Only one trustworthy structural-Gold document is present and it is already exposed by the historical DOC-0205 benchmark; hierarchy generalization cannot be proven until an independent structural-Gold source is available.",
+  "goldFirewall": {
+    "modelOutputsUsedForSelection": false,
+    "residualsUsedForSelection": false,
+    "goldUsedForRuntimeInput": false
+  }
+}
