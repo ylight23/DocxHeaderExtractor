@@ -392,8 +392,22 @@ legacy hierarchy fields, Gold IDs, or any ID not in the supplied catalog.
                 return mapped.Length == 1 ? mapped[0] : null;
             },
             StringComparer.Ordinal);
+        var predictedEntriesByGold = predictedNodeToGold
+            .Where(item => item.Value is not null)
+            .GroupBy(item => item.Value!, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.Select(item => item.Key).ToHashSet(StringComparer.Ordinal), StringComparer.Ordinal);
+        var splitGoldNodes = goldMembers.Keys
+            .Where(goldId => predictedEntriesByGold.TryGetValue(goldId, out var predictedIds) && predictedIds.Count > 1)
+            .ToHashSet(StringComparer.Ordinal);
+        var exactMembershipEntries = catalog.Entries
+            .Where(entry =>
+            {
+                var mapped = entry.MemberOccurrenceIds.Where(goldAliases.ContainsKey).Select(alias => goldAliases[alias]).Distinct(StringComparer.Ordinal).ToArray();
+                return mapped.Length == 1 && goldMembers[mapped[0]].SetEquals(entry.MemberOccurrenceIds.Where(goldAliases.ContainsKey));
+            })
+            .Select(entry => entry.SemanticNodeId)
+            .ToHashSet(StringComparer.Ordinal);
         var exactMembershipMatches = 0;
-        var splitGoldNodes = new HashSet<string>(StringComparer.Ordinal);
         var mergeErrors = 0;
         foreach (var entry in catalog.Entries)
         {
@@ -403,7 +417,6 @@ legacy hierarchy fields, Gold IDs, or any ID not in the supplied catalog.
             {
                 var predictedMembers = entry.MemberOccurrenceIds.Where(goldAliases.ContainsKey).ToHashSet(StringComparer.Ordinal);
                 if (goldMembers[mapped[0]].SetEquals(predictedMembers)) exactMembershipMatches++;
-                else splitGoldNodes.Add(mapped[0]);
             }
         }
         var goldEdges = goldRoot.GetProperty("tree").GetProperty("parentOf").EnumerateArray()
@@ -415,8 +428,12 @@ legacy hierarchy fields, Gold IDs, or any ID not in the supplied catalog.
             .Where(item => item.Parent is not null && item.Child is not null)
             .Select(item => $"{item.Parent}>{item.Child}")
             .ToHashSet(StringComparer.Ordinal);
+        var unmappablePredictedEdges = hierarchy.GraphValidation.AcceptedRelations
+            .Where(item => item.Relation == HdsaRelationType.ParentOf)
+            .Select(item => (Parent: predictedNodeToGold.GetValueOrDefault(item.From), Child: predictedNodeToGold.GetValueOrDefault(item.To)))
+            .Count(item => item.Child is not null && item.Parent is null);
         var tp = predictedEdges.Intersect(goldEdges, StringComparer.Ordinal).Count();
-        var fp = predictedEdges.Except(goldEdges, StringComparer.Ordinal).Count();
+        var fp = predictedEdges.Except(goldEdges, StringComparer.Ordinal).Count() + unmappablePredictedEdges;
         var fn = goldEdges.Except(predictedEdges, StringComparer.Ordinal).Count();
         var precision = tp + fp == 0 ? 0 : (double)tp / (tp + fp);
         var recall = tp + fn == 0 ? 0 : (double)tp / (tp + fn);
@@ -429,9 +446,12 @@ legacy hierarchy fields, Gold IDs, or any ID not in the supplied catalog.
             var predictedChildGold = predictedNodeToGold.GetValueOrDefault(decision.ChildSemanticNodeId);
             var predictedParentGold = decision.ParentSemanticNodeId is null ? null : predictedNodeToGold.GetValueOrDefault(decision.ParentSemanticNodeId);
             var goldParentId = predictedChildGold is not null && goldParent.TryGetValue(predictedChildGold, out var parent) ? parent : null;
+            var isCorrectRoot = decision.Decision == HdsaParentDecision.Root && predictedChildGold is not null && goldParentId is null;
+            var isCorrectParent = decision.Decision == HdsaParentDecision.SelectParent && predictedChildGold is not null &&
+                predictedParentGold is not null && predictedParentGold == goldParentId;
             var kind = decision.Decision == HdsaParentDecision.Unresolved ? "UNRESOLVED" :
                 predictedChildGold is null ? "SEMANTIC_RESOLUTION_ERROR" :
-                predictedParentGold == goldParentId ? "TP" : "MODEL_PARENT_SELECTION_ERROR";
+                isCorrectRoot || isCorrectParent ? "TP" : "MODEL_PARENT_SELECTION_ERROR";
             return new
             {
                 childSemanticNodeId = decision.ChildSemanticNodeId,
@@ -440,7 +460,9 @@ legacy hierarchy fields, Gold IDs, or any ID not in the supplied catalog.
                 candidateSet = request.CandidateParentSemanticNodeIds,
                 validated = true,
                 catalogFingerprint = catalog.CatalogFingerprint,
-                semanticMembershipStatus = predictedChildGold is null ? "UNMAPPABLE_OR_SPLIT" : "MAPPED_FOR_EVALUATION_ONLY",
+                semanticMembershipStatus = predictedChildGold is null ? "UNMAPPABLE" :
+                    exactMembershipEntries.Contains(decision.ChildSemanticNodeId) ? "EXACT_MEMBERSHIP" :
+                    "SPLIT_OR_NONEXACT_EVALUATION_MAPPING",
                 classification = kind,
             };
         }).ToArray();
@@ -462,9 +484,24 @@ legacy hierarchy fields, Gold IDs, or any ID not in the supplied catalog.
                 splitErrors = splitGoldNodes.Count,
                 mergeErrors,
                 exactMembershipMatches,
+                splitGoldNodeIds = splitGoldNodes.OrderBy(item => item, StringComparer.Ordinal).ToArray(),
                 evaluationAdapter = "predicted-member-occurrences-to-Gold-semantic-node; evaluation-only",
             },
-            parent = new { tp, fp, fn, precision, recall, f1, predictedEdgeCount = predictedEdges.Count, goldEdgeCount = goldEdges.Count, diagnostics },
+            parent = new
+            {
+                tp,
+                fp,
+                fn,
+                precision,
+                recall,
+                f1,
+                predictedEdgeCount = predictedEdges.Count + unmappablePredictedEdges,
+                mappedPredictedEdgeCount = predictedEdges.Count,
+                unmappablePredictedEdges,
+                goldEdgeCount = goldEdges.Count,
+                diagnostics,
+                metricsPolicy = "mapped semantic parent edges plus predicted edges with an evaluated child and unmappable parent; unresolved is not a correct edge",
+            },
             level = new { exact = levelRows.Count(item => item.exact), evaluated = levelRows.Count(item => item.goldSemanticNodeId is not null), rows = levelRows },
             endToEnd = new { hierarchy.Tree.IsValid, hierarchy.CatalogWasMutated, treeErrors = hierarchy.Tree.Errors },
             gold = new { goldOpenedAfterPredictionFreeze = true, sourceSha256 = context.SourceSha256 },
