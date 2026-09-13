@@ -1,0 +1,76 @@
+{
+  "artifactKind": "a99_semantic_identity_gold_pilot_state",
+  "schemaVersion": "a99-semantic-identity-pilot-state-v1",
+  "currentStage": "HUMAN_ANNOTATION_A_B",
+  "state": "BLOCKED_ON_HUMAN_ANNOTATION_A_B",
+  "head": "c51e1674ed9c97633fe8b8816472c138921c82ff",
+  "parentArtifacts": {
+    "pilotManifest": "eval/a99-closed-loop/review/identity-gold-pilot-manifest.v1.json",
+    "pilotManifestSha256": "a9d4376e81eacc44d932a7cd58bcfc56a3851c9564fe2baf69bd1a3f0ad214cb",
+    "schema": "eval/a99-closed-loop/review/semantic-identity-gold-schema.v1.json",
+    "schemaSha256": "1a05b507b51e10f897a10c68ec3f2c231d017429904e09218f5ef1279f62c74e",
+    "workflow": "eval/a99-closed-loop/review/semantic-identity-gold-workflow.v1.md",
+    "workflowSha256": "45e7ab700b192f8fa78ad95ebc988b52bf5a9558a1d9b7fc3ccc26f8d90bc606"
+  },
+  "pilot": {
+    "documentCount": 4,
+    "sourceFamilyCount": 3,
+    "sourceOccurrenceCount": 1567,
+    "membershipLineageVerified": true,
+    "reserveHoldoutUnchanged": true
+  },
+  "annotationInputs": {
+    "annotatorA": {
+      "present": false,
+      "valid": false,
+      "frozen": false,
+      "sha256": null
+    },
+    "annotatorB": {
+      "present": false,
+      "valid": false,
+      "frozen": false,
+      "sha256": null
+    },
+    "discoveryMethod": "metadata/role-based canonical search; no arbitrary newest-file selection",
+    "modelDerivedAnnotationAccepted": false
+  },
+  "agreement": {
+    "computed": false,
+    "sha256": null
+  },
+  "adjudication": {
+    "present": false,
+    "valid": false,
+    "complete": false,
+    "humanOnly": true,
+    "sha256": null
+  },
+  "gold": {
+    "frozen": false,
+    "sha256": null,
+    "goldUsedBeforeFreeze": false,
+    "modelOutputsUsedToCreateGold": false
+  },
+  "benchmark": {
+    "devHoldoutSplitFrozen": false,
+    "candidateBenchmarkExecuted": false,
+    "pairVerifierExecuted": false,
+    "promotionBenchmarkExecuted": false,
+    "stageBExecuted": false,
+    "globalDecoderTouched": false,
+    "levelLogicTouched": false
+  },
+  "calls": {
+    "modelCalls": 0,
+    "providerCalls": 0
+  },
+  "nextRequiredInput": "Supply independent human A and B semantic-identity annotations for all four pilot documents, without model/candidate/residual visibility.",
+  "doNotProceedUntil": [
+    "annotation A and B are independently supplied",
+    "both annotation sets validate against the frozen pilot",
+    "both annotation sets are frozen before agreement computation"
+  ],
+  "productionClaim": false,
+  "doNotPush": true
+}
