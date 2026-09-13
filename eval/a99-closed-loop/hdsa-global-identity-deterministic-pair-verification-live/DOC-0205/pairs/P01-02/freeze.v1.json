@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-deterministic-pair-freeze-v1",
+  "documentId": "DOC-0205",
+  "pairId": "P01-02",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "candidateSetSha256": "bf4f934f56ff6da2c5352128af45e23ac18709648dbda8721c87159358181a36",
+  "requestSha256": "ce3854b03e1978a6652ff17cd51de3ac720df3b7b241ac390dcc4526d18dac5a",
+  "responseSha256": "bbc143a8151e396b4848f8a8bc7984022059c431a265bf1f85a86dbedc4438df",
+  "predictionSha256": "209445b8c88d48d8268f760d2bdab8bc27828db6fa21b67554b75635e353abff",
+  "pair": {
+    "pairId": "P01-02",
+    "left": "SN-d53681cb67def23d",
+    "right": "SN-aca084dc03ba6e31",
+    "reasons": [
+      "ADJACENT_ORDER"
+    ]
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "response": {
+      "pairId": "P01-02",
+      "left": "SN-d53681cb67def23d",
+      "right": "SN-aca084dc03ba6e31",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    }
+  },
+  "provider": "Alibaba",
+  "model": "qwen/qwen3.7-flash",
+  "finishReason": "stop",
+  "inputTokens": 1900,
+  "reasoningTokens": 2051,
+  "outputTokens": 2132,
+  "elapsedMs": 22492,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "oraclePairSelection": false,
+  "goldReadBeforeFreeze": false,
+  "frozenBeforeGold": true
+}

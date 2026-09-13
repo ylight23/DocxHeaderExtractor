@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-deterministic-pair-false-merge-gate-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "candidateSetSha256": "bf4f934f56ff6da2c5352128af45e23ac18709648dbda8721c87159358181a36",
+  "predictionFreeze": "campaign-freeze.v1.json",
+  "goldEvaluation": "gold-evaluation.v1.json",
+  "positiveRelationCount": 2,
+  "falsePositivePositiveRelationCount": 1,
+  "falsePositivePairIds": [
+    "P02-03"
+  ],
+  "falseMerge": {
+    "pairId": "P02-03",
+    "left": "SN-aca084dc03ba6e31",
+    "leftOccurrence": "S0005",
+    "leftGoldSemanticNode": "N0001",
+    "right": "SN-fa3e46e19d6d0375",
+    "rightOccurrence": "S0014",
+    "rightGoldSemanticNode": "N0002",
+    "verifiedRelation": "CONTINUATION_OF",
+    "goldDistinct": true
+  },
+  "targetH2": {
+    "pair": "S0014↔S0015",
+    "covered": true,
+    "verifiedRelation": "CONTINUATION_OF"
+  },
+  "stageBAuthorized": false,
+  "stageBBlockReason": "H2_TARGET_PASS_FALSE_MERGE_STAGE_B_BLOCKED",
+  "goldOpenedAfterPredictionFreeze": true,
+  "modelCalls": 0,
+  "providerCalls": 0
+}

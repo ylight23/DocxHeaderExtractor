@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-deterministic-pair-response-v1",
+  "documentId": "DOC-0205",
+  "pairId": "P08-09",
+  "requestSha256": "31328d0daa397b94eb3f9db019aaefed5fb7f742de657614ee5880e6d0c3713e",
+  "responseSha256": "28e91292aa2c01df2d9ed37aa09983c64689f47699263fb2c4c116b5d62b4b1e",
+  "rawResponse": "{\n  \u0022pairId\u0022: \u0022P08-09\u0022,\n  \u0022left\u0022: \u0022SN-1767abb75196945e\u0022,\n  \u0022right\u0022: \u0022SN-35572ea4edd05ce3\u0022,\n  \u0022relation\u0022: \u0022DISTINCT\u0022\n,\n  \u0022direction\u0022: \u0022NONE\u0022\n}",
+  "provider": "Alibaba",
+  "finishReason": "stop",
+  "inputTokens": 1902,
+  "reasoningTokens": 707,
+  "outputTokens": 790,
+  "elapsedMs": 9206,
+  "modelCalls": 8,
+  "providerCalls": 8,
+  "goldReadBeforeFreeze": false
+}

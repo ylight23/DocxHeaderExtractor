@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-deterministic-pair-request-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+    "nodes": [
+      {
+        "nodeId": "SN-d53681cb67def23d",
+        "memberOccurrenceIds": [
+          "S0001"
+        ],
+        "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+        "documentOrder": 0,
+        "structuralRole": "DOCUMENT_FRAMING",
+        "outlineBearing": false
+      },
+      {
+        "nodeId": "SN-aca084dc03ba6e31",
+        "memberOccurrenceIds": [
+          "S0005"
+        ],
+        "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+        "documentOrder": 6,
+        "structuralRole": "OUTLINE_ROOT",
+        "outlineBearing": true
+      },
+      {
+        "nodeId": "SN-fa3e46e19d6d0375",
+        "memberOccurrenceIds": [
+          "S0014"
+        ],
+        "canonicalText": "Ch\u01B0\u01A1ng I",
+        "documentOrder": 17,
+        "structuralRole": "OUTLINE_HEADING",
+        "outlineBearing": true
+      },
+      {
+        "nodeId": "SN-2ddcbcfd14c02240",
+        "memberOccurrenceIds": [
+          "S0015"
+        ],
+        "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+        "documentOrder": 18,
+        "structuralRole": "SECTION_HEADING",
+        "outlineBearing": true
+      },
+      {
+        "nodeId": "SN-a34a97ca83b456e6",
+        "memberOccurrenceIds": [
+          "S0016"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "documentOrder": 20,
+        "structuralRole": "CONTENT_LABEL",
+        "outlineBearing": false
+      },
+      {
+        "nodeId": "SN-ad0f647090b35dae",
+        "memberOccurrenceIds": [
+          "S0019"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "documentOrder": 23,
+        "structuralRole": "CONTENT_LABEL",
+        "outlineBearing": false
+      },
+      {
+        "nodeId": "SN-2a07dbe2240718e3",
+        "memberOccurrenceIds": [
+          "S0021"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "documentOrder": 25,
+        "structuralRole": "CONTENT_LABEL",
+        "outlineBearing": false
+      },
+      {
+        "nodeId": "SN-1767abb75196945e",
+        "memberOccurrenceIds": [
+          "S0033"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "documentOrder": 37,
+        "structuralRole": "CONTENT_LABEL",
+        "outlineBearing": false
+      },
+      {
+        "nodeId": "SN-35572ea4edd05ce3",
+        "memberOccurrenceIds": [
+          "S0035"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "documentOrder": 39,
+        "structuralRole": "CONTENT_LABEL",
+        "outlineBearing": false
+      },
+      {
+        "nodeId": "SN-7e35948f55ab193e",
+        "memberOccurrenceIds": [
+          "S0044"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "documentOrder": 48,
+        "structuralRole": "CONTENT_LABEL",
+        "outlineBearing": false
+      },
+      {
+        "nodeId": "SN-04a6519cc7d08d60",
+        "memberOccurrenceIds": [
+          "S0052"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "documentOrder": 56,
+        "structuralRole": "CONTENT_LABEL",
+        "outlineBearing": false
+      },
+      {
+        "nodeId": "SN-9a8cf82ed4783b6d",
+        "memberOccurrenceIds": [
+          "S0060"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "documentOrder": 64,
+        "structuralRole": "CONTENT_LABEL",
+        "outlineBearing": false
+      }
+    ],
+    "targetPair": {
+      "pairId": "P02-03",
+      "left": "SN-aca084dc03ba6e31",
+      "right": "SN-fa3e46e19d6d0375"
+    },
+    "goldDerivedInput": false
+  },
+  "requestSha256": "268c4154bf3192ac05ff00134c5b11570b3c22b24ca96c8e042920c6d60facf0",
+  "candidateReasons": [
+    "ADJACENT_ORDER"
+  ],
+  "candidateSetSha256": "bf4f934f56ff6da2c5352128af45e23ac18709648dbda8721c87159358181a36",
+  "oraclePairSelection": false,
+  "goldDerivedInput": false,
+  "goldReadBeforeFreeze": false
+}

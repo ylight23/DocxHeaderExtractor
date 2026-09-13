@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-deterministic-pair-prediction-v1",
+  "documentId": "DOC-0205",
+  "pairId": "P05-06",
+  "requestSha256": "e5d6d7716d4609ec8fa3ec334a5142a11b7d64fffb6d67982d35c6417b6c84a5",
+  "responseSha256": "f40974fab85be8738213a64f93a75c3b4a45a42718e109e90befa492f5b15c7d",
+  "response": {
+    "pairId": "P05-06",
+    "left": "SN-a34a97ca83b456e6",
+    "right": "SN-ad0f647090b35dae",
+    "relation": "DISTINCT",
+    "direction": "NONE"
+  },
+  "parseError": null,
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "response": {
+      "pairId": "P05-06",
+      "left": "SN-a34a97ca83b456e6",
+      "right": "SN-ad0f647090b35dae",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    }
+  },
+  "candidateReasons": [
+    "ADJACENT_ORDER"
+  ],
+  "oraclePairSelection": false,
+  "goldDerivedInput": false,
+  "goldReadBeforeFreeze": false,
+  "frozenBeforeGold": true
+}

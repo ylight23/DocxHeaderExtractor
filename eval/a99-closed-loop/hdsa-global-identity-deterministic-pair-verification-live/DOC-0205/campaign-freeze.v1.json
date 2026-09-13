@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-deterministic-pair-campaign-freeze-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "candidateSetSha256": "bf4f934f56ff6da2c5352128af45e23ac18709648dbda8721c87159358181a36",
+  "candidateCount": 11,
+  "predictionCount": 11,
+  "campaignPredictionHash": "4dd06e20f55c078d97cf7eca95ba44996c49dceb70dec2e0edd2404f8287e526",
+  "validationStatuses": [
+    {
+      "pairId": "P01-02",
+      "status": "VALID",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    },
+    {
+      "pairId": "P02-03",
+      "status": "VALID",
+      "relation": "CONTINUATION_OF",
+      "direction": "RIGHT_TO_LEFT"
+    },
+    {
+      "pairId": "P03-04",
+      "status": "VALID",
+      "relation": "CONTINUATION_OF",
+      "direction": "RIGHT_TO_LEFT"
+    },
+    {
+      "pairId": "P04-05",
+      "status": "VALID",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    },
+    {
+      "pairId": "P05-06",
+      "status": "VALID",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    },
+    {
+      "pairId": "P06-07",
+      "status": "VALID",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    },
+    {
+      "pairId": "P07-08",
+      "status": "VALID",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    },
+    {
+      "pairId": "P08-09",
+      "status": "VALID",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    },
+    {
+      "pairId": "P09-10",
+      "status": "VALID",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    },
+    {
+      "pairId": "P10-11",
+      "status": "VALID",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    },
+    {
+      "pairId": "P11-12",
+      "status": "VALID",
+      "relation": "DISTINCT",
+      "direction": "NONE"
+    }
+  ],
+  "sparseValidation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "positiveRelations": [
+      {
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-fa3e46e19d6d0375",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT"
+      },
+      {
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-2ddcbcfd14c02240",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT"
+      }
+    ],
+    "positiveComponents": [
+      [
+        "SN-04a6519cc7d08d60"
+      ],
+      [
+        "SN-1767abb75196945e"
+      ],
+      [
+        "SN-2a07dbe2240718e3"
+      ],
+      [
+        "SN-2ddcbcfd14c02240",
+        "SN-aca084dc03ba6e31",
+        "SN-fa3e46e19d6d0375"
+      ],
+      [
+        "SN-35572ea4edd05ce3"
+      ],
+      [
+        "SN-7e35948f55ab193e"
+      ],
+      [
+        "SN-9a8cf82ed4783b6d"
+      ],
+      [
+        "SN-a34a97ca83b456e6"
+      ],
+      [
+        "SN-ad0f647090b35dae"
+      ],
+      [
+        "SN-d53681cb67def23d"
+      ]
+    ],
+    "noClaimPairCount": 64
+  },
+  "normalizedComponents": [
+    [
+      "SN-04a6519cc7d08d60"
+    ],
+    [
+      "SN-1767abb75196945e"
+    ],
+    [
+      "SN-2a07dbe2240718e3"
+    ],
+    [
+      "SN-2ddcbcfd14c02240",
+      "SN-aca084dc03ba6e31",
+      "SN-fa3e46e19d6d0375"
+    ],
+    [
+      "SN-35572ea4edd05ce3"
+    ],
+    [
+      "SN-7e35948f55ab193e"
+    ],
+    [
+      "SN-9a8cf82ed4783b6d"
+    ],
+    [
+      "SN-a34a97ca83b456e6"
+    ],
+    [
+      "SN-ad0f647090b35dae"
+    ],
+    [
+      "SN-d53681cb67def23d"
+    ]
+  ],
+  "modelCalls": 11,
+  "providerCalls": 11,
+  "oraclePairSelection": false,
+  "goldDerivedInput": false,
+  "goldReadBeforePredictionFreeze": false,
+  "predictionsFrozen": true
+}

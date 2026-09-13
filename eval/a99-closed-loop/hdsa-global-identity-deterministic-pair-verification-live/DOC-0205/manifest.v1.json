@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-deterministic-pair-verification-live-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "candidateSetPath": "eval/a99-closed-loop/hdsa-global-identity-deterministic-candidate-generator-poc/DOC-0205/candidate-set.v1.json",
+  "candidateSetSha256": "bf4f934f56ff6da2c5352128af45e23ac18709648dbda8721c87159358181a36",
+  "candidateFreezePath": "eval/a99-closed-loop/hdsa-global-identity-deterministic-candidate-generator-poc/DOC-0205/freeze.v1.json",
+  "candidateCount": 11,
+  "frozenA1Path": "eval/a99-closed-loop/hdsa-global-role-identity-v2-live/DOC-0205/attempt-2-keyed-a1/a1-role/prediction.v1.json",
+  "verifierVersion": "hdsa-global-identity-retrieve-verify-v1",
+  "oraclePairSelection": false,
+  "goldDerivedInput": false,
+  "goldReadBeforePredictionFreeze": false,
+  "transientRequestRetries": 0,
+  "onePairPerRequest": true,
+  "stageBExecuted": false
+}

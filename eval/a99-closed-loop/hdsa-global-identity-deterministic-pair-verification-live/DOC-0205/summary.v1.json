@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-deterministic-pair-verification-summary-v1",
+  "status": "H2_TARGET_PASS_FALSE_MERGE_STAGE_B_BLOCKED",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "candidateSet": {
+    "count": 11,
+    "sha256": "bf4f934f56ff6da2c5352128af45e23ac18709648dbda8721c87159358181a36"
+  },
+  "verification": {
+    "requested": 11,
+    "completed": 11,
+    "statuses": [
+      {
+        "pairId": "P01-02",
+        "status": "VALID",
+        "relation": "DISTINCT",
+        "direction": "NONE"
+      },
+      {
+        "pairId": "P02-03",
+        "status": "VALID",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT"
+      },
+      {
+        "pairId": "P03-04",
+        "status": "VALID",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT"
+      },
+      {
+        "pairId": "P04-05",
+        "status": "VALID",
+        "relation": "DISTINCT",
+        "direction": "NONE"
+      },
+      {
+        "pairId": "P05-06",
+        "status": "VALID",
+        "relation": "DISTINCT",
+        "direction": "NONE"
+      },
+      {
+        "pairId": "P06-07",
+        "status": "VALID",
+        "relation": "DISTINCT",
+        "direction": "NONE"
+      },
+      {
+        "pairId": "P07-08",
+        "status": "VALID",
+        "relation": "DISTINCT",
+        "direction": "NONE"
+      },
+      {
+        "pairId": "P08-09",
+        "status": "VALID",
+        "relation": "DISTINCT",
+        "direction": "NONE"
+      },
+      {
+        "pairId": "P09-10",
+        "status": "VALID",
+        "relation": "DISTINCT",
+        "direction": "NONE"
+      },
+      {
+        "pairId": "P10-11",
+        "status": "VALID",
+        "relation": "DISTINCT",
+        "direction": "NONE"
+      },
+      {
+        "pairId": "P11-12",
+        "status": "VALID",
+        "relation": "DISTINCT",
+        "direction": "NONE"
+      }
+    ],
+    "continuationCount": 2,
+    "repeatCount": 0,
+    "distinctCount": 9,
+    "unresolvedCount": 0,
+    "invalidCount": 0
+  },
+  "sparsePromotion": {
+    "accepted": true,
+    "reason": null,
+    "positiveRelations": [
+      {
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-fa3e46e19d6d0375",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT"
+      },
+      {
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-2ddcbcfd14c02240",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT"
+      }
+    ],
+    "components": [
+      [
+        "SN-04a6519cc7d08d60"
+      ],
+      [
+        "SN-1767abb75196945e"
+      ],
+      [
+        "SN-2a07dbe2240718e3"
+      ],
+      [
+        "SN-2ddcbcfd14c02240",
+        "SN-aca084dc03ba6e31",
+        "SN-fa3e46e19d6d0375"
+      ],
+      [
+        "SN-35572ea4edd05ce3"
+      ],
+      [
+        "SN-7e35948f55ab193e"
+      ],
+      [
+        "SN-9a8cf82ed4783b6d"
+      ],
+      [
+        "SN-a34a97ca83b456e6"
+      ],
+      [
+        "SN-ad0f647090b35dae"
+      ],
+      [
+        "SN-d53681cb67def23d"
+      ]
+    ]
+  },
+  "goldEvaluation": {
+    "goldSourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "goldSemanticNodeForS0014": "N0002",
+    "goldSemanticNodeForS0015": "N0002",
+    "goldPositivePairCount": 1,
+    "retrievedCandidateCount": 11,
+    "s0014S0015Generated": true,
+    "s0014S0015Covered": true,
+    "verifiedRelation": "CONTINUATION_OF",
+    "goldOpenedAfterPredictionFreeze": true,
+    "modelCallsDuringEvaluation": 0,
+    "providerCallsDuringEvaluation": 0
+  },
+  "h1FrozenA1": true,
+  "h2Target": true,
+  "h2": false,
+  "stageB": {
+    "authorized": false,
+    "executed": false,
+    "reason": "H2_TARGET_PASS_FALSE_MERGE_STAGE_B_BLOCKED"
+  },
+  "modelCalls": 11,
+  "providerCalls": 11,
+  "goldReadBeforePredictionFreeze": false,
+  "predictionsFrozen": true,
+  "oraclePairSelection": false
+}

@@ -1,0 +1,19 @@
+{
+  "goldSourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "goldSemanticNodeForS0014": "N0002",
+  "goldSemanticNodeForS0015": "N0002",
+  "goldPositivePairCount": 1,
+  "retrievedCandidateCount": 11,
+  "s0014S0015Generated": true,
+  "s0014S0015Covered": true,
+  "verifiedRelation": "CONTINUATION_OF",
+  "goldOpenedAfterPredictionFreeze": true,
+  "modelCallsDuringEvaluation": 0,
+  "providerCallsDuringEvaluation": 0,
+  "positiveRelationCount": 2,
+  "falsePositivePositiveRelationCount": 1,
+  "falsePositivePairIds": [
+    "P02-03"
+  ],
+  "noFalseMerge": false
+}

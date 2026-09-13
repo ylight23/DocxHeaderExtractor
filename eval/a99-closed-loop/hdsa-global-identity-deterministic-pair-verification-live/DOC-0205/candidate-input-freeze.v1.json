@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-deterministic-pair-verification-input-freeze-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "candidateSetSha256": "bf4f934f56ff6da2c5352128af45e23ac18709648dbda8721c87159358181a36",
+  "candidateCount": 11,
+  "candidates": [
+    {
+      "pairId": "P01-02",
+      "left": "SN-d53681cb67def23d",
+      "right": "SN-aca084dc03ba6e31",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "P02-03",
+      "left": "SN-aca084dc03ba6e31",
+      "right": "SN-fa3e46e19d6d0375",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "P03-04",
+      "left": "SN-fa3e46e19d6d0375",
+      "right": "SN-2ddcbcfd14c02240",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "P04-05",
+      "left": "SN-2ddcbcfd14c02240",
+      "right": "SN-a34a97ca83b456e6",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "P05-06",
+      "left": "SN-a34a97ca83b456e6",
+      "right": "SN-ad0f647090b35dae",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "P06-07",
+      "left": "SN-ad0f647090b35dae",
+      "right": "SN-2a07dbe2240718e3",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "P07-08",
+      "left": "SN-2a07dbe2240718e3",
+      "right": "SN-1767abb75196945e",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "P08-09",
+      "left": "SN-1767abb75196945e",
+      "right": "SN-35572ea4edd05ce3",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "P09-10",
+      "left": "SN-35572ea4edd05ce3",
+      "right": "SN-7e35948f55ab193e",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "P10-11",
+      "left": "SN-7e35948f55ab193e",
+      "right": "SN-04a6519cc7d08d60",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "P11-12",
+      "left": "SN-04a6519cc7d08d60",
+      "right": "SN-9a8cf82ed4783b6d",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    }
+  ],
+  "oraclePairSelection": false,
+  "goldDerivedInput": false,
+  "frozenBeforeProviderCalls": true,
+  "goldReadBeforeFreeze": false
+}
