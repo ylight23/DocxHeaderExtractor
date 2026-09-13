@@ -377,4 +377,122 @@ public sealed class HdsaRelationReasoningContractsTests
         Assert.Contains(cycleResult.Errors, error => error == "CONTINUATION_CYCLE");
         Assert.Equal(3, cycleResult.Predictions.Count);
     }
+
+    [Fact]
+    public void Semantic_node_catalog_and_parent_pipeline_are_production_shaped_without_gold()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [
+                new("S0001", 1, "Root", "h1", "scope-a"),
+                new("S0002", 2, "Root continued", "h1", "scope-a"),
+                new("S0003", 3, "Child", "h2", "scope-a"),
+                new("S0004", 4, "Grandchild", "h3", "scope-a"),
+            ]);
+        var identity = HdsaSemanticNodeResolverV3.Resolve(input, [
+            new("S0002", "S0001", HdsaSemanticIdentityRelationType.ContinuationOf, "e-continuation", true),
+        ]);
+        var catalog = HdsaSemanticNodeCatalogBuilder.Build(input, identity);
+        var result = HdsaSemanticHierarchyPipeline.Run(catalog, request =>
+        {
+            if (request.ChildSemanticNodeId == catalog.Entries[0].SemanticNodeId)
+                return new(request.CatalogFingerprint, request.ChildSemanticNodeId, HdsaParentDecision.Root);
+            return new(request.CatalogFingerprint, request.ChildSemanticNodeId,
+                HdsaParentDecision.SelectParent, request.CandidateParentSemanticNodeIds[0]);
+        });
+
+        Assert.Equal(3, catalog.Entries.Count);
+        Assert.True(catalog.ProductionBenchmark);
+        Assert.False(catalog.GoldUsed);
+        Assert.False(result.CatalogWasMutated);
+        Assert.Equal(catalog.CatalogFingerprint, result.CatalogFingerprintAfterParentReasoning);
+        Assert.Equal(3, result.DecisionValidations.Count(item => item.Accepted));
+        Assert.True(result.Tree.IsValid);
+        Assert.Equal((1, 2, 3), (
+            result.Tree.Nodes[0].Level,
+            result.Tree.Nodes[1].Level,
+            result.Tree.Nodes[2].Level));
+        Assert.True(result.LevelDerivedFromTreeDepth);
+        Assert.False(result.GoldReadBeforePrediction);
+        Assert.False(result.LegacyHierarchyConsumed);
+        Assert.Equal(0, result.ModelCalls);
+        Assert.Equal(0, result.ProviderCalls);
+    }
+
+    [Fact]
+    public void Semantic_node_catalog_fingerprint_is_deterministic_and_poison_resistant()
+    {
+        var clean = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [
+                new("S0002", 2, "Child", "h2", "scope"),
+                new("S0001", 1, "Root", "h1", "scope"),
+            ]);
+        var poisoned = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [
+                new("S0002", 2, "Child", "h2", "scope", ["level:99", "parent-node:BAD"]),
+                new("S0001", 1, "Root", "h1", "scope", ["role:BOGUS"]),
+            ]);
+        var cleanResult = HdsaSemanticNodeResolverV3.Resolve(clean, []);
+        var poisonedResult = HdsaSemanticNodeResolverV3.Resolve(poisoned, []);
+        var cleanCatalog = HdsaSemanticNodeCatalogBuilder.Build(clean, cleanResult);
+        var poisonedCatalog = HdsaSemanticNodeCatalogBuilder.Build(poisoned, poisonedResult);
+
+        Assert.Equal(cleanCatalog.CatalogFingerprint, poisonedCatalog.CatalogFingerprint);
+        Assert.Equal(
+            cleanCatalog.Entries.Select(item => item.SemanticNodeId),
+            poisonedCatalog.Entries.Select(item => item.SemanticNodeId));
+        var cleanRequest = HdsaSemanticNodeParentReasoningContract.CreateRequest(cleanCatalog, cleanCatalog.Entries[1].SemanticNodeId);
+        var poisonedRequest = HdsaSemanticNodeParentReasoningContract.CreateRequest(poisonedCatalog, poisonedCatalog.Entries[1].SemanticNodeId);
+        Assert.Equal(cleanRequest.CandidateParentSemanticNodeIds, poisonedRequest.CandidateParentSemanticNodeIds);
+        Assert.Equal(cleanRequest.AuthoritativeParentUniverse.Select(item => item.SemanticNodeId), poisonedRequest.AuthoritativeParentUniverse.Select(item => item.SemanticNodeId));
+    }
+
+    [Fact]
+    public void Semantic_node_parent_contract_rejects_out_of_candidate_and_accepts_unresolved_without_mutation()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "snapshot",
+            [new("S0001", 1, "A"), new("S0002", 2, "B"), new("S0003", 3, "C")]);
+        var identity = HdsaSemanticNodeResolverV3.Resolve(input, []);
+        var catalog = HdsaSemanticNodeCatalogBuilder.Build(input, identity);
+        var request = HdsaSemanticNodeParentReasoningContract.CreateRequest(catalog, catalog.Entries[2].SemanticNodeId, window: 1);
+        var outside = new HdsaSemanticNodeParentDecision(
+            catalog.CatalogFingerprint,
+            request.ChildSemanticNodeId,
+            HdsaParentDecision.SelectParent,
+            request.AuthoritativeParentUniverse[0].SemanticNodeId);
+        var unresolved = new HdsaSemanticNodeParentDecision(
+            catalog.CatalogFingerprint,
+            request.ChildSemanticNodeId,
+            HdsaParentDecision.Unresolved);
+
+        var outsideValidation = HdsaSemanticNodeParentReasoningContract.Validate(request, outside, catalog);
+        var unresolvedValidation = HdsaSemanticNodeParentReasoningContract.Validate(request, unresolved, catalog);
+
+        Assert.False(outsideValidation.Accepted);
+        Assert.Equal("PARENT_OUTSIDE_ATTENTION_CANDIDATES", outsideValidation.RejectionReason);
+        Assert.True(outsideValidation.ParentWasOutsideAttentionHints);
+        Assert.True(unresolvedValidation.Accepted);
+        Assert.Null(unresolved.ParentSemanticNodeId);
+    }
+
+    [Fact]
+    public void Semantic_node_parent_contract_rejects_catalog_mutation_and_gold_derived_inputs()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "snapshot", [new("S0001", 1, "A"), new("S0002", 2, "B")]);
+        var identity = HdsaSemanticNodeResolverV3.Resolve(input, []);
+        var catalog = HdsaSemanticNodeCatalogBuilder.Build(input, identity);
+        var request = HdsaSemanticNodeParentReasoningContract.CreateRequest(catalog, catalog.Entries[1].SemanticNodeId);
+        var mutated = new HdsaSemanticNodeParentDecision(
+            "different-catalog", request.ChildSemanticNodeId, HdsaParentDecision.Root);
+        var goldDecision = new HdsaSemanticNodeParentDecision(
+            catalog.CatalogFingerprint, request.ChildSemanticNodeId, HdsaParentDecision.Root);
+        var goldRequest = request with { GoldDerivedInput = true };
+
+        Assert.Equal("DECISION_CATALOG_FINGERPRINT_MISMATCH", HdsaSemanticNodeParentReasoningContract.Validate(request, mutated, catalog).RejectionReason);
+        Assert.Equal("CATALOG_FINGERPRINT_MISMATCH_OR_GOLD_INPUT", HdsaSemanticNodeParentReasoningContract.Validate(goldRequest, goldDecision, catalog).RejectionReason);
+    }
 }
