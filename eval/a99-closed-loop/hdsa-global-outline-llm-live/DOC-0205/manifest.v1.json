@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "a99-hdsa-global-outline-llm-live-manifest-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "catalogNodeCount": 12,
+  "requestNodeCount": 12,
+  "requestSha256": "ab111b93359de368c1af7d30d4c2091655649daee44948939e32a39a81146eb0",
+  "systemPromptSha256": "e847c2fb359705d343a622319df0ba086b8f9b0c5b9b672475491f7afaf52390",
+  "responseSchemaSha256": "2f2e76daef44c9e7f3c67ba5c98c3e0518675d1b195f00bec82f6418de0a9b49",
+  "candidateGeneration": "NONE_GLOBAL_OUTLINE_REQUEST_ALL_CATALOG_NODES",
+  "globalDecoderUsed": false,
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false,
+  "modelFallback": "NONE",
+  "expectedModelCalls": 1,
+  "expectedProviderCalls": 1,
+  "transientRequestRetries": 0
+}

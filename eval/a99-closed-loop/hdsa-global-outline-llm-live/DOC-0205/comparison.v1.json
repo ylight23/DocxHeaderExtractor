@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "a99-hdsa-global-outline-comparison-v1",
+  "localIncumbent": {
+    "parentF1": 0.8,
+    "levelExact": "4/11",
+    "s0005": "SELECT_PARENT(SN-d53681cb67def23d) / S0001"
+  },
+  "globalOutlineLlm": {
+    "parentF1": 0.9,
+    "conditionalParentF1": 0.9411764705882353,
+    "derivedLevelExact": "0/11",
+    "proposedLevelExact": "0/11",
+    "s0005": "SN-d53681cb67def23d"
+  },
+  "evaluationMode": "FROZEN_RESPONSE_REPLAY",
+  "freshModelCalls": 0,
+  "freshProviderCalls": 0
+}

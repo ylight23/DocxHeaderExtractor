@@ -1,0 +1,373 @@
+{
+  "schemaVersion": "a99-hdsa-global-outline-llm-prediction-v1",
+  "documentId": "DOC-0205",
+  "requestSha256": "ab111b93359de368c1af7d30d4c2091655649daee44948939e32a39a81146eb0",
+  "responseSha256": "d44586d3904364f0fbce63eb7843690376e0652ac25786eb76fd3c1384453de3",
+  "proposal": {
+    "nodes": [
+      {
+        "nodeId": "SN-d53681cb67def23d",
+        "parent": "ROOT",
+        "proposedLevel": 1,
+        "confidence": "s",
+        "reason": "Text \u0027CH\u00CDNH PH\u1EE4 ________\u0027 appears to be a document title or masthead (likely \u0027CH\u00CDNH PH\u1EE6\u0027 truncated or specific document header). It is the first node and semantically encompasses the entire regulation."
+      },
+      {
+        "nodeId": "SN-aca084dc03ba6e31",
+        "parent": "SN-d53681cb67def23d",
+        "proposedLevel": 2,
+        "confidence": "high",
+        "reason": "\u0027NGH\u1ECA \u0110\u1ECANH\u0027 (Decree) is a standard section in Vietnamese legal documents indicating the type of instrument. It sits under the main title but above the Chapters/Articles."
+      },
+      {
+        "nodeId": "SN-fa3e46e19d6d0375",
+        "parent": "SN-aca084dc03ba6e31",
+        "proposedLevel": 3,
+        "confidence": "high",
+        "reason": "\u0027Ch\u01B0\u01A1ng I\u0027 (Chapter I) is a major structural division of the decree. It logically follows the Decree identifier and precedes the General Provisions."
+      },
+      {
+        "nodeId": "SN-2ddcbcfd14c02240",
+        "parent": "SN-fa3e46e19d6d0375",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "\u0027QUY \u0110\u1ECANH CHUNG\u0027 (General Provisions) is the title of Chapter I. It contains the initial articles defining scope, objects, and terms."
+      },
+      {
+        "nodeId": "SN-a34a97ca83b456e6",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 1\u0027 (Article 1) is a sub-section within General Provisions. It defines the scope of adjustment."
+      },
+      {
+        "nodeId": "SN-ad0f647090b35dae",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 2\u0027 (Article 2) is a sibling to Article 1, also within General Provisions. It defines the applicable objects."
+      },
+      {
+        "nodeId": "SN-2a07dbe2240718e3",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 3\u0027 (Article 3) is a sibling to Articles 1 and 2, within General Provisions. It provides definitions."
+      },
+      {
+        "nodeId": "SN-1767abb75196945e",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 4\u0027 (Article 4) is a sibling article within General Provisions, discussing the legal value of shared data."
+      },
+      {
+        "nodeId": "SN-35572ea4edd05ce3",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 5\u0027 (Article 5) is a sibling article within General Provisions, outlining general principles for management and sharing."
+      },
+      {
+        "nodeId": "SN-7e35948f55ab193e",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 6\u0027 (Article 6) is a sibling article within General Provisions, detailing the execution of connection and sharing."
+      },
+      {
+        "nodeId": "SN-04a6519cc7d08d60",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 7\u0027 (Article 7) is a sibling article within General Provisions, specifying requirements for management, connection, and sharing."
+      },
+      {
+        "nodeId": "SN-9a8cf82ed4783b6d",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 8\u0027 (Article 8) is a sibling article within General Provisions, listing prohibited behaviors."
+      }
+    ]
+  },
+  "parseError": null,
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "parentRelations": [
+      {
+        "from": "SN-d53681cb67def23d",
+        "to": "SN-aca084dc03ba6e31",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-aca084dc03ba6e31",
+        "to": "SN-fa3e46e19d6d0375",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-fa3e46e19d6d0375",
+        "to": "SN-2ddcbcfd14c02240",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-a34a97ca83b456e6",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-ad0f647090b35dae",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-2a07dbe2240718e3",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-1767abb75196945e",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-35572ea4edd05ce3",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-7e35948f55ab193e",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-04a6519cc7d08d60",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-9a8cf82ed4783b6d",
+        "relation": "PARENT_OF"
+      }
+    ],
+    "graphValidation": {
+      "acceptedRelations": [
+        {
+          "from": "SN-2ddcbcfd14c02240",
+          "to": "SN-04a6519cc7d08d60",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "SN-2ddcbcfd14c02240",
+          "to": "SN-1767abb75196945e",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "SN-2ddcbcfd14c02240",
+          "to": "SN-2a07dbe2240718e3",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "SN-2ddcbcfd14c02240",
+          "to": "SN-35572ea4edd05ce3",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "SN-2ddcbcfd14c02240",
+          "to": "SN-7e35948f55ab193e",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "SN-2ddcbcfd14c02240",
+          "to": "SN-9a8cf82ed4783b6d",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "SN-2ddcbcfd14c02240",
+          "to": "SN-a34a97ca83b456e6",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "SN-2ddcbcfd14c02240",
+          "to": "SN-ad0f647090b35dae",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "SN-aca084dc03ba6e31",
+          "to": "SN-fa3e46e19d6d0375",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "SN-d53681cb67def23d",
+          "to": "SN-aca084dc03ba6e31",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "SN-fa3e46e19d6d0375",
+          "to": "SN-2ddcbcfd14c02240",
+          "relation": "PARENT_OF"
+        }
+      ],
+      "rejectedRelations": [],
+      "errors": [],
+      "isValid": true
+    },
+    "tree": {
+      "nodes": [
+        {
+          "id": "SN-d53681cb67def23d",
+          "parentId": null,
+          "level": 1
+        },
+        {
+          "id": "SN-aca084dc03ba6e31",
+          "parentId": "SN-d53681cb67def23d",
+          "level": 2
+        },
+        {
+          "id": "SN-fa3e46e19d6d0375",
+          "parentId": "SN-aca084dc03ba6e31",
+          "level": 3
+        },
+        {
+          "id": "SN-2ddcbcfd14c02240",
+          "parentId": "SN-fa3e46e19d6d0375",
+          "level": 4
+        },
+        {
+          "id": "SN-a34a97ca83b456e6",
+          "parentId": "SN-2ddcbcfd14c02240",
+          "level": 5
+        },
+        {
+          "id": "SN-ad0f647090b35dae",
+          "parentId": "SN-2ddcbcfd14c02240",
+          "level": 5
+        },
+        {
+          "id": "SN-2a07dbe2240718e3",
+          "parentId": "SN-2ddcbcfd14c02240",
+          "level": 5
+        },
+        {
+          "id": "SN-1767abb75196945e",
+          "parentId": "SN-2ddcbcfd14c02240",
+          "level": 5
+        },
+        {
+          "id": "SN-35572ea4edd05ce3",
+          "parentId": "SN-2ddcbcfd14c02240",
+          "level": 5
+        },
+        {
+          "id": "SN-7e35948f55ab193e",
+          "parentId": "SN-2ddcbcfd14c02240",
+          "level": 5
+        },
+        {
+          "id": "SN-04a6519cc7d08d60",
+          "parentId": "SN-2ddcbcfd14c02240",
+          "level": 5
+        },
+        {
+          "id": "SN-9a8cf82ed4783b6d",
+          "parentId": "SN-2ddcbcfd14c02240",
+          "level": 5
+        }
+      ],
+      "errors": [],
+      "isValid": true
+    },
+    "normalizedNodes": [
+      {
+        "nodeId": "SN-d53681cb67def23d",
+        "parent": "ROOT",
+        "proposedLevel": 1,
+        "confidence": "s",
+        "reason": "Text \u0027CH\u00CDNH PH\u1EE4 ________\u0027 appears to be a document title or masthead (likely \u0027CH\u00CDNH PH\u1EE6\u0027 truncated or specific document header). It is the first node and semantically encompasses the entire regulation."
+      },
+      {
+        "nodeId": "SN-aca084dc03ba6e31",
+        "parent": "SN-d53681cb67def23d",
+        "proposedLevel": 2,
+        "confidence": "high",
+        "reason": "\u0027NGH\u1ECA \u0110\u1ECANH\u0027 (Decree) is a standard section in Vietnamese legal documents indicating the type of instrument. It sits under the main title but above the Chapters/Articles."
+      },
+      {
+        "nodeId": "SN-fa3e46e19d6d0375",
+        "parent": "SN-aca084dc03ba6e31",
+        "proposedLevel": 3,
+        "confidence": "high",
+        "reason": "\u0027Ch\u01B0\u01A1ng I\u0027 (Chapter I) is a major structural division of the decree. It logically follows the Decree identifier and precedes the General Provisions."
+      },
+      {
+        "nodeId": "SN-2ddcbcfd14c02240",
+        "parent": "SN-fa3e46e19d6d0375",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "\u0027QUY \u0110\u1ECANH CHUNG\u0027 (General Provisions) is the title of Chapter I. It contains the initial articles defining scope, objects, and terms."
+      },
+      {
+        "nodeId": "SN-a34a97ca83b456e6",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 1\u0027 (Article 1) is a sub-section within General Provisions. It defines the scope of adjustment."
+      },
+      {
+        "nodeId": "SN-ad0f647090b35dae",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 2\u0027 (Article 2) is a sibling to Article 1, also within General Provisions. It defines the applicable objects."
+      },
+      {
+        "nodeId": "SN-2a07dbe2240718e3",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 3\u0027 (Article 3) is a sibling to Articles 1 and 2, within General Provisions. It provides definitions."
+      },
+      {
+        "nodeId": "SN-1767abb75196945e",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 4\u0027 (Article 4) is a sibling article within General Provisions, discussing the legal value of shared data."
+      },
+      {
+        "nodeId": "SN-35572ea4edd05ce3",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 5\u0027 (Article 5) is a sibling article within General Provisions, outlining general principles for management and sharing."
+      },
+      {
+        "nodeId": "SN-7e35948f55ab193e",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 6\u0027 (Article 6) is a sibling article within General Provisions, detailing the execution of connection and sharing."
+      },
+      {
+        "nodeId": "SN-04a6519cc7d08d60",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 7\u0027 (Article 7) is a sibling article within General Provisions, specifying requirements for management, connection, and sharing."
+      },
+      {
+        "nodeId": "SN-9a8cf82ed4783b6d",
+        "parent": "SN-2ddcbcfd14c02240",
+        "proposedLevel": 5,
+        "confidence": "high",
+        "reason": "\u0027\u0110i\u1EC1u 8\u0027 (Article 8) is a sibling article within General Provisions, listing prohibited behaviors."
+      }
+    ]
+  },
+  "globalDecoderUsed": false,
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}

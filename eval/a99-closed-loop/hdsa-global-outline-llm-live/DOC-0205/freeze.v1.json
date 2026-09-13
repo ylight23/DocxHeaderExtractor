@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-hdsa-global-outline-llm-freeze-v1",
+  "documentId": "DOC-0205",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "requestSha256": "ab111b93359de368c1af7d30d4c2091655649daee44948939e32a39a81146eb0",
+  "responseSha256": "d44586d3904364f0fbce63eb7843690376e0652ac25786eb76fd3c1384453de3",
+  "predictionSha256": "abba70d44e3ee59835b5328da3b16cb2d9b48cdf4b499da51fc0ff9a5aaeb48e",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "finishReason": "stop",
+  "inputTokens": 2209,
+  "reasoningTokens": 5131,
+  "outputTokens": 6383,
+  "elapsedMs": 57072,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "frozenBeforeGold": true
+}

@@ -36,6 +36,114 @@ authoritative; the harness derives final levels from the validated parent tree. 
 invent IDs, return offsets, return Gold, return legacy hierarchy fields, or omit a node.
 """;
 
+    /// <summary>
+    /// Re-evaluates the already frozen one-call probe without contacting a provider. This is
+    /// intentionally a separate command path so improving evaluation cannot accidentally rerun
+    /// the live request.
+    /// </summary>
+    public static async Task<int> RunFrozenEvaluationAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var output = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar));
+        var catalog = ReadCatalog(Path.Combine(repoRoot, CatalogPath.Replace('/', Path.DirectorySeparatorChar)));
+        if (!string.Equals(catalog.CatalogFingerprint, ExpectedCatalogFingerprint, StringComparison.Ordinal))
+            throw new InvalidDataException("GLOBAL_OUTLINE_CATALOG_RECONSTRUCTION_MISMATCH");
+
+        var requestPath = Path.Combine(output, "request.v1.json");
+        var responsePath = Path.Combine(output, "response.v1.json");
+        var predictionPath = Path.Combine(output, "prediction.v1.json");
+        var freezePath = Path.Combine(output, "freeze.v1.json");
+        Require(requestPath);
+        Require(responsePath);
+        Require(predictionPath);
+        Require(freezePath);
+
+        using var requestDocument = JsonDocument.Parse(await File.ReadAllTextAsync(requestPath, ct));
+        var requestRoot = requestDocument.RootElement;
+        if (requestRoot.GetProperty("goldReadBeforeFreeze").GetBoolean() || requestRoot.GetProperty("goldDerivedInput").GetBoolean())
+            throw new InvalidDataException("GLOBAL_OUTLINE_FROZEN_REQUEST_GOLD_CONTAMINATION");
+        var requestHash = requestRoot.GetProperty("requestSha256").GetString()!;
+        var request = requestRoot.GetProperty("request").Deserialize<HdsaGlobalOutlineHierarchyRequest>(JsonOptions)
+            ?? throw new InvalidDataException("GLOBAL_OUTLINE_REQUEST_PARSE_FAILED");
+        if (!string.Equals(requestHash, Sha256Text(JsonSerializer.Serialize(request, JsonOptions)), StringComparison.Ordinal))
+            throw new InvalidDataException("GLOBAL_OUTLINE_REQUEST_HASH_MISMATCH");
+        if (!string.Equals(request.CatalogFingerprint, catalog.CatalogFingerprint, StringComparison.Ordinal) ||
+            request.Nodes.Count != catalog.Entries.Count)
+            throw new InvalidDataException("GLOBAL_OUTLINE_FROZEN_REQUEST_CATALOG_MISMATCH");
+
+        using var responseDocument = JsonDocument.Parse(await File.ReadAllTextAsync(responsePath, ct));
+        var responseRoot = responseDocument.RootElement;
+        var rawResponse = responseRoot.GetProperty("rawResponse").GetString()!;
+        var responseHash = responseRoot.GetProperty("responseSha256").GetString()!;
+        if (!string.Equals(responseHash, Sha256Text(rawResponse), StringComparison.Ordinal))
+            throw new InvalidDataException("GLOBAL_OUTLINE_RESPONSE_HASH_MISMATCH");
+        if (!string.Equals(responseRoot.GetProperty("requestSha256").GetString(), requestHash, StringComparison.Ordinal))
+            throw new InvalidDataException("GLOBAL_OUTLINE_RESPONSE_REQUEST_MISMATCH");
+
+        using var predictionDocument = JsonDocument.Parse(await File.ReadAllTextAsync(predictionPath, ct));
+        using var freezeDocument = JsonDocument.Parse(await File.ReadAllTextAsync(freezePath, ct));
+        var freezeRoot = freezeDocument.RootElement;
+        if (freezeRoot.GetProperty("goldReadBeforeFreeze").GetBoolean() || !freezeRoot.GetProperty("frozenBeforeGold").GetBoolean())
+            throw new InvalidDataException("GLOBAL_OUTLINE_FREEZE_ORDER_INVALID");
+        if (!string.Equals(freezeRoot.GetProperty("predictionSha256").GetString(), Sha256File(predictionPath), StringComparison.Ordinal) ||
+            !string.Equals(freezeRoot.GetProperty("requestSha256").GetString(), requestHash, StringComparison.Ordinal) ||
+            !string.Equals(freezeRoot.GetProperty("responseSha256").GetString(), responseHash, StringComparison.Ordinal))
+            throw new InvalidDataException("GLOBAL_OUTLINE_FREEZE_HASH_MISMATCH");
+
+        var proposal = HdsaGlobalOutlineHierarchyContract.Parse(rawResponse);
+        var validation = HdsaGlobalOutlineHierarchyContract.Validate(request, proposal);
+        var evaluation = EvaluateAfterFreeze(repoRoot, catalog, request, proposal, validation);
+        await WriteJsonAsync(Path.Combine(output, "evaluation.v1.json"), evaluation, ct);
+
+        var localBaseline = new { parentF1 = .8, levelExact = "4/11", s0005 = "SELECT_PARENT(SN-d53681cb67def23d) / S0001" };
+        var comparison = new
+        {
+            schemaVersion = "a99-hdsa-global-outline-comparison-v1",
+            localIncumbent = localBaseline,
+            globalOutlineLlm = new
+            {
+                parentF1 = evaluation.Parent.F1,
+                conditionalParentF1 = evaluation.ConditionalParent.F1,
+                derivedLevelExact = $@"{evaluation.DerivedTreeLevel.Exact}/{evaluation.DerivedTreeLevel.Evaluated}",
+                proposedLevelExact = $@"{evaluation.ModelProposedLevel.Exact}/{evaluation.ModelProposedLevel.Evaluated}",
+                s0005 = evaluation.S0005,
+            },
+            evaluationMode = "FROZEN_RESPONSE_REPLAY",
+            freshModelCalls = 0,
+            freshProviderCalls = 0,
+        };
+        await WriteJsonAsync(Path.Combine(output, "comparison.v1.json"), comparison, ct);
+        await WriteJsonAsync(Path.Combine(output, "summary.v1.json"), new
+        {
+            schemaVersion = "a99-hdsa-global-outline-llm-live-summary-v1",
+            status = validation.Accepted ? "COMPLETE" : "GLOBAL_LLM_INVALID_TREE",
+            documentId = DocumentId,
+            model = responseRoot.TryGetProperty("model", out var modelElement) ? modelElement.GetString() : Model,
+            provider = responseRoot.TryGetProperty("provider", out var providerElement) ? providerElement.GetString() : null,
+            catalogFingerprint = catalog.CatalogFingerprint,
+            catalogNodeCount = catalog.Entries.Count,
+            requestNodeCount = request.Nodes.Count,
+            requestSha256 = requestHash,
+            responseSha256 = responseHash,
+            historicalModelCalls = responseRoot.GetProperty("modelCalls").GetInt32(),
+            historicalProviderCalls = responseRoot.GetProperty("providerCalls").GetInt32(),
+            freshModelCalls = 0,
+            freshProviderCalls = 0,
+            goldReadBeforeFreeze = false,
+            predictionFrozenBeforeGold = true,
+            globalDecoderUsed = false,
+            evaluation,
+            comparison,
+        }, ct);
+        Console.WriteLine("HDSA_GLOBAL_OUTLINE_FROZEN_EVALUATION=COMPLETE");
+        Console.WriteLine("FRESH_MODEL_CALLS=0");
+        Console.WriteLine("FRESH_PROVIDER_CALLS=0");
+        Console.WriteLine($"PARENT_F1={evaluation.Parent.F1:F4}");
+        Console.WriteLine($"CONDITIONAL_PARENT_F1={evaluation.ConditionalParent.F1:F4}");
+        Console.WriteLine($"S0005_GLOBAL={evaluation.S0005}");
+        return 0;
+    }
+
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
     {
         repoRoot = Path.GetFullPath(repoRoot);
@@ -363,34 +471,112 @@ invent IDs, return offsets, return Gold, return legacy hierarchy fields, or omit
         var recall = tp + fn == 0 ? 0 : (double)tp / (tp + fn);
         var f1 = precision + recall == 0 ? 0 : 2 * precision * recall / (precision + recall);
         var goldDepth = GoldDepth(goldEdges);
+        var predictedParentMap = validation?.ParentRelations
+            .Where(item => item.Relation == HdsaRelationType.ParentOf)
+            .GroupBy(item => item.To, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.First().From, StringComparer.Ordinal)
+            ?? new Dictionary<string, string>(StringComparer.Ordinal);
+        var goldParentMap = goldEdges.ToDictionary(
+            edge => edge[(edge.IndexOf('>') + 1)..],
+            edge => edge[..edge.IndexOf('>')],
+            StringComparer.Ordinal);
         var derivedRows = catalog.Entries.Where(entry => nodeMap[entry.SemanticNodeId] is not null).Select(entry =>
         {
             var goldId = nodeMap[entry.SemanticNodeId]!;
             var predicted = validation?.Tree.Nodes.SingleOrDefault(node => node.Id == entry.SemanticNodeId)?.Level;
-            return new { semanticNodeId = entry.SemanticNodeId, goldSemanticNodeId = goldId, predictedLevel = predicted, goldLevel = goldDepth[goldId], exact = predicted == goldDepth[goldId] };
+            var firstDivergentAncestor = FindFirstDivergentAncestor(entry.SemanticNodeId, nodeMap, predictedParentMap, goldParentMap);
+            return new
+            {
+                semanticNodeId = entry.SemanticNodeId,
+                goldSemanticNodeId = goldId,
+                predictedLevel = predicted,
+                goldLevel = goldDepth[goldId],
+                exact = predicted == goldDepth[goldId],
+                firstDivergentAncestor
+            };
         }).ToArray();
         var proposedRows = request.Nodes.Where(node => nodeMap[node.SemanticNodeId] is not null).Select(node =>
         {
             var goldId = nodeMap[node.SemanticNodeId]!;
             var proposed = proposal?.Nodes.SingleOrDefault(item => item.NodeId == node.SemanticNodeId)?.ProposedLevel;
-            return new { semanticNodeId = node.SemanticNodeId, proposedLevel = proposed, goldLevel = goldDepth[goldId], exact = proposed == goldDepth[goldId] };
+            return new { semanticNodeId = node.SemanticNodeId, proposedLevel = proposed, goldLevel = goldDepth[goldId], exact = proposed == goldDepth[goldId], firstDivergentAncestor = (string?)null };
         }).ToArray();
         var s0005 = catalog.Entries.FirstOrDefault(item => item.MemberOccurrenceIds.Contains("S0005", StringComparer.Ordinal));
         var s0005Proposal = proposal?.Nodes.SingleOrDefault(item => item.NodeId == s0005?.SemanticNodeId);
         var localParent = "SELECT_PARENT(SN-d53681cb67def23d) / S0001";
         var globalParent = s0005Proposal?.Parent ?? "UNPARSED";
+        var exactMembershipNodeIds = catalog.Entries
+            .Where(entry => IsExactGoldMembership(entry.MemberOccurrenceIds, aliases))
+            .Select(entry => entry.SemanticNodeId)
+            .ToHashSet(StringComparer.Ordinal);
+        var conditionalPredicted = predictedEdges
+            .Where(item => item.child is not null && catalog.Entries.Any(entry =>
+                nodeMap.GetValueOrDefault(entry.SemanticNodeId) == item.child && exactMembershipNodeIds.Contains(entry.SemanticNodeId)))
+            .ToArray();
+        var conditionalMapped = conditionalPredicted
+            .Where(item => item.parent is not null)
+            .Select(item => item.parent + ">" + item.child)
+            .ToHashSet(StringComparer.Ordinal);
+        var conditionalUnmappable = conditionalPredicted.Count(item => item.parent is null);
+        var conditionalGoldEdges = goldEdges.Where(edge =>
+            exactMembershipNodeIds.Any(id => nodeMap.GetValueOrDefault(id) == edge[(edge.IndexOf('>') + 1)..]))
+            .ToHashSet(StringComparer.Ordinal);
+        var conditionalTp = conditionalMapped.Intersect(conditionalGoldEdges, StringComparer.Ordinal).Count();
+        var conditionalFp = conditionalMapped.Except(conditionalGoldEdges, StringComparer.Ordinal).Count() + conditionalUnmappable;
+        var conditionalFn = conditionalGoldEdges.Except(conditionalMapped, StringComparer.Ordinal).Count();
+        var conditionalPrecision = conditionalTp + conditionalFp == 0 ? 0 : (double)conditionalTp / (conditionalTp + conditionalFp);
+        var conditionalRecall = conditionalTp + conditionalFn == 0 ? 0 : (double)conditionalTp / (conditionalTp + conditionalFn);
+        var conditionalF1 = conditionalPrecision + conditionalRecall == 0 ? 0 : 2 * conditionalPrecision * conditionalRecall / (conditionalPrecision + conditionalRecall);
         return new GlobalOutlineEvaluation(
             new ParentMetric(tp, fp, fn, precision, recall, f1, goldEdges.Count, mapped.Count, unmappable),
-            "evaluation-only; exact membership adapter is retained in per-node rows",
+            new ConditionalParentMetric(conditionalTp, conditionalFp, conditionalFn, conditionalPrecision, conditionalRecall,
+                conditionalF1, exactMembershipNodeIds.Count, conditionalGoldEdges.Count, conditionalMapped.Count, conditionalUnmappable),
             new LevelMetric(proposedRows.Count(item => item.exact), proposedRows.Length,
-                proposedRows.Select(item => new LevelRow(item.semanticNodeId, item.proposedLevel, item.goldLevel, item.exact)).ToArray()),
+                proposedRows.Select(item => new LevelRow(item.semanticNodeId, item.proposedLevel, item.goldLevel, item.exact, item.firstDivergentAncestor)).ToArray()),
             new LevelMetric(derivedRows.Count(item => item.exact), derivedRows.Length,
-                derivedRows.Select(item => new LevelRow(item.semanticNodeId, item.predictedLevel, item.goldLevel, item.exact)).ToArray()),
+                derivedRows.Select(item => new LevelRow(item.semanticNodeId, item.predictedLevel, item.goldLevel, item.exact, item.firstDivergentAncestor)).ToArray()),
             new TreeMetric(validation?.Tree.IsValid == true, validation?.Tree.Nodes.Count(item => item.ParentId is null) ?? 0,
                 validation?.GraphValidation.Errors.Contains("PARENT_CYCLE") == true),
             new RootMetric(localParent, globalParent, string.Equals(globalParent, HdsaGlobalOutlineHierarchyContract.Root, StringComparison.Ordinal)),
             globalParent,
-            derivedRows.Count(item => !item.exact));
+            derivedRows.Count(item => !item.exact && item.firstDivergentAncestor is not null &&
+                !string.Equals(item.firstDivergentAncestor, item.semanticNodeId, StringComparison.Ordinal)));
+    }
+
+    private static string? FindFirstDivergentAncestor(
+        string semanticNodeId,
+        IReadOnlyDictionary<string, string?> nodeMap,
+        IReadOnlyDictionary<string, string> predictedParentMap,
+        IReadOnlyDictionary<string, string> goldParentMap)
+    {
+        var current = semanticNodeId;
+        var visited = new HashSet<string>(StringComparer.Ordinal);
+        while (visited.Add(current))
+        {
+            var goldId = nodeMap.GetValueOrDefault(current);
+            if (goldId is null) return current;
+            var predictedParent = predictedParentMap.GetValueOrDefault(current);
+            if (predictedParent is not null && !nodeMap.ContainsKey(predictedParent))
+                return current;
+            var predictedGoldParent = predictedParent is null ? null : nodeMap.GetValueOrDefault(predictedParent);
+            var expectedGoldParent = goldParentMap.GetValueOrDefault(goldId);
+            if (!string.Equals(predictedGoldParent, expectedGoldParent, StringComparison.Ordinal))
+                return current;
+            if (predictedParent is null) return null;
+            current = predictedParent;
+        }
+        return current;
+    }
+
+    private static bool IsExactGoldMembership(IReadOnlyList<string> memberOccurrenceIds,
+        IReadOnlyDictionary<string, string> aliases)
+    {
+        var goldIds = memberOccurrenceIds.Where(aliases.ContainsKey).Select(alias => aliases[alias])
+            .Distinct(StringComparer.Ordinal).ToArray();
+        if (goldIds.Length != 1) return false;
+        var expectedMembers = aliases.Where(item => item.Value == goldIds[0]).Select(item => item.Key)
+            .ToHashSet(StringComparer.Ordinal);
+        return expectedMembers.SetEquals(memberOccurrenceIds);
     }
 
     private static IReadOnlyDictionary<string, int> GoldDepth(IReadOnlySet<string> edges)
@@ -429,7 +615,7 @@ invent IDs, return offsets, return Gold, return legacy hierarchy fields, or omit
 
     private sealed record GlobalOutlineEvaluation(
         ParentMetric Parent,
-        string ConditionalExactMembership,
+        ConditionalParentMetric ConditionalParent,
         LevelMetric ModelProposedLevel,
         LevelMetric DerivedTreeLevel,
         TreeMetric Tree,
@@ -437,12 +623,17 @@ invent IDs, return offsets, return Gold, return legacy hierarchy fields, or omit
         string S0005,
         int AncestorCascadeCount);
 
+    private sealed record ConditionalParentMetric(
+        int TP, int FP, int FN, double Precision, double Recall, double F1,
+        int ExactMembershipNodeCount, int GoldEdgeCount, int MappedPredictedEdgeCount,
+        int UnmappablePredictedEdges);
+
     private sealed record ParentMetric(
         int TP, int FP, int FN, double Precision, double Recall, double F1,
         int GoldEdgeCount, int MappedPredictedEdgeCount, int UnmappablePredictedEdges);
 
     private sealed record LevelMetric(int Exact, int Evaluated, IReadOnlyList<LevelRow> Rows);
-    private sealed record LevelRow(string SemanticNodeId, int? PredictedLevel, int GoldLevel, bool Exact);
+    private sealed record LevelRow(string SemanticNodeId, int? PredictedLevel, int GoldLevel, bool Exact, string? FirstDivergentAncestor);
     private sealed record TreeMetric(bool Valid, int Roots, bool Cycles);
     private sealed record RootMetric(string LocalIncumbent, string GlobalOutlineLlm, bool Recovered);
 }

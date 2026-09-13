@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "a99-hdsa-global-outline-llm-live-summary-v1",
+  "status": "COMPLETE",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "catalogNodeCount": 12,
+  "requestNodeCount": 12,
+  "requestSha256": "ab111b93359de368c1af7d30d4c2091655649daee44948939e32a39a81146eb0",
+  "responseSha256": "d44586d3904364f0fbce63eb7843690376e0652ac25786eb76fd3c1384453de3",
+  "historicalModelCalls": 1,
+  "historicalProviderCalls": 1,
+  "freshModelCalls": 0,
+  "freshProviderCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "predictionFrozenBeforeGold": true,
+  "globalDecoderUsed": false,
+  "evaluation": {
+    "parent": {
+      "tp": 9,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.8181818181818182,
+      "recall": 1,
+      "f1": 0.9,
+      "goldEdgeCount": 9,
+      "mappedPredictedEdgeCount": 10,
+      "unmappablePredictedEdges": 1
+    },
+    "conditionalParent": {
+      "tp": 8,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.8888888888888888,
+      "recall": 1,
+      "f1": 0.9411764705882353,
+      "exactMembershipNodeCount": 9,
+      "goldEdgeCount": 8,
+      "mappedPredictedEdgeCount": 8,
+      "unmappablePredictedEdges": 1
+    },
+    "modelProposedLevel": {
+      "exact": 0,
+      "evaluated": 11,
+      "rows": [
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "predictedLevel": 2,
+          "goldLevel": 1,
+          "exact": false,
+          "firstDivergentAncestor": null
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "predictedLevel": 3,
+          "goldLevel": 2,
+          "exact": false,
+          "firstDivergentAncestor": null
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "predictedLevel": 4,
+          "goldLevel": 2,
+          "exact": false,
+          "firstDivergentAncestor": null
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": null
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": null
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": null
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": null
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": null
+        },
+        {
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": null
+        },
+        {
+          "semanticNodeId": "SN-04a6519cc7d08d60",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": null
+        },
+        {
+          "semanticNodeId": "SN-9a8cf82ed4783b6d",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": null
+        }
+      ]
+    },
+    "derivedTreeLevel": {
+      "exact": 0,
+      "evaluated": 11,
+      "rows": [
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "predictedLevel": 2,
+          "goldLevel": 1,
+          "exact": false,
+          "firstDivergentAncestor": "SN-d53681cb67def23d"
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "predictedLevel": 3,
+          "goldLevel": 2,
+          "exact": false,
+          "firstDivergentAncestor": "SN-d53681cb67def23d"
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "predictedLevel": 4,
+          "goldLevel": 2,
+          "exact": false,
+          "firstDivergentAncestor": "SN-2ddcbcfd14c02240"
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": "SN-2ddcbcfd14c02240"
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": "SN-2ddcbcfd14c02240"
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": "SN-2ddcbcfd14c02240"
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": "SN-2ddcbcfd14c02240"
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": "SN-2ddcbcfd14c02240"
+        },
+        {
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": "SN-2ddcbcfd14c02240"
+        },
+        {
+          "semanticNodeId": "SN-04a6519cc7d08d60",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": "SN-2ddcbcfd14c02240"
+        },
+        {
+          "semanticNodeId": "SN-9a8cf82ed4783b6d",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false,
+          "firstDivergentAncestor": "SN-2ddcbcfd14c02240"
+        }
+      ]
+    },
+    "tree": {
+      "valid": true,
+      "roots": 1,
+      "cycles": false
+    },
+    "root": {
+      "localIncumbent": "SELECT_PARENT(SN-d53681cb67def23d) / S0001",
+      "globalOutlineLlm": "SN-d53681cb67def23d",
+      "recovered": false
+    },
+    "s0005": "SN-d53681cb67def23d",
+    "ancestorCascadeCount": 10
+  },
+  "comparison": {
+    "schemaVersion": "a99-hdsa-global-outline-comparison-v1",
+    "localIncumbent": {
+      "parentF1": 0.8,
+      "levelExact": "4/11",
+      "s0005": "SELECT_PARENT(SN-d53681cb67def23d) / S0001"
+    },
+    "globalOutlineLlm": {
+      "parentF1": 0.9,
+      "conditionalParentF1": 0.9411764705882353,
+      "derivedLevelExact": "0/11",
+      "proposedLevelExact": "0/11",
+      "s0005": "SN-d53681cb67def23d"
+    },
+    "evaluationMode": "FROZEN_RESPONSE_REPLAY",
+    "freshModelCalls": 0,
+    "freshProviderCalls": 0
+  }
+}
