@@ -1,0 +1,194 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-node-production-primary-error-forensic-v1",
+  "documentId": "DOC-0205",
+  "benchmarkCheckpoint": "c945c02",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "execution": {
+    "analysisMode": "OFFLINE_FROZEN_ARTIFACTS_ONLY",
+    "modelCalls": 0,
+    "providerCalls": 0,
+    "predictionFreezeUnchanged": true,
+    "catalogUnchanged": true,
+    "parentEdgesUnchanged": true,
+    "metricsUnchanged": true
+  },
+  "s0005RootForensic": {
+    "targetSemanticNodeId": "SN-aca084dc03ba6e31",
+    "targetSourceOccurrences": [
+      "S0005"
+    ],
+    "targetCanonicalText": "NGH\u1ECA \u0110\u1ECANH",
+    "goldParentKind": "ROOT",
+    "classification": "MODEL_WRONG_ROOT_DECISION",
+    "request": {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "candidateSemanticNodeIds": [
+        "SN-d53681cb67def23d"
+      ],
+      "candidateRendering": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        }
+      ],
+      "rootAllowed": true,
+      "unresolvedAllowed": true,
+      "rootInstructionPresent": true,
+      "rootInstructionEvidence": "Use ROOT only when the node is structurally root. Use UNRESOLVED when evidence is insufficient; never use ROOT merely because a candidate is hard to choose.",
+      "responseSchemaDecisions": [
+        "SELECT_PARENT",
+        "ROOT",
+        "UNRESOLVED"
+      ],
+      "rootIsNotFakeCandidate": true,
+      "candidateSelectionBiasRisk": true,
+      "candidateSelectionBiasReason": "The request renders preceding semantic nodes as candidates but has no explicit root affordance field; ROOT appears only in prompt/schema semantics.",
+      "predecessorVsSemanticParentDistinguished": "Prompt says semantic parent and the candidate universe is preceding nodes, but the request does not render an explicit distinction or a root sentinel."
+    },
+    "frozenDecision": {
+      "kind": "SELECT_PARENT",
+      "selectedSemanticNodeId": "SN-d53681cb67def23d",
+      "rawResponse": "{\n  \u0022catalogFingerprint\u0022: \u00225948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e\u0022,\n  \u0022childSemanticNodeId\u0022: \u0022SN-aca084dc03ba6e31\u0022,\n  \u0022decision\u0022: \u0022SELECT_PARENT\u0022,\n  \u0022parentSemanticNodeId\u0022: \u0022SN-d53681cb67def23d\u0022\n}"
+    },
+    "downstream": {
+      "validatorAccepted": true,
+      "validatorChangedDecision": false,
+      "treeChangedDecision": false,
+      "selectedParentWasInCandidates": true,
+      "selectedParentIsExcludedMasthead": true
+    },
+    "conclusion": {
+      "primaryCause": "MODEL_WRONG_ROOT_DECISION",
+      "candidateMissing": false,
+      "validatorEffect": false,
+      "downstreamSystemLoss": false,
+      "contractContextRisks": [
+        "ROOT_CONTRACT_PRESENT_BUT_NOT_RENDERED_AS_A_FIRST_CLASS_REQUEST_AFFORDANCE",
+        "ROOT_VS_MASTHEAD_AMBIGUITY"
+      ],
+      "evidenceLimit": "Frozen artifacts establish the contract/context risk and model decision boundary; they do not prove whether prompt framing alone or model reasoning caused the choice."
+    }
+  },
+  "s0014S0015SemanticIdentityForensic": {
+    "occurrences": [
+      {
+        "sourceAlias": "S0014",
+        "sourceOrder": 17,
+        "canonicalText": "Ch\u01B0\u01A1ng I"
+      },
+      {
+        "sourceAlias": "S0015",
+        "sourceOrder": 18,
+        "canonicalText": "QUY \u0110\u1ECANH CHUNG"
+      }
+    ],
+    "productionNodeIds": [
+      "SN-fa3e46e19d6d0375",
+      "SN-2ddcbcfd14c02240"
+    ],
+    "acceptedIdentityRelations": [],
+    "parserOwnedEvidenceObservedInFrozenCatalog": {
+      "sourceOrderAndAdjacency": "Observed: consecutive sourceOrder values 17 and 18.",
+      "text": "Observed: two source-owned canonical texts are persisted.",
+      "normalizedText": "Not persisted as an accepted identity relation.",
+      "styleLayoutParagraphProperties": "Not persisted in the frozen semantic catalog/request for this benchmark.",
+      "parserRelationEvidence": "None accepted; acceptedIdentityRelations is an empty array."
+    },
+    "parserEvidenceImpliesMerge": false,
+    "resolverMissedExistingEvidence": false,
+    "resolverMissedExistingEvidenceStatus": "UNSUPPORTED_BY_FROZEN_ARTIFACTS",
+    "classification": "EVIDENCE_REQUIRES_SEMANTIC_INFERENCE",
+    "productionCatalogMutated": false,
+    "inferenceBoundary": "v3 validates explicit identity relation proposals but does not infer SAME_SEMANTIC_REPEAT or CONTINUATION_OF from adjacency, style, layout, or text alone.",
+    "conclusion": "No heuristic merge is authorized. S0014/S0015 remain two production nodes until an independent parser-evidence or model-inference relation is proposed and fail-closed validation accepts it."
+  },
+  "semanticIdentityInferenceContract": {
+    "version": "semantic-identity-inference-contract-v1-design-only",
+    "productionInferenceRun": false,
+    "allowedRelations": [
+      "SAME_SEMANTIC_REPEAT",
+      "CONTINUATION_OF",
+      "DISTINCT",
+      "UNRESOLVED"
+    ],
+    "input": [
+      "source occurrence IDs",
+      "source text",
+      "normalized text",
+      "document order",
+      "bounded local context",
+      "style/layout evidence",
+      "parser structural evidence",
+      "document boundaries",
+      "accepted deterministic relations",
+      "source snapshot hash",
+      "semantic catalog fingerprint"
+    ],
+    "forbidden": [
+      "Gold semantic node IDs",
+      "Gold alias mapping",
+      "Gold parent",
+      "Gold level",
+      "Structural Gold",
+      "legacy hierarchy hints",
+      "old Eval hierarchy"
+    ],
+    "output": [
+      "leftOccurrenceId",
+      "rightOccurrenceId",
+      "relation",
+      "evidence/provenance"
+    ],
+    "validatorMustReject": [
+      "unknown occurrence",
+      "self relation",
+      "cross-document relation",
+      "source snapshot mismatch",
+      "invalid evidence hash",
+      "multiple incompatible continuation parents",
+      "cycle",
+      "conflicting SAME/DISTINCT relations",
+      "fabricated occurrence ID",
+      "Gold-derived provenance",
+      "legacy-derived provenance"
+    ],
+    "unresolvedPolicy": "KEEP_SPLIT_NO_HEURISTIC_FALLBACK",
+    "transitivityPolicy": "A~B and B~C do not fabricate A~C; accepted explicit edges remain provenance when a validated component collapse is used.",
+    "provenanceFields": [
+      "relationId",
+      "relationType",
+      "leftOccurrenceId",
+      "rightOccurrenceId",
+      "sourceSnapshotIdentity",
+      "inputEvidenceHash",
+      "inferenceContractVersion",
+      "inferenceSource",
+      "acceptedByValidator",
+      "rejectionReason",
+      "goldUsed",
+      "model/provider identity when live",
+      "frozen request/response hashes when live"
+    ]
+  },
+  "authoritativeBenchmark": {
+    "parent": {
+      "tp": 8,
+      "fp": 3,
+      "fn": 1,
+      "f1": 0.8
+    },
+    "conditionalExactMembership": {
+      "tp": 8,
+      "fp": 1,
+      "fn": 0,
+      "f1": 0.9411764705882353
+    },
+    "level": {
+      "exact": 4,
+      "evaluated": 11,
+      "mismatches": 7,
+      "ancestorCascades": 5
+    }
+  }
+}
