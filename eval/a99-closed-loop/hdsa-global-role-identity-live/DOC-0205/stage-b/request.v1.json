@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "a99-hdsa-global-hierarchy-after-normalization-request-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "catalogFingerprint": "d0c2e0f1f3038e4702ddf0a204b2a9bb5ab5e21789befbd4da54924133f3dcbf",
+    "nodes": [
+      {
+        "semanticNodeId": "GN-01a6c831ee9c6490",
+        "memberOccurrenceIds": [
+          "S0001"
+        ],
+        "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+        "documentOrder": 0,
+        "localContext": "structuralRole=DOCUMENT_FRAMING; outlineBearing=False",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-d53681cb67def23d"
+      },
+      {
+        "semanticNodeId": "GN-300778cdb4be61b6",
+        "memberOccurrenceIds": [
+          "S0005"
+        ],
+        "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+        "documentOrder": 6,
+        "localContext": "structuralRole=OUTLINE_ROOT; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-aca084dc03ba6e31"
+      },
+      {
+        "semanticNodeId": "GN-95fd693a6afe8e40",
+        "memberOccurrenceIds": [
+          "S0014"
+        ],
+        "canonicalText": "Ch\u01B0\u01A1ng I",
+        "documentOrder": 17,
+        "localContext": "structuralRole=OUTLINE_HEADING; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-fa3e46e19d6d0375"
+      },
+      {
+        "semanticNodeId": "GN-ac58adc6db475819",
+        "memberOccurrenceIds": [
+          "S0015"
+        ],
+        "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+        "documentOrder": 18,
+        "localContext": "structuralRole=SECTION_HEADING; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-2ddcbcfd14c02240"
+      },
+      {
+        "semanticNodeId": "GN-74bcc5c3dda2ad0c",
+        "memberOccurrenceIds": [
+          "S0016"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "documentOrder": 20,
+        "localContext": "structuralRole=CONTENT_LABEL; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-a34a97ca83b456e6"
+      },
+      {
+        "semanticNodeId": "GN-cab2fecc3902fca8",
+        "memberOccurrenceIds": [
+          "S0019"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "documentOrder": 23,
+        "localContext": "structuralRole=CONTENT_LABEL; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-ad0f647090b35dae"
+      },
+      {
+        "semanticNodeId": "GN-fd4fee23b11ce6fa",
+        "memberOccurrenceIds": [
+          "S0021"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "documentOrder": 25,
+        "localContext": "structuralRole=CONTENT_LABEL; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-2a07dbe2240718e3"
+      },
+      {
+        "semanticNodeId": "GN-a1b62785438f6690",
+        "memberOccurrenceIds": [
+          "S0033"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "documentOrder": 37,
+        "localContext": "structuralRole=CONTENT_LABEL; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-1767abb75196945e"
+      },
+      {
+        "semanticNodeId": "GN-f3ec7bfe99457af0",
+        "memberOccurrenceIds": [
+          "S0035"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "documentOrder": 39,
+        "localContext": "structuralRole=CONTENT_LABEL; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-35572ea4edd05ce3"
+      },
+      {
+        "semanticNodeId": "GN-8fa903f445b28cba",
+        "memberOccurrenceIds": [
+          "S0044"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "documentOrder": 48,
+        "localContext": "structuralRole=CONTENT_LABEL; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-7e35948f55ab193e"
+      },
+      {
+        "semanticNodeId": "GN-9213e9709d40d0ef",
+        "memberOccurrenceIds": [
+          "S0052"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "documentOrder": 56,
+        "localContext": "structuralRole=CONTENT_LABEL; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-04a6519cc7d08d60"
+      },
+      {
+        "semanticNodeId": "GN-ec3b8359c90f3485",
+        "memberOccurrenceIds": [
+          "S0060"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "documentOrder": 64,
+        "localContext": "structuralRole=CONTENT_LABEL; outlineBearing=True",
+        "styleLayoutEvidence": "parser-owned style/layout evidence unavailable in frozen catalog",
+        "containerEvidence": "members=SN-9a8cf82ed4783b6d"
+      }
+    ],
+    "acceptedIdentityRelations": [],
+    "goldDerivedInput": false
+  },
+  "requestSha256": "0e87c1f04c6941a7560bc66f8f34b4098812308c5f9fb65ef2027af4f8eb28b6",
+  "normalizedCatalogFingerprint": "d0c2e0f1f3038e4702ddf0a204b2a9bb5ab5e21789befbd4da54924133f3dcbf",
+  "stageAFreeze": "stage-a/freeze.v1.json",
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}

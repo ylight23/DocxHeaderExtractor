@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "a99-hdsa-global-role-identity-decision-v1",
+  "documentId": "DOC-0205",
+  "stageA": {
+    "requestSha256": "027609e0b5c45c148c2cb3d691fc9e6c7b47d9ffc5a541b7393cdbba97746740",
+    "responseSha256": "b6f7f1e9550e70f8239baff53b6c843e1a1540d4baf96a1d99c8530387462067",
+    "validated": true,
+    "documentFramingS0001": true,
+    "outlineRootS0005": true,
+    "sameIdentityS0014S0015": false,
+    "identityGroupCount": 12,
+    "hypothesisH1": "PASS",
+    "hypothesisH2": "FAIL"
+  },
+  "stageB": {
+    "executed": true,
+    "authorizedByStageA": false,
+    "classification": "EXPLORATORY_NOT_AUTHORIZED_AFTER_H2_FAILURE",
+    "requestSha256": "0e87c1f04c6941a7560bc66f8f34b4098812308c5f9fb65ef2027af4f8eb28b6",
+    "responseSha256": "151f906edfe8bd11b1d0d553e39495bcb6fe2868d76f5100211ef277e4fbefb4",
+    "parentF1": 0.9473684210526316,
+    "treeValid": true,
+    "derivedLevelExact": "2/11",
+    "s0005Parent": "ROOT",
+    "causalClaimAllowed": false
+  },
+  "providerCalls": 2,
+  "goldReadBeforeFreeze": false,
+  "promotionDecision": "DO_NOT_PROMOTE_TWO_STAGE_HYPOTHESIS",
+  "nextEvidenceBackedStep": "repair_or_retest_stage_a_identity_grouping_without_using_gold"
+}

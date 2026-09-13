@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "a99-hdsa-global-hierarchy-after-normalization-prediction-v1",
+  "documentId": "DOC-0205",
+  "requestSha256": "0e87c1f04c6941a7560bc66f8f34b4098812308c5f9fb65ef2027af4f8eb28b6",
+  "responseSha256": "151f906edfe8bd11b1d0d553e39495bcb6fe2868d76f5100211ef277e4fbefb4",
+  "proposal": {
+    "nodes": [
+      {
+        "nodeId": "GN-01a6c831ee9c6490",
+        "parent": "ROOT",
+        "proposedLevel": 1,
+        "confidence": "high",
+        "reason": "DOCUMENT_FRAMING node at start of document, likely title or main header."
+      },
+      {
+        "nodeId": "GN-300778cdb4be61b6",
+        "parent": "ROOT",
+        "proposedLevel": 1,
+        "confidence": "high",
+        "reason": "OUTLINE_ROOT indicates this is the primary semantic root of the content structure."
+      },
+      {
+        "nodeId": "GN-95fd693a6afe8e40",
+        "parent": "GN-300778cdb4be61b6",
+        "proposedLevel": 2,
+        "confidence": "high",
+        "reason": "Chapter heading (Ch\u01B0\u01A1ng I) logically follows the Outline Root and precedes sections."
+      },
+      {
+        "nodeId": "GN-ac58adc6db475819",
+        "parent": "GN-95fd693a6afe8e40",
+        "proposedLevel": 3,
+        "confidence": "high",
+        "reason": "Section heading (QUY \u0110\u1ECANH CHUNG) is a child of Chapter I."
+      },
+      {
+        "nodeId": "GN-74bcc5c3dda2ad0c",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 1 is a content label within the General Provisions section."
+      },
+      {
+        "nodeId": "GN-cab2fecc3902fca8",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 2 is a sibling to Article 1 within the same section."
+      },
+      {
+        "nodeId": "GN-fd4fee23b11ce6fa",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 3 is a sibling to Articles 1 and 2 within the same section."
+      },
+      {
+        "nodeId": "GN-a1b62785438f6690",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 4 is a sibling to previous articles within the same section."
+      },
+      {
+        "nodeId": "GN-f3ec7bfe99457af0",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 5 is a sibling to previous articles within the same section."
+      },
+      {
+        "nodeId": "GN-8fa903f445b28cba",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 6 is a sibling to previous articles within the same section."
+      },
+      {
+        "nodeId": "GN-9213e9709d40d0ef",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 7 is a sibling to previous articles within the same section."
+      },
+      {
+        "nodeId": "GN-ec3b8359c90f3485",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 8 is a sibling to previous articles within the same section."
+      }
+    ]
+  },
+  "parseError": null,
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "parentRelations": [
+      {
+        "from": "GN-300778cdb4be61b6",
+        "to": "GN-95fd693a6afe8e40",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "GN-95fd693a6afe8e40",
+        "to": "GN-ac58adc6db475819",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "GN-ac58adc6db475819",
+        "to": "GN-74bcc5c3dda2ad0c",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "GN-ac58adc6db475819",
+        "to": "GN-cab2fecc3902fca8",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "GN-ac58adc6db475819",
+        "to": "GN-fd4fee23b11ce6fa",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "GN-ac58adc6db475819",
+        "to": "GN-a1b62785438f6690",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "GN-ac58adc6db475819",
+        "to": "GN-f3ec7bfe99457af0",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "GN-ac58adc6db475819",
+        "to": "GN-8fa903f445b28cba",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "GN-ac58adc6db475819",
+        "to": "GN-9213e9709d40d0ef",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "GN-ac58adc6db475819",
+        "to": "GN-ec3b8359c90f3485",
+        "relation": "PARENT_OF"
+      }
+    ],
+    "graphValidation": {
+      "acceptedRelations": [
+        {
+          "from": "GN-300778cdb4be61b6",
+          "to": "GN-95fd693a6afe8e40",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "GN-95fd693a6afe8e40",
+          "to": "GN-ac58adc6db475819",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "GN-ac58adc6db475819",
+          "to": "GN-74bcc5c3dda2ad0c",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "GN-ac58adc6db475819",
+          "to": "GN-8fa903f445b28cba",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "GN-ac58adc6db475819",
+          "to": "GN-9213e9709d40d0ef",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "GN-ac58adc6db475819",
+          "to": "GN-a1b62785438f6690",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "GN-ac58adc6db475819",
+          "to": "GN-cab2fecc3902fca8",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "GN-ac58adc6db475819",
+          "to": "GN-ec3b8359c90f3485",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "GN-ac58adc6db475819",
+          "to": "GN-f3ec7bfe99457af0",
+          "relation": "PARENT_OF"
+        },
+        {
+          "from": "GN-ac58adc6db475819",
+          "to": "GN-fd4fee23b11ce6fa",
+          "relation": "PARENT_OF"
+        }
+      ],
+      "rejectedRelations": [],
+      "errors": [],
+      "isValid": true
+    },
+    "tree": {
+      "nodes": [
+        {
+          "id": "GN-01a6c831ee9c6490",
+          "parentId": null,
+          "level": 1
+        },
+        {
+          "id": "GN-300778cdb4be61b6",
+          "parentId": null,
+          "level": 1
+        },
+        {
+          "id": "GN-95fd693a6afe8e40",
+          "parentId": "GN-300778cdb4be61b6",
+          "level": 2
+        },
+        {
+          "id": "GN-ac58adc6db475819",
+          "parentId": "GN-95fd693a6afe8e40",
+          "level": 3
+        },
+        {
+          "id": "GN-74bcc5c3dda2ad0c",
+          "parentId": "GN-ac58adc6db475819",
+          "level": 4
+        },
+        {
+          "id": "GN-cab2fecc3902fca8",
+          "parentId": "GN-ac58adc6db475819",
+          "level": 4
+        },
+        {
+          "id": "GN-fd4fee23b11ce6fa",
+          "parentId": "GN-ac58adc6db475819",
+          "level": 4
+        },
+        {
+          "id": "GN-a1b62785438f6690",
+          "parentId": "GN-ac58adc6db475819",
+          "level": 4
+        },
+        {
+          "id": "GN-f3ec7bfe99457af0",
+          "parentId": "GN-ac58adc6db475819",
+          "level": 4
+        },
+        {
+          "id": "GN-8fa903f445b28cba",
+          "parentId": "GN-ac58adc6db475819",
+          "level": 4
+        },
+        {
+          "id": "GN-9213e9709d40d0ef",
+          "parentId": "GN-ac58adc6db475819",
+          "level": 4
+        },
+        {
+          "id": "GN-ec3b8359c90f3485",
+          "parentId": "GN-ac58adc6db475819",
+          "level": 4
+        }
+      ],
+      "errors": [],
+      "isValid": true
+    },
+    "normalizedNodes": [
+      {
+        "nodeId": "GN-01a6c831ee9c6490",
+        "parent": "ROOT",
+        "proposedLevel": 1,
+        "confidence": "high",
+        "reason": "DOCUMENT_FRAMING node at start of document, likely title or main header."
+      },
+      {
+        "nodeId": "GN-300778cdb4be61b6",
+        "parent": "ROOT",
+        "proposedLevel": 1,
+        "confidence": "high",
+        "reason": "OUTLINE_ROOT indicates this is the primary semantic root of the content structure."
+      },
+      {
+        "nodeId": "GN-95fd693a6afe8e40",
+        "parent": "GN-300778cdb4be61b6",
+        "proposedLevel": 2,
+        "confidence": "high",
+        "reason": "Chapter heading (Ch\u01B0\u01A1ng I) logically follows the Outline Root and precedes sections."
+      },
+      {
+        "nodeId": "GN-ac58adc6db475819",
+        "parent": "GN-95fd693a6afe8e40",
+        "proposedLevel": 3,
+        "confidence": "high",
+        "reason": "Section heading (QUY \u0110\u1ECANH CHUNG) is a child of Chapter I."
+      },
+      {
+        "nodeId": "GN-74bcc5c3dda2ad0c",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 1 is a content label within the General Provisions section."
+      },
+      {
+        "nodeId": "GN-cab2fecc3902fca8",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 2 is a sibling to Article 1 within the same section."
+      },
+      {
+        "nodeId": "GN-fd4fee23b11ce6fa",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 3 is a sibling to Articles 1 and 2 within the same section."
+      },
+      {
+        "nodeId": "GN-a1b62785438f6690",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 4 is a sibling to previous articles within the same section."
+      },
+      {
+        "nodeId": "GN-f3ec7bfe99457af0",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 5 is a sibling to previous articles within the same section."
+      },
+      {
+        "nodeId": "GN-8fa903f445b28cba",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 6 is a sibling to previous articles within the same section."
+      },
+      {
+        "nodeId": "GN-9213e9709d40d0ef",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 7 is a sibling to previous articles within the same section."
+      },
+      {
+        "nodeId": "GN-ec3b8359c90f3485",
+        "parent": "GN-ac58adc6db475819",
+        "proposedLevel": 4,
+        "confidence": "high",
+        "reason": "Article 8 is a sibling to previous articles within the same section."
+      }
+    ]
+  },
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false,
+  "globalDecoderUsed": false
+}

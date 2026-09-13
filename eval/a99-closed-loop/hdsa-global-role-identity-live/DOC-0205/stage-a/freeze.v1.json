@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-hdsa-global-normalization-freeze-v1",
+  "documentId": "DOC-0205",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "requestSha256": "027609e0b5c45c148c2cb3d691fc9e6c7b47d9ffc5a541b7393cdbba97746740",
+  "responseSha256": "b6f7f1e9550e70f8239baff53b6c843e1a1540d4baf96a1d99c8530387462067",
+  "predictionSha256": "5259a64a58ddf5ff68ea4c7e261a749cd96c73a377bc52ace3053103aa443271",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "finishReason": "stop",
+  "inputTokens": 2262,
+  "reasoningTokens": 2710,
+  "outputTokens": 3900,
+  "elapsedMs": 36157,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "frozenBeforeGold": true
+}

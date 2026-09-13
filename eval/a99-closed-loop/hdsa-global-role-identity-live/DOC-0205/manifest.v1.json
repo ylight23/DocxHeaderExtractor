@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-hdsa-global-role-identity-live-manifest-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "catalogNodeCount": 12,
+  "stageARequestSha256": "027609e0b5c45c148c2cb3d691fc9e6c7b47d9ffc5a541b7393cdbba97746740",
+  "stageASchemaSha256": "1851c7b79cc519b4e9481ceeeece0af12b45170aa930aee423ed8d7e21cbbeb5",
+  "stageBSchemaSha256": "2f2e76daef44c9e7f3c67ba5c98c3e0518675d1b195f00bec82f6418de0a9b49",
+  "candidateGeneration": "NONE_ALL_FROZEN_CATALOG_NODES",
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false,
+  "globalDecoderUsed": false,
+  "modelFallback": "NONE",
+  "transientRequestRetries": 0,
+  "causalDelta": "GLOBAL_ROLE_AND_IDENTITY_NORMALIZATION_BEFORE_GLOBAL_HIERARCHY"
+}

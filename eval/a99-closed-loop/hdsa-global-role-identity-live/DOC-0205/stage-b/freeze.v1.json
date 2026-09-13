@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-hdsa-global-hierarchy-after-normalization-freeze-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "normalizedCatalogFingerprint": "d0c2e0f1f3038e4702ddf0a204b2a9bb5ab5e21789befbd4da54924133f3dcbf",
+  "requestSha256": "0e87c1f04c6941a7560bc66f8f34b4098812308c5f9fb65ef2027af4f8eb28b6",
+  "responseSha256": "151f906edfe8bd11b1d0d553e39495bcb6fe2868d76f5100211ef277e4fbefb4",
+  "predictionSha256": "cc77a8caa8c203b4a5f537dfaf938426fd7e29da850fc0d48aca0cb7ae3a3fc4",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "finishReason": "stop",
+  "inputTokens": 2358,
+  "reasoningTokens": 5020,
+  "outputTokens": 6155,
+  "elapsedMs": 52118,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "frozenBeforeGold": true
+}
