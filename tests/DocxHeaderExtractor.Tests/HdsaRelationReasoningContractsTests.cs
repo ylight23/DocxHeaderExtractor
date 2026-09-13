@@ -227,4 +227,67 @@ public sealed class HdsaRelationReasoningContractsTests
         Assert.Equal(cleanResult.ResolverVersion, poisonedResult.ResolverVersion);
         Assert.False(poisonedResult.GoldUsed);
     }
+
+    [Fact]
+    public void Semantic_node_resolver_v2_merges_only_adjacent_exact_safe_equivalence()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [
+                new("S0002", 2, "  Results\t", "heading-2", "section-a"),
+                new("S0001", 1, "Results", "heading-2", "section-a"),
+                new("S0003", 3, "Results", "heading-2", "section-b"),
+            ]);
+
+        var result = HdsaSemanticNodeResolverV2.Resolve(input);
+
+        Assert.Equal("exact-safe-equivalence-v2", result.ResolverVersion);
+        Assert.Equal(2, result.Predictions.Count);
+        Assert.Equal(["S0001", "S0002"], result.Predictions[0].MemberOccurrenceIds);
+        Assert.Equal("Results", result.Predictions[0].CanonicalText);
+        Assert.Equal("NORMALIZED_TEXT+ADJACENT+EXACT_STYLE+EXACT_LAYOUT", result.Predictions[0].MergeEvidence);
+        Assert.Equal(["S0003"], result.Predictions[1].MemberOccurrenceIds);
+        Assert.Equal("IDENTITY_ONLY_NO_SAFE_MERGE", result.Predictions[1].MergeEvidence);
+        Assert.False(result.GoldUsed);
+    }
+
+    [Fact]
+    public void Semantic_node_resolver_v2_keeps_weak_or_nonadjacent_matches_split()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [
+                new("S0001", 1, "Results", "heading-2", "section-a"),
+                new("S0002", 3, "Results", "heading-2", "section-a"),
+                new("S0003", 4, "Results", "heading-2", null),
+                new("S0004", 5, "Results", null, "section-a"),
+            ]);
+
+        var result = HdsaSemanticNodeResolverV2.Resolve(input);
+
+        Assert.Equal(4, result.Predictions.Count);
+        Assert.All(result.Predictions, item => Assert.Single(item.MemberOccurrenceIds));
+        Assert.All(result.Predictions, item => Assert.Equal("IDENTITY_ONLY_NO_SAFE_MERGE", item.MergeEvidence));
+    }
+
+    [Fact]
+    public void Semantic_node_resolver_v2_rejects_gold_and_ignores_poison_hints()
+    {
+        var clean = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [new("S0001", 1, "Results", "heading-2", "section-a")]);
+        var poisoned = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [new("S0001", 1, "Results", "heading-2", "section-a", ["level:99", "parent-node:BAD_PARENT"])]);
+
+        var cleanResult = HdsaSemanticNodeResolverV2.Resolve(clean);
+        var poisonedResult = HdsaSemanticNodeResolverV2.Resolve(poisoned);
+
+        Assert.Equal(cleanResult.Predictions[0].PredictedSemanticNodeId, poisonedResult.Predictions[0].PredictedSemanticNodeId);
+        Assert.Equal(cleanResult.Predictions[0].MemberOccurrenceIds, poisonedResult.Predictions[0].MemberOccurrenceIds);
+        Assert.Equal(cleanResult.Predictions[0].CanonicalText, poisonedResult.Predictions[0].CanonicalText);
+        Assert.Equal(cleanResult.Predictions[0].MergeEvidence, poisonedResult.Predictions[0].MergeEvidence);
+        Assert.Throws<InvalidOperationException>(() => HdsaSemanticNodeResolverV2.Resolve(
+            new HdsaSemanticNodeResolutionInput("source-sha", "snapshot", [], true)));
+    }
 }
