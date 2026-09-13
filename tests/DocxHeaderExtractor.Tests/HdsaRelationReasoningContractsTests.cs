@@ -290,4 +290,91 @@ public sealed class HdsaRelationReasoningContractsTests
         Assert.Throws<InvalidOperationException>(() => HdsaSemanticNodeResolverV2.Resolve(
             new HdsaSemanticNodeResolutionInput("source-sha", "snapshot", [], true)));
     }
+
+    [Fact]
+    public void Semantic_node_resolver_v3_requires_explicit_relation_evidence_and_keeps_relation_types_distinct()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [
+                new("S0001", 1, "Results", "heading-2", "section-a"),
+                new("S0002", 4, " Results ", "heading-2", "section-a"),
+                new("S0003", 5, "Results continued", "heading-2", "section-a"),
+                new("S0004", 6, "Results", "heading-2", "section-b"),
+            ]);
+        var relations = new HdsaSemanticIdentityRelationProposal[]
+        {
+            new("S0002", "S0001", HdsaSemanticIdentityRelationType.SameSemanticRepeat, "e-repeat", true),
+            new("S0003", "S0002", HdsaSemanticIdentityRelationType.ContinuationOf, "e-continuation", true),
+        };
+
+        var result = HdsaSemanticNodeResolverV3.Resolve(input, relations);
+
+        Assert.True(result.IsValid);
+        Assert.Equal("repeat-continuation-evidence-v3", result.ResolverVersion);
+        Assert.Equal(2, result.Predictions.Count);
+        Assert.Equal(["S0001", "S0002", "S0003"], result.Predictions[0].MemberOccurrenceIds);
+        Assert.Equal("EXPLICIT_RELATIONS:CONTINUATION_OF,SAME_SEMANTIC_REPEAT", result.Predictions[0].MergeEvidence);
+        Assert.Equal(["S0004"], result.Predictions[1].MemberOccurrenceIds);
+        Assert.Equal(2, result.AcceptedRelations.Count);
+        Assert.Contains(result.AcceptedRelations, item => item.Relation == HdsaSemanticIdentityRelationType.SameSemanticRepeat);
+        Assert.Contains(result.AcceptedRelations, item => item.Relation == HdsaSemanticIdentityRelationType.ContinuationOf);
+    }
+
+    [Fact]
+    public void Semantic_node_resolver_v3_does_not_infer_distant_repeat_or_merge_from_weak_evidence()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [
+                new("S0001", 1, "Results", "heading-2", "section-a"),
+                new("S0002", 4, "Results", "heading-2", "section-a"),
+                new("S0003", 5, "Results continued", "heading-2", "section-a"),
+            ]);
+        var relations = new HdsaSemanticIdentityRelationProposal[]
+        {
+            new("S0002", "S0001", HdsaSemanticIdentityRelationType.SameSemanticRepeat, null, true),
+            new("S0003", "S0002", HdsaSemanticIdentityRelationType.ContinuationOf, "adjacency-only", false),
+        };
+
+        var result = HdsaSemanticNodeResolverV3.Resolve(input, relations);
+
+        Assert.Equal(3, result.Predictions.Count);
+        Assert.Empty(result.AcceptedRelations);
+        Assert.False(result.IsValid);
+        Assert.Contains(result.RejectedRelations, item => item.Reason == "MISSING_PARSER_EVIDENCE");
+        Assert.Contains(result.RejectedRelations, item => item.Reason == "INCOMPATIBLE_STRUCTURAL_BOUNDARY");
+    }
+
+    [Fact]
+    public void Semantic_node_resolver_v3_rejects_multiple_continuation_parents_and_cycles()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [
+                new("S0001", 1, "A"),
+                new("S0002", 2, "B"),
+                new("S0003", 3, "C"),
+            ]);
+        var conflicting = new HdsaSemanticIdentityRelationProposal[]
+        {
+            new("S0003", "S0002", HdsaSemanticIdentityRelationType.ContinuationOf, "e1", true),
+            new("S0003", "S0001", HdsaSemanticIdentityRelationType.ContinuationOf, "e2", true),
+        };
+        var cyclic = new HdsaSemanticIdentityRelationProposal[]
+        {
+            new("S0002", "S0001", HdsaSemanticIdentityRelationType.ContinuationOf, "e1", true),
+            new("S0003", "S0002", HdsaSemanticIdentityRelationType.ContinuationOf, "e2", true),
+            new("S0001", "S0003", HdsaSemanticIdentityRelationType.ContinuationOf, "e3", true),
+        };
+
+        var conflictResult = HdsaSemanticNodeResolverV3.Resolve(input, conflicting);
+        var cycleResult = HdsaSemanticNodeResolverV3.Resolve(input, cyclic);
+
+        Assert.Empty(conflictResult.AcceptedRelations);
+        Assert.Contains(conflictResult.Errors, error => error == "MULTIPLE_CONTINUATION_PARENTS");
+        Assert.Empty(cycleResult.AcceptedRelations);
+        Assert.Contains(cycleResult.Errors, error => error == "CONTINUATION_CYCLE");
+        Assert.Equal(3, cycleResult.Predictions.Count);
+    }
 }
