@@ -316,19 +316,53 @@ public static class HdsaSemanticNodeResolverV4
         RejectIdentityConflicts(acceptedIdentity, records, errors);
         RejectContinuationCycles(acceptedIdentity, records, errors);
 
-        var union = new DisjointSet(input.Occurrences.Select(item => item.OccurrenceId));
+        // Apply accepted relations through the merge-isolation contract. This is deliberately a
+        // local projection: unrelated component IDs and their source order are never rebuilt just
+        // because one semantic component is collapsed.
+        var occurrenceById = input.Occurrences.ToDictionary(item => item.OccurrenceId, StringComparer.Ordinal);
+        var isolatedComponents = input.Occurrences
+            .OrderBy(item => item.DocumentOrder)
+            .ThenBy(item => item.OccurrenceId, StringComparer.Ordinal)
+            .Select(item => new HdsaSemanticCatalogComponent(
+                HdsaSemanticMergeIsolation.StableMergedNodeId([item.OccurrenceId]),
+                [item.OccurrenceId], item.Text, item.DocumentOrder))
+            .ToList();
+        var isolatedRelations = new List<HdsaSemanticIdentityRelation>();
         foreach (var relation in acceptedIdentity)
-            union.Union(relation.FromOccurrenceId, relation.ToOccurrenceId);
-
-        var predictions = input.Occurrences
-            .GroupBy(item => union.Find(item.OccurrenceId), StringComparer.Ordinal)
-            .Select(group => group.OrderBy(item => item.DocumentOrder).ThenBy(item => item.OccurrenceId, StringComparer.Ordinal).ToArray())
-            .OrderBy(group => group[0].DocumentOrder)
-            .ThenBy(group => group[0].OccurrenceId, StringComparer.Ordinal)
-            .Select(group =>
+        {
+            var left = isolatedComponents.Single(component => component.MemberOccurrenceIds.Contains(relation.FromOccurrenceId, StringComparer.Ordinal));
+            var right = isolatedComponents.Single(component => component.MemberOccurrenceIds.Contains(relation.ToOccurrenceId, StringComparer.Ordinal));
+            if (string.Equals(left.SemanticNodeId, right.SemanticNodeId, StringComparison.Ordinal))
             {
-                var members = group.Select(item => item.OccurrenceId).ToArray();
-                var nodeId = "SN-" + Sha256(Encoding.UTF8.GetBytes(string.Join('\u001f', members)))[..16];
+                isolatedRelations.Add(relation);
+                continue;
+            }
+
+            var mergedNodeId = HdsaSemanticMergeIsolation.StableMergedNodeId(
+                left.MemberOccurrenceIds.Concat(right.MemberOccurrenceIds));
+            var projection = HdsaSemanticMergeIsolation.Apply(isolatedComponents,
+                new HdsaSemanticMergeOperation(mergedNodeId, [left.SemanticNodeId, right.SemanticNodeId], "MODEL_ACCEPTED"));
+            if (!projection.IsValid)
+            {
+                errors.UnionWith(projection.Errors.Select(error => "MERGE_ISOLATION_" + error));
+                continue;
+            }
+            isolatedComponents = projection.Components.ToList();
+            isolatedRelations.Add(relation);
+        }
+
+        acceptedIdentity = isolatedRelations;
+        var predictions = isolatedComponents
+            .OrderBy(component => component.SourceOrder)
+            .ThenBy(component => component.SemanticNodeId, StringComparer.Ordinal)
+            .Select(component =>
+            {
+                var members = component.MemberOccurrenceIds.ToArray();
+                var canonicalOccurrence = members
+                    .Select(member => occurrenceById[member])
+                    .OrderBy(item => item.DocumentOrder)
+                    .ThenBy(item => item.OccurrenceId, StringComparer.Ordinal)
+                    .First();
                 var relationNames = acceptedIdentity
                     .Where(item => members.Contains(item.FromOccurrenceId, StringComparer.Ordinal) && members.Contains(item.ToOccurrenceId, StringComparer.Ordinal))
                     .Select(item => item.Relation == HdsaSemanticIdentityRelationType.SameSemanticRepeat ? "SAME_SEMANTIC_REPEAT" : "CONTINUATION_OF")
@@ -337,7 +371,7 @@ public static class HdsaSemanticNodeResolverV4
                 var evidence = relationNames.Any()
                     ? "EXPLICIT_RELATIONS:" + string.Join(',', relationNames)
                     : "IDENTITY_ONLY_NO_RELATION";
-                return new HdsaSemanticNodePrediction(nodeId, members, group[0].Text, evidence, Version, false);
+                return new HdsaSemanticNodePrediction(component.SemanticNodeId, members, canonicalOccurrence.Text, evidence, Version, false);
             })
             .ToArray();
 
@@ -512,23 +546,4 @@ public static class HdsaSemanticNodeResolverV4
 
     private static string Sha256(byte[] bytes) => Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
 
-    private sealed class DisjointSet
-    {
-        private readonly Dictionary<string, string> _parent;
-
-        public DisjointSet(IEnumerable<string> items) => _parent = items.ToDictionary(item => item, StringComparer.Ordinal);
-
-        public string Find(string item)
-        {
-            if (!string.Equals(_parent[item], item, StringComparison.Ordinal)) _parent[item] = Find(_parent[item]);
-            return _parent[item];
-        }
-
-        public void Union(string left, string right)
-        {
-            var leftRoot = Find(left);
-            var rightRoot = Find(right);
-            if (!string.Equals(leftRoot, rightRoot, StringComparison.Ordinal)) _parent[rightRoot] = leftRoot;
-        }
-    }
 }
