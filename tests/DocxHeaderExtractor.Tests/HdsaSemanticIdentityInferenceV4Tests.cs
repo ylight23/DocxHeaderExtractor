@@ -200,6 +200,44 @@ public sealed class HdsaSemanticIdentityInferenceV4Tests
         Assert.Equal("semantic-identity-inference-v4", firstCatalog.ResolverVersion);
     }
 
+    [Fact]
+    public void Conservative_promotion_keeps_model_positive_relation_split()
+    {
+        var input = Input(new("S1", 1, "Results"), new("S2", 4, "RESULTS"));
+        var request = HdsaSemanticNodeResolverV4.CreateRequest(input, "S1", "S2");
+
+        var result = HdsaSemanticNodeResolverV4.Resolve(input,
+            [Observation(request, HdsaSemanticIdentityInferenceDecision.SameSemanticRepeat)],
+            HdsaSemanticIdentityResolutionMode.ConservativePromotion);
+
+        Assert.True(result.IsValid);
+        Assert.Equal(2, result.Predictions.Count);
+        Assert.Empty(result.AcceptedRelations);
+    }
+
+    [Fact]
+    public void Conservative_promotion_accepts_only_parser_relation_with_safe_evidence()
+    {
+        var input = Input(new("S1", 1, "Chapter"), new("S2", 2, "continued"));
+        var request = HdsaSemanticNodeResolverV4.CreateRequest(input, "S1", "S2");
+        var parserObservation = Observation(request, HdsaSemanticIdentityInferenceDecision.ContinuationOf) with
+        {
+            InferenceSource = "PARSER",
+            Model = null,
+            Provider = null,
+            ParserEvidenceHash = "parser-evidence",
+            StructuralBoundaryCompatible = true,
+        };
+
+        var result = HdsaSemanticNodeResolverV4.Resolve(input, [parserObservation],
+            HdsaSemanticIdentityResolutionMode.ConservativePromotion);
+
+        Assert.True(result.IsValid);
+        Assert.Single(result.Predictions);
+        Assert.True(result.AcceptedRelations.Single().StructuralBoundaryCompatible);
+        Assert.Equal("parser-evidence", result.AcceptedRelations.Single().ParserEvidenceHash);
+    }
+
     private static HdsaSemanticNodeResolutionInput Input(params HdsaSemanticNodeSourceOccurrence[] occurrences) =>
         new("source-sha", "snapshot-sha", occurrences, false);
 

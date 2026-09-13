@@ -69,7 +69,8 @@ public static class HdsaSemanticMergeIsolationReplayRunner
             firstRequest.PreprocessingSnapshotHash,
             occurrences.Values.OrderBy(item => item.DocumentOrder).ThenBy(item => item.OccurrenceId, StringComparer.Ordinal).ToArray(),
             false);
-        var replay = HdsaSemanticNodeResolverV4.Resolve(input, observations);
+        var replay = HdsaSemanticNodeResolverV4.Resolve(
+            input, observations, HdsaSemanticIdentityResolutionMode.ConservativePromotion);
         var replayEntries = replay.Predictions.Select(item => new CatalogEntry(
             item.PredictedSemanticNodeId, item.MemberOccurrenceIds, item.CanonicalText,
             item.MemberOccurrenceIds.Select(id => occurrences.TryGetValue(id, out var occurrence)
@@ -87,7 +88,7 @@ public static class HdsaSemanticMergeIsolationReplayRunner
         }, StringComparer.Ordinal);
         var affectedAliases = new HashSet<string>(["S0015", "S0016"], StringComparer.Ordinal);
         var falseMerge = replayEntries.SingleOrDefault(entry => affectedAliases.IsSubsetOf(entry.Aliases));
-        if (falseMerge is null) throw new InvalidDataException("FROZEN_FALSE_MERGE_NOT_PRESERVED");
+        if (falseMerge is not null) throw new InvalidDataException("CONSERVATIVE_PROMOTION_FALSE_MERGE_NOT_REMOVED");
 
         var targets = new List<RequestImpact>();
         foreach (var v3Entry in v3Catalog.Entries.OrderBy(item => item.SourceOrder))
@@ -98,10 +99,7 @@ public static class HdsaSemanticMergeIsolationReplayRunner
             var request = requestDocument.RootElement.GetProperty("request");
             var v3Request = ReadParentRequest(request, v3Catalog);
             var projected = ProjectParentRequest(v3Request, v3ToReplay, replayEntries);
-            var dependsOnMerge = v3Entry.Aliases.Any(affectedAliases.Contains) ||
-                v3Request.CandidateIds.SelectMany(id => v3ById.TryGetValue(id, out var candidate)
-                    ? candidate.Aliases
-                    : throw new InvalidDataException("V3_CANDIDATE_NOT_IN_CATALOG:" + id)).Any(affectedAliases.Contains);
+            var dependsOnMerge = false;
             var v4Entry = oldV4Catalog.Entries.FirstOrDefault(entry => entry.Aliases.ToHashSet(StringComparer.Ordinal).SetEquals(v3Entry.Aliases));
             var oldV4Request = v4Entry is null ? null : ReadOldV4Request(Path.Combine(v4, "parent", v4Entry.Id, "prediction.v1.json"));
             targets.Add(new RequestImpact(
@@ -128,11 +126,12 @@ public static class HdsaSemanticMergeIsolationReplayRunner
 
         var artifact = new
         {
-            schemaVersion = "a99-semantic-merge-isolation-replay-v1",
-            experiment = "V4_MERGE_ISOLATION_OFFLINE_REPLAY",
+            schemaVersion = "a99-semantic-promotion-replay-v1",
+            experiment = "V4_CONSERVATIVE_PROMOTION_OFFLINE_REPLAY",
             documentId = "DOC-0205",
             incumbent = new { version = "v3", status = "FROZEN_INCUMBENT", root = V3Root },
             rejectedChallenger = new { version = "v4", status = "FROZEN_REJECTED_CHALLENGER", root = V4Root },
+            challenger = new { version = "v4.1", status = "COUNTERFACTUAL_CONSERVATIVE_PROMOTION", resolverMode = HdsaSemanticIdentityResolutionMode.ConservativePromotion.ToString() },
             execution = new
             {
                 providerCalls = 0,
@@ -141,7 +140,8 @@ public static class HdsaSemanticMergeIsolationReplayRunner
                 identityDecisionCount = identityPredictions.Length,
                 goldReadBeforeFreeze = false,
                 goldUsed = false,
-                falseMergePreserved = falseMerge.Aliases.Where(affectedAliases.Contains).Order(StringComparer.Ordinal).ToArray(),
+                falseMergePreserved = false,
+                falseMergeRemoved = affectedAliases.Order(StringComparer.Ordinal).ToArray(),
                 productionV4BehaviorModified = true,
                 liveBenchmarkRerun = false,
             },
@@ -152,6 +152,7 @@ public static class HdsaSemanticMergeIsolationReplayRunner
                 replayCatalogEntries = replayEntries.Select(ToCatalogArtifact).ToArray(),
                 errors = replay.Errors,
                 oldV4FalseMergeEntry = oldV4Catalog.Entries.FirstOrDefault(entry => affectedAliases.IsSubsetOf(entry.Aliases)) is { } oldMerge ? ToCatalogArtifact(oldMerge) : null,
+                catalogEquivalentToV3 = replayEntries.Select(CatalogSignature).SequenceEqual(v3Catalog.Entries.Select(CatalogSignature), StringComparer.Ordinal),
                 catalogProjectionEquivalentToOldV4 = replayEntries.Select(CatalogSignature).SequenceEqual(
                     oldV4Catalog.Entries.Select(CatalogSignature), StringComparer.Ordinal),
             },
@@ -178,24 +179,26 @@ public static class HdsaSemanticMergeIsolationReplayRunner
                 membershipPreservingProjection = targets.All(item => item.DependsOnMerge || item.Impact == "UNCHANGED_UNRELATED"),
                 unexpectedBlastRadius = unexpected.Length > 0,
                 falseMergeWasHidden = false,
+                modelPositiveRelationsRequirePromotion = true,
             },
             conclusion = new
             {
-                status = unexpected.Length == 0 && replayUnrelatedStable && orderStable ? "MERGE_ISOLATION_INTEGRATION_PASS" : "MERGE_ISOLATION_INTEGRATION_FAIL",
-                interpretation = "The false merge is intentionally preserved. Isolation is evaluated only by whether unrelated identities/order/request payloads remain stable; it does not convert the false merge into a correct semantic decision.",
-                nextGate = "RELATION_PROMOTION_SAFETY_BEFORE_NEW_PROVIDER_CALL",
+                status = unexpected.Length == 0 && replayUnrelatedStable && orderStable && falseMerge is null ? "CONSERVATIVE_PROMOTION_REPLAY_PASS" : "CONSERVATIVE_PROMOTION_REPLAY_FAIL",
+                interpretation = "Model-only positive identity relations remain proposed and are not promoted. The historical false merge is removed, while unrelated catalog/request topology remains stable.",
+                nextGate = "NEW_BLIND_LIVE_V4_1_BENCHMARK_AFTER_OFFLINE_GATES",
             },
         };
 
         await File.WriteAllTextAsync(Path.Combine(output, "summary.v1.json"), JsonSerializer.Serialize(artifact, JsonOptions), ct);
-        Console.WriteLine("HDSA_SEMANTIC_MERGE_ISOLATION_REPLAY_STATUS=COMPLETE");
+        Console.WriteLine("HDSA_SEMANTIC_PROMOTION_REPLAY_STATUS=COMPLETE");
         Console.WriteLine("MODEL_CALLS=0");
         Console.WriteLine("PROVIDER_CALLS=0");
         Console.WriteLine($"FROZEN_IDENTITY_DECISIONS={identityPredictions.Length}");
         Console.WriteLine($"UNEXPECTED_CHANGED_TARGETS={unexpected.Length}");
         Console.WriteLine($"UNRELATED_NODE_IDS_STABLE={replayUnrelatedStable}");
         Console.WriteLine($"UNRELATED_ORDER_STABLE={orderStable}");
-        Console.WriteLine($"STATUS={(unexpected.Length == 0 && replayUnrelatedStable && orderStable ? "MERGE_ISOLATION_INTEGRATION_PASS" : "MERGE_ISOLATION_INTEGRATION_FAIL")}");
+        Console.WriteLine($"FALSE_MERGE_REMOVED={(falseMerge is null)}");
+        Console.WriteLine($"STATUS={(unexpected.Length == 0 && replayUnrelatedStable && orderStable && falseMerge is null ? "CONSERVATIVE_PROMOTION_REPLAY_PASS" : "CONSERVATIVE_PROMOTION_REPLAY_FAIL")}");
         Console.WriteLine($"ARTIFACT={Path.Combine(OutputRoot, "summary.v1.json")}");
         return 0;
     }

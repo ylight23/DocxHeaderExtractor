@@ -21,6 +21,12 @@ public enum HdsaSemanticIdentityInferenceDecision
     Unresolved,
 }
 
+public enum HdsaSemanticIdentityResolutionMode
+{
+    HistoricalV4,
+    ConservativePromotion,
+}
+
 /// <summary>One parser-owned pair from the exhaustive within-source identity universe.</summary>
 public sealed record HdsaSemanticIdentityPair(
     [property: JsonPropertyName("pairId")] string PairId,
@@ -60,7 +66,9 @@ public sealed record HdsaSemanticIdentityInferenceObservation(
     [property: JsonPropertyName("model")] string? Model,
     [property: JsonPropertyName("provider")] string? Provider,
     [property: JsonPropertyName("goldUsed")] bool GoldUsed = false,
-    [property: JsonPropertyName("legacyUsed")] bool LegacyUsed = false);
+    [property: JsonPropertyName("legacyUsed")] bool LegacyUsed = false,
+    [property: JsonPropertyName("parserEvidenceHash")] string? ParserEvidenceHash = null,
+    [property: JsonPropertyName("structuralBoundaryCompatible")] bool StructuralBoundaryCompatible = false);
 
 /// <summary>All decision provenance, including DISTINCT and UNRESOLVED outcomes.</summary>
 public sealed record HdsaSemanticIdentityInferenceRelationRecord(
@@ -242,6 +250,12 @@ public static class HdsaSemanticNodeResolverV4
     public static HdsaSemanticNodeResolutionV4Result Resolve(
         HdsaSemanticNodeResolutionInput input,
         IEnumerable<HdsaSemanticIdentityInferenceObservation> observations)
+        => Resolve(input, observations, HdsaSemanticIdentityResolutionMode.HistoricalV4);
+
+    public static HdsaSemanticNodeResolutionV4Result Resolve(
+        HdsaSemanticNodeResolutionInput input,
+        IEnumerable<HdsaSemanticIdentityInferenceObservation> observations,
+        HdsaSemanticIdentityResolutionMode resolutionMode)
     {
         ValidateInput(input);
         ArgumentNullException.ThrowIfNull(observations);
@@ -286,7 +300,7 @@ public static class HdsaSemanticNodeResolverV4
         }
 
         var acceptedCandidates = validByPair.Values
-            .Select(item => (item.Observation.Response, Record: records.Single(record =>
+            .Select(item => (item.Observation, item.Observation.Response, Record: records.Single(record =>
                 string.Equals(record.RequestHash, item.Observation.RequestHash, StringComparison.Ordinal) &&
                 string.Equals(record.ResponseHash, item.Observation.ResponseHash, StringComparison.Ordinal))))
             .Where(item => item.Record.AcceptedByValidator)
@@ -297,19 +311,36 @@ public static class HdsaSemanticNodeResolverV4
         {
             if (candidate.Response.Decision is HdsaSemanticIdentityInferenceDecision.Distinct or HdsaSemanticIdentityInferenceDecision.Unresolved)
                 continue;
+            var promotion = HdsaSemanticIdentityPromotionPolicy.Evaluate(
+                candidate.Response.Decision,
+                candidate.Record.InferenceSource,
+                candidate.Observation.ParserEvidenceHash,
+                candidate.Observation.StructuralBoundaryCompatible,
+                candidate.Observation.GoldUsed,
+                candidate.Observation.LegacyUsed);
+            if (resolutionMode == HdsaSemanticIdentityResolutionMode.ConservativePromotion && !promotion.CollapseAuthorized)
+                continue;
             var relation = candidate.Response.Decision == HdsaSemanticIdentityInferenceDecision.SameSemanticRepeat
                 ? new HdsaSemanticIdentityRelation(
                     candidate.Response.LeftOccurrenceId,
                     candidate.Response.RightOccurrenceId,
                     HdsaSemanticIdentityRelationType.SameSemanticRepeat,
-                    candidate.Record.InputEvidenceHash,
-                    true)
+                    resolutionMode == HdsaSemanticIdentityResolutionMode.ConservativePromotion
+                        ? candidate.Observation.ParserEvidenceHash!
+                        : candidate.Record.InputEvidenceHash,
+                    resolutionMode == HdsaSemanticIdentityResolutionMode.ConservativePromotion
+                        ? candidate.Observation.StructuralBoundaryCompatible
+                        : true)
                 : new HdsaSemanticIdentityRelation(
                     candidate.Response.RightOccurrenceId,
                     candidate.Response.LeftOccurrenceId,
                     HdsaSemanticIdentityRelationType.ContinuationOf,
-                    candidate.Record.InputEvidenceHash,
-                    true);
+                    resolutionMode == HdsaSemanticIdentityResolutionMode.ConservativePromotion
+                        ? candidate.Observation.ParserEvidenceHash!
+                        : candidate.Record.InputEvidenceHash,
+                    resolutionMode == HdsaSemanticIdentityResolutionMode.ConservativePromotion
+                        ? candidate.Observation.StructuralBoundaryCompatible
+                        : true);
             acceptedIdentity.Add(relation);
         }
 

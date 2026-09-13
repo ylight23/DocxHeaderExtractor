@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "a99-semantic-merge-isolation-replay-v1",
-  "experiment": "V4_MERGE_ISOLATION_OFFLINE_REPLAY",
+  "schemaVersion": "a99-semantic-promotion-replay-v1",
+  "experiment": "V4_CONSERVATIVE_PROMOTION_OFFLINE_REPLAY",
   "documentId": "DOC-0205",
   "incumbent": {
     "version": "v3",
@@ -12,6 +12,11 @@
     "status": "FROZEN_REJECTED_CHALLENGER",
     "root": "eval/a99-closed-loop/hdsa-semantic-node-production-v4-live/DOC-0205"
   },
+  "challenger": {
+    "version": "v4.1",
+    "status": "COUNTERFACTUAL_CONSERVATIVE_PROMOTION",
+    "resolverMode": "ConservativePromotion"
+  },
   "execution": {
     "providerCalls": 0,
     "modelCalls": 0,
@@ -19,7 +24,8 @@
     "identityDecisionCount": 66,
     "goldReadBeforeFreeze": false,
     "goldUsed": false,
-    "falseMergePreserved": [
+    "falseMergePreserved": false,
+    "falseMergeRemoved": [
       "S0015",
       "S0016"
     ],
@@ -28,7 +34,7 @@
   },
   "replayCatalog": {
     "resolverVersion": "semantic-identity-inference-v4",
-    "acceptedRelationCount": 1,
+    "acceptedRelationCount": 0,
     "replayCatalogEntries": [
       {
         "semanticNodeId": "SN-d53681cb67def23d",
@@ -55,13 +61,20 @@
         "sourceOrder": 17
       },
       {
-        "semanticNodeId": "SN-d0c33f80c2a0a704",
+        "semanticNodeId": "SN-2ddcbcfd14c02240",
         "memberOccurrenceIds": [
-          "S0015",
-          "S0016"
+          "S0015"
         ],
         "canonicalText": "QUY \u0110\u1ECANH CHUNG",
         "sourceOrder": 18
+      },
+      {
+        "semanticNodeId": "SN-a34a97ca83b456e6",
+        "memberOccurrenceIds": [
+          "S0016"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "sourceOrder": 20
       },
       {
         "semanticNodeId": "SN-ad0f647090b35dae",
@@ -130,7 +143,8 @@
       "canonicalText": "QUY \u0110\u1ECANH CHUNG",
       "sourceOrder": 18
     },
-    "catalogProjectionEquivalentToOldV4": true
+    "catalogEquivalentToV3": true,
+    "catalogProjectionEquivalentToOldV4": false
   },
   "relationPromotion": {
     "policyVersion": "semantic-identity-promotion-v1",
@@ -149,9 +163,7 @@
       ],
       [
         "S0014"
-      ]
-    ],
-    "locallyChangedTargets": [
+      ],
       [
         "S0015"
       ],
@@ -180,6 +192,7 @@
         "S0060"
       ]
     ],
+    "locallyChangedTargets": [],
     "unexpectedChangedTargets": [],
     "rows": [
       {
@@ -247,10 +260,10 @@
           "S0015"
         ],
         "v3NodeId": "SN-2ddcbcfd14c02240",
-        "replayNodeId": "SN-d0c33f80c2a0a704",
-        "dependsOnMerge": true,
+        "replayNodeId": "SN-2ddcbcfd14c02240",
+        "dependsOnMerge": false,
         "v3RequestHash": "fcde73a1b12c85236e6b05a4ffd4a7aee0b433b609f0c88f8fc7a8a508b6d30e",
-        "projectedRequestHash": "94b40777ac2b05139860638f66c4e27c822bd43a0dd78c5f054a1adbe1d93ee4",
+        "projectedRequestHash": "fcde73a1b12c85236e6b05a4ffd4a7aee0b433b609f0c88f8fc7a8a508b6d30e",
         "v3CandidateIds": [
           "SN-fa3e46e19d6d0375",
           "SN-aca084dc03ba6e31",
@@ -263,17 +276,17 @@
         ],
         "oldV4RequestHash": null,
         "oldV4CandidateIds": null,
-        "impact": "LOCALLY_CHANGED_TARGET"
+        "impact": "UNCHANGED_UNRELATED"
       },
       {
         "targetAliases": [
           "S0016"
         ],
         "v3NodeId": "SN-a34a97ca83b456e6",
-        "replayNodeId": "SN-d0c33f80c2a0a704",
-        "dependsOnMerge": true,
+        "replayNodeId": "SN-a34a97ca83b456e6",
+        "dependsOnMerge": false,
         "v3RequestHash": "f538a7e07ecc36398ee95a0cb7aa6e066d042032e13f32291fa6e4385275381a",
-        "projectedRequestHash": "d225f1acaa073a9ec208814de1851305c3c1903fec9ea422d2bbb5fb3e7e08a8",
+        "projectedRequestHash": "f538a7e07ecc36398ee95a0cb7aa6e066d042032e13f32291fa6e4385275381a",
         "v3CandidateIds": [
           "SN-2ddcbcfd14c02240",
           "SN-fa3e46e19d6d0375",
@@ -281,14 +294,14 @@
           "SN-d53681cb67def23d"
         ],
         "projectedCandidateIds": [
-          "SN-d0c33f80c2a0a704",
+          "SN-2ddcbcfd14c02240",
           "SN-fa3e46e19d6d0375",
           "SN-aca084dc03ba6e31",
           "SN-d53681cb67def23d"
         ],
         "oldV4RequestHash": null,
         "oldV4CandidateIds": null,
-        "impact": "LOCALLY_CHANGED_TARGET"
+        "impact": "UNCHANGED_UNRELATED"
       },
       {
         "targetAliases": [
@@ -296,9 +309,9 @@
         ],
         "v3NodeId": "SN-ad0f647090b35dae",
         "replayNodeId": "SN-ad0f647090b35dae",
-        "dependsOnMerge": true,
+        "dependsOnMerge": false,
         "v3RequestHash": "8207cb1020b9b23cf21da0be4a7feaeabcf27bd4da5edea2b83c43990d2950ce",
-        "projectedRequestHash": "472f16aefe1606da895fc03e8bc089f5cefc842469561933ce35057e0c3776b1",
+        "projectedRequestHash": "8207cb1020b9b23cf21da0be4a7feaeabcf27bd4da5edea2b83c43990d2950ce",
         "v3CandidateIds": [
           "SN-a34a97ca83b456e6",
           "SN-2ddcbcfd14c02240",
@@ -307,7 +320,8 @@
           "SN-d53681cb67def23d"
         ],
         "projectedCandidateIds": [
-          "SN-d0c33f80c2a0a704",
+          "SN-a34a97ca83b456e6",
+          "SN-2ddcbcfd14c02240",
           "SN-fa3e46e19d6d0375",
           "SN-aca084dc03ba6e31",
           "SN-d53681cb67def23d"
@@ -319,7 +333,7 @@
           "SN-aca084dc03ba6e31",
           "SN-d53681cb67def23d"
         ],
-        "impact": "LOCALLY_CHANGED_TARGET"
+        "impact": "UNCHANGED_UNRELATED"
       },
       {
         "targetAliases": [
@@ -327,9 +341,9 @@
         ],
         "v3NodeId": "SN-2a07dbe2240718e3",
         "replayNodeId": "SN-2a07dbe2240718e3",
-        "dependsOnMerge": true,
+        "dependsOnMerge": false,
         "v3RequestHash": "08f97d5761100d40b1af284a50d479a9f79afe1eb08e8eee076e7028392118c1",
-        "projectedRequestHash": "eda7add61ab35758ed38bc7895e58429b1c72c2b82fc9eb7592a9e6a12ce9a72",
+        "projectedRequestHash": "08f97d5761100d40b1af284a50d479a9f79afe1eb08e8eee076e7028392118c1",
         "v3CandidateIds": [
           "SN-ad0f647090b35dae",
           "SN-a34a97ca83b456e6",
@@ -340,7 +354,8 @@
         ],
         "projectedCandidateIds": [
           "SN-ad0f647090b35dae",
-          "SN-d0c33f80c2a0a704",
+          "SN-a34a97ca83b456e6",
+          "SN-2ddcbcfd14c02240",
           "SN-fa3e46e19d6d0375",
           "SN-aca084dc03ba6e31",
           "SN-d53681cb67def23d"
@@ -353,7 +368,7 @@
           "SN-aca084dc03ba6e31",
           "SN-d53681cb67def23d"
         ],
-        "impact": "LOCALLY_CHANGED_TARGET"
+        "impact": "UNCHANGED_UNRELATED"
       },
       {
         "targetAliases": [
@@ -361,9 +376,9 @@
         ],
         "v3NodeId": "SN-1767abb75196945e",
         "replayNodeId": "SN-1767abb75196945e",
-        "dependsOnMerge": true,
+        "dependsOnMerge": false,
         "v3RequestHash": "9903dd3d80e9a3283b13541f9672517c7887f9a8d418836703f468041ddf4771",
-        "projectedRequestHash": "caa9d72570c7f10a7e85acd41a7293ee0be3131d838907be5e724fdfd211e877",
+        "projectedRequestHash": "9903dd3d80e9a3283b13541f9672517c7887f9a8d418836703f468041ddf4771",
         "v3CandidateIds": [
           "SN-2a07dbe2240718e3",
           "SN-ad0f647090b35dae",
@@ -376,7 +391,8 @@
         "projectedCandidateIds": [
           "SN-2a07dbe2240718e3",
           "SN-ad0f647090b35dae",
-          "SN-d0c33f80c2a0a704",
+          "SN-a34a97ca83b456e6",
+          "SN-2ddcbcfd14c02240",
           "SN-fa3e46e19d6d0375",
           "SN-aca084dc03ba6e31",
           "SN-d53681cb67def23d"
@@ -390,7 +406,7 @@
           "SN-aca084dc03ba6e31",
           "SN-d53681cb67def23d"
         ],
-        "impact": "LOCALLY_CHANGED_TARGET"
+        "impact": "UNCHANGED_UNRELATED"
       },
       {
         "targetAliases": [
@@ -398,9 +414,9 @@
         ],
         "v3NodeId": "SN-35572ea4edd05ce3",
         "replayNodeId": "SN-35572ea4edd05ce3",
-        "dependsOnMerge": true,
+        "dependsOnMerge": false,
         "v3RequestHash": "0e72c5fcad2cd5acf849b3a3ffe7eb6bb0c9c5a72f7291b914a29e296a21dd63",
-        "projectedRequestHash": "510ebae8fb111375b2922d64fe210b6c33a93b6e17a93f2283deb0b690b82f45",
+        "projectedRequestHash": "0e72c5fcad2cd5acf849b3a3ffe7eb6bb0c9c5a72f7291b914a29e296a21dd63",
         "v3CandidateIds": [
           "SN-1767abb75196945e",
           "SN-2a07dbe2240718e3",
@@ -415,7 +431,8 @@
           "SN-1767abb75196945e",
           "SN-2a07dbe2240718e3",
           "SN-ad0f647090b35dae",
-          "SN-d0c33f80c2a0a704",
+          "SN-a34a97ca83b456e6",
+          "SN-2ddcbcfd14c02240",
           "SN-fa3e46e19d6d0375",
           "SN-aca084dc03ba6e31",
           "SN-d53681cb67def23d"
@@ -430,7 +447,7 @@
           "SN-aca084dc03ba6e31",
           "SN-d53681cb67def23d"
         ],
-        "impact": "LOCALLY_CHANGED_TARGET"
+        "impact": "UNCHANGED_UNRELATED"
       },
       {
         "targetAliases": [
@@ -438,9 +455,9 @@
         ],
         "v3NodeId": "SN-7e35948f55ab193e",
         "replayNodeId": "SN-7e35948f55ab193e",
-        "dependsOnMerge": true,
+        "dependsOnMerge": false,
         "v3RequestHash": "719fa23347823e43130a97758f948b0f0ea4e98b5d42891ff68a9c2065066192",
-        "projectedRequestHash": "8ed72e0ac5dcf11689626036d122d484a1a20769fc840d3035f42b43a2b71079",
+        "projectedRequestHash": "719fa23347823e43130a97758f948b0f0ea4e98b5d42891ff68a9c2065066192",
         "v3CandidateIds": [
           "SN-35572ea4edd05ce3",
           "SN-1767abb75196945e",
@@ -456,7 +473,8 @@
           "SN-1767abb75196945e",
           "SN-2a07dbe2240718e3",
           "SN-ad0f647090b35dae",
-          "SN-d0c33f80c2a0a704",
+          "SN-a34a97ca83b456e6",
+          "SN-2ddcbcfd14c02240",
           "SN-fa3e46e19d6d0375",
           "SN-aca084dc03ba6e31"
         ],
@@ -471,7 +489,7 @@
           "SN-aca084dc03ba6e31",
           "SN-d53681cb67def23d"
         ],
-        "impact": "LOCALLY_CHANGED_TARGET"
+        "impact": "UNCHANGED_UNRELATED"
       },
       {
         "targetAliases": [
@@ -479,9 +497,9 @@
         ],
         "v3NodeId": "SN-04a6519cc7d08d60",
         "replayNodeId": "SN-04a6519cc7d08d60",
-        "dependsOnMerge": true,
+        "dependsOnMerge": false,
         "v3RequestHash": "f9867a3070bc5dfb262540f327026890be51dcd2d2435444bce7e0dd848d46c6",
-        "projectedRequestHash": "7341abbfd459a176e37a3696119c0e67c5be39994aea0f8ec8eb862b961c84c2",
+        "projectedRequestHash": "f9867a3070bc5dfb262540f327026890be51dcd2d2435444bce7e0dd848d46c6",
         "v3CandidateIds": [
           "SN-7e35948f55ab193e",
           "SN-35572ea4edd05ce3",
@@ -498,7 +516,8 @@
           "SN-1767abb75196945e",
           "SN-2a07dbe2240718e3",
           "SN-ad0f647090b35dae",
-          "SN-d0c33f80c2a0a704",
+          "SN-a34a97ca83b456e6",
+          "SN-2ddcbcfd14c02240",
           "SN-fa3e46e19d6d0375"
         ],
         "oldV4RequestHash": "414d531ee2054b34e5428802d8b1eeff9121d7b3cdaef2f8f0abfce39a656d4e",
@@ -512,7 +531,7 @@
           "SN-fa3e46e19d6d0375",
           "SN-aca084dc03ba6e31"
         ],
-        "impact": "LOCALLY_CHANGED_TARGET"
+        "impact": "UNCHANGED_UNRELATED"
       },
       {
         "targetAliases": [
@@ -520,9 +539,9 @@
         ],
         "v3NodeId": "SN-9a8cf82ed4783b6d",
         "replayNodeId": "SN-9a8cf82ed4783b6d",
-        "dependsOnMerge": true,
+        "dependsOnMerge": false,
         "v3RequestHash": "c162a1074f34680eaa270b44d5ae2c4c55d260d3d511fb324a2ac163aaad0e6f",
-        "projectedRequestHash": "060d5fddcc78f1d2d6b532cae7bbe842e45a8d4cb00fc0db3493870bdc24452b",
+        "projectedRequestHash": "c162a1074f34680eaa270b44d5ae2c4c55d260d3d511fb324a2ac163aaad0e6f",
         "v3CandidateIds": [
           "SN-04a6519cc7d08d60",
           "SN-7e35948f55ab193e",
@@ -540,7 +559,8 @@
           "SN-1767abb75196945e",
           "SN-2a07dbe2240718e3",
           "SN-ad0f647090b35dae",
-          "SN-d0c33f80c2a0a704"
+          "SN-a34a97ca83b456e6",
+          "SN-2ddcbcfd14c02240"
         ],
         "oldV4RequestHash": "ce72ed4b3c028950093f605b26ac54fe5e7bed115c1dcf4b9ef9f86269a3e378",
         "oldV4CandidateIds": [
@@ -553,7 +573,7 @@
           "SN-d0c33f80c2a0a704",
           "SN-fa3e46e19d6d0375"
         ],
-        "impact": "LOCALLY_CHANGED_TARGET"
+        "impact": "UNCHANGED_UNRELATED"
       }
     ]
   },
@@ -563,11 +583,12 @@
     "unrelatedRequestBytesStable": true,
     "membershipPreservingProjection": true,
     "unexpectedBlastRadius": false,
-    "falseMergeWasHidden": false
+    "falseMergeWasHidden": false,
+    "modelPositiveRelationsRequirePromotion": true
   },
   "conclusion": {
-    "status": "MERGE_ISOLATION_INTEGRATION_PASS",
-    "interpretation": "The false merge is intentionally preserved. Isolation is evaluated only by whether unrelated identities/order/request payloads remain stable; it does not convert the false merge into a correct semantic decision.",
-    "nextGate": "RELATION_PROMOTION_SAFETY_BEFORE_NEW_PROVIDER_CALL"
+    "status": "CONSERVATIVE_PROMOTION_REPLAY_PASS",
+    "interpretation": "Model-only positive identity relations remain proposed and are not promoted. The historical false merge is removed, while unrelated catalog/request topology remains stable.",
+    "nextGate": "NEW_BLIND_LIVE_V4_1_BENCHMARK_AFTER_OFFLINE_GATES"
   }
 }

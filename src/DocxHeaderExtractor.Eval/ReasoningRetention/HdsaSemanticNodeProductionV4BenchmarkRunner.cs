@@ -133,7 +133,8 @@ level, depth, offsets, Gold, legacy fields, or an unknown ID.
             await WriteJsonAsync(freezePath, new { schemaVersion = "a99-hdsa-v4-identity-freeze-v1", documentId = DocumentId, pairId = request.Key, requestSha256 = requestHash, predictionSha256 = Sha256File(predictionPath), responseSha256 = Sha256Text(content), provider = telemetry.ProviderRoute, finishReason = telemetry.FinishReason, inputTokens = telemetry.ReportedInputTokens, reasoningTokens = telemetry.ReportedReasoningTokens, outputTokens = telemetry.ReportedOutputTokens, elapsedMs = sw.ElapsedMilliseconds, goldReadBeforeFreeze = false, frozenBeforeGold = true }, ct);
         }
 
-        var identityResult = HdsaSemanticNodeResolverV4.Resolve(identityInput, observations);
+        var identityResult = HdsaSemanticNodeResolverV4.Resolve(
+            identityInput, observations, HdsaSemanticIdentityResolutionMode.ConservativePromotion);
         if (!identityResult.IsValid)
         {
             await WriteJsonAsync(Path.Combine(output, "identity-result.v1.json"), identityResult, ct);
