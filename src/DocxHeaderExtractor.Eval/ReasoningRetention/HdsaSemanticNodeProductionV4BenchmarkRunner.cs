@@ -85,7 +85,11 @@ level, depth, offsets, Gold, legacy fields, or an unknown ID.
         var capability = (await OpenRouterModelCapabilityResolver.ResolveAsync(options, http, ct)).Capability;
         if (capability is null || !string.Equals(capability.ModelId, Model, StringComparison.Ordinal) ||
             !capability.ReasoningSupported || !capability.StructuredOutputSupported)
-            return await AbortAsync(output, "MODEL_CAPABILITY_MISMATCH", 0, 0, ct);
+        {
+            await WriteJsonAsync(Path.Combine(output, "capability.v1.json"), new { capability, requiredModel = Model, requiredReasoning = true, requiredStructuredOutput = true }, ct);
+            return await AbortAsync(output, capability is null ? "MODEL_CAPABILITY_MISMATCH:NULL" :
+                $"MODEL_CAPABILITY_MISMATCH:model={capability.ModelId};reasoning={capability.ReasoningSupported};structured={capability.StructuredOutputSupported};parameters={string.Join(',', capability.SupportedParameters)}", 0, 0, ct);
+        }
 
         using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
         var observations = new List<HdsaSemanticIdentityInferenceObservation>();
