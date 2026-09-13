@@ -6,7 +6,18 @@ namespace DocxHeaderExtractor.Core.Models;
 public sealed record SemanticProposalConflict(
     string PhysicalSourceIdentity,
     IReadOnlyList<CanonicalSemanticProposal> Alternatives,
-    string Classification = "SEMANTIC_PROPOSAL_CONFLICT");
+    string Classification = "OCCURRENCE_OR_BINDING_CONFLICT");
+
+/// <summary>
+/// A disagreement that does not prevent the harness from identifying and binding the physical
+/// occurrence. Contested semantic attributes remain unresolved for a later adjudication stage.
+/// </summary>
+public sealed record SemanticAttributeConflict(
+    string PhysicalSourceIdentity,
+    IReadOnlyList<CanonicalSemanticProposal> Alternatives,
+    CanonicalSemanticProposal BindingConsensus,
+    IReadOnlyDictionary<string, IReadOnlyList<string?>> ContestedFields,
+    string Classification = "SEMANTIC_ATTRIBUTE_CONFLICT");
 
 /// <summary>Result of deterministic pre-binder semantic proposal normalization.</summary>
 public sealed record SemanticConflictNormalizationResult(
@@ -15,7 +26,14 @@ public sealed record SemanticConflictNormalizationResult(
     int SemanticProposalInputCount,
     int SemanticProposalNormalizedCount,
     int ExactSemanticDuplicatesCollapsed,
-    int SemanticConflictProposalCount);
+    int SemanticConflictProposalCount)
+{
+    /// <summary>Attribute conflicts are non-blocking for physical source binding.</summary>
+    public IReadOnlyList<SemanticAttributeConflict> AttributeConflicts { get; init; } = [];
+
+    /// <summary>Proposals safe to pass to the deterministic binder.</summary>
+    public IReadOnlyList<CanonicalSemanticProposal> BindingReadyProposals { get; init; } = [];
+}
 
 /// <summary>
 /// Detects semantic disagreements for the same physical source occurrence before binding.
@@ -45,6 +63,7 @@ public static class SemanticConflictNormalizer
 
         var normalized = new List<CanonicalSemanticProposal>();
         var conflicts = new List<SemanticProposalConflict>();
+        var attributeConflicts = new List<SemanticAttributeConflict>();
         var collapsed = 0;
         var conflictProposalCount = 0;
         foreach (var group in grouped)
@@ -66,17 +85,79 @@ public static class SemanticConflictNormalizer
             }
 
             conflictProposalCount += group.Count();
-            conflicts.Add(new(group.Key, alternatives.Select(item => item.Proposal).ToArray()));
+            var alternativeProposals = alternatives.Select(item => item.Proposal).ToArray();
+            if (CanBindConsensus(alternativeProposals))
+            {
+                attributeConflicts.Add(new(
+                    group.Key,
+                    alternativeProposals,
+                    CreateBindingConsensus(alternativeProposals),
+                    ContestedFields(alternativeProposals)));
+            }
+            else
+            {
+                conflicts.Add(new(group.Key, alternativeProposals));
+            }
         }
 
-        return new(
+        var result = new SemanticConflictNormalizationResult(
             normalized,
             conflicts,
             proposals.Count,
             normalized.Count,
             collapsed,
-            conflictProposalCount);
+            conflictProposalCount)
+        {
+            AttributeConflicts = attributeConflicts,
+            BindingReadyProposals = normalized
+                .Concat(attributeConflicts.Select(item => item.BindingConsensus))
+                .OrderBy(item => SourceOrder(item, byAlias))
+                .ThenBy(item => PhysicalIdentity(item, byAlias), StringComparer.Ordinal)
+                .ToArray(),
+        };
+        return result;
     }
+
+    private static bool CanBindConsensus(IReadOnlyList<CanonicalSemanticProposal> alternatives)
+    {
+        if (alternatives.Count == 0 || alternatives.Any(item => !item.IsHeading)) return false;
+        var first = alternatives[0];
+        var bindingFingerprint = BindingFingerprint(first);
+        return alternatives.All(item => string.Equals(bindingFingerprint, BindingFingerprint(item), StringComparison.Ordinal));
+    }
+
+    private static CanonicalSemanticProposal CreateBindingConsensus(IReadOnlyList<CanonicalSemanticProposal> alternatives)
+    {
+        var first = alternatives[0];
+        return first with
+        {
+            SemanticRole = ConsensusValue(alternatives.Select(item => item.SemanticRole)),
+            StructuralType = ConsensusValue(alternatives.Select(item => item.StructuralType)),
+            Scope = ConsensusValue(alternatives.Select(item => item.Scope)),
+        };
+    }
+
+    private static IReadOnlyDictionary<string, IReadOnlyList<string?>> ContestedFields(
+        IReadOnlyList<CanonicalSemanticProposal> alternatives)
+    {
+        var fields = new Dictionary<string, IReadOnlyList<string?>>(StringComparer.Ordinal);
+        AddIfContested(fields, "semanticRole", alternatives.Select(item => item.SemanticRole));
+        AddIfContested(fields, "structuralType", alternatives.Select(item => item.StructuralType));
+        AddIfContested(fields, "scope", alternatives.Select(item => item.Scope));
+        return fields;
+    }
+
+    private static void AddIfContested(
+        IDictionary<string, IReadOnlyList<string?>> fields,
+        string name,
+        IEnumerable<string?> values)
+    {
+        var distinct = values.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToArray();
+        if (distinct.Length > 1) fields[name] = distinct;
+    }
+
+    private static string? ConsensusValue(IEnumerable<string?> values) =>
+        values.Distinct(StringComparer.Ordinal).Count() == 1 ? values.First() : null;
 
     private static int SourceOrder(CanonicalSemanticProposal proposal, IReadOnlyDictionary<string, SemanticSourceAlias> aliases)
     {
@@ -94,6 +175,17 @@ public static class SemanticConflictNormalizer
         });
         return string.Join("|", parts);
     }
+
+    private static string BindingFingerprint(CanonicalSemanticProposal proposal) =>
+        JsonSerializer.Serialize(new
+        {
+            sourceAliases = ResolveAliases(proposal),
+            selectionMode = proposal.SelectionMode ?? CanonicalSemanticSelectionMode.VerbatimText,
+            isHeading = proposal.IsHeading,
+            occurrence = proposal.Occurrence,
+            verbatimText = proposal.SelectionMode == CanonicalSemanticSelectionMode.WholeAlias ? null : proposal.VerbatimText,
+            verbatimParts = proposal.SelectionMode == CanonicalSemanticSelectionMode.WholeAlias ? [] : (proposal.VerbatimParts ?? []),
+        });
 
     private static string SemanticFingerprint(CanonicalSemanticProposal proposal)
     {

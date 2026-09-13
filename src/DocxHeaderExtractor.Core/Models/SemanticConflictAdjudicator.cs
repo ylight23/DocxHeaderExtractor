@@ -87,6 +87,17 @@ public static class SemanticAdjudicationContract
 public static class SemanticConflictAdjudicator
 {
     public static SemanticAdjudicationCase CreateCase(
+        SemanticAttributeConflict conflict,
+        IReadOnlyList<SemanticSourceAlias> aliases,
+        IReadOnlyList<string>? localContext = null,
+        IReadOnlyList<string>? structuralEvidence = null,
+        int contextRadius = 2) =>
+        CreateCase(new SemanticProposalConflict(
+            conflict.PhysicalSourceIdentity,
+            conflict.Alternatives,
+            conflict.Classification), aliases, localContext, structuralEvidence, contextRadius);
+
+    public static SemanticAdjudicationCase CreateCase(
         SemanticProposalConflict conflict,
         IReadOnlyList<SemanticSourceAlias> aliases,
         IReadOnlyList<string>? localContext = null,

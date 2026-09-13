@@ -361,9 +361,9 @@ schema.
         if (conflictProposals.Length != 2)
             throw new InvalidDataException($"EXPECTED_TWO_FROZEN_ALTERNATIVES:{conflictProposals.Length}");
         var normalization = SemanticConflictNormalizer.Normalize(conflictProposals, aliases);
-        if (normalization.Conflicts.Count != 1)
-            throw new InvalidDataException($"EXPECTED_ONE_SEMANTIC_CONFLICT:{normalization.Conflicts.Count}");
-        var adjudicationCase = SemanticConflictAdjudicator.CreateCase(normalization.Conflicts[0], aliases);
+        if (normalization.AttributeConflicts.Count != 1 || normalization.Conflicts.Count != 0)
+            throw new InvalidDataException($"EXPECTED_ONE_ATTRIBUTE_CONFLICT:{normalization.AttributeConflicts.Count}:BLOCKING={normalization.Conflicts.Count}");
+        var adjudicationCase = SemanticConflictAdjudicator.CreateCase(normalization.AttributeConflicts[0], aliases);
         if (!string.Equals(adjudicationCase.SourceEvidence.Single().Text, "Chương III", StringComparison.Ordinal))
             throw new InvalidDataException("UNEXPECTED_CONFLICT_SOURCE_TEXT");
         return new(sourceSha, aliases, adjudicationCase);

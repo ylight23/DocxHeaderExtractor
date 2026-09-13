@@ -98,6 +98,12 @@ public sealed record CanonicalSemanticProductionResult(
     public int SemanticConflictCount =>
         ConflictNormalization.Conflicts.Count;
 
+    public int SemanticAttributeConflictCount =>
+        ConflictNormalization.AttributeConflicts.Count;
+
+    public IReadOnlyList<SemanticAttributeConflict> AttributeConflicts =>
+        ConflictNormalization.AttributeConflicts;
+
     public IReadOnlyList<CanonicalSemanticGraphOccurrence> CanonicalOccurrences =>
         CanonicalGraph.Occurrences;
 
@@ -172,7 +178,7 @@ public static class CanonicalSemanticProductionEntryPoint
             _ = SemanticCandidatePolicy.CanAcceptOwnedOccurrence(alias.Alias, input.CandidateHints);
         var context = SemanticContextPacker.Pack(input.TargetEvidence, input.LocalContext, input.GlobalContext);
         var normalization = SemanticConflictNormalizer.Normalize(semanticProposals, aliases);
-        var text = CanonicalSemanticPipeline.Run(input.SourceCatalog, normalization.NormalizedProposals,
+        var text = CanonicalSemanticPipeline.Run(input.SourceCatalog, normalization.BindingReadyProposals,
             input.SourceSha256, input.ExpectedSourceSha256);
 
         var visualOccurrences = input.VisualBlocks is { Count: > 0 }
@@ -206,12 +212,16 @@ public static class CanonicalSemanticProductionEntryPoint
             new SemanticTransitionLedgerEntry("CANDIDATE_ATTENTION", "PRESERVED", aliases.Count, aliases.Count),
             new SemanticTransitionLedgerEntry("CONTEXT_PACKING", "PRESERVED", context.VisibleEvidence.Count, context.VisibleEvidence.Count),
             new SemanticTransitionLedgerEntry("SEMANTIC_CONFLICT_CHECK",
-                normalization.Conflicts.Count == 0 ? "PRESERVED" : "CONFLICTS_WITHHELD",
+                normalization.Conflicts.Count > 0
+                    ? "CONFLICTS_WITHHELD"
+                    : normalization.AttributeConflicts.Count > 0
+                        ? "ATTRIBUTE_CONFLICTS_BINDABLE"
+                        : "PRESERVED",
                 normalization.SemanticProposalInputCount,
-                normalization.SemanticProposalNormalizedCount,
-                normalization.Conflicts.Count == 0 ? null : "SEMANTIC_PROPOSAL_CONFLICT"),
+                normalization.BindingReadyProposals.Count,
+                normalization.Conflicts.Count > 0 ? "OCCURRENCE_OR_BINDING_CONFLICT" : null),
             new SemanticTransitionLedgerEntry("SEMANTIC_CONTRACT", "PRESERVED", semanticProposals.Count, semanticProposals.Count),
-            new SemanticTransitionLedgerEntry("TEXT_UTF16_BINDING", "PRESERVED", normalization.SemanticProposalNormalizedCount, text.BoundHeadings.Count),
+            new SemanticTransitionLedgerEntry("TEXT_UTF16_BINDING", "PRESERVED", normalization.BindingReadyProposals.Count, text.BoundHeadings.Count),
             new SemanticTransitionLedgerEntry("VISUAL_RECOVERY", "PRESERVED", input.VisualBlocks?.Count ?? 0, visualOccurrences.Count),
             new SemanticTransitionLedgerEntry("VISUAL_REGION_BINDING", "PRESERVED", visualProposals.Count, visualHeadings.Count),
             new SemanticTransitionLedgerEntry("CROSS_MODAL_RECONCILIATION", "PRESERVED", textEvidence.Length + visualEvidence.Length, unified.Count),

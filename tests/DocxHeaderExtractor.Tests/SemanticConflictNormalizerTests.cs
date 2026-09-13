@@ -62,7 +62,7 @@ public sealed class SemanticConflictNormalizerTests
     }
 
     [Fact]
-    public void S0239_article_vs_chapter_conflict_is_withheld()
+    public void S0239_article_vs_chapter_conflict_keeps_bindable_occurrence_and_contested_role()
     {
         var aliases = Aliases(("body[1]/p[250]", "Chương III"));
         var article = Whole("S0001", "ARTICLE");
@@ -71,10 +71,15 @@ public sealed class SemanticConflictNormalizerTests
         var result = SemanticConflictNormalizer.Normalize([article, chapter], aliases);
 
         Assert.Empty(result.NormalizedProposals);
-        var conflict = Assert.Single(result.Conflicts);
+        Assert.Empty(result.Conflicts);
+        var conflict = Assert.Single(result.AttributeConflicts);
         Assert.Equal("source:body[1]/p[250]:0:10", conflict.PhysicalSourceIdentity);
         Assert.Equal(["ARTICLE", "CHAPTER"], conflict.Alternatives
             .Select(item => item.SemanticRole).OrderBy(item => item, StringComparer.Ordinal));
+        Assert.Null(conflict.BindingConsensus.SemanticRole);
+        Assert.Equal(["ARTICLE", "CHAPTER"], conflict.ContestedFields["semanticRole"]);
+        Assert.Single(result.BindingReadyProposals);
+        Assert.Equal("S0001", result.BindingReadyProposals[0].SourceAlias);
         Assert.Equal(2, result.SemanticConflictProposalCount);
     }
 
@@ -101,7 +106,26 @@ public sealed class SemanticConflictNormalizerTests
         var result = SemanticConflictNormalizer.Normalize([primary, continuation], aliases);
 
         Assert.Empty(result.NormalizedProposals);
-        Assert.Single(result.Conflicts);
+        Assert.Empty(result.Conflicts);
+        Assert.Single(result.AttributeConflicts);
+        Assert.Single(result.BindingReadyProposals);
+        Assert.Equal("SECTION", result.BindingReadyProposals[0].SemanticRole);
+        Assert.Equal(["continuation", "primary"], result.AttributeConflicts[0].ContestedFields["scope"]);
+    }
+
+    [Fact]
+    public void Heading_presence_or_physical_selection_conflict_still_blocks_binding()
+    {
+        var aliases = Aliases(("p1", "Heading"));
+        var heading = Whole("S0001", "SECTION");
+        var body = Whole("S0001", "SECTION") with { IsHeading = false };
+
+        var result = SemanticConflictNormalizer.Normalize([heading, body], aliases);
+
+        Assert.Empty(result.BindingReadyProposals);
+        Assert.Empty(result.AttributeConflicts);
+        var conflict = Assert.Single(result.Conflicts);
+        Assert.Equal("OCCURRENCE_OR_BINDING_CONFLICT", conflict.Classification);
     }
 
     [Fact]
@@ -153,7 +177,7 @@ public sealed class SemanticConflictNormalizerTests
     }
 
     [Fact]
-    public void Production_entry_point_withholds_conflicts_before_the_binder()
+    public void Production_entry_point_binds_attribute_conflicts_but_withholds_identity_conflicts()
     {
         var result = CanonicalSemanticProductionEntryPoint.Run(new(
             Catalog(("p1", "Heading")),
@@ -162,18 +186,22 @@ public sealed class SemanticConflictNormalizerTests
             [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
             [], [], [], []));
 
-        Assert.Empty(result.TextPipeline.BoundHeadings);
-        Assert.Empty(result.TextPipeline.BindingObservations);
+        Assert.Single(result.TextPipeline.BoundHeadings);
+        Assert.Single(result.TextPipeline.BindingObservations);
+        Assert.Equal("Heading", result.TextPipeline.BoundHeadings[0].Text);
+        Assert.Equal("OTHER_STRUCTURAL_LABEL", result.TextPipeline.BoundHeadings[0].SemanticRole);
         Assert.Empty(result.NormalizedModelProposals);
-        Assert.Single(result.SemanticConflicts);
+        Assert.Empty(result.SemanticConflicts);
+        Assert.Single(result.AttributeConflicts);
         Assert.Equal(2, result.SemanticProposalInputCount);
         Assert.Equal(0, result.SemanticProposalNormalizedCount);
-        Assert.Equal(1, result.SemanticConflictCount);
+        Assert.Equal(0, result.SemanticConflictCount);
+        Assert.Equal(1, result.SemanticAttributeConflictCount);
         Assert.Equal(2, result.SemanticConflictProposalCount);
         Assert.Contains(result.StageLedger, entry =>
             entry.Stage == "SEMANTIC_CONFLICT_CHECK" &&
-            entry.Status == "CONFLICTS_WITHHELD" &&
-            entry.FirstLossCode == "SEMANTIC_PROPOSAL_CONFLICT");
+            entry.Status == "ATTRIBUTE_CONFLICTS_BINDABLE" &&
+            entry.FirstLossCode is null);
     }
 
     private static CanonicalSemanticProposal Whole(string alias, string role) =>
