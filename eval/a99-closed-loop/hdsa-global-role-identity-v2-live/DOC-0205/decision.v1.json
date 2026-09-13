@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "a99-hdsa-global-role-identity-v2-decision-v1",
+  "documentId": "DOC-0205",
+  "experiment": "GLOBAL_ROLE_THEN_IDENTITY_RELATION_REASONING",
+  "status": "BLOCKED",
+  "classification": "A1_STRUCTURED_OUTPUT_INVALID",
+  "stage": "A1_ROLE_ONLY",
+  "expectedNodeCount": 12,
+  "parsedNodeCount": 1,
+  "validationRejection": "NODE_COUNT_MISMATCH",
+  "finishReason": "stop",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "a2Executed": false,
+  "stageBExecuted": false,
+  "goldReadBeforeFreeze": false,
+  "causalClaimAuthorized": false,
+  "notes": [
+    "The provider response was persisted before validation.",
+    "The single accepted JSON node contained malformed/escaped trailing content in the confidence/reason fields; the remaining requested nodes were not parsed as an array of 12 nodes.",
+    "No retry was issued. A2 identity reasoning was not run because A1 was not validly frozen."
+  ]
+}

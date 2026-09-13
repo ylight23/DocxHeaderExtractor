@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "a99-hdsa-global-role-v2-prediction-v1",
+  "documentId": "DOC-0205",
+  "requestSha256": "0f4f383d8cd39b2a5c9ef974e794b4f0955f5d8e5e8004e7cb6d13c85dd6ec44",
+  "responseSha256": "39462478bbdfdfa883285846afe6b1a74ca0972dc3ec6eae181278587a172b9a",
+  "proposal": {
+    "nodes": [
+      {
+        "nodeId": "SN-d53681cb67def23d",
+        "structuralRole": "DOCUMENT_FRAMING",
+        "outlineBearing": false,
+        "confidence": ": 0.95, \u0022reason\u0022: \u0022Masthead/Title of the document\u0022 } }, { \u0022nodeId\u0022: \u0022SN-aca084dc03ba6e31\u0022, \u0022structuralRole\u0022: \u0022OUTLINE_ROOT\u0022, \u0022outlineBearing\u0022: true, \u0022confidence\u0022: 0.9, \u0022reason\u0022: \u0022Main title \u0027NGH\u1ECA QUY\u1EBET\u0027 (Resolution) acting as the root of the semantic outline\u0022 }, { \u0022nodeId\u0022: \u0022SN-fa3e46e19d6d0375\u0022, \u0022structuralRole\u0022: \u0022OUTLINE_HEADING\u0022, \u0022outlineBearing\u0022: true, \u0022confidence\u0022: 0.95, \u0022reason\u0022: \u0022Chapter heading \u0027Ch\u01B0\u01A1ng I\u0027\u0022 }, { \u0022nodeId\u0022: \u0022SN-2ddcbcfd14c02240\u0022, \u0022structuralRole\u0022: \u0022SECTION_HEADING\u0022, \u0022outlineBearing\u0022: true, \u0022confidence\u0022: 0.95, \u0022reason\u0022: \u0022Section title within Chapter I\u0022 }, { \u0022nodeId\u0022: \u0022SN-a34a97ca83b456e6\u0022, \u0022structuralRole\u0022: \u0022CONTENT_LABEL\u0022, \u0022outlineBearing\u0022: false, \u0022confidence\u0022: 0.9, \u0022reason\u0022: \u0022Article label \u0027\u0110i\u1EC1u 1\u0027, content descriptor rather than structural hierarchy node itself in this context, or minor section\u0022 }, { \u0022nodeId\u0022: \u0022SN-ad0f647090b35dae\u0022, \u0022structuralRole\u0022: \u0022CONTENT_LABEL\u0022, \u0022outlineBearing\u0022: false, \u0022confidence\u0022: 0.9, \u0022reason\u0022: \u0022Article label \u0027\u0110i\u1EC1u 2\u0027\u0022 }, { \u0022nodeId\u0022: \u0022SN-2a07dbe2240718e3\u0022, \u0022structuralRole\u0022: \u0022CONTENT_LABEL\u0022, \u0022outlineBearing\u0022: false, \u0022confidence\u0022: 0.9, \u0022reason\u0022: \u0022Article label \u0027\u0110i\u1EC1u 3\u0027\u0022 }, { \u0022nodeId\u0022: \u0022SN-1767abb75196945e\u0022, \u0022structuralRole\u0022: \u0022CONTENT_LABEL\u0022, \u0022outlineBearing\u0022: false, \u0022confidence\u0022: 0.9, \u0022reason\u0022: \u0022Article label \u0027\u0110i\u1EC1u 4\u0027\u0022 }, { \u0022nodeId\u0022: \u0022SN-35572ea4edd05ce3\u0022, \u0022structuralRole\u0022: \u0022CONTENT_LABEL\u0022, \u0022outlineBearing\u0022: false, \u0022confidence\u0022: 0.9, \u0022reason\u0022: \u0022Article label \u0027\u0110i\u1EC1u 5\u0027\u0022 }, { \u0022nodeId\u0022: \u0022SN-7e35948f55ab193e\u0022, \u0022structuralRole\u0022: \u0022CONTENT_LABEL\u0022, \u0022outlineBearing\u0022: false, \u0022confidence\u0022: 0.9, \u0022reason\u0022: \u0022Article label \u0027\u0110i\u1EC1u 6\u0027\u0022 }, { \u0022nodeId\u0022: \u0022SN-04a6519cc7d08d60\u0022, \u0022structuralRole\u0022: \u0022CONTENT_LABEL\u0022, \u0022outlineBearing\u0022: false, \u0022confidence\u0022: 0.9, \u0022reason\u0022: \u0022Article label \u0027\u0110i\u1EC1u 7\u0027\u0022 }, { \u0022nodeId\u0022: \u0022SN-9a8cf82ed4783b6d\u0022, \u0022structuralRole\u0022: \u0022CONTENT_LABEL\u0022, \u0022outlineBearing\u0022: false, \u0022confidence\u0022: 0.9, \u0022reason\u0022: ",
+        "reason": "Article label \u0027\u0110i\u1EC1u 8\u0027"
+      }
+    ]
+  },
+  "parseError": null,
+  "validation": {
+    "accepted": false,
+    "rejectionReason": "NODE_COUNT_MISMATCH",
+    "nodes": []
+  },
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}
