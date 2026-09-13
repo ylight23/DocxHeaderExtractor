@@ -1,0 +1,176 @@
+{
+  "artifactKind": "a99_hdsa_structural_gold_score",
+  "schemaVersion": "a99-hdsa-structural-gold-score-v1",
+  "documentId": "DOC-0205",
+  "structuralGoldFreezePath": "eval/a99-closed-loop/hdsa-parent-relation-live/DOC-0205/structural-gold-freeze.v1.json",
+  "structuralGoldSha256": "3981b19c62cc450ec9a339990236cb0f41b13462689c2d6413c62cc8cb801f71",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "predictionCount": 12,
+  "evaluatedSemanticNodes": 10,
+  "excludedOccurrences": 1,
+  "projectionPolicy": "occurrence_alias_to_semantic_node; invalid/conflicting node decisions are fail-closed; unresolved is abstention",
+  "projectedNodeDecisions": [
+    {
+      "node": "N0001",
+      "status": "INVALID_OR_CONFLICT",
+      "parentNode": null,
+      "observedOccurrences": [
+        "S0005"
+      ],
+      "observedParents": [
+        "S0001"
+      ]
+    },
+    {
+      "node": "N0002",
+      "status": "INVALID_OR_CONFLICT",
+      "parentNode": null,
+      "observedOccurrences": [
+        "S0014",
+        "S0015"
+      ],
+      "observedParents": [
+        "S0014"
+      ]
+    },
+    {
+      "node": "N0003",
+      "status": "PARENT",
+      "parentNode": "N0002",
+      "observedOccurrences": [
+        "S0016"
+      ],
+      "observedParents": [
+        "S0015"
+      ]
+    },
+    {
+      "node": "N0004",
+      "status": "PARENT",
+      "parentNode": "N0002",
+      "observedOccurrences": [
+        "S0019"
+      ],
+      "observedParents": [
+        "S0015"
+      ]
+    },
+    {
+      "node": "N0005",
+      "status": "PARENT",
+      "parentNode": "N0004",
+      "observedOccurrences": [
+        "S0021"
+      ],
+      "observedParents": [
+        "S0019"
+      ]
+    },
+    {
+      "node": "N0006",
+      "status": "UNRESOLVED",
+      "parentNode": null,
+      "observedOccurrences": [
+        "S0033"
+      ],
+      "observedParents": []
+    },
+    {
+      "node": "N0007",
+      "status": "PARENT",
+      "parentNode": "N0006",
+      "observedOccurrences": [
+        "S0035"
+      ],
+      "observedParents": [
+        "S0033"
+      ]
+    },
+    {
+      "node": "N0008",
+      "status": "PARENT",
+      "parentNode": "N0007",
+      "observedOccurrences": [
+        "S0044"
+      ],
+      "observedParents": [
+        "S0035"
+      ]
+    },
+    {
+      "node": "N0009",
+      "status": "PARENT",
+      "parentNode": "N0008",
+      "observedOccurrences": [
+        "S0052"
+      ],
+      "observedParents": [
+        "S0044"
+      ]
+    },
+    {
+      "node": "N0010",
+      "status": "PARENT",
+      "parentNode": "N0009",
+      "observedOccurrences": [
+        "S0060"
+      ],
+      "observedParents": [
+        "S0052"
+      ]
+    }
+  ],
+  "metrics": {
+    "parentEdge": {
+      "truePositive": 2,
+      "predictedDecisionCountIncludingInvalid": 9,
+      "validPredictedEdges": 7,
+      "goldEdges": 9,
+      "precision": 0.2222222222222222,
+      "recall": 0.2222222222222222,
+      "f1": 0.2222222222222222,
+      "validOnlyPrecision": 0.2857142857142857
+    },
+    "exactParentAccuracy": {
+      "correct": 2,
+      "denominator": 10,
+      "accuracy": 0.2
+    },
+    "rootAccuracy": {
+      "correct": 0,
+      "denominator": 1,
+      "accuracy": 0
+    },
+    "resolutionRate": {
+      "resolved": 7,
+      "denominator": 10,
+      "rate": 0.7
+    },
+    "treeValidity": {
+      "valid": false,
+      "invalidOrConflictNodes": 2,
+      "unresolvedNodes": 1,
+      "cycle": false,
+      "exactTreeMatch": false
+    },
+    "depthAccuracy": {
+      "correct": 3,
+      "denominator": 10,
+      "comparable": 10,
+      "accuracy": 0.3,
+      "policy": "derive depth after dropping invalid/unresolved projected edges"
+    },
+    "ancestor": {
+      "truePositive": 3,
+      "predicted": 14,
+      "gold": 17,
+      "precision": 0.21428571428571427,
+      "recall": 0.17647058823529413,
+      "f1": 0.1935483870967742
+    }
+  },
+  "firewall": {
+    "goldReadBeforePredictionFreeze": false,
+    "predictionsOpenedAfterGoldFreeze": true
+  }
+}

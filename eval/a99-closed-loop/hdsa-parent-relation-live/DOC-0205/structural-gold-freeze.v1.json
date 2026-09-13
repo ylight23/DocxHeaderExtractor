@@ -1,0 +1,19 @@
+{
+  "artifactKind": "a99_hdsa_structural_gold_freeze",
+  "schemaVersion": "a99-hdsa-structural-gold-freeze-v1",
+  "documentId": "DOC-0205",
+  "policy": "A99_STRUCTURAL_PARENT_V1",
+  "goldPath": "eval/a99-closed-loop/hdsa-parent-relation-live/DOC-0205/structural-gold.v1.json",
+  "goldSha256": "3981b19c62cc450ec9a339990236cb0f41b13462689c2d6413c62cc8cb801f71",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "status": "FROZEN",
+  "authority": "USER_SUPPLIED_SOURCE_ONLY_REVIEW",
+  "modelPredictionsOpenedBeforeFreeze": false,
+  "candidateShortlistOpenedBeforeFreeze": false,
+  "oldEvalHierarchyOpenedBeforeFreeze": false,
+  "levelIsDerived": true,
+  "semanticNodeCount": 10,
+  "parentEdgeCount": 9,
+  "excludedOccurrenceCount": 1,
+  "rootNodeCount": 1
+}

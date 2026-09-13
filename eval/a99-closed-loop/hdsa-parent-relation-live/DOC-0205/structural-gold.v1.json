@@ -1,0 +1,59 @@
+{
+  "artifactKind": "a99_hdsa_structural_gold",
+  "schemaVersion": "a99-hdsa-structural-gold-v1",
+  "documentId": "DOC-0205",
+  "policy": "A99_STRUCTURAL_PARENT_V1",
+  "status": "FROZEN_SOURCE_ONLY_AUTHORITY",
+  "sourcePath": "eval/a99-closed-loop/source-fidelity-audit/DOC-0205/converted-docx/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "occurrenceTreePolicy": "SEMANTIC_NODE_TREE_OCCURRENCES_RETAIN_PROVENANCE",
+  "goldFirewall": {
+    "modelPredictionsVisible": false,
+    "candidateShortlistVisible": false,
+    "modelRolesVisible": false,
+    "oldEvalHierarchyVisible": false
+  },
+  "reviewAuthority": "USER_SUPPLIED_SOURCE_ONLY_REVIEW",
+  "occurrences": [
+    { "sourceAlias": "S0001", "semanticNodeId": null, "parentSemanticNodeId": null, "isRoot": false, "occurrenceRelation": null, "reviewStatus": "EXCLUDED_NON_STRUCTURAL", "reviewNote": "Issuer/masthead; not a node in the structural outline." },
+    { "sourceAlias": "S0005", "semanticNodeId": "N0001", "parentSemanticNodeId": null, "isRoot": true, "occurrenceRelation": "PRIMARY", "reviewStatus": "RESOLVED", "reviewNote": "Document-title/root node represented by NGHỊ ĐỊNH." },
+    { "sourceAlias": "S0014", "semanticNodeId": "N0002", "parentSemanticNodeId": "N0001", "isRoot": false, "occurrenceRelation": "PRIMARY", "reviewStatus": "RESOLVED", "reviewNote": "Primary physical part of the Chapter I semantic node." },
+    { "sourceAlias": "S0015", "semanticNodeId": "N0002", "parentSemanticNodeId": "N0001", "isRoot": false, "occurrenceRelation": "CONTINUATION", "reviewStatus": "RESOLVED", "reviewNote": "QUY ĐỊNH CHUNG continues the same Chapter I semantic node." },
+    { "sourceAlias": "S0016", "semanticNodeId": "N0003", "parentSemanticNodeId": "N0002", "isRoot": false, "occurrenceRelation": "PRIMARY", "reviewStatus": "RESOLVED", "reviewNote": "Article 1 is a direct child of Chapter I." },
+    { "sourceAlias": "S0019", "semanticNodeId": "N0004", "parentSemanticNodeId": "N0002", "isRoot": false, "occurrenceRelation": "PRIMARY", "reviewStatus": "RESOLVED", "reviewNote": "Article 2 is a direct child of Chapter I." },
+    { "sourceAlias": "S0021", "semanticNodeId": "N0005", "parentSemanticNodeId": "N0002", "isRoot": false, "occurrenceRelation": "PRIMARY", "reviewStatus": "RESOLVED", "reviewNote": "Article 3 is a direct child of Chapter I." },
+    { "sourceAlias": "S0033", "semanticNodeId": "N0006", "parentSemanticNodeId": "N0002", "isRoot": false, "occurrenceRelation": "PRIMARY", "reviewStatus": "RESOLVED", "reviewNote": "Article 4 remains inside Chapter I." },
+    { "sourceAlias": "S0035", "semanticNodeId": "N0007", "parentSemanticNodeId": "N0002", "isRoot": false, "occurrenceRelation": "PRIMARY", "reviewStatus": "RESOLVED", "reviewNote": "Article 5 remains inside Chapter I." },
+    { "sourceAlias": "S0044", "semanticNodeId": "N0008", "parentSemanticNodeId": "N0002", "isRoot": false, "occurrenceRelation": "PRIMARY", "reviewStatus": "RESOLVED", "reviewNote": "Article 6 remains inside Chapter I." },
+    { "sourceAlias": "S0052", "semanticNodeId": "N0009", "parentSemanticNodeId": "N0002", "isRoot": false, "occurrenceRelation": "PRIMARY", "reviewStatus": "RESOLVED", "reviewNote": "Article 7 remains inside Chapter I." },
+    { "sourceAlias": "S0060", "semanticNodeId": "N0010", "parentSemanticNodeId": "N0002", "isRoot": false, "occurrenceRelation": "PRIMARY", "reviewStatus": "RESOLVED", "reviewNote": "Article 8 remains inside Chapter I." }
+  ],
+  "scope": {
+    "excludedOccurrenceCount": 1,
+    "resolvedOccurrenceCount": 11,
+    "semanticNodeCount": 10,
+    "parentEdgeCount": 9,
+    "rootNodeCount": 1,
+    "unresolvedNodeCount": 0
+  },
+  "tree": {
+    "root": "N0001",
+    "parentOf": [
+      { "parent": "N0001", "child": "N0002" },
+      { "parent": "N0002", "child": "N0003" },
+      { "parent": "N0002", "child": "N0004" },
+      { "parent": "N0002", "child": "N0005" },
+      { "parent": "N0002", "child": "N0006" },
+      { "parent": "N0002", "child": "N0007" },
+      { "parent": "N0002", "child": "N0008" },
+      { "parent": "N0002", "child": "N0009" },
+      { "parent": "N0002", "child": "N0010" }
+    ]
+  },
+  "annotationProtocol": {
+    "sourceOnly": true,
+    "levelIsDerived": true,
+    "styleAndNumberingAreEvidenceOnly": true,
+    "predictionOpenedBeforeFreeze": false
+  }
+}
