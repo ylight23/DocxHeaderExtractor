@@ -238,7 +238,7 @@ Do not return level, depth, offsets, text spans, legacy hierarchy fields, Gold I
             frozenDecision = new { decision = DecisionName(decision.Decision), parentSemanticNodeId = decision.ParentSemanticNodeId },
             gold = new { goldOpenedAfterFreeze = true, goldParentKind },
             classification = decision.Decision == HdsaParentDecision.Root ? "ROOT_CONTRACT_V2_FIXED_OBSERVED_FAILURE" :
-                decision.Decision == HdsaParentDecision.SelectParent ? "FRAMING_IMPROVEMENT_INSUFFICIENT_MODEL_ROOT_REASONING_FAILURE" :
+                decision.Decision == HdsaParentDecision.SelectParent ? "MODEL_WRONG_ROOT_DECISION_CONFIRMED_UNDER_ROOT_V2" :
                 "CONTRACT_CHANGED_BEHAVIOR_BUT_DID_NOT_RECOVER_ROOT",
             modelCalls = 1,
             providerCalls = Math.Max(1, model.ProviderCalls),
