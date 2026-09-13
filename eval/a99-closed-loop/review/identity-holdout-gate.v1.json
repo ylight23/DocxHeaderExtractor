@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-identity-holdout-gate-v1",
+  "status": "BLOCKED_ON_INDEPENDENT_IDENTITY_GOLD",
+  "createdAt": "2026-09-14",
+  "holdoutManifest": "eval/a99-closed-loop/review/holdout-manifest.v1.json",
+  "holdoutManifestStatus": "SEALED_SOURCE_ONLY",
+  "holdoutDocumentCount": 23,
+  "holdoutSourceOccurrenceCount": 143087,
+  "sourcePackets": {
+    "available": true,
+    "packetKind": "A99_EXHAUSTIVE_SOURCE_FIRST_REVIEW_PACKET",
+    "semanticIdentityRelations": false,
+    "parentRelations": false,
+    "sourceBackedGoldAuthority": false
+  },
+  "existingSemanticFreeze": {
+    "available": true,
+    "identityGroups": false,
+    "hierarchy": false,
+    "exactOccurrenceFreeze": false,
+    "occurrenceLevelIdentityGold": false
+  },
+  "modelOutputs": {
+    "presentInRepository": true,
+    "eligibleAsGold": false,
+    "usedForSelection": false,
+    "usedForGold": false
+  },
+  "selection": {
+    "selectedDocuments": [],
+    "selectionReason": "No independent semantic-identity Gold authority exists. No benchmark cohort was materialized.",
+    "reserveCohortRemainsImmutable": true
+  },
+  "promotionEvaluation": {
+    "parserSupportHypothesis": "BLOCKED_ON_IDENTITY_GOLD",
+    "independentSemanticConfirmationHypothesis": "BLOCKED_ON_IDENTITY_GOLD",
+    "modelOnlyPolicy": "MODEL_PROPOSED_KEEP_SPLIT",
+    "doc0205DevelopmentExposure": true,
+    "productionClaim": false
+  },
+  "oracleDiagnostic": {
+    "allowed": true,
+    "run": false,
+    "goldDerivedInput": false,
+    "productionClaim": false
+  },
+  "calls": {
+    "modelCalls": 0,
+    "providerCalls": 0
+  },
+  "forbiddenInputs": [
+    "model predictions",
+    "current DEV residuals",
+    "DOC-0205 forensic labels",
+    "candidate shortlists derived from Gold",
+    "semantic identity inferred from aggregate totals",
+    "historical hierarchy outputs"
+  ],
+  "nextGate": "Human source-only semantic-identity annotation for an independent subset, followed by freeze before any model output is opened.",
+  "productionBenchmarkAuthorized": false
+}
