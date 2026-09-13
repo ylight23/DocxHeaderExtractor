@@ -1,0 +1,90 @@
+{
+  "artifactKind": "a99_semantic_identity_gold_pilot_manifest",
+  "schemaVersion": "a99-semantic-identity-pilot-v1",
+  "status": "READY_FOR_INDEPENDENT_HUMAN_ANNOTATION",
+  "parentHoldoutManifest": "eval/a99-closed-loop/review/holdout-manifest.v1.json",
+  "parentHoldoutStatus": "SEALED_SOURCE_ONLY",
+  "selectionPolicy": {
+    "selectionInputs": [
+      "documentId",
+      "familyId",
+      "sourceOccurrenceCount",
+      "sourceSha256",
+      "packetSha256"
+    ],
+    "modelOutputsUsed": false,
+    "goldUsed": false,
+    "currentDevResidualsUsed": false,
+    "selectionRule": "Choose the smallest practical independent set covering three source families, then add the next-smallest document from the represented administrative family for within-family replication; ties by documentId.",
+    "reserveHoldoutUnchanged": true
+  },
+  "pilotDocuments": [
+    {
+      "documentId": "DOC-0191",
+      "documentGroupId": "GROUP-0080",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\011_Luat_An_toan_thong_tin_mang_86-2015-QH13.docx",
+      "sourceSha256": "5a7ab944618861645727669ecb05f6a808ddf57b4f82ba48f2283a051c63ce33",
+      "packetPath": "holdout-sealed/DOC-0191.v1.json",
+      "packetSha256": "2ec7e12275b4f99a2341a7e2d21cd38aef6f29568a313f86c29ce9b5890be96d",
+      "sourceOccurrenceCount": 55
+    },
+    {
+      "documentId": "DOC-0232",
+      "documentGroupId": "GROUP-0245",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\052_WBG_Trust_Fund_FIS_December_2025.docx",
+      "sourceSha256": "f17f2835cf66f18622c87456d5ee03c7fc5f5a5e2e70d8b05548471962ae6be5",
+      "packetPath": "holdout-sealed/DOC-0232.v1.json",
+      "packetSha256": "78bca1dce0f98cd64e341463dfd6c066a395e8286908b55a062402f22cbbf505",
+      "sourceOccurrenceCount": 1139
+    },
+    {
+      "documentId": "DOC-0251",
+      "documentGroupId": "GROUP-0210",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\071_ICP_IACG_Minutes_Oct_2025.docx",
+      "sourceSha256": "cfb85d7aedf635838b658dafc6fc17bab4d08ce42ffd7fd6417ab31b238d91f0",
+      "packetPath": "holdout-sealed/DOC-0251.v1.json",
+      "packetSha256": "a09cbea5aa6655d4e2c6f5401b01680a8fd497f7358e639d4d9c1d43c1d11691",
+      "sourceOccurrenceCount": 348
+    },
+    {
+      "documentId": "DOC-0253",
+      "documentGroupId": "GROUP-0060",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\073_FORTIS_GC_Minutes_Mar_2026.docx",
+      "sourceSha256": "3bad8832d728ae8d94368cc5024850828dc504f458b76657f6b86ac1e9c6bdda",
+      "packetPath": "holdout-sealed/DOC-0253.v1.json",
+      "packetSha256": "8e9f441f5318355f108bed37314ca4efd4942a69d48af19ea29f368a6796f7f7",
+      "sourceOccurrenceCount": 25
+    }
+  ],
+  "pilotTotals": {
+    "documentCount": 4,
+    "sourceOccurrenceCount": 1567,
+    "familyCount": 3
+  },
+  "annotationProtocol": {
+    "reviewAllPacketOccurrences": true,
+    "annotators": "TWO_INDEPENDENT_HUMANS",
+    "adjudicator": "HUMAN_ONLY_AFTER_A_AND_B_FREEZE",
+    "predictionVisible": false,
+    "modelOutputVisible": false,
+    "candidateOutputVisible": false,
+    "residualArtifactVisible": false,
+    "identityGroupsHandAnnotated": true,
+    "pairRelationsDerivedAfterFreeze": true
+  },
+  "freezeSequence": [
+    "freeze annotator A files",
+    "freeze annotator B files",
+    "validate source and packet hashes",
+    "human adjudicate disagreements using source evidence only",
+    "freeze identity Gold and file hashes",
+    "derive pair relations deterministically",
+    "only then permit candidate generation/verifier evaluation"
+  ],
+  "providerCalls": 0,
+  "productionBenchmarkAuthorized": false
+}

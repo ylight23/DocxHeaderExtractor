@@ -1,0 +1,101 @@
+{
+  "artifactKind": "a99_semantic_identity_gold_schema",
+  "schemaVersion": "a99-semantic-identity-gold-v1",
+  "authorityClass": "HUMAN_SOURCE_ONLY_GOLD",
+  "purpose": "Freeze occurrence-to-semantic-node identity independently of model, candidate, verifier, and prior residual artifacts.",
+  "annotationFileShape": {
+    "required": [
+      "artifactKind",
+      "schemaVersion",
+      "documentId",
+      "sourceSha256",
+      "sourcePacketSha256",
+      "reviewProtocol",
+      "reviewedEntireDocument",
+      "headingSetExhaustive",
+      "unresolvedSemanticUncertainty",
+      "rows"
+    ],
+    "reviewProtocol": [
+      "HUMAN_SOURCE_ONLY",
+      "NO_MODEL_OUTPUT_VISIBLE",
+      "NO_CANDIDATE_OUTPUT_VISIBLE",
+      "NO_PRIOR_RESIDUAL_VISIBLE"
+    ]
+  },
+  "rowContract": {
+    "required": [
+      "sourceId",
+      "stableId",
+      "sourceOrdinal",
+      "sourceSpan",
+      "sourceTextHash",
+      "headingStatus"
+    ],
+    "headingStatus": [
+      "HEADING",
+      "NOT_HEADING",
+      "UNRESOLVED"
+    ],
+    "headingFieldsRequiredWhenHeading": [
+      "identityGroupId",
+      "occurrenceRelation"
+    ],
+    "occurrenceRelation": [
+      "PRIMARY",
+      "REPEAT",
+      "CONTINUATION"
+    ],
+    "continuationFieldsRequiredWhenContinuation": [
+      "continuationOfOccurrenceId"
+    ],
+    "identityGroupIdRule": "All physical heading occurrences in one semantic node share one reviewer-assigned group ID; group IDs are document-local and deterministic after row order is frozen.",
+    "continuationDirectionRule": "A CONTINUATION row points only to an earlier HEADING occurrence in the same identityGroupId.",
+    "unresolvedRule": "UNRESOLVED rows have no identityGroupId and are excluded from strict identity scoring until adjudicated."
+  },
+  "derivedPairRelations": {
+    "notHandAnnotated": true,
+    "source": "frozen heading rows and identityGroupId membership",
+    "rules": [
+      "Different resolved identityGroupId values derive DISTINCT.",
+      "A continuationOfOccurrenceId derives directed CONTINUATION_OF from later occurrence to referenced earlier occurrence.",
+      "Resolved occurrences in the same group without a continuation edge derive SAME_SEMANTIC_REPEAT.",
+      "Any pair containing an UNRESOLVED occurrence is UNKNOWN and excluded from strict pair scoring."
+    ],
+    "allowedRelations": [
+      "SAME_SEMANTIC_REPEAT",
+      "CONTINUATION_OF",
+      "DISTINCT",
+      "UNKNOWN"
+    ]
+  },
+  "validationInvariants": [
+    "sourceSha256 matches the frozen holdout manifest",
+    "sourcePacketSha256 matches the sealed source-only packet",
+    "every sourceId/stableId/span is present in the packet",
+    "source spans are legal and non-duplicated",
+    "rows are deterministically ordered by sourceOrdinal then sourceId",
+    "HEADING rows have exactly one identityGroupId",
+    "CONTINUATION points backward within its group",
+    "identity groups do not cross document scope",
+    "derived relation graph has no contradictory continuation parent",
+    "semantic node IDs and pair relations are derived only after freeze"
+  ],
+  "strictEligibility": "reviewedEntireDocument=true and headingSetExhaustive=true and unresolvedSemanticUncertainty=false and all source/hash/identity invariants pass",
+  "forbiddenInputs": [
+    "model predictions",
+    "candidate sets",
+    "verifier responses",
+    "promotion decisions",
+    "DOC-0205 residual labels",
+    "old hierarchy output",
+    "Gold-derived candidate generation",
+    "fuzzy text or filename joins"
+  ],
+  "goldFirewall": {
+    "goldReadBeforeAnnotationFreeze": false,
+    "predictionsReadBeforeAnnotationFreeze": false,
+    "candidateGenerationBeforeAnnotationFreeze": false,
+    "providerCallsRequired": false
+  }
+}
