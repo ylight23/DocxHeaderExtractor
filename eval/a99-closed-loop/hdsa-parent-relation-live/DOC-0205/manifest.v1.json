@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "a99-hdsa-parent-relation-live-manifest-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "sourcePath": "eval/a99-closed-loop/source-fidelity-audit/DOC-0205/converted-docx/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+  "seedPredictionPath": "eval/a99-closed-loop/source-fidelity-whole-alias-live/DOC-0205/r2/whole-alias/prediction.v1.json",
+  "seedFreezePath": "eval/a99-closed-loop/source-fidelity-whole-alias-live/DOC-0205/r2/whole-alias/freeze.v1.json",
+  "selectedMiniTree": [
+    {
+      "alias": "S0001",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "text": "CH\u00CDNH PH\u1EE6 ________",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0005",
+      "sourceId": "body[1]/p[3]",
+      "text": "NGH\u1ECA \u0110\u1ECANH",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0014",
+      "sourceId": "body[1]/p[14]",
+      "text": "Ch\u01B0\u01A1ng I",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0015",
+      "sourceId": "body[1]/p[15]",
+      "text": "QUY \u0110\u1ECANH CHUNG",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0016",
+      "sourceId": "body[1]/p[17]",
+      "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0019",
+      "sourceId": "body[1]/p[20]",
+      "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0021",
+      "sourceId": "body[1]/p[22]",
+      "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0033",
+      "sourceId": "body[1]/p[34]",
+      "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0035",
+      "sourceId": "body[1]/p[36]",
+      "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0044",
+      "sourceId": "body[1]/p[45]",
+      "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0052",
+      "sourceId": "body[1]/p[53]",
+      "text": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "role": "Normal"
+    },
+    {
+      "alias": "S0060",
+      "sourceId": "body[1]/p[61]",
+      "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+      "role": "Normal"
+    }
+  ],
+  "primaryCandidateWindow": 3,
+  "candidateParentsAreAttentionOnly": true,
+  "authoritativeParentUniverse": "all selected source-backed occurrences preceding child",
+  "structuralGoldReadBeforeFreeze": false,
+  "goldReadBeforeFreeze": false,
+  "modelFallback": "NONE",
+  "semanticPromptChanged": false
+}

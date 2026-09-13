@@ -12,6 +12,12 @@ public sealed record HdsaRelationEvidence(
     [property: JsonPropertyName("localContext")] string? LocalContext,
     [property: JsonPropertyName("globalContext")] string? GlobalContext = null);
 
+public sealed record HdsaParentUniverseEntry(
+    [property: JsonPropertyName("id")] string Id,
+    [property: JsonPropertyName("documentOrder")] int DocumentOrder,
+    [property: JsonPropertyName("text")] string Text,
+    [property: JsonPropertyName("semanticRole")] string? SemanticRole = null);
+
 /// <summary>
 /// Request for one model relation decision. CandidateParents is an attention shortlist only;
 /// the validator still accepts any source-backed parent so the shortlist cannot become a recall gate.
@@ -19,6 +25,7 @@ public sealed record HdsaRelationEvidence(
 public sealed record HdsaRelationReasoningRequest(
     [property: JsonPropertyName("child")] string Child,
     [property: JsonPropertyName("candidateParents")] IReadOnlyList<string> CandidateParents,
+    [property: JsonPropertyName("authoritativeParentUniverse")] IReadOnlyList<HdsaParentUniverseEntry> AuthoritativeParentUniverse,
     [property: JsonPropertyName("evidence")] HdsaRelationEvidence Evidence,
     [property: JsonPropertyName("candidateParentsAreAttentionOnly")] bool CandidateParentsAreAttentionOnly = true);
 

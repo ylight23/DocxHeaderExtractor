@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "a99-hdsa-parent-relation-live-freeze-v1",
+  "documentId": "DOC-0205",
+  "child": "S0015",
+  "requestSha256": "ea84b26c6e62094976583db60954fdd1fec480269746e4b21109e9c6f9ad9487",
+  "predictionSha256": "21f4085d86d0eef0301ff05bfbabcf73b65af9b1b4df778c4f90db093c727133",
+  "responseSha256": "175f717cd048e1037382fddeb6c9188a17c4eb43d9b7e0f32c500c03a8d98bd2",
+  "provider": "Alibaba",
+  "finishReason": "stop",
+  "inputTokens": 541,
+  "reasoningTokens": 513,
+  "outputTokens": 552,
+  "elapsedMs": 6801,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false
+}

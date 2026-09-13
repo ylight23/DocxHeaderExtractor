@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-hdsa-parent-relation-live-prediction-v1",
+  "documentId": "DOC-0205",
+  "child": "S0044",
+  "requestSha256": "452f6c955bb051c1f03739f55534f509888f55ad918d314a136d39a4621e6e60",
+  "responseSha256": "7084dbee18a8e36699f257a08ffa76720d32f226bf4c7416ec1e2e5c520973fe",
+  "decision": {
+    "child": "S0044",
+    "decision": "SELECT_PARENT",
+    "parent": "S0035"
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "parentWasOutsideAttentionHints": false
+  },
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false
+}

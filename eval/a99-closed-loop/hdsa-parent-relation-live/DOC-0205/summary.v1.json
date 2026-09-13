@@ -1,0 +1,292 @@
+{
+  "schemaVersion": "a99-hdsa-parent-relation-live-summary-v1",
+  "status": "COMPLETE",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "miniTreeCount": 12,
+  "decisions": [
+    {
+      "child": "S0001",
+      "decision": "ROOT",
+      "parent": null
+    },
+    {
+      "child": "S0005",
+      "decision": "SELECT_PARENT",
+      "parent": "S0001"
+    },
+    {
+      "child": "S0014",
+      "decision": "UNRESOLVED",
+      "parent": null
+    },
+    {
+      "child": "S0015",
+      "decision": "SELECT_PARENT",
+      "parent": "S0014"
+    },
+    {
+      "child": "S0016",
+      "decision": "SELECT_PARENT",
+      "parent": "S0015"
+    },
+    {
+      "child": "S0019",
+      "decision": "SELECT_PARENT",
+      "parent": "S0015"
+    },
+    {
+      "child": "S0021",
+      "decision": "SELECT_PARENT",
+      "parent": "S0019"
+    },
+    {
+      "child": "S0033",
+      "decision": "UNRESOLVED",
+      "parent": null
+    },
+    {
+      "child": "S0035",
+      "decision": "SELECT_PARENT",
+      "parent": "S0033"
+    },
+    {
+      "child": "S0044",
+      "decision": "SELECT_PARENT",
+      "parent": "S0035"
+    },
+    {
+      "child": "S0052",
+      "decision": "SELECT_PARENT",
+      "parent": "S0044"
+    },
+    {
+      "child": "S0060",
+      "decision": "SELECT_PARENT",
+      "parent": "S0052"
+    }
+  ],
+  "relationProposals": [
+    {
+      "from": "S0001",
+      "to": "S0005",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0014",
+      "to": "S0015",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0015",
+      "to": "S0016",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0015",
+      "to": "S0019",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0019",
+      "to": "S0021",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0033",
+      "to": "S0035",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0035",
+      "to": "S0044",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0044",
+      "to": "S0052",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0052",
+      "to": "S0060",
+      "relation": "PARENT_OF"
+    }
+  ],
+  "normalizedRelations": [
+    {
+      "from": "S0001",
+      "to": "S0005",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0014",
+      "to": "S0015",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0015",
+      "to": "S0016",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0015",
+      "to": "S0019",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0019",
+      "to": "S0021",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0033",
+      "to": "S0035",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0035",
+      "to": "S0044",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0044",
+      "to": "S0052",
+      "relation": "PARENT_OF"
+    },
+    {
+      "from": "S0052",
+      "to": "S0060",
+      "relation": "PARENT_OF"
+    }
+  ],
+  "graphValidation": {
+    "acceptedRelations": [
+      {
+        "from": "S0001",
+        "to": "S0005",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "S0014",
+        "to": "S0015",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "S0015",
+        "to": "S0016",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "S0015",
+        "to": "S0019",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "S0019",
+        "to": "S0021",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "S0033",
+        "to": "S0035",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "S0035",
+        "to": "S0044",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "S0044",
+        "to": "S0052",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "S0052",
+        "to": "S0060",
+        "relation": "PARENT_OF"
+      }
+    ],
+    "rejectedRelations": [],
+    "errors": [],
+    "isValid": true
+  },
+  "tree": {
+    "nodes": [
+      {
+        "id": "S0001",
+        "parentId": null,
+        "level": 1
+      },
+      {
+        "id": "S0005",
+        "parentId": "S0001",
+        "level": 2
+      },
+      {
+        "id": "S0014",
+        "parentId": null,
+        "level": 1
+      },
+      {
+        "id": "S0015",
+        "parentId": "S0014",
+        "level": 2
+      },
+      {
+        "id": "S0016",
+        "parentId": "S0015",
+        "level": 3
+      },
+      {
+        "id": "S0019",
+        "parentId": "S0015",
+        "level": 3
+      },
+      {
+        "id": "S0021",
+        "parentId": "S0019",
+        "level": 4
+      },
+      {
+        "id": "S0033",
+        "parentId": null,
+        "level": 1
+      },
+      {
+        "id": "S0035",
+        "parentId": "S0033",
+        "level": 2
+      },
+      {
+        "id": "S0044",
+        "parentId": "S0035",
+        "level": 3
+      },
+      {
+        "id": "S0052",
+        "parentId": "S0044",
+        "level": 4
+      },
+      {
+        "id": "S0060",
+        "parentId": "S0052",
+        "level": 5
+      }
+    ],
+    "errors": [],
+    "isValid": true
+  },
+  "unresolvedCount": 2,
+  "rootDecisionCount": 1,
+  "parentOutsidePrimaryHints": 0,
+  "modelCalls": 12,
+  "providerCalls": 12,
+  "freshModelCallsThisInvocation": 0,
+  "freshProviderCallsThisInvocation": 0,
+  "telemetry": [],
+  "structuralGold": "NOT_EVALUATED_NO_AUTHORITY_OPENED",
+  "goldRead": false,
+  "goldReadBeforeFreeze": false
+}

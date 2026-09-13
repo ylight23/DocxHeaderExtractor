@@ -35,6 +35,7 @@ public sealed class HdsaRelationReasoningContractsTests
     {
         var request = new HdsaRelationReasoningRequest(
             "child", ["parent"],
+            [new("parent", 1, "Parent", "SECTION")],
             new("order=2", "2.1", "Heading 2", "ARTICLE/SECTION", "parent → child"));
         var decision = HdsaRelationReasoningContract.Parse(
             "{\"child\":\"child\",\"decision\":\"SELECT_PARENT\",\"parent\":\"parent\"}");
@@ -50,6 +51,7 @@ public sealed class HdsaRelationReasoningContractsTests
     {
         var request = new HdsaRelationReasoningRequest(
             "child", ["near-parent"],
+            [new("near-parent", 9, "Near parent") , new("distant-parent", 2, "Distant parent")],
             new("order=10", null, null, null, "context"));
         var decision = new HdsaRelationReasoningDecision(
             "child", HdsaParentDecision.SelectParent, "distant-parent");
@@ -65,7 +67,7 @@ public sealed class HdsaRelationReasoningContractsTests
     public void Root_and_unresolved_require_no_parent()
     {
         var request = new HdsaRelationReasoningRequest(
-            "child", [], new("order=1", null, null, null, null));
+            "child", [], [], new("order=1", null, null, null, null));
 
         Assert.True(HdsaRelationReasoningContract.Validate(
             request, new("child", HdsaParentDecision.Root), new HashSet<string>(["child"])).Accepted);
@@ -79,7 +81,7 @@ public sealed class HdsaRelationReasoningContractsTests
     public void Unknown_parent_and_extra_output_fields_fail_closed()
     {
         var request = new HdsaRelationReasoningRequest(
-            "child", ["parent"], new("order=2", null, null, null, null));
+            "child", ["parent"], [new("parent", 1, "Parent")], new("order=2", null, null, null, null));
         var unknownParent = new HdsaRelationReasoningDecision(
             "child", HdsaParentDecision.SelectParent, "invented");
         var invalid = HdsaRelationReasoningContract.Validate(request, unknownParent, new HashSet<string>(["child", "parent"]));
