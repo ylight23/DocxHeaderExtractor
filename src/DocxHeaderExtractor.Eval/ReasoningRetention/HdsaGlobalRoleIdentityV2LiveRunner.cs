@@ -18,7 +18,7 @@ public static class HdsaGlobalRoleIdentityV2LiveRunner
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string DocumentId = "DOC-0205";
     private const string CatalogPath = "eval/a99-closed-loop/hdsa-semantic-node-production-live/DOC-0205/semantic-catalog.v1.json";
-    private const string OutputRoot = "eval/a99-closed-loop/hdsa-global-role-identity-v2-live/DOC-0205";
+    private const string OutputRoot = "eval/a99-closed-loop/hdsa-global-role-identity-v2-live/DOC-0205/attempt-2-keyed-a1";
     private const string ExpectedCatalogFingerprint = "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e";
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
@@ -32,8 +32,10 @@ DOCUMENT_FRAMING includes issuer mastheads, banners, and document framing that i
 outline root. OUTLINE_ROOT is the root of the semantic outline. OUTLINE_HEADING and
 SECTION_HEADING are outline-bearing descendants. CONTENT_LABEL and NON_OUTLINE_LABEL are labels
 that do not by themselves establish hierarchy. REPEAT and CONTINUATION are permitted descriptive
-roles when that is the best local description. Return one result for every supplied node, in
-supplied order. Do not invent IDs, offsets, Gold, or legacy fields.
+roles when that is the best local description. Return only the compact keyed object:
+{"expectedNodeCount":12,"classifiedNodeCount":12,"roles":{"NODE_ID":"ROLE"}}.
+Use every supplied node ID exactly once as a key. The two counts must describe the supplied
+catalog. Do not return an array, per-node explanations, confidence, offsets, Gold, or legacy fields.
 """;
 
     private const string IdentityPrompt = """
@@ -69,7 +71,7 @@ pair exactly once in the supplied order. Keep reasons concise.
         var roleHash = Sha256Text(roleJson);
         await WriteJsonAsync(Path.Combine(output, "manifest.v1.json"), new
         {
-            schemaVersion = "a99-hdsa-global-role-identity-v2-live-manifest-v1",
+            schemaVersion = "a99-hdsa-global-role-identity-v2-keyed-a1-manifest-v1",
             documentId = DocumentId,
             model = Model,
             endpoint = Endpoint,
@@ -88,7 +90,7 @@ pair exactly once in the supplied order. Keep reasons concise.
         }, ct);
         await WriteJsonAsync(Path.Combine(roleDir, "request.v1.json"), new
         {
-            schemaVersion = "a99-hdsa-global-role-v2-request-v1",
+            schemaVersion = "a99-hdsa-global-role-v2-keyed-request-v1",
             documentId = DocumentId,
             request = roleRequest,
             requestSha256 = roleHash,
@@ -129,7 +131,7 @@ pair exactly once in the supplied order. Keep reasons concise.
         }
         var roleResponseHash = Sha256Text(roleResult.Content);
         await WriteJsonAsync(Path.Combine(roleDir, "response.v1.json"), ResponseArtifact(
-            "a99-hdsa-global-role-v2-response-v1", roleHash, roleResponseHash, roleResult), ct);
+            "a99-hdsa-global-role-v2-keyed-response-v1", roleHash, roleResponseHash, roleResult), ct);
         HdsaGlobalRoleClassificationProposal? roleProposal = null;
         string? roleParseError = null;
         try { roleProposal = HdsaGlobalRoleClassificationContract.Parse(roleResult.Content); }
@@ -140,7 +142,7 @@ pair exactly once in the supplied order. Keep reasons concise.
             : HdsaGlobalRoleClassificationContract.Validate(known, roleProposal);
         await WriteJsonAsync(Path.Combine(roleDir, "prediction.v1.json"), new
         {
-            schemaVersion = "a99-hdsa-global-role-v2-prediction-v1",
+            schemaVersion = "a99-hdsa-global-role-v2-keyed-prediction-v1",
             documentId = DocumentId, requestSha256 = roleHash, responseSha256 = roleResponseHash,
             proposal = roleProposal, parseError = roleParseError, validation = roleValidation,
             goldReadBeforeFreeze = false, goldDerivedInput = false,
@@ -148,7 +150,7 @@ pair exactly once in the supplied order. Keep reasons concise.
         var rolePredictionPath = Path.Combine(roleDir, "prediction.v1.json");
         await WriteJsonAsync(Path.Combine(roleDir, "freeze.v1.json"), new
         {
-            schemaVersion = "a99-hdsa-global-role-v2-freeze-v1",
+            schemaVersion = "a99-hdsa-global-role-v2-keyed-freeze-v1",
             documentId = DocumentId, sourceSha256 = catalog.SourceSha256,
             catalogFingerprint = catalog.CatalogFingerprint, requestSha256 = roleHash,
             responseSha256 = roleResponseHash, predictionSha256 = Sha256File(rolePredictionPath),

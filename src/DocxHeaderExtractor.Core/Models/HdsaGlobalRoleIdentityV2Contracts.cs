@@ -22,7 +22,9 @@ public sealed record HdsaGlobalRoleNodeProposal(
     [property: JsonPropertyName("reason")] string Reason);
 
 public sealed record HdsaGlobalRoleClassificationProposal(
-    [property: JsonPropertyName("nodes")] IReadOnlyList<HdsaGlobalRoleNodeProposal> Nodes);
+    [property: JsonPropertyName("expectedNodeCount")] int ExpectedNodeCount,
+    [property: JsonPropertyName("classifiedNodeCount")] int ClassifiedNodeCount,
+    [property: JsonPropertyName("roles")] IReadOnlyDictionary<string, string> Roles);
 
 public sealed record HdsaGlobalRoleClassificationValidation(
     bool Accepted, string? RejectionReason,
@@ -78,65 +80,61 @@ public static class HdsaGlobalRoleClassificationContract
         additionalProperties = false,
         properties = new
         {
-            nodes = new
+            expectedNodeCount = new { type = "integer", minimum = 0 },
+            classifiedNodeCount = new { type = "integer", minimum = 0 },
+            roles = new
             {
-                type = "array", minItems = 1,
-                items = new
-                {
-                    type = "object", additionalProperties = false,
-                    properties = new
-                    {
-                        nodeId = new { type = "string", minLength = 1 },
-                        structuralRole = new { type = "string", @enum = HdsaGlobalSemanticNormalizationRoles.All.Order() },
-                        outlineBearing = new { type = "boolean" },
-                        confidence = new { type = "string", minLength = 1 },
-                        reason = new { type = "string", minLength = 1 },
-                    },
-                    required = new[] { "nodeId", "structuralRole", "outlineBearing", "confidence", "reason" },
-                },
+                type = "object", minProperties = 1,
+                additionalProperties = new { type = "string", @enum = HdsaGlobalSemanticNormalizationRoles.All.Order() },
             },
         },
-        required = new[] { "nodes" },
+        required = new[] { "expectedNodeCount", "classifiedNodeCount", "roles" },
     };
 
     public static HdsaGlobalRoleClassificationProposal Parse(string raw)
     {
         using var document = JsonDocument.Parse(raw);
         var root = document.RootElement;
-        RequireOnly(root, "nodes");
-        var nodes = root.GetProperty("nodes").EnumerateArray().Select(item =>
+        RequireOnly(root, "expectedNodeCount", "classifiedNodeCount", "roles");
+        var rolesElement = root.GetProperty("roles");
+        if (rolesElement.ValueKind != JsonValueKind.Object)
+            throw new FormatException("HDSA_GLOBAL_ROLE_ROLES_NOT_OBJECT");
+        var roleProperties = rolesElement.EnumerateObject().ToArray();
+        if (roleProperties.GroupBy(item => item.Name, StringComparer.Ordinal).Any(group => group.Count() != 1))
+            throw new FormatException("HDSA_GLOBAL_ROLE_DUPLICATE_NODE_ID");
+        var roles = roleProperties.ToDictionary(item =>
         {
-            RequireOnly(item, "nodeId", "structuralRole", "outlineBearing", "confidence", "reason");
-            var bearing = item.GetProperty("outlineBearing");
-            return new HdsaGlobalRoleNodeProposal(
-                RequiredString(item, "nodeId"), RequiredString(item, "structuralRole"),
-                bearing.ValueKind switch
-                {
-                    JsonValueKind.True => true,
-                    JsonValueKind.False => false,
-                    _ => throw new FormatException("HDSA_GLOBAL_ROLE_OUTLINE_BEARING_INVALID"),
-                },
-                RequiredString(item, "confidence"), RequiredString(item, "reason"));
-        }).ToArray();
-        return new(nodes);
+            if (item.Value.ValueKind != JsonValueKind.String || string.IsNullOrWhiteSpace(item.Value.GetString()))
+                throw new FormatException("HDSA_GLOBAL_ROLE_ROLE_VALUE_INVALID:" + item.Name);
+            return item.Name;
+        }, item => item.Value.GetString()!, StringComparer.Ordinal);
+        return new(
+            RequiredInt(root, "expectedNodeCount"),
+            RequiredInt(root, "classifiedNodeCount"),
+            roles);
     }
 
     public static HdsaGlobalRoleClassificationValidation Validate(
         IReadOnlySet<string> knownNodeIds, HdsaGlobalRoleClassificationProposal proposal)
     {
-        if (proposal.Nodes.Count != knownNodeIds.Count) return new(false, "NODE_COUNT_MISMATCH", []);
-        if (proposal.Nodes.GroupBy(item => item.NodeId, StringComparer.Ordinal).Any(group => group.Count() != 1))
-            return new(false, "DUPLICATE_NODE_ID", []);
-        if (proposal.Nodes.Any(item => !knownNodeIds.Contains(item.NodeId)))
+        if (proposal.ExpectedNodeCount != knownNodeIds.Count) return new(false, "EXPECTED_NODE_COUNT_MISMATCH", []);
+        if (proposal.ClassifiedNodeCount != proposal.Roles.Count) return new(false, "CLASSIFIED_NODE_COUNT_MISMATCH", []);
+        if (proposal.Roles.Count != knownNodeIds.Count) return new(false, "ROLE_KEY_COUNT_MISMATCH", []);
+        if (proposal.Roles.Keys.Any(item => !knownNodeIds.Contains(item)))
             return new(false, "UNKNOWN_NODE_ID", []);
-        if (proposal.Nodes.Any(item => !HdsaGlobalSemanticNormalizationRoles.All.Contains(item.StructuralRole)))
+        if (proposal.Roles.Values.Any(item => !HdsaGlobalSemanticNormalizationRoles.All.Contains(item)))
             return new(false, "STRUCTURAL_ROLE_INVALID", []);
-        return new(true, null, proposal.Nodes);
+        var nodes = proposal.Roles.OrderBy(item => item.Key, StringComparer.Ordinal)
+            .Select(item => new HdsaGlobalRoleNodeProposal(
+                item.Key, item.Value, HdsaGlobalSemanticNormalizationRoles.OutlineBearing.Contains(item.Value),
+                "NOT_RETURNED", "A1_KEYED_ROLE_ONLY"))
+            .ToArray();
+        return new(true, null, nodes);
     }
 
-    private static string RequiredString(JsonElement root, string property) =>
-        root.TryGetProperty(property, out var value) && value.ValueKind == JsonValueKind.String &&
-        !string.IsNullOrWhiteSpace(value.GetString()) ? value.GetString()! :
+    private static int RequiredInt(JsonElement root, string property) =>
+        root.TryGetProperty(property, out var value) && value.ValueKind == JsonValueKind.Number &&
+        value.TryGetInt32(out var number) && number >= 0 ? number :
         throw new FormatException("HDSA_GLOBAL_ROLE_" + property.ToUpperInvariant() + "_MISSING");
 
     private static void RequireOnly(JsonElement root, params string[] allowed)

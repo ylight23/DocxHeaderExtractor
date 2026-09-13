@@ -1,0 +1,1532 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-v2-request-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+    "pairs": [
+      {
+        "pairId": "P01-02",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "OUTLINE_ROOT",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": true
+      },
+      {
+        "pairId": "P01-03",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "OUTLINE_HEADING",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": true
+      },
+      {
+        "pairId": "P01-04",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "SECTION_HEADING",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": true
+      },
+      {
+        "pairId": "P01-05",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P01-06",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P01-07",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P01-08",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P01-09",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P01-10",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P01-11",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P01-12",
+        "left": {
+          "nodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "documentOrder": 0
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "DOCUMENT_FRAMING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P02-03",
+        "left": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "right": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "leftStructuralRole": "OUTLINE_ROOT",
+        "rightStructuralRole": "OUTLINE_HEADING",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": true
+      },
+      {
+        "pairId": "P02-04",
+        "left": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "right": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "leftStructuralRole": "OUTLINE_ROOT",
+        "rightStructuralRole": "SECTION_HEADING",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": true
+      },
+      {
+        "pairId": "P02-05",
+        "left": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "right": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "leftStructuralRole": "OUTLINE_ROOT",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P02-06",
+        "left": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "right": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "leftStructuralRole": "OUTLINE_ROOT",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P02-07",
+        "left": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "right": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "leftStructuralRole": "OUTLINE_ROOT",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P02-08",
+        "left": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "right": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "leftStructuralRole": "OUTLINE_ROOT",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P02-09",
+        "left": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "right": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "leftStructuralRole": "OUTLINE_ROOT",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P02-10",
+        "left": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "right": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "leftStructuralRole": "OUTLINE_ROOT",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P02-11",
+        "left": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "right": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "leftStructuralRole": "OUTLINE_ROOT",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P02-12",
+        "left": {
+          "nodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "documentOrder": 6
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "OUTLINE_ROOT",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P03-04",
+        "left": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "right": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "leftStructuralRole": "OUTLINE_HEADING",
+        "rightStructuralRole": "SECTION_HEADING",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": true
+      },
+      {
+        "pairId": "P03-05",
+        "left": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "right": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "leftStructuralRole": "OUTLINE_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P03-06",
+        "left": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "right": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "leftStructuralRole": "OUTLINE_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P03-07",
+        "left": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "right": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "leftStructuralRole": "OUTLINE_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P03-08",
+        "left": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "right": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "leftStructuralRole": "OUTLINE_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P03-09",
+        "left": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "right": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "leftStructuralRole": "OUTLINE_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P03-10",
+        "left": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "right": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "leftStructuralRole": "OUTLINE_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P03-11",
+        "left": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "right": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "leftStructuralRole": "OUTLINE_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P03-12",
+        "left": {
+          "nodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "OUTLINE_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P04-05",
+        "left": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "right": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "leftStructuralRole": "SECTION_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P04-06",
+        "left": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "right": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "leftStructuralRole": "SECTION_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P04-07",
+        "left": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "right": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "leftStructuralRole": "SECTION_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P04-08",
+        "left": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "right": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "leftStructuralRole": "SECTION_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P04-09",
+        "left": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "right": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "leftStructuralRole": "SECTION_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P04-10",
+        "left": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "right": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "leftStructuralRole": "SECTION_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P04-11",
+        "left": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "right": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "leftStructuralRole": "SECTION_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P04-12",
+        "left": {
+          "nodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "SECTION_HEADING",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": true,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P05-06",
+        "left": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "right": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P05-07",
+        "left": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "right": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P05-08",
+        "left": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "right": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P05-09",
+        "left": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "right": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P05-10",
+        "left": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "right": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P05-11",
+        "left": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "right": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P05-12",
+        "left": {
+          "nodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P06-07",
+        "left": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "right": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P06-08",
+        "left": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "right": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P06-09",
+        "left": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "right": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P06-10",
+        "left": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "right": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P06-11",
+        "left": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "right": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P06-12",
+        "left": {
+          "nodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P07-08",
+        "left": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "right": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P07-09",
+        "left": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "right": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P07-10",
+        "left": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "right": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P07-11",
+        "left": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "right": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P07-12",
+        "left": {
+          "nodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P08-09",
+        "left": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "right": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P08-10",
+        "left": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "right": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P08-11",
+        "left": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "right": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P08-12",
+        "left": {
+          "nodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P09-10",
+        "left": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "right": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P09-11",
+        "left": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "right": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P09-12",
+        "left": {
+          "nodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P10-11",
+        "left": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "right": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P10-12",
+        "left": {
+          "nodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 48
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      },
+      {
+        "pairId": "P11-12",
+        "left": {
+          "nodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 56
+        },
+        "right": {
+          "nodeId": "SN-9a8cf82ed4783b6d",
+          "memberOccurrenceIds": [
+            "S0060"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+          "documentOrder": 64
+        },
+        "leftStructuralRole": "CONTENT_LABEL",
+        "rightStructuralRole": "CONTENT_LABEL",
+        "leftOutlineBearing": false,
+        "rightOutlineBearing": false
+      }
+    ],
+    "goldDerivedInput": false
+  },
+  "requestSha256": "edfabe6eda64a0081eca2f47fbacd614cdea740456eeb7f1a7aaeef3fe90adfc",
+  "roleFreeze": "a1-role/freeze.v1.json",
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}

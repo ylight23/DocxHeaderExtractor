@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "a99-hdsa-global-role-identity-v2-a1-response-forensic-v1",
+  "documentId": "DOC-0205",
+  "sourceAttempt": "a1-role/response.v1.json",
+  "requestSha256": "0f4f383d8cd39b2a5c9ef974e794b4f0955f5d8e5e8004e7cb6d13c85dd6ec44",
+  "rawResponseSha256": "39462478bbdfdfa883285846afe6b1a74ca0972dc3ec6eae181278587a172b9a",
+  "rawResponseBytesUtf8": 2277,
+  "finishReason": "stop",
+  "reportedOutputTokens": 4101,
+  "maxOutputTokens": 16000,
+  "independentParse": {
+    "rootShape": "object",
+    "rootProperties": ["nodes"],
+    "nodesValueKind": "array",
+    "nodesCount": 1,
+    "firstNodeProperties": ["nodeId", "structuralRole", "outlineBearing", "confidence", "reason"],
+    "remainingNodeRecordsEmbeddedInString": true
+  },
+  "expectedNodeCount": 12,
+  "parserLossEvidence": false,
+  "classification": "PROVIDER_CONTENT_STRUCTURALLY_INCOMPLETE",
+  "goldReadBeforeFreeze": false,
+  "notes": [
+    "The persisted raw content independently parses as one array element, not twelve.",
+    "The first element's confidence/reason content contains escaped trailing node records as string content; they are not array elements.",
+    "finishReason=stop and output tokens are well below the configured output limit, so this artifact does not classify the event as an output-limit truncation."
+  ]
+}

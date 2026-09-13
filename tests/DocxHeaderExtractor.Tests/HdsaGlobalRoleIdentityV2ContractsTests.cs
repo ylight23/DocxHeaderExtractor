@@ -7,16 +7,60 @@ public sealed class HdsaGlobalRoleIdentityV2ContractsTests
     [Fact]
     public void Role_contract_requires_each_known_node_exactly_once()
     {
-        var proposal = new HdsaGlobalRoleClassificationProposal([
-            new("S0001", "DOCUMENT_FRAMING", false, "high", "fixture"),
-            new("S0005", "OUTLINE_ROOT", true, "high", "fixture"),
-        ]);
+        var proposal = HdsaGlobalRoleClassificationContract.Parse("""
+            {
+              "expectedNodeCount": 2,
+              "classifiedNodeCount": 2,
+              "roles": {
+                "S0001": "DOCUMENT_FRAMING",
+                "S0005": "OUTLINE_ROOT"
+              }
+            }
+            """);
 
         var result = HdsaGlobalRoleClassificationContract.Validate(
             new HashSet<string>(["S0001", "S0005"], StringComparer.Ordinal), proposal);
 
         Assert.True(result.Accepted);
         Assert.Equal(2, result.Nodes.Count);
+    }
+
+    [Fact]
+    public void Role_contract_rejects_incomplete_keyset_even_when_counts_claim_complete()
+    {
+        var proposal = HdsaGlobalRoleClassificationContract.Parse("""
+            {
+              "expectedNodeCount": 2,
+              "classifiedNodeCount": 2,
+              "roles": {
+                "S0001": "DOCUMENT_FRAMING"
+              }
+            }
+            """);
+
+        var result = HdsaGlobalRoleClassificationContract.Validate(
+            new HashSet<string>(["S0001", "S0005"], StringComparer.Ordinal), proposal);
+
+        Assert.False(result.Accepted);
+        Assert.Equal("CLASSIFIED_NODE_COUNT_MISMATCH", result.RejectionReason);
+    }
+
+    [Fact]
+    public void Role_contract_rejects_duplicate_key_in_raw_json()
+    {
+        var exception = Assert.Throws<FormatException>(() =>
+            HdsaGlobalRoleClassificationContract.Parse("""
+                {
+                  "expectedNodeCount": 1,
+                  "classifiedNodeCount": 1,
+                  "roles": {
+                    "S0001": "DOCUMENT_FRAMING",
+                    "S0001": "OUTLINE_ROOT"
+                  }
+                }
+                """));
+
+        Assert.Equal("HDSA_GLOBAL_ROLE_DUPLICATE_NODE_ID", exception.Message);
     }
 
     [Fact]

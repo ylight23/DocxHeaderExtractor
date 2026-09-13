@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "a99-hdsa-global-role-identity-v2-keyed-decision-v1",
+  "documentId": "DOC-0205",
+  "status": "BLOCKED",
+  "classification": "A2_IDENTITY_RELATION_INVALID",
+  "a1": {
+    "contract": "KEYED_ROLE_MAP",
+    "expectedNodeCount": 12,
+    "classifiedNodeCount": 12,
+    "returnedKeyCount": 12,
+    "validation": "PASS",
+    "goldReadBeforeFreeze": false,
+    "frozenBeforeA2": true
+  },
+  "a2": {
+    "expectedPairCount": 66,
+    "parsedPairCount": 66,
+    "positiveRelationCount": 27,
+    "distinctRelationCount": 39,
+    "validation": "FAIL",
+    "rejection": "POSITIVE_DISTINCT_CONTRADICTION",
+    "interpretation": "The model used CONTINUATION_OF broadly for hierarchical containment, which creates transitive identity components contradicted by DISTINCT pairs. No component was accepted."
+  },
+  "stageB": {
+    "authorized": false,
+    "executed": false
+  },
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "modelCalls": 2,
+  "providerCalls": 2,
+  "goldReadBeforeFreeze": false,
+  "causalClaimAuthorized": false,
+  "noRetryIssued": true
+}

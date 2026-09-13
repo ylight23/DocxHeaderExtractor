@@ -1,0 +1,613 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-v2-prediction-v1",
+  "documentId": "DOC-0205",
+  "requestSha256": "edfabe6eda64a0081eca2f47fbacd614cdea740456eeb7f1a7aaeef3fe90adfc",
+  "responseSha256": "d31d6a6b82e76d2c499275ea7023bec92e88f73f6cee7dcfc3f421f165255131",
+  "response": {
+    "relations": [
+      {
+        "pairId": "P01-02",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-aca084dc03ba6e31",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Outline root heading; distinct semantic identities."
+      },
+      {
+        "pairId": "P01-03",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-fa3e46e19d6d0375",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Chapter I heading; distinct semantic identities."
+      },
+      {
+        "pairId": "P01-04",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-2ddcbcfd14c02240",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Section heading; distinct semantic identities."
+      },
+      {
+        "pairId": "P01-05",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-a34a97ca83b456e6",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Content label (Article 1); distinct semantic identities."
+      },
+      {
+        "pairId": "P01-06",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-ad0f647090b35dae",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Content label (Article 2); distinct semantic identities."
+      },
+      {
+        "pairId": "P01-07",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-2a07dbe2240718e3",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Content label (Article 3); distinct semantic identities."
+      },
+      {
+        "pairId": "P01-08",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-1767abb75196945e",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Content label (Article 4); distinct semantic identities."
+      },
+      {
+        "pairId": "P01-09",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-35572ea4edd05ce3",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Content label (Article 5); distinct semantic identities."
+      },
+      {
+        "pairId": "P01-10",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-7e35948f55ab193e",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Content label (Article 6); distinct semantic identities."
+      },
+      {
+        "pairId": "P01-11",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-04a6519cc7d08d60",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Content label (Article 7); distinct semantic identities."
+      },
+      {
+        "pairId": "P01-12",
+        "left": "SN-d53681cb67def23d",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "DISTINCT",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Document framing title vs. Content label (Article 8); distinct semantic identities."
+      },
+      {
+        "pairId": "P02-03",
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-fa3e46e19d6d0375",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Outline root \u0027NGH\u1ECA \u0110\u1ECANH\u0027 continues into \u0027Ch\u01B0\u01A1ng I\u0027; hierarchical continuation."
+      },
+      {
+        "pairId": "P02-04",
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-2ddcbcfd14c02240",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Outline root \u0027NGH\u1ECA \u0110\u1ECANH\u0027 continues into \u0027QUY \u0110\u1ECANH CHUNG\u0027; hierarchical continuation."
+      },
+      {
+        "pairId": "P02-05",
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-a34a97ca83b456e6",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Outline root \u0027NGH\u1ECA \u0110\u1ECANH\u0027 contains Article 1; hierarchical continuation."
+      },
+      {
+        "pairId": "P02-06",
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-ad0f647090b35dae",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Outline root \u0027NGH\u1ECA \u0110\u1ECANH\u0027 contains Article 2; hierarchical continuation."
+      },
+      {
+        "pairId": "P02-07",
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-2a07dbe2240718e3",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Outline root \u0027NGH\u1ECA \u0110\u1ECANH\u0027 contains Article 3; hierarchical continuation."
+      },
+      {
+        "pairId": "P02-08",
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-1767abb75196945e",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Outline root \u0027NGH\u1ECA \u0110\u1ECANH\u0027 contains Article 4; hierarchical continuation."
+      },
+      {
+        "pairId": "P02-09",
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-35572ea4edd05ce3",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Outline root \u0027NGH\u1ECA \u0110\u1ECANH\u0027 contains Article 5; hierarchical continuation."
+      },
+      {
+        "pairId": "P02-10",
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-7e35948f55ab193e",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Outline root \u0027NGH\u1ECA \u0110\u1ECANH\u0027 contains Article 6; hierarchical continuation."
+      },
+      {
+        "pairId": "P02-11",
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-04a6519cc7d08d60",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Outline root \u0027NGH\u1ECA \u0110\u1ECANH\u0027 contains Article 7; hierarchical continuation."
+      },
+      {
+        "pairId": "P02-12",
+        "left": "SN-aca084dc03ba6e31",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Outline root \u0027NGH\u1ECA \u0110\u1ECANH\u0027 contains Article 8; hierarchical continuation."
+      },
+      {
+        "pairId": "P03-04",
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-2ddcbcfd14c02240",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Chapter I heading continues into Section \u0027QUY \u0110\u1ECANH CHUNG\u0027; hierarchical continuation."
+      },
+      {
+        "pairId": "P03-05",
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-a34a97ca83b456e6",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Chapter I heading contains Article 1; hierarchical continuation."
+      },
+      {
+        "pairId": "P03-06",
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-ad0f647090b35dae",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Chapter I heading contains Article 2; hierarchical continuation."
+      },
+      {
+        "pairId": "P03-07",
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-2a07dbe2240718e3",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Chapter I heading contains Article 3; hierarchical continuation."
+      },
+      {
+        "pairId": "P03-08",
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-1767abb75196945e",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Chapter I heading contains Article 4; hierarchical continuation."
+      },
+      {
+        "pairId": "P03-09",
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-35572ea4edd05ce3",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Chapter I heading contains Article 5; hierarchical continuation."
+      },
+      {
+        "pairId": "P03-10",
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-7e35948f55ab193e",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Chapter I heading contains Article 6; hierarchical continuation."
+      },
+      {
+        "pairId": "P03-11",
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-04a6519cc7d08d60",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Chapter I heading contains Article 7; hierarchical continuation."
+      },
+      {
+        "pairId": "P03-12",
+        "left": "SN-fa3e46e19d6d0375",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Chapter I heading contains Article 8; hierarchical continuation."
+      },
+      {
+        "pairId": "P04-05",
+        "left": "SN-2ddcbcfd14c02240",
+        "right": "SN-a34a97ca83b456e6",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Section \u0027QUY \u0110\u1ECANH CHUNG\u0027 contains Article 1; hierarchical continuation."
+      },
+      {
+        "pairId": "P04-06",
+        "left": "SN-2ddcbcfd14c02240",
+        "right": "SN-ad0f647090b35dae",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Section \u0027QUY \u0110\u1ECANH CHUNG\u0027 contains Article 2; hierarchical continuation."
+      },
+      {
+        "pairId": "P04-07",
+        "left": "SN-2ddcbcfd14c02240",
+        "right": "SN-2a07dbe2240718e3",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Section \u0027QUY \u0110\u1ECANH CHUNG\u0027 contains Article 3; hierarchical continuation."
+      },
+      {
+        "pairId": "P04-08",
+        "left": "SN-2ddcbcfd14c02240",
+        "right": "SN-1767abb75196945e",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Section \u0027QUY \u0110\u1ECANH CHUNG\u0027 contains Article 4; hierarchical continuation."
+      },
+      {
+        "pairId": "P04-09",
+        "left": "SN-2ddcbcfd14c02240",
+        "right": "SN-35572ea4edd05ce3",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Section \u0027QUY \u0110\u1ECANH CHUNG\u0027 contains Article 5; hierarchical continuation."
+      },
+      {
+        "pairId": "P04-10",
+        "left": "SN-2ddcbcfd14c02240",
+        "right": "SN-7e35948f55ab193e",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Section \u0027QUY \u0110\u1ECANH CHUNG\u0027 contains Article 6; hierarchical continuation."
+      },
+      {
+        "pairId": "P04-11",
+        "left": "SN-2ddcbcfd14c02240",
+        "right": "SN-04a6519cc7d08d60",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Section \u0027QUY \u0110\u1ECANH CHUNG\u0027 contains Article 7; hierarchical continuation."
+      },
+      {
+        "pairId": "P04-12",
+        "left": "SN-2ddcbcfd14c02240",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "CONTINUATION_OF",
+        "direction": "RIGHT_TO_LEFT",
+        "confidence": "reasons: ",
+        "reason": "Section \u0027QUY \u0110\u1ECANH CHUNG\u0027 contains Article 8; hierarchical continuation."
+      },
+      {
+        "pairId": "P05-06",
+        "left": "SN-a34a97ca83b456e6",
+        "right": "SN-ad0f647090b35dae",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 1 vs Article 2); distinct semantic identities."
+      },
+      {
+        "pairId": "P05-07",
+        "left": "SN-a34a97ca83b456e6",
+        "right": "SN-2a07dbe2240718e3",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 1 vs Article 3); distinct semantic identities."
+      },
+      {
+        "pairId": "P05-08",
+        "left": "SN-a34a97ca83b456e6",
+        "right": "SN-1767abb75196945e",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 1 vs Article 4); distinct semantic identities."
+      },
+      {
+        "pairId": "P05-09",
+        "left": "SN-a34a97ca83b456e6",
+        "right": "SN-35572ea4edd05ce3",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 1 vs Article 5); distinct semantic identities."
+      },
+      {
+        "pairId": "P05-10",
+        "left": "SN-a34a97ca83b456e6",
+        "right": "SN-7e35948f55ab193e",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 1 vs Article 6); distinct semantic identities."
+      },
+      {
+        "pairId": "P05-11",
+        "left": "SN-a34a97ca83b456e6",
+        "right": "SN-04a6519cc7d08d60",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 1 vs Article 7); distinct semantic identities."
+      },
+      {
+        "pairId": "P05-12",
+        "left": "SN-a34a97ca83b456e6",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 1 vs Article 8); distinct semantic identities."
+      },
+      {
+        "pairId": "P06-07",
+        "left": "SN-ad0f647090b35dae",
+        "right": "SN-2a07dbe2240718e3",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 2 vs Article 3); distinct semantic identities."
+      },
+      {
+        "pairId": "P06-08",
+        "left": "SN-ad0f647090b35dae",
+        "right": "SN-1767abb75196945e",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 2 vs Article 4); distinct semantic identities."
+      },
+      {
+        "pairId": "P06-09",
+        "left": "SN-ad0f647090b35dae",
+        "right": "SN-35572ea4edd05ce3",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 2 vs Article 5); distinct semantic identities."
+      },
+      {
+        "pairId": "P06-10",
+        "left": "SN-ad0f647090b35dae",
+        "right": "SN-7e35948f55ab193e",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 2 vs Article 6); distinct semantic identities."
+      },
+      {
+        "pairId": "P06-11",
+        "left": "SN-ad0f647090b35dae",
+        "right": "SN-04a6519cc7d08d60",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 2 vs Article 7); distinct semantic identities."
+      },
+      {
+        "pairId": "P06-12",
+        "left": "SN-ad0f647090b35dae",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 2 vs Article 8); distinct semantic identities."
+      },
+      {
+        "pairId": "P07-08",
+        "left": "SN-2a07dbe2240718e3",
+        "right": "SN-1767abb75196945e",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 3 vs Article 4); distinct semantic identities."
+      },
+      {
+        "pairId": "P07-09",
+        "left": "SN-2a07dbe2240718e3",
+        "right": "SN-35572ea4edd05ce3",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 3 vs Article 5); distinct semantic identities."
+      },
+      {
+        "pairId": "P07-10",
+        "left": "SN-2a07dbe2240718e3",
+        "right": "SN-7e35948f55ab193e",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 3 vs Article 6); distinct semantic identities."
+      },
+      {
+        "pairId": "P07-11",
+        "left": "SN-2a07dbe2240718e3",
+        "right": "SN-04a6519cc7d08d60",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 3 vs Article 7); distinct semantic identities."
+      },
+      {
+        "pairId": "P07-12",
+        "left": "SN-2a07dbe2240718e3",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 3 vs Article 8); distinct semantic identities."
+      },
+      {
+        "pairId": "P08-09",
+        "left": "SN-1767abb75196945e",
+        "right": "SN-35572ea4edd05ce3",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 4 vs Article 5); distinct semantic identities."
+      },
+      {
+        "pairId": "P08-10",
+        "left": "SN-1767abb75196945e",
+        "right": "SN-7e35948f55ab193e",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 4 vs Article 6); distinct semantic identities."
+      },
+      {
+        "pairId": "P08-11",
+        "left": "SN-1767abb75196945e",
+        "right": "SN-04a6519cc7d08d60",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 4 vs Article 7); distinct semantic identities."
+      },
+      {
+        "pairId": "P08-12",
+        "left": "SN-1767abb75196945e",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 4 vs Article 8); distinct semantic identities."
+      },
+      {
+        "pairId": "P09-10",
+        "left": "SN-35572ea4edd05ce3",
+        "right": "SN-7e35948f55ab193e",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 5 vs Article 6); distinct semantic identities."
+      },
+      {
+        "pairId": "P09-11",
+        "left": "SN-35572ea4edd05ce3",
+        "right": "SN-04a6519cc7d08d60",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 5 vs Article 7); distinct semantic identities."
+      },
+      {
+        "pairId": "P09-12",
+        "left": "SN-35572ea4edd05ce3",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 5 vs Article 8); distinct semantic identities."
+      },
+      {
+        "pairId": "P10-11",
+        "left": "SN-7e35948f55ab193e",
+        "right": "SN-04a6519cc7d08d60",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 6 vs Article 7); distinct semantic identities."
+      },
+      {
+        "pairId": "P10-12",
+        "left": "SN-7e35948f55ab193e",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 6 vs Article 8); distinct semantic identities."
+      },
+      {
+        "pairId": "P11-12",
+        "left": "SN-04a6519cc7d08d60",
+        "right": "SN-9a8cf82ed4783b6d",
+        "relation": "DISTINCT",
+        "direction": "NONE",
+        "confidence": "reasons: ",
+        "reason": "Sibling content labels (Article 7 vs Article 8); distinct semantic identities."
+      }
+    ]
+  },
+  "parseError": null,
+  "validation": {
+    "accepted": false,
+    "rejectionReason": "POSITIVE_DISTINCT_CONTRADICTION",
+    "relations": [],
+    "acceptedComponents": []
+  },
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}

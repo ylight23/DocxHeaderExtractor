@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-v2-freeze-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "requestSha256": "edfabe6eda64a0081eca2f47fbacd614cdea740456eeb7f1a7aaeef3fe90adfc",
+  "responseSha256": "d31d6a6b82e76d2c499275ea7023bec92e88f73f6cee7dcfc3f421f165255131",
+  "predictionSha256": "44f30d6abdea8d69414ef069d921d9dd2387469b39e7882fbc66a84ef2f7cc42",
+  "provider": "Alibaba",
+  "model": "qwen/qwen3.7-flash",
+  "finishReason": "stop",
+  "inputTokens": 19527,
+  "reasoningTokens": 3979,
+  "outputTokens": 11926,
+  "elapsedMs": 96045,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "frozenBeforeGold": true
+}

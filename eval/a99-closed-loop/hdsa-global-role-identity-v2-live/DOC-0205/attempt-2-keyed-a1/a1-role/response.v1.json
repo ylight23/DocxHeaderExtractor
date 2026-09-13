@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-hdsa-global-role-v2-keyed-response-v1",
+  "documentId": "DOC-0205",
+  "requestSha256": "0f4f383d8cd39b2a5c9ef974e794b4f0955f5d8e5e8004e7cb6d13c85dd6ec44",
+  "responseSha256": "c1170ab8524af99f424dedf6d20e27d7a2366954457b6e5126920ce6bc4e1f49",
+  "rawResponse": "{\u0022expectedNodeCount\u0022:12,\u0022classifiedNodeCount\u0022:12,\u0022roles\u0022:{\u0022SN-d53681cb67def23d\u0022:\u0022DOCUMENT_FRAMING\u0022,\u0022SN-aca084dc03ba6e31\u0022:\u0022OUTLINE_ROOT\u0022,\u0022SN-fa3e46e19d6d0375\u0022:\u0022OUTLINE_HEADING\u0022,\u0022SN-2ddcbcfd14c02240\u0022:\u0022SECTION_HEADING\u0022,\u0022SN-a34a97ca83b456e6\u0022:\u0022CONTENT_LABEL\u0022,\u0022SN-ad0f647090b35dae\u0022:\u0022CONTENT_LABEL\u0022,\u0022SN-2a07dbe2240718e3\u0022:\u0022CONTENT_LABEL\u0022,\u0022SN-1767abb75196945e\u0022:\u0022CONTENT_LABEL\u0022,\u0022SN-35572ea4edd05ce3\u0022:\u0022CONTENT_LABEL\u0022,\u0022SN-7e35948f55ab193e\u0022:\u0022CONTENT_LABEL\u0022,\u0022SN-04a6519cc7d08d60\u0022:\u0022CONTENT_LABEL\u0022,\u0022SN-9a8cf82ed4783b6d\u0022:\u0022CONTENT_LABEL\u0022}}",
+  "provider": "Alibaba",
+  "finishReason": "stop",
+  "inputTokens": 1665,
+  "reasoningTokens": 2945,
+  "outputTokens": 3204,
+  "elapsedMs": 32823,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false
+}
