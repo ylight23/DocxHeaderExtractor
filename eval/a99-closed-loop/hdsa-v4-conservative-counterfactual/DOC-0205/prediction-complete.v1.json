@@ -1,0 +1,2521 @@
+{
+  "schemaVersion": "a99-hdsa-v4-conservative-counterfactual-prediction-v1",
+  "documentId": "DOC-0205",
+  "identitySource": "FROZEN_CONSERVATIVE_PROMOTION_REPLAY",
+  "parentSource": "FROZEN_V3_PARENT_PREDICTIONS",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "requests": [
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-d53681cb67def23d",
+      "candidateParentSemanticNodeIds": [],
+      "authoritativeParentUniverse": [],
+      "evidence": {
+        "documentOrder": "semantic-node-order=0",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "CH\u00CDNH PH\u1EE6 ________",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-aca084dc03ba6e31",
+      "candidateParentSemanticNodeIds": [
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=6",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "NGH\u1ECA \u0110\u1ECANH",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-fa3e46e19d6d0375",
+      "candidateParentSemanticNodeIds": [
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=17",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "Ch\u01B0\u01A1ng I",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-2ddcbcfd14c02240",
+      "candidateParentSemanticNodeIds": [
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=18",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "QUY \u0110\u1ECANH CHUNG",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-a34a97ca83b456e6",
+      "candidateParentSemanticNodeIds": [
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=20",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-ad0f647090b35dae",
+      "candidateParentSemanticNodeIds": [
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=23",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-2a07dbe2240718e3",
+      "candidateParentSemanticNodeIds": [
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=25",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-1767abb75196945e",
+      "candidateParentSemanticNodeIds": [
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=37",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-35572ea4edd05ce3",
+      "candidateParentSemanticNodeIds": [
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=39",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-7e35948f55ab193e",
+      "candidateParentSemanticNodeIds": [
+        "SN-35572ea4edd05ce3",
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 39
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=48",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-04a6519cc7d08d60",
+      "candidateParentSemanticNodeIds": [
+        "SN-7e35948f55ab193e",
+        "SN-35572ea4edd05ce3",
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 39
+        },
+        {
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 48
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=56",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-9a8cf82ed4783b6d",
+      "candidateParentSemanticNodeIds": [
+        "SN-04a6519cc7d08d60",
+        "SN-7e35948f55ab193e",
+        "SN-35572ea4edd05ce3",
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 39
+        },
+        {
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 48
+        },
+        {
+          "semanticNodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 56
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=64",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": null,
+      "goldDerivedInput": false
+    }
+  ],
+  "currentContractRequests": [
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-d53681cb67def23d",
+      "candidateParentSemanticNodeIds": [],
+      "authoritativeParentUniverse": [],
+      "evidence": {
+        "documentOrder": "semantic-node-order=0",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "CH\u00CDNH PH\u1EE6 ________",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-aca084dc03ba6e31",
+      "candidateParentSemanticNodeIds": [
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=6",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "NGH\u1ECA \u0110\u1ECANH",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-fa3e46e19d6d0375",
+      "candidateParentSemanticNodeIds": [
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=17",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "Ch\u01B0\u01A1ng I",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-2ddcbcfd14c02240",
+      "candidateParentSemanticNodeIds": [
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=18",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "QUY \u0110\u1ECANH CHUNG",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-a34a97ca83b456e6",
+      "candidateParentSemanticNodeIds": [
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=20",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "label": "SN-2ddcbcfd14c02240",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-ad0f647090b35dae",
+      "candidateParentSemanticNodeIds": [
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=23",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "label": "SN-a34a97ca83b456e6",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "label": "SN-2ddcbcfd14c02240",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-2a07dbe2240718e3",
+      "candidateParentSemanticNodeIds": [
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=25",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "label": "SN-a34a97ca83b456e6",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "label": "SN-2ddcbcfd14c02240",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-1767abb75196945e",
+      "candidateParentSemanticNodeIds": [
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=37",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "label": "SN-2a07dbe2240718e3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "label": "SN-a34a97ca83b456e6",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "label": "SN-2ddcbcfd14c02240",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-35572ea4edd05ce3",
+      "candidateParentSemanticNodeIds": [
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=39",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-1767abb75196945e",
+          "label": "SN-1767abb75196945e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "label": "SN-2a07dbe2240718e3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "label": "SN-a34a97ca83b456e6",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "label": "SN-2ddcbcfd14c02240",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-7e35948f55ab193e",
+      "candidateParentSemanticNodeIds": [
+        "SN-35572ea4edd05ce3",
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 39
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=48",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "label": "SN-35572ea4edd05ce3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-1767abb75196945e",
+          "label": "SN-1767abb75196945e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "label": "SN-2a07dbe2240718e3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "label": "SN-a34a97ca83b456e6",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "label": "SN-2ddcbcfd14c02240",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-04a6519cc7d08d60",
+      "candidateParentSemanticNodeIds": [
+        "SN-7e35948f55ab193e",
+        "SN-35572ea4edd05ce3",
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240",
+        "SN-fa3e46e19d6d0375"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 39
+        },
+        {
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 48
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=56",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "label": "SN-7e35948f55ab193e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "label": "SN-35572ea4edd05ce3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-1767abb75196945e",
+          "label": "SN-1767abb75196945e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "label": "SN-2a07dbe2240718e3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "label": "SN-a34a97ca83b456e6",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "label": "SN-2ddcbcfd14c02240",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-9a8cf82ed4783b6d",
+      "candidateParentSemanticNodeIds": [
+        "SN-04a6519cc7d08d60",
+        "SN-7e35948f55ab193e",
+        "SN-35572ea4edd05ce3",
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-a34a97ca83b456e6",
+        "SN-2ddcbcfd14c02240"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "memberOccurrenceIds": [
+            "S0015"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "memberOccurrenceIds": [
+            "S0016"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "sourceOrder": 20
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 39
+        },
+        {
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 48
+        },
+        {
+          "semanticNodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 56
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=64",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "globalContext": "catalog=5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-04a6519cc7d08d60",
+          "label": "SN-04a6519cc7d08d60",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "label": "SN-7e35948f55ab193e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "label": "SN-35572ea4edd05ce3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-1767abb75196945e",
+          "label": "SN-1767abb75196945e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "label": "SN-2a07dbe2240718e3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-a34a97ca83b456e6",
+          "label": "SN-a34a97ca83b456e6",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2ddcbcfd14c02240",
+          "label": "SN-2ddcbcfd14c02240",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    }
+  ],
+  "requestCompatibility": [
+    {
+      "childSemanticNodeId": "SN-d53681cb67def23d",
+      "frozenV3RequestSha256": "83f11e10e297e5befb76efa4143c7c9147114de23c04292c91637f13e185aa7a",
+      "currentContractRequestSha256": "9022e7c196d6a252cb728da71a716d4d04440b0f24b0218f3c84880bd847c719",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-aca084dc03ba6e31",
+      "frozenV3RequestSha256": "fa8cef262649e6dfa65d3a268fae654ad9375bd37df04e87938f3a26c096c096",
+      "currentContractRequestSha256": "51e62cf1d903d79fba914155be1056bb6bf745595a2f5577390bc1155d918e83",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-fa3e46e19d6d0375",
+      "frozenV3RequestSha256": "13e148f9241de31404d642e3c01041f9db75c4251b0b696f871c69eeef0b8a1f",
+      "currentContractRequestSha256": "3dde00de61da89cbcaf2facd6d9524cd0a88862cade15989573acb6b4f254167",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-2ddcbcfd14c02240",
+      "frozenV3RequestSha256": "d3f87c1f3d1230f52ff242df4ce3f3e2219f755b0f3e19741249b9934f716997",
+      "currentContractRequestSha256": "03ef373482645843a6cf3f2bf82d5dbe0ebc7712a484368c54994b295fbd2024",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-a34a97ca83b456e6",
+      "frozenV3RequestSha256": "e87e4ca86e757b2cdb348e8358f1ccd216f6af6595c88cc18872bc5719893fe7",
+      "currentContractRequestSha256": "8946dbdec4d20a2e3a6e2b67db3aaec4a955de7dee188b319fdba25066e25e39",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-ad0f647090b35dae",
+      "frozenV3RequestSha256": "417e8f5eb45340a80a49c74793c3e9bca221c4924e1c9dec1db1d8c0ef534b3e",
+      "currentContractRequestSha256": "26e942f2315e1041cfc68fc8a70b3a0b4dd777c247a560f9ecec2139cc2202e7",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-2a07dbe2240718e3",
+      "frozenV3RequestSha256": "a6c575fa102a33ece20d36d55047e2e52e8f089536ddef3f6cc5beb8bfca96bb",
+      "currentContractRequestSha256": "70708f1df16f419249e009f1410947f3d7452e9abb64336417334a979aab7e6e",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-1767abb75196945e",
+      "frozenV3RequestSha256": "b44ecede529075ed3b8ed57dbc8bc1c32be10a8cb190f989dd4efcd811d4806f",
+      "currentContractRequestSha256": "376dac734d2f920c06bd3247e965d18c13c28ad65d03ffdaf255a00867b9750e",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-35572ea4edd05ce3",
+      "frozenV3RequestSha256": "6d1967f074d7428bd40e58134a910253edbbc5f4c67720a8bc030ba493be613d",
+      "currentContractRequestSha256": "4310a1e106d886adc0551ab8d1cc5608652b402f080d4a2ce41782f723c85b1e",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-7e35948f55ab193e",
+      "frozenV3RequestSha256": "9b26164dce90d6fe9bfedd1e074e452cd4554964c1ec290db74c3a2f8d772539",
+      "currentContractRequestSha256": "cf4891f5bbcc0ea039ff8d31208ac080bc4be3ab871da9d44d755ca14b9369a9",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-04a6519cc7d08d60",
+      "frozenV3RequestSha256": "da858f05358932a9f73419fe22f00a11450b52c2882778d8840f84c24b094d5a",
+      "currentContractRequestSha256": "186fd2e059696de2eea6545c5a93e207604fafc7a52ac1c0de48218dc631e468",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    },
+    {
+      "childSemanticNodeId": "SN-9a8cf82ed4783b6d",
+      "frozenV3RequestSha256": "e8a8f527d49c073a21ceb7b712960b8e1fa2d4c434b6a71a27b8a2011f201abe",
+      "currentContractRequestSha256": "b894eb754f277266bb49a6461f5a5f56f6205898d39d7ea8d96eb7eaf92f55e6",
+      "historicalV3RequestHashVerified": true,
+      "commonRequestFieldsEquivalent": true,
+      "intentionalCurrentContractDelta": [
+        "decisionOptions (ROOT-v2)"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-d53681cb67def23d",
+      "decision": "ROOT",
+      "parentSemanticNodeId": null
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-aca084dc03ba6e31",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d53681cb67def23d"
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-fa3e46e19d6d0375",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d53681cb67def23d"
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-2ddcbcfd14c02240",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-fa3e46e19d6d0375"
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-a34a97ca83b456e6",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-2ddcbcfd14c02240"
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-ad0f647090b35dae",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-2ddcbcfd14c02240"
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-2a07dbe2240718e3",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-2ddcbcfd14c02240"
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-1767abb75196945e",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-fa3e46e19d6d0375"
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-35572ea4edd05ce3",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-2ddcbcfd14c02240"
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-7e35948f55ab193e",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-fa3e46e19d6d0375"
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-04a6519cc7d08d60",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-fa3e46e19d6d0375"
+    },
+    {
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+      "childSemanticNodeId": "SN-9a8cf82ed4783b6d",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-2ddcbcfd14c02240"
+    }
+  ],
+  "validations": [
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    }
+  ],
+  "tree": {
+    "nodes": [
+      {
+        "id": "SN-d53681cb67def23d",
+        "parentId": null,
+        "level": 1
+      },
+      {
+        "id": "SN-aca084dc03ba6e31",
+        "parentId": "SN-d53681cb67def23d",
+        "level": 2
+      },
+      {
+        "id": "SN-fa3e46e19d6d0375",
+        "parentId": "SN-d53681cb67def23d",
+        "level": 2
+      },
+      {
+        "id": "SN-2ddcbcfd14c02240",
+        "parentId": "SN-fa3e46e19d6d0375",
+        "level": 3
+      },
+      {
+        "id": "SN-a34a97ca83b456e6",
+        "parentId": "SN-2ddcbcfd14c02240",
+        "level": 4
+      },
+      {
+        "id": "SN-ad0f647090b35dae",
+        "parentId": "SN-2ddcbcfd14c02240",
+        "level": 4
+      },
+      {
+        "id": "SN-2a07dbe2240718e3",
+        "parentId": "SN-2ddcbcfd14c02240",
+        "level": 4
+      },
+      {
+        "id": "SN-1767abb75196945e",
+        "parentId": "SN-fa3e46e19d6d0375",
+        "level": 3
+      },
+      {
+        "id": "SN-35572ea4edd05ce3",
+        "parentId": "SN-2ddcbcfd14c02240",
+        "level": 4
+      },
+      {
+        "id": "SN-7e35948f55ab193e",
+        "parentId": "SN-fa3e46e19d6d0375",
+        "level": 3
+      },
+      {
+        "id": "SN-04a6519cc7d08d60",
+        "parentId": "SN-fa3e46e19d6d0375",
+        "level": 3
+      },
+      {
+        "id": "SN-9a8cf82ed4783b6d",
+        "parentId": "SN-2ddcbcfd14c02240",
+        "level": 4
+      }
+    ],
+    "errors": [],
+    "isValid": true
+  },
+  "graphValidation": {
+    "acceptedRelations": [
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-2a07dbe2240718e3",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-35572ea4edd05ce3",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-9a8cf82ed4783b6d",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-a34a97ca83b456e6",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-2ddcbcfd14c02240",
+        "to": "SN-ad0f647090b35dae",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-d53681cb67def23d",
+        "to": "SN-aca084dc03ba6e31",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-d53681cb67def23d",
+        "to": "SN-fa3e46e19d6d0375",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-fa3e46e19d6d0375",
+        "to": "SN-04a6519cc7d08d60",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-fa3e46e19d6d0375",
+        "to": "SN-1767abb75196945e",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-fa3e46e19d6d0375",
+        "to": "SN-2ddcbcfd14c02240",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-fa3e46e19d6d0375",
+        "to": "SN-7e35948f55ab193e",
+        "relation": "PARENT_OF"
+      }
+    ],
+    "rejectedRelations": [],
+    "errors": [],
+    "isValid": true
+  },
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}

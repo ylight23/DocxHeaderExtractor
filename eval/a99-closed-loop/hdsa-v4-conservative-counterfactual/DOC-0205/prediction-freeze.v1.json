@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "a99-hdsa-v4-conservative-counterfactual-freeze-v1",
+  "documentId": "DOC-0205",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "predictionSha256": "c21d15b571383a16b2de7408c85b39bb4dc677e951b6b13d8948130896fe6b54",
+  "parentDecisionCount": 12,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "frozenBeforeGold": true
+}
