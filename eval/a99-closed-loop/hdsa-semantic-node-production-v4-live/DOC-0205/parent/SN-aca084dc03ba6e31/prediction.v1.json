@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "a99-hdsa-v4-parent-prediction-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+    "childSemanticNodeId": "SN-aca084dc03ba6e31",
+    "candidateParentSemanticNodeIds": [
+      "SN-d53681cb67def23d"
+    ],
+    "authoritativeParentUniverse": [
+      {
+        "semanticNodeId": "SN-d53681cb67def23d",
+        "memberOccurrenceIds": [
+          "S0001"
+        ],
+        "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+        "sourceOrder": 0
+      }
+    ],
+    "evidence": {
+      "documentOrder": "semantic-node-order=6",
+      "numbering": null,
+      "styles": null,
+      "semanticRoles": null,
+      "localContext": "NGH\u1ECA \u0110\u1ECANH",
+      "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+    },
+    "decisionOptions": [
+      {
+        "decision": "ROOT",
+        "semanticNodeId": null,
+        "label": "ROOT",
+        "description": "The child has no semantic parent in this structural scope."
+      },
+      {
+        "decision": "SELECT_PARENT",
+        "semanticNodeId": "SN-d53681cb67def23d",
+        "label": "SN-d53681cb67def23d",
+        "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+      },
+      {
+        "decision": "UNRESOLVED",
+        "semanticNodeId": null,
+        "label": "UNRESOLVED",
+        "description": "Evidence is insufficient; do not use ROOT as a fallback."
+      }
+    ],
+    "goldDerivedInput": false
+  },
+  "requestSha256": "baec91deb1d2804aed9ca060e5b1155c4c931cd670d5ae92f6c3b0c108b70b5e",
+  "rawResponse": "{\n  \u0022catalogFingerprint\u0022: \u0022c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823\u0022,\n  \u0022childSemanticNodeId\u0022: \u0022SN-aca084dc03ba6e31\u0022,\n  \u0022decision\u0022: \u0022SELECT_PARENT\u0022,\n  \u0022parentSemanticNodeId\u0022: \u0022SN-d53681cb67def23d\u0022\n}",
+  "decision": {
+    "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+    "childSemanticNodeId": "SN-aca084dc03ba6e31",
+    "decision": "SELECT_PARENT",
+    "parentSemanticNodeId": "SN-d53681cb67def23d"
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "parentWasOutsideAttentionHints": false
+  },
+  "goldReadBeforeFreeze": false
+}

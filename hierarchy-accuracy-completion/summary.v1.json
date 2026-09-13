@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "a99-hierarchy-accuracy-completion-v1",
+  "generatedAtCodeHead": "da3f7c8",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "startHead": "8009d91",
+  "push": "NOT_PERFORMED_BY_TASK",
+  "authoritativeTarget": {
+    "occurrence": "NOT_DEFINED",
+    "semantic": "NOT_DEFINED",
+    "parent": "NOT_DEFINED",
+    "level": "NOT_DEFINED",
+    "productionAcceptance": "NOT_DEFINED",
+    "authorityArtifact": "eval/a99-closed-loop/hierarchy-accuracy-authority.v1.json"
+  },
+  "pipeline": {
+    "semanticResolver": "semantic-identity-inference-v4",
+    "identityRelationUniverse": ["SAME_SEMANTIC_REPEAT", "CONTINUATION_OF", "DISTINCT", "UNRESOLVED"],
+    "parentContract": "ROOT-v2 / semantic-node parent relation",
+    "model": "qwen/qwen3.7-flash",
+    "provider": "OpenRouter / Alibaba",
+    "tree": "HDSA validated PARENT_OF graph",
+    "levelSource": "tree depth; no level predictor or correction"
+  },
+  "cohort": {
+    "structuralGoldDocs": ["DOC-0205"],
+    "dev": ["DOC-0205"],
+    "holdout": [],
+    "previouslyExposed": ["DOC-0205"],
+    "holdoutAvailable": false,
+    "limitation": "Only one trustworthy structural-Gold source is present and it is already exposed; generalization is not proven."
+  },
+  "dev": {
+    "documentId": "DOC-0205",
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "identityPairs": 66,
+    "predictedSemanticNodes": 11,
+    "goldSemanticNodes": 10,
+    "exactMembership": 8,
+    "splits": 1,
+    "falseMerges": 1,
+    "parent": { "tp": 0, "fp": 1, "fn": 9, "precision": 0.0, "recall": 0.0, "f1": 0.0 },
+    "root": { "goldRoots": 1, "correct": 0, "wrong": 1 },
+    "treeValidity": { "valid": true, "catalogMutated": false, "cycles": 0, "multipleParent": 0 },
+    "level": { "exact": 1, "evaluated": 9, "accuracy": 0.1111111111111111, "ancestorCascades": 7 },
+    "systemLoss": 0,
+    "providerFailure": 0,
+    "bindFailure": 0,
+    "invalidResponse": 0,
+    "decomposition": "eval/a99-closed-loop/hdsa-semantic-node-production-v4-live/DOC-0205/error-decomposition.v1.json"
+  },
+  "holdout": { "status": "NOT_RUN_NO_HOLDOUT" },
+  "firewall": {
+    "goldBeforeFreeze": 0,
+    "goldDerivedInput": false,
+    "legacyHierarchyConsumed": false,
+    "oracleLeakage": false,
+    "levelSpecificHeuristic": false,
+    "candidateGoldPruning": false
+  },
+  "calls": {
+    "targetedV4Diagnostic": { "model": 1, "provider": 1, "decision": "DISTINCT", "goldBeforeFreeze": 0 },
+    "v4ProductionDev": { "model": 77, "provider": 77, "identityPairs": 66, "parentRequests": 11 },
+    "currentTaskTotal": { "model": 78, "provider": 78 },
+    "invalidOrExcluded": 0,
+    "accidentalTestCalls": 0
+  },
+  "tests": {
+    "focusedOffline": "19/19 PASS",
+    "releaseBuild": "PASS; 0 errors, existing warnings only",
+    "gitDiffCheck": "PASS",
+    "knownUnrelatedFailures": ["N15 historical SHA mismatch; unchanged"]
+  },
+  "rootCausesRemaining": [
+    "SEMANTIC_IDENTITY_MISSED_RELATION: S0014/S0015",
+    "SEMANTIC_FALSE_MERGE: S0015/S0016",
+    "MODEL_WRONG_ROOT_DECISION: S0005",
+    "MODEL_PARENT_ERRORS_AND_ANCESTOR_CASCADE: downstream of incorrect identity/root decisions"
+  ],
+  "finalStatus": {
+    "architecture": "IMPLEMENTED_AND_FIREWALLED",
+    "semanticIdentityAccuracy": "PARTIAL; 8 exact memberships, 1 split, 1 false merge on exposed DEV",
+    "parentAccuracy": "NOT_ACCEPTED; F1=0 on this v4 run",
+    "levelAccuracy": "NOT_SOLVED; mechanism clean but upstream identity/parent errors remain",
+    "generalization": "GENERALIZATION_NOT_PROVEN",
+    "accuracyTarget": "THRESHOLD_NOT_DEFINED",
+    "terminalReason": "INSUFFICIENT_INDEPENDENT_STRUCTURAL_GOLD; no valid holdout remains in repository"
+  }
+}

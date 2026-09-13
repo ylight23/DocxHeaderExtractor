@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "a99-hdsa-v4-identity-prediction-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "pair": {
+      "pairId": "IP-ce86256dedcc2b5b",
+      "left": {
+        "occurrenceId": "S0014",
+        "documentOrder": 17,
+        "text": "Ch\u01B0\u01A1ng I",
+        "styleEvidence": "Normal;font=10;bold=True",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "right": {
+        "occurrenceId": "S0015",
+        "documentOrder": 18,
+        "text": "QUY \u0110\u1ECANH CHUNG",
+        "styleEvidence": "Normal;font=10;bold=True",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "leftNormalizedText": "Ch\u01B0\u01A1ng I",
+      "rightNormalizedText": "QUY \u0110\u1ECANH CHUNG"
+    },
+    "goldDerivedInput": false
+  },
+  "requestSha256": "3771daa6594c41fc2fab27e293231986dd028e95f5f7b7b571dd59ce3b25c6db",
+  "rawResponse": "{\n  \u0022sourceSha256\u0022: \u0022a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9\u0022,\n  \u0022preprocessingSnapshotHash\u0022: \u00228c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af\u0022,\n  \u0022pairId\u0022: \u0022IP-ce86256dedcc2b5b\u0022,\n  \u0022leftOccurrenceId\u0022: \u0022S0014\u0022,\n  \u0022rightOccurrenceId\u0022: \u0022S0015\u0022,\n  \u0022decision\u0022: \u0022DISTINCT\u0022\n}",
+  "response": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "pairId": "IP-ce86256dedcc2b5b",
+    "leftOccurrenceId": "S0014",
+    "rightOccurrenceId": "S0015",
+    "decision": "DISTINCT"
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null
+  },
+  "goldReadBeforeFreeze": false
+}

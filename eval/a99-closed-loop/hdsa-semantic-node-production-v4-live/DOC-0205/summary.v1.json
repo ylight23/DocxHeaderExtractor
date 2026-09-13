@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "a99-hdsa-v4-production-summary-v1",
+  "status": "COMPLETE",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "resolver": "semantic-identity-inference-v4",
+  "identityPairs": 66,
+  "semanticNodes": 11,
+  "decisions": [
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-d53681cb67def23d",
+      "decision": "ROOT",
+      "parentSemanticNodeId": null
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-aca084dc03ba6e31",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d53681cb67def23d"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-fa3e46e19d6d0375",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d53681cb67def23d"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-d0c33f80c2a0a704",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-fa3e46e19d6d0375"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-ad0f647090b35dae",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-2a07dbe2240718e3",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-1767abb75196945e",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-35572ea4edd05ce3",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-7e35948f55ab193e",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-04a6519cc7d08d60",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-9a8cf82ed4783b6d",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-04a6519cc7d08d60"
+    }
+  ],
+  "treeValid": true,
+  "maxDepth": 5,
+  "evaluation": {
+    "goldOpenedAfterPredictionFreeze": true,
+    "semanticResolution": {
+      "predictedSemanticNodes": 11,
+      "goldSemanticNodes": 10,
+      "exactMembershipMatches": 8
+    },
+    "parent": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 9,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "goldEdgeCount": 9
+    },
+    "level": {
+      "exact": 1,
+      "evaluated": 9,
+      "accuracy": 0.1111111111111111,
+      "rows": [
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "predictedLevel": 2,
+          "goldLevel": 1,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "predictedLevel": 2,
+          "goldLevel": 2,
+          "exact": true
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-04a6519cc7d08d60",
+          "predictedLevel": 4,
+          "goldLevel": 3,
+          "exact": false
+        },
+        {
+          "semanticNodeId": "SN-9a8cf82ed4783b6d",
+          "predictedLevel": 5,
+          "goldLevel": 3,
+          "exact": false
+        }
+      ]
+    },
+    "tree": {
+      "isValid": true,
+      "catalogWasMutated": false
+    }
+  },
+  "modelCalls": 77,
+  "providerCalls": 77,
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false,
+  "legacyHierarchyConsumed": false,
+  "levelSource": "HDSA_TREE_DEPTH"
+}

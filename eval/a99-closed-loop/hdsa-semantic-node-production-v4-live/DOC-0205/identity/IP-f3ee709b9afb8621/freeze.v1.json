@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-hdsa-v4-identity-freeze-v1",
+  "documentId": "DOC-0205",
+  "pairId": "IP-f3ee709b9afb8621",
+  "requestSha256": "667f0725d6f5f12902eb32698c5994535e7bd9f0f6cee862a0c3816d628f0b0a",
+  "predictionSha256": "e3304b48f4cee1bdf9ede93f98d807f9f36692985468d55a6da132003c4f3f9f",
+  "responseSha256": "a6de418aafb01a4353d41356da879c3b9616b0d96d78d7dc86ba6f6f7922e45a",
+  "provider": "Alibaba",
+  "finishReason": "stop",
+  "inputTokens": 652,
+  "reasoningTokens": 535,
+  "outputTokens": 737,
+  "elapsedMs": 8027,
+  "goldReadBeforeFreeze": false,
+  "frozenBeforeGold": true
+}

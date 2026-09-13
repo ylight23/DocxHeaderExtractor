@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-identity-v4-live-request-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "preprocessingSnapshotHash": "dd835a9f71df22cda23bdaeac9136f5c3d10e6e3eacbb4bf092600f8bb5e1a35",
+  "pairId": "IP-282afcc38f8d89b8",
+  "request": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "dd835a9f71df22cda23bdaeac9136f5c3d10e6e3eacbb4bf092600f8bb5e1a35",
+    "pair": {
+      "pairId": "IP-282afcc38f8d89b8",
+      "left": {
+        "occurrenceId": "S0014",
+        "documentOrder": 17,
+        "text": "Ch\u01B0\u01A1ng I",
+        "styleEvidence": "Normal;font=10;bold=True;italic=False;alignment=center",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "right": {
+        "occurrenceId": "S0015",
+        "documentOrder": 18,
+        "text": "QUY \u0110\u1ECANH CHUNG",
+        "styleEvidence": "Normal;font=10;bold=True;italic=False;alignment=center",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "leftNormalizedText": "Ch\u01B0\u01A1ng I",
+      "rightNormalizedText": "QUY \u0110\u1ECANH CHUNG"
+    },
+    "goldDerivedInput": false
+  },
+  "requestSha256": "5bdca93c8b1a59e257df9cbfeaf6eedd43392bdb651928f8795a6d70f88e7337",
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false,
+  "legacyHierarchyConsumed": false
+}

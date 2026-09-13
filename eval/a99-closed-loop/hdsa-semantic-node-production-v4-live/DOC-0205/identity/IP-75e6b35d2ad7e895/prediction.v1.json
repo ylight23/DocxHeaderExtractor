@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "a99-hdsa-v4-identity-prediction-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "pair": {
+      "pairId": "IP-75e6b35d2ad7e895",
+      "left": {
+        "occurrenceId": "S0001",
+        "documentOrder": 0,
+        "text": "CH\u00CDNH PH\u1EE6 ________",
+        "styleEvidence": "Normal;font=10;bold=False",
+        "layoutEvidence": "section=0;tableDepth=1;keepNext=False;pageBreakBefore=False;lineBreaks=1",
+        "legacyHints": null
+      },
+      "right": {
+        "occurrenceId": "S0015",
+        "documentOrder": 18,
+        "text": "QUY \u0110\u1ECANH CHUNG",
+        "styleEvidence": "Normal;font=10;bold=True",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "leftNormalizedText": "CH\u00CDNH PH\u1EE6 ________",
+      "rightNormalizedText": "QUY \u0110\u1ECANH CHUNG"
+    },
+    "goldDerivedInput": false
+  },
+  "requestSha256": "c5fba73fadfdd771685db5cb0d884709721c0582052c80afd8e9b00a935a37d7",
+  "rawResponse": "{\n  \u0022sourceSha256\u0022: \u0022a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9\u0022,\n  \u0022preprocessingSnapshotHash\u0022: \u00228c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af\u0022,\n  \u0022pairId\u0022: \u0022IP-75e6b35d2ad7e895\u0022,\n  \u0022leftOccurrenceId\u0022: \u0022S0001\u0022,\n  \u0022rightOccurrenceId\u0022: \u0022S0015\u0022,\n  \u0022decision\u0022: \u0022DISTINCT\u0022\n}",
+  "response": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "pairId": "IP-75e6b35d2ad7e895",
+    "leftOccurrenceId": "S0001",
+    "rightOccurrenceId": "S0015",
+    "decision": "DISTINCT"
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null
+  },
+  "goldReadBeforeFreeze": false
+}

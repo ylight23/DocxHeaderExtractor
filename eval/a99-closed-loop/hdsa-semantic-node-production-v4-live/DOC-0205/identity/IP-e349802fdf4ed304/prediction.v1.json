@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "a99-hdsa-v4-identity-prediction-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "pair": {
+      "pairId": "IP-e349802fdf4ed304",
+      "left": {
+        "occurrenceId": "S0019",
+        "documentOrder": 23,
+        "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "styleEvidence": "Normal;font=10;bold=True",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "right": {
+        "occurrenceId": "S0060",
+        "documentOrder": 64,
+        "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "styleEvidence": "Normal;font=10;bold=True",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "leftNormalizedText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "rightNormalizedText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m"
+    },
+    "goldDerivedInput": false
+  },
+  "requestSha256": "e54df2124f8714941db6549454f5ebdff36e28f01c7d43e28d722f472d4882ba",
+  "rawResponse": "{\n  \u0022sourceSha256\u0022: \u0022a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9\u0022,\n  \u0022preprocessingSnapshotHash\u0022: \u00228c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af\u0022,\n  \u0022pairId\u0022: \u0022IP-e349802fdf4ed304\u0022,\n  \u0022leftOccurrenceId\u0022: \u0022S0019\u0022,\n  \u0022rightOccurrenceId\u0022: \u0022S0060\u0022,\n  \u0022decision\u0022: \u0022DISTINCT\u0022\n}",
+  "response": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "pairId": "IP-e349802fdf4ed304",
+    "leftOccurrenceId": "S0019",
+    "rightOccurrenceId": "S0060",
+    "decision": "DISTINCT"
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null
+  },
+  "goldReadBeforeFreeze": false
+}

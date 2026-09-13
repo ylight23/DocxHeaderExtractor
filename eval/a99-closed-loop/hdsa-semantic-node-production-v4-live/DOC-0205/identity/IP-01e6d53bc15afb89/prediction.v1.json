@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "a99-hdsa-v4-identity-prediction-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "pair": {
+      "pairId": "IP-01e6d53bc15afb89",
+      "left": {
+        "occurrenceId": "S0035",
+        "documentOrder": 39,
+        "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "styleEvidence": "Normal;font=10;bold=True",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "right": {
+        "occurrenceId": "S0044",
+        "documentOrder": 48,
+        "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "styleEvidence": "Normal;font=10;bold=True",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "leftNormalizedText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "rightNormalizedText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u"
+    },
+    "goldDerivedInput": false
+  },
+  "requestSha256": "b9718db3b175b321bbf6bee50d3afc154f61551e57d7993d0ed791497658e84e",
+  "rawResponse": "{\n  \u0022sourceSha256\u0022: \u0022a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9\u0022,\n  \u0022preprocessingSnapshotHash\u0022: \u00228c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af\u0022,\n  \u0022pairId\u0022: \u0022IP-01e6d53bc15afb89\u0022,\n  \u0022leftOccurrenceId\u0022: \u0022S0035\u0022,\n  \u0022rightOccurrenceId\u0022: \u0022S0044\u0022,\n  \u0022decision\u0022: \u0022DISTINCT\u0022\n}",
+  "response": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "pairId": "IP-01e6d53bc15afb89",
+    "leftOccurrenceId": "S0035",
+    "rightOccurrenceId": "S0044",
+    "decision": "DISTINCT"
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null
+  },
+  "goldReadBeforeFreeze": false
+}

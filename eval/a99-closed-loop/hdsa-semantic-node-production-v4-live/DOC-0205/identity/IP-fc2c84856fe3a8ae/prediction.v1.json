@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "a99-hdsa-v4-identity-prediction-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "pair": {
+      "pairId": "IP-fc2c84856fe3a8ae",
+      "left": {
+        "occurrenceId": "S0005",
+        "documentOrder": 6,
+        "text": "NGH\u1ECA \u0110\u1ECANH",
+        "styleEvidence": "Normal;font=10;bold=True",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "right": {
+        "occurrenceId": "S0021",
+        "documentOrder": 25,
+        "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "styleEvidence": "Normal;font=10;bold=True",
+        "layoutEvidence": "section=0;tableDepth=0;keepNext=False;pageBreakBefore=False;lineBreaks=0",
+        "legacyHints": null
+      },
+      "leftNormalizedText": "NGH\u1ECA \u0110\u1ECANH",
+      "rightNormalizedText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF"
+    },
+    "goldDerivedInput": false
+  },
+  "requestSha256": "8fe1f75a02e74d38514e12720a91b1d1b3cf3370865f695bccd650dc491cbb01",
+  "rawResponse": "{\n  \u0022sourceSha256\u0022: \u0022a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9\u0022,\n  \u0022preprocessingSnapshotHash\u0022: \u00228c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af\u0022,\n  \u0022pairId\u0022: \u0022IP-fc2c84856fe3a8ae\u0022,\n  \u0022leftOccurrenceId\u0022: \u0022S0005\u0022,\n  \u0022rightOccurrenceId\u0022: \u0022S0021\u0022,\n  \u0022decision\u0022: \u0022DISTINCT\u0022\n}",
+  "response": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "pairId": "IP-fc2c84856fe3a8ae",
+    "leftOccurrenceId": "S0005",
+    "rightOccurrenceId": "S0021",
+    "decision": "DISTINCT"
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null
+  },
+  "goldReadBeforeFreeze": false
+}

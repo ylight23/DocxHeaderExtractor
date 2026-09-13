@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "a99-hdsa-v4-parent-prediction-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+    "childSemanticNodeId": "SN-d0c33f80c2a0a704",
+    "candidateParentSemanticNodeIds": [
+      "SN-fa3e46e19d6d0375",
+      "SN-aca084dc03ba6e31",
+      "SN-d53681cb67def23d"
+    ],
+    "authoritativeParentUniverse": [
+      {
+        "semanticNodeId": "SN-d53681cb67def23d",
+        "memberOccurrenceIds": [
+          "S0001"
+        ],
+        "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+        "sourceOrder": 0
+      },
+      {
+        "semanticNodeId": "SN-aca084dc03ba6e31",
+        "memberOccurrenceIds": [
+          "S0005"
+        ],
+        "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+        "sourceOrder": 6
+      },
+      {
+        "semanticNodeId": "SN-fa3e46e19d6d0375",
+        "memberOccurrenceIds": [
+          "S0014"
+        ],
+        "canonicalText": "Ch\u01B0\u01A1ng I",
+        "sourceOrder": 17
+      }
+    ],
+    "evidence": {
+      "documentOrder": "semantic-node-order=18",
+      "numbering": null,
+      "styles": null,
+      "semanticRoles": null,
+      "localContext": "QUY \u0110\u1ECANH CHUNG",
+      "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+    },
+    "decisionOptions": [
+      {
+        "decision": "ROOT",
+        "semanticNodeId": null,
+        "label": "ROOT",
+        "description": "The child has no semantic parent in this structural scope."
+      },
+      {
+        "decision": "SELECT_PARENT",
+        "semanticNodeId": "SN-fa3e46e19d6d0375",
+        "label": "SN-fa3e46e19d6d0375",
+        "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+      },
+      {
+        "decision": "SELECT_PARENT",
+        "semanticNodeId": "SN-aca084dc03ba6e31",
+        "label": "SN-aca084dc03ba6e31",
+        "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+      },
+      {
+        "decision": "SELECT_PARENT",
+        "semanticNodeId": "SN-d53681cb67def23d",
+        "label": "SN-d53681cb67def23d",
+        "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+      },
+      {
+        "decision": "UNRESOLVED",
+        "semanticNodeId": null,
+        "label": "UNRESOLVED",
+        "description": "Evidence is insufficient; do not use ROOT as a fallback."
+      }
+    ],
+    "goldDerivedInput": false
+  },
+  "requestSha256": "2ae86c7b272c8d4adaa5fcb035e163dddfcc31ad369e69c06a44261e09116e0a",
+  "rawResponse": "{\n  \u0022catalogFingerprint\u0022: \u0022c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823\u0022,\n  \u0022childSemanticNodeId\u0022: \u0022SN-d0c33f80c2a0a704\u0022,\n  \u0022decision\u0022: \u0022SELECT_PARENT\u0022,\n  \u0022parentSemanticNodeId\u0022: \u0022SN-fa3e46e19d6d0375\u0022\n}",
+  "decision": {
+    "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+    "childSemanticNodeId": "SN-d0c33f80c2a0a704",
+    "decision": "SELECT_PARENT",
+    "parentSemanticNodeId": "SN-fa3e46e19d6d0375"
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "parentWasOutsideAttentionHints": false
+  },
+  "goldReadBeforeFreeze": false
+}

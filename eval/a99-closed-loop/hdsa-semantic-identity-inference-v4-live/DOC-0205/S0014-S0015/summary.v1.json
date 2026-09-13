@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-identity-v4-live-summary-v1",
+  "status": "COMPLETE",
+  "documentId": "DOC-0205",
+  "pair": {
+    "left": "S0014",
+    "right": "S0015",
+    "pairId": "IP-282afcc38f8d89b8"
+  },
+  "decision": "Distinct",
+  "decisionJson": "{\n  \u0022sourceSha256\u0022: \u0022a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9\u0022,\n  \u0022preprocessingSnapshotHash\u0022: \u0022dd835a9f71df22cda23bdaeac9136f5c3d10e6e3eacbb4bf092600f8bb5e1a35\u0022,\n  \u0022pairId\u0022: \u0022IP-282afcc38f8d89b8\u0022,\n  \u0022leftOccurrenceId\u0022: \u0022S0014\u0022,\n  \u0022rightOccurrenceId\u0022: \u0022S0015\u0022,\n  \u0022decision\u0022: \u0022DISTINCT\u0022\n}",
+  "predictions": [
+    {
+      "predictedSemanticNodeId": "SN-fa3e46e19d6d0375",
+      "memberOccurrenceIds": [
+        "S0014"
+      ],
+      "canonicalText": "Ch\u01B0\u01A1ng I",
+      "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+      "resolverVersion": "semantic-identity-inference-v4",
+      "goldUsed": false
+    },
+    {
+      "predictedSemanticNodeId": "SN-2ddcbcfd14c02240",
+      "memberOccurrenceIds": [
+        "S0015"
+      ],
+      "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+      "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+      "resolverVersion": "semantic-identity-inference-v4",
+      "goldUsed": false
+    }
+  ],
+  "acceptedRelations": [],
+  "relationRecords": [
+    {
+      "relationId": "IR-6effc12b6ad9a8c0",
+      "relationType": "DISTINCT",
+      "leftOccurrenceId": "S0014",
+      "rightOccurrenceId": "S0015",
+      "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:dd835a9f71df22cda23bdaeac9136f5c3d10e6e3eacbb4bf092600f8bb5e1a35",
+      "inputEvidenceHash": "e9c9a0bf9ae2372a74d91c8f0b33e1648093ca5353bd7ecaa42188c9490fc747",
+      "requestHash": "5bdca93c8b1a59e257df9cbfeaf6eedd43392bdb651928f8795a6d70f88e7337",
+      "responseHash": "dda581420e976e1aedeaebb58b954355a772429e544d01ded2b4a0077b48f4d8",
+      "inferenceContractVersion": "semantic-identity-inference-v4",
+      "inferenceSource": "MODEL",
+      "model": "qwen/qwen3.7-flash",
+      "provider": "Alibaba",
+      "acceptedByValidator": true,
+      "rejectionReason": null,
+      "goldUsed": false
+    }
+  ],
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "structuralGoldRead": false,
+  "diagnosticOnly": true
+}

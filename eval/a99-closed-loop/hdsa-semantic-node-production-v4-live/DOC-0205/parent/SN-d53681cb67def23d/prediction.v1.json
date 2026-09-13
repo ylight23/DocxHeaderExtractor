@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "a99-hdsa-v4-parent-prediction-v1",
+  "documentId": "DOC-0205",
+  "request": {
+    "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+    "childSemanticNodeId": "SN-d53681cb67def23d",
+    "candidateParentSemanticNodeIds": [],
+    "authoritativeParentUniverse": [],
+    "evidence": {
+      "documentOrder": "semantic-node-order=0",
+      "numbering": null,
+      "styles": null,
+      "semanticRoles": null,
+      "localContext": "CH\u00CDNH PH\u1EE6 ________",
+      "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+    },
+    "decisionOptions": [
+      {
+        "decision": "ROOT",
+        "semanticNodeId": null,
+        "label": "ROOT",
+        "description": "The child has no semantic parent in this structural scope."
+      },
+      {
+        "decision": "UNRESOLVED",
+        "semanticNodeId": null,
+        "label": "UNRESOLVED",
+        "description": "Evidence is insufficient; do not use ROOT as a fallback."
+      }
+    ],
+    "goldDerivedInput": false
+  },
+  "requestSha256": "51f6d98e427d67d6b5bd7ab160891fc3ae7455431bb4838267d85f13fb657aac",
+  "rawResponse": "{\n  \u0022catalogFingerprint\u0022: \u0022c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823\u0022,\n  \u0022childSemanticNodeId\u0022: \u0022SN-d53681cb67def23d\u0022,\n  \u0022decision\u0022: \u0022ROOT\u0022\n,\n  \u0022parentSemanticNodeId\u0022: null\n}",
+  "decision": {
+    "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+    "childSemanticNodeId": "SN-d53681cb67def23d",
+    "decision": "ROOT",
+    "parentSemanticNodeId": null
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "parentWasOutsideAttentionHints": false
+  },
+  "goldReadBeforeFreeze": false
+}

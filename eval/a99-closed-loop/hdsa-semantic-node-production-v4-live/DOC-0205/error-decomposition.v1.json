@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "a99-hdsa-v4-error-decomposition-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "predictionFreezePath": "eval/a99-closed-loop/hdsa-semantic-node-production-v4-live/DOC-0205/prediction-freeze.v1.json",
+  "goldOpenedAfterPredictionFreeze": true,
+  "goldReadBeforeFreeze": false,
+  "primaryErrors": [
+    {
+      "category": "SEMANTIC_SPLIT_CAUSED",
+      "occurrences": ["S0014", "S0015"],
+      "detail": "Gold N0002 spans S0014 and S0015; v4 kept S0014 separate from the S0015-containing component."
+    },
+    {
+      "category": "SEMANTIC_FALSE_MERGE",
+      "occurrences": ["S0015", "S0016"],
+      "detail": "v4 accepted CONTINUATION_OF for S0015/S0016 although Gold assigns N0002 and N0003."
+    },
+    {
+      "category": "MODEL_WRONG_ROOT_DECISION",
+      "occurrences": ["S0005"],
+      "detail": "The model selected the excluded masthead node S0001 as parent; Gold marks S0005 as the structural root."
+    }
+  ],
+  "cascades": [
+    {
+      "category": "ANCESTOR_PARENT_CASCADE",
+      "affectedOccurrences": ["S0019", "S0021", "S0033", "S0035", "S0044", "S0052", "S0060"],
+      "detail": "Article parent decisions point through the ambiguous S0015/S0016 component, so semantic mapping prevents correct Gold-edge evaluation and shifts derived depth."
+    }
+  ],
+  "metrics": {
+    "semanticPredictedNodes": 11,
+    "semanticGoldNodes": 10,
+    "exactMembershipMatches": 8,
+    "splitErrors": 1,
+    "falseMergeErrors": 1,
+    "parent": { "tp": 0, "fp": 1, "fn": 9, "precision": 0.0, "recall": 0.0, "f1": 0.0 },
+    "level": { "exact": 1, "evaluated": 9, "accuracy": 0.1111111111111111, "ancestorCascadeCount": 7 },
+    "treeValid": true,
+    "catalogMutatedAfterFreeze": false,
+    "validatorRejections": 0,
+    "systemLoss": 0
+  },
+  "rootCauseBoundary": "Observed residual is semantic identity plus model parent/root behavior; no validator, tree-construction, or level-projection bug is observed in this run.",
+  "levelDiagnostics": [
+    { "semanticNodeId": "SN-aca084dc03ba6e31", "goldSemanticNodeId": "N0001", "predictedLevel": 2, "goldLevel": 1, "firstDivergentAncestor": "SN-d53681cb67def23d", "rootCause": "MODEL_WRONG_ROOT_DECISION" },
+    { "semanticNodeId": "SN-ad0f647090b35dae", "goldSemanticNodeId": "N0004", "predictedLevel": 4, "goldLevel": 3, "firstDivergentAncestor": "SN-d0c33f80c2a0a704", "rootCause": "SEMANTIC_FALSE_MERGE" },
+    { "semanticNodeId": "SN-2a07dbe2240718e3", "goldSemanticNodeId": "N0005", "predictedLevel": 4, "goldLevel": 3, "firstDivergentAncestor": "SN-d0c33f80c2a0a704", "rootCause": "SEMANTIC_FALSE_MERGE" },
+    { "semanticNodeId": "SN-1767abb75196945e", "goldSemanticNodeId": "N0006", "predictedLevel": 4, "goldLevel": 3, "firstDivergentAncestor": "SN-d0c33f80c2a0a704", "rootCause": "SEMANTIC_FALSE_MERGE" },
+    { "semanticNodeId": "SN-35572ea4edd05ce3", "goldSemanticNodeId": "N0007", "predictedLevel": 4, "goldLevel": 3, "firstDivergentAncestor": "SN-d0c33f80c2a0a704", "rootCause": "SEMANTIC_FALSE_MERGE" },
+    { "semanticNodeId": "SN-7e35948f55ab193e", "goldSemanticNodeId": "N0008", "predictedLevel": 4, "goldLevel": 3, "firstDivergentAncestor": "SN-d0c33f80c2a0a704", "rootCause": "SEMANTIC_FALSE_MERGE" },
+    { "semanticNodeId": "SN-04a6519cc7d08d60", "goldSemanticNodeId": "N0009", "predictedLevel": 4, "goldLevel": 3, "firstDivergentAncestor": "SN-d0c33f80c2a0a704", "rootCause": "SEMANTIC_FALSE_MERGE" },
+    { "semanticNodeId": "SN-9a8cf82ed4783b6d", "goldSemanticNodeId": "N0010", "predictedLevel": 5, "goldLevel": 3, "firstDivergentAncestor": "SN-d0c33f80c2a0a704", "rootCause": "SEMANTIC_FALSE_MERGE" }
+  ],
+  "modelCalls": 77,
+  "providerCalls": 77,
+  "tuningPerformed": false
+}

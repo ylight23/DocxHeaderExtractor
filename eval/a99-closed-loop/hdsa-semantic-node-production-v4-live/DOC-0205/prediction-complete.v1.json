@@ -1,0 +1,2658 @@
+{
+  "schemaVersion": "a99-hdsa-v4-production-prediction-v1",
+  "documentId": "DOC-0205",
+  "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+  "identityResult": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "predictions": [
+      {
+        "predictedSemanticNodeId": "SN-d53681cb67def23d",
+        "memberOccurrenceIds": [
+          "S0001"
+        ],
+        "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+        "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      },
+      {
+        "predictedSemanticNodeId": "SN-aca084dc03ba6e31",
+        "memberOccurrenceIds": [
+          "S0005"
+        ],
+        "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+        "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      },
+      {
+        "predictedSemanticNodeId": "SN-fa3e46e19d6d0375",
+        "memberOccurrenceIds": [
+          "S0014"
+        ],
+        "canonicalText": "Ch\u01B0\u01A1ng I",
+        "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      },
+      {
+        "predictedSemanticNodeId": "SN-d0c33f80c2a0a704",
+        "memberOccurrenceIds": [
+          "S0015",
+          "S0016"
+        ],
+        "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+        "mergeEvidence": "EXPLICIT_RELATIONS:CONTINUATION_OF",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      },
+      {
+        "predictedSemanticNodeId": "SN-ad0f647090b35dae",
+        "memberOccurrenceIds": [
+          "S0019"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      },
+      {
+        "predictedSemanticNodeId": "SN-2a07dbe2240718e3",
+        "memberOccurrenceIds": [
+          "S0021"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      },
+      {
+        "predictedSemanticNodeId": "SN-1767abb75196945e",
+        "memberOccurrenceIds": [
+          "S0033"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      },
+      {
+        "predictedSemanticNodeId": "SN-35572ea4edd05ce3",
+        "memberOccurrenceIds": [
+          "S0035"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      },
+      {
+        "predictedSemanticNodeId": "SN-7e35948f55ab193e",
+        "memberOccurrenceIds": [
+          "S0044"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      },
+      {
+        "predictedSemanticNodeId": "SN-04a6519cc7d08d60",
+        "memberOccurrenceIds": [
+          "S0052"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      },
+      {
+        "predictedSemanticNodeId": "SN-9a8cf82ed4783b6d",
+        "memberOccurrenceIds": [
+          "S0060"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "mergeEvidence": "IDENTITY_ONLY_NO_RELATION",
+        "resolverVersion": "semantic-identity-inference-v4",
+        "goldUsed": false
+      }
+    ],
+    "acceptedRelations": [
+      {
+        "fromOccurrenceId": "S0016",
+        "toOccurrenceId": "S0015",
+        "relation": "CONTINUATION_OF",
+        "parserEvidenceHash": "57e124e480edd43fb3d173913fe05cd72bc63d0b10a4bb41361e1cc8a0d6a684",
+        "structuralBoundaryCompatible": true
+      }
+    ],
+    "relationRecords": [
+      {
+        "relationId": "IR-061027ff7f316150",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0016",
+        "rightOccurrenceId": "S0019",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "7456b255b8ea6419d55cee852faee4b66f585e819a5423d207a578c2ed54ab91",
+        "requestHash": "46454ce93f05d13a9517a71f0ea450bb83f21cb53a773c350f961c621e4a240b",
+        "responseHash": "2f556039edd7535ee9f47da21724dfc54b219a4122a2d526c5277e7e83f5b0b7",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-075e44722417639d",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0019",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "0c20b7d323ab057e3a19cdc20b242a986cae5633d65b8bba67dc01a0b57bcb32",
+        "requestHash": "e54df2124f8714941db6549454f5ebdff36e28f01c7d43e28d722f472d4882ba",
+        "responseHash": "7a9ee3eb287caa561714e1a984913ba0a7292815b90aa56ebc3dd42a536bbc19",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-0896ce651ba27940",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0021",
+        "rightOccurrenceId": "S0044",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "c0780062ad4f35d036cdde5ae78fabbf373c87473ccad98191699cdb6fb41047",
+        "requestHash": "230c933585e6bfc9fff7c044f77d9234c6975d9857154a58ffe271edc17aec37",
+        "responseHash": "25dcf493844777c4105bf6d5919c31861934c5876d0482590f6382e3ce0f7e85",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-1b10481df6d5c679",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0019",
+        "rightOccurrenceId": "S0052",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "22ce6c5ce5e85e321a1a13dc8481cc011670742e44858328742d2d3208133907",
+        "requestHash": "e4971335ff4f75ed9e5aeca8f31102dde91450f916d6c2244c2fe47091657985",
+        "responseHash": "b9ff8a0265208a3529ae33f8865db65270097a0bcf3fc07d4bbdbecafd9ca618",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-1ba7a9b22620c67c",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0014",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "e16c96cef9ddfd6c881cd422227b4c9eb55eddde23fd5f27a1f082eba43f5000",
+        "requestHash": "8fd97be8db206dcfe456c81a49bea2babd5faabf8ee451a511099fcb65b8704a",
+        "responseHash": "0d95001a46c2113cdbbcdabed2a7f51ce0ea1bec06e2bb421f97ec8801ef0142",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-1bdda9bb7ddb5c90",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0019",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "eae2dc5428f01caf949d3f0721037dee674b9da628ad24f87d985061170fced1",
+        "requestHash": "9eec49b25cb1ed0ec08060285eb8c18d0c511114cbbb3794a419ffdecca18830",
+        "responseHash": "12ce0ddd45dec86edff3f3138b1634fce18d5c6bc1cfa82ef49185d3723b8c57",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-2115e528b5cc6ea3",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0044",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "8e043f0302b653194ecf7807a583188cb62086ba782cbc3abb7e786c79d7ac53",
+        "requestHash": "fc0a34837b3a6f0d375edd44ee76530d28fdbfbcd1332e774cbedfc9dfd1f795",
+        "responseHash": "366fd5b8fc07e4fac03d4d504b9b78784b13af101ccce0eaeecfc7e9852033ea",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-229a330478f321a1",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0005",
+        "rightOccurrenceId": "S0052",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "97442a0609f5320cfb5b6f497d743b81f39266aea08ea107b3f16cbae8c5712f",
+        "requestHash": "6cd0f25e31c35164fe2100534bfbb4e6dd2772ab3dc7f2c1176f76ef573a11eb",
+        "responseHash": "b71cc80f8aa9c1491e0dbc8fe4b90aa488dd055b46b04a8129ebd26580f89037",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-27245866ae094f63",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0044",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "88501a85af926c2c7693c223bb142f7af06f257062ce6913c77ac3dfcf875ba8",
+        "requestHash": "dbc9ac608e853a0e93f36cfd616cb20c752462b49ebd97bf4b4287c0c2ed56bd",
+        "responseHash": "28043c1df1c219b61394a590fa98b1b7cb619f95de24d5bcfd170e8c5f124199",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-275e64e6d0758931",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0015",
+        "rightOccurrenceId": "S0021",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "0504d3659bcb9a3be0fb72572e4f84ef1eebbd97339274651b70a8b9ad6ac5ba",
+        "requestHash": "19fc443d743f5bdf7022ec9ea45840dc53bf054a2a658723d3dbbbf992baa47b",
+        "responseHash": "1fcd964c1bcd1c58fd83fbd0f8f43df67b8f91f424771092fa918fea6e9fd240",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-2799c095411aba28",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0021",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "9e6ae0079bdf27817912e4fced7d464fa2aef09046f9583f08bbe9bdf4bc85e1",
+        "requestHash": "32e0b9a286b797a3bd142fa6e98edf4f4040121c8ce48a85939fe30cba885117",
+        "responseHash": "609265a1c2de2fe0e34ffa32dc9464e785cb470d7b9490af948a5d983f15fbf7",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-32c6a9a5a70c1814",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0014",
+        "rightOccurrenceId": "S0021",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "7b21927106f1216ffb1b1ed85e183b8d55bdc091c0c0c4a6a5d37b77cc4ee77f",
+        "requestHash": "b0ae13bd818e06e26e44a117e16dbdae1445f5ecdf7d3b2a35f994272856d60a",
+        "responseHash": "0b42b4ad3f8a4c259c7a20573cd40ba2b2f2522f3fd51fb49773e022a272647c",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-3618d7b6fa7b94de",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0021",
+        "rightOccurrenceId": "S0033",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "bdc2803c31370c55a8d4837a2ed0ec7bf23d5cd85c76bee9750a6e21e149ea60",
+        "requestHash": "cc4d24f8c129e0ee7c659f4cd37565f6158aac4d9fe1c589198b851c69a04997",
+        "responseHash": "7c7ff9b68243afdf1409496686893bcff312f2530ba3c187cbb1061f192f6690",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-361e6596c75aba58",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0005",
+        "rightOccurrenceId": "S0014",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "bcbd8f94492e6011b7ddef84c029e57369e8dbf957b7f9357db5bd3cc2c5cd25",
+        "requestHash": "b615b09ceaf38bf49ee8ddf68c957b1d7db1b5ffbc2237f91c02179b590dd514",
+        "responseHash": "0a78caf511eefdd59c4a2220a7d057c44608beafc0fd7e6749c981d6334fd348",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-37c35fa81bd61c64",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0016",
+        "rightOccurrenceId": "S0033",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "d98f16fb04f7cb6ad30992757fc51b157065874f69859929c42aec226bc7f40a",
+        "requestHash": "ede3afde6596ccfc7bfd3af8a8483212e4f7c6d588cb49ea1c72db3c491881c5",
+        "responseHash": "d1e140bf247926c83f042d23cb01913b23c76f048d91ea85ec04118f7216113c",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-4121bf71d2aa2e85",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0005",
+        "rightOccurrenceId": "S0016",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "95181297892d6931d6b82382c213003cd66da522c3291a6dc09868dcf218f50e",
+        "requestHash": "210b2c858d692834f230c52f9be84abf8896efcc6b442d4ce74d36503cae3a35",
+        "responseHash": "f5f35fb14c3ab84d36b817ba2406d9b8e144a4c992354d9ac7ddff0ce11adc83",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-440a38f3d288d70e",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0005",
+        "rightOccurrenceId": "S0021",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "f78c2c7747d0d8a62d3c954731c9cd65069a8be28faf4196d8c28a1604e688f2",
+        "requestHash": "8fe1f75a02e74d38514e12720a91b1d1b3cf3370865f695bccd650dc491cbb01",
+        "responseHash": "53ee6a23f9601eb3bd2dbc8b6981480859aedc858e90cdcaea34f3d263a62b0c",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-4452107ae867902b",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0005",
+        "rightOccurrenceId": "S0035",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "abaa18bfa2aa0139d273e46c0ea1ed9ad9e4e22e86b01069f62ffab401d27a6a",
+        "requestHash": "a4b5f16f32bde50557b360083b9e87185ca1b476290e424c92f4d3057320cc78",
+        "responseHash": "c21fa443b3708cc7a894a445cad8080d498de4423c1ec638b99ffe5a3e32e9ac",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-4589a859cfffb762",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0016",
+        "rightOccurrenceId": "S0052",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "ef06ad8cd19da1268d045e0ed3ea03288516e997434da547c58bec94d9ae9377",
+        "requestHash": "b1b5aa03ddd39e30dcb5856c6846f88f5bbb833689e66b11f1c43b95732875f5",
+        "responseHash": "243123ce3798862ecf85d7395f585e0561dbc32bdd21d4e6c70057dc11741d6d",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-4bce4c016cf7bcbf",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0016",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "0e272cb396f308177bc3a4581eca6531f54931dbfb5860205fbe67163aa00e13",
+        "requestHash": "f3bf59e7f60d56a7a54945f58b823a9ceffcd857eaf8e30cc31f00f9cb29f3e9",
+        "responseHash": "0b0e98cb1c853e113c2f8cfd16cc73ca96582a4e26b22aadbb2bd2ffd5866383",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-4ec2f51baa41c9c4",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0052",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "e21149e5bd0ddfb52063a99924724b176a35e8e131fbba666920fe440f2bcadc",
+        "requestHash": "cabeab940a883e73f173c0331bcae1c01f6c5214449b87d05f2fa733be4dcd3f",
+        "responseHash": "6f41f0caddefce1749ddc9e82395c8d2079b3a3cd4f2e0d8c1ed9c650299ac88",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-517d514e8062223f",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0019",
+        "rightOccurrenceId": "S0044",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "235f846165e55c66178304eee18d286540a987e7aeffa4bd5f118473f18e1236",
+        "requestHash": "6ea16d2a8ddf474a45a0865cc9a387068116cda43a20404fdce1cf1b498826c2",
+        "responseHash": "1785a041d38b980cc47af43763cf6f6f5cb2463f7b67cffb0cb9f441b2a260fb",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-51d1d9dcfa4b1840",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0005",
+        "rightOccurrenceId": "S0015",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "128da8aa303ecd7d0b95124efe68d55161c7dc94b4d9f3349fc1c07cab486450",
+        "requestHash": "725bfe715216100a576f6d404350fb39c971e36106c24c1281bda7f95cc0a30e",
+        "responseHash": "8461bbe5163ca5d943826419ae19038f3f07084d0c1420d48da027dff77a59a1",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-530544467a4bffc3",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0015",
+        "rightOccurrenceId": "S0033",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "147108a8cc5dafd9c4a6c9e02d6b93de165fd4bb6e675b5319805ffbbab91ffc",
+        "requestHash": "70f68a031280a96743f49d081d6aa15760c25c0879c7355704111b26064dfba9",
+        "responseHash": "d7f6e78e1338e85debb7d7197db38d2f9284394b457588c39e4415d89dffef9c",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-53fe5b9a5b709b94",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0016",
+        "rightOccurrenceId": "S0021",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "2a49e596f88d5dedac16c0a269a6118959ff2694420cbfb055d9273ee9c010b5",
+        "requestHash": "02c3ee721f8c7baad6eb2ea16f35eac4edcc1ba8cad576c1f443cd592db3b47a",
+        "responseHash": "0d5236f7f35c3c30d7411c4dea3ab2c35755f77d9ae0c2f9f1f7d8c601605bd6",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-56b84f8337668ee8",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0014",
+        "rightOccurrenceId": "S0019",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "4fd85354dd54cacde0f8249f546551f856490d4efc2d40335da717e776fcf99a",
+        "requestHash": "5e9ff0621408a609bb7a69097a658c5cbaa7662e9a88c6ac0b7f6832179b824d",
+        "responseHash": "be8930a0c3d352f464daee5322596b9bf14482864a15cb09419ada1be8359d93",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-61a3e01dd2db6f39",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0033",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "ccaedab3c9f6bfe0b9d5ee2c7d7eff898cfbed542199ac399e5e8a0e1f8e6e75",
+        "requestHash": "d35a3275535d10f9fefc3ce710e3d7ee2cab2a9eb88bc49de89f6e2aef5bbfa7",
+        "responseHash": "bd42ddfaacfd8623fddb5ffa642cb180f0caea1fac7d69f499f840c417b76312",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-645c73930e316303",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0016",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "86952b02f79addaf24b4c507aca6190aef66c66decdddfa9b23a66509efb355a",
+        "requestHash": "fa7a73c424d98104165d3e17160c69cfc4586bf6db60cb0613488b2928e0d69b",
+        "responseHash": "df9b7caa364b3b93e17e923cb190f8e47061842415655e07054ce4a0c653ddcd",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-65e6dac62cb84c26",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0015",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "5d16e4402319fe4933abde7d8e80bce854b7d2c60c767589cefaa47fe8f16a0f",
+        "requestHash": "78436f74ce7322aa7e45eaa7b18bcddf021cdddb68a8e73bea79500635fd2cd7",
+        "responseHash": "e04e2dd47df3dfcb636de3396206348bf53d9a90450a936506a8d1154205c537",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-69ba3c2fda3ec19f",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0015",
+        "rightOccurrenceId": "S0019",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "ff76049e5da506d0cc2b631785fb398e7692b7fe9946c8085691321893611658",
+        "requestHash": "e08f5d2e7c9b0c21526b74623aa2cbf2a74479c6646484e13121997d24be637e",
+        "responseHash": "4f611fa2cb1e63552a77bab8e4c9e6290d049c14fd8f85f6a488327e99ac3513",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-6a1a52f8508e6bab",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0052",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "34cc5488af88c65c8eaf9d3efc68689b20155f379965dc5ce52f20ee486369e2",
+        "requestHash": "4affae6ee33cf75afefae01c550d5df564cb0a371cfd9edcf3dd04d668da648c",
+        "responseHash": "a358613d955429e90dea362e06fc5ac3298fa515dcb3a547f1bc0576c081858c",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-6c12605c13d7a35b",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0014",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "6de31157eca0b3950a8321ef4cd59eb26ce63214ae1f5e3bcda8472bad9725c4",
+        "requestHash": "942c223c90cfbf4b72694657ba83b52fd5ff2cd50fce795c582f9ca7a6d78528",
+        "responseHash": "cb06766990bbe9f3290f8989807fc250c02027c35caa983f3075e1cf1c30d5a1",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-6d03df0a691123e1",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0033",
+        "rightOccurrenceId": "S0052",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "6f902b7b8e8d20f26c3290c2b919c6a734f7f52c6347af9c50795903b2081a60",
+        "requestHash": "8a1ec52d12fdbefd6592569b2132567991be4b45816df3a730e4ce30a2bb96d2",
+        "responseHash": "f003bec1aec6e23ab775b37625f7224026ae505d7f79ef4d9ed297d3afdc03c5",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-6d2cb7bdc00598b7",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0005",
+        "rightOccurrenceId": "S0019",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "a448a8d846d4f30ae6f2d25a0b30e2560e79054744a4a41be087427e69d7fbcb",
+        "requestHash": "b0a0777e1d1974b8710eea1db00a48fc6565110e5182170f8abcce9c1b963ee7",
+        "responseHash": "19f9375f87d19a416ab5ac71d911b6c1277f2e8d3bccede198bb9add859f1e5a",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-859616c8586345aa",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0021",
+        "rightOccurrenceId": "S0035",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "1aa212a8003912dc72e4048db24d3ea310a66da419cea5bcd045a1a5d37a3fe6",
+        "requestHash": "4d09a9f639e2a8c97285f341af192e407ba3022eb02806b294ebd9eb66a14915",
+        "responseHash": "ef1d36d671c2d8fa413224bd255c0119523c92818fc13ba005bd8542b890c985",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-88a1fd68cdd0bd13",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0015",
+        "rightOccurrenceId": "S0044",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "3f999533846cfb32bf15eb0397b14094220bbf6aebdd19388775a9587fc58ea5",
+        "requestHash": "9e31aad85d2ebdd20f27c5e617ba53f3f7c62810a923873d855b341267554a7a",
+        "responseHash": "9bb9489a3ee31f3194883d6c34eb3cb5c312a6d6e19abf7a2efb8c9e4e19fa9b",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-898d091876b27a1b",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0019",
+        "rightOccurrenceId": "S0033",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "0ca632bcfda595c625633048ce0af322a9360c27a1c1e2664f3fd6540bca89ce",
+        "requestHash": "90278fa96d4286773a3e112442df2b2dc102a34ef34c7615029e7e1fa3630c86",
+        "responseHash": "56750f1d0220c6084ae128bf9f067741decf3b579703c37afd4223a506f5651d",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-8aab09b1ae0275be",
+        "relationType": "CONTINUATION_OF",
+        "leftOccurrenceId": "S0015",
+        "rightOccurrenceId": "S0016",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "57e124e480edd43fb3d173913fe05cd72bc63d0b10a4bb41361e1cc8a0d6a684",
+        "requestHash": "bbad7977ad99b244d3aadbb9a428050b52875130163c0d93c508a91e81206a77",
+        "responseHash": "f62f4bbfecd43637253f48b68f15f4ff8c6906843b50b4d8d7964d0d2abcd0aa",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-8b44e7b38a9a9ba9",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0021",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "866381ffb5cd29dacb81e0b998bd6927c8381f6bf2236476f349f30ed09a0fd1",
+        "requestHash": "21402729c0654b37910db17efaf99ee36925d1f6af784fbee6d1fa164e4e5d97",
+        "responseHash": "ba78bff09be3cf0a11ee0e17d14d331d82c5377f0468f166d0a49ee29c462832",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-8df5c37c60b8ac6c",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0016",
+        "rightOccurrenceId": "S0035",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "ebdf7a780403f6defecab295e1413e096e9dc2a9fe0469dbdecc75c970f38490",
+        "requestHash": "ac286bd2ae0fa0d2d287b0c1211be13cf3724cfb966edf866417d1997ae74550",
+        "responseHash": "07f593242495bd989c18a9124b73274e0c0f89efdb60cb555d6c6aacb58d428b",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-92943190b5e0b261",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0015",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "d50452c43b2e84387400ca541c9d017ccc3b52e4cbc1bf85034b16a2207f4a3a",
+        "requestHash": "c5fba73fadfdd771685db5cb0d884709721c0582052c80afd8e9b00a935a37d7",
+        "responseHash": "71ada5b58055c46d23587a35adec8605500c9a6b027f5d585fe8311b1f79d62a",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-96eb95050a32b06b",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0016",
+        "rightOccurrenceId": "S0044",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "1d1a83e995452bf12898912e93d78ffa7f01901b16fd3daea769b43ab46facc9",
+        "requestHash": "667f0725d6f5f12902eb32698c5994535e7bd9f0f6cee862a0c3816d628f0b0a",
+        "responseHash": "a6de418aafb01a4353d41356da879c3b9616b0d96d78d7dc86ba6f6f7922e45a",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-9a5d9dbe3adf7832",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0044",
+        "rightOccurrenceId": "S0052",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "7a113c9bdec83be2d0907abc9b94042a9bf30a755b5153deb881aebf536d68ed",
+        "requestHash": "74f30e6e1e353db8a8d599b43e65e12e53867b6320ac9cc232b2fcdc860a272a",
+        "responseHash": "cb11ad4ddd6c3727fa44ce12373a2c14d2f354ec3a973ee0483c95d2d9394c82",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-9a63847370d12617",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0035",
+        "rightOccurrenceId": "S0044",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "ac20bd217b7e3915a8da0f8ccb023a206788eb696d696e5e8d3e9ea7f77baa54",
+        "requestHash": "b9718db3b175b321bbf6bee50d3afc154f61551e57d7993d0ed791497658e84e",
+        "responseHash": "dd21624998fee0a1c43692651767259679b0701bbfe9d1b3254216e3f99de465",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-9a7baf93dd01441f",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0005",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "8d8e352d51ca626036d70f79b2b603dab5d18d2bd86e954eac60a06b9ac0ed28",
+        "requestHash": "34e6a9e6670431ed3abe2c9e1aebd40635409124af4890391d68b0076d3327de",
+        "responseHash": "e301a58c2cd41e1eaccacbc49c61034e596b04c1c3e2036f57fa02bd4a91903e",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-9e067b7c937b56f1",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0019",
+        "rightOccurrenceId": "S0021",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "b8fe083fe19b427bb74e9df711d4a4fe8fd484b2f203910733ad160616a8d56a",
+        "requestHash": "a6bc234d85ca5cf88c97234f84a7e106e1bdf85c114ddc4f631dc5e0587c5a65",
+        "responseHash": "e45a20519fddb06fde3ff502dbeaaa5aa0c861194d11919856e6c01a67aecc5f",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-a0b9a68e8cfa7843",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "b93ae9e0ec29f5c8b494cd6186ed0c5703131fc9c335275c610d805ca28963a7",
+        "requestHash": "545cfb6e8dbead0a0ef3f692b647218ce28c1340259c93e399bc662f9164c295",
+        "responseHash": "10bab477560bbbd2aef9191b7f5ff3682f4a1237add7022a71d08c3bca955097",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-a2b0e2f031a8e6ba",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0021",
+        "rightOccurrenceId": "S0052",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "c8cf079d7fc8da0ce5f00e1c43294fe583995bbdf13941a5b75a12bf544127d7",
+        "requestHash": "7f7a8c3b018189e96c27728f56a2f9287133aa499748f737c7dff54a5ef6852f",
+        "responseHash": "a7e6db5e3ebc3b29e0c4ccb4ab9dd8f3ef85ecea3e12456da4d18faee94857fb",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-a5b2f8d128ed917a",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0014",
+        "rightOccurrenceId": "S0016",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "df6dbb40169122770641ef542e2c1c1e35ac35a96866e42b4756e9d38ff3fa02",
+        "requestHash": "bd2fe1c06de2a3f6593d3bc576a0f9bfb97d75850793f4a1074f65e99c09c289",
+        "responseHash": "273c55ae6373ce25fffcf9955df15027de55bb63da1973e7eaf485f2f0767828",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-abef318294082968",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0015",
+        "rightOccurrenceId": "S0052",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "aa64513926e16bc08d05c8ac1c257bfe6b1f32290a1a6b4452f3ec38d5794db9",
+        "requestHash": "e2aacb3a7ad77d35a2d7997bdc40c95e1afdfdf315db5efb453e50c7aaf6618d",
+        "responseHash": "0c3b10ba2b028692238e34f99830cf587c3b66dd2197101a2fa212809eecd04e",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-ae1ff9848659b47e",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0005",
+        "rightOccurrenceId": "S0033",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "3b481be62b2342dcf84a36ac856e0eb80b63e1f3f940d823c77eea19de5e1084",
+        "requestHash": "2f360fd334bc2d30e2d00833ee8b2d26dd4c6056ec40bd013c9101405cda07ea",
+        "responseHash": "42488f2115970217fff775d63523e32f056304e99b24095683636d9935422e47",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-b1a3a4351a800393",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0035",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "c59fd5bc36e141751df2ce9f4761698b9aa8faf3b6c00e2cf9719a35de2a48d0",
+        "requestHash": "86d210ad0192909a970d9834f8998a1834873e46d6c62f3b142440489c5c4952",
+        "responseHash": "fb54401496802ec2d856754aa9c20ec67946252b994798cdca752ad4c99b718a",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-b7ca068a1373c7ee",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0005",
+        "rightOccurrenceId": "S0044",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "ef1f8cb2f829449cfa23c6b4047ad98e0bca36800f3f68c7a002b60314f7a033",
+        "requestHash": "4bc141696a5607cadd6b7750c1f2c924812dfca4fb5f668cb664af070adadfd6",
+        "responseHash": "5af27dc171741a8951cf216250de16765c161528eae5880eb2df8a2b1d324455",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-c22831e92f05d7d3",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0033",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "84b0e0a796c87ae2bad5299281e2dbbecb9ac0ac22bfeb52e54b3cc4ac4af563",
+        "requestHash": "066d4c4cd6f998873dec79613dac725e230aadc4697d2037f7744c0a6e4e75ae",
+        "responseHash": "fd7365b5b0d4466081b0c0eb603f340ac26c9a37b0aa1d9e2f9d7a5012e2b1d8",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-c4ea46cfcd275c05",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0014",
+        "rightOccurrenceId": "S0035",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "232e95549591fbf19d29798a22ce8052625b0109d1bfe6981dbe419d22b39571",
+        "requestHash": "ca569ba0929d48058ea81e7584c6061d3f0b41ab0c86d1397cea69b9da958424",
+        "responseHash": "89d69ec5773930894a51a8799e3feb9d272ba35f7baa811c73b7069445ad5fb2",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-c4f27f8869ff5158",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0014",
+        "rightOccurrenceId": "S0033",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "7543e47e06432657d895d02f0fa0442bdbdd028ed6e859f41d6564fb4caf3578",
+        "requestHash": "c22d206910e3a7bccc3cb5e7e4d01c8894702d616f4068c2876c7270dd3369af",
+        "responseHash": "98ac136ec56b7aacd9727e374f0fe890c3490f6ea3156dbc30e8306b74d2aff7",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-c6246c53256ca03c",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0015",
+        "rightOccurrenceId": "S0035",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "e92b1cbdbe6fc116dee1d01b661303d3dd121121a67fc7413852bc1fc08ee772",
+        "requestHash": "76ba40b174bb4306b7fb7bb09009b0426cadfe3c6ccc8ed3a624d19a93677f98",
+        "responseHash": "dfcd6aec5018d9f2efbf4e60d20a08f16c08b82e25689a47e5340b26450cd3e1",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-cd586ca9f4bfe853",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0019",
+        "rightOccurrenceId": "S0035",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "4f6c36d8c4e93cbe8a3e33dd5adb5a3269759241cd4feb84fc4b2cadca53814f",
+        "requestHash": "43d3a4c860472121b52ff6daccc94271d196c6dae08f63ecfe2867665443f8c1",
+        "responseHash": "baff9165873832ef2d2c97378ec0f55e1ae655095238c675d259e9a19c59ebcd",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-d8233f0a353e2357",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0014",
+        "rightOccurrenceId": "S0052",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "e981a78c2d5aac2fd2ba41daef6711708215aa3c5617deef4d89b7d1cdd35bf7",
+        "requestHash": "c110a3485ae110b1b65f4993fbf1da81387631c0cb789f0fe283b27f2e6a1ef9",
+        "responseHash": "4fa5e7b620c236956cb49cc0c027b9ffb863dc609581fe32fa783a2ff246830e",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-d9123461263c5a7b",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0033",
+        "rightOccurrenceId": "S0044",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "550cde25c7f34cc3450e5f6984a2b30cb4f1ed207675a95b2ef26abe813b3c7c",
+        "requestHash": "29fadc4fac4160e2d0095137f42c9b68b806e0596738593242dca9705e1ab0de",
+        "responseHash": "ce1497d852634097e0c668acda348b3637d58690be9fa52d836bb77bdaf4b534",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-db3bae151f86a6cf",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0001",
+        "rightOccurrenceId": "S0005",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "5b664719dc3263771a3d238835090e72f07370d62f06a452e211fae0e2c495e5",
+        "requestHash": "92d0ff21d384e9d1c5628bdff543e3ef9023a85450d7e794602ed348ca71b916",
+        "responseHash": "dc10d44591c174ef0e4af0a72c2438974f429df7a42c041107f268a0c143a41d",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-eb2b9e51f7db1cb1",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0014",
+        "rightOccurrenceId": "S0044",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "4172af89c38c1df20b7c238b96b10b188baa9b8573ff0fab6c98aaad50ac8a89",
+        "requestHash": "a6005bfc2b87fd00b80c1784061ed215142bc28aedd58c204ba6c2edc401ff79",
+        "responseHash": "c81489e29aa61a6ab0ec44ffe945007bd98647d7d1c0c84a0f475d9e4bb663f4",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-ed05210e02aa8c0b",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0014",
+        "rightOccurrenceId": "S0015",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "462976dcbd66f7dfa09836627727c9ab3c95144d96e085afaa675326f8b6e56d",
+        "requestHash": "3771daa6594c41fc2fab27e293231986dd028e95f5f7b7b571dd59ce3b25c6db",
+        "responseHash": "1495ee047725cf8169af44de9195dd6aba62e653f0fece5f5b3391413bcb2d39",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-efbec82963bdc42a",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0033",
+        "rightOccurrenceId": "S0035",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "382bceb61242c59da3af0e2fb9382e7bd445e4072e467cd84aa1f336a7c54c4b",
+        "requestHash": "bb1755d982b125808e2f63b0796d97ce1b0a207822c73d9d2401e94e50b6f6b2",
+        "responseHash": "3a128d174faa9376bbbabbaabe11bc2a50e617e8071d903feb0248c00bc5e1b6",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-f02bf8c4aea63eea",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0035",
+        "rightOccurrenceId": "S0052",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "be59effa18dc981dc6e2840678fe76429a9156fba7d5ea350998064786af1266",
+        "requestHash": "656db41b44cdb7c5e4c913700ad5c2c00a4384c14222454974485319c1f3aab1",
+        "responseHash": "e27a14cc389eef285b5d15fb2a7a4d90a106e52b11747be31322fcee5bf4308d",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      },
+      {
+        "relationId": "IR-f6a3bede046028f1",
+        "relationType": "DISTINCT",
+        "leftOccurrenceId": "S0035",
+        "rightOccurrenceId": "S0060",
+        "sourceSnapshotIdentity": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9:8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+        "inputEvidenceHash": "e6f9994c1212a354e801ffaee84cd8d2cde2571863bf1db2e09c48f61a94ce7d",
+        "requestHash": "b367de3dde1bab7b88debfa11c0aadc80b9b2a516a9cadf08c451c4b336b78f5",
+        "responseHash": "429910a499aee195a11b2d2d184e73acf2b983e333592c363c8a6564fd1170ef",
+        "inferenceContractVersion": "semantic-identity-inference-v4",
+        "inferenceSource": "MODEL",
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "acceptedByValidator": true,
+        "rejectionReason": null,
+        "goldUsed": false
+      }
+    ],
+    "rejectedRelations": [],
+    "errors": [],
+    "resolverVersion": "semantic-identity-inference-v4",
+    "goldUsed": false,
+    "isValid": true
+  },
+  "parentRequests": [
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-d53681cb67def23d",
+      "candidateParentSemanticNodeIds": [],
+      "authoritativeParentUniverse": [],
+      "evidence": {
+        "documentOrder": "semantic-node-order=0",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "CH\u00CDNH PH\u1EE6 ________",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-aca084dc03ba6e31",
+      "candidateParentSemanticNodeIds": [
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=6",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "NGH\u1ECA \u0110\u1ECANH",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-fa3e46e19d6d0375",
+      "candidateParentSemanticNodeIds": [
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=17",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "Ch\u01B0\u01A1ng I",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-d0c33f80c2a0a704",
+      "candidateParentSemanticNodeIds": [
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=18",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "QUY \u0110\u1ECANH CHUNG",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-ad0f647090b35dae",
+      "candidateParentSemanticNodeIds": [
+        "SN-d0c33f80c2a0a704",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "memberOccurrenceIds": [
+            "S0015",
+            "S0016"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=23",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "label": "SN-d0c33f80c2a0a704",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-2a07dbe2240718e3",
+      "candidateParentSemanticNodeIds": [
+        "SN-ad0f647090b35dae",
+        "SN-d0c33f80c2a0a704",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "memberOccurrenceIds": [
+            "S0015",
+            "S0016"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=25",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "label": "SN-d0c33f80c2a0a704",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-1767abb75196945e",
+      "candidateParentSemanticNodeIds": [
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-d0c33f80c2a0a704",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "memberOccurrenceIds": [
+            "S0015",
+            "S0016"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=37",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "label": "SN-2a07dbe2240718e3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "label": "SN-d0c33f80c2a0a704",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-35572ea4edd05ce3",
+      "candidateParentSemanticNodeIds": [
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-d0c33f80c2a0a704",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "memberOccurrenceIds": [
+            "S0015",
+            "S0016"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=39",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-1767abb75196945e",
+          "label": "SN-1767abb75196945e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "label": "SN-2a07dbe2240718e3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "label": "SN-d0c33f80c2a0a704",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-7e35948f55ab193e",
+      "candidateParentSemanticNodeIds": [
+        "SN-35572ea4edd05ce3",
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-d0c33f80c2a0a704",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31",
+        "SN-d53681cb67def23d"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "memberOccurrenceIds": [
+            "S0015",
+            "S0016"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 39
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=48",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "label": "SN-35572ea4edd05ce3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-1767abb75196945e",
+          "label": "SN-1767abb75196945e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "label": "SN-2a07dbe2240718e3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "label": "SN-d0c33f80c2a0a704",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "label": "SN-d53681cb67def23d",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-04a6519cc7d08d60",
+      "candidateParentSemanticNodeIds": [
+        "SN-7e35948f55ab193e",
+        "SN-35572ea4edd05ce3",
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-d0c33f80c2a0a704",
+        "SN-fa3e46e19d6d0375",
+        "SN-aca084dc03ba6e31"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "memberOccurrenceIds": [
+            "S0015",
+            "S0016"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 39
+        },
+        {
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 48
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=56",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "label": "SN-7e35948f55ab193e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "label": "SN-35572ea4edd05ce3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-1767abb75196945e",
+          "label": "SN-1767abb75196945e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "label": "SN-2a07dbe2240718e3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "label": "SN-d0c33f80c2a0a704",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "label": "SN-aca084dc03ba6e31",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-9a8cf82ed4783b6d",
+      "candidateParentSemanticNodeIds": [
+        "SN-04a6519cc7d08d60",
+        "SN-7e35948f55ab193e",
+        "SN-35572ea4edd05ce3",
+        "SN-1767abb75196945e",
+        "SN-2a07dbe2240718e3",
+        "SN-ad0f647090b35dae",
+        "SN-d0c33f80c2a0a704",
+        "SN-fa3e46e19d6d0375"
+      ],
+      "authoritativeParentUniverse": [
+        {
+          "semanticNodeId": "SN-d53681cb67def23d",
+          "memberOccurrenceIds": [
+            "S0001"
+          ],
+          "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+          "sourceOrder": 0
+        },
+        {
+          "semanticNodeId": "SN-aca084dc03ba6e31",
+          "memberOccurrenceIds": [
+            "S0005"
+          ],
+          "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+          "sourceOrder": 6
+        },
+        {
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "memberOccurrenceIds": [
+            "S0014"
+          ],
+          "canonicalText": "Ch\u01B0\u01A1ng I",
+          "sourceOrder": 17
+        },
+        {
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "memberOccurrenceIds": [
+            "S0015",
+            "S0016"
+          ],
+          "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+          "sourceOrder": 18
+        },
+        {
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "memberOccurrenceIds": [
+            "S0019"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "sourceOrder": 23
+        },
+        {
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "memberOccurrenceIds": [
+            "S0021"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "sourceOrder": 25
+        },
+        {
+          "semanticNodeId": "SN-1767abb75196945e",
+          "memberOccurrenceIds": [
+            "S0033"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "sourceOrder": 37
+        },
+        {
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "memberOccurrenceIds": [
+            "S0035"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 39
+        },
+        {
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "memberOccurrenceIds": [
+            "S0044"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 48
+        },
+        {
+          "semanticNodeId": "SN-04a6519cc7d08d60",
+          "memberOccurrenceIds": [
+            "S0052"
+          ],
+          "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+          "sourceOrder": 56
+        }
+      ],
+      "evidence": {
+        "documentOrder": "semantic-node-order=64",
+        "numbering": null,
+        "styles": null,
+        "semanticRoles": null,
+        "localContext": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "globalContext": "catalog=c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823"
+      },
+      "decisionOptions": [
+        {
+          "decision": "ROOT",
+          "semanticNodeId": null,
+          "label": "ROOT",
+          "description": "The child has no semantic parent in this structural scope."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-04a6519cc7d08d60",
+          "label": "SN-04a6519cc7d08d60",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-7e35948f55ab193e",
+          "label": "SN-7e35948f55ab193e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-35572ea4edd05ce3",
+          "label": "SN-35572ea4edd05ce3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-1767abb75196945e",
+          "label": "SN-1767abb75196945e",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-2a07dbe2240718e3",
+          "label": "SN-2a07dbe2240718e3",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-ad0f647090b35dae",
+          "label": "SN-ad0f647090b35dae",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-d0c33f80c2a0a704",
+          "label": "SN-d0c33f80c2a0a704",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "SELECT_PARENT",
+          "semanticNodeId": "SN-fa3e46e19d6d0375",
+          "label": "SN-fa3e46e19d6d0375",
+          "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+        },
+        {
+          "decision": "UNRESOLVED",
+          "semanticNodeId": null,
+          "label": "UNRESOLVED",
+          "description": "Evidence is insufficient; do not use ROOT as a fallback."
+        }
+      ],
+      "goldDerivedInput": false
+    }
+  ],
+  "decisions": [
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-d53681cb67def23d",
+      "decision": "ROOT",
+      "parentSemanticNodeId": null
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-aca084dc03ba6e31",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d53681cb67def23d"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-fa3e46e19d6d0375",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d53681cb67def23d"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-d0c33f80c2a0a704",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-fa3e46e19d6d0375"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-ad0f647090b35dae",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-2a07dbe2240718e3",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-1767abb75196945e",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-35572ea4edd05ce3",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-7e35948f55ab193e",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-04a6519cc7d08d60",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-d0c33f80c2a0a704"
+    },
+    {
+      "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+      "childSemanticNodeId": "SN-9a8cf82ed4783b6d",
+      "decision": "SELECT_PARENT",
+      "parentSemanticNodeId": "SN-04a6519cc7d08d60"
+    }
+  ],
+  "validations": [
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    },
+    {
+      "accepted": true,
+      "rejectionReason": null,
+      "parentWasOutsideAttentionHints": false
+    }
+  ],
+  "tree": {
+    "nodes": [
+      {
+        "id": "SN-d53681cb67def23d",
+        "parentId": null,
+        "level": 1
+      },
+      {
+        "id": "SN-aca084dc03ba6e31",
+        "parentId": "SN-d53681cb67def23d",
+        "level": 2
+      },
+      {
+        "id": "SN-fa3e46e19d6d0375",
+        "parentId": "SN-d53681cb67def23d",
+        "level": 2
+      },
+      {
+        "id": "SN-d0c33f80c2a0a704",
+        "parentId": "SN-fa3e46e19d6d0375",
+        "level": 3
+      },
+      {
+        "id": "SN-ad0f647090b35dae",
+        "parentId": "SN-d0c33f80c2a0a704",
+        "level": 4
+      },
+      {
+        "id": "SN-2a07dbe2240718e3",
+        "parentId": "SN-d0c33f80c2a0a704",
+        "level": 4
+      },
+      {
+        "id": "SN-1767abb75196945e",
+        "parentId": "SN-d0c33f80c2a0a704",
+        "level": 4
+      },
+      {
+        "id": "SN-35572ea4edd05ce3",
+        "parentId": "SN-d0c33f80c2a0a704",
+        "level": 4
+      },
+      {
+        "id": "SN-7e35948f55ab193e",
+        "parentId": "SN-d0c33f80c2a0a704",
+        "level": 4
+      },
+      {
+        "id": "SN-04a6519cc7d08d60",
+        "parentId": "SN-d0c33f80c2a0a704",
+        "level": 4
+      },
+      {
+        "id": "SN-9a8cf82ed4783b6d",
+        "parentId": "SN-04a6519cc7d08d60",
+        "level": 5
+      }
+    ],
+    "errors": [],
+    "isValid": true
+  },
+  "graphValidation": {
+    "acceptedRelations": [
+      {
+        "from": "SN-04a6519cc7d08d60",
+        "to": "SN-9a8cf82ed4783b6d",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-d0c33f80c2a0a704",
+        "to": "SN-04a6519cc7d08d60",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-d0c33f80c2a0a704",
+        "to": "SN-1767abb75196945e",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-d0c33f80c2a0a704",
+        "to": "SN-2a07dbe2240718e3",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-d0c33f80c2a0a704",
+        "to": "SN-35572ea4edd05ce3",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-d0c33f80c2a0a704",
+        "to": "SN-7e35948f55ab193e",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-d0c33f80c2a0a704",
+        "to": "SN-ad0f647090b35dae",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-d53681cb67def23d",
+        "to": "SN-aca084dc03ba6e31",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-d53681cb67def23d",
+        "to": "SN-fa3e46e19d6d0375",
+        "relation": "PARENT_OF"
+      },
+      {
+        "from": "SN-fa3e46e19d6d0375",
+        "to": "SN-d0c33f80c2a0a704",
+        "relation": "PARENT_OF"
+      }
+    ],
+    "rejectedRelations": [],
+    "errors": [],
+    "isValid": true
+  },
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false,
+  "legacyHierarchyConsumed": false
+}

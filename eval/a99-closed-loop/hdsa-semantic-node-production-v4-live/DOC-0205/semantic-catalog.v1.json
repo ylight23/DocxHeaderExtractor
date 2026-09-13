@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "a99-hdsa-v4-semantic-catalog-v1",
+  "documentId": "DOC-0205",
+  "catalog": {
+    "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+    "preprocessingSnapshotHash": "8c32bbe40be5b24812d90955fd1e5a14b6b14a5e59d8ccfe46130f79299227af",
+    "resolverVersion": "semantic-identity-inference-v4",
+    "entries": [
+      {
+        "semanticNodeId": "SN-d53681cb67def23d",
+        "memberOccurrenceIds": [
+          "S0001"
+        ],
+        "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+        "sourceOrder": 0
+      },
+      {
+        "semanticNodeId": "SN-aca084dc03ba6e31",
+        "memberOccurrenceIds": [
+          "S0005"
+        ],
+        "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+        "sourceOrder": 6
+      },
+      {
+        "semanticNodeId": "SN-fa3e46e19d6d0375",
+        "memberOccurrenceIds": [
+          "S0014"
+        ],
+        "canonicalText": "Ch\u01B0\u01A1ng I",
+        "sourceOrder": 17
+      },
+      {
+        "semanticNodeId": "SN-d0c33f80c2a0a704",
+        "memberOccurrenceIds": [
+          "S0015",
+          "S0016"
+        ],
+        "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+        "sourceOrder": 18
+      },
+      {
+        "semanticNodeId": "SN-ad0f647090b35dae",
+        "memberOccurrenceIds": [
+          "S0019"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+        "sourceOrder": 23
+      },
+      {
+        "semanticNodeId": "SN-2a07dbe2240718e3",
+        "memberOccurrenceIds": [
+          "S0021"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+        "sourceOrder": 25
+      },
+      {
+        "semanticNodeId": "SN-1767abb75196945e",
+        "memberOccurrenceIds": [
+          "S0033"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+        "sourceOrder": 37
+      },
+      {
+        "semanticNodeId": "SN-35572ea4edd05ce3",
+        "memberOccurrenceIds": [
+          "S0035"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+        "sourceOrder": 39
+      },
+      {
+        "semanticNodeId": "SN-7e35948f55ab193e",
+        "memberOccurrenceIds": [
+          "S0044"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "sourceOrder": 48
+      },
+      {
+        "semanticNodeId": "SN-04a6519cc7d08d60",
+        "memberOccurrenceIds": [
+          "S0052"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+        "sourceOrder": 56
+      },
+      {
+        "semanticNodeId": "SN-9a8cf82ed4783b6d",
+        "memberOccurrenceIds": [
+          "S0060"
+        ],
+        "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+        "sourceOrder": 64
+      }
+    ],
+    "acceptedIdentityRelations": [
+      {
+        "fromOccurrenceId": "S0016",
+        "toOccurrenceId": "S0015",
+        "relation": "CONTINUATION_OF",
+        "parserEvidenceHash": "57e124e480edd43fb3d173913fe05cd72bc63d0b10a4bb41361e1cc8a0d6a684",
+        "structuralBoundaryCompatible": true
+      }
+    ],
+    "catalogFingerprint": "c088b6ea071feb6782e87c1c513664265c2742f246885f2fc6e51bb42a482823",
+    "goldUsed": false,
+    "productionBenchmark": true,
+    "semanticNodeIds": [
+      "SN-d53681cb67def23d",
+      "SN-aca084dc03ba6e31",
+      "SN-fa3e46e19d6d0375",
+      "SN-d0c33f80c2a0a704",
+      "SN-ad0f647090b35dae",
+      "SN-2a07dbe2240718e3",
+      "SN-1767abb75196945e",
+      "SN-35572ea4edd05ce3",
+      "SN-7e35948f55ab193e",
+      "SN-04a6519cc7d08d60",
+      "SN-9a8cf82ed4783b6d"
+    ]
+  },
+  "goldUsed": false,
+  "productionBenchmark": true
+}
