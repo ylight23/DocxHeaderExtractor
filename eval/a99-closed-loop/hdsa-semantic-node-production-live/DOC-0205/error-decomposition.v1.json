@@ -1,0 +1,378 @@
+{
+  "schemaVersion": "a99-hdsa-semantic-node-production-error-decomposition-v1",
+  "documentId": "DOC-0205",
+  "benchmarkCheckpoint": "c945c02",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "predictionArtifacts": {
+    "predictionFreeze": "prediction-freeze.v1.json",
+    "predictionComplete": "prediction-complete.v1.json",
+    "catalog": "semantic-catalog.v1.json",
+    "goldOpenedAfterPredictionFreeze": true,
+    "goldDerivedInput": false,
+    "predictionRerunForScoringFix": false
+  },
+  "execution": {
+    "modelCalls": 0,
+    "providerCalls": 0,
+    "goldReadBeforeFreeze": false,
+    "analysisMode": "OFFLINE_FROZEN_PREDICTION_ONLY"
+  },
+  "semanticResolution": {
+    "predictedNodes": 12,
+    "goldNodes": 10,
+    "exactMembershipNodes": 9,
+    "splitGoldNodeIds": [
+      "N0002"
+    ],
+    "splitGoldNodeCount": 1,
+    "unmappedPredictedNodes": 1
+  },
+  "parent": {
+    "overall": {
+      "tp": 8,
+      "fp": 3,
+      "fn": 1,
+      "precision": 0.7272727272727273,
+      "recall": 0.8888888888888888,
+      "f1": 0.7999999999999999,
+      "predictedEdgeCount": 11,
+      "mappedPredictedEdgeCount": 9,
+      "unmappablePredictedEdges": 2,
+      "goldEdgeCount": 9
+    },
+    "conditionalOnExactSemanticMembership": {
+      "tp": 8,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.8888888888888888,
+      "recall": 1,
+      "f1": 0.9411764705882353,
+      "predictedEdgeCount": 9,
+      "mappedPredictedEdgeCount": 8,
+      "unmappablePredictedEdges": 1,
+      "goldEdgeCount": 8
+    },
+    "conditionalPolicy": "Restrict children to exact predicted membership; unmappable predicted parents remain FP; split semantic nodes are excluded from the conditional denominator.",
+    "parentErrorCount": 3
+  },
+  "level": {
+    "exact": 4,
+    "evaluated": 11,
+    "mismatchCount": 7,
+    "errorRootCauseCounts": {
+      "MODEL_WRONG_PARENT": 1,
+      "SEMANTIC_SPLIT_CAUSED": 1,
+      "ANCESTOR_PARENT_CASCADE": 5
+    }
+  },
+  "classification": {
+    "dimensions": [
+      "SEMANTIC_SPLIT_CAUSED",
+      "CANDIDATE_MISSING",
+      "MODEL_WRONG_PARENT",
+      "MODEL_SELECTED_SPLIT_ALIAS",
+      "VALIDATOR_EFFECT",
+      "ANCESTOR_PARENT_CASCADE",
+      "LEVEL_PROJECTION_ONLY"
+    ],
+    "allObservedErrorDimensions": [
+      "ANCESTOR_PARENT_CASCADE",
+      "MODEL_SELECTED_SPLIT_ALIAS",
+      "MODEL_WRONG_PARENT",
+      "SEMANTIC_RESOLUTION_ERROR",
+      "SEMANTIC_SPLIT_CAUSED"
+    ],
+    "errorDimensionCounts": {
+      "SEMANTIC_RESOLUTION_ERROR": 1,
+      "MODEL_WRONG_PARENT": 1,
+      "SEMANTIC_SPLIT_CAUSED": 2,
+      "MODEL_SELECTED_SPLIT_ALIAS": 2,
+      "ANCESTOR_PARENT_CASCADE": 5
+    },
+    "noEvidenceObserved": [
+      "CANDIDATE_MISSING",
+      "VALIDATOR_EFFECT",
+      "LEVEL_PROJECTION_ONLY"
+    ]
+  },
+  "diagnostics": [
+    {
+      "semanticNodeId": "SN-d53681cb67def23d",
+      "sourceAliases": [
+        "S0001"
+      ],
+      "canonicalText": "CH\u00CDNH PH\u1EE6 ________",
+      "membershipStatus": "UNMAPPED",
+      "goldSemanticNodeId": null,
+      "decision": "ROOT",
+      "predictedParent": null,
+      "mappedPredictedParent": null,
+      "goldParent": null,
+      "parentOutcome": "UNMAPPED_CHILD",
+      "predictedLevel": 1,
+      "goldLevel": null,
+      "firstDivergentAncestor": "SN-d53681cb67def23d",
+      "firstDivergentAncestorGoldSemanticNodeId": null,
+      "rootCause": "SEMANTIC_RESOLUTION_ERROR",
+      "errorDimensions": [
+        "SEMANTIC_RESOLUTION_ERROR"
+      ],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-aca084dc03ba6e31",
+      "sourceAliases": [
+        "S0005"
+      ],
+      "canonicalText": "NGH\u1ECA \u0110\u1ECANH",
+      "membershipStatus": "EXACT",
+      "goldSemanticNodeId": "N0001",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-d53681cb67def23d",
+      "mappedPredictedParent": null,
+      "goldParent": null,
+      "parentOutcome": "PARENT_WRONG_UNMAPPABLE_PARENT",
+      "predictedLevel": 2,
+      "goldLevel": 1,
+      "firstDivergentAncestor": "SN-aca084dc03ba6e31",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0001",
+      "rootCause": "MODEL_WRONG_PARENT",
+      "errorDimensions": [
+        "MODEL_WRONG_PARENT"
+      ],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-fa3e46e19d6d0375",
+      "sourceAliases": [
+        "S0014"
+      ],
+      "canonicalText": "Ch\u01B0\u01A1ng I",
+      "membershipStatus": "SPLIT",
+      "goldSemanticNodeId": "N0002",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-d53681cb67def23d",
+      "mappedPredictedParent": null,
+      "goldParent": "N0001",
+      "parentOutcome": "PARENT_WRONG_UNMAPPABLE_PARENT",
+      "predictedLevel": 2,
+      "goldLevel": 2,
+      "firstDivergentAncestor": "SN-fa3e46e19d6d0375",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0002",
+      "rootCause": "SEMANTIC_SPLIT_CAUSED",
+      "errorDimensions": [
+        "SEMANTIC_SPLIT_CAUSED",
+        "MODEL_SELECTED_SPLIT_ALIAS"
+      ],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-2ddcbcfd14c02240",
+      "sourceAliases": [
+        "S0015"
+      ],
+      "canonicalText": "QUY \u0110\u1ECANH CHUNG",
+      "membershipStatus": "SPLIT",
+      "goldSemanticNodeId": "N0002",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-fa3e46e19d6d0375",
+      "mappedPredictedParent": "N0002",
+      "goldParent": "N0001",
+      "parentOutcome": "PARENT_WRONG",
+      "predictedLevel": 3,
+      "goldLevel": 2,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0002",
+      "rootCause": "SEMANTIC_SPLIT_CAUSED",
+      "errorDimensions": [
+        "SEMANTIC_SPLIT_CAUSED",
+        "MODEL_SELECTED_SPLIT_ALIAS"
+      ],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-a34a97ca83b456e6",
+      "sourceAliases": [
+        "S0016"
+      ],
+      "canonicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "membershipStatus": "EXACT",
+      "goldSemanticNodeId": "N0003",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-2ddcbcfd14c02240",
+      "mappedPredictedParent": "N0002",
+      "goldParent": "N0002",
+      "parentOutcome": "PARENT_TRUE",
+      "predictedLevel": 4,
+      "goldLevel": 3,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0002",
+      "rootCause": "ANCESTOR_PARENT_CASCADE",
+      "errorDimensions": [
+        "ANCESTOR_PARENT_CASCADE"
+      ],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-ad0f647090b35dae",
+      "sourceAliases": [
+        "S0019"
+      ],
+      "canonicalText": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "membershipStatus": "EXACT",
+      "goldSemanticNodeId": "N0004",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-2ddcbcfd14c02240",
+      "mappedPredictedParent": "N0002",
+      "goldParent": "N0002",
+      "parentOutcome": "PARENT_TRUE",
+      "predictedLevel": 4,
+      "goldLevel": 3,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0002",
+      "rootCause": "ANCESTOR_PARENT_CASCADE",
+      "errorDimensions": [
+        "ANCESTOR_PARENT_CASCADE"
+      ],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-2a07dbe2240718e3",
+      "sourceAliases": [
+        "S0021"
+      ],
+      "canonicalText": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+      "membershipStatus": "EXACT",
+      "goldSemanticNodeId": "N0005",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-2ddcbcfd14c02240",
+      "mappedPredictedParent": "N0002",
+      "goldParent": "N0002",
+      "parentOutcome": "PARENT_TRUE",
+      "predictedLevel": 4,
+      "goldLevel": 3,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0002",
+      "rootCause": "ANCESTOR_PARENT_CASCADE",
+      "errorDimensions": [
+        "ANCESTOR_PARENT_CASCADE"
+      ],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-1767abb75196945e",
+      "sourceAliases": [
+        "S0033"
+      ],
+      "canonicalText": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+      "membershipStatus": "EXACT",
+      "goldSemanticNodeId": "N0006",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-fa3e46e19d6d0375",
+      "mappedPredictedParent": "N0002",
+      "goldParent": "N0002",
+      "parentOutcome": "PARENT_TRUE",
+      "predictedLevel": 3,
+      "goldLevel": 3,
+      "firstDivergentAncestor": "SN-fa3e46e19d6d0375",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0002",
+      "rootCause": "NO_ERROR",
+      "errorDimensions": [],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-35572ea4edd05ce3",
+      "sourceAliases": [
+        "S0035"
+      ],
+      "canonicalText": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "membershipStatus": "EXACT",
+      "goldSemanticNodeId": "N0007",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-2ddcbcfd14c02240",
+      "mappedPredictedParent": "N0002",
+      "goldParent": "N0002",
+      "parentOutcome": "PARENT_TRUE",
+      "predictedLevel": 4,
+      "goldLevel": 3,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0002",
+      "rootCause": "ANCESTOR_PARENT_CASCADE",
+      "errorDimensions": [
+        "ANCESTOR_PARENT_CASCADE"
+      ],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-7e35948f55ab193e",
+      "sourceAliases": [
+        "S0044"
+      ],
+      "canonicalText": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "membershipStatus": "EXACT",
+      "goldSemanticNodeId": "N0008",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-fa3e46e19d6d0375",
+      "mappedPredictedParent": "N0002",
+      "goldParent": "N0002",
+      "parentOutcome": "PARENT_TRUE",
+      "predictedLevel": 3,
+      "goldLevel": 3,
+      "firstDivergentAncestor": "SN-fa3e46e19d6d0375",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0002",
+      "rootCause": "NO_ERROR",
+      "errorDimensions": [],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-04a6519cc7d08d60",
+      "sourceAliases": [
+        "S0052"
+      ],
+      "canonicalText": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "membershipStatus": "EXACT",
+      "goldSemanticNodeId": "N0009",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-fa3e46e19d6d0375",
+      "mappedPredictedParent": "N0002",
+      "goldParent": "N0002",
+      "parentOutcome": "PARENT_TRUE",
+      "predictedLevel": 3,
+      "goldLevel": 3,
+      "firstDivergentAncestor": "SN-fa3e46e19d6d0375",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0002",
+      "rootCause": "NO_ERROR",
+      "errorDimensions": [],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    },
+    {
+      "semanticNodeId": "SN-9a8cf82ed4783b6d",
+      "sourceAliases": [
+        "S0060"
+      ],
+      "canonicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+      "membershipStatus": "EXACT",
+      "goldSemanticNodeId": "N0010",
+      "decision": "SELECT_PARENT",
+      "predictedParent": "SN-2ddcbcfd14c02240",
+      "mappedPredictedParent": "N0002",
+      "goldParent": "N0002",
+      "parentOutcome": "PARENT_TRUE",
+      "predictedLevel": 4,
+      "goldLevel": 3,
+      "firstDivergentAncestor": "SN-2ddcbcfd14c02240",
+      "firstDivergentAncestorGoldSemanticNodeId": "N0002",
+      "rootCause": "ANCESTOR_PARENT_CASCADE",
+      "errorDimensions": [
+        "ANCESTOR_PARENT_CASCADE"
+      ],
+      "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e"
+    }
+  ],
+  "interpretation": {
+    "primary": "The one Gold semantic node N0002 is split across S0014 and S0015. That split removes N0001\u003EN0002, creates a wrong mapped self-edge, and cascades depth errors to descendants attached below the split.",
+    "localParentError": "N0001/S0005 is attached to the excluded masthead node; this is a local wrong-parent selection, not a level-only projection error.",
+    "conditionalReading": "Among exact semantic memberships, eight child edges are correct; the remaining FP is the document-title/root node attached to the unmappable masthead.",
+    "causalClaimLimit": "This is frozen-output error attribution, not an ablation proving that semantic-node abstraction alone caused the historical F1 change."
+  }
+}
