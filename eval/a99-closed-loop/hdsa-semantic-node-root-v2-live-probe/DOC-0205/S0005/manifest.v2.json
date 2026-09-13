@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "a99-hdsa-root-v2-live-probe-manifest-v1",
+  "documentId": "DOC-0205",
+  "targetAlias": "S0005",
+  "targetSemanticNodeId": "SN-aca084dc03ba6e31",
+  "startCheckpoint": "6715096",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "e89c9206fd376e387af0641b720ef70ac832930510a2a3930d0d80e700a50e3a",
+  "historicalFrozenCatalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "catalogMatchesFrozenHistorical": false,
+  "probeValidity": "INVALID_CATALOG_RECONSTRUCTION",
+  "invalidReason": "The first live call was made by a runner that supplied the full source catalog instead of the frozen 12-node mini-tree catalog.",
+  "resolverVersion": "repeat-continuation-evidence-v3",
+  "candidateSemanticNodeIds": [
+    "SN-7732be82b0dacd3f",
+    "SN-b2ad90f1c46f910d",
+    "SN-36d9eadcdc2fbbc9",
+    "SN-d53681cb67def23d"
+  ],
+  "decisionOptions": [
+    {
+      "decision": "ROOT",
+      "semanticNodeId": null,
+      "label": "ROOT",
+      "description": "The child has no semantic parent in this structural scope."
+    },
+    {
+      "decision": "SELECT_PARENT",
+      "semanticNodeId": "SN-7732be82b0dacd3f",
+      "label": "SN-7732be82b0dacd3f",
+      "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+    },
+    {
+      "decision": "SELECT_PARENT",
+      "semanticNodeId": "SN-b2ad90f1c46f910d",
+      "label": "SN-b2ad90f1c46f910d",
+      "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+    },
+    {
+      "decision": "SELECT_PARENT",
+      "semanticNodeId": "SN-36d9eadcdc2fbbc9",
+      "label": "SN-36d9eadcdc2fbbc9",
+      "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+    },
+    {
+      "decision": "SELECT_PARENT",
+      "semanticNodeId": "SN-d53681cb67def23d",
+      "label": "SN-d53681cb67def23d",
+      "description": "Previous/nearby source-backed heading; select only if it is the child\u0027s semantic parent."
+    },
+    {
+      "decision": "UNRESOLVED",
+      "semanticNodeId": null,
+      "label": "UNRESOLVED",
+      "description": "Evidence is insufficient; do not use ROOT as a fallback."
+    }
+  ],
+  "requestSha256": "f3c53227dc3dd4f79513075d5b6e8c0363a57a00161c7ec961eb43ed5d4fd593",
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false,
+  "modelFallback": "NONE",
+  "probeCallsExpected": 1,
+  "contractDelta": "ROOT_FIRST_CLASS_DECISION_AFFORDANCE_ONLY"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-hdsa-root-v2-live-probe-integrity-v1",
+  "probeValidity": "INVALID_CATALOG_RECONSTRUCTION",
+  "authoritativeBenchmarkResult": false,
+  "expectedHistoricalFrozenCatalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "actualCatalogFingerprintUsedByCall": "e89c9206fd376e387af0641b720ef70ac832930510a2a3930d0d80e700a50e3a",
+  "catalogMatchesFrozenHistorical": false,
+  "requestSha256": "f3c53227dc3dd4f79513075d5b6e8c0363a57a00161c7ec961eb43ed5d4fd593",
+  "responseSha256": "cc1e62a946712b704b32020a65729cdc3bb8aa9236df251ebf697767780f9faa",
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "decisionObserved": "SELECT_PARENT",
+  "goldReadBeforeFreeze": false,
+  "correction": "Runner now selects the exact historical 12-node mini-tree aliases and fails closed unless the frozen catalog fingerprint matches.",
+  "correctedRunnerExecuted": false
+}
