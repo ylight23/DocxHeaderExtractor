@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-a2a-discovery-prediction-v1",
+  "documentId": "DOC-0205",
+  "requestSha256": "37209e7b004fdb746e40b9e4fb001ee6d315210db0f7e84b6b14a70fea135b2d",
+  "responseSha256": "1a6e3b610b2e552620df2c257a4417d4a3900cfecb89444d24f7cffbae230ac9",
+  "response": {
+    "candidatePairIds": []
+  },
+  "parseError": null,
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "candidatePairIds": [],
+    "maxCandidatePairCount": 6
+  },
+  "frozenBeforeGold": true,
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false
+}

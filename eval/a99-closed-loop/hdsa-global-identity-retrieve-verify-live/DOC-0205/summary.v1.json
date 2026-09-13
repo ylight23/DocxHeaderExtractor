@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-retrieve-verify-live-summary-v1",
+  "status": "A2_RETRIEVE_VERIFY_COMPLETE_STAGE_B_BLOCKED",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "sourceNodeCount": 12,
+  "pairUniverseCount": 66,
+  "a1Reused": {
+    "path": "eval/a99-closed-loop/hdsa-global-role-identity-v2-live/DOC-0205/attempt-2-keyed-a1/a1-role/prediction.v1.json",
+    "providerCalls": 0,
+    "goldReadBeforeFreeze": false
+  },
+  "a2a": {
+    "requestSha256": "37209e7b004fdb746e40b9e4fb001ee6d315210db0f7e84b6b14a70fea135b2d",
+    "responseSha256": "1a6e3b610b2e552620df2c257a4417d4a3900cfecb89444d24f7cffbae230ac9",
+    "validation": {
+      "accepted": true,
+      "rejectionReason": null,
+      "candidatePairIds": [],
+      "maxCandidatePairCount": 6
+    },
+    "providerCalls": 1
+  },
+  "a2b": {
+    "requested": 0,
+    "completed": 0,
+    "results": []
+  },
+  "sparsePromotion": {
+    "positiveRelationCount": 0,
+    "validation": {
+      "accepted": true,
+      "rejectionReason": null,
+      "positiveRelations": [],
+      "positiveComponents": [
+        [
+          "SN-04a6519cc7d08d60"
+        ],
+        [
+          "SN-1767abb75196945e"
+        ],
+        [
+          "SN-2a07dbe2240718e3"
+        ],
+        [
+          "SN-2ddcbcfd14c02240"
+        ],
+        [
+          "SN-35572ea4edd05ce3"
+        ],
+        [
+          "SN-7e35948f55ab193e"
+        ],
+        [
+          "SN-9a8cf82ed4783b6d"
+        ],
+        [
+          "SN-a34a97ca83b456e6"
+        ],
+        [
+          "SN-aca084dc03ba6e31"
+        ],
+        [
+          "SN-ad0f647090b35dae"
+        ],
+        [
+          "SN-d53681cb67def23d"
+        ],
+        [
+          "SN-fa3e46e19d6d0375"
+        ]
+      ],
+      "noClaimPairCount": 66
+    }
+  },
+  "stageB": {
+    "authorized": false,
+    "executed": false
+  },
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "predictionFrozenBeforeGold": true
+}

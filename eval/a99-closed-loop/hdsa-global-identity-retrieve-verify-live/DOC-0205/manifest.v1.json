@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "hdsa-global-identity-retrieve-verify-v1-manifest-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "catalogNodeCount": 12,
+  "pairUniverseCount": 66,
+  "frozenA1PredictionPath": "eval/a99-closed-loop/hdsa-global-role-identity-v2-live/DOC-0205/attempt-2-keyed-a1/a1-role/prediction.v1.json",
+  "frozenA1PredictionSha256": "1b11131a13b9190008e47a004e14c55b2746d8331c44a4b9e9c38fd3656cfc96",
+  "discoveryRequestSha256": "37209e7b004fdb746e40b9e4fb001ee6d315210db0f7e84b6b14a70fea135b2d",
+  "discoverySchemaSha256": "3616d9141b809ce0c9e58b6d7677c5cf6d5a5279021eb821e904eb30f0093070",
+  "verificationSchemaSha256": "fd0bced3fc6605eab984c96d707e3fda34629287749392113ceefda1fbe1c3e7",
+  "goldReadBeforeFreeze": false,
+  "goldDerivedInput": false,
+  "stageBExecuted": false,
+  "candidateGenerationIsRecallGate": false,
+  "omittedPairPolicy": "NO_CLAIM_KEEP_SPLIT",
+  "transientRequestRetries": 0
+}

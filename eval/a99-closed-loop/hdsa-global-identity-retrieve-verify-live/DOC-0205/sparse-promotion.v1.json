@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-retrieve-verify-sparse-promotion-v1",
+  "documentId": "DOC-0205",
+  "source": "A2B_VALIDATED_POSITIVE_RELATIONS_ONLY",
+  "response": {
+    "positiveRelations": []
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "positiveRelations": [],
+    "positiveComponents": [
+      [
+        "SN-04a6519cc7d08d60"
+      ],
+      [
+        "SN-1767abb75196945e"
+      ],
+      [
+        "SN-2a07dbe2240718e3"
+      ],
+      [
+        "SN-2ddcbcfd14c02240"
+      ],
+      [
+        "SN-35572ea4edd05ce3"
+      ],
+      [
+        "SN-7e35948f55ab193e"
+      ],
+      [
+        "SN-9a8cf82ed4783b6d"
+      ],
+      [
+        "SN-a34a97ca83b456e6"
+      ],
+      [
+        "SN-aca084dc03ba6e31"
+      ],
+      [
+        "SN-ad0f647090b35dae"
+      ],
+      [
+        "SN-d53681cb67def23d"
+      ],
+      [
+        "SN-fa3e46e19d6d0375"
+      ]
+    ],
+    "noClaimPairCount": 66
+  },
+  "noClaimPairCount": 66,
+  "goldUsed": false,
+  "goldReadBeforeFreeze": false
+}
