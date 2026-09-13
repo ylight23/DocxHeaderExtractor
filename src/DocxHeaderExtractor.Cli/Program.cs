@@ -38,7 +38,7 @@ if (options.ShowHelp)
     return 0;
 }
 // `sample`/`bench`/`eval` có đích mặc định, `info` tự dò mô hình – không cần đầu vào.
-if (options.Inputs.Count == 0 && options.Command is not ("sample" or "info" or "bench" or "eval" or "accuracy99" or "r18" or "harness-lift" or "local-qwen-preflight" or "local-qwen-large" or "a99-v6-whole-alias-replay" or "a99-v6-source-slice-audit" or "a99-v6-source-slice-challenger" or "a99-v6-source-fidelity-audit" or "a99-v6-source-fidelity-paired" or "a99-v6-faithful-whole-alias-replay" or "a99-v6-faithful-whole-alias-live" or "a99-v6-faithful-whole-alias-provider-probe"))
+if (options.Inputs.Count == 0 && options.Command is not ("sample" or "info" or "bench" or "eval" or "accuracy99" or "r18" or "harness-lift" or "local-qwen-preflight" or "local-qwen-large" or "a99-v6-whole-alias-replay" or "a99-v6-source-slice-audit" or "a99-v6-source-slice-challenger" or "a99-v6-source-fidelity-audit" or "a99-v6-source-fidelity-paired" or "a99-v6-faithful-whole-alias-replay" or "a99-v6-faithful-whole-alias-live" or "a99-v6-faithful-whole-alias-provider-probe" or "a99-semantic-conflict-adjudication"))
 {
     Console.Error.WriteLine("Chưa chỉ định file đầu vào.");
     return 2;
@@ -70,6 +70,7 @@ try
         "a99-v6-faithful-whole-alias-replay" => await A99V6FaithfulWholeAliasReplayRunner.RunAsync(Directory.GetCurrentDirectory(), cts.Token),
         "a99-v6-faithful-whole-alias-live" => await A99V6FaithfulWholeAliasLiveRunner.RunAsync(Directory.GetCurrentDirectory(), cts.Token),
         "a99-v6-faithful-whole-alias-provider-probe" => await A99V6FaithfulWholeAliasProviderProbeRunner.RunAsync(Directory.GetCurrentDirectory(), cts.Token),
+        "a99-semantic-conflict-adjudication" => await SemanticConflictAdjudicationRunner.RunAsync(Directory.GetCurrentDirectory(), cts.Token),
         "review" => await RunReviewAsync(options, cts.Token),
         "review-key" => RunReviewKey(options),
         "toc-keys" => RunTocKeys(options),

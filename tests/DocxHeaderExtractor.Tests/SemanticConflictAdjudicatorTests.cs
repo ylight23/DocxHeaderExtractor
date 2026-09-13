@@ -144,6 +144,60 @@ public sealed class SemanticConflictAdjudicatorTests
         Assert.Null(result.AcceptedProposal.VerbatimText);
     }
 
+    [Fact]
+    public void Selected_existing_alternative_is_the_only_proposal_given_to_exact_binder()
+    {
+        var aliases = Aliases();
+        var adjudicationCase = SemanticConflictAdjudicator.CreateCase(Conflict(), aliases);
+        var selected = adjudicationCase.Alternatives.Single(item => item.SemanticRole == "CHAPTER");
+        var decision = SemanticConflictAdjudicator.ValidateResponse(
+            adjudicationCase,
+            new SemanticAdjudicationResponse(adjudicationCase.CaseId, SemanticAdjudicationDecision.Select, selected.AlternativeId));
+
+        Assert.True(decision.IsValid);
+        var bound = CanonicalSemanticExactBinder.Bind([decision.AcceptedProposal!], aliases, out var observations);
+
+        Assert.Single(bound);
+        Assert.Equal("CHAPTER", bound[0].SemanticRole);
+        Assert.Equal("Chương III", bound[0].Text);
+        Assert.Single(observations);
+        Assert.Equal(CanonicalSemanticBindingStatus.Bound, observations[0].Status);
+    }
+
+    [Fact]
+    public void Unresolved_decision_withholds_all_proposals_from_binder()
+    {
+        var aliases = Aliases();
+        var adjudicationCase = SemanticConflictAdjudicator.CreateCase(Conflict(), aliases);
+        var decision = SemanticConflictAdjudicator.ValidateResponse(
+            adjudicationCase,
+            new SemanticAdjudicationResponse(adjudicationCase.CaseId, SemanticAdjudicationDecision.Unresolved));
+
+        Assert.True(decision.IsValid);
+        var bound = CanonicalSemanticExactBinder.Bind(
+            decision.AcceptedProposal is null ? [] : [decision.AcceptedProposal], aliases, out var observations);
+
+        Assert.Empty(bound);
+        Assert.Empty(observations);
+    }
+
+    [Fact]
+    public void Invalid_adjudication_response_cannot_reach_binder()
+    {
+        var aliases = Aliases();
+        var adjudicationCase = SemanticConflictAdjudicator.CreateCase(Conflict(), aliases);
+        var decision = SemanticConflictAdjudicator.ValidateResponse(
+            adjudicationCase,
+            new SemanticAdjudicationResponse(adjudicationCase.CaseId, SemanticAdjudicationDecision.Select, "A9999"));
+
+        Assert.False(decision.IsValid);
+        var bound = CanonicalSemanticExactBinder.Bind(
+            decision.AcceptedProposal is null ? [] : [decision.AcceptedProposal], aliases, out var observations);
+
+        Assert.Empty(bound);
+        Assert.Empty(observations);
+    }
+
     private static SemanticProposalConflict Conflict() => new(
         "source:body[1]/p[250]:0:10",
         [

@@ -7,7 +7,9 @@ namespace DocxHeaderExtractor.Core.Models;
 
 public static class SemanticAdjudicationDecision
 {
-    public const string Resolved = "RESOLVED";
+    public const string Select = "SELECT";
+    // Kept as a source-compatible name for Phase-A callers; the wire value is SELECT.
+    public const string Resolved = Select;
     public const string Unresolved = "UNRESOLVED";
 }
 

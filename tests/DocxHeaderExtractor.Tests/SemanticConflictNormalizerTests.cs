@@ -105,6 +105,20 @@ public sealed class SemanticConflictNormalizerTests
     }
 
     [Fact]
+    public void Hierarchy_level_hint_does_not_create_a_semantic_conflict()
+    {
+        var aliases = Aliases(("p1", "Heading"));
+        var shallow = Whole("S0001", "SECTION") with { RelationHints = ["level:1"] };
+        var deep = Whole("S0001", "SECTION") with { RelationHints = ["level:2"] };
+
+        var result = SemanticConflictNormalizer.Normalize([shallow, deep], aliases);
+
+        Assert.Single(result.NormalizedProposals);
+        Assert.Empty(result.Conflicts);
+        Assert.Equal(1, result.ExactSemanticDuplicatesCollapsed);
+    }
+
+    [Fact]
     public void Ordering_and_conflict_alternatives_are_independent_of_input_order()
     {
         var aliases = Aliases(("p1", "One"), ("p2", "Two"));
