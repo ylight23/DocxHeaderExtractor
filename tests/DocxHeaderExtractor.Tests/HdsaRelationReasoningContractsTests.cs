@@ -497,6 +497,46 @@ public sealed class HdsaRelationReasoningContractsTests
     }
 
     [Fact]
+    public void Root_is_a_first_class_decision_option_and_not_a_fake_candidate()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "snapshot", [new("S0001", 1, "Masthead"), new("S0005", 5, "Document title")]);
+        var identity = HdsaSemanticNodeResolverV3.Resolve(input, []);
+        var catalog = HdsaSemanticNodeCatalogBuilder.Build(input, identity);
+        var request = HdsaSemanticNodeParentReasoningContract.CreateRequest(catalog, catalog.Entries[1].SemanticNodeId);
+
+        Assert.Equal(["SN-" + Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes("S0001"))).ToLowerInvariant()[..16]], request.CandidateParentSemanticNodeIds);
+        Assert.Equal("ROOT", request.DecisionOptions[0].Decision);
+        Assert.Null(request.DecisionOptions[0].SemanticNodeId);
+        Assert.Equal("SELECT_PARENT", request.DecisionOptions[1].Decision);
+        Assert.Equal(request.CandidateParentSemanticNodeIds[0], request.DecisionOptions[1].SemanticNodeId);
+        Assert.Equal("UNRESOLVED", request.DecisionOptions[^1].Decision);
+        Assert.Contains("semantic parent", request.DecisionOptions[1].Description, StringComparison.OrdinalIgnoreCase);
+
+        var root = new HdsaSemanticNodeParentDecision(
+            catalog.CatalogFingerprint, request.ChildSemanticNodeId, HdsaParentDecision.Root);
+        var validation = HdsaSemanticNodeParentReasoningContract.Validate(request, root, catalog);
+        Assert.True(validation.Accepted);
+        Assert.DoesNotContain("ROOT", request.CandidateParentSemanticNodeIds);
+    }
+
+    [Fact]
+    public void Root_decision_affordance_serialization_is_deterministic()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "snapshot", [new("S0001", 1, "A"), new("S0002", 2, "B")]);
+        var identity = HdsaSemanticNodeResolverV3.Resolve(input, []);
+        var catalog = HdsaSemanticNodeCatalogBuilder.Build(input, identity);
+        var request = HdsaSemanticNodeParentReasoningContract.CreateRequest(catalog, catalog.Entries[1].SemanticNodeId);
+
+        var first = JsonSerializer.Serialize(request);
+        var second = JsonSerializer.Serialize(request);
+        Assert.Equal(first, second);
+        Assert.Contains("\"decisionOptions\":[{\"decision\":\"ROOT\"", first, StringComparison.Ordinal);
+        Assert.DoesNotContain("\"semanticNodeId\":\"ROOT\"", first, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Semantic_node_parent_contract_is_catalog_bound_and_has_no_level_output()
     {
         var schema = JsonSerializer.Serialize(HdsaSemanticNodeParentReasoningContract.Schema());

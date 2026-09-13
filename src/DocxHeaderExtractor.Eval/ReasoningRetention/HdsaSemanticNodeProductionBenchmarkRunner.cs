@@ -28,14 +28,16 @@ public static class HdsaSemanticNodeProductionBenchmarkRunner
         ["S0001", "S0005", "S0014", "S0015", "S0016", "S0019", "S0021", "S0033", "S0035", "S0044", "S0052", "S0060"];
 
     private const string SystemPrompt = """
-You are the A99 semantic-node parent reasoner. Decide only the immediate parent semantic-node
-relation for the supplied child semantic node. Use source order, canonical source-backed text,
-styles, numbering, and context as evidence; evidence is not a deterministic rule. Return exactly
-one JSON object with catalogFingerprint, childSemanticNodeId, decision, and parentSemanticNodeId.
-Use SELECT_PARENT only for an immediate parent from candidateParentSemanticNodeIds. Use ROOT only
-when the node is structurally root. Use UNRESOLVED when evidence is insufficient; never use ROOT
-merely because a candidate is hard to choose. Do not return level, depth, offsets, text spans,
-legacy hierarchy fields, Gold IDs, or any ID not in the supplied catalog.
+You are the A99 semantic-node parent reasoner. Decide only the immediate semantic parent relation
+for the supplied child semantic node. Use source order, canonical source-backed text, styles,
+numbering, and context as evidence; evidence is not a deterministic rule. The request's
+decisionOptions explicitly renders ROOT, candidate parent nodes, and UNRESOLVED as peer outcomes.
+ROOT means the child has no semantic parent in this structural scope; it is not a parent-node ID.
+The preceding/nearby headings are attention candidates, not automatically semantic parents.
+Return exactly one JSON object with catalogFingerprint, childSemanticNodeId, decision, and
+parentSemanticNodeId. Use SELECT_PARENT only for an immediate parent from candidateParentSemanticNodeIds.
+Use UNRESOLVED when evidence is insufficient; never use ROOT merely because a candidate is hard to choose.
+Do not return level, depth, offsets, text spans, legacy hierarchy fields, Gold IDs, or any ID not in the supplied catalog.
 """;
 
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
@@ -167,7 +169,7 @@ legacy hierarchy fields, Gold IDs, or any ID not in the supplied catalog.
 
             await WriteJsonAsync(Path.Combine(childDir, "request.v1.json"), new
             {
-                schemaVersion = "a99-hdsa-semantic-node-parent-request-v1",
+                schemaVersion = "a99-hdsa-semantic-node-parent-request-v2",
                 request,
                 requestSha256 = requestHash,
                 goldReadBeforeFreeze = false,

@@ -134,12 +134,21 @@ public sealed record HdsaSemanticParentUniverseEntry(
     [property: JsonPropertyName("canonicalText")] string CanonicalText,
     [property: JsonPropertyName("sourceOrder")] int SourceOrder);
 
+/// <summary>One explicit semantic-parent decision affordance. ROOT is represented as an outcome,
+/// never as a fabricated semantic-node ID.</summary>
+public sealed record HdsaSemanticParentDecisionOption(
+    [property: JsonPropertyName("decision")] string Decision,
+    [property: JsonPropertyName("semanticNodeId")] string? SemanticNodeId,
+    [property: JsonPropertyName("label")] string Label,
+    [property: JsonPropertyName("description")] string Description);
+
 public sealed record HdsaSemanticNodeParentReasoningRequest(
     [property: JsonPropertyName("catalogFingerprint")] string CatalogFingerprint,
     [property: JsonPropertyName("childSemanticNodeId")] string ChildSemanticNodeId,
     [property: JsonPropertyName("candidateParentSemanticNodeIds")] IReadOnlyList<string> CandidateParentSemanticNodeIds,
     [property: JsonPropertyName("authoritativeParentUniverse")] IReadOnlyList<HdsaSemanticParentUniverseEntry> AuthoritativeParentUniverse,
     [property: JsonPropertyName("evidence")] HdsaRelationEvidence Evidence,
+    [property: JsonPropertyName("decisionOptions")] IReadOnlyList<HdsaSemanticParentDecisionOption> DecisionOptions,
     [property: JsonPropertyName("goldDerivedInput")] bool GoldDerivedInput = false);
 
 public sealed record HdsaSemanticNodeParentDecision(
@@ -214,6 +223,20 @@ public static class HdsaSemanticNodeParentReasoningContract
             .ToArray();
         var candidates = universe.TakeLast(window).Reverse().Select(item => item.SemanticNodeId).ToArray();
         var child = ordered[childIndex];
+        var decisionOptions = new List<HdsaSemanticParentDecisionOption>
+        {
+            new("ROOT", null, "ROOT", "The child has no semantic parent in this structural scope."),
+        };
+        decisionOptions.AddRange(candidates.Select(candidate =>
+        {
+            var parent = universe.Single(item => string.Equals(item.SemanticNodeId, candidate, StringComparison.Ordinal));
+            return new HdsaSemanticParentDecisionOption(
+                "SELECT_PARENT",
+                parent.SemanticNodeId,
+                parent.SemanticNodeId,
+                "Previous/nearby source-backed heading; select only if it is the child's semantic parent.");
+        }));
+        decisionOptions.Add(new("UNRESOLVED", null, "UNRESOLVED", "Evidence is insufficient; do not use ROOT as a fallback."));
         return new(
             catalog.CatalogFingerprint,
             childSemanticNodeId,
@@ -226,6 +249,7 @@ public static class HdsaSemanticNodeParentReasoningContract
                 null,
                 child.CanonicalText,
                 "catalog=" + catalog.CatalogFingerprint),
+            decisionOptions,
             false);
     }
 
