@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-oracle-pair-diagnostic-summary-v1",
+  "status": "DIAGNOSTIC_COMPLETE",
+  "classification": "VERIFIER_CAPABILITY_OBSERVED_POSITIVE",
+  "documentId": "DOC-0205",
+  "pair": {
+    "left": "S0014",
+    "right": "S0015"
+  },
+  "validation": {
+    "accepted": true,
+    "rejectionReason": null,
+    "response": {
+      "pairId": "P03-04",
+      "left": "SN-fa3e46e19d6d0375",
+      "right": "SN-2ddcbcfd14c02240",
+      "relation": "CONTINUATION_OF",
+      "direction": "RIGHT_TO_LEFT"
+    }
+  },
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldDerivedInput": true,
+  "oracleDiagnostic": true,
+  "productionClaim": false,
+  "modelTuningAllowed": false,
+  "goldReadBeforeFreeze": false,
+  "predictionFrozenBeforeGold": true
+}

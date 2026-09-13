@@ -146,8 +146,19 @@ public static class HdsaGlobalIdentityRetrieveVerifyContract
     public static HdsaIdentityPairVerificationValidation ValidateVerification(
         HdsaIdentityPairVerificationRequest request,
         HdsaIdentityPairVerificationResponse response)
+        => ValidateVerification(request, response, allowOracleDiagnostic: false);
+
+    public static HdsaIdentityPairVerificationValidation ValidateOracleVerification(
+        HdsaIdentityPairVerificationRequest request,
+        HdsaIdentityPairVerificationResponse response)
+        => ValidateVerification(request, response, allowOracleDiagnostic: true);
+
+    private static HdsaIdentityPairVerificationValidation ValidateVerification(
+        HdsaIdentityPairVerificationRequest request,
+        HdsaIdentityPairVerificationResponse response,
+        bool allowOracleDiagnostic)
     {
-        if (request.GoldDerivedInput)
+        if (request.GoldDerivedInput && !allowOracleDiagnostic)
             return new(false, "GOLD_DERIVED_INPUT", null);
         var target = request.TargetPair;
         if (!string.Equals(response.PairId, target.PairId, StringComparison.Ordinal) ||

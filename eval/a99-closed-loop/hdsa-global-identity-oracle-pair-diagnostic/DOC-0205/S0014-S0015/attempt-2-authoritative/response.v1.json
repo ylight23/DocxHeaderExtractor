@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-oracle-pair-response-v1",
+  "documentId": "DOC-0205",
+  "requestSha256": "8d9b6a0309ed3b314737260d87108d705399fab349a6be338706957b5b8313f7",
+  "responseSha256": "5e8d43ef393802b489eb88147bdd6d6e7023f1412f5bfbe36332df7df6a61ff7",
+  "rawResponse": "{\n  \u0022pairId\u0022: \u0022P03-04\u0022,\n  \u0022left\u0022: \u0022SN-fa3e46e19d6d0375\u0022,\n  \u0022right\u0022: \u0022SN-2ddcbcfd14c02240\u0022,\n  \u0022relation\u0022: \u0022CONTINUATION_OF\u0022\n,\n  \u0022direction\u0022: \u0022RIGHT_TO_LEFT\u0022\n}",
+  "provider": "Alibaba",
+  "finishReason": "stop",
+  "inputTokens": 1913,
+  "reasoningTokens": 1385,
+  "outputTokens": 1473,
+  "elapsedMs": 13529,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "oracleDiagnostic": true
+}

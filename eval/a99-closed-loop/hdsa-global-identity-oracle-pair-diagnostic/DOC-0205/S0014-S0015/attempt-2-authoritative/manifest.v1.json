@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-oracle-pair-diagnostic-v1",
+  "documentId": "DOC-0205",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "frozenA1Path": "eval/a99-closed-loop/hdsa-global-role-identity-v2-live/DOC-0205/attempt-2-keyed-a1/a1-role/prediction.v1.json",
+  "structuralGoldPath": "eval/a99-closed-loop/hdsa-parent-relation-live/DOC-0205/structural-gold.v1.json",
+  "oracleSelection": {
+    "left": "S0014",
+    "right": "S0015",
+    "leftNodeId": "SN-fa3e46e19d6d0375",
+    "rightNodeId": "SN-2ddcbcfd14c02240",
+    "source": "STRUCTURAL_GOLD_DIAGNOSTIC_ONLY"
+  },
+  "requestSha256": "8d9b6a0309ed3b314737260d87108d705399fab349a6be338706957b5b8313f7",
+  "verificationSchemaSha256": "fd0bced3fc6605eab984c96d707e3fda34629287749392113ceefda1fbe1c3e7",
+  "goldDerivedInput": true,
+  "oracleDiagnostic": true,
+  "productionClaim": false,
+  "modelTuningAllowed": false,
+  "exactlyOneProviderCall": true,
+  "stageBExecuted": false
+}

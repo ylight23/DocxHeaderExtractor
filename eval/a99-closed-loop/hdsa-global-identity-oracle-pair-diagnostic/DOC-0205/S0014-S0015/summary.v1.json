@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-oracle-pair-diagnostic-summary-v1",
+  "status": "BLOCKED",
+  "reason": "ORACLE_PAIR_NOT_IN_CATALOG",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "oracleDiagnostic": true,
+  "productionClaim": false,
+  "goldReadBeforeFreeze": false
+}

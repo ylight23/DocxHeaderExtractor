@@ -72,6 +72,19 @@ public sealed class HdsaGlobalIdentityRetrieveVerifyContractsTests
             HdsaGlobalIdentityRetrieveVerifyContract.ValidateVerification(request, wrongDirection).RejectionReason);
     }
 
+    [Fact]
+    public void Oracle_validation_is_explicitly_diagnostic_only()
+    {
+        var request = new HdsaIdentityPairVerificationRequest(
+            "catalog", [Node("A", 1), Node("B", 2)], new("P01", "A", "B"), true);
+        var response = new HdsaIdentityPairVerificationResponse(
+            "P01", "A", "B", "CONTINUATION_OF", "RIGHT_TO_LEFT");
+
+        Assert.Equal("GOLD_DERIVED_INPUT",
+            HdsaGlobalIdentityRetrieveVerifyContract.ValidateVerification(request, response).RejectionReason);
+        Assert.True(HdsaGlobalIdentityRetrieveVerifyContract.ValidateOracleVerification(request, response).Accepted);
+    }
+
     private static HdsaIdentityCandidateDiscoveryRequest DiscoveryRequest(int pairCount)
     {
         var nodes = new[] { Node("A", 1), Node("B", 2) };

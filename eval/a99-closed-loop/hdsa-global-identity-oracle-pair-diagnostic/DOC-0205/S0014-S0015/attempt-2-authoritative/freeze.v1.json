@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-oracle-pair-freeze-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "requestSha256": "8d9b6a0309ed3b314737260d87108d705399fab349a6be338706957b5b8313f7",
+  "responseSha256": "5e8d43ef393802b489eb88147bdd6d6e7023f1412f5bfbe36332df7df6a61ff7",
+  "predictionSha256": "8c3f59f15a5785523e7048a9e2efd31e8908ada419585290c06c30d7358b2d0e",
+  "pair": {
+    "left": "S0014",
+    "right": "S0015",
+    "leftNodeId": "SN-fa3e46e19d6d0375",
+    "rightNodeId": "SN-2ddcbcfd14c02240"
+  },
+  "oracleDiagnostic": true,
+  "productionClaim": false,
+  "modelTuningAllowed": false,
+  "provider": "Alibaba",
+  "model": "qwen/qwen3.7-flash",
+  "finishReason": "stop",
+  "inputTokens": 1913,
+  "reasoningTokens": 1385,
+  "outputTokens": 1473,
+  "elapsedMs": 13529,
+  "modelCalls": 1,
+  "providerCalls": 1,
+  "goldReadBeforeFreeze": false,
+  "frozenBeforeGold": true
+}
