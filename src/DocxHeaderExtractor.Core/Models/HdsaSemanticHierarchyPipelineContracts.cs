@@ -51,6 +51,22 @@ public static class HdsaSemanticNodeCatalogBuilder
 {
     public static HdsaFrozenSemanticNodeCatalog Build(
         HdsaSemanticNodeResolutionInput input,
+        HdsaSemanticNodeResolutionV4Result result)
+    {
+        ArgumentNullException.ThrowIfNull(result);
+        return Build(input, new HdsaSemanticNodeResolutionV3Result(
+            result.SourceSha256,
+            result.PreprocessingSnapshotHash,
+            result.Predictions,
+            result.AcceptedRelations,
+            [],
+            result.Errors,
+            result.ResolverVersion,
+            result.GoldUsed));
+    }
+
+    public static HdsaFrozenSemanticNodeCatalog Build(
+        HdsaSemanticNodeResolutionInput input,
         HdsaSemanticNodeResolutionV3Result result)
     {
         ArgumentNullException.ThrowIfNull(input);

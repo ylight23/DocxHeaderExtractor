@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "a99-hierarchy-accuracy-authority-v1",
+  "status": "AUDITED",
+  "sourceCommit": "8009d91",
+  "searchScope": [
+    "docs/accuracy",
+    "eval/a99-closed-loop",
+    "tests/DocxHeaderExtractor.Tests"
+  ],
+  "occurrenceHeadingAccuracy": {
+    "definedThreshold": false,
+    "threshold": null,
+    "historicalTargets": [
+      "historical strict Gold metrics exist for occurrence lanes; they are not hierarchy acceptance thresholds"
+    ],
+    "productionAcceptanceTarget": "NOT_DEFINED"
+  },
+  "semanticNodeAccuracy": {
+    "definedThreshold": false,
+    "threshold": null,
+    "productionAcceptanceTarget": "NOT_DEFINED"
+  },
+  "parentAccuracy": {
+    "definedThreshold": false,
+    "threshold": null,
+    "productionAcceptanceTarget": "NOT_DEFINED"
+  },
+  "levelAccuracy": {
+    "definedThreshold": false,
+    "threshold": null,
+    "productionAcceptanceTarget": "NOT_DEFINED"
+  },
+  "historicalHierarchyEvidence": {
+    "doc0205ParentF1": 0.8,
+    "doc0205ConditionalParentF1": 0.941176,
+    "doc0205LevelExact": "4/11",
+    "authorityType": "MEASURED_BASELINE_NOT_ACCEPTANCE_THRESHOLD"
+  },
+  "conclusion": "HIERARCHY_THRESHOLD_NOT_DEFINED; report measured quality and generalization status without inventing a 99% target."
+}
