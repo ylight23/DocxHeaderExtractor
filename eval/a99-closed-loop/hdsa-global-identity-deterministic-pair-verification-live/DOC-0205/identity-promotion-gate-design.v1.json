@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "a99-hdsa-identity-promotion-gate-design-v1",
+  "status": "DESIGN_ONLY_NOT_ENABLED_FOR_LIVE_BENCHMARK",
+  "goldDerivedInput": false,
+  "legacyDerivedInput": false,
+  "purpose": "Prevent a model-only positive identity relation from collapsing semantic components without independent production-owned corroboration.",
+  "inputContract": {
+    "relation": "SAME_SEMANTIC_REPEAT | CONTINUATION_OF",
+    "leftSourceIdentity": "source-backed immutable identity",
+    "rightSourceIdentity": "source-backed immutable identity",
+    "inferenceSource": "MODEL | PARSER",
+    "parserEvidenceHash": "optional; required for parser-authorized promotion",
+    "structuralBoundaryCompatible": "required for parser-authorized promotion",
+    "independentSupport": "optional future production-owned corroboration",
+    "goldUsed": "must be false",
+    "legacyUsed": "must be false"
+  },
+  "decisions": {
+    "MODEL_positive_without_independent_support": {
+      "action": "MODEL_PROPOSED",
+      "collapseAuthorized": false,
+      "reason": "MODEL_ONLY_RELATION_REQUIRES_CORROBORATION"
+    },
+    "PARSER_positive_with_explicit_compatible_evidence": {
+      "action": "ACCEPTED_FOR_IDENTITY_COLLAPSE",
+      "collapseAuthorized": true
+    },
+    "DISTINCT_or_UNRESOLVED": {
+      "action": "KEEP_SPLIT",
+      "collapseAuthorized": false
+    },
+    "unknown_or_malformed_provenance": {
+      "action": "KEEP_SPLIT",
+      "collapseAuthorized": false
+    },
+    "gold_or_legacy_provenance": {
+      "action": "KEEP_SPLIT",
+      "collapseAuthorized": false
+    }
+  },
+  "invariants": [
+    "No model-only positive relation may authorize collapse.",
+    "No Gold or legacy field may affect promotion.",
+    "False split is preferred to false merge when evidence is insufficient.",
+    "Promotion must be evaluated before component collapse.",
+    "Only accepted relations may change the semantic catalog.",
+    "Unrelated catalog identities and candidate ordering remain stable."
+  ],
+  "not_authorized_yet": [
+    "A role-specific veto inferred from DOC-0205 alone",
+    "A DOC-0205-specific rule for S0005, S0014, or S0015",
+    "A second provider call",
+    "A production accuracy claim from this diagnostic"
+  ],
+  "implementationReference": "HdsaSemanticIdentityPromotionPolicy",
+  "doc0205DiagnosticResult": {
+    "modelPositiveRelations": 2,
+    "modelOnlyCollapseAuthorized": false,
+    "targetRelationObserved": true,
+    "targetRelationAcceptedForCollapse": false,
+    "stageBMayOpen": false
+  }
+}

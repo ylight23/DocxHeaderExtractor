@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "a99-hdsa-identity-pair-forensic-comparison-v1",
+  "documentId": "DOC-0205",
+  "campaign": "hdsa-global-identity-deterministic-pair-verification-live",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "candidateSetSha256": "bf4f934f56ff6da2c5352128af45e23ac18709648dbda8721c87159358181a36",
+  "goldDerivedInput": false,
+  "goldUsedForDiagnosisAfterFreeze": true,
+  "pairComparisons": [
+    {
+      "pairId": "P03-04",
+      "classification": "TRUE_POSITIVE_IDENTITY_RELATION",
+      "left": {
+        "nodeId": "SN-fa3e46e19d6d0375",
+        "sourceOccurrence": "S0014",
+        "text": "Chương I",
+        "documentOrder": 17,
+        "structuralRole": "OUTLINE_HEADING",
+        "outlineBearing": true,
+        "goldSemanticNodeId": "N0002"
+      },
+      "right": {
+        "nodeId": "SN-2ddcbcfd14c02240",
+        "sourceOccurrence": "S0015",
+        "text": "QUY ĐỊNH CHUNG",
+        "documentOrder": 18,
+        "structuralRole": "SECTION_HEADING",
+        "outlineBearing": true,
+        "goldSemanticNodeId": "N0002"
+      },
+      "evidence": {
+        "candidateReasons": [
+          "ADJACENT_ORDER"
+        ],
+        "documentOrderDistance": 1,
+        "normalizedTextEqual": false,
+        "styleEvidence": "NOT_REPRESENTED_IN_PAIR_REQUEST",
+        "layoutEvidence": "NOT_REPRESENTED_IN_PAIR_REQUEST",
+        "numberingEvidence": "NOT_REPRESENTED_IN_PAIR_REQUEST",
+        "containerEvidence": "NOT_REPRESENTED_IN_PAIR_REQUEST",
+        "parserContinuationEvidence": "NOT_REPRESENTED_IN_PAIR_REQUEST",
+        "verifierDirection": "RIGHT_TO_LEFT",
+        "requestSha256": "4b5fe0ddcf0cc103ddae0b618e25f80857ddea717cb93a859aee1221420a9314",
+        "responseSha256": "5e8d43ef393802b489eb88147bdd6d6e7023f1412f5bfbe36332df7df6a61ff7"
+      },
+      "verifierDecision": "CONTINUATION_OF",
+      "promotionUnderCurrentGenericPolicy": {
+        "inferenceSource": "MODEL",
+        "parserEvidenceHash": null,
+        "structuralBoundaryCompatible": false,
+        "action": "MODEL_PROPOSED",
+        "collapseAuthorized": false,
+        "reason": "MODEL_ONLY_RELATION_REQUIRES_CORROBORATION"
+      }
+    },
+    {
+      "pairId": "P02-03",
+      "classification": "FALSE_POSITIVE_IDENTITY_RELATION",
+      "left": {
+        "nodeId": "SN-aca084dc03ba6e31",
+        "sourceOccurrence": "S0005",
+        "text": "NGHỊ ĐỊNH",
+        "documentOrder": 6,
+        "structuralRole": "OUTLINE_ROOT",
+        "outlineBearing": true,
+        "goldSemanticNodeId": "N0001"
+      },
+      "right": {
+        "nodeId": "SN-fa3e46e19d6d0375",
+        "sourceOccurrence": "S0014",
+        "text": "Chương I",
+        "documentOrder": 17,
+        "structuralRole": "OUTLINE_HEADING",
+        "outlineBearing": true,
+        "goldSemanticNodeId": "N0002"
+      },
+      "evidence": {
+        "candidateReasons": [
+          "ADJACENT_ORDER"
+        ],
+        "documentOrderDistance": 11,
+        "normalizedTextEqual": false,
+        "styleEvidence": "NOT_REPRESENTED_IN_PAIR_REQUEST",
+        "layoutEvidence": "NOT_REPRESENTED_IN_PAIR_REQUEST",
+        "numberingEvidence": "NOT_REPRESENTED_IN_PAIR_REQUEST",
+        "containerEvidence": "NOT_REPRESENTED_IN_PAIR_REQUEST",
+        "parserContinuationEvidence": "NOT_REPRESENTED_IN_PAIR_REQUEST",
+        "verifierDirection": "RIGHT_TO_LEFT",
+        "requestSha256": "268c4154bf3192ac05ff00134c5b11570b3c22b24ca96c8e042920c6d60facf0",
+        "responseSha256": "0736fed4078f7172db96b62e296dc92be7361b6322681f0d982394c1aa24a0eb"
+      },
+      "verifierDecision": "CONTINUATION_OF",
+      "promotionUnderCurrentGenericPolicy": {
+        "inferenceSource": "MODEL",
+        "parserEvidenceHash": null,
+        "structuralBoundaryCompatible": false,
+        "action": "MODEL_PROPOSED",
+        "collapseAuthorized": false,
+        "reason": "MODEL_ONLY_RELATION_REQUIRES_CORROBORATION"
+      }
+    }
+  ],
+  "dimensionFindings": {
+    "candidateProvenanceDiscriminates": false,
+    "documentOrderDistanceDiscriminatesAlone": false,
+    "normalizedTextAffinityDiscriminates": false,
+    "coarseRoleMismatchIsSafeVeto": false,
+    "coarseRoleMismatchReason": "The true pair and false pair both have different frozen roles.",
+    "styleLayoutNumberingAvailableInVerifierRequest": false,
+    "parserOwnedContinuationEvidenceAvailableInVerifierRequest": false,
+    "verifierRationaleAvailable": false,
+    "genericContradictionInvariantEstablished": false
+  },
+  "positiveRelationSummary": {
+    "verifiedPositiveCount": 2,
+    "goldTruePositiveCount": 1,
+    "goldFalsePositiveCount": 1,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666667,
+    "acceptedPositiveComponentsBeforePromotionGate": 1,
+    "largestComponentSizeBeforePromotionGate": 3,
+    "multipleContinuationParents": 0,
+    "cycles": 0
+  },
+  "conclusion": {
+    "autoPromotionOfModelPositive": "REJECTED",
+    "roleVeto": "NOT_AUTHORIZED",
+    "doc0205Use": "DIAGNOSTIC_ONLY",
+    "nextEvidence": "Independent structural corroboration or an unseen structural identity holdout",
+    "productionClaim": false
+  }
+}
