@@ -1,0 +1,27 @@
+{
+  "artifactKind": "a99_hdsa_legacy_hierarchy_firewall_audit",
+  "schemaVersion": "a99-hdsa-legacy-hierarchy-firewall-v1",
+  "documentId": "DOC-0205",
+  "auditedCommit": "4e6be14",
+  "runner": "HdsaParentRelationLiveRunner",
+  "status": "PASS_WITH_SCOPE_LIMIT",
+  "sourcePath": "eval/a99-closed-loop/source-fidelity-audit/DOC-0205/converted-docx/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+  "legacyCanonicalGraphConsumed": false,
+  "legacyOutlineProjectionConsumed": false,
+  "legacyLevelHintConsumed": false,
+  "legacyParentHintConsumed": false,
+  "oldEvalHierarchyConsumed": false,
+  "levelProducedByTreeDepthOnly": true,
+  "hdsaInputIdentity": "direct source-backed alias/document-order identity",
+  "hdsaRelationSpaceUsedForTree": "PARENT_OF only",
+  "poisonRegression": {
+    "modelCalls": 0,
+    "providerCalls": 0,
+    "bogusRoleOrLegacyHintsChangedStructuralIds": false,
+    "bogusRoleOrLegacyHintsChangedConstructedTree": false,
+    "result": "PASS"
+  },
+  "scopeLimit": "The live runner reasons over occurrence aliases; semantic-node resolution/projection is not yet part of the live request.",
+  "goldRead": false,
+  "predictionRead": false
+}

@@ -104,4 +104,48 @@ public sealed class HdsaRelationReasoningContractsTests
             new("E", candidates, new("order=5", null, null, null, null))));
         Assert.Empty(HdsaParentAttentionCandidates.PrimaryPreceding(ids, "missing"));
     }
+
+    [Fact]
+    public void HDSA_structural_identity_does_not_depend_on_legacy_hints_or_metadata()
+    {
+        var ids = new[] { "A", "B", "C" };
+        var universeA = new[]
+        {
+            new HdsaParentUniverseEntry("A", 1, "A", "ARTICLE"),
+            new HdsaParentUniverseEntry("B", 2, "B", "SECTION"),
+        };
+        var universeB = new[]
+        {
+            new HdsaParentUniverseEntry("A", 1, "A", "LEGACY_ROLE_BOGUS"),
+            new HdsaParentUniverseEntry("B", 2, "B", "LEGACY_ROLE_BOGUS"),
+        };
+        var requestA = new HdsaRelationReasoningRequest(
+            "C", ["B"], universeA,
+            new("order=3", null, "ARTICLE", "local", "legacy-hints=[]"));
+        var requestB = new HdsaRelationReasoningRequest(
+            "C", ["B"], universeB,
+            new("order=3", null, "LEGACY_ROLE_BOGUS", "local", "legacy-hints=[level:99,parent-node:BAD_PARENT]"));
+
+        Assert.Equal(requestA.Child, requestB.Child);
+        Assert.Equal(requestA.CandidateParents, requestB.CandidateParents);
+        Assert.Equal(requestA.AuthoritativeParentUniverse.Select(item => item.Id),
+            requestB.AuthoritativeParentUniverse.Select(item => item.Id));
+
+        var proposals = new[]
+        {
+            new HdsaRelationProposal("A", "B", HdsaRelationType.ParentOf),
+            new HdsaRelationProposal("B", "C", HdsaRelationType.ParentOf),
+        };
+        var treeA = HdsaTreeConstructor.Build(ids,
+            HdsaGraphValidator.Validate(ids, HdsaRelationNormalizer.Normalize(ids, proposals)));
+        var treeB = HdsaTreeConstructor.Build(ids,
+            HdsaGraphValidator.Validate(ids, HdsaRelationNormalizer.Normalize(ids, proposals)));
+
+        Assert.Equal(treeA.Nodes, treeB.Nodes);
+        Assert.Equal(treeA.Errors, treeB.Errors);
+        Assert.Equal((1, 2, 3), (
+            treeB.Nodes.Single(node => node.Id == "A").Level,
+            treeB.Nodes.Single(node => node.Id == "B").Level,
+            treeB.Nodes.Single(node => node.Id == "C").Level));
+    }
 }
