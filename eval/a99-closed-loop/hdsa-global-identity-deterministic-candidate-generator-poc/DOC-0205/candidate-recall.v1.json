@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "a99-hdsa-global-identity-deterministic-candidate-recall-v1",
+  "documentId": "DOC-0205",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "catalogFingerprint": "5948fb130cdf730660991a7a83ceb5aab461374a1eb86ec5f40f112b7f64480e",
+  "candidateSetSha256": "bf4f934f56ff6da2c5352128af45e23ac18709648dbda8721c87159358181a36",
+  "freezeSha256": "a3f320dbe48c8c0eb44f0d7970c39694028478c22e50b5e9b684101e7dba8480",
+  "candidateSetFrozenBeforeGold": true,
+  "goldOpenedAfterFreeze": true,
+  "goldPath": "eval/a99-closed-loop/hdsa-parent-relation-live/DOC-0205/structural-gold.v1.json",
+  "goldDerivedInput": false,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "candidateCount": 11,
+  "pairUniverseCount": 66,
+  "candidateDensity": 0.16666666666666666,
+  "goldPositivePairCount": 1,
+  "goldPositivePairs": [
+    {
+      "left": "S0014",
+      "right": "S0015",
+      "relation": "CONTINUATION_OF",
+      "pairKey": "SN-2ddcbcfd14c02240\u001FSN-fa3e46e19d6d0375"
+    }
+  ],
+  "coveredGoldPositivePairs": [
+    {
+      "left": "S0014",
+      "right": "S0015",
+      "relation": "CONTINUATION_OF",
+      "pairKey": "SN-2ddcbcfd14c02240\u001FSN-fa3e46e19d6d0375"
+    }
+  ],
+  "candidateRecall": 1,
+  "s0014S0015Generated": true,
+  "s0014S0015CandidateCovered": true
+}
