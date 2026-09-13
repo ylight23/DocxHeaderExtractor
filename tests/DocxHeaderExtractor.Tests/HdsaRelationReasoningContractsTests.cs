@@ -101,7 +101,7 @@ public sealed class HdsaRelationReasoningContractsTests
 
         Assert.Equal(["D", "C"], candidates);
         Assert.True(HdsaParentAttentionCandidates.IsAttentionOnly(
-            new("E", candidates, new("order=5", null, null, null, null))));
+            new("E", candidates, [], new("order=5", null, null, null, null))));
         Assert.Empty(HdsaParentAttentionCandidates.PrimaryPreceding(ids, "missing"));
     }
 
@@ -147,5 +147,84 @@ public sealed class HdsaRelationReasoningContractsTests
             treeB.Nodes.Single(node => node.Id == "A").Level,
             treeB.Nodes.Single(node => node.Id == "B").Level,
             treeB.Nodes.Single(node => node.Id == "C").Level));
+    }
+
+    [Fact]
+    public void Semantic_node_resolver_rejects_gold_derived_input()
+    {
+        var input = new HdsaSemanticNodeResolutionInput("source", "snapshot", [], true);
+
+        var exception = Assert.Throws<InvalidOperationException>(() => HdsaSemanticNodeResolver.Resolve(input));
+
+        Assert.Contains("GOLD_FIREWALL", exception.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Semantic_node_resolver_is_deterministic_and_keeps_occurrences_source_backed()
+    {
+        var input = new HdsaSemanticNodeResolutionInput(
+            "source-sha",
+            "preprocessing-sha",
+            [
+                new("S0002", 2, "B", "style-b", "layout-b"),
+                new("S0001", 1, "A", "style-a", "layout-a"),
+            ]);
+
+        var first = HdsaSemanticNodeResolver.Resolve(input);
+        var second = HdsaSemanticNodeResolver.Resolve(input);
+
+        Assert.Equal(first.SourceSha256, second.SourceSha256);
+        Assert.Equal(first.PreprocessingSnapshotHash, second.PreprocessingSnapshotHash);
+        Assert.Equal(first.ResolverVersion, second.ResolverVersion);
+        Assert.Equal(first.GoldUsed, second.GoldUsed);
+        Assert.Equal(first.Predictions.Count, second.Predictions.Count);
+        for (var index = 0; index < first.Predictions.Count; index++)
+        {
+            var expected = first.Predictions[index];
+            var actual = second.Predictions[index];
+            Assert.Equal(expected.PredictedSemanticNodeId, actual.PredictedSemanticNodeId);
+            Assert.Equal(expected.MemberOccurrenceIds, actual.MemberOccurrenceIds);
+            Assert.Equal(expected.CanonicalText, actual.CanonicalText);
+            Assert.Equal(expected.MergeEvidence, actual.MergeEvidence);
+            Assert.Equal(expected.ResolverVersion, actual.ResolverVersion);
+            Assert.Equal(expected.GoldUsed, actual.GoldUsed);
+        }
+        Assert.Equal(["S0001", "S0002"], first.Predictions.SelectMany(item => item.MemberOccurrenceIds));
+        Assert.All(first.Predictions, item =>
+        {
+            Assert.Equal("IDENTITY_ONLY_NO_MERGE", item.MergeEvidence);
+            Assert.Equal("identity-no-merge-v1", item.ResolverVersion);
+            Assert.False(item.GoldUsed);
+            Assert.Single(item.MemberOccurrenceIds);
+        });
+    }
+
+    [Fact]
+    public void Semantic_node_resolver_ignores_poison_legacy_hints()
+    {
+        var clean = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [new("S0001", 1, "A", "style", "layout")]);
+        var poisoned = new HdsaSemanticNodeResolutionInput(
+            "source-sha", "preprocessing-sha",
+            [new("S0001", 1, "A", "style", "layout", ["level:99", "parent-node:BAD_PARENT", "role:BOGUS"])]);
+
+        var cleanResult = HdsaSemanticNodeResolver.Resolve(clean);
+        var poisonedResult = HdsaSemanticNodeResolver.Resolve(poisoned);
+
+        Assert.Equal(cleanResult.Predictions.Count, poisonedResult.Predictions.Count);
+        for (var index = 0; index < cleanResult.Predictions.Count; index++)
+        {
+            var expected = cleanResult.Predictions[index];
+            var actual = poisonedResult.Predictions[index];
+            Assert.Equal(expected.PredictedSemanticNodeId, actual.PredictedSemanticNodeId);
+            Assert.Equal(expected.MemberOccurrenceIds, actual.MemberOccurrenceIds);
+            Assert.Equal(expected.CanonicalText, actual.CanonicalText);
+            Assert.Equal(expected.MergeEvidence, actual.MergeEvidence);
+            Assert.Equal(expected.ResolverVersion, actual.ResolverVersion);
+            Assert.Equal(expected.GoldUsed, actual.GoldUsed);
+        }
+        Assert.Equal(cleanResult.ResolverVersion, poisonedResult.ResolverVersion);
+        Assert.False(poisonedResult.GoldUsed);
     }
 }
