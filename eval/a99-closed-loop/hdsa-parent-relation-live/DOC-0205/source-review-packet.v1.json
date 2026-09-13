@@ -1,0 +1,863 @@
+{
+  "artifactKind": "a99_hdsa_structural_gold_source_review_packet",
+  "schemaVersion": "a99-hdsa-structural-gold-source-review-v1",
+  "documentId": "DOC-0205",
+  "policy": "A99_STRUCTURAL_PARENT_V1",
+  "status": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW",
+  "sourcePath": "eval/a99-closed-loop/source-fidelity-audit/DOC-0205/converted-docx/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+  "sourceSha256": "a4e028bc53a9753c380a7ae05a87089e855ca7bb520a50ae4aaf9d535b4b1ef9",
+  "occurrenceTreePolicy": "SEMANTIC_NODE_TREE_OCCURRENCES_RETAIN_PROVENANCE",
+  "goldFirewall": {
+    "modelPredictionsVisible": false,
+    "candidateShortlistVisible": false,
+    "oldEvalHierarchyVisible": false,
+    "modelRolesVisible": false
+  },
+  "reviewInstructions": [
+    "Assign semanticNodeId from source semantics only.",
+    "Assign parentSemanticNodeId between semantic nodes; do not annotate level.",
+    "Use PRIMARY, REPEAT, or CONTINUATION only as occurrence annotation.",
+    "Use UNRESOLVED when source evidence is insufficient; do not force a relation."
+  ],
+  "occurrences": [
+    {
+      "sourceAlias": "S0001",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "text": "CH\u00CDNH PH\u1EE6 ________",
+      "previousSourceOccurrences": [],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0002",
+          "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[2]",
+          "text": "S\u1ED1: 47/2020/N\u0110-CP",
+          "documentOrder": 1
+        },
+        {
+          "sourceAlias": "S0003",
+          "sourceId": "body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+          "text": "C\u1ED8NG H\u00D2A X\u00C3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM \u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc _______________________",
+          "documentOrder": 2
+        }
+      ],
+      "documentOrder": 0,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "allCaps": true,
+          "fontSizePt": 10,
+          "alignment": "center"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 1,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 1
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0005",
+      "sourceId": "body[1]/p[3]",
+      "text": "NGH\u1ECA \u0110\u1ECANH",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0003",
+          "sourceId": "body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+          "text": "C\u1ED8NG H\u00D2A X\u00C3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM \u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc _______________________",
+          "documentOrder": 2
+        },
+        {
+          "sourceAlias": "S0004",
+          "sourceId": "body[1]/tbl[1]/tr[1]/tc[2]/p[2]",
+          "text": "H\u00E0 N\u1ED9i, ng\u00E0y 09 th\u00E1ng 4 n\u0103m 2020",
+          "documentOrder": 3
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0006",
+          "sourceId": "body[1]/p[4]",
+          "text": "Qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+          "documentOrder": 7
+        },
+        {
+          "sourceAlias": "S0007",
+          "sourceId": "body[1]/p[5]",
+          "text": "______________________",
+          "documentOrder": 8
+        }
+      ],
+      "documentOrder": 6,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": true,
+          "fontSizePt": 10,
+          "alignment": "center"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0014",
+      "sourceId": "body[1]/p[14]",
+      "text": "Ch\u01B0\u01A1ng I",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0012",
+          "sourceId": "body[1]/p[11]",
+          "text": "Theo \u0111\u1EC1 ngh\u1ECB c\u1EE7a B\u1ED9 tr\u01B0\u1EDFng B\u1ED9 Th\u00F4ng tin v\u00E0 Truy\u1EC1n th\u00F4ng;",
+          "documentOrder": 14
+        },
+        {
+          "sourceAlias": "S0013",
+          "sourceId": "body[1]/p[12]",
+          "text": "Ch\u00EDnh ph\u1EE7 ban h\u00E0nh Ngh\u1ECB \u0111\u1ECBnh v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc.",
+          "documentOrder": 15
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0015",
+          "sourceId": "body[1]/p[15]",
+          "text": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        },
+        {
+          "sourceAlias": "S0016",
+          "sourceId": "body[1]/p[17]",
+          "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        }
+      ],
+      "documentOrder": 17,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": false,
+          "fontSizePt": 10,
+          "alignment": "center"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0015",
+      "sourceId": "body[1]/p[15]",
+      "text": "QUY \u0110\u1ECANH CHUNG",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0013",
+          "sourceId": "body[1]/p[12]",
+          "text": "Ch\u00EDnh ph\u1EE7 ban h\u00E0nh Ngh\u1ECB \u0111\u1ECBnh v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc.",
+          "documentOrder": 15
+        },
+        {
+          "sourceAlias": "S0014",
+          "sourceId": "body[1]/p[14]",
+          "text": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0016",
+          "sourceId": "body[1]/p[17]",
+          "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+          "documentOrder": 20
+        },
+        {
+          "sourceAlias": "S0017",
+          "sourceId": "body[1]/p[18]",
+          "text": "1. Ngh\u1ECB \u0111\u1ECBnh n\u00E0y quy \u0111\u1ECBnh v\u1EC1 c\u00E1c ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc bao g\u1ED3m: qu\u1EA3n l\u00FD, qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u s\u1ED1; k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1; s\u1EED d\u1EE5ng, khai th\u00E1c d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc; cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc cho t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n; quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m trong k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc.",
+          "documentOrder": 21
+        }
+      ],
+      "documentOrder": 18,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": true,
+          "fontSizePt": 10,
+          "alignment": "center"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0016",
+      "sourceId": "body[1]/p[17]",
+      "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0014",
+          "sourceId": "body[1]/p[14]",
+          "text": "Ch\u01B0\u01A1ng I",
+          "documentOrder": 17
+        },
+        {
+          "sourceAlias": "S0015",
+          "sourceId": "body[1]/p[15]",
+          "text": "QUY \u0110\u1ECANH CHUNG",
+          "documentOrder": 18
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0017",
+          "sourceId": "body[1]/p[18]",
+          "text": "1. Ngh\u1ECB \u0111\u1ECBnh n\u00E0y quy \u0111\u1ECBnh v\u1EC1 c\u00E1c ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc bao g\u1ED3m: qu\u1EA3n l\u00FD, qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u s\u1ED1; k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1; s\u1EED d\u1EE5ng, khai th\u00E1c d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc; cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc cho t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n; quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m trong k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc.",
+          "documentOrder": 21
+        },
+        {
+          "sourceAlias": "S0018",
+          "sourceId": "body[1]/p[19]",
+          "text": "2. Ngh\u1ECB \u0111\u1ECBnh n\u00E0y kh\u00F4ng \u00E1p d\u1EE5ng \u0111\u1ED1i v\u1EDBi vi\u1EC7c chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 ch\u1EE9a th\u00F4ng tin thu\u1ED9c ph\u1EA1m vi b\u00ED m\u1EADt nh\u00E0 n\u01B0\u1EDBc \u0111\u01B0\u1EE3c quy \u0111\u1ECBnh t\u1EA1i Lu\u1EADt B\u1EA3o v\u1EC7 b\u00ED m\u1EADt nh\u00E0 n\u01B0\u1EDBc. Vi\u1EC7c chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 ch\u1EE9a th\u00F4ng tin thu\u1ED9c ph\u1EA1m vi b\u00ED m\u1EADt nh\u00E0 n\u01B0\u1EDBc \u0111\u01B0\u1EE3c th\u1EF1c hi\u1EC7n theo quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt hi\u1EC7n h\u00E0nh.",
+          "documentOrder": 22
+        }
+      ],
+      "documentOrder": 20,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": false,
+          "fontSizePt": 10,
+          "alignment": "both"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0019",
+      "sourceId": "body[1]/p[20]",
+      "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0017",
+          "sourceId": "body[1]/p[18]",
+          "text": "1. Ngh\u1ECB \u0111\u1ECBnh n\u00E0y quy \u0111\u1ECBnh v\u1EC1 c\u00E1c ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc bao g\u1ED3m: qu\u1EA3n l\u00FD, qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u s\u1ED1; k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1; s\u1EED d\u1EE5ng, khai th\u00E1c d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc; cung c\u1EA5p d\u1EEF li\u1EC7u m\u1EDF c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc cho t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n; quy\u1EC1n v\u00E0 tr\u00E1ch nhi\u1EC7m trong k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc.",
+          "documentOrder": 21
+        },
+        {
+          "sourceAlias": "S0018",
+          "sourceId": "body[1]/p[19]",
+          "text": "2. Ngh\u1ECB \u0111\u1ECBnh n\u00E0y kh\u00F4ng \u00E1p d\u1EE5ng \u0111\u1ED1i v\u1EDBi vi\u1EC7c chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 ch\u1EE9a th\u00F4ng tin thu\u1ED9c ph\u1EA1m vi b\u00ED m\u1EADt nh\u00E0 n\u01B0\u1EDBc \u0111\u01B0\u1EE3c quy \u0111\u1ECBnh t\u1EA1i Lu\u1EADt B\u1EA3o v\u1EC7 b\u00ED m\u1EADt nh\u00E0 n\u01B0\u1EDBc. Vi\u1EC7c chia s\u1EBB d\u1EEF li\u1EC7u s\u1ED1 ch\u1EE9a th\u00F4ng tin thu\u1ED9c ph\u1EA1m vi b\u00ED m\u1EADt nh\u00E0 n\u01B0\u1EDBc \u0111\u01B0\u1EE3c th\u1EF1c hi\u1EC7n theo quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt hi\u1EC7n h\u00E0nh.",
+          "documentOrder": 22
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0020",
+          "sourceId": "body[1]/p[21]",
+          "text": "Ngh\u1ECB \u0111\u1ECBnh n\u00E0y \u00E1p d\u1EE5ng \u0111\u1ED1i v\u1EDBi c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc bao g\u1ED3m c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c c\u1EA5p; c\u00E1c t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc \u0111\u01B0\u1EE3c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc chia s\u1EBB theo quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt.",
+          "documentOrder": 24
+        },
+        {
+          "sourceAlias": "S0021",
+          "sourceId": "body[1]/p[22]",
+          "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+          "documentOrder": 25
+        }
+      ],
+      "documentOrder": 23,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": false,
+          "fontSizePt": 10,
+          "alignment": "both"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0021",
+      "sourceId": "body[1]/p[22]",
+      "text": "\u0110i\u1EC1u 3. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0019",
+          "sourceId": "body[1]/p[20]",
+          "text": "\u0110i\u1EC1u 2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+          "documentOrder": 23
+        },
+        {
+          "sourceAlias": "S0020",
+          "sourceId": "body[1]/p[21]",
+          "text": "Ngh\u1ECB \u0111\u1ECBnh n\u00E0y \u00E1p d\u1EE5ng \u0111\u1ED1i v\u1EDBi c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc bao g\u1ED3m c\u00E1c b\u1ED9, c\u01A1 quan ngang b\u1ED9, c\u01A1 quan thu\u1ED9c Ch\u00EDnh ph\u1EE7, \u1EE6y ban nh\u00E2n d\u00E2n c\u00E1c c\u1EA5p; c\u00E1c t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n khai th\u00E1c, s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u s\u1ED1 c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc \u0111\u01B0\u1EE3c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc chia s\u1EBB theo quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt.",
+          "documentOrder": 24
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0022",
+          "sourceId": "body[1]/p[23]",
+          "text": "Trong Ngh\u1ECB \u0111\u1ECBnh n\u00E0y, c\u00E1c t\u1EEB ng\u1EEF d\u01B0\u1EDBi \u0111\u00E2y \u0111\u01B0\u1EE3c hi\u1EC3u nh\u01B0 sau:",
+          "documentOrder": 26
+        },
+        {
+          "sourceAlias": "S0023",
+          "sourceId": "body[1]/p[24]",
+          "text": "1. D\u1EEF li\u1EC7u s\u1ED1: l\u00E0 d\u1EEF li\u1EC7u d\u01B0\u1EDBi d\u1EA1ng k\u00FD hi\u1EC7u, ch\u1EEF vi\u1EBFt, ch\u1EEF s\u1ED1, h\u00ECnh \u1EA3nh, \u00E2m thanh ho\u1EB7c d\u1EA1ng t\u01B0\u01A1ng t\u1EF1 \u0111\u01B0\u1EE3c bi\u1EC3u di\u1EC5n b\u1EB1ng t\u00EDn hi\u1EC7u s\u1ED1. D\u1EEF li\u1EC7u s\u1ED1 mang th\u00F4ng tin s\u1ED1 v\u00E0 \u0111\u01B0\u1EE3c chia s\u1EBB d\u01B0\u1EDBi d\u1EA1ng th\u00F4ng \u0111i\u1EC7p d\u1EEF li\u1EC7u. Trong Ngh\u1ECB \u0111\u1ECBnh n\u00E0y, d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c hi\u1EC3u l\u00E0 d\u1EEF li\u1EC7u s\u1ED1.",
+          "documentOrder": 27
+        }
+      ],
+      "documentOrder": 25,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": false,
+          "fontSizePt": 10,
+          "alignment": "both"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0033",
+      "sourceId": "body[1]/p[34]",
+      "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0031",
+          "sourceId": "body[1]/p[32]",
+          "text": "9. D\u1EEF li\u1EC7u ch\u1EE7 (master data): l\u00E0 d\u1EEF li\u1EC7u ch\u1EE9a th\u00F4ng tin c\u01A1 b\u1EA3n nh\u1EA5t \u0111\u1EC3 \u0111\u1ECBnh danh v\u00E0 m\u00F4 t\u1EA3 c\u00E1c \u0111\u1ED1i t\u01B0\u1EE3ng th\u1EF1c th\u1EC3 nghi\u1EC7p v\u1EE5 c\u1ED1t l\u00F5i v\u00E0 \u0111\u1ED9c l\u1EADp.",
+          "documentOrder": 35
+        },
+        {
+          "sourceAlias": "S0032",
+          "sourceId": "body[1]/p[33]",
+          "text": "10. C\u1ED5ng d\u1EEF li\u1EC7u qu\u1ED1c gia: l\u00E0 \u0111i\u1EC3m \u0111\u1EA7u m\u1ED1i truy c\u1EADp th\u00F4ng tin, d\u1EEF li\u1EC7u c\u00F3 \u0111\u1ECBa ch\u1EC9 data.gov.vn tr\u00EAn m\u1EA1ng Internet ph\u1EE5c v\u1EE5 vi\u1EC7c c\u00F4ng b\u1ED1 d\u1EEF li\u1EC7u m\u1EDF, cung c\u1EA5p th\u00F4ng tin v\u1EC1 chia s\u1EBB d\u1EEF li\u1EC7u c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc; cung c\u1EA5p c\u00E1c t\u00E0i li\u1EC7u, d\u1ECBch v\u1EE5, c\u00F4ng c\u1EE5, \u1EE9ng d\u1EE5ng x\u1EED l\u00FD, khai th\u00E1c d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c c\u00F4ng b\u1ED1 b\u1EDFi c\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc.",
+          "documentOrder": 36
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0034",
+          "sourceId": "body[1]/p[35]",
+          "text": "Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB trong th\u00F4ng \u0111i\u1EC7p d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c x\u00E1c \u0111\u1ECBnh theo gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a th\u00F4ng \u0111i\u1EC7p d\u1EEF li\u1EC7u quy \u0111\u1ECBnh t\u1EA1i M\u1EE5c 1 Ch\u01B0\u01A1ng II Lu\u1EADt Giao d\u1ECBch \u0111i\u1EC7n t\u1EED v\u00E0 quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt c\u00F3 li\u00EAn quan.",
+          "documentOrder": 38
+        },
+        {
+          "sourceAlias": "S0035",
+          "sourceId": "body[1]/p[36]",
+          "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+          "documentOrder": 39
+        }
+      ],
+      "documentOrder": 37,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": false,
+          "fontSizePt": 10,
+          "alignment": "both"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0035",
+      "sourceId": "body[1]/p[36]",
+      "text": "\u0110i\u1EC1u 5. Nguy\u00EAn t\u1EAFc chung v\u1EC1 qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0033",
+          "sourceId": "body[1]/p[34]",
+          "text": "\u0110i\u1EC1u 4. Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB",
+          "documentOrder": 37
+        },
+        {
+          "sourceAlias": "S0034",
+          "sourceId": "body[1]/p[35]",
+          "text": "Gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c chia s\u1EBB trong th\u00F4ng \u0111i\u1EC7p d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c x\u00E1c \u0111\u1ECBnh theo gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD c\u1EE7a th\u00F4ng \u0111i\u1EC7p d\u1EEF li\u1EC7u quy \u0111\u1ECBnh t\u1EA1i M\u1EE5c 1 Ch\u01B0\u01A1ng II Lu\u1EADt Giao d\u1ECBch \u0111i\u1EC7n t\u1EED v\u00E0 quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt c\u00F3 li\u00EAn quan.",
+          "documentOrder": 38
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0036",
+          "sourceId": "body[1]/p[37]",
+          "text": "1. D\u1EEF li\u1EC7u h\u00ECnh th\u00E0nh trong ho\u1EA1t \u0111\u1ED9ng c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc \u0111\u01B0\u1EE3c chia s\u1EBB ph\u1EE5c v\u1EE5 c\u00E1c ho\u1EA1t \u0111\u1ED9ng c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc h\u01B0\u1EDBng t\u1EDBi ph\u1EE5c v\u1EE5 ng\u01B0\u1EDDi d\u00E2n, doanh nghi\u1EC7p tu\u00E2n th\u1EE7 quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt trong vi\u1EC7c t\u1EA1o l\u1EADp, qu\u1EA3n l\u00FD v\u00E0 s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u.",
+          "documentOrder": 40
+        },
+        {
+          "sourceAlias": "S0037",
+          "sourceId": "body[1]/p[38]",
+          "text": "2. C\u01A1 quan nh\u00E0 n\u01B0\u1EDBc ph\u1EA3i c\u00F3 tr\u00E1ch nhi\u1EC7m chia s\u1EBB d\u1EEF li\u1EC7u v\u1EDBi c\u01A1 quan, t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n kh\u00E1c theo quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt; kh\u00F4ng cung c\u1EA5p th\u00F4ng tin qua h\u00ECnh th\u1EE9c v\u0103n b\u1EA3n \u0111\u1ED1i v\u1EDBi th\u00F4ng tin \u0111\u00E3 \u0111\u01B0\u1EE3c khai th\u00E1c qua h\u00ECnh th\u1EE9c k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u gi\u1EEFa c\u00E1c h\u1EC7 th\u1ED1ng th\u00F4ng tin; kh\u00F4ng \u0111\u01B0\u1EE3c thu th\u1EADp, t\u1ED5 ch\u1EE9c thu th\u1EADp l\u1EA1i d\u1EEF li\u1EC7u ho\u1EB7c y\u00EAu c\u1EA7u ng\u01B0\u1EDDi d\u00E2n, doanh nghi\u1EC7p cung c\u1EA5p th\u00F4ng tin, d\u1EEF li\u1EC7u trong qu\u00E1 tr\u00ECnh gi\u1EA3i quy\u1EBFt c\u00E1c th\u1EE7 t\u1EE5c h\u00E0nh ch\u00EDnh n\u1EBFu d\u1EEF li\u1EC7u n\u00E0y \u0111\u00E3 \u0111\u01B0\u1EE3c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc kh\u00E1c cung c\u1EA5p, s\u1EB5n s\u00E0ng cung c\u1EA5p th\u00F4ng qua k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u, tr\u1EEB tr\u01B0\u1EDDng h\u1EE3p d\u1EEF li\u1EC7u \u0111\u00F3 kh\u00F4ng b\u1EA3o \u0111\u1EA3m y\u00EAu c\u1EA7u v\u1EC1 ch\u1EA5t l\u01B0\u1EE3ng theo ti\u00EAu chu\u1EA9n, quy chu\u1EA9n chuy\u00EAn ng\u00E0nh ho\u1EB7c ph\u00E1p lu\u1EADt c\u00F3 quy \u0111\u1ECBnh kh\u00E1c.",
+          "documentOrder": 41
+        }
+      ],
+      "documentOrder": 39,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": false,
+          "fontSizePt": 10,
+          "alignment": "both"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0044",
+      "sourceId": "body[1]/p[45]",
+      "text": "\u0110i\u1EC1u 6. Th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0042",
+          "sourceId": "body[1]/p[43]",
+          "text": "a) T\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n \u0111\u01B0\u1EE3c quy\u1EC1n khai th\u00E1c d\u1EEF li\u1EC7u c\u1EE7a m\u00ECnh ho\u1EB7c d\u1EEF li\u1EC7u c\u1EE7a t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n kh\u00E1c khi \u0111\u01B0\u1EE3c t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n \u0111\u00F3 ch\u1EA5p nh\u1EADn, tr\u1EEB tr\u01B0\u1EDDng h\u1EE3p ph\u00E1p lu\u1EADt c\u00F3 quy \u0111\u1ECBnh kh\u00E1c;",
+          "documentOrder": 46
+        },
+        {
+          "sourceAlias": "S0043",
+          "sourceId": "body[1]/p[44]",
+          "text": "b) C\u00E1c tr\u01B0\u1EDDng h\u1EE3p ngo\u00E0i quy \u0111\u1ECBnh t\u1EA1i \u0111i\u1EC3m a kho\u1EA3n n\u00E0y, d\u1EEF li\u1EC7u c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc \u0111\u01B0\u1EE3c chia s\u1EBB cho t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n \u0111\u01B0\u1EE3c th\u1EF1c hi\u1EC7n theo quy \u0111\u1ECBnh c\u1EE7a Lu\u1EADt Ti\u1EBFp c\u1EADn th\u00F4ng tin v\u00E0 c\u00E1c quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt hi\u1EC7n h\u00E0nh.",
+          "documentOrder": 47
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0045",
+          "sourceId": "body[1]/p[46]",
+          "text": "1. C\u01A1 quan nh\u00E0 n\u01B0\u1EDBc qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u c\u00F3 tr\u00E1ch nhi\u1EC7m th\u1EF1c hi\u1EC7n c\u00E1c ho\u1EA1t \u0111\u1ED9ng qu\u1EA3n l\u00FD d\u1EEF li\u1EC7u, qu\u1EA3n tr\u1ECB d\u1EEF li\u1EC7u v\u00E0 \u0111\u1EA3m b\u1EA3o kh\u1EA3 n\u0103ng s\u1EB5n s\u00E0ng k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u cho c\u00E1c c\u01A1 quan, t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n theo quy \u0111\u1ECBnh t\u1EA1i Ch\u01B0\u01A1ng II c\u1EE7a Ngh\u1ECB \u0111\u1ECBnh n\u00E0y.",
+          "documentOrder": 49
+        },
+        {
+          "sourceAlias": "S0046",
+          "sourceId": "body[1]/p[47]",
+          "text": "2. \u0110\u1ED1i v\u1EDBi d\u1EEF li\u1EC7u m\u1EDF, c\u01A1 quan, t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u \u0111\u00E3 \u0111\u01B0\u1EE3c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc c\u00F4ng b\u1ED1 theo quy \u0111\u1ECBnh chi ti\u1EBFt t\u1EA1i M\u1EE5c 3 Ch\u01B0\u01A1ng II c\u1EE7a Ngh\u1ECB \u0111\u1ECBnh n\u00E0y.",
+          "documentOrder": 50
+        }
+      ],
+      "documentOrder": 48,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": false,
+          "fontSizePt": 10,
+          "alignment": "both"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0052",
+      "sourceId": "body[1]/p[53]",
+      "text": "\u0110i\u1EC1u 7. Y\u00EAu c\u1EA7u trong vi\u1EC7c qu\u1EA3n l\u00FD, k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0050",
+          "sourceId": "body[1]/p[51]",
+          "text": "c) Tr\u01B0\u1EDDng h\u1EE3p kh\u00F4ng th\u1EF1c hi\u1EC7n \u0111\u01B0\u1EE3c k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u theo c\u00E1c quy \u0111\u1ECBnh t\u1EA1i \u0111i\u1EC3m a, b kho\u1EA3n n\u00E0y th\u00EC th\u1EF1c hi\u1EC7n theo quy \u0111\u1ECBnh gi\u1EA3i quy\u1EBFt v\u01B0\u1EDBng m\u1EAFc v\u1EC1 k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u quy \u0111\u1ECBnh t\u1EA1i M\u1EE5c 5 Ch\u01B0\u01A1ng III c\u1EE7a Ngh\u1ECB \u0111\u1ECBnh n\u00E0y.",
+          "documentOrder": 54
+        },
+        {
+          "sourceAlias": "S0051",
+          "sourceId": "body[1]/p[52]",
+          "text": "4. \u0110\u1ED1i v\u1EDBi vi\u1EC7c k\u1EBFt n\u1ED1i chia s\u1EBB d\u1EEF li\u1EC7u c\u1EE7a c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc cho t\u1ED5 ch\u1EE9c c\u00E1 nh\u00E2n: trong tr\u01B0\u1EDDng h\u1EE3p c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc cung c\u1EA5p d\u1EEF li\u1EC7u ch\u1EA5p thu\u1EADn cho ph\u00E9p k\u1EBFt n\u1ED1i, khai th\u00E1c theo quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt, t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u c\u00F3 tr\u00E1ch nhi\u1EC7m th\u1EF1c hi\u1EC7n c\u00E1c ngh\u0129a v\u1EE5 t\u01B0\u01A1ng \u0111\u01B0\u01A1ng c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, khai th\u00E1c d\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c quy \u0111\u1ECBnh t\u1EA1i Ngh\u1ECB \u0111\u1ECBnh n\u00E0y.",
+          "documentOrder": 55
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0053",
+          "sourceId": "body[1]/p[54]",
+          "text": "C\u01A1 quan nh\u00E0 n\u01B0\u1EDBc th\u1EF1c hi\u1EC7n k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u ph\u1EA3i th\u1EF1c hi\u1EC7n, tu\u00E2n th\u1EE7 c\u00E1c y\u00EAu c\u1EA7u sau:",
+          "documentOrder": 57
+        },
+        {
+          "sourceAlias": "S0054",
+          "sourceId": "body[1]/p[55]",
+          "text": "1. Ch\u1EC9 \u0111\u1ECBnh m\u1ED9t c\u00E1n b\u1ED9 l\u00E0m \u0111\u1EA7u m\u1ED1i ph\u1EE5 tr\u00E1ch k\u1EBFt n\u1ED1i v\u00E0 chia s\u1EBB d\u1EEF li\u1EC7u; c\u00F4ng khai s\u1ED1 \u0111i\u1EC7n tho\u1EA1i, \u0111\u1ECBa ch\u1EC9 th\u01B0 \u0111i\u1EC7n t\u1EED, t\u00EAn v\u00E0 v\u1ECB tr\u00ED, ch\u1EE9c n\u0103ng c\u00E1n b\u1ED9 \u0111\u1EA7u m\u1ED1i ph\u1EE5 tr\u00E1ch. C\u00E1n b\u1ED9 \u0111\u1EA7u m\u1ED1i ph\u1EE5 tr\u00E1ch c\u00F3 tr\u00E1ch nhi\u1EC7m ti\u1EBFp nh\u1EADn, ph\u1ED1i h\u1EE3p, x\u1EED l\u00FD c\u00E1c v\u1EA5n \u0111\u1EC1 v\u1EC1 k\u1EBFt n\u1ED1i, chia s\u1EBB d\u1EEF li\u1EC7u c\u1EE7a c\u01A1 quan, \u0111\u01A1n v\u1ECB m\u00ECnh \u0111\u1ED1i v\u1EDBi c\u01A1 quan, \u0111\u01A1n v\u1ECB b\u00EAn ngo\u00E0i.",
+          "documentOrder": 58
+        }
+      ],
+      "documentOrder": 56,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": false,
+          "fontSizePt": 10,
+          "alignment": "both"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "sourceAlias": "S0060",
+      "sourceId": "body[1]/p[61]",
+      "text": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi kh\u00F4ng \u0111\u01B0\u1EE3c l\u00E0m",
+      "previousSourceOccurrences": [
+        {
+          "sourceAlias": "S0058",
+          "sourceId": "body[1]/p[59]",
+          "text": "5. Tu\u00E2n th\u1EE7 c\u00E1c quy \u0111\u1ECBnh, h\u01B0\u1EDBng d\u1EABn k\u1EF9 thu\u1EADt v\u1EC1 trao \u0111\u1ED5i d\u1EEF li\u1EC7u, v\u1EC1 \u1EE9ng d\u1EE5ng c\u00F4ng ngh\u1EC7 th\u00F4ng tin trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc v\u00E0 c\u00E1c nguy\u00EAn t\u1EAFc \u0111\u01B0\u1EE3c quy \u0111\u1ECBnh t\u1EA1i \u0110i\u1EC1u 5 c\u1EE7a Ngh\u1ECB \u0111\u1ECBnh n\u00E0y.",
+          "documentOrder": 62
+        },
+        {
+          "sourceAlias": "S0059",
+          "sourceId": "body[1]/p[60]",
+          "text": "6. Ph\u00F9 h\u1EE3p v\u1EDBi Khung ki\u1EBFn tr\u00FAc Ch\u00EDnh ph\u1EE7 \u0111i\u1EC7n t\u1EED Vi\u1EC7t Nam.",
+          "documentOrder": 63
+        }
+      ],
+      "nextSourceOccurrences": [
+        {
+          "sourceAlias": "S0061",
+          "sourceId": "body[1]/p[62]",
+          "text": "1. C\u1EA3n tr\u1EDF ho\u1EA1t \u0111\u1ED9ng k\u1EBFt n\u1ED1i, quy\u1EC1n khai th\u00E1c v\u00E0 s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u h\u1EE3p ph\u00E1p c\u1EE7a c\u01A1 quan, t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n theo quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt.",
+          "documentOrder": 65
+        },
+        {
+          "sourceAlias": "S0062",
+          "sourceId": "body[1]/p[63]",
+          "text": "2. Mua b\u00E1n, trao \u0111\u1ED5i, chia s\u1EBB d\u1EEF li\u1EC7u tr\u00E1i quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt.",
+          "documentOrder": 66
+        }
+      ],
+      "documentOrder": 64,
+      "sourceEvidence": {
+        "numbering": {
+          "numberingId": null,
+          "numberingLevel": null,
+          "numberLabel": null,
+          "numberingFormat": null
+        },
+        "paragraphStyle": {
+          "styleId": "Normal",
+          "styleName": "Normal",
+          "builtInHeadingStyleLevel": null,
+          "outlineLevel": null
+        },
+        "formatting": {
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "allCaps": false,
+          "fontSizePt": 10,
+          "alignment": "both"
+        },
+        "layout": {
+          "keepNext": false,
+          "pageBreakBefore": false,
+          "tableDepth": 0,
+          "sectionIndex": 0
+        },
+        "lineBreakCount": 0
+      },
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    }
+  ]
+}
