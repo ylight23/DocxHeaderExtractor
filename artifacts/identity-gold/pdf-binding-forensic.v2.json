@@ -1,0 +1,190 @@
+{
+  "artifactKind": "a99_pdf_identity_binding_forensic",
+  "schemaVersion": "a99-pdf-identity-binding-forensic-v2",
+  "status": "BLOCKED_ON_IR018_SOURCE_REPRESENTATION",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldUsed": false,
+  "modelOutputsUsed": false,
+  "residualHintsUsed": false,
+  "source": {
+    "documentId": "DOC-0133",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/048_IBRD_Financial_Statements_March_2025.pdf",
+    "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbd8f731b7b78ba1049bfc3ba12",
+    "page": 66,
+    "pdfPageSizePoints": { "width": 612, "height": 792 }
+  },
+  "forensicTarget": {
+    "text": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+    "outerVisualRegion": {
+      "page": 66,
+      "description": "Top page heading above the embedded Deloitte report image",
+      "bboxPoints": {
+        "left": 73.3056640625,
+        "bottom": 745.632265625,
+        "right": 370.7994843750001,
+        "top": 756.0160546875
+      }
+    },
+    "innerVisualRegion": {
+      "page": 66,
+      "description": "Second auditor-report title is visibly inside the embedded Deloitte image",
+      "xObjectResource": "/Im1",
+      "pdfPigBoundingBoxReported": "[(x:72, y:720), 468, 589.28998]",
+      "imageWidth": 737,
+      "imageHeight": 928,
+      "rawImageLengthBytes": 244629,
+      "contentType": "JPEG_XOBJECT"
+    }
+  },
+  "layerAudit": {
+    "canonicalBlocks": [
+      {
+        "sourceOccurrenceId": "B002349",
+        "page": 66,
+        "sourceOrdinal": 2348,
+        "nativePath": "b2349",
+        "rawText": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+        "representation": "EXACT_NATIVE_BLOCK",
+        "bboxPoints": {
+          "left": 73.3056640625,
+          "bottom": 745.632265625,
+          "right": 370.7994843750001,
+          "top": 756.0160546875
+        },
+        "font": "arialmt",
+        "fontSize": 14,
+        "canonicalContribution": true,
+        "historicalBindingAssignment": "INNER"
+      }
+    ],
+    "pdfLineExtraction": {
+      "page": 66,
+      "pageLineOrdinal": 0,
+      "readingOrder": 3212,
+      "rawText": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+      "parserCanonicalText": "INDEPENDENTAUDITOR'S REVIEW REPORT",
+      "bboxPoints": {
+        "left": 73.3056640625,
+        "bottom": 745.632265625,
+        "right": 370.7994843750001,
+        "top": 756.0160546875
+      },
+      "font": "arialmt",
+      "fontSize": 14,
+      "contributesToCanonicalBlock": true
+    },
+    "pdfPigWords": {
+      "page": 66,
+      "wordCount": 4,
+      "words": [
+        { "text": "INDEPENDENT", "bboxReported": "[(x:72, y:755.8383203125), 100.338, 10.0283203125]" },
+        { "text": "AUDITOR'S", "bboxReported": "[(x:175.20799999999997, y:756.0160546875), 74.75999999999999, 10.2060546875]" },
+        { "text": "REVIEW", "bboxReported": "[(x:253.85999999999996, y:755.831484375), 55.230000000000075, 10.021484375]" },
+        { "text": "REPORT", "bboxReported": "[(x:312.982, y:756.0160546875), 58.10000000000002, 10.2060546875]" }
+      ],
+      "exactRawText": "INDEPENDENT AUDITOR'S REVIEW REPORT"
+    },
+    "pdfPigGlyphs": {
+      "page": 66,
+      "glyphsFoundForNativeText": true,
+      "glyphSequence": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+      "sourceGeometry": "PdfPig letter BoundingBox values are retained by the line/block audit",
+      "textRenderingState": "normal PDF text glyphs; no clipping anomaly observed"
+    },
+    "contentStream": {
+      "page": 66,
+      "textOperators": [
+        "BT",
+        "Tf /F1 14",
+        "Td 72 745.81",
+        "TJ",
+        "ET"
+      ],
+      "imageOperators": [
+        "q",
+        "cm",
+        "Do /Im1",
+        "Q"
+      ],
+      "markedContentCount": 0,
+      "pathCount": 0,
+      "textIsInsideFormXObject": false,
+      "nativeTextAndImageAreSeparatePageContent": true
+    },
+    "pageResources": {
+      "imageCount": 1,
+      "xObjectResource": "/Im1",
+      "xObjectType": "IMAGE",
+      "xObjectFilter": "/DCTDecode",
+      "nestedTextPrimitiveExposed": false
+    }
+  },
+  "comparisonFindings": {
+    "tocCandidate": {
+      "sourceOccurrenceId": "B000937",
+      "page": 31,
+      "rawText": "CONDENSED STATEMENTS OF CASH FLOWS 34 NOTES TO CONDENSED QUARTERLY FINANCIAL STATEMENTS 35 INDEPENDENT AUDITOR'S REVIEW REPORT 64",
+      "exactBareEndpoint": false
+    },
+    "nativeExactTextOccurrencesInPdfTextLayer": [
+      {
+        "page": 66,
+        "sourceOccurrenceId": "B002349",
+        "rawText": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+        "sourcePrimitiveKind": "PDF_NATIVE_TEXT",
+        "stableTextSha256": "76934c9fa5fd37c7a9e318a1c403a97c95e671cc359044bfb67b56ab99d34adb"
+      }
+    ],
+    "secondDisplayedOccurrence": {
+      "page": 66,
+      "sourcePrimitiveKind": "IMAGE_XOBJECT",
+      "textLayerLetters": false,
+      "ocrOrVlmRequiredForExactText": true
+    }
+  },
+  "classification": {
+    "failureClass": "OTHER_SOURCE_BACKED",
+    "authoritativeTextualPrimitiveForOuter": true,
+    "authoritativeTextualPrimitiveId": "B002349",
+    "independentSecondTextualPrimitiveForInner": false,
+    "whyCurrentBindingRemainsBlocked": "The exact native text primitive at the outer visual location is already B002349, while the frozen v2 binding assigns B002349 to INNER. The visually distinct second title is inside /Im1 and has no exposed PDF text primitives. Creating a second exact textual occurrence would require changing endpoint authority or introducing OCR/VLM/image-region identity, neither of which is authorized by this task.",
+    "notAParserOmission": true,
+    "notFragmentedText": true,
+    "notFormXObjectText": true,
+    "notVectorOutlinedText": true,
+    "imageOnlySecondOccurrence": true
+  },
+  "duplicateSafety": {
+    "sameTextDoesNotImplySameOccurrence": true,
+    "tocExcluded": true,
+    "nativeTextAndEmbeddedImageArePhysicallyDistinct": true,
+    "twoDistinctExactTextualBindingsAvailable": false,
+    "reason": "One occurrence is normal page text and the other is rendered within an image XObject; the current exact identity contract cannot represent both as two textual PDF occurrences without reopening the frozen endpoint assignment or adding a visual-region binding contract."
+  },
+  "relationMutationMetamorphic": {
+    "goldRelationRead": false,
+    "relationInput": "none",
+    "requiredResult": "occurrence identity must not depend on semantic relation",
+    "executed": false,
+    "blockedBeforeExecution": "Only one exact textual primitive is available; mutating relation cannot manufacture a second source occurrence."
+  },
+  "recoveryDecision": {
+    "genericPdfPrimitiveRecoveryImplemented": false,
+    "reason": "No missing native text primitive or unexposed text primitive was found. Existing PdfLine/PdfPig/native block already expose the only exact text primitive.",
+    "noFakeBlockCreated": true,
+    "noFuzzyMatching": true,
+    "ocr": "NOT_AUTHORIZED",
+    "vlm": "NOT_AUTHORIZED",
+    "providerCalls": 0,
+    "modelCalls": 0
+  },
+  "lineage": {
+    "priorForensicArtifact": "artifacts/identity-gold/pdf-binding-forensic.v1.json",
+    "priorBindingArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json",
+    "priorBindingArtifactPreserved": true,
+    "semanticGoldChanged": false,
+    "knownN15Changed": false
+  },
+  "gate": "BLOCKED_ON_IR018_SOURCE_REPRESENTATION"
+}
