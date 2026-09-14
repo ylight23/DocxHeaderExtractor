@@ -1,0 +1,41 @@
+{
+  "artifactKind": "a99_identity_benchmark_v3a_ranking_config",
+  "schemaVersion": "a99-identity-benchmark-v3a-ranking-config",
+  "algorithmVersion": "lexicographic-source-only-v1",
+  "dimensions": [
+    "evidenceTierDescending",
+    "documentOrderDistanceAscending",
+    "pairIdAscending"
+  ],
+  "evidenceTier": {
+    "tier3": "ADJACENT_ORDER \u002B NORMALIZED_TEXT_AFFINITY",
+    "tier2": "ADJACENT_ORDER",
+    "tier1": "NORMALIZED_TEXT_AFFINITY",
+    "blanketNormalizedTextAffinityVeto": false
+  },
+  "dominance": {
+    "dimensions": [
+      "hasNormalizedTextAffinity",
+      "hasAdjacentOrder",
+      "documentOrderDistance"
+    ],
+    "rule": "A dominates B only within a shared occurrence when A is no worse on every dimension and strictly better on one; pair-level pruning requires domination at both endpoints.",
+    "goldIndependent": true
+  },
+  "budgets": {
+    "maxCandidatesPerOccurrence": 8,
+    "maxCandidatesPerDocument": 12000,
+    "maxCandidatesTotal": 18000,
+    "selectionRule": "fixed operational caps declared before V3B; no Gold search"
+  },
+  "direction": {
+    "pairCanonicalization": "frozen broad candidate left/right order",
+    "symmetricRepeat": "one canonical pair request",
+    "continuation": "direction remains verifier response field; no reverse duplicate request"
+  },
+  "inputCandidateSetSha256": "d9718a6fa67ad7b2dea68959517605751d9b2dfd207ed3036d3d1e0a111e2b4d",
+  "inputSourceCatalogSha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+  "featureContractSha256": "fa843234cc863cdf64b2d86ae82a2316d415918176408f9e4cefb83aa2eda84b",
+  "modelUsed": false,
+  "goldUsed": false
+}

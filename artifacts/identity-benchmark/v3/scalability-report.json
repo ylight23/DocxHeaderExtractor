@@ -1,0 +1,66 @@
+{
+  "artifactKind": "a99_identity_benchmark_v3a_scalability_report",
+  "broadCandidates": 95999,
+  "afterDominance": 7659,
+  "shortlisted": 7659,
+  "reductionPercent": 92.0218,
+  "estimatedFutureProviderCalls": 7659,
+  "logicalRequestBytes": 7026603795,
+  "estimatedInputTokens": 1756650948,
+  "candidateDegrees": {
+    "before": {
+      "p50": 2,
+      "p90": 105,
+      "p95": 225,
+      "p99": 275,
+      "max": 275
+    },
+    "after": {
+      "p50": 2,
+      "p90": 3,
+      "p95": 4,
+      "p99": 4,
+      "max": 4
+    },
+    "beforeMax": 275,
+    "afterMax": 4
+  },
+  "perDocument": [
+    {
+      "documentId": "DOC-0123",
+      "sourceUnits": 3214,
+      "broadCandidates": 3904,
+      "shortlisted": 3416
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceUnits": 2354,
+      "broadCandidates": 72114,
+      "shortlisted": 2972
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceUnits": 970,
+      "broadCandidates": 19981,
+      "shortlisted": 1271
+    }
+  ],
+  "reasonBreakdown": {
+    "broad": {
+      "ADJACENT_ORDER": 6535,
+      "NORMALIZED_TEXT_AFFINITY": 89476
+    },
+    "shortlisted": {
+      "ADJACENT_ORDER": 6302,
+      "NORMALIZED_TEXT_AFFINITY": 1369
+    }
+  },
+  "dominance": {
+    "before": 95999,
+    "after": 7659,
+    "dominated": 88340,
+    "pairDominated": 88340
+  },
+  "goldUsed": false,
+  "modelUsed": false
+}

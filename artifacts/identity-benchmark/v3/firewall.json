@@ -1,0 +1,20 @@
+{
+  "artifactKind": "a99_identity_benchmark_v3a_firewall",
+  "schemaVersion": "a99-identity-benchmark-v3a-firewall",
+  "goldReadCount": 0,
+  "providerCalls": 0,
+  "goldArtifactLoaded": false,
+  "goldDerivedInput": false,
+  "modelDerivedFeatures": false,
+  "goldDerivedFeatures": false,
+  "candidateGenerationChanged": false,
+  "pruningAdded": true,
+  "contextProjectionChanged": false,
+  "identityPromotionGateChanged": false,
+  "everyBroadCandidateHasDisposition": true,
+  "shortlistBudgetExceeded": false,
+  "requestShaCheckedBeforeNetwork": true,
+  "dryRunProviderCalls": 0,
+  "canonicalBuilderSourceSha256": "020d2df158f601af1ee1bdb376764556ea6111de380f5f368caa3dddbd229a25",
+  "requestGuardSourceSha256": "692e77b88398bf45f451806c7f858e575de0492a036d0dca54e72cab0aee1d97"
+}

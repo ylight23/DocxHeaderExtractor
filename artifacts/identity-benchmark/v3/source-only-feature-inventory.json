@@ -1,0 +1,66 @@
+{
+  "artifactKind": "a99_identity_benchmark_v3a_source_only_feature_inventory",
+  "schemaVersion": "a99-identity-benchmark-v3a-source-only-feature-inventory",
+  "sourceCatalogFingerprint": "ed61300844f124d02144c09ea288822a88f6c7fdd0dbee0cf1bf42d31b51fd84",
+  "candidateCount": 95999,
+  "goldUsed": false,
+  "modelUsed": false,
+  "features": [
+    {
+      "name": "candidateGenerationReasons",
+      "availability": "SOURCE_DIRECT",
+      "derivation": "existing frozen broad candidate artifact"
+    },
+    {
+      "name": "normalizedTextAffinity",
+      "availability": "SOURCE_DERIVED",
+      "derivation": "existing generator reason; retained as signal, never blanket veto"
+    },
+    {
+      "name": "adjacentOrder",
+      "availability": "SOURCE_DERIVED",
+      "derivation": "existing generator reason"
+    },
+    {
+      "name": "documentOrderDistance",
+      "availability": "SOURCE_DERIVED",
+      "derivation": "absolute distance between source-owned documentOrder values"
+    },
+    {
+      "name": "sourceTextSha256",
+      "availability": "SOURCE_DERIVED",
+      "derivation": "hash of source-owned text for diagnostics"
+    },
+    {
+      "name": "occurrenceDegree",
+      "availability": "SOURCE_DERIVED",
+      "derivation": "degree in frozen broad candidate graph"
+    },
+    {
+      "name": "pageDistance",
+      "availability": "UNAVAILABLE",
+      "derivation": "not present in frozen identity source catalog"
+    },
+    {
+      "name": "styleLayoutCompatibility",
+      "availability": "UNAVAILABLE",
+      "derivation": "not present in frozen identity source catalog"
+    },
+    {
+      "name": "sectionOwnership",
+      "availability": "UNAVAILABLE",
+      "derivation": "not present in frozen identity source catalog"
+    },
+    {
+      "name": "modelScore",
+      "availability": "UNAVAILABLE",
+      "derivation": "forbidden in v3A"
+    },
+    {
+      "name": "goldRelationLabel",
+      "availability": "UNAVAILABLE",
+      "derivation": "forbidden in v3A"
+    }
+  ],
+  "featureContractSha256": "fa843234cc863cdf64b2d86ae82a2316d415918176408f9e4cefb83aa2eda84b"
+}
