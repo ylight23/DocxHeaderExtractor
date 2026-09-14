@@ -1,0 +1,1139 @@
+{
+  "artifactKind": "a99_identity_promotion_provider_execution_readiness_audit",
+  "schemaVersion": "a99-identity-promotion-provider-execution-readiness-audit-v1",
+  "benchmarkVersion": "a99-identity-promotion-benchmark-v1",
+  "benchmarkHead": "c448ac23cce184158bd77aca673d71740a308725",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "generatedAtUtc": "2026-09-14T08:24:28.3275436\u002B00:00",
+  "execution": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldReads": 0,
+    "semanticGoldOpened": false,
+    "productionBehaviorChanged": false,
+    "v1ArtifactsMutated": false
+  },
+  "frozenInputs": {
+    "sourceDocuments": 3,
+    "sourceUnits": 6538,
+    "candidatePairs": 95999,
+    "requests": 95999,
+    "candidateSetSha256": "d9718a6fa67ad7b2dea68959517605751d9b2dfd207ed3036d3d1e0a111e2b4d",
+    "requestManifestSha256": "b94524b99c1162d09849a1e5fde27589be548e43f3eb91e096acbc030e67341d",
+    "sourceCatalogFingerprint": "ed61300844f124d02144c09ea288822a88f6c7fdd0dbee0cf1bf42d31b51fd84",
+    "sourceCatalogFileSha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+    "sourceCatalogManifestSha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+    "candidateFileSha256": "d9718a6fa67ad7b2dea68959517605751d9b2dfd207ed3036d3d1e0a111e2b4d",
+    "requestManifestFileSha256": "b94524b99c1162d09849a1e5fde27589be548e43f3eb91e096acbc030e67341d"
+  },
+  "requestSizeDistribution": {
+    "requestBytes": {
+      "count": 95999,
+      "min": 284450,
+      "p50": 706325,
+      "p90": 706326,
+      "p95": 706326,
+      "p99": 1224095,
+      "max": 1224100,
+      "mean": 639573.0858029771,
+      "total": 61398376664
+    },
+    "estimatedInputTokens": {
+      "count": 95999,
+      "min": 71113,
+      "p50": 176582,
+      "p90": 176582,
+      "p95": 176582,
+      "p99": 306024,
+      "max": 306025,
+      "mean": 159893.67103824,
+      "total": 15349632526
+    },
+    "estimator": {
+      "name": "UTF8_BYTES_DIV_4_CEILING_V1",
+      "bytesPerToken": 4,
+      "valuesAreEstimated": true,
+      "exactTokenizerAvailableLocally": false
+    }
+  },
+  "contextLimitValidation": {
+    "model": "qwen/qwen3.7-flash",
+    "provider": "OpenRouter",
+    "contextLimitTokens": 1000000,
+    "contextLimitSource": "CURRENT_LIVE_RUNNER_CONFIGURATION",
+    "providerAdvertisedLimitVerifiedWithoutCall": false,
+    "nearThresholdDefinition": "estimated input tokens \u003E= 90% and \u003C= configured limit",
+    "counts": {
+      "within": 95999,
+      "near": 0,
+      "exceeds": 0,
+      "total": 95999
+    },
+    "percentages": {
+      "within": 1,
+      "near": 0,
+      "exceeds": 0
+    },
+    "status": "WITHIN_CONFIGURED_LIMIT_NOT_PROVIDER_VERIFIED",
+    "valuesAreEstimated": true
+  },
+  "totalTokenEstimate": {
+    "estimatedInputTokens": 15349632526,
+    "valuesAreEstimated": true,
+    "projected": {
+      "minimum": {
+        "inputTokens": 15349632526,
+        "outputTokens": 6143936,
+        "projectedTotalTokens": 15355776462
+      },
+      "typical": {
+        "inputTokens": 15349632526,
+        "outputTokens": 24575744,
+        "projectedTotalTokens": 15374208270
+      },
+      "maximum": {
+        "inputTokens": 15349632526,
+        "outputTokens": 1535984000,
+        "projectedTotalTokens": 16885616526
+      },
+      "outputAssumptions": {
+        "minimumOutputTokens": 64,
+        "typicalOutputTokens": 256,
+        "maximumOutputTokens": 16000,
+        "status": "PLANNING_ESTIMATES_NOT_OBSERVED"
+      }
+    },
+    "perDocument": [
+      {
+        "documentId": "DOC-0123",
+        "requestCount": 3904,
+        "estimatedInputTokens": 1194704715,
+        "projectedMinimumTokens": 1194954571,
+        "projectedTypicalTokens": 1195704139,
+        "projectedMaximumTokens": 1257168715
+      },
+      {
+        "documentId": "DOC-0133",
+        "requestCount": 72114,
+        "estimatedInputTokens": 12734018958,
+        "projectedMinimumTokens": 12738634254,
+        "projectedTypicalTokens": 12752480142,
+        "projectedMaximumTokens": 13887842958
+      },
+      {
+        "documentId": "DOC-0252",
+        "requestCount": 19981,
+        "estimatedInputTokens": 1420908853,
+        "projectedMinimumTokens": 1422187637,
+        "projectedTypicalTokens": 1426023989,
+        "projectedMaximumTokens": 1740604853
+      }
+    ]
+  },
+  "costEstimate": {
+    "provider": "OpenRouter",
+    "model": "qwen/qwen3.7-flash",
+    "status": "COST_UNKNOWN",
+    "inputPrice": null,
+    "outputPrice": null,
+    "pricingTimestamp": null,
+    "pricingSource": null,
+    "reason": "No authoritative price metadata is available locally without executing an external request."
+  },
+  "latencyScenarios": {
+    "requestCount": 95999,
+    "configuredMaxParallelRequests": 1,
+    "configuredTransientRetries": 0,
+    "scenarios": [
+      {
+        "requestsPerSecond": 1,
+        "seconds": 95999,
+        "duration": "1d 2h 39m 59s",
+        "status": "THEORETICAL_THROUGHPUT_SCENARIO"
+      },
+      {
+        "requestsPerSecond": 5,
+        "seconds": 19199.8,
+        "duration": "0d 5h 19m 59s",
+        "status": "THEORETICAL_THROUGHPUT_SCENARIO"
+      },
+      {
+        "requestsPerSecond": 10,
+        "seconds": 9599.9,
+        "duration": "0d 2h 39m 59s",
+        "status": "THEORETICAL_THROUGHPUT_SCENARIO"
+      },
+      {
+        "requestsPerSecond": 25,
+        "seconds": 3839.96,
+        "duration": "0d 1h 3m 59s",
+        "status": "THEORETICAL_THROUGHPUT_SCENARIO"
+      },
+      {
+        "requestsPerSecond": 50,
+        "seconds": 1919.98,
+        "duration": "0d 0h 31m 59s",
+        "status": "THEORETICAL_THROUGHPUT_SCENARIO"
+      }
+    ],
+    "providerConcurrency": "UNKNOWN_WITHOUT_PROVIDER_CALL",
+    "retryAmplificationRisk": "Configured transient retries are zero; transport/provider policy may still impose throttling or failure handling outside this runner.",
+    "malformedResponseRetryRisk": "Runner has no configured transient retry; malformed responses are a per-request failure risk, not silently retried in this audit.",
+    "expectedArtifactVolume": "One request/prediction/status artifact per candidate in the current per-candidate runner; exact full-universe volume is not created by this audit."
+  },
+  "requestRedundancy": {
+    "uniqueRequestHashes": 95999,
+    "duplicateRequestHashes": 0,
+    "uniqueSourceCatalogs": 3,
+    "totalRequestBytes": 61398376664,
+    "repeatedCatalogBytes": 61375392553,
+    "sharedDocumentContextBytes": 61375392553,
+    "pairSpecificBytes": 22984111,
+    "sharedContextShare": 0.999625656047459,
+    "pairSpecificShare": 0.00037434395254095347,
+    "measurement": "The frozen manifest does not persist bodies. Shared context is measured from the reconstructed source-node array; outer envelope and target fields are pair-specific. Current-runner serialization compatibility is reported separately.",
+    "note": "Request hashes are counted from frozen request entries."
+  },
+  "candidateDensity": {
+    "perDocument": [
+      {
+        "documentId": "DOC-0123",
+        "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "sourceUnits": 3214,
+        "eligiblePairUniverse": 5163291,
+        "generatedCandidates": 3904,
+        "candidateDensity": 0.0007561069093336014,
+        "requestCount": 3904,
+        "requestBytes": {
+          "count": 3904,
+          "min": 1224050,
+          "p50": 1224094,
+          "p90": 1224096,
+          "p95": 1224096,
+          "p99": 1224098,
+          "max": 1224100,
+          "mean": 1224081.684170082,
+          "total": 4778814895
+        },
+        "estimatedInputTokens": 1194704715,
+        "averageCandidatesPerOccurrence": 2.429371499688861,
+        "degree": {
+          "count": 3214,
+          "min": 2,
+          "p50": 2,
+          "p90": 4,
+          "p95": 5,
+          "p99": 6,
+          "max": 6,
+          "mean": 2.429371499688861,
+          "total": 7808
+        },
+        "reasonBreakdown": [
+          {
+            "reason": "ADJACENT_ORDER",
+            "count": 3213,
+            "share": 0.8211091234347049
+          },
+          {
+            "reason": "NORMALIZED_TEXT_AFFINITY",
+            "count": 700,
+            "share": 0.17889087656529518
+          }
+        ],
+        "reasonIncidenceCount": 3913,
+        "candidatesWithMultipleReasons": 9,
+        "sourceContextBytes": 1223805,
+        "pairSpecificBytes": 1080175
+      },
+      {
+        "documentId": "DOC-0133",
+        "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+        "sourceUnits": 2354,
+        "eligiblePairUniverse": 2769481,
+        "generatedCandidates": 72114,
+        "candidateDensity": 0.026038813770522348,
+        "requestCount": 72114,
+        "requestBytes": {
+          "count": 72114,
+          "min": 706322,
+          "p50": 706325,
+          "p90": 706326,
+          "p95": 706326,
+          "p99": 706326,
+          "max": 706399,
+          "mean": 706325.1281165931,
+          "total": 50935930289
+        },
+        "estimatedInputTokens": 12734018958,
+        "averageCandidatesPerOccurrence": 61.269328802039084,
+        "degree": {
+          "count": 2354,
+          "min": 1,
+          "p50": 2,
+          "p90": 275,
+          "p95": 275,
+          "p99": 275,
+          "max": 275,
+          "mean": 61.269328802039084,
+          "total": 144228
+        },
+        "reasonBreakdown": [
+          {
+            "reason": "NORMALIZED_TEXT_AFFINITY",
+            "count": 69764,
+            "share": 0.9673724641901355
+          },
+          {
+            "reason": "ADJACENT_ORDER",
+            "count": 2353,
+            "share": 0.03262753580986453
+          }
+        ],
+        "reasonIncidenceCount": 72117,
+        "candidatesWithMultipleReasons": 3,
+        "sourceContextBytes": 706087,
+        "pairSpecificBytes": 17172371
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+        "sourceUnits": 970,
+        "eligiblePairUniverse": 469965,
+        "generatedCandidates": 19981,
+        "candidateDensity": 0.042515932037492155,
+        "requestCount": 19981,
+        "requestBytes": {
+          "count": 19981,
+          "min": 284450,
+          "p50": 284452,
+          "p90": 284452,
+          "p95": 284452,
+          "p99": 284452,
+          "max": 284452,
+          "mean": 284451.8032130524,
+          "total": 5683631480
+        },
+        "estimatedInputTokens": 1420908853,
+        "averageCandidatesPerOccurrence": 41.197938144329896,
+        "degree": {
+          "count": 970,
+          "min": 1,
+          "p50": 2,
+          "p90": 150,
+          "p95": 150,
+          "p99": 150,
+          "max": 150,
+          "mean": 41.197938144329896,
+          "total": 39962
+        },
+        "reasonBreakdown": [
+          {
+            "reason": "NORMALIZED_TEXT_AFFINITY",
+            "count": 19012,
+            "share": 0.9515039287322957
+          },
+          {
+            "reason": "ADJACENT_ORDER",
+            "count": 969,
+            "share": 0.04849607126770432
+          }
+        ],
+        "reasonIncidenceCount": 19981,
+        "candidatesWithMultipleReasons": 0,
+        "sourceContextBytes": 284215,
+        "pairSpecificBytes": 4731565
+      }
+    ],
+    "generatorReasonBreakdown": [
+      {
+        "reason": "NORMALIZED_TEXT_AFFINITY",
+        "count": 89476,
+        "share": 0.9319348824613847
+      },
+      {
+        "reason": "ADJACENT_ORDER",
+        "count": 6535,
+        "share": 0.06806511753861537
+      }
+    ],
+    "reasonIncidenceCount": 96011,
+    "candidatesWithMultipleReasons": 12,
+    "topReasonShare": {
+      "reason": "NORMALIZED_TEXT_AFFINITY",
+      "count": 89476,
+      "share": 0.9319348824613847
+    }
+  },
+  "fanoutHotspots": [
+    {
+      "occurrenceId": "DOC-0133:B000007",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000026",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000028",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000030",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000032",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000036",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000041",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000080",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000090",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000093",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000100",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000115",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000117",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000130",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000133",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000142",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000159",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000163",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000167",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000175",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000177",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000182",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000201",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000218",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000224",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000231",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000236",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000242",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000249",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000255",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000257",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000259",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000265",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000267",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000272",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000274",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000286",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000304",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000312",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000317",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000327",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000329",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000349",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000354",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000381",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000386",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000402",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000405",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000410",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "occurrenceId": "DOC-0133:B000443",
+      "documentId": "DOC-0133",
+      "degree": 275,
+      "reasons": [
+        {
+          "reason": "NORMALIZED_TEXT_AFFINITY",
+          "count": 273
+        },
+        {
+          "reason": "ADJACENT_ORDER",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "pipelineIntent": {
+    "classification": "D_FOR_FROZEN_V1_EXECUTION_INTEGRATION",
+    "frozenBenchmarkRequestConstruction": "A: every generated candidate has one frozen verifier request.",
+    "currentRunnerEvidence": {
+      "oneRequestPerCandidate": true,
+      "consumesFrozenV1Manifest": false,
+      "existingPruningStage": "NO_PRE_VERIFIER_PRUNING_STAGE",
+      "evidence": [
+        "src/DocxHeaderExtractor.Eval/ReasoningRetention/HdsaDeterministicCandidatePairVerificationLiveRunner.cs:111 foreach candidateInput.Candidates",
+        "src/DocxHeaderExtractor.Eval/ReasoningRetention/HdsaDeterministicCandidatePairVerificationLiveRunner.cs:115 new HdsaIdentityPairVerificationRequest",
+        "src/DocxHeaderExtractor.Eval/ReasoningRetention/HdsaDeterministicCandidatePairVerificationLiveRunner.cs:116 JsonSerializer.Serialize(request, JsonOptions)",
+        "src/DocxHeaderExtractor.Eval/ReasoningRetention/HdsaDeterministicCandidatePairVerificationLiveRunner.cs:96-99 ContextSize=1,000,000; MaxOutputTokens=16,000; MaxParallelRequests=1"
+      ],
+      "pruningTermsFound": []
+    },
+    "existingPruningStage": "NO_PRE_VERIFIER_PRUNING_STAGE",
+    "note": "The checked-in live runner is DOC-0205-specific and does not consume the three-document v1 request manifest; this is reported as an integration mismatch, not silently treated as a full-universe executor."
+  },
+  "recommendedGate": "BLOCKED_ON_BENCHMARK_PIPELINE_MISMATCH",
+  "gateRationale": "Frozen v1 request hashes do not match the current live JSON serialization on sampled documents and/or no runner consumes the frozen three-document manifest. Do not call provider until the execution path is reconciled; v1 remains unchanged."
+}
