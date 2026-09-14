@@ -1,0 +1,44 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_c_manifest",
+  "schemaVersion": "a99-v4f-c-manifest-v1",
+  "status": "READY_FOR_PROJECTED_VERIFIER_EXPERIMENT_DESIGN",
+  "developmentStatus": "DEV_EXPOSED_CHALLENGER",
+  "independentGeneralizationClaim": false,
+  "parent": "V4F-B@6133127",
+  "candidateUniverseChanged": false,
+  "rankingChanged": false,
+  "evidenceRepresentationChanged": true,
+  "providerExecuted": false,
+  "candidateCount": 7702,
+  "projectedRequestCount": 7702,
+  "sourceCatalogSha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+  "sourceCatalogFingerprint": "ed61300844f124d02144c09ea288822a88f6c7fdd0dbee0cf1bf42d31b51fd84",
+  "shortlistSha256": "41036e1f4eea349fdc68dcac13932b00b377774f04b2c58ab184e5e29061ae12",
+  "v4eRequestManifestSha256": "220d236f502a56b4b7edb8e3b469382aaea4af25b13703e8dbc9505b709d66df",
+  "v4fBPacketManifestSha256": "139009ce0b3a0a9d146f770b589841e4bafe35dc6dc14071f4ada0f26397f81a",
+  "projectionConfigSha256": "4c75f16682e143b0cdec21359917a51cdcd7fce8fbd6727e9cab22213cded631",
+  "projectedRequestBuilderVersion": "hdsa-canonical-projected-pair-verifier-request-builder-v1",
+  "projectedRequestBuilderHash": "dc3e4b3791358d6f19b5ab4336d7918970a65aa7f46bda0427578d6f17989064",
+  "oldRequestTotalBytes": 7070469069,
+  "oldRequestEstimatedTokens": 1767619122,
+  "projectedRequestTotalBytes": 64990323,
+  "projectedRequestEstimatedTokens": 16250318,
+  "requestCountPreserved": true,
+  "exactBytesPersisted": false,
+  "exactBytesDeterministicallyReconstructible": true,
+  "goldReadCount": 0,
+  "v4ebEvaluationReadCount": 0,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "packetClasses": [
+    {
+      "packetClass": "LOCAL_ONLY",
+      "count": 4257
+    },
+    {
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "count": 3445
+    }
+  ],
+  "nextGate": "READY_FOR_PROJECTED_VERIFIER_EXPERIMENT_DESIGN"
+}

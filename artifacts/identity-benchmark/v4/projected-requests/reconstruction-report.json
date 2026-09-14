@@ -1,0 +1,15 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_c_reconstruction_report",
+  "schemaVersion": "a99-v4f-c-reconstruction-report-v1",
+  "packetReconstruction": "PASS",
+  "projectedRequestReconstruction": "PASS",
+  "packetShaMismatches": 0,
+  "requestShaMismatches": 0,
+  "accepted": 7702,
+  "expected": 7702,
+  "oldRequestCandidateIdentityPreserved": true,
+  "fullDocumentContextBytes": 0,
+  "dryRunTransportCalls": 0,
+  "builderVersion": "hdsa-canonical-projected-pair-verifier-request-builder-v1",
+  "builderHash": "dc3e4b3791358d6f19b5ab4336d7918970a65aa7f46bda0427578d6f17989064"
+}

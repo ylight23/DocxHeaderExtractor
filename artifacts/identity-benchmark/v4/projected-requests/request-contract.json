@@ -1,0 +1,57 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_c_projected_request_contract",
+  "schemaVersion": "a99-v4f-c-request-contract-v1",
+  "builderVersion": "hdsa-canonical-projected-pair-verifier-request-builder-v1",
+  "decisionContract": "hdsa-global-identity-retrieve-verify-v1",
+  "decisionOptions": [
+    "CONTINUATION_OF",
+    "SAME_SEMANTIC_REPEAT",
+    "DISTINCT",
+    "UNRESOLVED"
+  ],
+  "responseSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "pairId": {
+        "type": "string",
+        "minLength": 1
+      },
+      "left": {
+        "type": "string",
+        "minLength": 1
+      },
+      "right": {
+        "type": "string",
+        "minLength": 1
+      },
+      "relation": {
+        "type": "string",
+        "enum": [
+          "CONTINUATION_OF",
+          "SAME_SEMANTIC_REPEAT",
+          "DISTINCT",
+          "UNRESOLVED"
+        ]
+      },
+      "direction": {
+        "type": "string",
+        "enum": [
+          "RIGHT_TO_LEFT",
+          "NONE"
+        ]
+      }
+    },
+    "required": [
+      "pairId",
+      "left",
+      "right",
+      "relation",
+      "direction"
+    ]
+  },
+  "evidenceAdditions": "NONE; consumes frozen V4F-B packet reconstruction only",
+  "fullDocumentContext": false,
+  "goldAccess": false,
+  "providerExecution": false
+}

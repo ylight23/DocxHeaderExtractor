@@ -1,0 +1,34 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_c_context_limit_analysis",
+  "schemaVersion": "a99-v4f-c-context-limit-analysis-v1",
+  "configuredContextLimitTokens": 1000000,
+  "providerVerifiedContextLimitTokens": null,
+  "providerVerified": false,
+  "estimatedInputTokens": {
+    "count": 7702,
+    "min": 1326,
+    "p50": 1952,
+    "p75": 2346,
+    "p90": 2738,
+    "p95": 3021,
+    "p99": 3736,
+    "max": 5132,
+    "mean": 2109.883,
+    "total": 16250318
+  },
+  "classification": {
+    "safe": {
+      "count": 7702,
+      "percentage": 1
+    },
+    "near": {
+      "count": 0,
+      "percentage": 0
+    },
+    "exceeds": {
+      "count": 0,
+      "percentage": 0
+    }
+  },
+  "status": "WITHIN_CONFIGURED_LIMIT_NOT_PROVIDER_VERIFIED"
+}

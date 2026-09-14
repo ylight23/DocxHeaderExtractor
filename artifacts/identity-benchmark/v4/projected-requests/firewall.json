@@ -1,0 +1,20 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_c_firewall",
+  "schemaVersion": "a99-v4f-c-firewall-v1",
+  "goldReadCount": 0,
+  "v4ebEvaluationReadCount": 0,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "candidateUniverseChanged": false,
+  "rankingChanged": false,
+  "evidenceRepresentationChanged": true,
+  "requestPromptChanged": false,
+  "evidenceAdded": false,
+  "fullDocumentContextIncluded": false,
+  "packetBodiesPersisted": false,
+  "exactReconstruction": "PASS",
+  "dryRunTransportCalls": 0,
+  "tamperedPacketFailsClosed": true,
+  "tamperedManifestFailsClosed": true,
+  "candidateOrderCanonicalized": true
+}

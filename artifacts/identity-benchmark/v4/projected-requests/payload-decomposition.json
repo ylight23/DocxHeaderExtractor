@@ -1,0 +1,28 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_c_payload_decomposition",
+  "schemaVersion": "a99-v4f-c-payload-decomposition-v1",
+  "totals": {
+    "totalBytes": 64990323,
+    "staticInstructionBytes": 315782,
+    "pairCoreBytes": 6392832,
+    "localContextBytes": 32600214,
+    "structuralContextBytes": 3163122,
+    "relationalSourceFactsBytes": 2272663,
+    "responseSchemaBytes": 5984454,
+    "providerEnvelopeBytes": 1501890,
+    "otherBytes": 12759366,
+    "fullDocumentContextBytes": 0,
+    "exactSum": true
+  },
+  "percentages": {
+    "staticInstruction": 0.00485891,
+    "pairCore": 0.09836591,
+    "localContext": 0.50161643,
+    "structuralContext": 0.04867066,
+    "relationalSourceFacts": 0.03496925,
+    "responseSchema": 0.09208223,
+    "providerEnvelope": 0.02310944,
+    "other": 0.19632717,
+    "fullDocumentContext": 0
+  }
+}
