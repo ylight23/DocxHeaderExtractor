@@ -19,8 +19,10 @@ internal static class Program
             return command switch
             {
                 "--init" => Initialize(root),
+                "--import-user-final" => ImportUserFinal(root, args.SkipWhile(x => x != "--import-user-final").Skip(1).FirstOrDefault()),
                 "--validate" => Validate(root, args.SkipWhile(x => x != "--validate").Skip(1).FirstOrDefault()),
                 "--freeze" => Freeze(root, args.SkipWhile(x => x != "--freeze").Skip(1).FirstOrDefault()),
+                "--refresh-final-metadata" => RefreshFinalMetadata(root),
                 _ => Fail("V4H_B_UNKNOWN_COMMAND"),
             };
         }
@@ -96,6 +98,74 @@ internal static class Program
         return 0;
     }
 
+    private static int ImportUserFinal(string root, string? sourcePath)
+    {
+        if (string.IsNullOrWhiteSpace(sourcePath)) return Fail("V4H_B_USER_FINAL_SOURCE_PATH_REQUIRED");
+        var inputPath = Resolve(root, sourcePath);
+        var output = Full(root, ResultsRelative);
+        Directory.CreateDirectory(output);
+        var responsePath = Path.Combine(output, "human-adjudication.responses.json");
+        if (File.Exists(responsePath) || File.Exists(Path.Combine(output, "human-adjudication.frozen.v1.json"))) return Fail("V4H_B_RESPONSES_ALREADY_EXIST_OR_FROZEN");
+
+        var bindings = LoadBindings(root);
+        using var input = JsonDocument.Parse(File.ReadAllText(inputPath));
+        var inputRoot = input.RootElement;
+        var items = inputRoot.GetProperty("items").EnumerateArray().ToArray();
+        if (items.Length != bindings.Count) return Fail("V4H_B_USER_FINAL_ITEM_COUNT_MISMATCH");
+        var responses = items.Select(item =>
+        {
+            var direction = item.TryGetProperty("continuationDirection", out var directionElement) && directionElement.ValueKind == JsonValueKind.Object
+                ? directionElement
+                : default;
+            var relation = item.GetProperty("proposedRelation").GetString()!;
+            string? continuationSource = null;
+            string? continuedFrom = null;
+            if (relation == "CONTINUATION_OF")
+            {
+                continuationSource = direction.GetProperty("continuationOccurrenceId").GetString();
+                continuedFrom = direction.GetProperty("continuedFromOccurrenceId").GetString();
+            }
+            return new HumanReviewResponse(
+                item.GetProperty("reviewId").GetString()!,
+                item.GetProperty("candidateId").GetString()!,
+                item.GetProperty("leftOccurrenceId").GetString()!,
+                item.GetProperty("rightOccurrenceId").GetString()!,
+                relation,
+                item.GetProperty("proposedConfidence").GetString()!,
+                item.GetProperty("evidenceNote").GetString()!,
+                item.GetProperty("needsMoreSourceInspection").GetBoolean(),
+                continuationSource,
+                continuedFrom,
+                null,
+                null,
+                1);
+        }).ToArray();
+        var validation = AdjudicationValidator.ValidateSet(responses, bindings, requireComplete: true);
+        if (!validation.IsValid)
+        {
+            foreach (var error in validation.Errors.Take(30)) Console.Error.WriteLine(error);
+            return Fail("V4H_B_USER_FINAL_IMPORT_INVALID");
+        }
+
+        var inputSha = Sha256File(inputPath);
+        var artifact = new
+        {
+            schemaVersion = "a99-v4h-b-human-responses-v1",
+            authority = "USER_FINAL_SOURCE_BACKED_ADJUDICATION",
+            sourceArtifactFileName = Path.GetFileName(inputPath),
+            sourceArtifactSha256 = inputSha,
+            sourceArtifactOriginalAuthority = inputRoot.TryGetProperty("authority", out var sourceAuthority) ? sourceAuthority.GetString() : null,
+            modelAssistedMetadataSuperseded = true,
+            userFinalAuthority = true,
+            modelOutputsVisibleDuringReview = false,
+            existingGoldVisibleDuringReview = false,
+            responses,
+        };
+        WriteJson(responsePath, artifact);
+        Console.WriteLine($"IMPORTED=true ITEMS={responses.Length} SOURCE_SHA256={inputSha} AUTHORITY=USER_FINAL_SOURCE_BACKED_ADJUDICATION MODEL_CALLS=0 PROVIDER_CALLS=0");
+        return 0;
+    }
+
     private static int Freeze(string root, string? responsePath)
     {
         if (string.IsNullOrWhiteSpace(responsePath)) return Fail("V4H_B_RESPONSE_PATH_REQUIRED");
@@ -116,6 +186,7 @@ internal static class Program
         {
             schemaVersion = "a99-v4h-b-human-adjudication-frozen-v1",
             status = "BLINDED_SOURCE_BACKED_USER_ADJUDICATION_FROZEN",
+            authority = "USER_FINAL_SOURCE_BACKED_ADJUDICATION",
             independentHumanGold = false,
             modelOutputsVisibleDuringReview = false,
             existingGoldVisibleDuringReview = false,
@@ -128,10 +199,73 @@ internal static class Program
         };
         var frozenJson = Serialize(frozen);
         File.WriteAllText(frozenPath, frozenJson, new UTF8Encoding(false));
-        File.Copy(Resolve(root, responsePath), Path.Combine(output, "human-adjudication.responses.json"), overwrite: false);
-        WriteJson(Path.Combine(output, "adjudication-summary.json"), new { status = "BLINDED_SOURCE_BACKED_USER_ADJUDICATION_FROZEN", itemCount = canonical.Length, unresolvedCount = canonical.Count(x => x.Relation == "UNRESOLVED"), frozenSha256 = Sha256Text(frozenJson) });
-        WriteJson(Path.Combine(output, "firewall.json"), new { status = "BLINDED_SOURCE_BACKED_USER_ADJUDICATION_FROZEN", modelPredictionReadCount = 0, providerResponseReadCount = 0, existingGoldReadCount = 0, modelCalls = 0, providerCalls = 0 });
+        var resolvedResponsePath = Resolve(root, responsePath);
+        var repositoryResponsePath = Path.Combine(output, "human-adjudication.responses.json");
+        if (!string.Equals(Path.GetFullPath(resolvedResponsePath), Path.GetFullPath(repositoryResponsePath), StringComparison.OrdinalIgnoreCase))
+            File.Copy(resolvedResponsePath, repositoryResponsePath, overwrite: false);
+        WriteJson(Path.Combine(output, "review-progress.json"), new
+        {
+            schemaVersion = "a99-v4h-b-review-progress-v1",
+            status = "READY_FOR_V4H_SEMANTIC_ACCURACY_EVALUATION",
+            gate = "HUMAN_ADJUDICATION_FROZEN",
+            reviewPackManifest = AdjudicationRoot + "/review-item-manifest.json",
+            reviewPackManifestSha256 = Sha256File(Full(root, AdjudicationRoot + "/review-item-manifest.json")),
+            expectedItems = bindings.Count,
+            completedItems = canonical.Length,
+            blankItems = 0,
+            unresolvedItems = canonical.Count(x => x.Relation == "UNRESOLVED"),
+            responseFilePresent = true,
+            frozen = true,
+            frozenSha256 = Sha256Text(frozenJson),
+            authority = "USER_FINAL_SOURCE_BACKED_ADJUDICATION",
+            modelPredictionReadCount = 0,
+            providerResponseReadCount = 0,
+            existingGoldReadCount = 0,
+            modelCalls = 0,
+            providerCalls = 0,
+        });
+        WriteJson(Path.Combine(output, "adjudication-summary.json"), new { status = "BLINDED_SOURCE_BACKED_USER_ADJUDICATION_FROZEN", authority = "USER_FINAL_SOURCE_BACKED_ADJUDICATION", itemCount = canonical.Length, unresolvedCount = canonical.Count(x => x.Relation == "UNRESOLVED"), frozenSha256 = Sha256Text(frozenJson) });
+        WriteJson(Path.Combine(output, "firewall.json"), new { status = "BLINDED_SOURCE_BACKED_USER_ADJUDICATION_FROZEN", authority = "USER_FINAL_SOURCE_BACKED_ADJUDICATION", modelPredictionReadCount = 0, providerResponseReadCount = 0, existingGoldReadCount = 0, modelCalls = 0, providerCalls = 0 });
+        File.WriteAllText(Path.Combine(output, "report.md"), BuildFinalReport(canonical, Sha256Text(frozenJson)), new UTF8Encoding(false));
         Console.WriteLine($"STATUS=READY_FOR_V4H_SEMANTIC_ACCURACY_EVALUATION ITEMS={canonical.Length} FROZEN_SHA256={Sha256Text(frozenJson)} MODEL_CALLS=0 PROVIDER_CALLS=0");
+        return 0;
+    }
+
+    private static int RefreshFinalMetadata(string root)
+    {
+        var output = Full(root, ResultsRelative);
+        var frozenPath = Path.Combine(output, "human-adjudication.frozen.v1.json");
+        if (!File.Exists(frozenPath)) return Fail("V4H_B_FROZEN_ARTIFACT_MISSING");
+        using var document = JsonDocument.Parse(File.ReadAllText(frozenPath));
+        var responses = document.RootElement.GetProperty("responses").EnumerateArray()
+            .Select(item => JsonSerializer.Deserialize<HumanReviewResponse>(item.GetRawText(), AdjudicationJson.Options)!)
+            .ToArray();
+        var frozenSha = Sha256File(frozenPath);
+        WriteJson(Path.Combine(output, "review-progress.json"), new
+        {
+            schemaVersion = "a99-v4h-b-review-progress-v1",
+            status = "READY_FOR_V4H_SEMANTIC_ACCURACY_EVALUATION",
+            gate = "HUMAN_ADJUDICATION_FROZEN",
+            reviewPackManifest = AdjudicationRoot + "/review-item-manifest.json",
+            reviewPackManifestSha256 = Sha256File(Full(root, AdjudicationRoot + "/review-item-manifest.json")),
+            expectedItems = responses.Length,
+            completedItems = responses.Length,
+            blankItems = 0,
+            unresolvedItems = responses.Count(x => x.Relation == "UNRESOLVED"),
+            responseFilePresent = File.Exists(Path.Combine(output, "human-adjudication.responses.json")),
+            frozen = true,
+            frozenSha256 = frozenSha,
+            authority = "USER_FINAL_SOURCE_BACKED_ADJUDICATION",
+            modelPredictionReadCount = 0,
+            providerResponseReadCount = 0,
+            existingGoldReadCount = 0,
+            modelCalls = 0,
+            providerCalls = 0,
+        });
+        WriteJson(Path.Combine(output, "adjudication-summary.json"), new { status = "BLINDED_SOURCE_BACKED_USER_ADJUDICATION_FROZEN", authority = "USER_FINAL_SOURCE_BACKED_ADJUDICATION", itemCount = responses.Length, unresolvedCount = responses.Count(x => x.Relation == "UNRESOLVED"), frozenSha256 = frozenSha });
+        WriteJson(Path.Combine(output, "firewall.json"), new { status = "BLINDED_SOURCE_BACKED_USER_ADJUDICATION_FROZEN", authority = "USER_FINAL_SOURCE_BACKED_ADJUDICATION", modelPredictionReadCount = 0, providerResponseReadCount = 0, existingGoldReadCount = 0, modelCalls = 0, providerCalls = 0 });
+        File.WriteAllText(Path.Combine(output, "report.md"), BuildFinalReport(responses, frozenSha), new UTF8Encoding(false));
+        Console.WriteLine($"REFRESHED_FINAL_METADATA=true ITEMS={responses.Length} FROZEN_FILE_SHA256={frozenSha} MODEL_CALLS=0 PROVIDER_CALLS=0");
         return 0;
     }
 
@@ -177,6 +311,44 @@ internal static class Program
         "Supply a human-authored `responses` JSON file to the V4H-B validator. `UNRESOLVED` is a valid human judgment; blank rows are not.",
         "",
         $"The final frozen artifact and semantic accuracy evaluation are intentionally not created until all `{count}` bindings have valid human responses.",
+        "",
+    });
+
+    private static string BuildFinalReport(IReadOnlyList<HumanReviewResponse> responses, string frozenSha256) => string.Join(Environment.NewLine, new[]
+    {
+        "# V4H-B — blinded source-backed human adjudication",
+        "",
+        "Status: `READY_FOR_V4H_SEMANTIC_ACCURACY_EVALUATION`",
+        "Authority: `USER_FINAL_SOURCE_BACKED_ADJUDICATION`",
+        "Independent human Gold: `false`",
+        "",
+        "## Review",
+        "",
+        $"- Items: `{responses.Count}`",
+        $"- Completed: `{responses.Count}`",
+        $"- Unresolved: `{responses.Count(x => x.Relation == "UNRESOLVED")}`",
+        $"- Needs more source inspection: `{responses.Count(x => x.NeedsMoreSourceInspection)}`",
+        "",
+        "## Labels",
+        $"- SAME_SEMANTIC_REPEAT: `{responses.Count(x => x.Relation == "SAME_SEMANTIC_REPEAT")}`",
+        $"- CONTINUATION_OF: `{responses.Count(x => x.Relation == "CONTINUATION_OF")}`",
+        $"- DISTINCT_SEMANTIC_NODE: `{responses.Count(x => x.Relation == "DISTINCT_SEMANTIC_NODE")}`",
+        "",
+        "## Confidence",
+        $"- HIGH: `{responses.Count(x => x.Confidence == "HIGH")}`",
+        $"- MEDIUM: `{responses.Count(x => x.Confidence == "MEDIUM")}`",
+        $"- LOW: `{responses.Count(x => x.Confidence == "LOW")}`",
+        "",
+        "## Blinding",
+        "- Model predictions read: `0`",
+        "- Provider responses read: `0`",
+        "- Existing Gold read: `0`",
+        "- Model calls: `0`",
+        "- Provider calls: `0`",
+        "",
+        $"Frozen adjudication SHA256: `{frozenSha256}`",
+        "",
+        "V4H-C may now join model predictions. No accuracy comparison is performed by V4H-B.",
         "",
     });
 

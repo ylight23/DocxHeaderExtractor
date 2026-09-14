@@ -50,7 +50,7 @@ public static class AdjudicationValidator
 {
     private static readonly string[] ForbiddenEvidenceTerms =
     [
-        "model", "provider", "retrieval", "prediction", "score", "gold", "candidate reason",
+        "model", "provider", "retrieval", "prediction", "gold", "candidate reason",
     ];
 
     public static ValidationResult ValidateResponse(

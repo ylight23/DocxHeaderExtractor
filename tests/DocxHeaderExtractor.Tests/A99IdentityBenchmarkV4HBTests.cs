@@ -86,16 +86,17 @@ public sealed class A99IdentityBenchmarkV4HBTests
     }
 
     [Fact]
-    public void Repository_progress_remains_incomplete_without_human_labels()
+    public void Repository_progress_is_frozen_only_after_all_human_labels_are_present()
     {
         var path = Path.Combine(RepositoryRoot(), "artifacts", "identity-benchmark", "v4", "semantic-adjudication", "results", "review-progress.json");
         using var progress = JsonDocument.Parse(File.ReadAllText(path));
         var root = progress.RootElement;
-        Assert.Equal("V4H_ADJUDICATION_INCOMPLETE", root.GetProperty("status").GetString());
+        Assert.Equal("READY_FOR_V4H_SEMANTIC_ACCURACY_EVALUATION", root.GetProperty("status").GetString());
         Assert.Equal(128, root.GetProperty("expectedItems").GetInt32());
-        Assert.Equal(0, root.GetProperty("completedItems").GetInt32());
-        Assert.Equal(128, root.GetProperty("blankItems").GetInt32());
-        Assert.False(root.GetProperty("responseFilePresent").GetBoolean());
+        Assert.Equal(128, root.GetProperty("completedItems").GetInt32());
+        Assert.Equal(0, root.GetProperty("blankItems").GetInt32());
+        Assert.True(root.GetProperty("responseFilePresent").GetBoolean());
+        Assert.True(root.GetProperty("frozen").GetBoolean());
         Assert.Equal(0, root.GetProperty("modelPredictionReadCount").GetInt32());
         Assert.Equal(0, root.GetProperty("providerResponseReadCount").GetInt32());
         Assert.Equal(0, root.GetProperty("existingGoldReadCount").GetInt32());
