@@ -1,0 +1,22 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_b_projection_contract",
+  "schemaVersion": "a99-v4f-b-projection-contract-v1",
+  "projectionVersion": "v4f-b-bounded-source-evidence-projection-v1",
+  "components": [
+    "PairOccurrenceEvidence",
+    "LocalOrderEvidence",
+    "StructuralEvidence",
+    "NumberingEvidence",
+    "ScopeEvidence",
+    "LayoutEvidence",
+    "VisualSourceEvidence"
+  ],
+  "pairCore": "source-backed IDs, surfaces, order, source kind/container",
+  "localContext": "bounded previous/next occurrences and capped intervening occurrences",
+  "structuralContext": "source-container and bounded same-container peers only; hierarchy/ancestor fields unavailable in frozen catalog",
+  "relationalSourceFacts": "order distance, normalized equality, literal marker facts, candidate generation reasons",
+  "semanticConclusions": false,
+  "numericOffsets": false,
+  "goldAccess": false,
+  "sourceAuthority": "frozen V2 source catalog"
+}

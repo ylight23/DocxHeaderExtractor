@@ -1,0 +1,13 @@
+{
+  "projectionVersion": "v4f-b-bounded-source-evidence-projection-v1",
+  "previousOccurrenceCount": 2,
+  "nextOccurrenceCount": 2,
+  "maxInterveningOccurrences": 8,
+  "maxAncestorDepth": 0,
+  "maxStructuralPeers": 4,
+  "maxPacketOccurrences": 26,
+  "ordering": "documentOrder ASC, sourceOccurrenceId ASC",
+  "sourceOnly": true,
+  "goldDerivedInput": false,
+  "semanticRelations": "not projected"
+}

@@ -1,0 +1,53 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_b_evidence_availability",
+  "sourceOnly": true,
+  "packetCount": 7702,
+  "pairCore": {
+    "count": 7702,
+    "percentage": 1
+  },
+  "localContext": {
+    "count": 7702,
+    "percentage": 1
+  },
+  "structuralContext": {
+    "count": 3445,
+    "percentage": 0.44728642
+  },
+  "scope": {
+    "count": 0,
+    "percentage": 0
+  },
+  "numbering": {
+    "count": 0,
+    "percentage": 0
+  },
+  "branchMarkers": {
+    "count": 6,
+    "percentage": 0.00077902
+  },
+  "interveningOccurrences": {
+    "count": 1400,
+    "percentage": 0.18177097
+  },
+  "layout": {
+    "count": 0,
+    "percentage": 0
+  },
+  "visual": {
+    "count": 0,
+    "percentage": 0
+  },
+  "classes": [
+    {
+      "packetClass": "LOCAL_ONLY",
+      "count": 4257,
+      "share": 0.55271358
+    },
+    {
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "count": 3445,
+      "share": 0.44728642
+    }
+  ]
+}

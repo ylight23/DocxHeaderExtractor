@@ -1,0 +1,18 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_b_firewall",
+  "schemaVersion": "a99-v4f-b-firewall-v1",
+  "goldReadCount": 0,
+  "v4ebEvaluationReadCount": 0,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "candidateCountChanged": false,
+  "candidateOrderAffectsPacket": false,
+  "requestPromptChanged": false,
+  "relationFieldsConsumed": false,
+  "semanticConclusionFieldsProjected": false,
+  "noProviderTransport": true,
+  "packetBodiesPersisted": false,
+  "reconstructionFailures": 0,
+  "projectionLimitViolations": 0,
+  "goldMutationReplay": "not performed; implementation is source-only and has no Gold dependency"
+}

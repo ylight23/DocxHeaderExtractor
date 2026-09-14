@@ -1,0 +1,57 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_b_manifest",
+  "schemaVersion": "a99-v4f-b-manifest-v1",
+  "status": "READY_FOR_V4F_PROJECTED_REQUEST_FREEZE",
+  "parent": "V4F-A@8e7165d",
+  "candidateCount": 7702,
+  "projectedPacketCount": 7702,
+  "shortlistSha256": "41036e1f4eea349fdc68dcac13932b00b377774f04b2c58ab184e5e29061ae12",
+  "requestManifestSha256": "220d236f502a56b4b7edb8e3b469382aaea4af25b13703e8dbc9505b709d66df",
+  "sourceCatalogSha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+  "sourceCatalogFingerprint": "ed61300844f124d02144c09ea288822a88f6c7fdd0dbee0cf1bf42d31b51fd84",
+  "sourcePacketHashes": [
+    {
+      "documentId": "DOC-0123",
+      "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+      "sourcePath": "eval/harness-lift/review-packets/DOC-0123.v1.json"
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "sourcePath": "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0133.review-source.v1.json"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf"
+    }
+  ],
+  "projectionConfigSha256": "4c75f16682e143b0cdec21359917a51cdcd7fce8fbd6727e9cab22213cded631",
+  "projectionVersion": "v4f-b-bounded-source-evidence-projection-v1",
+  "oldRequestContext": {
+    "totalBytes": 7070469069,
+    "estimatedTokens": 1767619122
+  },
+  "newProjectedContext": {
+    "totalBytes": 53572661,
+    "estimatedTokens": 13395917
+  },
+  "exactReconstruction": "PASS",
+  "goldReadCount": 0,
+  "v4ebEvaluationReadCount": 0,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "candidateSetChanged": false,
+  "goldUsedForSelection": false,
+  "nextGate": "READY_FOR_V4F_PROJECTED_REQUEST_FREEZE",
+  "classes": [
+    {
+      "packetClass": "LOCAL_ONLY",
+      "count": 4257
+    },
+    {
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "count": 3445
+    }
+  ]
+}

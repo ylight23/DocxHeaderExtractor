@@ -1,0 +1,23 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_b_payload_decomposition",
+  "schemaVersion": "a99-v4f-b-payload-decomposition-v1",
+  "method": "component JSON byte accounting plus serialization residual",
+  "totals": {
+    "totalBytes": 53572661,
+    "pairSpecificBytes": 5869096,
+    "localContextBytes": 30004346,
+    "structuralContextBytes": 2702674,
+    "relationalFactsBytes": 1964311,
+    "staticSchemaMetadataBytes": 7101196,
+    "otherBytes": 5931038,
+    "exactSum": true
+  },
+  "percentages": {
+    "pairSpecific": 0.10955394,
+    "localContext": 0.56006824,
+    "structuralContext": 0.05044875,
+    "relationalFacts": 0.0366663,
+    "staticMetadata": 0.13255261,
+    "other": 0.11071016
+  }
+}
