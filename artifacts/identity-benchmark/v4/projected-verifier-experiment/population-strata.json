@@ -1,0 +1,287 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_d_population_strata",
+  "schemaVersion": "a99-v4f-d-population-strata-v1",
+  "populationCount": 7702,
+  "grouping": "documentId|packetClass|evidenceConfiguration|sourceOrderDistanceBucket",
+  "strata": [
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY|ADJACENT_1",
+      "populationCount": 7,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY|NEAR_2_4",
+      "populationCount": 2,
+      "sampledCount": 2,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|ADJACENT_ORDER|ADJACENT_1",
+      "populationCount": 2712,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|ADJACENT_ORDER|MID_5_16",
+      "populationCount": 15,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "MID_5_16"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|ADJACENT_ORDER|NEAR_2_4",
+      "populationCount": 245,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT|FAR_17_PLUS",
+      "populationCount": 6,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY|FAR_17_PLUS",
+      "populationCount": 10,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|NORMALIZED_TEXT_AFFINITY\u002BTERMINAL_ACRONYM_VARIANT|FAR_17_PLUS",
+      "populationCount": 1,
+      "sampledCount": 1,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|NORMALIZED_TEXT_AFFINITY|FAR_17_PLUS",
+      "populationCount": 299,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|NORMALIZED_TEXT_AFFINITY|MID_5_16",
+      "populationCount": 84,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|NORMALIZED_TEXT_AFFINITY|NEAR_2_4",
+      "populationCount": 35,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT|FAR_17_PLUS",
+      "populationCount": 6,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|SHARED_STRUCTURAL_HEADING_KEY|FAR_17_PLUS",
+      "populationCount": 22,
+      "sampledCount": 6,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0123|STRUCTURALLY_PARTIAL|TERMINAL_ACRONYM_VARIANT|FAR_17_PLUS",
+      "populationCount": 1,
+      "sampledCount": 1,
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "TERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0133|LOCAL_ONLY|ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY|ADJACENT_1",
+      "populationCount": 3,
+      "sampledCount": 3,
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1"
+    },
+    {
+      "stratum": "DOC-0133|LOCAL_ONLY|ADJACENT_ORDER|ADJACENT_1",
+      "populationCount": 2348,
+      "sampledCount": 5,
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1"
+    },
+    {
+      "stratum": "DOC-0133|LOCAL_ONLY|ADJACENT_ORDER|NEAR_2_4",
+      "populationCount": 1,
+      "sampledCount": 1,
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4"
+    },
+    {
+      "stratum": "DOC-0133|LOCAL_ONLY|NORMALIZED_TEXT_AFFINITY|FAR_17_PLUS",
+      "populationCount": 171,
+      "sampledCount": 5,
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0133|LOCAL_ONLY|NORMALIZED_TEXT_AFFINITY|MID_5_16",
+      "populationCount": 193,
+      "sampledCount": 5,
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16"
+    },
+    {
+      "stratum": "DOC-0133|LOCAL_ONLY|NORMALIZED_TEXT_AFFINITY|NEAR_2_4",
+      "populationCount": 256,
+      "sampledCount": 5,
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4"
+    },
+    {
+      "stratum": "DOC-0133|LOCAL_ONLY|SHARED_STRUCTURAL_HEADING_KEY|FAR_17_PLUS",
+      "populationCount": 3,
+      "sampledCount": 3,
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0133|LOCAL_ONLY|SHARED_STRUCTURAL_HEADING_KEY|NEAR_2_4",
+      "populationCount": 1,
+      "sampledCount": 1,
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "NEAR_2_4"
+    },
+    {
+      "stratum": "DOC-0133|LOCAL_ONLY|TERMINAL_ACRONYM_VARIANT|FAR_17_PLUS",
+      "populationCount": 1,
+      "sampledCount": 1,
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "TERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0252|LOCAL_ONLY|ADJACENT_ORDER|ADJACENT_1",
+      "populationCount": 969,
+      "sampledCount": 5,
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1"
+    },
+    {
+      "stratum": "DOC-0252|LOCAL_ONLY|EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY|FAR_17_PLUS",
+      "populationCount": 1,
+      "sampledCount": 1,
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0252|LOCAL_ONLY|EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY|MID_5_16",
+      "populationCount": 1,
+      "sampledCount": 1,
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "MID_5_16"
+    },
+    {
+      "stratum": "DOC-0252|LOCAL_ONLY|NORMALIZED_TEXT_AFFINITY|FAR_17_PLUS",
+      "populationCount": 53,
+      "sampledCount": 5,
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0252|LOCAL_ONLY|NORMALIZED_TEXT_AFFINITY|MID_5_16",
+      "populationCount": 117,
+      "sampledCount": 5,
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16"
+    },
+    {
+      "stratum": "DOC-0252|LOCAL_ONLY|NORMALIZED_TEXT_AFFINITY|NEAR_2_4",
+      "populationCount": 132,
+      "sampledCount": 5,
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4"
+    },
+    {
+      "stratum": "DOC-0252|LOCAL_ONLY|SHARED_STRUCTURAL_HEADING_KEY|FAR_17_PLUS",
+      "populationCount": 5,
+      "sampledCount": 5,
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS"
+    },
+    {
+      "stratum": "DOC-0252|LOCAL_ONLY|SHARED_STRUCTURAL_HEADING_KEY|NEAR_2_4",
+      "populationCount": 2,
+      "sampledCount": 2,
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "NEAR_2_4"
+    }
+  ]
+}

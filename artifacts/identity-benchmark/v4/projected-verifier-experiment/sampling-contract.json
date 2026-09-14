@@ -1,0 +1,27 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_d_sampling_contract",
+  "schemaVersion": "a99-v4f-d-sampling-contract-v1",
+  "population": 7702,
+  "targetSample": 128,
+  "selectionSeed": "a99-v4f-d-source-only-stratified-sha256-v1",
+  "selectionInputs": [
+    "documentId",
+    "packetClass",
+    "retrievalReasons",
+    "normalizedTextEquality",
+    "sourceOrderDistanceBucket",
+    "endpointDegreeBucket",
+    "requestSizeBucket"
+  ],
+  "forbiddenInputs": [
+    "IR_ID",
+    "GOLD_RELATION",
+    "V4E_B_OUTCOME",
+    "MODEL_OUTPUT",
+    "HUMAN_DIAGNOSTIC"
+  ],
+  "goldUsedForSelection": false,
+  "knownIrUsedForSelection": false,
+  "deterministic": true,
+  "sourceOnly": true
+}

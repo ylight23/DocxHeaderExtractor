@@ -1,0 +1,17 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_d_firewall",
+  "schemaVersion": "a99-v4f-d-firewall-v1",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReadCountForSampling": 0,
+  "v4ebEvaluationReadCountForSampling": 0,
+  "knownIrUsedForSelection": false,
+  "candidateUniverseChanged": false,
+  "rankingChanged": false,
+  "projectionChanged": false,
+  "requestBytesPersisted": false,
+  "requestHashesOnly": true,
+  "noProviderTransport": true,
+  "armLabelsNeutralInternally": true,
+  "goldAccuracyUnavailableUntilIndependentLabels": true
+}

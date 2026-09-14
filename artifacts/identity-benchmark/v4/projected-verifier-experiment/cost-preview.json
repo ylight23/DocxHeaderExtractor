@@ -1,0 +1,28 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_d_cost_preview",
+  "schemaVersion": "a99-v4f-d-cost-preview-v1",
+  "pricing": "COST_UNKNOWN",
+  "oldArm": {
+    "count": 128,
+    "min": 303882,
+    "p50": 1288369,
+    "p95": 1288408,
+    "max": 1288410,
+    "total": 120849684
+  },
+  "projectedArm": {
+    "count": 128,
+    "min": 6202,
+    "p50": 9508,
+    "p95": 12843,
+    "max": 17160,
+    "total": 1216298
+  },
+  "combined": {
+    "calls": 256,
+    "estimatedInputTokens": 30516576,
+    "bytes": 122065982
+  },
+  "outputTokensExcluded": true,
+  "providerNotQueried": true
+}

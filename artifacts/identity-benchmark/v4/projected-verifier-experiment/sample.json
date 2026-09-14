@@ -1,0 +1,2119 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_d_sample",
+  "schemaVersion": "a99-v4f-d-sample-v1",
+  "sampleCount": 128,
+  "selectionSeed": "a99-v4f-d-source-only-stratified-sha256-v1",
+  "canonicalOrdering": "stableSha256(pairId|seed) ASC",
+  "documents": [
+    {
+      "documentId": "DOC-0123",
+      "count": 70
+    },
+    {
+      "documentId": "DOC-0133",
+      "count": 29
+    },
+    {
+      "documentId": "DOC-0252",
+      "count": 29
+    }
+  ],
+  "packetClasses": [
+    {
+      "packetClass": "LOCAL_ONLY",
+      "count": 58
+    },
+    {
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "count": 70
+    }
+  ],
+  "candidates": [
+    {
+      "pairId": "DOC-0252:P311-312",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000311",
+      "right": "DOC-0252:B000312",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "0008e7cb37f5931c6a65a97ccfdbbe43f82b0c2a1180b0e8cd0725d1276604a7",
+      "packetSha256": "e35855f5b35cd618cc70c17bceda78dc9ebd094a51a9ec69bc46e0117c2bd71c",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1094-1095",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[583]",
+      "right": "DOC-0123:body[1]/p[584]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "000b6b6bf707fbe0e2ac73b8c0c2c39c468fdb57587e078ad82e44ccb52edcba",
+      "packetSha256": "f8531c2e5201d2feb99f6fbc515a41cd4c977942e14d90985c99354288c63dee",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1533-1534",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[2]",
+      "right": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[3]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0015c8a9435ffc329f8c1b29292eb51a5b4ebaf7809e780763ef0848b9af32b1",
+      "packetSha256": "0d4476631cc1ea7a6e09083a1a42a6f78685631331a4cdb7e86196f758423b98",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P933-934",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000933",
+      "right": "DOC-0133:B000934",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "00259f49fb9174033d592ac9fd7148bf7fef767353d63c4a7072d2bdb6b6fbfb",
+      "packetSha256": "65ee92530375308a831ca0ac01717dacf9f3e0de79347bccda94268ac40e016e",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1761-1762",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[1053]",
+      "right": "DOC-0123:body[1]/tbl[45]/tr[1]/tc[1]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "004034177268b1c50276fa7f77cbf2e2f757be6b9805fc30f9d370befed1bde3",
+      "packetSha256": "8c55f731a2dbb82c0b90cf6eeefe82568cd7abcf7b552c57ca571a9ff205bfa9",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P750-751",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000750",
+      "right": "DOC-0252:B000751",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "0053a1b83bd570d23e997d9e7dea2970fe575ca4e1c88e35a605db834509a37f",
+      "packetSha256": "d20da60c4dbad4d378d1f71c7b04eafa2384539c2571175d32208a19b7f63dc7",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P561-562",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000561",
+      "right": "DOC-0133:B000562",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "005927cfd3a2a85176ae8ce2c89290fc04b2b10c359a813e12399375eef74601",
+      "packetSha256": "61181618ebb9d343debb7c835100dc680292c054efbfe4ca788699692ee5234c",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P393-394",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000393",
+      "right": "DOC-0252:B000394",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "006cc5ff47a4257a6f58629096743bd7c05f3e099103793e1abec573a294f010",
+      "packetSha256": "3f814d5bcbb9aed0571142315600af546392586fc35e9a3cd1f95f950a937846",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P962-1000",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[493]",
+      "right": "DOC-0123:body[1]/p[534]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0081aa17813994886cccd416e4335bd539aec1687d041319eb3ef54bfb962360",
+      "packetSha256": "1ca19cae7d9912d6e877da1f2ff797ff48020863be64960ef0942b943d34b535",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P3005-3006",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[2]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[3]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0097b3b54c440f467e7da04af90f27bcfaa845224adacb0f50de7205b2204f3d",
+      "packetSha256": "6cf5caf0da9b999b4612064ecc20b7f530bdf1ee2b0e58e2b9d62db0fc3848f1",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P960-962",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000959",
+      "right": "DOC-0133:B000961",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "00a4179ce2a9614ec81bfc57efede0911802627b28962f213b8fdab20e666006",
+      "packetSha256": "e9712e145dba74a26d74c485e045a34611d0c54de2db39375ee54043eb96da0f",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1425-1973",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[31]/tr[6]/tc[2]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[47]/tr[6]/tc[2]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "00a6870a81ad778fac1b457d4662e78cb4498595348b7795a5a23f8c1829d4ad",
+      "packetSha256": "cd0501237697a702d35a04e152983a41c43a18579e87ff94fb24c91caaa31473",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P508-512",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000508",
+      "right": "DOC-0252:B000512",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "00aeee89f7dc47a671ba19870d808910fd3d7ea4ed13d2d8ff8ec53c63148050",
+      "packetSha256": "f50977c7e87f1de1a3cc5c8da7ffb54937e276bfb8b3989c196f6d4779d3b72f",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P1069-1070",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B001068",
+      "right": "DOC-0133:B001069",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "00b495a931e862d759dc1a56fea4e320b85a730d6e609d47384f8d0cb588d2ca",
+      "packetSha256": "c05b2f9f350173930c3b3c1be21bcdcf73b05c737d448bd1a2dd7b3fce0780f0",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P1467-1468",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B001466",
+      "right": "DOC-0133:B001467",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "00d3b49955890685da658a92ec9a3c8b5a3bbf13d5a1661fdea476de52353632",
+      "packetSha256": "a16afc0aae3a8f5ce0d9bb93479ed7bfee579697fd39aad2c9b998801c796dfb",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P783-784",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[317]",
+      "right": "DOC-0123:body[1]/p[318]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "00d3fb5bc3ef00f9fb010753334ff900dc153c6827a3018f5a71126ba43af6d2",
+      "packetSha256": "180e38ab2c09be79280a3140ba8829028632d6fb63768d93e623448f171b6a88",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1565-1566",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "00d54ab2665fe0700b1ede70b1013ac796fd2d63cac348eb5bfd333dd8981265",
+      "packetSha256": "bcda7e13957e7b2e0d8f3a711645afdf2d8034468602208c865add8d487c0ac0",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P188-189",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000188",
+      "right": "DOC-0252:B000189",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "00d75baab650b7722ab9e05829afeada259a528d98dea0f8639665bccadade03",
+      "packetSha256": "0344cf55941b641c65623ee087b02d3fd6bfb28470b973f48cf1f6a8a49910ee",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P855-856",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000855",
+      "right": "DOC-0133:B000856",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "00e53fb1c46641cccb31daa65a01480ea52c107e1f4b589e026727b063f0220b",
+      "packetSha256": "b9f5b569c7df614a794ae4a1e6c9939b9dde4a1abe0e48330b317dd5792e54f1",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1592-1593",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[920]",
+      "right": "DOC-0123:body[1]/p[921]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "00fad3d72ed7abb4eca081bdfa472c0ad3c6a35e2fd68e38d6e1f3206c5ffb27",
+      "packetSha256": "3a1bf5205a1b37d2eb2ae77be9efc49339e0be4279545c56b7b029aa6d5c5e0d",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P162-168",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000162",
+      "right": "DOC-0252:B000168",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "010cb4cd18bfb78cea7362105d98a415534df93558a8ec0a19f80fb21595fc3c",
+      "packetSha256": "a3bf6a9fefe15b057e5d514c743be15cdae1bdaf61bed30d0a44b724a030eee3",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P966-968",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000965",
+      "right": "DOC-0133:B000967",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "01127abf4cde24538bcebe45bfb2e4a0fd2952259fb61c16e96d9862727ba2be",
+      "packetSha256": "d3d6200475e223bacc35607e397b354955fb900bb78aadfd16403f9d01469036",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P418-426",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000418",
+      "right": "DOC-0252:B000426",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "012a590bbafc99f97c16afdd04f20749d557300e9b29873c2810dc071c508a88",
+      "packetSha256": "c238a448f7a9db529cf7ee0e04503a31077cdab83079a65e91a03330bb2679d6",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P194-731",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000194",
+      "right": "DOC-0252:B000731",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "012c628bc4c234d885c851453f3023b5659e9547b61b411570ce960048fc92f0",
+      "packetSha256": "c0e91be4a1ca1ea269f527f423e1d8b1694ad3e8077c9fd67c2dd2a3a0b13f43",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1006-1007",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[545]",
+      "right": "DOC-0123:body[1]/p[547]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "013d543658362c4a16e49769040626e5a9fc4ebaa919cb39a5fdeba65d9d71ac",
+      "packetSha256": "15304a2b7d9deb416db2a61895959e4a38108a29f0179507a64403bd19973b39",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P99-316",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000099",
+      "right": "DOC-0133:B000316",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "015409a0b0f84a6c4924f1ab3b1f4c578c8f261914cdec09d41d33365b88621e",
+      "packetSha256": "ffb7dfcf6416393c10bc7727d48163abba1864e414b5ae6aba8a3d9badfc0295",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P827-841",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000827",
+      "right": "DOC-0133:B000841",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "0154f1e493328893eb59b1dc8de316acaca1a030c4d68dadd7f7047ea359f7a1",
+      "packetSha256": "e4294912bd35950c72777dcaa3b84b4d0bc23264cad15b9b5c889576fc9bd5b1",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P2278-2294",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B002277",
+      "right": "DOC-0133:B002293",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "01992947835d81adbb6b2545b96041dd72b121bdf89bfe5e4f56d0765f215386",
+      "packetSha256": "8d09b0629fa711a7c1eba324bb657e6195ecb1a3ced79e79860670a0806db8b7",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P2227-2229",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B002226",
+      "right": "DOC-0133:B002228",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "01ab9b08788222ed15a21d8f184b28a3230f68778bc51997d7c71b2cd4d7a9b4",
+      "packetSha256": "4a99dbbb5a751679e3743a5c5de9bcdb73856c477b66141ae32dacf8430a4d9c",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P898-899",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000898",
+      "right": "DOC-0252:B000899",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "01c02583c83aa2f9b8fde394a0bb1c268d54e8158a63e799295f557c1b371594",
+      "packetSha256": "b3ffc8902a7799aac10dce03ac2317d23483d93f15a011578bbe2bc2ce8d262c",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P1982-2046",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B001981",
+      "right": "DOC-0133:B002045",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "01d6df498d6c2dec6975777334addb901386afe13e7ef358a95eb71499f1b28d",
+      "packetSha256": "abe89e57f81c99527501e655e51632c6cdc3a623f0542870e68dae9d54599ceb",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1540-1591",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[908]",
+      "right": "DOC-0123:body[1]/p[919]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "01f0d83eb365eac0984fa72bbd92be8a6983038384e04eed0d6c2448c8457b5e",
+      "packetSha256": "079e4f50dab669f32688372d09aed252b7fe8ac37d4086c7c721b22cd263067f",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1818-2556",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[45]/tr[24]/tc[2]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[54]/tr[17]/tc[1]/p[2]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0208382a884e371800bb264d1b75d8be822c824798842d7d9c255d2c323e3a4d",
+      "packetSha256": "c971a7a5d223cfa11ac52667054dfb37b439cb1ffb9f465c2db6f175943b49b8",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1161-1162",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[639]",
+      "right": "DOC-0123:body[1]/p[641]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "022532b072c555babd1d08e63d755b50cf8f818a1bacd115a2dc647825995e95",
+      "packetSha256": "3c7b7b8bbeaaa301e8bfa02ea4925ce0fce8a3539db78200804beb3c46a0b8e8",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1087-1088",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[21]/tr[5]/tc[1]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[21]/tr[6]/tc[1]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0233e5bef33690d3786a32650e08d7eb322d96c4e3f4d52114c775a9bc69db3d",
+      "packetSha256": "a90d77bbe5943f4df5b9116c380c16a6513f8ff506b849caf4c0b3e95eb144b5",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P118-136",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000118",
+      "right": "DOC-0133:B000136",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "02690f47ce318405852d90bf7a697b7d50b315545b8301e2e969d245256aea63",
+      "packetSha256": "2144a7cc7483148da4beb3dcf9c8149d4b9f5ee45564bfab628564093f468212",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P348-354",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]",
+      "right": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[20]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "02864ff72ceb0b231bd5595f4a226776aabff473e4154e6ec698b921945f96e3",
+      "packetSha256": "b727ee2e12b1ead2ef0c80e2501668a21e70e03c86a42d541f8c5aa4f8d8906c",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P955-957",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000955",
+      "right": "DOC-0252:B000957",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "0290bda82321c870472530eb548636af2f00cd4dc699e2d22148250e086c585f",
+      "packetSha256": "0295d93b92046eec36ee86e318dff5cfd828c57a09d372295467e1dc26e7d46d",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P140-157",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000140",
+      "right": "DOC-0133:B000157",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "029532f014f782e01cdc28be49a7d3d3af1de9363029817b91ec8d201dc8599b",
+      "packetSha256": "999cac4fd3b228b50702acdc0d48f0126194d2e78c83b3b850e81bcd78633ea5",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P1611-1618",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B001610",
+      "right": "DOC-0133:B001617",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "02dc1422781927b8c82fa5930fb00a3440253c58f543d817ec632540f8ba2b28",
+      "packetSha256": "752eb4b76caf6ff0c939fd93520b5b54dd0ef38544495c49fe236517e954e790",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P2843-2844",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[54]/tr[77]/tc[2]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[54]/tr[78]/tc[2]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "02e24d24f2ed073877cb3b1f12c90b835689fe2d15145b2e8cd5945a655659fc",
+      "packetSha256": "e19c7376cae90b895d5ec4d9b7dd1879de653dbff38b1a0a5afadf063703a8d2",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P2008-2009",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[1199]",
+      "right": "DOC-0123:body[1]/p[1201]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0319028e7761e0b26c86ac056fe36d7b23e74226f2f244a3249519162669585f",
+      "packetSha256": "7c3775eea61de5c66ad7fb7c4227d007196ef522246645abbd1ad84b56f940da",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P1803-1805",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B001802",
+      "right": "DOC-0133:B001804",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "03b789a4c7d43e321d109f15d417edef1f68c54799008e86a28ad3298e71c4ef",
+      "packetSha256": "744b04b9f05fee89e6ff6ed551b13728e408da3c8276f9ba8b3275b0fde0806f",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P449-453",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000449",
+      "right": "DOC-0252:B000453",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "03d5d0b1bd7d17699f550bfe5ea8b1c90594f464aad8e96cab5eca7c10014aae",
+      "packetSha256": "1456c44e433069a7880cc1fb0aa63109937d7e5eccd523ea2ce4e8b088126842",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1160-1161",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[637]",
+      "right": "DOC-0123:body[1]/p[639]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "03f61049e0506c6cb873ba180a3157b53933c340d07a1516fff80913b7d2e408",
+      "packetSha256": "31d23888085690e36746b16c40d0e1630d70d511a5eaedf92246addec3a7cac7",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P927-930",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000927",
+      "right": "DOC-0133:B000930",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "044d91b4f5dbdd24fcdf520615753e5cbdb0c26705842e5703baab811447c2e3",
+      "packetSha256": "e7705a5d3566c5e57990bb58913fd706ba6bf5ae1482ce8f803a1e46bd372798",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P199-325",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000199",
+      "right": "DOC-0252:B000325",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "046be7c2670f83aeef41a75b8a401278ef7b78ec925e289518906a75bc226edd",
+      "packetSha256": "8bbaaef7530d68f0fc4c24d4760f3ef473c0e8f08fa8a59e6a60622ee153c9c0",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P434-439",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000434",
+      "right": "DOC-0252:B000439",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "04a374f8acf37a4e604ec780569e6dbf4b93ea701fa526d18fcc8e23e40d7b99",
+      "packetSha256": "a0b10a2d2c8555460d4ec287ef1792eaf0df70f6a42f09c9e4e6aa872e127726",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P3151-3182",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[1462]",
+      "right": "DOC-0123:body[1]/p[1504]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "052aa40617e2aedd23e96de5addc8224affc59bfee508612bbf2a7de6077f7e3",
+      "packetSha256": "c484f66655dc39ade3244969bb1046bbc4d8ad77de5845ea83dac13b4adb47bb",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P01-42",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[1]",
+      "right": "DOC-0123:body[1]/p[76]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0599c58a4a6941cf47986bfdf96a95ffa22d10294fd6624cb31c595cb9b86198",
+      "packetSha256": "15455027066432ed326a1cdb44acbdfbf356c0c828354748df373350e09592ef",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P16-31",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000016",
+      "right": "DOC-0252:B000031",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "059d0f862e7c64fe1aa2bb4a299aec8713c241528db81aeb5a8cb73690991b75",
+      "packetSha256": "ffcd62ead95bbd4e45e0a5b7820e0387906f1185b9330d5a04bd2f2eebe26887",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P36-41",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000036",
+      "right": "DOC-0133:B000041",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "05e9eb4dd9257d1f5fbbcf9ded23f192734c2398cb0afa4f296852b0e8d61353",
+      "packetSha256": "d537fa92d9d38a12213c25e87233205519e936ceea56db44942e741b5598c07b",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1603-1610",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "061ca4de8e09ba1a4199027d899a20804b8ce7768fca1adc0e1fedf27dc9f420",
+      "packetSha256": "f97c8d5bc696f93c165fa4177233122cdbef8c99563f9b418eba6b545b6dea15",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P1892-1908",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B001891",
+      "right": "DOC-0133:B001907",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "06420dbe6441313eb44ac1dbfe0602e59bd5aed321cfd2241aab4f113da534d7",
+      "packetSha256": "a08e17866dec5e78062f03429f2d3a497de8854644285be506ce9f6356b3224a",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P1736-1753",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B001735",
+      "right": "DOC-0133:B001752",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "064ede8843828cea50ed3d73449ee57bd3db248d4ac8623f80496230c3f3d76c",
+      "packetSha256": "34d1452423359fb6c151e6517a87e62923b7a29561d7f480558f82ed3dba1dad",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P2048-2050",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[50]/tr[14]/tc[2]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[50]/tr[15]/tc[2]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "079b7c33d6f9092080da3998c4c281b851b4b8335875dc20672f8ee7b909cf8e",
+      "packetSha256": "8ca93189178a7bf5c3fadc77a0399cdf72efd41ba9c5aefd8b94bd0f36f04ce8",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P224-226",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000224",
+      "right": "DOC-0252:B000226",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "0851f706edb114dbf40f507689dc587572d42f6952e0dcf16a951805d12c6c67",
+      "packetSha256": "af23ee1e37866454a5ffa7710359e005aded535d29ce20d1b1c0af25923a2e66",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P66-1995",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[101]",
+      "right": "DOC-0123:body[1]/p[1192]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0897718775e42a56ce872f8d4d0ac3948a9084ca47922d837d8e32781a4b9a7a",
+      "packetSha256": "a1318d43ca948b12ac88a47e43b083dabbf1ebbc06d5e0c9b4c5046cb7fd4fc2",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P3013-3018",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[5]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[5]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "08e34c8966f3ce32d6865a07b170807575f5a4782675cd2d7e98de044c632e2b",
+      "packetSha256": "4e0bde36692baf87b0a8863f8db8445935cc500c5d732b2c6a11bacd2b6765ec",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P396-402",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000396",
+      "right": "DOC-0252:B000402",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "08ee938bfeec0f4385dbec340afb061931839ea5d45fcda75aef61ced867827a",
+      "packetSha256": "7d7e95d7592ec4e9516cf7a1992c87dfa6b5d40a191a58fb9c0f70b82fb378ff",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P22-26",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000022",
+      "right": "DOC-0252:B000026",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "09e6a1188b86d5c55dc90f5e283959948b5ad48f88c08595b8ee47927d2fa67d",
+      "packetSha256": "669971490e66bba2ed21766204db20bfe7e7ba7fbb340f1f49097d1bca0be74d",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P3092-3097",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[1378]",
+      "right": "DOC-0123:body[1]/p[1387]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0d08e080d2494686c8a99cf3e5b6b7028782c698b2c69dcfb9655eeb065df4de",
+      "packetSha256": "adb840fd286626984c0d9dcd1c1f8f7d29d96422d4e46864ce536ef66b24c5d8",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P3086-3088",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]",
+      "right": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0d81af3e08d3bcf234cef71861fafac9ff11a75f972e0b323115e2aab5507add",
+      "packetSha256": "116a25b1295399f37fdf6dfdfc2025900be02a8aeb3abb7bfaf9216f6812e209",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P107-235",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000107",
+      "right": "DOC-0252:B000235",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "0dfc7181375806df2893ad75b04df3a0fd4cf063d7261bf389dd0decf0d97af3",
+      "packetSha256": "a9463c35862b07dcc793032e5bff610450da4f2c355fb835fd482f4dfdc90355",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P2742-2754",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]",
+      "right": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0e67a7e23460ce1f6e433c31579e50834cd6c334c3417679908bc5c27451e5f5",
+      "packetSha256": "b43ff1a10487b86499ef458a553b328ed07ab16570606055d494b90ca570be7d",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P3010-3015",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[2]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[2]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "0ee1b485755796af8c15c0161f1cb7ebb4fc4aa0b278ecd2609f5ccd124a06e0",
+      "packetSha256": "1eaa68d768dbfd4412876b4616b7ef47db940c4bc05d535474441fdf6fd451df",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P539-595",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000539",
+      "right": "DOC-0252:B000595",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "0ee4f2e175bbb39745c8d381b993a886def46425942e60d9ba70a39349e107db",
+      "packetSha256": "23b2fc246a1552edfb1c35061d10175b2538cbe30c437a17c267d13f60dcab84",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0062-0126",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[97]",
+      "right": "DOC-0123:body[1]/p[179]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "102d5ba8f9265d1013ea8f7bf2f4ae5fbdc50434c0e743c461dd776f551033c0",
+      "packetSha256": "307e361561ef00f972036b8129412547c55cc045cf25e79985951e845391f4d4",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1178-1179",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[25]/tr[3]/tc[2]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "128a1d90cd0d124ddd21ef64cd0e864faaf327ff06f2b57cf0cb40fc19f2d2af",
+      "packetSha256": "7d6b610514be426aed5058e214c1132155ff0dc22b87c4d1ea20fb395a0a5794",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1228-1229",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "1361ca196d84ecbfe048f7f7305757c589b5e0a181eac2213aac9c41fe5299d1",
+      "packetSha256": "f24f71b94887fe69b2c69b74a7f447a977e715c96738213e6de280a2997b327f",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P2101-2103",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[50]/tr[32]/tc[2]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[50]/tr[33]/tc[2]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "1505696444742fef5a2b11af4ad4c750ff76a47833a9444c75255e2dc286b237",
+      "packetSha256": "008609090359fddae8386d9fe331c198aa304c4d7fa2fa1bdfe05df297be6bda",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0068-0259",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[103]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "199e711f4247faf6da8e9fad59c561d6677102592a600dfe6988068e14943d88",
+      "packetSha256": "7648dee6297792213d9ea3b5f57e4de82775eb444bcf23b31d524dafd29031e4",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:P63-83",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000063",
+      "right": "DOC-0252:B000083",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "1a5def1fa7b471c0cb6ff3976757d8f3561e8ff5cd15f4fc82af441e8cb9dd6a",
+      "packetSha256": "2761367ec4aaa51a7b9b09afa011201d3b72aa4e2f0f8ecdef90f4027e468583",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:V4P0011-0013",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000011",
+      "right": "DOC-0133:B000013",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "1ac0aa8b19af715475737ad03397fc3193fdee196d9e5a382bde361d70574893",
+      "packetSha256": "2d66a0142bd8c2a677ad728d1e232351799bb49b560fd4deda93a1efa42d8a9f",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1334-1338",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]",
+      "right": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "1bf19263fc051f59daffca844961c36908e0c2593e4e6a045892d3f65ce800dc",
+      "packetSha256": "9ae8f7decdb0a31c169a5da44d96ab58c850a3afddf9c9f4ecaea43bb9c6afe7",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P05-06",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[7]",
+      "right": "DOC-0123:body[1]/p[14]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "1c23cc6764867f5b7a042e109d04b880482569b11de39d090abff128462d71e8",
+      "packetSha256": "fc2bab77e1071a07e9fe491aeac0aca95c7fe370d85beee596fbaa359ff33f44",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P49-132",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[84]",
+      "right": "DOC-0123:body[1]/p[192]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "1c433b350bcd181988d7ca333fa7a49bbc4da3a6410ab6d6eb12446bae843056",
+      "packetSha256": "a47d473ed1116bfec286968980620403a1f3a11230d611afd31562a4d25606f5",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P59-254",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[94]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[8]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "1de5ff930c7f9f0fd57d935cc5f4cdebd7dd31a567469468d826df5e8fccfcb7",
+      "packetSha256": "bc1ed33a495c9cb79f17971e3b1ad743f067448e0396083c4d5703548d50103a",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0132-0200",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[192]",
+      "right": "DOC-0123:body[1]/p[263]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "20011bfc77523c29e5e60f572df63e99865f287900ef6bed97b279ebd256259b",
+      "packetSha256": "272f728a0c11c76d288d9ebab9ce3e28ed0af7af4ac34ed8c7748b20e4a79330",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:V4P0006-0042",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000006",
+      "right": "DOC-0252:B000042",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "20e3a53ffa6e83523eec6a2d7ca83f422306ce9d8c4acf5d374477fb98b6eb97",
+      "packetSha256": "097e3ae0330d204a6b372b4e92ab39091491a86672b67119edcfbe5e7539ef17",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1482-1485",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[875]",
+      "right": "DOC-0123:body[1]/p[878]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "214fd309fd67f782f04a35b5bbd4cc103a322246b8d3c306a378479f5f5be5b2",
+      "packetSha256": "f33fb5dd4caf9ff086728e2c9a376fe4d3c50448c8bdff9d33e81bae1dbf7ba5",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0128-0258",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[181]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "23de4f03adf26adcfe0be48f7898c79919340fd6004a714454c565130931c463",
+      "packetSha256": "20394661210723991f4de8f3ac7f0bf134a72cddd72df725d2ced3e88516738f",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0120-0250",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[173]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "24c5416acbb0c9dd7c1c1481d5066a63e65712a80cc253b61076ec081f2eb3f4",
+      "packetSha256": "b5d6c9e313d38d298022816b6fb8b2a983720a5b1fb9b22af947f2a49228015d",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P53-251",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[88]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "270dce8d569f0c579452f9c1e8614475f4e2aadc1c58d82142dc8a1cc2fb3e56",
+      "packetSha256": "04c2dc59867c11cffc995e4092e4e15f5acef119d6877cc572e3c5ab8161aed4",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P552-554",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "2ab4700f5558598e6447dedd2eee1aa5536bfda4ad4f968ee0f4b8e04f9e1c6e",
+      "packetSha256": "f6ae86291282be34e4626f439f9518ae0688e756af1af05f6ebe45fbdd8bfec1",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0057-0123",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[92]",
+      "right": "DOC-0123:body[1]/p[176]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "2dde672660a29c0423dd95cbcb5fe9bcb290326ac329af4217806f2788a0b6b3",
+      "packetSha256": "cdde12557e2fb665ad9a4d8fbcbfc3be0cfe5968a3e2694fb2f26144303211ab",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0070-0130",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[105]",
+      "right": "DOC-0123:body[1]/p[183]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "3264c56d2442983eb1dc044af891725754c6142cd154b165ebeaac63f18011cd",
+      "packetSha256": "9a9ba615ea959cc7adb951db3926da51250f747b7ddfa0681a0b9ea3cacacbe5",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0049-0119",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[84]",
+      "right": "DOC-0123:body[1]/p[172]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "35145ec4371eacaa31c625783c192f74c33c736e2cc3be7278c407c16281b3bb",
+      "packetSha256": "8929cc48f267da4e71e31aeecf15c891bbc6df7989364034aaa1285f9049c423",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P602-1271",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+      "right": "DOC-0123:body[1]/p[695]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "3f8f3c5e0b0330e86933e584d9ca7fd69eebe649fe596127388c9321280ae71f",
+      "packetSha256": "e11a20184d97e0ff8d264a06ef3bf9cf31fde7688b84b941af94e02ccd8f20a8",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1035-1036",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[3]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "3f951fe4f34ee51409398c92873076a5eaceed5e6c11d329dfbcdd4adb320157",
+      "packetSha256": "8c76a94d8c1bcd45b28cc709e17b7bce87ce8e5a0ae12060e193a5a0de6f12c4",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P937-938",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000937",
+      "right": "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "3fcb92bea86d7abbd02a3fc9a7865714ad0d20b7f602e1960227b8641fe80fc5",
+      "packetSha256": "4c256a56c5b639fb8c291556f1a0d064e70fb489ce20714105e4f95fac7fc90f",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:V4P0005-0935",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000005",
+      "right": "DOC-0133:B000935",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "TERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "412326fab524bcbf8fccd16e157b20f37d9a3021cd2ac72f887053742cf06c18",
+      "packetSha256": "1326238160957e55120b47df10eed4cb9fd3544e089e4ebfcdad501f8605f982",
+      "reasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P57-253",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[92]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "45ee0709f7cd112f002da497528203f7522c7b5c12883afe7993fc0ec995bfe2",
+      "packetSha256": "30e2bd2894c3e3884bf64dc4b9ca8419290d81c8eb66e07732dcbc12cb4fc078",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1056-1057",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[3]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "4841130339b4be412b0717c3c40bd249f33420c724205a53d201e038391a3a2d",
+      "packetSha256": "1dd0b31213e70f865e10e14b34d6a3dca360d4cecf5898202a85970398537ba9",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1665-1666",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "48ff80c26e3dd8e399554b4eb880d7cf4857cb197b79ded5ce04d68039bab519",
+      "packetSha256": "9c7e39b51f09fe5d6296b4ac2df0d550059de9f84a1f04dd8054ea4305318fb6",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1093-1094",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[21]/tr[9]/tc[1]/p[1]",
+      "right": "DOC-0123:body[1]/p[583]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "4c13459d4c03007a1bba9935f5cf359e87ebabd605ffaca9c3a706c107e73c2c",
+      "packetSha256": "e9ac3ad74a1b2630649e776532b7a2a535f9696b468dc013949fafded281a79c",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1664-1665",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "4c6ea096b34ffb6b9bbaa7cead327a81139a4a4fa638850ac19a3dae3c887d92",
+      "packetSha256": "de5110266d644ef585fb2aa15f93e30574d8b6112d2fb55c32f0c6bb8cfb3db9",
+      "reasons": [
+        "ADJACENT_ORDER"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:V4P0013-0034",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000013",
+      "right": "DOC-0133:B000034",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "5dd2723c955904ec0d94110fb042721b63f49ec6afe474932982db0d6b494a92",
+      "packetSha256": "58d1307225d871a1b26ed60e3b745697b833cef2a97f4e32c4da35ffa3481bea",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P55-252",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[90]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "5decb08fece29e8c13675bd871b83dc843e5d50f7cf8bfe3af393718cd17e1d3",
+      "packetSha256": "ebe9cbdb3dbe241354529e478cee16df30d68702e1c2b03585e6e1635653b3b8",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P250-541",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]",
+      "right": "DOC-0123:body[1]/p[276]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "66aac6fa5d4a541c5d23bcca060d5868149da8a17ee856e7a3bd60757b37c3d4",
+      "packetSha256": "befb8455b4e49f9a8662396707a93d5854b37e726ecc26a793943fb6de606308",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:V4P0888-0893",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000888",
+      "right": "DOC-0252:B000893",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "701b9e4d02d8d9fbd1838247147b4c1925f8a102304546f830a809737165ab5a",
+      "packetSha256": "97f5a4693818feebbfc7d31a478a777bb31db1b6b3bfa365c45d67cb5778e07e",
+      "reasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P51-250",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[86]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "7161e644ab4c2b85b31fee9d0a2b8ea595c1af99dfa4ac990222760112634257",
+      "packetSha256": "4a37648610730228e2841bcd76e70863a2d3b84e603f6b8c2b88fd625a73bd15",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P70-260",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[105]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "71a8b04d9fb32b5dea203b85dd612e1d0e0fbe1c742c029b77989167893ff546",
+      "packetSha256": "1443572b1ce9f20cd8edad481896a90ca5e4ef3ec6f72930d813398f5e42d17f",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:V4P0875-0878",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000875",
+      "right": "DOC-0252:B000878",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "720da4a2c7796cfd9015caa7496221e3cc771be0448e3cd56ce3345b21caa9e6",
+      "packetSha256": "9479b4fa8e1bbf91217ebeabc991d68959b690174a69c063f2cff6d777ce1ad0",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:V4P0872-0875",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000872",
+      "right": "DOC-0252:B000875",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "72d77ab88a3801d6e6cbef2cb0cd36068f839017816bdd832d2c7482530e25e8",
+      "packetSha256": "84216d5bb811974f3b3aeea62d383972c300bbef7ca6adfdc049254b7e5393bd",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P254-1719",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[8]",
+      "right": "DOC-0123:body[1]/p[992]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "80a6f2c137e62061e00c79abbcdfa45a8fc91ee6585b07c3bbaead7a5f491d9c",
+      "packetSha256": "37925659c4926dca2af87c286edb8a512bb9991affff56d98dc4135522921408",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:V4P0544-0888",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000544",
+      "right": "DOC-0252:B000888",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "83ab71e64ae8976fc5cdc200baab9cd63eebb3f4bdb8983e07278b54d0acc9c8",
+      "packetSha256": "586043223322cbb062e3410d89644a47107ec756cd6d8ccaec634d2e4c433ca4",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:V4P0435-0883",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000435",
+      "right": "DOC-0252:B000883",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "85d09672af0b82462578ad84dbf17b154c53ed18e4d6442c5d59ae375d72a586",
+      "packetSha256": "5fc3ab8584b70f0b47b60a3ecba6748b30c252fb5ceddd696f4672321fc60988",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0066-0258",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[101]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "89bda87e119c37f8cb7023abebe7a07e577f6465f39e3d740916de67ca3d6d54",
+      "packetSha256": "8dfc6c430a2434bc102d23cf3908d6633380c9e5f275aafb84cc369f96daf075",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P337-338",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000337",
+      "right": "DOC-0133:B000338",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "8b3ae7f10e8d1589aa9a4cec5c7707ed1e28220cd325c9162456314da985fdfa",
+      "packetSha256": "093d27d5aabe26b508d90a180f530e484d2e30e03750761e80600df38b514d23",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0258-1995",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+      "right": "DOC-0123:body[1]/p[1192]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "8c059620aec8a94a1cb1a87a8668df4815415e75d5bb43457e4cb4a0a863f000",
+      "packetSha256": "9315099b7e05bd2734d03711ed73a4ee446643796d4e767f4c95778e21e88500",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:V4P0544-0893",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000544",
+      "right": "DOC-0252:B000893",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "9791779242d5943d615b4a030d186d2352b96d99ac1524c0879a98e7069f9467",
+      "packetSha256": "693abc8137590e86a1d0f1dbea684ce2e1d60136a2c3a79fd3f17e5f40a341d5",
+      "reasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:V4P0015-0616",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000015",
+      "right": "DOC-0133:B000616",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "a0a3bb9cec9d5bd49280451e8c55ee15e451fc889dd84ebdbd4a24f61e8a2970",
+      "packetSha256": "786a23b57fc174170d5eb7cc273e5eef7a4a1f12898e067cd51c32ac958cf680",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P1271-1341",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[695]",
+      "right": "DOC-0123:body[1]/p[766]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "TERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "a1df5c25c45ebe905b165befe7dca8729f75ee50c4ce644e6d079ca45fc41eea",
+      "packetSha256": "74b15f21c0f18875f30642616b5de445992d3107b6fd40d800ae2254968e2483",
+      "reasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:V4P0851-0904",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000851",
+      "right": "DOC-0252:B000904",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "a4b2438f1990350b166d4a30216556175e98882a14198bd8fc3dd14d939bd127",
+      "packetSha256": "84826767eb4ddf8a89a8eab9958a4ac260084a15784aab16fdfc2b6ec154319c",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P359-360",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000359",
+      "right": "DOC-0133:B000360",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "a6ba5d0b0e135c585608a23144430e32b865a2171a4f05f06ba3e7860b3812ba",
+      "packetSha256": "a1505e33ef7e899e2216a54352e984f265acaba771a5cb7cd3bc21274dae87f7",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0200-0249",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[263]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "a77b2fc56c98be5155afc03b78630a4f16c8b5d4a24da7a170a44adcbdfe4c51",
+      "packetSha256": "59c7cb10893ac9ed586630c14d50b94212903d6887dda47db87cf246d0729da3",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1177-1178",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[4]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "b1803d6b15262b121002b7fa109c7f43bf1540bef8c78a1971c0314a68794017",
+      "packetSha256": "d4edd1897f1b986443d8dd59ac2ee47a65bf26146d268d024ec27d794ce5e7b9",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1036-1037",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[5]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "ba241d95ebf9ba30db320ce0f909822dc786aa05bd599d4a63145bceb645cc3a",
+      "packetSha256": "5c963ddc4b86403b108ce430470bfb2c4ae73733bb3a299124d2aa393518c495",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P07-08",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[32]/txbxContent[1]/p[1]",
+      "right": "DOC-0123:body[1]/p[32]/txbxContent[2]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "bfab99614af294e53d46e14f49800343ac3b5699fabe29716040cd63f8ab3191",
+      "packetSha256": "100fc890047246848516bfd8e40eb3ea95d0ae2a0f899f311107aa41e150c6c2",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P132-249",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[192]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "c180cd36a95f2b5374bb25a16c6a40f2a04a58d103fd6b69d62c36f66e84341b",
+      "packetSha256": "008bb1d826696ae2d221ead924baea95bf16e0f0d15beb4511fe318ad00c5da3",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0252:V4P0042-0253",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000042",
+      "right": "DOC-0252:B000253",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "SMALL_LE_400K",
+      "stableRank": "ce0b8b1de906eea0b2baee5c6d9cd325e1434070ba36ee2dfd3a361f2751764c",
+      "packetSha256": "37c49a05f9c8e2d632fac5872cf85603d1ede28868afe96b3a343095866c2b4e",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P68-2007",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[103]",
+      "right": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "d0dd29e6aff8ad53e800c7833cb3a8b041f6cd62afeb3bf6c06a149cdd7188dc",
+      "packetSha256": "c4213f51b98f652bea45301851a577b8cd2f4c2c7990f734b3e058f07258e4ec",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1057-1058",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[5]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "d8744c6755b79c08b5a87f66fce829ffb9e3a8e113df20f8c3516e887646c2d4",
+      "packetSha256": "26b55e14ba0832f63e017afdc22c649fe02a9eb0f872818b77c6057046b476b2",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:V4P0259-2007",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+      "right": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_4_PLUS",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "dbbfd5312f44e16d028e640ac9641c81ee930ef9a81305282664850dc44a27ef",
+      "packetSha256": "19c9149f5ca88afb82b55908db49765663f19d08f3f841e0d8981c9ecf3032bb",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:V4P0017-0921",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000017",
+      "right": "DOC-0133:B000921",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "e54ecfd4c4a34712a4fd6189aea3cd7a98f6c39c43b5a4be3134b0cefa3a6527",
+      "packetSha256": "d9ac1e36f47329f17ec9152f43ce3220d2cb8bda3b6e0eaa2ce002a5ce9f2361",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "pairId": "DOC-0133:P339-340",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000339",
+      "right": "DOC-0133:B000340",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "MEDIUM_400_800K",
+      "stableRank": "f55102fff72a17b5d1939676843d37147d39e84a3002f8f6cc7890e253bd650d",
+      "packetSha256": "f2939e96b12ed170e943fb155e63bf4be47aed9bdadbddaf48a379dbb190d1dc",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    },
+    {
+      "pairId": "DOC-0123:P1091-1092",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]",
+      "right": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "endpointDegreeBucket": "DEGREE_2_3",
+      "requestSizeBucket": "LARGE_GT_800K",
+      "stableRank": "fb6fff3473752041ce33509391ed0330e534654d5a64e0140180bef506231302",
+      "packetSha256": "0f396a4bb8b5fe7c39c2d3a8c74aabdeff55867d12af7a3fcd2cdc841ac9bc92",
+      "reasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    }
+  ]
+}

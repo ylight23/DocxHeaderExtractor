@@ -1,0 +1,41 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_d_manifest",
+  "schemaVersion": "a99-v4f-d-manifest-v1",
+  "status": "READY_FOR_V4F_PAIRED_PROVIDER_EXECUTION",
+  "parent": "V4F-C@7874911",
+  "populationCount": 7702,
+  "sampleCount": 128,
+  "totalFutureCalls": 256,
+  "documents": [
+    "DOC-0123",
+    "DOC-0133",
+    "DOC-0252"
+  ],
+  "packetClasses": [
+    "LOCAL_ONLY",
+    "STRUCTURALLY_PARTIAL"
+  ],
+  "candidateUniverseChanged": false,
+  "rankingChanged": false,
+  "projectionChanged": false,
+  "oldRequestCount": 128,
+  "projectedRequestCount": 128,
+  "candidateIdentityParity": true,
+  "model": "qwen/qwen3.7-flash",
+  "provider": "OpenRouter",
+  "configurationHash": "8983be53cc38d8a28c8d1467216934d3bab1201673dae86f077f82328b392967",
+  "decisionOptions": [
+    "CONTINUATION_OF",
+    "SAME_SEMANTIC_REPEAT",
+    "DISTINCT",
+    "UNRESOLVED"
+  ],
+  "responseSchemaHash": "8b5e22af97736257531345e38461f8273f66960c4f14e11a9d3e53cfe39d11c7",
+  "onlyChangedVariable": "EVIDENCE_REPRESENTATION",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReadCountForSampling": 0,
+  "v4ebEvaluationReadCountForSampling": 0,
+  "knownIrUsedForSelection": false,
+  "nextGate": "READY_FOR_V4F_PAIRED_PROVIDER_EXECUTION"
+}

@@ -1,0 +1,14 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_d_metrics_contract",
+  "schemaVersion": "a99-v4f-d-metrics-contract-v1",
+  "behavioralPreservation": [
+    "PairwiseRelationAgreement",
+    "ProjectedChangeRate",
+    "ParseValidityRateByArm",
+    "InvalidResponseRateByArm",
+    "AbstentionRateByArm"
+  ],
+  "semanticAccuracy": "SEPARATE; requires independent labels; ARM_A is not oracle",
+  "agreementIsAccuracy": false,
+  "freezeBeforeExecution": true
+}
