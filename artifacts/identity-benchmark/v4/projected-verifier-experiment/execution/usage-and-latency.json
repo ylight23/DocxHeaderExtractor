@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "a99-v4f-e-usage-and-latency-v1",
+  "old": {
+    "reportedInputTokens": {
+      "count": 0,
+      "min": 0,
+      "p50": 0,
+      "p95": 0,
+      "max": 0,
+      "total": 0
+    },
+    "reportedOutputTokens": {
+      "count": 0,
+      "min": 0,
+      "p50": 0,
+      "p95": 0,
+      "max": 0,
+      "total": 0
+    },
+    "latencyMs": {
+      "count": 0,
+      "min": 0,
+      "p50": 0,
+      "p95": 0,
+      "max": 0,
+      "total": 0
+    }
+  },
+  "projected": {
+    "reportedInputTokens": {
+      "count": 0,
+      "min": 0,
+      "p50": 0,
+      "p95": 0,
+      "max": 0,
+      "total": 0
+    },
+    "reportedOutputTokens": {
+      "count": 0,
+      "min": 0,
+      "p50": 0,
+      "p95": 0,
+      "max": 0,
+      "total": 0
+    },
+    "latencyMs": {
+      "count": 0,
+      "min": 0,
+      "p50": 0,
+      "p95": 0,
+      "max": 0,
+      "total": 0
+    }
+  },
+  "usageSource": "provider_telemetry_when_returned"
+}

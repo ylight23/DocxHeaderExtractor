@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "a99-v4f-e-execution-integrity-v1",
+  "totalAttemptRecords": 256,
+  "actualProviderAttempts": 256,
+  "rawResponseHashes": 221,
+  "persistedRawBodies": 219,
+  "unavailableResponses": 35,
+  "rawPersistenceFailures": 2,
+  "rawPersistenceFailureSequences": [
+    1,
+    2
+  ],
+  "providerErrorsWithoutRawBody": 35,
+  "providerCallsAfterPersistenceFix": 254,
+  "goldReadCount": 0,
+  "responseBodiesWereNotRepairedOrRerun": true,
+  "status": "PARTIAL_RAW_RESPONSE_FREEZE_WITH_IMMUTABLE_ATTEMPT_LINEAGE"
+}

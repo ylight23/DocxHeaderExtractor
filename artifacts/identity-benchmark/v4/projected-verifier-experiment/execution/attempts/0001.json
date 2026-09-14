@@ -1,0 +1,21 @@
+{
+  "sequence": 1,
+  "candidateId": "DOC-0252:P311-312",
+  "arm": "ARM_A",
+  "requestId": "DOC-0252:P311-312",
+  "requestSha256": "801a4614c97bf7895baa5520c57d211166e17d142bbcfd9197ff26dc8600bd59",
+  "requestBytes": 303884,
+  "attemptNumber": 1,
+  "startedUtc": "2026-09-14T13:38:55.4707634+00:00",
+  "completedUtc": "2026-09-14T13:39:19.684159+00:00",
+  "status": "TRANSPORT_ERROR",
+  "httpStatus": 200,
+  "providerRequestId": "gen-1789393137-8hxw8WDQUDnvWXKWHMKK",
+  "latencyMs": 24213,
+  "inputTokens": 113587,
+  "outputTokens": 1591,
+  "rawResponseSha256": "e0c61b66460e3888c8dc9a2ad63d4095e2a71064307ed25a90ec5aecf24adbea",
+  "parsedResponseSha256": null,
+  "error": "DirectoryNotFoundException:Could not find a part of the path \u0027C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\identity-benchmark\\v4\\projected-verifier-experiment\\execution\\raw-responses\\0001-ARM_A.json\u0027.",
+  "goldReadBeforeFreeze": false
+}

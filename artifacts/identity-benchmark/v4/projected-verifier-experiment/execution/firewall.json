@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-v4f-e-firewall-v1",
+  "goldReadCountBeforeResponseFreeze": 0,
+  "v4ebEvaluationReadCountBeforeResponseFreeze": 0,
+  "sampleChanged": false,
+  "requestChanged": false,
+  "projectionChanged": false,
+  "parserChanged": false,
+  "modelConfigChanged": false,
+  "goldUsedForSampling": false,
+  "goldUsedForRetry": false,
+  "oldArmUsedAsOracle": false,
+  "sameParserBothArms": true,
+  "rawFrozenBeforeComparison": true,
+  "providerCalls": 256,
+  "modelCalls": 256,
+  "expectedProviderAttempts": 256,
+  "executionOrderPreserved": true,
+  "transientRequestRetries": 0
+}

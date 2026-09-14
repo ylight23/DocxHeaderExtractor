@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "a99-v4f-e-provider-preflight-v1",
+  "status": "PREFLIGHT_PASS",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "availability": true,
+  "availabilityReason": "MODEL_AVAILABLE",
+  "contextLimitTokens": 1000000,
+  "configuredContextLimitTokens": 1000000,
+  "largestFrozenOldRequestBytes": 1288410,
+  "largestFrozenOldRequestEstimatedInputTokens": 322103,
+  "configuredMaxOutputTokens": 768,
+  "reasoningSupported": true,
+  "structuredOutputSupported": true,
+  "selectedReasoningEffort": "enabled",
+  "maxCompletionTokensReported": 65536,
+  "pricing": {
+    "verified": true,
+    "inputUsdPerMillionTokens": 0.03,
+    "outputUsdPerMillionTokens": 0.13,
+    "source": "https://openrouter.ai/qwen",
+    "sourceType": "OFFICIAL_OPENROUTER_MODEL_PAGE"
+  },
+  "rateLimit": "NOT_EXPOSED_BY_PROVIDER_METADATA",
+  "explicitExecutionFlag": true,
+  "requestCount": 256,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "checkedUtc": "2026-09-14T13:58:06.4918556+00:00"
+}

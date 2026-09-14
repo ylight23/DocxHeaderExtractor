@@ -1,0 +1,21 @@
+{
+  "sequence": 195,
+  "candidateId": "DOC-0133:V4P0013-0034",
+  "arm": "ARM_B",
+  "requestId": "DOC-0133:V4P0013-0034",
+  "requestSha256": "d1454b7f0c291831f7bf2c989e8d05d15d86a8a95af10b622bb6c1ac40ebe7ca",
+  "requestBytes": 9817,
+  "attemptNumber": 1,
+  "startedUtc": "2026-09-14T14:31:27.857596+00:00",
+  "completedUtc": "2026-09-14T14:31:43.3297319+00:00",
+  "status": "INVALID_SCHEMA",
+  "httpStatus": 200,
+  "providerRequestId": "gen-1789396289-IFuSoDlVokW3qmgZSObN",
+  "latencyMs": 15472,
+  "inputTokens": 3159,
+  "outputTokens": 1405,
+  "rawResponseSha256": "219fa1900635d9aae53280d1cb73615155a28f8a02a56a108c442002dab28f27",
+  "parsedResponseSha256": "bf35d9da2fb22c0782eb0fdd57f06c009d9e93c7585e307f6d32ce97eb935f45",
+  "error": null,
+  "goldReadBeforeFreeze": false
+}

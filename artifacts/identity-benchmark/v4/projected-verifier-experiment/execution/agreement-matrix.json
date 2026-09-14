@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "a99-v4f-e-agreement-matrix-v1",
+  "validPairedOutputs": 58,
+  "agreementCount": 35,
+  "pairwiseRelationAgreement": 0.603448275862069,
+  "projectedChangeCount": 23,
+  "projectedChangeRate": 0.39655172413793105,
+  "matrix": {
+    "DISTINCT-\u003EDISTINCT": 23,
+    "DISTINCT-\u003ESAME_SEMANTIC_REPEAT": 9,
+    "SAME_SEMANTIC_REPEAT-\u003ESAME_SEMANTIC_REPEAT": 11,
+    "DISTINCT-\u003ECONTINUATION_OF": 2,
+    "CONTINUATION_OF-\u003EDISTINCT": 12,
+    "CONTINUATION_OF-\u003ECONTINUATION_OF": 1
+  },
+  "metricsAreBehavioralNotAccuracy": true
+}

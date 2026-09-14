@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-v4f-e-cost-report-v1",
+  "pricingVerified": true,
+  "source": "https://openrouter.ai/qwen",
+  "inputUsdPerMillionTokens": 0.03,
+  "outputUsdPerMillionTokens": 0.13,
+  "old": {
+    "actualInputUsd": 0.00,
+    "actualOutputUsd": 0.00
+  },
+  "projected": {
+    "actualInputUsd": 0.00,
+    "actualOutputUsd": 0.00
+  },
+  "outputUnavailableMeans": "COST_PARTIAL_NOT_FABRICATED"
+}
