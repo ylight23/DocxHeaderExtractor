@@ -113,8 +113,9 @@ instruction, parent, hierarchy, level, offsets, Gold, or legacy fields.
             ct.ThrowIfCancellationRequested();
             var target = new HdsaIdentityCandidatePair(candidate.PairId, candidate.Left, candidate.Right);
             var request = new HdsaIdentityPairVerificationRequest(catalog.CatalogFingerprint, nodes, target, false);
-            var requestJson = JsonSerializer.Serialize(request, JsonOptions);
-            var requestHash = Sha256Text(requestJson);
+            var canonicalRequest = HdsaCanonicalPairVerifierRequestBuilder.Build(request);
+            var requestJson = canonicalRequest.Json;
+            var requestHash = canonicalRequest.Sha256;
             var pairDir = Path.Combine(output, "pairs", candidate.PairId);
             Directory.CreateDirectory(pairDir);
             await WriteJsonAsync(Path.Combine(pairDir, "request.v1.json"), new

@@ -1,0 +1,317 @@
+{
+  "artifactKind": "a99_identity_promotion_request_parity_report",
+  "schemaVersion": "a99-identity-promotion-request-parity-v2",
+  "benchmarkVersion": "a99-identity-promotion-benchmark-v2",
+  "canonicalBuilderVersion": "hdsa-canonical-pair-verifier-request-builder-v1",
+  "canonicalBuilderSourceSha256": "020d2df158f601af1ee1bdb376764556ea6111de380f5f368caa3dddbd229a25",
+  "requestManifestSha256": "9d93fcfeca621171499bd3114b9629d10ddb8644984c468e4cbbcbf2fdd59d11",
+  "historicalDoc0205": {
+    "rows": [
+      {
+        "pairId": "P01-02",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P01-02/request.v1.json",
+        "expectedHash": "ce3854b03e1978a6652ff17cd51de3ac720df3b7b241ac390dcc4526d18dac5a",
+        "reconstructedHash": "ce3854b03e1978a6652ff17cd51de3ac720df3b7b241ac390dcc4526d18dac5a",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      },
+      {
+        "pairId": "P02-03",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P02-03/request.v1.json",
+        "expectedHash": "268c4154bf3192ac05ff00134c5b11570b3c22b24ca96c8e042920c6d60facf0",
+        "reconstructedHash": "268c4154bf3192ac05ff00134c5b11570b3c22b24ca96c8e042920c6d60facf0",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      },
+      {
+        "pairId": "P03-04",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P03-04/request.v1.json",
+        "expectedHash": "4b5fe0ddcf0cc103ddae0b618e25f80857ddea717cb93a859aee1221420a9314",
+        "reconstructedHash": "4b5fe0ddcf0cc103ddae0b618e25f80857ddea717cb93a859aee1221420a9314",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      },
+      {
+        "pairId": "P04-05",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P04-05/request.v1.json",
+        "expectedHash": "6ebe6f85790822c03ee0e13a977c90f8326e9d5541af1cbf89bdebf25c261346",
+        "reconstructedHash": "6ebe6f85790822c03ee0e13a977c90f8326e9d5541af1cbf89bdebf25c261346",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      },
+      {
+        "pairId": "P05-06",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P05-06/request.v1.json",
+        "expectedHash": "e5d6d7716d4609ec8fa3ec334a5142a11b7d64fffb6d67982d35c6417b6c84a5",
+        "reconstructedHash": "e5d6d7716d4609ec8fa3ec334a5142a11b7d64fffb6d67982d35c6417b6c84a5",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      },
+      {
+        "pairId": "P06-07",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P06-07/request.v1.json",
+        "expectedHash": "29bac436afa279f1eb2c417721d4e1fcb9dc3cb427940d14e0fc7b706796b1c8",
+        "reconstructedHash": "29bac436afa279f1eb2c417721d4e1fcb9dc3cb427940d14e0fc7b706796b1c8",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      },
+      {
+        "pairId": "P07-08",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P07-08/request.v1.json",
+        "expectedHash": "bca0db13929bfba9f316dc5a9ac295c1c903b6f9c890a2c1859e256fe120e77a",
+        "reconstructedHash": "bca0db13929bfba9f316dc5a9ac295c1c903b6f9c890a2c1859e256fe120e77a",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      },
+      {
+        "pairId": "P08-09",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P08-09/request.v1.json",
+        "expectedHash": "31328d0daa397b94eb3f9db019aaefed5fb7f742de657614ee5880e6d0c3713e",
+        "reconstructedHash": "31328d0daa397b94eb3f9db019aaefed5fb7f742de657614ee5880e6d0c3713e",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      },
+      {
+        "pairId": "P09-10",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P09-10/request.v1.json",
+        "expectedHash": "3f3f0ef0ce74fbf842c2e2af03a134f4e2ba2be99493a896d991ac87e9ac4551",
+        "reconstructedHash": "3f3f0ef0ce74fbf842c2e2af03a134f4e2ba2be99493a896d991ac87e9ac4551",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      },
+      {
+        "pairId": "P10-11",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P10-11/request.v1.json",
+        "expectedHash": "d8a49382cfcdaf3d23f516419d3e92c64b3496dfa7b79bd171fa30b99a2f627f",
+        "reconstructedHash": "d8a49382cfcdaf3d23f516419d3e92c64b3496dfa7b79bd171fa30b99a2f627f",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      },
+      {
+        "pairId": "P11-12",
+        "path": "eval/a99-closed-loop/hdsa-global-identity-deterministic-pair-verification-live/DOC-0205/pairs/P11-12/request.v1.json",
+        "expectedHash": "17ffdebe35b0188e1b2d4f3083dd6953ba523d736aabe2fd1e3cf5b457d31a57",
+        "reconstructedHash": "17ffdebe35b0188e1b2d4f3083dd6953ba523d736aabe2fd1e3cf5b457d31a57",
+        "hashIdentical": true,
+        "exactHistoricalBytesAvailable": false,
+        "byteIdentical": null
+      }
+    ],
+    "sampleCount": 11,
+    "matchingRows": 11,
+    "hashIdentical": true,
+    "byteIdentical": false,
+    "evidence": "IMMUTABLE_HISTORICAL_HASH_EVIDENCE_ONLY"
+  },
+  "crossDocument": {
+    "rows": [
+      {
+        "documentId": "DOC-0123",
+        "pairId": "DOC-0123:P01-02",
+        "selection": "FIRST_MIDDLE_LAST",
+        "executionHash": "aca8f96b10296faf34da559fb7a9df4d2434d6c8554b09c2ca93503a59a96711",
+        "benchmarkHash": "aca8f96b10296faf34da559fb7a9df4d2434d6c8554b09c2ca93503a59a96711",
+        "executionBytes": 1288362,
+        "benchmarkBytes": 1288362,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0123",
+        "pairId": "DOC-0123:P2395-2396",
+        "selection": "FIRST_MIDDLE_LAST",
+        "executionHash": "7d880bc43aaa25356ebe9e361989310a85a0a38aeae60ec7b8e720ea42d899c5",
+        "benchmarkHash": "7d880bc43aaa25356ebe9e361989310a85a0a38aeae60ec7b8e720ea42d899c5",
+        "executionBytes": 1288408,
+        "benchmarkBytes": 1288408,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0123",
+        "pairId": "DOC-0123:P999-1000",
+        "selection": "FIRST_MIDDLE_LAST",
+        "executionHash": "58aa079ff5ed8e116b769a401d23e5db85d1a3e68e0a0f42a654ccb56e1e1dc4",
+        "benchmarkHash": "58aa079ff5ed8e116b769a401d23e5db85d1a3e68e0a0f42a654ccb56e1e1dc4",
+        "executionBytes": 1288369,
+        "benchmarkBytes": 1288369,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0123",
+        "pairId": "DOC-0123:P1034-1035",
+        "selection": "HIGHEST_SOURCE_ONLY_FANOUT",
+        "executionHash": "384fafa566cfa71c3f596895e89eff75a25179f60060cc53c9e54c1787786a1d",
+        "benchmarkHash": "384fafa566cfa71c3f596895e89eff75a25179f60060cc53c9e54c1787786a1d",
+        "executionBytes": 1288406,
+        "benchmarkBytes": 1288406,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0133",
+        "pairId": "DOC-0133:P01-02",
+        "selection": "FIRST_MIDDLE_LAST",
+        "executionHash": "81d96b2671539a34a00cbd23f8a876c37d56ff49bda71551d62700e79e517fdf",
+        "benchmarkHash": "81d96b2671539a34a00cbd23f8a876c37d56ff49bda71551d62700e79e517fdf",
+        "executionBytes": 753434,
+        "benchmarkBytes": 753434,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0133",
+        "pairId": "DOC-0133:P272-730",
+        "selection": "FIRST_MIDDLE_LAST",
+        "executionHash": "7752ad9dd14555e4ec9fc9041c924cbc223857a2e869c795eff4688d50b86633",
+        "benchmarkHash": "7752ad9dd14555e4ec9fc9041c924cbc223857a2e869c795eff4688d50b86633",
+        "executionBytes": 753436,
+        "benchmarkBytes": 753436,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0133",
+        "pairId": "DOC-0133:P999-1000",
+        "selection": "FIRST_MIDDLE_LAST",
+        "executionHash": "672b34b89eee778d4baf9ee1dd440ffa356b5fe39d23883d188a0c160b2d99d7",
+        "benchmarkHash": "672b34b89eee778d4baf9ee1dd440ffa356b5fe39d23883d188a0c160b2d99d7",
+        "executionBytes": 753437,
+        "benchmarkBytes": 753437,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0133",
+        "pairId": "DOC-0133:P06-07",
+        "selection": "HIGHEST_SOURCE_ONLY_FANOUT",
+        "executionHash": "c516c8c9c3db829cb0567aac5ba64bf58fcc7e29e168fa33798f69c42495ae0a",
+        "benchmarkHash": "c516c8c9c3db829cb0567aac5ba64bf58fcc7e29e168fa33798f69c42495ae0a",
+        "executionBytes": 753434,
+        "benchmarkBytes": 753434,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0252",
+        "pairId": "DOC-0252:P01-02",
+        "selection": "FIRST_MIDDLE_LAST",
+        "executionHash": "76d71dd9eb1ce0130deec982393f4c9b6150b119529e9591130db1a4a583d4ea",
+        "benchmarkHash": "76d71dd9eb1ce0130deec982393f4c9b6150b119529e9591130db1a4a583d4ea",
+        "executionBytes": 303882,
+        "benchmarkBytes": 303882,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0252",
+        "pairId": "DOC-0252:P37-719",
+        "selection": "FIRST_MIDDLE_LAST",
+        "executionHash": "5a48cbd2e05e4ce4dc2f3c0bd94467be8c5a851963ba832b848cdb81bb1be96e",
+        "benchmarkHash": "5a48cbd2e05e4ce4dc2f3c0bd94467be8c5a851963ba832b848cdb81bb1be96e",
+        "executionBytes": 303883,
+        "benchmarkBytes": 303883,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0252",
+        "pairId": "DOC-0252:P99-859",
+        "selection": "FIRST_MIDDLE_LAST",
+        "executionHash": "1a863460b73ca31725264db555dabfffcacccca0f1810299471195fe44d3c656",
+        "benchmarkHash": "1a863460b73ca31725264db555dabfffcacccca0f1810299471195fe44d3c656",
+        "executionBytes": 303883,
+        "benchmarkBytes": 303883,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      },
+      {
+        "documentId": "DOC-0252",
+        "pairId": "DOC-0252:P104-105",
+        "selection": "HIGHEST_SOURCE_ONLY_FANOUT",
+        "executionHash": "b370bde858f0748a68610a5087a588798189d74cf68abdb28c6d41a099ec4d90",
+        "benchmarkHash": "b370bde858f0748a68610a5087a588798189d74cf68abdb28c6d41a099ec4d90",
+        "executionBytes": 303884,
+        "benchmarkBytes": 303884,
+        "bytesIdentical": true,
+        "hashesIdentical": true
+      }
+    ],
+    "sampleCount": 12,
+    "matchingRows": 12,
+    "allSamplesIdentical": true,
+    "hashesIdentical": true
+  },
+  "reconstruction": {
+    "rows": [
+      {
+        "requestId": "DOC-0123:P01-02",
+        "manifestHash": "aca8f96b10296faf34da559fb7a9df4d2434d6c8554b09c2ca93503a59a96711",
+        "firstHash": "aca8f96b10296faf34da559fb7a9df4d2434d6c8554b09c2ca93503a59a96711",
+        "secondHash": "aca8f96b10296faf34da559fb7a9df4d2434d6c8554b09c2ca93503a59a96711",
+        "firstBytes": 1288362,
+        "secondBytes": 1288362,
+        "manifestHashMatch": true,
+        "run1Run2BytesIdentical": true,
+        "run1Run2HashIdentical": true
+      },
+      {
+        "requestId": "DOC-0133:P422-718",
+        "manifestHash": "0b7c1f5ffc9e2a7434a9b1f56f34d7b39dd9012c05516e03f3b54e496a2f68c6",
+        "firstHash": "0b7c1f5ffc9e2a7434a9b1f56f34d7b39dd9012c05516e03f3b54e496a2f68c6",
+        "secondHash": "0b7c1f5ffc9e2a7434a9b1f56f34d7b39dd9012c05516e03f3b54e496a2f68c6",
+        "firstBytes": 753436,
+        "secondBytes": 753436,
+        "manifestHashMatch": true,
+        "run1Run2BytesIdentical": true,
+        "run1Run2HashIdentical": true
+      },
+      {
+        "requestId": "DOC-0252:P99-859",
+        "manifestHash": "1a863460b73ca31725264db555dabfffcacccca0f1810299471195fe44d3c656",
+        "firstHash": "1a863460b73ca31725264db555dabfffcacccca0f1810299471195fe44d3c656",
+        "secondHash": "1a863460b73ca31725264db555dabfffcacccca0f1810299471195fe44d3c656",
+        "firstBytes": 303883,
+        "secondBytes": 303883,
+        "manifestHashMatch": true,
+        "run1Run2BytesIdentical": true,
+        "run1Run2HashIdentical": true
+      },
+      {
+        "requestId": "DOC-0133:P01-02",
+        "manifestHash": "81d96b2671539a34a00cbd23f8a876c37d56ff49bda71551d62700e79e517fdf",
+        "firstHash": "81d96b2671539a34a00cbd23f8a876c37d56ff49bda71551d62700e79e517fdf",
+        "secondHash": "81d96b2671539a34a00cbd23f8a876c37d56ff49bda71551d62700e79e517fdf",
+        "firstBytes": 753434,
+        "secondBytes": 753434,
+        "manifestHashMatch": true,
+        "run1Run2BytesIdentical": true,
+        "run1Run2HashIdentical": true
+      }
+    ],
+    "allSamplesIdentical": true,
+    "allManifestHashesMatch": true,
+    "coverage": "SAMPLED_RECONSTRUCTION; ALL_ENTRIES_GUARDED_DURING_FREEZE"
+  },
+  "executorDryRun": {
+    "manifestConsumed": true,
+    "checkedEntries": 95999,
+    "rejectedEntries": 0,
+    "allEntriesAccepted": true,
+    "providerCalls": 0,
+    "safety": "MANIFEST_READ; SOURCE_AND_CANDIDATE_HASHES_VERIFIED; SHA_AND_BYTE_LENGTH_CHECKED_BEFORE_TRANSPORT"
+  },
+  "byteParityUsesSharedBuilder": true,
+  "allRequestedChecksPass": true
+}

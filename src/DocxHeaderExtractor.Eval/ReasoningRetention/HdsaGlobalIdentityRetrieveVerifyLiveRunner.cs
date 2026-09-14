@@ -179,8 +179,9 @@ legacy fields.
             var target = pairById[pairId];
             var verificationRequest = new HdsaIdentityPairVerificationRequest(
                 catalog.CatalogFingerprint, nodes, target, false);
-            var verificationJson = JsonSerializer.Serialize(verificationRequest, JsonOptions);
-            var verificationHash = Sha256Text(verificationJson);
+            var canonicalRequest = HdsaCanonicalPairVerifierRequestBuilder.Build(verificationRequest);
+            var verificationJson = canonicalRequest.Json;
+            var verificationHash = canonicalRequest.Sha256;
             var dir = Path.Combine(verificationDir, pairId);
             Directory.CreateDirectory(dir);
             await WriteJsonAsync(Path.Combine(dir, "request.v1.json"), new

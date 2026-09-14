@@ -1,0 +1,18 @@
+{
+  "artifactKind": "a99_identity_promotion_benchmark_v2_firewall",
+  "schemaVersion": "a99-identity-promotion-benchmark-v2-firewall",
+  "benchmarkVersion": "a99-identity-promotion-benchmark-v2",
+  "goldReadCount": 0,
+  "providerCalls": 0,
+  "goldDerivedInput": false,
+  "relationGoldOpened": false,
+  "relationLabelsReachRequestBuilder": false,
+  "candidateGenerationChanged": false,
+  "pruningAdded": false,
+  "v1ArtifactsMutated": false,
+  "requestShaCheckedBeforeNetwork": true,
+  "manifestConsumedByDryRunExecutor": true,
+  "allManifestEntriesGuarded": true,
+  "dryRun": true,
+  "tamperedManifestPolicy": "FAIL_CLOSED"
+}
