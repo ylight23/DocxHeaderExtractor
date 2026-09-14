@@ -33,7 +33,9 @@ public sealed record IdentityGoldSourceOccurrence(
     string? NativePath,
     int? Utf16Start,
     int? Utf16Length,
-    string? BoundingBoxJson = null);
+    string? BoundingBoxJson = null,
+    string? CanonicalComparisonText = null,
+    IReadOnlyList<string>? NormalizationsApplied = null);
 
 /// <summary>
 /// A source-only endpoint query.  It contains no semantic relation, confidence, or
@@ -63,7 +65,10 @@ public sealed record IdentityGoldBoundOccurrence(
     string TextSha256,
     string BindingMethod,
     string BindingConfidence,
-    bool SourceLineageVerified);
+    bool SourceLineageVerified,
+    IdentityGoldTextMatch TextMatch = IdentityGoldTextMatch.VerbatimExact,
+    string? CanonicalComparisonText = null,
+    IReadOnlyList<string>? NormalizationsApplied = null);
 
 public sealed record IdentityGoldEndpointBinding(
     IdentityGoldBindingStatus Status,
@@ -137,7 +142,42 @@ public static class IdentityGoldBinderV1
             matches = source.ToArray();
         }
 
-        matches = matches.Where(item => string.Equals(item.VerbatimText, query.ExactText, StringComparison.Ordinal)).ToArray();
+        var exactMatches = matches
+            .Where(item => string.Equals(item.VerbatimText, query.ExactText, StringComparison.Ordinal))
+            .ToArray();
+
+        var textMatch = IdentityGoldTextMatch.VerbatimExact;
+        var normalizations = (IReadOnlyList<string>?)null;
+        var canonicalText = (string?)null;
+        if (exactMatches.Length > 0)
+        {
+            matches = exactMatches;
+        }
+        else
+        {
+            var expectedCanonical = PdfSourceTextCanonicalizer.CollapsePdfWhitespace(query.ExactText);
+            var canonicalMatches = matches
+                .Where(item => !string.IsNullOrEmpty(item.CanonicalComparisonText))
+                .Where(item => string.Equals(
+                    expectedCanonical,
+                    PdfSourceTextCanonicalizer.CollapsePdfWhitespace(item.CanonicalComparisonText!),
+                    StringComparison.Ordinal))
+                .ToArray();
+            if (canonicalMatches.Length > 0)
+            {
+                matches = canonicalMatches;
+                textMatch = IdentityGoldTextMatch.PdfLayoutCanonicalEquivalent;
+                canonicalText = PdfSourceTextCanonicalizer.CollapsePdfWhitespace(canonicalMatches[0].CanonicalComparisonText!);
+                normalizations = canonicalMatches[0].NormalizationsApplied ?? [];
+                method = method == "UNIQUE_EXACT_TEXT"
+                    ? "UNIQUE_PDF_LAYOUT_CANONICAL_TEXT"
+                    : method.Replace("AND_EXACT_TEXT", "AND_PDF_LAYOUT_CANONICAL_TEXT", StringComparison.Ordinal);
+            }
+            else
+            {
+                matches = [];
+            }
+        }
 
         if (matches.Count == 0)
             return Failure(IdentityGoldBindingStatus.TextNotFound, "no exact verbatim source text matched the source identity");
@@ -166,9 +206,14 @@ public static class IdentityGoldBinderV1
                 occurrence.BoundingBoxJson,
                 Sha256(occurrence.VerbatimText),
                 method,
-                "EXACT",
-                true),
-            ["source SHA256 verified", "exact verbatim text verified", $"stable source identity verified: {stableId}"],
+                textMatch == IdentityGoldTextMatch.VerbatimExact ? "EXACT" : "PDF_LAYOUT_CANONICAL_EQUIVALENT",
+                true,
+                textMatch,
+                canonicalText,
+                normalizations),
+            textMatch == IdentityGoldTextMatch.VerbatimExact
+                ? ["source SHA256 verified", "exact verbatim text verified", $"stable source identity verified: {stableId}"]
+                : ["source SHA256 verified", "PDF layout canonical text verified", $"stable source identity verified: {stableId}"],
             []);
     }
 

@@ -12,7 +12,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 internal sealed record PdfLine(
     int Page, double Y, double FontSize, string Text, double BoldRatio, string LeadingBoldPrefix,
     double ItalicRatio, double Left, double Right, string FontName, string FillColorKey,
-    string? CanonicalMatchText = null, string? MatchText = null);
+    string? CanonicalMatchText = null, string? MatchText = null,
+    double? Bottom = null, double? Top = null);
 
 internal static class PdfLineExtraction
 {
@@ -114,7 +115,9 @@ internal static class PdfLineExtraction
                     Dominant(fontNames),
                     Dominant(fillColors),
                     canonicalMatch,
-                    matchText));
+                    matchText,
+                    ordered.Min(l => l.BoundingBox.Bottom),
+                    ordered.Max(l => l.BoundingBox.Top)));
             }
         }
         return lines;

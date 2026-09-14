@@ -1,0 +1,385 @@
+{
+  "artifactKind": "a99_semantic_identity_bindings",
+  "schemaVersion": "a99-semantic-identity-bindings-user-reviewed-v2",
+  "status": "BLOCKED_ON_IDENTITY_GOLD_BINDING",
+  "semanticGoldPath": "artifacts/identity-gold/semantic-identity-gold.user-reviewed.v2.json",
+  "semanticGoldSha256": "1c50754951b89ec48a0b0016db3e6079afd088bd0fb20a08ac60e10c41e6fae2",
+  "binderVersion": "identity-gold-binder-v1+pdf-raw-occurrence-recovery-v1",
+  "createdFromCommit": "6d0d07befb031c21e653a0940a61297a6b6313d0",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldRelationConsumedByBinder": false,
+  "sourceHashes": {
+    "DOC-0123": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+    "DOC-0133": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+    "DOC-0252": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61"
+  },
+  "sourceEvidence": {
+    "DOC-0123": {
+      "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/038_WB_Works_DB_SingleStage_NoSEASH_2025.docx",
+      "path": "eval/harness-lift/review-packets/DOC-0123.v1.json",
+      "packetSha256": "1067fd25b39f806e956e338778a92a573881ec28123df92b4df39f5f56a1759a",
+      "coordinateSystem": "DOCX_NATIVE_SOURCE_ID + SOURCE_ORDINAL + PARAGRAPH_LOCAL_UTF16"
+    },
+    "DOC-0133": {
+      "path": "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0133.review-source.v1.json",
+      "packetSha256": "68b3218a3a4610ed7983a57f7bb53213ac8f849f8bde88bf8bd148406b0a0a62",
+      "coordinateSystem": "PDF_PAGE + PDF_BLOCK_ID + SOURCE_ORDINAL + VERBATIM_PDF_TEXT",
+      "pdfRecoveryForensicPath": "artifacts/identity-gold/pdf-binding-forensic.v1.json"
+    },
+    "DOC-0252": {
+      "path": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+      "enumerator": "IsolatedPdfSourceBuilder at createdFromCommit",
+      "coordinateSystem": "PDF_PAGE + PDF_BLOCK_ID + SOURCE_ORDINAL + VERBATIM_PDF_TEXT",
+      "enumeratorVersion": "IsolatedPdfSourceBuilder + PdfRawOccurrenceRecovery v1",
+      "pdfRecoveryForensicPath": "artifacts/identity-gold/pdf-binding-forensic.v1.json"
+    }
+  },
+  "items": [
+    {
+      "id": "IR-018",
+      "semanticRelation": "DISTINCT_SEMANTIC_NODE",
+      "semanticConfidence": "HIGH",
+      "bindingStatus": "TEXT_NOT_FOUND",
+      "machineEvaluable": false,
+      "leftQuery": {
+        "documentId": "DOC-0133",
+        "expectedSourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+        "exactText": "INDEPENDENT AUDITOR'S REVIEW REPORT"
+      },
+      "rightQuery": {
+        "documentId": "DOC-0133",
+        "expectedSourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+        "exactText": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+        "sourceOccurrenceId": "B002349"
+      },
+      "leftOccurrence": null,
+      "rightOccurrence": {
+        "documentId": "DOC-0133",
+        "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+        "sourceOccurrenceId": "B002349",
+        "verbatimText": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+        "page": 66,
+        "sourceOrdinal": 2348,
+        "nativePath": "b2349",
+        "bbox": {
+          "topY": 750.9192224121095,
+          "bottomY": 750.9192224121095,
+          "left": 73.3056640625,
+          "right": 370.7994843750001,
+          "fontSize": 14,
+          "font": "arialmt"
+        },
+        "textSha256": "76934c9fa5fd37c7a9e318a1c403a97c95e671cc359044bfb67b56ab99d34adb",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_EXACT_TEXT",
+        "bindingConfidence": "EXACT",
+        "sourceLineageVerified": true
+      },
+      "bindingEvidence": [
+        "source SHA256 verified",
+        "line-level forensic recovery confirms B000937 contains the endpoint text only as a composite TOC line with suffix 64",
+        "B002349 is independently represented as the exact inner occurrence on page 66",
+        "outer approved occurrence still has no independent source object; it remains blocked",
+        "no punctuation, fuzzy, typographic-apostrophe, or semantic repair was used"
+      ],
+      "observedSourceObjects": [
+        {
+          "sourceOccurrenceId": "B000937",
+          "page": 31,
+          "sourceOrdinal": 936,
+          "literalSourceText": "CONDENSED STATEMENTS OF CASH FLOWS 34 NOTES TO CONDENSED QUARTERLY FINANCIAL STATEMENTS 35 INDEPENDENT AUDITOR'S REVIEW REPORT 64",
+          "resolution": "NOT_AN_EXACT_ENDPOINT"
+        },
+        {
+          "sourceOccurrenceId": "B002349",
+          "page": 66,
+          "sourceOrdinal": 2348,
+          "literalSourceText": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+          "resolution": "EXACT_SINGLE_OBSERVATION"
+        }
+      ],
+      "ambiguities": [
+        "outer heading occurrence is not independently represented as an exact source object by the frozen PDF packet"
+      ]
+    },
+    {
+      "id": "IR-019",
+      "semanticRelation": "CONTINUATION_OF",
+      "semanticConfidence": "HIGH",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "leftQuery": {
+        "documentId": "DOC-0252",
+        "expectedSourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+        "exactText": "SESSION V: Current Research"
+      },
+      "rightQuery": {
+        "documentId": "DOC-0252",
+        "expectedSourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+        "exactText": "SESSION V: Current Research (Cont’d)"
+      },
+      "leftOccurrence": {
+        "documentId": "DOC-0252",
+        "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+        "sourceOccurrenceId": "B000888",
+        "verbatimText": "SESSION V: Cu rrent Research",
+        "page": 14,
+        "sourceOrdinal": 887,
+        "nativePath": "b888",
+        "bbox": {
+          "left": 72.33480937499999,
+          "bottom": 670.676015625,
+          "right": 202.06228724999997,
+          "top": 678.3037499999999
+        },
+        "textSha256": "a83afaa419276b72842dc865706cfe38155d4fff70b939489917b2d0406d184c",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_PDF_LAYOUT_CANONICAL_TEXT",
+        "bindingConfidence": "PDF_LAYOUT_CANONICAL_EQUIVALENT",
+        "sourceLineageVerified": true,
+        "textMatch": "PDF_LAYOUT_CANONICAL_EQUIVALENT",
+        "canonicalComparisonText": "SESSION V: Current Research",
+        "normalizationsApplied": [
+          "REJOIN_PDF_TEXT_RUN_FRAGMENTATION"
+        ]
+      },
+      "rightOccurrence": {
+        "documentId": "DOC-0252",
+        "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+        "sourceOccurrenceId": "B000893",
+        "verbatimText": "SESSION V: Cu rrent Resea rch (Cont’d)",
+        "page": 14,
+        "sourceOrdinal": 892,
+        "nativePath": "b893",
+        "bbox": {
+          "left": 72.33480937499999,
+          "bottom": 558.9771093749999,
+          "right": 241.29127124999997,
+          "top": 568.55625
+        },
+        "textSha256": "44c38a155a291c9cb265a12fc27b4679091a45ce0406332932bbc3bc370b204b",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_PDF_LAYOUT_CANONICAL_TEXT",
+        "bindingConfidence": "PDF_LAYOUT_CANONICAL_EQUIVALENT",
+        "sourceLineageVerified": true,
+        "textMatch": "PDF_LAYOUT_CANONICAL_EQUIVALENT",
+        "canonicalComparisonText": "SESSION V: Current Research (Cont’d)",
+        "normalizationsApplied": [
+          "REJOIN_PDF_TEXT_RUN_FRAGMENTATION"
+        ]
+      },
+      "bindingEvidence": [
+        "source SHA256 verified",
+        "B000888 and B000893 source identities are preserved",
+        "PdfPig line-level MatchText rejoined only parser-backed text-run fragmentation",
+        "both approved texts match their parser canonical text",
+        "raw parser text and raw text SHA256 remain preserved",
+        "no fuzzy or semantic text repair was used"
+      ],
+      "observedSourceObjects": [
+        {
+          "sourceOccurrenceId": "B000888",
+          "page": 14,
+          "sourceOrdinal": 887,
+          "literalSourceText": "SESSION V: Cu rrent Research",
+          "parserCanonicalText": "SESSION V: Current Research",
+          "textMatch": "PDF_LAYOUT_CANONICAL_EQUIVALENT",
+          "resolution": "BOUND_BY_NATIVE_ID_AND_PARSER_CANONICAL_TEXT"
+        },
+        {
+          "sourceOccurrenceId": "B000893",
+          "page": 14,
+          "sourceOrdinal": 892,
+          "literalSourceText": "SESSION V: Cu rrent Resea rch (Cont’d)",
+          "parserCanonicalText": "SESSION V: Current Research (Cont’d)",
+          "textMatch": "PDF_LAYOUT_CANONICAL_EQUIVALENT",
+          "resolution": "BOUND_BY_NATIVE_ID_AND_PARSER_CANONICAL_TEXT"
+        }
+      ],
+      "ambiguities": []
+    },
+    {
+      "id": "IR-020",
+      "semanticRelation": "SAME_SEMANTIC_REPEAT",
+      "semanticConfidence": "HIGH",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "leftQuery": {
+        "documentId": "DOC-0123",
+        "expectedSourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "exactText": "Section I - Instructions to Proposers (ITP)",
+        "sourceOccurrenceId": "body[1]/p[192]",
+        "sourceOrdinal": 193,
+        "nativePath": "body[1]/p[192]"
+      },
+      "rightQuery": {
+        "documentId": "DOC-0123",
+        "expectedSourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "exactText": "Section I - Instructions to Proposers",
+        "sourceOccurrenceId": "body[1]/p[263]",
+        "sourceOrdinal": 264,
+        "nativePath": "body[1]/p[263]"
+      },
+      "leftOccurrence": {
+        "documentId": "DOC-0123",
+        "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "sourceOccurrenceId": "body[1]/p[192]",
+        "verbatimText": "Section I - Instructions to Proposers (ITP)",
+        "sourceOrdinal": 193,
+        "nativePath": "body[1]/p[192]",
+        "textSha256": "e0c4efd5846b724389d3e3462c2f61b15b73be3c53cdee6127068c2402d7bb24",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_EXACT_TEXT",
+        "bindingConfidence": "EXACT",
+        "sourceLineageVerified": true
+      },
+      "rightOccurrence": {
+        "documentId": "DOC-0123",
+        "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "sourceOccurrenceId": "body[1]/p[263]",
+        "verbatimText": "Section I - Instructions to Proposers",
+        "sourceOrdinal": 264,
+        "nativePath": "body[1]/p[263]",
+        "textSha256": "c0c00e1566e2f500d82d7986f717aec95a357c2fc58298a2c2a369e557808277",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_EXACT_TEXT",
+        "bindingConfidence": "EXACT",
+        "sourceLineageVerified": true
+      },
+      "bindingEvidence": [
+        "source SHA256 verified",
+        "both native source IDs verified",
+        "both exact verbatim texts verified"
+      ],
+      "ambiguities": []
+    },
+    {
+      "id": "IR-021",
+      "semanticRelation": "SAME_SEMANTIC_REPEAT",
+      "semanticConfidence": "HIGH",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "leftQuery": {
+        "documentId": "DOC-0123",
+        "expectedSourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "exactText": "Contractor’s Representative and Key Personnel",
+        "sourceOccurrenceId": "body[1]/p[1164]",
+        "sourceOrdinal": 3005,
+        "nativePath": "body[1]/p[1164]"
+      },
+      "rightQuery": {
+        "documentId": "DOC-0123",
+        "expectedSourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "exactText": "Contractor’s Representative and Key Personnel",
+        "sourceOccurrenceId": "body[1]/p[1166]",
+        "sourceOrdinal": 3007,
+        "nativePath": "body[1]/p[1166]"
+      },
+      "leftOccurrence": {
+        "documentId": "DOC-0123",
+        "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "sourceOccurrenceId": "body[1]/p[1164]",
+        "verbatimText": "Contractor’s Representative and Key Personnel",
+        "sourceOrdinal": 3005,
+        "nativePath": "body[1]/p[1164]",
+        "textSha256": "c5b2ae0b810197269a9cea8d44d2121edd3e8e7b5b8d2924dc6579372485b6ef",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_EXACT_TEXT",
+        "bindingConfidence": "EXACT",
+        "sourceLineageVerified": true
+      },
+      "rightOccurrence": {
+        "documentId": "DOC-0123",
+        "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "sourceOccurrenceId": "body[1]/p[1166]",
+        "verbatimText": "Contractor’s Representative and Key Personnel",
+        "sourceOrdinal": 3007,
+        "nativePath": "body[1]/p[1166]",
+        "textSha256": "c5b2ae0b810197269a9cea8d44d2121edd3e8e7b5b8d2924dc6579372485b6ef",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_EXACT_TEXT",
+        "bindingConfidence": "EXACT",
+        "sourceLineageVerified": true
+      },
+      "bindingEvidence": [
+        "source SHA256 verified",
+        "both native source IDs verified",
+        "p[1165] note remains source context and is not bound"
+      ],
+      "ambiguities": []
+    },
+    {
+      "id": "IR-022",
+      "semanticRelation": "DISTINCT_SEMANTIC_NODE",
+      "semanticConfidence": "HIGH",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "leftQuery": {
+        "documentId": "DOC-0123",
+        "expectedSourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "exactText": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES",
+        "sourceOccurrenceId": "body[1]/p[1098]",
+        "sourceOrdinal": 2939,
+        "nativePath": "body[1]/p[1098]"
+      },
+      "rightQuery": {
+        "documentId": "DOC-0123",
+        "expectedSourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "exactText": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES",
+        "sourceOccurrenceId": "body[1]/p[1137]",
+        "sourceOrdinal": 2978,
+        "nativePath": "body[1]/p[1137]"
+      },
+      "leftOccurrence": {
+        "documentId": "DOC-0123",
+        "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "sourceOccurrenceId": "body[1]/p[1098]",
+        "verbatimText": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES",
+        "sourceOrdinal": 2939,
+        "nativePath": "body[1]/p[1098]",
+        "textSha256": "b1a6973902111768b76ee0f2ca01be66f4ff81101f06d4245661104100fd44fb",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_EXACT_TEXT",
+        "bindingConfidence": "EXACT",
+        "sourceLineageVerified": true
+      },
+      "rightOccurrence": {
+        "documentId": "DOC-0123",
+        "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+        "sourceOccurrenceId": "body[1]/p[1137]",
+        "verbatimText": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES",
+        "sourceOrdinal": 2978,
+        "nativePath": "body[1]/p[1137]",
+        "textSha256": "b1a6973902111768b76ee0f2ca01be66f4ff81101f06d4245661104100fd44fb",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_EXACT_TEXT",
+        "bindingConfidence": "EXACT",
+        "sourceLineageVerified": true
+      },
+      "bindingEvidence": [
+        "source SHA256 verified",
+        "both native source IDs verified",
+        "distinct source ordinals preserve OPTION 1/OPTION 2 provenance without using relation as a selector"
+      ],
+      "ambiguities": []
+    }
+  ],
+  "summary": {
+    "totalGoldItems": 5,
+    "exactBound": 4,
+    "ambiguous": 0,
+    "bindingIncomplete": 1,
+    "machineEvaluable": 4,
+    "fuzzyJoins": 0,
+    "fabricatedOccurrenceIds": 0,
+    "goldReadBeforeBinding": false
+  },
+  "gate": "BLOCKED_ON_IDENTITY_GOLD_BINDING",
+  "remainingBlockers": [
+    "IR-018 outer occurrence exact source object unavailable"
+  ],
+  "previousBindingArtifact": {
+    "path": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v1.json",
+    "sha256": "8c586a512850f96be724bf328e0dba01e5587db52eef7fb727c7a111b26c060e"
+  },
+  "pdfRecovery": {
+    "version": "pdf-raw-occurrence-recovery-v1",
+    "matchingPolicy": "parser-backed MatchText run rejoin + whitespace collapse only",
+    "punctuationRemoval": false,
+    "fuzzyMatching": false,
+    "semanticSimilarity": false,
+    "fabricatedCoordinates": false
+  }
+}
