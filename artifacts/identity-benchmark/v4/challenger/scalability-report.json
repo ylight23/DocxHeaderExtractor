@@ -1,0 +1,56 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4b_scalability_report",
+  "v3BroadCandidates": 95999,
+  "v4AddedCandidates": 70,
+  "v4BroadCandidates": 96069,
+  "additionsByReason": {
+    "SHARED_STRUCTURAL_HEADING_KEY": 67,
+    "TERMINAL_ACRONYM_VARIANT": 10,
+    "EXPLICIT_CONTINUATION_VARIANT": 2
+  },
+  "broadByReason": {
+    "ADJACENT_ORDER": 6535,
+    "NORMALIZED_TEXT_AFFINITY": 89476,
+    "SHARED_STRUCTURAL_HEADING_KEY": 89,
+    "TERMINAL_ACRONYM_VARIANT": 19,
+    "EXPLICIT_CONTINUATION_VARIANT": 2
+  },
+  "overlappingNewReasonPairs": 9,
+  "perDocument": [
+    {
+      "documentId": "DOC-0123",
+      "v3BroadCandidates": 3904,
+      "addedCandidates": 44,
+      "v4BroadCandidates": 3948,
+      "addedCandidatesByReason": {
+        "SHARED_STRUCTURAL_HEADING_KEY": 42,
+        "TERMINAL_ACRONYM_VARIANT": 9
+      }
+    },
+    {
+      "documentId": "DOC-0133",
+      "v3BroadCandidates": 72114,
+      "addedCandidates": 6,
+      "v4BroadCandidates": 72120,
+      "addedCandidatesByReason": {
+        "TERMINAL_ACRONYM_VARIANT": 1,
+        "SHARED_STRUCTURAL_HEADING_KEY": 5
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "v3BroadCandidates": 19981,
+      "addedCandidates": 20,
+      "v4BroadCandidates": 20001,
+      "addedCandidatesByReason": {
+        "SHARED_STRUCTURAL_HEADING_KEY": 20,
+        "EXPLICIT_CONTINUATION_VARIANT": 2
+      }
+    }
+  ],
+  "maximumAddedEndpointFanOut": 5,
+  "scaleGuard": "PASS",
+  "pruningApplied": false,
+  "goldUsed": false,
+  "providerCalls": 0
+}

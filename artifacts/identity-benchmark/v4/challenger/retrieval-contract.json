@@ -1,0 +1,43 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4b_retrieval_contract",
+  "schemaVersion": "a99-identity-benchmark-v4b-retrieval-contract-v1",
+  "developmentStatus": "DEV_EXPOSED_CHALLENGER",
+  "informedBy": [
+    "V3B_RETRIEVAL_FAILURE",
+    "V4A_RETRIEVAL_FORENSICS"
+  ],
+  "independentGeneralizationClaim": false,
+  "composition": "V3 broad candidate set UNION three source-only signal families; no weights and no pruning.",
+  "signals": [
+    {
+      "name": "SHARED_STRUCTURAL_HEADING_KEY",
+      "grammar": "leading SESSION or SECTION plus Roman/decimal identifier",
+      "eligibility": "same document, same kind, same normalized identifier",
+      "impliesRelation": false
+    },
+    {
+      "name": "TERMINAL_ACRONYM_VARIANT",
+      "grammar": "one terminal bounded uppercase acronym parenthetical",
+      "eligibility": "exact existing narrow normalization of acronym-stripped base",
+      "impliesRelation": false
+    },
+    {
+      "name": "EXPLICIT_CONTINUATION_VARIANT",
+      "grammar": "terminal Cont\u2019d, Contd, or Continued",
+      "eligibility": "same document and exact base comparison or compatible structural key",
+      "impliesRelation": false
+    }
+  ],
+  "forbidden": [
+    "strip_all_parentheticals",
+    "fuzzy_matching",
+    "relation_labels",
+    "automatic_merge",
+    "Gold",
+    "model_output",
+    "weights"
+  ],
+  "pdfTextPolicy": "rawVerbatimText remains distinct from any parser-backed canonical comparison text; no broad PDF fuzzy repair is introduced.",
+  "goldReadCount": 0,
+  "providerCalls": 0
+}

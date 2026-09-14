@@ -1,0 +1,20 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4b_firewall",
+  "schemaVersion": "a99-identity-benchmark-v4b-firewall-v1",
+  "developmentStatus": "DEV_EXPOSED_CHALLENGER",
+  "goldReadCount": 0,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldUsedForGeneration": false,
+  "goldUsedForRanking": false,
+  "goldUsedForPruning": false,
+  "goldUsedToChooseThreshold": false,
+  "relationLabelsConsumed": false,
+  "promotionApplied": false,
+  "v3ArtifactsModified": false,
+  "requestArtifactsCreated": false,
+  "predictionArtifactsCreated": false,
+  "sourceOrderCanonicalized": true,
+  "metamorphicTests": "PASS",
+  "sourceInputOnly": true
+}

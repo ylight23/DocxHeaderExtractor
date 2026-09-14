@@ -1,0 +1,292 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4b_lexical_variant_extractions",
+  "schemaVersion": "a99-identity-benchmark-v4b-lexical-variant-extractions-v1",
+  "extraction": "source-only bounded terminal grammars",
+  "acronymRows": [
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[84]",
+      "documentOrder": 85,
+      "rawText": "Section I - Instructions to Proposers (ITP)",
+      "baseSurface": "Section I - Instructions to Proposers",
+      "normalizedBase": "SECTION I - INSTRUCTIONS TO PROPOSERS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[86]",
+      "documentOrder": 87,
+      "rawText": "Section II - Proposal Data Sheet (PDS)",
+      "baseSurface": "Section II - Proposal Data Sheet",
+      "normalizedBase": "SECTION II - PROPOSAL DATA SHEET",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[101]",
+      "documentOrder": 102,
+      "rawText": "Section VIII - General Conditions (GC)",
+      "baseSurface": "Section VIII - General Conditions",
+      "normalizedBase": "SECTION VIII - GENERAL CONDITIONS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[103]",
+      "documentOrder": 104,
+      "rawText": "Section IX - Particular Conditions (PC)",
+      "baseSurface": "Section IX - Particular Conditions",
+      "normalizedBase": "SECTION IX - PARTICULAR CONDITIONS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[192]",
+      "documentOrder": 193,
+      "rawText": "Section I - Instructions to Proposers (ITP)",
+      "baseSurface": "Section I - Instructions to Proposers",
+      "normalizedBase": "SECTION I - INSTRUCTIONS TO PROPOSERS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+      "documentOrder": 313,
+      "rawText": "Section I - Instructions to Proposers (ITP)",
+      "baseSurface": "Section I - Instructions to Proposers",
+      "normalizedBase": "SECTION I - INSTRUCTIONS TO PROPOSERS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]",
+      "documentOrder": 314,
+      "rawText": "Section II - Proposal Data Sheet (PDS)",
+      "baseSurface": "Section II - Proposal Data Sheet",
+      "normalizedBase": "SECTION II - PROPOSAL DATA SHEET",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/tbl[10]/tr[2]/tc[1]/p[1]",
+      "documentOrder": 553,
+      "rawText": "Best and Final Offer (BAFO)",
+      "baseSurface": "Best and Final Offer",
+      "normalizedBase": "BEST AND FINAL OFFER",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/tbl[10]/tr[3]/tc[1]/p[1]",
+      "documentOrder": 556,
+      "rawText": "Most Advantageous Proposal (MAP)",
+      "baseSurface": "Most Advantageous Proposal",
+      "normalizedBase": "MOST ADVANTAGEOUS PROPOSAL",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[276]",
+      "documentOrder": 606,
+      "rawText": "Section II - Proposal Data Sheet (PDS)",
+      "baseSurface": "Section II - Proposal Data Sheet",
+      "normalizedBase": "SECTION II - PROPOSAL DATA SHEET",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+      "documentOrder": 670,
+      "rawText": "Code of Conduct for Contractor\u2019s Personnel (ES)",
+      "baseSurface": "Code of Conduct for Contractor\u2019s Personnel",
+      "normalizedBase": "CODE OF CONDUCT FOR CONTRACTOR\u2019S PERSONNEL",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[322]",
+      "documentOrder": 914,
+      "rawText": "Evaluation of Technical Part (ITP 31)",
+      "baseSurface": "Evaluation of Technical Part",
+      "normalizedBase": "EVALUATION OF TECHNICAL PART",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[396]",
+      "documentOrder": 1006,
+      "rawText": "Multiple Contracts (ITP 40.3)",
+      "baseSurface": "Multiple Contracts",
+      "normalizedBase": "MULTIPLE CONTRACTS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[575]",
+      "documentOrder": 1243,
+      "rawText": "Table B. Foreign Currency (FC)",
+      "baseSurface": "Table B. Foreign Currency",
+      "normalizedBase": "TABLE B. FOREIGN CURRENCY",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/tbl[21]/tr[1]/tc[5]/p[2]",
+      "documentOrder": 1291,
+      "rawText": "Percentage of Total Proposal Price (TPP)",
+      "baseSurface": "Percentage of Total Proposal Price",
+      "normalizedBase": "PERCENTAGE OF TOTAL PROPOSAL PRICE",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[695]",
+      "documentOrder": 2040,
+      "rawText": "Code of Conduct for Contractor\u2019s Personnel (ES)",
+      "baseSurface": "Code of Conduct for Contractor\u2019s Personnel",
+      "normalizedBase": "CODE OF CONDUCT FOR CONTRACTOR\u2019S PERSONNEL",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[807]",
+      "documentOrder": 2166,
+      "rawText": "ATTACHMENT 1: Behaviors constituting Sexual Exploitation and Abuse (SEA) and behaviors constituting Sexual Harassment (SH)",
+      "baseSurface": "ATTACHMENT 1: Behaviors constituting Sexual Exploitation and Abuse (SEA) and behaviors constituting Sexual Harassment",
+      "normalizedBase": "ATTACHMENT 1: BEHAVIORS CONSTITUTING SEXUAL EXPLOITATION AND ABUSE (SEA) AND BEHAVIORS CONSTITUTING SEXUAL HARASSMENT",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[1192]",
+      "documentOrder": 3101,
+      "rawText": "Section VIII - General Conditions (GC)",
+      "baseSurface": "Section VIII - General Conditions",
+      "normalizedBase": "SECTION VIII - GENERAL CONDITIONS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/tbl[48]/tr[1]/tc[1]/p[5]",
+      "documentOrder": 3107,
+      "rawText": "International Federation of Consulting Engineers (FIDIC)",
+      "baseSurface": "International Federation of Consulting Engineers",
+      "normalizedBase": "INTERNATIONAL FEDERATION OF CONSULTING ENGINEERS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+      "documentOrder": 3117,
+      "rawText": "Section IX - Particular Conditions (PC)",
+      "baseSurface": "Section IX - Particular Conditions",
+      "normalizedBase": "SECTION IX - PARTICULAR CONDITIONS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/tbl[53]/tr[10]/tc[1]/p[2]",
+      "documentOrder": 3459,
+      "rawText": "Sexual Exploitation and Abuse (SEA), and Sexual Harassment (SH)",
+      "baseSurface": "Sexual Exploitation and Abuse (SEA), and Sexual Harassment",
+      "normalizedBase": "SEXUAL EXPLOITATION AND ABUSE (SEA), AND SEXUAL HARASSMENT",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0123",
+      "sourceOccurrenceId": "DOC-0123:body[1]/p[1243]",
+      "documentOrder": 4051,
+      "rawText": "Part D- Environmental and Social (ES)",
+      "baseSurface": "Part D- Environmental and Social",
+      "normalizedBase": "PART D- ENVIRONMENTAL AND SOCIAL",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceOccurrenceId": "DOC-0133:B000931",
+      "documentOrder": 930,
+      "rawText": "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT (IBRD)",
+      "baseSurface": "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT",
+      "normalizedBase": "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceOccurrenceId": "DOC-0133:B000935",
+      "documentOrder": 934,
+      "rawText": "CONDENSED QUARTERLY FINANCIAL STATEMENTS (UNAUDITED)",
+      "baseSurface": "CONDENSED QUARTERLY FINANCIAL STATEMENTS",
+      "normalizedBase": "CONDENSED QUARTERLY FINANCIAL STATEMENTS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceOccurrenceId": "DOC-0133:B001152",
+      "documentOrder": 1151,
+      "rawText": "In June 2022 the Financial Accounting Standards Board (FASB) issued Accounting Standard Update (ASU)",
+      "baseSurface": "In June 2022 the Financial Accounting Standards Board (FASB) issued Accounting Standard Update",
+      "normalizedBase": "IN JUNE 2022 THE FINANCIAL ACCOUNTING STANDARDS BOARD (FASB) ISSUED ACCOUNTING STANDARD UPDATE",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceOccurrenceId": "DOC-0252:B000181",
+      "documentOrder": 180,
+      "rawText": "data so u rces u sed fo r the extra po latio n of P P Ps a s pu bl is hed i n the W B Wo rld Deve lo pm e nt I n d icato rs (WD I )",
+      "baseSurface": "data so u rces u sed fo r the extra po latio n of P P Ps a s pu bl is hed i n the W B Wo rld Deve lo pm e nt I n d icato rs",
+      "normalizedBase": "DATA SO U RCES U SED FO R THE EXTRA PO LATIO N OF P P PS A S PU BL IS HED I N THE W B WO RLD DEVE LO PM E NT I N D ICATO RS",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceOccurrenceId": "DOC-0252:B000208",
+      "documentOrder": 207,
+      "rawText": "Lati n Am e rica a n d the Ca ri bbea n La dy I nfa nte O rtega U n ited N atio ns Eco n o m ic Co m m issio n fo r Lati n Am e rica a n d the Ca ri bbea n (U N - ECLAC)",
+      "baseSurface": "Lati n Am e rica a n d the Ca ri bbea n La dy I nfa nte O rtega U n ited N atio ns Eco n o m ic Co m m issio n fo r Lati n Am e rica a n d the Ca ri bbea n",
+      "normalizedBase": "LATI N AM E RICA A N D THE CA RI BBEA N LA DY I NFA NTE O RTEGA U N ITED N ATIO NS ECO N O M IC CO M M ISSIO N FO R LATI N AM E RICA A N D THE CA RI BBEA N",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceOccurrenceId": "DOC-0252:B000620",
+      "documentOrder": 619,
+      "rawText": "Co m pa riso n P rogra m m e (ECP)",
+      "baseSurface": "Co m pa riso n P rogra m m e",
+      "normalizedBase": "CO M PA RISO N P ROGRA M M E",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceOccurrenceId": "DOC-0252:B000861",
+      "documentOrder": 860,
+      "rawText": "I nte rn atio n a l Co m pa riso n Progra m (ICP) TECH N ICAL ADVISORY G ROU P (TAG)",
+      "baseSurface": "I nte rn atio n a l Co m pa riso n Progra m (ICP) TECH N ICAL ADVISORY G ROU P",
+      "normalizedBase": "I NTE RN ATIO N A L CO M PA RISO N PROGRA M (ICP) TECH N ICAL ADVISORY G ROU P",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceOccurrenceId": "DOC-0252:B000944",
+      "documentOrder": 943,
+      "rawText": "ICP I nter-Agency Coordination G rou p (IACG)",
+      "baseSurface": "ICP I nter-Agency Coordination G rou p",
+      "normalizedBase": "ICP I NTER-AGENCY COORDINATION G ROU P",
+      "grammar": "TERMINAL_UPPERCASE_ACRONYM"
+    }
+  ],
+  "continuationRows": [
+    {
+      "documentId": "DOC-0252",
+      "sourceOccurrenceId": "DOC-0252:B000893",
+      "documentOrder": 892,
+      "rawText": "SESSION V: Cu rrent Resea rch (Cont\u2019d)",
+      "baseSurface": "SESSION V: Cu rrent Resea rch",
+      "normalizedBase": "SESSION V: CU RRENT RESEA RCH",
+      "continuationMarker": "(Cont\u2019d)",
+      "structuralKey": "SESSION V",
+      "grammar": "TERMINAL_CONTINUATION_MARKER"
+    }
+  ],
+  "goldUsed": false,
+  "providerCalls": 0
+}

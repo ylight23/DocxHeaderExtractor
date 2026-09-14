@@ -1,0 +1,38 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4b_manifest",
+  "schemaVersion": "a99-identity-benchmark-v4b-manifest-v1",
+  "status": "READY_FOR_V4_RETRIEVAL_EVALUATION",
+  "developmentStatus": "DEV_EXPOSED_CHALLENGER",
+  "informedBy": [
+    "V3B_RETRIEVAL_FAILURE",
+    "V4A_RETRIEVAL_FORENSICS"
+  ],
+  "independentGeneralizationClaim": false,
+  "sourceDocuments": 3,
+  "sourceUnits": 6538,
+  "sourceCatalogPath": "artifacts/identity-benchmark/v2/source-catalog.json",
+  "sourceCatalogSha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+  "sourceCatalogFingerprint": "ed61300844f124d02144c09ea288822a88f6c7fdd0dbee0cf1bf42d31b51fd84",
+  "v3BroadCandidateCount": 95999,
+  "v3BroadCandidateSetSha256": "d9718a6fa67ad7b2dea68959517605751d9b2dfd207ed3036d3d1e0a111e2b4d",
+  "v4AddedCandidateCount": 70,
+  "v4BroadCandidateCount": 96069,
+  "v4BroadCandidateSetSha256": "a9aad1afabb0645112f6aefae743d91b8dfb6f8681231881fcf791538053c9a0",
+  "generatorSourceSha256": "1ef57553e3b191787c6795919441cde1a6656d27fc964cdfae86a2c032d7c3b8",
+  "candidateGenerationMode": "V3_SET_UNION_SOURCE_ONLY_STRUCTURAL_AND_LEXICAL_SIGNALS",
+  "signalFamilies": [
+    "SHARED_STRUCTURAL_HEADING_KEY",
+    "TERMINAL_ACRONYM_VARIANT",
+    "EXPLICIT_CONTINUATION_VARIANT"
+  ],
+  "v3PruningApplied": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReadCount": 0,
+  "goldUsedForGeneration": false,
+  "requestArtifactsCreated": false,
+  "predictionArtifactsCreated": false,
+  "metamorphicSelfTests": "PASS",
+  "productionBehaviorChanged": false,
+  "nextGate": "READY_FOR_V4_RETRIEVAL_EVALUATION"
+}

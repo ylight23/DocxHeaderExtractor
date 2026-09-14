@@ -1,0 +1,26 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4b_source_reference",
+  "schemaVersion": "a99-identity-benchmark-v4b-source-reference-v1",
+  "path": "artifacts/identity-benchmark/v2/source-catalog.json",
+  "sha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+  "catalogFingerprint": "ed61300844f124d02144c09ea288822a88f6c7fdd0dbee0cf1bf42d31b51fd84",
+  "documents": [
+    {
+      "documentId": "DOC-0123",
+      "sourceUnitCount": 3214,
+      "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1"
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceUnitCount": 2354,
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceUnitCount": 970,
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61"
+    }
+  ],
+  "goldReadCount": 0,
+  "providerCalls": 0
+}

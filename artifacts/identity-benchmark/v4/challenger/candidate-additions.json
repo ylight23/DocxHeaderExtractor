@@ -1,0 +1,1140 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4b_candidate_additions",
+  "schemaVersion": "a99-identity-benchmark-v4b-candidate-additions-v1",
+  "developmentStatus": "DEV_EXPOSED_CHALLENGER",
+  "candidates": [
+    {
+      "candidateId": "DOC-0123:V4P0049-0119",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[84]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[172]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[172]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[84]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0049-0200",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[84]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[263]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "structuralKey": "SECTION I",
+      "acronymBase": "SECTION I - INSTRUCTIONS TO PROPOSERS",
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[263]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[84]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0051-0120",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[86]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[173]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION II",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[173]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[86]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0053-0121",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[88]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[174]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION III",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[174]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[88]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0053-0758",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[88]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[285]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION III",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[285]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[88]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0055-0122",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[90]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[175]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION IV",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[175]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[90]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0057-0123",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[92]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[176]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION V",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[176]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[92]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0059-0124",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[94]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[177]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VI",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[177]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[94]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0062-0126",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[97]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[179]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VII",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[179]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[97]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0062-1739",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[97]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[1016]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VII",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[1016]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[97]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0066-0128",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[101]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[181]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VIII",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[101]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[181]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0066-0258",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[101]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "structuralKey": "SECTION VIII",
+      "acronymBase": "SECTION VIII - GENERAL CONDITIONS",
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[101]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0068-0129",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[103]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[182]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION IX",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[103]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[182]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0068-0259",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[103]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "structuralKey": "SECTION IX",
+      "acronymBase": "SECTION IX - PARTICULAR CONDITIONS",
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[103]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0070-0130",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[105]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[183]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION X",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[105]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[183]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0119-0132",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[172]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[192]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[172]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[192]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0119-0200",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[172]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[263]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[172]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[263]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0119-0249",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[172]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[172]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0120-0250",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[173]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION II",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[173]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0120-0541",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[173]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[276]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION II",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[173]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[276]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0121-0251",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[174]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION III",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[174]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0121-0758",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[174]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[285]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION III",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[174]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[285]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0122-0252",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[175]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION IV",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[175]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0122-0875",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[175]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[403]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION IV",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[175]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[403]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0123-0253",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[176]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION V",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[176]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0123-1714",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[176]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[981]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION V",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[176]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[981]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0124-0254",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[177]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[8]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VI",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[177]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[8]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0124-1719",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[177]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[992]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VI",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[177]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[992]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0126-0256",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[179]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[10]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VII",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[179]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[10]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0126-1739",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[179]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[1016]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VII",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[1016]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[179]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0128-0258",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[181]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VIII",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[181]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0128-1995",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[181]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[1192]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VIII",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[1192]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[181]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0129-0259",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[182]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION IX",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[182]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0129-2007",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[182]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION IX",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[182]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0130-0260",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[183]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION X",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[183]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0130-2953",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[183]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[1314]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION X",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[1314]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[183]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0132-0200",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[192]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[263]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "structuralKey": "SECTION I",
+      "acronymBase": "SECTION I - INSTRUCTIONS TO PROPOSERS",
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[192]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[263]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0200-0249",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[263]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "structuralKey": "SECTION I",
+      "acronymBase": "SECTION I - INSTRUCTIONS TO PROPOSERS",
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[263]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0251-0758",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[285]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION III",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[285]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0256-1739",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[10]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[1016]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION VII",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[1016]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[10]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0258-1995",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[1192]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "structuralKey": "SECTION VIII",
+      "acronymBase": "SECTION VIII - GENERAL CONDITIONS",
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[1192]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0259-2007",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+      "rightOccurrenceId": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "structuralKey": "SECTION IX",
+      "acronymBase": "SECTION IX - PARTICULAR CONDITIONS",
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P0602-1341",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[766]",
+      "reasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "structuralKey": null,
+      "acronymBase": "CODE OF CONDUCT FOR CONTRACTOR\u2019S PERSONNEL",
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[766]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0123:V4P1271-1341",
+      "documentId": "DOC-0123",
+      "leftOccurrenceId": "DOC-0123:body[1]/p[695]",
+      "rightOccurrenceId": "DOC-0123:body[1]/p[766]",
+      "reasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "structuralKey": null,
+      "acronymBase": "CODE OF CONDUCT FOR CONTRACTOR\u2019S PERSONNEL",
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[695]",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0123:body[1]/p[766]"
+      ]
+    },
+    {
+      "candidateId": "DOC-0133:V4P0005-0935",
+      "documentId": "DOC-0133",
+      "leftOccurrenceId": "DOC-0133:B000005",
+      "rightOccurrenceId": "DOC-0133:B000935",
+      "reasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "structuralKey": null,
+      "acronymBase": "CONDENSED QUARTERLY FINANCIAL STATEMENTS",
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000005",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000935"
+      ]
+    },
+    {
+      "candidateId": "DOC-0133:V4P0011-0013",
+      "documentId": "DOC-0133",
+      "leftOccurrenceId": "DOC-0133:B000011",
+      "rightOccurrenceId": "DOC-0133:B000013",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000011",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000013"
+      ]
+    },
+    {
+      "candidateId": "DOC-0133:V4P0011-0034",
+      "documentId": "DOC-0133",
+      "leftOccurrenceId": "DOC-0133:B000011",
+      "rightOccurrenceId": "DOC-0133:B000034",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000011",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000034"
+      ]
+    },
+    {
+      "candidateId": "DOC-0133:V4P0013-0034",
+      "documentId": "DOC-0133",
+      "leftOccurrenceId": "DOC-0133:B000013",
+      "rightOccurrenceId": "DOC-0133:B000034",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000013",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000034"
+      ]
+    },
+    {
+      "candidateId": "DOC-0133:V4P0015-0616",
+      "documentId": "DOC-0133",
+      "leftOccurrenceId": "DOC-0133:B000015",
+      "rightOccurrenceId": "DOC-0133:B000616",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION IV",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000015",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000616"
+      ]
+    },
+    {
+      "candidateId": "DOC-0133:V4P0017-0921",
+      "documentId": "DOC-0133",
+      "leftOccurrenceId": "DOC-0133:B000017",
+      "rightOccurrenceId": "DOC-0133:B000921",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SECTION V",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000017",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0133:B000921"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0006-0042",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000006",
+      "rightOccurrenceId": "DOC-0252:B000042",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000006",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000042"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0006-0253",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000006",
+      "rightOccurrenceId": "DOC-0252:B000253",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000006",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000253"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0006-0872",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000006",
+      "rightOccurrenceId": "DOC-0252:B000872",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000006",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000872"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0006-0875",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000006",
+      "rightOccurrenceId": "DOC-0252:B000875",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000006",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000875"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0006-0878",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000006",
+      "rightOccurrenceId": "DOC-0252:B000878",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000006",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000878"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0042-0253",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000042",
+      "rightOccurrenceId": "DOC-0252:B000253",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000042",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000253"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0042-0872",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000042",
+      "rightOccurrenceId": "DOC-0252:B000872",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000042",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000872"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0042-0875",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000042",
+      "rightOccurrenceId": "DOC-0252:B000875",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000042",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000875"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0042-0878",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000042",
+      "rightOccurrenceId": "DOC-0252:B000878",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000042",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000878"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0253-0872",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000253",
+      "rightOccurrenceId": "DOC-0252:B000872",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000253",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000872"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0253-0875",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000253",
+      "rightOccurrenceId": "DOC-0252:B000875",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000253",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000875"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0253-0878",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000253",
+      "rightOccurrenceId": "DOC-0252:B000878",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000253",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000878"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0435-0883",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000435",
+      "rightOccurrenceId": "DOC-0252:B000883",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION IV",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000435",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000883"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0544-0888",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000544",
+      "rightOccurrenceId": "DOC-0252:B000888",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION V",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000544",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000888"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0544-0893",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000544",
+      "rightOccurrenceId": "DOC-0252:B000893",
+      "reasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION V",
+      "acronymBase": null,
+      "continuationMarker": "(Cont\u2019d)",
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000544",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000893"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0851-0904",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000851",
+      "rightOccurrenceId": "DOC-0252:B000904",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION VI",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000851",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000904"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0872-0875",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000872",
+      "rightOccurrenceId": "DOC-0252:B000875",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000872",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000875"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0872-0878",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000872",
+      "rightOccurrenceId": "DOC-0252:B000878",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000872",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000878"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0875-0878",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000875",
+      "rightOccurrenceId": "DOC-0252:B000878",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION I",
+      "acronymBase": null,
+      "continuationMarker": null,
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000875",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000878"
+      ]
+    },
+    {
+      "candidateId": "DOC-0252:V4P0888-0893",
+      "documentId": "DOC-0252",
+      "leftOccurrenceId": "DOC-0252:B000888",
+      "rightOccurrenceId": "DOC-0252:B000893",
+      "reasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "structuralKey": "SESSION V",
+      "acronymBase": null,
+      "continuationMarker": "(Cont\u2019d)",
+      "sourceEvidenceReferences": [
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000888",
+        "artifacts/identity-benchmark/v2/source-catalog.json#DOC-0252:B000893"
+      ]
+    }
+  ],
+  "v3BroadCandidateCount": 95999,
+  "addedCandidateCount": 70,
+  "goldUsed": false,
+  "providerCalls": 0
+}
