@@ -65,7 +65,7 @@ Gold, or legacy fields.
         }).ToArray();
         var paired = BuildPairedResults(results);
         var agreement = BuildAgreement(paired);
-        var usage = BuildUsage(results);
+        var usage = BuildUsageFromAttempts(existing.Values);
         var rawManifest = results.Select(x =>
         {
             var attempt = existing[x.Sequence];
@@ -100,7 +100,7 @@ Gold, or legacy fields.
         });
         await WriteAsync(Path.Combine(output, "agreement-matrix.json"), agreement);
         await WriteAsync(Path.Combine(output, "usage-and-latency.json"), usage);
-        await WriteAsync(Path.Combine(output, "cost-report.json"), BuildCost(results));
+        await WriteAsync(Path.Combine(output, "cost-report.json"), BuildCostFromAttempts(existing.Values));
         await WriteAsync(Path.Combine(output, "execution-integrity.v1.json"), new
         {
             schemaVersion = "a99-v4f-e-execution-integrity-v1", totalAttemptRecords = existing.Count,
@@ -534,6 +534,29 @@ Gold, or legacy fields.
         return new { schemaVersion = "a99-v4f-e-cost-report-v1", pricingVerified = true, source = "https://openrouter.ai/qwen", inputUsdPerMillionTokens = 0.03m, outputUsdPerMillionTokens = 0.13m, old = new { actualInputUsd = Input(results.Where(x => x.Arm == "ARM_A")), actualOutputUsd = Output(results.Where(x => x.Arm == "ARM_A")) }, projected = new { actualInputUsd = Input(results.Where(x => x.Arm == "ARM_B")), actualOutputUsd = Output(results.Where(x => x.Arm == "ARM_B")) }, outputUnavailableMeans = "COST_PARTIAL_NOT_FABRICATED" };
     }
 
+    private static object BuildUsageFromAttempts(IEnumerable<AttemptRecord> attempts)
+    {
+        object Stats(IEnumerable<AttemptRecord> input)
+        {
+            var values = input.ToArray();
+            return new
+            {
+                reportedInputTokens = Distribution(values.Where(x => x.InputTokens.HasValue).Select(x => x.InputTokens!.Value)),
+                reportedOutputTokens = Distribution(values.Where(x => x.OutputTokens.HasValue).Select(x => x.OutputTokens!.Value)),
+                latencyMs = Distribution(values.Select(x => x.LatencyMs)),
+            };
+        }
+        return new { schemaVersion = "a99-v4f-e-usage-and-latency-v1", old = Stats(attempts.Where(x => x.Arm == "ARM_A")), projected = Stats(attempts.Where(x => x.Arm == "ARM_B")), usageSource = "frozen_attempt_record_telemetry" };
+    }
+
+    private static object BuildCostFromAttempts(IEnumerable<AttemptRecord> attempts)
+    {
+        decimal? Input(IEnumerable<AttemptRecord> input) { var tokens = input.Select(x => x.InputTokens).Where(x => x.HasValue).Sum(x => (long?)x!.Value); return tokens.HasValue ? tokens.Value * 0.03m / 1_000_000m : null; }
+        decimal? Output(IEnumerable<AttemptRecord> input) { var tokens = input.Select(x => x.OutputTokens).Where(x => x.HasValue).Sum(x => (long?)x!.Value); return tokens.HasValue ? tokens.Value * 0.13m / 1_000_000m : null; }
+        var values = attempts.ToArray();
+        return new { schemaVersion = "a99-v4f-e-cost-report-v1", pricingVerified = true, source = "https://openrouter.ai/qwen", inputUsdPerMillionTokens = 0.03m, outputUsdPerMillionTokens = 0.13m, old = new { actualInputUsd = Input(values.Where(x => x.Arm == "ARM_A")), actualOutputUsd = Output(values.Where(x => x.Arm == "ARM_A")) }, projected = new { actualInputUsd = Input(values.Where(x => x.Arm == "ARM_B")), actualOutputUsd = Output(values.Where(x => x.Arm == "ARM_B")) }, outputUnavailableMeans = "COST_PARTIAL_NOT_FABRICATED" };
+    }
+
     private static object ParseSummary(IEnumerable<ArmResult> values) => new { total = values.Count(), valid = values.Count(x => x.Status == "VALID"), invalidSchema = values.Count(x => x.Status == "INVALID_SCHEMA"), providerError = values.Count(x => x.Status == "PROVIDER_ERROR"), transportError = values.Count(x => x.Status == "TRANSPORT_ERROR"), unresolved = values.Count(x => RelationOf(x.Parsed) == "UNRESOLVED") };
     private static string? RelationOf(object? parsed)
     {
@@ -554,7 +577,10 @@ Gold, or legacy fields.
         var transportAttempts = attempts.Count(x => x.Status != "TRANSPORT_ERROR");
         var integrityGap = attempts.Any(x => x.Status == "TRANSPORT_ERROR" && x.HttpStatus == 200) || attempts.Any(x => x.RawResponseSha256 is null);
         var status = integrityGap ? "RESPONSE_FREEZE_COMPLETE_WITH_RAW_PERSISTENCE_GAP" : "PAIRED_VERIFIER_EXPERIMENT_COMPLETE";
-        return $"# A99 V4F-E — paired OLD vs PROJECTED verifier execution\n\nStatus: **{status}**\n\nFrozen sample: **{ExpectedSample}** candidates / **{ExpectedCalls}** interleaved provider attempts. Model: `{Model}` via `{Provider}`. The only changed variable is evidence representation.\n\n## Execution\n\nExecution order SHA: `{inputs.ExecutionOrderHash}`. Recorded attempts: **{attempts.Count:N0}**; non-transport outcomes: **{transportAttempts:N0}**. No retries were used.\n\n## Parsing\n\n- OLD valid: **{oldValid:N0}/{ExpectedSample}**\n- PROJECTED valid: **{projectedValid:N0}/{ExpectedSample}**\n\n## Behavioral preservation\n\nSee `agreement-matrix.json`. Agreement is behavioral agreement with OLD, not semantic accuracy; OLD is not Gold.\n\n## Integrity note\n\nSee `execution-integrity.v1.json`. The two initial HTTP 200 response bodies were not persisted because of a local runner directory-creation defect; they were retained as immutable attempt records and were not rerun. Provider-error attempts have no raw response body.\n\n## Firewall\n\nGold reads before response freeze: **0**; V4F-B reads: **0**; sample/request/projection/parser/model config changed: **NO**. Raw responses were frozen before paired comparison.\n\n## Cost and usage\n\nSee `usage-and-latency.json` and `cost-report.json`; actual provider usage is reported only when returned.\n\n## Semantic accuracy\n\n**UNAVAILABLE**. No Gold was opened in this experiment.\n";
+        var validPairCount = paired.Count(x => x.ValidPair);
+        var agreementCount = paired.Count(x => x.ValidPair && x.Agreement);
+        var rawHashCount = attempts.Count(x => x.RawResponseSha256 is not null);
+        return $"# A99 V4F-E — paired OLD vs PROJECTED verifier execution\n\nStatus: **{status}**\n\nFrozen sample: **{ExpectedSample}** candidates / **{ExpectedCalls}** interleaved provider attempts. Model: `{Model}` via `{Provider}`. The only changed variable is evidence representation.\n\n## Execution\n\nExecution order SHA: `{inputs.ExecutionOrderHash}`. Recorded attempts: **{attempts.Count:N0}**; non-transport outcomes: **{transportAttempts:N0}**; raw response hashes: **{rawHashCount:N0}**. No retries were used.\n\n## Parsing\n\n- OLD valid: **{oldValid:N0}/{ExpectedSample}**\n- PROJECTED valid: **{projectedValid:N0}/{ExpectedSample}**\n- Valid paired outputs: **{validPairCount:N0}/{ExpectedSample}**\n\n## Behavioral preservation\n\n- Agreement: **{agreementCount:N0}/{validPairCount:N0}** ({(validPairCount == 0 ? 0d : agreementCount / (double)validPairCount):P2})\n- Behavioral changes among valid pairs: **{validPairCount - agreementCount:N0}**\n\nSee `agreement-matrix.json`. Agreement is behavioral agreement with OLD, not semantic accuracy; OLD is not Gold.\n\n## Integrity note\n\nSee `execution-integrity.v1.json`. The two initial HTTP 200 response bodies were not persisted because of a local runner directory-creation defect; they were retained as immutable attempt records and were not rerun. Provider-error attempts have no raw response body.\n\n## Firewall\n\nGold reads before response freeze: **0**; V4F-B reads: **0**; sample/request/projection/parser/model config changed: **NO**. Raw responses were frozen before paired comparison.\n\n## Cost and usage\n\nSee `usage-and-latency.json` and `cost-report.json`; actual provider usage is reported only when returned.\n\n## Semantic accuracy\n\n**UNAVAILABLE**. No Gold was opened in this experiment.\n";
     }
 
     private static Packet BuildPacket(Candidate c, Occurrence left, Occurrence right, Occurrence[] nodes, SourceDoc source, string fingerprint, string configHash)

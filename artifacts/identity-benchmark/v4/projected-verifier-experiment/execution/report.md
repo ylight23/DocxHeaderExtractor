@@ -6,14 +6,18 @@ Frozen sample: **128** candidates / **256** interleaved provider attempts. Model
 
 ## Execution
 
-Execution order SHA: `0a3c75d296d8966a70c8545db9e4ec9819d80ba700186406ed8626366a8f2492`. Recorded attempts: **256**; non-transport outcomes: **254**. No retries were used.
+Execution order SHA: `0a3c75d296d8966a70c8545db9e4ec9819d80ba700186406ed8626366a8f2492`. Recorded attempts: **256**; non-transport outcomes: **254**; raw response hashes: **221**. No retries were used.
 
 ## Parsing
 
 - OLD valid: **109/128**
 - PROJECTED valid: **63/128**
+- Valid paired outputs: **58/128**
 
 ## Behavioral preservation
+
+- Agreement: **35/58** (60.34%)
+- Behavioral changes among valid pairs: **23**
 
 See `agreement-matrix.json`. Agreement is behavioral agreement with OLD, not semantic accuracy; OLD is not Gold.
 

@@ -2,55 +2,55 @@
   "schemaVersion": "a99-v4f-e-usage-and-latency-v1",
   "old": {
     "reportedInputTokens": {
-      "count": 0,
-      "min": 0,
-      "p50": 0,
-      "p95": 0,
-      "max": 0,
-      "total": 0
+      "count": 112,
+      "min": 113585,
+      "p50": 445172,
+      "p95": 445194,
+      "max": 445197,
+      "total": 37430358
     },
     "reportedOutputTokens": {
-      "count": 0,
-      "min": 0,
-      "p50": 0,
-      "p95": 0,
-      "max": 0,
-      "total": 0
+      "count": 112,
+      "min": 561,
+      "p50": 1337,
+      "p95": 2156,
+      "max": 2333,
+      "total": 152788
     },
     "latencyMs": {
-      "count": 0,
-      "min": 0,
-      "p50": 0,
-      "p95": 0,
-      "max": 0,
-      "total": 0
+      "count": 128,
+      "min": 378,
+      "p50": 10200,
+      "p95": 39811,
+      "max": 80438,
+      "total": 1822351
     }
   },
   "projected": {
     "reportedInputTokens": {
-      "count": 0,
-      "min": 0,
-      "p50": 0,
-      "p95": 0,
-      "max": 0,
-      "total": 0
+      "count": 109,
+      "min": 2225,
+      "p50": 3142,
+      "p95": 3971,
+      "max": 4784,
+      "total": 340561
     },
     "reportedOutputTokens": {
-      "count": 0,
-      "min": 0,
-      "p50": 0,
-      "p95": 0,
-      "max": 0,
-      "total": 0
+      "count": 109,
+      "min": 773,
+      "p50": 1571,
+      "p95": 2091,
+      "max": 2437,
+      "total": 170196
     },
     "latencyMs": {
-      "count": 0,
-      "min": 0,
-      "p50": 0,
-      "p95": 0,
-      "max": 0,
-      "total": 0
+      "count": 128,
+      "min": 166,
+      "p50": 16371,
+      "p95": 25180,
+      "max": 30974,
+      "total": 1961236
     }
   },
-  "usageSource": "provider_telemetry_when_returned"
+  "usageSource": "frozen_attempt_record_telemetry"
 }
