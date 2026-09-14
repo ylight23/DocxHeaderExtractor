@@ -1,9 +1,1289 @@
 {
   "schemaVersion": "a99-v4g-b-raw-response-manifest-v1",
-  "status": "PENDING_PROVIDER_EXECUTION",
-  "frozenBeforeParsing": true,
-  "responseCount": 0,
-  "persistedRawBodies": 0,
-  "responses": [],
+  "frozenBeforeParsingComparison": true,
+  "responseCount": 128,
+  "successfulRawResponses": 95,
+  "responses": [
+    {
+      "sequence": 1,
+      "candidateId": "DOC-0123:P01-42",
+      "requestSha256": "690424407ed72bdad6b81dad3bc8c88f8d13c0b2b697f9d280d909cd350bc217",
+      "status": "VALID",
+      "rawResponseSha256": "9fb0e757ab44888473a3aaf05077737ac32fe55d9c0bc24ce3f69e637ff2c23c",
+      "providerRequestId": "gen-1789401932-TzrjsJ7jL7MYqmAKFhXQ",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 2,
+      "candidateId": "DOC-0123:P05-06",
+      "requestSha256": "c9f71803ef2f6190f13d2280300d3f905eafcfeb729c45c7cd3c2c4db29f66de",
+      "status": "VALID",
+      "rawResponseSha256": "d4b669818ef218dc2ed96bb53b9f0c2adae60a783eed113dcfea46f005046e0f",
+      "providerRequestId": "gen-1789401955-LeFCJCTWZRU3x5lfgHCO",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 3,
+      "candidateId": "DOC-0123:P07-08",
+      "requestSha256": "29ba8720e26408a4c9217961c3571d3b070e89464a929e8f145f7e6d2c15e138",
+      "status": "VALID",
+      "rawResponseSha256": "512c6d6cd908840717b965e1f626b87c275f9323379eab787693af9ebc642a44",
+      "providerRequestId": "gen-1789401965-1IyVPW5VuQiFyfYiyXzQ",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 4,
+      "candidateId": "DOC-0123:P1006-1007",
+      "requestSha256": "443d210f68422551ec0051b9e7e0ef0db0dd9906d78e831da160c4024bc5b775",
+      "status": "VALID",
+      "rawResponseSha256": "9fec4402a12019cac8f4cb91cf0c8244e728ed0912117166cb422091d35024f2",
+      "providerRequestId": "gen-1789401979-QrxlIIBSRny3DUTTnaRr",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 5,
+      "candidateId": "DOC-0123:P1035-1036",
+      "requestSha256": "1c044990b62bcdcf66e352d78f2bd0c893772e124a5b98b3144bc42f664f3a49",
+      "status": "VALID",
+      "rawResponseSha256": "dbdf1ad93898084b51611d29460544dc2afc91b2be085e99d93f35f29f9411c6",
+      "providerRequestId": "gen-1789401996-P4wN1OCuWFGUxkrvT4xJ",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 6,
+      "candidateId": "DOC-0123:P1036-1037",
+      "requestSha256": "8e7d6ce2a9bca58a8bf2a8bf99e17977847627a4b271870dffe549c2f63ee787",
+      "status": "VALID",
+      "rawResponseSha256": "27b8bda834f5c54959d2c776ed9adcd51407996e812ff8b3bab94ceca38f4c6b",
+      "providerRequestId": "gen-1789402008-eM4Ou8USD4Ae0GOkf0vQ",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 7,
+      "candidateId": "DOC-0123:P1056-1057",
+      "requestSha256": "50c2e840944feae68edf63973b9a295586891befa17fb3d9a43ebd1feebd3442",
+      "status": "VALID",
+      "rawResponseSha256": "61da744316081b4519eb516df5c204ca3ca878ca6a849890b9c87552766a5d09",
+      "providerRequestId": "gen-1789402026-XnkNM1Fq5AT9IPl4VFI9",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 8,
+      "candidateId": "DOC-0123:P1057-1058",
+      "requestSha256": "15657797f7fb4f0c2231336bd027e5c15c0be86b4524181299cade71eb463350",
+      "status": "VALID",
+      "rawResponseSha256": "8caa344d1b31119e6b3b91be18a4539e28c29eb8f65891c346ad585d6f41c3e0",
+      "providerRequestId": "gen-1789402038-xV0RBhKLPGQuv54qMAgE",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 9,
+      "candidateId": "DOC-0123:P1087-1088",
+      "requestSha256": "51c096903c75523aa0c0e4aabedd326d901ab09b4805b5a22ca3d21cd0e70c97",
+      "status": "VALID",
+      "rawResponseSha256": "1b062593822bba91235df8055ee8a7b08387790b006e73e2e6980169aa210cbb",
+      "providerRequestId": "gen-1789402056-Sbx4AeL02EV8F7GseCa1",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 10,
+      "candidateId": "DOC-0123:P1091-1092",
+      "requestSha256": "38b5e89a8ae0803f7fbd5853c1f4e56c517062e45b206832b5bbc56e9a841da4",
+      "status": "VALID",
+      "rawResponseSha256": "ac5abfc87ba299dbe853df69375e8f59c7ee9bb764208e87b57ed28ba38f5905",
+      "providerRequestId": "gen-1789402064-vyEgzEUwUuqdNb7t2Ka9",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 11,
+      "candidateId": "DOC-0123:P1093-1094",
+      "requestSha256": "922ba5f9edeeae2e8f4862cffe4f6f0aa737afe1c72f076a147f9f8c66b8bea6",
+      "status": "VALID",
+      "rawResponseSha256": "0fd320c1d84e69348082d838bde085b76c35d57ffc7e001e98b5edf5a83081c0",
+      "providerRequestId": "gen-1789402081-vzLaUXFq2NnfLYrnNoO3",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 12,
+      "candidateId": "DOC-0123:P1094-1095",
+      "requestSha256": "a245f8fd40c0e7686869a4ee6c1677db5ebab14bccfe09f11fde7c2d22c73461",
+      "status": "VALID",
+      "rawResponseSha256": "8483e67836f1e7a13c018577b7279c74e49de1f48e9a0d8cf8b5d65d64c91f6b",
+      "providerRequestId": "gen-1789402093-gaijU7db2D1gAuR3F5Ew",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 13,
+      "candidateId": "DOC-0123:P1160-1161",
+      "requestSha256": "12b1eeac8f19ccd685ce2e6cf3c0a192aeab6be506904df5de9396f915e27ae6",
+      "status": "VALID",
+      "rawResponseSha256": "5a81fe4ab2ce3450c2ddf97417d19a1863ff2bf7945d95b6b4cf6c7d7a66cd4d",
+      "providerRequestId": "gen-1789402108-zuREPC4laDOM57LYupSw",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 14,
+      "candidateId": "DOC-0123:P1161-1162",
+      "requestSha256": "87f301d546bb765cd2172c5608cb5f795a0c66fd0265607d44ed2a28a19ae684",
+      "status": "VALID",
+      "rawResponseSha256": "a1b18238164a056f6503403b2d91e60fb81cf851ee76ce5447484b69d3777234",
+      "providerRequestId": "gen-1789402120-aA1xIHQcScqva8MR987f",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 15,
+      "candidateId": "DOC-0123:P1177-1178",
+      "requestSha256": "adee6874067530aa511c361715adec8078608129e19ab94cdf8350669104f1a3",
+      "status": "VALID",
+      "rawResponseSha256": "cc92a715635e798b4fa4dc7ed8642229083c4cf5a4a537de441736d456de0cc2",
+      "providerRequestId": "gen-1789402128-YycYuj8KODQK4Roxngbj",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 16,
+      "candidateId": "DOC-0123:P1178-1179",
+      "requestSha256": "1060088d37e4965ed612ed4c1259c60ae3fec50d7d92bffb371a11d501726c35",
+      "status": "VALID",
+      "rawResponseSha256": "3b25554dafae6ca3fa5f415cca9401233bf3a65e3981fdada2b2ee4c455c20ee",
+      "providerRequestId": "gen-1789402141-bqoIthnCapOmTUsA31Zk",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 17,
+      "candidateId": "DOC-0123:P1228-1229",
+      "requestSha256": "7c85b6b249eda7ee2a8034f32b8f364c170c0568446780b56661f3266dd4b45f",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 18,
+      "candidateId": "DOC-0123:P132-249",
+      "requestSha256": "252802b8f49815685f6f06b992955e92f92a223567c87d9193b2a64a76ad8a50",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 19,
+      "candidateId": "DOC-0123:P1334-1338",
+      "requestSha256": "312b9e331cd44b67de35566e03243a8d08025282a7e451f2d1a0aa035c991a88",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 20,
+      "candidateId": "DOC-0123:P1425-1973",
+      "requestSha256": "a09c6d458f7cc5508783198815ba9f9cfa70f5f57d57a8ffc295cb13bcbaae27",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 21,
+      "candidateId": "DOC-0123:P1482-1485",
+      "requestSha256": "770016275f2398eec4dd6c4a5f79599db0e826418d8736f57528773751cd6f78",
+      "status": "VALID",
+      "rawResponseSha256": "4c3fdb8840a28cdf2dbdb40297fe0e262d0d7c9fb0f996f0afe55078da854e06",
+      "providerRequestId": "gen-1789402164-FBpfPXrqTTJKhyjEfcjK",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 22,
+      "candidateId": "DOC-0123:P1533-1534",
+      "requestSha256": "6130a3effe89347b5875d8be273df0d23570dd6576fdc9a3be2ff20dd173dc83",
+      "status": "VALID",
+      "rawResponseSha256": "982eff78b456f012687d0d5e2cac144f2f429a07b6cfbff86bfd99f5f1ffddc6",
+      "providerRequestId": "gen-1789402179-QWxmIUE7PFahonPtZ6Hr",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 23,
+      "candidateId": "DOC-0123:P1540-1591",
+      "requestSha256": "a3ba4d31cb9009d601b6b2d159a4dbeaa747591e42076aeb3de7c00301bd00a1",
+      "status": "VALID",
+      "rawResponseSha256": "0dfdc6187e0ded460bfcf9fca3a273a627aab9caf624502f8e908a3d3bd9902f",
+      "providerRequestId": "gen-1789402191-uxdVNxLEEmEx0U8m1Wrm",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 24,
+      "candidateId": "DOC-0123:P1565-1566",
+      "requestSha256": "f6395b4fe83d972c7ac0918d46d15aeec49d7e0b819a9121ea2b4ce1836e5e84",
+      "status": "VALID",
+      "rawResponseSha256": "6dc5830d066ddc01bce3b35fcd017ffaebe61fb816fcf56fd73129ea7da7ac64",
+      "providerRequestId": "gen-1789402209-rHG8KwieWZsQbxj5Px9m",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 25,
+      "candidateId": "DOC-0123:P1592-1593",
+      "requestSha256": "521a3553c5d9a7b30523e6505ff0745f2836ecc51b42de4f0865e21de42a72c7",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 26,
+      "candidateId": "DOC-0123:P1603-1610",
+      "requestSha256": "a0b931a4f75be23b2d6f7ba1f2efab31f515a22837a224bc8ca9a596005efd89",
+      "status": "VALID",
+      "rawResponseSha256": "6cdd590a2a85acfbada5d3057cc0334492a553a56e501df9d6fd2333003b80a4",
+      "providerRequestId": "gen-1789402223-XVlFwSJPeDxjtbj3YCaR",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 27,
+      "candidateId": "DOC-0123:P1664-1665",
+      "requestSha256": "977d2176b9c0f218513e8e2877a0c753500f1d5dc3afa81a9d36d19409d7f038",
+      "status": "VALID",
+      "rawResponseSha256": "babe669c36cb538b1a5ce3eb67f26a8ca38e2e727716972bba21b882ceac888d",
+      "providerRequestId": "gen-1789402245-4AhzIlo0OaRnR9yVubQX",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 28,
+      "candidateId": "DOC-0123:P1665-1666",
+      "requestSha256": "70f1522fce4f8abd75336431fef7ea8c6ab2eb5ad7c2af36fd0b3b36f54d0466",
+      "status": "VALID",
+      "rawResponseSha256": "68ae33b57d50fdd9e6a3ee394517fdc01bf88fd065e81b9ae55923f1d465ea51",
+      "providerRequestId": "gen-1789402262-oaY8eAP7YiV08gThoJ5B",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 29,
+      "candidateId": "DOC-0123:P1761-1762",
+      "requestSha256": "32a14855e68ca7ce45bcaa4e468047622ab730b767118f3b3e40713a3162e8c2",
+      "status": "VALID",
+      "rawResponseSha256": "aa4a9b083f4e2a5cbd9cd75eee54b260a8dd72545db8932e17a8842833108d02",
+      "providerRequestId": "gen-1789402279-sNTVlEaHL6gkPJc5T7hz",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 30,
+      "candidateId": "DOC-0123:P1818-2556",
+      "requestSha256": "711434bfca03fe5b616982f935adf7fe536ab947b0fbdd10a1e4edabdf83730d",
+      "status": "VALID",
+      "rawResponseSha256": "cb426caff4a1770bbe30880a79afe7517bd0672e3b2c5830658aa9fae41b6c87",
+      "providerRequestId": "gen-1789402291-BWdxr3tS29Pt7rPdLPmx",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 31,
+      "candidateId": "DOC-0123:P2008-2009",
+      "requestSha256": "c2d3c6d651dd6e4b787fd0861c4a1c84a8dae0e968fe99c90ef7bc9709a83b90",
+      "status": "VALID",
+      "rawResponseSha256": "95e63e8b055fd4c730c8a7a37156ce2d194d28aa7e8e800843667eca4369c388",
+      "providerRequestId": "gen-1789402310-gIssiHrJErOFkYexzRR4",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 32,
+      "candidateId": "DOC-0123:P2048-2050",
+      "requestSha256": "85f95a16e82cec9a4aad4a77e0208bbbc1f04c48f755f3d097f966542f85d607",
+      "status": "VALID",
+      "rawResponseSha256": "c77e67efbcbe5d51c9749aed60d44160f1b125a0edb8f910b87315c4a20cc580",
+      "providerRequestId": "gen-1789402326-dt7lcCDsEXosBTFzADfU",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 33,
+      "candidateId": "DOC-0123:P2101-2103",
+      "requestSha256": "20e8f0e73190502963f484ba22815d9b29d51931e3f8d04f83f81b369c343350",
+      "status": "VALID",
+      "rawResponseSha256": "84982da3ea4a795c24abe2ff8a9b9df5cf662bd658bb19abd711a331bb3e17a2",
+      "providerRequestId": "gen-1789402341-EdQHictj5xvmouAHsV22",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 34,
+      "candidateId": "DOC-0123:P250-541",
+      "requestSha256": "1fc97677c9103f69f19590e8167566a7849fc64b9f41cdd0a0dd2b46fdb35dd2",
+      "status": "VALID",
+      "rawResponseSha256": "970fcf88a6611e44339e35aabc92685c6ccdb9601fb8a4159c26f2c10618e819",
+      "providerRequestId": "gen-1789402359-WvdCrjgRa3eTr8YRey2D",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 35,
+      "candidateId": "DOC-0123:P254-1719",
+      "requestSha256": "946b854d5e141f7f509d81fa41e91e5affaaf577bc75aebb6beb2d89ef882cdc",
+      "status": "VALID",
+      "rawResponseSha256": "66e247e3f66d9e81ef92f3f914c5fdbb1b2430976d4ec911fca2305308566824",
+      "providerRequestId": "gen-1789402372-sSRvEwAJszWM73StKrCc",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 36,
+      "candidateId": "DOC-0123:P2742-2754",
+      "requestSha256": "006957761cc0627df3b2e5fe069f2bf8367c205651ffb6ee6412447720f51a9d",
+      "status": "VALID",
+      "rawResponseSha256": "a507b672ee9d69fe2e7789774ca148833c86997488c2a06e6374bb4e76d3c7ab",
+      "providerRequestId": "gen-1789402382-uynAFsXmKpILa507FRj5",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 37,
+      "candidateId": "DOC-0123:P2843-2844",
+      "requestSha256": "eb19fca8fbbf66b0c49a9c13fe3ea131cc24018d770afcb9a30f44216f45b7e7",
+      "status": "VALID",
+      "rawResponseSha256": "2ec6ff0e89f340d77db172b64eff9664d1dc7f12275a5d41f68a32ab5f6c7dec",
+      "providerRequestId": "gen-1789402401-dEWz8D76J7JmsUczLt1F",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 38,
+      "candidateId": "DOC-0123:P3005-3006",
+      "requestSha256": "ecb94e96f0c1f5ff61eb4658e0c9bf726ca094f65c773f5b292752935d7629fd",
+      "status": "VALID",
+      "rawResponseSha256": "5ad23079ae95bbc883893977a6dd2557193e60586cc7a98236833e7ffc4819b2",
+      "providerRequestId": "gen-1789402418-hWaFUY7kngGUWIVzbSNK",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 39,
+      "candidateId": "DOC-0123:P3010-3015",
+      "requestSha256": "eaf847aa54758d872b923315b6ae5d8761e291b3564eb7acf17dda1025736288",
+      "status": "VALID",
+      "rawResponseSha256": "367c10a11ea5dd69594cef8052ae042a818866d8c6a115db857a6041678aa3a8",
+      "providerRequestId": "gen-1789402428-GtQOcOQ3Iud9H5eRB6XL",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 40,
+      "candidateId": "DOC-0123:P3013-3018",
+      "requestSha256": "61af35ebdf9641dc71a35a8ba17c67b753e900c3d6961572844ec72a2a9b0d24",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 41,
+      "candidateId": "DOC-0123:P3086-3088",
+      "requestSha256": "706d41cdefae5c5ad41ccf15dbbae5a4828a18be4b96c987f639ebd6557032f6",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 42,
+      "candidateId": "DOC-0123:P3092-3097",
+      "requestSha256": "da9344f62ab4b76ad7957ceed8bd463c7bb8f7367a1e96c7876ef42e470511f2",
+      "status": "VALID",
+      "rawResponseSha256": "b5fdb942b52263a684742027590ad897917d9803ff2e129333aedcbb06953756",
+      "providerRequestId": "gen-1789402440-utc9trYgZjeN7f9dowCS",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 43,
+      "candidateId": "DOC-0123:P3151-3182",
+      "requestSha256": "bde7f988a7c19ee3d6956ae346e402f70e4724ecdf9e87b0a1b5386e20b2cf9b",
+      "status": "VALID",
+      "rawResponseSha256": "408cd7fe5372002f1fc16ac39a1d00dfcb4a4c8218dcbcac380e1e34943a43bd",
+      "providerRequestId": "gen-1789402458-jicX38tK49bODULRP0W4",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 44,
+      "candidateId": "DOC-0123:P348-354",
+      "requestSha256": "71d36cf2144bf5e275a28d7e9aea8584b7a95a168e83e17aeb38abba0df7db9e",
+      "status": "VALID",
+      "rawResponseSha256": "4adb36d8acde02812070145ef6d6e32bed01b5fa42fe98155fe81dc83f827e67",
+      "providerRequestId": "gen-1789402471-FpVdiAeoc8kNkap7EwGm",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 45,
+      "candidateId": "DOC-0123:P49-132",
+      "requestSha256": "a2e7de999708c1f502b28a5d33210e02d8b287f71e8f50694d06e589b8301d98",
+      "status": "VALID",
+      "rawResponseSha256": "5b3898300d66b15cf2afbd8ce1445594407c0152d05c5771166b8d476b129a0d",
+      "providerRequestId": "gen-1789402495-1TZivHNROPWPIhQCklVy",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 46,
+      "candidateId": "DOC-0123:P51-250",
+      "requestSha256": "bbf7fa0ea07eb9cf45d6f2703cc3c3d432d64d32e3fab2c1aa1eb97b70b9e0f7",
+      "status": "VALID",
+      "rawResponseSha256": "d2e0ee6aa2e1ecc1432b8de2d5d220ff42c82e3b4eb2ce301246753f6398b975",
+      "providerRequestId": "gen-1789402510-ECXjsOZkO8mWGFPdKlyu",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 47,
+      "candidateId": "DOC-0123:P53-251",
+      "requestSha256": "e2c8abc5134e84f124b90feb3593bb13d08d57b95dc1556ad7f40cfe2f00e28c",
+      "status": "VALID",
+      "rawResponseSha256": "a65c6ad394ecfd386d1c1cd2d84408da0b391a003dae5edd3cd58acf1d297f64",
+      "providerRequestId": "gen-1789402527-BjdhvnOG9COKPZrr6zzi",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 48,
+      "candidateId": "DOC-0123:P55-252",
+      "requestSha256": "2379f1d2b814c82d7011b1fcccab165cab5ec4aee6014d82fca32384dbd5069f",
+      "status": "VALID",
+      "rawResponseSha256": "d4c308e1f03538243c21dba7074931771e47e8735b0e6447fa13c4c1ef083b62",
+      "providerRequestId": "gen-1789402542-O5kp4ew9SnjK0DyuBjoJ",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 49,
+      "candidateId": "DOC-0123:P552-554",
+      "requestSha256": "78fd639a814e9f62a32ad00659b1934bb525e5d8cfbcfdc745401f4fadba139c",
+      "status": "VALID",
+      "rawResponseSha256": "4a94f0c35164a6f901b8d6500af70fe162e1bd15992405a70d9a0e16150e6edf",
+      "providerRequestId": "gen-1789402563-bdpH3JIrymO3MVciOJY8",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 50,
+      "candidateId": "DOC-0123:P57-253",
+      "requestSha256": "fc13cde7a436964580b786b8e7846d6fc9dc7a8e2b9be94c07e8d0d77630a3bf",
+      "status": "VALID",
+      "rawResponseSha256": "943aca1c9392680b27e9656d8c975235d5a4f1b815ebce4f1ab89912d51d8cad",
+      "providerRequestId": "gen-1789402573-HYpojAxJabP7bCsvGYXh",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 51,
+      "candidateId": "DOC-0123:P59-254",
+      "requestSha256": "a0cc848b1fbcb85a7a911d17277dcead1a90d3230a76f33bc9e18f6d6db19201",
+      "status": "VALID",
+      "rawResponseSha256": "7ccbf7e84062ce957ac046992d5e3be3c50bb216f436a1be05356d1702c2ed82",
+      "providerRequestId": "gen-1789402591-EnrTxEGhwfbaQOIRDRjZ",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 52,
+      "candidateId": "DOC-0123:P602-1271",
+      "requestSha256": "d317badc496479238e1b99bbdf1d2abc1a40e9d7dbd67d2dd1a7bc9d61fc1268",
+      "status": "VALID",
+      "rawResponseSha256": "ec176d055a4495631965d97832478e759b10913cf79a696a4058c084e84aff4a",
+      "providerRequestId": "gen-1789402607-VlffcEuI9KO5wvaXdd4b",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 53,
+      "candidateId": "DOC-0123:P66-1995",
+      "requestSha256": "d6f8f6fea5a61d5f1e1a42102601aef59479a7b88fd0a3819456aab713f4098c",
+      "status": "VALID",
+      "rawResponseSha256": "a5ebdf4750549ae0de86ed62b76b7d3828fe1a797a2aa4cd90c0858e02d3d9f2",
+      "providerRequestId": "gen-1789402616-TOaBhu04BChBly7vk6Ko",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 54,
+      "candidateId": "DOC-0123:P68-2007",
+      "requestSha256": "0722417d242a9d1f40f71950d0e8782d2d05c1b5c5d1a3d1d6aba4a1fc112f67",
+      "status": "VALID",
+      "rawResponseSha256": "c1bae9020a884832f5bda46f05e8e9e7d76db2ab77dfe82d218b7774150554a4",
+      "providerRequestId": "gen-1789402632-pnMc8GmtQtCVrHDyjP2J",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 55,
+      "candidateId": "DOC-0123:P70-260",
+      "requestSha256": "a66245164077cce69aee0a0a41972334033c2c7d4abafb0f0e0dbfd3cf5e393e",
+      "status": "VALID",
+      "rawResponseSha256": "dcb60e30c80ef71dd4596d0222668f0293d365684f4d6bfb3e67cb81dbfd56dd",
+      "providerRequestId": "gen-1789402652-25bnm1D4OWsfetvD7EGp",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 56,
+      "candidateId": "DOC-0123:P783-784",
+      "requestSha256": "89b29060000e9ab00e3d0de0c68bbf83bd46d68b0c06a6bde77d3d9c421b0479",
+      "status": "VALID",
+      "rawResponseSha256": "e61f510a7f4211a1804661d2c940e44c1266892b334d390f3ef5d06eba8e2e7f",
+      "providerRequestId": "gen-1789402670-OPOhzFqxv2nOlIJKo5I0",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 57,
+      "candidateId": "DOC-0123:P962-1000",
+      "requestSha256": "879b93f38297cbe559ae0e224f160f9e85a277c5d055832b9b08bbe613752dc6",
+      "status": "VALID",
+      "rawResponseSha256": "4f9b99628d77e72203ff73852479f237a55fb4fc1c7687da9f1ff431ca551c65",
+      "providerRequestId": "gen-1789402684-OhFiyom3HOYBxevIt3f0",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 58,
+      "candidateId": "DOC-0123:V4P0049-0119",
+      "requestSha256": "7f7d7d335d698aec3802ad875acc474f541e4365e1acd07b8ce3f79e7f4c906a",
+      "status": "VALID",
+      "rawResponseSha256": "8a3b621305d1e02a3a4c5c515ec45bbd5b44c17a8f1703f8fcad35e76970e02b",
+      "providerRequestId": "gen-1789402705-6UW8jh0IlC6GAU4jkvNF",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 59,
+      "candidateId": "DOC-0123:V4P0057-0123",
+      "requestSha256": "17784d6932d79d0a477ceaf6b83a4384e121c0e6ae823aa97abfa2b8ee9ed763",
+      "status": "VALID",
+      "rawResponseSha256": "c029c536920112f319f8d3667f1377fa779069c25576837fb89bdac91fe5f470",
+      "providerRequestId": "gen-1789402731-sArERRGaoPvZwP3Z2uUu",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 60,
+      "candidateId": "DOC-0123:V4P0062-0126",
+      "requestSha256": "40d8ac36d9625ec507894629441d2b44b11a97a1e597743e71e66472eaf4dc8e",
+      "status": "VALID",
+      "rawResponseSha256": "8f76c8fd9837b13c54474d37f6245e7681650df79a8f4a13201cbde73720835a",
+      "providerRequestId": "gen-1789402749-FZcBdUFNBbh792bHUklr",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 61,
+      "candidateId": "DOC-0123:V4P0066-0258",
+      "requestSha256": "b4380ce9a0335a034b2eca3cd863ffd2e4cc4ac4ecaf9d46df82c93f41c324a9",
+      "status": "VALID",
+      "rawResponseSha256": "a8c538c0b37cb4c1a56ed188175f983d52d6fc6565179dc64dce1b5c29d04f7e",
+      "providerRequestId": "gen-1789402767-tnuNhwyDKwsiybUf4Nyj",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 62,
+      "candidateId": "DOC-0123:V4P0068-0259",
+      "requestSha256": "257fc9f562f929ac6916ee35349510064747cf92a69fbab0bf7d452a47768446",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 63,
+      "candidateId": "DOC-0123:V4P0070-0130",
+      "requestSha256": "b49abe95db0d3a30c6886cceab83a4896b3cf14403b255b9249f85ab6a4bbf13",
+      "status": "VALID",
+      "rawResponseSha256": "1b58e46b97acf2ba3762673bc748779993fc85c1489901bd9fed492b92ca2cf8",
+      "providerRequestId": "gen-1789402782-z3j4KBqHs0Ah9t2CmMVh",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 64,
+      "candidateId": "DOC-0123:V4P0120-0250",
+      "requestSha256": "c7822820e72d6273d2f30a88e00b3f41c24b52224d115b2e77b5c593b9306f8e",
+      "status": "VALID",
+      "rawResponseSha256": "67eee3e031167298b75fdd48591f1b8828674025ec639a3d469cb348e6e2ddc6",
+      "providerRequestId": "gen-1789402795-Zy8ILLCjLz7nXMVcBRv5",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 65,
+      "candidateId": "DOC-0123:V4P0128-0258",
+      "requestSha256": "307e12651844b2ee196920c8f00796af5ccdf04277a6bfb80215c61c5e53532d",
+      "status": "VALID",
+      "rawResponseSha256": "d4baee0899ae2d670cc8a4af6250510873612553869481f715e0b2293aa2e6ad",
+      "providerRequestId": "gen-1789402813-t5SxbNrJVA6S1gga0Lmu",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 66,
+      "candidateId": "DOC-0123:V4P0132-0200",
+      "requestSha256": "689000bd5ea68e77e298a999f49f4c7d4a0b6e131dda4a0b7b350b6c5283eef6",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 67,
+      "candidateId": "DOC-0123:V4P0200-0249",
+      "requestSha256": "e714931160bb3ab6a1a4ef18a4f4ffb622c5cac3fce3fc86cbbe573343a4ed02",
+      "status": "VALID",
+      "rawResponseSha256": "9776131c9ec04fea3d3e9428f9b3234de1f6b5521f3eaf28a227bc37565c0e7d",
+      "providerRequestId": "gen-1789402830-MqRVJo4YCD3IFlGzNwjn",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 68,
+      "candidateId": "DOC-0123:V4P0258-1995",
+      "requestSha256": "153ddb66e29da894b42df5655eeafacc17de696f21a441483e615d20d74908e7",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 69,
+      "candidateId": "DOC-0123:V4P0259-2007",
+      "requestSha256": "e2def20ccbe21762017055aaea7921ad00ddcb6c1efb731d14d45b53848de47e",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 70,
+      "candidateId": "DOC-0123:V4P1271-1341",
+      "requestSha256": "301152d16362686335419cdc95a0880d4729a3700ef360c0a94d6220d7eb251f",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 71,
+      "candidateId": "DOC-0133:P1069-1070",
+      "requestSha256": "336a4b1d87f8dced40b9e65207aab4d97294d822659b8da4a4f6a55d89a73288",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 72,
+      "candidateId": "DOC-0133:P118-136",
+      "requestSha256": "9074710a1eeaf9beda0e155b8a09c086283e73519a4178387ac70146dd247e29",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 73,
+      "candidateId": "DOC-0133:P140-157",
+      "requestSha256": "5ec1b2cf8175a0c60ebc2ab52a38004edf855efa51527cdb645ce3adc0384038",
+      "status": "VALID",
+      "rawResponseSha256": "85b1da9fd25ca83f5b9d2a6e65d867d128fae83693940b7f8b2b7408b4c2b3ad",
+      "providerRequestId": "gen-1789402848-0zqSDALyasyrW20AuJKK",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 74,
+      "candidateId": "DOC-0133:P1467-1468",
+      "requestSha256": "201c9ae8116877cea4f4a1205c75165ed7abdcab11d6bbd5ce1484a048f29a30",
+      "status": "VALID",
+      "rawResponseSha256": "4d4e1a624dca23047794ae90a7f6dd9346f65119c3f94ca08e0383b67e085775",
+      "providerRequestId": "gen-1789402864-jfZ39Iik0dIwyvwsBa4W",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 75,
+      "candidateId": "DOC-0133:P1611-1618",
+      "requestSha256": "626df55cfcae91483a8ff77b9508b6259e4e2b0c7933954c9a734a60ec6d5673",
+      "status": "VALID",
+      "rawResponseSha256": "0f9e38ff1e63acee71d1b216feb3308f5f7f771f0619acad14886f9372a86d41",
+      "providerRequestId": "gen-1789402876-x1YpoCVErEk08203BPTW",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 76,
+      "candidateId": "DOC-0133:P1736-1753",
+      "requestSha256": "a6ee73dddd36e1e5ab92f485f5e63312ea6adf70854324f2f87a57f555b6f97b",
+      "status": "VALID",
+      "rawResponseSha256": "64bf3d03a7075bffdf5f9e587e6fbaf55da850eb94ad0137d2b6b8f6edb044cc",
+      "providerRequestId": "gen-1789402892-q457Etx5L5qYaoly64jA",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 77,
+      "candidateId": "DOC-0133:P1803-1805",
+      "requestSha256": "2e67453c8ef9ef3418c1bb3eaa0d41c786eb313fd39ae4a50696d975228df726",
+      "status": "VALID",
+      "rawResponseSha256": "0c2772093215390e58d7c6e093b58a9cf1b359f07d938270c6d810311eec95d1",
+      "providerRequestId": "gen-1789402909-CgXU5ARaXYgpOJb7s390",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 78,
+      "candidateId": "DOC-0133:P1892-1908",
+      "requestSha256": "f234d2387770be2dac332f7e565618a452aaa12cffccfbb2b4c6b96081e0f148",
+      "status": "VALID",
+      "rawResponseSha256": "d2c7c8270bf15a76bc5bb13ef06616261020d074c774623e5a7b2605dcc3f50a",
+      "providerRequestId": "gen-1789402927-NCRZ9u413PTQ5MGRjIax",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 79,
+      "candidateId": "DOC-0133:P1982-2046",
+      "requestSha256": "8477bd4e56bb626955520881770529f9ac98e6d2e1ecdc8437c8d6a71369222c",
+      "status": "VALID",
+      "rawResponseSha256": "ed9897035d0cc0dbe2c9984f23a93058c56453457193a3d15a210c5294599675",
+      "providerRequestId": "gen-1789402942-2Z5bqmytKLJjPioSUuwk",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 80,
+      "candidateId": "DOC-0133:P2227-2229",
+      "requestSha256": "347710c34a2c7ab6a911f12a5b2fea399075fe054c9c25cce7eb0a50c5f04709",
+      "status": "VALID",
+      "rawResponseSha256": "fb7e358fc08968843668ee7c4369138bf5fdbcf550cc696f883a11577ed6fca3",
+      "providerRequestId": "gen-1789402958-TBMdpVcrGiu16Zfyqcys",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 81,
+      "candidateId": "DOC-0133:P2278-2294",
+      "requestSha256": "a7a7d34c67c69f96f269e9be0fa48eed26cd8d313fa84726a068b4c036578f3f",
+      "status": "VALID",
+      "rawResponseSha256": "595c6b44e067d89717b6162ba86e8ac9c9a0e6454317a7d0dc70d11ce2fd27e5",
+      "providerRequestId": "gen-1789402977-idUlyp9kFwNlsG5mFz3H",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 82,
+      "candidateId": "DOC-0133:P337-338",
+      "requestSha256": "e5c74a4addd96945c36c4f7e53367ed1bcb8b032b1fc072bc9a55d8fd60abcba",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 83,
+      "candidateId": "DOC-0133:P339-340",
+      "requestSha256": "eaa7c8766668aacd61e194f4f21549a73faf93263bfe9364ef8274d03b7404bc",
+      "status": "VALID",
+      "rawResponseSha256": "9686c67d256f47c9b39e7cfe7b7f1a8f946d4b4db07932eafcb2f6bf3510faa3",
+      "providerRequestId": "gen-1789402991-U8gCIahpxzm0hSDdjdF5",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 84,
+      "candidateId": "DOC-0133:P359-360",
+      "requestSha256": "2dcb98a755900efbeab43e8afdeb28119212194f37ba9eb6f1022f92a263ff13",
+      "status": "VALID",
+      "rawResponseSha256": "d75186b03196ec4ca4a9cc59fb73c62647a784e8bb0d0c6d62446bbd820d6bc1",
+      "providerRequestId": "gen-1789403005-iqMjXHKKQeB5bAOWkaf1",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 85,
+      "candidateId": "DOC-0133:P36-41",
+      "requestSha256": "61e5d629d8f1a419531710c46511aad6d8a867d6fca4ce7866d9f73d05d7e2cf",
+      "status": "VALID",
+      "rawResponseSha256": "6e0bde5c113f3c77e31698825df40086157c8d799f4ec532e49728dc0f234afb",
+      "providerRequestId": "gen-1789403024-ksvALxNLNxePL3oVF72k",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 86,
+      "candidateId": "DOC-0133:P561-562",
+      "requestSha256": "67c22436f5c9b1a754f07416f3b769f6704d5ab2e13f81aa4829cbdb8af06779",
+      "status": "VALID",
+      "rawResponseSha256": "18cdfdaf5945406998e030969bc9951f437114bbf25263e30e46b9d378be4b82",
+      "providerRequestId": "gen-1789403037-aAmNsqlsqInb0RQxvHKr",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 87,
+      "candidateId": "DOC-0133:P827-841",
+      "requestSha256": "e1c64c65c5456bd67367962050720301387349010b83d993540b1abb0a8afd67",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 88,
+      "candidateId": "DOC-0133:P855-856",
+      "requestSha256": "fdc11fca0e385638396a7d7832642db029261090b8e4ce5dd1983ed3b0e5a1e0",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 89,
+      "candidateId": "DOC-0133:P927-930",
+      "requestSha256": "83b1e4e3ffbed9a13ac26f6d7e212ec081b64d9d4b07c69bb718c37f6f93c630",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 90,
+      "candidateId": "DOC-0133:P933-934",
+      "requestSha256": "dad45bc3d62873827d9e85e0f6490d824d84a6a4e43e6daec7b5f0252e1cbdd4",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 91,
+      "candidateId": "DOC-0133:P937-938",
+      "requestSha256": "754b1f9213a337ddaace8def132fe2576c3597f3da8f5853ef0dd9d61dc8b773",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 92,
+      "candidateId": "DOC-0133:P960-962",
+      "requestSha256": "20acb3ff394da821bdd07bf5628582f2a97a7a3bcb24700911a52b2c2f0490ab",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 93,
+      "candidateId": "DOC-0133:P966-968",
+      "requestSha256": "0fe1c5f12ba7ccdf4db0d769fd5781ce38a2956115d3defcc82b6c44b886a775",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 94,
+      "candidateId": "DOC-0133:P99-316",
+      "requestSha256": "bc81311d57e460176e6793718b46d13a1067ee82d0d28a89b071ba1311bfc806",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 95,
+      "candidateId": "DOC-0133:V4P0005-0935",
+      "requestSha256": "814bb587812d4fd7236d340298aa8133143d2405b5a234db4f7fe66f10adcc1f",
+      "status": "VALID",
+      "rawResponseSha256": "a126dcf5d874b4bbaf688ea042d49a01456a3b995070c3065a8a6581313cc0c9",
+      "providerRequestId": "gen-1789403052-cqdeqhj238uPwm2u7fdl",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 96,
+      "candidateId": "DOC-0133:V4P0011-0013",
+      "requestSha256": "c60db4faa32238c321ba9b55d168aae9bf82834cd23d9ea64c119b6ff2e4508e",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 97,
+      "candidateId": "DOC-0133:V4P0013-0034",
+      "requestSha256": "ce95da2b972f2a1146dedfc25b9b87b9951211f7d6217a1a7be8309c3e456dd6",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 98,
+      "candidateId": "DOC-0133:V4P0015-0616",
+      "requestSha256": "98f7e7d857f155e19e7241cf411b0b99cfec5b33b3b74d1c1e367f2b200e09bd",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 99,
+      "candidateId": "DOC-0133:V4P0017-0921",
+      "requestSha256": "3a4881694b40d691f4a7d1ba2901aee109588c2e788c29e56fb18642cc2c0fba",
+      "status": "VALID",
+      "rawResponseSha256": "adf163b7790ff758bd78650a3d85a1af217661728cdc05ce3019d322efbb5491",
+      "providerRequestId": "gen-1789403076-ildzdsSwi6UD07ogZ8f4",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 100,
+      "candidateId": "DOC-0252:P107-235",
+      "requestSha256": "08fa4b572545043d02beb7e539ca3f948469ccd23d78150fae943457af0780bf",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 101,
+      "candidateId": "DOC-0252:P16-31",
+      "requestSha256": "df75ff9eedc646a0e979b7d08f717306b1df3930540437dbe1bffdb994df4021",
+      "status": "VALID",
+      "rawResponseSha256": "16344b4561e55838551eb959417fdecac6082ea0240f372d3782608cd7a4cfd8",
+      "providerRequestId": "gen-1789403094-bpFpWgg04TogeeTVN2tA",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 102,
+      "candidateId": "DOC-0252:P162-168",
+      "requestSha256": "e34a1323abdf799232ffe67604b88b1bf397cd6201da82c18c56e8d43baad8cf",
+      "status": "VALID",
+      "rawResponseSha256": "508a3427ac3b0b621c61d73465d22676f4d31c2746bfa8603b7b6b90b25a53fd",
+      "providerRequestId": "gen-1789403110-qWnm99pLCjNwmsMtT3Y7",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 103,
+      "candidateId": "DOC-0252:P188-189",
+      "requestSha256": "3589137e31cd203431bcfbcc4f37b3d93aff3bd240560fdf494529214b0bf4ff",
+      "status": "VALID",
+      "rawResponseSha256": "2632ea05c0197461c2c3db2cd2347e137964f2b770799893c0dda5026db40361",
+      "providerRequestId": "gen-1789403128-BCtRMbr6k8Qmdx5lZuyn",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 104,
+      "candidateId": "DOC-0252:P194-731",
+      "requestSha256": "23897700578347eb28b9e84e3ef4d267b9366135b542169f2dc3670b8f23e2f7",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 105,
+      "candidateId": "DOC-0252:P199-325",
+      "requestSha256": "4710312cb226813d733c25c92bef8afb0068344d7eb6e729017233683ad3dd87",
+      "status": "VALID",
+      "rawResponseSha256": "27288d1c554a04fe0d0a8397385caaf7ff28ae857b087c8170a8cb3ec8bb8c2d",
+      "providerRequestId": "gen-1789403153-73dGyLwOjkLYdHrIkpSp",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 106,
+      "candidateId": "DOC-0252:P22-26",
+      "requestSha256": "b718c725a27dfb8f523d2ccdc0117b959913ffc72c692cb660ed277c33228816",
+      "status": "VALID",
+      "rawResponseSha256": "b5c9ff345f1189d153249f52f2a333f292c11a1e958ca4b88e877d7a4372a3c5",
+      "providerRequestId": "gen-1789403173-3qhP4BdLe8KwYv5VhOCn",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 107,
+      "candidateId": "DOC-0252:P224-226",
+      "requestSha256": "47ef76822b3b110593bf9d14a6040ff2e301a90cc2c0b2eba558488174652771",
+      "status": "VALID",
+      "rawResponseSha256": "a45636f5aacbdb8d77e3d37f3d3b9f96dcf738243eb140160160e6ab6065523e",
+      "providerRequestId": "gen-1789403187-azSz9FlHeZ1cqJw4fZKH",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 108,
+      "candidateId": "DOC-0252:P311-312",
+      "requestSha256": "0adeb7aaf8d50587ea9a322ba27d922f58992d71ff7aa0d9cf1a04e3c03283b1",
+      "status": "VALID",
+      "rawResponseSha256": "5aef93d1ec756d70f44fe4cdaa8ac283d0adae3889e5278f0919ba1423d9ecbf",
+      "providerRequestId": "gen-1789403203-VrBoOx9qQuVH0leIaiSc",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 109,
+      "candidateId": "DOC-0252:P393-394",
+      "requestSha256": "6c3e14ebf3b628b123879c8f0e2b75630adcc000667cd99f12a53d833f68e4fe",
+      "status": "VALID",
+      "rawResponseSha256": "92653e05db31cec4fd2511ee566710fd3f8ff56aee431ca7a4647b226e170d07",
+      "providerRequestId": "gen-1789403222-uzCWnSZGEcmqTBB7AHfP",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 110,
+      "candidateId": "DOC-0252:P396-402",
+      "requestSha256": "b64a94e30c684e51c01e1574db6327715184864d0671b55e3b139f8dc72f8b47",
+      "status": "VALID",
+      "rawResponseSha256": "71742b7d0792b847027ffb91d01cfc2990860d85d21ab2efd171ca703eb6b26a",
+      "providerRequestId": "gen-1789403237-EufcFwnCmZeOmIoAk8nu",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 111,
+      "candidateId": "DOC-0252:P418-426",
+      "requestSha256": "b0da6444745d7ab02d0898674b97860198c2a725d3d2e43e03e076c08e03fecc",
+      "status": "VALID",
+      "rawResponseSha256": "35be11f929eac28189aa152dee5cd16c6af50275a5a18e2419cc5c020d771ef1",
+      "providerRequestId": "gen-1789403254-2cxfC60JieW3nqAXlLdM",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 112,
+      "candidateId": "DOC-0252:P434-439",
+      "requestSha256": "60fe596e2764e940c570d24384499635cd6b59d6a63f2148dc9fef0bbf0b6a3e",
+      "status": "VALID",
+      "rawResponseSha256": "9f805746580acabaf16af00869e8c32933dfb4cb1597570cd59547e008e8d818",
+      "providerRequestId": "gen-1789403268-rGBnhV3BtSGrGCvPXNaN",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 113,
+      "candidateId": "DOC-0252:P449-453",
+      "requestSha256": "7d9c34e3229097b0b6ec0ab04c60b04a5b7dcf96c0e064616111b5ca745dfd19",
+      "status": "VALID",
+      "rawResponseSha256": "18b0c496a36f6a20ac1ead247285eaa55343834f0f0d9093274080d2d43b3028",
+      "providerRequestId": "gen-1789403287-jT229h4xA2NTVaetNA9A",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 114,
+      "candidateId": "DOC-0252:P508-512",
+      "requestSha256": "8ffd8663883adf76ce1d6f097668cc3ebff2149a381f2e067ecc7f5b8a3fda89",
+      "status": "VALID",
+      "rawResponseSha256": "cf2e55ea48f4391e4112c8c02e4b82a7c948d9b600db81d4ff313fca3e565443",
+      "providerRequestId": "gen-1789403304-zwXB8HTg3AuCRkmeCTgU",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 115,
+      "candidateId": "DOC-0252:P539-595",
+      "requestSha256": "e0970b0f55e4250cd3a646a9185041d160ed76a4663533e7952eda321914270f",
+      "status": "VALID",
+      "rawResponseSha256": "eda028d8940258a2588257b7e642a2bacd57ee9f791065e72b0d64e406961b7b",
+      "providerRequestId": "gen-1789403318-jbYxWGLQLcwimOpM2N9o",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 116,
+      "candidateId": "DOC-0252:P63-83",
+      "requestSha256": "aef9be993aa2e4259dd5425f2bae276305c137d48a9de4c297d0e21830a084ba",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 117,
+      "candidateId": "DOC-0252:P750-751",
+      "requestSha256": "db8516fb5bcf8a9388d84d3766f53ec8c53e898f80ef9c93ca00b1f0f159df0d",
+      "status": "VALID",
+      "rawResponseSha256": "b33cc39cd7171faa060d34c437860e0703325ccdff30e4c3ed933ab49ebbaee5",
+      "providerRequestId": "gen-1789403334-zUDok7g1RRg5ljARI5hr",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 118,
+      "candidateId": "DOC-0252:P898-899",
+      "requestSha256": "d286bac6d644ca44f40ffa431535f654d1b0431f02601acb6a9fe4927a588886",
+      "status": "VALID",
+      "rawResponseSha256": "824f4854d60c8965c7c90da2b4ece777f5be635c2db1346a3696b3594cc1a7f0",
+      "providerRequestId": "gen-1789403350-8RJHJESEVQwl3oNOBQac",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 119,
+      "candidateId": "DOC-0252:P955-957",
+      "requestSha256": "47ef3c6f8fa584ba2b534519fee9a8e620fa979a593defd1b74c4f864eae1385",
+      "status": "VALID",
+      "rawResponseSha256": "df15639d454201783dd4fd82405cddb1ce8027fa2d1bbacebbd39f9a9525951b",
+      "providerRequestId": "gen-1789403362-0qrz6cTwxU5J2nxgecBR",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 120,
+      "candidateId": "DOC-0252:V4P0006-0042",
+      "requestSha256": "5a01aa169f1ec509a906f94faf2d42db786daccb480614218357e9398a525979",
+      "status": "VALID",
+      "rawResponseSha256": "8bc791146631c3d0c33573d638b1caf05952070ffc878f93bea7901c75c261a8",
+      "providerRequestId": "gen-1789403375-qpg4vld80o4T3q141Vu7",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 121,
+      "candidateId": "DOC-0252:V4P0042-0253",
+      "requestSha256": "0a5c018181a088f015a03b3bf92dab56bb2246a31e7d81c7dbee0e03bfd93ddd",
+      "status": "VALID",
+      "rawResponseSha256": "5cd8cbff1a03bdfa367a79d491cd87cd65af6ab563dd88d5564b343c90e10aef",
+      "providerRequestId": "gen-1789403386-6pEZjDndZ5OtcBYmHfqW",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 122,
+      "candidateId": "DOC-0252:V4P0435-0883",
+      "requestSha256": "112aab36dc0533fa5a9836605864ee3e6915fc22dbf29d1df12b3be681f19a35",
+      "status": "VALID",
+      "rawResponseSha256": "7d46faa72b542fa6c372098fbc31ecf5a4555f5eec3fc5b211cdeef73b815e29",
+      "providerRequestId": "gen-1789403396-rceUdxRL0CsPp2TjfooD",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 123,
+      "candidateId": "DOC-0252:V4P0544-0888",
+      "requestSha256": "35fe4278635944e1d2c87677a86e2bd14d1aae9c77d13f8d433c4f75847c0387",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 124,
+      "candidateId": "DOC-0252:V4P0544-0893",
+      "requestSha256": "2bef5de53b9cddc947ad391a07a0d43a4d5cb0628977d71323cb497504fa0779",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 125,
+      "candidateId": "DOC-0252:V4P0851-0904",
+      "requestSha256": "5ca8f43084c25fba96a47ea13c7f26e61088fbf12cf99fdca3fa72801b50bbd7",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 126,
+      "candidateId": "DOC-0252:V4P0872-0875",
+      "requestSha256": "6c77f488dd7b9f2919923f8b51995db0a4caa371f2b8c0421ada789c9c64e850",
+      "status": "PROVIDER_ERROR",
+      "rawResponseSha256": null,
+      "providerRequestId": null,
+      "httpStatus": null,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 127,
+      "candidateId": "DOC-0252:V4P0875-0878",
+      "requestSha256": "ad535b34ca40817d561b33cf8c1a7e29126d6429e70dca560b4be7c0114242b9",
+      "status": "VALID",
+      "rawResponseSha256": "145464c3e348c291de8e52a67112c7f77bc20361eedf9c047f156aa961e070c3",
+      "providerRequestId": "gen-1789403406-dGAUGunKMSgAFWIrfEuq",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    },
+    {
+      "sequence": 128,
+      "candidateId": "DOC-0252:V4P0888-0893",
+      "requestSha256": "7bd606e189ad79ee0e2e6464af47095523bb5b1252f4681a343d850b0c36f0c8",
+      "status": "VALID",
+      "rawResponseSha256": "f5d39a41c7d2c1cb88d44bf6a8b53302118ef4a3221165bb5b7b1ce542435d7d",
+      "providerRequestId": "gen-1789403418-zbZFxDqMxnKY88QelMIZ",
+      "httpStatus": 200,
+      "goldReadBeforeFreeze": false
+    }
+  ],
   "goldReadCount": 0
 }

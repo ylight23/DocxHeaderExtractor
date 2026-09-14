@@ -1,11 +1,11 @@
 {
   "schemaVersion": "a99-v4g-b-firewall-v1",
-  "status": "AWAITING_V4G_PROVIDER_EXECUTION_APPROVAL",
+  "status": "COMPLETE",
   "goldReadCount": 0,
   "ir018ToIr022ReadCount": 0,
   "v4ebEvaluationReadCount": 0,
-  "modelCalls": 0,
-  "providerCalls": 0,
+  "modelCalls": 128,
+  "providerCalls": 128,
   "candidateUniverseChanged": false,
   "evidenceChanged": false,
   "projectionChanged": false,
@@ -14,5 +14,6 @@
   "targetGroundingRepresentationChanged": true,
   "all128Scheduled": true,
   "historical45UsedForSelection": false,
-  "noProviderTransport": true
+  "rawFrozenBeforeParse": true,
+  "noFuzzyRepair": true
 }

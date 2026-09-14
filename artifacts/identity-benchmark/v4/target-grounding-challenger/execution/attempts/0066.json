@@ -1,0 +1,20 @@
+{
+  "sequence": 66,
+  "candidateId": "DOC-0123:V4P0132-0200",
+  "requestId": "DOC-0123:V4P0132-0200",
+  "requestSha256": "689000bd5ea68e77e298a999f49f4c7d4a0b6e131dda4a0b7b350b6c5283eef6",
+  "requestBytes": 10752,
+  "startedUtc": "2026-09-14T16:20:28.1236885+00:00",
+  "completedUtc": "2026-09-14T16:20:28.3515307+00:00",
+  "status": "PROVIDER_ERROR",
+  "httpStatus": null,
+  "providerRequestId": null,
+  "latencyMs": 227,
+  "inputTokens": null,
+  "reasoningTokens": null,
+  "outputTokens": null,
+  "rawResponseSha256": null,
+  "parsedResponseSha256": null,
+  "error": "ReasoningCompletionException:OpenRouter returned 429: {\u0022error\u0022:{\u0022message\u0022:\u0022Provider returned error\u0022,\u0022code\u0022:429,\u0022metadata\u0022:{\u0022raw\u0022:\u0022qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\u0022,\u0022provider_name\u0022:\u0022Alibaba\u0022,\u0022is_byok\u0022:false,\u0022provider_error_code\u0022:\u0022insufficient_quota\u0022,\u0022limit_source\u0022:\u0022upstream_provider_shared_pool\u0022,\u0022remedy_hint\u0022:\u0022Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\u0022}},\u0022user",
+  "goldReadBeforeFreeze": false
+}

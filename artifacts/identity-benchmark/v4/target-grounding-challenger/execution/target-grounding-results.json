@@ -1,14 +1,17 @@
 {
   "schemaVersion": "a99-v4g-b-target-grounding-results-v1",
-  "status": "PENDING_PROVIDER_EXECUTION",
-  "primaryMetric": "TARGET_MISMATCH",
-  "scheduledDenominator": 128,
-  "evaluableDenominator": null,
-  "targetMismatchScheduled": null,
-  "targetMismatchEvaluable": null,
-  "targetMismatchScheduledRate": null,
-  "targetMismatchEvaluableRate": null,
-  "validScheduledRate": null,
-  "validEvaluableRate": null,
-  "goldReadCount": 0
+  "status": "FROZEN_BEFORE_GOLD",
+  "classification": "TARGET_GROUNDING_REPAIRED_ON_DEV_SAMPLE",
+  "scheduled": 128,
+  "evaluable": 95,
+  "targetMismatch": 0,
+  "valid": 95,
+  "providerErrors": 33,
+  "otherInvalid": 0,
+  "targetMismatchScheduledRate": 0,
+  "targetMismatchEvaluableRate": 0,
+  "validScheduledRate": 0.7421875,
+  "validEvaluableRate": 1,
+  "goldReadCount": 0,
+  "semanticAccuracyMeasured": false
 }

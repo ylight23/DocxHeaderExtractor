@@ -1,8 +1,36 @@
 {
   "schemaVersion": "a99-v4g-b-usage-and-latency-v1",
-  "status": "PENDING_PROVIDER_EXECUTION",
-  "calls": 0,
-  "inputTokens": [],
-  "outputTokens": [],
-  "latencyMs": []
+  "calls": 128,
+  "inputTokens": {
+    "count": 95,
+    "min": 2486,
+    "p50": 3385,
+    "p95": 4263,
+    "max": 5047,
+    "total": 319934
+  },
+  "reasoningTokens": {
+    "count": 95,
+    "min": 536,
+    "p50": 1180,
+    "p95": 1712,
+    "max": 2148,
+    "total": 114172
+  },
+  "outputTokens": {
+    "count": 95,
+    "min": 651,
+    "p50": 1276,
+    "p95": 1802,
+    "max": 2233,
+    "total": 123589
+  },
+  "latencyMs": {
+    "count": 128,
+    "min": 150,
+    "p50": 13890,
+    "p95": 21570,
+    "max": 26791,
+    "total": 1497782
+  }
 }

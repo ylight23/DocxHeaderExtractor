@@ -1,0 +1,20 @@
+{
+  "sequence": 36,
+  "candidateId": "DOC-0123:P2742-2754",
+  "requestId": "DOC-0123:P2742-2754",
+  "requestSha256": "006957761cc0627df3b2e5fe069f2bf8367c205651ffb6ee6412447720f51a9d",
+  "requestBytes": 14576,
+  "startedUtc": "2026-09-14T16:13:00.9464194+00:00",
+  "completedUtc": "2026-09-14T16:13:19.3358872+00:00",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerRequestId": "gen-1789402382-uynAFsXmKpILa507FRj5",
+  "latencyMs": 18389,
+  "inputTokens": 4625,
+  "reasoningTokens": 1469,
+  "outputTokens": 1586,
+  "rawResponseSha256": "a507b672ee9d69fe2e7789774ca148833c86997488c2a06e6374bb4e76d3c7ab",
+  "parsedResponseSha256": "627e1b4f273afeeaa39ca336720eac682b03d0c9856abafd1bea79a968b14e92",
+  "error": null,
+  "goldReadBeforeFreeze": false
+}

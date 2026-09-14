@@ -9,13 +9,13 @@ public sealed class A99IdentityBenchmarkV4GBTests
     private static JsonDocument Load(string file) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), file)));
 
     [Fact]
-    public void Preflight_requires_explicit_approval_and_did_not_transport()
+    public void Provider_preflight_is_frozen_before_transport()
     {
         using var preflight = Load("provider-preflight.json");
         var p = preflight.RootElement;
-        Assert.Equal("AWAITING_V4G_PROVIDER_EXECUTION_APPROVAL", p.GetProperty("status").GetString());
-        Assert.True(p.GetProperty("requiredExplicitApproval").GetBoolean());
-        Assert.Equal(128, p.GetProperty("sampleCount").GetInt32());
+        Assert.Equal("PREFLIGHT_PASS_FROZEN_CAPABILITY", p.GetProperty("status").GetString());
+        Assert.Equal(128, p.GetProperty("requestCount").GetInt32());
+        Assert.True(p.GetProperty("explicitExecutionFlag").GetBoolean());
         Assert.Equal(0, p.GetProperty("modelCalls").GetInt32());
         Assert.Equal(0, p.GetProperty("providerCalls").GetInt32());
         Assert.Equal(0, p.GetProperty("goldReadCount").GetInt32());
@@ -41,16 +41,15 @@ public sealed class A99IdentityBenchmarkV4GBTests
     }
 
     [Fact]
-    public void Execution_is_scheduled_for_all_128_not_historical_failures_only()
+    public void Execution_completed_all_128_attempts_without_retry()
     {
         using var manifest = Load("execution-manifest.json");
         var m = manifest.RootElement;
         Assert.Equal(128, m.GetProperty("scheduledCalls").GetInt32());
-        Assert.Equal(0, m.GetProperty("actualProviderCalls").GetInt32());
-        Assert.True(m.GetProperty("targetGroundingRepresentationChanged").GetBoolean());
+        Assert.Equal(128, m.GetProperty("actualProviderCalls").GetInt32());
         using var attempts = Load("attempt-manifest.json");
         Assert.Equal(128, attempts.RootElement.GetProperty("expectedAttemptCount").GetInt32());
-        Assert.Equal(0, attempts.RootElement.GetProperty("actualAttemptCount").GetInt32());
+        Assert.Equal(128, attempts.RootElement.GetProperty("actualAttemptCount").GetInt32());
     }
 
     [Fact]
@@ -64,6 +63,29 @@ public sealed class A99IdentityBenchmarkV4GBTests
         Assert.False(f.GetProperty("candidateUniverseChanged").GetBoolean());
         Assert.False(f.GetProperty("evidenceChanged").GetBoolean());
         Assert.True(f.GetProperty("targetGroundingRepresentationChanged").GetBoolean());
-        Assert.True(f.GetProperty("noProviderTransport").GetBoolean());
+        Assert.Equal(128, f.GetProperty("providerCalls").GetInt32());
+        Assert.True(f.GetProperty("all128Scheduled").GetBoolean());
+        Assert.True(f.GetProperty("rawFrozenBeforeParse").GetBoolean());
+    }
+
+    [Fact]
+    public void Response_freeze_has_zero_target_mismatch_and_gold_reads()
+    {
+        using var results = Load("target-grounding-results.json");
+        var r = results.RootElement;
+        Assert.Equal("FROZEN_BEFORE_GOLD", r.GetProperty("status").GetString());
+        Assert.Equal(128, r.GetProperty("scheduled").GetInt32());
+        Assert.Equal(95, r.GetProperty("evaluable").GetInt32());
+        Assert.Equal(0, r.GetProperty("targetMismatch").GetInt32());
+        Assert.Equal(0, r.GetProperty("goldReadCount").GetInt32());
+        Assert.False(r.GetProperty("semanticAccuracyMeasured").GetBoolean());
+
+        using var paired = Load("historical-paired-analysis.json");
+        var p = paired.RootElement;
+        Assert.Equal("COMPLETE_AFTER_RESPONSE_FREEZE", p.GetProperty("status").GetString());
+        Assert.Equal(45, p.GetProperty("v1TargetMismatch").GetInt32());
+        Assert.Equal(0, p.GetProperty("v2TargetMismatch").GetInt32());
+        Assert.Equal(28, p.GetProperty("repairedTargetGrounding").GetInt32());
+        Assert.Equal(0, p.GetProperty("goldReadCount").GetInt32());
     }
 }

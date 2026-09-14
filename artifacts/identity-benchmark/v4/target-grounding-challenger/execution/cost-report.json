@@ -1,8 +1,10 @@
 {
   "schemaVersion": "a99-v4g-b-cost-report-v1",
-  "status": "PENDING_PROVIDER_EXECUTION",
   "provider": "OpenRouter",
   "model": "qwen/qwen3.7-flash",
-  "actualProviderCalls": 0,
-  "estimatedCostUsd": 0
+  "inputUsdPerMillionTokens": 0.03,
+  "outputUsdPerMillionTokens": 0.13,
+  "inputTokens": 319934,
+  "outputTokens": 123589,
+  "estimatedCostUsd": 0.02566459
 }
