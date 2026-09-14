@@ -1,0 +1,48 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_a_payload_decomposition",
+  "schemaVersion": "a99-v4f-a-payload-decomposition-v1",
+  "method": "canonical JSON element byte accounting; residual is provider/static/serialization envelope",
+  "totals": {
+    "totalBytes": 7070469069,
+    "pairSpecificBytes": 970863,
+    "documentSharedContextBytes": 7068273588,
+    "staticPromptBytes": 0,
+    "providerEnvelopeBytes": 0,
+    "otherBytes": 1224618,
+    "exactSum": true
+  },
+  "percentages": {
+    "pairSpecific": 0.00013731,
+    "documentSharedContext": 0.99968949,
+    "staticPrompt": 0,
+    "providerEnvelope": 0,
+    "other": 0.0001732
+  },
+  "logicalVsUnique": {
+    "logicalSharedContextBytes": 7068273588,
+    "uniqueDocumentContextBytes": 2344873,
+    "redundancyFactor": 3014.352414,
+    "repeatedContextBytes": 7065928715,
+    "uniqueDocumentCount": 3
+  },
+  "perDocument": [
+    {
+      "documentId": "DOC-0123",
+      "requestCount": 3445,
+      "uniqueDocumentContextBytes": 1288087,
+      "logicalRepeatedContextBytes": 4437459715
+    },
+    {
+      "documentId": "DOC-0133",
+      "requestCount": 2977,
+      "uniqueDocumentContextBytes": 753169,
+      "logicalRepeatedContextBytes": 2242184113
+    },
+    {
+      "documentId": "DOC-0252",
+      "requestCount": 1280,
+      "uniqueDocumentContextBytes": 303617,
+      "logicalRepeatedContextBytes": 388629760
+    }
+  ]
+}

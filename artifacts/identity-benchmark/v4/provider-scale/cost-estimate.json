@@ -1,0 +1,10 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_a_cost_estimate",
+  "schemaVersion": "a99-v4f-a-cost-estimate-v1",
+  "status": "COST_UNKNOWN",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "pricing": null,
+  "reason": "No authoritative local provider price snapshot was available; this offline audit did not call or query the provider.",
+  "pricingSource": "NOT_VERIFIED_WITHOUT_PROVIDER_CALL"
+}

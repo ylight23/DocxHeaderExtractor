@@ -1,0 +1,109 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_a_manifest",
+  "schemaVersion": "a99-v4f-a-manifest-v1",
+  "status": "OFFLINE_PROVIDER_SCALE_AUDIT_COMPLETE",
+  "behavioralParent": "V4E-A@9d90980",
+  "v4eManifestSha256": "f7fc8328f0a3287d6d6d2a8977fbd55fc94b51fb4d43dfb1dddb38f2a3e5ebe6",
+  "shortlistSha256": "41036e1f4eea349fdc68dcac13932b00b377774f04b2c58ab184e5e29061ae12",
+  "requestManifestSha256": "220d236f502a56b4b7edb8e3b469382aaea4af25b13703e8dbc9505b709d66df",
+  "sourceCatalogSha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+  "sourceCatalogFingerprint": "ed61300844f124d02144c09ea288822a88f6c7fdd0dbee0cf1bf42d31b51fd84",
+  "sourcePacketHashes": [
+    {
+      "documentId": "DOC-0123",
+      "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+      "sourcePath": "eval/harness-lift/review-packets/DOC-0123.v1.json"
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "sourcePath": "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0133.review-source.v1.json"
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf"
+    }
+  ],
+  "canonicalBuilderVersion": "hdsa-canonical-pair-verifier-request-builder-v1",
+  "requestContract": "hdsa-global-identity-retrieve-verify-v1",
+  "requestCount": 7702,
+  "exactReconstruction": "PASS",
+  "requestBodiesPersisted": false,
+  "configuredContextLimitTokens": 1000000,
+  "providerVerifiedContextLimitTokens": null,
+  "providerContextLimitVerified": false,
+  "contextValidation": {
+    "artifactKind": "a99_identity_benchmark_v4f_a_context_validation",
+    "model": "qwen/qwen3.7-flash",
+    "provider": "OpenRouter",
+    "configuredContextLimitTokens": 1000000,
+    "providerVerifiedContextLimitTokens": null,
+    "providerVerified": false,
+    "safeThreshold": "estimatedInputTokens \u003C 90% of configured limit",
+    "counts": {
+      "safe": 7702,
+      "near": 0,
+      "exceeds": 0,
+      "total": 7702
+    },
+    "percentages": {
+      "safe": 1,
+      "near": 0,
+      "exceeds": 0
+    },
+    "status": "WITHIN_CONFIGURED_LIMIT_NOT_PROVIDER_VERIFIED",
+    "estimatedTokenDistribution": {
+      "count": 7702,
+      "min": 75971,
+      "p50": 188360,
+      "p75": 322101,
+      "p90": 322102,
+      "p95": 322102,
+      "p99": 322102,
+      "max": 322103,
+      "mean": 229501.314,
+      "total": 1767619122
+    },
+    "perDocument": [
+      {
+        "documentId": "DOC-0123",
+        "requestCount": 3445,
+        "minInputTokens": 322091,
+        "maxInputTokens": 322103,
+        "meanInputTokens": 322098.60203193035
+      },
+      {
+        "documentId": "DOC-0133",
+        "requestCount": 2977,
+        "minInputTokens": 188359,
+        "maxInputTokens": 188378,
+        "meanInputTokens": 188359.60665099093
+      },
+      {
+        "documentId": "DOC-0252",
+        "requestCount": 1280,
+        "minInputTokens": 75971,
+        "maxInputTokens": 75972,
+        "meanInputTokens": 75971.00703125
+      }
+    ]
+  },
+  "goldReadCount": 0,
+  "v4ebEvaluationReadCount": 0,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "candidateGenerationChanged": false,
+  "requestSerializationChanged": false,
+  "primaryDiagnosis": "REQUEST_CONTEXT_DOMINANT",
+  "recommendedNextExperiment": "READY_FOR_V4F_CONTEXT_PROJECTION_EXPERIMENT",
+  "sourceGoldSelection": false,
+  "v4ebConsumed": false,
+  "invariants": {
+    "frozenShortlistCount": 7702,
+    "frozenRequestCount": 7702,
+    "requestShaParity": true,
+    "tokenTotalsDeterministic": true,
+    "payloadDecompositionExact": true
+  }
+}

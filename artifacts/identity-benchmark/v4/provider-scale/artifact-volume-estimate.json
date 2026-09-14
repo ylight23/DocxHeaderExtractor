@@ -1,0 +1,32 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_a_artifact_volume_estimate",
+  "schemaVersion": "a99-v4f-a-artifact-volume-estimate-v1",
+  "formulas": {
+    "utf8BytesPerToken": 4,
+    "responseEnvelopeBytesAssumption": 1024,
+    "predictionRecordBytesAssumption": 1024,
+    "promotionRecordBytesAssumption": 512
+  },
+  "logicalRawRequestBytes": 7070469069,
+  "reconstructedHashOnlyFootprintBytes": 6212286,
+  "rawRequestArchiveBytesIfPersisted": 7070469069,
+  "scenarios": {
+    "minimal": {
+      "rawResponseBytes": 8872704,
+      "parsedPredictionBytes": 7886848,
+      "promotionBytes": 3943424
+    },
+    "typical": {
+      "rawResponseBytes": 11830272,
+      "parsedPredictionBytes": 7886848,
+      "promotionBytes": 3943424
+    },
+    "maximum": {
+      "rawResponseBytes": 31547392,
+      "parsedPredictionBytes": 7886848,
+      "promotionBytes": 3943424
+    }
+  },
+  "assumptionsAreEstimates": true,
+  "rawBodiesArchived": false
+}

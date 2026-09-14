@@ -1,0 +1,160 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_a_call_count_distribution",
+  "schemaVersion": "a99-v4f-a-call-count-distribution-v1",
+  "totalCalls": 7702,
+  "callsPerDocument": [
+    {
+      "documentId": "DOC-0123",
+      "calls": 3445
+    },
+    {
+      "documentId": "DOC-0133",
+      "calls": 2977
+    },
+    {
+      "documentId": "DOC-0252",
+      "calls": 1280
+    }
+  ],
+  "candidateEndpointDegree": {
+    "allDocuments": {
+      "count": 6538,
+      "min": 1,
+      "p50": 2,
+      "p75": 3,
+      "p90": 3,
+      "p95": 4,
+      "p99": 4,
+      "max": 6,
+      "mean": 2.356,
+      "total": 15404
+    },
+    "perDocument": [
+      {
+        "documentId": "DOC-0123",
+        "statistics": {
+          "count": 3214,
+          "min": 1,
+          "p50": 2,
+          "p75": 2,
+          "p90": 3,
+          "p95": 3,
+          "p99": 4,
+          "max": 6,
+          "mean": 2.144,
+          "total": 6890
+        }
+      },
+      {
+        "documentId": "DOC-0133",
+        "statistics": {
+          "count": 2354,
+          "min": 1,
+          "p50": 2,
+          "p75": 3,
+          "p90": 4,
+          "p95": 4,
+          "p99": 4,
+          "max": 4,
+          "mean": 2.529,
+          "total": 5954
+        }
+      },
+      {
+        "documentId": "DOC-0252",
+        "statistics": {
+          "count": 970,
+          "min": 1,
+          "p50": 2,
+          "p75": 3,
+          "p90": 4,
+          "p95": 4,
+          "p99": 4,
+          "max": 4,
+          "mean": 2.639,
+          "total": 2560
+        }
+      }
+    ]
+  },
+  "evidenceConfigurations": [
+    {
+      "configuration": "ADJACENT_ORDER",
+      "count": 6290,
+      "share": 0.81667099
+    },
+    {
+      "configuration": "NORMALIZED_TEXT_AFFINITY",
+      "count": 1340,
+      "share": 0.17398078
+    },
+    {
+      "configuration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "count": 33,
+      "share": 0.0042846
+    },
+    {
+      "configuration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "count": 12,
+      "share": 0.00155804
+    },
+    {
+      "configuration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "count": 10,
+      "share": 0.00129836
+    },
+    {
+      "configuration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "count": 6,
+      "share": 0.00077902
+    },
+    {
+      "configuration": "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "count": 6,
+      "share": 0.00077902
+    },
+    {
+      "configuration": "EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "count": 2,
+      "share": 0.00025967
+    },
+    {
+      "configuration": "TERMINAL_ACRONYM_VARIANT",
+      "count": 2,
+      "share": 0.00025967
+    },
+    {
+      "configuration": "NORMALIZED_TEXT_AFFINITY\u002BTERMINAL_ACRONYM_VARIANT",
+      "count": 1,
+      "share": 0.00012984
+    }
+  ],
+  "evidenceDimensions": [
+    {
+      "reason": "ADJACENT_ORDER",
+      "count": 6302,
+      "share": 0.81822903
+    },
+    {
+      "reason": "NORMALIZED_TEXT_AFFINITY",
+      "count": 1369,
+      "share": 0.17774604
+    },
+    {
+      "reason": "SHARED_STRUCTURAL_HEADING_KEY",
+      "count": 57,
+      "share": 0.00740068
+    },
+    {
+      "reason": "TERMINAL_ACRONYM_VARIANT",
+      "count": 15,
+      "share": 0.00194755
+    },
+    {
+      "reason": "EXPLICIT_CONTINUATION_VARIANT",
+      "count": 2,
+      "share": 0.00025967
+    }
+  ],
+  "sourceOnly": true
+}

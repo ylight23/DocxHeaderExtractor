@@ -1,0 +1,44 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_a_execution_scenarios",
+  "schemaVersion": "a99-v4f-a-execution-scenarios-v1",
+  "requestCount": 7702,
+  "noConcurrencyAssumption": true,
+  "rates": [
+    {
+      "requestsPerSecond": 1,
+      "wallSeconds": 7702,
+      "wallMinutes": 128.36666666666667,
+      "wallHours": 2.1394444444444445
+    },
+    {
+      "requestsPerSecond": 2,
+      "wallSeconds": 3851,
+      "wallMinutes": 64.18333333333334,
+      "wallHours": 1.0697222222222222
+    },
+    {
+      "requestsPerSecond": 5,
+      "wallSeconds": 1540.4,
+      "wallMinutes": 25.673333333333336,
+      "wallHours": 0.42788888888888893
+    },
+    {
+      "requestsPerSecond": 10,
+      "wallSeconds": 770.2,
+      "wallMinutes": 12.836666666666668,
+      "wallHours": 0.21394444444444446
+    },
+    {
+      "requestsPerSecond": 25,
+      "wallSeconds": 308.08,
+      "wallMinutes": 5.134666666666666,
+      "wallHours": 0.08557777777777777
+    },
+    {
+      "requestsPerSecond": 50,
+      "wallSeconds": 154.04,
+      "wallMinutes": 2.567333333333333,
+      "wallHours": 0.04278888888888888
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_a_request_size_distribution",
+  "schemaVersion": "a99-v4f-a-request-size-distribution-v1",
+  "requestCount": 7702,
+  "requestBytes": {
+    "count": 7702,
+    "min": 303882,
+    "p50": 753438,
+    "p75": 1288404,
+    "p90": 1288408,
+    "p95": 1288408,
+    "p99": 1288408,
+    "max": 1288412,
+    "mean": 918004.294,
+    "total": 7070469069
+  },
+  "estimatedInputTokens": {
+    "count": 7702,
+    "min": 75971,
+    "p50": 188360,
+    "p75": 322101,
+    "p90": 322102,
+    "p95": 322102,
+    "p99": 322102,
+    "max": 322103,
+    "mean": 229501.314,
+    "total": 1767619122
+  },
+  "estimator": {
+    "name": "UTF8_BYTES_DIV_4_CEILING_V1",
+    "bytesPerToken": 4,
+    "valuesAreEstimated": true,
+    "exactTokenizerAvailableLocally": false
+  },
+  "perDocument": [
+    {
+      "documentId": "DOC-0123",
+      "requestCount": 3445,
+      "totalBytes": 4438515326,
+      "totalInputTokens": 1109629684,
+      "sharedContextBytes": 4437459715,
+      "uniqueContextBytes": 1288087,
+      "minBytes": 1288362,
+      "medianBytes": 1288406,
+      "p95Bytes": 1288408,
+      "maxBytes": 1288412,
+      "meanInputTokens": 322098.60203193035,
+      "minInputTokens": 322091,
+      "maxInputTokens": 322103
+    },
+    {
+      "documentId": "DOC-0133",
+      "requestCount": 2977,
+      "totalBytes": 2242982446,
+      "totalInputTokens": 560746549,
+      "sharedContextBytes": 2242184113,
+      "uniqueContextBytes": 753169,
+      "minBytes": 753434,
+      "medianBytes": 753438,
+      "p95Bytes": 753438,
+      "maxBytes": 753511,
+      "meanInputTokens": 188359.60665099093,
+      "minInputTokens": 188359,
+      "maxInputTokens": 188378
+    },
+    {
+      "documentId": "DOC-0252",
+      "requestCount": 1280,
+      "totalBytes": 388971297,
+      "totalInputTokens": 97242889,
+      "sharedContextBytes": 388629760,
+      "uniqueContextBytes": 303617,
+      "minBytes": 303882,
+      "medianBytes": 303884,
+      "p95Bytes": 303884,
+      "maxBytes": 303888,
+      "meanInputTokens": 75971.00703125,
+      "minInputTokens": 75971,
+      "maxInputTokens": 75972
+    }
+  ]
+}

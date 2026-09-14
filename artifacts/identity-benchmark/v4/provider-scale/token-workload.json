@@ -1,0 +1,38 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_a_token_workload",
+  "schemaVersion": "a99-v4f-a-token-workload-v1",
+  "requestCount": 7702,
+  "inputTokens": {
+    "total": 1767619122,
+    "valuesAreEstimated": true
+  },
+  "scenarios": [
+    {
+      "name": "MINIMAL_SCENARIO_ASSUMPTION",
+      "outputTokensPerRequest": 32,
+      "totalOutputTokens": 246464,
+      "totalTokens": 1767865586,
+      "estimatedOutputBytes": 985856
+    },
+    {
+      "name": "TYPICAL_SCENARIO_ASSUMPTION",
+      "outputTokensPerRequest": 128,
+      "totalOutputTokens": 985856,
+      "totalTokens": 1768604978,
+      "estimatedOutputBytes": 3943424
+    },
+    {
+      "name": "CONFIGURED_REMOTE_MAX_OUTPUT_SCENARIO_ASSUMPTION",
+      "outputTokensPerRequest": 768,
+      "totalOutputTokens": 5915136,
+      "totalTokens": 1773534258,
+      "estimatedOutputBytes": 23660544
+    }
+  ],
+  "outputAssumptions": {
+    "minimum": 32,
+    "typical": 128,
+    "configuredRemoteDefault": 768,
+    "note": "Scenario values are workload assumptions; no previous model output was inspected and no provider configuration was changed."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4f_a_firewall",
+  "schemaVersion": "a99-v4f-a-firewall-v1",
+  "goldReadCount": 0,
+  "v4ebEvaluationReadCount": 0,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "v4eBConsumed": false,
+  "goldUsedForSelection": false,
+  "goldUsedForAnalysis": false,
+  "rawModelOutputsRead": false,
+  "sourceGoldPathsRead": false,
+  "requestBodiesMutated": false,
+  "requestBodiesArchived": false,
+  "exactReconstruction": "PASS",
+  "reconstructionFailureCount": 0,
+  "frozenShortlistCount": 7702,
+  "frozenRequestCount": 7702,
+  "noProviderTransport": true,
+  "noDependencyInstallation": true
+}
