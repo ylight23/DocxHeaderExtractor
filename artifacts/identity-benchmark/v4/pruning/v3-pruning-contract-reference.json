@@ -1,0 +1,49 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4d_a_v3_pruning_contract_reference",
+  "schemaVersion": "a99-identity-benchmark-v4d-a-v3-pruning-contract-reference-v1",
+  "status": "BLOCKED_ON_V3_PRUNER_CONTRACT_INCOMPATIBILITY",
+  "algorithmVersion": "lexicographic-source-only-v1",
+  "dimensions": [
+    "evidenceTierDescending",
+    "documentOrderDistanceAscending",
+    "pairIdAscending"
+  ],
+  "evidenceTier": {
+    "tier3": "ADJACENT_ORDER \u002B NORMALIZED_TEXT_AFFINITY",
+    "tier2": "ADJACENT_ORDER",
+    "tier1": "NORMALIZED_TEXT_AFFINITY",
+    "blanketNormalizedTextAffinityVeto": false
+  },
+  "dominance": {
+    "dimensions": [
+      "hasNormalizedTextAffinity",
+      "hasAdjacentOrder",
+      "documentOrderDistance"
+    ],
+    "rule": "A dominates B only within a shared occurrence when A is no worse on every dimension and strictly better on one; pair-level pruning requires domination at both endpoints.",
+    "goldIndependent": true
+  },
+  "budgets": {
+    "maxCandidatesPerOccurrence": 8,
+    "maxCandidatesPerDocument": 12000,
+    "maxCandidatesTotal": 18000,
+    "selectionRule": "fixed operational caps declared before V3B; no Gold search"
+  },
+  "inputHashes": {
+    "rankingConfigSha256": "e5df9b2d1868d98957825984c80b039956eb53ca21db63fca8d9704c74e30e06",
+    "featureContractSha256": "3479723189addb2469e69acb05e25e318c9ca85df0ade2a8f18ac33601a5092d",
+    "shortlistManifestSha256": "8f2e2d4fc217085fa5e96224bc9431626f9559236658ebe58fa8dbae18c7e4c3"
+  },
+  "supportedReasonLabels": [
+    "ADJACENT_ORDER",
+    "NORMALIZED_TEXT_AFFINITY"
+  ],
+  "unsupportedV4ReasonLabels": [
+    "EXPLICIT_CONTINUATION_VARIANT",
+    "SHARED_STRUCTURAL_HEADING_KEY",
+    "TERMINAL_ACRONYM_VARIANT"
+  ],
+  "compatibility": "NEW_REASON_LABELS_HAVE_NO_FROZEN_TIER_OR_FEATURE_MAPPING",
+  "goldUsed": false,
+  "providerCalls": 0
+}

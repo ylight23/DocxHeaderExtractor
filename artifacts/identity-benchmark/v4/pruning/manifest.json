@@ -1,0 +1,40 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4d_a_manifest",
+  "schemaVersion": "a99-identity-benchmark-v4d-a-manifest-v1",
+  "status": "BLOCKED_ON_V3_PRUNER_CONTRACT_INCOMPATIBILITY",
+  "developmentStatus": "DEV_EXPOSED_CHALLENGER",
+  "independentGeneralizationClaim": false,
+  "phase": "V4D_A_SOURCE_ONLY_V3_PRUNING_COMPATIBILITY_AND_FREEZE",
+  "input": {
+    "v4BroadCandidateCount": 96069,
+    "v4OnlyCandidateCount": 70,
+    "v4BroadSha256": "a9aad1afabb0645112f6aefae743d91b8dfb6f8681231881fcf791538053c9a0"
+  },
+  "v3PruningContract": {
+    "rankingConfigSha256": "e5df9b2d1868d98957825984c80b039956eb53ca21db63fca8d9704c74e30e06",
+    "featureContractSha256": "3479723189addb2469e69acb05e25e318c9ca85df0ade2a8f18ac33601a5092d",
+    "shortlistManifestSha256": "8f2e2d4fc217085fa5e96224bc9431626f9559236658ebe58fa8dbae18c7e4c3",
+    "candidateSetSha256": "d9718a6fa67ad7b2dea68959517605751d9b2dfd207ed3036d3d1e0a111e2b4d"
+  },
+  "newReasonLabels": [
+    "EXPLICIT_CONTINUATION_VARIANT",
+    "SHARED_STRUCTURAL_HEADING_KEY",
+    "TERMINAL_ACRONYM_VARIANT"
+  ],
+  "newReasonLabelsHaveFrozenV3Interpretation": false,
+  "pruningApplied": false,
+  "shortlistCreated": false,
+  "requestArtifactsCreated": false,
+  "goldReadCount": 0,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "v4bManifestSha256": "d8a0ce04130328141dcf75569c8fb646596624e328e326db6f52bf06abc78cdb",
+  "freezeIntegrity": {
+    "integrity": "PASS",
+    "v4ManifestStatus": "READY_FOR_V4_RETRIEVAL_EVALUATION",
+    "v4ManifestSha256": "d8a0ce04130328141dcf75569c8fb646596624e328e326db6f52bf06abc78cdb",
+    "v4BroadSha256": "a9aad1afabb0645112f6aefae743d91b8dfb6f8681231881fcf791538053c9a0",
+    "v3BroadSha256": "d9718a6fa67ad7b2dea68959517605751d9b2dfd207ed3036d3d1e0a111e2b4d"
+  },
+  "nextGate": "BLOCKED_ON_V3_PRUNER_CONTRACT_INCOMPATIBILITY"
+}

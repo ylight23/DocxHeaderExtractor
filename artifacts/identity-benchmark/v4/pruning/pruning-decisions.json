@@ -1,0 +1,941 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4d_a_pruning_decisions",
+  "schemaVersion": "a99-identity-benchmark-v4d-a-pruning-decisions-v1",
+  "status": "BLOCKED_ON_V3_PRUNER_CONTRACT_INCOMPATIBILITY",
+  "pruningApplied": false,
+  "everyBroadCandidateHasDisposition": false,
+  "blockedBeforeDisposition": true,
+  "unsupportedV4OnlyCandidates": [
+    {
+      "candidateId": "DOC-0123:V4P0049-0119",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[84]",
+      "right": "DOC-0123:body[1]/p[172]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0049-0200",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[84]",
+      "right": "DOC-0123:body[1]/p[263]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0051-0120",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[86]",
+      "right": "DOC-0123:body[1]/p[173]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0053-0121",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[88]",
+      "right": "DOC-0123:body[1]/p[174]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0053-0758",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[88]",
+      "right": "DOC-0123:body[1]/p[285]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0055-0122",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[90]",
+      "right": "DOC-0123:body[1]/p[175]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0057-0123",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[92]",
+      "right": "DOC-0123:body[1]/p[176]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0059-0124",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[94]",
+      "right": "DOC-0123:body[1]/p[177]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0062-0126",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[97]",
+      "right": "DOC-0123:body[1]/p[179]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0062-1739",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[97]",
+      "right": "DOC-0123:body[1]/p[1016]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0066-0128",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[101]",
+      "right": "DOC-0123:body[1]/p[181]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0066-0258",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[101]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0068-0129",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[103]",
+      "right": "DOC-0123:body[1]/p[182]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0068-0259",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[103]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0070-0130",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[105]",
+      "right": "DOC-0123:body[1]/p[183]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0119-0132",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[172]",
+      "right": "DOC-0123:body[1]/p[192]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0119-0200",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[172]",
+      "right": "DOC-0123:body[1]/p[263]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0119-0249",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[172]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0120-0250",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[173]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0120-0541",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[173]",
+      "right": "DOC-0123:body[1]/p[276]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0121-0251",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[174]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0121-0758",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[174]",
+      "right": "DOC-0123:body[1]/p[285]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0122-0252",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[175]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0122-0875",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[175]",
+      "right": "DOC-0123:body[1]/p[403]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0123-0253",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[176]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0123-1714",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[176]",
+      "right": "DOC-0123:body[1]/p[981]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0124-0254",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[177]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[8]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0124-1719",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[177]",
+      "right": "DOC-0123:body[1]/p[992]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0126-0256",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[179]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[10]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0126-1739",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[179]",
+      "right": "DOC-0123:body[1]/p[1016]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0128-0258",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[181]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0128-1995",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[181]",
+      "right": "DOC-0123:body[1]/p[1192]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0129-0259",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[182]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0129-2007",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[182]",
+      "right": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0130-0260",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[183]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0130-2953",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[183]",
+      "right": "DOC-0123:body[1]/p[1314]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0132-0200",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[192]",
+      "right": "DOC-0123:body[1]/p[263]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0200-0249",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[263]",
+      "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0251-0758",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]",
+      "right": "DOC-0123:body[1]/p[285]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0256-1739",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[10]",
+      "right": "DOC-0123:body[1]/p[1016]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0258-1995",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+      "right": "DOC-0123:body[1]/p[1192]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0259-2007",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+      "right": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P0602-1341",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+      "right": "DOC-0123:body[1]/p[766]",
+      "v4Reasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "unsupportedReasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0123:V4P1271-1341",
+      "documentId": "DOC-0123",
+      "left": "DOC-0123:body[1]/p[695]",
+      "right": "DOC-0123:body[1]/p[766]",
+      "v4Reasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "unsupportedReasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0133:V4P0005-0935",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000005",
+      "right": "DOC-0133:B000935",
+      "v4Reasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "unsupportedReasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0133:V4P0011-0013",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000011",
+      "right": "DOC-0133:B000013",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0133:V4P0011-0034",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000011",
+      "right": "DOC-0133:B000034",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0133:V4P0013-0034",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000013",
+      "right": "DOC-0133:B000034",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0133:V4P0015-0616",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000015",
+      "right": "DOC-0133:B000616",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0133:V4P0017-0921",
+      "documentId": "DOC-0133",
+      "left": "DOC-0133:B000017",
+      "right": "DOC-0133:B000921",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0006-0042",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000006",
+      "right": "DOC-0252:B000042",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0006-0253",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000006",
+      "right": "DOC-0252:B000253",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0006-0872",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000006",
+      "right": "DOC-0252:B000872",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0006-0875",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000006",
+      "right": "DOC-0252:B000875",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0006-0878",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000006",
+      "right": "DOC-0252:B000878",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0042-0253",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000042",
+      "right": "DOC-0252:B000253",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0042-0872",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000042",
+      "right": "DOC-0252:B000872",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0042-0875",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000042",
+      "right": "DOC-0252:B000875",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0042-0878",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000042",
+      "right": "DOC-0252:B000878",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0253-0872",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000253",
+      "right": "DOC-0252:B000872",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0253-0875",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000253",
+      "right": "DOC-0252:B000875",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0253-0878",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000253",
+      "right": "DOC-0252:B000878",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0435-0883",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000435",
+      "right": "DOC-0252:B000883",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0544-0888",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000544",
+      "right": "DOC-0252:B000888",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0544-0893",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000544",
+      "right": "DOC-0252:B000893",
+      "v4Reasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0851-0904",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000851",
+      "right": "DOC-0252:B000904",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0872-0875",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000872",
+      "right": "DOC-0252:B000875",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0872-0878",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000872",
+      "right": "DOC-0252:B000878",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0875-0878",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000875",
+      "right": "DOC-0252:B000878",
+      "v4Reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    },
+    {
+      "candidateId": "DOC-0252:V4P0888-0893",
+      "documentId": "DOC-0252",
+      "left": "DOC-0252:B000888",
+      "right": "DOC-0252:B000893",
+      "v4Reasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "unsupportedReasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "disposition": "BLOCKED_UNRANKABLE_UNDER_FROZEN_V3_CONTRACT"
+    }
+  ],
+  "decisions": [],
+  "goldUsed": false,
+  "providerCalls": 0
+}

@@ -1,0 +1,14 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4d_a_scalability_report",
+  "schemaVersion": "a99-identity-benchmark-v4d-a-scalability-report-v1",
+  "status": "BLOCKED_ON_V3_PRUNER_CONTRACT_INCOMPATIBILITY",
+  "v3BroadCandidates": 95999,
+  "v4BroadCandidates": 96069,
+  "afterDominance": null,
+  "finalShortlist": 0,
+  "maxDegreeBefore": null,
+  "maxDegreeAfter": null,
+  "notComputed": "PRUNER_CONTRACT_INCOMPATIBILITY",
+  "goldUsed": false,
+  "providerCalls": 0
+}
