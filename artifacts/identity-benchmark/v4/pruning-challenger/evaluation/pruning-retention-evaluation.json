@@ -1,0 +1,81 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4e_b_pruning_retention_evaluation",
+  "schemaVersion": "a99-identity-benchmark-v4e-b-pruning-retention-evaluation-v1",
+  "status": "READY_FOR_V4_PROVIDER_SCALE_DECISION",
+  "phase": "V4E_B_FROZEN_V4E_SHORTLIST_GOLD_EVALUATION",
+  "developmentStatus": "DEV_EXPOSED_CHALLENGER",
+  "independentGeneralizationClaim": false,
+  "integrityBeforeGold": {
+    "integrity": "PASS",
+    "v4EManifestSha256": "f7fc8328f0a3287d6d6d2a8977fbd55fc94b51fb4d43dfb1dddb38f2a3e5ebe6",
+    "shortlistSha256": "41036e1f4eea349fdc68dcac13932b00b377774f04b2c58ab184e5e29061ae12",
+    "rankingSha256": "2f28a80c1230046bdf17cf91fae8420945fc2274a541abb8f7ef2a0c8b1e1e23",
+    "sourceEvidenceSha256": "27a05d21aac31e42ac4184c970796bbac1efaca4beb3fd2e1cdf4d74c581070f",
+    "requestManifestSha256": "220d236f502a56b4b7edb8e3b469382aaea4af25b13703e8dbc9505b709d66df",
+    "firewallSha256": "73dd522bbfef74c87d9cd60c4be7615122ae3a7db63b02ab09171fef7c0811a8",
+    "v3CompatibilitySha256": "391f10f8660c47103ade63b5235bef5c9c99eb26f679895d027c737fb834baf5",
+    "v4BroadSha256": "a9aad1afabb0645112f6aefae743d91b8dfb6f8681231881fcf791538053c9a0",
+    "sourceSha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+    "shortlistCount": 7702
+  },
+  "goldAuthority": "USER_REVIEWED_IDENTITY_GOLD_FROZEN",
+  "independentABGold": false,
+  "goldOpenedAfterFreeze": true,
+  "goldSha256": "1c50754951b89ec48a0b0016db3e6079afd088bd0fb20a08ac60e10c41e6fae2",
+  "bindingArtifacts": {
+    "v2Sha256": "122bf50fee967a2ef9a33aee3bc146d7df842d9e469126744fc0f68a017059b8",
+    "v4Sha256": "09184c106d4c271e71dc4dea72a43eb215290d86ed83e03927d20ae6287fb7d4"
+  },
+  "v4eArtifacts": {
+    "manifestSha256": "f7fc8328f0a3287d6d6d2a8977fbd55fc94b51fb4d43dfb1dddb38f2a3e5ebe6",
+    "shortlistSha256": "41036e1f4eea349fdc68dcac13932b00b377774f04b2c58ab184e5e29061ae12",
+    "pruningDecisionsSha256": "2d42dcb93ad522d098cff69d6d4a41cba44854382a151eb7f5a394ec1633d064"
+  },
+  "metrics": {
+    "v4BroadPositiveRecall": {
+      "numerator": 3,
+      "denominator": 3,
+      "value": 1
+    },
+    "v4ePositiveRetention": {
+      "numerator": 3,
+      "denominator": 3,
+      "value": 1
+    },
+    "continuationRetention": {
+      "numerator": 1,
+      "denominator": 1
+    },
+    "sameRepeatRetention": {
+      "numerator": 2,
+      "denominator": 2
+    },
+    "distinctDiagnosticCoverage": [
+      {
+        "itemId": "IR-018",
+        "broadPresent": true,
+        "shortlistPresent": true,
+        "disposition": "SHORTLISTED"
+      },
+      {
+        "itemId": "IR-022",
+        "broadPresent": true,
+        "shortlistPresent": true,
+        "disposition": "SHORTLISTED"
+      }
+    ],
+    "candidateVolume": {
+      "v3Broad": 95999,
+      "v3PositiveRecall": "1/3",
+      "v4Broad": 96069,
+      "v4eShortlist": 7702
+    }
+  },
+  "firewall": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "promotionExecution": false,
+    "v4eArtifactsMutated": false
+  },
+  "nextGate": "READY_FOR_V4_PROVIDER_SCALE_DECISION"
+}

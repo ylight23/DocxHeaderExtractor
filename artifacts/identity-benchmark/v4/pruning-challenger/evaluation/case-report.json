@@ -1,0 +1,188 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4e_b_case_report",
+  "schemaVersion": "a99-identity-benchmark-v4e-b-case-report-v1",
+  "status": "READY_FOR_V4_PROVIDER_SCALE_DECISION",
+  "goldAuthority": "USER_REVIEWED_IDENTITY_GOLD_FROZEN",
+  "independentABGold": false,
+  "cases": [
+    {
+      "itemId": "IR-018",
+      "documentId": "DOC-0133",
+      "relation": "DISTINCT_SEMANTIC_NODE",
+      "isPositive": false,
+      "left": "DOC-0133:B002349",
+      "right": "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0133:B002349",
+        "text": "INDEPENDENT AUDITOR\u0027S REVIEW REPORT",
+        "documentOrder": 2348
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11",
+        "text": "INDEPENDENT AUDITOR\u0027S REVIEW REPORT\n\n",
+        "documentOrder": 936
+      },
+      "v3BroadPresent": true,
+      "broadPresent": true,
+      "v4Only": false,
+      "candidateId": "DOC-0133:P938-2350",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidence": {
+        "evidenceTier": 1,
+        "hasAdjacentOrder": false,
+        "hasNormalizedTextAffinity": true,
+        "documentOrderDistance": 1412
+      },
+      "shortlistPresent": true,
+      "outcome": "RETAINED_V3_EXISTING",
+      "attribution": "NONE",
+      "disposition": "SHORTLISTED"
+    },
+    {
+      "itemId": "IR-019",
+      "documentId": "DOC-0252",
+      "relation": "CONTINUATION_OF",
+      "isPositive": true,
+      "left": "DOC-0252:B000888",
+      "right": "DOC-0252:B000893",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0252:B000888",
+        "text": "SESSION V: Cu rrent Research",
+        "documentOrder": 887
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0252:B000893",
+        "text": "SESSION V: Cu rrent Resea rch (Cont\u2019d)",
+        "documentOrder": 892
+      },
+      "v3BroadPresent": false,
+      "broadPresent": true,
+      "v4Only": true,
+      "candidateId": "DOC-0252:V4P0888-0893",
+      "reasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidence": {
+        "evidenceTier": 0,
+        "hasAdjacentOrder": false,
+        "hasNormalizedTextAffinity": false,
+        "documentOrderDistance": 5
+      },
+      "shortlistPresent": true,
+      "outcome": "RETAINED_V4_ONLY",
+      "attribution": "NONE",
+      "disposition": "SHORTLISTED"
+    },
+    {
+      "itemId": "IR-020",
+      "documentId": "DOC-0123",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "isPositive": true,
+      "left": "DOC-0123:body[1]/p[192]",
+      "right": "DOC-0123:body[1]/p[263]",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[192]",
+        "text": "Section I - Instructions to Proposers (ITP)",
+        "documentOrder": 193
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[263]",
+        "text": "Section I - Instructions to Proposers",
+        "documentOrder": 264
+      },
+      "v3BroadPresent": false,
+      "broadPresent": true,
+      "v4Only": true,
+      "candidateId": "DOC-0123:V4P0132-0200",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "evidence": {
+        "evidenceTier": 0,
+        "hasAdjacentOrder": false,
+        "hasNormalizedTextAffinity": false,
+        "documentOrderDistance": 71
+      },
+      "shortlistPresent": true,
+      "outcome": "RETAINED_V4_ONLY",
+      "attribution": "NONE",
+      "disposition": "SHORTLISTED"
+    },
+    {
+      "itemId": "IR-021",
+      "documentId": "DOC-0123",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "isPositive": true,
+      "left": "DOC-0123:body[1]/p[1164]",
+      "right": "DOC-0123:body[1]/p[1166]",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[1164]",
+        "text": "Contractor\u2019s Representative and Key Personnel",
+        "documentOrder": 3005
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[1166]",
+        "text": "Contractor\u2019s Representative and Key Personnel",
+        "documentOrder": 3007
+      },
+      "v3BroadPresent": true,
+      "broadPresent": true,
+      "v4Only": false,
+      "candidateId": "DOC-0123:P1960-1962",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidence": {
+        "evidenceTier": 1,
+        "hasAdjacentOrder": false,
+        "hasNormalizedTextAffinity": true,
+        "documentOrderDistance": 2
+      },
+      "shortlistPresent": true,
+      "outcome": "RETAINED_V3_EXISTING",
+      "attribution": "NONE",
+      "disposition": "SHORTLISTED"
+    },
+    {
+      "itemId": "IR-022",
+      "documentId": "DOC-0123",
+      "relation": "DISTINCT_SEMANTIC_NODE",
+      "isPositive": false,
+      "left": "DOC-0123:body[1]/p[1098]",
+      "right": "DOC-0123:body[1]/p[1137]",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[1098]",
+        "text": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES",
+        "documentOrder": 2939
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[1137]",
+        "text": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES",
+        "documentOrder": 2978
+      },
+      "v3BroadPresent": true,
+      "broadPresent": true,
+      "v4Only": false,
+      "candidateId": "DOC-0123:P1905-1939",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidence": {
+        "evidenceTier": 1,
+        "hasAdjacentOrder": false,
+        "hasNormalizedTextAffinity": true,
+        "documentOrderDistance": 39
+      },
+      "shortlistPresent": true,
+      "outcome": "RETAINED_V3_EXISTING",
+      "attribution": "NONE",
+      "disposition": "SHORTLISTED"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}
