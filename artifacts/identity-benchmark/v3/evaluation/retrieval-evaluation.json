@@ -1,0 +1,69 @@
+{
+  "artifactKind": "a99_identity_benchmark_v3b_retrieval_evaluation",
+  "schemaVersion": "a99-identity-benchmark-v3b-retrieval-evaluation",
+  "status": "V3_RETRIEVAL_RECALL_FAILURE",
+  "phase": "V3B_FROZEN_IDENTITY_SHORTLIST_RETRIEVAL_EVALUATION",
+  "behavioralParent": "V3A_SOURCE_ONLY_SHORTLIST_FREEZE",
+  "goldAuthority": "USER_REVIEWED_IDENTITY_GOLD_FROZEN",
+  "independentABGold": false,
+  "goldOpenedAfterV3AIntegrity": true,
+  "goldSha256": "1c50754951b89ec48a0b0016db3e6079afd088bd0fb20a08ac60e10c41e6fae2",
+  "bindingArtifacts": {
+    "v2Sha256": "122bf50fee967a2ef9a33aee3bc146d7df842d9e469126744fc0f68a017059b8",
+    "v4Sha256": "09184c106d4c271e71dc4dea72a43eb215290d86ed83e03927d20ae6287fb7d4",
+    "exactEndpointEvidence": true
+  },
+  "v3aFreeze": {
+    "manifestSha256": "824b17c125ec59a54e590dd4063ab5d734f601dc10aa1d183db499abb9219fd8",
+    "broadCandidateCount": 95999,
+    "afterDominanceCount": 7659,
+    "shortlistedCount": 7659,
+    "broadCandidateSetSha256": "d9718a6fa67ad7b2dea68959517605751d9b2dfd207ed3036d3d1e0a111e2b4d",
+    "shortlistSha256": "b73700755a6ebb4110d43b4b815c64b23a4f1ffa7be284288da60c826e51adda",
+    "candidateRankingConfigSha256": "e5df9b2d1868d98957825984c80b039956eb53ca21db63fca8d9704c74e30e06",
+    "featureInventorySha256": "3479723189addb2469e69acb05e25e318c9ca85df0ade2a8f18ac33601a5092d",
+    "requestManifestSha256": "494500ba054af983128d48dd58bf2f6164f449f584e57649d90f4b65c887474e",
+    "integrity": "PASS",
+    "goldReadCountBeforeCheck": 0,
+    "providerCallsBeforeCheck": 0
+  },
+  "metrics": {
+    "totalCases": 5,
+    "positiveDenominator": 3,
+    "positiveRetrieved": 1,
+    "positiveRecall": 0.3333333333333333,
+    "continuationCases": 1,
+    "continuationRetrieved": 0,
+    "repeatCases": 2,
+    "repeatRetrieved": 1,
+    "distinctDiagnostics": [
+      {
+        "itemId": "IR-018",
+        "broadPresent": true,
+        "shortlistPresent": true,
+        "outcome": "RETRIEVED"
+      },
+      {
+        "itemId": "IR-022",
+        "broadPresent": true,
+        "shortlistPresent": true,
+        "outcome": "RETRIEVED"
+      }
+    ],
+    "outcomeCounts": {
+      "RETRIEVED": 3,
+      "BROAD_RETRIEVAL_MISS": 2
+    }
+  },
+  "firewall": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldUsedForCandidateGeneration": false,
+    "goldUsedForRanking": false,
+    "goldUsedForPruning": false,
+    "goldUsedForRequests": false,
+    "predictionRerun": false,
+    "v3aArtifactsMutated": false
+  },
+  "nextGate": "V3_RETRIEVAL_RECALL_FAILURE"
+}

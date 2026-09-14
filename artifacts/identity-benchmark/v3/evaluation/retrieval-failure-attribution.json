@@ -1,0 +1,30 @@
+{
+  "artifactKind": "a99_identity_benchmark_v3b_retrieval_failure_attribution",
+  "schemaVersion": "a99-identity-benchmark-v3b-retrieval-failure-attribution",
+  "goldDerivedInput": false,
+  "rows": [
+    {
+      "itemId": "IR-019",
+      "relation": "CONTINUATION_OF",
+      "isPositive": true,
+      "outcome": "BROAD_RETRIEVAL_MISS",
+      "attribution": "BROAD_RETRIEVAL",
+      "candidateId": null,
+      "rank": null,
+      "pruningDisposition": null,
+      "sourceOnlyReasons": []
+    },
+    {
+      "itemId": "IR-020",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "isPositive": true,
+      "outcome": "BROAD_RETRIEVAL_MISS",
+      "attribution": "BROAD_RETRIEVAL",
+      "candidateId": null,
+      "rank": null,
+      "pruningDisposition": null,
+      "sourceOnlyReasons": []
+    }
+  ],
+  "providerCalls": 0
+}

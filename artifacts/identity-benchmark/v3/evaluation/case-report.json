@@ -1,0 +1,393 @@
+{
+  "artifactKind": "a99_identity_benchmark_v3b_case_report",
+  "schemaVersion": "a99-identity-benchmark-v3b-case-report",
+  "status": "V3_RETRIEVAL_RECALL_FAILURE",
+  "goldAuthority": "USER_REVIEWED_IDENTITY_GOLD_FROZEN",
+  "independentABGold": false,
+  "cases": [
+    {
+      "itemId": "IR-018",
+      "documentId": "DOC-0133",
+      "relation": "DISTINCT_SEMANTIC_NODE",
+      "isPositive": false,
+      "left": "DOC-0133:B002349",
+      "right": "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0133:B002349",
+        "text": "INDEPENDENT AUDITOR\u0027S REVIEW REPORT",
+        "documentOrder": 2348
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11",
+        "text": "INDEPENDENT AUDITOR\u0027S REVIEW REPORT\n\n",
+        "documentOrder": 936
+      },
+      "broadCandidatePresent": true,
+      "afterDominancePresent": true,
+      "shortlistPresent": true,
+      "candidateId": "DOC-0133:P938-2350",
+      "documentRank": 62235,
+      "rankMeaning": "V3A_DOCUMENT_RANK",
+      "candidateReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "pruningDisposition": "SHORTLISTED",
+      "pruningReason": "WITHIN_SOURCE_ONLY_BOUNDED_SELECTION",
+      "competingCandidates": [
+        {
+          "candidateId": "DOC-0133:P337-338",
+          "rank": 1,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0133:P339-340",
+          "rank": 2,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0133:P359-360",
+          "rank": 3,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0133:P937-938",
+          "rank": 4,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 2,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": false,
+            "documentOrderDistance": 0
+          }
+        },
+        {
+          "candidateId": "DOC-0133:P01-02",
+          "rank": 5,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 2,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": false,
+            "documentOrderDistance": 1
+          }
+        }
+      ],
+      "outcome": "RETRIEVED",
+      "attribution": "NONE"
+    },
+    {
+      "itemId": "IR-019",
+      "documentId": "DOC-0252",
+      "relation": "CONTINUATION_OF",
+      "isPositive": true,
+      "left": "DOC-0252:B000888",
+      "right": "DOC-0252:B000893",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0252:B000888",
+        "text": "SESSION V: Cu rrent Research",
+        "documentOrder": 887
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0252:B000893",
+        "text": "SESSION V: Cu rrent Resea rch (Cont\u2019d)",
+        "documentOrder": 892
+      },
+      "broadCandidatePresent": false,
+      "afterDominancePresent": false,
+      "shortlistPresent": false,
+      "candidateId": null,
+      "documentRank": null,
+      "rankMeaning": "V3A_DOCUMENT_RANK",
+      "candidateReasons": [],
+      "pruningDisposition": null,
+      "pruningReason": null,
+      "competingCandidates": [],
+      "outcome": "BROAD_RETRIEVAL_MISS",
+      "attribution": "BROAD_RETRIEVAL"
+    },
+    {
+      "itemId": "IR-020",
+      "documentId": "DOC-0123",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "isPositive": true,
+      "left": "DOC-0123:body[1]/p[192]",
+      "right": "DOC-0123:body[1]/p[263]",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[192]",
+        "text": "Section I - Instructions to Proposers (ITP)",
+        "documentOrder": 193
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[263]",
+        "text": "Section I - Instructions to Proposers",
+        "documentOrder": 264
+      },
+      "broadCandidatePresent": false,
+      "afterDominancePresent": false,
+      "shortlistPresent": false,
+      "candidateId": null,
+      "documentRank": null,
+      "rankMeaning": "V3A_DOCUMENT_RANK",
+      "candidateReasons": [],
+      "pruningDisposition": null,
+      "pruningReason": null,
+      "competingCandidates": [],
+      "outcome": "BROAD_RETRIEVAL_MISS",
+      "attribution": "BROAD_RETRIEVAL"
+    },
+    {
+      "itemId": "IR-021",
+      "documentId": "DOC-0123",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "isPositive": true,
+      "left": "DOC-0123:body[1]/p[1164]",
+      "right": "DOC-0123:body[1]/p[1166]",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[1164]",
+        "text": "Contractor\u2019s Representative and Key Personnel",
+        "documentOrder": 3005
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[1166]",
+        "text": "Contractor\u2019s Representative and Key Personnel",
+        "documentOrder": 3007
+      },
+      "broadCandidatePresent": true,
+      "afterDominancePresent": true,
+      "shortlistPresent": true,
+      "candidateId": "DOC-0123:P1960-1962",
+      "documentRank": 3219,
+      "rankMeaning": "V3A_DOCUMENT_RANK",
+      "candidateReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "pruningDisposition": "SHORTLISTED",
+      "pruningReason": "WITHIN_SOURCE_ONLY_BOUNDED_SELECTION",
+      "competingCandidates": [
+        {
+          "candidateId": "DOC-0123:P07-08",
+          "rank": 1,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0123:P1035-1036",
+          "rank": 2,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0123:P1036-1037",
+          "rank": 3,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0123:P1056-1057",
+          "rank": 4,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0123:P1057-1058",
+          "rank": 5,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        }
+      ],
+      "outcome": "RETRIEVED",
+      "attribution": "NONE"
+    },
+    {
+      "itemId": "IR-022",
+      "documentId": "DOC-0123",
+      "relation": "DISTINCT_SEMANTIC_NODE",
+      "isPositive": false,
+      "left": "DOC-0123:body[1]/p[1098]",
+      "right": "DOC-0123:body[1]/p[1137]",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[1098]",
+        "text": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES",
+        "documentOrder": 2939
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[1137]",
+        "text": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES",
+        "documentOrder": 2978
+      },
+      "broadCandidatePresent": true,
+      "afterDominancePresent": true,
+      "shortlistPresent": true,
+      "candidateId": "DOC-0123:P1905-1939",
+      "documentRank": 3485,
+      "rankMeaning": "V3A_DOCUMENT_RANK",
+      "candidateReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "pruningDisposition": "SHORTLISTED",
+      "pruningReason": "WITHIN_SOURCE_ONLY_BOUNDED_SELECTION",
+      "competingCandidates": [
+        {
+          "candidateId": "DOC-0123:P07-08",
+          "rank": 1,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0123:P1035-1036",
+          "rank": 2,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0123:P1036-1037",
+          "rank": 3,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0123:P1056-1057",
+          "rank": 4,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        },
+        {
+          "candidateId": "DOC-0123:P1057-1058",
+          "rank": 5,
+          "decision": "SHORTLISTED",
+          "reasons": [
+            "ADJACENT_ORDER",
+            "NORMALIZED_TEXT_AFFINITY"
+          ],
+          "rankFeatures": {
+            "evidenceTier": 3,
+            "hasAdjacentOrder": true,
+            "hasNormalizedTextAffinity": true,
+            "documentOrderDistance": 1
+          }
+        }
+      ],
+      "outcome": "RETRIEVED",
+      "attribution": "NONE"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}
