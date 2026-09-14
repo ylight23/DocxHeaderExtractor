@@ -1,0 +1,18 @@
+{
+  "primaryDiagnosis": "PROJECTED_TARGET_GROUNDING_DEGRADATION",
+  "rationale": "Projected HTTP-success invalidity is dominated by frozen validator target-pair mismatches, not Gold accuracy.",
+  "scheduledPairs": 128,
+  "scheduledAttempts": 256,
+  "bothTransportSuccessPairs": 101,
+  "bothRawAvailablePairs": 100,
+  "bothParseValidPairs": 58,
+  "agreementDenominator": 58,
+  "disagreementCount": 23,
+  "oldInvalidHttpSuccess": 2,
+  "projectedInvalidHttpSuccess": 45,
+  "projectedTargetMismatch": 45,
+  "providerFailures": 35,
+  "rawPersistenceIncidents": 2,
+  "goldReadCount": 0,
+  "schemaVersion": "a99-v4f-f-failure-attribution-v1"
+}

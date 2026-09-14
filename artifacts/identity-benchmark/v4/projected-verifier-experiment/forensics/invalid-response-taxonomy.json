@@ -1,0 +1,545 @@
+{
+  "schemaVersion": "a99-v4f-f-invalid-response-taxonomy-v1",
+  "categories": [
+    {
+      "arm": "ARM_A",
+      "category": "TARGET_ID_MISMATCH",
+      "count": 2,
+      "sequences": [
+        13,
+        69
+      ],
+      "rejectionReasons": [
+        "TARGET_PAIR_MISMATCH"
+      ]
+    },
+    {
+      "arm": "ARM_B",
+      "category": "TARGET_ID_MISMATCH",
+      "count": 45,
+      "sequences": [
+        8,
+        14,
+        16,
+        24,
+        30,
+        38,
+        40,
+        49,
+        66,
+        70,
+        72,
+        74,
+        99,
+        103,
+        123,
+        143,
+        152,
+        158,
+        160,
+        161,
+        163,
+        166,
+        171,
+        174,
+        175,
+        183,
+        192,
+        195,
+        202,
+        208,
+        210,
+        213,
+        215,
+        217,
+        222,
+        223,
+        226,
+        227,
+        230,
+        233,
+        239,
+        241,
+        246,
+        249,
+        251
+      ],
+      "rejectionReasons": [
+        "TARGET_PAIR_MISMATCH"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "sequence": 8,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0133:P933-934",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "da922f8d62b52cbef32f70c312ce2205b0287ca32408ed452eea9330f55a0abd",
+      "parsedResponseSha256": "9e6bfda2a972c69d120fa53710d053c4a9ff8de3c985d7eeee95d510e7ad97a8"
+    },
+    {
+      "sequence": 13,
+      "arm": "ARM_A",
+      "candidateId": "DOC-0133:P561-562",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "29bb64a03cccc17a1c6923b9d0030a31eabf99d6e4532e2b49226d7adb1a5b3f",
+      "parsedResponseSha256": "0db36f54c40e67e9058d218eae20e34ca1ba86b53b0e84509fd42186348de0c3"
+    },
+    {
+      "sequence": 14,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0133:P561-562",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "6e687dfef4f8f773bffd29e019067eb82143a27305b0a10b956c749648a253a5",
+      "parsedResponseSha256": "31e3816dfdd576fa91e5e7fb8960921d43f61f316ccdc81c9d060975b75ddef1"
+    },
+    {
+      "sequence": 16,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0252:P393-394",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "70e677dc2e99a1ba432171fad60b023a5e68c0114876a7c7b4c8bb0cd60bac54",
+      "parsedResponseSha256": "eb4e3a49ba0f95299bbcd427e591253947fe7e069988c06b349d8307bef658d2"
+    },
+    {
+      "sequence": 24,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P1425-1973",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "20b2d3eb9ff134b3feff4ae22038ec855a145baf72fd20c6c3540a0cf485441f",
+      "parsedResponseSha256": "41a765faa803bd72e09fdff65ec052986c6364fff8397857c30a8ab3b2bd0d15"
+    },
+    {
+      "sequence": 30,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0133:P1467-1468",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "1555e15ae91a213891a0f06a8c99cd3b0611da09ab18d96c5816dd2b46ec976b",
+      "parsedResponseSha256": "c4af19b02bea568100619c6d335167f5429f71ab8cb9a2a11a82404052d974a2"
+    },
+    {
+      "sequence": 38,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0133:P855-856",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "e0c32407c66eba85de343d90f6367aa2f5bc7423919ac44ed4251b242f5da398",
+      "parsedResponseSha256": "306c0984babbbe2ebcaf63a42b7beb5be83f2da90ab73ca6375f547f873ecdf1"
+    },
+    {
+      "sequence": 40,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P1592-1593",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "9ce416c7acafb09387d817089764c51eb1a4f9b5de1abb3f4022cce8e152fcf1",
+      "parsedResponseSha256": "96439a7b9a2b031aaa05bdba1bca032cc31e8f3617af459eb8d74dc23fc1842a"
+    },
+    {
+      "sequence": 49,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P1006-1007",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "0ac2aeda988db6529879a006178349e79c08314140a24469e30cfb42b540e6fb",
+      "parsedResponseSha256": "1a9693fc5bd6b602c0466a9e75d7d7ec0126c69a61736497ce6a6f03b8c72405"
+    },
+    {
+      "sequence": 66,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P1818-2556",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "fc9f3b98b61a3d9afd5307237e7cf45f0257438437e588a8dd6a5ad6fd1025be",
+      "parsedResponseSha256": "90f9b8f7cea005ea812d6ca536a8d4451bbfa479a6cc12b41d45d71651e79034"
+    },
+    {
+      "sequence": 69,
+      "arm": "ARM_A",
+      "candidateId": "DOC-0123:P1087-1088",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "5aafc4d7e0cace9c3ce0af1c53400b04c338bc5ad7d2e99e8419af90158732ad",
+      "parsedResponseSha256": "9e79817f55baeec750bf1977d0fe25ce638338ed401d1d8519ea5c845b4df062"
+    },
+    {
+      "sequence": 70,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P1087-1088",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "1e89d6a206cbab28bd9876ecd1b65271eb1fa7e6b969f92afa13c4d2ef712375",
+      "parsedResponseSha256": "9e79817f55baeec750bf1977d0fe25ce638338ed401d1d8519ea5c845b4df062"
+    },
+    {
+      "sequence": 72,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0133:P118-136",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "8f4e7c5fdba99fc71aed95459d9ac895e093026240ee8bfd929deb3658d8387b",
+      "parsedResponseSha256": "377b63f8f59cb3e21a229a0552119e6fc35f0941c83113b57103dada7c03c054"
+    },
+    {
+      "sequence": 74,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P348-354",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "b5d13d4e772afca529d470c3a406e05e02b77e63b0f1231c0e7f1b40fd1269d6",
+      "parsedResponseSha256": "f689cd23ea30a14c59c9a74e0183a85089bfca972f2a39fe95c2ca2f40e6b5a7"
+    },
+    {
+      "sequence": 99,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P01-42",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "d42639a4db1cd21acf46957bf9d80778cb9b00046cfb343daa040eff50adb4d3",
+      "parsedResponseSha256": "8c07e37ea61d23267b5341980c22121dd136339cb0c32503256ff092c7041399"
+    },
+    {
+      "sequence": 103,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0133:P36-41",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "b6cb4119ebc585fd3af86c9d912a597fc56689694579e546a9ea36b0ebc0b27a",
+      "parsedResponseSha256": "c9631b44ea7e41e6b5d5e1cce62788da5c44e310a52555d5af09dc1ef3221823"
+    },
+    {
+      "sequence": 123,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P3092-3097",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "749aaf83af4a42f64bf32d4f22eade877780bf0374d50ee3aa20419f22fda4b7",
+      "parsedResponseSha256": "39645a136f3d40cbbca905bf9bcb894498e48e47dbc88614e5b1db841d5a1c2c"
+    },
+    {
+      "sequence": 143,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0068-0259",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "1ff447a11d38329a4d220cd5bb98921c54fc584aabea1bdfc24ee3f6b2f150b8",
+      "parsedResponseSha256": "4d0d0fb238723026a7fc2b35ac4d809dc7d307fcba1bc24c79ce9c9f391f96fc"
+    },
+    {
+      "sequence": 152,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P05-06",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "78d69ffe67f1f4be61faa33df215624a21f283ebd83d6bd62827ae3db0c67cc8",
+      "parsedResponseSha256": "7566ec01c55ce32012bc0202b1512374c7e7cc56f7e874c98d2c809cab93037b"
+    },
+    {
+      "sequence": 158,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0132-0200",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "cd5ef536b2553ee024f318ab5292ac9a06e02170f753fe520ba9930b0a83b7fe",
+      "parsedResponseSha256": "f984bc58f97c7749b8bd9db0e21ec6810b69b4b24165cf737a64110204204ae2"
+    },
+    {
+      "sequence": 160,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0252:V4P0006-0042",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "c7bc6c8f5d7cdddcd4bbac261496e723cfec4c0975f29760579213058372e7b4",
+      "parsedResponseSha256": "1e30bf60c7d2f62213e03db4cea2f5e00cb6e81d6544d2f8d14eaccdc41929e6"
+    },
+    {
+      "sequence": 161,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P1482-1485",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "47027eca9675029bbccbecf50501f078a4e2f45d18986ab216e79fb0f02287ee",
+      "parsedResponseSha256": "a9611c8dd05bf8794ea9db61b3fc02e6596f61c32ce6ca52d60b62989f01677c"
+    },
+    {
+      "sequence": 163,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0128-0258",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "dc7f975e2400ba66bcf84678365ac35ca7cfdfadab71c798442dfcdd9a650b22",
+      "parsedResponseSha256": "45e88aceee9b5e622af62349b78a5f6bcbe2be02d649cdd20b07392db4c3d243"
+    },
+    {
+      "sequence": 166,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0120-0250",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "dbef329d4d90d43c62b24b71f4104d237b60952654d35c31c4fc07f4b06e81d7",
+      "parsedResponseSha256": "27fdc7350f89f6407109ee7bba580df0179a2ed5a452283f0e27f16a25e32f3e"
+    },
+    {
+      "sequence": 171,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0057-0123",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "0c7308b3354e90c1ca3b796d160de93bfae13f6405d8af32f222cd55ce21324a",
+      "parsedResponseSha256": "d7c16319a1387d245bf312a245897b0f7ad174e426a541ffb775f7bdb94a9ee6"
+    },
+    {
+      "sequence": 174,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0070-0130",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "ffdf332a9930dad5e576d56142da9ee078368fc0f6d92902d44c51be1035b48d",
+      "parsedResponseSha256": "311e788adf2cb76ae71c67453bed16534b409db572856c1ebfb4562beea71ee8"
+    },
+    {
+      "sequence": 175,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0049-0119",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "f5640b0fa2791b6eba08380410c0d055704df82308c208e18bbd6bc1a329dbff",
+      "parsedResponseSha256": "082a1bf8a5bbc97f51f3fa80cfeaa02bebb20dd94b6a9b72c0ab287d193e4d6d"
+    },
+    {
+      "sequence": 183,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0133:V4P0005-0935",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "56424e94546d217b3b7ae425e79193d6631107340aa5ce14341d5498bbc5a3da",
+      "parsedResponseSha256": "1a43590bde18bd921c0cb5d838c117308fcc330214df06b18dc7c9996aafe4d7"
+    },
+    {
+      "sequence": 192,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P1093-1094",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "e61c813048faea5bb119ed4d02ea27829b209308dd22af5f9ab5378553d779a3",
+      "parsedResponseSha256": "7e192cd5237af76a6e7810e3853b9811f6e752fb5d98ca9f7f52d67abf42ac16"
+    },
+    {
+      "sequence": 195,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0133:V4P0013-0034",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "219fa1900635d9aae53280d1cb73615155a28f8a02a56a108c442002dab28f27",
+      "parsedResponseSha256": "bf35d9da2fb22c0782eb0fdd57f06c009d9e93c7585e307f6d32ce97eb935f45"
+    },
+    {
+      "sequence": 202,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0252:V4P0888-0893",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "3d31d94a63a991a5b9e3bd6760804b5b5aeeb0717aed6df59c134fd68fd58fd8",
+      "parsedResponseSha256": "edbfd470d498d61e1ce49718c5c2047d8928f16767ec2559e980ad655c5d0719"
+    },
+    {
+      "sequence": 208,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0252:V4P0875-0878",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "1412205c5b0c608b335c2b800193cae8dae26ea6c4aa4e426a34c2ed6c6e2153",
+      "parsedResponseSha256": "86c6ae6e7479cff39c6925ab3124f6adf0a3f28e16c46ed02a17eef543474e20"
+    },
+    {
+      "sequence": 210,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0252:V4P0872-0875",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "f831b15d444b6ff861c8d2bb45f1946608ef326b71f7f93af6824d3e435932b6",
+      "parsedResponseSha256": "0cea4c478c04205352b249952f88746c514a19debcaf6db58dfc42e403541d58"
+    },
+    {
+      "sequence": 213,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0252:V4P0544-0888",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "9db6acc835b91742d2af45809b902c8eded39210ea1869c6238bd7a988e3c0b8",
+      "parsedResponseSha256": "577425dcadb2c9af0b30ceac8789a0a32e1b0ccc5787b4385cf1574232e6e871"
+    },
+    {
+      "sequence": 215,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0252:V4P0435-0883",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "ff3286c2c90d28a17c5269eb67dce31626c55189a3f9f58bb293ded6961b5c75",
+      "parsedResponseSha256": "10e4c550b5efd7cf295a78711796c5feecf89c177400da14c6da2870204c2f11"
+    },
+    {
+      "sequence": 217,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0066-0258",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "da614910d50b4feabaf9da53f07a8bfad55b49c97bf31ef65e26c7fc4fe300f4",
+      "parsedResponseSha256": "5b3913c66687a9c3cd575ebf31a7e7b90602b7f676b0472a81352cb1ed51b8c7"
+    },
+    {
+      "sequence": 222,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0258-1995",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "61c92527e2d2157667179436fb509f15f1296926359646b3826f76fc24684cbc",
+      "parsedResponseSha256": "aeb9c9434d7579f3fc2970c367869d709b3410b1e1acf1597a1f1451460e291d"
+    },
+    {
+      "sequence": 223,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0252:V4P0544-0893",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "f7bfe8f30634a0f4b33a5a650b90217eab8e4fb57637cd2a892c297fae0f6552",
+      "parsedResponseSha256": "412ce0086f6b31e28169d323eaca05981e716c468e9e8beab715c83c665afe97"
+    },
+    {
+      "sequence": 226,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0133:V4P0015-0616",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "2b896be92b97517063c57a4526b15cf3b606a2f16da2dc2dce07d9f6fcfc462a",
+      "parsedResponseSha256": "c907c5fa6769ca7c10e5ebf6ccf9e0308159c0d6152d5ee44754e88bc67afd77"
+    },
+    {
+      "sequence": 227,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P1271-1341",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "1bae3a3e725c8374f1507b9df7a7c5dfd209a497595247e05b592bc80fa5ca75",
+      "parsedResponseSha256": "0d403420f71ae1a2ba6d5c11fd3c7d91a724270f635d051e6715daa21c9a6cb6"
+    },
+    {
+      "sequence": 230,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0252:V4P0851-0904",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "c4e246fd58b286fa0b2dbe35084145fe8d84fdd607a3019a780e7f4ccd04f175",
+      "parsedResponseSha256": "82f15d080cf9870ff781f61d61abef33b2a1acae2ff629d2dc22580a5a84656a"
+    },
+    {
+      "sequence": 233,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0200-0249",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "f8b71c7a501f31a45aa4de26a9c792c6d9098bc28488b4a49ea034ea4ff565bd",
+      "parsedResponseSha256": "c12e2d8897b4b25ae0abaeb56a97cd47a94c528a2c877241e488b31bf4418471"
+    },
+    {
+      "sequence": 239,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P07-08",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "535d2c0dc2ad794044720cfe2baaf6cd49f555b584b43a3cdb9a8fcb4393f688",
+      "parsedResponseSha256": "e88c62605e3865b2e400cbd8d23090b752c03d60280251f8b1e9638335b8eaa5"
+    },
+    {
+      "sequence": 241,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P132-249",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "884a7fb3fc4c669eb15d4c9c3143e969a496dca21602ed4522227f7c5c0a5bf2",
+      "parsedResponseSha256": "b875802fe7bf1aca72158233e1b377b799386a4c918ba4d352ddcb7dfc84746e"
+    },
+    {
+      "sequence": 246,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:P68-2007",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "960165af80057998e157880d7d8b9f03c3e0dbc21a52a7e2fb5cc972e9d853c8",
+      "parsedResponseSha256": "f4fb8a34503bf15abd86f52fd6cdc107ccb65d94870f09e4caad29604ebb297f"
+    },
+    {
+      "sequence": 249,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0123:V4P0259-2007",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "4bb2cb948148c2716ca7b0fe645950181c88ea60d6af192ff758091f85246b89",
+      "parsedResponseSha256": "570204d4b80513453b914800e27223e4d465d7767d7b3a24172617f0a7b5e969"
+    },
+    {
+      "sequence": 251,
+      "arm": "ARM_B",
+      "candidateId": "DOC-0133:V4P0017-0921",
+      "outcome": "HTTP_SUCCESS_VALIDATOR_REJECTED",
+      "category": "TARGET_ID_MISMATCH",
+      "rejection": "TARGET_PAIR_MISMATCH",
+      "rawResponseSha256": "d537fd7507cdfbd132fb7ae2f00c7093e24f40855fb71fa7aaacd769a9d5a642",
+      "parsedResponseSha256": "b72f4bde65f19ec4d2119f78b79573d878498969167d488e1c63fec4a100534f"
+    }
+  ],
+  "classificationUses": "frozen parser and validator behavior; no manual repair"
+}

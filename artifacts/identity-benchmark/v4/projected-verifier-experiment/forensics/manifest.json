@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "a99-v4f-f-forensics-manifest-v1",
+  "experiment": "IDENTITY_BENCHMARK_V4F_F",
+  "parent": "V4F-E@5ae41b6",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReadCount": 0,
+  "executionArtifactsMutated": false,
+  "promptChanged": false,
+  "projectionChanged": false,
+  "parserChanged": false,
+  "goldDerivedInput": false,
+  "scheduledPairs": 128,
+  "scheduledAttempts": 256,
+  "bothParseValidPairs": 58,
+  "agreementDenominator": 58,
+  "disagreementCount": 23,
+  "primaryDiagnosis": "PROJECTED_TARGET_GROUNDING_DEGRADATION",
+  "inputExecutionManifestSha256": "d4d8e93e74b06d2f74d89a8ce8c94e8d713b4f61ec381904207612fa583e71e0",
+  "outputFiles": [
+    "arm-outcome-breakdown.json",
+    "disagreement-matrix.json",
+    "disagreement-strata.json",
+    "failure-attribution.json",
+    "invalid-response-taxonomy.json",
+    "provider-failure-analysis.json",
+    "target-grounding-analysis.json",
+    "validity-strata.json"
+  ],
+  "createdUtc": "2026-09-14T15:04:50.7559582+00:00"
+}

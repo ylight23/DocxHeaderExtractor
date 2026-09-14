@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "a99-v4f-f-disagreement-strata-v1",
+  "bothValidRows": 58,
+  "byDocument": [
+    {
+      "stratum": "DOC-0123",
+      "count": 33,
+      "agreement": 22,
+      "disagreement": 11,
+      "agreementRate": 0.6666666666666666
+    },
+    {
+      "stratum": "DOC-0133",
+      "count": 14,
+      "agreement": 9,
+      "disagreement": 5,
+      "agreementRate": 0.6428571428571429
+    },
+    {
+      "stratum": "DOC-0252",
+      "count": 11,
+      "agreement": 4,
+      "disagreement": 7,
+      "agreementRate": 0.36363636363636365
+    }
+  ],
+  "byPacketClass": [
+    {
+      "stratum": "LOCAL_ONLY",
+      "count": 25,
+      "agreement": 13,
+      "disagreement": 12,
+      "agreementRate": 0.52
+    },
+    {
+      "stratum": "STRUCTURALLY_PARTIAL",
+      "count": 33,
+      "agreement": 22,
+      "disagreement": 11,
+      "agreementRate": 0.6666666666666666
+    }
+  ],
+  "byEvidenceConfiguration": [
+    {
+      "stratum": "ADJACENT_ORDER",
+      "count": 13,
+      "agreement": 8,
+      "disagreement": 5,
+      "agreementRate": 0.6153846153846154
+    },
+    {
+      "stratum": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "count": 9,
+      "agreement": 6,
+      "disagreement": 3,
+      "agreementRate": 0.6666666666666666
+    },
+    {
+      "stratum": "NORMALIZED_TEXT_AFFINITY",
+      "count": 26,
+      "agreement": 13,
+      "disagreement": 13,
+      "agreementRate": 0.5
+    },
+    {
+      "stratum": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "count": 5,
+      "agreement": 3,
+      "disagreement": 2,
+      "agreementRate": 0.6
+    },
+    {
+      "stratum": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "count": 3,
+      "agreement": 3,
+      "disagreement": 0,
+      "agreementRate": 1
+    },
+    {
+      "stratum": "NORMALIZED_TEXT_AFFINITY\u002BTERMINAL_ACRONYM_VARIANT",
+      "count": 1,
+      "agreement": 1,
+      "disagreement": 0,
+      "agreementRate": 1
+    },
+    {
+      "stratum": "SHARED_STRUCTURAL_HEADING_KEY",
+      "count": 1,
+      "agreement": 1,
+      "disagreement": 0,
+      "agreementRate": 1
+    }
+  ],
+  "byDistanceBucket": [
+    {
+      "stratum": "ADJACENT_1",
+      "count": 12,
+      "agreement": 8,
+      "disagreement": 4,
+      "agreementRate": 0.6666666666666666
+    },
+    {
+      "stratum": "FAR_17_PLUS",
+      "count": 17,
+      "agreement": 13,
+      "disagreement": 4,
+      "agreementRate": 0.7647058823529411
+    },
+    {
+      "stratum": "MID_5_16",
+      "count": 11,
+      "agreement": 5,
+      "disagreement": 6,
+      "agreementRate": 0.45454545454545453
+    },
+    {
+      "stratum": "NEAR_2_4",
+      "count": 18,
+      "agreement": 9,
+      "disagreement": 9,
+      "agreementRate": 0.5
+    }
+  ],
+  "byStructuralEvidence": [
+    {
+      "stratum": "AVAILABLE",
+      "count": 33,
+      "agreement": 22,
+      "disagreement": 11,
+      "agreementRate": 0.6666666666666666
+    },
+    {
+      "stratum": "UNAVAILABLE",
+      "count": 25,
+      "agreement": 13,
+      "disagreement": 12,
+      "agreementRate": 0.52
+    }
+  ],
+  "byLocalInterveningEvidence": [
+    {
+      "stratum": "AVAILABLE",
+      "count": 58,
+      "agreement": 35,
+      "disagreement": 23,
+      "agreementRate": 0.603448275862069
+    }
+  ],
+  "byProjectedSizeBucket": [
+    {
+      "stratum": "MEDIUM_LE_100K",
+      "count": 23,
+      "agreement": 17,
+      "disagreement": 6,
+      "agreementRate": 0.7391304347826086
+    },
+    {
+      "stratum": "SMALL_LE_10K",
+      "count": 35,
+      "agreement": 18,
+      "disagreement": 17,
+      "agreementRate": 0.5142857142857142
+    }
+  ]
+}

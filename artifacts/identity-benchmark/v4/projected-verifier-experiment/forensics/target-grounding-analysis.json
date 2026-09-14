@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "a99-v4f-f-target-grounding-analysis-v1",
+  "byArm": [
+    {
+      "arm": "ARM_A",
+      "parsedResponses": 111,
+      "targetPairMismatch": 2,
+      "relationInvalid": 0,
+      "directionInvalid": 0,
+      "malformedOrMissing": 0,
+      "examples": [
+        {
+          "sequence": 13,
+          "id": "DOC-0133:P561-562",
+          "response": {
+            "pairId": "DOC-0133:P561-562",
+            "left": "DISTINCT",
+            "right": "DISTINCT",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 69,
+          "id": "DOC-0123:P1087-1088",
+          "response": {
+            "pairId": "DOC-0123:P1087-1088",
+            "left": "Foreign currency #",
+            "right": "Total Proposal Price",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        }
+      ]
+    },
+    {
+      "arm": "ARM_B",
+      "parsedResponses": 108,
+      "targetPairMismatch": 45,
+      "relationInvalid": 0,
+      "directionInvalid": 0,
+      "malformedOrMissing": 0,
+      "examples": [
+        {
+          "sequence": 8,
+          "id": "DOC-0133:P933-934",
+          "response": {
+            "pairId": "DOC-0133:P933-934",
+            "left": "March 31 2025",
+            "right": ",",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 14,
+          "id": "DOC-0133:P561-562",
+          "response": {
+            "pairId": "DOC-0133:P561-562",
+            "left": "Other ALM Portfolio IBRD uses derivatives to stabilize its interest revenue from the portion of loans that is sensitive to changes in short- term interest rates. The Other ALM portfolio consists of derivatives which convert a portion of variable rate loan cash flows to fixed rate loan cash flows. In the first nine months of FY 25 IBRD recorded unrealized mark-to-market",
+            "right": ",",
+            "relation": "CONTINUATION_OF",
+            "direction": "RIGHT_TO_LEFT"
+          }
+        },
+        {
+          "sequence": 16,
+          "id": "DOC-0252:P393-394",
+          "response": {
+            "pairId": "DOC-0252:P393-394",
+            "left": "expo rts P P Ps wh ich wa s prese nted Sessio n V of th is TAG m eeti ng Othe r resea rch to pics i n cl u de revisiti ng",
+            "right": ", .",
+            "relation": "CONTINUATION_OF",
+            "direction": "RIGHT_TO_LEFT"
+          }
+        },
+        {
+          "sequence": 24,
+          "id": "DOC-0123:P1425-1973",
+          "response": {
+            "pairId": "DOC-0123:P1425-1973",
+            "left": "[Environmental Impact Assessment Specialist]",
+            "right": "[Environmental Impact Assessment Specialist]",
+            "relation": "SAME_SEMANTIC_REPEAT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 30,
+          "id": "DOC-0133:P1467-1468",
+          "response": {
+            "pairId": "DOC-0133:P1467-1468",
+            "left": "DOC-0133:B001467",
+            "right": "DOC-0133:B001468",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 38,
+          "id": "DOC-0133:P855-856",
+          "response": {
+            "pairId": "DOC-0133:P855-856",
+            "left": "In millions of U.S. dollars",
+            "right": "Exposures as of March 31 2025",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 40,
+          "id": "DOC-0123:P1592-1593",
+          "response": {
+            "pairId": "DOC-0123:P1592-1593",
+            "left": "Joint Venture Member\u2019s or Specialized Subcontractor\u2019s Name: [insert full name]",
+            "right": "RFP No. and title: [insert RFP number and title]",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 49,
+          "id": "DOC-0123:P1006-1007",
+          "response": {
+            "pairId": "DOC-0123:P1006-1007",
+            "left": "ENCLOSURE(S):",
+            "right": "Appendix to Proposal",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 66,
+          "id": "DOC-0123:P1818-2556",
+          "response": {
+            "pairId": "DOC-0123:P1818-2556",
+            "left": "Health and Safety of Personnel",
+            "right": "Health and Safety of Personnel",
+            "relation": "SAME_SEMANTIC_REPEAT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 70,
+          "id": "DOC-0123:P1087-1088",
+          "response": {
+            "pairId": "DOC-0123:P1087-1088",
+            "left": "Foreign currency #",
+            "right": "Total Proposal Price",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 72,
+          "id": "DOC-0133:P118-136",
+          "response": {
+            "pairId": "DOC-0133:P118-136",
+            "left": "In billions of U.S. dollars",
+            "right": "In billions of U.S. dollars",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 74,
+          "id": "DOC-0123:P348-354",
+          "response": {
+            "pairId": "DOC-0123:P348-354",
+            "left": "if the successful Proposer fails to:",
+            "right": "if the successful Proposer fails to:",
+            "relation": "SAME_SEMANTIC_REPEAT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 99,
+          "id": "DOC-0123:P01-42",
+          "response": {
+            "pairId": "DOC-0123:P01-42",
+            "left": "STANDARD PROCUREMENT DOCUMENT",
+            "right": "Standard Procurement Document",
+            "relation": "SAME_SEMANTIC_REPEAT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 103,
+          "id": "DOC-0133:P36-41",
+          "response": {
+            "pairId": "DOC-0133:P36-41",
+            "left": ",",
+            "right": ",",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 123,
+          "id": "DOC-0123:P3092-3097",
+          "response": {
+            "pairId": "DOC-0123:P3092-3097",
+            "left": "OR",
+            "right": "OR",
+            "relation": "SAME_SEMANTIC_REPEAT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 143,
+          "id": "DOC-0123:V4P0068-0259",
+          "response": {
+            "pairId": "DOC-0123:V4P0068-0259",
+            "left": "Section IX - Particular Conditions (PC)",
+            "right": "Section IX - Particular Conditions",
+            "relation": "SAME_SEMANTIC_REPEAT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 152,
+          "id": "DOC-0123:P05-06",
+          "response": {
+            "pairId": "DOC-0123:P05-06",
+            "left": "(Single-Stage Request for Proposals, after Initial Selection)",
+            "right": "(where the Bank\u2019s Disqualification mechanism for non-compliance with SEA/SH obligations DOES NOT APPLY)",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 158,
+          "id": "DOC-0123:V4P0132-0200",
+          "response": {
+            "pairId": "DOC-0123:V4P0132-0200",
+            "left": "Section I - Instructions to Proposers (ITP)",
+            "right": "Section I - Instructions to Proposers",
+            "relation": "SAME_SEMANTIC_REPEAT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 160,
+          "id": "DOC-0252:V4P0006-0042",
+          "response": {
+            "pairId": "DOC-0252:V4P0006-0042",
+            "left": "Session I : Welcome a nd meeting objectives",
+            "right": "Session I I : U pdate on the ICP 2021 Cycle 1 G loba l office u pdate .",
+            "relation": "DISTINCT",
+            "direction": "NONE"
+          }
+        },
+        {
+          "sequence": 161,
+          "id": "DOC-0123:P1482-1485",
+          "response": {
+            "pairId": "DOC-0123:P1482-1485",
+            "left": "Signature:",
+            "right": "Signature:",
+            "relation": "SAME_SEMANTIC_REPEAT",
+            "direction": "NONE"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretation": "target identity is evaluated only against frozen target pair; no Gold"
+}

@@ -1,0 +1,321 @@
+{
+  "schemaVersion": "a99-v4f-f-provider-failure-analysis-v1",
+  "provider": "OpenRouter",
+  "failures": [
+    {
+      "sequence": 4,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 34,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 35,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 41,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 42,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 55,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 56,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 57,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 59,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 60,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 61,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 76,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 83,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 94,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 95,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 105,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 106,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 108,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 109,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 124,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 125,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 127,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 135,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 136,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 141,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 142,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 153,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 154,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 159,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 169,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 172,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 198,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 238,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 243,
+      "arm": "ARM_A",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    },
+    {
+      "sequence": 244,
+      "arm": "ARM_B",
+      "httpCode": "429",
+      "providerErrorCode": "insufficient_quota",
+      "providerName": "Alibaba",
+      "errorClass": "ReasoningCompletionException"
+    }
+  ],
+  "byArm": [
+    {
+      "arm": "ARM_B",
+      "count": 19,
+      "httpCodes": [
+        {
+          "code": "429",
+          "count": 19
+        }
+      ],
+      "providerErrorCodes": [
+        {
+          "code": "insufficient_quota",
+          "count": 19
+        }
+      ]
+    },
+    {
+      "arm": "ARM_A",
+      "count": 16,
+      "httpCodes": [
+        {
+          "code": "429",
+          "count": 16
+        }
+      ],
+      "providerErrorCodes": [
+        {
+          "code": "insufficient_quota",
+          "count": 16
+        }
+      ]
+    }
+  ],
+  "noRerun": true
+}
