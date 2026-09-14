@@ -23,6 +23,8 @@ SOURCE
 
 The LLM may decide meaning or propose a relation. The harness owns source identity, coordinates, admissibility, and deterministic graph construction. `level` remains derived from validated tree depth; it is not an Evidence Fabric decision.
 
+`SemanticOccurrence` is not the same thing as `TextOccurrence`. A source-backed occurrence may be `TEXT`, `IMAGE`, or `IMAGE_REGION` (and may later include `VECTOR`). An image XObject proves source ownership but does not, by itself, identify a heading region inside the image; a visual region is exact only after a reproducible locator supplies its pixel bounds and region hash. IR-018 is the motivating case: the outer title is native PDF text while the distinct inner title is image-only content in `/Im1`. A text-extractor gap and non-textual source content are different failure classes.
+
 ## Evidence Fabric
 
 ```text

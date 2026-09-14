@@ -1,0 +1,76 @@
+{
+  "artifactKind": "a99_pdf_identity_binding_forensic",
+  "schemaVersion": "a99-pdf-identity-binding-forensic-v3",
+  "status": "BLOCKED_ON_IR018_VISUAL_REGION_LOCALIZATION",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldUsed": false,
+  "modelOutputsUsed": false,
+  "residualHintsUsed": false,
+  "source": {
+    "documentId": "DOC-0133",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/048_IBRD_Financial_Statements_March_2025.pdf",
+    "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbd8f731b7b78ba1049bfc3ba12",
+    "page": 66,
+    "pdfPageSizePoints": { "width": 612, "height": 792 }
+  },
+  "endpointAttribution": {
+    "outer": {
+      "sourceOccurrenceId": "B002349",
+      "kind": "PDF_TEXT",
+      "status": "EXACT_BOUND",
+      "text": "INDEPENDENT AUDITOR'S REVIEW REPORT"
+    },
+    "inner": {
+      "kind": "PDF_IMAGE_REGION",
+      "parentImageResource": "/Im1",
+      "status": "IMAGE_XOBJECT_BOUND_REGION_UNBOUND",
+      "classification": "IMAGE_ONLY_TEXT"
+    }
+  },
+  "imageXObject": {
+    "sourceOccurrenceId": "pdf-image:31891732112b9c0b97cc3bac711c728f0b8f06cf5a381a3c1ab1eceba662f667",
+    "page": 66,
+    "xObjectResourceName": "/Im1",
+    "placementIndex": 0,
+    "imageWidth": 737,
+    "imageHeight": 928,
+    "imageSha256": "889817466fd9cab1cd9ea1275a359504f5e5fbb4e78ebaab97ded1c1d7a10659",
+    "pagePlacementBBoxPoints": { "left": 72, "bottom": 130.71002, "right": 540, "top": 720 },
+    "transformMatrix": [468, 0, 0, 589.28998, 72, 130.71002],
+    "sourceLineageVerified": true
+  },
+  "innerRegion": {
+    "pixelBBox": null,
+    "regionImageSha256": null,
+    "locatorMethod": null,
+    "status": "UNBOUND",
+    "reason": "PdfPig exposes the image XObject but no text primitive or exact visual region inside it; no local OCR executable or existing deterministic local OCR wrapper was found."
+  },
+  "findings": {
+    "nativeOuterTextPrimitive": "B002349",
+    "innerTextLayerLetters": false,
+    "innerRequiresVisualLocator": true,
+    "textExtractorFailure": false,
+    "nonTextualSourceContent": true,
+    "historicalEndpointAttributionError": true,
+    "sameTextDoesNotImplySameOccurrence": true,
+    "wholeImageIsNotInnerHeading": true,
+    "fuzzyMatching": false,
+    "fabricatedCoordinates": false
+  },
+  "relationMutationMetamorphic": {
+    "goldRelationRead": false,
+    "sourceBindingChanged": false,
+    "result": "PASS"
+  },
+  "lineage": {
+    "priorForensicArtifact": "artifacts/identity-gold/pdf-binding-forensic.v2.json",
+    "priorForensicArtifactPreserved": true,
+    "priorBindingArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json",
+    "correctedBindingArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v3.json",
+    "semanticGoldChanged": false,
+    "knownN15Changed": false
+  },
+  "gate": "BLOCKED_ON_IR018_VISUAL_REGION_LOCALIZATION"
+}

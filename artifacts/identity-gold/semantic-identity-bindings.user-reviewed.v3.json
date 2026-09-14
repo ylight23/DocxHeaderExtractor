@@ -1,0 +1,146 @@
+{
+  "artifactKind": "a99_semantic_identity_bindings",
+  "schemaVersion": "a99-semantic-identity-bindings-user-reviewed-v3",
+  "status": "IMAGE_XOBJECT_BOUND_REGION_UNBOUND",
+  "semanticGoldPath": "artifacts/identity-gold/semantic-identity-gold.user-reviewed.v2.json",
+  "semanticGoldSha256": "1c50754951b89ec48a0b0016db3e6079afd088bd0fb20a08ac60e10c41e6fae2",
+  "binderVersion": "identity-gold-binder-v1 + pdf-source-occurrence-binder-v1",
+  "createdFromCommit": "c34d43656223eb931fa536fd96a5c6f488b2daec",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldRelationConsumedByBinder": false,
+  "sourceHashes": {
+    "DOC-0133": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbd8f731b7b78ba1049bfc3ba12"
+  },
+  "sourceOccurrenceKinds": ["TEXT", "IMAGE", "IMAGE_REGION"],
+  "items": [
+    {
+      "id": "IR-018",
+      "semanticRelation": "DISTINCT_SEMANTIC_NODE",
+      "semanticConfidence": "HIGH",
+      "bindingStatus": "IMAGE_XOBJECT_BOUND_REGION_UNBOUND",
+      "machineEvaluable": false,
+      "outer": {
+        "kind": "PDF_TEXT",
+        "sourceAuthority": "SOURCE_DIRECT",
+        "documentId": "DOC-0133",
+        "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbd8f731b7b78ba1049bfc3ba12",
+        "sourceOccurrenceId": "B002349",
+        "verbatimText": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+        "page": 66,
+        "sourceOrdinal": 2348,
+        "nativePath": "b2349",
+        "bboxPoints": {
+          "left": 73.3056640625,
+          "bottom": 745.632265625,
+          "right": 370.7994843750001,
+          "top": 756.0160546875
+        },
+        "textSha256": "76934c9fa5fd37c7a9e318a1c403a97c95e671cc359044bfb67b56ab99d34adb",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_EXACT_TEXT",
+        "bindingConfidence": "EXACT",
+        "sourceLineageVerified": true
+      },
+      "inner": {
+        "kind": "PDF_IMAGE_REGION",
+        "sourceAuthority": "SOURCE_DIRECT",
+        "textInterpretationAuthority": "VISUAL_DERIVED",
+        "documentId": "DOC-0133",
+        "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbd8f731b7b78ba1049bfc3ba12",
+        "parentImage": {
+          "kind": "PDF_IMAGE_XOBJECT",
+          "sourceOccurrenceId": "pdf-image:31891732112b9c0b97cc3bac711c728f0b8f06cf5a381a3c1ab1eceba662f667",
+          "page": 66,
+          "xObjectResourceName": "/Im1",
+          "placementIndex": 0,
+          "imageWidth": 737,
+          "imageHeight": 928,
+          "imageSha256": "889817466fd9cab1cd9ea1275a359504f5e5fbb4e78ebaab97ded1c1d7a10659",
+          "pagePlacementBBoxPoints": {
+            "left": 72,
+            "bottom": 130.71002,
+            "right": 540,
+            "top": 720
+          },
+          "transformMatrix": [468, 0, 0, 589.28998, 72, 130.71002],
+          "sourceLineageVerified": true
+        },
+        "regionStatus": "REGION_UNBOUND",
+        "pixelBBox": null,
+        "normalizedBBox": null,
+        "regionImageSha256": null,
+        "regionLocatorMethod": null,
+        "textEvidence": null,
+        "sourceLineageVerified": false,
+        "bindingEvidence": [
+          "PDF source SHA256 verified",
+          "page 66 /Im1 XObject name verified",
+          "placement index, dimensions, raw image SHA256, placement bbox, and transform verified from PdfPig source data",
+          "the title is inside the image but no exact inner pixel region was supplied",
+          "whole image is not treated as the heading region",
+          "no OCR, VLM, fuzzy matching, or fabricated coordinates used"
+        ]
+      },
+      "endpointAttributionCorrection": "B002349 is OUTER; INNER is image-only content inside /Im1"
+    },
+    {
+      "id": "IR-019",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "unchangedFromPreviousArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json#IR-019"
+    },
+    {
+      "id": "IR-020",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "unchangedFromPreviousArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json#IR-020"
+    },
+    {
+      "id": "IR-021",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "unchangedFromPreviousArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json#IR-021"
+    },
+    {
+      "id": "IR-022",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "unchangedFromPreviousArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json#IR-022"
+    }
+  ],
+  "summary": {
+    "totalGoldItems": 5,
+    "exactBound": 4,
+    "imageXObjectsBound": 1,
+    "imageRegionsBound": 0,
+    "bindingIncomplete": 1,
+    "machineEvaluable": 4,
+    "fuzzyJoins": 0,
+    "fabricatedOccurrenceIds": 0,
+    "goldReadBeforeBinding": false
+  },
+  "relationMutationMetamorphic": {
+    "goldRelationRead": false,
+    "relationMutation": "DISTINCT_SEMANTIC_NODE -> SAME_SEMANTIC_REPEAT",
+    "sourceBindingChanged": false,
+    "testedWith": "same source occurrence queries; binder has no relation parameter"
+  },
+  "previousBindingArtifact": {
+    "path": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json",
+    "sha256": "122bf50fee967a2ef9a33aee3bc146d7df842d9e469126744fc0f68a017059b8"
+  },
+  "forensicArtifact": {
+    "path": "artifacts/identity-gold/pdf-binding-forensic.v3.json",
+    "sha256": "b4f8fba0bcba400f7a35de0e9000b67470fa49bfa47d49ac3a180a5b838242d9"
+  },
+  "pdfRecovery": {
+    "version": "pdf-raw-occurrence-recovery-v1 + pdf-source-occurrence-binder-v1",
+    "matchingPolicy": "source identity and source facts only; no text localization inside image",
+    "punctuationRemoval": false,
+    "fuzzyMatching": false,
+    "semanticSimilarity": false,
+    "fabricatedCoordinates": false
+  },
+  "gate": "BLOCKED_ON_IR018_VISUAL_REGION_LOCALIZATION",
+  "remainingBlockers": ["IR-018 INNER exact visual region locator is unavailable"]
+}
