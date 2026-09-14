@@ -1,0 +1,74 @@
+{
+  "artifactKind": "a99_identity_promotion_benchmark_manifest",
+  "schemaVersion": "a99-identity-promotion-benchmark-v1",
+  "status": "BLOCKED_ON_IDENTITY_GOLD_BINDING",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "headAtPreparation": "c51e1674ed9c97633fe8b8816472c138921c82ff",
+  "goldArtifact": "artifacts/identity-gold/semantic-identity-gold.user-reviewed.v2.json",
+  "goldArtifactSha256": "1c50754951b89ec48a0b0016db3e6079afd088bd0fb20a08ac60e10c41e6fae2",
+  "goldAuthority": "USER_REVIEWED_IDENTITY_GOLD_FROZEN",
+  "independentABGold": false,
+  "goldFirewall": {
+    "goldConsumedBeforePredictionFreeze": false,
+    "goldReadCountBeforePredictionFreeze": 0,
+    "goldUsedForCandidateGeneration": false,
+    "goldUsedForRequests": false,
+    "goldUsedForPromotion": false
+  },
+  "goldCoverage": {
+    "semanticItems": 5,
+    "machineEvaluableItems": 0,
+    "bindingIncompleteItems": 5,
+    "unboundItems": [
+      "IR-018",
+      "IR-019",
+      "IR-020",
+      "IR-021",
+      "IR-022"
+    ],
+    "fabricatedOccurrenceIds": 0,
+    "fuzzyJoins": 0
+  },
+  "pipeline": {
+    "candidateGenerator": "hdsa-deterministic-identity-candidate-generator-v1",
+    "pairVerifier": "hdsa-global-identity-retrieve-verify-v1",
+    "promotionPolicy": "semantic-identity-promotion-v1",
+    "candidateGenerationGoldBlind": true,
+    "currentProductionBehaviorChanged": false
+  },
+  "execution": {
+    "candidateFrozen": false,
+    "requestsFrozen": false,
+    "rawResponsesFrozen": false,
+    "predictionsFrozen": false,
+    "promotionDecisionsFrozen": false,
+    "candidateBenchmarkExecuted": false,
+    "pairVerifierExecuted": false,
+    "promotionBenchmarkExecuted": false,
+    "provider": null,
+    "model": null,
+    "plannedCalls": 0,
+    "actualModelCalls": 0,
+    "actualProviderCalls": 0,
+    "replayOrNewCalls": "NONE"
+  },
+  "blockingReason": "User-reviewed semantic identity decisions do not yet contain stable source occurrence identifiers or validated source-backed bindings. Exact identity benchmark denominator is therefore zero.",
+  "requiredBeforeExecution": [
+    "materialize each IR item to concrete source occurrence IDs from matching source hashes",
+    "fail closed on missing or ambiguous binding",
+    "freeze a machine-evaluable Gold artifact",
+    "freeze any DEV/HOLDOUT split before benchmark execution"
+  ],
+  "forbiddenActions": [
+    "invent occurrence IDs",
+    "fuzzy or filename-only binding",
+    "use Gold to generate candidates",
+    "put Gold relation labels in model requests",
+    "weaken promotion policy to produce an accepted result",
+    "run provider calls while binding is incomplete"
+  ],
+  "stageBExecuted": false,
+  "globalDecoderTouched": false,
+  "levelLogicTouched": false,
+  "productionClaim": false
+}

@@ -1,0 +1,149 @@
+{
+  "artifactKind": "a99_semantic_identity_gold",
+  "schemaVersion": "a99-semantic-identity-gold-user-reviewed-v2",
+  "status": "USER_REVIEWED_IDENTITY_GOLD_FROZEN",
+  "authority": "USER_REVIEWED_ASSISTANT_PROPOSAL / USER",
+  "independentABGold": false,
+  "mustNotClaim": [
+    "INDEPENDENT_IDENTITY_GOLD_FROZEN",
+    "EXACT_OCCURRENCE_FREEZE",
+    "MACHINE_EVALUABLE_BINDING_FOR_UNBOUND_ITEMS"
+  ],
+  "semanticConfidenceIsDistinctFromExactBinding": true,
+  "preservedPriorDecisions": {
+    "items": [
+      "IR-001",
+      "IR-002",
+      "IR-003",
+      "IR-004",
+      "IR-005",
+      "IR-006",
+      "IR-007",
+      "IR-008",
+      "IR-009",
+      "IR-010",
+      "IR-011",
+      "IR-012",
+      "IR-013",
+      "IR-014",
+      "IR-015",
+      "IR-016",
+      "IR-017"
+    ],
+    "reopened": false,
+    "materializedInThisArtifact": false,
+    "reason": "Prior decisions are preserved by existing lineage and are not reopened by this delta artifact."
+  },
+  "decisions": [
+    {
+      "itemId": "IR-018",
+      "documentId": "DOC-0133",
+      "sourceFile": "048_IBRD_Financial_Statements_March_2025.pdf",
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "relation": "DISTINCT_SEMANTIC_NODE",
+      "identity": "DISTINCT",
+      "semanticConfidence": "HIGH",
+      "exactBindingStatus": "SEMANTICALLY_FROZEN_BUT_BINDING_INCOMPLETE",
+      "machineEvaluable": false,
+      "occurrences": [
+        {
+          "label": "OUTER",
+          "text": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+          "sourceOccurrenceId": null
+        },
+        {
+          "label": "INNER",
+          "text": "INDEPENDENT AUDITOR’S REVIEW REPORT",
+          "sourceOccurrenceId": null
+        }
+      ],
+      "sourceBackedReason": "The outer occurrence owns the IBRD financial-statements/report section; the inner occurrence owns the embedded Deloitte review letter. Different document ownership and embedded-document boundaries prohibit same-node promotion.",
+      "genericEvidence": [
+        "DOCUMENT_OWNERSHIP_BOUNDARY",
+        "EMBEDDED_DOCUMENT_BOUNDARY",
+        "LOCAL_SEMANTIC_ROLE_DIFFERENCE"
+      ]
+    },
+    {
+      "itemId": "IR-019",
+      "documentId": "DOC-0252",
+      "sourceFile": "072_ICP_TAG_Minutes_Mar_2025.pdf",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "relation": "CONTINUATION_OF",
+      "identity": "SAME_SEMANTIC_NODE",
+      "semanticConfidence": "HIGH",
+      "exactBindingStatus": "SEMANTICALLY_FROZEN_BUT_BINDING_INCOMPLETE",
+      "machineEvaluable": false,
+      "occurrences": [
+        {
+          "label": "ANCHOR",
+          "text": "SESSION V: Current Research",
+          "sourceOccurrenceId": null
+        },
+        {
+          "label": "CONTINUATION",
+          "text": "SESSION V: Current Research (Cont’d)",
+          "sourceOccurrenceId": null
+        }
+      ],
+      "continuationDirection": {
+        "from": "CONTINUATION",
+        "to": "ANCHOR",
+        "sourceOccurrenceIdsMaterialized": false
+      },
+      "sourceBackedReason": "The pair shares Session V and the semantic core title; the source-authored '(Cont’d)' marker, reading order across Day 1 to Day 2, compatible agenda scope, and absence of a competing Session V node establish continuation.",
+      "genericEvidence": [
+        "EXPLICIT_CONTINUATION_MARKER",
+        "SAME_NUMBERED_SEMANTIC_CORE",
+        "CROSS_BOUNDARY_READING_ORDER",
+        "COMPATIBLE_SCOPE"
+      ]
+    },
+    {
+      "itemId": "IR-020",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "identity": "SAME_SEMANTIC_NODE",
+      "semanticConfidence": "HIGH",
+      "exactBindingStatus": "SEMANTICALLY_FROZEN_BUT_BINDING_INCOMPLETE",
+      "machineEvaluable": false,
+      "sourceBackedReason": "Preserved latest user-reviewed identity decision; source occurrence identifiers are not supplied in this task and are not fabricated."
+    },
+    {
+      "itemId": "IR-021",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "identity": "SAME_SEMANTIC_NODE",
+      "semanticConfidence": "HIGH",
+      "exactBindingStatus": "SEMANTICALLY_FROZEN_BUT_BINDING_INCOMPLETE",
+      "machineEvaluable": false,
+      "sourceBackedReason": "Preserved latest user-reviewed identity decision; source occurrence identifiers are not supplied in this task and are not fabricated."
+    },
+    {
+      "itemId": "IR-022",
+      "relation": "DISTINCT_SEMANTIC_NODE",
+      "identity": "DISTINCT",
+      "semanticConfidence": "HIGH",
+      "exactBindingStatus": "SEMANTICALLY_FROZEN_BUT_BINDING_INCOMPLETE",
+      "machineEvaluable": false,
+      "sourceBackedReason": "Preserved latest user-reviewed decision: identical headings under mutually exclusive OPTION 1 and OPTION 2 branches must not be promoted to one semantic node.",
+      "genericEvidence": [
+        "MUTUALLY_EXCLUSIVE_BRANCH",
+        "OPTION_1",
+        "OPTION_2"
+      ]
+    }
+  ],
+  "bindingSummary": {
+    "semanticItems": 5,
+    "machineEvaluableItems": 0,
+    "bindingIncompleteItems": 5,
+    "fabricatedOccurrenceIds": 0,
+    "fuzzyJoins": 0
+  },
+  "goldFirewall": {
+    "goldUsedForCandidateGeneration": false,
+    "goldUsedForModelRequests": false,
+    "goldUsedForPromotion": false,
+    "modelOutputsUsedToCreateGold": false,
+    "independentABAnnotation": false
+  }
+}
