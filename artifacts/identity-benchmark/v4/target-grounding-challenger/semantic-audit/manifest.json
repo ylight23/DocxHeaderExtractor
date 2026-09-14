@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-v4g-c-manifest-v1",
+  "status": "INTEGRITY_VERIFIED",
+  "sourceExecution": "V4G-B@9446aac",
+  "executionManifestSha256": "76de4e42384fb94986c824f10e6551cf19fc64f56ec9010a7c070c07a2ac3eb1",
+  "attemptManifestSha256": "64f68c741899b0b7935c086fd505d6c502ddaf293b3871c1aa2e12138106e81a",
+  "parsedResultsSha256": "fff4dd635fd083cce51fcf54da297d23321aae18d64db2b4715a3b71b90e4c2f",
+  "targetGroundingResultsSha256": "0aad661615f7667b68c784614f6566fc4a673024349aa6fe93ac45057385c593",
+  "historicalPairedAnalysisSha256": "9855cb87c95ba7422e8255c1993c845108850086bd948ea95383dce8f3c9178c",
+  "scheduled": 128,
+  "attempts": 128,
+  "providerCalls": 128,
+  "valid": 95,
+  "providerErrors": 33,
+  "targetMismatch": 0,
+  "goldReadCount": 0,
+  "modelCalls": 0,
+  "noExecutionArtifactsMutated": true
+}

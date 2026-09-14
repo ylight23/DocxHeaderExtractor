@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "a99-v4g-c-dev-gold-diagnostic-v1",
+  "goldArtifact": "USER_REVIEWED_IDENTITY_GOLD_FROZEN",
+  "latestGoldBindingsSha256": "09184c106d4c271e71dc4dea72a43eb215290d86ed83e03927d20ae6287fb7d4",
+  "bindingGoldSha256": "122bf50fee967a2ef9a33aee3bc146d7df842d9e469126744fc0f68a017059b8",
+  "goldReadAfterBehaviorFreeze": true,
+  "independentGeneralizationClaim": false,
+  "evaluable": 0,
+  "correct": 0,
+  "incorrect": 0,
+  "accuracy": null,
+  "rows": [],
+  "note": "No exact frozen Gold endpoint pair occurs naturally in the 128-candidate sample; semantic correctness is unavailable."
+}

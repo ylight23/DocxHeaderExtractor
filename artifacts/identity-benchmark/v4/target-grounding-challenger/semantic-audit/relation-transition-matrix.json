@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "a99-v4g-c-relation-transition-matrix-v1",
+  "v1ToV2": {
+    "DISTINCT": {
+      "DISTINCT": 26
+    },
+    "CONTINUATION_OF": {
+      "DISTINCT": 1,
+      "CONTINUATION_OF": 2
+    },
+    "SAME_SEMANTIC_REPEAT": {
+      "SAME_SEMANTIC_REPEAT": 19,
+      "DISTINCT": 1
+    }
+  },
+  "jointlyValidRelationOutputs": 49
+}

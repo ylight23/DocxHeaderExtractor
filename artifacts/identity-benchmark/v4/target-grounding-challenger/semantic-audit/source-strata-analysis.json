@@ -1,0 +1,379 @@
+{
+  "schemaVersion": "a99-v4g-c-source-strata-analysis-v1",
+  "sourceOnly": true,
+  "strata": [
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 6,
+      "evaluable": 5,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 5
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "scheduled": 6,
+      "evaluable": 5,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {
+        "DISTINCT": 3,
+        "CONTINUATION_OF": 2
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "scheduled": 6,
+      "evaluable": 6,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 1,
+        "DISTINCT": 5
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "scheduled": 6,
+      "evaluable": 6,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "DISTINCT": 5,
+        "CONTINUATION_OF": 1
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "scheduled": 2,
+      "evaluable": 2,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 1,
+        "DISTINCT": 1
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "scheduled": 6,
+      "evaluable": 5,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {
+        "DISTINCT": 5
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 6,
+      "evaluable": 5,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 5
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "scheduled": 6,
+      "evaluable": 4,
+      "providerOrParseUnavailable": 2,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 4
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "scheduled": 6,
+      "evaluable": 5,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 3,
+        "DISTINCT": 2
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 6,
+      "evaluable": 6,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 6
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 1,
+      "evaluable": 1,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 1
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 6,
+      "evaluable": 6,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 5,
+        "DISTINCT": 1
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 6,
+      "evaluable": 2,
+      "providerOrParseUnavailable": 4,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 2
+      }
+    },
+    {
+      "documentId": "DOC-0123",
+      "packetClass": "STRUCTURALLY_PARTIAL",
+      "evidenceConfiguration": "TERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 1,
+      "evaluable": 0,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {}
+    },
+    {
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "scheduled": 5,
+      "evaluable": 2,
+      "providerOrParseUnavailable": 3,
+      "relationDistribution": {
+        "CONTINUATION_OF": 2
+      }
+    },
+    {
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 5,
+      "evaluable": 3,
+      "providerOrParseUnavailable": 2,
+      "relationDistribution": {
+        "DISTINCT": 2,
+        "SAME_SEMANTIC_REPEAT": 1
+      }
+    },
+    {
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "scheduled": 5,
+      "evaluable": 4,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {
+        "DISTINCT": 3,
+        "SAME_SEMANTIC_REPEAT": 1
+      }
+    },
+    {
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "scheduled": 5,
+      "evaluable": 2,
+      "providerOrParseUnavailable": 3,
+      "relationDistribution": {
+        "DISTINCT": 2
+      }
+    },
+    {
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "scheduled": 3,
+      "evaluable": 2,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 2
+      }
+    },
+    {
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "scheduled": 1,
+      "evaluable": 0,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {}
+    },
+    {
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "TERMINAL_ACRONYM_VARIANT",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 1,
+      "evaluable": 1,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 1
+      }
+    },
+    {
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "scheduled": 1,
+      "evaluable": 0,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {}
+    },
+    {
+      "documentId": "DOC-0133",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 3,
+      "evaluable": 1,
+      "providerOrParseUnavailable": 2,
+      "relationDistribution": {
+        "SAME_SEMANTIC_REPEAT": 1
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 5,
+      "evaluable": 2,
+      "providerOrParseUnavailable": 3,
+      "relationDistribution": {
+        "DISTINCT": 2
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "scheduled": 5,
+      "evaluable": 5,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "DISTINCT": 5
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "ADJACENT_ORDER",
+      "sourceOrderDistanceBucket": "ADJACENT_1",
+      "scheduled": 5,
+      "evaluable": 5,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "DISTINCT": 5
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "NORMALIZED_TEXT_AFFINITY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "scheduled": 5,
+      "evaluable": 5,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "DISTINCT": 5
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 5,
+      "evaluable": 3,
+      "providerOrParseUnavailable": 2,
+      "relationDistribution": {
+        "DISTINCT": 2,
+        "SAME_SEMANTIC_REPEAT": 1
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "FAR_17_PLUS",
+      "scheduled": 1,
+      "evaluable": 0,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {}
+    },
+    {
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "SHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "NEAR_2_4",
+      "scheduled": 2,
+      "evaluable": 1,
+      "providerOrParseUnavailable": 1,
+      "relationDistribution": {
+        "DISTINCT": 1
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "packetClass": "LOCAL_ONLY",
+      "evidenceConfiguration": "EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY",
+      "sourceOrderDistanceBucket": "MID_5_16",
+      "scheduled": 1,
+      "evaluable": 1,
+      "providerOrParseUnavailable": 0,
+      "relationDistribution": {
+        "CONTINUATION_OF": 1
+      }
+    }
+  ]
+}
