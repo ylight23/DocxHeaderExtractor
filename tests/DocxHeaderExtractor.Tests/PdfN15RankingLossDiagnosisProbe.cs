@@ -10,6 +10,8 @@ namespace DocxHeaderExtractor.Tests;
 /// Source occurrence identity is authoritative. Candidate ids are emitted only as same-run diagnostics.
 /// This probe does not alter a score, a budget, a label, or any production route.
 /// </summary>
+[Trait("SuiteTier", "HistoricalForensic")]
+[Trait("SuiteTier", "LongRunning")]
 public sealed class PdfN15RankingLossDiagnosisProbe
 {
     private const int SelectedBudget = 160;

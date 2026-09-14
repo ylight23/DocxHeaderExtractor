@@ -11,6 +11,8 @@ namespace DocxHeaderExtractor.Tests;
 /// and the sequential live-run contract before either OpenRouter call exists. Silver labels are used
 /// only in the non-reviewer binding and diagnostics; the human packet contains source facts alone.
 /// </summary>
+[Trait("SuiteTier", "HistoricalForensic")]
+[Trait("SuiteTier", "LongRunning")]
 public sealed class PdfN14SilverAuditAndN2PreparationProbe
 {
     private const int ContextRadius = 2;

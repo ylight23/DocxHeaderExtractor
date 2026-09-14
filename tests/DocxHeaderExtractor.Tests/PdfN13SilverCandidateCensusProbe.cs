@@ -28,6 +28,8 @@ namespace DocxHeaderExtractor.Tests;
 /// eligibility loss.
 /// </para>
 /// </summary>
+[Trait("SuiteTier", "HistoricalForensic")]
+[Trait("SuiteTier", "LongRunning")]
 public sealed class PdfN13SilverCandidateCensusProbe
 {
     private static readonly (string Stem, string Relative)[] Documents =
