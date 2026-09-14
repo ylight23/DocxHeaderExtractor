@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "a99-v4h-a-blinding-firewall-v1",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "providerResponseReadCount": 0,
+  "modelPredictionReadCount": 0,
+  "existingGoldReadCount": 0,
+  "sampleChanged": false,
+  "all128Included": true,
+  "candidateRankVisible": false,
+  "retrievalReasonsVisible": false,
+  "sourceOnlyInputs": [
+    "artifacts/identity-benchmark/v4/projected-verifier-experiment/sample.json",
+    "artifacts/identity-benchmark/v2/source-catalog.json"
+  ],
+  "forbiddenInputs": [
+    "V4G-B parsed-results",
+    "V4G-B execution",
+    "V4G-C audit",
+    "V4F-E predictions",
+    "OLD predictions",
+    "model rationales",
+    "existing Gold"
+  ]
+}

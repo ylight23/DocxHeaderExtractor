@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "a99-v4h-a-adjudication-contract-v1",
+  "allowedRelations": [
+    "SAME_SEMANTIC_REPEAT",
+    "CONTINUATION_OF",
+    "DISTINCT_SEMANTIC_NODE",
+    "UNRESOLVED"
+  ],
+  "continuationIsDirectional": true,
+  "confidence": [
+    "HIGH",
+    "MEDIUM",
+    "LOW"
+  ],
+  "unresolvedMustNotBeForced": true,
+  "sourceAuthority": "SOURCE_DOCUMENT_PLUS_HUMAN_ADJUDICATION",
+  "modelOutputFields": []
+}
