@@ -1,0 +1,15 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4e_a_v3_baseline_compatibility",
+  "schemaVersion": "a99-identity-benchmark-v4e-a-v3-baseline-compatibility-v1",
+  "status": "PASS",
+  "v3BroadCandidateCount": 95999,
+  "expectedShortlistCount": 7659,
+  "actualShortlistCount": 7659,
+  "frozenV3ShortlistSha256": "b73700755a6ebb4110d43b4b815c64b23a4f1ffa7be284288da60c826e51adda",
+  "challengerReproductionSha256": "b73700755a6ebb4110d43b4b815c64b23a4f1ffa7be284288da60c826e51adda",
+  "byteIdentical": true,
+  "candidateDispositionComparable": true,
+  "v3ArtifactsModified": false,
+  "goldUsed": false,
+  "providerCalls": 0
+}

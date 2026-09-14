@@ -1,0 +1,16 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4e_a_shortlist_manifest",
+  "schemaVersion": "a99-identity-benchmark-v4e-a-shortlist-manifest-v1",
+  "status": "READY_FOR_V4E_PRUNING_GOLD_EVALUATION",
+  "sourceCatalogFingerprint": "ed61300844f124d02144c09ea288822a88f6c7fdd0dbee0cf1bf42d31b51fd84",
+  "broadCandidateSetSha256": "a9aad1afabb0645112f6aefae743d91b8dfb6f8681231881fcf791538053c9a0",
+  "shortlistSha256": "41036e1f4eea349fdc68dcac13932b00b377774f04b2c58ab184e5e29061ae12",
+  "broadCandidateCount": 96069,
+  "afterDominanceCount": 7702,
+  "shortlistedCount": 7702,
+  "maxCandidatesPerOccurrence": 8,
+  "maxCandidatesPerDocument": 12000,
+  "maxCandidatesTotal": 18000,
+  "goldUsed": false,
+  "providerCalls": 0
+}

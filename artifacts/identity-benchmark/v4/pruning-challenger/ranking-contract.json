@@ -1,0 +1,28 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4e_a_ranking_contract",
+  "schemaVersion": "a99-identity-benchmark-v4e-a-ranking-contract-v1",
+  "algorithmVersion": "v4e-backward-compatible-evidence-vector-v1",
+  "primaryOrder": [
+    "legacyV3EvidenceTierDescending",
+    "continuationEvidenceDescending",
+    "lexicalVariantEvidenceDescending",
+    "structuralKeyEvidenceDescending",
+    "sourceOrderDistanceAscending",
+    "candidateIdAscending"
+  ],
+  "oldEvidenceTier": {
+    "tier3": "ADJACENT_ORDER \u002B NORMALIZED_TEXT_AFFINITY",
+    "tier2": "ADJACENT_ORDER",
+    "tier1": "NORMALIZED_TEXT_AFFINITY"
+  },
+  "dominance": "A dominates B at an endpoint only when A is no worse on normalized affinity, adjacency, lexical variant, structural key, continuation and distance, with at least one strict improvement; heterogeneous evidence remains incomparable.",
+  "incomparableEvidence": "preserved until fixed operational budget; deterministic fallback order is documented above",
+  "budgets": {
+    "maxCandidatesPerOccurrence": 8,
+    "maxCandidatesPerDocument": 12000,
+    "maxCandidatesTotal": 18000
+  },
+  "reasonLabelsAreScores": false,
+  "goldUsed": false,
+  "modelUsed": false
+}

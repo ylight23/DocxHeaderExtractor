@@ -1,0 +1,80 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4e_a_scalability_report",
+  "v3": {
+    "broad": 95999,
+    "afterDominance": 7659,
+    "shortlist": 7659
+  },
+  "v4": {
+    "broad": 96069,
+    "afterDominance": 7702,
+    "shortlist": 7702,
+    "reductionPercent": 91.9828
+  },
+  "v4Only": {
+    "total": 70,
+    "shortlisted": 43,
+    "dominated": 27,
+    "budgetPruned": 0
+  },
+  "reasonBreakdown": {
+    "broad": {
+      "ADJACENT_ORDER": 6535,
+      "NORMALIZED_TEXT_AFFINITY": 89476,
+      "SHARED_STRUCTURAL_HEADING_KEY": 89,
+      "TERMINAL_ACRONYM_VARIANT": 19,
+      "EXPLICIT_CONTINUATION_VARIANT": 2
+    },
+    "shortlisted": {
+      "ADJACENT_ORDER": 6302,
+      "NORMALIZED_TEXT_AFFINITY": 1369,
+      "SHARED_STRUCTURAL_HEADING_KEY": 57,
+      "TERMINAL_ACRONYM_VARIANT": 15,
+      "EXPLICIT_CONTINUATION_VARIANT": 2
+    }
+  },
+  "candidateDegree": {
+    "before": {
+      "p50": 2,
+      "p90": 105,
+      "p95": 225,
+      "p99": 275,
+      "max": 275
+    },
+    "after": {
+      "p50": 2,
+      "p90": 3,
+      "p95": 4,
+      "p99": 4,
+      "max": 6
+    },
+    "beforeMax": 275,
+    "afterMax": 6
+  },
+  "perDocument": [
+    {
+      "documentId": "DOC-0123",
+      "broad": 3948,
+      "shortlisted": 3445,
+      "afterDominance": 3445
+    },
+    {
+      "documentId": "DOC-0133",
+      "broad": 72120,
+      "shortlisted": 2977,
+      "afterDominance": 2977
+    },
+    {
+      "documentId": "DOC-0252",
+      "broad": 20001,
+      "shortlisted": 1280,
+      "afterDominance": 1280
+    }
+  ],
+  "dominance": {
+    "dominated": 88367,
+    "pairDominated": 88367
+  },
+  "goldUsed": false,
+  "providerCalls": 0
+}

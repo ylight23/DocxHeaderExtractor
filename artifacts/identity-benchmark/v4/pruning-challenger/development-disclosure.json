@@ -1,0 +1,16 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4e_a_development_disclosure",
+  "schemaVersion": "a99-identity-benchmark-v4e-a-development-disclosure-v1",
+  "developmentStatus": "DEV_EXPOSED_CHALLENGER",
+  "informedBy": [
+    "V3B_RETRIEVAL_FAILURE",
+    "V4A_RETRIEVAL_FORENSICS",
+    "V4C_BROAD_RETRIEVAL_EVALUATION",
+    "V4D_PRUNER_CONTRACT_INCOMPATIBILITY"
+  ],
+  "independentGeneralizationClaim": false,
+  "goldReadCount": 0,
+  "providerCalls": 0,
+  "v4cEvaluationReadCount": 0,
+  "designExposedToV4CEvaluation": true
+}

@@ -1,0 +1,37 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4e_a_source_evidence_distribution",
+  "sourceOnly": true,
+  "candidateCount": 96069,
+  "configurationCounts": {
+    "ADJACENT_ORDER": 6523,
+    "NORMALIZED_TEXT_AFFINITY": 89441,
+    "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY": 12,
+    "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT": 8,
+    "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY": 14,
+    "NORMALIZED_TEXT_AFFINITY\u002BTERMINAL_ACRONYM_VARIANT": 1,
+    "SHARED_STRUCTURAL_HEADING_KEY": 58,
+    "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT": 7,
+    "TERMINAL_ACRONYM_VARIANT": 3,
+    "EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY": 2
+  },
+  "v4OnlyConfigurationCounts": {
+    "SHARED_STRUCTURAL_HEADING_KEY": 58,
+    "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT": 7,
+    "TERMINAL_ACRONYM_VARIANT": 3,
+    "EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY": 2
+  },
+  "degree": {
+    "p50": 2,
+    "p90": 105,
+    "p95": 225,
+    "p99": 275,
+    "max": 275
+  },
+  "negativeControls": {
+    "sameStructuralKeyDifferentText": 67,
+    "adjacentUnrelatedText": 6523,
+    "acronymEvidencePairs": 10
+  },
+  "goldUsed": false,
+  "providerCalls": 0
+}
