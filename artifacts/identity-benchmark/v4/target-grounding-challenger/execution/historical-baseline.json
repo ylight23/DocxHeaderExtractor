@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "a99-v4g-b-historical-baseline-v1",
+  "source": "FROZEN_V4F_E_EXECUTION_ARTIFACTS",
+  "executionManifestSha256": "d4d8e93e74b06d2f74d89a8ce8c94e8d713b4f61ec381904207612fa583e71e0",
+  "parsedResultsSha256": "a3c1123c6aec43d49083c59ba10b663f5c95a29c144f2c3082086156c92c17f0",
+  "temporalProviderDriftControlled": false,
+  "goldReadCount": 0,
+  "v4ebEvaluationReadCount": 0,
+  "arms": [
+    {
+      "arm": "OLD",
+      "scheduled": 128,
+      "transportSuccess": 112,
+      "rawAvailable": 111,
+      "validatorEvaluable": 111,
+      "targetMismatch": 2,
+      "valid": 109,
+      "otherInvalid": 0,
+      "providerError": 16,
+      "rawPersistenceFailure": 1
+    },
+    {
+      "arm": "PROJECTED_V1",
+      "scheduled": 128,
+      "transportSuccess": 109,
+      "rawAvailable": 108,
+      "validatorEvaluable": 108,
+      "targetMismatch": 45,
+      "valid": 63,
+      "otherInvalid": 0,
+      "providerError": 19,
+      "rawPersistenceFailure": 1
+    }
+  ]
+}

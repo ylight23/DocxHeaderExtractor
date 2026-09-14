@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "a99-v4g-b-provider-preflight-v1",
+  "status": "AWAITING_V4G_PROVIDER_EXECUTION_APPROVAL",
+  "requiredExplicitApproval": true,
+  "requiredFlag": "--execute-approved",
+  "expectedHead": "6edb12d07f3d5f468705afca32862440c7fd4077",
+  "actualHead": "6edb12d07f3d5f468705afca32862440c7fd4077",
+  "sampleCount": 128,
+  "model": "qwen/qwen3.7-flash",
+  "provider": "OpenRouter",
+  "configurationHash": "8983be53cc38d8a28c8d1467216934d3bab1201673dae86f077f82328b392967",
+  "transientRequestRetries": 0,
+  "goldReadCount": 0,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "requestBodiesPersisted": false,
+  "requestIntegrityReady": true,
+  "historicalBaselineReconstructed": true,
+  "temporalProviderDriftControlled": false,
+  "createdUtc": "2026-09-14T15:48:11.8233233+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "a99-v4g-b-execution-manifest-v1",
+  "experiment": "IDENTITY_BENCHMARK_V4G_B",
+  "parent": "V4G-A@6edb12d",
+  "status": "AWAITING_V4G_PROVIDER_EXECUTION_APPROVAL",
+  "historicalControlComparison": true,
+  "temporalProviderDriftControlled": false,
+  "candidateUniverse": 7702,
+  "frozenSampleCount": 128,
+  "scheduledCalls": 128,
+  "actualModelCalls": 0,
+  "actualProviderCalls": 0,
+  "sampleCandidateIdsSha256": "df48969b09c782343417a30f029ff1f833483c5eb88ba2b31f608deadfa8bac8",
+  "v4gManifestSha256": "29e38c918c540da63a8952cb2b1394ca2ffceb185603e972ef432ba197364795",
+  "v4gRequestManifestSha256": "bbbac993f69100d6b92e3cea70b6bc58ecc5a6e1326cab5eff3b582692696e2e",
+  "v4gSampleRequestManifestSha256": "93cb201cc2d405a71eca16919790a99ca1ab24824dfb021ff1953eb1434247c7",
+  "parserChanged": false,
+  "validatorChanged": false,
+  "projectionChanged": false,
+  "targetGroundingRepresentationChanged": true,
+  "goldReadCount": 0,
+  "createdUtc": "2026-09-14T15:48:11.8233233+00:00"
+}
