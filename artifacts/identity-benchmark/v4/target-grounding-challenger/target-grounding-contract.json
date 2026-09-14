@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "a99-v4g-a-target-grounding-contract-v1",
+  "builderVersion": "hdsa-canonical-target-grounded-projected-pair-verifier-request-builder-v1",
+  "systemContractSha256": "8c0b9b64676e5af0131ca135f2bfec6102da62ba0dcce66ddb2ff9e2991b0929",
+  "targetPair": {
+    "leftRole": "LEFT_TARGET",
+    "rightRole": "RIGHT_TARGET",
+    "fields": [
+      "occurrenceId",
+      "verbatimText",
+      "canonicalComparisonText",
+      "sourceOrder",
+      "pageOrSourceLocation"
+    ]
+  },
+  "supportingEvidence": [
+    "LEFT_CONTEXT",
+    "RIGHT_CONTEXT",
+    "STRUCTURAL_CONTEXT",
+    "INTERVENING_CONTEXT",
+    "RELATIONAL_FACTS",
+    "EVIDENCE_AVAILABILITY",
+    "MISSING_EVIDENCE"
+  ],
+  "targetIdentity": "exact frozen source occurrence IDs; no generated short aliases replace IDs",
+  "responseContract": "hdsa-global-identity-retrieve-verify-v1",
+  "decisionOptions": [
+    "CONTINUATION_OF",
+    "SAME_SEMANTIC_REPEAT",
+    "DISTINCT",
+    "UNRESOLVED"
+  ],
+  "parserChanged": false
+}

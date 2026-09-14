@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "a99-v4g-a-future-metrics-contract-v1",
+  "providerCalls": 0,
+  "primaryMetric": "TargetMismatchRate",
+  "historicalV1": {
+    "targetMismatch": "45/128",
+    "valid": "63/128"
+  },
+  "futureArms": [
+    "V4F-C PROJECTED_V1",
+    "V4G PROJECTED_V2_TARGET_GROUNDED"
+  ],
+  "secondaryMetrics": [
+    "ParseValidityRate",
+    "ValidResponseRate",
+    "RelationAgreementAmongBothValid",
+    "ProviderErrorRate"
+  ],
+  "v1IsHistoricalControl": true,
+  "noV1RerunRequired": true,
+  "semanticAccuracy": "not measured in V4G-A"
+}
