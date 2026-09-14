@@ -34,6 +34,7 @@
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Web\DocxHeaderExtractor.Web.csproj" Aliases="global,WebApp" />
     <ProjectReference Include="..\..\tools\identity-benchmark-v4h-b\IdentityBenchmarkV4HB.csproj" />
     <ProjectReference Include="..\..\tools\identity-benchmark-v4h-c\IdentityBenchmarkV4HC.csproj" />
+    <ProjectReference Include="..\..\tools\identity-benchmark-v5a\IdentityBenchmarkV5A.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,2540 @@
+{
+  "schemaVersion": "a99-v5a-source-only-clusters-v1",
+  "sourceOnly": true,
+  "candidateCount": 128,
+  "clusters": [
+    {
+      "clusterId": "SC-538ebaf081e6bad0",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[101]",
+        "DOC-0123:body[1]/p[1192]",
+        "DOC-0123:body[1]/p[181]",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]"
+      ],
+      "edgeCount": 4,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P66-1995",
+        "DOC-0123:V4P0066-0258",
+        "DOC-0123:V4P0128-0258",
+        "DOC-0123:V4P0258-1995"
+      ]
+    },
+    {
+      "clusterId": "SC-08167ba838d293a6",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[103]",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+        "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]"
+      ],
+      "edgeCount": 3,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P68-2007",
+        "DOC-0123:V4P0068-0259",
+        "DOC-0123:V4P0259-2007"
+      ]
+    },
+    {
+      "clusterId": "SC-9b24e51b35eb9e0e",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[1053]",
+        "DOC-0123:body[1]/tbl[45]/tr[1]/tc[1]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1761-1762"
+      ]
+    },
+    {
+      "clusterId": "SC-4b403ae3785e286d",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[105]",
+        "DOC-0123:body[1]/p[183]",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P70-260",
+        "DOC-0123:V4P0070-0130"
+      ]
+    },
+    {
+      "clusterId": "SC-d5c3803d86734251",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[1199]",
+        "DOC-0123:body[1]/p[1201]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P2008-2009"
+      ]
+    },
+    {
+      "clusterId": "SC-fe3480c51dd004da",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[1378]",
+        "DOC-0123:body[1]/p[1387]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P3092-3097"
+      ]
+    },
+    {
+      "clusterId": "SC-f40d8092d172eeb3",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[1462]",
+        "DOC-0123:body[1]/p[1504]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P3151-3182"
+      ]
+    },
+    {
+      "clusterId": "SC-75b66683b75b0c9d",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[14]",
+        "DOC-0123:body[1]/p[7]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P05-06"
+      ]
+    },
+    {
+      "clusterId": "SC-e8f95e9d0abd1e12",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[172]",
+        "DOC-0123:body[1]/p[192]",
+        "DOC-0123:body[1]/p[263]",
+        "DOC-0123:body[1]/p[84]",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]"
+      ],
+      "edgeCount": 5,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "SHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P132-249",
+        "DOC-0123:P49-132",
+        "DOC-0123:V4P0049-0119",
+        "DOC-0123:V4P0132-0200",
+        "DOC-0123:V4P0200-0249"
+      ]
+    },
+    {
+      "clusterId": "SC-7059833e26bf82f4",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[173]",
+        "DOC-0123:body[1]/p[276]",
+        "DOC-0123:body[1]/p[86]",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]"
+      ],
+      "edgeCount": 3,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY\u002BTERMINAL_ACRONYM_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P250-541",
+        "DOC-0123:P51-250",
+        "DOC-0123:V4P0120-0250"
+      ]
+    },
+    {
+      "clusterId": "SC-b54f759607ee0732",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[176]",
+        "DOC-0123:body[1]/p[92]",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P57-253",
+        "DOC-0123:V4P0057-0123"
+      ]
+    },
+    {
+      "clusterId": "SC-2309002963e9d48f",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[179]",
+        "DOC-0123:body[1]/p[97]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:V4P0062-0126"
+      ]
+    },
+    {
+      "clusterId": "SC-c5711328ecc9f9cb",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[1]",
+        "DOC-0123:body[1]/p[76]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P01-42"
+      ]
+    },
+    {
+      "clusterId": "SC-1c4e8826322b617f",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[317]",
+        "DOC-0123:body[1]/p[318]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P783-784"
+      ]
+    },
+    {
+      "clusterId": "SC-d9213bae8cb6cb04",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[32]/txbxContent[1]/p[1]",
+        "DOC-0123:body[1]/p[32]/txbxContent[2]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P07-08"
+      ]
+    },
+    {
+      "clusterId": "SC-73ac22ce69d37810",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[493]",
+        "DOC-0123:body[1]/p[534]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P962-1000"
+      ]
+    },
+    {
+      "clusterId": "SC-9b18cccc27c0d200",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[545]",
+        "DOC-0123:body[1]/p[547]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1006-1007"
+      ]
+    },
+    {
+      "clusterId": "SC-52691ad0f0d7986c",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[583]",
+        "DOC-0123:body[1]/p[584]",
+        "DOC-0123:body[1]/tbl[21]/tr[9]/tc[1]/p[1]"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1",
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1093-1094",
+        "DOC-0123:P1094-1095"
+      ]
+    },
+    {
+      "clusterId": "SC-669698e5599ec637",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[637]",
+        "DOC-0123:body[1]/p[639]",
+        "DOC-0123:body[1]/p[641]"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1160-1161",
+        "DOC-0123:P1161-1162"
+      ]
+    },
+    {
+      "clusterId": "SC-3ebbfbdbe24a0530",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[695]",
+        "DOC-0123:body[1]/p[766]",
+        "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY\u002BTERMINAL_ACRONYM_VARIANT",
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P602-1271",
+        "DOC-0123:V4P1271-1341"
+      ]
+    },
+    {
+      "clusterId": "SC-d5cbcde35e2b090c",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]",
+        "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1334-1338"
+      ]
+    },
+    {
+      "clusterId": "SC-d739ea4122054a93",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[875]",
+        "DOC-0123:body[1]/p[878]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1482-1485"
+      ]
+    },
+    {
+      "clusterId": "SC-ac7abb41bc2c3aa3",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[88]",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P53-251"
+      ]
+    },
+    {
+      "clusterId": "SC-070e08de7da1b95f",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[908]",
+        "DOC-0123:body[1]/p[919]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1540-1591"
+      ]
+    },
+    {
+      "clusterId": "SC-a0f2d7ae724cdb91",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[90]",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P55-252"
+      ]
+    },
+    {
+      "clusterId": "SC-282e741228750d1f",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[920]",
+        "DOC-0123:body[1]/p[921]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1592-1593"
+      ]
+    },
+    {
+      "clusterId": "SC-acfaf38c61fcdf67",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/p[94]",
+        "DOC-0123:body[1]/p[992]",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[8]"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY\u002BSHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P254-1719",
+        "DOC-0123:P59-254"
+      ]
+    },
+    {
+      "clusterId": "SC-dc75f78b36c2ca7c",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]",
+        "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P552-554"
+      ]
+    },
+    {
+      "clusterId": "SC-c69060a6af5acfbd",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[19]/tr[2]/tc[3]/p[1]",
+        "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+        "DOC-0123:body[1]/tbl[19]/tr[2]/tc[5]/p[1]"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1035-1036",
+        "DOC-0123:P1036-1037"
+      ]
+    },
+    {
+      "clusterId": "SC-7f00f6b6d1373a71",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[20]/tr[2]/tc[3]/p[1]",
+        "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+        "DOC-0123:body[1]/tbl[20]/tr[2]/tc[5]/p[1]"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1056-1057",
+        "DOC-0123:P1057-1058"
+      ]
+    },
+    {
+      "clusterId": "SC-963694a61eb66696",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[21]/tr[5]/tc[1]/p[1]",
+        "DOC-0123:body[1]/tbl[21]/tr[6]/tc[1]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1087-1088"
+      ]
+    },
+    {
+      "clusterId": "SC-79b853331cdd3744",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]",
+        "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1091-1092"
+      ]
+    },
+    {
+      "clusterId": "SC-2f569716eaed3deb",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[25]/tr[2]/tc[4]/p[1]",
+        "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]",
+        "DOC-0123:body[1]/tbl[25]/tr[3]/tc[2]/p[1]"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1",
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1177-1178",
+        "DOC-0123:P1178-1179"
+      ]
+    },
+    {
+      "clusterId": "SC-fadddbae86c6b0ed",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+        "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1228-1229"
+      ]
+    },
+    {
+      "clusterId": "SC-998cbc0bfc0238bb",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[31]/tr[6]/tc[2]/p[1]",
+        "DOC-0123:body[1]/tbl[47]/tr[6]/tc[2]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1425-1973"
+      ]
+    },
+    {
+      "clusterId": "SC-ee488063d482ae5e",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[2]",
+        "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[3]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1533-1534"
+      ]
+    },
+    {
+      "clusterId": "SC-3fe557caa33c2f2c",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]",
+        "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[20]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P348-354"
+      ]
+    },
+    {
+      "clusterId": "SC-9ab2d7468337edc1",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]",
+        "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1565-1566"
+      ]
+    },
+    {
+      "clusterId": "SC-9f1e3d86544b5fc0",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]",
+        "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1603-1610"
+      ]
+    },
+    {
+      "clusterId": "SC-88db42c1dfb9c081",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]",
+        "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+        "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1664-1665",
+        "DOC-0123:P1665-1666"
+      ]
+    },
+    {
+      "clusterId": "SC-80b901344aab318a",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[45]/tr[24]/tc[2]/p[1]",
+        "DOC-0123:body[1]/tbl[54]/tr[17]/tc[1]/p[2]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P1818-2556"
+      ]
+    },
+    {
+      "clusterId": "SC-91e7ad245f102049",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[50]/tr[14]/tc[2]/p[1]",
+        "DOC-0123:body[1]/tbl[50]/tr[15]/tc[2]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P2048-2050"
+      ]
+    },
+    {
+      "clusterId": "SC-160cc47520d52014",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[50]/tr[32]/tc[2]/p[1]",
+        "DOC-0123:body[1]/tbl[50]/tr[33]/tc[2]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P2101-2103"
+      ]
+    },
+    {
+      "clusterId": "SC-b5e7cf633691dae4",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]",
+        "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P2742-2754"
+      ]
+    },
+    {
+      "clusterId": "SC-3a28d380ba15df4f",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[54]/tr[77]/tc[2]/p[1]",
+        "DOC-0123:body[1]/tbl[54]/tr[78]/tc[2]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P2843-2844"
+      ]
+    },
+    {
+      "clusterId": "SC-b77c14278a8905d6",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[57]/tr[3]/tc[2]/p[1]",
+        "DOC-0123:body[1]/tbl[57]/tr[3]/tc[3]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P3005-3006"
+      ]
+    },
+    {
+      "clusterId": "SC-2ecdded7e5d3167a",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[57]/tr[4]/tc[2]/p[1]",
+        "DOC-0123:body[1]/tbl[57]/tr[5]/tc[2]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P3010-3015"
+      ]
+    },
+    {
+      "clusterId": "SC-7f1bfd6d60c574fa",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[57]/tr[4]/tc[5]/p[1]",
+        "DOC-0123:body[1]/tbl[57]/tr[5]/tc[5]/p[1]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P3013-3018"
+      ]
+    },
+    {
+      "clusterId": "SC-d72ffa990605f300",
+      "documentId": "DOC-0123",
+      "occurrenceIds": [
+        "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]",
+        "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "STRUCTURALLY_PARTIAL"
+      ],
+      "candidateIds": [
+        "DOC-0123:P3086-3088"
+      ]
+    },
+    {
+      "clusterId": "SC-948f7fb1a513c101",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000005",
+        "DOC-0133:B000935"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "evidenceConfigurations": [
+        "TERMINAL_ACRONYM_VARIANT"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:V4P0005-0935"
+      ]
+    },
+    {
+      "clusterId": "SC-11d1b04f16c142d4",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000011",
+        "DOC-0133:B000013",
+        "DOC-0133:B000034"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS",
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:V4P0011-0013",
+        "DOC-0133:V4P0013-0034"
+      ]
+    },
+    {
+      "clusterId": "SC-c483be6ba7146330",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000015",
+        "DOC-0133:B000616"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:V4P0015-0616"
+      ]
+    },
+    {
+      "clusterId": "SC-193e908c0f00a68c",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000017",
+        "DOC-0133:B000921"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:V4P0017-0921"
+      ]
+    },
+    {
+      "clusterId": "SC-054b6bb0ac5b9b45",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000036",
+        "DOC-0133:B000041"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P36-41"
+      ]
+    },
+    {
+      "clusterId": "SC-56263abc254ef233",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000099",
+        "DOC-0133:B000316"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P99-316"
+      ]
+    },
+    {
+      "clusterId": "SC-475453187c1c821e",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000118",
+        "DOC-0133:B000136"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P118-136"
+      ]
+    },
+    {
+      "clusterId": "SC-e418cf6207ee6cfd",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000140",
+        "DOC-0133:B000157"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P140-157"
+      ]
+    },
+    {
+      "clusterId": "SC-19f21d3bb805257d",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000337",
+        "DOC-0133:B000338"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P337-338"
+      ]
+    },
+    {
+      "clusterId": "SC-44f46f640e7712b0",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000339",
+        "DOC-0133:B000340"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P339-340"
+      ]
+    },
+    {
+      "clusterId": "SC-c03b3d5ec241bf2d",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000359",
+        "DOC-0133:B000360"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER",
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER\u002BNORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P359-360"
+      ]
+    },
+    {
+      "clusterId": "SC-e1c35fd18a3f134f",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000561",
+        "DOC-0133:B000562"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P561-562"
+      ]
+    },
+    {
+      "clusterId": "SC-0f5f8eb5084651d7",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000827",
+        "DOC-0133:B000841"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P827-841"
+      ]
+    },
+    {
+      "clusterId": "SC-dd7c93016022f445",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000855",
+        "DOC-0133:B000856"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P855-856"
+      ]
+    },
+    {
+      "clusterId": "SC-4f5dfab186393c56",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000927",
+        "DOC-0133:B000930"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P927-930"
+      ]
+    },
+    {
+      "clusterId": "SC-8f8b372c4df44219",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000933",
+        "DOC-0133:B000934"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P933-934"
+      ]
+    },
+    {
+      "clusterId": "SC-7dba387f4f54f96d",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000937",
+        "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P937-938"
+      ]
+    },
+    {
+      "clusterId": "SC-c17bdfebd789811c",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000959",
+        "DOC-0133:B000961"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P960-962"
+      ]
+    },
+    {
+      "clusterId": "SC-7bbcc897f811cf5f",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B000965",
+        "DOC-0133:B000967"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P966-968"
+      ]
+    },
+    {
+      "clusterId": "SC-032875e9c153cab7",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B001068",
+        "DOC-0133:B001069"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P1069-1070"
+      ]
+    },
+    {
+      "clusterId": "SC-cc9434be93085964",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B001466",
+        "DOC-0133:B001467"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P1467-1468"
+      ]
+    },
+    {
+      "clusterId": "SC-07084e0aff69e2bd",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B001610",
+        "DOC-0133:B001617"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P1611-1618"
+      ]
+    },
+    {
+      "clusterId": "SC-336b192f25ee8c62",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B001735",
+        "DOC-0133:B001752"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P1736-1753"
+      ]
+    },
+    {
+      "clusterId": "SC-e85d77b885a189a0",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B001802",
+        "DOC-0133:B001804"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P1803-1805"
+      ]
+    },
+    {
+      "clusterId": "SC-137e766fed8e14d8",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B001891",
+        "DOC-0133:B001907"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P1892-1908"
+      ]
+    },
+    {
+      "clusterId": "SC-4db7f9417ce6abc3",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B001981",
+        "DOC-0133:B002045"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P1982-2046"
+      ]
+    },
+    {
+      "clusterId": "SC-71e2f00f18661add",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B002226",
+        "DOC-0133:B002228"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P2227-2229"
+      ]
+    },
+    {
+      "clusterId": "SC-c557c9be01e4fc96",
+      "documentId": "DOC-0133",
+      "occurrenceIds": [
+        "DOC-0133:B002277",
+        "DOC-0133:B002293"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0133:P2278-2294"
+      ]
+    },
+    {
+      "clusterId": "SC-fd68b6c73c10e67b",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000006",
+        "DOC-0252:B000042",
+        "DOC-0252:B000253"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:V4P0006-0042",
+        "DOC-0252:V4P0042-0253"
+      ]
+    },
+    {
+      "clusterId": "SC-b8cd0daf89cc2809",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000016",
+        "DOC-0252:B000031"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P16-31"
+      ]
+    },
+    {
+      "clusterId": "SC-f8cd55c5e557df36",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000022",
+        "DOC-0252:B000026"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P22-26"
+      ]
+    },
+    {
+      "clusterId": "SC-698908c4f6d37a72",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000063",
+        "DOC-0252:B000083"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P63-83"
+      ]
+    },
+    {
+      "clusterId": "SC-83ba6382175a7582",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000107",
+        "DOC-0252:B000235"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P107-235"
+      ]
+    },
+    {
+      "clusterId": "SC-e1dba61cbc2b05da",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000162",
+        "DOC-0252:B000168"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P162-168"
+      ]
+    },
+    {
+      "clusterId": "SC-87ddf22bac3dbc7a",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000188",
+        "DOC-0252:B000189"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P188-189"
+      ]
+    },
+    {
+      "clusterId": "SC-62312e2ef1696634",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000194",
+        "DOC-0252:B000731"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P194-731"
+      ]
+    },
+    {
+      "clusterId": "SC-625a5883ecaebaa4",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000199",
+        "DOC-0252:B000325"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P199-325"
+      ]
+    },
+    {
+      "clusterId": "SC-df80308b29693450",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000224",
+        "DOC-0252:B000226"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P224-226"
+      ]
+    },
+    {
+      "clusterId": "SC-2d5e22fcd48f9e6a",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000311",
+        "DOC-0252:B000312"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P311-312"
+      ]
+    },
+    {
+      "clusterId": "SC-f58ec7a5d0cc2968",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000393",
+        "DOC-0252:B000394"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P393-394"
+      ]
+    },
+    {
+      "clusterId": "SC-faa9769a7ae9a698",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000396",
+        "DOC-0252:B000402"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P396-402"
+      ]
+    },
+    {
+      "clusterId": "SC-95866d105ba259d4",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000418",
+        "DOC-0252:B000426"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P418-426"
+      ]
+    },
+    {
+      "clusterId": "SC-cd566bc4da71285c",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000434",
+        "DOC-0252:B000439"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P434-439"
+      ]
+    },
+    {
+      "clusterId": "SC-9d7862e7cb1eb620",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000435",
+        "DOC-0252:B000883"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:V4P0435-0883"
+      ]
+    },
+    {
+      "clusterId": "SC-08bd91eaff8ac2d7",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000449",
+        "DOC-0252:B000453"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P449-453"
+      ]
+    },
+    {
+      "clusterId": "SC-10ca4581b17299d1",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000508",
+        "DOC-0252:B000512"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P508-512"
+      ]
+    },
+    {
+      "clusterId": "SC-2e75eab82a3e81ee",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000539",
+        "DOC-0252:B000595"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P539-595"
+      ]
+    },
+    {
+      "clusterId": "SC-95c6de236313b846",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000544",
+        "DOC-0252:B000888",
+        "DOC-0252:B000893"
+      ],
+      "edgeCount": 3,
+      "evidenceReasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "EXPLICIT_CONTINUATION_VARIANT\u002BSHARED_STRUCTURAL_HEADING_KEY",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS",
+        "MID_5_16"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:V4P0544-0888",
+        "DOC-0252:V4P0544-0893",
+        "DOC-0252:V4P0888-0893"
+      ]
+    },
+    {
+      "clusterId": "SC-f12b996463a94a60",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000750",
+        "DOC-0252:B000751"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P750-751"
+      ]
+    },
+    {
+      "clusterId": "SC-04bc27e74780febd",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000851",
+        "DOC-0252:B000904"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "FAR_17_PLUS"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:V4P0851-0904"
+      ]
+    },
+    {
+      "clusterId": "SC-a120b089d9ec8dc0",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000872",
+        "DOC-0252:B000875",
+        "DOC-0252:B000878"
+      ],
+      "edgeCount": 2,
+      "evidenceReasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "evidenceConfigurations": [
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:V4P0872-0875",
+        "DOC-0252:V4P0875-0878"
+      ]
+    },
+    {
+      "clusterId": "SC-463e6c81092ee630",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000898",
+        "DOC-0252:B000899"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "ADJACENT_ORDER"
+      ],
+      "evidenceConfigurations": [
+        "ADJACENT_ORDER"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "ADJACENT_1"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P898-899"
+      ]
+    },
+    {
+      "clusterId": "SC-61fc0dbd9dfcc7f1",
+      "documentId": "DOC-0252",
+      "occurrenceIds": [
+        "DOC-0252:B000955",
+        "DOC-0252:B000957"
+      ],
+      "edgeCount": 1,
+      "evidenceReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "evidenceConfigurations": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "sourceOrderDistanceBuckets": [
+        "NEAR_2_4"
+      ],
+      "packetClasses": [
+        "LOCAL_ONLY"
+      ],
+      "candidateIds": [
+        "DOC-0252:P955-957"
+      ]
+    }
+  ]
+}
