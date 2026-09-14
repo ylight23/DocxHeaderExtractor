@@ -1,0 +1,109 @@
+{
+  "artifactKind": "a99_local_tesseract_binding_feasibility",
+  "schemaVersion": "a99-local-tesseract-binding-feasibility-v1",
+  "status": "FEASIBLE_SPIKE",
+  "source": {
+    "documentId": "DOC-0133",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/048_IBRD_Financial_Statements_March_2025.pdf",
+    "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+    "page": 66,
+    "xObjectResourceName": "/Im1",
+    "imageOccurrenceId": "pdf-image:31891732112b9c0b97cc3bac711c728f0b8f06cf5a381a3c1ab1eceba662f667",
+    "imageSha256": "889817466fd9cab1cd9ea1275a359504f5e5fbb4e78ebaab97ded1c1d7a10659",
+    "imageSize": {
+      "width": 737,
+      "height": 928
+    }
+  },
+  "execution": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "vlmCalls": 0,
+    "remoteOcr": false,
+    "goldUsed": false,
+    "modelOutputsUsed": false,
+    "sourceTextUsedForRecognition": false,
+    "exactImageBytesUsed": true,
+    "preprocessing": "NONE"
+  },
+  "engine": {
+    "name": "Tesseract",
+    "version": "5.2.0",
+    "wrapper": "Tesseract NuGet wrapper 5.2.0",
+    "language": "eng",
+    "pageSegmentationMode": "SPARSE_TEXT",
+    "ocrEngineMode": "LSTM_ONLY",
+    "userDefinedDpi": 300,
+    "tessdataSha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2",
+    "packageSha256": "202d82fc7c7d8384df7da57206d5e1f456ccdabd648c46e67cdfaa3a911d4795",
+    "nativeX64": {
+      "tesseract50Sha256": "de4d04ec75095374d98f5dd7a60d14d7e2e0f76589db693eccf7ae658be8cb2b",
+      "leptonicaSha256": "dfcb3e6ed0b16bc55bfdbcf53543cfe42a354b87c3e35bd3a95eebf005d73e76"
+    }
+  },
+  "output": {
+    "rawArtifact": "artifacts/identity-gold/ir018-im1-tesseract-raw.v1.json",
+    "rawArtifactSha256": "de8e8cad11bd858240e5705cd3aa371b264901ebf1a56c5f414d2954f1e0a96d",
+    "rawRegionCount": 405,
+    "lineRegionCount": 42,
+    "wordRegionCount": 363,
+    "replayRuns": 2,
+    "replayByteIdentical": true,
+    "exactMatcher": "NARROW_EXACT_NORMALIZATION_ONLY",
+    "matchedRegionCount": 1,
+    "matchArtifact": "artifacts/identity-gold/ir018-im1-tesseract-match.v1.json",
+    "matchArtifactSha256": "dbcec6140688d9dfcfa32d6b9e40cc479dd1b64912f65f1c313022f77a7c508b",
+    "stableVisualOccurrenceId": "pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11",
+    "pixelBoundingBox": {
+      "Left": 217,
+      "Top": 190,
+      "Right": 507,
+      "Bottom": 202,
+      "Width": 290,
+      "Height": 12
+    },
+    "regionImageSha256": "02fe70b2f4e314751a7616ddcd12e925f1605139f161155c47bdf0f7d51d290d"
+  },
+  "licensing": {
+    "tesseract": "Apache-2.0",
+    "leptonica": "BSD-2-Clause",
+    "packageSource": "NuGet package Tesseract 5.2.0; temporary feasibility environment only",
+    "committedProductionDependency": false
+  },
+  "deployment": {
+    "currentStatus": "FEASIBILITY_ONLY_NOT_PRODUCTION",
+    "windowsSpike": true,
+    "x64NativeAssetsObserved": true,
+    "pinnedLanguageDataRequired": true,
+    "productionPackagingDecision": "NOT_MADE",
+    "portabilityRisk": "native runtime and tessdata require explicit per-platform packaging and validation"
+  },
+  "contracts": {
+    "locatorAuthority": "VISUAL_DERIVED",
+    "coordinateAuthority": "HARNESS_SOURCE_IMAGE_PIXELS",
+    "textAuthority": "VISUAL_DERIVED",
+    "sourceTextDuplicated": false,
+    "modelNumericOffsets": false,
+    "wholeImageAsHeadingRegion": false,
+    "fuzzyMatching": false,
+    "goldSpecificLocator": false
+  },
+  "gate": {
+    "sourceImageIdentity": "PASS",
+    "rawOcrPersistedBeforeMatch": "PASS",
+    "uniqueExactRegion": "PASS",
+    "deterministicReplay": "PASS",
+    "visualRegionBinding": "PASS_FOR_IR018_SPIKE",
+    "fiveOfFiveIdentityGold": "PASS",
+    "productionReady": false,
+    "nextGate": "INDEPENDENT_IDENTITY_PROMOTION_BENCHMARK"
+  },
+  "provenance": {
+    "generatedFromCommit": "db1b3e44359fdbfda07517c0566171dc5e530c46",
+    "previousBindingArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v3.json",
+    "previousForensicArtifact": "artifacts/identity-gold/pdf-binding-forensic.v3.json",
+    "semanticGoldChanged": false,
+    "ir018SemanticRelationChanged": false,
+    "knownN15Changed": false
+  }
+}

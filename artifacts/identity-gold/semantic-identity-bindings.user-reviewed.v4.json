@@ -1,0 +1,206 @@
+{
+  "artifactKind": "a99_semantic_identity_bindings",
+  "schemaVersion": "a99-semantic-identity-bindings-user-reviewed-v4",
+  "status": "EXACT_BOUND",
+  "semanticGoldPath": "artifacts/identity-gold/semantic-identity-gold.user-reviewed.v2.json",
+  "semanticGoldSha256": "1c50754951b89ec48a0b0016db3e6079afd088bd0fb20a08ac60e10c41e6fae2",
+  "binderVersion": "identity-gold-binder-v1 + pdf-source-occurrence-binder-v1",
+  "createdFromCommit": "db1b3e44359fdbfda07517c0566171dc5e530c46",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldRelationConsumedByBinder": false,
+  "sourceHashes": {
+    "DOC-0133": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbd8f731b7b78ba1049bfc3ba12"
+  },
+  "sourceOccurrenceKinds": [
+    "TEXT",
+    "IMAGE",
+    "IMAGE_REGION"
+  ],
+  "items": [
+    {
+      "id": "IR-018",
+      "semanticRelation": "DISTINCT_SEMANTIC_NODE",
+      "semanticConfidence": "HIGH",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "outer": {
+        "kind": "PDF_TEXT",
+        "sourceAuthority": "SOURCE_DIRECT",
+        "documentId": "DOC-0133",
+        "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbd8f731b7b78ba1049bfc3ba12",
+        "sourceOccurrenceId": "B002349",
+        "verbatimText": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+        "page": 66,
+        "sourceOrdinal": 2348,
+        "nativePath": "b2349",
+        "bboxPoints": {
+          "left": 73.3056640625,
+          "bottom": 745.632265625,
+          "right": 370.7994843750001,
+          "top": 756.0160546875
+        },
+        "textSha256": "76934c9fa5fd37c7a9e318a1c403a97c95e671cc359044bfb67b56ab99d34adb",
+        "bindingMethod": "NATIVE_SOURCE_ID_AND_EXACT_TEXT",
+        "bindingConfidence": "EXACT",
+        "sourceLineageVerified": true
+      },
+      "inner": {
+        "kind": "PDF_IMAGE_REGION",
+        "sourceAuthority": "SOURCE_DIRECT",
+        "textInterpretationAuthority": "VISUAL_DERIVED",
+        "documentId": "DOC-0133",
+        "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbd8f731b7b78ba1049bfc3ba12",
+        "parentImage": {
+          "kind": "PDF_IMAGE_XOBJECT",
+          "sourceOccurrenceId": "pdf-image:31891732112b9c0b97cc3bac711c728f0b8f06cf5a381a3c1ab1eceba662f667",
+          "page": 66,
+          "xObjectResourceName": "/Im1",
+          "placementIndex": 0,
+          "imageWidth": 737,
+          "imageHeight": 928,
+          "imageSha256": "889817466fd9cab1cd9ea1275a359504f5e5fbb4e78ebaab97ded1c1d7a10659",
+          "pagePlacementBBoxPoints": {
+            "left": 72,
+            "bottom": 130.71002,
+            "right": 540,
+            "top": 720
+          },
+          "transformMatrix": [
+            468,
+            0,
+            0,
+            589.28998,
+            72,
+            130.71002
+          ],
+          "sourceLineageVerified": true
+        },
+        "regionStatus": "EXACT_BOUND",
+        "pixelBBox": {
+          "Left": 217,
+          "Top": 190,
+          "Right": 507,
+          "Bottom": 202,
+          "Width": 290,
+          "Height": 12
+        },
+        "normalizedBBox": {
+          "X": 0.2944369063772049,
+          "Y": 0.20474137931034483,
+          "Width": 0.39348710990502034,
+          "Height": 0.01293103448275862
+        },
+        "regionImageSha256": "02fe70b2f4e314751a7616ddcd12e925f1605139f161155c47bdf0f7d51d290d",
+        "regionLocatorMethod": "LOCAL_TESSERACT_5_2_0_EXACT_LINE",
+        "textEvidence": "INDEPENDENT AUDITOR'S REVIEW REPORT\n\n",
+        "sourceLineageVerified": true,
+        "bindingEvidence": [
+          "PDF source SHA256 verified",
+          "page 66 /Im1 XObject name verified",
+          "exact image XObject bytes and image SHA256 verified",
+          "raw local OCR output was frozen before matching",
+          "one exact normalized line match found in frozen OCR regions",
+          "pixel bbox and region PNG SHA256 are source-image-backed",
+          "stable visual-region occurrence ID derived by the existing identity factory",
+          "no VLM, provider, Gold, fuzzy matching, or fabricated coordinates used"
+        ],
+        "locatorAuthority": "VISUAL_DERIVED",
+        "sourceOccurrenceId": "pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11",
+        "ocrEvidence": {
+          "normalizedText": "INDEPENDENT AUDITOR'S REVIEW REPORT",
+          "confidence": 80.01307,
+          "engine": "Tesseract 5.2.0",
+          "wrapper": "Tesseract NuGet wrapper 5.2.0",
+          "language": "eng",
+          "pageSegmentationMode": "SPARSE_TEXT",
+          "ocrEngineMode": "LSTM_ONLY",
+          "userDefinedDpi": 300,
+          "preprocessing": "NONE",
+          "rawArtifact": "artifacts/identity-gold/ir018-im1-tesseract-raw.v1.json",
+          "rawArtifactSha256": "de8e8cad11bd858240e5705cd3aa371b264901ebf1a56c5f414d2954f1e0a96d",
+          "matchArtifact": "artifacts/identity-gold/ir018-im1-tesseract-match.v1.json",
+          "matchArtifactSha256": "dbcec6140688d9dfcfa32d6b9e40cc479dd1b64912f65f1c313022f77a7c508b"
+        }
+      },
+      "endpointAttributionCorrection": "B002349 is OUTER; INNER is image-only content inside /Im1"
+    },
+    {
+      "id": "IR-019",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "unchangedFromPreviousArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json#IR-019"
+    },
+    {
+      "id": "IR-020",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "unchangedFromPreviousArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json#IR-020"
+    },
+    {
+      "id": "IR-021",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "unchangedFromPreviousArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json#IR-021"
+    },
+    {
+      "id": "IR-022",
+      "bindingStatus": "EXACT_BOUND",
+      "machineEvaluable": true,
+      "unchangedFromPreviousArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json#IR-022"
+    }
+  ],
+  "summary": {
+    "totalGoldItems": 5,
+    "exactBound": 5,
+    "imageXObjectsBound": 1,
+    "imageRegionsBound": 1,
+    "bindingIncomplete": 0,
+    "machineEvaluable": 5,
+    "fuzzyJoins": 0,
+    "fabricatedOccurrenceIds": 0,
+    "goldReadBeforeBinding": false
+  },
+  "relationMutationMetamorphic": {
+    "goldRelationRead": false,
+    "relationMutation": "DISTINCT_SEMANTIC_NODE -> SAME_SEMANTIC_REPEAT",
+    "sourceBindingChanged": false,
+    "testedWith": "same source occurrence queries; binder has no relation parameter"
+  },
+  "previousBindingArtifact": {
+    "path": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v2.json",
+    "sha256": "122bf50fee967a2ef9a33aee3bc146d7df842d9e469126744fc0f68a017059b8"
+  },
+  "forensicArtifact": {
+    "path": "artifacts/identity-gold/pdf-binding-forensic.v3.json",
+    "sha256": "b4f8fba0bcba400f7a35de0e9000b67470fa49bfa47d49ac3a180a5b838242d9"
+  },
+  "pdfRecovery": {
+    "engine": "Tesseract 5.2.0",
+    "wrapper": "Tesseract NuGet wrapper 5.2.0",
+    "mode": "LOCAL_FEASIBILITY_SPIKE_ONLY",
+    "productionDependencyAdded": false,
+    "sourceImageSha256": "889817466fd9cab1cd9ea1275a359504f5e5fbb4e78ebaab97ded1c1d7a10659",
+    "rawOcrArtifact": "artifacts/identity-gold/ir018-im1-tesseract-raw.v1.json",
+    "rawOcrArtifactSha256": "de8e8cad11bd858240e5705cd3aa371b264901ebf1a56c5f414d2954f1e0a96d",
+    "exactMatchArtifact": "artifacts/identity-gold/ir018-im1-tesseract-match.v1.json",
+    "exactMatchArtifactSha256": "dbcec6140688d9dfcfa32d6b9e40cc479dd1b64912f65f1c313022f77a7c508b",
+    "deterministicReplay": "TWO_RUNS_BYTE_IDENTICAL",
+    "providerCalls": 0,
+    "modelCalls": 0
+  },
+  "gate": "READY_FOR_IDENTITY_PROMOTION_BENCHMARK",
+  "remainingBlockers": [],
+  "lineage": {
+    "priorForensicArtifact": "artifacts/identity-gold/pdf-binding-forensic.v3.json",
+    "priorForensicArtifactPreserved": true,
+    "priorBindingArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v3.json",
+    "correctedBindingArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v4.json",
+    "rawOcrArtifact": "artifacts/identity-gold/ir018-im1-tesseract-raw.v1.json",
+    "exactMatchArtifact": "artifacts/identity-gold/ir018-im1-tesseract-match.v1.json",
+    "semanticGoldChanged": false,
+    "knownN15Changed": false,
+    "goldUsed": false,
+    "modelOutputsUsed": false
+  }
+}

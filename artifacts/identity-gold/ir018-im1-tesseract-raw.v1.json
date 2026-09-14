@@ -1,0 +1,6500 @@
+{
+  "SchemaVersion": "a99-ir018-local-tesseract-raw-v1",
+  "SourcePdfSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+  "SourceImageOccurrenceId": "pdf-image:31891732112b9c0b97cc3bac711c728f0b8f06cf5a381a3c1ab1eceba662f667",
+  "SourceImageSha256": "889817466fd9cab1cd9ea1275a359504f5e5fbb4e78ebaab97ded1c1d7a10659",
+  "ImageWidth": 737,
+  "ImageHeight": 928,
+  "Configuration": {
+    "Engine": "5.2.0",
+    "Wrapper": "Tesseract NuGet wrapper 5.2.0",
+    "Language": "eng",
+    "PageSegmentationMode": "SPARSE_TEXT",
+    "OcrEngineMode": "LSTM_ONLY",
+    "UserDefinedDpi": 300,
+    "Preprocessing": "NONE",
+    "LanguageDataSha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+  },
+  "AllDetectedRegions": [
+    {
+      "RegionIndex": 0,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 620,
+        "Top": 10,
+        "Right": 731,
+        "Bottom": 19,
+        "Width": 111,
+        "Height": 9
+      },
+      "RecognizedText": "Deloitte \u0026 Touche LIP\n\n",
+      "Confidence": 90.901184,
+      "SourceOrder": 0,
+      "CropSha256": "56e25011914d7e832f66b7956e5b457788bc106ef6bed5203348015e62eaebef"
+    },
+    {
+      "RegionIndex": 1,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 620,
+        "Top": 26,
+        "Right": 733,
+        "Bottom": 36,
+        "Width": 113,
+        "Height": 10
+      },
+      "RecognizedText": "7900 Tysons One Place\n\n",
+      "Confidence": 86.834946,
+      "SourceOrder": 1,
+      "CropSha256": "16c13f6b5a23903ca789f6125c8204602bf82c0278eb8c07f14e95f6166a384a"
+    },
+    {
+      "RegionIndex": 2,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 3,
+        "Top": 27,
+        "Right": 230,
+        "Bottom": 71,
+        "Width": 227,
+        "Height": 44
+      },
+      "RecognizedText": "Deloitte.\n\n",
+      "Confidence": 95.78206,
+      "SourceOrder": 2,
+      "CropSha256": "f9d66125118b4dd7a124635899e22f91dcd05a6e2da819a4fe6613a44238799c"
+    },
+    {
+      "RegionIndex": 3,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 620,
+        "Top": 41,
+        "Right": 712,
+        "Bottom": 78,
+        "Width": 92,
+        "Height": 37
+      },
+      "RecognizedText": "ten va22102\n\n",
+      "Confidence": 42.481575,
+      "SourceOrder": 3,
+      "CropSha256": "1d59f5b3f183327f79a1c900f971fb19e1925c41105e883598f5f0614f46b7a5"
+    },
+    {
+      "RegionIndex": 4,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 619,
+        "Top": 85,
+        "Right": 728,
+        "Bottom": 93,
+        "Width": 109,
+        "Height": 8
+      },
+      "RecognizedText": "Tet \u002B1703 251 1000\n\n",
+      "Confidence": 72.35949,
+      "SourceOrder": 4,
+      "CropSha256": "d2542f73236b7a7230eaabc1a8eb93327f7caf907d3daf6ccacc73b46d8e1466"
+    },
+    {
+      "RegionIndex": 5,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 620,
+        "Top": 100,
+        "Right": 727,
+        "Bottom": 108,
+        "Width": 107,
+        "Height": 8
+      },
+      "RecognizedText": "Fax: \u002B1703 251 3400\n\n",
+      "Confidence": 81.3213,
+      "SourceOrder": 5,
+      "CropSha256": "c0b378834b6dfb46982d9160361d7dae5bda3a8367f9dca52e70fc9779197d5e"
+    },
+    {
+      "RegionIndex": 6,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 620,
+        "Top": 115,
+        "Right": 711,
+        "Bottom": 123,
+        "Width": 91,
+        "Height": 8
+      },
+      "RecognizedText": "wwwdeloitte.com\n\n",
+      "Confidence": 34.39653,
+      "SourceOrder": 6,
+      "CropSha256": "2c0954dadd8cc0b4d669c981ed7cb7d15e5a91abe247977cb745ed8aacf135b1"
+    },
+    {
+      "RegionIndex": 7,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 217,
+        "Top": 190,
+        "Right": 507,
+        "Bottom": 202,
+        "Width": 290,
+        "Height": 12
+      },
+      "RecognizedText": "INDEPENDENT AUDITOR\u0027S REVIEW REPORT\n\n",
+      "Confidence": 80.01307,
+      "SourceOrder": 7,
+      "CropSha256": "2ac3ef27bb5ddc11b0eaf06e86a9d3ce23db66006e83f13df5b8d3fccd9e2e61"
+    },
+    {
+      "RegionIndex": 8,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 226,
+        "Right": 292,
+        "Bottom": 238,
+        "Width": 287,
+        "Height": 12
+      },
+      "RecognizedText": "President and Board of Executive Directors\n\n",
+      "Confidence": 96.70149,
+      "SourceOrder": 8,
+      "CropSha256": "1eb7ee94f673cfc0f21b9774ecdd6ad6822e1ce55e523883dec5e6cbb912fc68"
+    },
+    {
+      "RegionIndex": 9,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 247,
+        "Right": 164,
+        "Bottom": 259,
+        "Width": 159,
+        "Height": 12
+      },
+      "RecognizedText": "International Bank for Ri\n\n",
+      "Confidence": 88.522095,
+      "SourceOrder": 9,
+      "CropSha256": "964a2ecb8ee5c48b3e7fa59d15d949c02c0265be9b1e7518d39b2f79b83e2d29"
+    },
+    {
+      "RegionIndex": 10,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 190,
+        "Top": 247,
+        "Right": 300,
+        "Bottom": 259,
+        "Width": 110,
+        "Height": 12
+      },
+      "RecognizedText": "instruction and D\n\n",
+      "Confidence": 67.166534,
+      "SourceOrder": 10,
+      "CropSha256": "0cdf94799ce3b48d4075821e9cdb1f1d662d53db310481a2fa48ebcbe0e4acd8"
+    },
+    {
+      "RegionIndex": 11,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 283,
+        "Right": 340,
+        "Bottom": 295,
+        "Width": 335,
+        "Height": 12
+      },
+      "RecognizedText": "Results of Review of Interim Financial Information\n\n",
+      "Confidence": 96.2986,
+      "SourceOrder": 11,
+      "CropSha256": "719564f0fdad5e0f2186f4cd953f03085752c98481baecc8ecdc9ad3c73188ad"
+    },
+    {
+      "RegionIndex": 12,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 321,
+        "Right": 719,
+        "Bottom": 336,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "We have reviewed the accompanying condensed balance sheet of the International Bank for\n\n",
+      "Confidence": 96.29103,
+      "SourceOrder": 12,
+      "CropSha256": "017e43501324ed36c14afc4c99735419419bfb9f147e9fa6092ab8a36888cb17"
+    },
+    {
+      "RegionIndex": 13,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 342,
+        "Right": 719,
+        "Bottom": 357,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "Reconstruction and Development (\u201CIBRD\u201D) as of March 31, 2025, and the related condensed statements of\n\n",
+      "Confidence": 94.60593,
+      "SourceOrder": 13,
+      "CropSha256": "60480d073bfdbda554e39c77225d5a547514b3b628338929fb773b3312f5768f"
+    },
+    {
+      "RegionIndex": 14,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 362,
+        "Right": 718,
+        "Bottom": 377,
+        "Width": 713,
+        "Height": 15
+      },
+      "RecognizedText": "income, and comprehensive income for the three-month and nine-month periods ended March 31, 2025\n\n",
+      "Confidence": 96.111565,
+      "SourceOrder": 14,
+      "CropSha256": "5de9186e9a455d0eaf89348623c258fe46b3fd4e5557ab7b7cf95c79cc767b77"
+    },
+    {
+      "RegionIndex": 15,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 383,
+        "Right": 719,
+        "Bottom": 398,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "and 2024, and the condensed statements of changes in retained earnings and cash flows for the nine-\n\n",
+      "Confidence": 96.23133,
+      "SourceOrder": 15,
+      "CropSha256": "11f69abc8346157f2199d0fb14d65236089a5dc02ca6f99b8c669d71893097bd"
+    },
+    {
+      "RegionIndex": 16,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 403,
+        "Right": 719,
+        "Bottom": 418,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "month periods ended March 31, 2025 and 2024, and the related notes (collectively referred to as the\n\n",
+      "Confidence": 95.50212,
+      "SourceOrder": 16,
+      "CropSha256": "39b3664c3304814ae95d85268afdaada9d2b07dc3b83e43179576ab7b8136ba0"
+    },
+    {
+      "RegionIndex": 17,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 424,
+        "Right": 219,
+        "Bottom": 439,
+        "Width": 214,
+        "Height": 15
+      },
+      "RecognizedText": "\u201Cinterim financial information\u201D).\n\n",
+      "Confidence": 94.27554,
+      "SourceOrder": 17,
+      "CropSha256": "73105f15622f8c528030a8ce3d884b270c19bd7c47c6ed3429267aa166cab845"
+    },
+    {
+      "RegionIndex": 18,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 463,
+        "Right": 718,
+        "Bottom": 478,
+        "Width": 713,
+        "Height": 15
+      },
+      "RecognizedText": "Based on our reviews, we are not aware of any material modifications that should be made to the\n\n",
+      "Confidence": 96.69652,
+      "SourceOrder": 18,
+      "CropSha256": "8e20eef9b7f6b7b684ec0a7b7238668ae72f74317ff61f75ca21f4df9193f2c8"
+    },
+    {
+      "RegionIndex": 19,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 483,
+        "Right": 719,
+        "Bottom": 498,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "accompanying interim financial information for it to be in accordance with accounting principles generally\n\n",
+      "Confidence": 94.274025,
+      "SourceOrder": 19,
+      "CropSha256": "95c31c6bb0fea9ac69114130d4d62a8660c52a68ad6f2f94274ab18e25edf36e"
+    },
+    {
+      "RegionIndex": 20,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 504,
+        "Right": 283,
+        "Bottom": 519,
+        "Width": 278,
+        "Height": 15
+      },
+      "RecognizedText": "accepted in the United States of America.\n\n",
+      "Confidence": 95.64992,
+      "SourceOrder": 20,
+      "CropSha256": "dc31d58d2a046aa8d6ca11adf75053340089fe8614584979f2673764aba74426"
+    },
+    {
+      "RegionIndex": 21,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 540,
+        "Right": 165,
+        "Bottom": 552,
+        "Width": 160,
+        "Height": 12
+      },
+      "RecognizedText": "Basis for Review Results\n\n",
+      "Confidence": 91.09326,
+      "SourceOrder": 21,
+      "CropSha256": "00a8c7036d7a17619362ee5b9ed766caece75a32276beeb6ce9bdaf0741cf23e"
+    },
+    {
+      "RegionIndex": 22,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 578,
+        "Right": 719,
+        "Bottom": 593,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "We conducted our reviews in accordance with auditing standards generally accepted in the United States\n\n",
+      "Confidence": 94.53793,
+      "SourceOrder": 22,
+      "CropSha256": "dd0f4dc5104121ae829b92f21ceb32d6211469beaf23c3f4218659ffc81d4436"
+    },
+    {
+      "RegionIndex": 23,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 599,
+        "Right": 718,
+        "Bottom": 614,
+        "Width": 713,
+        "Height": 15
+      },
+      "RecognizedText": "of America (GAAS) applicable to reviews of interim financial information. A review of interim financial\n\n",
+      "Confidence": 94.341934,
+      "SourceOrder": 23,
+      "CropSha256": "fb7bf3bc60958c20c4c907e649f5cbfbbb3496303f8f2422800c5cffa7f96a37"
+    },
+    {
+      "RegionIndex": 24,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 620,
+        "Right": 719,
+        "Bottom": 635,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "information consists principally of applying analytical procedures and making inquiries of persons\n\n",
+      "Confidence": 94.91032,
+      "SourceOrder": 24,
+      "CropSha256": "d1de609dd269fb41015bdb291a7710442ec2a0f886b09803f096a9c3a1e14e37"
+    },
+    {
+      "RegionIndex": 25,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 640,
+        "Right": 719,
+        "Bottom": 655,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "responsible for financial and accounting matters. A review of interim financial information is substantially\n\n",
+      "Confidence": 95.088486,
+      "SourceOrder": 25,
+      "CropSha256": "341a65c2f9ab3e6562679d433343c72983022d5f9f0877c4c50f9eed3811886e"
+    },
+    {
+      "RegionIndex": 26,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 660,
+        "Right": 719,
+        "Bottom": 675,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "less in scope than an audit conducted in accordance with GAAS, the objective of which is an expression of\n\n",
+      "Confidence": 94.72492,
+      "SourceOrder": 26,
+      "CropSha256": "b4c66683ac10267bcb4367cdea7325d2a84931ba90b2dbe0701a7e3359bf310b"
+    },
+    {
+      "RegionIndex": 27,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 681,
+        "Right": 718,
+        "Bottom": 696,
+        "Width": 713,
+        "Height": 15
+      },
+      "RecognizedText": "an opinion regarding the financial information as a whole, and accordingly, we do not express such an\n\n",
+      "Confidence": 93.50894,
+      "SourceOrder": 27,
+      "CropSha256": "b4de6b56c4b7bf88e0657fd9405543ee3a34b8e369ff7ce4728f9dc71050b267"
+    },
+    {
+      "RegionIndex": 28,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 701,
+        "Right": 718,
+        "Bottom": 716,
+        "Width": 713,
+        "Height": 15
+      },
+      "RecognizedText": "opinion. We are required to be independent of IBRD and to meet our other ethical responsibilities in\n\n",
+      "Confidence": 96.48597,
+      "SourceOrder": 28,
+      "CropSha256": "6997a1680b9ba25b1dda461c2ca331e8eaf8f8c4f403cd5a962541a788056961"
+    },
+    {
+      "RegionIndex": 29,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 722,
+        "Right": 719,
+        "Bottom": 737,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "accordance with the relevant ethical requirements relating to our review. We believe that the results of\n\n",
+      "Confidence": 96.629036,
+      "SourceOrder": 29,
+      "CropSha256": "f7a28a27c9b83872038273f400414481a3ae5525058fd1a0743f11ed74760658"
+    },
+    {
+      "RegionIndex": 30,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 4,
+        "Top": 743,
+        "Right": 468,
+        "Bottom": 758,
+        "Width": 464,
+        "Height": 15
+      },
+      "RecognizedText": "the review procedures provide a reasonable basis for our conclusion.\n\n",
+      "Confidence": 96.35998,
+      "SourceOrder": 30,
+      "CropSha256": "7338c0cfb617d86c993925579319fe1b3b8141aded613528c2d37032d3b5f28b"
+    },
+    {
+      "RegionIndex": 31,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 90,
+        "Top": 779,
+        "Right": 93,
+        "Bottom": 780,
+        "Width": 3,
+        "Height": 1
+      },
+      "RecognizedText": "7\n\n",
+      "Confidence": 15.992424,
+      "SourceOrder": 31,
+      "CropSha256": "6a5b88ca7b253ca36d47b065df53c4d5d3102f356c0cf379aee1b6da8dc41eff"
+    },
+    {
+      "RegionIndex": 32,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 112,
+        "Top": 778,
+        "Right": 127,
+        "Bottom": 790,
+        "Width": 15,
+        "Height": 12
+      },
+      "RecognizedText": "of\n\n",
+      "Confidence": 95.849205,
+      "SourceOrder": 32,
+      "CropSha256": "6f962d0120c1f4a92fb5bce981c7cf4a3018595ebdf8e5ee75f4ae7e81a654a8"
+    },
+    {
+      "RegionIndex": 33,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 225,
+        "Top": 778,
+        "Right": 386,
+        "Bottom": 790,
+        "Width": 161,
+        "Height": 12
+      },
+      "RecognizedText": "for the Interim Financial\n\n",
+      "Confidence": 96.742325,
+      "SourceOrder": 33,
+      "CropSha256": "fd21e85623ac0c0dc271ee5addade1f5dcac4f5e6c15cf01c31ee0d9049f4d67"
+    },
+    {
+      "RegionIndex": 34,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 101,
+        "Top": 821,
+        "Right": 109,
+        "Bottom": 829,
+        "Width": 8,
+        "Height": 8
+      },
+      "RecognizedText": "is\n\n",
+      "Confidence": 91.15538,
+      "SourceOrder": 34,
+      "CropSha256": "067d15ad2b5e3343c2e59da6b8e1d316a0440296a84cf0d64623a0614aec62c9"
+    },
+    {
+      "RegionIndex": 35,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 196,
+        "Top": 817,
+        "Right": 242,
+        "Bottom": 829,
+        "Width": 46,
+        "Height": 12
+      },
+      "RecognizedText": "for the\n\n",
+      "Confidence": 96.70841,
+      "SourceOrder": 35,
+      "CropSha256": "91aceb79f59c1b54b3f8099d19de8e8c4db3a329f64ba46a4b7e5e83eb07a21b"
+    },
+    {
+      "RegionIndex": 36,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 332,
+        "Top": 817,
+        "Right": 384,
+        "Bottom": 829,
+        "Width": 52,
+        "Height": 12
+      },
+      "RecognizedText": "and fair\n\n",
+      "Confidence": 94.02597,
+      "SourceOrder": 36,
+      "CropSha256": "6683eec2836893971b9660b9c8532fd18d62557e03a0a8ba8a33918368d40d2f"
+    },
+    {
+      "RegionIndex": 37,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 480,
+        "Top": 817,
+        "Right": 718,
+        "Bottom": 829,
+        "Width": 238,
+        "Height": 12
+      },
+      "RecognizedText": "of the interim financial information\n\n",
+      "Confidence": 95.81524,
+      "SourceOrder": 37,
+      "CropSha256": "ed83b5e5570d72a1e648cbab69d988310c71562bcce59a2aed693e69982a3861"
+    },
+    {
+      "RegionIndex": 38,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 838,
+        "Right": 718,
+        "Bottom": 853,
+        "Width": 713,
+        "Height": 15
+      },
+      "RecognizedText": "in accordance with accounting principles generally accepted in the United States of America and for the\n\n",
+      "Confidence": 95.41252,
+      "SourceOrder": 38,
+      "CropSha256": "759de0335cdcd2fcb9ef23079cc2c64eb1bbfcd80e00ef6ea8503d579c89238c"
+    },
+    {
+      "RegionIndex": 39,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 858,
+        "Right": 719,
+        "Bottom": 873,
+        "Width": 714,
+        "Height": 15
+      },
+      "RecognizedText": "design, implementation, and maintenance of internal control relevant to the preparation and fair\n\n",
+      "Confidence": 94.945,
+      "SourceOrder": 39,
+      "CropSha256": "e3dc435891a372016dc64997503c17983f3ce7a132cc421d1577a7a8a6772965"
+    },
+    {
+      "RegionIndex": 40,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 879,
+        "Right": 718,
+        "Bottom": 894,
+        "Width": 713,
+        "Height": 15
+      },
+      "RecognizedText": "presentation of interim financial information that is free from material misstatement, whether due to fraud\n\n",
+      "Confidence": 95.73292,
+      "SourceOrder": 40,
+      "CropSha256": "823321a274ab112f939403fc1285b8f1b2b3b19a835c9cb9d39870750e9e5bfb"
+    },
+    {
+      "RegionIndex": 41,
+      "Kind": "LINE",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 903,
+        "Right": 60,
+        "Bottom": 911,
+        "Width": 55,
+        "Height": 8
+      },
+      "RecognizedText": "or error.\n",
+      "Confidence": 84.582664,
+      "SourceOrder": 41,
+      "CropSha256": "2c518ed837c5b13f5ee81ffe6f9be48640772752463f819842deb11216aa4bdd"
+    },
+    {
+      "RegionIndex": 0,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 620,
+        "Top": 10,
+        "Right": 660,
+        "Bottom": 19,
+        "Width": 40,
+        "Height": 9
+      },
+      "RecognizedText": "Deloitte",
+      "Confidence": 93.301346,
+      "SourceOrder": 0,
+      "CropSha256": "3deee2833de17ca7d1c68fe8b4dd73cde06097acf5fbdeb902618dc50925a326"
+    },
+    {
+      "RegionIndex": 1,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 663,
+        "Top": 11,
+        "Right": 671,
+        "Bottom": 19,
+        "Width": 8,
+        "Height": 8
+      },
+      "RecognizedText": "\u0026",
+      "Confidence": 92.79948,
+      "SourceOrder": 1,
+      "CropSha256": "95fc89ec5aea78d9a7b810e26d200f747d96250e688e149062351af60066e904"
+    },
+    {
+      "RegionIndex": 2,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 674,
+        "Top": 11,
+        "Right": 711,
+        "Bottom": 19,
+        "Width": 37,
+        "Height": 8
+      },
+      "RecognizedText": "Touche",
+      "Confidence": 96.49687,
+      "SourceOrder": 2,
+      "CropSha256": "9e98b06d038e1840ff925e8936f0961f671d400f3a9776cde3234546af270ace"
+    },
+    {
+      "RegionIndex": 3,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 715,
+        "Top": 11,
+        "Right": 731,
+        "Bottom": 19,
+        "Width": 16,
+        "Height": 8
+      },
+      "RecognizedText": "LIP",
+      "Confidence": 81.00703,
+      "SourceOrder": 3,
+      "CropSha256": "20d7a2188022792328f3167e22ac6ba34a679f176c5f2125d813fe58d27db257"
+    },
+    {
+      "RegionIndex": 4,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 620,
+        "Top": 26,
+        "Right": 644,
+        "Bottom": 34,
+        "Width": 24,
+        "Height": 8
+      },
+      "RecognizedText": "7900",
+      "Confidence": 78.32018,
+      "SourceOrder": 4,
+      "CropSha256": "a7bfe816875296e9a299d7d33ef81897b0bfe157454a1fcfad169e545353c4b8"
+    },
+    {
+      "RegionIndex": 5,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 647,
+        "Top": 26,
+        "Right": 680,
+        "Bottom": 36,
+        "Width": 33,
+        "Height": 10
+      },
+      "RecognizedText": "Tysons",
+      "Confidence": 96.55245,
+      "SourceOrder": 5,
+      "CropSha256": "73259cd9302daa81a0dd11c32b6581d4035d7265233c184ee4f309f8356bf7de"
+    },
+    {
+      "RegionIndex": 6,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 684,
+        "Top": 26,
+        "Right": 704,
+        "Bottom": 34,
+        "Width": 20,
+        "Height": 8
+      },
+      "RecognizedText": "One",
+      "Confidence": 86.23357,
+      "SourceOrder": 6,
+      "CropSha256": "7131db23d452b92fd724acabcb84ec97133a017b633291e40bf88e03d6ab31e5"
+    },
+    {
+      "RegionIndex": 7,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 708,
+        "Top": 26,
+        "Right": 733,
+        "Bottom": 34,
+        "Width": 25,
+        "Height": 8
+      },
+      "RecognizedText": "Place",
+      "Confidence": 86.23357,
+      "SourceOrder": 7,
+      "CropSha256": "bb380ef986669e51d8da22a1e154fb1ee013332acb83b3bfa861f2a330b40ecb"
+    },
+    {
+      "RegionIndex": 8,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 3,
+        "Top": 27,
+        "Right": 230,
+        "Bottom": 71,
+        "Width": 227,
+        "Height": 44
+      },
+      "RecognizedText": "Deloitte.",
+      "Confidence": 95.78206,
+      "SourceOrder": 8,
+      "CropSha256": "f9d66125118b4dd7a124635899e22f91dcd05a6e2da819a4fe6613a44238799c"
+    },
+    {
+      "RegionIndex": 9,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 620,
+        "Top": 41,
+        "Right": 665,
+        "Bottom": 78,
+        "Width": 45,
+        "Height": 37
+      },
+      "RecognizedText": "ten",
+      "Confidence": 48.888664,
+      "SourceOrder": 9,
+      "CropSha256": "ca4d1db1732b0fc7f1a90a7704e1ee3c16a749cb5c6171a225e7a9328e7be778"
+    },
+    {
+      "RegionIndex": 10,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 665,
+        "Top": 56,
+        "Right": 712,
+        "Bottom": 64,
+        "Width": 47,
+        "Height": 8
+      },
+      "RecognizedText": "va22102",
+      "Confidence": 36.074486,
+      "SourceOrder": 10,
+      "CropSha256": "0f3c334b9f0f49887eaa2184da61a6db7fe606779a159ebfefdbe5f21c3a79fe"
+    },
+    {
+      "RegionIndex": 11,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 619,
+        "Top": 85,
+        "Right": 633,
+        "Bottom": 93,
+        "Width": 14,
+        "Height": 8
+      },
+      "RecognizedText": "Tet",
+      "Confidence": 51.405205,
+      "SourceOrder": 11,
+      "CropSha256": "53bd2e7728526a392e42fe660d14e694074ee1c2fc5cff070a9fd25eea8c2c74"
+    },
+    {
+      "RegionIndex": 12,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 646,
+        "Top": 85,
+        "Right": 679,
+        "Bottom": 93,
+        "Width": 33,
+        "Height": 8
+      },
+      "RecognizedText": "\u002B1703",
+      "Confidence": 72.2249,
+      "SourceOrder": 12,
+      "CropSha256": "d3873ba16687ab2481c92a1e3f428bbf720e514c15daa79bdf6f8b5c339ef719"
+    },
+    {
+      "RegionIndex": 13,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 683,
+        "Top": 85,
+        "Right": 700,
+        "Bottom": 93,
+        "Width": 17,
+        "Height": 8
+      },
+      "RecognizedText": "251",
+      "Confidence": 72.2249,
+      "SourceOrder": 13,
+      "CropSha256": "8c8595920a8bad0a2e0991d617e85b43b998e9ca8d74dd3c929469f73f43aaff"
+    },
+    {
+      "RegionIndex": 14,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 705,
+        "Top": 85,
+        "Right": 728,
+        "Bottom": 93,
+        "Width": 23,
+        "Height": 8
+      },
+      "RecognizedText": "1000",
+      "Confidence": 93.582954,
+      "SourceOrder": 14,
+      "CropSha256": "012f00a89cd65f630d58da2ddc3c3d07c887c736e3ce77358f460f4b89e5f5c9"
+    },
+    {
+      "RegionIndex": 15,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 620,
+        "Top": 100,
+        "Right": 636,
+        "Bottom": 108,
+        "Width": 16,
+        "Height": 8
+      },
+      "RecognizedText": "Fax:",
+      "Confidence": 92.363976,
+      "SourceOrder": 15,
+      "CropSha256": "d67b5c15e50835afa8ea0fc20d5023d2230fb123a229727c1f746f6d87088dfb"
+    },
+    {
+      "RegionIndex": 16,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 645,
+        "Top": 100,
+        "Right": 678,
+        "Bottom": 108,
+        "Width": 33,
+        "Height": 8
+      },
+      "RecognizedText": "\u002B1703",
+      "Confidence": 78.50472,
+      "SourceOrder": 16,
+      "CropSha256": "75fe5e2a78cbeee7cb0ccbb23dacf319dd406f095dcdf2b7d51c38ee30970ee8"
+    },
+    {
+      "RegionIndex": 17,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 682,
+        "Top": 100,
+        "Right": 699,
+        "Bottom": 108,
+        "Width": 17,
+        "Height": 8
+      },
+      "RecognizedText": "251",
+      "Confidence": 77.208244,
+      "SourceOrder": 17,
+      "CropSha256": "2f24fd418a03487bcd411b6bd42698d5da1839b7b639f1f44ac338776c9e667e"
+    },
+    {
+      "RegionIndex": 18,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 703,
+        "Top": 100,
+        "Right": 727,
+        "Bottom": 108,
+        "Width": 24,
+        "Height": 8
+      },
+      "RecognizedText": "3400",
+      "Confidence": 77.208244,
+      "SourceOrder": 18,
+      "CropSha256": "45ef4ecc954af7c7bcfc30263913d4d24d3c1dabfaa42f842c38ba8695eda454"
+    },
+    {
+      "RegionIndex": 19,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 620,
+        "Top": 115,
+        "Right": 711,
+        "Bottom": 123,
+        "Width": 91,
+        "Height": 8
+      },
+      "RecognizedText": "wwwdeloitte.com",
+      "Confidence": 34.39653,
+      "SourceOrder": 19,
+      "CropSha256": "2c0954dadd8cc0b4d669c981ed7cb7d15e5a91abe247977cb745ed8aacf135b1"
+    },
+    {
+      "RegionIndex": 20,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 217,
+        "Top": 191,
+        "Right": 314,
+        "Bottom": 202,
+        "Width": 97,
+        "Height": 11
+      },
+      "RecognizedText": "INDEPENDENT",
+      "Confidence": 96.94903,
+      "SourceOrder": 20,
+      "CropSha256": "a13fd06147df4c2c43d6bdd7ba4b85644221c14000010f912973cc51daff5520"
+    },
+    {
+      "RegionIndex": 21,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 318,
+        "Top": 190,
+        "Right": 392,
+        "Bottom": 202,
+        "Width": 74,
+        "Height": 12
+      },
+      "RecognizedText": "AUDITOR\u0027S",
+      "Confidence": 29.338112,
+      "SourceOrder": 21,
+      "CropSha256": "c80962b3c3ca752643152079c90dc587af932aaf0eeae86382e22f8af328537b"
+    },
+    {
+      "RegionIndex": 22,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 397,
+        "Top": 191,
+        "Right": 449,
+        "Bottom": 202,
+        "Width": 52,
+        "Height": 11
+      },
+      "RecognizedText": "REVIEW",
+      "Confidence": 96.92726,
+      "SourceOrder": 22,
+      "CropSha256": "c5d0e327e2ee0af30dde06e5e07d90827e84c0cecb436b17e78906c2ccb079d8"
+    },
+    {
+      "RegionIndex": 23,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 455,
+        "Top": 191,
+        "Right": 507,
+        "Bottom": 202,
+        "Width": 52,
+        "Height": 11
+      },
+      "RecognizedText": "REPORT",
+      "Confidence": 96.837875,
+      "SourceOrder": 23,
+      "CropSha256": "cf41556286da8ecb63b4211a3955c7d71a00416783ce845a98736ce7f1932ee4"
+    },
+    {
+      "RegionIndex": 24,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 226,
+        "Right": 68,
+        "Bottom": 238,
+        "Width": 63,
+        "Height": 12
+      },
+      "RecognizedText": "President",
+      "Confidence": 96.93694,
+      "SourceOrder": 24,
+      "CropSha256": "f2056e97b1da5daca7d6b9f63caef4f99ae8ee872eac22f3774ad50930eaeaa2"
+    },
+    {
+      "RegionIndex": 25,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 73,
+        "Top": 226,
+        "Right": 96,
+        "Bottom": 238,
+        "Width": 23,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.99069,
+      "SourceOrder": 25,
+      "CropSha256": "3a5d09b4fe254961c2385fee9d4b2ea068e9d3a29e42c104bb50222e0a286e72"
+    },
+    {
+      "RegionIndex": 26,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 103,
+        "Top": 226,
+        "Right": 140,
+        "Bottom": 238,
+        "Width": 37,
+        "Height": 12
+      },
+      "RecognizedText": "Board",
+      "Confidence": 96.9864,
+      "SourceOrder": 26,
+      "CropSha256": "666e7386a8ecc471ed82b59ae5d4aa4e503bf3a6c3ffcc716c93e687d28dcbc0"
+    },
+    {
+      "RegionIndex": 27,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 146,
+        "Top": 226,
+        "Right": 159,
+        "Bottom": 238,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.98025,
+      "SourceOrder": 27,
+      "CropSha256": "ef5555d0a302f55e2ea4eea84619f04c507673dac449642b56441b9b1f9628f9"
+    },
+    {
+      "RegionIndex": 28,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 164,
+        "Top": 227,
+        "Right": 227,
+        "Bottom": 238,
+        "Width": 63,
+        "Height": 11
+      },
+      "RecognizedText": "Executive",
+      "Confidence": 96.49266,
+      "SourceOrder": 28,
+      "CropSha256": "2cea470e03ff25f515542efe32cb5da2622dcadbf7a3d327fcea8c2e01fb67c4"
+    },
+    {
+      "RegionIndex": 29,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 232,
+        "Top": 227,
+        "Right": 292,
+        "Bottom": 238,
+        "Width": 60,
+        "Height": 11
+      },
+      "RecognizedText": "Directors",
+      "Confidence": 95.822,
+      "SourceOrder": 29,
+      "CropSha256": "ed54efc94304973187652fec828dfe5b10d10502bb6b6cb1a9aafbdd60b8cad5"
+    },
+    {
+      "RegionIndex": 30,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 253,
+        "Right": 91,
+        "Bottom": 259,
+        "Width": 86,
+        "Height": 6
+      },
+      "RecognizedText": "International",
+      "Confidence": 96.00767,
+      "SourceOrder": 30,
+      "CropSha256": "c12b718587df6ed1ce168efebeeab331bbda0b2f7605d548bf8f01e7894b61e9"
+    },
+    {
+      "RegionIndex": 31,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 97,
+        "Top": 243,
+        "Right": 125,
+        "Bottom": 267,
+        "Width": 28,
+        "Height": 24
+      },
+      "RecognizedText": "Bank",
+      "Confidence": 96.96167,
+      "SourceOrder": 31,
+      "CropSha256": "5933431a6b64884b1d2dfa8dc6e03e943152971fc7cff26ff22117abb349286d"
+    },
+    {
+      "RegionIndex": 32,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 131,
+        "Top": 243,
+        "Right": 149,
+        "Bottom": 267,
+        "Width": 18,
+        "Height": 24
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.17614,
+      "SourceOrder": 32,
+      "CropSha256": "e38ab33d7ed8a411d23aa8b98975bf498829dd828a3a23a26052837c8e7d87ec"
+    },
+    {
+      "RegionIndex": 33,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 155,
+        "Top": 243,
+        "Right": 167,
+        "Bottom": 267,
+        "Width": 12,
+        "Height": 24
+      },
+      "RecognizedText": "Ri",
+      "Confidence": 64.94292,
+      "SourceOrder": 33,
+      "CropSha256": "eba294612cba4fa87ddb4896682811eb1c68a14b229fb7967a8c216e3fb992e7"
+    },
+    {
+      "RegionIndex": 34,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 190,
+        "Top": 253,
+        "Right": 239,
+        "Bottom": 259,
+        "Width": 49,
+        "Height": 6
+      },
+      "RecognizedText": "instruction",
+      "Confidence": 31.175491,
+      "SourceOrder": 34,
+      "CropSha256": "7cc21a19c2f2e8156d4cf75d940a1d88704cfa16a92e0f3e6d8fd78bc8e6b23f"
+    },
+    {
+      "RegionIndex": 35,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 250,
+        "Top": 247,
+        "Right": 300,
+        "Bottom": 259,
+        "Width": 50,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 93.29869,
+      "SourceOrder": 35,
+      "CropSha256": "f49f1a385a8a217d286effc83e8bf662845f14279bd2ea55c61f9d2af0ec8449"
+    },
+    {
+      "RegionIndex": 36,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 291,
+        "Top": 240,
+        "Right": 303,
+        "Bottom": 268,
+        "Width": 12,
+        "Height": 28
+      },
+      "RecognizedText": "D",
+      "Confidence": 77.025406,
+      "SourceOrder": 36,
+      "CropSha256": "497b780b50100424b437d8ec04dab40674bc03a820695ea0d41afc3da1da5ec4"
+    },
+    {
+      "RegionIndex": 37,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 283,
+        "Right": 52,
+        "Bottom": 295,
+        "Width": 47,
+        "Height": 12
+      },
+      "RecognizedText": "Results",
+      "Confidence": 96.90836,
+      "SourceOrder": 37,
+      "CropSha256": "242a1e23636d93fa8ae313c7f7795bb99815a2cb05d8842c686b559567cc91d0"
+    },
+    {
+      "RegionIndex": 38,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 57,
+        "Top": 283,
+        "Right": 71,
+        "Bottom": 295,
+        "Width": 14,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.92866,
+      "SourceOrder": 38,
+      "CropSha256": "5c543e1b8ec55be7edaeedffd4a6fe9b1adaef8a5e949f0b083abdb885d3c11f"
+    },
+    {
+      "RegionIndex": 39,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 75,
+        "Top": 284,
+        "Right": 122,
+        "Bottom": 295,
+        "Width": 47,
+        "Height": 11
+      },
+      "RecognizedText": "Review",
+      "Confidence": 96.57839,
+      "SourceOrder": 39,
+      "CropSha256": "fd1164dd3ac682ed6aa4086aabb8a9f74b21f2bc8035b4f723c53fcbc82bec75"
+    },
+    {
+      "RegionIndex": 40,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 126,
+        "Top": 283,
+        "Right": 140,
+        "Bottom": 295,
+        "Width": 14,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 95.532074,
+      "SourceOrder": 40,
+      "CropSha256": "fef4effa1c0132240e6e19b5c1d1a6682c1d806d097a99a510537e7b27ef91a5"
+    },
+    {
+      "RegionIndex": 41,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 145,
+        "Top": 284,
+        "Right": 192,
+        "Bottom": 295,
+        "Width": 47,
+        "Height": 11
+      },
+      "RecognizedText": "Interim",
+      "Confidence": 96.62624,
+      "SourceOrder": 41,
+      "CropSha256": "a63ca013ee594dd162827b474d16eb320f8f18378443282794fd3352cc937d06"
+    },
+    {
+      "RegionIndex": 42,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 198,
+        "Top": 283,
+        "Right": 255,
+        "Bottom": 295,
+        "Width": 57,
+        "Height": 12
+      },
+      "RecognizedText": "Financial",
+      "Confidence": 95.9618,
+      "SourceOrder": 42,
+      "CropSha256": "b62ff6400ca8f8f46151ec4390f99cffebbcd2dec522f00ec57345eac8d7e59d"
+    },
+    {
+      "RegionIndex": 43,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 261,
+        "Top": 283,
+        "Right": 340,
+        "Bottom": 295,
+        "Width": 79,
+        "Height": 12
+      },
+      "RecognizedText": "Information",
+      "Confidence": 95.55464,
+      "SourceOrder": 43,
+      "CropSha256": "a1adcace64116c44c7d78b8f191c1fb3448a0c3bf772090da3715ee88c1bcf47"
+    },
+    {
+      "RegionIndex": 44,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 322,
+        "Right": 27,
+        "Bottom": 333,
+        "Width": 22,
+        "Height": 11
+      },
+      "RecognizedText": "We",
+      "Confidence": 96.14043,
+      "SourceOrder": 44,
+      "CropSha256": "754bad22ddf72bd620ea9c741a06078679a47d2922727379c6a62e46eb3cb189"
+    },
+    {
+      "RegionIndex": 45,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 40,
+        "Top": 321,
+        "Right": 70,
+        "Bottom": 333,
+        "Width": 30,
+        "Height": 12
+      },
+      "RecognizedText": "have",
+      "Confidence": 96.264015,
+      "SourceOrder": 45,
+      "CropSha256": "e39a732040ea5e69bb7bbbaf5b64315135c9d6976c956c35947c0d736322e4fd"
+    },
+    {
+      "RegionIndex": 46,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 83,
+        "Top": 321,
+        "Right": 144,
+        "Bottom": 333,
+        "Width": 61,
+        "Height": 12
+      },
+      "RecognizedText": "reviewed",
+      "Confidence": 96.53559,
+      "SourceOrder": 46,
+      "CropSha256": "03c4c7231783cd0e6de8efd0806a9fa953e0731582acafb1e3a327d25ff4c115"
+    },
+    {
+      "RegionIndex": 47,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 156,
+        "Top": 321,
+        "Right": 178,
+        "Bottom": 333,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.53559,
+      "SourceOrder": 47,
+      "CropSha256": "43206167f403c171fc6a66e4a90cf2c65cdfd5001db2ef8d27654f8d8c5c8fd3"
+    },
+    {
+      "RegionIndex": 48,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 191,
+        "Top": 325,
+        "Right": 287,
+        "Bottom": 336,
+        "Width": 96,
+        "Height": 11
+      },
+      "RecognizedText": "accompanying",
+      "Confidence": 96.58806,
+      "SourceOrder": 48,
+      "CropSha256": "41172c1c9edd32d19fc1f60950a2e45ab4704490c2e20c7224ce388d77dd257a"
+    },
+    {
+      "RegionIndex": 49,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 300,
+        "Top": 321,
+        "Right": 372,
+        "Bottom": 333,
+        "Width": 72,
+        "Height": 12
+      },
+      "RecognizedText": "condensed",
+      "Confidence": 96.698715,
+      "SourceOrder": 49,
+      "CropSha256": "c4be2429bea10101ba0edf4532ebafeaeaac2c17245825710d3c6584f8534909"
+    },
+    {
+      "RegionIndex": 50,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 385,
+        "Top": 321,
+        "Right": 436,
+        "Bottom": 333,
+        "Width": 51,
+        "Height": 12
+      },
+      "RecognizedText": "balance",
+      "Confidence": 96.736046,
+      "SourceOrder": 50,
+      "CropSha256": "82c36fbd90f65da239eb0d776a3086ba830af7365ec0a1076daac168ab55a254"
+    },
+    {
+      "RegionIndex": 51,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 449,
+        "Top": 321,
+        "Right": 485,
+        "Bottom": 333,
+        "Width": 36,
+        "Height": 12
+      },
+      "RecognizedText": "sheet",
+      "Confidence": 94.79508,
+      "SourceOrder": 51,
+      "CropSha256": "f6ea9475f5712e9a6e0719e5833291c0c2dec73cc00cda7ecb0a8d968aa49ca4"
+    },
+    {
+      "RegionIndex": 52,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 498,
+        "Top": 321,
+        "Right": 511,
+        "Bottom": 333,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 94.79508,
+      "SourceOrder": 52,
+      "CropSha256": "5e2a222143ed35c1dfda0df2263689dec4d144353a7c2ed5d843b4a5887a133d"
+    },
+    {
+      "RegionIndex": 53,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 523,
+        "Top": 321,
+        "Right": 544,
+        "Bottom": 333,
+        "Width": 21,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.9262,
+      "SourceOrder": 53,
+      "CropSha256": "8ecd664eb5a5fa5c637a7b87745ee8a64321381e86ab5deeeec46b3227bffa5b"
+    },
+    {
+      "RegionIndex": 54,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 558,
+        "Top": 321,
+        "Right": 643,
+        "Bottom": 333,
+        "Width": 85,
+        "Height": 12
+      },
+      "RecognizedText": "International",
+      "Confidence": 96.29174,
+      "SourceOrder": 54,
+      "CropSha256": "c9bd9ca5bbbb63b5b74da280926cba87cd3f382acbf173683c5bcba3b6128320"
+    },
+    {
+      "RegionIndex": 55,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 657,
+        "Top": 321,
+        "Right": 688,
+        "Bottom": 333,
+        "Width": 31,
+        "Height": 12
+      },
+      "RecognizedText": "Bank",
+      "Confidence": 96.73842,
+      "SourceOrder": 55,
+      "CropSha256": "f6808a8346f102218a2e221bf3cd22b9d2008ded31a812c2360a86ed30516af2"
+    },
+    {
+      "RegionIndex": 56,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 700,
+        "Top": 321,
+        "Right": 719,
+        "Bottom": 333,
+        "Width": 19,
+        "Height": 12
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.73842,
+      "SourceOrder": 56,
+      "CropSha256": "a0e448ec67dff468b4994cfe156d93ce529ffff60848a0464870249164d5bcdf"
+    },
+    {
+      "RegionIndex": 57,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 343,
+        "Right": 105,
+        "Bottom": 354,
+        "Width": 100,
+        "Height": 11
+      },
+      "RecognizedText": "Reconstruction",
+      "Confidence": 94.00849,
+      "SourceOrder": 57,
+      "CropSha256": "3a4a32185b17f890b601b6bae563c49ed3cd45a02c254595c424a439d58b5506"
+    },
+    {
+      "RegionIndex": 58,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 111,
+        "Top": 342,
+        "Right": 134,
+        "Bottom": 354,
+        "Width": 23,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.60525,
+      "SourceOrder": 58,
+      "CropSha256": "8b8d074144341be9f85ecbd98060d0f6d79b9916ff6a346a780629e609f6c6af"
+    },
+    {
+      "RegionIndex": 59,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 140,
+        "Top": 342,
+        "Right": 230,
+        "Bottom": 357,
+        "Width": 90,
+        "Height": 15
+      },
+      "RecognizedText": "Development",
+      "Confidence": 96.28522,
+      "SourceOrder": 59,
+      "CropSha256": "b663dc7aecbe089468e8127b4a5f0a26837be487a12ac4ceb59e30db4390f6b7"
+    },
+    {
+      "RegionIndex": 60,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 235,
+        "Top": 342,
+        "Right": 289,
+        "Bottom": 357,
+        "Width": 54,
+        "Height": 15
+      },
+      "RecognizedText": "(\u201CIBRD\u201D)",
+      "Confidence": 78.4351,
+      "SourceOrder": 60,
+      "CropSha256": "7ccc743b631f562399a0ba9af5bf44e005177d516b6ca460cf200cb4463a2dc7"
+    },
+    {
+      "RegionIndex": 61,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 294,
+        "Top": 346,
+        "Right": 307,
+        "Bottom": 354,
+        "Width": 13,
+        "Height": 8
+      },
+      "RecognizedText": "as",
+      "Confidence": 89.190445,
+      "SourceOrder": 61,
+      "CropSha256": "49987de1957c25da31cc8ee41f1841f5a88abda3bb2b2d05d085b481fdd2876b"
+    },
+    {
+      "RegionIndex": 62,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 312,
+        "Top": 342,
+        "Right": 325,
+        "Bottom": 354,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 93.10011,
+      "SourceOrder": 62,
+      "CropSha256": "58553bcd9b72716c737cbc4e7f48b9ca92fb5695dae93c2ff105034926183711"
+    },
+    {
+      "RegionIndex": 63,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 329,
+        "Top": 342,
+        "Right": 371,
+        "Bottom": 354,
+        "Width": 42,
+        "Height": 12
+      },
+      "RecognizedText": "March",
+      "Confidence": 96.92265,
+      "SourceOrder": 63,
+      "CropSha256": "7cf658e25ee245a21511e57e87ed41d99ddf9dc8139fb9bb8078d03ee45020bc"
+    },
+    {
+      "RegionIndex": 64,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 376,
+        "Top": 343,
+        "Right": 395,
+        "Bottom": 356,
+        "Width": 19,
+        "Height": 13
+      },
+      "RecognizedText": "31,",
+      "Confidence": 96.81191,
+      "SourceOrder": 64,
+      "CropSha256": "7e9e7e2ef596dea083e1e3df918aa7b54352ef8700e855d61923bca6aafc614a"
+    },
+    {
+      "RegionIndex": 65,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 401,
+        "Top": 343,
+        "Right": 437,
+        "Bottom": 356,
+        "Width": 36,
+        "Height": 13
+      },
+      "RecognizedText": "2025,",
+      "Confidence": 96.830025,
+      "SourceOrder": 65,
+      "CropSha256": "25735659fa6fec64225461d80bc7d335466a24a0ae214da3b95a571fee7608fc"
+    },
+    {
+      "RegionIndex": 66,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 442,
+        "Top": 342,
+        "Right": 466,
+        "Bottom": 354,
+        "Width": 24,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.93515,
+      "SourceOrder": 66,
+      "CropSha256": "2233c6bd75cb3ae20d4f81cfe19d6cd91dadf4e68c6f4849a4de2715e1115840"
+    },
+    {
+      "RegionIndex": 67,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 471,
+        "Top": 342,
+        "Right": 492,
+        "Bottom": 354,
+        "Width": 21,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.89646,
+      "SourceOrder": 67,
+      "CropSha256": "9f7ceb1a46444bfe0d46755916bcca957c76ac6dd14a6c28391afd9abd0788a2"
+    },
+    {
+      "RegionIndex": 68,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 498,
+        "Top": 342,
+        "Right": 544,
+        "Bottom": 354,
+        "Width": 46,
+        "Height": 12
+      },
+      "RecognizedText": "related",
+      "Confidence": 96.88278,
+      "SourceOrder": 68,
+      "CropSha256": "53e550263bfc4ef5c5442df9dd53c438c68d173b0a4591b246a1bf20e19162f7"
+    },
+    {
+      "RegionIndex": 69,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 549,
+        "Top": 342,
+        "Right": 621,
+        "Bottom": 354,
+        "Width": 72,
+        "Height": 12
+      },
+      "RecognizedText": "condensed",
+      "Confidence": 96.56294,
+      "SourceOrder": 69,
+      "CropSha256": "e39a4633b0b850d63b323123cc31bff33f517bbd12aa2c06c62e35df96ce8202"
+    },
+    {
+      "RegionIndex": 70,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 626,
+        "Top": 344,
+        "Right": 701,
+        "Bottom": 354,
+        "Width": 75,
+        "Height": 10
+      },
+      "RecognizedText": "statements",
+      "Confidence": 96.661804,
+      "SourceOrder": 70,
+      "CropSha256": "eca31562d10880cabb5e0d569c405661fc99b3ace35ca5847d2ac3b6f57bd2b7"
+    },
+    {
+      "RegionIndex": 71,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 706,
+        "Top": 342,
+        "Right": 719,
+        "Bottom": 354,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.960625,
+      "SourceOrder": 71,
+      "CropSha256": "ca3caad06f10f41929daa4b5ad3763054284e4d8ad3c077fe78e5dcbadcbd38e"
+    },
+    {
+      "RegionIndex": 72,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 366,
+        "Right": 57,
+        "Bottom": 376,
+        "Width": 52,
+        "Height": 10
+      },
+      "RecognizedText": "income,",
+      "Confidence": 96.59333,
+      "SourceOrder": 72,
+      "CropSha256": "689195dba24b2f22a0d3ca019d2fab14ef907ce1e131629ffda5d87edd1c8bb4"
+    },
+    {
+      "RegionIndex": 73,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 63,
+        "Top": 362,
+        "Right": 87,
+        "Bottom": 374,
+        "Width": 24,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.37128,
+      "SourceOrder": 73,
+      "CropSha256": "b6d476eb5470ebf71ed6df590bf515d0823f476d0d382913177683701ad7897c"
+    },
+    {
+      "RegionIndex": 74,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 93,
+        "Top": 362,
+        "Right": 195,
+        "Bottom": 377,
+        "Width": 102,
+        "Height": 15
+      },
+      "RecognizedText": "comprehensive",
+      "Confidence": 96.37128,
+      "SourceOrder": 74,
+      "CropSha256": "641e40dca34ea5bd7c559e16ac87f10ab6d0443a03483d447f1250a39988acd9"
+    },
+    {
+      "RegionIndex": 75,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 201,
+        "Top": 366,
+        "Right": 249,
+        "Bottom": 374,
+        "Width": 48,
+        "Height": 8
+      },
+      "RecognizedText": "income",
+      "Confidence": 96.767525,
+      "SourceOrder": 75,
+      "CropSha256": "3663ebaab5ca907a62b1a1a84e585accba88ec4428a1f037493d0a1d1b5253d7"
+    },
+    {
+      "RegionIndex": 76,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 254,
+        "Top": 362,
+        "Right": 274,
+        "Bottom": 374,
+        "Width": 20,
+        "Height": 12
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.70816,
+      "SourceOrder": 76,
+      "CropSha256": "1a2045a73ccf08693f36b52e322a45b8587de20cc7a1012817c234519773d97f"
+    },
+    {
+      "RegionIndex": 77,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 278,
+        "Top": 362,
+        "Right": 300,
+        "Bottom": 374,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.32632,
+      "SourceOrder": 77,
+      "CropSha256": "80cf51412ff03ad9cb2834e4bd122d2a8863163b74224bf2224da511d82b033f"
+    },
+    {
+      "RegionIndex": 78,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 305,
+        "Top": 362,
+        "Right": 391,
+        "Bottom": 374,
+        "Width": 86,
+        "Height": 12
+      },
+      "RecognizedText": "three-month",
+      "Confidence": 93.50638,
+      "SourceOrder": 78,
+      "CropSha256": "561fe98575f2b2c5e6f23e88fc6c7400ed35ca621d8c163fe781818db4b4dd0b"
+    },
+    {
+      "RegionIndex": 79,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 397,
+        "Top": 362,
+        "Right": 420,
+        "Bottom": 374,
+        "Width": 23,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.9262,
+      "SourceOrder": 79,
+      "CropSha256": "c748c046966f8754c6665d856bce4ce477a989ec4cb3c62145ca3caef8ae5c08"
+    },
+    {
+      "RegionIndex": 80,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 427,
+        "Top": 362,
+        "Right": 504,
+        "Bottom": 374,
+        "Width": 77,
+        "Height": 12
+      },
+      "RecognizedText": "nine-month",
+      "Confidence": 96.76925,
+      "SourceOrder": 80,
+      "CropSha256": "eddc1196491b9c1c84abdbad30b73d62b36000d6fb2685af7740b0872db3a1d2"
+    },
+    {
+      "RegionIndex": 81,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 511,
+        "Top": 362,
+        "Right": 559,
+        "Bottom": 377,
+        "Width": 48,
+        "Height": 15
+      },
+      "RecognizedText": "periods",
+      "Confidence": 96.49433,
+      "SourceOrder": 81,
+      "CropSha256": "2a2592d7e07623db2006b7997c28dd3fa33e47e3a04feb0bb088e3a8cf1f279b"
+    },
+    {
+      "RegionIndex": 82,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 565,
+        "Top": 362,
+        "Right": 606,
+        "Bottom": 374,
+        "Width": 41,
+        "Height": 12
+      },
+      "RecognizedText": "ended",
+      "Confidence": 95.69071,
+      "SourceOrder": 82,
+      "CropSha256": "295226191ed5914e30c2a9d9c7ed6d69ba9b971fe0a7bedfc258278d5a8d0926"
+    },
+    {
+      "RegionIndex": 83,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 613,
+        "Top": 362,
+        "Right": 654,
+        "Bottom": 374,
+        "Width": 41,
+        "Height": 12
+      },
+      "RecognizedText": "March",
+      "Confidence": 96.75249,
+      "SourceOrder": 83,
+      "CropSha256": "6fca1b7e700c4a3c223aaad6bae3b6c6eff491ed6099601ad82716ad22d1bf09"
+    },
+    {
+      "RegionIndex": 84,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 660,
+        "Top": 363,
+        "Right": 679,
+        "Bottom": 376,
+        "Width": 19,
+        "Height": 13
+      },
+      "RecognizedText": "31,",
+      "Confidence": 93.32426,
+      "SourceOrder": 84,
+      "CropSha256": "cd8ea07617cc859551cb78206b6c6b7be0448abb5642ac32a412b05eabc74799"
+    },
+    {
+      "RegionIndex": 85,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 686,
+        "Top": 363,
+        "Right": 718,
+        "Bottom": 374,
+        "Width": 32,
+        "Height": 11
+      },
+      "RecognizedText": "2025",
+      "Confidence": 96.960396,
+      "SourceOrder": 85,
+      "CropSha256": "9c3de6571b038636c09cb372387c53649edacef32d983a8082902b62f039e9ce"
+    },
+    {
+      "RegionIndex": 86,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 383,
+        "Right": 28,
+        "Bottom": 395,
+        "Width": 23,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.66755,
+      "SourceOrder": 86,
+      "CropSha256": "ba89697ba80b0cf1d1b503a4afdb11e9c02d9486fac01001c8fd28accdaee5d6"
+    },
+    {
+      "RegionIndex": 87,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 36,
+        "Top": 384,
+        "Right": 72,
+        "Bottom": 397,
+        "Width": 36,
+        "Height": 13
+      },
+      "RecognizedText": "2024,",
+      "Confidence": 96.94562,
+      "SourceOrder": 87,
+      "CropSha256": "10bb408d30ccc302f60fcabd917b33b340703859404b2628eabae27a56defcdc"
+    },
+    {
+      "RegionIndex": 88,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 80,
+        "Top": 383,
+        "Right": 103,
+        "Bottom": 395,
+        "Width": 23,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.998055,
+      "SourceOrder": 88,
+      "CropSha256": "5a1cbbbf101615d3d069247fb427491c5c869aec74482a43ef604305d577a3a0"
+    },
+    {
+      "RegionIndex": 89,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 110,
+        "Top": 383,
+        "Right": 132,
+        "Bottom": 395,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.28168,
+      "SourceOrder": 89,
+      "CropSha256": "7f7a4ce736a200b408eed59c03a145bd413c3239a3a38c72c468bc571f3ed9fe"
+    },
+    {
+      "RegionIndex": 90,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 139,
+        "Top": 383,
+        "Right": 211,
+        "Bottom": 395,
+        "Width": 72,
+        "Height": 12
+      },
+      "RecognizedText": "condensed",
+      "Confidence": 97.006256,
+      "SourceOrder": 90,
+      "CropSha256": "15b04b155b6ef6f35bb853516e90176e495d3d2542c435c054fb78488bcd5a02"
+    },
+    {
+      "RegionIndex": 91,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 218,
+        "Top": 385,
+        "Right": 293,
+        "Bottom": 395,
+        "Width": 75,
+        "Height": 10
+      },
+      "RecognizedText": "statements",
+      "Confidence": 96.75449,
+      "SourceOrder": 91,
+      "CropSha256": "aa518b7e0a180e227634a5957418d623416f93931d45a15aac9519ebe4cbb2cb"
+    },
+    {
+      "RegionIndex": 92,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 300,
+        "Top": 383,
+        "Right": 313,
+        "Bottom": 395,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.992805,
+      "SourceOrder": 92,
+      "CropSha256": "b3eaf2b7ea121df62967272e5abcebf6e3bff7f848e74c327faee0c9317667d2"
+    },
+    {
+      "RegionIndex": 93,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 319,
+        "Top": 383,
+        "Right": 373,
+        "Bottom": 398,
+        "Width": 54,
+        "Height": 15
+      },
+      "RecognizedText": "changes",
+      "Confidence": 96.94726,
+      "SourceOrder": 93,
+      "CropSha256": "07cfe44144c61aae034bd6c83eb2d98226572be7b3bb1c140c184ab4dbe34e38"
+    },
+    {
+      "RegionIndex": 94,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 381,
+        "Top": 387,
+        "Right": 391,
+        "Bottom": 395,
+        "Width": 10,
+        "Height": 8
+      },
+      "RecognizedText": "in",
+      "Confidence": 96.301285,
+      "SourceOrder": 94,
+      "CropSha256": "5420b389bfe025fe87a3b93003bd88b013047c32867f07ef88cb80d576348f8f"
+    },
+    {
+      "RegionIndex": 95,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 399,
+        "Top": 383,
+        "Right": 453,
+        "Bottom": 395,
+        "Width": 54,
+        "Height": 12
+      },
+      "RecognizedText": "retained",
+      "Confidence": 96.71049,
+      "SourceOrder": 95,
+      "CropSha256": "edcec5c03e8f776df5f699b8dbced080fd8a24b8627d63aff8d9c74c7875b855"
+    },
+    {
+      "RegionIndex": 96,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 460,
+        "Top": 387,
+        "Right": 517,
+        "Bottom": 398,
+        "Width": 57,
+        "Height": 11
+      },
+      "RecognizedText": "earnings",
+      "Confidence": 96.71049,
+      "SourceOrder": 96,
+      "CropSha256": "6e7d934e44c445e8741f53d4b3ff68a050508a63773c259bb8dd20c8efc44f40"
+    },
+    {
+      "RegionIndex": 97,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 524,
+        "Top": 383,
+        "Right": 547,
+        "Bottom": 395,
+        "Width": 23,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.84533,
+      "SourceOrder": 97,
+      "CropSha256": "b6a41a5fd3dc6c4d84c9be19abf66cc79448a70af8e49b4410f05d3c46f2081d"
+    },
+    {
+      "RegionIndex": 98,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 555,
+        "Top": 383,
+        "Right": 583,
+        "Bottom": 395,
+        "Width": 28,
+        "Height": 12
+      },
+      "RecognizedText": "cash",
+      "Confidence": 96.84533,
+      "SourceOrder": 98,
+      "CropSha256": "4feb7813ac271b66dbeb4c0fe1ee0a839d039b86cc6ce959940744148e0a21a2"
+    },
+    {
+      "RegionIndex": 99,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 590,
+        "Top": 383,
+        "Right": 625,
+        "Bottom": 395,
+        "Width": 35,
+        "Height": 12
+      },
+      "RecognizedText": "flows",
+      "Confidence": 95.30902,
+      "SourceOrder": 99,
+      "CropSha256": "c9f7f64ee3a8cada224ef6face6126ca3f3a3cc025d07517ad5e9e3488d76579"
+    },
+    {
+      "RegionIndex": 100,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 631,
+        "Top": 383,
+        "Right": 651,
+        "Bottom": 395,
+        "Width": 20,
+        "Height": 12
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.98388,
+      "SourceOrder": 100,
+      "CropSha256": "c5052a0ed33b4f5fa5f59431ad48fe2feb5f5d05ef7f42d7029f4d13f5acfb25"
+    },
+    {
+      "RegionIndex": 101,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 656,
+        "Top": 383,
+        "Right": 678,
+        "Bottom": 395,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 93.3058,
+      "SourceOrder": 101,
+      "CropSha256": "e306a9f621d4d0c0612b3a057506d825ef9f56df503f8a7bc605df80a5f52750"
+    },
+    {
+      "RegionIndex": 102,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 685,
+        "Top": 387,
+        "Right": 719,
+        "Bottom": 395,
+        "Width": 34,
+        "Height": 8
+      },
+      "RecognizedText": "nine-",
+      "Confidence": 92.327286,
+      "SourceOrder": 102,
+      "CropSha256": "f68a27820b8602fb60d82dfe17df22eeee5533ad30dc68721fdde512ec00742e"
+    },
+    {
+      "RegionIndex": 103,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 403,
+        "Right": 48,
+        "Bottom": 415,
+        "Width": 43,
+        "Height": 12
+      },
+      "RecognizedText": "month",
+      "Confidence": 91.3906,
+      "SourceOrder": 103,
+      "CropSha256": "9396c9e3e06a11737e5750958c07e2921801fc650222f8491fcfc265de9d3d7a"
+    },
+    {
+      "RegionIndex": 104,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 56,
+        "Top": 403,
+        "Right": 105,
+        "Bottom": 418,
+        "Width": 49,
+        "Height": 15
+      },
+      "RecognizedText": "periods",
+      "Confidence": 96.203354,
+      "SourceOrder": 104,
+      "CropSha256": "e9489188db7798ab6546e1d5877a0b8160270064049ad07b8fa97715be767a27"
+    },
+    {
+      "RegionIndex": 105,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 112,
+        "Top": 403,
+        "Right": 153,
+        "Bottom": 415,
+        "Width": 41,
+        "Height": 12
+      },
+      "RecognizedText": "ended",
+      "Confidence": 96.63882,
+      "SourceOrder": 105,
+      "CropSha256": "5f7d2ee5c7bf403d1d48858451a3f2ad2647b6d62750c0110b316e24592c9eb5"
+    },
+    {
+      "RegionIndex": 106,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 161,
+        "Top": 403,
+        "Right": 203,
+        "Bottom": 415,
+        "Width": 42,
+        "Height": 12
+      },
+      "RecognizedText": "March",
+      "Confidence": 96.77658,
+      "SourceOrder": 106,
+      "CropSha256": "4c5b6a571684a6e22333f5621ed5108625ca82ae1d976110822272ea6a7d282d"
+    },
+    {
+      "RegionIndex": 107,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 211,
+        "Top": 404,
+        "Right": 230,
+        "Bottom": 417,
+        "Width": 19,
+        "Height": 13
+      },
+      "RecognizedText": "31,",
+      "Confidence": 92.41721,
+      "SourceOrder": 107,
+      "CropSha256": "c3df013ede31e4628b55822f07d58286f3e9380185c1c6ca880cc98335fdd92a"
+    },
+    {
+      "RegionIndex": 108,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 237,
+        "Top": 404,
+        "Right": 270,
+        "Bottom": 415,
+        "Width": 33,
+        "Height": 11
+      },
+      "RecognizedText": "2025",
+      "Confidence": 94.89723,
+      "SourceOrder": 108,
+      "CropSha256": "0b555e5721ecd74371f5f27a4d933e87b23335436efd6d526eb68bfc8ce1bcce"
+    },
+    {
+      "RegionIndex": 109,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 277,
+        "Top": 403,
+        "Right": 301,
+        "Bottom": 415,
+        "Width": 24,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 92.70904,
+      "SourceOrder": 109,
+      "CropSha256": "e84bcde5b342919d26522edd959dd75f2358f03551cc1f16be474d74047d6fcc"
+    },
+    {
+      "RegionIndex": 110,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 308,
+        "Top": 404,
+        "Right": 345,
+        "Bottom": 417,
+        "Width": 37,
+        "Height": 13
+      },
+      "RecognizedText": "2024,",
+      "Confidence": 96.89022,
+      "SourceOrder": 110,
+      "CropSha256": "9d6ad5bfbc2ad2fa8f689894d1e0d3e3c1e9d33f29b6bb85bff718666f853907"
+    },
+    {
+      "RegionIndex": 111,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 352,
+        "Top": 403,
+        "Right": 376,
+        "Bottom": 415,
+        "Width": 24,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.92315,
+      "SourceOrder": 111,
+      "CropSha256": "0e0c5275d097903110b96408481c2aac183a5e7fe19bfcd542a5ec99c2fa15e8"
+    },
+    {
+      "RegionIndex": 112,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 383,
+        "Top": 403,
+        "Right": 405,
+        "Bottom": 415,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.88294,
+      "SourceOrder": 112,
+      "CropSha256": "08da2fbeadb11e0d54c8c5c0da026c573f3f5a48a703bdcdd6774542e5ae99cf"
+    },
+    {
+      "RegionIndex": 113,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 413,
+        "Top": 403,
+        "Right": 458,
+        "Bottom": 415,
+        "Width": 45,
+        "Height": 12
+      },
+      "RecognizedText": "related",
+      "Confidence": 96.81487,
+      "SourceOrder": 113,
+      "CropSha256": "e2aa30ed0af1bbb1eecce44284065f106f61e3dd4ab9eeb8bb582799b2be123e"
+    },
+    {
+      "RegionIndex": 114,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 467,
+        "Top": 405,
+        "Right": 502,
+        "Bottom": 415,
+        "Width": 35,
+        "Height": 10
+      },
+      "RecognizedText": "notes",
+      "Confidence": 96.91251,
+      "SourceOrder": 114,
+      "CropSha256": "4d21933638fcd2937eb1a8ef1adeb4f5b6e8c56bf850544e89ce6955c0f01834"
+    },
+    {
+      "RegionIndex": 115,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 510,
+        "Top": 403,
+        "Right": 589,
+        "Bottom": 418,
+        "Width": 79,
+        "Height": 15
+      },
+      "RecognizedText": "(collectively",
+      "Confidence": 96.66257,
+      "SourceOrder": 115,
+      "CropSha256": "6158e3b179f796a9b05d9c3aa956cff015365cf496310ea6718cc2327680e3c0"
+    },
+    {
+      "RegionIndex": 116,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 596,
+        "Top": 403,
+        "Right": 650,
+        "Bottom": 415,
+        "Width": 54,
+        "Height": 12
+      },
+      "RecognizedText": "referred",
+      "Confidence": 92.48043,
+      "SourceOrder": 116,
+      "CropSha256": "357e9c9fa9a5344371d91d1a0934d36544995e4a27602e86a351e014170f0994"
+    },
+    {
+      "RegionIndex": 117,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 657,
+        "Top": 405,
+        "Right": 670,
+        "Bottom": 415,
+        "Width": 13,
+        "Height": 10
+      },
+      "RecognizedText": "to",
+      "Confidence": 95.94847,
+      "SourceOrder": 117,
+      "CropSha256": "96bac27918843b71bae66117a9d8d1ce91eb1b60af57d8cd25a49f40d0dfb3bf"
+    },
+    {
+      "RegionIndex": 118,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 677,
+        "Top": 407,
+        "Right": 690,
+        "Bottom": 415,
+        "Width": 13,
+        "Height": 8
+      },
+      "RecognizedText": "as",
+      "Confidence": 96.13046,
+      "SourceOrder": 118,
+      "CropSha256": "1df8ec93d3415249bcada18bcc57b3c89753ff7fbd83da41f3684f09c4a1604f"
+    },
+    {
+      "RegionIndex": 119,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 697,
+        "Top": 403,
+        "Right": 719,
+        "Bottom": 415,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.85762,
+      "SourceOrder": 119,
+      "CropSha256": "ad0b8e4f94a0973b5b04793b9bc054f32dfe69fdb093d517130a88c2f298e78a"
+    },
+    {
+      "RegionIndex": 120,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 424,
+        "Right": 59,
+        "Bottom": 436,
+        "Width": 54,
+        "Height": 12
+      },
+      "RecognizedText": "\u201Cinterim",
+      "Confidence": 94.593544,
+      "SourceOrder": 120,
+      "CropSha256": "a1838ac4a81807f7712fec287b598813598416565f9b178e3aeb2c3b2bbd7945"
+    },
+    {
+      "RegionIndex": 121,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 64,
+        "Top": 424,
+        "Right": 119,
+        "Bottom": 436,
+        "Width": 55,
+        "Height": 12
+      },
+      "RecognizedText": "financial",
+      "Confidence": 94.593544,
+      "SourceOrder": 121,
+      "CropSha256": "ad0f9a26f042922c90b24055648fedae09d7fcc70634ffa22b1fc849304e4373"
+    },
+    {
+      "RegionIndex": 122,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 125,
+        "Top": 424,
+        "Right": 219,
+        "Bottom": 439,
+        "Width": 94,
+        "Height": 15
+      },
+      "RecognizedText": "information\u201D).",
+      "Confidence": 93.63954,
+      "SourceOrder": 122,
+      "CropSha256": "648fefe8ebefbddb9ddcb1f1b10330707c0992871ead8c1ea52337dc3f9e1076"
+    },
+    {
+      "RegionIndex": 123,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 463,
+        "Right": 44,
+        "Bottom": 475,
+        "Width": 39,
+        "Height": 12
+      },
+      "RecognizedText": "Based",
+      "Confidence": 96.81791,
+      "SourceOrder": 123,
+      "CropSha256": "622ecd0d1bcc0e1df4a44c20815e91d20629d93bbc196b6103a25efbca61b95f"
+    },
+    {
+      "RegionIndex": 124,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 52,
+        "Top": 467,
+        "Right": 68,
+        "Bottom": 475,
+        "Width": 16,
+        "Height": 8
+      },
+      "RecognizedText": "on",
+      "Confidence": 96.15502,
+      "SourceOrder": 124,
+      "CropSha256": "09e1a8775be988efad5b5ba12ea52f27119eb7c1152f0811b434b21fe860ec0c"
+    },
+    {
+      "RegionIndex": 125,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 77,
+        "Top": 467,
+        "Right": 100,
+        "Bottom": 475,
+        "Width": 23,
+        "Height": 8
+      },
+      "RecognizedText": "our",
+      "Confidence": 96.81807,
+      "SourceOrder": 125,
+      "CropSha256": "9134ce2331c59be3257717ca3644aec47d32ecc48fa9386a701991722109aa61"
+    },
+    {
+      "RegionIndex": 126,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 108,
+        "Top": 467,
+        "Right": 161,
+        "Bottom": 477,
+        "Width": 53,
+        "Height": 10
+      },
+      "RecognizedText": "reviews,",
+      "Confidence": 96.61584,
+      "SourceOrder": 126,
+      "CropSha256": "305409a1694dc203679df9f3e2e7e977778c9bd3e7c0841358b6eaf05cd3d582"
+    },
+    {
+      "RegionIndex": 127,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 170,
+        "Top": 467,
+        "Right": 189,
+        "Bottom": 475,
+        "Width": 19,
+        "Height": 8
+      },
+      "RecognizedText": "we",
+      "Confidence": 96.842415,
+      "SourceOrder": 127,
+      "CropSha256": "e2431d28ad7d9cfb02e0cc105b3bdc90a227e2c1e619ee7f8e1a040a1de8d434"
+    },
+    {
+      "RegionIndex": 128,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 197,
+        "Top": 467,
+        "Right": 218,
+        "Bottom": 475,
+        "Width": 21,
+        "Height": 8
+      },
+      "RecognizedText": "are",
+      "Confidence": 96.99175,
+      "SourceOrder": 128,
+      "CropSha256": "284bb8f173adc5df836196cbd4b63c495d78d492ea4e1a2244c197d3047f3dbf"
+    },
+    {
+      "RegionIndex": 129,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 227,
+        "Top": 465,
+        "Right": 249,
+        "Bottom": 475,
+        "Width": 22,
+        "Height": 10
+      },
+      "RecognizedText": "not",
+      "Confidence": 96.92459,
+      "SourceOrder": 129,
+      "CropSha256": "2dbbc22533e26d2c9c52a85809c460323552855e3ea7769ec4c864f0cca58049"
+    },
+    {
+      "RegionIndex": 130,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 257,
+        "Top": 467,
+        "Right": 297,
+        "Bottom": 475,
+        "Width": 40,
+        "Height": 8
+      },
+      "RecognizedText": "aware",
+      "Confidence": 96.77501,
+      "SourceOrder": 130,
+      "CropSha256": "5e611e5687bce4e30c9ca483521894de9ff577b669cf5ba7aab201814544315a"
+    },
+    {
+      "RegionIndex": 131,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 306,
+        "Top": 463,
+        "Right": 319,
+        "Bottom": 475,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.78185,
+      "SourceOrder": 131,
+      "CropSha256": "52a5059e4bfec451fab7efd42293a921707c943a63982f873c65650c2a9cd267"
+    },
+    {
+      "RegionIndex": 132,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 326,
+        "Top": 467,
+        "Right": 350,
+        "Bottom": 478,
+        "Width": 24,
+        "Height": 11
+      },
+      "RecognizedText": "any",
+      "Confidence": 96.77888,
+      "SourceOrder": 132,
+      "CropSha256": "9f432cb0b497f3f06453150f766e2277858bb8585ae020b80a2a020a2195c50d"
+    },
+    {
+      "RegionIndex": 133,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 358,
+        "Top": 463,
+        "Right": 412,
+        "Bottom": 475,
+        "Width": 54,
+        "Height": 12
+      },
+      "RecognizedText": "material",
+      "Confidence": 96.77888,
+      "SourceOrder": 133,
+      "CropSha256": "a2b98872ae44b59e14e5c2e1c6e347348c54f68feaf6a6735a841d6fbd6dc42f"
+    },
+    {
+      "RegionIndex": 134,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 421,
+        "Top": 463,
+        "Right": 511,
+        "Bottom": 475,
+        "Width": 90,
+        "Height": 12
+      },
+      "RecognizedText": "modifications",
+      "Confidence": 96.30937,
+      "SourceOrder": 134,
+      "CropSha256": "30a63b2e7120084ab255194251e3117a3cc2ec61fc0a8ffcc5e608bab4974f96"
+    },
+    {
+      "RegionIndex": 135,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 519,
+        "Top": 463,
+        "Right": 546,
+        "Bottom": 475,
+        "Width": 27,
+        "Height": 12
+      },
+      "RecognizedText": "that",
+      "Confidence": 96.21188,
+      "SourceOrder": 135,
+      "CropSha256": "64edf8551d223f890d70ffc300762cc3c4503c21abf82391618d564d6d87f5de"
+    },
+    {
+      "RegionIndex": 136,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 554,
+        "Top": 463,
+        "Right": 597,
+        "Bottom": 475,
+        "Width": 43,
+        "Height": 12
+      },
+      "RecognizedText": "should",
+      "Confidence": 96.21188,
+      "SourceOrder": 136,
+      "CropSha256": "c9394d9991f45caedf142529ab98f3f618231033b6a7d0c570be49787df62782"
+    },
+    {
+      "RegionIndex": 137,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 607,
+        "Top": 463,
+        "Right": 622,
+        "Bottom": 475,
+        "Width": 15,
+        "Height": 12
+      },
+      "RecognizedText": "be",
+      "Confidence": 97.00633,
+      "SourceOrder": 137,
+      "CropSha256": "5709e5cb586ab4565ac9cc44a671f3401a41279552f000c6a446015ff64e8cf7"
+    },
+    {
+      "RegionIndex": 138,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 631,
+        "Top": 463,
+        "Right": 667,
+        "Bottom": 475,
+        "Width": 36,
+        "Height": 12
+      },
+      "RecognizedText": "made",
+      "Confidence": 96.60387,
+      "SourceOrder": 138,
+      "CropSha256": "a3c1e169397c96aefeabb03699fbe1d5c8d8833cd354675ae88b86ce010f161e"
+    },
+    {
+      "RegionIndex": 139,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 676,
+        "Top": 465,
+        "Right": 689,
+        "Bottom": 475,
+        "Width": 13,
+        "Height": 10
+      },
+      "RecognizedText": "to",
+      "Confidence": 96.96704,
+      "SourceOrder": 139,
+      "CropSha256": "baa9cac4355894418428acd7b0b25f355fc85c791e0e11245bf0f0b934c6178c"
+    },
+    {
+      "RegionIndex": 140,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 697,
+        "Top": 463,
+        "Right": 718,
+        "Bottom": 475,
+        "Width": 21,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.94668,
+      "SourceOrder": 140,
+      "CropSha256": "7b6bd1be9ac9ea4e1ea925539569a3d626115cf9127a173f5ea1567ca49c59ec"
+    },
+    {
+      "RegionIndex": 141,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 487,
+        "Right": 101,
+        "Bottom": 498,
+        "Width": 96,
+        "Height": 11
+      },
+      "RecognizedText": "accompanying",
+      "Confidence": 96.23746,
+      "SourceOrder": 141,
+      "CropSha256": "ccc14dbf0bb5e8b7d8a208de1ad472c70fd76f1caf5060715e9317e529c68f52"
+    },
+    {
+      "RegionIndex": 142,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 107,
+        "Top": 485,
+        "Right": 153,
+        "Bottom": 495,
+        "Width": 46,
+        "Height": 10
+      },
+      "RecognizedText": "interim",
+      "Confidence": 96.725586,
+      "SourceOrder": 142,
+      "CropSha256": "23e8581e0e67a5b767d09ac4d241d4bfcf126698346a0c194f04026ae76e0e0f"
+    },
+    {
+      "RegionIndex": 143,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 158,
+        "Top": 483,
+        "Right": 214,
+        "Bottom": 495,
+        "Width": 56,
+        "Height": 12
+      },
+      "RecognizedText": "financial",
+      "Confidence": 96.93517,
+      "SourceOrder": 143,
+      "CropSha256": "76008e061fc548d1f51ddd74694e6a70f33c61e6a044f4e67118d586d31ea8bc"
+    },
+    {
+      "RegionIndex": 144,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 220,
+        "Top": 483,
+        "Right": 298,
+        "Bottom": 495,
+        "Width": 78,
+        "Height": 12
+      },
+      "RecognizedText": "information",
+      "Confidence": 96.84803,
+      "SourceOrder": 144,
+      "CropSha256": "1ec399253ceab14cd9c92d73cce51a25712b1702934f31d0271b9c119abf0f7f"
+    },
+    {
+      "RegionIndex": 145,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 303,
+        "Top": 483,
+        "Right": 322,
+        "Bottom": 495,
+        "Width": 19,
+        "Height": 12
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.65049,
+      "SourceOrder": 145,
+      "CropSha256": "83d35ca980fa8d043b9c2a3d8978d9d0e4110c1f80a6ef6ca820863d44c7de74"
+    },
+    {
+      "RegionIndex": 146,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 327,
+        "Top": 485,
+        "Right": 335,
+        "Bottom": 495,
+        "Width": 8,
+        "Height": 10
+      },
+      "RecognizedText": "it",
+      "Confidence": 96.65049,
+      "SourceOrder": 146,
+      "CropSha256": "9c87a93c35181250b8e3f8726135e03eacf2a0c39ccdff5ab0270f2376bcffb4"
+    },
+    {
+      "RegionIndex": 147,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 340,
+        "Top": 485,
+        "Right": 353,
+        "Bottom": 495,
+        "Width": 13,
+        "Height": 10
+      },
+      "RecognizedText": "to",
+      "Confidence": 91.40756,
+      "SourceOrder": 147,
+      "CropSha256": "90ec4c6292c6dbed3c5325ce765ff1031c5da58490b94c975fd74962ec891357"
+    },
+    {
+      "RegionIndex": 148,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 359,
+        "Top": 483,
+        "Right": 374,
+        "Bottom": 495,
+        "Width": 15,
+        "Height": 12
+      },
+      "RecognizedText": "be",
+      "Confidence": 91.40756,
+      "SourceOrder": 148,
+      "CropSha256": "18e4efb612dbe4fdb1fbba68a28d4d90c6c7e4828b518eff1e0c5d70ad3b215a"
+    },
+    {
+      "RegionIndex": 149,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 380,
+        "Top": 487,
+        "Right": 390,
+        "Bottom": 495,
+        "Width": 10,
+        "Height": 8
+      },
+      "RecognizedText": "in",
+      "Confidence": 96.709,
+      "SourceOrder": 149,
+      "CropSha256": "5fc9c5175ea2288af7d61754cdd951a47f70c0626a765cac16b4a43419af24b8"
+    },
+    {
+      "RegionIndex": 150,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 396,
+        "Top": 483,
+        "Right": 472,
+        "Bottom": 495,
+        "Width": 76,
+        "Height": 12
+      },
+      "RecognizedText": "accordance",
+      "Confidence": 87.51436,
+      "SourceOrder": 150,
+      "CropSha256": "f8440182742fbdf78d104d2af92d99efa1616db1326396fbdbbe983dad764f35"
+    },
+    {
+      "RegionIndex": 151,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 477,
+        "Top": 483,
+        "Right": 505,
+        "Bottom": 495,
+        "Width": 28,
+        "Height": 12
+      },
+      "RecognizedText": "with",
+      "Confidence": 94.954895,
+      "SourceOrder": 151,
+      "CropSha256": "5e06b29f2d015c4e79529b426712e9e294d9386ee86586fab82c5b0aa8945f96"
+    },
+    {
+      "RegionIndex": 152,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 511,
+        "Top": 485,
+        "Right": 584,
+        "Bottom": 498,
+        "Width": 73,
+        "Height": 13
+      },
+      "RecognizedText": "accounting",
+      "Confidence": 89.436905,
+      "SourceOrder": 152,
+      "CropSha256": "ca18e4733f1458290a8909702cdc74909b71e1dda62caee736112c4e888037a6"
+    },
+    {
+      "RegionIndex": 153,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 589,
+        "Top": 483,
+        "Right": 653,
+        "Bottom": 498,
+        "Width": 64,
+        "Height": 15
+      },
+      "RecognizedText": "principles",
+      "Confidence": 91.49921,
+      "SourceOrder": 153,
+      "CropSha256": "21e00af78176c9f18a04c17c2b4d32fd49929ec18709419946b4caa304806af5"
+    },
+    {
+      "RegionIndex": 154,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 658,
+        "Top": 483,
+        "Right": 719,
+        "Bottom": 498,
+        "Width": 61,
+        "Height": 15
+      },
+      "RecognizedText": "generally",
+      "Confidence": 96.8596,
+      "SourceOrder": 154,
+      "CropSha256": "b53d28c29cadb4418b5ae2ffdac09c8facc42ee38cfcadb6983d3e29d8f4ec35"
+    },
+    {
+      "RegionIndex": 155,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 504,
+        "Right": 65,
+        "Bottom": 519,
+        "Width": 60,
+        "Height": 15
+      },
+      "RecognizedText": "accepted",
+      "Confidence": 93.905685,
+      "SourceOrder": 155,
+      "CropSha256": "3b02c11424e0f530cfa853d35e647c9bd24cadf9b711ae22e5510fed69f18907"
+    },
+    {
+      "RegionIndex": 156,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 71,
+        "Top": 508,
+        "Right": 81,
+        "Bottom": 516,
+        "Width": 10,
+        "Height": 8
+      },
+      "RecognizedText": "in",
+      "Confidence": 96.968895,
+      "SourceOrder": 156,
+      "CropSha256": "7aabeda06e70318b42a7beafa1ac4c2b39052dcdfc5b1299763d45edb04f90fe"
+    },
+    {
+      "RegionIndex": 157,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 86,
+        "Top": 504,
+        "Right": 108,
+        "Bottom": 516,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.927475,
+      "SourceOrder": 157,
+      "CropSha256": "ef45ffec866bb800de0c84068bfcd45b9f7562bdf5c732f8c58091b48688a1ea"
+    },
+    {
+      "RegionIndex": 158,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 114,
+        "Top": 504,
+        "Right": 157,
+        "Bottom": 516,
+        "Width": 43,
+        "Height": 12
+      },
+      "RecognizedText": "United",
+      "Confidence": 96.95038,
+      "SourceOrder": 158,
+      "CropSha256": "57033ad89adfa198d72698f08b899f22ee67be40bfdea45b893f4d31406542e6"
+    },
+    {
+      "RegionIndex": 159,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 163,
+        "Top": 505,
+        "Right": 203,
+        "Bottom": 516,
+        "Width": 40,
+        "Height": 11
+      },
+      "RecognizedText": "States",
+      "Confidence": 96.7659,
+      "SourceOrder": 159,
+      "CropSha256": "150eedaf2d08f4cc7dba6e5bf6f0769024a6f2ac3f34f78dad952832dd7545cf"
+    },
+    {
+      "RegionIndex": 160,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 208,
+        "Top": 504,
+        "Right": 221,
+        "Bottom": 516,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.98808,
+      "SourceOrder": 160,
+      "CropSha256": "218f0595203fda2b199eee0144879732b9f5707b86cf17c9005084b26b08026f"
+    },
+    {
+      "RegionIndex": 161,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 225,
+        "Top": 505,
+        "Right": 283,
+        "Bottom": 516,
+        "Width": 58,
+        "Height": 11
+      },
+      "RecognizedText": "America.",
+      "Confidence": 91.04302,
+      "SourceOrder": 161,
+      "CropSha256": "21ee00b37e1cff9a9a20b5f147f360b0fa480b7417e26261f03cff4b8bc442ae"
+    },
+    {
+      "RegionIndex": 162,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 541,
+        "Right": 37,
+        "Bottom": 552,
+        "Width": 32,
+        "Height": 11
+      },
+      "RecognizedText": "Basis",
+      "Confidence": 96.89658,
+      "SourceOrder": 162,
+      "CropSha256": "ca6f1206c09d3895030b11f415e13f62439bc193b64caf4a66d702b0fe4648c4"
+    },
+    {
+      "RegionIndex": 163,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 42,
+        "Top": 540,
+        "Right": 61,
+        "Bottom": 552,
+        "Width": 19,
+        "Height": 12
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.77742,
+      "SourceOrder": 163,
+      "CropSha256": "efa82b0662f149a40939758a53657155728ea95f780970123a95d0aec2312f4f"
+    },
+    {
+      "RegionIndex": 164,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 66,
+        "Top": 541,
+        "Right": 113,
+        "Bottom": 552,
+        "Width": 47,
+        "Height": 11
+      },
+      "RecognizedText": "Review",
+      "Confidence": 96.77742,
+      "SourceOrder": 164,
+      "CropSha256": "7f8a5dad24e5b21b21519f4dbe571de96e62c61ae04749e0af0fb4231198c13a"
+    },
+    {
+      "RegionIndex": 165,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 119,
+        "Top": 540,
+        "Right": 165,
+        "Bottom": 552,
+        "Width": 46,
+        "Height": 12
+      },
+      "RecognizedText": "Results",
+      "Confidence": 73.92162,
+      "SourceOrder": 165,
+      "CropSha256": "13ef507e57e66c42d486096cb1570df918160758e3d2e5b9f39099914083bae2"
+    },
+    {
+      "RegionIndex": 166,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 579,
+        "Right": 27,
+        "Bottom": 590,
+        "Width": 22,
+        "Height": 11
+      },
+      "RecognizedText": "We",
+      "Confidence": 95.75817,
+      "SourceOrder": 166,
+      "CropSha256": "13350d5d908212fadea7df397368e08de6413d5a67412dde7326691fbb05c118"
+    },
+    {
+      "RegionIndex": 167,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 32,
+        "Top": 578,
+        "Right": 102,
+        "Bottom": 590,
+        "Width": 70,
+        "Height": 12
+      },
+      "RecognizedText": "conducted",
+      "Confidence": 95.75817,
+      "SourceOrder": 167,
+      "CropSha256": "a77354a5de08183c4b8499d5831b7b0ce2da8bbbeec4c3e00d24360348e0ff22"
+    },
+    {
+      "RegionIndex": 168,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 108,
+        "Top": 582,
+        "Right": 130,
+        "Bottom": 590,
+        "Width": 22,
+        "Height": 8
+      },
+      "RecognizedText": "our",
+      "Confidence": 96.860054,
+      "SourceOrder": 168,
+      "CropSha256": "94e8070751f4f51bfb102551d58d6cda8d096fb19a9b584c0f5568f94d3c3d80"
+    },
+    {
+      "RegionIndex": 169,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 136,
+        "Top": 582,
+        "Right": 186,
+        "Bottom": 590,
+        "Width": 50,
+        "Height": 8
+      },
+      "RecognizedText": "reviews",
+      "Confidence": 96.89053,
+      "SourceOrder": 169,
+      "CropSha256": "07e78972bd9114faa63566a963bc0f77eb24357d8c9da23c33dfde0b5162c015"
+    },
+    {
+      "RegionIndex": 170,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 192,
+        "Top": 582,
+        "Right": 202,
+        "Bottom": 590,
+        "Width": 10,
+        "Height": 8
+      },
+      "RecognizedText": "in",
+      "Confidence": 92.72242,
+      "SourceOrder": 170,
+      "CropSha256": "859a810d5631f80a72585ac7d05f1b36c47579c27e76c021adf0fdb146737fbc"
+    },
+    {
+      "RegionIndex": 171,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 208,
+        "Top": 578,
+        "Right": 284,
+        "Bottom": 590,
+        "Width": 76,
+        "Height": 12
+      },
+      "RecognizedText": "accordance",
+      "Confidence": 92.72242,
+      "SourceOrder": 171,
+      "CropSha256": "64a4e88d896a83a6e6c389ae90accf71a2c5b068dad9045512a7a8a5a1ad17a7"
+    },
+    {
+      "RegionIndex": 172,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 290,
+        "Top": 578,
+        "Right": 318,
+        "Bottom": 590,
+        "Width": 28,
+        "Height": 12
+      },
+      "RecognizedText": "with",
+      "Confidence": 96.59127,
+      "SourceOrder": 172,
+      "CropSha256": "9cc69e66a3628b59e0d611a8702f6249fc492e708e9ac54bfd732b83254924f1"
+    },
+    {
+      "RegionIndex": 173,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 324,
+        "Top": 578,
+        "Right": 378,
+        "Bottom": 593,
+        "Width": 54,
+        "Height": 15
+      },
+      "RecognizedText": "auditing",
+      "Confidence": 96.46206,
+      "SourceOrder": 173,
+      "CropSha256": "0209038996ef941d620efe0eba362677e7773717f4c263becd0f817c783f60e2"
+    },
+    {
+      "RegionIndex": 174,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 383,
+        "Top": 578,
+        "Right": 448,
+        "Bottom": 590,
+        "Width": 65,
+        "Height": 12
+      },
+      "RecognizedText": "standards",
+      "Confidence": 96.93249,
+      "SourceOrder": 174,
+      "CropSha256": "26414005dc3c9359762574d71793a22bda0f7e9e56954696f10b96cc28b6515a"
+    },
+    {
+      "RegionIndex": 175,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 453,
+        "Top": 578,
+        "Right": 514,
+        "Bottom": 593,
+        "Width": 61,
+        "Height": 15
+      },
+      "RecognizedText": "generally",
+      "Confidence": 96.56419,
+      "SourceOrder": 175,
+      "CropSha256": "215a09fae03fbb33c04b06c30061aac356acffa62bd9d6efef4c50d8abc8a093"
+    },
+    {
+      "RegionIndex": 176,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 519,
+        "Top": 578,
+        "Right": 579,
+        "Bottom": 593,
+        "Width": 60,
+        "Height": 15
+      },
+      "RecognizedText": "accepted",
+      "Confidence": 82.7795,
+      "SourceOrder": 176,
+      "CropSha256": "fca532c0be7fc1a3aa90688f4bdbdb229f28d0766eade6c15afcffce6dbb6d7c"
+    },
+    {
+      "RegionIndex": 177,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 586,
+        "Top": 582,
+        "Right": 596,
+        "Bottom": 590,
+        "Width": 10,
+        "Height": 8
+      },
+      "RecognizedText": "in",
+      "Confidence": 93.370224,
+      "SourceOrder": 177,
+      "CropSha256": "5b33599c1f44a1f967a1da3db8436ae2fa402121b0fe30608ee4e86555dedd56"
+    },
+    {
+      "RegionIndex": 178,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 601,
+        "Top": 578,
+        "Right": 623,
+        "Bottom": 590,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 93.370224,
+      "SourceOrder": 178,
+      "CropSha256": "506e1a38257fad3f325872e22136ca3c72ea3caf3d9d7c15a37e5b97fff67781"
+    },
+    {
+      "RegionIndex": 179,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 629,
+        "Top": 578,
+        "Right": 672,
+        "Bottom": 590,
+        "Width": 43,
+        "Height": 12
+      },
+      "RecognizedText": "United",
+      "Confidence": 94.364456,
+      "SourceOrder": 179,
+      "CropSha256": "419e2f4661637c4d0f2e9908877c595f8689240f87381bdf3724107da2d4ce86"
+    },
+    {
+      "RegionIndex": 180,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 678,
+        "Top": 579,
+        "Right": 719,
+        "Bottom": 590,
+        "Width": 41,
+        "Height": 11
+      },
+      "RecognizedText": "States",
+      "Confidence": 96.92277,
+      "SourceOrder": 180,
+      "CropSha256": "7f421cb29e5b83177974e0a525045d217f5a3f3431bd6a451b4587772375e785"
+    },
+    {
+      "RegionIndex": 181,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 599,
+        "Right": 18,
+        "Bottom": 611,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.27212,
+      "SourceOrder": 181,
+      "CropSha256": "23e5a3b76536c32f5379fb17ad73ffefd596ad5df0fab14a9b201fbb411ab54c"
+    },
+    {
+      "RegionIndex": 182,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 24,
+        "Top": 600,
+        "Right": 79,
+        "Bottom": 611,
+        "Width": 55,
+        "Height": 11
+      },
+      "RecognizedText": "America",
+      "Confidence": 95.903305,
+      "SourceOrder": 182,
+      "CropSha256": "e4a4bb5c8b700b3bf28c77238d7ddf259c654420ce3037eb75923d8608a23d69"
+    },
+    {
+      "RegionIndex": 183,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 87,
+        "Top": 599,
+        "Right": 132,
+        "Bottom": 614,
+        "Width": 45,
+        "Height": 15
+      },
+      "RecognizedText": "(GAAS)",
+      "Confidence": 90.449425,
+      "SourceOrder": 183,
+      "CropSha256": "e53f7c44f034e9e9363e907847c64c6c5a7f868e80f33ef92bcc0bfcb78c08f8"
+    },
+    {
+      "RegionIndex": 184,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 140,
+        "Top": 599,
+        "Right": 207,
+        "Bottom": 614,
+        "Width": 67,
+        "Height": 15
+      },
+      "RecognizedText": "applicable",
+      "Confidence": 88.46537,
+      "SourceOrder": 184,
+      "CropSha256": "bd70daaade82db787fa1df9d5d5d2127010154e57ddd6a915f4a771d4f22782d"
+    },
+    {
+      "RegionIndex": 185,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 214,
+        "Top": 601,
+        "Right": 228,
+        "Bottom": 611,
+        "Width": 14,
+        "Height": 10
+      },
+      "RecognizedText": "to",
+      "Confidence": 96.91485,
+      "SourceOrder": 185,
+      "CropSha256": "8ec75ac9dbc5e6be4ee0a7c2a3e936b9961a2fcba31a9cb4ac7b8d2a1bdfd456"
+    },
+    {
+      "RegionIndex": 186,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 235,
+        "Top": 603,
+        "Right": 286,
+        "Bottom": 611,
+        "Width": 51,
+        "Height": 8
+      },
+      "RecognizedText": "reviews",
+      "Confidence": 92.91675,
+      "SourceOrder": 186,
+      "CropSha256": "3d68f3fd6cabe30b7ed7789b6c048f964d1cb14a6116fab63a77632364f25bf5"
+    },
+    {
+      "RegionIndex": 187,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 293,
+        "Top": 599,
+        "Right": 306,
+        "Bottom": 611,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.41728,
+      "SourceOrder": 187,
+      "CropSha256": "3f8ab975f90936273afb6da049a858e91659dd561dffbf1e013ad1b2687fb67b"
+    },
+    {
+      "RegionIndex": 188,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 313,
+        "Top": 601,
+        "Right": 360,
+        "Bottom": 611,
+        "Width": 47,
+        "Height": 10
+      },
+      "RecognizedText": "interim",
+      "Confidence": 96.41728,
+      "SourceOrder": 188,
+      "CropSha256": "9854a5fcb3f4a96f2210f1e6a148415e29afef2a709871c65410dbb9a7d6df94"
+    },
+    {
+      "RegionIndex": 189,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 368,
+        "Top": 599,
+        "Right": 423,
+        "Bottom": 611,
+        "Width": 55,
+        "Height": 12
+      },
+      "RecognizedText": "financial",
+      "Confidence": 96.87836,
+      "SourceOrder": 189,
+      "CropSha256": "1bd76a3076f9095ec8d2cb3525cb792d47352275eed55dc3334c92add689eed8"
+    },
+    {
+      "RegionIndex": 190,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 431,
+        "Top": 599,
+        "Right": 509,
+        "Bottom": 611,
+        "Width": 78,
+        "Height": 12
+      },
+      "RecognizedText": "information.",
+      "Confidence": 95.95097,
+      "SourceOrder": 190,
+      "CropSha256": "ad338b12811b798317952d5c8e46df92a4c32e58b26c5549faeabe689fd151bb"
+    },
+    {
+      "RegionIndex": 191,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 521,
+        "Top": 600,
+        "Right": 530,
+        "Bottom": 611,
+        "Width": 9,
+        "Height": 11
+      },
+      "RecognizedText": "A",
+      "Confidence": 96.405045,
+      "SourceOrder": 191,
+      "CropSha256": "4bd82a49a56d632c7d187419f1c03b69f27cad398c47dde500197eb42cf2bd18"
+    },
+    {
+      "RegionIndex": 192,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 537,
+        "Top": 603,
+        "Right": 581,
+        "Bottom": 611,
+        "Width": 44,
+        "Height": 8
+      },
+      "RecognizedText": "review",
+      "Confidence": 93.1255,
+      "SourceOrder": 192,
+      "CropSha256": "4d4b372e6a355e8bf933a911197b6cf0354620e7331202e9a33880d9cb19bc3c"
+    },
+    {
+      "RegionIndex": 193,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 588,
+        "Top": 599,
+        "Right": 602,
+        "Bottom": 611,
+        "Width": 14,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.76656,
+      "SourceOrder": 193,
+      "CropSha256": "d5730145359218fb6bf515b1bdd87eed104652fda8bae20a504606253a33610d"
+    },
+    {
+      "RegionIndex": 194,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 609,
+        "Top": 601,
+        "Right": 656,
+        "Bottom": 611,
+        "Width": 47,
+        "Height": 10
+      },
+      "RecognizedText": "interim",
+      "Confidence": 91.123085,
+      "SourceOrder": 194,
+      "CropSha256": "1b515ef07e4b5f05a45d244ed7d25e330230a8e1c4d26c0d5a981bcfb987daa1"
+    },
+    {
+      "RegionIndex": 195,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 663,
+        "Top": 599,
+        "Right": 718,
+        "Bottom": 611,
+        "Width": 55,
+        "Height": 12
+      },
+      "RecognizedText": "financial",
+      "Confidence": 91.123085,
+      "SourceOrder": 195,
+      "CropSha256": "1b70139baebd21efca928f7df97007e4e04315302daddc83412aacf22d68ae46"
+    },
+    {
+      "RegionIndex": 196,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 620,
+        "Right": 83,
+        "Bottom": 632,
+        "Width": 78,
+        "Height": 12
+      },
+      "RecognizedText": "information",
+      "Confidence": 95.303764,
+      "SourceOrder": 196,
+      "CropSha256": "681329d3d418992a9956ba0dc929c4d857b461348f1f510f95a26cf2ab35cdc2"
+    },
+    {
+      "RegionIndex": 197,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 94,
+        "Top": 622,
+        "Right": 146,
+        "Bottom": 632,
+        "Width": 52,
+        "Height": 10
+      },
+      "RecognizedText": "consists",
+      "Confidence": 95.14107,
+      "SourceOrder": 197,
+      "CropSha256": "75247c467f8c7f06ddf405f214adcace8604e364393038b3290393a8bb0479ad"
+    },
+    {
+      "RegionIndex": 198,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 157,
+        "Top": 620,
+        "Right": 225,
+        "Bottom": 635,
+        "Width": 68,
+        "Height": 15
+      },
+      "RecognizedText": "principally",
+      "Confidence": 95.14107,
+      "SourceOrder": 198,
+      "CropSha256": "009e7940ff4282d169cb9f7fac2d30af247a9572038b08ed5f39db6f93d47fd2"
+    },
+    {
+      "RegionIndex": 199,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 235,
+        "Top": 620,
+        "Right": 249,
+        "Bottom": 632,
+        "Width": 14,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.54869,
+      "SourceOrder": 199,
+      "CropSha256": "347efb929788bfa8e84cd785211f0a6934e11784da2a198edfa9b63ebac21c47"
+    },
+    {
+      "RegionIndex": 200,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 258,
+        "Top": 620,
+        "Right": 314,
+        "Bottom": 635,
+        "Width": 56,
+        "Height": 15
+      },
+      "RecognizedText": "applying",
+      "Confidence": 84.79475,
+      "SourceOrder": 200,
+      "CropSha256": "b63e0fb98a72f63bb123fd7ff2a80c90b1e51a7e1d27a9535b357571ecafd338"
+    },
+    {
+      "RegionIndex": 201,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 324,
+        "Top": 620,
+        "Right": 386,
+        "Bottom": 635,
+        "Width": 62,
+        "Height": 15
+      },
+      "RecognizedText": "analytical",
+      "Confidence": 96.68808,
+      "SourceOrder": 201,
+      "CropSha256": "2bdf0655cd95c8ddcef81f0ea35e6b543cc8502419a07e179b8e1eefc16d4dbb"
+    },
+    {
+      "RegionIndex": 202,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 397,
+        "Top": 620,
+        "Right": 473,
+        "Bottom": 635,
+        "Width": 76,
+        "Height": 15
+      },
+      "RecognizedText": "procedures",
+      "Confidence": 92.017075,
+      "SourceOrder": 202,
+      "CropSha256": "f03f3f7761474a657cc7a60342d276c3c3cb488fa39b1ac0e4d237c4925a9068"
+    },
+    {
+      "RegionIndex": 203,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 483,
+        "Top": 620,
+        "Right": 507,
+        "Bottom": 632,
+        "Width": 24,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.3643,
+      "SourceOrder": 203,
+      "CropSha256": "ecdd5a45400836bc1ae398dc3f4c3fce2a05197afcc8a0849e1a1b826f23674f"
+    },
+    {
+      "RegionIndex": 204,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 519,
+        "Top": 620,
+        "Right": 566,
+        "Bottom": 635,
+        "Width": 47,
+        "Height": 15
+      },
+      "RecognizedText": "making",
+      "Confidence": 96.51166,
+      "SourceOrder": 204,
+      "CropSha256": "840a1f0cd0401598f6b2bf3dd3f20aafe5d624c9dcc56386a9ab9ccb832b4e00"
+    },
+    {
+      "RegionIndex": 205,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 577,
+        "Top": 624,
+        "Right": 633,
+        "Bottom": 635,
+        "Width": 56,
+        "Height": 11
+      },
+      "RecognizedText": "inquiries",
+      "Confidence": 96.79339,
+      "SourceOrder": 205,
+      "CropSha256": "6f8084a0d5c2e6ea09dba0337c9400071c12bff20573fb3e331e0ea76680c2d5"
+    },
+    {
+      "RegionIndex": 206,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 643,
+        "Top": 620,
+        "Right": 657,
+        "Bottom": 632,
+        "Width": 14,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.81018,
+      "SourceOrder": 206,
+      "CropSha256": "12cb28288abebea4f28973797b963419e61d0bc6bbffcb2be6d5fa9db0d3844c"
+    },
+    {
+      "RegionIndex": 207,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 667,
+        "Top": 624,
+        "Right": 719,
+        "Bottom": 635,
+        "Width": 52,
+        "Height": 11
+      },
+      "RecognizedText": "persons",
+      "Confidence": 96.809814,
+      "SourceOrder": 207,
+      "CropSha256": "d912f6f96be4bcae92d31397bb02f00e62eb28344b6a6be63cc18752a8f1a1be"
+    },
+    {
+      "RegionIndex": 208,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 640,
+        "Right": 81,
+        "Bottom": 655,
+        "Width": 76,
+        "Height": 15
+      },
+      "RecognizedText": "responsible",
+      "Confidence": 94.49843,
+      "SourceOrder": 208,
+      "CropSha256": "59ac632084c680fb39becf8bff230580e4c58fc971b73533cfd0c720a11513fc"
+    },
+    {
+      "RegionIndex": 209,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 86,
+        "Top": 640,
+        "Right": 106,
+        "Bottom": 652,
+        "Width": 20,
+        "Height": 12
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.905426,
+      "SourceOrder": 209,
+      "CropSha256": "70ae33e0ee00c69fe477b578ae7fd843790bc1bdc794b7b194607eea23133481"
+    },
+    {
+      "RegionIndex": 210,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 110,
+        "Top": 640,
+        "Right": 166,
+        "Bottom": 652,
+        "Width": 56,
+        "Height": 12
+      },
+      "RecognizedText": "financial",
+      "Confidence": 95.261314,
+      "SourceOrder": 210,
+      "CropSha256": "58e7c74e7c54c3e5237da08438e7cb1ff9ac53db4ac00fb069bac154ecaceccc"
+    },
+    {
+      "RegionIndex": 211,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 172,
+        "Top": 640,
+        "Right": 195,
+        "Bottom": 652,
+        "Width": 23,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.801186,
+      "SourceOrder": 211,
+      "CropSha256": "ab790ae62cb92903e107646761d36757f9a08f8e320c5d6eb39b44d69e0572ee"
+    },
+    {
+      "RegionIndex": 212,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 201,
+        "Top": 642,
+        "Right": 275,
+        "Bottom": 655,
+        "Width": 74,
+        "Height": 13
+      },
+      "RecognizedText": "accounting",
+      "Confidence": 90.36478,
+      "SourceOrder": 212,
+      "CropSha256": "cac0d808d7c1b8a7f282ec6748c6baf188deabcb950bb67f9949f4f0b1ae0333"
+    },
+    {
+      "RegionIndex": 213,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 280,
+        "Top": 642,
+        "Right": 335,
+        "Bottom": 652,
+        "Width": 55,
+        "Height": 10
+      },
+      "RecognizedText": "matters.",
+      "Confidence": 96.434204,
+      "SourceOrder": 213,
+      "CropSha256": "d420e54b7682926c0edf6048c5653c6ef3eba28736b1110520d07c28bd5167e3"
+    },
+    {
+      "RegionIndex": 214,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 341,
+        "Top": 641,
+        "Right": 350,
+        "Bottom": 652,
+        "Width": 9,
+        "Height": 11
+      },
+      "RecognizedText": "A",
+      "Confidence": 96.82732,
+      "SourceOrder": 214,
+      "CropSha256": "2e80e3884b31447614920b2fc88259c2cea7c7d011315c825709a6fa4fdb4871"
+    },
+    {
+      "RegionIndex": 215,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 355,
+        "Top": 644,
+        "Right": 399,
+        "Bottom": 652,
+        "Width": 44,
+        "Height": 8
+      },
+      "RecognizedText": "review",
+      "Confidence": 96.7007,
+      "SourceOrder": 215,
+      "CropSha256": "db316002a5b7062d5349fa9c7e3bf4cdf34e12ea11f77813a398d8155c0014ed"
+    },
+    {
+      "RegionIndex": 216,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 404,
+        "Top": 640,
+        "Right": 417,
+        "Bottom": 652,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 91.45525,
+      "SourceOrder": 216,
+      "CropSha256": "bd874673ae58eae9b11134622ebdc419b4406f4f34022a45fdeac852bcab8d63"
+    },
+    {
+      "RegionIndex": 217,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 423,
+        "Top": 642,
+        "Right": 470,
+        "Bottom": 652,
+        "Width": 47,
+        "Height": 10
+      },
+      "RecognizedText": "interim",
+      "Confidence": 91.45525,
+      "SourceOrder": 217,
+      "CropSha256": "1b4789114024df9d6600c975cd3f5b811262daa5d2e85577b332db164e20f5c8"
+    },
+    {
+      "RegionIndex": 218,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 475,
+        "Top": 640,
+        "Right": 530,
+        "Bottom": 652,
+        "Width": 55,
+        "Height": 12
+      },
+      "RecognizedText": "financial",
+      "Confidence": 96.880005,
+      "SourceOrder": 218,
+      "CropSha256": "c2d141776a6149cb6fdab5416f107d45cb27706df33c07f795d6fac832c65e15"
+    },
+    {
+      "RegionIndex": 219,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 537,
+        "Top": 640,
+        "Right": 615,
+        "Bottom": 652,
+        "Width": 78,
+        "Height": 12
+      },
+      "RecognizedText": "information",
+      "Confidence": 96.86844,
+      "SourceOrder": 219,
+      "CropSha256": "32ac2dae3374466458874053ffd0dcba121c0b468f1a649d7d8545361f0427b9"
+    },
+    {
+      "RegionIndex": 220,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 621,
+        "Top": 644,
+        "Right": 630,
+        "Bottom": 652,
+        "Width": 9,
+        "Height": 8
+      },
+      "RecognizedText": "is",
+      "Confidence": 94.93094,
+      "SourceOrder": 220,
+      "CropSha256": "096f01cc36ead11f822bdc648a52d994102945983cafe4a1fedbf5316d31d678"
+    },
+    {
+      "RegionIndex": 221,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 635,
+        "Top": 640,
+        "Right": 719,
+        "Bottom": 655,
+        "Width": 84,
+        "Height": 15
+      },
+      "RecognizedText": "substantially",
+      "Confidence": 95.85559,
+      "SourceOrder": 221,
+      "CropSha256": "2ea43e4290d5e1bb55b1d03ceb3e5c0d702c8e4b10a9ab0a81fc7d30a2cf3f2a"
+    },
+    {
+      "RegionIndex": 222,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 660,
+        "Right": 29,
+        "Bottom": 672,
+        "Width": 24,
+        "Height": 12
+      },
+      "RecognizedText": "less",
+      "Confidence": 92.507324,
+      "SourceOrder": 222,
+      "CropSha256": "5c102a1d9ac8f852891bcf9ba73741def76c89b1fb6c0c88596b2bc6db520e54"
+    },
+    {
+      "RegionIndex": 223,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 34,
+        "Top": 664,
+        "Right": 44,
+        "Bottom": 672,
+        "Width": 10,
+        "Height": 8
+      },
+      "RecognizedText": "in",
+      "Confidence": 90.77463,
+      "SourceOrder": 223,
+      "CropSha256": "be2319aca8b91da0bf3cce7f49e381c383928eb934cb8e3c3723b1b6ad7f675a"
+    },
+    {
+      "RegionIndex": 224,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 50,
+        "Top": 664,
+        "Right": 88,
+        "Bottom": 675,
+        "Width": 38,
+        "Height": 11
+      },
+      "RecognizedText": "scope",
+      "Confidence": 90.77463,
+      "SourceOrder": 224,
+      "CropSha256": "79cff5f18e15f20e97c324f30ae92c106f2b4453d8a97dad5807f2237babec82"
+    },
+    {
+      "RegionIndex": 225,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 93,
+        "Top": 660,
+        "Right": 123,
+        "Bottom": 672,
+        "Width": 30,
+        "Height": 12
+      },
+      "RecognizedText": "than",
+      "Confidence": 96.43673,
+      "SourceOrder": 225,
+      "CropSha256": "98dc756d384805eff0d057aa2f14e02ac819c8fb5fd091b5496c05a7eb3cc8f9"
+    },
+    {
+      "RegionIndex": 226,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 129,
+        "Top": 664,
+        "Right": 143,
+        "Bottom": 672,
+        "Width": 14,
+        "Height": 8
+      },
+      "RecognizedText": "an",
+      "Confidence": 94.508,
+      "SourceOrder": 226,
+      "CropSha256": "ac0b4748363ab13a7cc67a673721e646ad62606f6e28351cfbf938d8f153a19a"
+    },
+    {
+      "RegionIndex": 227,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 149,
+        "Top": 660,
+        "Right": 183,
+        "Bottom": 672,
+        "Width": 34,
+        "Height": 12
+      },
+      "RecognizedText": "audit",
+      "Confidence": 88.69276,
+      "SourceOrder": 227,
+      "CropSha256": "069a5d134cbbaa6f5def0a29c6b9f88aedd2e1d94f53ab318136a6ae60104b6c"
+    },
+    {
+      "RegionIndex": 228,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 188,
+        "Top": 660,
+        "Right": 258,
+        "Bottom": 672,
+        "Width": 70,
+        "Height": 12
+      },
+      "RecognizedText": "conducted",
+      "Confidence": 88.69276,
+      "SourceOrder": 228,
+      "CropSha256": "89aeb4ab67e226bdf014811c40976cbb6c7a04cad3bee16deb22703fe1e6ec41"
+    },
+    {
+      "RegionIndex": 229,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 265,
+        "Top": 664,
+        "Right": 274,
+        "Bottom": 672,
+        "Width": 9,
+        "Height": 8
+      },
+      "RecognizedText": "in",
+      "Confidence": 96.7859,
+      "SourceOrder": 229,
+      "CropSha256": "8010992d4bd086baad36fa3ad23859baeb21a2b020e89dacb248085c2c405d51"
+    },
+    {
+      "RegionIndex": 230,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 280,
+        "Top": 660,
+        "Right": 356,
+        "Bottom": 672,
+        "Width": 76,
+        "Height": 12
+      },
+      "RecognizedText": "accordance",
+      "Confidence": 95.46709,
+      "SourceOrder": 230,
+      "CropSha256": "e60096e7cc5f6aa507c0636dde11c6a47244bea21ded1d230b2f201181979a0c"
+    },
+    {
+      "RegionIndex": 231,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 361,
+        "Top": 660,
+        "Right": 390,
+        "Bottom": 672,
+        "Width": 29,
+        "Height": 12
+      },
+      "RecognizedText": "with",
+      "Confidence": 96.57464,
+      "SourceOrder": 231,
+      "CropSha256": "ffc63f54a7cd18e1306d7c97e089888fb7a2bbf4001374849e1d320f35d3893a"
+    },
+    {
+      "RegionIndex": 232,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 395,
+        "Top": 661,
+        "Right": 435,
+        "Bottom": 674,
+        "Width": 40,
+        "Height": 13
+      },
+      "RecognizedText": "GAAS,",
+      "Confidence": 96.869415,
+      "SourceOrder": 232,
+      "CropSha256": "c52e1ffda74c57ae017920d822036d9961270ef42a9c753a2043441bf5173f5c"
+    },
+    {
+      "RegionIndex": 233,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 440,
+        "Top": 660,
+        "Right": 462,
+        "Bottom": 672,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.96728,
+      "SourceOrder": 233,
+      "CropSha256": "a6ba3dc0a9534f3e5b9b2edff3bb55de223b61aa22121fd214da00da2766a62a"
+    },
+    {
+      "RegionIndex": 234,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 467,
+        "Top": 660,
+        "Right": 528,
+        "Bottom": 675,
+        "Width": 61,
+        "Height": 15
+      },
+      "RecognizedText": "objective",
+      "Confidence": 96.79395,
+      "SourceOrder": 234,
+      "CropSha256": "112a5a7057203d313da359b85a2ae0d32739ce85bd984d0f282566f76d894106"
+    },
+    {
+      "RegionIndex": 235,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 533,
+        "Top": 660,
+        "Right": 546,
+        "Bottom": 672,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.30876,
+      "SourceOrder": 235,
+      "CropSha256": "28fa938b4f108562c67f0bba1b985ac4d530e837a8ae89d81fd3275d9896b2f0"
+    },
+    {
+      "RegionIndex": 236,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 550,
+        "Top": 660,
+        "Right": 589,
+        "Bottom": 672,
+        "Width": 39,
+        "Height": 12
+      },
+      "RecognizedText": "which",
+      "Confidence": 94.26319,
+      "SourceOrder": 236,
+      "CropSha256": "06c7b5eb232536884b317a0ec6ccdd8db8a42319137b1f19e3d4ad51c3cf0edf"
+    },
+    {
+      "RegionIndex": 237,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 595,
+        "Top": 664,
+        "Right": 604,
+        "Bottom": 672,
+        "Width": 9,
+        "Height": 8
+      },
+      "RecognizedText": "is",
+      "Confidence": 96.75946,
+      "SourceOrder": 237,
+      "CropSha256": "49aba1b0e484703836e058803f879ae4432d112d08edd55a7a4cc795ff0ccd9d"
+    },
+    {
+      "RegionIndex": 238,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 609,
+        "Top": 664,
+        "Right": 624,
+        "Bottom": 672,
+        "Width": 15,
+        "Height": 8
+      },
+      "RecognizedText": "an",
+      "Confidence": 96.75946,
+      "SourceOrder": 238,
+      "CropSha256": "6326e92c7a2618c645483b18e6f3ca1465c6bacea5b4dd20b8917b287ad80f2d"
+    },
+    {
+      "RegionIndex": 239,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 630,
+        "Top": 664,
+        "Right": 700,
+        "Bottom": 675,
+        "Width": 70,
+        "Height": 11
+      },
+      "RecognizedText": "expression",
+      "Confidence": 96.86012,
+      "SourceOrder": 239,
+      "CropSha256": "bbdb1d91693667e15bd045e9aac0643d657e6e9226cd52d8cc672085aa6b4f94"
+    },
+    {
+      "RegionIndex": 240,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 706,
+        "Top": 660,
+        "Right": 719,
+        "Bottom": 672,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.9774,
+      "SourceOrder": 240,
+      "CropSha256": "6be61160909e164cc3052d11fd4c37d1c03252a36005aef1c4de56ae6aa593d9"
+    },
+    {
+      "RegionIndex": 241,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 685,
+        "Right": 20,
+        "Bottom": 693,
+        "Width": 15,
+        "Height": 8
+      },
+      "RecognizedText": "an",
+      "Confidence": 95.78411,
+      "SourceOrder": 241,
+      "CropSha256": "90d641158c5fd8d73bf7a92277d75318d2eae1e525341bf1990d26713904e863"
+    },
+    {
+      "RegionIndex": 242,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 27,
+        "Top": 685,
+        "Right": 76,
+        "Bottom": 696,
+        "Width": 49,
+        "Height": 11
+      },
+      "RecognizedText": "opinion",
+      "Confidence": 96.69562,
+      "SourceOrder": 242,
+      "CropSha256": "7a1e8c7f7f49ce288e1aa02f2ebdfd57c960c910cf1b46704d80feb6f2dd1faa"
+    },
+    {
+      "RegionIndex": 243,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 85,
+        "Top": 681,
+        "Right": 148,
+        "Bottom": 696,
+        "Width": 63,
+        "Height": 15
+      },
+      "RecognizedText": "regarding",
+      "Confidence": 94.590645,
+      "SourceOrder": 243,
+      "CropSha256": "005430460a586ad078987c9737251dce7a0bd8fb5e00978050d86a67460074cc"
+    },
+    {
+      "RegionIndex": 244,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 154,
+        "Top": 681,
+        "Right": 175,
+        "Bottom": 693,
+        "Width": 21,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.953,
+      "SourceOrder": 244,
+      "CropSha256": "5d2c7ca25170748658f5fcc088ddc4beb126f2ddba559fe0a3ccd4ca7bb41958"
+    },
+    {
+      "RegionIndex": 245,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 182,
+        "Top": 681,
+        "Right": 237,
+        "Bottom": 693,
+        "Width": 55,
+        "Height": 12
+      },
+      "RecognizedText": "financial",
+      "Confidence": 96.79155,
+      "SourceOrder": 245,
+      "CropSha256": "0d6f556c8f116cfb941694310fa81fa6fdbc92ad536ef7670b398b9d14897f6c"
+    },
+    {
+      "RegionIndex": 246,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 245,
+        "Top": 681,
+        "Right": 323,
+        "Bottom": 693,
+        "Width": 78,
+        "Height": 12
+      },
+      "RecognizedText": "information",
+      "Confidence": 90.86384,
+      "SourceOrder": 246,
+      "CropSha256": "f66fd32c77ea65d8d723c79e6d666c49c6582bbabbf99f4d0102ececa8ec6110"
+    },
+    {
+      "RegionIndex": 247,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 330,
+        "Top": 685,
+        "Right": 343,
+        "Bottom": 693,
+        "Width": 13,
+        "Height": 8
+      },
+      "RecognizedText": "as",
+      "Confidence": 96.3082,
+      "SourceOrder": 247,
+      "CropSha256": "817a28683e5be8a0a124b3e16fbc776f6f4314e52cb9ae1682a3bc17f6e80a6b"
+    },
+    {
+      "RegionIndex": 248,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 350,
+        "Top": 685,
+        "Right": 357,
+        "Bottom": 693,
+        "Width": 7,
+        "Height": 8
+      },
+      "RecognizedText": "a",
+      "Confidence": 75.30762,
+      "SourceOrder": 248,
+      "CropSha256": "ca0c9d46dbae0b31da9d5a37e6c7c1b014ed9b0d42605ba7ae2f7ef8249161f1"
+    },
+    {
+      "RegionIndex": 249,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 363,
+        "Top": 681,
+        "Right": 407,
+        "Bottom": 695,
+        "Width": 44,
+        "Height": 14
+      },
+      "RecognizedText": "whole,",
+      "Confidence": 96.93888,
+      "SourceOrder": 249,
+      "CropSha256": "ad5df05c80e6070f07d6d11fac56c81ae2d82b5209a62a654292bdbdbc63e54c"
+    },
+    {
+      "RegionIndex": 250,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 415,
+        "Top": 681,
+        "Right": 438,
+        "Bottom": 693,
+        "Width": 23,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 95.61961,
+      "SourceOrder": 250,
+      "CropSha256": "f39349e94d5c8d9bc5d944781d126e79fcbf0fceb2d4a2d1b48c95254ac420c2"
+    },
+    {
+      "RegionIndex": 251,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 446,
+        "Top": 681,
+        "Right": 525,
+        "Bottom": 696,
+        "Width": 79,
+        "Height": 15
+      },
+      "RecognizedText": "accordingly,",
+      "Confidence": 84.25939,
+      "SourceOrder": 251,
+      "CropSha256": "1b26e4d63a638e34547071a48bd763eb092773ae592dfa168b536186123f4654"
+    },
+    {
+      "RegionIndex": 252,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 532,
+        "Top": 685,
+        "Right": 551,
+        "Bottom": 693,
+        "Width": 19,
+        "Height": 8
+      },
+      "RecognizedText": "we",
+      "Confidence": 96.688385,
+      "SourceOrder": 252,
+      "CropSha256": "0d9137f5da27787935a1ed7764d7b2e4b2d941d9c81b73ddea6d012020d79aa7"
+    },
+    {
+      "RegionIndex": 253,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 558,
+        "Top": 681,
+        "Right": 574,
+        "Bottom": 693,
+        "Width": 16,
+        "Height": 12
+      },
+      "RecognizedText": "do",
+      "Confidence": 94.17548,
+      "SourceOrder": 253,
+      "CropSha256": "e2e29ac84f27e6ac96e345745a951c2257fd68825abfd3384554bbaf750e1edf"
+    },
+    {
+      "RegionIndex": 254,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 581,
+        "Top": 683,
+        "Right": 603,
+        "Bottom": 693,
+        "Width": 22,
+        "Height": 10
+      },
+      "RecognizedText": "not",
+      "Confidence": 92.56841,
+      "SourceOrder": 254,
+      "CropSha256": "bcd18f3729d5ae27f55443f6c382c583a683e928ed522d683a30de9d4e9618cf"
+    },
+    {
+      "RegionIndex": 255,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 610,
+        "Top": 685,
+        "Right": 660,
+        "Bottom": 696,
+        "Width": 50,
+        "Height": 11
+      },
+      "RecognizedText": "express",
+      "Confidence": 92.56841,
+      "SourceOrder": 255,
+      "CropSha256": "7b6927c6d15a21db55e84b8ac937288fab5ea432458d611caaebd877fa121c2c"
+    },
+    {
+      "RegionIndex": 256,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 666,
+        "Top": 681,
+        "Right": 696,
+        "Bottom": 693,
+        "Width": 30,
+        "Height": 12
+      },
+      "RecognizedText": "such",
+      "Confidence": 96.63074,
+      "SourceOrder": 256,
+      "CropSha256": "c733300ad20f57febbe3645473aa4f1e84297d8b4d5f7426a162f3ce1677ff91"
+    },
+    {
+      "RegionIndex": 257,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 703,
+        "Top": 685,
+        "Right": 718,
+        "Bottom": 693,
+        "Width": 15,
+        "Height": 8
+      },
+      "RecognizedText": "an",
+      "Confidence": 96.908165,
+      "SourceOrder": 257,
+      "CropSha256": "dd80e663e04226b38c9663aff623cc82eb395b23c205a24e264a36dc136f0384"
+    },
+    {
+      "RegionIndex": 258,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 705,
+        "Right": 58,
+        "Bottom": 716,
+        "Width": 53,
+        "Height": 11
+      },
+      "RecognizedText": "opinion.",
+      "Confidence": 95.35173,
+      "SourceOrder": 258,
+      "CropSha256": "09af0d4238876f5a2aacd8342afd9145e1d80d561489c3935e093b27dd7f78f1"
+    },
+    {
+      "RegionIndex": 259,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 66,
+        "Top": 702,
+        "Right": 88,
+        "Bottom": 713,
+        "Width": 22,
+        "Height": 11
+      },
+      "RecognizedText": "We",
+      "Confidence": 96.969925,
+      "SourceOrder": 259,
+      "CropSha256": "7f29702f745da90add2d6d99f40a5640e04aefd6d42d29283dfe0535fc414a76"
+    },
+    {
+      "RegionIndex": 260,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 96,
+        "Top": 705,
+        "Right": 116,
+        "Bottom": 713,
+        "Width": 20,
+        "Height": 8
+      },
+      "RecognizedText": "are",
+      "Confidence": 96.88729,
+      "SourceOrder": 260,
+      "CropSha256": "3ddd473f93d43c350b3fb9ad5f16d9a4c89ba9c0075586d5372d65e28e406774"
+    },
+    {
+      "RegionIndex": 261,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 124,
+        "Top": 701,
+        "Right": 180,
+        "Bottom": 716,
+        "Width": 56,
+        "Height": 15
+      },
+      "RecognizedText": "required",
+      "Confidence": 96.86389,
+      "SourceOrder": 261,
+      "CropSha256": "d7ed99c1c02cb525c8cd8206365e40679cc8efd6c5cbaa530ced310230f5b39d"
+    },
+    {
+      "RegionIndex": 262,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 188,
+        "Top": 703,
+        "Right": 201,
+        "Bottom": 713,
+        "Width": 13,
+        "Height": 10
+      },
+      "RecognizedText": "to",
+      "Confidence": 96.9424,
+      "SourceOrder": 262,
+      "CropSha256": "65152907d3a41172d44841eac7ae8dd3301758d50be928a87c484b31ae28dbe0"
+    },
+    {
+      "RegionIndex": 263,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 209,
+        "Top": 701,
+        "Right": 224,
+        "Bottom": 713,
+        "Width": 15,
+        "Height": 12
+      },
+      "RecognizedText": "be",
+      "Confidence": 96.9424,
+      "SourceOrder": 263,
+      "CropSha256": "53d835fea2896aa958242ba667542dc542c695a191bca6de9abc99e72ed9e9e9"
+    },
+    {
+      "RegionIndex": 264,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 232,
+        "Top": 701,
+        "Right": 317,
+        "Bottom": 716,
+        "Width": 85,
+        "Height": 15
+      },
+      "RecognizedText": "independent",
+      "Confidence": 96.88774,
+      "SourceOrder": 264,
+      "CropSha256": "20f4c93c2bd0b5bd50e6aa4cdccdbaf9633a9e9e9e2cb72c7d44fde46d53cb9e"
+    },
+    {
+      "RegionIndex": 265,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 324,
+        "Top": 701,
+        "Right": 338,
+        "Bottom": 713,
+        "Width": 14,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.47902,
+      "SourceOrder": 265,
+      "CropSha256": "2541a43408250272bbcac042615e2725ce35e05bb738b18e46786be81476de47"
+    },
+    {
+      "RegionIndex": 266,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 345,
+        "Top": 702,
+        "Right": 375,
+        "Bottom": 713,
+        "Width": 30,
+        "Height": 11
+      },
+      "RecognizedText": "IBRD",
+      "Confidence": 96.12509,
+      "SourceOrder": 266,
+      "CropSha256": "eceed214a63176405b3767ade918dd15d00a7135bc86690202e35d45617c6ba6"
+    },
+    {
+      "RegionIndex": 267,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 383,
+        "Top": 701,
+        "Right": 406,
+        "Bottom": 713,
+        "Width": 23,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.89973,
+      "SourceOrder": 267,
+      "CropSha256": "271731f393b7fca003d1e20346b276475ed7a4cb95a51e73d61a65b47ef1ecf8"
+    },
+    {
+      "RegionIndex": 268,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 414,
+        "Top": 703,
+        "Right": 427,
+        "Bottom": 713,
+        "Width": 13,
+        "Height": 10
+      },
+      "RecognizedText": "to",
+      "Confidence": 96.89973,
+      "SourceOrder": 268,
+      "CropSha256": "385c60a289d2b164ecc96d2fa11f3615040b4e7ef16e9d91c580f8bd8e7006d5"
+    },
+    {
+      "RegionIndex": 269,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 435,
+        "Top": 703,
+        "Right": 469,
+        "Bottom": 713,
+        "Width": 34,
+        "Height": 10
+      },
+      "RecognizedText": "meet",
+      "Confidence": 94.52377,
+      "SourceOrder": 269,
+      "CropSha256": "36aaeb5a3824abf05afa70986e1bf173929b844d40a141885b1bc3c61efd575c"
+    },
+    {
+      "RegionIndex": 270,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 476,
+        "Top": 705,
+        "Right": 499,
+        "Bottom": 713,
+        "Width": 23,
+        "Height": 8
+      },
+      "RecognizedText": "our",
+      "Confidence": 96.990906,
+      "SourceOrder": 270,
+      "CropSha256": "f2a6d7de6dbaeb5a0dad8c22583ce759431870210c56cadb36feefe4ba0af390"
+    },
+    {
+      "RegionIndex": 271,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 506,
+        "Top": 701,
+        "Right": 542,
+        "Bottom": 713,
+        "Width": 36,
+        "Height": 12
+      },
+      "RecognizedText": "other",
+      "Confidence": 96.638504,
+      "SourceOrder": 271,
+      "CropSha256": "a42ad6f7b30de29dc3b3bac923bf677114148aadbe38023df27a48e5ddffea72"
+    },
+    {
+      "RegionIndex": 272,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 549,
+        "Top": 701,
+        "Right": 592,
+        "Bottom": 713,
+        "Width": 43,
+        "Height": 12
+      },
+      "RecognizedText": "ethical",
+      "Confidence": 96.537994,
+      "SourceOrder": 272,
+      "CropSha256": "11054f75840b4be58be5669897bc742479f0766911639e8e310d223883aab735"
+    },
+    {
+      "RegionIndex": 273,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 601,
+        "Top": 701,
+        "Right": 700,
+        "Bottom": 716,
+        "Width": 99,
+        "Height": 15
+      },
+      "RecognizedText": "responsibilities",
+      "Confidence": 96.160675,
+      "SourceOrder": 273,
+      "CropSha256": "7ee23b0e8192d9d5ca798612b0918dfbc35a87c82509cf9b15749aa76ed56f96"
+    },
+    {
+      "RegionIndex": 274,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 708,
+        "Top": 705,
+        "Right": 718,
+        "Bottom": 713,
+        "Width": 10,
+        "Height": 8
+      },
+      "RecognizedText": "in",
+      "Confidence": 96.160675,
+      "SourceOrder": 274,
+      "CropSha256": "547936d4ae9b370f52499692ea77ae2c18982711facc510dc922fc7c4e2220bb"
+    },
+    {
+      "RegionIndex": 275,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 722,
+        "Right": 81,
+        "Bottom": 734,
+        "Width": 76,
+        "Height": 12
+      },
+      "RecognizedText": "accordance",
+      "Confidence": 95.99151,
+      "SourceOrder": 275,
+      "CropSha256": "85f04f99c47d8c5e0c72c3dd77726e2f9f63d0b9a159fcc5f5d97079647060f0"
+    },
+    {
+      "RegionIndex": 276,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 87,
+        "Top": 722,
+        "Right": 115,
+        "Bottom": 734,
+        "Width": 28,
+        "Height": 12
+      },
+      "RecognizedText": "with",
+      "Confidence": 96.13016,
+      "SourceOrder": 276,
+      "CropSha256": "2f3e17cba8e44b2c2a19b9a64e126d6a2bc92ad539aad32d4fd1667bee7e389f"
+    },
+    {
+      "RegionIndex": 277,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 122,
+        "Top": 722,
+        "Right": 143,
+        "Bottom": 734,
+        "Width": 21,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.96836,
+      "SourceOrder": 277,
+      "CropSha256": "75bbc37856d7b4560cd4e26bbaeea217ec114c1585d6605193d1f62d63c44c72"
+    },
+    {
+      "RegionIndex": 278,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 150,
+        "Top": 722,
+        "Right": 204,
+        "Bottom": 734,
+        "Width": 54,
+        "Height": 12
+      },
+      "RecognizedText": "relevant",
+      "Confidence": 96.482285,
+      "SourceOrder": 278,
+      "CropSha256": "0fc0c116ac8c7b2b338170729c84a368b06c8740ad20488f4e373abc08ad16bb"
+    },
+    {
+      "RegionIndex": 279,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 210,
+        "Top": 722,
+        "Right": 253,
+        "Bottom": 734,
+        "Width": 43,
+        "Height": 12
+      },
+      "RecognizedText": "ethical",
+      "Confidence": 96.482285,
+      "SourceOrder": 279,
+      "CropSha256": "c3bea21f6bcc5b01e040b9e402ab0b7a7bfe88819be2ca01ab9abbc31f373486"
+    },
+    {
+      "RegionIndex": 280,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 261,
+        "Top": 724,
+        "Right": 350,
+        "Bottom": 737,
+        "Width": 89,
+        "Height": 13
+      },
+      "RecognizedText": "requirements",
+      "Confidence": 96.213104,
+      "SourceOrder": 280,
+      "CropSha256": "ba31c8afc563ff0fb9f4db1d34d22a573d0ba824fa796a903455cf7615111cad"
+    },
+    {
+      "RegionIndex": 281,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 357,
+        "Top": 722,
+        "Right": 407,
+        "Bottom": 737,
+        "Width": 50,
+        "Height": 15
+      },
+      "RecognizedText": "relating",
+      "Confidence": 96.42813,
+      "SourceOrder": 281,
+      "CropSha256": "f55fc17e8f08ab6e0f8d862615e1b6f93db1f1ae0dfa2892ab9927234d029374"
+    },
+    {
+      "RegionIndex": 282,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 413,
+        "Top": 724,
+        "Right": 426,
+        "Bottom": 734,
+        "Width": 13,
+        "Height": 10
+      },
+      "RecognizedText": "to",
+      "Confidence": 97.005745,
+      "SourceOrder": 282,
+      "CropSha256": "7c73310fa583dd60cc5ea388a5a90f1dd3f1a2c98d341575aefb8ad860d809f3"
+    },
+    {
+      "RegionIndex": 283,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 432,
+        "Top": 726,
+        "Right": 455,
+        "Bottom": 734,
+        "Width": 23,
+        "Height": 8
+      },
+      "RecognizedText": "our",
+      "Confidence": 96.58069,
+      "SourceOrder": 283,
+      "CropSha256": "60bd77e3053f5ddb49e77d8934a9e79a27a3317ae222ca76e02799025a942d49"
+    },
+    {
+      "RegionIndex": 284,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 461,
+        "Top": 726,
+        "Right": 508,
+        "Bottom": 734,
+        "Width": 47,
+        "Height": 8
+      },
+      "RecognizedText": "review.",
+      "Confidence": 96.58069,
+      "SourceOrder": 284,
+      "CropSha256": "f12402de68a5bc0b1a04d11ab14872aad127632368152affc7de1c34af7d1320"
+    },
+    {
+      "RegionIndex": 285,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 515,
+        "Top": 723,
+        "Right": 536,
+        "Bottom": 734,
+        "Width": 21,
+        "Height": 11
+      },
+      "RecognizedText": "We",
+      "Confidence": 96.995476,
+      "SourceOrder": 285,
+      "CropSha256": "e2b1b12a567ed60f4244d23ca9504050c98681bd4eb70e7ee5a416274f7e75ed"
+    },
+    {
+      "RegionIndex": 286,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 543,
+        "Top": 722,
+        "Right": 590,
+        "Bottom": 734,
+        "Width": 47,
+        "Height": 12
+      },
+      "RecognizedText": "believe",
+      "Confidence": 96.874535,
+      "SourceOrder": 286,
+      "CropSha256": "f3697d6069b6c1135cf711cf0e971917637dfafb1713da4615a43335517abd57"
+    },
+    {
+      "RegionIndex": 287,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 596,
+        "Top": 722,
+        "Right": 623,
+        "Bottom": 734,
+        "Width": 27,
+        "Height": 12
+      },
+      "RecognizedText": "that",
+      "Confidence": 96.89549,
+      "SourceOrder": 287,
+      "CropSha256": "7609506d22867ebda1250cd8d6ee7645a6e99c7746632500ae1e3b80a6940108"
+    },
+    {
+      "RegionIndex": 288,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 628,
+        "Top": 722,
+        "Right": 650,
+        "Bottom": 734,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.89549,
+      "SourceOrder": 288,
+      "CropSha256": "7e58f83350bad6fb9cc154c99cf332884cb90429e1f4ebfba3cbb9fb078cc040"
+    },
+    {
+      "RegionIndex": 289,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 657,
+        "Top": 722,
+        "Right": 700,
+        "Bottom": 734,
+        "Width": 43,
+        "Height": 12
+      },
+      "RecognizedText": "results",
+      "Confidence": 96.87735,
+      "SourceOrder": 289,
+      "CropSha256": "5eeffadb9d1edaeec836cce99065752f8c618ef7bc5b510e3163224c9970f0d9"
+    },
+    {
+      "RegionIndex": 290,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 706,
+        "Top": 722,
+        "Right": 719,
+        "Bottom": 734,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.663284,
+      "SourceOrder": 290,
+      "CropSha256": "ef5555d0a302f55e2ea4eea84619f04c507673dac449642b56441b9b1f9628f9"
+    },
+    {
+      "RegionIndex": 291,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 4,
+        "Top": 743,
+        "Right": 26,
+        "Bottom": 755,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.49366,
+      "SourceOrder": 291,
+      "CropSha256": "c5d87cff71c427118de97ef492b4811d1977b3c113f99f9dffea3a762c014a69"
+    },
+    {
+      "RegionIndex": 292,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 31,
+        "Top": 747,
+        "Right": 75,
+        "Bottom": 755,
+        "Width": 44,
+        "Height": 8
+      },
+      "RecognizedText": "review",
+      "Confidence": 95.83889,
+      "SourceOrder": 292,
+      "CropSha256": "97ea284aa30a927d475673be3ecfeb6826fd5674bb27dcba8168937501e3d0b2"
+    },
+    {
+      "RegionIndex": 293,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 81,
+        "Top": 743,
+        "Right": 156,
+        "Bottom": 758,
+        "Width": 75,
+        "Height": 15
+      },
+      "RecognizedText": "procedures",
+      "Confidence": 96.85667,
+      "SourceOrder": 293,
+      "CropSha256": "3ce25f3ff358999928f2e104dd6b00e85e6abfb3802ef4473b2f55fe73ccd213"
+    },
+    {
+      "RegionIndex": 294,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 161,
+        "Top": 743,
+        "Right": 211,
+        "Bottom": 758,
+        "Width": 50,
+        "Height": 15
+      },
+      "RecognizedText": "provide",
+      "Confidence": 96.77542,
+      "SourceOrder": 294,
+      "CropSha256": "24d10ba256007f65e0e90feac21730fa38a5b13a324c87d020ed5baa3909cef8"
+    },
+    {
+      "RegionIndex": 295,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 216,
+        "Top": 747,
+        "Right": 222,
+        "Bottom": 755,
+        "Width": 6,
+        "Height": 8
+      },
+      "RecognizedText": "a",
+      "Confidence": 96.87932,
+      "SourceOrder": 295,
+      "CropSha256": "728bd1d8a251e426dd9a40254764124c8c3b76dbc5332a23390a50996c369daf"
+    },
+    {
+      "RegionIndex": 296,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 228,
+        "Top": 743,
+        "Right": 301,
+        "Bottom": 755,
+        "Width": 73,
+        "Height": 12
+      },
+      "RecognizedText": "reasonable",
+      "Confidence": 95.78985,
+      "SourceOrder": 296,
+      "CropSha256": "9ab35d36a084113d52ae695e33511b4113fe0c726b1b2d43fcd2cef04c3a1d28"
+    },
+    {
+      "RegionIndex": 297,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 307,
+        "Top": 743,
+        "Right": 338,
+        "Bottom": 755,
+        "Width": 31,
+        "Height": 12
+      },
+      "RecognizedText": "basis",
+      "Confidence": 96.935196,
+      "SourceOrder": 297,
+      "CropSha256": "dba2d78e6b6d396c434e6015be3f655eb5216e65125771a708b99349eb505da1"
+    },
+    {
+      "RegionIndex": 298,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 343,
+        "Top": 743,
+        "Right": 362,
+        "Bottom": 755,
+        "Width": 19,
+        "Height": 12
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.62672,
+      "SourceOrder": 298,
+      "CropSha256": "711ac6e2ddfa01e0bb714ad20034d5e95db6ea9732ef9c5fe8047678751fcd89"
+    },
+    {
+      "RegionIndex": 299,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 367,
+        "Top": 747,
+        "Right": 389,
+        "Bottom": 755,
+        "Width": 22,
+        "Height": 8
+      },
+      "RecognizedText": "our",
+      "Confidence": 95.853806,
+      "SourceOrder": 299,
+      "CropSha256": "9d246b6ba13525be0507bbc5062e08fc166d4218937a017216287dd785c1b952"
+    },
+    {
+      "RegionIndex": 300,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 394,
+        "Top": 743,
+        "Right": 468,
+        "Bottom": 755,
+        "Width": 74,
+        "Height": 12
+      },
+      "RecognizedText": "conclusion.",
+      "Confidence": 95.55029,
+      "SourceOrder": 300,
+      "CropSha256": "daefeaf8fa13cbf7298623d7b07c81a0c2b6eb10d6935a20591f4f4255ab1cd9"
+    },
+    {
+      "RegionIndex": 301,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 90,
+        "Top": 779,
+        "Right": 93,
+        "Bottom": 780,
+        "Width": 3,
+        "Height": 1
+      },
+      "RecognizedText": "7",
+      "Confidence": 15.992424,
+      "SourceOrder": 301,
+      "CropSha256": "6a5b88ca7b253ca36d47b065df53c4d5d3102f356c0cf379aee1b6da8dc41eff"
+    },
+    {
+      "RegionIndex": 302,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 112,
+        "Top": 778,
+        "Right": 127,
+        "Bottom": 790,
+        "Width": 15,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 95.849205,
+      "SourceOrder": 302,
+      "CropSha256": "6f962d0120c1f4a92fb5bce981c7cf4a3018595ebdf8e5ee75f4ae7e81a654a8"
+    },
+    {
+      "RegionIndex": 303,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 225,
+        "Top": 783,
+        "Right": 242,
+        "Bottom": 790,
+        "Width": 17,
+        "Height": 7
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.67031,
+      "SourceOrder": 303,
+      "CropSha256": "adc0f37b57cb1e0371435745f2b5d0aad0a033b0e4ee14625ebbe448f4f27595"
+    },
+    {
+      "RegionIndex": 304,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 249,
+        "Top": 783,
+        "Right": 270,
+        "Bottom": 790,
+        "Width": 21,
+        "Height": 7
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.89275,
+      "SourceOrder": 304,
+      "CropSha256": "117f7c42aa0fcffa2becdb1c63514b419b94022282dcf3b8cbc994a9bdba6a6d"
+    },
+    {
+      "RegionIndex": 305,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 275,
+        "Top": 779,
+        "Right": 323,
+        "Bottom": 790,
+        "Width": 48,
+        "Height": 11
+      },
+      "RecognizedText": "Interim",
+      "Confidence": 96.69214,
+      "SourceOrder": 305,
+      "CropSha256": "3209165490fe7a9bd62a8a8c78a98c7911dc86a2dfba02ed0ce4da9ad6539fc9"
+    },
+    {
+      "RegionIndex": 306,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 329,
+        "Top": 778,
+        "Right": 386,
+        "Bottom": 790,
+        "Width": 57,
+        "Height": 12
+      },
+      "RecognizedText": "Financial",
+      "Confidence": 96.71409,
+      "SourceOrder": 306,
+      "CropSha256": "682f29090e8d87f98ee27311d4169f37052e0ba5819138a0ed20754627a7c6d2"
+    },
+    {
+      "RegionIndex": 307,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 101,
+        "Top": 821,
+        "Right": 109,
+        "Bottom": 829,
+        "Width": 8,
+        "Height": 8
+      },
+      "RecognizedText": "is",
+      "Confidence": 91.15538,
+      "SourceOrder": 307,
+      "CropSha256": "067d15ad2b5e3343c2e59da6b8e1d316a0440296a84cf0d64623a0614aec62c9"
+    },
+    {
+      "RegionIndex": 308,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 196,
+        "Top": 817,
+        "Right": 216,
+        "Bottom": 829,
+        "Width": 20,
+        "Height": 12
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.741486,
+      "SourceOrder": 308,
+      "CropSha256": "0c402174521c499a353cb3e65efc742550b07e6eebe49ad9a0c2a1ecdaea4aa0"
+    },
+    {
+      "RegionIndex": 309,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 220,
+        "Top": 817,
+        "Right": 242,
+        "Bottom": 829,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.67533,
+      "SourceOrder": 309,
+      "CropSha256": "01116b705ea4a2ab6e8f254e11bf740f31f54816d0ded0c28d976c7c0e46077d"
+    },
+    {
+      "RegionIndex": 310,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 332,
+        "Top": 817,
+        "Right": 356,
+        "Bottom": 829,
+        "Width": 24,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 94.963196,
+      "SourceOrder": 310,
+      "CropSha256": "3c1aff7a136c5a6391cb0eed8b23b9d012e972968c29f6e10629bb15409221d2"
+    },
+    {
+      "RegionIndex": 311,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 362,
+        "Top": 817,
+        "Right": 384,
+        "Bottom": 829,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "fair",
+      "Confidence": 93.08875,
+      "SourceOrder": 311,
+      "CropSha256": "dd1170da764877fa0b2eaa74716128db64155767022946bd2e7b01b70c3a9eec"
+    },
+    {
+      "RegionIndex": 312,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 480,
+        "Top": 817,
+        "Right": 493,
+        "Bottom": 829,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 95.896996,
+      "SourceOrder": 312,
+      "CropSha256": "640052c3a3a0b6b9b5724d5b26d91e1076599e1ac73ed148b12d18f87a15314f"
+    },
+    {
+      "RegionIndex": 313,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 498,
+        "Top": 817,
+        "Right": 519,
+        "Bottom": 829,
+        "Width": 21,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.86167,
+      "SourceOrder": 313,
+      "CropSha256": "fdf0b416df8f561396529d3a8c9ee52ee5a35c1db6bed702c0099a5f2e8b98be"
+    },
+    {
+      "RegionIndex": 314,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 526,
+        "Top": 819,
+        "Right": 573,
+        "Bottom": 829,
+        "Width": 47,
+        "Height": 10
+      },
+      "RecognizedText": "interim",
+      "Confidence": 93.59784,
+      "SourceOrder": 314,
+      "CropSha256": "adc10e13db96f155757b363c1675846cd542149abd9d78ff77b1b0d2bb937778"
+    },
+    {
+      "RegionIndex": 315,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 578,
+        "Top": 817,
+        "Right": 634,
+        "Bottom": 829,
+        "Width": 56,
+        "Height": 12
+      },
+      "RecognizedText": "financial",
+      "Confidence": 96.65084,
+      "SourceOrder": 315,
+      "CropSha256": "c9175c5949b7f5f790114bd40a54533296e7bea30cdbd40e71ed6fb35c444dfe"
+    },
+    {
+      "RegionIndex": 316,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 641,
+        "Top": 817,
+        "Right": 718,
+        "Bottom": 829,
+        "Width": 77,
+        "Height": 12
+      },
+      "RecognizedText": "information",
+      "Confidence": 96.06885,
+      "SourceOrder": 316,
+      "CropSha256": "0a275db615b7d065b1fee9fd76bb03d59386ba75c941eb1b4a7ac40b46f5e797"
+    },
+    {
+      "RegionIndex": 317,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 842,
+        "Right": 15,
+        "Bottom": 850,
+        "Width": 10,
+        "Height": 8
+      },
+      "RecognizedText": "in",
+      "Confidence": 95.66616,
+      "SourceOrder": 317,
+      "CropSha256": "1cb23d4dae6ec87677cdb90528b8b29c134402424b312eb2956ac23fe71179ad"
+    },
+    {
+      "RegionIndex": 318,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 22,
+        "Top": 838,
+        "Right": 98,
+        "Bottom": 850,
+        "Width": 76,
+        "Height": 12
+      },
+      "RecognizedText": "accordance",
+      "Confidence": 93.0718,
+      "SourceOrder": 318,
+      "CropSha256": "96cbc55fbccf4cfd42e51b330253669d574df47615d7f2eb6c7beb5536e22546"
+    },
+    {
+      "RegionIndex": 319,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 105,
+        "Top": 838,
+        "Right": 132,
+        "Bottom": 850,
+        "Width": 27,
+        "Height": 12
+      },
+      "RecognizedText": "with",
+      "Confidence": 96.07886,
+      "SourceOrder": 319,
+      "CropSha256": "2c0d4c48a52690ddb358f115db181b44029adc55515beeac31f8843499db7a86"
+    },
+    {
+      "RegionIndex": 320,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 139,
+        "Top": 840,
+        "Right": 212,
+        "Bottom": 853,
+        "Width": 73,
+        "Height": 13
+      },
+      "RecognizedText": "accounting",
+      "Confidence": 95.99461,
+      "SourceOrder": 320,
+      "CropSha256": "e0291fd4d7a9d4f50d873d763a9ed42eb9baaec140a59a2086097399e4a25f74"
+    },
+    {
+      "RegionIndex": 321,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 219,
+        "Top": 838,
+        "Right": 282,
+        "Bottom": 853,
+        "Width": 63,
+        "Height": 15
+      },
+      "RecognizedText": "principles",
+      "Confidence": 96.52185,
+      "SourceOrder": 321,
+      "CropSha256": "f3535ebeb9b0e6988fe3d59d44bbc5c578cbcb0d2ff9f528f1999c2d1fb983ca"
+    },
+    {
+      "RegionIndex": 322,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 288,
+        "Top": 838,
+        "Right": 349,
+        "Bottom": 853,
+        "Width": 61,
+        "Height": 15
+      },
+      "RecognizedText": "generally",
+      "Confidence": 91.25951,
+      "SourceOrder": 322,
+      "CropSha256": "26c36f0e003e6e4f90d075cb975d7f01ba2209c7f1ad48fb73c3b99c153b646b"
+    },
+    {
+      "RegionIndex": 323,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 355,
+        "Top": 838,
+        "Right": 415,
+        "Bottom": 853,
+        "Width": 60,
+        "Height": 15
+      },
+      "RecognizedText": "accepted",
+      "Confidence": 96.58477,
+      "SourceOrder": 323,
+      "CropSha256": "f64e2fa1e563e0e7b511591c7cdc8b120139e7fb541d4b328849f45874fbf98c"
+    },
+    {
+      "RegionIndex": 324,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 422,
+        "Top": 842,
+        "Right": 432,
+        "Bottom": 850,
+        "Width": 10,
+        "Height": 8
+      },
+      "RecognizedText": "in",
+      "Confidence": 90.57943,
+      "SourceOrder": 324,
+      "CropSha256": "8ff172dfa2b953681c4a5d62bdfcae0b14d2ba43db0ac662b1cff70431a43774"
+    },
+    {
+      "RegionIndex": 325,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 439,
+        "Top": 838,
+        "Right": 460,
+        "Bottom": 850,
+        "Width": 21,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.963104,
+      "SourceOrder": 325,
+      "CropSha256": "2310dc80c62525910c43fc0dd61340554462afe2fd5d2433b3b40d2c8ebc4f9d"
+    },
+    {
+      "RegionIndex": 326,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 467,
+        "Top": 838,
+        "Right": 510,
+        "Bottom": 850,
+        "Width": 43,
+        "Height": 12
+      },
+      "RecognizedText": "United",
+      "Confidence": 93.76404,
+      "SourceOrder": 326,
+      "CropSha256": "2904cc4df88c5383afccb0ee7331c1ef4032bdef381e988bce5da45a7a7d5ba0"
+    },
+    {
+      "RegionIndex": 327,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 517,
+        "Top": 839,
+        "Right": 557,
+        "Bottom": 850,
+        "Width": 40,
+        "Height": 11
+      },
+      "RecognizedText": "States",
+      "Confidence": 96.71856,
+      "SourceOrder": 327,
+      "CropSha256": "32cb34b221c84d2543c1dd0151003dae688ee7b1cce8d646df1ef95184c6c83b"
+    },
+    {
+      "RegionIndex": 328,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 563,
+        "Top": 838,
+        "Right": 576,
+        "Bottom": 850,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.7817,
+      "SourceOrder": 328,
+      "CropSha256": "783f78d6b284ca291ee2f252738f918decbcc4deb67b10b8ee6bc25551e45f37"
+    },
+    {
+      "RegionIndex": 329,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 582,
+        "Top": 839,
+        "Right": 636,
+        "Bottom": 850,
+        "Width": 54,
+        "Height": 11
+      },
+      "RecognizedText": "America",
+      "Confidence": 96.53537,
+      "SourceOrder": 329,
+      "CropSha256": "cb06cfdb0b716d6d487f1283e62209cb6db3e7209d2e9506b976b970d00a98f8"
+    },
+    {
+      "RegionIndex": 330,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 642,
+        "Top": 838,
+        "Right": 666,
+        "Bottom": 850,
+        "Width": 24,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.955345,
+      "SourceOrder": 330,
+      "CropSha256": "2a660e082ed953d1536d0d20d230d9ed957943d6af819f9b87ce3f9dbe59a38a"
+    },
+    {
+      "RegionIndex": 331,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 672,
+        "Top": 838,
+        "Right": 691,
+        "Bottom": 850,
+        "Width": 19,
+        "Height": 12
+      },
+      "RecognizedText": "for",
+      "Confidence": 96.56261,
+      "SourceOrder": 331,
+      "CropSha256": "329b0a973a1acae9aee77c516d41f4a4bb1955181a5721ba50b5caf7eaa119e7"
+    },
+    {
+      "RegionIndex": 332,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 697,
+        "Top": 838,
+        "Right": 718,
+        "Bottom": 850,
+        "Width": 21,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 96.56261,
+      "SourceOrder": 332,
+      "CropSha256": "763b062bf18520b067930bf1fc0189c4870fd235d272313ed1cad4583c3a29e3"
+    },
+    {
+      "RegionIndex": 333,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 858,
+        "Right": 51,
+        "Bottom": 873,
+        "Width": 46,
+        "Height": 15
+      },
+      "RecognizedText": "design,",
+      "Confidence": 96.83819,
+      "SourceOrder": 333,
+      "CropSha256": "93d210becafcf4bc1602a8af1498e5dd3f14d0931666c27fa0bb8f1f53b2b21b"
+    },
+    {
+      "RegionIndex": 334,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 62,
+        "Top": 858,
+        "Right": 172,
+        "Bottom": 873,
+        "Width": 110,
+        "Height": 15
+      },
+      "RecognizedText": "implementation,",
+      "Confidence": 92.29141,
+      "SourceOrder": 334,
+      "CropSha256": "8ac47f84135b25ef17bc84e0fd1a598c5f84eedb5927645a0089241a03ba684a"
+    },
+    {
+      "RegionIndex": 335,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 183,
+        "Top": 858,
+        "Right": 206,
+        "Bottom": 870,
+        "Width": 23,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.51946,
+      "SourceOrder": 335,
+      "CropSha256": "b304e622f8c7036ef837a7308f55261e5c2ec0a3b37b49c89e5456fd6a73a7c5"
+    },
+    {
+      "RegionIndex": 336,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 217,
+        "Top": 860,
+        "Right": 304,
+        "Bottom": 870,
+        "Width": 87,
+        "Height": 10
+      },
+      "RecognizedText": "maintenance",
+      "Confidence": 96.51946,
+      "SourceOrder": 336,
+      "CropSha256": "377747bdb887a0cd5207e41b63da4cc1b13805928d81a1fbf0e5c3b811b06704"
+    },
+    {
+      "RegionIndex": 337,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 314,
+        "Top": 858,
+        "Right": 328,
+        "Bottom": 870,
+        "Width": 14,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.77653,
+      "SourceOrder": 337,
+      "CropSha256": "8a91042f63721e354c46403f2882e3f232f19697dfdacc770265f9a927be8c46"
+    },
+    {
+      "RegionIndex": 338,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 337,
+        "Top": 858,
+        "Right": 387,
+        "Bottom": 870,
+        "Width": 50,
+        "Height": 12
+      },
+      "RecognizedText": "internal",
+      "Confidence": 93.73365,
+      "SourceOrder": 338,
+      "CropSha256": "5998170c278b5c6fe2b4c971404fb0cadf05772ea7b831d0dd1052b347d4b978"
+    },
+    {
+      "RegionIndex": 339,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 398,
+        "Top": 858,
+        "Right": 445,
+        "Bottom": 870,
+        "Width": 47,
+        "Height": 12
+      },
+      "RecognizedText": "control",
+      "Confidence": 95.72141,
+      "SourceOrder": 339,
+      "CropSha256": "83b9f482bb75051ef563163b01d18859cb1af4730adea7bae80d02286bd24464"
+    },
+    {
+      "RegionIndex": 340,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 456,
+        "Top": 858,
+        "Right": 510,
+        "Bottom": 870,
+        "Width": 54,
+        "Height": 12
+      },
+      "RecognizedText": "relevant",
+      "Confidence": 95.63858,
+      "SourceOrder": 340,
+      "CropSha256": "5de3922270381d90107436b9a9c835d3efd878f900f304b7fa336c39d6d7f521"
+    },
+    {
+      "RegionIndex": 341,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 520,
+        "Top": 860,
+        "Right": 533,
+        "Bottom": 870,
+        "Width": 13,
+        "Height": 10
+      },
+      "RecognizedText": "to",
+      "Confidence": 95.82901,
+      "SourceOrder": 341,
+      "CropSha256": "581764db45468df07a5dcb602fca0e5f7b7f94317c3562e2e336d3d64e92ab5a"
+    },
+    {
+      "RegionIndex": 342,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 542,
+        "Top": 858,
+        "Right": 564,
+        "Bottom": 870,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "the",
+      "Confidence": 92.39149,
+      "SourceOrder": 342,
+      "CropSha256": "872784195d29f91cd82895823a842385834b492db8bd6e946d166cadd1f3775e"
+    },
+    {
+      "RegionIndex": 343,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 575,
+        "Top": 860,
+        "Right": 652,
+        "Bottom": 873,
+        "Width": 77,
+        "Height": 13
+      },
+      "RecognizedText": "preparation",
+      "Confidence": 92.39149,
+      "SourceOrder": 343,
+      "CropSha256": "f6cfd4bdde36c6a05f04f48dce44f54f4d45782589fbb14fccbb7f5606972415"
+    },
+    {
+      "RegionIndex": 344,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 663,
+        "Top": 858,
+        "Right": 687,
+        "Bottom": 870,
+        "Width": 24,
+        "Height": 12
+      },
+      "RecognizedText": "and",
+      "Confidence": 96.21834,
+      "SourceOrder": 344,
+      "CropSha256": "75640719479c2fdcbc993bbb66def001655ad640d3c14e4e34af4c2076bc1453"
+    },
+    {
+      "RegionIndex": 345,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 697,
+        "Top": 858,
+        "Right": 719,
+        "Bottom": 870,
+        "Width": 22,
+        "Height": 12
+      },
+      "RecognizedText": "fair",
+      "Confidence": 93.41596,
+      "SourceOrder": 345,
+      "CropSha256": "b4c4d7d15d7abab0e46f8683faa3bd4228f91af4e5fc66212e41ede7272a77fe"
+    },
+    {
+      "RegionIndex": 346,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 881,
+        "Right": 90,
+        "Bottom": 894,
+        "Width": 85,
+        "Height": 13
+      },
+      "RecognizedText": "presentation",
+      "Confidence": 94.568184,
+      "SourceOrder": 346,
+      "CropSha256": "dbf3e97987b13b451e316c52588f5f43db9425fab0cf42a861b73faef73bc323"
+    },
+    {
+      "RegionIndex": 347,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 95,
+        "Top": 879,
+        "Right": 108,
+        "Bottom": 891,
+        "Width": 13,
+        "Height": 12
+      },
+      "RecognizedText": "of",
+      "Confidence": 96.95231,
+      "SourceOrder": 347,
+      "CropSha256": "82832caa6b0fc98c51f9bf1f68b6f31e358ef3755c88dd4a365091aae57cab60"
+    },
+    {
+      "RegionIndex": 348,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 112,
+        "Top": 881,
+        "Right": 159,
+        "Bottom": 891,
+        "Width": 47,
+        "Height": 10
+      },
+      "RecognizedText": "interim",
+      "Confidence": 96.366714,
+      "SourceOrder": 348,
+      "CropSha256": "da1f86b1f25b52573802940b9e98026ebff5990d733711fd1a936d114f789449"
+    },
+    {
+      "RegionIndex": 349,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 163,
+        "Top": 879,
+        "Right": 218,
+        "Bottom": 891,
+        "Width": 55,
+        "Height": 12
+      },
+      "RecognizedText": "financial",
+      "Confidence": 96.86441,
+      "SourceOrder": 349,
+      "CropSha256": "448849f05041d374b03bb673e9eb9b5767af264fcf66e08beeb834b1c42c03c2"
+    },
+    {
+      "RegionIndex": 350,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 224,
+        "Top": 879,
+        "Right": 302,
+        "Bottom": 891,
+        "Width": 78,
+        "Height": 12
+      },
+      "RecognizedText": "information",
+      "Confidence": 96.36934,
+      "SourceOrder": 350,
+      "CropSha256": "e25bec0d1256161399f3e46b4f1315643574386918b7d5a22f313b7cd2d454c8"
+    },
+    {
+      "RegionIndex": 351,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 306,
+        "Top": 879,
+        "Right": 333,
+        "Bottom": 891,
+        "Width": 27,
+        "Height": 12
+      },
+      "RecognizedText": "that",
+      "Confidence": 96.62704,
+      "SourceOrder": 351,
+      "CropSha256": "8ea65d0e6ff230281f48bd128ae05b060ee1e5fef35963bf9eb176812eeb2950"
+    },
+    {
+      "RegionIndex": 352,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 338,
+        "Top": 883,
+        "Right": 346,
+        "Bottom": 891,
+        "Width": 8,
+        "Height": 8
+      },
+      "RecognizedText": "is",
+      "Confidence": 96.62704,
+      "SourceOrder": 352,
+      "CropSha256": "3dca9d75ad49cfbc4d769fb9ffabd9c559ec6950bdb11d0afff93109289462c1"
+    },
+    {
+      "RegionIndex": 353,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 350,
+        "Top": 879,
+        "Right": 377,
+        "Bottom": 891,
+        "Width": 27,
+        "Height": 12
+      },
+      "RecognizedText": "free",
+      "Confidence": 88.54481,
+      "SourceOrder": 353,
+      "CropSha256": "96b431331801244245f6386cacb27f0b936ad99f8dde46957e6387bdc85d3057"
+    },
+    {
+      "RegionIndex": 354,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 381,
+        "Top": 879,
+        "Right": 413,
+        "Bottom": 891,
+        "Width": 32,
+        "Height": 12
+      },
+      "RecognizedText": "from",
+      "Confidence": 96.92699,
+      "SourceOrder": 354,
+      "CropSha256": "b34d94a1f7dd71c5dfc45c29d55970e355cd9896983bade5eb1d8f77dd8e4353"
+    },
+    {
+      "RegionIndex": 355,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 418,
+        "Top": 879,
+        "Right": 472,
+        "Bottom": 891,
+        "Width": 54,
+        "Height": 12
+      },
+      "RecognizedText": "material",
+      "Confidence": 96.8718,
+      "SourceOrder": 355,
+      "CropSha256": "09b94b43c52ce9eef5552b22dbc7fb988acf4f32f02919bee15eb9a0df1c28c2"
+    },
+    {
+      "RegionIndex": 356,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 477,
+        "Top": 881,
+        "Right": 572,
+        "Bottom": 893,
+        "Width": 95,
+        "Height": 12
+      },
+      "RecognizedText": "misstatement,",
+      "Confidence": 95.20671,
+      "SourceOrder": 356,
+      "CropSha256": "836b1d58e4819740823edfe952444cbe8edec69cacfdc61fb797e3deebf6d924"
+    },
+    {
+      "RegionIndex": 357,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 577,
+        "Top": 879,
+        "Right": 633,
+        "Bottom": 891,
+        "Width": 56,
+        "Height": 12
+      },
+      "RecognizedText": "whether",
+      "Confidence": 96.92027,
+      "SourceOrder": 357,
+      "CropSha256": "9ccf7c375cd4ef758d2347128d0d4a9fdff696683cc94bf7bb6eb76a7037256c"
+    },
+    {
+      "RegionIndex": 358,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 637,
+        "Top": 879,
+        "Right": 662,
+        "Bottom": 891,
+        "Width": 25,
+        "Height": 12
+      },
+      "RecognizedText": "due",
+      "Confidence": 96.89167,
+      "SourceOrder": 358,
+      "CropSha256": "cf97794c504fa65f27a3d768e7c59725c9667bac65d5cedccf7347e68240e767"
+    },
+    {
+      "RegionIndex": 359,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 666,
+        "Top": 881,
+        "Right": 677,
+        "Bottom": 891,
+        "Width": 11,
+        "Height": 10
+      },
+      "RecognizedText": "to",
+      "Confidence": 95.12824,
+      "SourceOrder": 359,
+      "CropSha256": "86bc518d1f6f829694295795b68cd07ea5cb6666e73e12c6ce1cb84f7e3ac308"
+    },
+    {
+      "RegionIndex": 360,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 683,
+        "Top": 879,
+        "Right": 718,
+        "Bottom": 891,
+        "Width": 35,
+        "Height": 12
+      },
+      "RecognizedText": "fraud",
+      "Confidence": 95.12824,
+      "SourceOrder": 360,
+      "CropSha256": "9c7d68469976c3956bd6e4d35de8ebb5dd64dac90a249f3ed88680132e7c53ef"
+    },
+    {
+      "RegionIndex": 361,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 5,
+        "Top": 903,
+        "Right": 18,
+        "Bottom": 911,
+        "Width": 13,
+        "Height": 8
+      },
+      "RecognizedText": "or",
+      "Confidence": 84.582664,
+      "SourceOrder": 361,
+      "CropSha256": "23f4db5c2eda1d0991df665879ffea8be09344d6a589aa6fdc488a7e23130bd4"
+    },
+    {
+      "RegionIndex": 362,
+      "Kind": "WORD",
+      "PixelBBox": {
+        "Left": 23,
+        "Top": 903,
+        "Right": 60,
+        "Bottom": 911,
+        "Width": 37,
+        "Height": 8
+      },
+      "RecognizedText": "error.",
+      "Confidence": 84.582664,
+      "SourceOrder": 362,
+      "CropSha256": "6ea1a75c990024a3ea93ece8f3f7f2d62241c9f91691108cff9fe7ee5f9bec59"
+    }
+  ]
+}

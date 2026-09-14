@@ -1,0 +1,25 @@
+{
+  "SchemaVersion": "a99-ir018-local-tesseract-match-v1",
+  "ExpectedSurfaceNormalized": "INDEPENDENT AUDITOR\u0027S REVIEW REPORT",
+  "Status": "UNIQUE_MATCH",
+  "Candidates": [
+    {
+      "FirstLineIndex": 7,
+      "LastLineIndex": 7,
+      "RecognizedText": "INDEPENDENT AUDITOR\u0027S REVIEW REPORT\n\n",
+      "PixelBBox": {
+        "Left": 217,
+        "Top": 190,
+        "Right": 507,
+        "Bottom": 202,
+        "Width": 290,
+        "Height": 12
+      },
+      "ConstituentRegionIndices": [
+        7
+      ],
+      "RegionImageSha256": "02fe70b2f4e314751a7616ddcd12e925f1605139f161155c47bdf0f7d51d290d",
+      "StableOccurrenceId": "pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11"
+    }
+  ]
+}
