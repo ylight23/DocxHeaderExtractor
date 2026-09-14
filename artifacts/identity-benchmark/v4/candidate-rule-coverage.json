@@ -1,0 +1,45 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4a_candidate_rule_coverage",
+  "schemaVersion": "a99-identity-benchmark-v4a-candidate-rule-coverage-v1",
+  "rules": [
+    {
+      "rule": "ADJACENT_ORDER",
+      "candidateCount": 6535,
+      "documentsAffected": 3,
+      "perDocumentCandidateCount": {
+        "DOC-0123": 3213,
+        "DOC-0133": 2353,
+        "DOC-0252": 969
+      },
+      "maximumEndpointFanOut": 2,
+      "canTheoreticallyRetrieveIr019": false,
+      "canTheoreticallyRetrieveIr020": false,
+      "canTheoreticallyRetrieveIr021": false,
+      "interpretation": "Generator emits only adjacent sorted source-array indices; it is not a broad distance window."
+    },
+    {
+      "rule": "NORMALIZED_TEXT_AFFINITY",
+      "candidateCount": 89476,
+      "documentsAffected": 3,
+      "perDocumentCandidateCount": {
+        "DOC-0123": 700,
+        "DOC-0133": 69764,
+        "DOC-0252": 19012
+      },
+      "maximumEndpointFanOut": 273,
+      "canTheoreticallyRetrieveIr019": false,
+      "canTheoreticallyRetrieveIr020": false,
+      "canTheoreticallyRetrieveIr021": true,
+      "interpretation": "Generator emits only exact equality after Unicode normalization, whitespace collapse, and uppercasing."
+    }
+  ],
+  "totalBroadCandidates": 95999,
+  "sourceDocuments": 3,
+  "generatedReasonCounts": {
+    "ADJACENT_ORDER": 6535,
+    "NORMALIZED_TEXT_AFFINITY": 89476
+  },
+  "generatorContract": "HdsaDeterministicIdentityCandidateGenerator v1: adjacent index OR exact normalized text equality",
+  "providerCalls": 0,
+  "goldUsedForGeneration": false
+}

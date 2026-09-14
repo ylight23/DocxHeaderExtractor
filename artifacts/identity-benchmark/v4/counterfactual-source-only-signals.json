@@ -1,0 +1,262 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4a_counterfactual_source_only_signals",
+  "schemaVersion": "a99-identity-benchmark-v4a-counterfactual-source-only-signals-v1",
+  "status": "COUNTERFACTUAL_ONLY_NO_RULE_IMPLEMENTED",
+  "declaredSignalsBeforeMeasurement": [
+    "FINAL_ACRONYM_PARENTHETICAL_EQUIVALENCE",
+    "SHARED_STRUCTURAL_SESSION_SECTION_KEY",
+    "CONTINUATION_MARKER_WITH_SHARED_STRUCTURAL_KEY"
+  ],
+  "signals": [
+    {
+      "signal": "FINAL_ACRONYM_PARENTHETICAL_EQUIVALENCE",
+      "definition": "Remove only one terminal parenthetical whose content matches a bounded uppercase acronym grammar; preserve all other text and do not strip arbitrary punctuation.",
+      "additionalCandidatePairs": 10,
+      "additionalPairsByDocument": {
+        "DOC-0123": 9,
+        "DOC-0133": 1
+      },
+      "additionalMaximumEndpointFanOut": 3,
+      "sampleAddedPairs": [
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[84]",
+          "right": "DOC-0123:body[1]/p[263]",
+          "groupKey": "SECTION I - INSTRUCTIONS TO PROPOSERS"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[192]",
+          "right": "DOC-0123:body[1]/p[263]",
+          "groupKey": "SECTION I - INSTRUCTIONS TO PROPOSERS"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[263]",
+          "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+          "groupKey": "SECTION I - INSTRUCTIONS TO PROPOSERS"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[101]",
+          "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+          "groupKey": "SECTION VIII - GENERAL CONDITIONS"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+          "right": "DOC-0123:body[1]/p[1192]",
+          "groupKey": "SECTION VIII - GENERAL CONDITIONS"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[103]",
+          "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+          "groupKey": "SECTION IX - PARTICULAR CONDITIONS"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+          "right": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+          "groupKey": "SECTION IX - PARTICULAR CONDITIONS"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+          "right": "DOC-0123:body[1]/p[766]",
+          "groupKey": "CODE OF CONDUCT FOR CONTRACTOR\u2019S PERSONNEL"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[695]",
+          "right": "DOC-0123:body[1]/p[766]",
+          "groupKey": "CODE OF CONDUCT FOR CONTRACTOR\u2019S PERSONNEL"
+        },
+        {
+          "documentId": "DOC-0133",
+          "left": "DOC-0133:B000005",
+          "right": "DOC-0133:B000935",
+          "groupKey": "CONDENSED QUARTERLY FINANCIAL STATEMENTS"
+        }
+      ],
+      "targetDiagnosticStatus": {
+        "IR-019": "NOT_EXPOSED",
+        "IR-020": "ADDED_COUNTERFACTUAL",
+        "IR-021": "ALREADY_EXISTING"
+      },
+      "safetyNote": "Source-only grouping estimate; no production rule was changed or selected."
+    },
+    {
+      "signal": "SHARED_STRUCTURAL_SESSION_SECTION_KEY",
+      "definition": "Use only a parser-independent leading SESSION/SECTION Roman-or-decimal key as a retrieval hint; it never labels or merges a relation.",
+      "additionalCandidatePairs": 67,
+      "additionalPairsByDocument": {
+        "DOC-0123": 42,
+        "DOC-0133": 5,
+        "DOC-0252": 20
+      },
+      "additionalMaximumEndpointFanOut": 5,
+      "sampleAddedPairs": [
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[84]",
+          "right": "DOC-0123:body[1]/p[172]",
+          "groupKey": "SECTION I"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[84]",
+          "right": "DOC-0123:body[1]/p[263]",
+          "groupKey": "SECTION I"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[172]",
+          "right": "DOC-0123:body[1]/p[192]",
+          "groupKey": "SECTION I"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[172]",
+          "right": "DOC-0123:body[1]/p[263]",
+          "groupKey": "SECTION I"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[172]",
+          "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+          "groupKey": "SECTION I"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[192]",
+          "right": "DOC-0123:body[1]/p[263]",
+          "groupKey": "SECTION I"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[263]",
+          "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+          "groupKey": "SECTION I"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[86]",
+          "right": "DOC-0123:body[1]/p[173]",
+          "groupKey": "SECTION II"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[173]",
+          "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]",
+          "groupKey": "SECTION II"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[173]",
+          "right": "DOC-0123:body[1]/p[276]",
+          "groupKey": "SECTION II"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[88]",
+          "right": "DOC-0123:body[1]/p[174]",
+          "groupKey": "SECTION III"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[88]",
+          "right": "DOC-0123:body[1]/p[285]",
+          "groupKey": "SECTION III"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[174]",
+          "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]",
+          "groupKey": "SECTION III"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[174]",
+          "right": "DOC-0123:body[1]/p[285]",
+          "groupKey": "SECTION III"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]",
+          "right": "DOC-0123:body[1]/p[285]",
+          "groupKey": "SECTION III"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[90]",
+          "right": "DOC-0123:body[1]/p[175]",
+          "groupKey": "SECTION IV"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[175]",
+          "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+          "groupKey": "SECTION IV"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[175]",
+          "right": "DOC-0123:body[1]/p[403]",
+          "groupKey": "SECTION IV"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[92]",
+          "right": "DOC-0123:body[1]/p[176]",
+          "groupKey": "SECTION V"
+        },
+        {
+          "documentId": "DOC-0123",
+          "left": "DOC-0123:body[1]/p[176]",
+          "right": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]",
+          "groupKey": "SECTION V"
+        }
+      ],
+      "targetDiagnosticStatus": {
+        "IR-019": "ADDED_COUNTERFACTUAL",
+        "IR-020": "ADDED_COUNTERFACTUAL",
+        "IR-021": "ALREADY_EXISTING"
+      },
+      "safetyNote": "Source-only grouping estimate; no production rule was changed or selected."
+    },
+    {
+      "signal": "CONTINUATION_MARKER_WITH_SHARED_STRUCTURAL_KEY",
+      "definition": "Retrieve a pair when one source unit has a terminal Cont\u2019d/Contd/Continued marker and both units share the same leading SESSION/SECTION key.",
+      "additionalCandidatePairs": 2,
+      "additionalPairsByDocument": {
+        "DOC-0252": 2
+      },
+      "additionalMaximumEndpointFanOut": 2,
+      "sampleAddedPairs": [
+        {
+          "documentId": "DOC-0252",
+          "left": "DOC-0252:B000544",
+          "right": "DOC-0252:B000893",
+          "groupKey": "SESSION V"
+        },
+        {
+          "documentId": "DOC-0252",
+          "left": "DOC-0252:B000888",
+          "right": "DOC-0252:B000893",
+          "groupKey": "SESSION V"
+        }
+      ],
+      "targetDiagnosticStatus": {
+        "IR-019": "ADDED_COUNTERFACTUAL",
+        "IR-020": "NOT_EXPOSED",
+        "IR-021": "ALREADY_EXISTING"
+      },
+      "safetyNote": "Source-only grouping estimate; no production rule was changed or selected."
+    }
+  ],
+  "noGoldOptimizedThresholdSearch": true,
+  "goldUsedForGeneration": false,
+  "devExposed": true,
+  "providerCalls": 0
+}

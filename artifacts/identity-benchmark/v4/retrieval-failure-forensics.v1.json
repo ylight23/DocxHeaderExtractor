@@ -1,0 +1,278 @@
+{
+  "metadata": {
+    "artifactKind": "a99_identity_benchmark_v4a_retrieval_failure_forensics",
+    "schemaVersion": "a99-identity-benchmark-v4a-retrieval-failure-forensics-v1",
+    "status": "READY_FOR_V4_RETRIEVAL_CHALLENGER_DESIGN",
+    "phase": "V4A_BROAD_RETRIEVAL_FAILURE_FORENSICS",
+    "devExposed": true,
+    "sourceCatalogPath": "artifacts/identity-benchmark/v2/source-catalog.json",
+    "sourceCatalogFingerprint": "ed61300844f124d02144c09ea288822a88f6c7fdd0dbee0cf1bf42d31b51fd84",
+    "sourceCatalogSha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+    "v3aManifestSha256": "824b17c125ec59a54e590dd4063ab5d734f601dc10aa1d183db499abb9219fd8",
+    "v3bEvaluationSha256": "6d1b0cfbc975126d84fdb8befb5fe96b41e1222f0e78eddff78eea54a9a72332",
+    "currentGenerator": "src/DocxHeaderExtractor.Core/Models/HdsaDeterministicIdentityCandidateGenerator.cs",
+    "currentGeneratorSha256": "1ef57553e3b191787c6795919441cde1a6656d27fc964cdfae86a2c032d7c3b8",
+    "broadCandidateCount": 95999,
+    "normalizedTextAffinityIncidences": 89476,
+    "goldUsedForGeneration": false,
+    "goldDerivedTargetReferences": true,
+    "modelUsed": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "productionBehaviorChanged": false,
+    "v1V2V3ArtifactsModified": false,
+    "knownV3Gate": "V3_RETRIEVAL_RECALL_FAILURE",
+    "knownV3AStatus": "READY_FOR_V3_RETRIEVAL_EVALUATION"
+  },
+  "targetTrace": [
+    {
+      "itemId": "IR-019",
+      "documentId": "DOC-0252",
+      "relation": "CONTINUATION_OF",
+      "isPositive": true,
+      "left": "DOC-0252:B000888",
+      "right": "DOC-0252:B000893",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0252:B000888",
+        "text": "SESSION V: Cu rrent Research",
+        "documentOrder": 887,
+        "sourceArrayIndex": 887,
+        "normalizedText": "SESSION V: CU RRENT RESEARCH",
+        "structuralKey": "SESSION V",
+        "hasContinuationMarker": false
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0252:B000893",
+        "text": "SESSION V: Cu rrent Resea rch (Cont\u2019d)",
+        "documentOrder": 892,
+        "sourceArrayIndex": 892,
+        "normalizedText": "SESSION V: CU RRENT RESEA RCH (CONT\u2019D)",
+        "structuralKey": "SESSION V",
+        "hasContinuationMarker": true
+      },
+      "sourceOnlyComparison": {
+        "sourceArrayIndexDistance": 5,
+        "interveningSourceUnits": 4,
+        "documentOrderDistance": 5,
+        "sameNormalizedText": false,
+        "tokenOverlap": 0.5,
+        "sourcePageDistance": "UNAVAILABLE_IN_FROZEN_CATALOG",
+        "styleLayoutCompatibility": "UNAVAILABLE_IN_FROZEN_CATALOG",
+        "numberingIdentity": "UNAVAILABLE_IN_FROZEN_CATALOG",
+        "scopeIdentity": "UNAVAILABLE_IN_FROZEN_CATALOG"
+      },
+      "adjacentRule": {
+        "rule": "ADJACENT_ORDER",
+        "status": "DISTANCE_FAILED",
+        "eligible": false,
+        "explanation": "The v1 generator tests sorted source-array adjacency (j == i \u002B 1); no broader distance rule exists."
+      },
+      "textAffinityRule": {
+        "rule": "NORMALIZED_TEXT_AFFINITY",
+        "status": "TEXT_SIGNAL_FAILED",
+        "eligible": false,
+        "explanation": "The v1 generator requires exact equality after Normalize(), whitespace collapse, and ToUpperInvariant()."
+      },
+      "scopeRule": {
+        "rule": "SCOPE",
+        "status": "UNAVAILABLE",
+        "eligible": false,
+        "explanation": "No scope blocker is implemented by the current generator."
+      },
+      "structuralRule": {
+        "rule": "PARSER_STRUCTURAL_SIGNAL",
+        "status": "NOT_IMPLEMENTED",
+        "eligible": false,
+        "explanation": "No numbering/style/page/continuation structural rule is implemented."
+      },
+      "currentCandidatePresent": false,
+      "currentCandidateId": null,
+      "currentCandidateReasons": [],
+      "finalOutcome": "FILTERED_NO_ACTIVE_RULE",
+      "exposure": "DEV_EXPOSED_TARGET"
+    },
+    {
+      "itemId": "IR-020",
+      "documentId": "DOC-0123",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "isPositive": true,
+      "left": "DOC-0123:body[1]/p[192]",
+      "right": "DOC-0123:body[1]/p[263]",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[192]",
+        "text": "Section I - Instructions to Proposers (ITP)",
+        "documentOrder": 193,
+        "sourceArrayIndex": 131,
+        "normalizedText": "SECTION I - INSTRUCTIONS TO PROPOSERS (ITP)",
+        "structuralKey": "SECTION I",
+        "hasContinuationMarker": false
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[263]",
+        "text": "Section I - Instructions to Proposers",
+        "documentOrder": 264,
+        "sourceArrayIndex": 199,
+        "normalizedText": "SECTION I - INSTRUCTIONS TO PROPOSERS",
+        "structuralKey": "SECTION I",
+        "hasContinuationMarker": false
+      },
+      "sourceOnlyComparison": {
+        "sourceArrayIndexDistance": 68,
+        "interveningSourceUnits": 67,
+        "documentOrderDistance": 71,
+        "sameNormalizedText": false,
+        "tokenOverlap": 0.8571428571428571,
+        "sourcePageDistance": "UNAVAILABLE_IN_FROZEN_CATALOG",
+        "styleLayoutCompatibility": "UNAVAILABLE_IN_FROZEN_CATALOG",
+        "numberingIdentity": "UNAVAILABLE_IN_FROZEN_CATALOG",
+        "scopeIdentity": "UNAVAILABLE_IN_FROZEN_CATALOG"
+      },
+      "adjacentRule": {
+        "rule": "ADJACENT_ORDER",
+        "status": "DISTANCE_FAILED",
+        "eligible": false,
+        "explanation": "The v1 generator tests sorted source-array adjacency (j == i \u002B 1); no broader distance rule exists."
+      },
+      "textAffinityRule": {
+        "rule": "NORMALIZED_TEXT_AFFINITY",
+        "status": "TEXT_SIGNAL_FAILED",
+        "eligible": false,
+        "explanation": "The v1 generator requires exact equality after Normalize(), whitespace collapse, and ToUpperInvariant()."
+      },
+      "scopeRule": {
+        "rule": "SCOPE",
+        "status": "UNAVAILABLE",
+        "eligible": false,
+        "explanation": "No scope blocker is implemented by the current generator."
+      },
+      "structuralRule": {
+        "rule": "PARSER_STRUCTURAL_SIGNAL",
+        "status": "NOT_IMPLEMENTED",
+        "eligible": false,
+        "explanation": "No numbering/style/page/continuation structural rule is implemented."
+      },
+      "currentCandidatePresent": false,
+      "currentCandidateId": null,
+      "currentCandidateReasons": [],
+      "finalOutcome": "FILTERED_NO_ACTIVE_RULE",
+      "exposure": "DEV_EXPOSED_TARGET"
+    },
+    {
+      "itemId": "IR-021",
+      "documentId": "DOC-0123",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "isPositive": true,
+      "left": "DOC-0123:body[1]/p[1164]",
+      "right": "DOC-0123:body[1]/p[1166]",
+      "leftSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[1164]",
+        "text": "Contractor\u2019s Representative and Key Personnel",
+        "documentOrder": 3005,
+        "sourceArrayIndex": 1959,
+        "normalizedText": "CONTRACTOR\u2019S REPRESENTATIVE AND KEY PERSONNEL",
+        "structuralKey": null,
+        "hasContinuationMarker": false
+      },
+      "rightSource": {
+        "sourceOccurrenceId": "DOC-0123:body[1]/p[1166]",
+        "text": "Contractor\u2019s Representative and Key Personnel",
+        "documentOrder": 3007,
+        "sourceArrayIndex": 1961,
+        "normalizedText": "CONTRACTOR\u2019S REPRESENTATIVE AND KEY PERSONNEL",
+        "structuralKey": null,
+        "hasContinuationMarker": false
+      },
+      "sourceOnlyComparison": {
+        "sourceArrayIndexDistance": 2,
+        "interveningSourceUnits": 1,
+        "documentOrderDistance": 2,
+        "sameNormalizedText": true,
+        "tokenOverlap": 1,
+        "sourcePageDistance": "UNAVAILABLE_IN_FROZEN_CATALOG",
+        "styleLayoutCompatibility": "UNAVAILABLE_IN_FROZEN_CATALOG",
+        "numberingIdentity": "UNAVAILABLE_IN_FROZEN_CATALOG",
+        "scopeIdentity": "UNAVAILABLE_IN_FROZEN_CATALOG"
+      },
+      "adjacentRule": {
+        "rule": "ADJACENT_ORDER",
+        "status": "DISTANCE_FAILED",
+        "eligible": false,
+        "explanation": "The v1 generator tests sorted source-array adjacency (j == i \u002B 1); no broader distance rule exists."
+      },
+      "textAffinityRule": {
+        "rule": "NORMALIZED_TEXT_AFFINITY",
+        "status": "ELIGIBLE",
+        "eligible": true,
+        "explanation": "The v1 generator requires exact equality after Normalize(), whitespace collapse, and ToUpperInvariant()."
+      },
+      "scopeRule": {
+        "rule": "SCOPE",
+        "status": "UNAVAILABLE",
+        "eligible": false,
+        "explanation": "No scope blocker is implemented by the current generator."
+      },
+      "structuralRule": {
+        "rule": "PARSER_STRUCTURAL_SIGNAL",
+        "status": "NOT_IMPLEMENTED",
+        "eligible": false,
+        "explanation": "No numbering/style/page/continuation structural rule is implemented."
+      },
+      "currentCandidatePresent": true,
+      "currentCandidateId": "DOC-0123:P1960-1962",
+      "currentCandidateReasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ],
+      "finalOutcome": "EMITTED",
+      "exposure": "DEV_EXPOSED_TARGET"
+    }
+  ],
+  "ruleCoverage": [
+    {
+      "rule": "ADJACENT_ORDER",
+      "candidateCount": 6535,
+      "documentsAffected": 3,
+      "perDocumentCandidateCount": {
+        "DOC-0123": 3213,
+        "DOC-0133": 2353,
+        "DOC-0252": 969
+      },
+      "maximumEndpointFanOut": 2,
+      "canTheoreticallyRetrieveIr019": false,
+      "canTheoreticallyRetrieveIr020": false,
+      "canTheoreticallyRetrieveIr021": false,
+      "interpretation": "Generator emits only adjacent sorted source-array indices; it is not a broad distance window."
+    },
+    {
+      "rule": "NORMALIZED_TEXT_AFFINITY",
+      "candidateCount": 89476,
+      "documentsAffected": 3,
+      "perDocumentCandidateCount": {
+        "DOC-0123": 700,
+        "DOC-0133": 69764,
+        "DOC-0252": 19012
+      },
+      "maximumEndpointFanOut": 273,
+      "canTheoreticallyRetrieveIr019": false,
+      "canTheoreticallyRetrieveIr020": false,
+      "canTheoreticallyRetrieveIr021": true,
+      "interpretation": "Generator emits only exact equality after Unicode normalization, whitespace collapse, and uppercasing."
+    }
+  ],
+  "architecturalDiagnosis": "CURRENT_BROAD_RETRIEVAL_MULTI_FACTOR_GAP",
+  "diagnosisRationale": [
+    "The current generator has only adjacency and exact normalized-text equality; neither rule sees the two missed endpoint pairs.",
+    "IR-019 needs a source-only structural/continuation retrieval signal because parser text fragmentation prevents exact normalized equality and the endpoints are non-adjacent.",
+    "IR-020 needs a conservative lexical-variant or structural-key retrieval signal because the terminal acronym makes exact normalized equality fail and the endpoints are non-adjacent.",
+    "This is retrieval diagnosis only; no relation label, merge, promotion, or Gold-derived candidate was created."
+  ],
+  "firewall": {
+    "goldUsedForGeneration": false,
+    "goldUsedForRuleSelection": false,
+    "goldUsedToChooseThreshold": false,
+    "goldDerivedTargetReferences": true,
+    "modelOutputsUsed": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "devExposed": true
+  }
+}
