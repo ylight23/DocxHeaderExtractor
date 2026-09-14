@@ -1,0 +1,49 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4c_failure_attribution",
+  "schemaVersion": "a99-identity-benchmark-v4c-failure-attribution-v1",
+  "goldDerivedInput": false,
+  "rows": [
+    {
+      "itemId": "IR-019",
+      "relation": "CONTINUATION_OF",
+      "outcome": "RETRIEVED_V4_MULTI_SIGNAL",
+      "attribution": "NONE",
+      "broadPresent": true,
+      "v3BroadPresent": false,
+      "v4Only": true,
+      "candidateId": "DOC-0252:V4P0888-0893",
+      "reasons": [
+        "EXPLICIT_CONTINUATION_VARIANT",
+        "SHARED_STRUCTURAL_HEADING_KEY"
+      ]
+    },
+    {
+      "itemId": "IR-020",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "outcome": "RETRIEVED_V4_MULTI_SIGNAL",
+      "attribution": "NONE",
+      "broadPresent": true,
+      "v3BroadPresent": false,
+      "v4Only": true,
+      "candidateId": "DOC-0123:V4P0132-0200",
+      "reasons": [
+        "SHARED_STRUCTURAL_HEADING_KEY",
+        "TERMINAL_ACRONYM_VARIANT"
+      ]
+    },
+    {
+      "itemId": "IR-021",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "outcome": "RETRIEVED_V3_EXISTING",
+      "attribution": "NONE",
+      "broadPresent": true,
+      "v3BroadPresent": true,
+      "v4Only": false,
+      "candidateId": "DOC-0123:P1960-1962",
+      "reasons": [
+        "NORMALIZED_TEXT_AFFINITY"
+      ]
+    }
+  ],
+  "providerCalls": 0
+}

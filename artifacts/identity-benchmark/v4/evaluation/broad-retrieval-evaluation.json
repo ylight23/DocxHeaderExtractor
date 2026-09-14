@@ -1,0 +1,92 @@
+{
+  "artifactKind": "a99_identity_benchmark_v4c_broad_retrieval_evaluation",
+  "schemaVersion": "a99-identity-benchmark-v4c-broad-retrieval-evaluation-v1",
+  "status": "READY_FOR_V4_PRUNING_EVALUATION",
+  "phase": "V4C_FROZEN_V4_BROAD_RETRIEVAL_EVALUATION",
+  "developmentStatus": "DEV_EXPOSED_CHALLENGER",
+  "independentGeneralizationClaim": false,
+  "integrityBeforeGold": {
+    "integrity": "PASS",
+    "manifestSha256": "d8a0ce04130328141dcf75569c8fb646596624e328e326db6f52bf06abc78cdb",
+    "broadSha256": "a9aad1afabb0645112f6aefae743d91b8dfb6f8681231881fcf791538053c9a0",
+    "sourceReferenceSha256": "4f08f6ad6f7c2effaf3091e79304401d07a15fd228556ee5f3418b9373261e76",
+    "contractSha256": "0002af979b40a1f4c32ae8032d022ec0d621adba077ba4b8a5125cb83f2a0a97",
+    "firewallSha256": "e3525e76c1f341d5d4229404b954b2dfb93dc3315ae7be29f7063fb40c6b7a46",
+    "additionsSha256": "3d92c88268a6d262c05395a330e651951752477e97ba2ecbc9b286dd73468820",
+    "broadCount": 96069,
+    "additionCount": 70,
+    "providerCalls": 0,
+    "goldReadCount": 0
+  },
+  "goldAuthority": "USER_REVIEWED_IDENTITY_GOLD_FROZEN",
+  "independentABGold": false,
+  "goldOpenedAfterFreeze": true,
+  "goldSha256": "1c50754951b89ec48a0b0016db3e6079afd088bd0fb20a08ac60e10c41e6fae2",
+  "bindingArtifacts": {
+    "v2Sha256": "122bf50fee967a2ef9a33aee3bc146d7df842d9e469126744fc0f68a017059b8",
+    "v4Sha256": "09184c106d4c271e71dc4dea72a43eb215290d86ed83e03927d20ae6287fb7d4",
+    "exactEndpointEvidence": true
+  },
+  "metrics": {
+    "totalCases": 5,
+    "positiveDenominator": 3,
+    "positiveRetrieved": 3,
+    "positiveRecall": 1,
+    "absoluteImprovementOverV3": 0.6666666666666667,
+    "percentagePointImprovementOverV3": 66.66666666666667,
+    "continuation": {
+      "denominator": 1,
+      "retrieved": 1
+    },
+    "sameRepeat": {
+      "denominator": 2,
+      "retrieved": 2
+    },
+    "distinctDiagnostics": [
+      {
+        "itemId": "IR-018",
+        "broadPresent": true,
+        "v3BroadPresent": true,
+        "v4Only": false,
+        "outcome": "RETRIEVED_V3_EXISTING"
+      },
+      {
+        "itemId": "IR-022",
+        "broadPresent": true,
+        "v3BroadPresent": true,
+        "v4Only": false,
+        "outcome": "RETRIEVED_V3_EXISTING"
+      }
+    ],
+    "candidateVolume": {
+      "v3Broad": 95999,
+      "v4Broad": 96069,
+      "added": 70,
+      "increasePercent": 0.07291742622318982
+    }
+  },
+  "signalContribution": {
+    "structuralKey": [
+      "IR-019",
+      "IR-020"
+    ],
+    "terminalAcronym": [
+      "IR-020"
+    ],
+    "continuationMarker": [
+      "IR-019"
+    ],
+    "causalAblationPerformed": false
+  },
+  "firewall": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldUsedForGeneration": false,
+    "goldUsedForPruning": false,
+    "requestsCreated": false,
+    "predictionsCreated": false,
+    "v4bArtifactsMutated": false,
+    "broadCandidateSha256": "a9aad1afabb0645112f6aefae743d91b8dfb6f8681231881fcf791538053c9a0"
+  },
+  "nextGate": "READY_FOR_V4_PRUNING_EVALUATION"
+}
