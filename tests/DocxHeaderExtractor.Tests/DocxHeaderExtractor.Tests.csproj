@@ -33,6 +33,7 @@
          các mức trần phải có test, không thể chỉ tin vào review. -->
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Web\DocxHeaderExtractor.Web.csproj" Aliases="global,WebApp" />
     <ProjectReference Include="..\..\tools\identity-benchmark-v4h-b\IdentityBenchmarkV4HB.csproj" />
+    <ProjectReference Include="..\..\tools\identity-benchmark-v4h-c\IdentityBenchmarkV4HC.csproj" />
   </ItemGroup>
 
 </Project>

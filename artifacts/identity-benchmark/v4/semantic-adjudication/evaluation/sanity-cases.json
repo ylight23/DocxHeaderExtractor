@@ -1,0 +1,26 @@
+[
+  {
+    "reviewId": "SA-0067",
+    "candidateId": "DOC-0252:V4P0544-0888",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "INVALID_PREDICTION",
+    "predictionStatus": "PROVIDER_ERROR",
+    "correct": false
+  },
+  {
+    "reviewId": "SA-0108",
+    "candidateId": "DOC-0252:V4P0544-0893",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "INVALID_PREDICTION",
+    "predictionStatus": "PROVIDER_ERROR",
+    "correct": false
+  },
+  {
+    "reviewId": "SA-0040",
+    "candidateId": "DOC-0252:V4P0888-0893",
+    "goldRelation": "CONTINUATION_OF",
+    "predictedRelation": "CONTINUATION_OF",
+    "predictionStatus": "VALID",
+    "correct": true
+  }
+]

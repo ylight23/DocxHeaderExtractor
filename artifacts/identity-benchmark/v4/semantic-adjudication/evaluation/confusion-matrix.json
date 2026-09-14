@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "a99-v4h-confusion-matrix-v1",
+  "rows": {
+    "SAME_SEMANTIC_REPEAT": {
+      "SAME_SEMANTIC_REPEAT": 22,
+      "CONTINUATION_OF": 0,
+      "DISTINCT": 1,
+      "INVALID_PREDICTION": 7
+    },
+    "CONTINUATION_OF": {
+      "SAME_SEMANTIC_REPEAT": 0,
+      "CONTINUATION_OF": 1,
+      "DISTINCT": 0,
+      "INVALID_PREDICTION": 0
+    },
+    "DISTINCT": {
+      "SAME_SEMANTIC_REPEAT": 18,
+      "CONTINUATION_OF": 5,
+      "DISTINCT": 48,
+      "INVALID_PREDICTION": 26
+    }
+  },
+  "invalidPredictionCount": 33
+}

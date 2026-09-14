@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "a99-v4h-c-evaluation-manifest-v1",
+  "status": "V4H_C_COMPLETE",
+  "experiment": "IDENTITY_BENCHMARK_V4H_C",
+  "goldArtifact": "artifacts/identity-benchmark/v4/semantic-adjudication/results/human-adjudication.frozen.v1.json",
+  "goldSha256": "1b4c10fd20e0840a272611065bfcff524335542ea5d5b71cfe16bae692eaae16",
+  "expectedGoldSha256": "1b4c10fd20e0840a272611065bfcff524335542ea5d5b71cfe16bae692eaae16",
+  "predictionArtifact": "artifacts/identity-benchmark/v4/target-grounding-challenger/execution/parsed-results.json",
+  "predictionSha256": "fff4dd635fd083cce51fcf54da297d23321aae18d64db2b4715a3b71b90e4c2f",
+  "executionManifest": "artifacts/identity-benchmark/v4/target-grounding-challenger/execution/execution-manifest.json",
+  "executionManifestSha256": "76de4e42384fb94986c824f10e6551cf19fc64f56ec9010a7c070c07a2ac3eb1",
+  "itemCount": 128,
+  "exactCandidateJoinCount": 128,
+  "exactPredictionEndpointJoinCount": 95,
+  "providerErrorEndpointUnavailableCount": 33,
+  "exactJoin": true,
+  "evaluationOnly": true,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "pairwiseLaneStatus": "CLOSED_AFTER_V4H_C",
+  "nextArchitecture": "GLOBAL_CLUSTER_SEMANTIC_NODE_INDUCTION"
+}
