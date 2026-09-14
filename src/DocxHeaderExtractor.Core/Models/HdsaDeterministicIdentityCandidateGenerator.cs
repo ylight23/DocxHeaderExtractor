@@ -38,6 +38,11 @@ public static class HdsaDeterministicIdentityCandidateGenerator
             .OrderBy(item => item.DocumentOrder)
             .ThenBy(item => item.NodeId, StringComparer.Ordinal)
             .ToArray();
+        // Normalize each source unit once. Recomputing this inside the pair loop makes a
+        // full-document candidate freeze unnecessarily quadratic in text-processing cost.
+        var normalizedTexts = nodes
+            .Select(item => Normalize(item.CanonicalText))
+            .ToArray();
         var output = new List<HdsaDeterministicIdentityCandidate>();
         for (var i = 0; i < nodes.Length; i++)
         {
@@ -46,7 +51,7 @@ public static class HdsaDeterministicIdentityCandidateGenerator
                 var reasons = new List<string>();
                 if (j == i + 1)
                     reasons.Add("ADJACENT_ORDER");
-                if (Normalize(nodes[i].CanonicalText) == Normalize(nodes[j].CanonicalText))
+                if (normalizedTexts[i] == normalizedTexts[j])
                     reasons.Add("NORMALIZED_TEXT_AFFINITY");
                 if (reasons.Count == 0)
                     continue;

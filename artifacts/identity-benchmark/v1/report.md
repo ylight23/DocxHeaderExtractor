@@ -1,45 +1,30 @@
 # A99 Identity Promotion Benchmark v1
 
-Status: `BLOCKED_ON_IDENTITY_GOLD_BINDING`
+Status: `READY_FOR_PROVIDER_EXECUTION`
 
-This is a prepared benchmark lane, not an executed accuracy result.
+This is a Gold-blind candidate and request freeze. No provider/model call was made.
 
-## Authority and firewall
+## Frozen input
 
-The semantic decisions are recorded in `artifacts/identity-gold/semantic-identity-gold.user-reviewed.v2.json` with authority `USER_REVIEWED_IDENTITY_GOLD_FROZEN`. They are not independent A/B Gold. All five listed decisions have semantic confidence `HIGH`, but exact binding is intentionally separate and currently incomplete.
+- Machine-evaluable identity Gold: `5/5` (evaluation-only; relation labels were not loaded for preparation).
+- Source universe: `6538` source occurrences across `3` documents.
+- Candidate generator: `hdsa-deterministic-identity-candidate-generator-v1`.
+- Candidate pairs: `95999`.
+- Candidate SHA256: `d9718a6fa67ad7b2dea68959517605751d9b2dfd207ed3036d3d1e0a111e2b4d`.
+- Verifier requests: `95999`.
+- Request manifest SHA256: `b94524b99c1162d09849a1e5fde27589be548e43f3eb91e096acbc030e67341d`.
+- Exact request bytes: per-request SHA256 and byte length frozen; bodies are reconstructible from the frozen source catalog.
+- Source catalog: `source-catalog.json`; relation Gold is not loaded in this phase.
+- Provider/model: OpenRouter endpoint / `qwen/qwen3.7-flash` from the current live runner configuration.
+- Planned provider calls: `95999`; new calls: `0`.
 
-No model output, candidate output, DOC-0205 forensic label, or historical hierarchy output contributed to the Gold. No Gold was read before a prediction freeze because no prediction campaign was started.
+## Firewall
 
-## Why execution is blocked
+`GoldReadCountBeforePredictionFreeze=0`, `GoldConsumedBeforePredictionFreeze=false`.
+Candidate generation and request construction use source facts only. Relation labels, Gold confidence, model outputs, and residual hints are absent. The five cases were not injected as candidate pairs; natural retrieval is measured by joining after freeze.
 
-IR-018 through IR-022 do not currently have stable source occurrence IDs and validated source-backed bindings in the repository. The benchmark therefore has:
+## Gate
 
-```text
-semantic Gold items       5
-machine-evaluable items   0
-binding-incomplete items  5
-fabricated IDs            0
-fuzzy joins               0
-```
+`READY_FOR_PROVIDER_EXECUTION`
 
-The benchmark must not invent aliases/spans, use fuzzy matching, or treat semantic `HIGH` as an exact-coordinate freeze. It remains blocked until each item is materialized against a matching source hash and an exact/visual binder identity.
-
-## Intended execution order after binding freeze
-
-```text
-source-backed occurrences
-  -> deterministic candidate generation
-  -> candidate freeze/hash
-  -> pair-verifier request freeze/hash
-  -> raw response freeze
-  -> parsed prediction freeze
-  -> current IdentityPromotionGate
-  -> promotion freeze
-  -> only then Gold join and scoring
-```
-
-The current model-only positive policy remains unchanged: `MODEL_PROPOSED` does not auto-merge. Candidate recall, verifier relation metrics, promotion precision/recall, false merges/splits, component explosion, continuation conflicts, and cycles will be measured only after the binding gate passes.
-
-Provider/model calls for this prepared lane: `0/0`. No new call is authorized by this artifact.
-
-GlobalDecoder, Stage B, and level logic were not touched. Level remains derived from validated tree depth.
+This task stops before provider execution because the current turn does not explicitly authorize a new external benchmark call. Existing frozen raw responses will be replayed only where request hashes are compatible; otherwise each request requires a new call. No production behavior, promotion policy, prompt, or model configuration was changed.

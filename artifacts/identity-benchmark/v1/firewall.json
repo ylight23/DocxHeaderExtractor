@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "a99-identity-promotion-firewall-v1",
+  "goldReadCountBeforePredictionFreeze": 0,
+  "goldConsumedBeforePredictionFreeze": false,
+  "goldUsedForCandidateGeneration": false,
+  "goldUsedForRequests": false,
+  "goldUsedForPromotion": false,
+  "candidateOrPromotionOutputsUsedAsGoldAuthority": false,
+  "candidateSetFrozen": true,
+  "requestsFrozen": true,
+  "predictionsFrozen": false,
+  "promotionDecisionsFrozen": false
+}

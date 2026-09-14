@@ -1,74 +1,54 @@
 {
   "artifactKind": "a99_identity_promotion_benchmark_manifest",
   "schemaVersion": "a99-identity-promotion-benchmark-v1",
-  "status": "BLOCKED_ON_IDENTITY_GOLD_BINDING",
+  "status": "READY_FOR_PROVIDER_EXECUTION",
   "branch": "accuracy99/autonomous-closed-loop",
-  "headAtPreparation": "c51e1674ed9c97633fe8b8816472c138921c82ff",
-  "goldArtifact": "artifacts/identity-gold/semantic-identity-gold.user-reviewed.v2.json",
-  "goldArtifactSha256": "1c50754951b89ec48a0b0016db3e6079afd088bd0fb20a08ac60e10c41e6fae2",
-  "goldAuthority": "USER_REVIEWED_IDENTITY_GOLD_FROZEN",
-  "independentABGold": false,
-  "goldFirewall": {
-    "goldConsumedBeforePredictionFreeze": false,
-    "goldReadCountBeforePredictionFreeze": 0,
-    "goldUsedForCandidateGeneration": false,
-    "goldUsedForRequests": false,
-    "goldUsedForPromotion": false
-  },
-  "goldCoverage": {
-    "semanticItems": 5,
-    "machineEvaluableItems": 0,
-    "bindingIncompleteItems": 5,
-    "unboundItems": [
-      "IR-018",
-      "IR-019",
-      "IR-020",
-      "IR-021",
-      "IR-022"
-    ],
-    "fabricatedOccurrenceIds": 0,
-    "fuzzyJoins": 0
-  },
-  "pipeline": {
-    "candidateGenerator": "hdsa-deterministic-identity-candidate-generator-v1",
-    "pairVerifier": "hdsa-global-identity-retrieve-verify-v1",
-    "promotionPolicy": "semantic-identity-promotion-v1",
-    "candidateGenerationGoldBlind": true,
-    "currentProductionBehaviorChanged": false
-  },
-  "execution": {
-    "candidateFrozen": false,
-    "requestsFrozen": false,
-    "rawResponsesFrozen": false,
-    "predictionsFrozen": false,
-    "promotionDecisionsFrozen": false,
-    "candidateBenchmarkExecuted": false,
-    "pairVerifierExecuted": false,
-    "promotionBenchmarkExecuted": false,
-    "provider": null,
-    "model": null,
-    "plannedCalls": 0,
-    "actualModelCalls": 0,
-    "actualProviderCalls": 0,
-    "replayOrNewCalls": "NONE"
-  },
-  "blockingReason": "User-reviewed semantic identity decisions do not yet contain stable source occurrence identifiers or validated source-backed bindings. Exact identity benchmark denominator is therefore zero.",
-  "requiredBeforeExecution": [
-    "materialize each IR item to concrete source occurrence IDs from matching source hashes",
-    "fail closed on missing or ambiguous binding",
-    "freeze a machine-evaluable Gold artifact",
-    "freeze any DEV/HOLDOUT split before benchmark execution"
+  "head": "c448ac23cce184158bd77aca673d71740a308725",
+  "semanticGoldPath": "artifacts/identity-gold/semantic-identity-gold.user-reviewed.v2.json",
+  "semanticGoldSha256": null,
+  "semanticGoldHashDeferredUntilGoldRelease": true,
+  "bindingArtifactPath": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v4.json",
+  "bindingArtifactSha256": null,
+  "bindingArtifactHashDeferredUntilGoldRelease": true,
+  "sourceCatalogPath": "artifacts/identity-benchmark/v1/source-catalog.json",
+  "sourceCatalogSha256": "ccd43fccd9b6948baf252a4e4429ac20934b10a75d78896c45915b98de02f8eb",
+  "machineEvaluableGoldCount": 5,
+  "provider": "OpenRouter endpoint; backend identity only after telemetry",
+  "model": "qwen/qwen3.7-flash (current live runner configuration)",
+  "candidateGenerator": "hdsa-deterministic-identity-candidate-generator-v1",
+  "candidateGeneratorSourceSha256": "1ef57553e3b191787c6795919441cde1a6656d27fc964cdfae86a2c032d7c3b8",
+  "candidateSetSha256": "d9718a6fa67ad7b2dea68959517605751d9b2dfd207ed3036d3d1e0a111e2b4d",
+  "requestManifestSha256": "b94524b99c1162d09849a1e5fde27589be548e43f3eb91e096acbc030e67341d",
+  "plannedCalls": 95999,
+  "replayedCalls": 0,
+  "actualNewCalls": 0,
+  "goldReadCountBeforePredictionFreeze": 0,
+  "goldConsumedBeforePredictionFreeze": false,
+  "providerCallsUsedAsGoldAuthority": 0,
+  "candidateOrPromotionOutputsUsedAsGoldAuthority": false,
+  "productionBehaviorChanged": false,
+  "sourceUniverse": [
+    {
+      "documentId": "DOC-0123",
+      "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+      "occurrenceCount": 3214
+    },
+    {
+      "documentId": "DOC-0133",
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "occurrenceCount": 2354
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "occurrenceCount": 970
+    }
   ],
-  "forbiddenActions": [
-    "invent occurrence IDs",
-    "fuzzy or filename-only binding",
-    "use Gold to generate candidates",
-    "put Gold relation labels in model requests",
-    "weaken promotion policy to produce an accepted result",
-    "run provider calls while binding is incomplete"
-  ],
-  "stageBExecuted": false,
-  "globalDecoderTouched": false,
-  "levelLogicTouched": false,
-  "productionClaim": false
+  "candidateCount": 95999,
+  "requestsFrozen": true,
+  "predictionsFrozen": false,
+  "promotionDecisionsFrozen": false,
+  "providerExecutionAuthorizedByCurrentTurn": false,
+  "stopGate": "READY_FOR_PROVIDER_EXECUTION",
+  "noGoldBeforePredictionFreeze": true
 }

@@ -39,19 +39,19 @@ public sealed class A99IdentityGoldArtifactTests
     }
 
     [Fact]
-    public void Benchmark_manifest_fails_closed_before_binding_and_provider_execution()
+    public void Benchmark_manifest_freezes_source_requests_before_provider_execution()
     {
         using var manifest = Load("artifacts/identity-benchmark/v1/manifest.json");
         var root = manifest.RootElement;
 
-        Assert.Equal("BLOCKED_ON_IDENTITY_GOLD_BINDING", root.GetProperty("status").GetString());
-        Assert.False(root.GetProperty("goldFirewall").GetProperty("goldConsumedBeforePredictionFreeze").GetBoolean());
-        Assert.Equal(0, root.GetProperty("goldFirewall").GetProperty("goldReadCountBeforePredictionFreeze").GetInt32());
-        Assert.Equal(0, root.GetProperty("execution").GetProperty("actualModelCalls").GetInt32());
-        Assert.Equal(0, root.GetProperty("execution").GetProperty("actualProviderCalls").GetInt32());
-        Assert.False(root.GetProperty("execution").GetProperty("candidateBenchmarkExecuted").GetBoolean());
-        Assert.False(root.GetProperty("execution").GetProperty("pairVerifierExecuted").GetBoolean());
-        Assert.False(root.GetProperty("execution").GetProperty("promotionBenchmarkExecuted").GetBoolean());
+        Assert.Equal("READY_FOR_PROVIDER_EXECUTION", root.GetProperty("status").GetString());
+        Assert.False(root.GetProperty("goldConsumedBeforePredictionFreeze").GetBoolean());
+        Assert.Equal(0, root.GetProperty("goldReadCountBeforePredictionFreeze").GetInt32());
+        Assert.Equal(0, root.GetProperty("actualNewCalls").GetInt32());
+        Assert.True(root.GetProperty("plannedCalls").GetInt32() > 0);
+        Assert.True(root.GetProperty("requestsFrozen").GetBoolean());
+        Assert.False(root.GetProperty("predictionsFrozen").GetBoolean());
+        Assert.Equal("READY_FOR_PROVIDER_EXECUTION", root.GetProperty("stopGate").GetString());
     }
 
     [Fact]
