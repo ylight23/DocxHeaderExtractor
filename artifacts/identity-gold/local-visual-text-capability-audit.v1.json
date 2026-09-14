@@ -1,0 +1,148 @@
+{
+  "artifactKind": "a99_local_visual_text_capability_audit",
+  "schemaVersion": "a99-local-visual-text-capability-audit-v1",
+  "repository": "C:/DocxHeaderExtractor-a99-closed-loop",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "headAtAudit": "27c56a35604bdf826f39598968e85ec0a137ef4",
+  "capability": "PARTIAL",
+  "capabilityMeaning": "The repository can extract image XObject identity and rasterize PDF content, but no installed local word/line text locator and recognizer with reproducible bounding boxes was found.",
+  "execution": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "remoteOcr": false,
+    "dependencyInstalled": false,
+    "goldUsed": false,
+    "modelOutputsUsed": false
+  },
+  "repositoryEvidence": {
+    "packages": [
+      { "name": "PdfPig", "version": "0.1.15", "capability": "PDF text/letter and image XObject/source geometry; not an OCR text-region locator" },
+      { "name": "PDFtoImage", "version": "5.4.0", "capability": "PDF rasterization; not OCR or text-region detection" }
+    ],
+    "ocrPackageReferences": [],
+    "nativeCommittedBinaries": [],
+    "existingSourceAbstractions": [
+      "PdfImageSourceOccurrenceReader",
+      "PdfImageSourceOccurrence",
+      "PdfImageRegionSourceOccurrence",
+      "PdfRegionRasterizer",
+      "IPdfVisualQuestion",
+      "PdfVisualTextRecovery"
+    ],
+    "existingAbstractionLimit": "The visual question adapters are VLM/model interfaces and PdfVisualTextRecovery consumes visual answers; neither is a local deterministic word/line detector that can enumerate regions from /Im1 bytes without a model call."
+  },
+  "localEnvironment": {
+    "executables": [
+      { "name": "tesseract", "available": false },
+      { "name": "magick", "available": false },
+      { "name": "pdftoppm", "available": false },
+      { "name": "ocrmypdf", "available": false },
+      { "name": "soffice", "available": false },
+      { "name": "gs", "available": false },
+      { "name": "python", "available": true, "path": "C:/Users/btdba/AppData/Local/Microsoft/WindowsApps/python.exe", "ocrCapabilityVerified": false }
+    ],
+    "nugetCacheCandidates": [],
+    "windowsOcrSurface": {
+      "windowsMediaOcrDllPresent": true,
+      "windowsMediaOcrWinmdPresent": false,
+      "repositoryWrapperPresent": false,
+      "classification": "not_usable_as_an_existing_repo capability without a new WinRT integration, language/runtime validation, and portability decision"
+    }
+  },
+  "sourceCase": {
+    "documentId": "DOC-0133",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/048_IBRD_Financial_Statements_March_2025.pdf",
+    "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+    "innerEndpoint": "IR-018",
+    "parentImageOccurrenceId": "pdf-image:31891732112b9c0b97cc3bac711c728f0b8f06cf5a381a3c1ab1eceba662f667",
+    "imageXObject": "/Im1",
+    "imageSha256": "889817466fd9cab1cd9ea1275a359504f5e5fbb4e78ebaab97ded1c1d7a10659",
+    "imageSize": { "width": 737, "height": 928 },
+    "innerRegionStatus": "UNBOUND"
+  },
+  "contracts": {
+    "localVisualRegionDetector": {
+      "required": true,
+      "implemented": false,
+      "interfaceIntent": "ILocalVisualRegionDetector",
+      "requiredOutput": "source-image-backed pixel regions with deterministic bbox and provenance"
+    },
+    "localTextRecognizer": {
+      "required": false,
+      "implemented": false,
+      "interfaceIntent": "ILocalTextRecognizer",
+      "requiredOutput": "VISUAL_DERIVED recognized text and confidence, never native PDF text"
+    },
+    "stableRegionIdentity": "parent image occurrence ID + exact pixel bbox + region pixel SHA256",
+    "unsupportedValuesPopulated": false
+  },
+  "candidateFeasibility": [
+    {
+      "candidate": "Tesseract",
+      "detectorAndRecognizer": true,
+      "bboxAndConfidence": true,
+      "localOffline": true,
+      "deployment": "native executable/library plus pinned tessdata; Windows and Linux packaging required",
+      "fit": "best first feasibility candidate if a dependency is approved",
+      "risks": "must pin binary/config/language data and validate layout/diacritics; not installed in this checkout",
+      "reference": "https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc"
+    },
+    {
+      "candidate": "PaddleOCR",
+      "detectorAndRecognizer": true,
+      "bboxAndConfidence": true,
+      "localOffline": true,
+      "deployment": "Python/native runtime and separately pinned detection/recognition models",
+      "fit": "stronger layout/text detection candidate but substantially larger deployment surface",
+      "risks": "model/runtime footprint, packaging, version pinning, and language validation; not installed",
+      "reference": "https://paddlepaddle.github.io/PaddleOCR/main/en/version3.x/module_usage/text_detection.html"
+    },
+    {
+      "candidate": "ONNX Runtime",
+      "detectorAndRecognizer": false,
+      "bboxAndConfidence": "depends on supplied OCR models",
+      "localOffline": true,
+      "deployment": "cross-platform runtime plus separately selected/pinned OCR models",
+      "fit": "runtime substrate, not a complete locator/recognizer choice",
+      "risks": "does not solve model selection, text detection, recognition, or licensing by itself",
+      "reference": "https://onnxruntime.ai/docs/"
+    },
+    {
+      "candidate": "Windows.Media.Ocr",
+      "detectorAndRecognizer": true,
+      "bboxAndConfidence": "requires API integration validation",
+      "localOffline": true,
+      "deployment": "Windows-only OS API",
+      "fit": "possible workstation-specific experiment, not an existing portable repository capability",
+      "risks": "WinRT projection/language-pack/API availability and Linux deployment remain unresolved",
+      "reference": null
+    }
+  ],
+  "recommendation": {
+    "newDependencyInstalled": false,
+    "recommendedEngine": "NONE_APPROVED_YET",
+    "nextFeasibilityCandidate": "Tesseract",
+    "reason": "It is the smallest candidate that exposes local text-region boxes and confidence through stable hOCR/TSV/box-style outputs; it still requires a separate approved dependency, language-data, determinism, and layout-validation task.",
+    "doNotImplementYet": [
+      "No OCR dependency was present or installed.",
+      "No source-specific IR-018 locator or expected-text pixel search is justified.",
+      "No fuzzy/semantic image matching is justified.",
+      "Do not claim an inner region or fabricate a bbox from the whole image placement."
+    ]
+  },
+  "result": {
+    "outerIr018": "EXACT_BOUND",
+    "parentImage": "EXACT_BOUND",
+    "innerRegion": "UNBOUND",
+    "machineEvaluable": "4/5",
+    "gate": "BLOCKED_ON_IR018_VISUAL_REGION_LOCALIZATION",
+    "metamorphicRelationEffect": "NOT_RUN_BECAUSE_NO_LOCATOR_IMPLEMENTATION; existing source-binding relation mutation remains independent"
+  },
+  "provenance": {
+    "semanticGoldChanged": false,
+    "ir018RelationChanged": false,
+    "knownN15Changed": false,
+    "priorForensicArtifact": "artifacts/identity-gold/pdf-binding-forensic.v3.json",
+    "priorBindingArtifact": "artifacts/identity-gold/semantic-identity-bindings.user-reviewed.v3.json"
+  }
+}

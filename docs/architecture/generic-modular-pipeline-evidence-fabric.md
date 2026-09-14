@@ -25,6 +25,26 @@ The LLM may decide meaning or propose a relation. The harness owns source identi
 
 `SemanticOccurrence` is not the same thing as `TextOccurrence`. A source-backed occurrence may be `TEXT`, `IMAGE`, or `IMAGE_REGION` (and may later include `VECTOR`). An image XObject proves source ownership but does not, by itself, identify a heading region inside the image; a visual region is exact only after a reproducible locator supplies its pixel bounds and region hash. IR-018 is the motivating case: the outer title is native PDF text while the distinct inner title is image-only content in `/Im1`. A text-extractor gap and non-textual source content are different failure classes.
 
+An image-backed source is also separated into an asset/container and any
+occurrences localized inside it:
+
+```text
+SourceAsset (image XObject, source-owned bytes and placement)
+  -> ILocalVisualRegionDetector (where text-bearing regions are)
+  -> ILocalTextRecognizer (what a region says, if recognition is available)
+  -> ImageRegionSourceOccurrence (source-backed pixel bbox and crop hash)
+```
+
+Region detection and text recognition are independent capabilities. A future
+engine may implement both, but the source-occurrence contract must not depend on
+an OCR engine object or silently treat recognized text as native PDF text.
+`SourceAsset` and the exact pixel crop are `SOURCE_DIRECT` once grounded to the
+source bytes; recognized text is `VISUAL_DERIVED` interpretation. Region
+identity is derived only from the parent image occurrence, exact pixel bbox, and
+region pixel hash, never from an IR, Gold label, semantic node, or expected
+heading text. If a local detector cannot provide reproducible coordinates, the
+image region remains unbound.
+
 ## Evidence Fabric
 
 ```text
