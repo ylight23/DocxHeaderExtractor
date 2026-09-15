@@ -1,0 +1,604 @@
+{
+  "schemaVersion": "a99-v8h0-frozen-bound-heading-occurrence-set-v2",
+  "sourceUniverseSha256": "2fc7de5761a96176d275422553786f2f43ffc4f293a4bff7cfb0d61703d98e55",
+  "candidateManifestSha256": "747ddaaadb7c1f3941e34e232bd401cf5e4c324536a98cff988c89503bcb40b1",
+  "primaryExecutionManifestSha256": "e5baba9960171167f32aa8f0cbaf6adfb955074dcad6dce524095d611be35bd4",
+  "bindingPolicy": "FAIL_CLOSED_DOCUMENT_ROLE_COVERAGE",
+  "bindingEligibleDocuments": [
+    "NEW-26BE9B284520",
+    "NEW-6717CCA50787",
+    "NEW-C07DA5643BE9",
+    "NEW-FDF9C2552AF0"
+  ],
+  "bindingExcludedDocuments": [
+    "NEW-073DB817879B",
+    "NEW-45314CB70E99"
+  ],
+  "immutable": true,
+  "occurrences": [
+    {
+      "documentId": "NEW-26BE9B284520",
+      "blockRef": "B007",
+      "bindingStatus": "BOUND",
+      "sourceText": "Subdivision C",
+      "sourceRefs": [
+        "92|665.389433441162|77.9002859375|194.62693294833312|Subdivision C"
+      ],
+      "span": {
+        "start": 0,
+        "end": 13
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "blockRef": "B008",
+      "bindingStatus": "BOUND",
+      "sourceText": "Subdivisions D and E",
+      "sourceRefs": [
+        "92|118.53610064338235|77.90058593750001|260.1418162009306|Subdivisions D and E"
+      ],
+      "span": {
+        "start": 0,
+        "end": 20
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "blockRef": "B021",
+      "bindingStatus": "BOUND",
+      "sourceText": "The three arms of government",
+      "sourceRefs": [
+        "6|474.1766411590577|77.30495454101568|337.1114789073558|The three arms of government"
+      ],
+      "span": {
+        "start": 0,
+        "end": 28
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "blockRef": "B022",
+      "bindingStatus": "BOUND",
+      "sourceText": "The \u2018administrative state\u2019",
+      "sourceRefs": [
+        "7|208.78526321411132|77.30435454101563|290.58101937827|The \u2018administrative state\u2019"
+      ],
+      "span": {
+        "start": 0,
+        "end": 26
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "blockRef": "B024",
+      "bindingStatus": "BOUND",
+      "sourceText": "Early history of Australian migration laws",
+      "sourceRefs": [
+        "10|174.33350137246626|78.6473649902344|425.12796775080403|Early history of Australian migration laws"
+      ],
+      "span": {
+        "start": 0,
+        "end": 42
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "blockRef": "B031",
+      "bindingStatus": "BOUND",
+      "sourceText": "Current structure of migration legislation",
+      "sourceRefs": [
+        "13|520.7970907432156|77.84333056640627|419.19735981407246|Current structure of migration legislation"
+      ],
+      "span": {
+        "start": 0,
+        "end": 42
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "blockRef": "B032",
+      "bindingStatus": "BOUND",
+      "sourceText": "Who is an \u2018alien\u2019?",
+      "sourceRefs": [
+        "14|452.93326025390627|77.34199145507813|227.95199580168932|Who is an \u2018alien\u2019?"
+      ],
+      "span": {
+        "start": 0,
+        "end": 18
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B001",
+      "bindingStatus": "BOUND",
+      "sourceText": "Step 2: Consider the aims of the overall justice system",
+      "sourceRefs": [
+        "271|226.09074543478224|68.66244062500002|403.1204386090001|Step 2: Consider the aims of the overall justice system"
+      ],
+      "span": {
+        "start": 0,
+        "end": 4
+      },
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B002",
+      "bindingStatus": "BOUND",
+      "sourceText": "Step 7 : Revise the model pluralist method",
+      "sourceRefs": [
+        "282|475.09924620535696|80.00144062500001|334.9510735575|Step 7 : Revise the model pluralist method"
+      ],
+      "span": {
+        "start": 0,
+        "end": 4
+      },
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B004",
+      "bindingStatus": "BOUND",
+      "sourceText": "Model 1 : Repression of a non-state justice system by the state system",
+      "sourceRefs": [
+        "226|514.5121460937501|80.4849390625|428.4483983290001|Model 1 : Repression of a non-state justice system by the",
+        "226|501.10270156249993|80.001540625|156.946905649|state system"
+      ],
+      "span": {
+        "start": 0,
+        "end": 4
+      },
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B005",
+      "bindingStatus": "BOUND",
+      "sourceText": "Model 3 : No formal recognition but active encouragement of a non-state justice system by the State",
+      "sourceRefs": [
+        "228|342.10100297851585|80.4849390625|430.49857000750023|Model 3 : No formal recognition but active encouragement",
+        "228|328.8547973214287|80.0466578125|336.04840532500003|of a non-state justice system by the State"
+      ],
+      "span": {
+        "start": 0,
+        "end": 5
+      },
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B006",
+      "bindingStatus": "BOUND",
+      "sourceText": "Model 4: Limited formal recognition by the State of the exercise of jurisdiction by a non-state justice system",
+      "sourceRefs": [
+        "230|231.09777316576088|80.4849390625|416.9378355730002|Model 4: Limited formal recognition by the State of the",
+        "230|217.61538239694144|80.027321875|399.6017767450001|exercise of jurisdiction by a non-state justice system"
+      ],
+      "span": {
+        "start": 0,
+        "end": 5
+      },
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B007",
+      "bindingStatus": "BOUND",
+      "sourceText": "Model 5 : Formal recognition of exclusive jurisdiction in a defined area",
+      "sourceRefs": [
+        "234|333.94943007812503|80.4849390625|424.3649441575003|Model 5 : Formal recognition of exclusive jurisdiction in a",
+        "234|320.8018351562499|79.975759375|153.54090728949998|defined area"
+      ],
+      "span": {
+        "start": 0,
+        "end": 5
+      },
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B008",
+      "bindingStatus": "BOUND",
+      "sourceText": "Model 6: Formal recognition and the giving of state coercive powers to a non-state justice system",
+      "sourceRefs": [
+        "237|174.1593212027616|69.1459390625|381.5620899170002|Model 6: Formal recognition and the giving of state",
+        "237|160.67220204326927|68.7205484375|348.887240897|coercive powers to a non-state justice system"
+      ],
+      "span": {
+        "start": 0,
+        "end": 5
+      },
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B009",
+      "bindingStatus": "BOUND",
+      "sourceText": "Model 7 : Complete incorporation of the non-state justice system by the State",
+      "sourceRefs": [
+        "242|580.5679027104591|80.4849390625|425.49194892100024|Model 7 : Complete incorporation of the non-state justice",
+        "242|567.2908299804687|80.001540625|202.319626405|system by the State"
+      ],
+      "span": {
+        "start": 0,
+        "end": 77
+      },
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B014",
+      "bindingStatus": "BOUND",
+      "sourceText": "ENDNOTES",
+      "sourceRefs": [
+        "284|264.46972265624976|80.28543437500001|149.04939062499997|ENDNOTES"
+      ],
+      "span": {
+        "start": 0,
+        "end": 8
+      },
+      "role": "appendix_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B027",
+      "bindingStatus": "BOUND",
+      "sourceText": "Model 2 : Formal independence between the systems but tacit acceptance by the State of a non-state justice system",
+      "sourceRefs": [
+        "227|615.7800143229167|69.1459390625|415.0013578835001|Model 2 : Formal independence between the systems but",
+        "227|602.4492429687498|68.3209390625|418.6130525850002|tacit acceptance by the State of a non-state justice system"
+      ],
+      "span": {
+        "start": 0,
+        "end": 106
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B028",
+      "bindingStatus": "BOUND",
+      "sourceText": "Step 4: Consider the applicability of the different models of relationship to this context",
+      "sourceRefs": [
+        "275|615.9385332031251|68.662540625|414.31824582200005|Step 4: Consider the applicability of the different models",
+        "275|602.67087578125|68.61742343750001|248.09690831449998|of relationship to this context"
+      ],
+      "span": {
+        "start": 0,
+        "end": 83
+      },
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B030",
+      "bindingStatus": "BOUND",
+      "sourceText": "ENDNOTES",
+      "sourceRefs": [
+        "14|480.37172265625|80.28503437500005|149.04899062500002|ENDNOTES"
+      ],
+      "span": {
+        "start": 0,
+        "end": 8
+      },
+      "role": "appendix_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B031",
+      "bindingStatus": "BOUND",
+      "sourceText": "ENDNOTES",
+      "sourceRefs": [
+        "19|176.77682265624983|68.94593437500002|137.70989062499999|ENDNOTES"
+      ],
+      "span": {
+        "start": 0,
+        "end": 8
+      },
+      "role": "appendix_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B033",
+      "bindingStatus": "BOUND",
+      "sourceText": "Place",
+      "sourceRefs": [
+        "22|122.53701812499978|80.32995156249996|110.97870156249996|Place"
+      ],
+      "span": {
+        "start": 0,
+        "end": 5
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B034",
+      "bindingStatus": "BOUND",
+      "sourceText": "The urban\u2013rural divide: which one is the \u2018easy life\u2019 ?",
+      "sourceRefs": [
+        "24|257.82717135416647|79.83406250000006|395.61784154150024|The urban\u2013rural divide: which one is the \u2018easy life\u2019 ?"
+      ],
+      "span": {
+        "start": 0,
+        "end": 54
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B035",
+      "bindingStatus": "BOUND",
+      "sourceText": "Language",
+      "sourceRefs": [
+        "28|487.0305713867187|80.34294218749997|137.28640156249995|Language"
+      ],
+      "span": {
+        "start": 0,
+        "end": 8
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B036",
+      "bindingStatus": "BOUND",
+      "sourceText": "Politics",
+      "sourceRefs": [
+        "29|344.64873638671867|68.99125156250003|110.91625625000005|Politics"
+      ],
+      "span": {
+        "start": 0,
+        "end": 8
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B037",
+      "bindingStatus": "BOUND",
+      "sourceText": "Religion and denomination",
+      "sourceRefs": [
+        "31|566.8381002921195|68.99135156249997|227.852905089|Religion and denomination"
+      ],
+      "span": {
+        "start": 0,
+        "end": 25
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "blockRef": "B039",
+      "bindingStatus": "BOUND",
+      "sourceText": "Gender",
+      "sourceRefs": [
+        "33|443.95062890624996|68.77211093750003|111.32855000000002|Gender"
+      ],
+      "span": {
+        "start": 0,
+        "end": 6
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "blockRef": "B026",
+      "bindingStatus": "BOUND",
+      "sourceText": "Step 1 . Ta l k i n g w i t h t h e V i ct i m ( s )",
+      "sourceRefs": [
+        "275|145.51535344827585|59.5902576|202.88212170000003|Step 1 . Ta l k i n g w i t h t h e V i ct i m ( s )"
+      ],
+      "span": {
+        "start": 0,
+        "end": 4
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "blockRef": "B027",
+      "bindingStatus": "BOUND",
+      "sourceText": "Step 3 . Meet i n g w i t h bot h Pa rt i es",
+      "sourceRefs": [
+        "276|419.50925|59.5902576|205.02568200000002|Step 3 . Meet i n g w i t h bot h Pa rt i es"
+      ],
+      "span": {
+        "start": 0,
+        "end": 4
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "blockRef": "B028",
+      "bindingStatus": "BOUND",
+      "sourceText": "Step 5 . Reac h i n g a D ec i s i o n w i t h bot h Pa rt i es",
+      "sourceRefs": [
+        "277|460.0184868421052|59.5902576|261.03058200000004|Step 5 . Reac h i n g a D ec i s i o n w i t h bot h Pa rt i es"
+      ],
+      "span": {
+        "start": 0,
+        "end": 4
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "blockRef": "B029",
+      "bindingStatus": "BOUND",
+      "sourceText": "Step 6. T h e Act o f Reco n c i l i at i o n",
+      "sourceRefs": [
+        "277|292.3839496310249|59.5902576|203.82180450000004|Step 6. T h e Act o f Reco n c i l i at i o n"
+      ],
+      "span": {
+        "start": 0,
+        "end": 4
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "blockRef": "B030",
+      "bindingStatus": "BOUND",
+      "sourceText": "Step 8. Fo l l ow-u p",
+      "sourceRefs": [
+        "278|405.7549000000001|59.5902576|135.8224584|Step 8. Fo l l ow-u p"
+      ],
+      "span": {
+        "start": 0,
+        "end": 4
+      },
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "blockRef": "B004",
+      "bindingStatus": "BOUND",
+      "sourceText": "I. INTRODUCTION",
+      "sourceRefs": [
+        "1|561.8087033142855|256.16175680000003|359.8716224|I. INTRODUCTION"
+      ],
+      "span": {
+        "start": 0,
+        "end": 15
+      },
+      "role": "section_heading",
+      "confidence": 1,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "blockRef": "B005",
+      "bindingStatus": "BOUND",
+      "sourceText": "II. PRIMORDIAL PERTURBATION WITH MODIFIED DISPERSION RELATION",
+      "sourceRefs": [
+        "2|577.8808398254545|104.77575680000001|511.26570752000003|II. PRIMORDIAL PERTURBATION WITH MODIFIED DISPERSION RELATION"
+      ],
+      "span": {
+        "start": 0,
+        "end": 61
+      },
+      "role": "section_heading",
+      "confidence": 1,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "blockRef": "B006",
+      "bindingStatus": "BOUND",
+      "sourceText": "III. GRAVITATIONAL WAVES INDUCED FROM SCALAR PERTURBATION",
+      "sourceRefs": [
+        "4|501.06050098823533|115.0387568|501.00192799999996|III. GRAVITATIONAL WAVES INDUCED FROM SCALAR PERTURBATION"
+      ],
+      "span": {
+        "start": 0,
+        "end": 57
+      },
+      "role": "section_heading",
+      "confidence": 1,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "blockRef": "B007",
+      "bindingStatus": "BOUND",
+      "sourceText": "IV. PBH PRODUCTION AND OVERPRODUCTION AVOIDANCE",
+      "sourceRefs": [
+        "6|311.7153620571427|142.3947568|473.7283427199999|IV. PBH PRODUCTION AND OVERPRODUCTION AVOIDANCE"
+      ],
+      "span": {
+        "start": 0,
+        "end": 47
+      },
+      "role": "section_heading",
+      "confidence": 1,
+      "exactTextOwnedByHarness": true
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "blockRef": "B019",
+      "bindingStatus": "BOUND",
+      "sourceText": "Acknowledgments",
+      "sourceRefs": [
+        "10|356.75559392000025|266.8175551999999|349.30395199999987|Acknowledgments"
+      ],
+      "span": {
+        "start": 0,
+        "end": 15
+      },
+      "role": "appendix_heading",
+      "confidence": 0.95,
+      "exactTextOwnedByHarness": true
+    }
+  ]
+}

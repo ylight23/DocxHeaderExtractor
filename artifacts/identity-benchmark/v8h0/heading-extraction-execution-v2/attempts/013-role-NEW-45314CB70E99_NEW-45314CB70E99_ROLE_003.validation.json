@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-45314CB70E99",
+  "stage": "ROLE",
+  "requestKey": "NEW-45314CB70E99|NEW-45314CB70E99:ROLE:003",
+  "requestSha256": "98fd24be2c9b163ecfa07b45535f387388a5c9e4f7edf8e821468b773a61e211",
+  "validatedAt": "2026-09-15T10:01:58.8875002+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b792",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B017"
+    },
+    {
+      "ref": "b808",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B018"
+    },
+    {
+      "ref": "b821",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B019"
+    },
+    {
+      "ref": "b833",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B020"
+    },
+    {
+      "ref": "b835",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B021"
+    },
+    {
+      "ref": "b844",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B022"
+    },
+    {
+      "ref": "b1004",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B023"
+    },
+    {
+      "ref": "b1500",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B024"
+    }
+  ]
+}

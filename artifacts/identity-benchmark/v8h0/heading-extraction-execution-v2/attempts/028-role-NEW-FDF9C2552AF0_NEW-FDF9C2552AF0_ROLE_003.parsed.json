@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "a99-v8h0-provider-parsed-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-FDF9C2552AF0",
+  "stage": "ROLE",
+  "requestKey": "NEW-FDF9C2552AF0|NEW-FDF9C2552AF0:ROLE:003",
+  "requestSha256": "aca0e77819ce6af72df60b5ac87a5157dd311a9be18a6917ec8fc08ed4074e12",
+  "parsedAt": "2026-09-15T10:05:42.4953423+00:00",
+  "status": "PARSED",
+  "content": "{\n  \u0022blocks\u0022: [\n    {\n      \u0022id\u0022: \u0022b156\u0022,\n      \u0022role\u0022: \u0022unknown\u0022,\n      \u0022confidence\u0022: 0.95\n    },\n    {\n      \u0022id\u0022: \u0022b160\u0022,\n      \u0022role\u0022: \u0022unknown\u0022,\n      \u0022confidence\u0022: 0.95\n    },\n    {\n      \u0022id\u0022: \u0022b185\u0022,\n      \u0022role\u0022: \u0022appendix_heading\u0022,\n      \u0022confidence\u0022: 0.95\n    },\n    {\n      \u0022id\u0022: \u0022b169\u0022,\n      \u0022role\u0022: \u0022section_heading\u0022,\n      \u0022confidence\u0022: 0.95\n    },\n    {\n      \u0022id\u0022: \u0022b2\u0022,\n      \u0022role\u0022: \u0022unknown\u0022,\n      \u0022confidence\u0022: 0.95\n    },\n    {\n      \u0022id\u0022: \u0022b168\u0022,\n      \u0022role\u0022: \u0022unknown\u0022,\n      \u0022confidence\u0022: 0.95\n    },\n    {\n      \u0022id\u0022: \u0022b220\u0022,\n      \u0022role\u0022: \u0022unknown\u0022,\n      \u0022confidence\u0022: 0.95\n    },\n    {\n      \u0022id\u0022: \u0022b88\u0022,\n      \u0022role\u0022: \u0022unknown\u0022,\n      \u0022confidence\u0022: 0.95\n    }\n  ]\n}"
+}

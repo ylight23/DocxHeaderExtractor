@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-45314CB70E99",
+  "stage": "POINTER_SPAN",
+  "requestKey": "NEW-45314CB70E99|NEW-45314CB70E99:POINTER_SPAN:001",
+  "requestSha256": "198c5fa0dc423c9198a5ee12a074d21a7e7685494ee3d5a3094af6211050361d",
+  "validatedAt": "2026-09-15T10:07:29.0580085+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b7785",
+      "role": "",
+      "confidence": 0,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B001"
+    },
+    {
+      "ref": "b7861",
+      "role": "",
+      "confidence": 0,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B002"
+    },
+    {
+      "ref": "b39",
+      "role": "",
+      "confidence": 0,
+      "isHeading": false,
+      "span": {
+        "start": 0,
+        "end": 46
+      },
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B003"
+    },
+    {
+      "ref": "b52",
+      "role": "",
+      "confidence": 0,
+      "isHeading": false,
+      "span": {
+        "start": 0,
+        "end": 46
+      },
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B004"
+    }
+  ]
+}

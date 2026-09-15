@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "a99-v8h0-provider-raw-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-C07DA5643BE9",
+  "stage": "ROLE",
+  "requestKey": "NEW-C07DA5643BE9|NEW-C07DA5643BE9:ROLE:002",
+  "requestSha256": "fca5e49d13f18628855e9f8bdc81fb9d1468786812c1bc26039de4607c7ec001",
+  "started": "2026-09-15T10:03:39.4554103+00:00",
+  "received": "2026-09-15T10:03:47.9175978+00:00",
+  "httpStatus": 200,
+  "providerStatus": "HTTP_SUCCESS",
+  "rawResponseSha256": "9e7b778b880f7d3023aa937717eb61a4acfb931951c7bb2c45c692f57b68699d",
+  "rawProviderResponse": "\n         \n\n         \n\n         \n{\u0022id\u0022:\u0022gen-1789466619-EYdjjnbuIhP9mClAi02C\u0022,\u0022object\u0022:\u0022chat.completion\u0022,\u0022created\u0022:1789466619,\u0022model\u0022:\u0022qwen/qwen3.5-9b\u0022,\u0022provider\u0022:\u0022SiliconFlow\u0022,\u0022system_fingerprint\u0022:null,\u0022service_tier\u0022:null,\u0022choices\u0022:[{\u0022index\u0022:0,\u0022logprobs\u0022:null,\u0022finish_reason\u0022:\u0022stop\u0022,\u0022native_finish_reason\u0022:\u0022stop\u0022,\u0022message\u0022:{\u0022role\u0022:\u0022assistant\u0022,\u0022content\u0022:\u0022{\\\u0022blocks\\\u0022:[{\\\u0022id\\\u0022:\\\u0022b4416\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:0.9},{\\\u0022id\\\u0022:\\\u0022b4431\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:0.9},{\\\u0022id\\\u0022:\\\u0022b4449\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:0.9},{\\\u0022id\\\u0022:\\\u0022b4499\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:0.9},{\\\u0022id\\\u0022:\\\u0022b4612\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:0.9},{\\\u0022id\\\u0022:\\\u0022b4621\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:0.9},{\\\u0022id\\\u0022:\\\u0022b4652\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:0.9},{\\\u0022id\\\u0022:\\\u0022b4686\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:0.9}]}\u0022,\u0022refusal\u0022:null,\u0022reasoning\u0022:null}}],\u0022usage\u0022:{\u0022prompt_tokens\u0022:2851,\u0022completion_tokens\u0022:149,\u0022total_tokens\u0022:3000,\u0022cost\u0022:0.00030745,\u0022is_byok\u0022:false,\u0022prompt_tokens_details\u0022:{\u0022cached_tokens\u0022:0,\u0022cache_write_tokens\u0022:0,\u0022audio_tokens\u0022:0,\u0022video_tokens\u0022:0},\u0022cost_details\u0022:{\u0022upstream_inference_cost\u0022:0.00030745,\u0022upstream_inference_prompt_cost\u0022:0.0002851,\u0022upstream_inference_completions_cost\u0022:0.00002235},\u0022completion_tokens_details\u0022:{\u0022reasoning_tokens\u0022:0,\u0022image_tokens\u0022:0,\u0022audio_tokens\u0022:0}}}"
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-073DB817879B",
+  "stage": "ROLE",
+  "requestKey": "NEW-073DB817879B|NEW-073DB817879B:ROLE:003",
+  "requestSha256": "cae8b3bff99008800eda64372d9c1211320f1dcd9e6ad34f63009ab8e8d877d8",
+  "validatedAt": "2026-09-15T09:59:26.111896+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b187",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B017"
+    },
+    {
+      "ref": "b188",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B018"
+    },
+    {
+      "ref": "b198",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B019"
+    },
+    {
+      "ref": "b201",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B020"
+    },
+    {
+      "ref": "b208",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B021"
+    },
+    {
+      "ref": "b210",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B022"
+    },
+    {
+      "ref": "b227",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B023"
+    },
+    {
+      "ref": "b230",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B024"
+    }
+  ]
+}

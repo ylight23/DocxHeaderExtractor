@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "a99-v8h0-provider-raw-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-FDF9C2552AF0",
+  "stage": "ROLE",
+  "requestKey": "NEW-FDF9C2552AF0|NEW-FDF9C2552AF0:ROLE:005",
+  "requestSha256": "e7fb2b5c8f160dd70189dc225da2b5fefa0f66da71a0160d299ce3a79d0a0058",
+  "started": "2026-09-15T10:06:10.0120919+00:00",
+  "received": "2026-09-15T10:06:21.7401388+00:00",
+  "httpStatus": 200,
+  "providerStatus": "HTTP_SUCCESS",
+  "rawResponseSha256": "32806033bee67df56cb39a7c823b5918cf1033b31e24ce5e20b4bcb91812f68d",
+  "rawProviderResponse": "\n         \n\n         \n\n         \n\n         \n{\u0022id\u0022:\u0022gen-1789466770-RW2YaSg90P9YIIrT5Ljj\u0022,\u0022object\u0022:\u0022chat.completion\u0022,\u0022created\u0022:1789466770,\u0022model\u0022:\u0022qwen/qwen3.5-9b\u0022,\u0022provider\u0022:\u0022Venice\u0022,\u0022system_fingerprint\u0022:null,\u0022service_tier\u0022:null,\u0022choices\u0022:[{\u0022index\u0022:0,\u0022logprobs\u0022:null,\u0022finish_reason\u0022:\u0022stop\u0022,\u0022native_finish_reason\u0022:\u0022stop\u0022,\u0022message\u0022:{\u0022role\u0022:\u0022assistant\u0022,\u0022content\u0022:\u0022{\\\u0022blocks\\\u0022:[{\\\u0022id\\\u0022:\\\u0022b49\\\u0022,\\\u0022role\\\u0022:\\\u0022table_title\\\u0022,\\\u0022confidence\\\u0022:0.95}]}\u0022,\u0022refusal\u0022:null,\u0022reasoning\u0022:null}}],\u0022usage\u0022:{\u0022prompt_tokens\u0022:618,\u0022completion_tokens\u0022:23,\u0022total_tokens\u0022:641,\u0022cost\u0022:0.00006525,\u0022is_byok\u0022:false,\u0022prompt_tokens_details\u0022:{\u0022cached_tokens\u0022:0,\u0022cache_write_tokens\u0022:0,\u0022audio_tokens\u0022:0,\u0022video_tokens\u0022:0},\u0022cost_details\u0022:{\u0022upstream_inference_cost\u0022:0.00006525,\u0022upstream_inference_prompt_cost\u0022:0.0000618,\u0022upstream_inference_completions_cost\u0022:0.00000345},\u0022completion_tokens_details\u0022:{\u0022reasoning_tokens\u0022:0,\u0022image_tokens\u0022:0,\u0022audio_tokens\u0022:0}}}"
+}

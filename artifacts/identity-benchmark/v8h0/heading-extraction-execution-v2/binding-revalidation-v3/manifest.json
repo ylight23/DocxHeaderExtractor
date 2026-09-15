@@ -1,0 +1,59 @@
+{
+  "artifactKind": "a99_identity_benchmark_v8h0_heading_binding_revalidation",
+  "schemaVersion": "a99-v8h0-heading-binding-revalidation-v2",
+  "status": "COMPLETED_WITH_FAILURES_PRESERVED",
+  "primaryExecutionManifestSha256": "e5baba9960171167f32aa8f0cbaf6adfb955074dcad6dce524095d611be35bd4",
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "identityEvaluationReadCount": 0,
+  "bindingPolicy": "FAIL_CLOSED_DOCUMENT_ROLE_COVERAGE",
+  "bindingEligibleDocuments": [
+    "NEW-26BE9B284520",
+    "NEW-6717CCA50787",
+    "NEW-C07DA5643BE9",
+    "NEW-FDF9C2552AF0"
+  ],
+  "bindingExcludedDocuments": [
+    "NEW-073DB817879B",
+    "NEW-45314CB70E99"
+  ],
+  "totalFrozenBoundHeadingOccurrences": 36,
+  "perDocument": [
+    {
+      "documentId": "NEW-26BE9B284520",
+      "modelSelectedHeadingRefs": 10,
+      "successfullyBoundHeadings": 7,
+      "unknownRefs": 0,
+      "duplicateOrIncompatibleRefs": 0,
+      "unboundRefs": 3,
+      "exactSourceMismatches": 0
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "modelSelectedHeadingRefs": 20,
+      "successfullyBoundHeadings": 19,
+      "unknownRefs": 0,
+      "duplicateOrIncompatibleRefs": 0,
+      "unboundRefs": 1,
+      "exactSourceMismatches": 0
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "modelSelectedHeadingRefs": 5,
+      "successfullyBoundHeadings": 5,
+      "unknownRefs": 0,
+      "duplicateOrIncompatibleRefs": 0,
+      "unboundRefs": 0,
+      "exactSourceMismatches": 0
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "modelSelectedHeadingRefs": 6,
+      "successfullyBoundHeadings": 5,
+      "unknownRefs": 0,
+      "duplicateOrIncompatibleRefs": 0,
+      "unboundRefs": 1,
+      "exactSourceMismatches": 0
+    }
+  ]
+}

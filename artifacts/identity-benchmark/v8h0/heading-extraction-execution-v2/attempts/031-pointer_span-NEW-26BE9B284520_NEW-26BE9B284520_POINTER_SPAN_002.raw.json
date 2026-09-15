@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "a99-v8h0-provider-raw-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-26BE9B284520",
+  "stage": "POINTER_SPAN",
+  "requestKey": "NEW-26BE9B284520|NEW-26BE9B284520:POINTER_SPAN:002",
+  "requestSha256": "682302d48cd695a1e11addf157df2c02955d515907620a299c5fb8bc368f9bc1",
+  "started": "2026-09-15T10:06:21.7475977+00:00",
+  "received": "2026-09-15T10:06:33.7418975+00:00",
+  "httpStatus": 200,
+  "providerStatus": "HTTP_SUCCESS",
+  "rawResponseSha256": "e31c82c6df5ac967f92152c553f147fe2906d55e7554d1962db0d9eba88ff077",
+  "rawProviderResponse": "\n         \n\n         \n\n         \n\n         \n{\u0022id\u0022:\u0022gen-1789466781-QAwzwijAYkQS7UQDcUvj\u0022,\u0022object\u0022:\u0022chat.completion\u0022,\u0022created\u0022:1789466781,\u0022model\u0022:\u0022qwen/qwen3.5-9b\u0022,\u0022provider\u0022:\u0022Venice\u0022,\u0022system_fingerprint\u0022:null,\u0022service_tier\u0022:null,\u0022choices\u0022:[{\u0022index\u0022:0,\u0022logprobs\u0022:null,\u0022finish_reason\u0022:\u0022stop\u0022,\u0022native_finish_reason\u0022:\u0022stop\u0022,\u0022message\u0022:{\u0022role\u0022:\u0022assistant\u0022,\u0022content\u0022:\u0022{\\\u0022blocks\\\u0022:[{\\\u0022id\\\u0022:\\\u0022b2441\\\u0022,\\\u0022heading_span\\\u0022:{\\\u0022start\\\u0022:0,\\\u0022end\\\u0022:29}},{\\\u0022id\\\u0022:\\\u0022b2678\\\u0022,\\\u0022heading_span\\\u0022:{\\\u0022start\\\u0022:0,\\\u0022end\\\u0022:74}},{\\\u0022id\\\u0022:\\\u0022b1214\\\u0022,\\\u0022heading_span\\\u0022:{\\\u0022start\\\u0022:0,\\\u0022end\\\u0022:13}},{\\\u0022id\\\u0022:\\\u0022b1224\\\u0022,\\\u0022heading_span\\\u0022:{\\\u0022start\\\u0022:0,\\\u0022end\\\u0022:20}}]}\u0022,\u0022refusal\u0022:null,\u0022reasoning\u0022:null}}],\u0022usage\u0022:{\u0022prompt_tokens\u0022:774,\u0022completion_tokens\u0022:88,\u0022total_tokens\u0022:862,\u0022cost\u0022:0.0000906,\u0022is_byok\u0022:false,\u0022prompt_tokens_details\u0022:{\u0022cached_tokens\u0022:0,\u0022cache_write_tokens\u0022:0,\u0022audio_tokens\u0022:0,\u0022video_tokens\u0022:0},\u0022cost_details\u0022:{\u0022upstream_inference_cost\u0022:0.0000906,\u0022upstream_inference_prompt_cost\u0022:0.0000774,\u0022upstream_inference_completions_cost\u0022:0.0000132},\u0022completion_tokens_details\u0022:{\u0022reasoning_tokens\u0022:0,\u0022image_tokens\u0022:0,\u0022audio_tokens\u0022:0}}}"
+}

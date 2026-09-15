@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-6717CCA50787",
+  "stage": "ROLE",
+  "requestKey": "NEW-6717CCA50787|NEW-6717CCA50787:ROLE:004",
+  "requestSha256": "21f1497e5e7088fc3a5aaa39f0bc11c2483712b11fcfd416f4b47812951a224b",
+  "validatedAt": "2026-09-15T10:03:12.9672865+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b5119",
+      "role": "body_text",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-6717CCA50787",
+      "opaqueRef": "B025"
+    },
+    {
+      "ref": "b5183",
+      "role": "body_text",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-6717CCA50787",
+      "opaqueRef": "B026"
+    },
+    {
+      "ref": "b3380",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null,
+      "documentId": "NEW-6717CCA50787",
+      "opaqueRef": "B027"
+    },
+    {
+      "ref": "b4183",
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null,
+      "documentId": "NEW-6717CCA50787",
+      "opaqueRef": "B028"
+    },
+    {
+      "ref": "b40",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-6717CCA50787",
+      "opaqueRef": "B029"
+    },
+    {
+      "ref": "b80",
+      "role": "appendix_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null,
+      "documentId": "NEW-6717CCA50787",
+      "opaqueRef": "B030"
+    },
+    {
+      "ref": "b151",
+      "role": "appendix_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null,
+      "documentId": "NEW-6717CCA50787",
+      "opaqueRef": "B031"
+    },
+    {
+      "ref": "b164",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null,
+      "documentId": "NEW-6717CCA50787",
+      "opaqueRef": "B032"
+    }
+  ]
+}

@@ -1,0 +1,1958 @@
+{
+  "schemaVersion": "a99-v8h0-role-decisions-v1",
+  "decisions": [
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B009",
+      "productionRef": "b12",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B010",
+      "productionRef": "b5",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B011",
+      "productionRef": "b92",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B012",
+      "productionRef": "b149",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B013",
+      "productionRef": "b150",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B014",
+      "productionRef": "b152",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B015",
+      "productionRef": "b158",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B016",
+      "productionRef": "b186",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B017",
+      "productionRef": "b187",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B018",
+      "productionRef": "b188",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B019",
+      "productionRef": "b198",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B020",
+      "productionRef": "b201",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B021",
+      "productionRef": "b208",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B022",
+      "productionRef": "b210",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B023",
+      "productionRef": "b227",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B024",
+      "productionRef": "b230",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B025",
+      "productionRef": "b249",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B026",
+      "productionRef": "b264",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B027",
+      "productionRef": "b265",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B028",
+      "productionRef": "b282",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B029",
+      "productionRef": "b317",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B030",
+      "productionRef": "b320",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B031",
+      "productionRef": "b322",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B032",
+      "productionRef": "b323",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B033",
+      "productionRef": "b328",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B034",
+      "productionRef": "b330",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B035",
+      "productionRef": "b331",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B036",
+      "productionRef": "b335",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B037",
+      "productionRef": "b337",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B038",
+      "productionRef": "b346",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B039",
+      "productionRef": "b376",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-073DB817879B",
+      "ref": "B040",
+      "productionRef": "b88",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B001",
+      "productionRef": "b573",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B002",
+      "productionRef": "b2249",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B003",
+      "productionRef": "b2258",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B004",
+      "productionRef": "b2265",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B005",
+      "productionRef": "b2441",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B006",
+      "productionRef": "b2678",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B007",
+      "productionRef": "b1214",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B008",
+      "productionRef": "b1224",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B009",
+      "productionRef": "b447",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B010",
+      "productionRef": "b1927",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B011",
+      "productionRef": "b3204",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B012",
+      "productionRef": "b3530",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B013",
+      "productionRef": "b3742",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B014",
+      "productionRef": "b3755",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B015",
+      "productionRef": "b3780",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B016",
+      "productionRef": "b414",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B017",
+      "productionRef": "b3011",
+      "role": "body_text",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B018",
+      "productionRef": "b3099",
+      "role": "body_text",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B019",
+      "productionRef": "b991",
+      "role": "body_text",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B020",
+      "productionRef": "b22",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B021",
+      "productionRef": "b34",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B022",
+      "productionRef": "b48",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B023",
+      "productionRef": "b56",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B024",
+      "productionRef": "b84",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B025",
+      "productionRef": "b100",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B026",
+      "productionRef": "b95",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B027",
+      "productionRef": "b105",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B028",
+      "productionRef": "b108",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B029",
+      "productionRef": "b116",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B030",
+      "productionRef": "b122",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B031",
+      "productionRef": "b125",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B032",
+      "productionRef": "b140",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B033",
+      "productionRef": "b142",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B034",
+      "productionRef": "b165",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B035",
+      "productionRef": "b175",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B036",
+      "productionRef": "b192",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B037",
+      "productionRef": "b213",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B038",
+      "productionRef": "b214",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B039",
+      "productionRef": "b235",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "ref": "B040",
+      "productionRef": "b244",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B001",
+      "productionRef": "b7785",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B002",
+      "productionRef": "b7861",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B003",
+      "productionRef": "b39",
+      "role": "section_heading",
+      "confidence": 1,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B004",
+      "productionRef": "b52",
+      "role": "section_heading",
+      "confidence": 1,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B005",
+      "productionRef": "b1264",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B006",
+      "productionRef": "b7856",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B007",
+      "productionRef": "b69",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B008",
+      "productionRef": "b993",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B017",
+      "productionRef": "b792",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B018",
+      "productionRef": "b808",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B019",
+      "productionRef": "b821",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B020",
+      "productionRef": "b833",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B021",
+      "productionRef": "b835",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B022",
+      "productionRef": "b844",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B023",
+      "productionRef": "b1004",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B024",
+      "productionRef": "b1500",
+      "role": "list_item_topic",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B025",
+      "productionRef": "b1505",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B026",
+      "productionRef": "b1524",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B027",
+      "productionRef": "b1540",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B028",
+      "productionRef": "b1810",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B029",
+      "productionRef": "b1941",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B030",
+      "productionRef": "b2262",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B031",
+      "productionRef": "b2273",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B032",
+      "productionRef": "b2294",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B033",
+      "productionRef": "b2400",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B034",
+      "productionRef": "b2512",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B035",
+      "productionRef": "b2515",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B036",
+      "productionRef": "b2626",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B037",
+      "productionRef": "b2628",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B038",
+      "productionRef": "b2631",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B039",
+      "productionRef": "b2736",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "ref": "B040",
+      "productionRef": "b2742",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B001",
+      "productionRef": "b4143",
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B002",
+      "productionRef": "b4279",
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B003",
+      "productionRef": "b3978",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B004",
+      "productionRef": "b3361",
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B005",
+      "productionRef": "b3410",
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B006",
+      "productionRef": "b3448",
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B007",
+      "productionRef": "b3511",
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B008",
+      "productionRef": "b3562",
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B009",
+      "productionRef": "b3635",
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B010",
+      "productionRef": "b4130",
+      "role": "list_item_topic",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B011",
+      "productionRef": "b4165",
+      "role": "list_item_topic",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B012",
+      "productionRef": "b4198",
+      "role": "list_item_topic",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B013",
+      "productionRef": "b4270",
+      "role": "list_item_topic",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B014",
+      "productionRef": "b4309",
+      "role": "appendix_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B015",
+      "productionRef": "b4394",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B016",
+      "productionRef": "b4621",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B017",
+      "productionRef": "b4634",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B018",
+      "productionRef": "b4805",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B019",
+      "productionRef": "b4916",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B020",
+      "productionRef": "b4947",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B021",
+      "productionRef": "b4948",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B022",
+      "productionRef": "b5005",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B023",
+      "productionRef": "b5059",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B024",
+      "productionRef": "b5067",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B025",
+      "productionRef": "b5119",
+      "role": "body_text",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B026",
+      "productionRef": "b5183",
+      "role": "body_text",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B027",
+      "productionRef": "b3380",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B028",
+      "productionRef": "b4183",
+      "role": "topic_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B029",
+      "productionRef": "b40",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B030",
+      "productionRef": "b80",
+      "role": "appendix_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B031",
+      "productionRef": "b151",
+      "role": "appendix_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B032",
+      "productionRef": "b164",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B033",
+      "productionRef": "b180",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B034",
+      "productionRef": "b202",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B035",
+      "productionRef": "b247",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B036",
+      "productionRef": "b264",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B037",
+      "productionRef": "b286",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B038",
+      "productionRef": "b310",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B039",
+      "productionRef": "b313",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "ref": "B040",
+      "productionRef": "b315",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B001",
+      "productionRef": "b4211",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B002",
+      "productionRef": "b4601",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B003",
+      "productionRef": "b4648",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B004",
+      "productionRef": "b4681",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B005",
+      "productionRef": "b4702",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B006",
+      "productionRef": "b4745",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B007",
+      "productionRef": "b4782",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B008",
+      "productionRef": "b4386",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B009",
+      "productionRef": "b4416",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B010",
+      "productionRef": "b4431",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B011",
+      "productionRef": "b4449",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B012",
+      "productionRef": "b4499",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B013",
+      "productionRef": "b4612",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B014",
+      "productionRef": "b4621",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B015",
+      "productionRef": "b4652",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B016",
+      "productionRef": "b4686",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B017",
+      "productionRef": "b4748",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B018",
+      "productionRef": "b4783",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B019",
+      "productionRef": "b1033",
+      "role": "figure_title",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B020",
+      "productionRef": "b1162",
+      "role": "figure_title",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B021",
+      "productionRef": "b1752",
+      "role": "list_item_topic",
+      "confidence": 0.8,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B022",
+      "productionRef": "b1771",
+      "role": "list_item_topic",
+      "confidence": 0.8,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B023",
+      "productionRef": "b1828",
+      "role": "table_title",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B024",
+      "productionRef": "b1931",
+      "role": "body_text",
+      "confidence": 0.8,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B025",
+      "productionRef": "b2491",
+      "role": "figure_title",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B026",
+      "productionRef": "b3711",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B027",
+      "productionRef": "b3717",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B028",
+      "productionRef": "b3732",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B029",
+      "productionRef": "b3737",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B030",
+      "productionRef": "b3754",
+      "role": "topic_heading",
+      "confidence": 0.9,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B031",
+      "productionRef": "b4003",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B032",
+      "productionRef": "b4115",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B033",
+      "productionRef": "b4144",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B034",
+      "productionRef": "b4765",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B035",
+      "productionRef": "b1049",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B036",
+      "productionRef": "b4642",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B037",
+      "productionRef": "b1220",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B038",
+      "productionRef": "b1823",
+      "role": "table_title",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B039",
+      "productionRef": "b1834",
+      "role": "table_title",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "ref": "B040",
+      "productionRef": "b2452",
+      "role": "table_title",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B001",
+      "productionRef": "b29",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B002",
+      "productionRef": "b54",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B003",
+      "productionRef": "b125",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B004",
+      "productionRef": "b8",
+      "role": "section_heading",
+      "confidence": 1,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B005",
+      "productionRef": "b27",
+      "role": "section_heading",
+      "confidence": 1,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B006",
+      "productionRef": "b67",
+      "role": "section_heading",
+      "confidence": 1,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B007",
+      "productionRef": "b108",
+      "role": "section_heading",
+      "confidence": 1,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B008",
+      "productionRef": "b34",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B009",
+      "productionRef": "b60",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B010",
+      "productionRef": "b72",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B011",
+      "productionRef": "b74",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B012",
+      "productionRef": "b79",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B013",
+      "productionRef": "b84",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B014",
+      "productionRef": "b94",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B015",
+      "productionRef": "b96",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B016",
+      "productionRef": "b134",
+      "role": "body_text",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B017",
+      "productionRef": "b156",
+      "role": "unknown",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B018",
+      "productionRef": "b160",
+      "role": "unknown",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B019",
+      "productionRef": "b185",
+      "role": "appendix_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B020",
+      "productionRef": "b169",
+      "role": "section_heading",
+      "confidence": 0.95,
+      "isHeading": true,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B021",
+      "productionRef": "b2",
+      "role": "unknown",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B022",
+      "productionRef": "b168",
+      "role": "unknown",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B023",
+      "productionRef": "b220",
+      "role": "unknown",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B024",
+      "productionRef": "b88",
+      "role": "unknown",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B025",
+      "productionRef": "b90",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B026",
+      "productionRef": "b92",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B027",
+      "productionRef": "b119",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B028",
+      "productionRef": "b121",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B029",
+      "productionRef": "b140",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B030",
+      "productionRef": "b165",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B031",
+      "productionRef": "b35",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B032",
+      "productionRef": "b137",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "ref": "B033",
+      "productionRef": "b49",
+      "role": "table_title",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null
+    }
+  ]
+}

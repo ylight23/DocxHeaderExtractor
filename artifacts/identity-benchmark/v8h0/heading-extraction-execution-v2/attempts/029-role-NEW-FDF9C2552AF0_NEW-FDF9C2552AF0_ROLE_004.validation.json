@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-FDF9C2552AF0",
+  "stage": "ROLE",
+  "requestKey": "NEW-FDF9C2552AF0|NEW-FDF9C2552AF0:ROLE:004",
+  "requestSha256": "ecd6efd53c518c16596f2f1a179bf19f6f2d5af4b2e956b6fda998bd4c6e33e1",
+  "validatedAt": "2026-09-15T10:06:10.0061402+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b90",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-FDF9C2552AF0",
+      "opaqueRef": "B025"
+    },
+    {
+      "ref": "b92",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-FDF9C2552AF0",
+      "opaqueRef": "B026"
+    },
+    {
+      "ref": "b119",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-FDF9C2552AF0",
+      "opaqueRef": "B027"
+    },
+    {
+      "ref": "b121",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-FDF9C2552AF0",
+      "opaqueRef": "B028"
+    },
+    {
+      "ref": "b140",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-FDF9C2552AF0",
+      "opaqueRef": "B029"
+    },
+    {
+      "ref": "b165",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-FDF9C2552AF0",
+      "opaqueRef": "B030"
+    },
+    {
+      "ref": "b35",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-FDF9C2552AF0",
+      "opaqueRef": "B031"
+    },
+    {
+      "ref": "b137",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-FDF9C2552AF0",
+      "opaqueRef": "B032"
+    }
+  ]
+}

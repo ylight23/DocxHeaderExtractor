@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "a99-v8h0-provider-raw-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-FDF9C2552AF0",
+  "stage": "ROLE",
+  "requestKey": "NEW-FDF9C2552AF0|NEW-FDF9C2552AF0:ROLE:004",
+  "requestSha256": "ecd6efd53c518c16596f2f1a179bf19f6f2d5af4b2e956b6fda998bd4c6e33e1",
+  "started": "2026-09-15T10:05:42.4994291+00:00",
+  "received": "2026-09-15T10:06:10.0016389+00:00",
+  "httpStatus": 200,
+  "providerStatus": "HTTP_SUCCESS",
+  "rawResponseSha256": "3e04c4296e574059c8aae5de09bfce4c31026e6bde47c7543d1b5398e8e56103",
+  "rawProviderResponse": "\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n{\u0022id\u0022:\u0022gen-1789466742-1ID6scZLEABUHlBD7irT\u0022,\u0022object\u0022:\u0022chat.completion\u0022,\u0022created\u0022:1789466742,\u0022model\u0022:\u0022qwen/qwen3.5-9b\u0022,\u0022provider\u0022:\u0022DeepInfra\u0022,\u0022system_fingerprint\u0022:null,\u0022service_tier\u0022:null,\u0022choices\u0022:[{\u0022index\u0022:0,\u0022logprobs\u0022:null,\u0022finish_reason\u0022:\u0022stop\u0022,\u0022native_finish_reason\u0022:\u0022stop\u0022,\u0022message\u0022:{\u0022role\u0022:\u0022assistant\u0022,\u0022content\u0022:\u0022{\\\u0022blocks\\\u0022:[{\\\u0022id\\\u0022:\\\u0022b90\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:1.0},{\\\u0022id\\\u0022:\\\u0022b92\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:1.0},{\\\u0022id\\\u0022:\\\u0022b119\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:1.0},{\\\u0022id\\\u0022:\\\u0022b121\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:1.0},{\\\u0022id\\\u0022:\\\u0022b140\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:1.0},{\\\u0022id\\\u0022:\\\u0022b165\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:1.0},{\\\u0022id\\\u0022:\\\u0022b35\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:1.0},{\\\u0022id\\\u0022:\\\u0022b137\\\u0022,\\\u0022role\\\u0022:\\\u0022unknown\\\u0022,\\\u0022confidence\\\u0022:1.0}]}\u0022,\u0022refusal\u0022:null,\u0022reasoning\u0022:null}}],\u0022usage\u0022:{\u0022prompt_tokens\u0022:2340,\u0022completion_tokens\u0022:138,\u0022total_tokens\u0022:2478,\u0022cost\u0022:0.0002547,\u0022is_byok\u0022:false,\u0022prompt_tokens_details\u0022:{\u0022cached_tokens\u0022:0,\u0022cache_write_tokens\u0022:0,\u0022audio_tokens\u0022:0,\u0022video_tokens\u0022:0},\u0022cost_details\u0022:{\u0022upstream_inference_cost\u0022:0.0002547,\u0022upstream_inference_prompt_cost\u0022:0.000234,\u0022upstream_inference_completions_cost\u0022:0.0000207},\u0022completion_tokens_details\u0022:{\u0022reasoning_tokens\u0022:0,\u0022image_tokens\u0022:0,\u0022audio_tokens\u0022:0}}}"
+}

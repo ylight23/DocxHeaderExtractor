@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-26BE9B284520",
+  "stage": "POINTER_SPAN",
+  "requestKey": "NEW-26BE9B284520|NEW-26BE9B284520:POINTER_SPAN:002",
+  "requestSha256": "682302d48cd695a1e11addf157df2c02955d515907620a299c5fb8bc368f9bc1",
+  "validatedAt": "2026-09-15T10:06:33.7438504+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b2441",
+      "role": "",
+      "confidence": 0,
+      "isHeading": false,
+      "span": {
+        "start": 0,
+        "end": 29
+      },
+      "documentId": "NEW-26BE9B284520",
+      "opaqueRef": "B005"
+    },
+    {
+      "ref": "b2678",
+      "role": "",
+      "confidence": 0,
+      "isHeading": false,
+      "span": {
+        "start": 0,
+        "end": 74
+      },
+      "documentId": "NEW-26BE9B284520",
+      "opaqueRef": "B006"
+    },
+    {
+      "ref": "b1214",
+      "role": "",
+      "confidence": 0,
+      "isHeading": false,
+      "span": {
+        "start": 0,
+        "end": 13
+      },
+      "documentId": "NEW-26BE9B284520",
+      "opaqueRef": "B007"
+    },
+    {
+      "ref": "b1224",
+      "role": "",
+      "confidence": 0,
+      "isHeading": false,
+      "span": {
+        "start": 0,
+        "end": 20
+      },
+      "documentId": "NEW-26BE9B284520",
+      "opaqueRef": "B008"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-C07DA5643BE9",
+  "stage": "ROLE",
+  "requestKey": "NEW-C07DA5643BE9|NEW-C07DA5643BE9:ROLE:002",
+  "requestSha256": "fca5e49d13f18628855e9f8bdc81fb9d1468786812c1bc26039de4607c7ec001",
+  "validatedAt": "2026-09-15T10:03:47.9243284+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b4416",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B009"
+    },
+    {
+      "ref": "b4431",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B010"
+    },
+    {
+      "ref": "b4449",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B011"
+    },
+    {
+      "ref": "b4499",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B012"
+    },
+    {
+      "ref": "b4612",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B013"
+    },
+    {
+      "ref": "b4621",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B014"
+    },
+    {
+      "ref": "b4652",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B015"
+    },
+    {
+      "ref": "b4686",
+      "role": "unknown",
+      "confidence": 0.9,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B016"
+    }
+  ]
+}

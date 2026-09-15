@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "a99-v8h0-provider-raw-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-6717CCA50787",
+  "stage": "ROLE",
+  "requestKey": "NEW-6717CCA50787|NEW-6717CCA50787:ROLE:001",
+  "requestSha256": "bc686ab74784550b59e7bd7a0d89bc292d05712fb7c43bab94760bb773b37c21",
+  "started": "2026-09-15T10:02:18.6011194+00:00",
+  "received": "2026-09-15T10:02:33.5888523+00:00",
+  "httpStatus": 200,
+  "providerStatus": "HTTP_SUCCESS",
+  "rawResponseSha256": "33aaeec741a0cbf440f6adcfff6106120fdd88e86f7ea4577bf24cab5ba15034",
+  "rawProviderResponse": "\n         \n\n         \n\n         \n\n         \n\n         \n{\u0022id\u0022:\u0022gen-1789466538-0paisEmzdvPdVPX882WU\u0022,\u0022object\u0022:\u0022chat.completion\u0022,\u0022created\u0022:1789466538,\u0022model\u0022:\u0022qwen/qwen3.5-9b\u0022,\u0022provider\u0022:\u0022Venice\u0022,\u0022system_fingerprint\u0022:null,\u0022service_tier\u0022:null,\u0022choices\u0022:[{\u0022index\u0022:0,\u0022logprobs\u0022:null,\u0022finish_reason\u0022:\u0022stop\u0022,\u0022native_finish_reason\u0022:\u0022stop\u0022,\u0022message\u0022:{\u0022role\u0022:\u0022assistant\u0022,\u0022content\u0022:\u0022{\\\u0022blocks\\\u0022:[{\\\u0022id\\\u0022:\\\u0022b4143\\\u0022,\\\u0022role\\\u0022:\\\u0022topic_heading\\\u0022,\\\u0022confidence\\\u0022:0.95},{\\\u0022id\\\u0022:\\\u0022b4279\\\u0022,\\\u0022role\\\u0022:\\\u0022topic_heading\\\u0022,\\\u0022confidence\\\u0022:0.95},{\\\u0022id\\\u0022:\\\u0022b3978\\\u0022,\\\u0022role\\\u0022:\\\u0022body_text\\\u0022,\\\u0022confidence\\\u0022:0.9},{\\\u0022id\\\u0022:\\\u0022b3361\\\u0022,\\\u0022role\\\u0022:\\\u0022topic_heading\\\u0022,\\\u0022confidence\\\u0022:0.95},{\\\u0022id\\\u0022:\\\u0022b3410\\\u0022,\\\u0022role\\\u0022:\\\u0022topic_heading\\\u0022,\\\u0022confidence\\\u0022:0.95},{\\\u0022id\\\u0022:\\\u0022b3448\\\u0022,\\\u0022role\\\u0022:\\\u0022topic_heading\\\u0022,\\\u0022confidence\\\u0022:0.95},{\\\u0022id\\\u0022:\\\u0022b3511\\\u0022,\\\u0022role\\\u0022:\\\u0022topic_heading\\\u0022,\\\u0022confidence\\\u0022:0.95},{\\\u0022id\\\u0022:\\\u0022b3562\\\u0022,\\\u0022role\\\u0022:\\\u0022topic_heading\\\u0022,\\\u0022confidence\\\u0022:0.95}]}\u0022,\u0022refusal\u0022:null,\u0022reasoning\u0022:null}}],\u0022usage\u0022:{\u0022prompt_tokens\u0022:2908,\u0022completion_tokens\u0022:164,\u0022total_tokens\u0022:3072,\u0022cost\u0022:0.0003154,\u0022is_byok\u0022:false,\u0022prompt_tokens_details\u0022:{\u0022cached_tokens\u0022:0,\u0022cache_write_tokens\u0022:0,\u0022audio_tokens\u0022:0,\u0022video_tokens\u0022:0},\u0022cost_details\u0022:{\u0022upstream_inference_cost\u0022:0.0003154,\u0022upstream_inference_prompt_cost\u0022:0.0002908,\u0022upstream_inference_completions_cost\u0022:0.0000246},\u0022completion_tokens_details\u0022:{\u0022reasoning_tokens\u0022:0,\u0022image_tokens\u0022:0,\u0022audio_tokens\u0022:0}}}"
+}

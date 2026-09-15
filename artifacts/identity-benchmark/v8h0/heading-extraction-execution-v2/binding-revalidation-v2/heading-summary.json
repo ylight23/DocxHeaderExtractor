@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "a99-v8h0-heading-summary-v2",
+  "bindingPolicy": "FAIL_CLOSED_DOCUMENT_ROLE_COVERAGE",
+  "bindingEligibleDocuments": [
+    "NEW-26BE9B284520",
+    "NEW-6717CCA50787",
+    "NEW-C07DA5643BE9",
+    "NEW-FDF9C2552AF0"
+  ],
+  "bindingExcludedDocuments": [
+    "NEW-073DB817879B",
+    "NEW-45314CB70E99"
+  ],
+  "perDocument": [
+    {
+      "documentId": "NEW-26BE9B284520",
+      "modelSelectedHeadingRefs": 10,
+      "successfullyBoundHeadings": 0,
+      "unknownRefs": 0,
+      "duplicateOrIncompatibleRefs": 0,
+      "unboundRefs": 10,
+      "exactSourceMismatches": 0
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "modelSelectedHeadingRefs": 20,
+      "successfullyBoundHeadings": 0,
+      "unknownRefs": 0,
+      "duplicateOrIncompatibleRefs": 0,
+      "unboundRefs": 20,
+      "exactSourceMismatches": 0
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "modelSelectedHeadingRefs": 5,
+      "successfullyBoundHeadings": 0,
+      "unknownRefs": 0,
+      "duplicateOrIncompatibleRefs": 0,
+      "unboundRefs": 5,
+      "exactSourceMismatches": 0
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "modelSelectedHeadingRefs": 6,
+      "successfullyBoundHeadings": 0,
+      "unknownRefs": 0,
+      "duplicateOrIncompatibleRefs": 0,
+      "unboundRefs": 6,
+      "exactSourceMismatches": 0
+    }
+  ]
+}

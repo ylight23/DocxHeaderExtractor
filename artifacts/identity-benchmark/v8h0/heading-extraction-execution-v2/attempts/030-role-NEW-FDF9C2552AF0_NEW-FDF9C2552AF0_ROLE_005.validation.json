@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-FDF9C2552AF0",
+  "stage": "ROLE",
+  "requestKey": "NEW-FDF9C2552AF0|NEW-FDF9C2552AF0:ROLE:005",
+  "requestSha256": "e7fb2b5c8f160dd70189dc225da2b5fefa0f66da71a0160d299ce3a79d0a0058",
+  "validatedAt": "2026-09-15T10:06:21.744104+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b49",
+      "role": "table_title",
+      "confidence": 0.95,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-FDF9C2552AF0",
+      "opaqueRef": "B033"
+    }
+  ]
+}

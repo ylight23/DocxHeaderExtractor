@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-C07DA5643BE9",
+  "stage": "ROLE",
+  "requestKey": "NEW-C07DA5643BE9|NEW-C07DA5643BE9:ROLE:001",
+  "requestSha256": "f1608a7d862d29241fab7e2fb2e46e84d46049b0b88cf54b4673bffe1a1bd5b3",
+  "validatedAt": "2026-09-15T10:03:39.4529275+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b4211",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B001"
+    },
+    {
+      "ref": "b4601",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B002"
+    },
+    {
+      "ref": "b4648",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B003"
+    },
+    {
+      "ref": "b4681",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B004"
+    },
+    {
+      "ref": "b4702",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B005"
+    },
+    {
+      "ref": "b4745",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B006"
+    },
+    {
+      "ref": "b4782",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B007"
+    },
+    {
+      "ref": "b4386",
+      "role": "unknown",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-C07DA5643BE9",
+      "opaqueRef": "B008"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-45314CB70E99",
+  "stage": "ROLE",
+  "requestKey": "NEW-45314CB70E99|NEW-45314CB70E99:ROLE:005",
+  "requestSha256": "b448b2e74e4d41ba8389335c4568ea299e87cb0d74a302c5b38ca3800c82be34",
+  "validatedAt": "2026-09-15T10:02:18.5939877+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b2400",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B033"
+    },
+    {
+      "ref": "b2512",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B034"
+    },
+    {
+      "ref": "b2515",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B035"
+    },
+    {
+      "ref": "b2626",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B036"
+    },
+    {
+      "ref": "b2628",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B037"
+    },
+    {
+      "ref": "b2631",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B038"
+    },
+    {
+      "ref": "b2736",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B039"
+    },
+    {
+      "ref": "b2742",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-45314CB70E99",
+      "opaqueRef": "B040"
+    }
+  ]
+}

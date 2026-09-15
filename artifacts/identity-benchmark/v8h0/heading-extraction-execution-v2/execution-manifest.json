@@ -1,0 +1,100 @@
+{
+  "artifactKind": "a99_identity_benchmark_v8h0_heading_extraction_execution",
+  "schemaVersion": "a99-v8h0-heading-extraction-execution-v1",
+  "status": "COMPLETED_WITH_FAILURES_PRESERVED",
+  "authority": {
+    "preflightCommit": "98ce62e",
+    "preflightManifestSha256": "2228e9a7948a30b49b061f94190f8ff613fe3f6c418ff0249960a6e1a918eb55",
+    "preflightRequestIndexSha256": "7f4b41c7d611b628f471e38ea8c60ae3033572bcc23ed3cd1459dfca1b77ef75",
+    "preflightCandidateManifestSha256": "747ddaaadb7c1f3941e34e232bd401cf5e4c324536a98cff988c89503bcb40b1",
+    "preflightRoleRequestsSha256": "d9f6f63ca524a40ee8fb76fb475b2771727f13bbf571f979d6f6a203de43f4cb",
+    "preflightSpanRequestsSha256": "f807f6e14718c624f33ef233175cb1acd51cf253fb2ca2e4d15349095d1713e7",
+    "executionCampaign": "execution-v2",
+    "requestsImmutable": true,
+    "bindingRepair": false
+  },
+  "provider": {
+    "provider": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "retry": 0,
+    "roleCalls": 30,
+    "spanCalls": 18,
+    "totalCalls": 48
+  },
+  "role": {
+    "scheduled": 30,
+    "executed": 30,
+    "valid": 28,
+    "invalidValidation": 2,
+    "providerError": 2
+  },
+  "span": {
+    "materializedUpperBound": 59,
+    "triggered": 18,
+    "executed": 18,
+    "valid": 18,
+    "invalidValidation": 0,
+    "providerError": 0
+  },
+  "headingOutput": {
+    "totalFrozenBoundHeadingOccurrences": 38,
+    "perDocument": [
+      {
+        "documentId": "NEW-26BE9B284520",
+        "modelSelectedHeadingRefs": 10,
+        "successfullyBoundHeadings": 7,
+        "unknownRefs": 0,
+        "duplicateOrIncompatibleRefs": 0,
+        "unboundRefs": 3,
+        "exactSourceMismatches": 0
+      },
+      {
+        "documentId": "NEW-45314CB70E99",
+        "modelSelectedHeadingRefs": 2,
+        "successfullyBoundHeadings": 2,
+        "unknownRefs": 0,
+        "duplicateOrIncompatibleRefs": 0,
+        "unboundRefs": 0,
+        "exactSourceMismatches": 0
+      },
+      {
+        "documentId": "NEW-6717CCA50787",
+        "modelSelectedHeadingRefs": 20,
+        "successfullyBoundHeadings": 19,
+        "unknownRefs": 0,
+        "duplicateOrIncompatibleRefs": 0,
+        "unboundRefs": 1,
+        "exactSourceMismatches": 0
+      },
+      {
+        "documentId": "NEW-C07DA5643BE9",
+        "modelSelectedHeadingRefs": 5,
+        "successfullyBoundHeadings": 5,
+        "unknownRefs": 0,
+        "duplicateOrIncompatibleRefs": 0,
+        "unboundRefs": 0,
+        "exactSourceMismatches": 0
+      },
+      {
+        "documentId": "NEW-FDF9C2552AF0",
+        "modelSelectedHeadingRefs": 6,
+        "successfullyBoundHeadings": 5,
+        "unknownRefs": 0,
+        "duplicateOrIncompatibleRefs": 0,
+        "unboundRefs": 1,
+        "exactSourceMismatches": 0
+      }
+    ]
+  },
+  "firewall": {
+    "goldReadCount": 0,
+    "identityLabelReadCount": 0,
+    "historicalEvaluationReadCount": 0,
+    "v4hToV8PredictionReadCount": 0,
+    "v5ToV8PredictionReadCount": 0,
+    "v6ToV8PredictionReadCount": 0,
+    "v7ToV8PredictionReadCount": 0,
+    "identityCandidateGeneration": false
+  }
+}

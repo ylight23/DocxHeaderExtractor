@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "a99-v8h0-provider-validation-v2",
+  "executionCampaign": "execution-v2",
+  "documentId": "NEW-073DB817879B",
+  "stage": "ROLE",
+  "requestKey": "NEW-073DB817879B|NEW-073DB817879B:ROLE:004",
+  "requestSha256": "2e0aec16937714909e824b79d50fafebb173c3ecd89997055cbb0202da1df602",
+  "validatedAt": "2026-09-15T09:59:42.6641563+00:00",
+  "validationStatus": "VALID",
+  "validationReason": "ok",
+  "decisions": [
+    {
+      "ref": "b249",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B025"
+    },
+    {
+      "ref": "b264",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B026"
+    },
+    {
+      "ref": "b265",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B027"
+    },
+    {
+      "ref": "b282",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B028"
+    },
+    {
+      "ref": "b317",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B029"
+    },
+    {
+      "ref": "b320",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B030"
+    },
+    {
+      "ref": "b322",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B031"
+    },
+    {
+      "ref": "b323",
+      "role": "body_text",
+      "confidence": 1,
+      "isHeading": false,
+      "span": null,
+      "documentId": "NEW-073DB817879B",
+      "opaqueRef": "B032"
+    }
+  ]
+}
