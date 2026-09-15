@@ -1,0 +1,52 @@
+{
+  "contractKind": "A99_CANONICAL_SEMANTIC_NODE_HIERARCHY_REVIEW_CONTRACT",
+  "schemaVersion": "a99-canonical-semantic-node-hierarchy-review-v2",
+  "status": "PREPARATION_ONLY_NOT_YET_REVIEWED",
+  "historicalLevelVisible": false,
+  "occurrenceAuthority": {
+    "occurrenceId": "headingOccurrenceId",
+    "sourceIdentity": [
+      "sourceId",
+      "exactText",
+      "sourceReferencePath",
+      "sourceReferenceSha256"
+    ],
+    "assignment": "exactly one semanticNodeId or UNRESOLVED",
+    "occurrenceRole": [
+      "PRIMARY",
+      "REPEAT",
+      "CONTINUATION"
+    ]
+  },
+  "semanticNodeAuthority": {
+    "semanticNodes": [
+      {
+        "semanticNodeId": "N001",
+        "canonicalMeaning": null,
+        "reviewStatus": "PENDING"
+      }
+    ],
+    "parentEdges": [
+      {
+        "childSemanticNodeId": "N001",
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "reviewStatus": "PENDING"
+      }
+    ]
+  },
+  "derivationPolicy": {
+    "occurrenceToNode": "reviewed occurrence assignment",
+    "nodeToParent": "reviewed semantic-node parent edge or ROOT",
+    "level": "derive deterministically as tree depth after validation; reviewer does not enter level"
+  },
+  "validation": [
+    "every resolved occurrence belongs to exactly one semantic node",
+    "every resolved semantic node has exactly one parent or ROOT",
+    "no dangling parent references",
+    "no parent cycles",
+    "one or more ROOT nodes only when the document is intentionally frozen as a forest",
+    "REPEAT/CONTINUATION occurrences do not create a new node unless explicitly adjudicated DISTINCT",
+    "historical level remains unavailable during review"
+  ]
+}
