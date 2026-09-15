@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "a99-v8a2-eligibility-snapshot-v1",
+  "status": "FROZEN_NEW_SOURCE_ELIGIBILITY",
+  "selectionSeed": "a99-v8h0-extension-new-source-corpus-v1",
+  "selectionRule": "source-independent family/format/size-band stratification; no semantic difficulty or known failure-shape ranking",
+  "eligiblePoolCount": 3,
+  "selectedSourceIds": [
+    "NEW-976B6F4383DD",
+    "NEW-D37DD2D74B04",
+    "NEW-F90364E75711"
+  ],
+  "selectedDocuments": [
+    {
+      "sourceId": "NEW-976B6F4383DD",
+      "name": "un__lesotho-annual-results-report-2024.pdf",
+      "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8h0-extension-candidates\\un__lesotho-annual-results-report-2024.pdf",
+      "repositoryPath": "artifacts/identity-benchmark/v8h0-extension/source-intake-v1/source-corpus/NEW-976B6F4383DD_un__lesotho-annual-results-report-2024.pdf",
+      "byteSha256": "976b6f4383dd4f15ee5ea172c520b8e9c4854a2b00afc0468c3c7d200f46e8a7",
+      "normalizedTextSha256": "edbe865fc86c70827122ada26a7ffdbaa77add5634e1e084a38e2507d5134f46",
+      "format": "pdf",
+      "family": "un",
+      "sizeBand": "LARGE",
+      "occurrenceCount": 1527,
+      "paragraphCount": 2952,
+      "nonEmptyParagraphCount": 2952
+    },
+    {
+      "sourceId": "NEW-D37DD2D74B04",
+      "name": "ukgov__charity-commission-annual-report-2023-24.pdf",
+      "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8h0-extension-candidates\\ukgov__charity-commission-annual-report-2023-24.pdf",
+      "repositoryPath": "artifacts/identity-benchmark/v8h0-extension/source-intake-v1/source-corpus/NEW-D37DD2D74B04_ukgov__charity-commission-annual-report-2023-24.pdf",
+      "byteSha256": "d37dd2d74b04ed8f33c6717e398674ab369ef15abb7db2227a03d75f20ba7795",
+      "normalizedTextSha256": "d761624b959e52081af0682bfc81e4f1d185cd83b8972e72030a01d118a71223",
+      "format": "pdf",
+      "family": "ukgov",
+      "sizeBand": "MEDIUM",
+      "occurrenceCount": 1383,
+      "paragraphCount": 3844,
+      "nonEmptyParagraphCount": 3844
+    },
+    {
+      "sourceId": "NEW-F90364E75711",
+      "name": "worldbank__access-to-information-fy24-annual-report.pdf",
+      "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8h0-extension-candidates\\worldbank__access-to-information-fy24-annual-report.pdf",
+      "repositoryPath": "artifacts/identity-benchmark/v8h0-extension/source-intake-v1/source-corpus/NEW-F90364E75711_worldbank__access-to-information-fy24-annual-report.pdf",
+      "byteSha256": "f90364e757116adb74aaf07514c325f53619a8be4eb6ea201ffb8ba562878975",
+      "normalizedTextSha256": "f870815ef74daafc1bdb3e00ed21323be859d7d58936128c7e828eb1f71c2f90",
+      "format": "pdf",
+      "family": "worldbank",
+      "sizeBand": "LARGE",
+      "occurrenceCount": 467,
+      "paragraphCount": 693,
+      "nonEmptyParagraphCount": 693
+    }
+  ],
+  "rejectedDocuments": [],
+  "familyDistribution": {
+    "un": 1,
+    "ukgov": 1,
+    "worldbank": 1
+  },
+  "formatDistribution": {
+    "pdf": 3
+  },
+  "noGoldOrPredictionInput": true
+}

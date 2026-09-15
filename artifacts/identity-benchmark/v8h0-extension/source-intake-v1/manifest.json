@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "a99-v8a2-manifest-v1",
+  "status": "READY_FOR_V8_PROVIDER_EXECUTION",
+  "sourceDirectory": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8h0-extension-candidates",
+  "sourceScanSha256": "1e1588bd8c18fae4921d8f58e9a24f7791a4da5c80ff2ca4c1c10b9a8467694f",
+  "selectionSeed": "a99-v8h0-extension-new-source-corpus-v1",
+  "selectedSourceIds": [
+    "NEW-976B6F4383DD",
+    "NEW-D37DD2D74B04",
+    "NEW-F90364E75711"
+  ],
+  "rejectedSourceIds": [],
+  "familyDistribution": {
+    "un": 1,
+    "ukgov": 1,
+    "worldbank": 1
+  },
+  "formatDistribution": {
+    "pdf": 3
+  },
+  "selectedDocumentCount": 3,
+  "occurrenceCount": 3377,
+  "candidatePairCount": 27451,
+  "proposerRequestCount": 3,
+  "falsifierRequestCount": 3,
+  "proposerRequestSetSha256": "05e702da58a909677c3c05c872c84b44c4bebb0b0d8a05f8383450575d566a12",
+  "falsifierRequestSetSha256": "836b24cba9b9659807b2529a872f639681ffc04bf251103aea7972bbba3d8598",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReadCount": 0,
+  "v7PredictionReadCount": 0,
+  "holdoutSelected": true,
+  "generalizationClaim": false,
+  "autoCollapse": false,
+  "acceptedAuthority": "MODEL_PROPOSED_PROOF \u002B CLEAR_FALSIFIER =\u003E ACCEPTED_FOR_V8_GRAPH_ONLY; otherwise KEEP_SPLIT"
+}

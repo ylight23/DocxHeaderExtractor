@@ -32,7 +32,9 @@ internal static class Program
         try
         {
             var root = Path.GetFullPath(args.FirstOrDefault(x => !x.StartsWith("--", StringComparison.Ordinal)) ?? Directory.GetCurrentDirectory());
-            Run(root);
+            var inputRelative = GetOption(args, "--input-relative") ?? V8A2Relative;
+            var outputRelative = GetOption(args, "--output-relative") ?? OutputRelative;
+            Run(root, inputRelative, outputRelative);
             return 0;
         }
         catch (Exception ex)
@@ -42,10 +44,11 @@ internal static class Program
         }
     }
 
-    private static void Run(string root)
+    private static void Run(string root, string inputRelative, string outputRelative)
     {
-        var input = Full(root, V8A2Relative);
-        var output = Full(root, OutputRelative);
+        var input = Full(root, inputRelative);
+        var output = Full(root, outputRelative);
+        var extension = !inputRelative.Equals(V8A2Relative, StringComparison.OrdinalIgnoreCase);
         Require(Directory.Exists(input), "V8A2_INPUT_NOT_FOUND");
         if (Directory.Exists(output) && Directory.EnumerateFiles(output, "*", SearchOption.AllDirectories).Any())
         {
@@ -77,7 +80,7 @@ internal static class Program
                 x.GetProperty("byteSha256").GetString()!,
                 x.GetProperty("family").GetString()!))
             .OrderBy(x => x.SourceId, StringComparer.Ordinal).ToArray();
-        Require(sourceRows.Length == 6, "V8H0_SOURCE_COUNT_DRIFT");
+        Require(sourceRows.Length > 0, "V8H0_SOURCE_COUNT_EMPTY");
 
         var docs = sourceRows.Select(BuildDocument).ToArray();
         var rebuiltDocs = sourceRows.Select(BuildDocument).ToArray();
@@ -187,7 +190,7 @@ internal static class Program
         {
             artifactKind = "a99_identity_benchmark_v8h0_heading_extraction_preflight",
             schemaVersion = "a99-v8h0-heading-extraction-preflight-v1",
-            status = "READY_FOR_V8H0_HEADING_PROVIDER_AUTHORIZATION",
+            status = extension ? "READY_FOR_V8H0_EXTENSION_HEADING_PROVIDER_AUTHORIZATION" : "READY_FOR_V8H0_HEADING_PROVIDER_AUTHORIZATION",
             authority = new
             {
                 v8ProofContract = V8ProofAuthority,
@@ -195,6 +198,8 @@ internal static class Program
                 v8a3Commit = V8A3Authority,
                 v8bCommit = V8BAuthority,
                 v8b0Commit = V8B0Authority,
+                inputRelative,
+                extension,
                 v8a2ManifestSha256 = Sha256File(v8a2ManifestPath),
                 sourceIntakeSha256 = Sha256File(intakePath),
                 frozenInputArtifactsMutated = false,
@@ -247,7 +252,7 @@ internal static class Program
                 requestHashesDeterministic,
                 allRequestsMaterializedBeforeProvider = true,
                 noGoldOrPredictionInputs = true,
-                status = "READY_FOR_V8H0_HEADING_PROVIDER_AUTHORIZATION",
+                status = extension ? "READY_FOR_V8H0_EXTENSION_HEADING_PROVIDER_AUTHORIZATION" : "READY_FOR_V8H0_HEADING_PROVIDER_AUTHORIZATION",
             },
             next = "Provider authorization may be considered only for frozen role requests; pointer-span requests are conditional upper-bound shards and must be executed only for validated role-selected blocks.",
         };
@@ -382,6 +387,7 @@ internal static class Program
     private static string BuildReport(object manifest, IReadOnlyList<DocumentPlan> docs, object scale, IReadOnlyList<TestResult> tests) => $"# V8H0 — upstream heading extraction + binding preflight\n\nStatus: **READY_FOR_V8H0_HEADING_PROVIDER_AUTHORIZATION**.\n\nThis artifact is source-only and provider-free. It reuses the existing PDF production role/span contract and freezes a complete parser line universe plus deterministic role/pointer request shards. No Gold, identity candidates, historical predictions, or evaluation artifacts were read.\n\n- Documents: **{docs.Count}**\n- Parser source lines preserved: **{docs.Sum(x => x.SourceLines.Count):N0}**\n- Production candidate blocks before budget: **{docs.Sum(x => x.CandidateBlocks.Count):N0}**\n- Selected analyst blocks: **{docs.Sum(x => x.SelectedBlocks.Count):N0}**\n- Role requests: **{docs.Sum(x => x.RoleRequests.Count):N0}**\n- Conditional pointer-span request upper bound: **{docs.Sum(x => x.SpanRequests.Count):N0}**\n- Provider/model calls: **0/0**\n- Gold reads: **0**\n\n## Reused detector\n\n`PdfLineExtraction → PdfLineBlockFilter → PdfSemanticBlockGrouper → PdfStyleClusterProfile → PdfCandidateContextBuilder → PdfCandidateRanker → PdfLayoutEvidenceOutline.BuildBroadCandidates/SelectRankedCandidates → PdfBlockAnalyst role/span contract`. The model sees only local opaque block refs (`b1`, `b2`, ...); canonical source line identities remain harness-owned handle-map data.\n\n## Binding boundary\n\nRole output may select a supplied block ref. Pointer output may select only parser-owned UTF-16 offsets. The harness owns exact source text, source line IDs, and provenance. Unknown/fabricated/missing/duplicate refs are fail-closed. Level, parent, semantic identity, and identity pair labels are outside this lane.\n\n## Offline contract tests\n\n{tests.Count(x => x.Pass)}/{tests.Count} synthetic binding checks passed.\n\n## Next\n\nProvider authorization may be considered for the frozen role request set. Pointer-span requests are conditional upper-bound shards and must only run for role-selected blocks; no V8H0 prediction is present yet.\n";
 
     private static JsonElement Load(string path) => JsonDocument.Parse(File.ReadAllText(path)).RootElement.Clone();
+    private static string? GetOption(string[] args, string name) { var i = Array.IndexOf(args, name); return i >= 0 && i + 1 < args.Length ? args[i + 1] : null; }
     private static string Full(string root, string relative) => Path.GetFullPath(Path.Combine(root, relative.Replace('/', Path.DirectorySeparatorChar)));
     private static string Sha256(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text))).ToLowerInvariant();
     private static string Sha256File(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();

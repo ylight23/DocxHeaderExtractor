@@ -1,0 +1,35 @@
+[
+  {
+    "sourceRepository": "UK Government / Charity Commission",
+    "sourceURL": "https://assets.publishing.service.gov.uk/media/6697c6e549b9c0597fdafec3/Charity_Commission_Annual_Report_and_Accounts_170724.pdf",
+    "sourceFamily": "ukgov",
+    "originalFileName": "Charity_Commission_Annual_Report_and_Accounts_170724.pdf",
+    "localPath": "external-source-intake/v8h0-extension-candidates/ukgov__charity-commission-annual-report-2023-24.pdf",
+    "sourceFormat": "pdf",
+    "byteSha256": "d37dd2d74b04ed8f33c6717e398674ab369ef15abb7db2227a03d75f20ba7795",
+    "fileSize": 1661327,
+    "license": "UK Open Government Licence v3.0; source publication states third-party copyright exclusions"
+  },
+  {
+    "sourceRepository": "United Nations Lesotho",
+    "sourceURL": "https://lesotho.un.org/sites/default/files/2025-04/Lesotho%20Annual%20Results%20Report%202024%20%28002%29.pdf",
+    "sourceFamily": "un",
+    "originalFileName": "Lesotho Annual Results Report 2024 (002).pdf",
+    "localPath": "external-source-intake/v8h0-extension-candidates/un__lesotho-annual-results-report-2024.pdf",
+    "sourceFormat": "pdf",
+    "byteSha256": "976b6f4383dd4f15ee5ea172c520b8e9c4854a2b00afc0468c3c7d200f46e8a7",
+    "fileSize": 7350782,
+    "license": "Public UN publication; source URL and byte fingerprint frozen for benchmark provenance"
+  },
+  {
+    "sourceRepository": "World Bank Group",
+    "sourceURL": "https://thedocs.worldbank.org/en/doc/3af111c0327d07f6f53ff8ededbe8e4d-0090012025/original/FY24-ATI-Annual-Report-FINAL.pdf",
+    "sourceFamily": "worldbank",
+    "originalFileName": "FY24-ATI-Annual-Report-FINAL.pdf",
+    "localPath": "external-source-intake/v8h0-extension-candidates/worldbank__access-to-information-fy24-annual-report.pdf",
+    "sourceFormat": "pdf",
+    "byteSha256": "f90364e757116adb74aaf07514c325f53619a8be4eb6ea201ffb8ba562878975",
+    "fileSize": 5555532,
+    "license": "World Bank Group public report; source URL and byte fingerprint frozen for benchmark provenance"
+  }
+]

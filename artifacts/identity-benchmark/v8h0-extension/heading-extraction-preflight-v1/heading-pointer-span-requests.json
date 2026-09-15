@@ -1,0 +1,1649 @@
+{
+  "schemaVersion": "a99-v8h0-pointer-span-requests-v1",
+  "conditionalOnRoleSelection": true,
+  "frozenBeforeProvider": true,
+  "requests": [
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004"
+      ],
+      "sourceRefs": [
+        "U000306",
+        "U000320",
+        "U000334",
+        "U000342"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-976B6F4383DD:POINTER_SPAN:001",
+        "blocks": [
+          "B001",
+          "B002",
+          "B003",
+          "B004"
+        ],
+        "sourceRefs": [
+          "U000306",
+          "U000320",
+          "U000334",
+          "U000342"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b148\u0022,\u0022source_text\u0022:\u0022Ch i ld re n u n de r 5 yea rs w ho a re m a l n o u ris he d:\u0022,\u0022source_length\u0022:62,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,7,8,10,11,12,13,14,15,16,17,19,20,21,22,23,24,27,28,30,31,32,33,35,36,37,38,40,41,42,43,44,45,46,47,48,49,50,51,52,53,56,57,59,60,61,62],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,7,8,10,11,12,13,14,15,16,17,19,20,21,22,23,24,27,28,30,31,32,33,35,36,37,38,40,41,42,43,44,45,46,47,48,49,50,51,52,53,56,57,59,60,61,62],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u002222 % of the population (335 000 people)\u0022,\u0022experiencehighly a cutefoodinsecurity\u0022],\u0022next_blocks\u0022:[\u0022stuntedoverweightwasted\u0022,\u0022Literacyrates: fem a le: 98 % m a le: 89 %\u0022]}},{\u0022id\u0022:\u0022b158\u0022,\u0022source_text\u0022:\u0022jo i ntl o r s o le l w h i le 28% of ho m e ow n e rs h i p is\u0022,\u0022source_length\u0022:63,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,30,31,33,34,35,37,38,40,41,42,43,44,45,47,48,49,50,51,52,54,55,56,57,58,59,60,61,63],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,30,31,33,34,35,37,38,40,41,42,43,44,45,47,48,49,50,51,52,54,55,56,57,58,59,60,61,63],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022a bout Propertyownership: 23 % of menown a home\u0022,\u0022theirown\u0022],\u0022next_blocks\u0022:[\u0022sexual a ndyy reprod uctive\u0022,\u0022with women\u0022]}},{\u0022id\u0022:\u0022b168\u0022,\u0022source_text\u0022:\u0022Deaths pe r 1 00 000 l ive bi rths:\u0022,\u0022source_length\u0022:35,\u0022allowed_start_offsets\u0022:[0,6,7,9,10,11,12,13,14,16,17,20,21,22,23,26,27,29,30,34,35],\u0022allowed_end_offsets\u0022:[0,6,7,9,10,11,12,13,14,16,17,20,21,22,23,26,27,29,30,34,35],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Developmentin Lesotho: A sn a pshot 9\u0022,\u0022MAT E R N A L A N D I NFA N T M ORTA LITY 1 1\u0022],\u0022next_blocks\u0022:[\u0022MATE RNAL U N D E R-FIVE I NFANT NEO NATAL M O RTALITY M O RTALITY M O RTALITY M O RTALITY\u0022,\u0022HIV / AI D S 1 2\u0022]}},{\u0022id\u0022:\u0022b172\u0022,\u0022source_text\u0022:\u0022Antiretrovira l\u0022,\u0022source_length\u0022:15,\u0022allowed_start_offsets\u0022:[0,13,14,15],\u0022allowed_end_offsets\u0022:[0,13,14,15],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022MATE RNAL U N D E R-FIVE I NFANT NEO NATAL M O RTALITY M O RTALITY M O RTALITY M O RTALITY\u0022,\u0022HIV / AI D S 1 2\u0022],\u0022next_blocks\u0022:[\u0022from 201 0)\u0022,\u0022Progresstowards 95 - 95 - 95 targets:\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4088,
+      "estimatedInputTokens": 1022,
+      "repeatedContextBytes": 106,
+      "requestSha256": "52a5ac5410239ad17d85066e0c18c5413d58351efa584bfff47e0828b09b1ab7"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000350",
+        "U000714",
+        "U000742",
+        "U001011"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-976B6F4383DD:POINTER_SPAN:002",
+        "blocks": [
+          "B005",
+          "B006",
+          "B007",
+          "B008"
+        ],
+        "sourceRefs": [
+          "U000350",
+          "U000714",
+          "U000742",
+          "U001011"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b175\u0022,\u0022source_text\u0022:\u0022Prog ress towa rds 95- 95- 95 ta rgets:\u0022,\u0022source_length\u0022:39,\u0022allowed_start_offsets\u0022:[0,4,5,9,10,14,15,18,19,21,22,23,25,26,27,29,30,32,33,38,39],\u0022allowed_end_offsets\u0022:[0,4,5,9,10,14,15,18,19,21,22,23,25,26,27,29,30,32,33,38,39],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Antiretrovira l\u0022,\u0022from 201 0)\u0022],\u0022next_blocks\u0022:[\u0022Of thoseliving with HIV / AI DS:\u0022,\u0022knowtheirstatus of those whoknowtheir of those on treatment\u0022]}},{\u0022id\u0022:\u0022b290\u0022,\u0022source_text\u0022:\u0022co m m e m o rates 200 yea rs of Ba sotho\u0022,\u0022source_length\u0022:41,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,6,7,8,9,10,11,12,13,18,19,22,23,26,27,29,30,32,33,35,36,41],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,6,7,8,9,10,11,12,13,18,19,22,23,26,27,29,30,32,33,35,36,41],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022partnerships a ndinn ovativefinancingmechanismscontributed to sustainableprogresstowards Lesotho\\u2019sdevelopmentgoals\u0022,\u00222024: The United Nationsin Lesotho\u0022],\u0022next_blocks\u0022:[\u0022LAU NCH I N GTH EBICE NTE N NIAL CO M M E M O RATIO N SAN D\u0022,\u0022first-evernationaldialogue with youngpeople providing the m with a platform to reflectontheiridentity a ndtheirrolein the economicdevelopment of the country a nditsfuture\u0022]}},{\u0022id\u0022:\u0022b301\u0022,\u0022source_text\u0022:\u0022AD D RESSIN G FOO D IN SECU RITY AN D AG RICU LTU RAL\u0022,\u0022source_length\u0022:53,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,11,12,13,14,17,18,19,20,22,23,27,28,32,33,35,36,37,38,40,41,45,46,49,50,53],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,11,12,13,14,17,18,19,20,22,23,27,28,32,33,35,36,37,38,40,41,45,46,49,50,53],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022AGAINST CHILDRE N: D r Najat Maalla M\\u2019jid the Special\u0022,\u0022D r M\\u2019jid\\u2019sm ission focused on strengtheningchild protection systems a ndadvancing national efforts to end violenceagainst\u0022],\u0022next_blocks\u0022:[\u0022children She engageddi rectly with childrencaregivers a ndchild\u0022,\u0022INVESTM ENT: By mid - 2024 as a result of prolongeddrought\u0022]}},{\u0022id\u0022:\u0022b417\u0022,\u0022source_text\u0022:\u0022Th l i d i h i d d t I N C LU SIVE DIGITALIZATIO N\u0022,\u0022source_length\u0022:50,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,34,35,48,49,50],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,34,35,48,49,50],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Publicsectorreforms:\u0022,\u0022LEGIS LATIVE RE FO RM Sittdtlltlti Th\u0022],\u0022next_blocks\u0022:[\u0022tdb U Nidtf P U BLIC SECTO RRE FO RM AND\u0022,\u0022Strategic Pillar 1: Goodgovern a nce a ndsocialequity 25\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4364,
+      "estimatedInputTokens": 1091,
+      "repeatedContextBytes": 0,
+      "requestSha256": "bbf41402d972a713da4b2e9667609766c809bfb5a49e3ba5f29a9ae2a5ccd2a6"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012"
+      ],
+      "sourceRefs": [
+        "U001407",
+        "U002288",
+        "U002851",
+        "U003006"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-976B6F4383DD:POINTER_SPAN:003",
+        "blocks": [
+          "B009",
+          "B010",
+          "B011",
+          "B012"
+        ],
+        "sourceRefs": [
+          "U001407",
+          "U002288",
+          "U002851",
+          "U003006"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b517\u0022,\u0022source_text\u0022:\u0022AD D RESSI N G G BV f t f i ht f i L th\u0022,\u0022source_length\u0022:39,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,39],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,39],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Violence \\u2013 sexu a l a nd G B Vviolence a g a instchildren a ndotherformsofviolence a ndh a rmfulpr a ctices:\u0022,\u0022M ULTIS ECTO RAL AP PROAC HTO thtddtitifthtt\u0022],\u0022next_blocks\u0022:[\u0022Strategic Pillar 1: Goodgovern a nce a ndsocialequity 31\u0022,\u0022S D Gfin a ncing:\u0022]}},{\u0022id\u0022:\u0022b789\u0022,\u0022source_text\u0022:\u0022cove ri n g 70% of the popu lation a n d e n su ri n g eq u ita ble a ccess to esse ntia l se rvices\u0022,\u0022source_length\u0022:100,\u0022allowed_start_offsets\u0022:[0,4,5,7,8,9,10,11,12,14,15,16,18,19,22,23,27,28,34,35,36,37,38,39,40,41,42,43,44,45,47,48,50,51,52,53,54,55,57,58,59,60,63,64,67,68,69,70,75,76,78,79,83,84,88,89,90,91,93,94,100],\u0022allowed_end_offsets\u0022:[0,4,5,7,8,9,10,11,12,14,15,16,18,19,22,23,27,28,34,35,36,37,38,39,40,41,42,43,44,45,47,48,50,51,52,53,54,55,57,58,59,60,63,64,67,68,69,70,75,76,78,79,83,84,88,89,90,91,93,94,100],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022doctorsimproving maternal a ndnewborncare\u0022,\u0022Integrated servicedeliverymodelswereexpanded to 8 additional districts\u0022],\u0022next_blocks\u0022:[\u0022H I Vresponse:\u0022,\u0022Strengthenedn a tion a lcapacitiesfor a nequitable a ndsustain a ble HIV responsetargetingkey a ndprioritypopulations\u0022]}},{\u0022id\u0022:\u0022b982\u0022,\u0022source_text\u0022:\u0022Fig u re 1 : Prog ress o n d isa bi l ity i n cl u sio n sco reca rd pe rce nta ge of i n d icato rs by statu s 2020\\u20132024\u0022,\u0022source_length\u0022:121,\u0022allowed_start_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,13,17,18,22,23,24,25,26,27,28,29,32,33,35,36,37,38,41,42,43,44,45,46,48,49,50,51,54,55,56,57,60,61,65,66,68,69,71,72,75,76,79,80,82,83,85,86,87,88,89,90,91,92,97,98,100,101,103,104,109,110,111,112,116,117,121],\u0022allowed_end_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,13,17,18,22,23,24,25,26,27,28,29,32,33,35,36,37,38,41,42,43,44,45,46,48,49,50,51,54,55,56,57,60,61,65,66,68,69,71,72,75,76,79,80,82,83,85,86,87,88,89,90,91,92,97,98,100,101,103,104,109,110,111,112,116,117,121],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Finance a ndcashtra nsfers: Leveragedthe U N Pa rtners Portal to enhance\u0022,\u0022\\u00A9 U NDP\u0022],\u0022next_blocks\u0022:[\u0022Source: U N Sustainable Development Group ((UNIN FO) 2025\u0022,\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 61\u0022]}},{\u0022id\u0022:\u0022b1023\u0022,\u0022source_text\u0022:\u0022Fig u re 2: Prog ress o n ge n de r sco reca rd pe rce nta ge of i n d icato rs by statu s 2020\\u20132024\u0022,\u0022source_length\u0022:100,\u0022allowed_start_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,16,17,21,22,23,24,25,26,28,29,30,31,33,34,35,36,39,40,44,45,47,48,50,51,54,55,58,59,61,62,64,65,66,67,68,69,70,71,76,77,79,80,82,83,88,89,90,91,95,96,100],\u0022allowed_end_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,16,17,21,22,23,24,25,26,28,29,30,31,33,34,35,36,39,40,44,45,47,48,50,51,54,55,58,59,61,62,64,65,66,67,68,69,70,71,76,77,79,80,82,83,88,89,90,91,95,96,100],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 61\u0022,\u0022Raising awareness through UN-led initiatives: internation a lframeworks\u0022],\u0022next_blocks\u0022:[\u0022Source: U N Sustainable Development Group (UNIN FO) 2025\u0022,\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 63\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 5313,
+      "estimatedInputTokens": 1329,
+      "repeatedContextBytes": 75,
+      "requestSha256": "f8c91d75aac95bf06fd59c1db839b2f592686387e875f654a1c0ab8a2b09710e"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U002396",
+        "U003119",
+        "U003197",
+        "U003297"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-976B6F4383DD:POINTER_SPAN:004",
+        "blocks": [
+          "B013",
+          "B014",
+          "B015",
+          "B016"
+        ],
+        "sourceRefs": [
+          "U002396",
+          "U003119",
+          "U003197",
+          "U003297"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1068\u0022,\u0022source_text\u0022:\u0022Ta ble 2: Coo pe ratio n Fra m ewo rk bu dget m o bi l ized fu n ds a n d expe n d itu re fo r 2024\u0022,\u0022source_length\u0022:99,\u0022allowed_start_offsets\u0022:[0,2,3,6,7,8,9,10,13,14,16,17,22,23,24,25,28,29,30,31,34,35,37,38,40,41,45,46,47,48,49,50,52,53,54,55,59,60,62,63,64,65,67,68,69,70,71,72,73,74,78,79,80,81,82,83,86,87,89,90,92,93,94,95,99],\u0022allowed_end_offsets\u0022:[0,2,3,6,7,8,9,10,13,14,16,17,22,23,24,25,28,29,30,31,34,35,37,38,40,41,45,46,47,48,49,50,52,53,54,55,59,60,62,63,64,65,67,68,69,70,71,72,73,74,78,79,80,81,82,83,86,87,89,90,92,93,94,95,99],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 63\u0022,\u0022\\u00A9 U NRCO / Reitumetse Russell\u0022],\u0022next_blocks\u0022:[\u0022Cooperation Required Available Fra mework Cooperation Fra meworkresourcesresources Expenditure Delivery\u0022,\u0022Pillar 1: Good Peoplelivingin Lesotho a rebetter governa nce a ndserved by im provedgovernancesocialequitysystems a ndstructures that a re\u0022]}},{\u0022id\u0022:\u0022b1086\u0022,\u0022source_text\u0022:\u0022Fig u re 4: U N fu n d i n g ga p by SDG i n US$ m i l l io n s 2024\u0022,\u0022source_length\u0022:68,\u0022allowed_start_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,31,32,33,34,36,37,40,41,42,43,44,45,47,48,49,50,51,52,53,54,55,56,57,59,60,61,62,63,64,68],\u0022allowed_end_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,31,32,33,34,36,37,40,41,42,43,44,45,47,48,49,50,51,52,53,54,55,56,57,59,60,61,62,63,64,68],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 65\u0022,\u0022Figure 3: Mobilizedfundingin US $ by U N a gency 2024\u0022],\u0022next_blocks\u0022:[\u002264 9 %. 98 % coverage\u0022,\u002293 7 coverage\u0022]}},{\u0022id\u0022:\u0022b1129\u0022,\u0022source_text\u0022:\u0022Fig u re 6: U N co ntri butio n to expe n d itu re reso u rces by SDG 2024\u0022,\u0022source_length\u0022:74,\u0022allowed_start_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,13,14,15,16,18,19,23,24,29,30,31,32,34,35,39,40,41,42,43,44,47,48,50,51,55,56,57,58,62,63,65,66,69,70,74],\u0022allowed_end_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,13,14,15,16,18,19,23,24,29,30,31,32,34,35,39,40,41,42,43,44,47,48,50,51,55,56,57,58,62,63,65,66,69,70,74],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Figure 5: Number of programmaticinterventionsper SDG 2024\u0022,\u0022Source: U N Sustainable Development Group (UNIN FO) 2025\u0022],\u0022next_blocks\u0022:[\u002210 2 % coverage\u0022,\u00221 4 5 6 7 8 8 3 % coverage\u0022]}},{\u0022id\u0022:\u0022b822\u0022,\u0022source_text\u0022:\u0022Ta ble 1 : Key m etrics of Lesotho\\u2019s HIV/AIDS respo n se\u0022,\u0022source_length\u0022:56,\u0022allowed_start_offsets\u0022:[0,2,3,6,7,8,9,10,11,14,15,16,17,23,24,26,27,34,35,36,37,40,41,45,46,51,52,53,54,56],\u0022allowed_end_offsets\u0022:[0,2,3,6,7,8,9,10,11,14,15,16,17,23,24,26,27,34,35,36,37,40,41,45,46,51,52,53,54,56],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022to implementthe Counter Domestic Violence Act N o 1 4 of 2022\u0022,\u0022preventionprogrammesintegratingfoodsecurity a ndsocial protectionsupport\u0022],\u0022next_blocks\u0022:[\u0022Key a rea Result achieved\u0022,\u0022Fundingsecured (P E PFAR) US $ 67 million\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4902,
+      "estimatedInputTokens": 1226,
+      "repeatedContextBytes": 0,
+      "requestSha256": "cda5234988d7175b10f62c224a37c94a5408b75dd38bd0139abffb5af1de1c86"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020"
+      ],
+      "sourceRefs": [
+        "U003159",
+        "U003263",
+        "U003365",
+        "U003488"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-976B6F4383DD:POINTER_SPAN:005",
+        "blocks": [
+          "B017",
+          "B018",
+          "B019",
+          "B020"
+        ],
+        "sourceRefs": [
+          "U003159",
+          "U003263",
+          "U003365",
+          "U003488"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1078\u0022,\u0022source_text\u0022:\u0022Fig u re 3: M o bi l ized fu n d i n g i n US$ by U N a ge n cy 2024\u0022,\u0022source_length\u0022:68,\u0022allowed_start_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,13,14,15,16,18,19,20,21,25,26,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,45,46,47,49,50,51,52,53,54,55,56,58,59,60,61,63,64,68],\u0022allowed_end_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,13,14,15,16,18,19,20,21,25,26,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,45,46,47,49,50,51,52,53,54,55,56,58,59,60,61,63,64,68],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Total (a llpillars a nd outcomes) 28 739 776 1 8 654 743 1 1 920 991 63 9\u0022,\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 65\u0022],\u0022next_blocks\u0022:[\u0022Figure 4: U Nfundinggap by SDGin US $ millions 2024\u0022,\u002264 9 %. 98 % coverage\u0022]}},{\u0022id\u0022:\u0022b1117\u0022,\u0022source_text\u0022:\u0022Fig u re 5: N u m be r of prog ra m matic i nte rve ntio n s pe r SDG 2024\u0022,\u0022source_length\u0022:74,\u0022allowed_start_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,25,26,30,31,33,34,35,36,41,42,43,44,47,48,51,52,56,57,58,59,60,61,63,64,65,66,69,70,74],\u0022allowed_end_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,25,26,30,31,33,34,35,36,41,42,43,44,47,48,51,52,56,57,58,59,60,61,63,64,65,66,69,70,74],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u002267 5 % coverage\u0022,\u0022Source: U N Sustainable Development Group (UNIN FO) 2025\u0022],\u0022next_blocks\u0022:[\u0022Source: U N Sustainable Development Group (UNIN FO) 2025\u0022,\u0022Figure 6: U Ncontribution to expenditureresources by SDG 2024\u0022]}},{\u0022id\u0022:\u0022b1161\u0022,\u0022source_text\u0022:\u0022Fig u re 7: Leve ra gi n g of U N i nvestm e nts to a dva n ce a ch ieve m e nt of SDGs 2024\u0022,\u0022source_length\u0022:92,\u0022allowed_start_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,16,17,19,20,22,23,24,25,26,27,29,30,31,32,33,34,35,36,42,43,44,45,48,49,51,52,53,54,57,58,59,60,62,63,64,65,67,68,72,73,74,75,76,77,79,80,82,83,87,88,92],\u0022allowed_end_offsets\u0022:[0,3,4,5,6,8,9,10,11,12,16,17,19,20,22,23,24,25,26,27,29,30,31,32,33,34,35,36,42,43,44,45,48,49,51,52,53,54,57,58,59,60,62,63,64,65,67,68,72,73,74,75,76,77,79,80,82,83,87,88,92],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Source: U N Sustainable Development Group (UNIN FO) 2025 Note: Total U N contribution in 2024 = US $ 1 1 9 million\u0022,\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 67\u0022],\u0022next_blocks\u0022:[\u0022Source: U N Sustainable Development Group (UNIN FO) 2025\u0022,\u0022FI NAN CI N G T H E 2030 AG E NDA bilitithdbdiid\u0022]}},{\u0022id\u0022:\u0022b1193\u0022,\u0022source_text\u0022:\u0022Ta ble 3: Reso u rce m o bi l izatio n pi pe l i n e\u0022,\u0022source_length\u0022:52,\u0022allowed_start_offsets\u0022:[0,2,3,6,7,8,9,10,14,15,16,17,20,21,22,23,24,25,27,28,29,30,36,37,38,39,41,42,44,45,46,47,48,49,50,51,52],\u0022allowed_end_offsets\u0022:[0,2,3,6,7,8,9,10,14,15,16,17,20,21,22,23,24,25,27,28,29,30,36,37,38,39,41,42,44,45,46,47,48,49,50,51,52],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022African Development Bank (Af DB) Climate Action Window \\u2013 Adaptation: A conceptnotewas Development partner coordination: I n 2024 four\u0022,\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 69\u0022],\u0022next_blocks\u0022:[\u0022Budget N ot\u0022,\u0022Project Donor (US $) Proposed Approved Secured a pproved\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 5036,
+      "estimatedInputTokens": 1259,
+      "repeatedContextBytes": 112,
+      "requestSha256": "f1c7f690be01ec4e4bc2e3c327fa9edb7384a8004a8b2ddc28c4067227dfe1d6"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:006",
+      "shardOrdinal": 6,
+      "blockRefs": [
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000321",
+        "U000323",
+        "U001665",
+        "U001667",
+        "U003124",
+        "U003125",
+        "U003126"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-976B6F4383DD:POINTER_SPAN:006",
+        "blocks": [
+          "B021",
+          "B022",
+          "B023",
+          "B024"
+        ],
+        "sourceRefs": [
+          "U000321",
+          "U000323",
+          "U001665",
+          "U001667",
+          "U003124",
+          "U003125",
+          "U003126"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1070\u0022,\u0022source_text\u0022:\u0022Pi l la r 1 : Good Peo pl e l ivi n g i n Lesotho a re bette r governa nce a nd se rved by i m proved gove rna n ce socia l eq u ity syste ms a n d stru ctu res that a re\u0022,\u0022source_length\u0022:170,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,7,8,9,10,11,12,13,14,18,19,22,23,25,26,27,28,29,30,33,34,35,36,37,38,39,40,41,42,49,50,51,52,54,55,60,61,62,63,70,71,74,75,76,77,79,80,82,83,87,88,90,91,92,93,94,95,101,102,106,107,110,111,112,113,115,116,121,122,123,124,126,127,128,129,132,133,138,139,141,142,143,144,145,146,147,148,152,153,156,157,160,161,165,166,167,168,170],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,7,8,9,10,11,12,13,14,18,19,22,23,25,26,27,28,29,30,33,34,35,36,37,38,39,40,41,42,49,50,51,52,54,55,60,61,62,63,70,71,74,75,76,77,79,80,82,83,87,88,90,91,92,93,94,95,101,102,106,107,110,111,112,113,115,116,121,122,123,124,126,127,128,129,132,133,138,139,141,142,143,144,145,146,147,148,152,153,156,157,160,161,165,166,167,168,170],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Table 2: Cooperation Frameworkbudgetmobilizedfunds a ndexpenditurefor 2024\u0022,\u0022Cooperation Required Available Fra mework Cooperation Fra meworkresourcesresources Expenditure Delivery\u0022],\u0022next_blocks\u0022:[\u0022inclusive a nd a ccountable with peopleem poweredengaged a nd enjoyinghumanrightspeace justice a nd\u0022,\u0022climateresilienceresources a ndgreengrowth that is\u0022]}},{\u0022id\u0022:\u0022b159\u0022,\u0022source_text\u0022:\u0022sexua l a nd y y reprod uctive\u0022,\u0022source_length\u0022:30,\u0022allowed_start_offsets\u0022:[0,5,6,7,8,9,10,12,13,14,15,16,17,23,24,30],\u0022allowed_end_offsets\u0022:[0,5,6,7,8,9,10,12,13,14,15,16,17,23,24,30],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022theirown\u0022,\u0022jointlorsolelwhile 28 % of homeownership is\u0022],\u0022next_blocks\u0022:[\u0022with women\u0022,\u0022healthrights\u0022]}},{\u0022id\u0022:\u0022b594\u0022,\u0022source_text\u0022:\u0022\\u201CTh e s u p po rt I rece ived h a s h e l ped i m p rove my yi e l d With o n g o i n g i n p ut a n d tra i n i n g I h o pe to sca l e\u0022,\u0022source_length\u0022:136,\u0022allowed_start_offsets\u0022:[0,1,3,4,5,6,7,8,9,10,11,12,14,15,17,18,19,20,24,25,29,30,31,32,33,34,35,36,37,38,39,40,41,42,45,46,47,48,49,50,51,52,56,57,59,60,62,63,64,65,66,67,68,69,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,96,97,98,99,100,101,102,103,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,125,126,128,129,132,133,134,135,136],\u0022allowed_end_offsets\u0022:[0,1,3,4,5,6,7,8,9,10,11,12,14,15,17,18,19,20,24,25,29,30,31,32,33,34,35,36,37,38,39,40,41,42,45,46,47,48,49,50,51,52,56,57,59,60,62,63,64,65,66,67,68,69,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,96,97,98,99,100,101,102,103,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,125,126,128,129,132,133,134,135,136],\u0022context\u0022:{\u0022scope\u0022:\u0022quoted_replacement\u0022,\u0022previous_blocks\u0022:[\u0022households with homeg a rdeningkitsincludingsh a denets a ndsixcropseedvarietiessuch a s\u0022,\u0022spin a ch beetrootcarrots a ndonions\u0022],\u0022next_blocks\u0022:[\u0022upmyproductionreachmorem a rkets a ndcontribute to foodsecurityinmycommunity \\u201D\u0022,\u0022Thoahl a ka\\u2019sjourney \\u2013 fromch a uffeur to su ccessfulfarmer \\u2013 demon stratesthepower of resilienceopportunity a nd a griculturalsupportprogrammesintransforminglives a ndlivelihoods\u0022]}},{\u0022id\u0022:\u0022b595\u0022,\u0022source_text\u0022:\u0022u p my p ro d u cti o n rea c h m o re m a rkets a n d co ntri b ute to foo d sec u rity i n my co m m u n ity \\u201D\u0022,\u0022source_length\u0022:112,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,6,7,8,9,11,12,13,14,15,16,19,20,21,22,23,24,27,28,29,30,31,32,33,34,35,36,38,39,40,41,42,43,48,49,50,51,52,53,54,55,57,58,62,63,64,65,68,69,71,72,75,76,77,78,81,82,83,84,88,89,90,91,92,93,95,96,98,99,100,101,102,103,104,105,106,107,110,111,112],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,6,7,8,9,11,12,13,14,15,16,19,20,21,22,23,24,27,28,29,30,31,32,33,34,35,36,38,39,40,41,42,43,48,49,50,51,52,53,54,55,57,58,62,63,64,65,68,69,71,72,75,76,77,78,81,82,83,84,88,89,90,91,92,93,95,96,98,99,100,101,102,103,104,105,106,107,110,111,112],\u0022context\u0022:{\u0022scope\u0022:\u0022quoted_replacement\u0022,\u0022previous_blocks\u0022:[\u0022spin a ch beetrootcarrots a ndonions\u0022,\u0022\\u201C Thesupport Ireceivedh a shelpedimprovemyyield With ongoinginput a ndtraining Ihope to scale\u0022],\u0022next_blocks\u0022:[\u0022Thoahl a ka\\u2019sjourney \\u2013 fromch a uffeur to su ccessfulfarmer \\u2013 demon stratesthepower of resilienceopportunity a nd a griculturalsupportprogrammesintransforminglives a ndlivelihoods\u0022,\u0022Strategic Pillar 2: Equitablefoodsystemsenvironmentalsustain a bility a ndclimateresilience 37\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 6334,
+      "estimatedInputTokens": 1584,
+      "repeatedContextBytes": 221,
+      "requestSha256": "59769090a803dc83fc53ab4770fd968690021ee1bea1b261d167f810080515f0"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:007",
+      "shardOrdinal": 7,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028"
+      ],
+      "sourceRefs": [
+        "U000018",
+        "U002141",
+        "U002142",
+        "U002144"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-976B6F4383DD:POINTER_SPAN:007",
+        "blocks": [
+          "B025",
+          "B026",
+          "B027",
+          "B028"
+        ],
+        "sourceRefs": [
+          "U000018",
+          "U002141",
+          "U002142",
+          "U002144"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b732\u0022,\u0022source_text\u0022:\u0022\\u201CTh i s i n iti ative i s m o re th a n ju st a n exh i b iti o n; it i s a testa m e nt to th e u nta p ped pote nti a l of pe rso n s\u0022,\u0022source_length\u0022:135,\u0022allowed_start_offsets\u0022:[0,1,3,4,5,6,7,8,9,10,11,12,15,16,21,22,23,24,25,26,27,28,29,30,32,33,35,36,37,38,39,40,42,43,45,46,47,48,49,50,53,54,55,56,57,58,61,62,63,64,65,66,67,69,70,71,72,73,74,75,76,81,82,83,84,85,86,88,89,91,92,94,95,96,97,98,99,102,103,104,105,108,109,113,114,117,118,119,120,121,122,124,125,127,128,131,132,133,134,135],\u0022allowed_end_offsets\u0022:[0,1,3,4,5,6,7,8,9,10,11,12,15,16,21,22,23,24,25,26,27,28,29,30,32,33,35,36,37,38,39,40,42,43,45,46,47,48,49,50,53,54,55,56,57,58,61,62,63,64,65,66,67,69,70,71,72,73,74,75,76,81,82,83,84,85,86,88,89,91,92,94,95,96,97,98,99,102,103,104,105,108,109,113,114,117,118,119,120,121,122,124,125,127,128,131,132,133,134,135],\u0022context\u0022:{\u0022scope\u0022:\u0022quoted_replacement\u0022,\u0022previous_blocks\u0022:[\u0022\\u00A9 FAO / Gianluigi Guercia\u0022,\u0022job creators a ndkeycontributors to theeconomy\u0022],\u0022next_blocks\u0022:[\u0022with disabilitiesin Lesotho The U Niscommitted to ensuringth at disabilityinclusiongoesbeyond\u0022,\u0022policydiscussions to realeconomicempowerment a ndsustain a blelivelihoods \\u201D said Th a biso\u0022]}},{\u0022id\u0022:\u0022b733\u0022,\u0022source_text\u0022:\u0022with d i sa b i l iti es i n Lesoth o Th e U N i s co m m itted to e n s u ri n g th at d i sa b i l ity i n c l u s i o n g oes beyo n d\u0022,\u0022source_length\u0022:137,\u0022allowed_start_offsets\u0022:[0,4,5,6,7,8,9,11,12,13,14,15,16,17,18,21,22,24,25,26,27,28,29,35,36,37,38,40,41,42,43,44,45,46,47,48,49,50,51,53,54,55,56,57,58,63,64,66,67,68,69,70,71,72,73,74,75,77,78,79,80,81,82,84,85,87,88,89,90,91,92,94,95,96,97,98,99,100,101,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,128,129,133,134,135,136,137],\u0022allowed_end_offsets\u0022:[0,4,5,6,7,8,9,11,12,13,14,15,16,17,18,21,22,24,25,26,27,28,29,35,36,37,38,40,41,42,43,44,45,46,47,48,49,50,51,53,54,55,56,57,58,63,64,66,67,68,69,70,71,72,73,74,75,77,78,79,80,81,82,84,85,87,88,89,90,91,92,94,95,96,97,98,99,100,101,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,128,129,133,134,135,136,137],\u0022context\u0022:{\u0022scope\u0022:\u0022quoted_replacement\u0022,\u0022previous_blocks\u0022:[\u0022job creators a ndkeycontributors to theeconomy\u0022,\u0022\\u201C Thisinitiativeismoreth a njust a nexhibition; itis a testament to theuntappedpotenti a l of persons\u0022],\u0022next_blocks\u0022:[\u0022policydiscussions to realeconomicempowerment a ndsustain a blelivelihoods \\u201D said Th a biso\u0022,\u0022M a se nyetsethe U N Disability Inclusion Officer\u0022]}},{\u0022id\u0022:\u0022b734\u0022,\u0022source_text\u0022:\u0022po l i cy d i sc u ss i o n s to rea l eco n o m i c e m powe rm e nt a n d s u sta i n a b l e l ive l i h oo d s \\u201D sa i d Th a b i so\u0022,\u0022source_length\u0022:135,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,6,7,9,10,11,12,13,14,16,17,18,19,21,22,23,24,25,26,27,28,29,30,32,33,36,37,38,39,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,61,62,64,65,66,67,69,70,71,72,73,74,75,76,77,78,79,80,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,101,102,103,104,105,106,107,108,110,111,112,113,114,115,116,117,119,120,121,122,123,124,126,127,128,129,130,131,132,133,135],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,6,7,9,10,11,12,13,14,16,17,18,19,21,22,23,24,25,26,27,28,29,30,32,33,36,37,38,39,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,61,62,64,65,66,67,69,70,71,72,73,74,75,76,77,78,79,80,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,101,102,103,104,105,106,107,108,110,111,112,113,114,115,116,117,119,120,121,122,123,124,126,127,128,129,130,131,132,133,135],\u0022context\u0022:{\u0022scope\u0022:\u0022quoted_replacement\u0022,\u0022previous_blocks\u0022:[\u0022\\u201C Thisinitiativeismoreth a njust a nexhibition; itis a testament to theuntappedpotenti a l of persons\u0022,\u0022with disabilitiesin Lesotho The U Niscommitted to ensuringth at disabilityinclusiongoesbeyond\u0022],\u0022next_blocks\u0022:[\u0022M a se nyetsethe U N Disability Inclusion Officer\u0022,\u0022Throughdirect U Nsupportincludingtheprovision of productionmateri a ls a ndessenti a lequipment\u0022]}},{\u0022id\u0022:\u0022b10\u0022,\u0022source_text\u0022:\u0022D EVE LO P M E NT I N LESOTH O: A S NAPS H OT 7\u0022,\u0022source_length\u0022:47,\u0022allowed_start_offsets\u0022:[0,1,2,5,6,8,9,10,11,12,13,14,15,17,18,19,20,21,22,28,29,30,31,32,33,34,35,36,40,41,42,43,45,46,47],\u0022allowed_end_offsets\u0022:[0,1,2,5,6,8,9,10,11,12,13,14,15,17,18,19,20,21,22,28,29,30,31,32,33,34,35,36,40,41,42,43,45,46,47],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022AB B REVIATIO N SAN DACRO NYM S 4\u0022,\u0022TH E U NITE D NATIO N SCO UNTRY TEAM I N LESOTH O 5\u0022],\u0022next_blocks\u0022:[\u0022CHAPTE R 1: KEY DEVE LO P M ENTS I NCO UNTRY AND\u0022,\u0022CHAPTE R 3: KEY FOCU SFO R 2025 71\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 6409,
+      "estimatedInputTokens": 1603,
+      "repeatedContextBytes": 383,
+      "requestSha256": "bc4c3afb8e87d898733db0705f7af3dcc5949d91fe69d0a2556eae39aaaa6202"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:008",
+      "shardOrdinal": 8,
+      "blockRefs": [
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000014",
+        "U000019",
+        "U000040",
+        "U000041"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-976B6F4383DD:POINTER_SPAN:008",
+        "blocks": [
+          "B029",
+          "B030",
+          "B031",
+          "B032"
+        ],
+        "sourceRefs": [
+          "U000014",
+          "U000019",
+          "U000040",
+          "U000041"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b11\u0022,\u0022source_text\u0022:\u0022CHAPTE R 1 : KEY D EVE LO P M E NTS I N CO U NTRY AN D\u0022,\u0022source_length\u0022:54,\u0022allowed_start_offsets\u0022:[0,6,7,8,9,10,11,12,13,16,17,18,19,22,23,25,26,27,28,29,30,31,32,35,36,37,38,39,40,42,43,44,45,49,50,52,53,54],\u0022allowed_end_offsets\u0022:[0,6,7,8,9,10,11,12,13,16,17,18,19,22,23,25,26,27,28,29,30,31,32,35,36,37,38,39,40,42,43,44,45,49,50,52,53,54],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022TH E U NITE D NATIO N SCO UNTRY TEAM I N LESOTH O 5\u0022,\u0022DEVE LO P M ENT I N LESOTH O: A SNAPS HOT 7\u0022],\u0022next_blocks\u0022:[\u0022CHAPTE R 3: KEY FOCU SFO R 2025 71\u0022,\u0022RE F ERE NCES 72\u0022]}},{\u0022id\u0022:\u0022b22\u0022,\u0022source_text\u0022:\u0022CHAPTE R 3: KEY FOCU S FO R 2025 71\u0022,\u0022source_length\u0022:35,\u0022allowed_start_offsets\u0022:[0,6,7,8,9,10,11,12,15,16,20,21,22,23,25,26,27,28,32,33,35],\u0022allowed_end_offsets\u0022:[0,6,7,8,9,10,11,12,15,16,20,21,22,23,25,26,27,28,32,33,35],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022DEVE LO P M ENT I N LESOTH O: A SNAPS HOT 7\u0022,\u0022CHAPTE R 1: KEY DEVE LO P M ENTS I NCO UNTRY AND\u0022],\u0022next_blocks\u0022:[\u0022RE F ERE NCES 72\u0022,\u0022\\u00A9 U NICEF / Karin Schermbrucker\u0022]}},{\u0022id\u0022:\u0022b23\u0022,\u0022source_text\u0022:\u0022RE F E RE N CES 72\u0022,\u0022source_length\u0022:18,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,6,7,9,10,11,12,15,16,18],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,6,7,9,10,11,12,15,16,18],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022CHAPTE R 1: KEY DEVE LO P M ENTS I NCO UNTRY AND\u0022,\u0022CHAPTE R 3: KEY FOCU SFO R 2025 71\u0022],\u0022next_blocks\u0022:[\u0022\\u00A9 U NICEF / Karin Schermbrucker\u0022,\u0022Foreword\u0022]}},{\u0022id\u0022:\u0022b7\u0022,\u0022source_text\u0022:\u0022Co nte nts\u0022,\u0022source_length\u0022:10,\u0022allowed_start_offsets\u0022:[0,2,3,6,7,10],\u0022allowed_end_offsets\u0022:[0,2,3,6,7,10],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[],\u0022next_blocks\u0022:[\u0022AB B REVIATIO N SAN DACRO NYM S 4\u0022,\u0022TH E U NITE D NATIO N SCO UNTRY TEAM I N LESOTH O 5\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3616,
+      "estimatedInputTokens": 904,
+      "repeatedContextBytes": 224,
+      "requestSha256": "f51358d2e084b1244ff0af99f759bd74aa82ca3a3b7dae2e9f65e85eb2569b79"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:009",
+      "shardOrdinal": 9,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036"
+      ],
+      "sourceRefs": [
+        "U000016",
+        "U000017",
+        "U000043",
+        "U000044"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-976B6F4383DD:POINTER_SPAN:009",
+        "blocks": [
+          "B033",
+          "B034",
+          "B035",
+          "B036"
+        ],
+        "sourceRefs": [
+          "U000016",
+          "U000017",
+          "U000043",
+          "U000044"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b8\u0022,\u0022source_text\u0022:\u0022AB B REVIATIO N S AN D ACRO NYM S 4\u0022,\u0022source_length\u0022:35,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,13,14,15,16,17,18,20,21,22,23,27,28,31,32,33,34,35],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,13,14,15,16,17,18,20,21,22,23,27,28,31,32,33,34,35],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Contents\u0022],\u0022next_blocks\u0022:[\u0022TH E U NITE D NATIO N SCO UNTRY TEAM I N LESOTH O 5\u0022,\u0022DEVE LO P M ENT I N LESOTH O: A SNAPS HOT 7\u0022]}},{\u0022id\u0022:\u0022b9\u0022,\u0022source_text\u0022:\u0022TH E U N ITE D NATIO N S CO U NTRY TEAM I N LESOTH O 5\u0022,\u0022source_length\u0022:54,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,6,7,8,9,12,13,14,15,20,21,22,23,24,25,27,28,29,30,34,35,39,40,41,42,43,44,50,51,52,53,54],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,6,7,8,9,12,13,14,15,20,21,22,23,24,25,27,28,29,30,34,35,39,40,41,42,43,44,50,51,52,53,54],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Contents\u0022,\u0022AB B REVIATIO N SAN DACRO NYM S 4\u0022],\u0022next_blocks\u0022:[\u0022DEVE LO P M ENT I N LESOTH O: A SNAPS HOT 7\u0022,\u0022CHAPTE R 1: KEY DEVE LO P M ENTS I NCO UNTRY AND\u0022]}},{\u0022id\u0022:\u0022b24\u0022,\u0022source_text\u0022:\u0022\\u00A9 U NICEF/Karin Schermbrucker\u0022,\u0022source_length\u0022:29,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,9,10,15,16,29],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,9,10,15,16,29],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022CHAPTE R 3: KEY FOCU SFO R 2025 71\u0022,\u0022RE F ERE NCES 72\u0022],\u0022next_blocks\u0022:[\u0022Foreword\u0022,\u0022Foreword 3\u0022]}},{\u0022id\u0022:\u0022b25\u0022,\u0022source_text\u0022:\u0022Fo rewo rd\u0022,\u0022source_length\u0022:10,\u0022allowed_start_offsets\u0022:[0,2,3,7,8,10],\u0022allowed_end_offsets\u0022:[0,2,3,7,8,10],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022RE F ERE NCES 72\u0022,\u0022\\u00A9 U NICEF / Karin Schermbrucker\u0022],\u0022next_blocks\u0022:[\u0022Foreword 3\u0022,\u0022Abbreviations a nd a cronyms\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3504,
+      "estimatedInputTokens": 876,
+      "repeatedContextBytes": 77,
+      "requestSha256": "0a11e87ee693c9ad16a216556ea8d5a9506880aada149df95bffbc4bbf021e8e"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:010",
+      "shardOrdinal": 10,
+      "blockRefs": [
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U000177",
+        "U000178",
+        "U000268",
+        "U000271"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-976B6F4383DD:POINTER_SPAN:010",
+        "blocks": [
+          "B037",
+          "B038",
+          "B039",
+          "B040"
+        ],
+        "sourceRefs": [
+          "U000177",
+          "U000178",
+          "U000268",
+          "U000271"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b61\u0022,\u0022source_text\u0022:\u0022The U n ite d N atio n s\u0022,\u0022source_length\u0022:24,\u0022allowed_start_offsets\u0022:[0,3,4,5,6,7,8,11,12,13,14,15,16,20,21,22,23,24],\u0022allowed_end_offsets\u0022:[0,3,4,5,6,7,8,11,12,13,14,15,16,20,21,22,23,24],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Abbreviations a nd a cronyms\u0022,\u0022The United Nations Country Teamin Lesotho 5\u0022],\u0022next_blocks\u0022:[\u0022Country Teamin Lesotho\u0022,\u0022\\u00A9 Shutterstock / E M Borque\u0022]}},{\u0022id\u0022:\u0022b62\u0022,\u0022source_text\u0022:\u0022Co u ntry Tea m i n Lesotho\u0022,\u0022source_length\u0022:27,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,9,10,13,14,15,16,17,18,19,20,27],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,9,10,13,14,15,16,17,18,19,20,27],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022The United Nations Country Teamin Lesotho 5\u0022,\u0022The United Nations\u0022],\u0022next_blocks\u0022:[\u0022\\u00A9 Shutterstock / E M Borque\u0022,\u0022Developmentin Lesotho: A sn a pshot 7\u0022]}},{\u0022id\u0022:\u0022b130\u0022,\u0022source_text\u0022:\u0022Lesotho : A s n a ps h ot\u0022,\u0022source_length\u0022:25,\u0022allowed_start_offsets\u0022:[0,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,25],\u0022allowed_end_offsets\u0022:[0,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,25],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Developmentin Lesotho: A sn a pshot 7\u0022,\u0022Developmentin\u0022],\u0022next_blocks\u0022:[\u00222 1 millionl 1\u0022,\u0022peope\u0022]}},{\u0022id\u0022:\u0022b133\u0022,\u0022source_text\u0022:\u0022peo p e\u0022,\u0022source_length\u0022:7,\u0022allowed_start_offsets\u0022:[0,3,4,5,6,7],\u0022allowed_end_offsets\u0022:[0,3,4,5,6,7],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Lesotho: A sn a pshot\u0022,\u00222 1 millionl 1\u0022],\u0022next_blocks\u0022:[\u0022economicgrowth\u0022,\u0022i nflationrate\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3373,
+      "estimatedInputTokens": 844,
+      "repeatedContextBytes": 122,
+      "requestSha256": "96bd8b3ca72eacb20d6b491a50b48d7b4672900aea73c00bdc8c6a7bc45ebd42"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004"
+      ],
+      "sourceRefs": [
+        "U005311",
+        "U005313",
+        "U005327",
+        "U005328",
+        "U005334",
+        "U005336",
+        "U005392",
+        "U005394"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:001",
+        "blocks": [
+          "B001",
+          "B002",
+          "B003",
+          "B004"
+        ],
+        "sourceRefs": [
+          "U005311",
+          "U005313",
+          "U005327",
+          "U005328",
+          "U005334",
+          "U005336",
+          "U005392",
+          "U005394"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b2098\u0022,\u0022source_text\u0022:\u0022At 31 Ma rch 2024 4 51 2 Depreciation\u0022,\u0022source_length\u0022:37,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,8,9,12,13,17,18,19,20,22,23,24,25,37],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,8,9,12,13,17,18,19,20,22,23,24,25,37],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00228 Right-of-use a ssets\u0022,\u0022Cost or Val uation\u0022],\u0022next_blocks\u0022:[\u0022At 31 March 2024 2 749\u0022,\u0022Carrying a mount at 31 March 2023 3 228 Carrying a mount at 31 March 2024 1 763\u0022]}},{\u0022id\u0022:\u0022b2102\u0022,\u0022source_text\u0022:\u0022At 31 Ma rch 2022 0 I n itia l adoption of I FRS 1 6 on 1 Apri l 2022 4 1 85\u0022,\u0022source_length\u0022:76,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,8,9,12,13,17,18,19,20,21,22,23,24,28,29,30,31,39,40,42,43,44,45,48,49,50,51,52,53,55,56,57,58,62,63,64,65,69,70,71,72,73,74,76],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,8,9,12,13,17,18,19,20,21,22,23,24,28,29,30,31,39,40,42,43,44,45,48,49,50,51,52,53,55,56,57,58,62,63,64,65,69,70,71,72,73,74,76],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022At 31 March 2024 2 749\u0022,\u0022Carrying a mount at 31 March 2023 3 228 Carrying a mount at 31 March 2024 1 763\u0022],\u0022next_blocks\u0022:[\u0022Cost or Val uation\u0022,\u0022At 31 March 2023 4 532 Depreciation\u0022]}},{\u0022id\u0022:\u0022b2105\u0022,\u0022source_text\u0022:\u0022At 31 Ma rch 2023 4 532 Depreciation\u0022,\u0022source_length\u0022:36,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,8,9,12,13,17,18,19,20,23,24,36],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,8,9,12,13,17,18,19,20,23,24,36],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022At 31 March 2022 0 Initial adoption of IFRS 1 6 on 1 April 2022 4 1 85\u0022,\u0022Cost or Val uation\u0022],\u0022next_blocks\u0022:[\u0022At 31 March 2022 1 304\u0022,\u0022Carrying a mount at 31 March 2022 0 Carrying a mount at 31 March 2023 3 228\u0022]}},{\u0022id\u0022:\u0022b2125\u0022,\u0022source_text\u0022:\u0022Tota l cu rrent paya bles 4 02 1 4 940 Amou nts fa l li ng due after more tha n one yea r:\u0022,\u0022source_length\u0022:90,\u0022allowed_start_offsets\u0022:[0,4,5,6,7,9,10,15,16,20,21,25,26,27,28,30,31,32,33,34,35,38,39,43,44,47,48,50,51,52,53,55,56,58,59,62,63,68,69,73,74,77,78,79,80,83,84,87,88,89,90],\u0022allowed_end_offsets\u0022:[0,4,5,6,7,9,10,15,16,20,21,25,26,27,28,30,31,32,33,34,35,38,39,43,44,47,48,50,51,52,53,55,56,58,59,62,63,68,69,73,74,77,78,79,80,83,84,87,88,89,90],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00221 1 Trade a ndotherpayables\u0022,\u0022Amountsfallingduewithinoneyear:\u0022],\u0022next_blocks\u0022:[\u0022Totalnon-currentpayables 909 1 847\u0022,\u00221 1 1 Legal\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4236,
+      "estimatedInputTokens": 1059,
+      "repeatedContextBytes": 137,
+      "requestSha256": "721392aaae233713e130476b958848ced99afc9161a4953d804c0f3d6b92c723"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000905",
+        "U001461",
+        "U002019",
+        "U002053"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:002",
+        "blocks": [
+          "B005",
+          "B006",
+          "B007",
+          "B008"
+        ],
+        "sourceRefs": [
+          "U000905",
+          "U001461",
+          "U002019",
+          "U002053"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b410\u0022,\u0022source_text\u0022:\u0022to 96% of a ppl ica tio n s\u0022,\u0022source_length\u0022:27,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,9,10,11,12,15,16,19,20,23,24,25,26,27],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,9,10,11,12,15,16,19,20,23,24,25,26,27],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022We a ssessed a ndresponded\u0022,\u0022initialresponse to a pplicationsfor\u0022],\u0022next_blocks\u0022:[\u0022registrationpermissions a nd\u0022,\u0022, within 1 0 workingdays\u0022]}},{\u0022id\u0022:\u0022b737\u0022,\u0022source_text\u0022:\u0022I m p e m e nt n g t e C a r t es Act 2022 ,\u0022,\u0022source_length\u0022:44,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,33,34,37,38,42,43,44],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,33,34,37,38,42,43,44],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022P E RFO RMAN CE ANALYS I S\u0022,\u0022wor\u0022],\u0022next_blocks\u0022:[\u0022P E RFO RMAN CE ANALYS I S\u0022,\u0022Measuring the impact a nd.\u0022]}},{\u0022id\u0022:\u0022b1036\u0022,\u0022source_text\u0022:\u0022Reve n u e D E L Ca pita l D E L N et Cash Req u i re m e nt\u0022,\u0022source_length\u0022:60,\u0022allowed_start_offsets\u0022:[0,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,24,25,26,27,28,29,30,31,32,33,34,35,37,38,42,43,46,47,48,49,50,51,53,54,55,56,57,58,60],\u0022allowed_end_offsets\u0022:[0,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,24,25,26,27,28,29,30,31,32,33,34,35,37,38,42,43,46,47,48,49,50,51,53,54,55,56,57,58,60],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Part 1 c Fin a ncial Review\u0022,\u0022Fin a ncialperform a nce a gainststatu to rylimits\u0022],\u0022next_blocks\u0022:[\u0022Surplus for year 74 91 428\u0022,\u0022Dame Helen Stephenson CBE Chief Executive a nd Accounting Officer 1 2 July 2024\u0022]}},{\u0022id\u0022:\u0022b1047\u0022,\u0022source_text\u0022:\u0022CO 2 e m iss io n s\u0022,\u0022source_length\u0022:19,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,6,7,8,9,12,13,15,16,17,18,19],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,6,7,8,9,12,13,15,16,17,18,19],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Part 2 Susta in a bility Report\u0022,\u0022Overallperform a nce (2023 - 24)\u0022],\u0022next_blocks\u0022:[\u0022Monitoringbusinesstravel to reduce CO 2 emissions\u0022,\u0022CCEW Businesstravelyearonyearcomparison:\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3930,
+      "estimatedInputTokens": 983,
+      "repeatedContextBytes": 26,
+      "requestSha256": "87dcde98769b96126900fa7f83d8d924b1f8c6bb472a551002ac025ea68da657"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012"
+      ],
+      "sourceRefs": [
+        "U000061",
+        "U000076",
+        "U000723",
+        "U002076"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:003",
+        "blocks": [
+          "B009",
+          "B010",
+          "B011",
+          "B012"
+        ],
+        "sourceRefs": [
+          "U000061",
+          "U000076",
+          "U000723",
+          "U002076"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1058\u0022,\u0022source_text\u0022:\u0022Do m estic I nte rnatio na l\u0022,\u0022source_length\u0022:28,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,10,11,12,13,16,17,23,24,26,27,28],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,10,11,12,13,16,17,23,24,26,27,28],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Allstaff Mileage CO 2 Charge Air Air Air CO 2 Air Air Air CO 2\u0022,\u0022Emissionsmileagecharge Emissionmileagecharge Emission\u0022],\u0022next_blocks\u0022:[\u0022S USTAI NAB ILITY R EPO RT\u0022,\u0022Wastereduction\u0022]}},{\u0022id\u0022:\u0022b32\u0022,\u0022source_text\u0022:\u0022Pa rt 1 Pe rfo rm a n ce Re po rt\u0022,\u0022source_length\u0022:33,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,10,11,14,15,17,18,19,20,21,22,24,25,27,28,30,31,33],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,10,11,14,15,17,18,19,20,21,22,24,25,27,28,30,31,33],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00224 Resource Accounts 76\u0022,\u0022G loss a ry (not a udited) 94\u0022],\u0022next_blocks\u0022:[\u0022I ntroduction\u0022,\u0022Part 1 a Perform a nce Overview\u0022]}},{\u0022id\u0022:\u0022b37\u0022,\u0022source_text\u0022:\u0022Pa rt 1 a Pe rfo rm a n ce Ove rview\u0022,\u0022source_length\u0022:36,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,9,10,12,13,16,17,19,20,21,22,23,24,26,27,30,31,36],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,9,10,12,13,16,17,19,20,21,22,23,24,26,27,30,31,36],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Part 1 Perform a nce Report\u0022,\u0022I ntroduction\u0022],\u0022next_blocks\u0022:[\u0022Forewordfrom the Chair\u0022,\u0022P E RFO RMAN CE OVE RVI EW\u0022]}},{\u0022id\u0022:\u0022b331\u0022,\u0022source_text\u0022:\u0022Pa rt 1 b Pe rfo rm a n ce An a lysis\u0022,\u0022source_length\u0022:37,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,9,10,12,13,16,17,19,20,21,22,23,24,26,27,29,30,31,32,37],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,9,10,12,13,16,17,19,20,21,22,23,24,26,27,29,30,31,32,37],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022charitiessupportedthroughthe\u0022,\u00221 1 1 870 Contact Centre\u0022],\u0022next_blocks\u0022:[\u0022peraon a erorm a nce \\u2013,\u0022,\u0022summ a ry\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3647,
+      "estimatedInputTokens": 912,
+      "repeatedContextBytes": 13,
+      "requestSha256": "4d406df18313309fbfefecbf661b8b2291e5095a6396fcc4c4929b0104b5503f"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U001979",
+        "U002037",
+        "U002212",
+        "U002298"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:004",
+        "blocks": [
+          "B013",
+          "B014",
+          "B015",
+          "B016"
+        ],
+        "sourceRefs": [
+          "U001979",
+          "U002037",
+          "U002212",
+          "U002298"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1026\u0022,\u0022source_text\u0022:\u0022Pa rt 1 c Fin a n cia l Review\u0022,\u0022source_length\u0022:30,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,9,10,13,14,15,16,17,18,21,22,23,24,30],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,9,10,13,14,15,16,17,18,21,22,23,24,30],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00221 87 (GRC)\u0022,\u0022P E RFO RMAN CE ANALYS I S\u0022],\u0022next_blocks\u0022:[\u0022Fin a ncialperform a nce a gainststatu to rylimits\u0022,\u0022Revenue D E L Capital D E L N et Cash Requirement\u0022]}},{\u0022id\u0022:\u0022b1042\u0022,\u0022source_text\u0022:\u0022Pa rt 2 Su sta in a bi lity Re po rt\u0022,\u0022source_length\u0022:36,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,10,11,14,15,17,18,19,20,22,23,27,28,30,31,33,34,36],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,10,11,14,15,17,18,19,20,22,23,27,28,30,31,33,34,36],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Surplus for year 74 91 428\u0022,\u0022Dame Helen Stephenson CBE Chief Executive a nd Accounting Officer 1 2 July 2024\u0022],\u0022next_blocks\u0022:[\u0022Overallperform a nce (2023 - 24)\u0022,\u0022CO 2 emissions\u0022]}},{\u0022id\u0022:\u0022b1099\u0022,\u0022source_text\u0022:\u0022Pa rt 3 Acco u nta bi lity Re po rt\u0022,\u0022source_length\u0022:35,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,12,13,14,15,18,19,21,22,26,27,29,30,32,33,35],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,12,13,14,15,18,19,21,22,26,27,29,30,32,33,35],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022S USTAI NAB ILITY R EPO RT\u0022,\u0022Procurement processes\u0022],\u0022next_blocks\u0022:[\u0022I ntroduction\u0022,\u0022Statement of Accounting Officersresponsibi lities\u0022]}},{\u0022id\u0022:\u0022b1123\u0022,\u0022source_text\u0022:\u0022Pa rt 3 a Co rpo rate Gove rn a n ce Re po rt\u0022,\u0022source_length\u0022:45,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,9,10,12,13,16,17,21,22,26,27,29,30,31,32,33,34,36,37,39,40,42,43,45],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,9,10,12,13,16,17,21,22,26,27,29,30,31,32,33,34,36,37,39,40,42,43,45],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Statement of Accounting Officersresponsibi lities\u0022,\u0022ACCO UNTAB ILITY R EPO RT\u0022],\u0022next_blocks\u0022:[\u0022The Commissionsgovern a ncestructures\u0022,\u0022Changes to the Board\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3794,
+      "estimatedInputTokens": 949,
+      "repeatedContextBytes": 49,
+      "requestSha256": "ab634b46f45693c9a93a2921dadd5ebd2807adb3e6358e8ed1daca095003f980"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020"
+      ],
+      "sourceRefs": [
+        "U000038",
+        "U000883",
+        "U000884",
+        "U003087",
+        "U004619"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:005",
+        "blocks": [
+          "B017",
+          "B018",
+          "B019",
+          "B020"
+        ],
+        "sourceRefs": [
+          "U000038",
+          "U000883",
+          "U000884",
+          "U003087",
+          "U004619"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1360\u0022,\u0022source_text\u0022:\u0022Pa rt 3 b Re m u n e ratio n a n d Staff Re po rt\u0022,\u0022source_length\u0022:49,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,26,27,28,29,30,31,32,33,34,35,40,41,43,44,46,47,49],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,26,27,28,29,30,31,32,33,34,35,40,41,43,44,46,47,49],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Accounting officersstatement of effectiveness\u0022,\u0022Dame Helen Stephenson CBE Chief Executive a nd Accounting Officer 1 2 July 2024\u0022],\u0022next_blocks\u0022:[\u0022Remuneration Report\u0022,\u0022Servicecontracts\u0022]}},{\u0022id\u0022:\u0022b1861\u0022,\u0022source_text\u0022:\u0022Pa rt 4 Reso u rce Acco u nts\u0022,\u0022source_length\u0022:29,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,12,13,14,15,18,19,23,24,25,26,29],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,12,13,14,15,18,19,23,24,25,26,29],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Report\u0022,\u0022Gareth Davies Comptroller a nd Auditor General 1 5 July 2024\u0022],\u0022next_blocks\u0022:[\u0022Contents\u0022,\u0022Notes to the Departmental Resource Accounts Glossary\u0022]}},{\u0022id\u0022:\u0022b396\u0022,\u0022source_text\u0022:\u0022ithi 1 2 0 d (95 % of a l l ca l ls a n d 79 % of ca l ls w n seco n s\u0022,\u0022source_length\u0022:70,\u0022allowed_start_offsets\u0022:[0,4,5,6,7,8,9,10,11,12,13,14,16,17,18,19,21,22,23,24,25,26,27,28,30,31,32,33,35,36,37,38,39,40,41,42,44,45,46,47,49,50,52,53,54,55,57,58,59,60,61,62,66,67,68,69,70],\u0022allowed_end_offsets\u0022:[0,4,5,6,7,8,9,10,11,12,13,14,16,17,18,19,21,22,23,24,25,26,27,28,30,31,32,33,35,36,37,38,39,40,41,42,44,45,46,47,49,50,52,53,54,55,57,58,59,60,61,62,66,67,68,69,70],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Newsystemfortrustees\u0022,\u0022P E RFO RMAN CE ANALYS I S\u0022],\u0022next_blocks\u0022:[\u0022within 1 2 0 secondsin 2 022 - 23)\u0022,\u0022compared to 68 497 in 2 022 - 23\u0022]}},{\u0022id\u0022:\u0022b20\u0022,\u0022source_text\u0022:\u00221 Pe rfo rm a n ce Re po rt 2\u0022,\u0022source_length\u0022:29,\u0022allowed_start_offsets\u0022:[0,1,2,4,5,8,9,11,12,13,14,15,16,18,19,21,22,24,25,27,28,29],\u0022allowed_end_offsets\u0022:[0,1,2,4,5,8,9,11,12,13,14,15,16,18,19,21,22,24,25,27,28,29],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022otherw is estated To viewth is licencev is itnationala rchivesgovuk / doc / open-government-licence /\u0022,\u0022Contents\u0022],\u0022next_blocks\u0022:[\u00221 a Perform a nce Overview 3\u0022,\u00221 b Perform a nce An a lys is 1 1\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4103,
+      "estimatedInputTokens": 1026,
+      "repeatedContextBytes": 8,
+      "requestSha256": "564badf8b1aef56d318baac06f78650c5ca1728b746b91abccacfb89c599ee33"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:006",
+      "shardOrdinal": 6,
+      "blockRefs": [
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000040",
+        "U000042",
+        "U000044",
+        "U000046"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:006",
+        "blocks": [
+          "B021",
+          "B022",
+          "B023",
+          "B024"
+        ],
+        "sourceRefs": [
+          "U000040",
+          "U000042",
+          "U000044",
+          "U000046"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b21\u0022,\u0022source_text\u0022:\u00221 a Pe rfo rm a n ce Ove rv iew 3\u0022,\u0022source_length\u0022:33,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,6,7,10,11,13,14,15,16,17,18,20,21,24,25,27,28,31,32,33],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,6,7,10,11,13,14,15,16,17,18,20,21,24,25,27,28,31,32,33],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Contents\u0022,\u00221 Perform a nce Report 2\u0022],\u0022next_blocks\u0022:[\u00221 b Perform a nce An a lys is 1 1\u0022,\u00221 c Fin a ncial Review 26\u0022]}},{\u0022id\u0022:\u0022b22\u0022,\u0022source_text\u0022:\u00221 b Pe rfo rm a n ce An a lys is 1 1\u0022,\u0022source_length\u0022:36,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,6,7,10,11,13,14,15,16,17,18,20,21,23,24,25,26,29,30,32,33,34,35,36],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,6,7,10,11,13,14,15,16,17,18,20,21,23,24,25,26,29,30,32,33,34,35,36],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00221 Perform a nce Report 2\u0022,\u00221 a Perform a nce Overview 3\u0022],\u0022next_blocks\u0022:[\u00221 c Fin a ncial Review 26\u0022,\u00222 Sustain a bility Report 27\u0022]}},{\u0022id\u0022:\u0022b23\u0022,\u0022source_text\u0022:\u00221 c Fi n a n c ia l Rev iew 26\u0022,\u0022source_length\u0022:30,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,6,7,8,9,10,11,12,13,14,15,17,18,19,20,23,24,27,28,30],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,6,7,8,9,10,11,12,13,14,15,17,18,19,20,23,24,27,28,30],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00221 a Perform a nce Overview 3\u0022,\u00221 b Perform a nce An a lys is 1 1\u0022],\u0022next_blocks\u0022:[\u00222 Sustain a bility Report 27\u0022,\u00223 Accountability Report 31\u0022]}},{\u0022id\u0022:\u0022b24\u0022,\u0022source_text\u0022:\u00222 Su sta i n a bi l ity Re po rt 27\u0022,\u0022source_length\u0022:35,\u0022allowed_start_offsets\u0022:[0,1,2,4,5,8,9,10,11,12,13,14,15,17,18,19,20,23,24,26,27,29,30,32,33,35],\u0022allowed_end_offsets\u0022:[0,1,2,4,5,8,9,10,11,12,13,14,15,17,18,19,20,23,24,26,27,29,30,32,33,35],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00221 b Perform a nce An a lys is 1 1\u0022,\u00221 c Fin a ncial Review 26\u0022],\u0022next_blocks\u0022:[\u00223 Accountability Report 31\u0022,\u00223 a Corporate Govern a nce Report 33\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3714,
+      "estimatedInputTokens": 929,
+      "repeatedContextBytes": 222,
+      "requestSha256": "471fc8ae6d5846d222abde9edf3d0e4f6402cee85c4ea87fdb794cb036b70837"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:007",
+      "shardOrdinal": 7,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028"
+      ],
+      "sourceRefs": [
+        "U000048",
+        "U000050",
+        "U000052",
+        "U000057"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:007",
+        "blocks": [
+          "B025",
+          "B026",
+          "B027",
+          "B028"
+        ],
+        "sourceRefs": [
+          "U000048",
+          "U000050",
+          "U000052",
+          "U000057"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b25\u0022,\u0022source_text\u0022:\u00223 Acco u nta bi l ity Re po rt 31\u0022,\u0022source_length\u0022:33,\u0022allowed_start_offsets\u0022:[0,1,2,6,7,8,9,12,13,15,16,17,18,21,22,24,25,27,28,30,31,33],\u0022allowed_end_offsets\u0022:[0,1,2,6,7,8,9,12,13,15,16,17,18,21,22,24,25,27,28,30,31,33],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00221 c Fin a ncial Review 26\u0022,\u00222 Sustain a bility Report 27\u0022],\u0022next_blocks\u0022:[\u00223 a Corporate Govern a nce Report 33\u0022,\u00223 b Remuneration a nd Staff Report 47\u0022]}},{\u0022id\u0022:\u0022b26\u0022,\u0022source_text\u0022:\u00223 a Co rpo rate Gove rn a n ce Re po rt 33\u0022,\u0022source_length\u0022:42,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,6,7,10,11,15,16,20,21,23,24,25,26,27,28,30,31,33,34,36,37,39,40,42],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,6,7,10,11,15,16,20,21,23,24,25,26,27,28,30,31,33,34,36,37,39,40,42],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00222 Sustain a bility Report 27\u0022,\u00223 Accountability Report 31\u0022],\u0022next_blocks\u0022:[\u00223 b Remuneration a nd Staff Report 47\u0022,\u0022Audit Report\u0022]}},{\u0022id\u0022:\u0022b27\u0022,\u0022source_text\u0022:\u00223 b Re m u n e ratio n a n d Staff Re po rt 47\u0022,\u0022source_length\u0022:46,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,6,7,8,9,10,11,12,13,14,15,20,21,22,23,24,25,26,27,28,29,34,35,37,38,40,41,43,44,46],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,6,7,8,9,10,11,12,13,14,15,20,21,22,23,24,25,26,27,28,29,34,35,37,38,40,41,43,44,46],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00223 Accountability Report 31\u0022,\u00223 a Corporate Govern a nce Report 33\u0022],\u0022next_blocks\u0022:[\u0022Audit Report\u0022,\u00224 Resource Accounts 76\u0022]}},{\u0022id\u0022:\u0022b30\u0022,\u0022source_text\u0022:\u00224 Res o u rce Acco u nts 76\u0022,\u0022source_length\u0022:27,\u0022allowed_start_offsets\u0022:[0,1,2,5,6,7,8,9,10,13,14,18,19,20,21,24,25,27],\u0022allowed_end_offsets\u0022:[0,1,2,5,6,7,8,9,10,13,14,18,19,20,21,24,25,27],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00223 b Remuneration a nd Staff Report 47\u0022,\u0022Audit Report\u0022],\u0022next_blocks\u0022:[\u0022G loss a ry (not a udited) 94\u0022,\u0022Part 1 Perform a nce Report\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3726,
+      "estimatedInputTokens": 932,
+      "repeatedContextBytes": 188,
+      "requestSha256": "2d9f21fa17dd658f2162527e464f5bfd035e777a6912f8e4ec5b7cf663c57c1d"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:008",
+      "shardOrdinal": 8,
+      "blockRefs": [
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000714",
+        "U004798",
+        "U004817",
+        "U004856"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:008",
+        "blocks": [
+          "B029",
+          "B030",
+          "B031",
+          "B032"
+        ],
+        "sourceRefs": [
+          "U000714",
+          "U004798",
+          "U004817",
+          "U004856"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b328\u0022,\u0022source_text\u0022:\u00221 1 1 870 Co n ta ct Ce n t re\u0022,\u0022source_length\u0022:30,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,9,10,12,13,14,15,17,18,20,21,23,24,25,26,27,28,30],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,9,10,12,13,14,15,17,18,20,21,23,24,25,26,27,28,30],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022number of individu a l\u0022,\u0022charitiessupportedthroughthe\u0022],\u0022next_blocks\u0022:[\u0022Part 1 b Perform a nce An a lysis\u0022,\u0022peraon a erorm a nce \\u2013,\u0022]}},{\u0022id\u0022:\u0022b1928\u0022,\u0022source_text\u0022:\u00221 Ge n e ra l i nfo rm atio n\u0022,\u0022source_length\u0022:29,\u0022allowed_start_offsets\u0022:[0,1,2,4,5,6,7,8,9,11,12,13,14,15,16,19,20,22,23,27,28,29],\u0022allowed_end_offsets\u0022:[0,1,2,4,5,6,7,8,9,11,12,13,14,15,16,19,20,22,23,27,28,29],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u0022N otes to the Departmental Resource Accounts\u0022],\u0022next_blocks\u0022:[\u00222 Statement of a ccountingpo licies\u0022,\u00222 1 Accountingconvention\u0022]}},{\u0022id\u0022:\u0022b1932\u0022,\u0022source_text\u0022:\u00222 State m e nt of a cco u nti n g po licies\u0022,\u0022source_length\u0022:43,\u0022allowed_start_offsets\u0022:[0,1,2,7,8,9,10,11,12,14,15,17,18,19,20,23,24,25,26,29,30,31,32,33,34,36,37,43],\u0022allowed_end_offsets\u0022:[0,1,2,7,8,9,10,11,12,14,15,17,18,19,20,23,24,25,26,29,30,31,32,33,34,36,37,43],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022N otes to the Departmental Resource Accounts\u0022,\u00221 Generalinformation\u0022],\u0022next_blocks\u0022:[\u00222 1 Accountingconvention\u0022,\u0022RESO URCE ACCO UNTS\u0022]}},{\u0022id\u0022:\u0022b1943\u0022,\u0022source_text\u0022:\u00222 1 Acco u nti n g co nve ntio n\u0022,\u0022source_length\u0022:32,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,8,9,10,11,14,15,16,17,18,19,21,22,25,26,30,31,32],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,8,9,10,11,14,15,16,17,18,19,21,22,25,26,30,31,32],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00221 Generalinformation\u0022,\u00222 Statement of a ccountingpo licies\u0022],\u0022next_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u00222 2 Propertyplant a ndequipment\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3701,
+      "estimatedInputTokens": 926,
+      "repeatedContextBytes": 161,
+      "requestSha256": "48999fdcd210d262ef58ef37cf400089330eba774ec5aa1ad762fa7e5f72dcdc"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:009",
+      "shardOrdinal": 9,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036"
+      ],
+      "sourceRefs": [
+        "U004882",
+        "U004905",
+        "U004949",
+        "U004958"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:009",
+        "blocks": [
+          "B033",
+          "B034",
+          "B035",
+          "B036"
+        ],
+        "sourceRefs": [
+          "U004882",
+          "U004905",
+          "U004949",
+          "U004958"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1953\u0022,\u0022source_text\u0022:\u00222 3 I nta n g i ble assets\u0022,\u0022source_length\u0022:26,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,9,10,11,12,13,14,15,16,19,20,26],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,9,10,11,12,13,14,15,16,19,20,26],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u00222 2 Propertyplant a ndequipment\u0022],\u0022next_blocks\u0022:[\u00222 4 De preciation a nd Amo rtisation\u0022,\u0022RESO URCE ACCO UNTS\u0022]}},{\u0022id\u0022:\u0022b1961\u0022,\u0022source_text\u0022:\u00222 4 De preciatio n a n d Am o rtisatio n\u0022,\u0022source_length\u0022:40,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,6,7,16,17,18,19,20,21,22,23,24,25,27,28,29,30,38,39,40],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,6,7,16,17,18,19,20,21,22,23,24,25,27,28,29,30,38,39,40],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00222 2 Propertyplant a ndequipment\u0022,\u00222 3 Intangible assets\u0022],\u0022next_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u00222 5 Right-of use assets\u0022]}},{\u0022id\u0022:\u0022b1978\u0022,\u0022source_text\u0022:\u00222 6 I m pa i rm e nts\u0022,\u0022source_length\u0022:21,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,7,8,10,11,12,13,15,16,17,18,21],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,7,8,10,11,12,13,15,16,17,18,21],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u00222 5 Right-of use assets\u0022],\u0022next_blocks\u0022:[\u00222 7 Operatingincome\u0022,\u00222 8 Admin istrationexpenditure\u0022]}},{\u0022id\u0022:\u0022b1980\u0022,\u0022source_text\u0022:\u00222 7 O pe rati n g i n co m e\u0022,\u0022source_length\u0022:28,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,8,9,13,14,15,16,17,18,19,20,21,22,24,25,26,27,28],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,8,9,13,14,15,16,17,18,19,20,21,22,24,25,26,27,28],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00222 5 Right-of use assets\u0022,\u00222 6 Impairments\u0022],\u0022next_blocks\u0022:[\u00222 8 Admin istrationexpenditure\u0022,\u0022RESO URCE ACCO UNTS\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3536,
+      "estimatedInputTokens": 884,
+      "repeatedContextBytes": 183,
+      "requestSha256": "96e89c9927a934748b0859d7ec356225bb29ca8b4c473ca14a90ae027edb5583"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:010",
+      "shardOrdinal": 10,
+      "blockRefs": [
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U004979",
+        "U005043",
+        "U005055",
+        "U005183"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:010",
+        "blocks": [
+          "B037",
+          "B038",
+          "B039",
+          "B040"
+        ],
+        "sourceRefs": [
+          "U004979",
+          "U005043",
+          "U005055",
+          "U005183"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1986\u0022,\u0022source_text\u0022:\u00222 8 Ad m i n istratio n expe n ditu re\u0022,\u0022source_length\u0022:38,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,6,7,8,9,10,11,12,13,21,22,23,24,28,29,30,31,35,36,38],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,6,7,8,9,10,11,12,13,21,22,23,24,28,29,30,31,35,36,38],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00222 6 Impairments\u0022,\u00222 7 Operatingincome\u0022],\u0022next_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u00222 9 Foreigncurrency\u0022]}},{\u0022id\u0022:\u0022b2008\u0022,\u0022source_text\u0022:\u00222 1 2 Va l u e Added Tax\u0022,\u0022source_length\u0022:24,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,20,21,24],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,20,21,24],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00222 1 0 Pensions\u0022,\u00222 1 1 Leases\u0022],\u0022next_blocks\u0022:[\u00222 1 3 Contingentliabilities\u0022,\u0022RESO URCE ACCO UNTS\u0022]}},{\u0022id\u0022:\u0022b2013\u0022,\u0022source_text\u0022:\u00222 1 3 Co nti n ge nt l ia bi l ities\u0022,\u0022source_length\u0022:36,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,8,9,12,13,14,15,17,18,20,21,22,23,25,26,28,29,30,31,36],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,8,9,12,13,14,15,17,18,20,21,22,23,25,26,28,29,30,31,36],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u00222 1 1 Leases\u0022,\u00222 1 2 Value Added Tax\u0022],\u0022next_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u0022Other Other\u0022]}},{\u0022id\u0022:\u0022b2054\u0022,\u0022source_text\u0022:\u00225 I n co m e\u0022,\u0022source_length\u0022:12,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,8,9,10,11,12],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,8,9,10,11,12],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u0022Auditors\u0022],\u0022next_blocks\u0022:[\u0022I ncome received from other U K governmentdepa rtments:\u0022,\u0022Totalincome 1 487 1 490\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3436,
+      "estimatedInputTokens": 859,
+      "repeatedContextBytes": 69,
+      "requestSha256": "5a25a28cae43dd03e8345a5e8a79a564d47670e358adad83af395c546c4534fb"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004"
+      ],
+      "sourceRefs": [
+        "U000461",
+        "U000603",
+        "U000608",
+        "U000630",
+        "U000631"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-F90364E75711:POINTER_SPAN:001",
+        "blocks": [
+          "B001",
+          "B002",
+          "B003",
+          "B004"
+        ],
+        "sourceRefs": [
+          "U000461",
+          "U000603",
+          "U000608",
+          "U000630",
+          "U000631"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b273\u0022,\u0022source_text\u0022:\u0022C l i m ate C h a n ge Ad a ptati o n a n d M iti gati o n Co- Be n efits by Secto r fo r\u0022,\u0022source_length\u0022:89,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,20,22,23,25,26,27,28,33,34,35,36,37,38,39,40,41,42,43,44,45,46,49,50,54,55,56,57,58,59,61,62,63,65,66,67,68,73,74,76,77,82,83,84,85,87,88,89],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,20,22,23,25,26,27,28,33,34,35,36,37,38,39,40,41,42,43,44,45,46,49,50,54,55,56,57,58,59,61,62,63,65,66,67,68,73,74,76,77,82,83,84,85,87,88,89],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022requested Policy\u0022,\u0022to Deny Access\u0022],\u0022next_blocks\u0022:[\u0022X Dismissed\u0022,\u0022t Dismissedmeansth at the a ppealisnotconsideredonitsmerits a ndistherefore rejectedbecause (a) therequester\u0022]}},{\u0022id\u0022:\u0022b193\u0022,\u0022source_text\u0022:\u0022Tota l 643 5 8 9 9 2 54 F lfi l l d i W h l F lfi l l d i P t F lfi l l d i W h l i P t\u0022,\u0022source_length\u0022:87,\u0022allowed_start_offsets\u0022:[0,4,5,6,7,10,11,12,13,14,15,16,17,18,19,20,21,23,24,25,26,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87],\u0022allowed_end_offsets\u0022:[0,4,5,6,7,10,11,12,13,14,15,16,17,18,19,20,21,23,24,25,26,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Requests Requests Total Number of Requests\u0022,\u0022Indicator\u0022],\u0022next_blocks\u0022:[\u0022uenoeuen a ruenoeorn a r\u0022,\u0022Totalnumber 3 65 52 4 1 7\u0022]}},{\u0022id\u0022:\u0022b254\u0022,\u0022source_text\u0022:\u0022Re q u ests c l ose d w i t h i n 2 0 w o r k i n g d a ys 48 1 8 1 D i i t D A\u0022,\u0022source_length\u0022:79,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,6,7,11,12,13,14,15,16,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,59,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,6,7,11,12,13,14,15,16,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,59,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Applicable Exception (s)\u0022,\u0022informationrequestedupholding World Bank\u0022],\u0022next_blocks\u0022:[\u0022ecsonoenyccess\u0022,\u0022Requestsclosed a fter 2 0 workingd a ys 1 08 1 9\u0022]}},{\u0022id\u0022:\u0022b258\u0022,\u0022source_text\u0022:\u0022C l i m ate C h a n ge Ad a ptati o n a n d\u0022,\u0022source_length\u0022:43,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,20,22,23,25,26,27,28,33,34,35,36,37,38,39,40,41,42,43],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,20,22,23,25,26,27,28,33,34,35,36,37,38,39,40,41,42,43],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022ecsonoenyccess\u0022,\u0022Requestsclosed a fter 2 0 workingd a ys 1 08 1 9\u0022],\u0022next_blocks\u0022:[\u0022Totalnumber of Requests Closed 589 1 0 0\u0022,\u0022A ppe a ls Concluded by the Access to Inform a tion Committee (A I C)\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4896,
+      "estimatedInputTokens": 1224,
+      "repeatedContextBytes": 62,
+      "requestSha256": "ec547ae7159fded1b590ce9a0104fd3614b441160da0bcd0d5b774f48742ee93"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000012",
+        "U000013",
+        "U000014",
+        "U000712",
+        "U000713",
+        "U000714"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-F90364E75711:POINTER_SPAN:002",
+        "blocks": [
+          "B005",
+          "B006",
+          "B007",
+          "B008"
+        ],
+        "sourceRefs": [
+          "U000012",
+          "U000013",
+          "U000014",
+          "U000712",
+          "U000713",
+          "U000714"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b297\u0022,\u0022source_text\u0022:\u0022O pe n D a ta I n i t i a t iv e p rov i d es free a n d o pe n a ccess to t h o u sa n d s of d eve l o p m e n t d ata i n d i ca - to rs\u0022,\u0022source_length\u0022:139,\u0022allowed_start_offsets\u0022:[0,1,2,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,38,39,40,41,42,43,45,46,50,51,52,53,54,55,56,57,58,59,61,62,63,64,65,66,71,72,74,75,76,77,78,79,80,81,82,83,85,86,87,88,89,90,91,92,94,95,96,97,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,120,121,122,123,124,125,126,127,128,129,131,132,133,134,136,137,139],\u0022allowed_end_offsets\u0022:[0,1,2,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,38,39,40,41,42,43,45,46,50,51,52,53,54,55,56,57,58,59,61,62,63,64,65,66,71,72,74,75,76,77,78,79,80,81,82,83,85,86,87,88,89,90,91,92,94,95,96,97,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,120,121,122,123,124,125,126,127,128,129,131,132,133,134,136,137,139],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Projects \\u0026 Operationsprovides a ccess to basicinformationon a ll of the World Bankslendingp rojectsfrom 1947 to thepresent\u0022,\u0022The Open Government Partnershipis a multilateralinitiativeth at securesconcretecommitmentsfromgovern-ments to promotetransparencyempowercitizens a ndfightcorruption\u0022],\u0022next_blocks\u0022:[]}},{\u0022id\u0022:\u0022b10\u0022,\u0022source_text\u0022:\u0022documents more accessible and discoverable. The launch of\u0022,\u0022source_length\u0022:57,\u0022allowed_start_offsets\u0022:[0,9,10,14,15,25,26,29,30,42,43,44,47,48,54,55,57],\u0022allowed_end_offsets\u0022:[0,9,10,14,15,25,26,29,30,42,43,44,47,48,54,55,57],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022to the Open Knowledge Repository and Documents \\u0026\u0022,\u0022Reports platform making research data and official\u0022],\u0022next_blocks\u0022:[\u0022the Reproducible Research Repository and improvements to\u0022,\u0022opendata platforms further advanced transparency and\u0022]}},{\u0022id\u0022:\u0022b11\u0022,\u0022source_text\u0022:\u0022the Reproducible Research Repository and improvements to\u0022,\u0022source_length\u0022:56,\u0022allowed_start_offsets\u0022:[0,3,4,16,17,25,26,36,37,40,41,53,54,56],\u0022allowed_end_offsets\u0022:[0,3,4,16,17,25,26,36,37,40,41,53,54,56],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Reports platform making research data and official\u0022,\u0022documents more accessible and discoverable. The launch of\u0022],\u0022next_blocks\u0022:[\u0022opendata platforms further advanced transparency and\u0022,\u0022accountability in development research. The Archives\u0022]}},{\u0022id\u0022:\u0022b12\u0022,\u0022source_text\u0022:\u0022open data platforms further advanced transparency and\u0022,\u0022source_length\u0022:53,\u0022allowed_start_offsets\u0022:[0,4,5,9,10,19,20,27,28,36,37,49,50,53],\u0022allowed_end_offsets\u0022:[0,4,5,9,10,19,20,27,28,36,37,49,50,53],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022documents more accessible and discoverable. The launch of\u0022,\u0022the Reproducible Research Repository and improvements to\u0022],\u0022next_blocks\u0022:[\u0022accountability in development research. The Archives\u0022,\u0022continued to expand public access by declassifying and\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4846,
+      "estimatedInputTokens": 1212,
+      "repeatedContextBytes": 267,
+      "requestSha256": "c256719563ab43722ddec7020d1f29d7fd65cfa14a6157f323ea1fcff37f824f"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012"
+      ],
+      "sourceRefs": [
+        "U000015",
+        "U000016",
+        "U000017",
+        "U000018"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-F90364E75711:POINTER_SPAN:003",
+        "blocks": [
+          "B009",
+          "B010",
+          "B011",
+          "B012"
+        ],
+        "sourceRefs": [
+          "U000015",
+          "U000016",
+          "U000017",
+          "U000018"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b13\u0022,\u0022source_text\u0022:\u0022accountability in development research. The Archives\u0022,\u0022source_length\u0022:52,\u0022allowed_start_offsets\u0022:[0,14,15,17,18,29,30,38,39,40,43,44,52],\u0022allowed_end_offsets\u0022:[0,14,15,17,18,29,30,38,39,40,43,44,52],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022the Reproducible Research Repository and improvements to\u0022,\u0022opendata platforms further advanced transparency and\u0022],\u0022next_blocks\u0022:[\u0022continued to expand public access by declassifying and\u0022,\u0022digitizing hundreds of thousands of pages of historical\u0022]}},{\u0022id\u0022:\u0022b14\u0022,\u0022source_text\u0022:\u0022continued to expand public access by declassifying and\u0022,\u0022source_length\u0022:54,\u0022allowed_start_offsets\u0022:[0,9,10,12,13,19,20,26,27,33,34,36,37,50,51,54],\u0022allowed_end_offsets\u0022:[0,9,10,12,13,19,20,26,27,33,34,36,37,50,51,54],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022opendata platforms further advanced transparency and\u0022,\u0022accountability in development research. The Archives\u0022],\u0022next_blocks\u0022:[\u0022digitizing hundreds of thousands of pages of historical\u0022,\u0022records.\u0022]}},{\u0022id\u0022:\u0022b15\u0022,\u0022source_text\u0022:\u0022digitizing hundreds of thousands of pages of historical\u0022,\u0022source_length\u0022:55,\u0022allowed_start_offsets\u0022:[0,10,11,19,20,22,23,32,33,35,36,41,42,44,45,55],\u0022allowed_end_offsets\u0022:[0,10,11,19,20,22,23,32,33,35,36,41,42,44,45,55],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022accountability in development research. The Archives\u0022,\u0022continued to expand public access by declassifying and\u0022],\u0022next_blocks\u0022:[\u0022records.\u0022,\u0022Efforts to enhance user experience included upgraded\u0022]}},{\u0022id\u0022:\u0022b16\u0022,\u0022source_text\u0022:\u0022records.\u0022,\u0022source_length\u0022:8,\u0022allowed_start_offsets\u0022:[0,7,8],\u0022allowed_end_offsets\u0022:[0,7,8],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022continued to expand public access by declassifying and\u0022,\u0022digitizing hundreds of thousands of pages of historical\u0022],\u0022next_blocks\u0022:[\u0022Efforts to enhance user experience included upgraded\u0022,\u0022emailalert systems, enriched discovery platforms, and new\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3808,
+      "estimatedInputTokens": 952,
+      "repeatedContextBytes": 382,
+      "requestSha256": "96ac9cfac4894116914b55844df27c936f2b38e1f18e60cfd20ac87d053d79f4"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U000019",
+        "U000020",
+        "U000021",
+        "U000023"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-F90364E75711:POINTER_SPAN:004",
+        "blocks": [
+          "B013",
+          "B014",
+          "B015",
+          "B016"
+        ],
+        "sourceRefs": [
+          "U000019",
+          "U000020",
+          "U000021",
+          "U000023"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b17\u0022,\u0022source_text\u0022:\u0022Efforts to enhance user experience included upgraded\u0022,\u0022source_length\u0022:52,\u0022allowed_start_offsets\u0022:[0,7,8,10,11,18,19,23,24,34,35,43,44,52],\u0022allowed_end_offsets\u0022:[0,7,8,10,11,18,19,23,24,34,35,43,44,52],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022digitizing hundreds of thousands of pages of historical\u0022,\u0022records.\u0022],\u0022next_blocks\u0022:[\u0022emailalert systems, enriched discovery platforms, and new\u0022,\u0022digital preservationtoolsall of which empower\u0022]}},{\u0022id\u0022:\u0022b18\u0022,\u0022source_text\u0022:\u0022email alert systems, enriched discovery platforms, and new\u0022,\u0022source_length\u0022:58,\u0022allowed_start_offsets\u0022:[0,5,6,11,12,19,20,21,29,30,39,40,49,50,51,54,55,58],\u0022allowed_end_offsets\u0022:[0,5,6,11,12,19,20,21,29,30,39,40,49,50,51,54,55,58],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022records.\u0022,\u0022Efforts to enhance user experience included upgraded\u0022],\u0022next_blocks\u0022:[\u0022digital preservationtoolsall of which empower\u0022,\u0022stakeholders to engage with World Bank information more\u0022]}},{\u0022id\u0022:\u0022b19\u0022,\u0022source_text\u0022:\u0022digital preservation tools all of which empower\u0022,\u0022source_length\u0022:47,\u0022allowed_start_offsets\u0022:[0,7,8,20,21,26,27,30,31,33,34,39,40,47],\u0022allowed_end_offsets\u0022:[0,7,8,20,21,26,27,30,31,33,34,39,40,47],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Efforts to enhance user experience included upgraded\u0022,\u0022emailalert systems, enriched discovery platforms, and new\u0022],\u0022next_blocks\u0022:[\u0022stakeholders to engage with World Bank information more\u0022,\u0022effectively. The first meeting of the Open Science\u0022]}},{\u0022id\u0022:\u0022b20\u0022,\u0022source_text\u0022:\u0022stakeholders to engage with World Bank information more\u0022,\u0022source_length\u0022:55,\u0022allowed_start_offsets\u0022:[0,12,13,15,16,22,23,27,28,33,34,38,39,50,51,55],\u0022allowed_end_offsets\u0022:[0,12,13,15,16,22,23,27,28,33,34,38,39,50,51,55],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022emailalert systems, enriched discovery platforms, and new\u0022,\u0022digital preservationtoolsall of which empower\u0022],\u0022next_blocks\u0022:[\u0022effectively. The first meeting of the Open Science\u0022,\u0022Community and the rollout of the Records Management\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3904,
+      "estimatedInputTokens": 976,
+      "repeatedContextBytes": 369,
+      "requestSha256": "16103908cdce7fba4db166e4a2e23126593c680c34a0a7e56d7733e73c2d0130"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020"
+      ],
+      "sourceRefs": [
+        "U000024",
+        "U000025",
+        "U000026",
+        "U000033"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-F90364E75711:POINTER_SPAN:005",
+        "blocks": [
+          "B017",
+          "B018",
+          "B019",
+          "B020"
+        ],
+        "sourceRefs": [
+          "U000024",
+          "U000025",
+          "U000026",
+          "U000033"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b21\u0022,\u0022source_text\u0022:\u0022effectively. The first meeting of the Open Science\u0022,\u0022source_length\u0022:50,\u0022allowed_start_offsets\u0022:[0,11,12,13,16,17,22,23,30,31,33,34,37,38,42,43,50],\u0022allowed_end_offsets\u0022:[0,11,12,13,16,17,22,23,30,31,33,34,37,38,42,43,50],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022digital preservationtoolsall of which empower\u0022,\u0022stakeholders to engage with World Bank information more\u0022],\u0022next_blocks\u0022:[\u0022Community and the rollout of the Records Management\u0022,\u0022no Maturity Assessment Toolkit underscored the Bank\\u2019s\u0022]}},{\u0022id\u0022:\u0022b22\u0022,\u0022source_text\u0022:\u0022Community and the rollout of the Records Management\u0022,\u0022source_length\u0022:51,\u0022allowed_start_offsets\u0022:[0,9,10,13,14,17,18,25,26,28,29,32,33,40,41,51],\u0022allowed_end_offsets\u0022:[0,9,10,13,14,17,18,25,26,28,29,32,33,40,41,51],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022stakeholders to engage with World Bank information more\u0022,\u0022effectively. The first meeting of the Open Science\u0022],\u0022next_blocks\u0022:[\u0022no Maturity Assessment Toolkit underscored the Bank\\u2019s\u0022,\u0022fo dedication to open knowledge and best practices.\u0022]}},{\u0022id\u0022:\u0022b23\u0022,\u0022source_text\u0022:\u0022no Maturity Assessment Toolkit underscored the Bank\\u2019s\u0022,\u0022source_length\u0022:53,\u0022allowed_start_offsets\u0022:[0,2,3,11,12,22,23,30,31,42,43,46,47,51,52,53],\u0022allowed_end_offsets\u0022:[0,2,3,11,12,22,23,30,31,42,43,46,47,51,52,53],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022effectively. The first meeting of the Open Science\u0022,\u0022Community and the rollout of the Records Management\u0022],\u0022next_blocks\u0022:[\u0022fo dedication to open knowledge and best practices.\u0022,\u0022se Collectively these achievements reflect ongoing efforts to e\u0022]}},{\u0022id\u0022:\u0022b26\u0022,\u0022source_text\u0022:\u0022fo dedication to open knowledge and best practices.\u0022,\u0022source_length\u0022:51,\u0022allowed_start_offsets\u0022:[0,2,3,13,14,16,17,21,22,31,32,35,36,40,41,50,51],\u0022allowed_end_offsets\u0022:[0,2,3,13,14,16,17,21,22,31,32,35,36,40,41,50,51],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Community and the rollout of the Records Management\u0022,\u0022no Maturity Assessment Toolkit underscored the Bank\\u2019s\u0022],\u0022next_blocks\u0022:[\u0022se Collectively these achievements reflect ongoing efforts to e\u0022,\u0022tr broaden public access and foster greater accountability\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4058,
+      "estimatedInputTokens": 1015,
+      "repeatedContextBytes": 431,
+      "requestSha256": "f30a6d4222bc41006a7909976f650ec6c4a572d298604401508c457e4f7295d9"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:006",
+      "shardOrdinal": 6,
+      "blockRefs": [
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000005",
+        "U000007",
+        "U000039",
+        "U000046"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-F90364E75711:POINTER_SPAN:006",
+        "blocks": [
+          "B021",
+          "B022",
+          "B023",
+          "B024"
+        ],
+        "sourceRefs": [
+          "U000005",
+          "U000007",
+          "U000039",
+          "U000046"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b29\u0022,\u0022source_text\u0022:\u0022se Collectively these achievements reflect ongoing efforts to e\u0022,\u0022source_length\u0022:63,\u0022allowed_start_offsets\u0022:[0,2,3,15,16,21,22,34,35,42,43,50,51,58,59,61,62,63],\u0022allowed_end_offsets\u0022:[0,2,3,15,16,21,22,34,35,42,43,50,51,58,59,61,62,63],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022no Maturity Assessment Toolkit underscored the Bank\\u2019s\u0022,\u0022fo dedication to open knowledge and best practices.\u0022],\u0022next_blocks\u0022:[\u0022tr broaden public access and foster greater accountability\u0022,\u0022Pageviews: Over 1 0 0 million\u0022]}},{\u0022id\u0022:\u0022b34\u0022,\u0022source_text\u0022:\u0022tr broaden public access and foster greater accountability\u0022,\u0022source_length\u0022:58,\u0022allowed_start_offsets\u0022:[0,2,3,10,11,17,18,24,25,28,29,35,36,43,44,58],\u0022allowed_end_offsets\u0022:[0,2,3,10,11,17,18,24,25,28,29,35,36,43,44,58],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022fo dedication to open knowledge and best practices.\u0022,\u0022se Collectively these achievements reflect ongoing efforts to e\u0022],\u0022next_blocks\u0022:[\u0022Pageviews: Over 1 0 0 million\u0022,\u0022Downlo a ds: Over 3 2 million\u0022]}},{\u0022id\u0022:\u0022b4\u0022,\u0022source_text\u0022:\u0022Fiscal Year 2024 (FY 24) marked significant progress in the\u0022,\u0022source_length\u0022:59,\u0022allowed_start_offsets\u0022:[0,6,7,11,12,16,17,18,20,21,23,24,25,31,32,43,44,52,53,55,56,59],\u0022allowed_end_offsets\u0022:[0,6,7,11,12,16,17,18,20,21,23,24,25,31,32,43,44,52,53,55,56,59],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[],\u0022next_blocks\u0022:[\u0022World Bank\\u2019s commitment to transparency and public\u0022,\u0022access to information. The Bank introduced major upgrades\u0022]}},{\u0022id\u0022:\u0022b6\u0022,\u0022source_text\u0022:\u0022World Bank\\u2019s commitment to transparency and public\u0022,\u0022source_length\u0022:50,\u0022allowed_start_offsets\u0022:[0,5,6,10,11,12,13,23,24,26,27,39,40,43,44,50],\u0022allowed_end_offsets\u0022:[0,5,6,10,11,12,13,23,24,26,27,39,40,43,44,50],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Fiscal Year 2024 (FY 24) marked significant progress in the\u0022],\u0022next_blocks\u0022:[\u0022access to information. The Bank introduced major upgrades\u0022,\u0022to the Open Knowledge Repository and Documents \\u0026\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 3854,
+      "estimatedInputTokens": 964,
+      "repeatedContextBytes": 137,
+      "requestSha256": "5938d0f258605859898c4722ebc05b78433f679746313e8b5551b288841ca1f0"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:007",
+      "shardOrdinal": 7,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028"
+      ],
+      "sourceRefs": [
+        "U000008",
+        "U000009",
+        "U000010",
+        "U000074"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-F90364E75711:POINTER_SPAN:007",
+        "blocks": [
+          "B025",
+          "B026",
+          "B027",
+          "B028"
+        ],
+        "sourceRefs": [
+          "U000008",
+          "U000009",
+          "U000010",
+          "U000074"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b7\u0022,\u0022source_text\u0022:\u0022access to information. The Bank introduced major upgrades\u0022,\u0022source_length\u0022:57,\u0022allowed_start_offsets\u0022:[0,6,7,9,10,21,22,23,26,27,31,32,42,43,48,49,57],\u0022allowed_end_offsets\u0022:[0,6,7,9,10,21,22,23,26,27,31,32,42,43,48,49,57],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Fiscal Year 2024 (FY 24) marked significant progress in the\u0022,\u0022World Bank\\u2019s commitment to transparency and public\u0022],\u0022next_blocks\u0022:[\u0022to the Open Knowledge Repository and Documents \\u0026\u0022,\u0022Reports platform making research data and official\u0022]}},{\u0022id\u0022:\u0022b8\u0022,\u0022source_text\u0022:\u0022to the Open Knowledge Repository and Documents \\u0026\u0022,\u0022source_length\u0022:48,\u0022allowed_start_offsets\u0022:[0,2,3,6,7,11,12,21,22,32,33,36,37,46,47,48],\u0022allowed_end_offsets\u0022:[0,2,3,6,7,11,12,21,22,32,33,36,37,46,47,48],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022World Bank\\u2019s commitment to transparency and public\u0022,\u0022access to information. The Bank introduced major upgrades\u0022],\u0022next_blocks\u0022:[\u0022Reports platform making research data and official\u0022,\u0022documents more accessible and discoverable. The launch of\u0022]}},{\u0022id\u0022:\u0022b9\u0022,\u0022source_text\u0022:\u0022Reports platform making research data and official\u0022,\u0022source_length\u0022:50,\u0022allowed_start_offsets\u0022:[0,7,8,16,17,23,24,32,33,37,38,41,42,50],\u0022allowed_end_offsets\u0022:[0,7,8,16,17,23,24,32,33,37,38,41,42,50],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022access to information. The Bank introduced major upgrades\u0022,\u0022to the Open Knowledge Repository and Documents \\u0026\u0022],\u0022next_blocks\u0022:[\u0022documents more accessible and discoverable. The launch of\u0022,\u0022the Reproducible Research Repository and improvements to\u0022]}},{\u0022id\u0022:\u0022b45\u0022,\u0022source_text\u0022:\u0022Pa ge v i e w s : Ov e r 1 0 0 m i l l i o n\u0022,\u0022source_length\u0022:44,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022se Collectively these achievements reflect ongoing efforts to e\u0022,\u0022tr broaden public access and foster greater accountability\u0022],\u0022next_blocks\u0022:[\u0022Downlo a ds: Over 3 2 million\u0022,\u0022Av a il a bled a tasets: 1 6 7 8 8\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4141,
+      "estimatedInputTokens": 1036,
+      "repeatedContextBytes": 264,
+      "requestSha256": "8b01943f4a052fd57920d61dd8bb10d985db508b86edb049ecd9a4ccf69a7903"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:008",
+      "shardOrdinal": 8,
+      "blockRefs": [
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000075",
+        "U000077",
+        "U000122",
+        "U000131"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-F90364E75711:POINTER_SPAN:008",
+        "blocks": [
+          "B029",
+          "B030",
+          "B031",
+          "B032"
+        ],
+        "sourceRefs": [
+          "U000075",
+          "U000077",
+          "U000122",
+          "U000131"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b46\u0022,\u0022source_text\u0022:\u0022D o w n l o a d s : Ov e r 3 2 m i l l i o n\u0022,\u0022source_length\u0022:44,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022tr broaden public access and foster greater accountability\u0022,\u0022Pageviews: Over 1 0 0 million\u0022],\u0022next_blocks\u0022:[\u0022Av a il a bled a tasets: 1 6 7 8 8\u0022,\u0022Downlo a dsin FY 2 4 A bstr a ct Viewsin FY 2 4\u0022]}},{\u0022id\u0022:\u0022b47\u0022,\u0022source_text\u0022:\u0022Av a i l a b l e d a ta s e ts : 1 6 7 8 8\u0022,\u0022source_length\u0022:42,\u0022allowed_start_offsets\u0022:[0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42],\u0022allowed_end_offsets\u0022:[0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Pageviews: Over 1 0 0 million\u0022,\u0022Downlo a ds: Over 3 2 million\u0022],\u0022next_blocks\u0022:[\u0022Downlo a dsin FY 2 4 A bstr a ct Viewsin FY 2 4\u0022,\u0022, Downlo a dsin FY 2 4\u0022]}},{\u0022id\u0022:\u0022b62\u0022,\u0022source_text\u0022:\u0022D o w n l o a d s i n FY 2 4 A b s t r a c t V i e w s i n FY 2 4\u0022,\u0022source_length\u0022:65,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,61,62,63,64,65],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,61,62,63,64,65],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Downlo a ds: Over 3 2 million\u0022,\u0022Av a il a bled a tasets: 1 6 7 8 8\u0022],\u0022next_blocks\u0022:[\u0022, Downlo a dsin FY 2 4\u0022,\u0022Pagesdecl a ssifiedin FY 2 4 3 8 0 5 9 7\u0022]}},{\u0022id\u0022:\u0022b66\u0022,\u0022source_text\u0022:\u0022, D o w n l o a d s i n FY 2 4\u0022,\u0022source_length\u0022:30,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,26,27,28,29,30],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,26,27,28,29,30],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Av a il a bled a tasets: 1 6 7 8 8\u0022,\u0022Downlo a dsin FY 2 4 A bstr a ct Viewsin FY 2 4\u0022],\u0022next_blocks\u0022:[\u0022Pagesdecl a ssifiedin FY 2 4 3 8 0 5 9 7\u0022,\u0022Pagesdigitizedin FY 2 4 4 1 2 7 0 4\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4345,
+      "estimatedInputTokens": 1087,
+      "repeatedContextBytes": 282,
+      "requestSha256": "2825eb6d550a371ee00863e3949de15f74986719dcb725db9741f5ce730c245d"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:009",
+      "shardOrdinal": 9,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036"
+      ],
+      "sourceRefs": [
+        "U000232",
+        "U000234",
+        "U000236",
+        "U000267"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-F90364E75711:POINTER_SPAN:009",
+        "blocks": [
+          "B033",
+          "B034",
+          "B035",
+          "B036"
+        ],
+        "sourceRefs": [
+          "U000232",
+          "U000234",
+          "U000236",
+          "U000267"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b110\u0022,\u0022source_text\u0022:\u0022R N u m b e r o f Pa e s R e s e a r c h e d 5 2 3 4 4 6\u0022,\u0022source_length\u0022:56,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Reportspro a ctivelydisclosed 1 4 5\u0022,\u0022s Nbf Rheumeroese a rcers 1 6 4 e\u0022],\u0022next_blocks\u0022:[\u0022Access to Inform a tion Requests H a ndled Requests Fulfilled (in Wholeorin Part) or Denied\u0022,\u0022Number Of the 5 89 requestsclosedin FY 24 429 requestsprovidedsufficientinformation a ndwereh a ndled by the AT I\u0022]}},{\u0022id\u0022:\u0022b96\u0022,\u0022source_text\u0022:\u0022Pa ge s d e c l a s s i fi e d i n FY 2 4 3 8 0 5 9 7\u0022,\u0022source_length\u0022:53,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,26,27,28,29,30,31,32,33,34,35,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,26,27,28,29,30,31,32,33,34,35,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Downlo a dsin FY 2 4 A bstr a ct Viewsin FY 2 4\u0022,\u0022, Downlo a dsin FY 2 4\u0022],\u0022next_blocks\u0022:[\u0022Pagesdigitizedin FY 2 4 4 1 2 7 0 4\u0022,\u0022Reportspro a ctivelydisclosed 1 4 5\u0022]}},{\u0022id\u0022:\u0022b97\u0022,\u0022source_text\u0022:\u0022Pa ge s d i g i t i z e d i n FY 2 4 4 1 2 7 0 4\u0022,\u0022source_length\u0022:48,\u0022allowed_start_offsets\u0022:[0,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48],\u0022allowed_end_offsets\u0022:[0,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022, Downlo a dsin FY 2 4\u0022,\u0022Pagesdecl a ssifiedin FY 2 4 3 8 0 5 9 7\u0022],\u0022next_blocks\u0022:[\u0022Reportspro a ctivelydisclosed 1 4 5\u0022,\u0022s Nbf Rheumeroese a rcers 1 6 4 e\u0022]}},{\u0022id\u0022:\u0022b98\u0022,\u0022source_text\u0022:\u0022R e p o rts p r o a c t i v e ly d i s c l o s e d 1 4 5\u0022,\u0022source_length\u0022:56,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Pagesdecl a ssifiedin FY 2 4 3 8 0 5 9 7\u0022,\u0022Pagesdigitizedin FY 2 4 4 1 2 7 0 4\u0022],\u0022next_blocks\u0022:[\u0022s Nbf Rheumeroese a rcers 1 6 4 e\u0022,\u0022R Numberof Paes Rese a rched 5 2 3 4 4 6\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 4667,
+      "estimatedInputTokens": 1167,
+      "repeatedContextBytes": 233,
+      "requestSha256": "aef0616e389321e3f8e4f57d140356d51b8c6785cb23fb1a9e5eecb86dfe8e68"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:010",
+      "shardOrdinal": 10,
+      "blockRefs": [
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U000442",
+        "U000443",
+        "U000445",
+        "U000446"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "POINTER_SPAN",
+        "shardId": "NEW-F90364E75711:POINTER_SPAN:010",
+        "blocks": [
+          "B037",
+          "B038",
+          "B039",
+          "B040"
+        ],
+        "sourceRefs": [
+          "U000442",
+          "U000443",
+          "U000445",
+          "U000446"
+        ],
+        "systemPrompt": "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\nThe span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\nChoose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\nNever rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022heading_span\u0022:{\u0022start\u0022:0,\u0022end\u0022:19}}]}.",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b178\u0022,\u0022source_text\u0022:\u0022Acce s s to I n fo r m a t i o n R e q u e sts H a n d l e d R e q u e sts F u lfi l l e d (i n W h o l e o r i n Pa rt) o r D e n i e d\u0022,\u0022source_length\u0022:136,\u0022allowed_start_offsets\u0022:[0,4,5,6,7,8,9,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,74,75,76,77,78,79,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136],\u0022allowed_end_offsets\u0022:[0,4,5,6,7,8,9,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,74,75,76,77,78,79,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022s Nbf Rheumeroese a rcers 1 6 4 e\u0022,\u0022R Numberof Paes Rese a rched 5 2 3 4 4 6\u0022],\u0022next_blocks\u0022:[\u0022Number Of the 5 89 requestsclosedin FY 24 429 requestsprovidedsufficientinformation a ndwereh a ndled by the AT I\u0022,\u0022Fiscalyearinwhich Number of Percentage of Number of AT I\u0022]}},{\u0022id\u0022:\u0022b179\u0022,\u0022source_text\u0022:\u0022N u m be r Of t h e 5 89 req u ests c losed i n FY 24 429 req u ests p rovi d ed s u ffi ci e n t i n fo r m ati o n a n d we re h a n d led by t h e AT I\u0022,\u0022source_length\u0022:154,\u0022allowed_start_offsets\u0022:[0,1,2,3,4,5,6,8,9,10,11,13,14,15,16,17,18,19,20,21,22,24,25,28,29,30,31,35,36,37,38,43,44,45,46,47,48,50,51,53,54,57,58,61,62,63,64,68,69,70,71,75,76,77,78,80,81,82,83,84,85,88,89,91,92,93,94,95,96,97,98,99,100,101,102,104,105,106,107,108,109,112,113,114,115,116,117,118,119,120,121,122,123,125,126,128,129,130,131,132,133,134,135,136,137,140,141,143,144,145,146,147,148,149,150,152,153,154],\u0022allowed_end_offsets\u0022:[0,1,2,3,4,5,6,8,9,10,11,13,14,15,16,17,18,19,20,21,22,24,25,28,29,30,31,35,36,37,38,43,44,45,46,47,48,50,51,53,54,57,58,61,62,63,64,68,69,70,71,75,76,77,78,80,81,82,83,84,85,88,89,91,92,93,94,95,96,97,98,99,100,101,102,104,105,106,107,108,109,112,113,114,115,116,117,118,119,120,121,122,123,125,126,128,129,130,131,132,133,134,135,136,137,140,141,143,144,145,146,147,148,149,150,152,153,154],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022R Numberof Paes Rese a rched 5 2 3 4 4 6\u0022,\u0022Access to Inform a tion Requests H a ndled Requests Fulfilled (in Wholeorin Part) or Denied\u0022],\u0022next_blocks\u0022:[\u0022Fiscalyearinwhich Number of Percentage of Number of AT I\u0022,\u0022f AT Isystem 41 7 requestswerefulfilledinwholeorinpart a nd 1 2 requestsweredeniedwithoutfulfilling a nypart of\u0022]}},{\u0022id\u0022:\u0022b180\u0022,\u0022source_text\u0022:\u0022Fi sca l yea r i n w h i c h N u m be r of Pe rce n ta ge of N u m be r of AT I\u0022,\u0022source_length\u0022:79,\u0022allowed_start_offsets\u0022:[0,2,3,6,7,8,9,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,37,38,39,40,42,43,45,46,49,50,51,52,54,55,57,58,60,61,62,63,64,65,66,67,69,70,71,72,74,75,77,78,79],\u0022allowed_end_offsets\u0022:[0,2,3,6,7,8,9,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,37,38,39,40,42,43,45,46,49,50,51,52,54,55,57,58,60,61,62,63,64,65,66,67,69,70,71,72,74,75,77,78,79],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Access to Inform a tion Requests H a ndled Requests Fulfilled (in Wholeorin Part) or Denied\u0022,\u0022Number Of the 5 89 requestsclosedin FY 24 429 requestsprovidedsufficientinformation a ndwereh a ndled by the AT I\u0022],\u0022next_blocks\u0022:[\u0022f AT Isystem 41 7 requestswerefulfilledinwholeorinpart a nd 1 2 requestsweredeniedwithoutfulfilling a nypart of\u0022,\u0022the AT Irequestwas AT Irequests AT Irequestsrequestswhich\u0022]}},{\u0022id\u0022:\u0022b181\u0022,\u0022source_text\u0022:\u0022f AT I syste m 41 7 req u ests we re fu lfi l led i n w h o le o r i n pa rt a n d 1 2 req u ests we re d e n i ed w it h o u t fu lfi l li n g a ny pa rt of\u0022,\u0022source_length\u0022:157,\u0022allowed_start_offsets\u0022:[0,1,2,4,5,6,7,12,13,14,15,17,18,19,20,23,24,25,26,30,31,33,34,36,37,39,40,43,44,45,46,49,50,51,52,53,54,55,56,57,58,59,60,62,63,64,65,66,67,68,69,70,71,73,74,76,77,78,79,80,81,82,83,84,85,86,87,90,91,92,93,97,98,100,101,103,104,105,106,107,108,109,110,111,112,114,115,116,117,119,120,121,122,123,124,125,126,127,128,130,131,134,135,136,137,139,140,141,142,143,144,145,146,148,149,151,152,154,155,157],\u0022allowed_end_offsets\u0022:[0,1,2,4,5,6,7,12,13,14,15,17,18,19,20,23,24,25,26,30,31,33,34,36,37,39,40,43,44,45,46,49,50,51,52,53,54,55,56,57,58,59,60,62,63,64,65,66,67,68,69,70,71,73,74,76,77,78,79,80,81,82,83,84,85,86,87,90,91,92,93,97,98,100,101,103,104,105,106,107,108,109,110,111,112,114,115,116,117,119,120,121,122,123,124,125,126,127,128,130,131,134,135,136,137,139,140,141,142,143,144,145,146,148,149,151,152,154,155,157],\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022previous_blocks\u0022:[\u0022Number Of the 5 89 requestsclosedin FY 24 429 requestsprovidedsufficientinformation a ndwereh a ndled by the AT I\u0022,\u0022Fiscalyearinwhich Number of Percentage of Number of AT I\u0022],\u0022next_blocks\u0022:[\u0022the AT Irequestwas AT Irequests AT Irequestsrequestswhich\u0022,\u0022therequest\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "pointerOnly": true,
+          "forbidden": [
+            "headingText",
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity"
+          ]
+        }
+      },
+      "requestBytes": 7031,
+      "estimatedInputTokens": 1758,
+      "repeatedContextBytes": 637,
+      "requestSha256": "082b199907971ee5eaf44be3821f8de80b82dad017a920f5ca69885371210712"
+    }
+  ]
+}

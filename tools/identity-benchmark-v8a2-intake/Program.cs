@@ -24,10 +24,13 @@ internal static class Program
         var root = Path.GetFullPath(args.FirstOrDefault(x => !x.StartsWith("--", StringComparison.Ordinal)) ?? Directory.GetCurrentDirectory());
         var sourceDir = GetOption(args, "--source-dir") ?? throw new ArgumentException("V8A2 requires --source-dir");
         sourceDir = Path.GetFullPath(sourceDir);
+        var outputRelative = GetOption(args, "--output-relative") ?? OutputRelative;
+        var requiredDocuments = ParsePositiveInt(GetOption(args, "--required-documents"), RequiredDocuments);
+        var selectionSeed = GetOption(args, "--selection-seed") ?? SelectionSeed;
         try
         {
-            await RunAsync(root, sourceDir, args.Contains("--replace", StringComparer.Ordinal));
-            var manifestPath = Path.Combine(Full(root, OutputRelative), "manifest.json");
+            await RunAsync(root, sourceDir, outputRelative, requiredDocuments, selectionSeed, args.Contains("--replace", StringComparer.Ordinal));
+            var manifestPath = Path.Combine(Full(root, outputRelative), "manifest.json");
             using var manifest = JsonDocument.Parse(await File.ReadAllTextAsync(manifestPath));
             Console.WriteLine($"V8A2_STATUS={manifest.RootElement.GetProperty("status").GetString()} PROVIDER_CALLS=0 GOLD_READ_COUNT=0");
             return 0;
@@ -39,10 +42,10 @@ internal static class Program
         }
     }
 
-    private static async Task RunAsync(string root, string sourceDir, bool replace)
+    private static async Task RunAsync(string root, string sourceDir, string outputRelative, int requiredDocuments, string selectionSeed, bool replace)
     {
         Require(Directory.Exists(sourceDir), "V8A2_SOURCE_DIRECTORY_NOT_FOUND");
-        var output = Full(root, OutputRelative);
+        var output = Full(root, outputRelative);
         if (replace && Directory.Exists(output)) Directory.Delete(output, true);
         Require(!Directory.Exists(output) || !Directory.EnumerateFiles(output, "*", SearchOption.AllDirectories).Any(), "V8A2_OUTPUT_ALREADY_EXISTS_NO_OVERWRITE");
         Directory.CreateDirectory(output);
@@ -64,14 +67,14 @@ internal static class Program
         await WriteAsync(Path.Combine(output, "intake-manifest.json"), new
         {
             schemaVersion = "a99-v8a2-intake-manifest-v1",
-            status = eligible.Length >= RequiredDocuments ? "INTAKE_ELIGIBLE_POOL_FOUND" : "BLOCKED_ON_NEW_SOURCE_CORPUS",
+            status = eligible.Length >= requiredDocuments ? "INTAKE_ELIGIBLE_POOL_FOUND" : "BLOCKED_ON_NEW_SOURCE_CORPUS",
             sourceDirectory = sourceDir,
             sourceDirectoryReadOnly = true,
             sourceScanSha256 = sourceScanSha,
             sourceFileCount = sourceFiles.Length,
             supportedSourceCount = sourceFiles.Length,
             eligibleUniqueSourceCount = eligible.Length,
-            requiredMinimum = RequiredDocuments,
+            requiredMinimum = requiredDocuments,
             providerCalls = 0,
             goldReadCount = 0,
             historicalProvenanceRead = true,
@@ -118,7 +121,7 @@ internal static class Program
             sourceOnly = true,
         });
 
-        if (eligible.Length < RequiredDocuments)
+        if (eligible.Length < requiredDocuments)
         {
             await WriteAsync(Path.Combine(output, "eligibility-snapshot.json"), new
             {
@@ -126,7 +129,7 @@ internal static class Program
                 status = "BLOCKED_ON_NEW_SOURCE_CORPUS",
                 reason = "Fewer than six readable, unique, non-near-duplicate external sources survived the historical provenance firewall.",
                 eligibleUniqueSourceCount = eligible.Length,
-                requiredMinimum = RequiredDocuments,
+                requiredMinimum = requiredDocuments,
                 noSubstitution = true,
                 noBackupBypass = true,
                 noGeneratedDocxBypass = true,
@@ -141,7 +144,7 @@ internal static class Program
                 sourceDirectory = sourceDir,
                 sourceScanSha256 = sourceScanSha,
                 eligibleUniqueSourceCount = eligible.Length,
-                requiredMinimum = RequiredDocuments,
+                requiredMinimum = requiredDocuments,
                 providerCalls = 0,
                 modelCalls = 0,
                 goldReadCount = 0,
@@ -151,7 +154,7 @@ internal static class Program
             return;
         }
 
-        var selected = SelectDeterministically(eligible, RequiredDocuments);
+        var selected = SelectDeterministically(eligible, requiredDocuments, selectionSeed);
         var selectedSourceIds = selected.Select(x => x.SourceId).ToHashSet(StringComparer.Ordinal);
         var rejectedRecords = sourceFiles.Where(x => !selectedSourceIds.Contains(x.SourceId)).Select(x => new
         {
@@ -194,7 +197,7 @@ internal static class Program
         {
             schemaVersion = "a99-v8a2-eligibility-snapshot-v1",
             status = "FROZEN_NEW_SOURCE_ELIGIBILITY",
-            selectionSeed = SelectionSeed,
+            selectionSeed,
             selectionRule = "source-independent family/format/size-band stratification; no semantic difficulty or known failure-shape ranking",
             eligiblePoolCount = eligible.Length,
             selectedSourceIds = selected.Select(x => x.SourceId).ToArray(),
@@ -214,7 +217,7 @@ internal static class Program
             status = "READY_FOR_V8_PROVIDER_EXECUTION",
             sourceDirectory = sourceDir,
             sourceScanSha256 = sourceScanSha,
-            selectionSeed = SelectionSeed,
+            selectionSeed,
             selectedSourceIds = selected.Select(x => x.SourceId).ToArray(),
             rejectedSourceIds = rejectedRecords.Select(x => x.SourceId).ToArray(),
             familyDistribution = selected.GroupBy(x => x.Family, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal),
@@ -235,7 +238,7 @@ internal static class Program
             autoCollapse = false,
             acceptedAuthority = "MODEL_PROPOSED_PROOF + CLEAR_FALSIFIER => ACCEPTED_FOR_V8_GRAPH_ONLY; otherwise KEEP_SPLIT",
         });
-        await File.WriteAllTextAsync(Path.Combine(output, "report.md"), BuildReadyReport(sourceDir, selectedDocs, candidateSets.Sum(x => x.candidates.Count), proposerRequestSetSha, falsifierRequestSetSha), new UTF8Encoding(false));
+        await File.WriteAllTextAsync(Path.Combine(output, "report.md"), BuildReadyReport(sourceDir, selectedDocs, candidateSets.Sum(x => x.candidates.Count), proposerRequestSetSha, falsifierRequestSetSha, selectionSeed, requiredDocuments), new UTF8Encoding(false));
     }
 
     private static Historical ReadHistorical(string root, string inventoryPath)
@@ -366,9 +369,9 @@ internal static class Program
         autoCollapse = false,
     };
 
-    private static IReadOnlyList<SourceInspection> SelectDeterministically(IReadOnlyList<SourceInspection> eligible, int count)
+    private static IReadOnlyList<SourceInspection> SelectDeterministically(IReadOnlyList<SourceInspection> eligible, int count, string selectionSeed)
     {
-        var ranked = eligible.OrderBy(x => x.Family, StringComparer.Ordinal).ThenBy(x => x.Format, StringComparer.Ordinal).ThenBy(x => x.SizeBand, StringComparer.Ordinal).ThenBy(x => Sha256Text(SelectionSeed + "|" + x.SourceId), StringComparer.Ordinal).ToArray(); var selected = new List<SourceInspection>(); foreach (var family in ranked.Select(x => x.Family).Distinct(StringComparer.Ordinal)) { var row = ranked.First(x => x.Family == family); if (!selected.Any(x => x.SourceId == row.SourceId)) selected.Add(row); if (selected.Count == count) break; } foreach (var row in ranked) { if (selected.Count == count) break; if (selected.All(x => x.SourceId != row.SourceId)) selected.Add(row); } return selected.OrderBy(x => x.SourceId, StringComparer.Ordinal).ToArray();
+        var ranked = eligible.OrderBy(x => x.Family, StringComparer.Ordinal).ThenBy(x => x.Format, StringComparer.Ordinal).ThenBy(x => x.SizeBand, StringComparer.Ordinal).ThenBy(x => Sha256Text(selectionSeed + "|" + x.SourceId), StringComparer.Ordinal).ToArray(); var selected = new List<SourceInspection>(); foreach (var family in ranked.Select(x => x.Family).Distinct(StringComparer.Ordinal)) { var row = ranked.First(x => x.Family == family); if (!selected.Any(x => x.SourceId == row.SourceId)) selected.Add(row); if (selected.Count == count) break; } foreach (var row in ranked) { if (selected.Count == count) break; if (selected.All(x => x.SourceId != row.SourceId)) selected.Add(row); } return selected.OrderBy(x => x.SourceId, StringComparer.Ordinal).ToArray();
     }
 
     private static double Similarity(string left, string right)
@@ -395,14 +398,15 @@ internal static class Program
     private static string SanitizeFileName(string name) => string.Concat(name.Select(c => Path.GetInvalidFileNameChars().Contains(c) ? '_' : c));
     private static bool EndsSentence(string text) => text.EndsWith(".", StringComparison.Ordinal) || text.EndsWith("!", StringComparison.Ordinal) || text.EndsWith("?", StringComparison.Ordinal);
     private static string GetOption(string[] args, string name) { var i = Array.IndexOf(args, name); return i >= 0 && i + 1 < args.Length ? args[i + 1] : null; }
+    private static int ParsePositiveInt(string? value, int fallback) => value is null ? fallback : int.TryParse(value, out var parsed) && parsed > 0 ? parsed : throw new ArgumentException("Expected a positive integer option.");
     private static string Full(string root, string relative) => Path.Combine(root, relative.Replace('/', Path.DirectorySeparatorChar));
     private static string Relative(string root, string path) => Path.GetRelativePath(root, path).Replace('\\', '/');
     private static string Sha256File(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
     private static string Sha256Text(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text))).ToLowerInvariant();
     private static async Task WriteAsync(string path, object value) => await File.WriteAllTextAsync(path, JsonSerializer.Serialize(value, JsonOptions), new UTF8Encoding(false));
     private static void Require(bool ok, string error) { if (!ok) throw new InvalidDataException(error); }
-    private static string BuildBlockedReport(string sourceDir, IReadOnlyList<SourceInspection> all, IReadOnlyList<SourceInspection> eligible) => $"# V8A2 — new source corpus intake\n\nStatus: **BLOCKED_ON_NEW_SOURCE_CORPUS**.\n\nSource directory: `{sourceDir}`\n\nThe read-only source scan found **{all.Count}** supported DOCX/PDF files; only **{eligible.Count}** survived readability, byte/source provenance, normalized-text, and near-duplicate checks. The minimum is **{RequiredDocuments}**. No substitution with generated-docx, backup, converted, or historical files was performed.\n\n- Provider/model calls: **0/0**\n- Gold/prediction reads: **0**\n- Holdout selection: **not performed**\n- Candidate/request materialization: **not performed**\n";
-    private static string BuildReadyReport(string sourceDir, IReadOnlyList<ParsedDocument> docs, int candidateCount, string proposerRequestSetSha, string falsifierRequestSetSha) => $"# V8A2 — new source corpus intake\n\nStatus: **READY_FOR_V8_PROVIDER_EXECUTION**.\n\nSource-only intake from `{sourceDir}` selected **{docs.Count}** documents using `{SelectionSeed}`. No Gold, historical predictions, semantic labels, or provider calls were used. Proposer and independent falsifier request sets are frozen; acceptance is graph-only and is not automatic collapse.\n\n- Occurrences: **{docs.Sum(x => x.Occurrences.Count)}**\n- Candidate pairs: **{candidateCount}**\n- Proposer request-set SHA-256: `{proposerRequestSetSha}`\n- Falsifier request-set SHA-256: `{falsifierRequestSetSha}`\n- Provider/model calls: **0/0**\n- Gold/prediction reads: **0**\n";
+    private static string BuildBlockedReport(string sourceDir, IReadOnlyList<SourceInspection> all, IReadOnlyList<SourceInspection> eligible) => $"# V8A2 — new source corpus intake\n\nStatus: **BLOCKED_ON_NEW_SOURCE_CORPUS**.\n\nSource directory: `{sourceDir}`\n\nThe read-only source scan found **{all.Count}** supported DOCX/PDF files; only **{eligible.Count}** survived readability, byte/source provenance, normalized-text, and near-duplicate checks. No substitution with generated-docx, backup, converted, or historical files was performed.\n\n- Provider/model calls: **0/0**\n- Gold/prediction reads: **0**\n- Holdout selection: **not performed**\n- Candidate/request materialization: **not performed**\n";
+    private static string BuildReadyReport(string sourceDir, IReadOnlyList<ParsedDocument> docs, int candidateCount, string proposerRequestSetSha, string falsifierRequestSetSha, string selectionSeed, int requiredDocuments) => $"# V8A2 — new source corpus intake\n\nStatus: **READY_FOR_V8_PROVIDER_EXECUTION**.\n\nSource-only intake from `{sourceDir}` selected **{docs.Count}** documents using `{selectionSeed}`; configured minimum was **{requiredDocuments}**. No Gold, historical predictions, semantic labels, or provider calls were used. Proposer and independent falsifier request sets are frozen; acceptance is graph-only and is not automatic collapse.\n\n- Occurrences: **{docs.Sum(x => x.Occurrences.Count)}**\n- Candidate pairs: **{candidateCount}**\n- Proposer request-set SHA-256: `{proposerRequestSetSha}`\n- Falsifier request-set SHA-256: `{falsifierRequestSetSha}`\n- Provider/model calls: **0/0**\n- Gold/prediction reads: **0**\n";
 
     private sealed record Historical(HashSet<string> NormalizedTextHashes, HashSet<string> SourceHashes)
     {

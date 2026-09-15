@@ -1,0 +1,190 @@
+{
+  "artifactKind": "a99_identity_benchmark_v8h0_heading_extraction_preflight",
+  "schemaVersion": "a99-v8h0-heading-extraction-preflight-v1",
+  "status": "READY_FOR_V8H0_EXTENSION_HEADING_PROVIDER_AUTHORIZATION",
+  "authority": {
+    "v8ProofContract": "ffa1110",
+    "v8a2Commit": "579b3fd",
+    "v8a3Commit": "c6ce41c",
+    "v8bCommit": "1550c2e",
+    "v8b0Commit": "140f8ad",
+    "inputRelative": "artifacts/identity-benchmark/v8h0-extension/source-intake-v1",
+    "extension": true,
+    "v8a2ManifestSha256": "2bc2e4c576b70c96c7c283f86a444aee67ec4666da8e57bd96a3f74c68e370e1",
+    "sourceIntakeSha256": "4e7a43bfcd603ba623fad3d49941369fa2236ba896c725596f58bdb15300eb49",
+    "frozenInputArtifactsMutated": false
+  },
+  "detector": {
+    "version": "pdf-layout-evidence-production-role-span-v1",
+    "reused": "PdfLineExtraction, PdfLineBlockFilter, PdfSemanticBlockGrouper, PdfStyleClusterProfile, PdfCandidateContextBuilder, PdfCandidateRanker, PdfLayoutEvidenceOutline.BuildBroadCandidates/SelectRankedCandidates, PdfBlockAnalyst role/span prompts",
+    "maxAnalystBlocks": 40,
+    "roleBatchSize": 8,
+    "pointerSpanBatchSize": 4,
+    "promptProfileSha256": "028ed77b71687bebadd8f5e702b7ad0890e11dca845597cf0a48652e8aec7aab",
+    "modelCalls": 0,
+    "providerCalls": 0
+  },
+  "documents": {
+    "count": 3,
+    "sourceLineCount": 10034,
+    "sourceRows": [
+      {
+        "sourceId": "NEW-976B6F4383DD",
+        "name": "un__lesotho-annual-results-report-2024.pdf",
+        "byteSha256": "976b6f4383dd4f15ee5ea172c520b8e9c4854a2b00afc0468c3c7d200f46e8a7",
+        "family": "un"
+      },
+      {
+        "sourceId": "NEW-D37DD2D74B04",
+        "name": "ukgov__charity-commission-annual-report-2023-24.pdf",
+        "byteSha256": "d37dd2d74b04ed8f33c6717e398674ab369ef15abb7db2227a03d75f20ba7795",
+        "family": "ukgov"
+      },
+      {
+        "sourceId": "NEW-F90364E75711",
+        "name": "worldbank__access-to-information-fy24-annual-report.pdf",
+        "byteSha256": "f90364e757116adb74aaf07514c325f53619a8be4eb6ea201ffb8ba562878975",
+        "family": "worldbank"
+      }
+    ],
+    "candidateManifest": "4eae3a0dd5136ab73e958d979572cee9948ecd61c0bd1d94f148a5074f902f59"
+  },
+  "requestScale": {
+    "requestCount": 45,
+    "roleRequestCount": 15,
+    "pointerSpanRequestCount": 30,
+    "totalRequestBytes": 306198,
+    "maximumRequestBytes": 14709,
+    "totalEstimatedInputTokens": 76565,
+    "maximumEstimatedInputTokens": 3678,
+    "repeatedContextBytes": 18250,
+    "repeatedContextRatio": 0.05960195690370283,
+    "perDocument": [
+      {
+        "documentId": "NEW-976B6F4383DD",
+        "requestCount": 15,
+        "rawSourceLines": 3682,
+        "candidateBlocks": 452,
+        "selectedBlocks": 40,
+        "totalBytes": 109087,
+        "totalEstimatedInputTokens": 27277,
+        "maxRequestBytes": 14709,
+        "maxEstimatedInputTokens": 3678,
+        "roleSourceRefs": 43,
+        "spanSourceRefsUpperBound": 43
+      },
+      {
+        "documentId": "NEW-D37DD2D74B04",
+        "requestCount": 15,
+        "rawSourceLines": 5632,
+        "candidateBlocks": 538,
+        "selectedBlocks": 40,
+        "totalBytes": 96536,
+        "totalEstimatedInputTokens": 24139,
+        "maxRequestBytes": 12364,
+        "maxEstimatedInputTokens": 3091,
+        "roleSourceRefs": 45,
+        "spanSourceRefsUpperBound": 45
+      },
+      {
+        "documentId": "NEW-F90364E75711",
+        "requestCount": 15,
+        "rawSourceLines": 720,
+        "candidateBlocks": 104,
+        "selectedBlocks": 40,
+        "totalBytes": 100575,
+        "totalEstimatedInputTokens": 25149,
+        "maxRequestBytes": 11751,
+        "maxEstimatedInputTokens": 2938,
+        "roleSourceRefs": 43,
+        "spanSourceRefsUpperBound": 43
+      }
+    ]
+  },
+  "binding": {
+    "version": "v8h0-source-bound-heading-binding-v1",
+    "sourceAuthority": "harness-owned immutable source line/block map",
+    "modelOutputRefs": "production block-local opaque ids only; canonical source IDs are never model output authority",
+    "exactTextOwnedByHarness": true,
+    "numericOffsetsOwnedByHarness": true,
+    "noLevelParentIdentity": true,
+    "syntheticTests": {
+      "count": 13,
+      "passed": 13,
+      "results": [
+        {
+          "name": "valid_selection",
+          "pass": true
+        },
+        {
+          "name": "unknown_ref_rejected",
+          "pass": true
+        },
+        {
+          "name": "fabricated_canonical_id_rejected",
+          "pass": true
+        },
+        {
+          "name": "duplicate_incompatible_rejected",
+          "pass": true
+        },
+        {
+          "name": "missing_output_is_invalid",
+          "pass": true
+        },
+        {
+          "name": "forbidden_level_rejected",
+          "pass": true
+        },
+        {
+          "name": "forbidden_parent_rejected",
+          "pass": true
+        },
+        {
+          "name": "forbidden_identity_rejected",
+          "pass": true
+        },
+        {
+          "name": "exact_source_text_binding",
+          "pass": true
+        },
+        {
+          "name": "source_text_drift_rejected",
+          "pass": true
+        },
+        {
+          "name": "provenance_binding_is_exact",
+          "pass": true
+        },
+        {
+          "name": "pointer_offsets_are_harness_owned",
+          "pass": true
+        },
+        {
+          "name": "deterministic_validation",
+          "pass": true
+        }
+      ]
+    }
+  },
+  "firewall": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldReadCount": 0,
+    "v8a2Mutated": false,
+    "v8a3Mutated": false,
+    "v8bMutated": false,
+    "v8b0Mutated": false,
+    "identityCandidateGeneration": false,
+    "historicalN15Mutated": false
+  },
+  "gate": {
+    "sourceUniverseComplete": true,
+    "productionDetectorReused": true,
+    "requestHashesDeterministic": true,
+    "allRequestsMaterializedBeforeProvider": true,
+    "noGoldOrPredictionInputs": true,
+    "status": "READY_FOR_V8H0_EXTENSION_HEADING_PROVIDER_AUTHORIZATION"
+  },
+  "next": "Provider authorization may be considered only for frozen role requests; pointer-span requests are conditional upper-bound shards and must be executed only for validated role-selected blocks."
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "a99-v8h0-binding-contract-tests-v1",
+  "results": [
+    {
+      "name": "valid_selection",
+      "pass": true
+    },
+    {
+      "name": "unknown_ref_rejected",
+      "pass": true
+    },
+    {
+      "name": "fabricated_canonical_id_rejected",
+      "pass": true
+    },
+    {
+      "name": "duplicate_incompatible_rejected",
+      "pass": true
+    },
+    {
+      "name": "missing_output_is_invalid",
+      "pass": true
+    },
+    {
+      "name": "forbidden_level_rejected",
+      "pass": true
+    },
+    {
+      "name": "forbidden_parent_rejected",
+      "pass": true
+    },
+    {
+      "name": "forbidden_identity_rejected",
+      "pass": true
+    },
+    {
+      "name": "exact_source_text_binding",
+      "pass": true
+    },
+    {
+      "name": "source_text_drift_rejected",
+      "pass": true
+    },
+    {
+      "name": "provenance_binding_is_exact",
+      "pass": true
+    },
+    {
+      "name": "pointer_offsets_are_harness_owned",
+      "pass": true
+    },
+    {
+      "name": "deterministic_validation",
+      "pass": true
+    }
+  ]
+}

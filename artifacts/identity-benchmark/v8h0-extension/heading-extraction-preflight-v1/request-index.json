@@ -1,0 +1,1272 @@
+{
+  "schemaVersion": "a99-v8h0-request-index-v1",
+  "requests": [
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004"
+      ],
+      "sourceRefs": [
+        "U000306",
+        "U000320",
+        "U000334",
+        "U000342"
+      ],
+      "requestBytes": 4088,
+      "estimatedInputTokens": 1022,
+      "repeatedContextBytes": 106,
+      "requestSha256": "52a5ac5410239ad17d85066e0c18c5413d58351efa584bfff47e0828b09b1ab7",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "b664f28f8ba51ddc2adcf687bfe2da610a8e6707f50fe4985856f0d97923fa20",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000350",
+        "U000714",
+        "U000742",
+        "U001011"
+      ],
+      "requestBytes": 4364,
+      "estimatedInputTokens": 1091,
+      "repeatedContextBytes": 0,
+      "requestSha256": "bbf41402d972a713da4b2e9667609766c809bfb5a49e3ba5f29a9ae2a5ccd2a6",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "3ea3eebac076b63e2c726f1d4783205e11b1d497618f5bf485332f870946f622",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012"
+      ],
+      "sourceRefs": [
+        "U001407",
+        "U002288",
+        "U002851",
+        "U003006"
+      ],
+      "requestBytes": 5313,
+      "estimatedInputTokens": 1329,
+      "repeatedContextBytes": 75,
+      "requestSha256": "f8c91d75aac95bf06fd59c1db839b2f592686387e875f654a1c0ab8a2b09710e",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "43fd9757400172a9f57e41e66726c10d7584ce52d27cc1923448b8e50f6b15f2",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U002396",
+        "U003119",
+        "U003197",
+        "U003297"
+      ],
+      "requestBytes": 4902,
+      "estimatedInputTokens": 1226,
+      "repeatedContextBytes": 0,
+      "requestSha256": "cda5234988d7175b10f62c224a37c94a5408b75dd38bd0139abffb5af1de1c86",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "e395e53b791fade6beeb292b26982297bd10329918c5071b69df9825a490958b",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020"
+      ],
+      "sourceRefs": [
+        "U003159",
+        "U003263",
+        "U003365",
+        "U003488"
+      ],
+      "requestBytes": 5036,
+      "estimatedInputTokens": 1259,
+      "repeatedContextBytes": 112,
+      "requestSha256": "f1c7f690be01ec4e4bc2e3c327fa9edb7384a8004a8b2ddc28c4067227dfe1d6",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "2553f0a46de755fe2aef013639255edc859e9d999b0f82ffa1d47b375a3e8cd5",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:006",
+      "shardOrdinal": 6,
+      "blockRefs": [
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000321",
+        "U000323",
+        "U001665",
+        "U001667",
+        "U003124",
+        "U003125",
+        "U003126"
+      ],
+      "requestBytes": 6334,
+      "estimatedInputTokens": 1584,
+      "repeatedContextBytes": 221,
+      "requestSha256": "59769090a803dc83fc53ab4770fd968690021ee1bea1b261d167f810080515f0",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "8b4e6ca7b0994066585ec120177cad071c8155fe87ada843bee6fbc44dc35694",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:007",
+      "shardOrdinal": 7,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028"
+      ],
+      "sourceRefs": [
+        "U000018",
+        "U002141",
+        "U002142",
+        "U002144"
+      ],
+      "requestBytes": 6409,
+      "estimatedInputTokens": 1603,
+      "repeatedContextBytes": 383,
+      "requestSha256": "bc4c3afb8e87d898733db0705f7af3dcc5949d91fe69d0a2556eae39aaaa6202",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "9cffa5e3ee6ce96d54a6079ad21af79f51bf4f93a9c40cdd6dd62a6cc487a8ba",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:008",
+      "shardOrdinal": 8,
+      "blockRefs": [
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000014",
+        "U000019",
+        "U000040",
+        "U000041"
+      ],
+      "requestBytes": 3616,
+      "estimatedInputTokens": 904,
+      "repeatedContextBytes": 224,
+      "requestSha256": "f51358d2e084b1244ff0af99f759bd74aa82ca3a3b7dae2e9f65e85eb2569b79",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "f30c06c8aee1b8f2c6aee7137c2366ab55deb5acaab95624880f54a04be72c3e",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:009",
+      "shardOrdinal": 9,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036"
+      ],
+      "sourceRefs": [
+        "U000016",
+        "U000017",
+        "U000043",
+        "U000044"
+      ],
+      "requestBytes": 3504,
+      "estimatedInputTokens": 876,
+      "repeatedContextBytes": 77,
+      "requestSha256": "0a11e87ee693c9ad16a216556ea8d5a9506880aada149df95bffbc4bbf021e8e",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "504569faa8b7692ec8a51bc678978e6fdae7ab233ef3b19829281881d61a5921",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-976B6F4383DD:POINTER_SPAN:010",
+      "shardOrdinal": 10,
+      "blockRefs": [
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U000177",
+        "U000178",
+        "U000268",
+        "U000271"
+      ],
+      "requestBytes": 3373,
+      "estimatedInputTokens": 844,
+      "repeatedContextBytes": 122,
+      "requestSha256": "96bd8b3ca72eacb20d6b491a50b48d7b4672900aea73c00bdc8c6a7bc45ebd42",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "8c06f4aa9e01f364fbb89c2c2c38ff3d7d7f6ce600a6a71e00812b39d2e99f00",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "ROLE",
+      "shardId": "NEW-976B6F4383DD:ROLE:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000306",
+        "U000320",
+        "U000334",
+        "U000342",
+        "U000350",
+        "U000714",
+        "U000742",
+        "U001011"
+      ],
+      "requestBytes": 12190,
+      "estimatedInputTokens": 3048,
+      "repeatedContextBytes": 710,
+      "requestSha256": "3bcd92a5f6f60d623b201b79d11401e42887928013161bdf791ddd336db44907",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "f7ff56d97ae42cbe5fb1421da4591d5b85a583544c1168d80223791a2ce3e149",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "ROLE",
+      "shardId": "NEW-976B6F4383DD:ROLE:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U001407",
+        "U002288",
+        "U002396",
+        "U002851",
+        "U003006",
+        "U003119",
+        "U003197",
+        "U003297"
+      ],
+      "requestBytes": 14268,
+      "estimatedInputTokens": 3567,
+      "repeatedContextBytes": 1396,
+      "requestSha256": "664d4b8c02c2ce34fb5fa015fc725b03be32d90dc40306de93837786c7d6939e",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "d5112ed4f5dfd724ddfd7b283aa8ac375cacee83516f9a2914b4089915e61eba",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "ROLE",
+      "shardId": "NEW-976B6F4383DD:ROLE:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000321",
+        "U000323",
+        "U001665",
+        "U001667",
+        "U003124",
+        "U003125",
+        "U003126",
+        "U003159",
+        "U003263",
+        "U003365",
+        "U003488"
+      ],
+      "requestBytes": 14709,
+      "estimatedInputTokens": 3678,
+      "repeatedContextBytes": 1319,
+      "requestSha256": "a2478f00993297e381966225bab391950a43b949a4a9911de2ffb5d401308074",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "8bd4322dd9ab7031ff7b9f6be5d1a3a854dc56d1ec0e3677c0204bb08558f19a",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "ROLE",
+      "shardId": "NEW-976B6F4383DD:ROLE:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000014",
+        "U000018",
+        "U000019",
+        "U000040",
+        "U000041",
+        "U002141",
+        "U002142",
+        "U002144"
+      ],
+      "requestBytes": 11357,
+      "estimatedInputTokens": 2840,
+      "repeatedContextBytes": 1131,
+      "requestSha256": "0c3cdbf2315c52914cee8e94a5c481d04b1454d49777b4b109073dea4e1cb7b3",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "0c9b6ad5da83bf9f17090c0ddb5c9ff33fc7aad2c13488fcd7250803f241b93e",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "ROLE",
+      "shardId": "NEW-976B6F4383DD:ROLE:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U000016",
+        "U000017",
+        "U000043",
+        "U000044",
+        "U000177",
+        "U000178",
+        "U000268",
+        "U000271"
+      ],
+      "requestBytes": 9624,
+      "estimatedInputTokens": 2406,
+      "repeatedContextBytes": 227,
+      "requestSha256": "c7c894a1b1d7b678b8311e7671d0f5b877f087e7bff6597ae0e2815f14afd452",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "9dc4f8d2e33cf03aa490b11ff116f1790d8b3382de50c56269ae6bdb04fc415e",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004"
+      ],
+      "sourceRefs": [
+        "U005311",
+        "U005313",
+        "U005327",
+        "U005328",
+        "U005334",
+        "U005336",
+        "U005392",
+        "U005394"
+      ],
+      "requestBytes": 4236,
+      "estimatedInputTokens": 1059,
+      "repeatedContextBytes": 137,
+      "requestSha256": "721392aaae233713e130476b958848ced99afc9161a4953d804c0f3d6b92c723",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "41427dcf749cef153d8432a77f65b4c0132cc47aaa6945941c9872d0b8cd477f",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000905",
+        "U001461",
+        "U002019",
+        "U002053"
+      ],
+      "requestBytes": 3930,
+      "estimatedInputTokens": 983,
+      "repeatedContextBytes": 26,
+      "requestSha256": "87dcde98769b96126900fa7f83d8d924b1f8c6bb472a551002ac025ea68da657",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "71e3df5cacb48c565d31660613cd72eb1f8eeb192b75a3780693397671e95a2c",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012"
+      ],
+      "sourceRefs": [
+        "U000061",
+        "U000076",
+        "U000723",
+        "U002076"
+      ],
+      "requestBytes": 3647,
+      "estimatedInputTokens": 912,
+      "repeatedContextBytes": 13,
+      "requestSha256": "4d406df18313309fbfefecbf661b8b2291e5095a6396fcc4c4929b0104b5503f",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "a1b5e4216c380931f5cefb19b4b5c0ec111bd2217f023bf05db004bcde842584",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U001979",
+        "U002037",
+        "U002212",
+        "U002298"
+      ],
+      "requestBytes": 3794,
+      "estimatedInputTokens": 949,
+      "repeatedContextBytes": 49,
+      "requestSha256": "ab634b46f45693c9a93a2921dadd5ebd2807adb3e6358e8ed1daca095003f980",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "a4e13740b426215a63f2a0802e33b7487a44bbc49acd15b97f31b9cb15524d6a",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020"
+      ],
+      "sourceRefs": [
+        "U000038",
+        "U000883",
+        "U000884",
+        "U003087",
+        "U004619"
+      ],
+      "requestBytes": 4103,
+      "estimatedInputTokens": 1026,
+      "repeatedContextBytes": 8,
+      "requestSha256": "564badf8b1aef56d318baac06f78650c5ca1728b746b91abccacfb89c599ee33",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "6f547f1d661d7551c3e36d25c87067407285c17966f0f7155f59e6dc1cd8627f",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:006",
+      "shardOrdinal": 6,
+      "blockRefs": [
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000040",
+        "U000042",
+        "U000044",
+        "U000046"
+      ],
+      "requestBytes": 3714,
+      "estimatedInputTokens": 929,
+      "repeatedContextBytes": 222,
+      "requestSha256": "471fc8ae6d5846d222abde9edf3d0e4f6402cee85c4ea87fdb794cb036b70837",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "db31cfdc6009b2a81b2b74d7e1df3d07a1f9b4485487d055bafb95b4f930a49c",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:007",
+      "shardOrdinal": 7,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028"
+      ],
+      "sourceRefs": [
+        "U000048",
+        "U000050",
+        "U000052",
+        "U000057"
+      ],
+      "requestBytes": 3726,
+      "estimatedInputTokens": 932,
+      "repeatedContextBytes": 188,
+      "requestSha256": "2d9f21fa17dd658f2162527e464f5bfd035e777a6912f8e4ec5b7cf663c57c1d",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "d181c8b8cc181ac7da0289d8b0a80f8d3140ebb68485a1446e2a3073fd222d25",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:008",
+      "shardOrdinal": 8,
+      "blockRefs": [
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000714",
+        "U004798",
+        "U004817",
+        "U004856"
+      ],
+      "requestBytes": 3701,
+      "estimatedInputTokens": 926,
+      "repeatedContextBytes": 161,
+      "requestSha256": "48999fdcd210d262ef58ef37cf400089330eba774ec5aa1ad762fa7e5f72dcdc",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "a512af6b90a1f538adc57d21a1cd854380db7d1b4d16817a1319d0d0a7558b03",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:009",
+      "shardOrdinal": 9,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036"
+      ],
+      "sourceRefs": [
+        "U004882",
+        "U004905",
+        "U004949",
+        "U004958"
+      ],
+      "requestBytes": 3536,
+      "estimatedInputTokens": 884,
+      "repeatedContextBytes": 183,
+      "requestSha256": "96e89c9927a934748b0859d7ec356225bb29ca8b4c473ca14a90ae027edb5583",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "4cdbfadfc2f265dc79d98078ebfdd9912d9dbfcd39184388d05b40e727839ae8",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-D37DD2D74B04:POINTER_SPAN:010",
+      "shardOrdinal": 10,
+      "blockRefs": [
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U004979",
+        "U005043",
+        "U005055",
+        "U005183"
+      ],
+      "requestBytes": 3436,
+      "estimatedInputTokens": 859,
+      "repeatedContextBytes": 69,
+      "requestSha256": "5a25a28cae43dd03e8345a5e8a79a564d47670e358adad83af395c546c4534fb",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "bb0ee89c616200de2a2c36d3f4d804af15101d233514c4d9c0ecca22e69d88e5",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "ROLE",
+      "shardId": "NEW-D37DD2D74B04:ROLE:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000905",
+        "U001461",
+        "U002019",
+        "U002053",
+        "U005311",
+        "U005313",
+        "U005327",
+        "U005328",
+        "U005334",
+        "U005336",
+        "U005392",
+        "U005394"
+      ],
+      "requestBytes": 12364,
+      "estimatedInputTokens": 3091,
+      "repeatedContextBytes": 729,
+      "requestSha256": "be47f9bba9052db3f3388365ba1ab204f7e10156c0cf6003e9abce74f198f607",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "4140f6fb1aee2fb6d67aef735b7bf1062acc5ba32df493ffee8580277ca32c28",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "ROLE",
+      "shardId": "NEW-D37DD2D74B04:ROLE:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U000061",
+        "U000076",
+        "U000723",
+        "U001979",
+        "U002037",
+        "U002076",
+        "U002212",
+        "U002298"
+      ],
+      "requestBytes": 12030,
+      "estimatedInputTokens": 3008,
+      "repeatedContextBytes": 632,
+      "requestSha256": "13dd5eee0e1ac84c37f04807dfca81f65c83876f5c9f1325e446fc1b8e6183d6",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "16694f512fd626d51726204b5b9a979187682cf06d9955137b80c1f7f94e93d2",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "ROLE",
+      "shardId": "NEW-D37DD2D74B04:ROLE:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000038",
+        "U000040",
+        "U000042",
+        "U000044",
+        "U000046",
+        "U000883",
+        "U000884",
+        "U003087",
+        "U004619"
+      ],
+      "requestBytes": 11298,
+      "estimatedInputTokens": 2825,
+      "repeatedContextBytes": 601,
+      "requestSha256": "d6567f046a61dbf26e78839cb637f46785be62c211aa746439600266d94b9119",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "cb6c7629037f83978c4178d0e6a40c331ef47d853f16579b22ec774027bc726b",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "ROLE",
+      "shardId": "NEW-D37DD2D74B04:ROLE:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000048",
+        "U000050",
+        "U000052",
+        "U000057",
+        "U000714",
+        "U004798",
+        "U004817",
+        "U004856"
+      ],
+      "requestBytes": 11629,
+      "estimatedInputTokens": 2908,
+      "repeatedContextBytes": 917,
+      "requestSha256": "5e0cb2bd45eec94eea70e1571695b30ed25b773b89801a106dbc354ed3939dae",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "3e22a56cd9fe99f44c1cbbe42bb7f8e57374033618e47f364a1e18a5244a5fc7",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "ROLE",
+      "shardId": "NEW-D37DD2D74B04:ROLE:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U004882",
+        "U004905",
+        "U004949",
+        "U004958",
+        "U004979",
+        "U005043",
+        "U005055",
+        "U005183"
+      ],
+      "requestBytes": 11392,
+      "estimatedInputTokens": 2848,
+      "repeatedContextBytes": 906,
+      "requestSha256": "631ba32ed2d0b19fe1bca99704875d58260702a9a66d371cad24b11cb70acadb",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "5a32c92729f971fa12cdfcbc435dfcf33f8bff3df836e34dc226728637703b2e",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004"
+      ],
+      "sourceRefs": [
+        "U000461",
+        "U000603",
+        "U000608",
+        "U000630",
+        "U000631"
+      ],
+      "requestBytes": 4896,
+      "estimatedInputTokens": 1224,
+      "repeatedContextBytes": 62,
+      "requestSha256": "ec547ae7159fded1b590ce9a0104fd3614b441160da0bcd0d5b774f48742ee93",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "270891c812087187275efb85795f1aa2f529fa74bdb48e55c89701d130374ba2",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000012",
+        "U000013",
+        "U000014",
+        "U000712",
+        "U000713",
+        "U000714"
+      ],
+      "requestBytes": 4846,
+      "estimatedInputTokens": 1212,
+      "repeatedContextBytes": 267,
+      "requestSha256": "c256719563ab43722ddec7020d1f29d7fd65cfa14a6157f323ea1fcff37f824f",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "c91c5ada28765ee170923a32cb71cd1fd3d7717959253445d5da50e5b1648536",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012"
+      ],
+      "sourceRefs": [
+        "U000015",
+        "U000016",
+        "U000017",
+        "U000018"
+      ],
+      "requestBytes": 3808,
+      "estimatedInputTokens": 952,
+      "repeatedContextBytes": 382,
+      "requestSha256": "96ac9cfac4894116914b55844df27c936f2b38e1f18e60cfd20ac87d053d79f4",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "e17d334973fb56ba5f4d6423c1f886a43bfc158f054c01fa500a3d77a2a4b9f1",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U000019",
+        "U000020",
+        "U000021",
+        "U000023"
+      ],
+      "requestBytes": 3904,
+      "estimatedInputTokens": 976,
+      "repeatedContextBytes": 369,
+      "requestSha256": "16103908cdce7fba4db166e4a2e23126593c680c34a0a7e56d7733e73c2d0130",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "dd56e71481eed66730f39252e9731ee7ee5d8839e23ce5f6476b4b2107edc5ab",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020"
+      ],
+      "sourceRefs": [
+        "U000024",
+        "U000025",
+        "U000026",
+        "U000033"
+      ],
+      "requestBytes": 4058,
+      "estimatedInputTokens": 1015,
+      "repeatedContextBytes": 431,
+      "requestSha256": "f30a6d4222bc41006a7909976f650ec6c4a572d298604401508c457e4f7295d9",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "c66311a122238dd42987d483146cbc4200495549ddfff98473b7c8cf2c1270b9",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:006",
+      "shardOrdinal": 6,
+      "blockRefs": [
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000005",
+        "U000007",
+        "U000039",
+        "U000046"
+      ],
+      "requestBytes": 3854,
+      "estimatedInputTokens": 964,
+      "repeatedContextBytes": 137,
+      "requestSha256": "5938d0f258605859898c4722ebc05b78433f679746313e8b5551b288841ca1f0",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "84abacf2e6c4cb5a799d7023e1de27b8efb15a017d8de3732649a17f4686b5a4",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:007",
+      "shardOrdinal": 7,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028"
+      ],
+      "sourceRefs": [
+        "U000008",
+        "U000009",
+        "U000010",
+        "U000074"
+      ],
+      "requestBytes": 4141,
+      "estimatedInputTokens": 1036,
+      "repeatedContextBytes": 264,
+      "requestSha256": "8b01943f4a052fd57920d61dd8bb10d985db508b86edb049ecd9a4ccf69a7903",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "338a89d9f51c75eabf629278e4ffe38692e4301b6d7190ecb3a164b62220a512",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:008",
+      "shardOrdinal": 8,
+      "blockRefs": [
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000075",
+        "U000077",
+        "U000122",
+        "U000131"
+      ],
+      "requestBytes": 4345,
+      "estimatedInputTokens": 1087,
+      "repeatedContextBytes": 282,
+      "requestSha256": "2825eb6d550a371ee00863e3949de15f74986719dcb725db9741f5ce730c245d",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "1ab96b82289e63ea72607786ce81819befe97d0c84bbb49048670d2de1261d66",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:009",
+      "shardOrdinal": 9,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036"
+      ],
+      "sourceRefs": [
+        "U000232",
+        "U000234",
+        "U000236",
+        "U000267"
+      ],
+      "requestBytes": 4667,
+      "estimatedInputTokens": 1167,
+      "repeatedContextBytes": 233,
+      "requestSha256": "aef0616e389321e3f8e4f57d140356d51b8c6785cb23fb1a9e5eecb86dfe8e68",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "4f9dffe7ac42f08714993cb000261db9c9b6e24bd12aaaa60ee7100f5d9611dd",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "POINTER_SPAN",
+      "shardId": "NEW-F90364E75711:POINTER_SPAN:010",
+      "shardOrdinal": 10,
+      "blockRefs": [
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U000442",
+        "U000443",
+        "U000445",
+        "U000446"
+      ],
+      "requestBytes": 7031,
+      "estimatedInputTokens": 1758,
+      "repeatedContextBytes": 637,
+      "requestSha256": "082b199907971ee5eaf44be3821f8de80b82dad017a920f5ca69885371210712",
+      "systemPromptSha256": "371ae5481b0cb561bccbd06a994051a5ea066a0e6af7c38bf87f6a7918f86f9c",
+      "userPromptSha256": "68c46cdac3539d81057242e4c6743804b90372c5b8b3079b2098055c315ba95d",
+      "conditional": true
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "ROLE",
+      "shardId": "NEW-F90364E75711:ROLE:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000012",
+        "U000013",
+        "U000014",
+        "U000461",
+        "U000603",
+        "U000608",
+        "U000630",
+        "U000631",
+        "U000712",
+        "U000713",
+        "U000714"
+      ],
+      "requestBytes": 11751,
+      "estimatedInputTokens": 2938,
+      "repeatedContextBytes": 710,
+      "requestSha256": "d61ba75900155b0d409d309c228ca7c0ff9573d74088b0f2b0d66ddc2fc49fc4",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "8c7f9c4fc9c33b7d1918e1e30f532857dc26c630d0150ea6c23bc47464e6fb2b",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "ROLE",
+      "shardId": "NEW-F90364E75711:ROLE:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U000015",
+        "U000016",
+        "U000017",
+        "U000018",
+        "U000019",
+        "U000020",
+        "U000021",
+        "U000023"
+      ],
+      "requestBytes": 10771,
+      "estimatedInputTokens": 2693,
+      "repeatedContextBytes": 923,
+      "requestSha256": "51c1ef5d21c39cbd1928a66f909012901f69ab35cd448d128745adcbd5b7c9ab",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "ea8acff5dc2d5a12bff90a1d8367cbd28464e01bc2e7f41d899ea655824d97a2",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "ROLE",
+      "shardId": "NEW-F90364E75711:ROLE:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000005",
+        "U000007",
+        "U000024",
+        "U000025",
+        "U000026",
+        "U000033",
+        "U000039",
+        "U000046"
+      ],
+      "requestBytes": 10594,
+      "estimatedInputTokens": 2649,
+      "repeatedContextBytes": 795,
+      "requestSha256": "8358fe1d144a5e5b389e30b5a8c4acf5309cbfd7a4e43714dcbfc138a362eab1",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "88e4cff883db07521f28fa977300e4b72a6fa56eb46b116be7be680c021b92e5",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "ROLE",
+      "shardId": "NEW-F90364E75711:ROLE:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000008",
+        "U000009",
+        "U000010",
+        "U000074",
+        "U000075",
+        "U000077",
+        "U000122",
+        "U000131"
+      ],
+      "requestBytes": 10438,
+      "estimatedInputTokens": 2610,
+      "repeatedContextBytes": 667,
+      "requestSha256": "90944954a485fe4b30d884e7a3a29a08618ba55af730968ac9442cd77cd7c10a",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "0fd803bb6f72489740fd47b65678910230ee2ba2fa3e86e3542c3a936ec1ce08",
+      "conditional": false
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "ROLE",
+      "shardId": "NEW-F90364E75711:ROLE:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U000232",
+        "U000234",
+        "U000236",
+        "U000267",
+        "U000442",
+        "U000443",
+        "U000445",
+        "U000446"
+      ],
+      "requestBytes": 11471,
+      "estimatedInputTokens": 2868,
+      "repeatedContextBytes": 1147,
+      "requestSha256": "2de138fedd4fcc400b9519efb0110c520c5740aae8686eda5a4a5f8c5a8fd5c7",
+      "systemPromptSha256": "227375f8a94939647874f0ed3aaa4650b6c8136ad794af2d95f0882db61bbade",
+      "userPromptSha256": "4f19a31df52442e567aed55112ffcc8126cf58932e61529792ca0fd1987b648d",
+      "conditional": false
+    }
+  ]
+}

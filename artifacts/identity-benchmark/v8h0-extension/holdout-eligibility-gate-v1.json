@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "a99-v8h0-extension-holdout-eligibility-gate-v1",
+  "status": "BLOCKED_ON_EXTENSION_HEADING_EXECUTION",
+  "sourceOnly": true,
+  "generalizationClaim": false,
+  "requiredMinimumDocuments": 6,
+  "existingAuthority": {
+    "path": "artifacts/identity-benchmark/v8h0/heading-extraction-execution-v2/binding-revalidation-v3/frozen-bound-heading-occurrence-set.json",
+    "sha256": "78fb19291390c4fab474c3093a42b758a6b5ce8bfa7c3fd960b6ad7c32fdb2be",
+    "eligibleDocumentCount": 4,
+    "boundHeadingCount": 36,
+    "bindingEligibleDocuments": [
+      "NEW-26BE9B284520",
+      "NEW-6717CCA50787",
+      "NEW-C07DA5643BE9",
+      "NEW-FDF9C2552AF0"
+    ],
+    "bindingExcludedDocuments": [
+      "NEW-073DB817879B",
+      "NEW-45314CB70E99"
+    ],
+    "excludedDocumentsResurrection": false
+  },
+  "extensionAuthority": {
+    "sourceIntakeManifest": "artifacts/identity-benchmark/v8h0-extension/source-intake-v1/manifest.json",
+    "sourceIntakeManifestSha256": "2bc2e4c576b70c96c7c283f86a444aee67ec4666da8e57bd96a3f74c68e370e1",
+    "eligibilitySnapshot": "artifacts/identity-benchmark/v8h0-extension/source-intake-v1/eligibility-snapshot.json",
+    "eligibilitySnapshotSha256": "20b6eb18eda7955c970be8f894fd9cdfd63d50c6dbf79fda59340fd1a64f296f",
+    "preflightManifest": "artifacts/identity-benchmark/v8h0-extension/heading-extraction-preflight-v1/manifest.json",
+    "preflightManifestSha256": "3c5213c1c2245853fea2a279f0985e87cc49517d99606a1add7081b984bff9f1",
+    "requestIndexSha256": "ee726d359de01275754a99892e46e50dadd8c9d5de5f593ae1efd18b47b86512",
+    "candidateDocuments": [
+      "NEW-976B6F4383DD",
+      "NEW-D37DD2D74B04",
+      "NEW-F90364E75711"
+    ],
+    "candidateDocumentCount": 3,
+    "candidateSourceLines": 10034,
+    "roleRequests": 15,
+    "conditionalSpanRequests": 30,
+    "providerCalls": 0,
+    "goldReads": 0
+  },
+  "combinedGate": {
+    "sourceEligibleDocumentsBeforeExtensionExecution": 4,
+    "newSourceDocumentsFrozen": 3,
+    "potentialCombinedDocumentCount": 7,
+    "combinedHoldoutReady": false,
+    "reason": "The three new documents are source-eligible and heading requests are preflight-frozen, but they do not enter the bound-heading authority until a separately authorized heading execution completes with valid document-level binding.",
+    "nextRequiredPhase": "V8H0_EXTENSION_HEADING_EXECUTION",
+    "identityProviderCalls": 0,
+    "goldReads": 0
+  },
+  "firewall": {
+    "goldUsed": false,
+    "identityLabelsUsed": false,
+    "historicalPredictionsUsed": false,
+    "semanticDifficultySelection": false,
+    "knownFailureShapeSelection": false,
+    "backupOrGeneratedDocxBypass": false,
+    "oldExcludedDocumentsResurrected": false
+  }
+}

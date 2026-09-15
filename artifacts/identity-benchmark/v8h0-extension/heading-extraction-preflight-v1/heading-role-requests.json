@@ -1,0 +1,1078 @@
+{
+  "schemaVersion": "a99-v8h0-role-requests-v1",
+  "frozenBeforeProvider": true,
+  "requests": [
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "ROLE",
+      "shardId": "NEW-976B6F4383DD:ROLE:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000306",
+        "U000320",
+        "U000334",
+        "U000342",
+        "U000350",
+        "U000714",
+        "U000742",
+        "U001011"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "ROLE",
+        "shardId": "NEW-976B6F4383DD:ROLE:001",
+        "blocks": [
+          "B001",
+          "B002",
+          "B003",
+          "B004",
+          "B005",
+          "B006",
+          "B007",
+          "B008"
+        ],
+        "sourceRefs": [
+          "U000306",
+          "U000320",
+          "U000334",
+          "U000342",
+          "U000350",
+          "U000714",
+          "U000742",
+          "U001011"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b148\u0022,\u0022page\u0022:10,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-semicondensed\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022Ch i ld re n u n de r 5 yea rs w ho a re m a l n o u ris he d:\u0022,\u0022source_length\u0022:62,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b139\u0022,\u0022b140\u0022,\u0022b141\u0022,\u0022b142\u0022,\u0022b143\u0022,\u0022b144\u0022,\u0022b146\u0022,\u0022b147\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u002222 % of the population (335 000 people)\u0022,\u0022experiencehighly a cutefoodinsecurity\u0022],\u0022next_blocks\u0022:[\u0022stuntedoverweightwasted\u0022,\u0022Literacyrates: fem a le: 98 % m a le: 89 %\u0022]}},{\u0022id\u0022:\u0022b158\u0022,\u0022page\u0022:10,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-semicondensed\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022jo i ntl o r s o le l w h i le 28% of ho m e ow n e rs h i p is\u0022,\u0022source_length\u0022:63,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b148: Childrenunder 5 yearswho a rem a lnourished:\u0022],\u0022allowed_parent_ids\u0022:[\u0022b149\u0022,\u0022b151\u0022,\u0022b152\u0022,\u0022b153\u0022,\u0022b154\u0022,\u0022b155\u0022,\u0022b156\u0022,\u0022b157\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022a bout Propertyownership: 23 % of menown a home\u0022,\u0022theirown\u0022],\u0022next_blocks\u0022:[\u0022sexual a ndyy reprod uctive\u0022,\u0022with women\u0022]}},{\u0022id\u0022:\u0022b168\u0022,\u0022page\u0022:11,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-semicondensedbold\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022Deaths pe r 1 00 000 l ive bi rths:\u0022,\u0022source_length\u0022:35,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b148: Childrenunder 5 yearswho a rem a lnourished:\u0022,\u0022b158: jointlorsolelwhile 28 % of homeownership is\u0022],\u0022allowed_parent_ids\u0022:[\u0022b160\u0022,\u0022b161\u0022,\u0022b162\u0022,\u0022b163\u0022,\u0022b164\u0022,\u0022b165\u0022,\u0022b166\u0022,\u0022b167\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022Developmentin Lesotho: A sn a pshot 9\u0022,\u0022MAT E R N A L A N D I NFA N T M ORTA LITY 1 1\u0022],\u0022next_blocks\u0022:[\u0022MATE RNAL U N D E R-FIVE I NFANT NEO NATAL M O RTALITY M O RTALITY M O RTALITY M O RTALITY\u0022,\u0022HIV / AI D S 1 2\u0022]}},{\u0022id\u0022:\u0022b172\u0022,\u0022page\u0022:11,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-semicondensedbold\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022Antiretrovira l\u0022,\u0022source_length\u0022:15,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b148: Childrenunder 5 yearswho a rem a lnourished:\u0022,\u0022b158: jointlorsolelwhile 28 % of homeownership is\u0022,\u0022b168: Deathsper 1 00 000 livebirths:\u0022],\u0022allowed_parent_ids\u0022:[\u0022b163\u0022,\u0022b164\u0022,\u0022b165\u0022,\u0022b166\u0022,\u0022b167\u0022,\u0022b168\u0022,\u0022b169\u0022,\u0022b170\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022,\u0022marker_only_source\u0022],\u0022previous_blocks\u0022:[\u0022MATE RNAL U N D E R-FIVE I NFANT NEO NATAL M O RTALITY M O RTALITY M O RTALITY M O RTALITY\u0022,\u0022HIV / AI D S 1 2\u0022],\u0022next_blocks\u0022:[\u0022from 201 0)\u0022,\u0022Progresstowards 95 - 95 - 95 targets:\u0022]}},{\u0022id\u0022:\u0022b175\u0022,\u0022page\u0022:11,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-semicondensedbold\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022Prog ress towa rds 95- 95- 95 ta rgets:\u0022,\u0022source_length\u0022:39,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b148: Childrenunder 5 yearswho a rem a lnourished:\u0022,\u0022b158: jointlorsolelwhile 28 % of homeownership is\u0022,\u0022b168: Deathsper 1 00 000 livebirths:\u0022,\u0022b172: Antiretrovira l\u0022],\u0022allowed_parent_ids\u0022:[\u0022b165\u0022,\u0022b166\u0022,\u0022b167\u0022,\u0022b168\u0022,\u0022b169\u0022,\u0022b170\u0022,\u0022b172\u0022,\u0022b174\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022Antiretrovira l\u0022,\u0022from 201 0)\u0022],\u0022next_blocks\u0022:[\u0022Of thoseliving with HIV / AI DS:\u0022,\u0022knowtheirstatus of those whoknowtheir of those on treatment\u0022]}},{\u0022id\u0022:\u0022b290\u0022,\u0022page\u0022:20,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-bold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022co m m e m o rates 200 yea rs of Ba sotho\u0022,\u0022source_length\u0022:41,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b158: jointlorsolelwhile 28 % of homeownership is\u0022,\u0022b168: Deathsper 1 00 000 livebirths:\u0022,\u0022b172: Antiretrovira l\u0022,\u0022b175: Progresstowards 95 - 95 - 95 targets:\u0022],\u0022allowed_parent_ids\u0022:[\u0022b275\u0022,\u0022b276\u0022,\u0022b277\u0022,\u0022b278\u0022,\u0022b279\u0022,\u0022b283\u0022,\u0022b287\u0022,\u0022b289\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022partnerships a ndinn ovativefinancingmechanismscontributed to sustainableprogresstowards Lesotho\\u2019sdevelopmentgoals\u0022,\u00222024: The United Nationsin Lesotho\u0022],\u0022next_blocks\u0022:[\u0022LAU NCH I N GTH EBICE NTE N NIAL CO M M E M O RATIO N SAN D\u0022,\u0022first-evernationaldialogue with youngpeople providing the m with a platform to reflectontheiridentity a ndtheirrolein the economicdevelopment of the country a nditsfuture\u0022]}},{\u0022id\u0022:\u0022b301\u0022,\u0022page\u0022:20,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedbold\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022AD D RESSIN G FOO D IN SECU RITY AN D AG RICU LTU RAL\u0022,\u0022source_length\u0022:53,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b168: Deathsper 1 00 000 livebirths:\u0022,\u0022b172: Antiretrovira l\u0022,\u0022b175: Progresstowards 95 - 95 - 95 targets:\u0022,\u0022b290: commemorates 200 years of Basotho\u0022],\u0022allowed_parent_ids\u0022:[\u0022b287\u0022,\u0022b289\u0022,\u0022b290\u0022,\u0022b292\u0022,\u0022b294\u0022,\u0022b297\u0022,\u0022b298\u0022,\u0022b300\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022AGAINST CHILDRE N: D r Najat Maalla M\\u2019jid the Special\u0022,\u0022D r M\\u2019jid\\u2019sm ission focused on strengtheningchild protection systems a ndadvancing national efforts to end violenceagainst\u0022],\u0022next_blocks\u0022:[\u0022children She engageddi rectly with childrencaregivers a ndchild\u0022,\u0022INVESTM ENT: By mid - 2024 as a result of prolongeddrought\u0022]}},{\u0022id\u0022:\u0022b417\u0022,\u0022page\u0022:26,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-semicondensedsemibold\u0022,\u0022color\u0022:\u00220.91,0.20,0.54\u0022},\u0022source_text\u0022:\u0022Th l i d i h i d d t I N C LU SIVE DIGITALIZATIO N\u0022,\u0022source_length\u0022:50,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b172: Antiretrovira l\u0022,\u0022b175: Progresstowards 95 - 95 - 95 targets:\u0022,\u0022b290: commemorates 200 years of Basotho\u0022,\u0022b301: AD D RESSIN GFOO DIN SECU RITY AND AG RICU LTU RAL\u0022],\u0022allowed_parent_ids\u0022:[\u0022b393\u0022,\u0022b394\u0022,\u0022b396\u0022,\u0022b399\u0022,\u0022b400\u0022,\u0022b401\u0022,\u0022b403\u0022,\u0022b407\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022],\u0022previous_blocks\u0022:[\u0022Publicsectorreforms:\u0022,\u0022LEGIS LATIVE RE FO RM Sittdtlltlti Th\u0022],\u0022next_blocks\u0022:[\u0022tdb U Nidtf P U BLIC SECTO RRE FO RM AND\u0022,\u0022Strategic Pillar 1: Goodgovern a nce a ndsocialequity 25\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 12190,
+      "estimatedInputTokens": 3048,
+      "repeatedContextBytes": 710,
+      "requestSha256": "3bcd92a5f6f60d623b201b79d11401e42887928013161bdf791ddd336db44907"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "ROLE",
+      "shardId": "NEW-976B6F4383DD:ROLE:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U001407",
+        "U002288",
+        "U002396",
+        "U002851",
+        "U003006",
+        "U003119",
+        "U003197",
+        "U003297"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "ROLE",
+        "shardId": "NEW-976B6F4383DD:ROLE:002",
+        "blocks": [
+          "B009",
+          "B010",
+          "B011",
+          "B012",
+          "B013",
+          "B014",
+          "B015",
+          "B016"
+        ],
+        "sourceRefs": [
+          "U001407",
+          "U002288",
+          "U002396",
+          "U002851",
+          "U003006",
+          "U003119",
+          "U003197",
+          "U003297"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b517\u0022,\u0022page\u0022:32,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-semicondensedsemibold\u0022,\u0022color\u0022:\u00220.91,0.20,0.54\u0022},\u0022source_text\u0022:\u0022AD D RESSI N G G BV f t f i ht f i L th\u0022,\u0022source_length\u0022:39,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b175: Progresstowards 95 - 95 - 95 targets:\u0022,\u0022b290: commemorates 200 years of Basotho\u0022,\u0022b301: AD D RESSIN GFOO DIN SECU RITY AND AG RICU LTU RAL\u0022,\u0022b417: Thlidihiddt I N CLU SIVE DIGITALIZATIO N\u0022],\u0022allowed_parent_ids\u0022:[\u0022b471\u0022,\u0022b476\u0022,\u0022b477\u0022,\u0022b486\u0022,\u0022b497\u0022,\u0022b507\u0022,\u0022b509\u0022,\u0022b515\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022Violence \\u2013 sexu a l a nd G B Vviolence a g a instchildren a ndotherformsofviolence a ndh a rmfulpr a ctices:\u0022,\u0022M ULTIS ECTO RAL AP PROAC HTO thtddtitifthtt\u0022],\u0022next_blocks\u0022:[\u0022Strategic Pillar 1: Goodgovern a nce a ndsocialequity 31\u0022,\u0022S D Gfin a ncing:\u0022]}},{\u0022id\u0022:\u0022b789\u0022,\u0022page\u0022:51,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-semicondensed\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022cove ri n g 70% of the popu lation a n d e n su ri n g eq u ita ble a ccess to esse ntia l se rvices\u0022,\u0022source_length\u0022:100,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b290: commemorates 200 years of Basotho\u0022,\u0022b301: AD D RESSIN GFOO DIN SECU RITY AND AG RICU LTU RAL\u0022,\u0022b417: Thlidihiddt I N CLU SIVE DIGITALIZATIO N\u0022,\u0022b517: AD D RESSI N G GBV ftfihtfi L th\u0022],\u0022allowed_parent_ids\u0022:[\u0022b776\u0022,\u0022b779\u0022,\u0022b780\u0022,\u0022b782\u0022,\u0022b783\u0022,\u0022b784\u0022,\u0022b787\u0022,\u0022b788\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022doctorsimproving maternal a ndnewborncare\u0022,\u0022Integrated servicedeliverymodelswereexpanded to 8 additional districts\u0022],\u0022next_blocks\u0022:[\u0022H I Vresponse:\u0022,\u0022Strengthenedn a tion a lcapacitiesfor a nequitable a ndsustain a ble HIV responsetargetingkey a ndprioritypopulations\u0022]}},{\u0022id\u0022:\u0022b982\u0022,\u0022page\u0022:62,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedsemibold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Fig u re 1 : Prog ress o n d isa bi l ity i n cl u sio n sco reca rd pe rce nta ge of i n d icato rs by statu s 2020\\u20132024\u0022,\u0022source_length\u0022:121,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b417: Thlidihiddt I N CLU SIVE DIGITALIZATIO N\u0022,\u0022b517: AD D RESSI N G GBV ftfihtfi L th\u0022,\u0022b789: covering 70 % of the popu lation a ndensuringequitable a ccess to essentialse rvices\u0022,\u0022b822: Table 1: Keym etrics of Lesotho\\u2019s HIV / AIDSresponse\u0022],\u0022allowed_parent_ids\u0022:[\u0022b960\u0022,\u0022b964\u0022,\u0022b966\u0022,\u0022b967\u0022,\u0022b968\u0022,\u0022b969\u0022,\u0022b970\u0022,\u0022b972\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022],\u0022previous_blocks\u0022:[\u0022Finance a ndcashtra nsfers: Leveragedthe U N Pa rtners Portal to enhance\u0022,\u0022\\u00A9 U NDP\u0022],\u0022next_blocks\u0022:[\u0022Source: U N Sustainable Development Group ((UNIN FO) 2025\u0022,\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 61\u0022]}},{\u0022id\u0022:\u0022b1023\u0022,\u0022page\u0022:64,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedsemibold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Fig u re 2: Prog ress o n ge n de r sco reca rd pe rce nta ge of i n d icato rs by statu s 2020\\u20132024\u0022,\u0022source_length\u0022:100,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b517: AD D RESSI N G GBV ftfihtfi L th\u0022,\u0022b789: covering 70 % of the popu lation a ndensuringequitable a ccess to essentialse rvices\u0022,\u0022b822: Table 1: Keym etrics of Lesotho\\u2019s HIV / AIDSresponse\u0022,\u0022b982: Figure 1: Progressondisabilityinclusionscorecardpercentage of indicators by status 2020 \\u2013 2024\u0022],\u0022allowed_parent_ids\u0022:[\u0022b968\u0022,\u0022b969\u0022,\u0022b970\u0022,\u0022b972\u0022,\u0022b982\u0022,\u0022b989\u0022,\u0022b990\u0022,\u0022b993\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022],\u0022previous_blocks\u0022:[\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 61\u0022,\u0022Raising awareness through UN-led initiatives: internation a lframeworks\u0022],\u0022next_blocks\u0022:[\u0022Source: U N Sustainable Development Group (UNIN FO) 2025\u0022,\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 63\u0022]}},{\u0022id\u0022:\u0022b1068\u0022,\u0022page\u0022:66,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedsemibold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Ta ble 2: Coo pe ratio n Fra m ewo rk bu dget m o bi l ized fu n ds a n d expe n d itu re fo r 2024\u0022,\u0022source_length\u0022:99,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b789: covering 70 % of the popu lation a ndensuringequitable a ccess to essentialse rvices\u0022,\u0022b822: Table 1: Keym etrics of Lesotho\\u2019s HIV / AIDSresponse\u0022,\u0022b982: Figure 1: Progressondisabilityinclusionscorecardpercentage of indicators by status 2020 \\u2013 2024\u0022,\u0022b1023: Figure 2: Progressongenderscorecardpercentage of indicators by status 2020 \\u2013 2024\u0022],\u0022allowed_parent_ids\u0022:[\u0022b982\u0022,\u0022b989\u0022,\u0022b990\u0022,\u0022b993\u0022,\u0022b1023\u0022,\u0022b1030\u0022,\u0022b1031\u0022,\u0022b1044\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022],\u0022previous_blocks\u0022:[\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 63\u0022,\u0022\\u00A9 U NRCO / Reitumetse Russell\u0022],\u0022next_blocks\u0022:[\u0022Cooperation Required Available Fra mework Cooperation Fra meworkresourcesresources Expenditure Delivery\u0022,\u0022Pillar 1: Good Peoplelivingin Lesotho a rebetter governa nce a ndserved by im provedgovernancesocialequitysystems a ndstructures that a re\u0022]}},{\u0022id\u0022:\u0022b1086\u0022,\u0022page\u0022:67,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedsemibold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Fig u re 4: U N fu n d i n g ga p by SDG i n US$ m i l l io n s 2024\u0022,\u0022source_length\u0022:68,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1023: Figure 2: Progressongenderscorecardpercentage of indicators by status 2020 \\u2013 2024\u0022,\u0022b1068: Table 2: Cooperation Frameworkbudgetmobilizedfunds a ndexpenditurefor 2024\u0022,\u0022b1070: Pillar 1: Good Peoplelivingin Lesotho a rebetter governa nce a ndserved by im provedgovernancesocialequitysystems a ndstructures that a re\u0022,\u0022b1078: Figure 3: Mobilizedfundingin US $ by U N a gency 2024\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1069\u0022,\u0022b1070\u0022,\u0022b1071\u0022,\u0022b1073\u0022,\u0022b1075\u0022,\u0022b1076\u0022,\u0022b1077\u0022,\u0022b1078\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022],\u0022previous_blocks\u0022:[\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 65\u0022,\u0022Figure 3: Mobilizedfundingin US $ by U N a gency 2024\u0022],\u0022next_blocks\u0022:[\u002264 9 %. 98 % coverage\u0022,\u002293 7 coverage\u0022]}},{\u0022id\u0022:\u0022b1129\u0022,\u0022page\u0022:68,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedsemibold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Fig u re 6: U N co ntri butio n to expe n d itu re reso u rces by SDG 2024\u0022,\u0022source_length\u0022:74,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1070: Pillar 1: Good Peoplelivingin Lesotho a rebetter governa nce a ndserved by im provedgovernancesocialequitysystems a ndstructures that a re\u0022,\u0022b1078: Figure 3: Mobilizedfundingin US $ by U N a gency 2024\u0022,\u0022b1086: Figure 4: U Nfundinggap by SDGin US $ millions 2024\u0022,\u0022b1117: Figure 5: Number of programmaticinterventionsper SDG 2024\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1107\u0022,\u0022b1109\u0022,\u0022b1111\u0022,\u0022b1113\u0022,\u0022b1115\u0022,\u0022b1116\u0022,\u0022b1117\u0022,\u0022b1128\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022],\u0022previous_blocks\u0022:[\u0022Figure 5: Number of programmaticinterventionsper SDG 2024\u0022,\u0022Source: U N Sustainable Development Group (UNIN FO) 2025\u0022],\u0022next_blocks\u0022:[\u002210 2 % coverage\u0022,\u00221 4 5 6 7 8 8 3 % coverage\u0022]}},{\u0022id\u0022:\u0022b822\u0022,\u0022page\u0022:54,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedsemibold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Ta ble 1 : Key m etrics of Lesotho\\u2019s HIV/AIDS respo n se\u0022,\u0022source_length\u0022:56,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b301: AD D RESSIN GFOO DIN SECU RITY AND AG RICU LTU RAL\u0022,\u0022b417: Thlidihiddt I N CLU SIVE DIGITALIZATIO N\u0022,\u0022b517: AD D RESSI N G GBV ftfihtfi L th\u0022,\u0022b789: covering 70 % of the popu lation a ndensuringequitable a ccess to essentialse rvices\u0022],\u0022allowed_parent_ids\u0022:[\u0022b801\u0022,\u0022b802\u0022,\u0022b803\u0022,\u0022b804\u0022,\u0022b805\u0022,\u0022b806\u0022,\u0022b819\u0022,\u0022b821\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022to implementthe Counter Domestic Violence Act N o 1 4 of 2022\u0022,\u0022preventionprogrammesintegratingfoodsecurity a ndsocial protectionsupport\u0022],\u0022next_blocks\u0022:[\u0022Key a rea Result achieved\u0022,\u0022Fundingsecured (P E PFAR) US $ 67 million\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 14268,
+      "estimatedInputTokens": 3567,
+      "repeatedContextBytes": 1396,
+      "requestSha256": "664d4b8c02c2ce34fb5fa015fc725b03be32d90dc40306de93837786c7d6939e"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "ROLE",
+      "shardId": "NEW-976B6F4383DD:ROLE:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000321",
+        "U000323",
+        "U001665",
+        "U001667",
+        "U003124",
+        "U003125",
+        "U003126",
+        "U003159",
+        "U003263",
+        "U003365",
+        "U003488"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "ROLE",
+        "shardId": "NEW-976B6F4383DD:ROLE:003",
+        "blocks": [
+          "B017",
+          "B018",
+          "B019",
+          "B020",
+          "B021",
+          "B022",
+          "B023",
+          "B024"
+        ],
+        "sourceRefs": [
+          "U000321",
+          "U000323",
+          "U001665",
+          "U001667",
+          "U003124",
+          "U003125",
+          "U003126",
+          "U003159",
+          "U003263",
+          "U003365",
+          "U003488"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1078\u0022,\u0022page\u0022:67,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedsemibold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Fig u re 3: M o bi l ized fu n d i n g i n US$ by U N a ge n cy 2024\u0022,\u0022source_length\u0022:68,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b982: Figure 1: Progressondisabilityinclusionscorecardpercentage of indicators by status 2020 \\u2013 2024\u0022,\u0022b1023: Figure 2: Progressongenderscorecardpercentage of indicators by status 2020 \\u2013 2024\u0022,\u0022b1068: Table 2: Cooperation Frameworkbudgetmobilizedfunds a ndexpenditurefor 2024\u0022,\u0022b1070: Pillar 1: Good Peoplelivingin Lesotho a rebetter governa nce a ndserved by im provedgovernancesocialequitysystems a ndstructures that a re\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1068\u0022,\u0022b1069\u0022,\u0022b1070\u0022,\u0022b1071\u0022,\u0022b1073\u0022,\u0022b1075\u0022,\u0022b1076\u0022,\u0022b1077\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022Total (a llpillars a nd outcomes) 28 739 776 1 8 654 743 1 1 920 991 63 9\u0022,\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 65\u0022],\u0022next_blocks\u0022:[\u0022Figure 4: U Nfundinggap by SDGin US $ millions 2024\u0022,\u002264 9 %. 98 % coverage\u0022]}},{\u0022id\u0022:\u0022b1117\u0022,\u0022page\u0022:68,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedsemibold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Fig u re 5: N u m be r of prog ra m matic i nte rve ntio n s pe r SDG 2024\u0022,\u0022source_length\u0022:74,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1068: Table 2: Cooperation Frameworkbudgetmobilizedfunds a ndexpenditurefor 2024\u0022,\u0022b1070: Pillar 1: Good Peoplelivingin Lesotho a rebetter governa nce a ndserved by im provedgovernancesocialequitysystems a ndstructures that a re\u0022,\u0022b1078: Figure 3: Mobilizedfundingin US $ by U N a gency 2024\u0022,\u0022b1086: Figure 4: U Nfundinggap by SDGin US $ millions 2024\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1103\u0022,\u0022b1105\u0022,\u0022b1107\u0022,\u0022b1109\u0022,\u0022b1111\u0022,\u0022b1113\u0022,\u0022b1115\u0022,\u0022b1116\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u002267 5 % coverage\u0022,\u0022Source: U N Sustainable Development Group (UNIN FO) 2025\u0022],\u0022next_blocks\u0022:[\u0022Source: U N Sustainable Development Group (UNIN FO) 2025\u0022,\u0022Figure 6: U Ncontribution to expenditureresources by SDG 2024\u0022]}},{\u0022id\u0022:\u0022b1161\u0022,\u0022page\u0022:69,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedsemibold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Fig u re 7: Leve ra gi n g of U N i nvestm e nts to a dva n ce a ch ieve m e nt of SDGs 2024\u0022,\u0022source_length\u0022:92,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1078: Figure 3: Mobilizedfundingin US $ by U N a gency 2024\u0022,\u0022b1086: Figure 4: U Nfundinggap by SDGin US $ millions 2024\u0022,\u0022b1117: Figure 5: Number of programmaticinterventionsper SDG 2024\u0022,\u0022b1129: Figure 6: U Ncontribution to expenditureresources by SDG 2024\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1148\u0022,\u0022b1150\u0022,\u0022b1152\u0022,\u0022b1154\u0022,\u0022b1156\u0022,\u0022b1158\u0022,\u0022b1159\u0022,\u0022b1160\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022Source: U N Sustainable Development Group (UNIN FO) 2025 Note: Total U N contribution in 2024 = US $ 1 1 9 million\u0022,\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 67\u0022],\u0022next_blocks\u0022:[\u0022Source: U N Sustainable Development Group (UNIN FO) 2025\u0022,\u0022FI NAN CI N G T H E 2030 AG E NDA bilitithdbdiid\u0022]}},{\u0022id\u0022:\u0022b1193\u0022,\u0022page\u0022:71,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensedsemibold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Ta ble 3: Reso u rce m o bi l izatio n pi pe l i n e\u0022,\u0022source_length\u0022:52,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1086: Figure 4: U Nfundinggap by SDGin US $ millions 2024\u0022,\u0022b1117: Figure 5: Number of programmaticinterventionsper SDG 2024\u0022,\u0022b1129: Figure 6: U Ncontribution to expenditureresources by SDG 2024\u0022,\u0022b1161: Figure 7: Leveraging of U N i nvestments to a dvance a chievement of SDGs 2024\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1160\u0022,\u0022b1161\u0022,\u0022b1162\u0022,\u0022b1165\u0022,\u0022b1181\u0022,\u0022b1182\u0022,\u0022b1189\u0022,\u0022b1192\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022African Development Bank (Af DB) Climate Action Window \\u2013 Adaptation: A conceptnotewas Development partner coordination: I n 2024 four\u0022,\u0022The Cooperation Framework \\u2013 Supportingnation a ldevelopmentprio rities 69\u0022],\u0022next_blocks\u0022:[\u0022Budget N ot\u0022,\u0022Project Donor (US $) Proposed Approved Secured a pproved\u0022]}},{\u0022id\u0022:\u0022b1070\u0022,\u0022page\u0022:66,\u0022lines\u0022:3,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensed\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Pi l la r 1 : Good Peo pl e l ivi n g i n Lesotho a re bette r governa nce a nd se rved by i m proved gove rna n ce socia l eq u ity syste ms a n d stru ctu res that a re\u0022,\u0022source_length\u0022:170,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b822: Table 1: Keym etrics of Lesotho\\u2019s HIV / AIDSresponse\u0022,\u0022b982: Figure 1: Progressondisabilityinclusionscorecardpercentage of indicators by status 2020 \\u2013 2024\u0022,\u0022b1023: Figure 2: Progressongenderscorecardpercentage of indicators by status 2020 \\u2013 2024\u0022,\u0022b1068: Table 2: Cooperation Frameworkbudgetmobilizedfunds a ndexpenditurefor 2024\u0022],\u0022allowed_parent_ids\u0022:[\u0022b990\u0022,\u0022b993\u0022,\u0022b1023\u0022,\u0022b1030\u0022,\u0022b1031\u0022,\u0022b1044\u0022,\u0022b1068\u0022,\u0022b1069\u0022],\u0022observed_facts\u0022:[\u0022multi_line_cluster\u0022,\u0022marker:labelled\u0022],\u0022previous_blocks\u0022:[\u0022Table 2: Cooperation Frameworkbudgetmobilizedfunds a ndexpenditurefor 2024\u0022,\u0022Cooperation Required Available Fra mework Cooperation Fra meworkresourcesresources Expenditure Delivery\u0022],\u0022next_blocks\u0022:[\u0022inclusive a nd a ccountable with peopleem poweredengaged a nd enjoyinghumanrightspeace justice a nd\u0022,\u0022climateresilienceresources a ndgreengrowth that is\u0022]}},{\u0022id\u0022:\u0022b159\u0022,\u0022page\u0022:10,\u0022lines\u0022:2,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-semicondensedbold\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022sexua l a nd y y reprod uctive\u0022,\u0022source_length\u0022:30,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b148: Childrenunder 5 yearswho a rem a lnourished:\u0022,\u0022b158: jointlorsolelwhile 28 % of homeownership is\u0022],\u0022allowed_parent_ids\u0022:[\u0022b151\u0022,\u0022b152\u0022,\u0022b153\u0022,\u0022b154\u0022,\u0022b155\u0022,\u0022b156\u0022,\u0022b157\u0022,\u0022b158\u0022],\u0022observed_facts\u0022:[\u0022multi_line_cluster\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022theirown\u0022,\u0022jointlorsolelwhile 28 % of homeownership is\u0022],\u0022next_blocks\u0022:[\u0022with women\u0022,\u0022healthrights\u0022]}},{\u0022id\u0022:\u0022b594\u0022,\u0022page\u0022:38,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-regular\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022\\u201CTh e s u p po rt I rece ived h a s h e l ped i m p rove my yi e l d With o n g o i n g i n p ut a n d tra i n i n g I h o pe to sca l e\u0022,\u0022source_length\u0022:136,\u0022context\u0022:{\u0022scope\u0022:\u0022quoted_replacement\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b290: commemorates 200 years of Basotho\u0022,\u0022b301: AD D RESSIN GFOO DIN SECU RITY AND AG RICU LTU RAL\u0022,\u0022b417: Thlidihiddt I N CLU SIVE DIGITALIZATIO N\u0022,\u0022b517: AD D RESSI N G GBV ftfihtfi L th\u0022],\u0022allowed_parent_ids\u0022:[\u0022b579\u0022,\u0022b580\u0022,\u0022b581\u0022,\u0022b584\u0022,\u0022b586\u0022,\u0022b588\u0022,\u0022b591\u0022,\u0022b592\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022households with homeg a rdeningkitsincludingsh a denets a ndsixcropseedvarietiessuch a s\u0022,\u0022spin a ch beetrootcarrots a ndonions\u0022],\u0022next_blocks\u0022:[\u0022upmyproductionreachmorem a rkets a ndcontribute to foodsecurityinmycommunity \\u201D\u0022,\u0022Thoahl a ka\\u2019sjourney \\u2013 fromch a uffeur to su ccessfulfarmer \\u2013 demon stratesthepower of resilienceopportunity a nd a griculturalsupportprogrammesintransforminglives a ndlivelihoods\u0022]}},{\u0022id\u0022:\u0022b595\u0022,\u0022page\u0022:38,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-regular\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022u p my p ro d u cti o n rea c h m o re m a rkets a n d co ntri b ute to foo d sec u rity i n my co m m u n ity \\u201D\u0022,\u0022source_length\u0022:112,\u0022context\u0022:{\u0022scope\u0022:\u0022quoted_replacement\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b290: commemorates 200 years of Basotho\u0022,\u0022b301: AD D RESSIN GFOO DIN SECU RITY AND AG RICU LTU RAL\u0022,\u0022b417: Thlidihiddt I N CLU SIVE DIGITALIZATIO N\u0022,\u0022b517: AD D RESSI N G GBV ftfihtfi L th\u0022],\u0022allowed_parent_ids\u0022:[\u0022b580\u0022,\u0022b581\u0022,\u0022b584\u0022,\u0022b586\u0022,\u0022b588\u0022,\u0022b591\u0022,\u0022b592\u0022,\u0022b594\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022spin a ch beetrootcarrots a ndonions\u0022,\u0022\\u201C Thesupport Ireceivedh a shelpedimprovemyyield With ongoinginput a ndtraining Ihope to scale\u0022],\u0022next_blocks\u0022:[\u0022Thoahl a ka\\u2019sjourney \\u2013 fromch a uffeur to su ccessfulfarmer \\u2013 demon stratesthepower of resilienceopportunity a nd a griculturalsupportprogrammesintransforminglives a ndlivelihoods\u0022,\u0022Strategic Pillar 2: Equitablefoodsystemsenvironmentalsustain a bility a ndclimateresilience 37\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 14709,
+      "estimatedInputTokens": 3678,
+      "repeatedContextBytes": 1319,
+      "requestSha256": "a2478f00993297e381966225bab391950a43b949a4a9911de2ffb5d401308074"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "ROLE",
+      "shardId": "NEW-976B6F4383DD:ROLE:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000014",
+        "U000018",
+        "U000019",
+        "U000040",
+        "U000041",
+        "U002141",
+        "U002142",
+        "U002144"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "ROLE",
+        "shardId": "NEW-976B6F4383DD:ROLE:004",
+        "blocks": [
+          "B025",
+          "B026",
+          "B027",
+          "B028",
+          "B029",
+          "B030",
+          "B031",
+          "B032"
+        ],
+        "sourceRefs": [
+          "U000014",
+          "U000018",
+          "U000019",
+          "U000040",
+          "U000041",
+          "U002141",
+          "U002142",
+          "U002144"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b732\u0022,\u0022page\u0022:48,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-regular\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022\\u201CTh i s i n iti ative i s m o re th a n ju st a n exh i b iti o n; it i s a testa m e nt to th e u nta p ped pote nti a l of pe rso n s\u0022,\u0022source_length\u0022:135,\u0022context\u0022:{\u0022scope\u0022:\u0022quoted_replacement\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b290: commemorates 200 years of Basotho\u0022,\u0022b301: AD D RESSIN GFOO DIN SECU RITY AND AG RICU LTU RAL\u0022,\u0022b417: Thlidihiddt I N CLU SIVE DIGITALIZATIO N\u0022,\u0022b517: AD D RESSI N G GBV ftfihtfi L th\u0022],\u0022allowed_parent_ids\u0022:[\u0022b719\u0022,\u0022b720\u0022,\u0022b721\u0022,\u0022b724\u0022,\u0022b727\u0022,\u0022b729\u0022,\u0022b730\u0022,\u0022b731\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022\\u00A9 FAO / Gianluigi Guercia\u0022,\u0022job creators a ndkeycontributors to theeconomy\u0022],\u0022next_blocks\u0022:[\u0022with disabilitiesin Lesotho The U Niscommitted to ensuringth at disabilityinclusiongoesbeyond\u0022,\u0022policydiscussions to realeconomicempowerment a ndsustain a blelivelihoods \\u201D said Th a biso\u0022]}},{\u0022id\u0022:\u0022b733\u0022,\u0022page\u0022:48,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-regular\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022with d i sa b i l iti es i n Lesoth o Th e U N i s co m m itted to e n s u ri n g th at d i sa b i l ity i n c l u s i o n g oes beyo n d\u0022,\u0022source_length\u0022:137,\u0022context\u0022:{\u0022scope\u0022:\u0022quoted_replacement\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b290: commemorates 200 years of Basotho\u0022,\u0022b301: AD D RESSIN GFOO DIN SECU RITY AND AG RICU LTU RAL\u0022,\u0022b417: Thlidihiddt I N CLU SIVE DIGITALIZATIO N\u0022,\u0022b517: AD D RESSI N G GBV ftfihtfi L th\u0022],\u0022allowed_parent_ids\u0022:[\u0022b720\u0022,\u0022b721\u0022,\u0022b724\u0022,\u0022b727\u0022,\u0022b729\u0022,\u0022b730\u0022,\u0022b731\u0022,\u0022b732\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022job creators a ndkeycontributors to theeconomy\u0022,\u0022\\u201C Thisinitiativeismoreth a njust a nexhibition; itis a testament to theuntappedpotenti a l of persons\u0022],\u0022next_blocks\u0022:[\u0022policydiscussions to realeconomicempowerment a ndsustain a blelivelihoods \\u201D said Th a biso\u0022,\u0022M a se nyetsethe U N Disability Inclusion Officer\u0022]}},{\u0022id\u0022:\u0022b734\u0022,\u0022page\u0022:48,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-regular\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022po l i cy d i sc u ss i o n s to rea l eco n o m i c e m powe rm e nt a n d s u sta i n a b l e l ive l i h oo d s \\u201D sa i d Th a b i so\u0022,\u0022source_length\u0022:135,\u0022context\u0022:{\u0022scope\u0022:\u0022quoted_replacement\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b290: commemorates 200 years of Basotho\u0022,\u0022b301: AD D RESSIN GFOO DIN SECU RITY AND AG RICU LTU RAL\u0022,\u0022b417: Thlidihiddt I N CLU SIVE DIGITALIZATIO N\u0022,\u0022b517: AD D RESSI N G GBV ftfihtfi L th\u0022],\u0022allowed_parent_ids\u0022:[\u0022b721\u0022,\u0022b724\u0022,\u0022b727\u0022,\u0022b729\u0022,\u0022b730\u0022,\u0022b731\u0022,\u0022b732\u0022,\u0022b733\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022\\u201C Thisinitiativeismoreth a njust a nexhibition; itis a testament to theuntappedpotenti a l of persons\u0022,\u0022with disabilitiesin Lesotho The U Niscommitted to ensuringth at disabilityinclusiongoesbeyond\u0022],\u0022next_blocks\u0022:[\u0022M a se nyetsethe U N Disability Inclusion Officer\u0022,\u0022Throughdirect U Nsupportincludingtheprovision of productionmateri a ls a ndessenti a lequipment\u0022]}},{\u0022id\u0022:\u0022b10\u0022,\u0022page\u0022:3,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-bold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022D EVE LO P M E NT I N LESOTH O: A S NAPS H OT 7\u0022,\u0022source_length\u0022:47,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022AB B REVIATIO N SAN DACRO NYM S 4\u0022,\u0022TH E U NITE D NATIO N SCO UNTRY TEAM I N LESOTH O 5\u0022],\u0022next_blocks\u0022:[\u0022CHAPTE R 1: KEY DEVE LO P M ENTS I NCO UNTRY AND\u0022,\u0022CHAPTE R 3: KEY FOCU SFO R 2025 71\u0022]}},{\u0022id\u0022:\u0022b11\u0022,\u0022page\u0022:3,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-bold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022CHAPTE R 1 : KEY D EVE LO P M E NTS I N CO U NTRY AN D\u0022,\u0022source_length\u0022:54,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022TH E U NITE D NATIO N SCO UNTRY TEAM I N LESOTH O 5\u0022,\u0022DEVE LO P M ENT I N LESOTH O: A SNAPS HOT 7\u0022],\u0022next_blocks\u0022:[\u0022CHAPTE R 3: KEY FOCU SFO R 2025 71\u0022,\u0022RE F ERE NCES 72\u0022]}},{\u0022id\u0022:\u0022b22\u0022,\u0022page\u0022:3,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-bold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022CHAPTE R 3: KEY FOCU S FO R 2025 71\u0022,\u0022source_length\u0022:35,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022,\u0022b11\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022DEVE LO P M ENT I N LESOTH O: A SNAPS HOT 7\u0022,\u0022CHAPTE R 1: KEY DEVE LO P M ENTS I NCO UNTRY AND\u0022],\u0022next_blocks\u0022:[\u0022RE F ERE NCES 72\u0022,\u0022\\u00A9 U NICEF / Karin Schermbrucker\u0022]}},{\u0022id\u0022:\u0022b23\u0022,\u0022page\u0022:3,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-bold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022RE F E RE N CES 72\u0022,\u0022source_length\u0022:18,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022,\u0022b11\u0022,\u0022b22\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022CHAPTE R 1: KEY DEVE LO P M ENTS I NCO UNTRY AND\u0022,\u0022CHAPTE R 3: KEY FOCU SFO R 2025 71\u0022],\u0022next_blocks\u0022:[\u0022\\u00A9 U NICEF / Karin Schermbrucker\u0022,\u0022Foreword\u0022]}},{\u0022id\u0022:\u0022b7\u0022,\u0022page\u0022:3,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-regular\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Co nte nts\u0022,\u0022source_length\u0022:10,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[],\u0022next_blocks\u0022:[\u0022AB B REVIATIO N SAN DACRO NYM S 4\u0022,\u0022TH E U NITE D NATIO N SCO UNTRY TEAM I N LESOTH O 5\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 11357,
+      "estimatedInputTokens": 2840,
+      "repeatedContextBytes": 1131,
+      "requestSha256": "0c3cdbf2315c52914cee8e94a5c481d04b1454d49777b4b109073dea4e1cb7b3"
+    },
+    {
+      "documentId": "NEW-976B6F4383DD",
+      "stage": "ROLE",
+      "shardId": "NEW-976B6F4383DD:ROLE:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U000016",
+        "U000017",
+        "U000043",
+        "U000044",
+        "U000177",
+        "U000178",
+        "U000268",
+        "U000271"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-976B6F4383DD",
+        "stage": "ROLE",
+        "shardId": "NEW-976B6F4383DD:ROLE:005",
+        "blocks": [
+          "B033",
+          "B034",
+          "B035",
+          "B036",
+          "B037",
+          "B038",
+          "B039",
+          "B040"
+        ],
+        "sourceRefs": [
+          "U000016",
+          "U000017",
+          "U000043",
+          "U000044",
+          "U000177",
+          "U000178",
+          "U000268",
+          "U000271"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b8\u0022,\u0022page\u0022:3,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-bold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022AB B REVIATIO N S AN D ACRO NYM S 4\u0022,\u0022source_length\u0022:35,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b7\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Contents\u0022],\u0022next_blocks\u0022:[\u0022TH E U NITE D NATIO N SCO UNTRY TEAM I N LESOTH O 5\u0022,\u0022DEVE LO P M ENT I N LESOTH O: A SNAPS HOT 7\u0022]}},{\u0022id\u0022:\u0022b9\u0022,\u0022page\u0022:3,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-bold\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022TH E U N ITE D NATIO N S CO U NTRY TEAM I N LESOTH O 5\u0022,\u0022source_length\u0022:54,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b7\u0022,\u0022b8\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Contents\u0022,\u0022AB B REVIATIO N SAN DACRO NYM S 4\u0022],\u0022next_blocks\u0022:[\u0022DEVE LO P M ENT I N LESOTH O: A SNAPS HOT 7\u0022,\u0022CHAPTE R 1: KEY DEVE LO P M ENTS I NCO UNTRY AND\u0022]}},{\u0022id\u0022:\u0022b24\u0022,\u0022page\u0022:4,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-condensed\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022\\u00A9 U NICEF/Karin Schermbrucker\u0022,\u0022source_length\u0022:29,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022,\u0022b11\u0022,\u0022b22\u0022,\u0022b23\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022CHAPTE R 3: KEY FOCU SFO R 2025 71\u0022,\u0022RE F ERE NCES 72\u0022],\u0022next_blocks\u0022:[\u0022Foreword\u0022,\u0022Foreword 3\u0022]}},{\u0022id\u0022:\u0022b25\u0022,\u0022page\u0022:4,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-regular\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Fo rewo rd\u0022,\u0022source_length\u0022:10,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022,\u0022b11\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b24\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022RE F ERE NCES 72\u0022,\u0022\\u00A9 U NICEF / Karin Schermbrucker\u0022],\u0022next_blocks\u0022:[\u0022Foreword 3\u0022,\u0022Abbreviations a nd a cronyms\u0022]}},{\u0022id\u0022:\u0022b61\u0022,\u0022page\u0022:7,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-regular\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022The U n ite d N atio n s\u0022,\u0022source_length\u0022:24,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b11\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b24\u0022,\u0022b25\u0022,\u0022b40\u0022,\u0022b50\u0022,\u0022b60\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Abbreviations a nd a cronyms\u0022,\u0022The United Nations Country Teamin Lesotho 5\u0022],\u0022next_blocks\u0022:[\u0022Country Teamin Lesotho\u0022,\u0022\\u00A9 Shutterstock / E M Borque\u0022]}},{\u0022id\u0022:\u0022b62\u0022,\u0022page\u0022:7,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-regular\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Co u ntry Tea m i n Lesotho\u0022,\u0022source_length\u0022:27,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b22\u0022,\u0022b23\u0022,\u0022b24\u0022,\u0022b25\u0022,\u0022b40\u0022,\u0022b50\u0022,\u0022b60\u0022,\u0022b61\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022The United Nations Country Teamin Lesotho 5\u0022,\u0022The United Nations\u0022],\u0022next_blocks\u0022:[\u0022\\u00A9 Shutterstock / E M Borque\u0022,\u0022Developmentin Lesotho: A sn a pshot 7\u0022]}},{\u0022id\u0022:\u0022b130\u0022,\u0022page\u0022:9,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-regular\u0022,\u0022color\u0022:\u00220.34,0.57,0.81\u0022},\u0022source_text\u0022:\u0022Lesotho : A s n a ps h ot\u0022,\u0022source_length\u0022:25,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b40\u0022,\u0022b50\u0022,\u0022b60\u0022,\u0022b61\u0022,\u0022b62\u0022,\u0022b67\u0022,\u0022b128\u0022,\u0022b129\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Developmentin Lesotho: A sn a pshot 7\u0022,\u0022Developmentin\u0022],\u0022next_blocks\u0022:[\u00222 1 millionl 1\u0022,\u0022peope\u0022]}},{\u0022id\u0022:\u0022b133\u0022,\u0022page\u0022:9,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022notosans-semicondensed\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022peo p e\u0022,\u0022source_length\u0022:7,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b60\u0022,\u0022b61\u0022,\u0022b62\u0022,\u0022b67\u0022,\u0022b128\u0022,\u0022b129\u0022,\u0022b130\u0022,\u0022b132\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Lesotho: A sn a pshot\u0022,\u00222 1 millionl 1\u0022],\u0022next_blocks\u0022:[\u0022economicgrowth\u0022,\u0022i nflationrate\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 9624,
+      "estimatedInputTokens": 2406,
+      "repeatedContextBytes": 227,
+      "requestSha256": "c7c894a1b1d7b678b8311e7671d0f5b877f087e7bff6597ae0e2815f14afd452"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "ROLE",
+      "shardId": "NEW-D37DD2D74B04:ROLE:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000905",
+        "U001461",
+        "U002019",
+        "U002053",
+        "U005311",
+        "U005313",
+        "U005327",
+        "U005328",
+        "U005334",
+        "U005336",
+        "U005392",
+        "U005394"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "ROLE",
+        "shardId": "NEW-D37DD2D74B04:ROLE:001",
+        "blocks": [
+          "B001",
+          "B002",
+          "B003",
+          "B004",
+          "B005",
+          "B006",
+          "B007",
+          "B008"
+        ],
+        "sourceRefs": [
+          "U000905",
+          "U001461",
+          "U002019",
+          "U002053",
+          "U005311",
+          "U005313",
+          "U005327",
+          "U005328",
+          "U005334",
+          "U005336",
+          "U005392",
+          "U005394"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b2098\u0022,\u0022page\u0022:94,\u0022lines\u0022:2,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-medium\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022At 31 Ma rch 2024 4 51 2 Depreciation\u0022,\u0022source_length\u0022:37,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b2054: 5 Income\u0022,\u0022b2059: 6 Propertyplant a ndequipment\u0022,\u0022b2077: 7 Intangible a ssets\u0022,\u0022b2095: 8 Right-of-use a ssets\u0022],\u0022allowed_parent_ids\u0022:[\u0022b2085\u0022,\u0022b2086\u0022,\u0022b2088\u0022,\u0022b2089\u0022,\u0022b2091\u0022,\u0022b2094\u0022,\u0022b2095\u0022,\u0022b2096\u0022],\u0022observed_facts\u0022:[\u0022multi_line_cluster\u0022,\u0022marker:loose_labelled\u0022,\u0022table_like\u0022],\u0022previous_blocks\u0022:[\u00228 Right-of-use a ssets\u0022,\u0022Cost or Val uation\u0022],\u0022next_blocks\u0022:[\u0022At 31 March 2024 2 749\u0022,\u0022Carrying a mount at 31 March 2023 3 228 Carrying a mount at 31 March 2024 1 763\u0022]}},{\u0022id\u0022:\u0022b2102\u0022,\u0022page\u0022:94,\u0022lines\u0022:2,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-medium\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022At 31 Ma rch 2022 0 I n itia l adoption of I FRS 1 6 on 1 Apri l 2022 4 1 85\u0022,\u0022source_length\u0022:76,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b2059: 6 Propertyplant a ndequipment\u0022,\u0022b2077: 7 Intangible a ssets\u0022,\u0022b2095: 8 Right-of-use a ssets\u0022,\u0022b2098: At 31 March 2024 4 51 2 Depreciation\u0022],\u0022allowed_parent_ids\u0022:[\u0022b2089\u0022,\u0022b2091\u0022,\u0022b2094\u0022,\u0022b2095\u0022,\u0022b2096\u0022,\u0022b2098\u0022,\u0022b2100\u0022,\u0022b2101\u0022],\u0022observed_facts\u0022:[\u0022multi_line_cluster\u0022,\u0022marker:loose_labelled\u0022,\u0022table_like\u0022],\u0022previous_blocks\u0022:[\u0022At 31 March 2024 2 749\u0022,\u0022Carrying a mount at 31 March 2023 3 228 Carrying a mount at 31 March 2024 1 763\u0022],\u0022next_blocks\u0022:[\u0022Cost or Val uation\u0022,\u0022At 31 March 2023 4 532 Depreciation\u0022]}},{\u0022id\u0022:\u0022b2105\u0022,\u0022page\u0022:94,\u0022lines\u0022:2,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-medium\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022At 31 Ma rch 2023 4 532 Depreciation\u0022,\u0022source_length\u0022:36,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b2077: 7 Intangible a ssets\u0022,\u0022b2095: 8 Right-of-use a ssets\u0022,\u0022b2098: At 31 March 2024 4 51 2 Depreciation\u0022,\u0022b2102: At 31 March 2022 0 Initial adoption of IFRS 1 6 on 1 April 2022 4 1 85\u0022],\u0022allowed_parent_ids\u0022:[\u0022b2094\u0022,\u0022b2095\u0022,\u0022b2096\u0022,\u0022b2098\u0022,\u0022b2100\u0022,\u0022b2101\u0022,\u0022b2102\u0022,\u0022b2103\u0022],\u0022observed_facts\u0022:[\u0022multi_line_cluster\u0022,\u0022marker:loose_labelled\u0022,\u0022table_like\u0022],\u0022previous_blocks\u0022:[\u0022At 31 March 2022 0 Initial adoption of IFRS 1 6 on 1 April 2022 4 1 85\u0022,\u0022Cost or Val uation\u0022],\u0022next_blocks\u0022:[\u0022At 31 March 2022 1 304\u0022,\u0022Carrying a mount at 31 March 2022 0 Carrying a mount at 31 March 2023 3 228\u0022]}},{\u0022id\u0022:\u0022b2125\u0022,\u0022page\u0022:96,\u0022lines\u0022:2,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-medium\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022Tota l cu rrent paya bles 4 02 1 4 940 Amou nts fa l li ng due after more tha n one yea r:\u0022,\u0022source_length\u0022:90,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b2102: At 31 March 2022 0 Initial adoption of IFRS 1 6 on 1 April 2022 4 1 85\u0022,\u0022b2105: At 31 March 2023 4 532 Depreciation\u0022,\u0022b2110: 9 Cash a ndcashequivalents\u0022,\u0022b2121: 1 1 Trade a ndotherpayables\u0022],\u0022allowed_parent_ids\u0022:[\u0022b2110\u0022,\u0022b2111\u0022,\u0022b2113\u0022,\u0022b2115\u0022,\u0022b2118\u0022,\u0022b2120\u0022,\u0022b2121\u0022,\u0022b2122\u0022],\u0022observed_facts\u0022:[\u0022multi_line_cluster\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u00221 1 Trade a ndotherpayables\u0022,\u0022Amountsfallingduewithinoneyear:\u0022],\u0022next_blocks\u0022:[\u0022Totalnon-currentpayables 909 1 847\u0022,\u00221 1 1 Legal\u0022]}},{\u0022id\u0022:\u0022b410\u0022,\u0022page\u0022:17,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.00\u0022},\u0022source_text\u0022:\u0022to 96% of a ppl ica tio n s\u0022,\u0022source_length\u0022:27,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b37: Part 1 a Perform a nce Overview\u0022,\u0022b328: 1 1 1 870 Contact Centre\u0022,\u0022b331: Part 1 b Perform a nce An a lysis\u0022,\u0022b396: ithi 1 2 0 d (95 % of a llcalls a nd 79 % of callswnsecons\u0022],\u0022allowed_parent_ids\u0022:[\u0022b402\u0022,\u0022b403\u0022,\u0022b404\u0022,\u0022b405\u0022,\u0022b406\u0022,\u0022b407\u0022,\u0022b408\u0022,\u0022b409\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022We a ssessed a ndresponded\u0022,\u0022initialresponse to a pplicationsfor\u0022],\u0022next_blocks\u0022:[\u0022registrationpermissions a nd\u0022,\u0022, within 1 0 workingdays\u0022]}},{\u0022id\u0022:\u0022b737\u0022,\u0022page\u0022:24,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022I m p e m e nt n g t e C a r t es Act 2022 ,\u0022,\u0022source_length\u0022:44,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b328: 1 1 1 870 Contact Centre\u0022,\u0022b331: Part 1 b Perform a nce An a lysis\u0022,\u0022b396: ithi 1 2 0 d (95 % of a llcalls a nd 79 % of callswnsecons\u0022,\u0022b410: to 96 % of a pplications\u0022],\u0022allowed_parent_ids\u0022:[\u0022b594\u0022,\u0022b606\u0022,\u0022b640\u0022,\u0022b642\u0022,\u0022b647\u0022,\u0022b669\u0022,\u0022b722\u0022,\u0022b724\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022P E RFO RMAN CE ANALYS I S\u0022,\u0022wor\u0022],\u0022next_blocks\u0022:[\u0022P E RFO RMAN CE ANALYS I S\u0022,\u0022Measuring the impact a nd.\u0022]}},{\u0022id\u0022:\u0022b1036\u0022,\u0022page\u0022:30,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022Reve n u e D E L Ca pita l D E L N et Cash Req u i re m e nt\u0022,\u0022source_length\u0022:60,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b396: ithi 1 2 0 d (95 % of a llcalls a nd 79 % of callswnsecons\u0022,\u0022b410: to 96 % of a pplications\u0022,\u0022b737: Impementngte C a rtes Act 2022,\u0022,\u0022b1026: Part 1 c Fin a ncial Review\u0022],\u0022allowed_parent_ids\u0022:[\u0022b918\u0022,\u0022b954\u0022,\u0022b994\u0022,\u0022b996\u0022,\u0022b998\u0022,\u0022b1001\u0022,\u0022b1026\u0022,\u0022b1033\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022Part 1 c Fin a ncial Review\u0022,\u0022Fin a ncialperform a nce a gainststatu to rylimits\u0022],\u0022next_blocks\u0022:[\u0022Surplus for year 74 91 428\u0022,\u0022Dame Helen Stephenson CBE Chief Executive a nd Accounting Officer 1 2 July 2024\u0022]}},{\u0022id\u0022:\u0022b1047\u0022,\u0022page\u0022:31,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022CO 2 e m iss io n s\u0022,\u0022source_length\u0022:19,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b737: Impementngte C a rtes Act 2022,\u0022,\u0022b1026: Part 1 c Fin a ncial Review\u0022,\u0022b1036: Revenue D E L Capital D E L N et Cash Requirement\u0022,\u0022b1042: Part 2 Susta in a bility Report\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1001\u0022,\u0022b1026\u0022,\u0022b1033\u0022,\u0022b1036\u0022,\u0022b1038\u0022,\u0022b1041\u0022,\u0022b1042\u0022,\u0022b1043\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022Part 2 Susta in a bility Report\u0022,\u0022Overallperform a nce (2023 - 24)\u0022],\u0022next_blocks\u0022:[\u0022Monitoringbusinesstravel to reduce CO 2 emissions\u0022,\u0022CCEW Businesstravelyearonyearcomparison:\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 12364,
+      "estimatedInputTokens": 3091,
+      "repeatedContextBytes": 729,
+      "requestSha256": "be47f9bba9052db3f3388365ba1ab204f7e10156c0cf6003e9abce74f198f607"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "ROLE",
+      "shardId": "NEW-D37DD2D74B04:ROLE:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U000061",
+        "U000076",
+        "U000723",
+        "U001979",
+        "U002037",
+        "U002076",
+        "U002212",
+        "U002298"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "ROLE",
+        "shardId": "NEW-D37DD2D74B04:ROLE:002",
+        "blocks": [
+          "B009",
+          "B010",
+          "B011",
+          "B012",
+          "B013",
+          "B014",
+          "B015",
+          "B016"
+        ],
+        "sourceRefs": [
+          "U000061",
+          "U000076",
+          "U000723",
+          "U001979",
+          "U002037",
+          "U002076",
+          "U002212",
+          "U002298"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1058\u0022,\u0022page\u0022:31,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022Do m estic I nte rnatio na l\u0022,\u0022source_length\u0022:28,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1026: Part 1 c Fin a ncial Review\u0022,\u0022b1036: Revenue D E L Capital D E L N et Cash Requirement\u0022,\u0022b1042: Part 2 Susta in a bility Report\u0022,\u0022b1047: CO 2 emissions\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1041\u0022,\u0022b1042\u0022,\u0022b1043\u0022,\u0022b1047\u0022,\u0022b1049\u0022,\u0022b1055\u0022,\u0022b1056\u0022,\u0022b1057\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022Allstaff Mileage CO 2 Charge Air Air Air CO 2 Air Air Air CO 2\u0022,\u0022Emissionsmileagecharge Emissionmileagecharge Emission\u0022],\u0022next_blocks\u0022:[\u0022S USTAI NAB ILITY R EPO RT\u0022,\u0022Wastereduction\u0022]}},{\u0022id\u0022:\u0022b32\u0022,\u0022page\u0022:6,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022Pa rt 1 Pe rfo rm a n ce Re po rt\u0022,\u0022source_length\u0022:33,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b25: 3 Accountability Report 31\u0022,\u0022b26: 3 a Corporate Govern a nce Report 33\u0022,\u0022b27: 3 b Remuneration a nd Staff Report 47\u0022,\u0022b30: 4 Resource Accounts 76\u0022],\u0022allowed_parent_ids\u0022:[\u0022b23\u0022,\u0022b24\u0022,\u0022b25\u0022,\u0022b26\u0022,\u0022b27\u0022,\u0022b29\u0022,\u0022b30\u0022,\u0022b31\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u00224 Resource Accounts 76\u0022,\u0022G loss a ry (not a udited) 94\u0022],\u0022next_blocks\u0022:[\u0022I ntroduction\u0022,\u0022Part 1 a Perform a nce Overview\u0022]}},{\u0022id\u0022:\u0022b37\u0022,\u0022page\u0022:7,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022Pa rt 1 a Pe rfo rm a n ce Ove rview\u0022,\u0022source_length\u0022:36,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b26: 3 a Corporate Govern a nce Report 33\u0022,\u0022b27: 3 b Remuneration a nd Staff Report 47\u0022,\u0022b30: 4 Resource Accounts 76\u0022,\u0022b32: Part 1 Perform a nce Report\u0022],\u0022allowed_parent_ids\u0022:[\u0022b25\u0022,\u0022b26\u0022,\u0022b27\u0022,\u0022b29\u0022,\u0022b30\u0022,\u0022b31\u0022,\u0022b32\u0022,\u0022b33\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022Part 1 Perform a nce Report\u0022,\u0022I ntroduction\u0022],\u0022next_blocks\u0022:[\u0022Forewordfrom the Chair\u0022,\u0022P E RFO RMAN CE OVE RVI EW\u0022]}},{\u0022id\u0022:\u0022b331\u0022,\u0022page\u0022:15,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022Pa rt 1 b Pe rfo rm a n ce An a lysis\u0022,\u0022source_length\u0022:37,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b30: 4 Resource Accounts 76\u0022,\u0022b32: Part 1 Perform a nce Report\u0022,\u0022b37: Part 1 a Perform a nce Overview\u0022,\u0022b328: 1 1 1 870 Contact Centre\u0022],\u0022allowed_parent_ids\u0022:[\u0022b321\u0022,\u0022b322\u0022,\u0022b323\u0022,\u0022b324\u0022,\u0022b325\u0022,\u0022b326\u0022,\u0022b327\u0022,\u0022b328\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022charitiessupportedthroughthe\u0022,\u00221 1 1 870 Contact Centre\u0022],\u0022next_blocks\u0022:[\u0022peraon a erorm a nce \\u2013,\u0022,\u0022summ a ry\u0022]}},{\u0022id\u0022:\u0022b1026\u0022,\u0022page\u0022:30,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022Pa rt 1 c Fin a n cia l Review\u0022,\u0022source_length\u0022:30,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b331: Part 1 b Perform a nce An a lysis\u0022,\u0022b396: ithi 1 2 0 d (95 % of a llcalls a nd 79 % of callswnsecons\u0022,\u0022b410: to 96 % of a pplications\u0022,\u0022b737: Impementngte C a rtes Act 2022,\u0022],\u0022allowed_parent_ids\u0022:[\u0022b916\u0022,\u0022b917\u0022,\u0022b918\u0022,\u0022b954\u0022,\u0022b994\u0022,\u0022b996\u0022,\u0022b998\u0022,\u0022b1001\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u00221 87 (GRC)\u0022,\u0022P E RFO RMAN CE ANALYS I S\u0022],\u0022next_blocks\u0022:[\u0022Fin a ncialperform a nce a gainststatu to rylimits\u0022,\u0022Revenue D E L Capital D E L N et Cash Requirement\u0022]}},{\u0022id\u0022:\u0022b1042\u0022,\u0022page\u0022:31,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022Pa rt 2 Su sta in a bi lity Re po rt\u0022,\u0022source_length\u0022:36,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b410: to 96 % of a pplications\u0022,\u0022b737: Impementngte C a rtes Act 2022,\u0022,\u0022b1026: Part 1 c Fin a ncial Review\u0022,\u0022b1036: Revenue D E L Capital D E L N et Cash Requirement\u0022],\u0022allowed_parent_ids\u0022:[\u0022b996\u0022,\u0022b998\u0022,\u0022b1001\u0022,\u0022b1026\u0022,\u0022b1033\u0022,\u0022b1036\u0022,\u0022b1038\u0022,\u0022b1041\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022Surplus for year 74 91 428\u0022,\u0022Dame Helen Stephenson CBE Chief Executive a nd Accounting Officer 1 2 July 2024\u0022],\u0022next_blocks\u0022:[\u0022Overallperform a nce (2023 - 24)\u0022,\u0022CO 2 emissions\u0022]}},{\u0022id\u0022:\u0022b1099\u0022,\u0022page\u0022:35,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022Pa rt 3 Acco u nta bi lity Re po rt\u0022,\u0022source_length\u0022:35,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1036: Revenue D E L Capital D E L N et Cash Requirement\u0022,\u0022b1042: Part 2 Susta in a bility Report\u0022,\u0022b1047: CO 2 emissions\u0022,\u0022b1058: Domestic I nte rnational\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1068\u0022,\u0022b1072\u0022,\u0022b1073\u0022,\u0022b1077\u0022,\u0022b1081\u0022,\u0022b1088\u0022,\u0022b1092\u0022,\u0022b1093\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022S USTAI NAB ILITY R EPO RT\u0022,\u0022Procurement processes\u0022],\u0022next_blocks\u0022:[\u0022I ntroduction\u0022,\u0022Statement of Accounting Officersresponsibi lities\u0022]}},{\u0022id\u0022:\u0022b1123\u0022,\u0022page\u0022:37,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022Pa rt 3 a Co rpo rate Gove rn a n ce Re po rt\u0022,\u0022source_length\u0022:45,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1042: Part 2 Susta in a bility Report\u0022,\u0022b1047: CO 2 emissions\u0022,\u0022b1058: Domestic I nte rnational\u0022,\u0022b1099: Part 3 Accountability Report\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1081\u0022,\u0022b1088\u0022,\u0022b1092\u0022,\u0022b1093\u0022,\u0022b1099\u0022,\u0022b1100\u0022,\u0022b1106\u0022,\u0022b1116\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022Statement of Accounting Officersresponsibi lities\u0022,\u0022ACCO UNTAB ILITY R EPO RT\u0022],\u0022next_blocks\u0022:[\u0022The Commissionsgovern a ncestructures\u0022,\u0022Changes to the Board\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 12030,
+      "estimatedInputTokens": 3008,
+      "repeatedContextBytes": 632,
+      "requestSha256": "13dd5eee0e1ac84c37f04807dfca81f65c83876f5c9f1325e446fc1b8e6183d6"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "ROLE",
+      "shardId": "NEW-D37DD2D74B04:ROLE:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000038",
+        "U000040",
+        "U000042",
+        "U000044",
+        "U000046",
+        "U000883",
+        "U000884",
+        "U003087",
+        "U004619"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "ROLE",
+        "shardId": "NEW-D37DD2D74B04:ROLE:003",
+        "blocks": [
+          "B017",
+          "B018",
+          "B019",
+          "B020",
+          "B021",
+          "B022",
+          "B023",
+          "B024"
+        ],
+        "sourceRefs": [
+          "U000038",
+          "U000040",
+          "U000042",
+          "U000044",
+          "U000046",
+          "U000883",
+          "U000884",
+          "U003087",
+          "U004619"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1360\u0022,\u0022page\u0022:51,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022Pa rt 3 b Re m u n e ratio n a n d Staff Re po rt\u0022,\u0022source_length\u0022:49,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1047: CO 2 emissions\u0022,\u0022b1058: Domestic I nte rnational\u0022,\u0022b1099: Part 3 Accountability Report\u0022,\u0022b1123: Part 3 a Corporate Govern a nce Report\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1318\u0022,\u0022b1320\u0022,\u0022b1334\u0022,\u0022b1335\u0022,\u0022b1341\u0022,\u0022b1352\u0022,\u0022b1353\u0022,\u0022b1359\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022Accounting officersstatement of effectiveness\u0022,\u0022Dame Helen Stephenson CBE Chief Executive a nd Accounting Officer 1 2 July 2024\u0022],\u0022next_blocks\u0022:[\u0022Remuneration Report\u0022,\u0022Servicecontracts\u0022]}},{\u0022id\u0022:\u0022b1861\u0022,\u0022page\u0022:80,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u0022Pa rt 4 Reso u rce Acco u nts\u0022,\u0022source_length\u0022:29,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1058: Domestic I nte rnational\u0022,\u0022b1099: Part 3 Accountability Report\u0022,\u0022b1123: Part 3 a Corporate Govern a nce Report\u0022,\u0022b1360: Part 3 b Remuneration a nd Staff Report\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1815\u0022,\u0022b1819\u0022,\u0022b1829\u0022,\u0022b1836\u0022,\u0022b1846\u0022,\u0022b1851\u0022,\u0022b1856\u0022,\u0022b1858\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022,\u0022header_footer_zone\u0022],\u0022previous_blocks\u0022:[\u0022Report\u0022,\u0022Gareth Davies Comptroller a nd Auditor General 1 5 July 2024\u0022],\u0022next_blocks\u0022:[\u0022Contents\u0022,\u0022Notes to the Departmental Resource Accounts Glossary\u0022]}},{\u0022id\u0022:\u0022b396\u0022,\u0022page\u0022:17,\u0022lines\u0022:2,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.00\u0022},\u0022source_text\u0022:\u0022ithi 1 2 0 d (95 % of a l l ca l ls a n d 79 % of ca l ls w n seco n s\u0022,\u0022source_length\u0022:70,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b32: Part 1 Perform a nce Report\u0022,\u0022b37: Part 1 a Perform a nce Overview\u0022,\u0022b328: 1 1 1 870 Contact Centre\u0022,\u0022b331: Part 1 b Perform a nce An a lysis\u0022],\u0022allowed_parent_ids\u0022:[\u0022b326\u0022,\u0022b327\u0022,\u0022b328\u0022,\u0022b331\u0022,\u0022b333\u0022,\u0022b335\u0022,\u0022b383\u0022,\u0022b392\u0022],\u0022observed_facts\u0022:[\u0022multi_line_cluster\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022Newsystemfortrustees\u0022,\u0022P E RFO RMAN CE ANALYS I S\u0022],\u0022next_blocks\u0022:[\u0022within 1 2 0 secondsin 2 022 - 23)\u0022,\u0022compared to 68 497 in 2 022 - 23\u0022]}},{\u0022id\u0022:\u0022b20\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-light\u0022,\u0022color\u0022:\u00220.24,0.20,0.20\u0022},\u0022source_text\u0022:\u00221 Pe rfo rm a n ce Re po rt 2\u0022,\u0022source_length\u0022:29,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b1\u0022,\u0022b2\u0022,\u0022b3\u0022,\u0022b4\u0022,\u0022b5\u0022,\u0022b13\u0022,\u0022b19\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u0022otherw is estated To viewth is licencev is itnationala rchivesgovuk / doc / open-government-licence /\u0022,\u0022Contents\u0022],\u0022next_blocks\u0022:[\u00221 a Perform a nce Overview 3\u0022,\u00221 b Perform a nce An a lys is 1 1\u0022]}},{\u0022id\u0022:\u0022b21\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-light\u0022,\u0022color\u0022:\u00220.24,0.20,0.20\u0022},\u0022source_text\u0022:\u00221 a Pe rfo rm a n ce Ove rv iew 3\u0022,\u0022source_length\u0022:33,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b20: 1 Perform a nce Report 2\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1\u0022,\u0022b2\u0022,\u0022b3\u0022,\u0022b4\u0022,\u0022b5\u0022,\u0022b13\u0022,\u0022b19\u0022,\u0022b20\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u0022Contents\u0022,\u00221 Perform a nce Report 2\u0022],\u0022next_blocks\u0022:[\u00221 b Perform a nce An a lys is 1 1\u0022,\u00221 c Fin a ncial Review 26\u0022]}},{\u0022id\u0022:\u0022b22\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-light\u0022,\u0022color\u0022:\u00220.24,0.20,0.20\u0022},\u0022source_text\u0022:\u00221 b Pe rfo rm a n ce An a lys is 1 1\u0022,\u0022source_length\u0022:36,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b20: 1 Perform a nce Report 2\u0022,\u0022b21: 1 a Perform a nce Overview 3\u0022],\u0022allowed_parent_ids\u0022:[\u0022b2\u0022,\u0022b3\u0022,\u0022b4\u0022,\u0022b5\u0022,\u0022b13\u0022,\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u00221 Perform a nce Report 2\u0022,\u00221 a Perform a nce Overview 3\u0022],\u0022next_blocks\u0022:[\u00221 c Fin a ncial Review 26\u0022,\u00222 Sustain a bility Report 27\u0022]}},{\u0022id\u0022:\u0022b23\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-light\u0022,\u0022color\u0022:\u00220.24,0.20,0.20\u0022},\u0022source_text\u0022:\u00221 c Fi n a n c ia l Rev iew 26\u0022,\u0022source_length\u0022:30,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b20: 1 Perform a nce Report 2\u0022,\u0022b21: 1 a Perform a nce Overview 3\u0022,\u0022b22: 1 b Perform a nce An a lys is 1 1\u0022],\u0022allowed_parent_ids\u0022:[\u0022b3\u0022,\u0022b4\u0022,\u0022b5\u0022,\u0022b13\u0022,\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u00221 a Perform a nce Overview 3\u0022,\u00221 b Perform a nce An a lys is 1 1\u0022],\u0022next_blocks\u0022:[\u00222 Sustain a bility Report 27\u0022,\u00223 Accountability Report 31\u0022]}},{\u0022id\u0022:\u0022b24\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-light\u0022,\u0022color\u0022:\u00220.24,0.20,0.20\u0022},\u0022source_text\u0022:\u00222 Su sta i n a bi l ity Re po rt 27\u0022,\u0022source_length\u0022:35,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b20: 1 Perform a nce Report 2\u0022,\u0022b21: 1 a Perform a nce Overview 3\u0022,\u0022b22: 1 b Perform a nce An a lys is 1 1\u0022,\u0022b23: 1 c Fin a ncial Review 26\u0022],\u0022allowed_parent_ids\u0022:[\u0022b4\u0022,\u0022b5\u0022,\u0022b13\u0022,\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u00221 b Perform a nce An a lys is 1 1\u0022,\u00221 c Fin a ncial Review 26\u0022],\u0022next_blocks\u0022:[\u00223 Accountability Report 31\u0022,\u00223 a Corporate Govern a nce Report 33\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 11298,
+      "estimatedInputTokens": 2825,
+      "repeatedContextBytes": 601,
+      "requestSha256": "d6567f046a61dbf26e78839cb637f46785be62c211aa746439600266d94b9119"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "ROLE",
+      "shardId": "NEW-D37DD2D74B04:ROLE:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000048",
+        "U000050",
+        "U000052",
+        "U000057",
+        "U000714",
+        "U004798",
+        "U004817",
+        "U004856"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "ROLE",
+        "shardId": "NEW-D37DD2D74B04:ROLE:004",
+        "blocks": [
+          "B025",
+          "B026",
+          "B027",
+          "B028",
+          "B029",
+          "B030",
+          "B031",
+          "B032"
+        ],
+        "sourceRefs": [
+          "U000048",
+          "U000050",
+          "U000052",
+          "U000057",
+          "U000714",
+          "U004798",
+          "U004817",
+          "U004856"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b25\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-light\u0022,\u0022color\u0022:\u00220.24,0.20,0.20\u0022},\u0022source_text\u0022:\u00223 Acco u nta bi l ity Re po rt 31\u0022,\u0022source_length\u0022:33,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b21: 1 a Perform a nce Overview 3\u0022,\u0022b22: 1 b Perform a nce An a lys is 1 1\u0022,\u0022b23: 1 c Fin a ncial Review 26\u0022,\u0022b24: 2 Sustain a bility Report 27\u0022],\u0022allowed_parent_ids\u0022:[\u0022b5\u0022,\u0022b13\u0022,\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b24\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u00221 c Fin a ncial Review 26\u0022,\u00222 Sustain a bility Report 27\u0022],\u0022next_blocks\u0022:[\u00223 a Corporate Govern a nce Report 33\u0022,\u00223 b Remuneration a nd Staff Report 47\u0022]}},{\u0022id\u0022:\u0022b26\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-light\u0022,\u0022color\u0022:\u00220.24,0.20,0.20\u0022},\u0022source_text\u0022:\u00223 a Co rpo rate Gove rn a n ce Re po rt 33\u0022,\u0022source_length\u0022:42,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b22: 1 b Perform a nce An a lys is 1 1\u0022,\u0022b23: 1 c Fin a ncial Review 26\u0022,\u0022b24: 2 Sustain a bility Report 27\u0022,\u0022b25: 3 Accountability Report 31\u0022],\u0022allowed_parent_ids\u0022:[\u0022b13\u0022,\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b24\u0022,\u0022b25\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u00222 Sustain a bility Report 27\u0022,\u00223 Accountability Report 31\u0022],\u0022next_blocks\u0022:[\u00223 b Remuneration a nd Staff Report 47\u0022,\u0022Audit Report\u0022]}},{\u0022id\u0022:\u0022b27\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-light\u0022,\u0022color\u0022:\u00220.24,0.20,0.20\u0022},\u0022source_text\u0022:\u00223 b Re m u n e ratio n a n d Staff Re po rt 47\u0022,\u0022source_length\u0022:46,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b23: 1 c Fin a ncial Review 26\u0022,\u0022b24: 2 Sustain a bility Report 27\u0022,\u0022b25: 3 Accountability Report 31\u0022,\u0022b26: 3 a Corporate Govern a nce Report 33\u0022],\u0022allowed_parent_ids\u0022:[\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b24\u0022,\u0022b25\u0022,\u0022b26\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u00223 Accountability Report 31\u0022,\u00223 a Corporate Govern a nce Report 33\u0022],\u0022next_blocks\u0022:[\u0022Audit Report\u0022,\u00224 Resource Accounts 76\u0022]}},{\u0022id\u0022:\u0022b30\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-light\u0022,\u0022color\u0022:\u00220.24,0.20,0.20\u0022},\u0022source_text\u0022:\u00224 Res o u rce Acco u nts 76\u0022,\u0022source_length\u0022:27,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b24: 2 Sustain a bility Report 27\u0022,\u0022b25: 3 Accountability Report 31\u0022,\u0022b26: 3 a Corporate Govern a nce Report 33\u0022,\u0022b27: 3 b Remuneration a nd Staff Report 47\u0022],\u0022allowed_parent_ids\u0022:[\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b24\u0022,\u0022b25\u0022,\u0022b26\u0022,\u0022b27\u0022,\u0022b29\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u00223 b Remuneration a nd Staff Report 47\u0022,\u0022Audit Report\u0022],\u0022next_blocks\u0022:[\u0022G loss a ry (not a udited) 94\u0022,\u0022Part 1 Perform a nce Report\u0022]}},{\u0022id\u0022:\u0022b328\u0022,\u0022page\u0022:14,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-light\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00221 1 1 870 Co n ta ct Ce n t re\u0022,\u0022source_length\u0022:30,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b27: 3 b Remuneration a nd Staff Report 47\u0022,\u0022b30: 4 Resource Accounts 76\u0022,\u0022b32: Part 1 Perform a nce Report\u0022,\u0022b37: Part 1 a Perform a nce Overview\u0022],\u0022allowed_parent_ids\u0022:[\u0022b320\u0022,\u0022b321\u0022,\u0022b322\u0022,\u0022b323\u0022,\u0022b324\u0022,\u0022b325\u0022,\u0022b326\u0022,\u0022b327\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:spaced_arabic\u0022],\u0022previous_blocks\u0022:[\u0022number of individu a l\u0022,\u0022charitiessupportedthroughthe\u0022],\u0022next_blocks\u0022:[\u0022Part 1 b Perform a nce An a lysis\u0022,\u0022peraon a erorm a nce \\u2013,\u0022]}},{\u0022id\u0022:\u0022b1928\u0022,\u0022page\u0022:85,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00221 Ge n e ra l i nfo rm atio n\u0022,\u0022source_length\u0022:29,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1099: Part 3 Accountability Report\u0022,\u0022b1123: Part 3 a Corporate Govern a nce Report\u0022,\u0022b1360: Part 3 b Remuneration a nd Staff Report\u0022,\u0022b1861: Part 4 Resource Accounts\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1915\u0022,\u0022b1916\u0022,\u0022b1917\u0022,\u0022b1920\u0022,\u0022b1922\u0022,\u0022b1924\u0022,\u0022b1926\u0022,\u0022b1927\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u0022N otes to the Departmental Resource Accounts\u0022],\u0022next_blocks\u0022:[\u00222 Statement of a ccountingpo licies\u0022,\u00222 1 Accountingconvention\u0022]}},{\u0022id\u0022:\u0022b1932\u0022,\u0022page\u0022:85,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00222 State m e nt of a cco u nti n g po licies\u0022,\u0022source_length\u0022:43,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1123: Part 3 a Corporate Govern a nce Report\u0022,\u0022b1360: Part 3 b Remuneration a nd Staff Report\u0022,\u0022b1861: Part 4 Resource Accounts\u0022,\u0022b1928: 1 Generalinformation\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1916\u0022,\u0022b1917\u0022,\u0022b1920\u0022,\u0022b1922\u0022,\u0022b1924\u0022,\u0022b1926\u0022,\u0022b1927\u0022,\u0022b1928\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u0022N otes to the Departmental Resource Accounts\u0022,\u00221 Generalinformation\u0022],\u0022next_blocks\u0022:[\u00222 1 Accountingconvention\u0022,\u0022RESO URCE ACCO UNTS\u0022]}},{\u0022id\u0022:\u0022b1943\u0022,\u0022page\u0022:85,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00222 1 Acco u nti n g co nve ntio n\u0022,\u0022source_length\u0022:32,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1360: Part 3 b Remuneration a nd Staff Report\u0022,\u0022b1861: Part 4 Resource Accounts\u0022,\u0022b1928: 1 Generalinformation\u0022,\u0022b1932: 2 Statement of a ccountingpo licies\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1917\u0022,\u0022b1920\u0022,\u0022b1922\u0022,\u0022b1924\u0022,\u0022b1926\u0022,\u0022b1927\u0022,\u0022b1928\u0022,\u0022b1932\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:spaced_arabic\u0022],\u0022previous_blocks\u0022:[\u00221 Generalinformation\u0022,\u00222 Statement of a ccountingpo licies\u0022],\u0022next_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u00222 2 Propertyplant a ndequipment\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 11629,
+      "estimatedInputTokens": 2908,
+      "repeatedContextBytes": 917,
+      "requestSha256": "5e0cb2bd45eec94eea70e1571695b30ed25b773b89801a106dbc354ed3939dae"
+    },
+    {
+      "documentId": "NEW-D37DD2D74B04",
+      "stage": "ROLE",
+      "shardId": "NEW-D37DD2D74B04:ROLE:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U004882",
+        "U004905",
+        "U004949",
+        "U004958",
+        "U004979",
+        "U005043",
+        "U005055",
+        "U005183"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-D37DD2D74B04",
+        "stage": "ROLE",
+        "shardId": "NEW-D37DD2D74B04:ROLE:005",
+        "blocks": [
+          "B033",
+          "B034",
+          "B035",
+          "B036",
+          "B037",
+          "B038",
+          "B039",
+          "B040"
+        ],
+        "sourceRefs": [
+          "U004882",
+          "U004905",
+          "U004949",
+          "U004958",
+          "U004979",
+          "U005043",
+          "U005055",
+          "U005183"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1953\u0022,\u0022page\u0022:86,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00222 3 I nta n g i ble assets\u0022,\u0022source_length\u0022:26,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1928: 1 Generalinformation\u0022,\u0022b1932: 2 Statement of a ccountingpo licies\u0022,\u0022b1943: 2 1 Accountingconvention\u0022,\u0022b1946: 2 2 Propertyplant a ndequipment\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1924\u0022,\u0022b1926\u0022,\u0022b1927\u0022,\u0022b1928\u0022,\u0022b1932\u0022,\u0022b1943\u0022,\u0022b1945\u0022,\u0022b1946\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:spaced_arabic\u0022],\u0022previous_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u00222 2 Propertyplant a ndequipment\u0022],\u0022next_blocks\u0022:[\u00222 4 De preciation a nd Amo rtisation\u0022,\u0022RESO URCE ACCO UNTS\u0022]}},{\u0022id\u0022:\u0022b1961\u0022,\u0022page\u0022:86,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00222 4 De preciatio n a n d Am o rtisatio n\u0022,\u0022source_length\u0022:40,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1932: 2 Statement of a ccountingpo licies\u0022,\u0022b1943: 2 1 Accountingconvention\u0022,\u0022b1946: 2 2 Propertyplant a ndequipment\u0022,\u0022b1953: 2 3 Intangible assets\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1926\u0022,\u0022b1927\u0022,\u0022b1928\u0022,\u0022b1932\u0022,\u0022b1943\u0022,\u0022b1945\u0022,\u0022b1946\u0022,\u0022b1953\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:spaced_arabic\u0022],\u0022previous_blocks\u0022:[\u00222 2 Propertyplant a ndequipment\u0022,\u00222 3 Intangible assets\u0022],\u0022next_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u00222 5 Right-of use assets\u0022]}},{\u0022id\u0022:\u0022b1978\u0022,\u0022page\u0022:87,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00222 6 I m pa i rm e nts\u0022,\u0022source_length\u0022:21,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1946: 2 2 Propertyplant a ndequipment\u0022,\u0022b1953: 2 3 Intangible assets\u0022,\u0022b1961: 2 4 De preciation a nd Amo rtisation\u0022,\u0022b1970: 2 5 Right-of use assets\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1932\u0022,\u0022b1943\u0022,\u0022b1945\u0022,\u0022b1946\u0022,\u0022b1953\u0022,\u0022b1961\u0022,\u0022b1969\u0022,\u0022b1970\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:spaced_arabic\u0022],\u0022previous_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u00222 5 Right-of use assets\u0022],\u0022next_blocks\u0022:[\u00222 7 Operatingincome\u0022,\u00222 8 Admin istrationexpenditure\u0022]}},{\u0022id\u0022:\u0022b1980\u0022,\u0022page\u0022:87,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00222 7 O pe rati n g i n co m e\u0022,\u0022source_length\u0022:28,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1953: 2 3 Intangible assets\u0022,\u0022b1961: 2 4 De preciation a nd Amo rtisation\u0022,\u0022b1970: 2 5 Right-of use assets\u0022,\u0022b1978: 2 6 Impairments\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1943\u0022,\u0022b1945\u0022,\u0022b1946\u0022,\u0022b1953\u0022,\u0022b1961\u0022,\u0022b1969\u0022,\u0022b1970\u0022,\u0022b1978\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:spaced_arabic\u0022],\u0022previous_blocks\u0022:[\u00222 5 Right-of use assets\u0022,\u00222 6 Impairments\u0022],\u0022next_blocks\u0022:[\u00222 8 Admin istrationexpenditure\u0022,\u0022RESO URCE ACCO UNTS\u0022]}},{\u0022id\u0022:\u0022b1986\u0022,\u0022page\u0022:87,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00222 8 Ad m i n istratio n expe n ditu re\u0022,\u0022source_length\u0022:38,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1961: 2 4 De preciation a nd Amo rtisation\u0022,\u0022b1970: 2 5 Right-of use assets\u0022,\u0022b1978: 2 6 Impairments\u0022,\u0022b1980: 2 7 Operatingincome\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1945\u0022,\u0022b1946\u0022,\u0022b1953\u0022,\u0022b1961\u0022,\u0022b1969\u0022,\u0022b1970\u0022,\u0022b1978\u0022,\u0022b1980\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:spaced_arabic\u0022],\u0022previous_blocks\u0022:[\u00222 6 Impairments\u0022,\u00222 7 Operatingincome\u0022],\u0022next_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u00222 9 Foreigncurrency\u0022]}},{\u0022id\u0022:\u0022b2008\u0022,\u0022page\u0022:88,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00222 1 2 Va l u e Added Tax\u0022,\u0022source_length\u0022:24,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1978: 2 6 Impairments\u0022,\u0022b1980: 2 7 Operatingincome\u0022,\u0022b1986: 2 8 Admin istrationexpenditure\u0022,\u0022b1990: 2 9 Foreigncurrency\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1970\u0022,\u0022b1978\u0022,\u0022b1980\u0022,\u0022b1986\u0022,\u0022b1989\u0022,\u0022b1990\u0022,\u0022b1994\u0022,\u0022b1998\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:spaced_arabic\u0022],\u0022previous_blocks\u0022:[\u00222 1 0 Pensions\u0022,\u00222 1 1 Leases\u0022],\u0022next_blocks\u0022:[\u00222 1 3 Contingentliabilities\u0022,\u0022RESO URCE ACCO UNTS\u0022]}},{\u0022id\u0022:\u0022b2013\u0022,\u0022page\u0022:88,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00222 1 3 Co nti n ge nt l ia bi l ities\u0022,\u0022source_length\u0022:36,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1980: 2 7 Operatingincome\u0022,\u0022b1986: 2 8 Admin istrationexpenditure\u0022,\u0022b1990: 2 9 Foreigncurrency\u0022,\u0022b2008: 2 1 2 Value Added Tax\u0022],\u0022allowed_parent_ids\u0022:[\u0022b1978\u0022,\u0022b1980\u0022,\u0022b1986\u0022,\u0022b1989\u0022,\u0022b1990\u0022,\u0022b1994\u0022,\u0022b1998\u0022,\u0022b2008\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:spaced_arabic\u0022],\u0022previous_blocks\u0022:[\u00222 1 1 Leases\u0022,\u00222 1 2 Value Added Tax\u0022],\u0022next_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u0022Other Other\u0022]}},{\u0022id\u0022:\u0022b2054\u0022,\u0022page\u0022:91,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022dax-regular\u0022,\u0022color\u0022:\u00220.00,0.00,0.39\u0022},\u0022source_text\u0022:\u00225 I n co m e\u0022,\u0022source_length\u0022:12,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b1986: 2 8 Admin istrationexpenditure\u0022,\u0022b1990: 2 9 Foreigncurrency\u0022,\u0022b2008: 2 1 2 Value Added Tax\u0022,\u0022b2013: 2 1 3 Contingentliabilities\u0022],\u0022allowed_parent_ids\u0022:[\u0022b2040\u0022,\u0022b2041\u0022,\u0022b2044\u0022,\u0022b2045\u0022,\u0022b2047\u0022,\u0022b2048\u0022,\u0022b2051\u0022,\u0022b2052\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:arabic\u0022],\u0022previous_blocks\u0022:[\u0022RESO URCE ACCO UNTS\u0022,\u0022Auditors\u0022],\u0022next_blocks\u0022:[\u0022I ncome received from other U K governmentdepa rtments:\u0022,\u0022Totalincome 1 487 1 490\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 11392,
+      "estimatedInputTokens": 2848,
+      "repeatedContextBytes": 906,
+      "requestSha256": "631ba32ed2d0b19fe1bca99704875d58260702a9a66d371cad24b11cb70acadb"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "ROLE",
+      "shardId": "NEW-F90364E75711:ROLE:001",
+      "shardOrdinal": 1,
+      "blockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008"
+      ],
+      "sourceRefs": [
+        "U000012",
+        "U000013",
+        "U000014",
+        "U000461",
+        "U000603",
+        "U000608",
+        "U000630",
+        "U000631",
+        "U000712",
+        "U000713",
+        "U000714"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "ROLE",
+        "shardId": "NEW-F90364E75711:ROLE:001",
+        "blocks": [
+          "B001",
+          "B002",
+          "B003",
+          "B004",
+          "B005",
+          "B006",
+          "B007",
+          "B008"
+        ],
+        "sourceRefs": [
+          "U000012",
+          "U000013",
+          "U000014",
+          "U000461",
+          "U000603",
+          "U000608",
+          "U000630",
+          "U000631",
+          "U000712",
+          "U000713",
+          "U000714"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b273\u0022,\u0022page\u0022:10,\u0022lines\u0022:2,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.00,0.00,0.00\u0022},\u0022source_text\u0022:\u0022C l i m ate C h a n ge Ad a ptati o n a n d M iti gati o n Co- Be n efits by Secto r fo r\u0022,\u0022source_length\u0022:89,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b193: Total 643 5 8 9 9 2 54 Flfilldi Whl Flfilldi P t Flfilldi Whli P t\u0022,\u0022b254: Requestsclosedwithin 2 0 workingd a ys 48 1 8 1 Diit D A\u0022,\u0022b258: Climate C h a nge Ad a ptation a nd\u0022],\u0022allowed_parent_ids\u0022:[\u0022b262\u0022,\u0022b264\u0022,\u0022b265\u0022,\u0022b267\u0022,\u0022b268\u0022,\u0022b269\u0022,\u0022b270\u0022,\u0022b271\u0022],\u0022observed_facts\u0022:[\u0022multi_line_cluster\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022requested Policy\u0022,\u0022to Deny Access\u0022],\u0022next_blocks\u0022:[\u0022X Dismissed\u0022,\u0022t Dismissedmeansth at the a ppealisnotconsideredonitsmerits a ndistherefore rejectedbecause (a) therequester\u0022]}},{\u0022id\u0022:\u0022b193\u0022,\u0022page\u0022:8,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.00,0.00,0.00\u0022},\u0022source_text\u0022:\u0022Tota l 643 5 8 9 9 2 54 F lfi l l d i W h l F lfi l l d i P t F lfi l l d i W h l i P t\u0022,\u0022source_length\u0022:87,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b185\u0022,\u0022b186\u0022,\u0022b187\u0022,\u0022b188\u0022,\u0022b189\u0022,\u0022b190\u0022,\u0022b191\u0022,\u0022b192\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022Requests Requests Total Number of Requests\u0022,\u0022Indicator\u0022],\u0022next_blocks\u0022:[\u0022uenoeuen a ruenoeorn a r\u0022,\u0022Totalnumber 3 65 52 4 1 7\u0022]}},{\u0022id\u0022:\u0022b254\u0022,\u0022page\u0022:10,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.00,0.00,0.00\u0022},\u0022source_text\u0022:\u0022Re q u ests c l ose d w i t h i n 2 0 w o r k i n g d a ys 48 1 8 1 D i i t D A\u0022,\u0022source_length\u0022:79,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b193: Total 643 5 8 9 9 2 54 Flfilldi Whl Flfilldi P t Flfilldi Whli P t\u0022],\u0022allowed_parent_ids\u0022:[\u0022b246\u0022,\u0022b247\u0022,\u0022b248\u0022,\u0022b249\u0022,\u0022b250\u0022,\u0022b251\u0022,\u0022b252\u0022,\u0022b253\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022Applicable Exception (s)\u0022,\u0022informationrequestedupholding World Bank\u0022],\u0022next_blocks\u0022:[\u0022ecsonoenyccess\u0022,\u0022Requestsclosed a fter 2 0 workingd a ys 1 08 1 9\u0022]}},{\u0022id\u0022:\u0022b258\u0022,\u0022page\u0022:10,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.00,0.00,0.00\u0022},\u0022source_text\u0022:\u0022C l i m ate C h a n ge Ad a ptati o n a n d\u0022,\u0022source_length\u0022:43,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b193: Total 643 5 8 9 9 2 54 Flfilldi Whl Flfilldi P t Flfilldi Whli P t\u0022,\u0022b254: Requestsclosedwithin 2 0 workingd a ys 48 1 8 1 Diit D A\u0022],\u0022allowed_parent_ids\u0022:[\u0022b249\u0022,\u0022b250\u0022,\u0022b251\u0022,\u0022b252\u0022,\u0022b253\u0022,\u0022b254\u0022,\u0022b255\u0022,\u0022b256\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022ecsonoenyccess\u0022,\u0022Requestsclosed a fter 2 0 workingd a ys 1 08 1 9\u0022],\u0022next_blocks\u0022:[\u0022Totalnumber of Requests Closed 589 1 0 0\u0022,\u0022A ppe a ls Concluded by the Access to Inform a tion Committee (A I C)\u0022]}},{\u0022id\u0022:\u0022b297\u0022,\u0022page\u0022:11,\u0022lines\u0022:3,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00221.00,1.00,1.00\u0022},\u0022source_text\u0022:\u0022O pe n D a ta I n i t i a t iv e p rov i d es free a n d o pe n a ccess to t h o u sa n d s of d eve l o p m e n t d ata i n d i ca - to rs\u0022,\u0022source_length\u0022:139,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[\u0022b193: Total 643 5 8 9 9 2 54 Flfilldi Whl Flfilldi P t Flfilldi Whli P t\u0022,\u0022b254: Requestsclosedwithin 2 0 workingd a ys 48 1 8 1 Diit D A\u0022,\u0022b258: Climate C h a nge Ad a ptation a nd\u0022,\u0022b273: Climate C h a nge Ad a ptation a nd Mitigation Co-Benefits by Sectorfor\u0022],\u0022allowed_parent_ids\u0022:[\u0022b273\u0022,\u0022b274\u0022,\u0022b277\u0022,\u0022b278\u0022,\u0022b280\u0022,\u0022b282\u0022,\u0022b293\u0022,\u0022b295\u0022],\u0022observed_facts\u0022:[\u0022multi_line_cluster\u0022,\u0022marker:loose_labelled\u0022],\u0022previous_blocks\u0022:[\u0022Projects \\u0026 Operationsprovides a ccess to basicinformationon a ll of the World Bankslendingp rojectsfrom 1947 to thepresent\u0022,\u0022The Open Government Partnershipis a multilateralinitiativeth at securesconcretecommitmentsfromgovern-ments to promotetransparencyempowercitizens a ndfightcorruption\u0022],\u0022next_blocks\u0022:[]}},{\u0022id\u0022:\u0022b10\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022documents more accessible and discoverable. The launch of\u0022,\u0022source_length\u0022:57,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b4\u0022,\u0022b6\u0022,\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022to the Open Knowledge Repository and Documents \\u0026\u0022,\u0022Reports platform making research data and official\u0022],\u0022next_blocks\u0022:[\u0022the Reproducible Research Repository and improvements to\u0022,\u0022opendata platforms further advanced transparency and\u0022]}},{\u0022id\u0022:\u0022b11\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022the Reproducible Research Repository and improvements to\u0022,\u0022source_length\u0022:56,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b4\u0022,\u0022b6\u0022,\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Reports platform making research data and official\u0022,\u0022documents more accessible and discoverable. The launch of\u0022],\u0022next_blocks\u0022:[\u0022opendata platforms further advanced transparency and\u0022,\u0022accountability in development research. The Archives\u0022]}},{\u0022id\u0022:\u0022b12\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022open data platforms further advanced transparency and\u0022,\u0022source_length\u0022:53,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b4\u0022,\u0022b6\u0022,\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022,\u0022b11\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022documents more accessible and discoverable. The launch of\u0022,\u0022the Reproducible Research Repository and improvements to\u0022],\u0022next_blocks\u0022:[\u0022accountability in development research. The Archives\u0022,\u0022continued to expand public access by declassifying and\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 11751,
+      "estimatedInputTokens": 2938,
+      "repeatedContextBytes": 710,
+      "requestSha256": "d61ba75900155b0d409d309c228ca7c0ff9573d74088b0f2b0d66ddc2fc49fc4"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "ROLE",
+      "shardId": "NEW-F90364E75711:ROLE:002",
+      "shardOrdinal": 2,
+      "blockRefs": [
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016"
+      ],
+      "sourceRefs": [
+        "U000015",
+        "U000016",
+        "U000017",
+        "U000018",
+        "U000019",
+        "U000020",
+        "U000021",
+        "U000023"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "ROLE",
+        "shardId": "NEW-F90364E75711:ROLE:002",
+        "blocks": [
+          "B009",
+          "B010",
+          "B011",
+          "B012",
+          "B013",
+          "B014",
+          "B015",
+          "B016"
+        ],
+        "sourceRefs": [
+          "U000015",
+          "U000016",
+          "U000017",
+          "U000018",
+          "U000019",
+          "U000020",
+          "U000021",
+          "U000023"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b13\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022accountability in development research. The Archives\u0022,\u0022source_length\u0022:52,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b4\u0022,\u0022b6\u0022,\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022,\u0022b11\u0022,\u0022b12\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022the Reproducible Research Repository and improvements to\u0022,\u0022opendata platforms further advanced transparency and\u0022],\u0022next_blocks\u0022:[\u0022continued to expand public access by declassifying and\u0022,\u0022digitizing hundreds of thousands of pages of historical\u0022]}},{\u0022id\u0022:\u0022b14\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022continued to expand public access by declassifying and\u0022,\u0022source_length\u0022:54,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b6\u0022,\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022,\u0022b11\u0022,\u0022b12\u0022,\u0022b13\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022opendata platforms further advanced transparency and\u0022,\u0022accountability in development research. The Archives\u0022],\u0022next_blocks\u0022:[\u0022digitizing hundreds of thousands of pages of historical\u0022,\u0022records.\u0022]}},{\u0022id\u0022:\u0022b15\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022digitizing hundreds of thousands of pages of historical\u0022,\u0022source_length\u0022:55,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b7\u0022,\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022,\u0022b11\u0022,\u0022b12\u0022,\u0022b13\u0022,\u0022b14\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022accountability in development research. The Archives\u0022,\u0022continued to expand public access by declassifying and\u0022],\u0022next_blocks\u0022:[\u0022records.\u0022,\u0022Efforts to enhance user experience included upgraded\u0022]}},{\u0022id\u0022:\u0022b16\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022records.\u0022,\u0022source_length\u0022:8,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b8\u0022,\u0022b9\u0022,\u0022b10\u0022,\u0022b11\u0022,\u0022b12\u0022,\u0022b13\u0022,\u0022b14\u0022,\u0022b15\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022continued to expand public access by declassifying and\u0022,\u0022digitizing hundreds of thousands of pages of historical\u0022],\u0022next_blocks\u0022:[\u0022Efforts to enhance user experience included upgraded\u0022,\u0022emailalert systems, enriched discovery platforms, and new\u0022]}},{\u0022id\u0022:\u0022b17\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022Efforts to enhance user experience included upgraded\u0022,\u0022source_length\u0022:52,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b9\u0022,\u0022b10\u0022,\u0022b11\u0022,\u0022b12\u0022,\u0022b13\u0022,\u0022b14\u0022,\u0022b15\u0022,\u0022b16\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022digitizing hundreds of thousands of pages of historical\u0022,\u0022records.\u0022],\u0022next_blocks\u0022:[\u0022emailalert systems, enriched discovery platforms, and new\u0022,\u0022digital preservationtoolsall of which empower\u0022]}},{\u0022id\u0022:\u0022b18\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022email alert systems, enriched discovery platforms, and new\u0022,\u0022source_length\u0022:58,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b10\u0022,\u0022b11\u0022,\u0022b12\u0022,\u0022b13\u0022,\u0022b14\u0022,\u0022b15\u0022,\u0022b16\u0022,\u0022b17\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022records.\u0022,\u0022Efforts to enhance user experience included upgraded\u0022],\u0022next_blocks\u0022:[\u0022digital preservationtoolsall of which empower\u0022,\u0022stakeholders to engage with World Bank information more\u0022]}},{\u0022id\u0022:\u0022b19\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022digital preservation tools all of which empower\u0022,\u0022source_length\u0022:47,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b11\u0022,\u0022b12\u0022,\u0022b13\u0022,\u0022b14\u0022,\u0022b15\u0022,\u0022b16\u0022,\u0022b17\u0022,\u0022b18\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Efforts to enhance user experience included upgraded\u0022,\u0022emailalert systems, enriched discovery platforms, and new\u0022],\u0022next_blocks\u0022:[\u0022stakeholders to engage with World Bank information more\u0022,\u0022effectively. The first meeting of the Open Science\u0022]}},{\u0022id\u0022:\u0022b20\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022stakeholders to engage with World Bank information more\u0022,\u0022source_length\u0022:55,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b12\u0022,\u0022b13\u0022,\u0022b14\u0022,\u0022b15\u0022,\u0022b16\u0022,\u0022b17\u0022,\u0022b18\u0022,\u0022b19\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022emailalert systems, enriched discovery platforms, and new\u0022,\u0022digital preservationtoolsall of which empower\u0022],\u0022next_blocks\u0022:[\u0022effectively. The first meeting of the Open Science\u0022,\u0022Community and the rollout of the Records Management\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 10771,
+      "estimatedInputTokens": 2693,
+      "repeatedContextBytes": 923,
+      "requestSha256": "51c1ef5d21c39cbd1928a66f909012901f69ab35cd448d128745adcbd5b7c9ab"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "ROLE",
+      "shardId": "NEW-F90364E75711:ROLE:003",
+      "shardOrdinal": 3,
+      "blockRefs": [
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024"
+      ],
+      "sourceRefs": [
+        "U000005",
+        "U000007",
+        "U000024",
+        "U000025",
+        "U000026",
+        "U000033",
+        "U000039",
+        "U000046"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "ROLE",
+        "shardId": "NEW-F90364E75711:ROLE:003",
+        "blocks": [
+          "B017",
+          "B018",
+          "B019",
+          "B020",
+          "B021",
+          "B022",
+          "B023",
+          "B024"
+        ],
+        "sourceRefs": [
+          "U000005",
+          "U000007",
+          "U000024",
+          "U000025",
+          "U000026",
+          "U000033",
+          "U000039",
+          "U000046"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b21\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022effectively. The first meeting of the Open Science\u0022,\u0022source_length\u0022:50,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b13\u0022,\u0022b14\u0022,\u0022b15\u0022,\u0022b16\u0022,\u0022b17\u0022,\u0022b18\u0022,\u0022b19\u0022,\u0022b20\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022digital preservationtoolsall of which empower\u0022,\u0022stakeholders to engage with World Bank information more\u0022],\u0022next_blocks\u0022:[\u0022Community and the rollout of the Records Management\u0022,\u0022no Maturity Assessment Toolkit underscored the Bank\\u2019s\u0022]}},{\u0022id\u0022:\u0022b22\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022Community and the rollout of the Records Management\u0022,\u0022source_length\u0022:51,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b14\u0022,\u0022b15\u0022,\u0022b16\u0022,\u0022b17\u0022,\u0022b18\u0022,\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022stakeholders to engage with World Bank information more\u0022,\u0022effectively. The first meeting of the Open Science\u0022],\u0022next_blocks\u0022:[\u0022no Maturity Assessment Toolkit underscored the Bank\\u2019s\u0022,\u0022fo dedication to open knowledge and best practices.\u0022]}},{\u0022id\u0022:\u0022b23\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:11.5,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022no Maturity Assessment Toolkit underscored the Bank\\u2019s\u0022,\u0022source_length\u0022:53,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b15\u0022,\u0022b16\u0022,\u0022b17\u0022,\u0022b18\u0022,\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022effectively. The first meeting of the Open Science\u0022,\u0022Community and the rollout of the Records Management\u0022],\u0022next_blocks\u0022:[\u0022fo dedication to open knowledge and best practices.\u0022,\u0022se Collectively these achievements reflect ongoing efforts to e\u0022]}},{\u0022id\u0022:\u0022b26\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:11.5,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022fo dedication to open knowledge and best practices.\u0022,\u0022source_length\u0022:51,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b16\u0022,\u0022b17\u0022,\u0022b18\u0022,\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Community and the rollout of the Records Management\u0022,\u0022no Maturity Assessment Toolkit underscored the Bank\\u2019s\u0022],\u0022next_blocks\u0022:[\u0022se Collectively these achievements reflect ongoing efforts to e\u0022,\u0022tr broaden public access and foster greater accountability\u0022]}},{\u0022id\u0022:\u0022b29\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:11.5,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022se Collectively these achievements reflect ongoing efforts to e\u0022,\u0022source_length\u0022:63,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b17\u0022,\u0022b18\u0022,\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b26\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022no Maturity Assessment Toolkit underscored the Bank\\u2019s\u0022,\u0022fo dedication to open knowledge and best practices.\u0022],\u0022next_blocks\u0022:[\u0022tr broaden public access and foster greater accountability\u0022,\u0022Pageviews: Over 1 0 0 million\u0022]}},{\u0022id\u0022:\u0022b34\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:11.5,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022tr broaden public access and foster greater accountability\u0022,\u0022source_length\u0022:58,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b18\u0022,\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b26\u0022,\u0022b29\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022fo dedication to open knowledge and best practices.\u0022,\u0022se Collectively these achievements reflect ongoing efforts to e\u0022],\u0022next_blocks\u0022:[\u0022Pageviews: Over 1 0 0 million\u0022,\u0022Downlo a ds: Over 3 2 million\u0022]}},{\u0022id\u0022:\u0022b4\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022Fiscal Year 2024 (FY 24) marked significant progress in the\u0022,\u0022source_length\u0022:59,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[],\u0022next_blocks\u0022:[\u0022World Bank\\u2019s commitment to transparency and public\u0022,\u0022access to information. The Bank introduced major upgrades\u0022]}},{\u0022id\u0022:\u0022b6\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022World Bank\\u2019s commitment to transparency and public\u0022,\u0022source_length\u0022:50,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b4\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Fiscal Year 2024 (FY 24) marked significant progress in the\u0022],\u0022next_blocks\u0022:[\u0022access to information. The Bank introduced major upgrades\u0022,\u0022to the Open Knowledge Repository and Documents \\u0026\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 10594,
+      "estimatedInputTokens": 2649,
+      "repeatedContextBytes": 795,
+      "requestSha256": "8358fe1d144a5e5b389e30b5a8c4acf5309cbfd7a4e43714dcbfc138a362eab1"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "ROLE",
+      "shardId": "NEW-F90364E75711:ROLE:004",
+      "shardOrdinal": 4,
+      "blockRefs": [
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032"
+      ],
+      "sourceRefs": [
+        "U000008",
+        "U000009",
+        "U000010",
+        "U000074",
+        "U000075",
+        "U000077",
+        "U000122",
+        "U000131"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "ROLE",
+        "shardId": "NEW-F90364E75711:ROLE:004",
+        "blocks": [
+          "B025",
+          "B026",
+          "B027",
+          "B028",
+          "B029",
+          "B030",
+          "B031",
+          "B032"
+        ],
+        "sourceRefs": [
+          "U000008",
+          "U000009",
+          "U000010",
+          "U000074",
+          "U000075",
+          "U000077",
+          "U000122",
+          "U000131"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b7\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022access to information. The Bank introduced major upgrades\u0022,\u0022source_length\u0022:57,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b4\u0022,\u0022b6\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Fiscal Year 2024 (FY 24) marked significant progress in the\u0022,\u0022World Bank\\u2019s commitment to transparency and public\u0022],\u0022next_blocks\u0022:[\u0022to the Open Knowledge Repository and Documents \\u0026\u0022,\u0022Reports platform making research data and official\u0022]}},{\u0022id\u0022:\u0022b8\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022to the Open Knowledge Repository and Documents \\u0026\u0022,\u0022source_length\u0022:48,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b4\u0022,\u0022b6\u0022,\u0022b7\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022World Bank\\u2019s commitment to transparency and public\u0022,\u0022access to information. The Bank introduced major upgrades\u0022],\u0022next_blocks\u0022:[\u0022Reports platform making research data and official\u0022,\u0022documents more accessible and discoverable. The launch of\u0022]}},{\u0022id\u0022:\u0022b9\u0022,\u0022page\u0022:2,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:12,\u0022font\u0022:\u0022sansserifcollection\u0022,\u0022color\u0022:\u00220.14,0.15,0.15\u0022},\u0022source_text\u0022:\u0022Reports platform making research data and official\u0022,\u0022source_length\u0022:50,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b4\u0022,\u0022b6\u0022,\u0022b7\u0022,\u0022b8\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022access to information. The Bank introduced major upgrades\u0022,\u0022to the Open Knowledge Repository and Documents \\u0026\u0022],\u0022next_blocks\u0022:[\u0022documents more accessible and discoverable. The launch of\u0022,\u0022the Reproducible Research Repository and improvements to\u0022]}},{\u0022id\u0022:\u0022b45\u0022,\u0022page\u0022:3,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.08,0.36,0.50\u0022},\u0022source_text\u0022:\u0022Pa ge v i e w s : Ov e r 1 0 0 m i l l i o n\u0022,\u0022source_length\u0022:44,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b19\u0022,\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b26\u0022,\u0022b29\u0022,\u0022b34\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022se Collectively these achievements reflect ongoing efforts to e\u0022,\u0022tr broaden public access and foster greater accountability\u0022],\u0022next_blocks\u0022:[\u0022Downlo a ds: Over 3 2 million\u0022,\u0022Av a il a bled a tasets: 1 6 7 8 8\u0022]}},{\u0022id\u0022:\u0022b46\u0022,\u0022page\u0022:3,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.08,0.36,0.50\u0022},\u0022source_text\u0022:\u0022D o w n l o a d s : Ov e r 3 2 m i l l i o n\u0022,\u0022source_length\u0022:44,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b20\u0022,\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b26\u0022,\u0022b29\u0022,\u0022b34\u0022,\u0022b45\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022tr broaden public access and foster greater accountability\u0022,\u0022Pageviews: Over 1 0 0 million\u0022],\u0022next_blocks\u0022:[\u0022Av a il a bled a tasets: 1 6 7 8 8\u0022,\u0022Downlo a dsin FY 2 4 A bstr a ct Viewsin FY 2 4\u0022]}},{\u0022id\u0022:\u0022b47\u0022,\u0022page\u0022:3,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.08,0.36,0.50\u0022},\u0022source_text\u0022:\u0022Av a i l a b l e d a ta s e ts : 1 6 7 8 8\u0022,\u0022source_length\u0022:42,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b21\u0022,\u0022b22\u0022,\u0022b23\u0022,\u0022b26\u0022,\u0022b29\u0022,\u0022b34\u0022,\u0022b45\u0022,\u0022b46\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Pageviews: Over 1 0 0 million\u0022,\u0022Downlo a ds: Over 3 2 million\u0022],\u0022next_blocks\u0022:[\u0022Downlo a dsin FY 2 4 A bstr a ct Viewsin FY 2 4\u0022,\u0022, Downlo a dsin FY 2 4\u0022]}},{\u0022id\u0022:\u0022b62\u0022,\u0022page\u0022:4,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.08,0.36,0.50\u0022},\u0022source_text\u0022:\u0022D o w n l o a d s i n FY 2 4 A b s t r a c t V i e w s i n FY 2 4\u0022,\u0022source_length\u0022:65,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b22\u0022,\u0022b23\u0022,\u0022b26\u0022,\u0022b29\u0022,\u0022b34\u0022,\u0022b45\u0022,\u0022b46\u0022,\u0022b47\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Downlo a ds: Over 3 2 million\u0022,\u0022Av a il a bled a tasets: 1 6 7 8 8\u0022],\u0022next_blocks\u0022:[\u0022, Downlo a dsin FY 2 4\u0022,\u0022Pagesdecl a ssifiedin FY 2 4 3 8 0 5 9 7\u0022]}},{\u0022id\u0022:\u0022b66\u0022,\u0022page\u0022:4,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.08,0.36,0.50\u0022},\u0022source_text\u0022:\u0022, D o w n l o a d s i n FY 2 4\u0022,\u0022source_length\u0022:30,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b23\u0022,\u0022b26\u0022,\u0022b29\u0022,\u0022b34\u0022,\u0022b45\u0022,\u0022b46\u0022,\u0022b47\u0022,\u0022b62\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Av a il a bled a tasets: 1 6 7 8 8\u0022,\u0022Downlo a dsin FY 2 4 A bstr a ct Viewsin FY 2 4\u0022],\u0022next_blocks\u0022:[\u0022Pagesdecl a ssifiedin FY 2 4 3 8 0 5 9 7\u0022,\u0022Pagesdigitizedin FY 2 4 4 1 2 7 0 4\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 10438,
+      "estimatedInputTokens": 2610,
+      "repeatedContextBytes": 667,
+      "requestSha256": "90944954a485fe4b30d884e7a3a29a08618ba55af730968ac9442cd77cd7c10a"
+    },
+    {
+      "documentId": "NEW-F90364E75711",
+      "stage": "ROLE",
+      "shardId": "NEW-F90364E75711:ROLE:005",
+      "shardOrdinal": 5,
+      "blockRefs": [
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "sourceRefs": [
+        "U000232",
+        "U000234",
+        "U000236",
+        "U000267",
+        "U000442",
+        "U000443",
+        "U000445",
+        "U000446"
+      ],
+      "request": {
+        "schemaVersion": "a99-v8h0-heading-extraction-request-v1",
+        "documentId": "NEW-F90364E75711",
+        "stage": "ROLE",
+        "shardId": "NEW-F90364E75711:ROLE:005",
+        "blocks": [
+          "B033",
+          "B034",
+          "B035",
+          "B036",
+          "B037",
+          "B038",
+          "B039",
+          "B040"
+        ],
+        "sourceRefs": [
+          "U000232",
+          "U000234",
+          "U000236",
+          "U000267",
+          "U000442",
+          "U000443",
+          "U000445",
+          "U000446"
+        ],
+        "systemPrompt": "You classify candidate PDF text blocks for document outline extraction.\nDeterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\nFor each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\nA domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\nDo not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as \u0027AVAILABILITY OF INFORMATION\u0027.\nClassify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\nReturn one compact strict JSON object for every input id. Omit explanations unless needed.\nFormat: {\u0022blocks\u0022:[{\u0022id\u0022:\u0022b1\u0022,\u0022role\u0022:\u0022closed_role\u0022,\u0022confidence\u0022:0.0}]}",
+        "userPrompt": "{\u0022blocks\u0022:[{\u0022id\u0022:\u0022b110\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.08,0.36,0.50\u0022},\u0022source_text\u0022:\u0022R N u m b e r o f Pa e s R e s e a r c h e d 5 2 3 4 4 6\u0022,\u0022source_length\u0022:56,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b46\u0022,\u0022b47\u0022,\u0022b62\u0022,\u0022b66\u0022,\u0022b96\u0022,\u0022b97\u0022,\u0022b98\u0022,\u0022b103\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Reportspro a ctivelydisclosed 1 4 5\u0022,\u0022s Nbf Rheumeroese a rcers 1 6 4 e\u0022],\u0022next_blocks\u0022:[\u0022Access to Inform a tion Requests H a ndled Requests Fulfilled (in Wholeorin Part) or Denied\u0022,\u0022Number Of the 5 89 requestsclosedin FY 24 429 requestsprovidedsufficientinformation a ndwereh a ndled by the AT I\u0022]}},{\u0022id\u0022:\u0022b96\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.08,0.36,0.50\u0022},\u0022source_text\u0022:\u0022Pa ge s d e c l a s s i fi e d i n FY 2 4 3 8 0 5 9 7\u0022,\u0022source_length\u0022:53,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b26\u0022,\u0022b29\u0022,\u0022b34\u0022,\u0022b45\u0022,\u0022b46\u0022,\u0022b47\u0022,\u0022b62\u0022,\u0022b66\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Downlo a dsin FY 2 4 A bstr a ct Viewsin FY 2 4\u0022,\u0022, Downlo a dsin FY 2 4\u0022],\u0022next_blocks\u0022:[\u0022Pagesdigitizedin FY 2 4 4 1 2 7 0 4\u0022,\u0022Reportspro a ctivelydisclosed 1 4 5\u0022]}},{\u0022id\u0022:\u0022b97\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.08,0.36,0.50\u0022},\u0022source_text\u0022:\u0022Pa ge s d i g i t i z e d i n FY 2 4 4 1 2 7 0 4\u0022,\u0022source_length\u0022:48,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b29\u0022,\u0022b34\u0022,\u0022b45\u0022,\u0022b46\u0022,\u0022b47\u0022,\u0022b62\u0022,\u0022b66\u0022,\u0022b96\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022, Downlo a dsin FY 2 4\u0022,\u0022Pagesdecl a ssifiedin FY 2 4 3 8 0 5 9 7\u0022],\u0022next_blocks\u0022:[\u0022Reportspro a ctivelydisclosed 1 4 5\u0022,\u0022s Nbf Rheumeroese a rcers 1 6 4 e\u0022]}},{\u0022id\u0022:\u0022b98\u0022,\u0022page\u0022:5,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.08,0.36,0.50\u0022},\u0022source_text\u0022:\u0022R e p o rts p r o a c t i v e ly d i s c l o s e d 1 4 5\u0022,\u0022source_length\u0022:56,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b34\u0022,\u0022b45\u0022,\u0022b46\u0022,\u0022b47\u0022,\u0022b62\u0022,\u0022b66\u0022,\u0022b96\u0022,\u0022b97\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Pagesdecl a ssifiedin FY 2 4 3 8 0 5 9 7\u0022,\u0022Pagesdigitizedin FY 2 4 4 1 2 7 0 4\u0022],\u0022next_blocks\u0022:[\u0022s Nbf Rheumeroese a rcers 1 6 4 e\u0022,\u0022R Numberof Paes Rese a rched 5 2 3 4 4 6\u0022]}},{\u0022id\u0022:\u0022b178\u0022,\u0022page\u0022:8,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.00,0.00,0.00\u0022},\u0022source_text\u0022:\u0022Acce s s to I n fo r m a t i o n R e q u e sts H a n d l e d R e q u e sts F u lfi l l e d (i n W h o l e o r i n Pa rt) o r D e n i e d\u0022,\u0022source_length\u0022:136,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b47\u0022,\u0022b62\u0022,\u0022b66\u0022,\u0022b96\u0022,\u0022b97\u0022,\u0022b98\u0022,\u0022b103\u0022,\u0022b110\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022s Nbf Rheumeroese a rcers 1 6 4 e\u0022,\u0022R Numberof Paes Rese a rched 5 2 3 4 4 6\u0022],\u0022next_blocks\u0022:[\u0022Number Of the 5 89 requestsclosedin FY 24 429 requestsprovidedsufficientinformation a ndwereh a ndled by the AT I\u0022,\u0022Fiscalyearinwhich Number of Percentage of Number of AT I\u0022]}},{\u0022id\u0022:\u0022b179\u0022,\u0022page\u0022:8,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.50,0.46,0.43\u0022},\u0022source_text\u0022:\u0022N u m be r Of t h e 5 89 req u ests c losed i n FY 24 429 req u ests p rovi d ed s u ffi ci e n t i n fo r m ati o n a n d we re h a n d led by t h e AT I\u0022,\u0022source_length\u0022:154,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b62\u0022,\u0022b66\u0022,\u0022b96\u0022,\u0022b97\u0022,\u0022b98\u0022,\u0022b103\u0022,\u0022b110\u0022,\u0022b178\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022R Numberof Paes Rese a rched 5 2 3 4 4 6\u0022,\u0022Access to Inform a tion Requests H a ndled Requests Fulfilled (in Wholeorin Part) or Denied\u0022],\u0022next_blocks\u0022:[\u0022Fiscalyearinwhich Number of Percentage of Number of AT I\u0022,\u0022f AT Isystem 41 7 requestswerefulfilledinwholeorinpart a nd 1 2 requestsweredeniedwithoutfulfilling a nypart of\u0022]}},{\u0022id\u0022:\u0022b180\u0022,\u0022page\u0022:8,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.00,0.00,0.00\u0022},\u0022source_text\u0022:\u0022Fi sca l yea r i n w h i c h N u m be r of Pe rce n ta ge of N u m be r of AT I\u0022,\u0022source_length\u0022:79,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b66\u0022,\u0022b96\u0022,\u0022b97\u0022,\u0022b98\u0022,\u0022b103\u0022,\u0022b110\u0022,\u0022b178\u0022,\u0022b179\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Access to Inform a tion Requests H a ndled Requests Fulfilled (in Wholeorin Part) or Denied\u0022,\u0022Number Of the 5 89 requestsclosedin FY 24 429 requestsprovidedsufficientinformation a ndwereh a ndled by the AT I\u0022],\u0022next_blocks\u0022:[\u0022f AT Isystem 41 7 requestswerefulfilledinwholeorinpart a nd 1 2 requestsweredeniedwithoutfulfilling a nypart of\u0022,\u0022the AT Irequestwas AT Irequests AT Irequestsrequestswhich\u0022]}},{\u0022id\u0022:\u0022b181\u0022,\u0022page\u0022:8,\u0022lines\u0022:1,\u0022style\u0022:{\u0022font_size\u0022:1,\u0022font\u0022:\u0022sourcesans3-roman\u0022,\u0022color\u0022:\u00220.50,0.46,0.43\u0022},\u0022source_text\u0022:\u0022f AT I syste m 41 7 req u ests we re fu lfi l led i n w h o le o r i n pa rt a n d 1 2 req u ests we re d e n i ed w it h o u t fu lfi l li n g a ny pa rt of\u0022,\u0022source_length\u0022:157,\u0022context\u0022:{\u0022scope\u0022:\u0022document_body\u0022,\u0022domain_role_hint\u0022:\u0022Unknown\u0022,\u0022document_regime\u0022:\u0022document_body\u0022,\u0022active_heading_stack\u0022:[],\u0022allowed_parent_ids\u0022:[\u0022b96\u0022,\u0022b97\u0022,\u0022b98\u0022,\u0022b103\u0022,\u0022b110\u0022,\u0022b178\u0022,\u0022b179\u0022,\u0022b180\u0022],\u0022observed_facts\u0022:[\u0022standalone_line\u0022,\u0022no_marker\u0022],\u0022previous_blocks\u0022:[\u0022Number Of the 5 89 requestsclosedin FY 24 429 requestsprovidedsufficientinformation a ndwereh a ndled by the AT I\u0022,\u0022Fiscalyearinwhich Number of Percentage of Number of AT I\u0022],\u0022next_blocks\u0022:[\u0022the AT Irequestwas AT Irequests AT Irequestsrequestswhich\u0022,\u0022therequest\u0022]}}]}",
+        "outputContract": {
+          "response": "blocks",
+          "refField": "id",
+          "rolesOnly": true,
+          "forbidden": [
+            "level",
+            "parent",
+            "semanticNodeId",
+            "identity",
+            "canonicalText"
+          ]
+        }
+      },
+      "requestBytes": 11471,
+      "estimatedInputTokens": 2868,
+      "repeatedContextBytes": 1147,
+      "requestSha256": "2de138fedd4fcc400b9519efb0110c520c5740aae8686eda5a4a5f8c5a8fd5c7"
+    }
+  ]
+}
