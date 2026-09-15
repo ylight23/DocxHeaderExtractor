@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "a99-v8-proof-carrying-identity-contract-v1",
+  "status": "OFFLINE_CONTRACT_FROZEN_BEFORE_HOLDOUT_SELECTION",
+  "purpose": "Separate positive identity proof from independent distinctness challenge before any collapse authority.",
+  "stages": {
+    "sourceOnlyCandidate": "deterministic source-owned candidate pair",
+    "positiveProposer": "MODEL_PROPOSED_PROOF_ONLY",
+    "adversarialFalsifier": "INDEPENDENT_MODEL_DISTINCTNESS_CHALLENGE_ONLY",
+    "deterministicGate": "ACCEPTED_FOR_V8_GRAPH_ONLY or KEEP_SPLIT",
+    "downstream": "V7C conservative clustering; ACCEPTED is not automatic collapse"
+  },
+  "proposerOutput": {
+    "positiveProofs": {
+      "candidateId": "exact frozen candidate ID",
+      "relation": [
+        "SAME_SEMANTIC_REPEAT",
+        "CONTINUATION_OF"
+      ],
+      "proofStatus": [
+        "SUFFICIENT",
+        "INSUFFICIENT",
+        "UNRESOLVED"
+      ],
+      "proofClaims": "one or more generic source-backed claims",
+      "evidenceRefs": "must reference supplied parser/source evidence",
+      "direction": "required for CONTINUATION_OF"
+    },
+    "omittedCandidate": "NO_CLAIM / KEEP_SPLIT"
+  },
+  "falsifierOutput": {
+    "challenges": {
+      "candidateId": "exact frozen candidate ID",
+      "decision": [
+        "NO_CREDIBLE_DISTINCTNESS",
+        "DISTINCTNESS_FOUND",
+        "UNRESOLVED"
+      ],
+      "contradictionClaims": "zero or more generic distinct-node claims",
+      "evidenceRefs": "must reference supplied parser/source evidence"
+    },
+    "independentInput": "falsifier does not receive proposer rationale or proof claims",
+    "omittedCandidate": "UNRESOLVED / KEEP_SPLIT"
+  },
+  "deterministicPromotionGate": {
+    "accept": [
+      "valid proposer proofStatus=SUFFICIENT",
+      "valid falsifier decision=NO_CREDIBLE_DISTINCTNESS",
+      "relation and direction agree",
+      "all evidence references resolve",
+      "no schema/identity/direction conflict"
+    ],
+    "keepSplit": [
+      "missing proposer proof",
+      "proofStatus=INSUFFICIENT or UNRESOLVED",
+      "falsifier DISTINCTNESS_FOUND or UNRESOLVED",
+      "invalid/missing evidence",
+      "relation/direction conflict",
+      "unknown/duplicate candidate"
+    ],
+    "autoCollapse": false,
+    "connectedComponentsAuthority": false,
+    "absenceOfContradictionIsNotProof": true
+  },
+  "genericEvidenceCategories": [
+    "INDEPENDENT_ORGANIZATIONAL_FUNCTION",
+    "LOCAL_DISCOURSE_ROLE",
+    "STRUCTURAL_INSTANTIATION",
+    "READING_POSITION_AND_CONTEXT",
+    "SEMANTIC_OBLIGATION_CONTEXT",
+    "REFERENCE_OR_INDEX_REPRESENTATION",
+    "INDEPENDENT_CONTENT_BODY"
+  ],
+  "forbidden": [
+    "Gold-derived instructions",
+    "DOC-0205-specific veto",
+    "Agenda-specific veto",
+    "TOC-specific veto",
+    "same-text automatic merge",
+    "same-owner automatic merge",
+    "connected-component collapse",
+    "parent",
+    "ROOT",
+    "level",
+    "numeric threshold as sole promotion authority"
+  ],
+  "firewall": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldReadCount": 0,
+    "v7PredictionReadCount": 0,
+    "holdoutSelected": false,
+    "generalizationClaim": false
+  }
+}

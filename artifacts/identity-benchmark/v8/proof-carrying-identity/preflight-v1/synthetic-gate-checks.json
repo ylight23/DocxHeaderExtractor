@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "a99-v8-synthetic-gate-checks-v1",
+  "status": "PASS",
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "candidateUniverse": [
+    "C001",
+    "C002",
+    "C003",
+    "C004",
+    "C005",
+    "C006"
+  ],
+  "evidenceUniverse": [
+    "E001",
+    "E002"
+  ],
+  "cases": [
+    {
+      "name": "proof_and_no_contradiction",
+      "expected": "ACCEPTED_FOR_V8_GRAPH_ONLY",
+      "actual": "ACCEPTED_FOR_V8_GRAPH_ONLY",
+      "proposerValid": true,
+      "falsifierValid": true,
+      "proposerError": null,
+      "falsifierError": null,
+      "autoCollapse": false
+    },
+    {
+      "name": "proof_without_falsifier_clearance",
+      "expected": "KEEP_SPLIT",
+      "actual": "KEEP_SPLIT",
+      "proposerValid": true,
+      "falsifierValid": true,
+      "proposerError": null,
+      "falsifierError": null,
+      "autoCollapse": false
+    },
+    {
+      "name": "distinctness_challenge_wins",
+      "expected": "KEEP_SPLIT",
+      "actual": "KEEP_SPLIT",
+      "proposerValid": true,
+      "falsifierValid": true,
+      "proposerError": null,
+      "falsifierError": null,
+      "autoCollapse": false
+    },
+    {
+      "name": "weak_positive_proof",
+      "expected": "KEEP_SPLIT",
+      "actual": "KEEP_SPLIT",
+      "proposerValid": true,
+      "falsifierValid": true,
+      "proposerError": null,
+      "falsifierError": null,
+      "autoCollapse": false
+    },
+    {
+      "name": "both_uncertain",
+      "expected": "KEEP_SPLIT",
+      "actual": "KEEP_SPLIT",
+      "proposerValid": true,
+      "falsifierValid": true,
+      "proposerError": null,
+      "falsifierError": null,
+      "autoCollapse": false
+    },
+    {
+      "name": "omitted_proposer",
+      "expected": "KEEP_SPLIT",
+      "actual": "KEEP_SPLIT",
+      "proposerValid": true,
+      "falsifierValid": true,
+      "proposerError": null,
+      "falsifierError": null,
+      "autoCollapse": false
+    }
+  ],
+  "invariants": [
+    "proof alone cannot accept",
+    "no contradiction is not identity proof",
+    "falsifier uncertainty keeps split",
+    "positive acceptance is not auto-collapse",
+    "omitted proposal keeps split"
+  ]
+}
