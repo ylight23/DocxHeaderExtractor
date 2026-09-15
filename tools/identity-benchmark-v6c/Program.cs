@@ -33,6 +33,7 @@ internal static class Program
         {
             if (args.Any(x => string.Equals(x, "--execute-primary", StringComparison.Ordinal))) return await ExecutePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--finalize-primary", StringComparison.Ordinal))) return await FinalizePrimaryAsync(root);
+            if (args.Any(x => string.Equals(x, "--diagnose-primary", StringComparison.Ordinal))) return await DiagnosePrimaryAsync(root);
             await RunPreflightAsync(root);
             Console.WriteLine("V6C_STATUS=OWNER_INDUCTION_PREFLIGHT_FROZEN REQUESTS=3 MODEL_CALLS=0 PROVIDER_CALLS=0 GOLD_READ_COUNT=0 V5C_READ_COUNT=0 V6A_READ_COUNT=0");
             return 0;
@@ -249,6 +250,92 @@ internal static class Program
             frozenBeforeEvaluation = true, recoveryCohort = false, retries = 0, completedUtc = DateTimeOffset.UtcNow,
         });
         Console.WriteLine($"V6C_OFFLINE_SUMMARY_COMPLETE VALID={valid.Length} INVALID={invalid} PROVIDER_ERRORS={providerErrors} MODEL_CALLS={modelCalls} PROVIDER_CALLS={providerCalls} GOLD_READ_COUNT=0");
+        return 0;
+    }
+
+    private static async Task<int> DiagnosePrimaryAsync(string root)
+    {
+        var preflight = Full(root, OutputRelative);
+        var execution = Full(root, ExecutionRelative);
+        var frozen = LoadFrozenRequests(preflight);
+        using var manifest = JsonDocument.Parse(await File.ReadAllTextAsync(Path.Combine(execution, "attempt-manifest.json")));
+        var attempts = manifest.RootElement.GetProperty("attempts").EnumerateArray().ToArray();
+        Require(attempts.Length == ExpectedRequests, "V6C_DIAGNOSIS_ATTEMPT_COUNT");
+        var byDocument = frozen.ToDictionary(x => x.DocumentId, StringComparer.Ordinal);
+        var cases = new List<object>();
+        foreach (var attempt in attempts)
+        {
+            var sequence = attempt.GetProperty("sequence").GetInt32();
+            var documentId = attempt.GetProperty("documentId").GetString()!;
+            var rawPath = Path.Combine(execution, "raw-responses", $"{sequence:D3}.json");
+            Require(File.Exists(rawPath), "V6C_DIAGNOSIS_RAW_MISSING");
+            using var response = JsonDocument.Parse(await File.ReadAllTextAsync(rawPath));
+            var request = byDocument[documentId].Request;
+            var allowed = new HashSet<string>(request.GetProperty("occurrences").EnumerateArray().Select(x => x.GetProperty("occurrenceId").GetString()!), StringComparer.Ordinal);
+            var validEvidence = new HashSet<string>(allowed, StringComparer.Ordinal);
+            validEvidence.UnionWith(request.GetProperty("occurrences").EnumerateArray().Select(x => x.GetProperty("sourceContainerIdentity").GetString()!));
+            validEvidence.UnionWith(request.GetProperty("parserOwnedScopeGroups").EnumerateArray().Select(x => x.GetProperty("sourceContainerIdentity").GetString()!));
+            var badMembers = new List<string>();
+            var badEvidence = new List<string>();
+            var duplicateMembers = new List<string>();
+            var owners = response.RootElement.GetProperty("owners");
+            foreach (var owner in owners.EnumerateArray())
+            {
+                var ownerId = owner.GetProperty("ownerLocalId").GetString()!;
+                var seen = new HashSet<string>(StringComparer.Ordinal);
+                foreach (var member in owner.GetProperty("memberOccurrenceIds").EnumerateArray())
+                {
+                    var memberId = member.GetString()!;
+                    if (!allowed.Contains(memberId)) badMembers.Add($"{ownerId}:{memberId}");
+                    if (!seen.Add(memberId)) duplicateMembers.Add($"{ownerId}:{memberId}");
+                }
+                foreach (var evidence in owner.GetProperty("evidenceRefs").EnumerateArray())
+                {
+                    var evidenceId = evidence.GetString()!;
+                    if (!validEvidence.Contains(evidenceId)) badEvidence.Add($"{ownerId}:{evidenceId}");
+                }
+            }
+            var assigned = response.RootElement.GetProperty("assignments").EnumerateArray().Select(x => x.GetProperty("occurrenceId").GetString()!).ToArray();
+            var unresolved = response.RootElement.GetProperty("unresolvedOccurrenceIds").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
+            var duplicateAssignments = assigned.GroupBy(x => x, StringComparer.Ordinal).Where(x => x.Count() > 1).Select(x => x.Key).OrderBy(x => x, StringComparer.Ordinal).ToArray();
+            var missingCoverage = allowed.Except(assigned, StringComparer.Ordinal).Except(unresolved, StringComparer.Ordinal).OrderBy(x => x, StringComparer.Ordinal).ToArray();
+            var primaryFailure = badMembers.Count > 0 || duplicateMembers.Count > 0 ? "UNKNOWN_OR_DUPLICATE_MEMBER" : badEvidence.Count > 0 ? "FABRICATED_EVIDENCE_REFERENCE" : duplicateAssignments.Length > 0 ? "MULTIPLE_ASSIGNMENT" : missingCoverage.Length > 0 ? "INCOMPLETE_ASSIGNMENT_COVERAGE" : "NONE_OBSERVED";
+            cases.Add(new
+            {
+                sequence,
+                documentId,
+                rawResponseSha256 = Sha256File(rawPath),
+                providerStatus = attempt.GetProperty("status").GetString(),
+                ownerCount = owners.GetArrayLength(),
+                assignmentCount = assigned.Length,
+                unresolvedCount = unresolved.Count,
+                badMemberCount = badMembers.Count,
+                badEvidenceCount = badEvidence.Count,
+                duplicateMemberCount = duplicateMembers.Count,
+                duplicateAssignmentCount = duplicateAssignments.Length,
+                missingCoverageCount = missingCoverage.Length,
+                primaryFailure,
+                examples = new { badMembers = badMembers.Take(5).ToArray(), badEvidence = badEvidence.Take(5).ToArray(), duplicateMembers = duplicateMembers.Take(5).ToArray(), missingCoverage = missingCoverage.Take(5).ToArray() },
+            });
+        }
+        var output = Path.Combine(execution, "diagnosis-v1");
+        Directory.CreateDirectory(output);
+        await WriteAsync(Path.Combine(output, "manifest.json"), new
+        {
+            schemaVersion = "a99-v6c-primary-failure-diagnosis-v1",
+            status = "OFFLINE_RAW_RESPONSE_FORENSIC_COMPLETE",
+            source = "FROZEN_V6C_PRIMARY_RAW_RESPONSES",
+            providerCalls = 0,
+            modelCalls = 0,
+            goldReadCount = 0,
+            v5cReadCount = 0,
+            v6aReadCount = 0,
+            predictionMutation = false,
+            validatorRelaxation = false,
+            cases,
+        });
+        await File.WriteAllTextAsync(Path.Combine(output, "report.md"), "# V6C primary failure diagnosis\n\nOffline raw-response forensic only. No provider, Gold, V5C, or V6A reads; no prediction or validator mutation.\n\n" + string.Join("\n", cases.Select(x => $"- {JsonSerializer.Serialize(x, JsonOptions)}")) + "\n", new UTF8Encoding(false));
+        Console.WriteLine("V6C_DIAGNOSIS_COMPLETE PROVIDER_CALLS=0 GOLD_READ_COUNT=0 V5C_READ_COUNT=0 V6A_READ_COUNT=0");
         return 0;
     }
 
