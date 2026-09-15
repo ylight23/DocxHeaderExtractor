@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-v6c-preflight-manifest-v2-addressable",
+  "status": "READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION",
+  "supersedes": "preflight-v1",
+  "documentCount": 3,
+  "occurrenceCount": 226,
+  "requestCount": 3,
+  "requestHashes": [
+    "ae3b8586490000b2fc85c02adb7b08b8338ac146af5fd3ffe66d780ef08bd970",
+    "4a7ff1057541284d6350c7bf62257b654eaa6d26af30403e03943124c2f64788",
+    "845f385110753b1acb3bf1cb75faac733b78775cff94370dc033c973b0f2d566"
+  ],
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v1PredictionMutation": false,
+  "note": "Addressability challenger prepared offline after V6C-v1 failure diagnosis. No provider execution authorized or performed."
+}

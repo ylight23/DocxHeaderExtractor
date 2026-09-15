@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Eval.ReasoningRetention;
 using DocxHeaderExtractor.Infrastructure.AI;
@@ -34,6 +35,7 @@ internal static class Program
             if (args.Any(x => string.Equals(x, "--execute-primary", StringComparison.Ordinal))) return await ExecutePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--finalize-primary", StringComparison.Ordinal))) return await FinalizePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--diagnose-primary", StringComparison.Ordinal))) return await DiagnosePrimaryAsync(root);
+            if (args.Any(x => string.Equals(x, "--prepare-v2", StringComparison.Ordinal))) return await PrepareV2Async(root);
             await RunPreflightAsync(root);
             Console.WriteLine("V6C_STATUS=OWNER_INDUCTION_PREFLIGHT_FROZEN REQUESTS=3 MODEL_CALLS=0 PROVIDER_CALLS=0 GOLD_READ_COUNT=0 V5C_READ_COUNT=0 V6A_READ_COUNT=0");
             return 0;
@@ -336,6 +338,68 @@ internal static class Program
         });
         await File.WriteAllTextAsync(Path.Combine(output, "report.md"), "# V6C primary failure diagnosis\n\nOffline raw-response forensic only. No provider, Gold, V5C, or V6A reads; no prediction or validator mutation.\n\n" + string.Join("\n", cases.Select(x => $"- {JsonSerializer.Serialize(x, JsonOptions)}")) + "\n", new UTF8Encoding(false));
         Console.WriteLine("V6C_DIAGNOSIS_COMPLETE PROVIDER_CALLS=0 GOLD_READ_COUNT=0 V5C_READ_COUNT=0 V6A_READ_COUNT=0");
+        return 0;
+    }
+
+    private static async Task<int> PrepareV2Async(string root)
+    {
+        var v1 = Full(root, OutputRelative);
+        var output = Full(root, "artifacts/identity-benchmark/v6/owner-induction/preflight-v2-addressable");
+        Require(File.Exists(Path.Combine(v1, "manifest.json")) && File.Exists(Path.Combine(v1, "requests.json")), "V6C_V2_V1_PREFLIGHT_MISSING");
+        using var manifest = JsonDocument.Parse(await File.ReadAllTextAsync(Path.Combine(v1, "manifest.json")));
+        Require(manifest.RootElement.GetProperty("status").GetString() == "READY_FOR_PROVIDER_EXECUTION", "V6C_V2_V1_STATUS");
+        using var requests = JsonDocument.Parse(await File.ReadAllTextAsync(Path.Combine(v1, "requests.json")));
+        var records = new List<object>();
+        foreach (var record in requests.RootElement.GetProperty("requests").EnumerateArray())
+        {
+            var source = JsonNode.Parse(record.GetProperty("request").GetRawText())!.AsObject();
+            var occurrenceIds = source["occurrences"]!.AsArray().Select(x => x!["occurrenceId"]!.GetValue<string>()).ToArray();
+            var evidenceRefs = new HashSet<string>(occurrenceIds, StringComparer.Ordinal);
+            foreach (var occurrence in source["occurrences"]!.AsArray())
+            {
+                foreach (var key in new[] { "clusterIds", "candidateIds", "evidenceReasons" })
+                    foreach (var value in occurrence![key]!.AsArray()) evidenceRefs.Add(value!.GetValue<string>());
+                evidenceRefs.Add(occurrence["sourceContainerIdentity"]!.GetValue<string>());
+            }
+            foreach (var group in source["parserOwnedScopeGroups"]!.AsArray()) evidenceRefs.Add(group!["sourceContainerIdentity"]!.GetValue<string>());
+            source["allowedOccurrenceIds"] = new JsonArray(occurrenceIds.Select(x => (JsonNode)JsonValue.Create(x)!).ToArray());
+            source["allowedEvidenceRefs"] = new JsonArray(evidenceRefs.OrderBy(x => x, StringComparer.Ordinal).Select(x => (JsonNode)JsonValue.Create(x)!).ToArray());
+            source["addressabilityContract"] = "COPY_EXACT_ID_FROM_ALLOWED_UNIVERSE_NO_QUALIFICATION";
+            var serialized = source.ToJsonString(new JsonSerializerOptions { WriteIndented = true });
+            var hash = Sha256Text(serialized);
+            records.Add(new { request = JsonDocument.Parse(serialized).RootElement.Clone(), requestHash = hash, documentId = source["documentId"]!.GetValue<string>(), occurrenceCount = occurrenceIds.Length, allowedEvidenceRefCount = evidenceRefs.Count });
+        }
+        Directory.CreateDirectory(output);
+        await WriteAsync(Path.Combine(output, "request-contract.json"), new
+        {
+            schemaVersion = "a99-v6c-owner-induction-v2-addressable",
+            supersedes = "a99-v6c-structural-owner-induction-v1",
+            changes = new[] { "explicit allowedOccurrenceIds", "explicit allowedEvidenceRefs", "exact copy/no qualification instruction" },
+            providerCalls = 0,
+            goldReadCount = 0,
+            v1PredictionMutation = false,
+            note = "Offline challenger preflight only. This is a new request boundary and needs separate provider authorization; V6C-v1 remains frozen and authoritative for its three calls."
+        });
+        await WriteAsync(Path.Combine(output, "requests.json"), new { schemaVersion = "a99-v6c-owner-induction-requests-v2-addressable", status = "FROZEN_SOURCE_ONLY_OWNER_INDUCTION_REQUESTS_V2", requestCount = records.Count, sourcePreflight = "../preflight-v1", goldDerivedInput = false, v5cEvaluationIncluded = false, v6aDiagnosisIncluded = false, semanticNodeRequested = false, hierarchyRequested = false, records });
+        await WriteAsync(Path.Combine(output, "manifest.json"), new
+        {
+            schemaVersion = "a99-v6c-preflight-manifest-v2-addressable",
+            status = "READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION",
+            supersedes = "preflight-v1",
+            documentCount = records.Count,
+            occurrenceCount = records.Sum(x => x.GetType().GetProperty("occurrenceCount")!.GetValue(x) as int? ?? 0),
+            requestCount = records.Count,
+            requestHashes = records.Select(x => x.GetType().GetProperty("requestHash")!.GetValue(x)!.ToString()).ToArray(),
+            modelCalls = 0,
+            providerCalls = 0,
+            goldReadCount = 0,
+            v5cReadCount = 0,
+            v6aReadCount = 0,
+            v1PredictionMutation = false,
+            note = "Addressability challenger prepared offline after V6C-v1 failure diagnosis. No provider execution authorized or performed."
+        });
+        await File.WriteAllTextAsync(Path.Combine(output, "report.md"), "# A99 V6C-v2 — addressable owner induction preflight\n\nV1 is preserved. This challenger makes the exact allowed occurrence/evidence universes explicit to reduce identifier qualification and evidence-reference drift. It has **0 provider calls** and requires separate authorization.\n", new UTF8Encoding(false));
+        Console.WriteLine($"V6C_V2_PREFLIGHT_COMPLETE REQUESTS={records.Count} PROVIDER_CALLS=0 GOLD_READ_COUNT=0 V1_MUTATION=false");
         return 0;
     }
 

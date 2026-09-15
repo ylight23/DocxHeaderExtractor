@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "a99-v6c-owner-induction-v2-addressable",
+  "supersedes": "a99-v6c-structural-owner-induction-v1",
+  "changes": [
+    "explicit allowedOccurrenceIds",
+    "explicit allowedEvidenceRefs",
+    "exact copy/no qualification instruction"
+  ],
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "v1PredictionMutation": false,
+  "note": "Offline challenger preflight only. This is a new request boundary and needs separate provider authorization; V6C-v1 remains frozen and authoritative for its three calls."
+}
