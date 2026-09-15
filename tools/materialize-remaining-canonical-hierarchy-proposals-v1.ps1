@@ -94,7 +94,7 @@ function New-DocumentProposal([object]$Packet, [string]$PacketPath) {
     $parentByHeading = Parent-Map $doc $count
     $completeParentMap = ($parentByHeading.Count -eq $count -and @($parentByHeading.Keys).Count -eq $count)
     $needsReview = -not $completeParentMap
-    $status = if ($needsReview) { 'REVIEW_REQUIRED_CANONICAL_HIERARCHY' } else { 'READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY' }
+    $status = if ($needsReview) { 'REVIEW_REQUIRED_CANONICAL_HIERARCHY' } else { 'HISTORICAL_STRICT_HIERARCHY_PROPOSAL' }
 
     $assignments = @()
     $nodes = @()

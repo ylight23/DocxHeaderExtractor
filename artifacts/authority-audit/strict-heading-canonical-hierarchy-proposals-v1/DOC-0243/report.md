@@ -1,6 +1,6 @@
 # DOC-0243 canonical hierarchy proposal
 
-Status: **READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY**
+Status: **HISTORICAL_STRICT_HIERARCHY_PROPOSAL**
 
 Occurrences: 102
 Semantic nodes: 102

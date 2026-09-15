@@ -21,11 +21,11 @@ Review queue entries: 8
 
 - DOC-0001: occurrences=7, semanticNodes=7, PRIMARY=7, REPEAT=0, CONTINUATION=0, parentEdges=7, ROOTChildren=2, maxDepth=3, validator=VALID, ambiguities=0, status=USER_REVIEWED_CANONICAL_HIERARCHY_GOLD
 - DOC-0116: occurrences=22, semanticNodes=22, PRIMARY=22, REPEAT=0, CONTINUATION=0, parentEdges=0, ROOTChildren=0, maxDepth=0, validator=INVALID, ambiguities=1, status=REVIEW_REQUIRED_CANONICAL_HIERARCHY
-- DOC-0256: occurrences=24, semanticNodes=24, PRIMARY=24, REPEAT=0, CONTINUATION=0, parentEdges=24, ROOTChildren=7, maxDepth=2, validator=VALID, ambiguities=0, status=READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY
-- DOC-0258: occurrences=24, semanticNodes=24, PRIMARY=24, REPEAT=0, CONTINUATION=0, parentEdges=24, ROOTChildren=1, maxDepth=3, validator=VALID, ambiguities=0, status=READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY
-- DOC-0252: occurrences=27, semanticNodes=27, PRIMARY=27, REPEAT=0, CONTINUATION=0, parentEdges=27, ROOTChildren=8, maxDepth=3, validator=VALID, ambiguities=0, status=READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY
-- DOC-0205: occurrences=71, semanticNodes=71, PRIMARY=71, REPEAT=0, CONTINUATION=0, parentEdges=71, ROOTChildren=5, maxDepth=3, validator=VALID, ambiguities=0, status=READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY
-- DOC-0243: occurrences=102, semanticNodes=102, PRIMARY=102, REPEAT=0, CONTINUATION=0, parentEdges=102, ROOTChildren=6, maxDepth=3, validator=VALID, ambiguities=0, status=READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY
+- DOC-0256: occurrences=24, semanticNodes=24, PRIMARY=24, REPEAT=0, CONTINUATION=0, parentEdges=24, ROOTChildren=7, maxDepth=2, validator=VALID, ambiguities=0, status=HISTORICAL_STRICT_HIERARCHY_PROPOSAL
+- DOC-0258: occurrences=24, semanticNodes=24, PRIMARY=24, REPEAT=0, CONTINUATION=0, parentEdges=24, ROOTChildren=1, maxDepth=3, validator=VALID, ambiguities=0, status=HISTORICAL_STRICT_HIERARCHY_PROPOSAL
+- DOC-0252: occurrences=27, semanticNodes=27, PRIMARY=27, REPEAT=0, CONTINUATION=0, parentEdges=27, ROOTChildren=8, maxDepth=3, validator=VALID, ambiguities=0, status=HISTORICAL_STRICT_HIERARCHY_PROPOSAL
+- DOC-0205: occurrences=71, semanticNodes=71, PRIMARY=71, REPEAT=0, CONTINUATION=0, parentEdges=71, ROOTChildren=5, maxDepth=3, validator=VALID, ambiguities=0, status=HISTORICAL_STRICT_HIERARCHY_PROPOSAL
+- DOC-0243: occurrences=102, semanticNodes=102, PRIMARY=102, REPEAT=0, CONTINUATION=0, parentEdges=102, ROOTChildren=6, maxDepth=3, validator=VALID, ambiguities=0, status=HISTORICAL_STRICT_HIERARCHY_PROPOSAL
 - DOC-0216: occurrences=117, semanticNodes=117, PRIMARY=117, REPEAT=0, CONTINUATION=0, parentEdges=0, ROOTChildren=0, maxDepth=0, validator=INVALID, ambiguities=1, status=REVIEW_REQUIRED_CANONICAL_HIERARCHY
 - DOC-0122: occurrences=126, semanticNodes=126, PRIMARY=126, REPEAT=0, CONTINUATION=0, parentEdges=0, ROOTChildren=0, maxDepth=0, validator=INVALID, ambiguities=1, status=REVIEW_REQUIRED_CANONICAL_HIERARCHY
 
