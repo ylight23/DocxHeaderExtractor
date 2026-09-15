@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-v7b-execution-manifest-v1",
+  "status": "EXECUTING",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "requestSetSha256": "5af2dd92a27ff109a4bf929685f336fe9496d6c12602adfd1d3c6fe62e70cf45",
+  "scheduledCalls": 3,
+  "transientRequestRetries": 0,
+  "maxParallelRequests": 1,
+  "goldReadCount": 0,
+  "historicalPredictionReadCount": 0,
+  "evaluationReadCount": 0,
+  "autoCollapse": false,
+  "connectedComponentsAuthority": false
+}

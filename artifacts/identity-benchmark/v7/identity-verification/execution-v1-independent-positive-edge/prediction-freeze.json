@@ -1,0 +1,705 @@
+{
+  "schemaVersion": "a99-v7b-prediction-freeze-v1",
+  "status": "V7B_VERIFIER_OUTPUTS_FROZEN_BEFORE_CLUSTERING_OR_EVALUATION",
+  "requestSetSha256": "5af2dd92a27ff109a4bf929685f336fe9496d6c12602adfd1d3c6fe62e70cf45",
+  "completedAttempts": 3,
+  "modelCalls": 3,
+  "providerCalls": 3,
+  "goldReadCount": 0,
+  "historicalPredictionReadCount": 0,
+  "evaluationReadCount": 0,
+  "autoCollapse": false,
+  "connectedComponentsAuthority": false,
+  "defaultPolicy": "REJECT_AND_UNRESOLVED_KEEP_SPLIT",
+  "recovery": "PRIMARY_001_OFFLINE_REVALIDATED_AFTER_HARNESS_BUG; PRIMARY_002_003_EXECUTED_ONCE",
+  "attempts": [
+    {
+      "schemaVersion": "a99-v7b-attempt-v1",
+      "attemptId": "primary-001",
+      "sequence": 1,
+      "documentId": "DOC-0123",
+      "requestHash": "a75e1dfa0867c71ee3e995498237b9f09a68ed334eb92621eabccc5079824bef",
+      "requestSetSha256": "5af2dd92a27ff109a4bf929685f336fe9496d6c12602adfd1d3c6fe62e70cf45",
+      "status": "VALID",
+      "httpStatus": null,
+      "providerCallId": null,
+      "rawResponseSha256": "e1a356236d6d6d7d63d7690e6f41e3ea73222f45e18f5aa17158c2341feb9eff",
+      "parsedResponseSha256": "d4af17346aedd53b7f79e9a1665f6305212903b721afc438b126e6799554a4e7",
+      "provider": "OpenRouter",
+      "model": "qwen/qwen3.7-flash",
+      "latencyMs": null,
+      "reportedInputTokens": null,
+      "reportedReasoningTokens": null,
+      "reportedOutputTokens": null,
+      "finishReason": null,
+      "error": null,
+      "retryCount": 0,
+      "goldReadBeforeFreeze": false,
+      "historicalPredictionReadBeforeFreeze": false,
+      "evaluationReadBeforeFreeze": false,
+      "autoCollapse": false,
+      "connectedComponentsAuthority": false,
+      "recovery": "OFFLINE_REVALIDATION_OF_ALREADY_CONSUMED_PRIMARY_RAW_RESPONSE",
+      "response": {
+        "response": {
+          "decisions": [
+            {
+              "proposalId": "P0002",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E001"
+              ]
+            },
+            {
+              "proposalId": "P0013",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E002"
+              ]
+            },
+            {
+              "proposalId": "P0014",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E003"
+              ]
+            },
+            {
+              "proposalId": "P0020",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E004"
+              ]
+            },
+            {
+              "proposalId": "P0021",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E005"
+              ]
+            },
+            {
+              "proposalId": "P0026",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E006"
+              ]
+            },
+            {
+              "proposalId": "P0031",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E007"
+              ]
+            },
+            {
+              "proposalId": "P0036",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E008"
+              ]
+            },
+            {
+              "proposalId": "P0041",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E009"
+              ]
+            },
+            {
+              "proposalId": "P0042",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E010"
+              ]
+            },
+            {
+              "proposalId": "P0048",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E011"
+              ]
+            },
+            {
+              "proposalId": "P0050",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E012"
+              ]
+            },
+            {
+              "proposalId": "P0051",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E013"
+              ]
+            },
+            {
+              "proposalId": "P0069",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E014"
+              ]
+            },
+            {
+              "proposalId": "P0085",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E015"
+              ]
+            },
+            {
+              "proposalId": "P0104",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E016"
+              ]
+            },
+            {
+              "proposalId": "P0108",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E017",
+                "E018"
+              ]
+            },
+            {
+              "proposalId": "P0109",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E019",
+                "E020",
+                "E021"
+              ]
+            },
+            {
+              "proposalId": "P0110",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E022"
+              ]
+            },
+            {
+              "proposalId": "P0112",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E023"
+              ]
+            },
+            {
+              "proposalId": "P0124",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E024",
+                "E025",
+                "E026"
+              ]
+            },
+            {
+              "proposalId": "P0135",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E027",
+                "E028",
+                "E029"
+              ]
+            },
+            {
+              "proposalId": "P0138",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E030"
+              ]
+            },
+            {
+              "proposalId": "P0139",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E031",
+                "E032",
+                "E033"
+              ]
+            },
+            {
+              "proposalId": "P0141",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E034"
+              ]
+            },
+            {
+              "proposalId": "P0146",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E035",
+                "E036"
+              ]
+            },
+            {
+              "proposalId": "P0150",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E037"
+              ]
+            },
+            {
+              "proposalId": "P0152",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E038",
+                "E039",
+                "E040"
+              ]
+            },
+            {
+              "proposalId": "P0153",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E041",
+                "E042",
+                "E043"
+              ]
+            },
+            {
+              "proposalId": "P0154",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E044",
+                "E045"
+              ]
+            },
+            {
+              "proposalId": "P0157",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E046",
+                "E047"
+              ]
+            },
+            {
+              "proposalId": "P0159",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E048",
+                "E049"
+              ]
+            },
+            {
+              "proposalId": "P0165",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E050",
+                "E051"
+              ]
+            },
+            {
+              "proposalId": "P0168",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E052",
+                "E053"
+              ]
+            },
+            {
+              "proposalId": "P0170",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E054",
+                "E055",
+                "E056"
+              ]
+            },
+            {
+              "proposalId": "P0172",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E057"
+              ]
+            }
+          ]
+        },
+        "validation": {
+          "accepted": true,
+          "decisionCount": 36,
+          "unknownCandidateCount": 0,
+          "unknownOccurrenceCount": 0,
+          "unknownEvidenceCount": 0,
+          "duplicateDecisionCount": 0,
+          "missingDecisionCount": 0,
+          "directionErrorCount": 0,
+          "errors": []
+        },
+        "revalidatedAfterHarnessBug": "V7B_EVIDENCE_REF_JSON_NAME_CORRECTION"
+      }
+    },
+    {
+      "schemaVersion": "a99-v7b-attempt-v1",
+      "attemptId": "primary-002",
+      "sequence": 2,
+      "documentId": "DOC-0133",
+      "requestHash": "2649561575716e2ff1b1df0cbb7cafe29f509b995b62e912527b1c52d6d5b97d",
+      "requestSetSha256": "5af2dd92a27ff109a4bf929685f336fe9496d6c12602adfd1d3c6fe62e70cf45",
+      "status": "VALID",
+      "httpStatus": 200,
+      "providerCallId": "gen-1789449787-2TMTLNzOPBQgMCHR21cY",
+      "rawResponseSha256": "45609e92188451bf85722533cf84b58cf802d3e390c7f73132e6758a6e2e042e",
+      "parsedResponseSha256": "ca8c0ae7a8312c3e5cbfe3d1bc723201f76b1fe2b3c8d135baf56b9ed08b242e",
+      "provider": "OpenRouter",
+      "model": "qwen/qwen3.7-flash",
+      "latencyMs": 28598,
+      "reportedInputTokens": 25661,
+      "reportedReasoningTokens": 2256,
+      "reportedOutputTokens": 2838,
+      "finishReason": "stop",
+      "error": null,
+      "retryCount": 0,
+      "goldReadBeforeFreeze": false,
+      "historicalPredictionReadBeforeFreeze": false,
+      "evaluationReadBeforeFreeze": false,
+      "autoCollapse": false,
+      "connectedComponentsAuthority": false,
+      "response": {
+        "response": {
+          "decisions": [
+            {
+              "proposalId": "P0014",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E001"
+              ]
+            },
+            {
+              "proposalId": "P0015",
+              "decision": "REJECT",
+              "relation": "NONE",
+              "confidence": "HIGH",
+              "evidenceRefs": []
+            },
+            {
+              "proposalId": "P0022",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E003",
+                "E004",
+                "E005"
+              ]
+            },
+            {
+              "proposalId": "P0023",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E006",
+                "E007",
+                "E008"
+              ]
+            },
+            {
+              "proposalId": "P0026",
+              "decision": "REJECT",
+              "relation": "NONE",
+              "confidence": "HIGH",
+              "evidenceRefs": []
+            },
+            {
+              "proposalId": "P0027",
+              "decision": "REJECT",
+              "relation": "NONE",
+              "confidence": "HIGH",
+              "evidenceRefs": []
+            },
+            {
+              "proposalId": "P0061",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E011"
+              ]
+            },
+            {
+              "proposalId": "P0063",
+              "decision": "REJECT",
+              "relation": "NONE",
+              "confidence": "HIGH",
+              "evidenceRefs": []
+            },
+            {
+              "proposalId": "P0064",
+              "decision": "ACCEPT",
+              "relation": "SAME_SEMANTIC_REPEAT",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E013"
+              ]
+            }
+          ]
+        },
+        "validation": {
+          "accepted": true,
+          "decisionCount": 9,
+          "unknownCandidateCount": 0,
+          "unknownOccurrenceCount": 0,
+          "unknownEvidenceCount": 0,
+          "duplicateDecisionCount": 0,
+          "missingDecisionCount": 0,
+          "directionErrorCount": 0,
+          "errors": []
+        }
+      }
+    },
+    {
+      "schemaVersion": "a99-v7b-attempt-v1",
+      "attemptId": "primary-003",
+      "sequence": 3,
+      "documentId": "DOC-0252",
+      "requestHash": "70d8d34a219300542c76a4dc81414420e2dc6d2d673c9a4849c9e25e79e79096",
+      "requestSetSha256": "5af2dd92a27ff109a4bf929685f336fe9496d6c12602adfd1d3c6fe62e70cf45",
+      "status": "INVALID_VALIDATION",
+      "httpStatus": 200,
+      "providerCallId": "gen-1789449814-jAFmfy6yQTPmkHLM0YRY",
+      "rawResponseSha256": "7401f5e8a08e738ca3fd87f51b6401f13491ddc6878114af502c79df5893f35e",
+      "parsedResponseSha256": "e88a51769cca34a1a3d93c0948857b0d4aca93a4ebe83ad1dffb34016da9ed77",
+      "provider": "OpenRouter",
+      "model": "qwen/qwen3.7-flash",
+      "latencyMs": 79089,
+      "reportedInputTokens": 26612,
+      "reportedReasoningTokens": 7057,
+      "reportedOutputTokens": 7996,
+      "finishReason": "stop",
+      "error": "V7B_DIRECTION_ERROR",
+      "retryCount": 0,
+      "goldReadBeforeFreeze": false,
+      "historicalPredictionReadBeforeFreeze": false,
+      "evaluationReadBeforeFreeze": false,
+      "autoCollapse": false,
+      "connectedComponentsAuthority": false,
+      "response": {
+        "response": {
+          "decisions": [
+            {
+              "proposalId": "P0009",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E001",
+                "E002"
+              ]
+            },
+            {
+              "proposalId": "P0015",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E003",
+                "E004"
+              ]
+            },
+            {
+              "proposalId": "P0018",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E005",
+                "E006"
+              ]
+            },
+            {
+              "proposalId": "P0019",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E007",
+                "E008"
+              ]
+            },
+            {
+              "proposalId": "P0028",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E009",
+                "E010"
+              ]
+            },
+            {
+              "proposalId": "P0030",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E011",
+                "E012"
+              ]
+            },
+            {
+              "proposalId": "P0032",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E013",
+                "E014"
+              ]
+            },
+            {
+              "proposalId": "P0033",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E015",
+                "E016"
+              ]
+            },
+            {
+              "proposalId": "P0035",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E017",
+                "E018"
+              ]
+            },
+            {
+              "proposalId": "P0036",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E019",
+                "E020"
+              ]
+            },
+            {
+              "proposalId": "P0039",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E021",
+                "E022"
+              ]
+            },
+            {
+              "proposalId": "P0051",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E023",
+                "E024"
+              ]
+            },
+            {
+              "proposalId": "P0054",
+              "decision": "ACCEPT",
+              "relation": "CONTINUATION_OF",
+              "confidence": "HIGH",
+              "evidenceRefs": [
+                "E025",
+                "E026"
+              ]
+            }
+          ]
+        },
+        "validation": {
+          "accepted": false,
+          "decisionCount": 13,
+          "unknownCandidateCount": 0,
+          "unknownOccurrenceCount": 0,
+          "unknownEvidenceCount": 0,
+          "duplicateDecisionCount": 0,
+          "missingDecisionCount": 0,
+          "directionErrorCount": 13,
+          "errors": [
+            "V7B_DIRECTION_ERROR"
+          ]
+        }
+      }
+    }
+  ]
+}

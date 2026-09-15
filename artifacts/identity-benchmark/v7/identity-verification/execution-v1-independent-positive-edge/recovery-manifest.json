@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "a99-v7b-recovery-manifest-v1",
+  "status": "PRIMARY_001_RAW_REVALIDATED_OFFLINE_AFTER_HARNESS_BUG",
+  "consumedProviderCallsBeforeRecovery": 1,
+  "callsRemaining": 2,
+  "retryCount": 0,
+  "requestSetSha256": "5af2dd92a27ff109a4bf929685f336fe9496d6c12602adfd1d3c6fe62e70cf45",
+  "requestMutation": false,
+  "promptMutation": false,
+  "proposalSetMutation": false,
+  "bug": "validator looked for @ref while JSON serialization emitted ref",
+  "goldReadCount": 0,
+  "historicalPredictionReadCount": 0,
+  "evaluationReadCount": 0
+}

@@ -27,6 +27,7 @@ internal static class Program
         try
         {
             if (args.Any(x => string.Equals(x, "--execute-v7b", StringComparison.Ordinal))) return await ExecuteAsync(root);
+            if (args.Any(x => string.Equals(x, "--resume-v7b", StringComparison.Ordinal))) return await ResumeAsync(root);
             if (args.Any(x => string.Equals(x, "--finalize-v7b", StringComparison.Ordinal))) return await FinalizeAsync(root);
             await PrepareAsync(root);
             Console.WriteLine("V7B_STATUS=INDEPENDENT_EDGE_VERIFIER_PREFLIGHT_FROZEN PROVIDER_CALLS=0 GOLD_READ_COUNT=0");
@@ -175,6 +176,105 @@ internal static class Program
             autoCollapse = false, connectedComponentsAuthority = false,
         });
         return 1;
+    }
+
+    private static async Task<int> ResumeAsync(string root)
+    {
+        var preflight = Full(root, OutputRelative);
+        var execution = Full(root, ExecutionRelative);
+        var frozen = LoadFrozenRequests(preflight);
+        Require(Directory.Exists(execution), "V7B_RESUME_EXECUTION_MISSING");
+        var manifestPath = Path.Combine(execution, "execution-manifest.json");
+        using var executionManifest = Read(manifestPath);
+        Require(executionManifest.RootElement.GetProperty("requestSetSha256").GetString() == RequestSetSha256 && executionManifest.RootElement.GetProperty("scheduledCalls").GetInt32() == 3 && executionManifest.RootElement.GetProperty("transientRequestRetries").GetInt32() == 0 && executionManifest.RootElement.GetProperty("goldReadCount").GetInt32() == 0 && executionManifest.RootElement.GetProperty("historicalPredictionReadCount").GetInt32() == 0 && executionManifest.RootElement.GetProperty("evaluationReadCount").GetInt32() == 0, "V7B_RESUME_EXECUTION_FIREWALL");
+        var attemptsDir = Path.Combine(execution, "attempts"); var rawDir = Path.Combine(execution, "raw-responses"); var parsedDir = Path.Combine(execution, "parsed");
+        Require(File.Exists(Path.Combine(attemptsDir, "001.started.json")) && File.Exists(Path.Combine(rawDir, "001.json")) && !File.Exists(Path.Combine(attemptsDir, "001.completed.json")), "V7B_RESUME_EXPECTED_PARTIAL_ATTEMPT");
+        Require(!File.Exists(Path.Combine(attemptsDir, "002.started.json")) && !File.Exists(Path.Combine(attemptsDir, "003.started.json")), "V7B_RESUME_NO_LATER_ATTEMPTS");
+
+        var first = frozen[0];
+        var raw = await File.ReadAllTextAsync(Path.Combine(rawDir, "001.json"));
+        using var rawDoc = JsonDocument.Parse(raw);
+        var firstValidation = ValidateResponse(first.Request, rawDoc.RootElement);
+        var firstParsed = new { response = rawDoc.RootElement.Clone(), validation = firstValidation, revalidatedAfterHarnessBug = "V7B_EVIDENCE_REF_JSON_NAME_CORRECTION" };
+        await WriteAsync(Path.Combine(parsedDir, "001.json"), firstParsed);
+        await WriteAsync(Path.Combine(attemptsDir, "001.completed.json"), new
+        {
+            schemaVersion = "a99-v7b-attempt-v1", attemptId = "primary-001", sequence = 1,
+            documentId = first.DocumentId, requestHash = first.RequestHash, requestSetSha256 = RequestSetSha256,
+            status = firstValidation.Accepted ? "VALID" : "INVALID_VALIDATION", httpStatus = (int?)null,
+            providerCallId = (string?)null, rawResponseSha256 = Sha256Text(raw), parsedResponseSha256 = Sha256Text(JsonSerializer.Serialize(firstParsed, JsonOptions)),
+            provider = Provider, model = Model, latencyMs = (long?)null, reportedInputTokens = (int?)null,
+            reportedReasoningTokens = (int?)null, reportedOutputTokens = (int?)null, finishReason = (string?)null,
+            error = firstValidation.Accepted ? null : firstValidation.Errors.FirstOrDefault(), retryCount = 0,
+            goldReadBeforeFreeze = false, historicalPredictionReadBeforeFreeze = false, evaluationReadBeforeFreeze = false,
+            autoCollapse = false, connectedComponentsAuthority = false, recovery = "OFFLINE_REVALIDATION_OF_ALREADY_CONSUMED_PRIMARY_RAW_RESPONSE",
+            response = firstParsed,
+        });
+        await WriteAsync(Path.Combine(execution, "recovery-manifest.json"), new
+        {
+            schemaVersion = "a99-v7b-recovery-manifest-v1", status = "PRIMARY_001_RAW_REVALIDATED_OFFLINE_AFTER_HARNESS_BUG",
+            consumedProviderCallsBeforeRecovery = 1, callsRemaining = 2, retryCount = 0,
+            requestSetSha256 = RequestSetSha256, requestMutation = false, promptMutation = false,
+            proposalSetMutation = false, bug = "validator looked for @ref while JSON serialization emitted ref",
+            goldReadCount = 0, historicalPredictionReadCount = 0, evaluationReadCount = 0,
+        });
+        Require(firstValidation.Accepted, "V7B_RESUME_PRIMARY_001_INVALID_AFTER_CORRECTION");
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        Require(!string.IsNullOrWhiteSpace(apiKey), "V7B_RESUME_PROVIDER_API_KEY");
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), ApiKey = apiKey, Model = Model, ContextSize = 1_000_000,
+            MaxOutputTokens = 24_000, RequestTimeoutSeconds = 600, TransientRequestRetries = 0,
+            MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capability = new OpenRouterModelCapability
+        {
+            ModelId = Model, ContextLength = 1_000_000, ReasoningSupported = true,
+            StructuredOutputSupported = true, SelectedReasoningEffort = "enabled",
+            ReasoningEnabled = true, EffortListReported = false, MaxCompletionTokens = 65_536,
+        };
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(root, "identity-benchmark-v7b", "resume-two-remaining-independent-positive-edge-verifications");
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        var completed = new List<object> { JsonSerializer.Deserialize<object>(await File.ReadAllTextAsync(Path.Combine(attemptsDir, "001.completed.json")))! };
+        for (var i = 1; i < frozen.Count; i++)
+        {
+            var item = frozen[i]; var sequence = i + 1; var attemptId = $"primary-{sequence:D3}";
+            await WriteAsync(Path.Combine(attemptsDir, $"{sequence:D3}.started.json"), new
+            {
+                schemaVersion = "a99-v7b-attempt-start-v1", attemptId, sequence, documentId = item.DocumentId,
+                requestHash = item.RequestHash, requestSetSha256 = RequestSetSha256, retry = false,
+                goldReadBeforeAttempt = false, historicalPredictionReadBeforeAttempt = false,
+                evaluationReadBeforeAttempt = false, autoCollapse = false, connectedComponentsAuthority = false,
+            });
+            var status = "PROVIDER_ERROR"; string? error = null; string? rawHash = null; string? parsedHash = null; int? httpStatus = null; string? providerCallId = null; RequestPacketTelemetry? telemetry = null; object? parsed = null;
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            try
+            {
+                var requestJson = item.Request.GetRawText();
+                var result = await model.CompleteRawStructuredSemanticAsync(item.DocumentId, "V7B_INDEPENDENT_POSITIVE_EDGE_VERIFICATION", $"v7b:{item.DocumentId}:{item.RequestHash}", requestJson, item.OccurrenceCount, item.ProposalCount, item.EvidenceCount, SystemPromptV7B, $"TASK=V7B_INDEPENDENT_POSITIVE_EDGE_VERIFICATION\n{requestJson}\nReturn exactly the requested JSON object.", ResponseSchemaV7B(), "a99_v7b_independent_positive_edge_verification_v1");
+                telemetry = result.Telemetry; httpStatus = telemetry.HttpStatus; providerCallId = telemetry.ProviderCallId; rawHash = Sha256Text(result.Content);
+                await File.WriteAllTextAsync(Path.Combine(rawDir, $"{sequence:D3}.json"), result.Content, new UTF8Encoding(false));
+                using var response = JsonDocument.Parse(result.Content); var validation = ValidateResponse(item.Request, response.RootElement);
+                parsed = new { response = response.RootElement.Clone(), validation }; parsedHash = Sha256Text(JsonSerializer.Serialize(parsed, JsonOptions));
+                await WriteAsync(Path.Combine(parsedDir, $"{sequence:D3}.json"), parsed); status = validation.Accepted ? "VALID" : "INVALID_VALIDATION"; error = validation.Accepted ? null : validation.Errors.FirstOrDefault();
+            }
+            catch (JsonException ex) { status = "INVALID_SCHEMA"; error = ex.Message; }
+            catch (Exception ex) when (ex is HttpRequestException or IOException or TimeoutException or ReasoningCompletionException or FormatException) { status = "PROVIDER_ERROR"; error = ex.GetType().Name + ":" + ex.Message; }
+            stopwatch.Stop();
+            var completedAttempt = new
+            {
+                schemaVersion = "a99-v7b-attempt-v1", attemptId, sequence, documentId = item.DocumentId, requestHash = item.RequestHash, requestSetSha256 = RequestSetSha256, status, httpStatus, providerCallId, rawResponseSha256 = rawHash, parsedResponseSha256 = parsedHash, provider = Provider, model = Model, latencyMs = stopwatch.ElapsedMilliseconds, reportedInputTokens = telemetry?.ReportedInputTokens, reportedReasoningTokens = telemetry?.ReportedReasoningTokens, reportedOutputTokens = telemetry?.ReportedOutputTokens, finishReason = telemetry?.FinishReason, error, retryCount = 0, goldReadBeforeFreeze = false, historicalPredictionReadBeforeFreeze = false, evaluationReadBeforeFreeze = false, autoCollapse = false, connectedComponentsAuthority = false, response = parsed,
+            };
+            await WriteAsync(Path.Combine(attemptsDir, $"{sequence:D3}.completed.json"), completedAttempt); completed.Add(completedAttempt);
+            await WriteAsync(Path.Combine(execution, "attempt-manifest.json"), new { schemaVersion = "a99-v7b-attempt-manifest-v1", immutableAttemptRecords = true, expectedAttemptCount = 3, actualAttemptCount = completed.Count, actualModelCalls = model.ProviderCalls + 1, actualProviderCalls = model.ProviderCalls + 1, retryCount = 0, goldReadCount = 0, historicalPredictionReadCount = 0, evaluationReadCount = 0, autoCollapse = false, connectedComponentsAuthority = false, attempts = completed });
+            Console.WriteLine($"V7B_ATTEMPT={sequence}/3 DOCUMENT={item.DocumentId} STATUS={status} PROVIDER_CALLS={model.ProviderCalls + 1}");
+        }
+        Require(completed.Count == 3 && model.ProviderCalls == 2, "V7B_RESUME_PROVIDER_CALL_COUNT");
+        await WriteAsync(Path.Combine(execution, "prediction-freeze.json"), new { schemaVersion = "a99-v7b-prediction-freeze-v1", status = "V7B_VERIFIER_OUTPUTS_FROZEN_BEFORE_CLUSTERING_OR_EVALUATION", requestSetSha256 = RequestSetSha256, completedAttempts = 3, modelCalls = 3, providerCalls = 3, goldReadCount = 0, historicalPredictionReadCount = 0, evaluationReadCount = 0, autoCollapse = false, connectedComponentsAuthority = false, defaultPolicy = "REJECT_AND_UNRESOLVED_KEEP_SPLIT", recovery = "PRIMARY_001_OFFLINE_REVALIDATED_AFTER_HARNESS_BUG; PRIMARY_002_003_EXECUTED_ONCE", attempts = completed });
+        Console.WriteLine($"V7B_STATUS=VERIFIER_OUTPUTS_FROZEN REQUESTS=3 MODEL_CALLS=3 PROVIDER_CALLS=3 GOLD_READ_COUNT=0 AUTO_COLLAPSE=false");
+        return 0;
     }
 
     private static async Task<int> FinalizeAsync(string root)
@@ -441,7 +541,7 @@ requested JSON object with one decision per proposed edge.
         if (response.ValueKind != JsonValueKind.Object || !response.TryGetProperty("decisions", out var decisions) || decisions.ValueKind != JsonValueKind.Array) return V7BValidation.Invalid("V7B_REQUIRED_FIELDS");
         var proposalMap = request.GetProperty("proposedEdges").EnumerateArray().ToDictionary(x => x.GetProperty("proposalId").GetString()!, x => x, StringComparer.Ordinal);
         var occurrenceRefs = request.GetProperty("occurrences").EnumerateArray().Select(x => x.GetProperty("ref").GetString()!).ToHashSet(StringComparer.Ordinal);
-        var evidenceRefs = request.GetProperty("sourceEvidence").GetProperty("evidence").EnumerateArray().Select(x => x.GetProperty("@ref").GetString()!).ToHashSet(StringComparer.Ordinal);
+        var evidenceRefs = request.GetProperty("sourceEvidence").GetProperty("evidence").EnumerateArray().Select(x => x.GetProperty("ref").GetString()!).ToHashSet(StringComparer.Ordinal);
         var seen = new HashSet<string>(StringComparer.Ordinal); var unknownCandidate = 0; var unknownOccurrence = 0; var unknownEvidence = 0; var duplicate = 0; var direction = 0;
         foreach (var item in decisions.EnumerateArray())
         {

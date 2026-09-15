@@ -1,0 +1,149 @@
+{
+  "response": {
+    "decisions": [
+      {
+        "proposalId": "P0009",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E001",
+          "E002"
+        ]
+      },
+      {
+        "proposalId": "P0015",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E003",
+          "E004"
+        ]
+      },
+      {
+        "proposalId": "P0018",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E005",
+          "E006"
+        ]
+      },
+      {
+        "proposalId": "P0019",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E007",
+          "E008"
+        ]
+      },
+      {
+        "proposalId": "P0028",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E009",
+          "E010"
+        ]
+      },
+      {
+        "proposalId": "P0030",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E011",
+          "E012"
+        ]
+      },
+      {
+        "proposalId": "P0032",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E013",
+          "E014"
+        ]
+      },
+      {
+        "proposalId": "P0033",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E015",
+          "E016"
+        ]
+      },
+      {
+        "proposalId": "P0035",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E017",
+          "E018"
+        ]
+      },
+      {
+        "proposalId": "P0036",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E019",
+          "E020"
+        ]
+      },
+      {
+        "proposalId": "P0039",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E021",
+          "E022"
+        ]
+      },
+      {
+        "proposalId": "P0051",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E023",
+          "E024"
+        ]
+      },
+      {
+        "proposalId": "P0054",
+        "decision": "ACCEPT",
+        "relation": "CONTINUATION_OF",
+        "confidence": "HIGH",
+        "evidenceRefs": [
+          "E025",
+          "E026"
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "accepted": false,
+    "decisionCount": 13,
+    "unknownCandidateCount": 0,
+    "unknownOccurrenceCount": 0,
+    "unknownEvidenceCount": 0,
+    "duplicateDecisionCount": 0,
+    "missingDecisionCount": 0,
+    "directionErrorCount": 13,
+    "errors": [
+      "V7B_DIRECTION_ERROR"
+    ]
+  }
+}

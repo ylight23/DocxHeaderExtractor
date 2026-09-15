@@ -1,0 +1,81 @@
+{
+  "decisions": [
+    {
+      "proposalId": "P0014",
+      "decision": "ACCEPT",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "confidence": "HIGH",
+      "evidenceRefs": [
+       "E001"
+      ]
+    },
+    {
+      "proposalId": "P0015",
+      "decision": "REJECT",
+      "relation": "NONE",
+      "confidence": "HIGH",
+      "evidenceRefs": []
+    },
+    {
+      "proposalId": "P0022",
+      "decision": "ACCEPT",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "confidence": "HIGH",
+      "evidenceRefs": [
+       "E003",
+       "E004",
+       "E005"
+      ]
+    },
+    {
+      "proposalId": "P0023",
+      "decision": "ACCEPT",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "confidence": "HIGH",
+      "evidenceRefs": [
+       "E006",
+       "E007",
+       "E008"
+      ]
+    },
+    {
+      "proposalId": "P0026",
+      "decision": "REJECT",
+      "relation": "NONE",
+      "confidence": "HIGH",
+      "evidenceRefs": []
+    },
+    {
+      "proposalId": "P0027",
+      "decision": "REJECT",
+      "relation": "NONE",
+      "confidence": "HIGH",
+      "evidenceRefs": []
+    },
+    {
+      "proposalId": "P0061",
+      "decision": "ACCEPT",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "confidence": "HIGH",
+      "evidenceRefs": [
+       "E011"
+      ]
+    },
+    {
+      "proposalId": "P0063",
+      "decision": "REJECT",
+      "relation": "NONE",
+      "confidence": "HIGH",
+      "evidenceRefs": []
+    },
+    {
+      "proposalId": "P0064",
+      "decision": "ACCEPT",
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "confidence": "HIGH",
+      "evidenceRefs": [
+       "E013"
+      ]
+    }
+  ]
+}
