@@ -1,0 +1,929 @@
+{
+  "artifactKind": "a99_canonical_semantic_nodes_proposal",
+  "schemaVersion": "a99-canonical-semantic-nodes-proposal-v1",
+  "documentId": "DOC-0243",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "sourcePacketSha256": "f7943439892475411a80fb58bb5aecfa40eb51e86a03d493d8e29c35e6fd604a",
+  "semanticNodes": [
+    {
+      "semanticNodeRef": "N001",
+      "canonicalOccurrenceRef": "H0001"
+    },
+    {
+      "semanticNodeRef": "N002",
+      "canonicalOccurrenceRef": "H0002"
+    },
+    {
+      "semanticNodeRef": "N003",
+      "canonicalOccurrenceRef": "H0003"
+    },
+    {
+      "semanticNodeRef": "N004",
+      "canonicalOccurrenceRef": "H0004"
+    },
+    {
+      "semanticNodeRef": "N005",
+      "canonicalOccurrenceRef": "H0005"
+    },
+    {
+      "semanticNodeRef": "N006",
+      "canonicalOccurrenceRef": "H0006"
+    },
+    {
+      "semanticNodeRef": "N007",
+      "canonicalOccurrenceRef": "H0007"
+    },
+    {
+      "semanticNodeRef": "N008",
+      "canonicalOccurrenceRef": "H0008"
+    },
+    {
+      "semanticNodeRef": "N009",
+      "canonicalOccurrenceRef": "H0009"
+    },
+    {
+      "semanticNodeRef": "N010",
+      "canonicalOccurrenceRef": "H0010"
+    },
+    {
+      "semanticNodeRef": "N011",
+      "canonicalOccurrenceRef": "H0011"
+    },
+    {
+      "semanticNodeRef": "N012",
+      "canonicalOccurrenceRef": "H0012"
+    },
+    {
+      "semanticNodeRef": "N013",
+      "canonicalOccurrenceRef": "H0013"
+    },
+    {
+      "semanticNodeRef": "N014",
+      "canonicalOccurrenceRef": "H0014"
+    },
+    {
+      "semanticNodeRef": "N015",
+      "canonicalOccurrenceRef": "H0015"
+    },
+    {
+      "semanticNodeRef": "N016",
+      "canonicalOccurrenceRef": "H0016"
+    },
+    {
+      "semanticNodeRef": "N017",
+      "canonicalOccurrenceRef": "H0017"
+    },
+    {
+      "semanticNodeRef": "N018",
+      "canonicalOccurrenceRef": "H0018"
+    },
+    {
+      "semanticNodeRef": "N019",
+      "canonicalOccurrenceRef": "H0019"
+    },
+    {
+      "semanticNodeRef": "N020",
+      "canonicalOccurrenceRef": "H0020"
+    },
+    {
+      "semanticNodeRef": "N021",
+      "canonicalOccurrenceRef": "H0021"
+    },
+    {
+      "semanticNodeRef": "N022",
+      "canonicalOccurrenceRef": "H0022"
+    },
+    {
+      "semanticNodeRef": "N023",
+      "canonicalOccurrenceRef": "H0023"
+    },
+    {
+      "semanticNodeRef": "N024",
+      "canonicalOccurrenceRef": "H0024"
+    },
+    {
+      "semanticNodeRef": "N025",
+      "canonicalOccurrenceRef": "H0025"
+    },
+    {
+      "semanticNodeRef": "N026",
+      "canonicalOccurrenceRef": "H0026"
+    },
+    {
+      "semanticNodeRef": "N027",
+      "canonicalOccurrenceRef": "H0027"
+    },
+    {
+      "semanticNodeRef": "N028",
+      "canonicalOccurrenceRef": "H0028"
+    },
+    {
+      "semanticNodeRef": "N029",
+      "canonicalOccurrenceRef": "H0029"
+    },
+    {
+      "semanticNodeRef": "N030",
+      "canonicalOccurrenceRef": "H0030"
+    },
+    {
+      "semanticNodeRef": "N031",
+      "canonicalOccurrenceRef": "H0031"
+    },
+    {
+      "semanticNodeRef": "N032",
+      "canonicalOccurrenceRef": "H0032"
+    },
+    {
+      "semanticNodeRef": "N033",
+      "canonicalOccurrenceRef": "H0033"
+    },
+    {
+      "semanticNodeRef": "N034",
+      "canonicalOccurrenceRef": "H0034"
+    },
+    {
+      "semanticNodeRef": "N035",
+      "canonicalOccurrenceRef": "H0035"
+    },
+    {
+      "semanticNodeRef": "N036",
+      "canonicalOccurrenceRef": "H0036"
+    },
+    {
+      "semanticNodeRef": "N037",
+      "canonicalOccurrenceRef": "H0037"
+    },
+    {
+      "semanticNodeRef": "N038",
+      "canonicalOccurrenceRef": "H0038"
+    },
+    {
+      "semanticNodeRef": "N039",
+      "canonicalOccurrenceRef": "H0039"
+    },
+    {
+      "semanticNodeRef": "N040",
+      "canonicalOccurrenceRef": "H0040"
+    },
+    {
+      "semanticNodeRef": "N041",
+      "canonicalOccurrenceRef": "H0041"
+    },
+    {
+      "semanticNodeRef": "N042",
+      "canonicalOccurrenceRef": "H0042"
+    },
+    {
+      "semanticNodeRef": "N043",
+      "canonicalOccurrenceRef": "H0043"
+    },
+    {
+      "semanticNodeRef": "N044",
+      "canonicalOccurrenceRef": "H0044"
+    },
+    {
+      "semanticNodeRef": "N045",
+      "canonicalOccurrenceRef": "H0045"
+    },
+    {
+      "semanticNodeRef": "N046",
+      "canonicalOccurrenceRef": "H0046"
+    },
+    {
+      "semanticNodeRef": "N047",
+      "canonicalOccurrenceRef": "H0047"
+    },
+    {
+      "semanticNodeRef": "N048",
+      "canonicalOccurrenceRef": "H0048"
+    },
+    {
+      "semanticNodeRef": "N049",
+      "canonicalOccurrenceRef": "H0049"
+    },
+    {
+      "semanticNodeRef": "N050",
+      "canonicalOccurrenceRef": "H0050"
+    },
+    {
+      "semanticNodeRef": "N051",
+      "canonicalOccurrenceRef": "H0051"
+    },
+    {
+      "semanticNodeRef": "N052",
+      "canonicalOccurrenceRef": "H0052"
+    },
+    {
+      "semanticNodeRef": "N053",
+      "canonicalOccurrenceRef": "H0053"
+    },
+    {
+      "semanticNodeRef": "N054",
+      "canonicalOccurrenceRef": "H0054"
+    },
+    {
+      "semanticNodeRef": "N055",
+      "canonicalOccurrenceRef": "H0055"
+    },
+    {
+      "semanticNodeRef": "N056",
+      "canonicalOccurrenceRef": "H0056"
+    },
+    {
+      "semanticNodeRef": "N057",
+      "canonicalOccurrenceRef": "H0057"
+    },
+    {
+      "semanticNodeRef": "N058",
+      "canonicalOccurrenceRef": "H0058"
+    },
+    {
+      "semanticNodeRef": "N059",
+      "canonicalOccurrenceRef": "H0059"
+    },
+    {
+      "semanticNodeRef": "N060",
+      "canonicalOccurrenceRef": "H0060"
+    },
+    {
+      "semanticNodeRef": "N061",
+      "canonicalOccurrenceRef": "H0061"
+    },
+    {
+      "semanticNodeRef": "N062",
+      "canonicalOccurrenceRef": "H0062"
+    },
+    {
+      "semanticNodeRef": "N063",
+      "canonicalOccurrenceRef": "H0063"
+    },
+    {
+      "semanticNodeRef": "N064",
+      "canonicalOccurrenceRef": "H0064"
+    },
+    {
+      "semanticNodeRef": "N065",
+      "canonicalOccurrenceRef": "H0065"
+    },
+    {
+      "semanticNodeRef": "N066",
+      "canonicalOccurrenceRef": "H0066"
+    },
+    {
+      "semanticNodeRef": "N067",
+      "canonicalOccurrenceRef": "H0067"
+    },
+    {
+      "semanticNodeRef": "N068",
+      "canonicalOccurrenceRef": "H0068"
+    },
+    {
+      "semanticNodeRef": "N069",
+      "canonicalOccurrenceRef": "H0069"
+    },
+    {
+      "semanticNodeRef": "N070",
+      "canonicalOccurrenceRef": "H0070"
+    },
+    {
+      "semanticNodeRef": "N071",
+      "canonicalOccurrenceRef": "H0071"
+    },
+    {
+      "semanticNodeRef": "N072",
+      "canonicalOccurrenceRef": "H0072"
+    },
+    {
+      "semanticNodeRef": "N073",
+      "canonicalOccurrenceRef": "H0073"
+    },
+    {
+      "semanticNodeRef": "N074",
+      "canonicalOccurrenceRef": "H0074"
+    },
+    {
+      "semanticNodeRef": "N075",
+      "canonicalOccurrenceRef": "H0075"
+    },
+    {
+      "semanticNodeRef": "N076",
+      "canonicalOccurrenceRef": "H0076"
+    },
+    {
+      "semanticNodeRef": "N077",
+      "canonicalOccurrenceRef": "H0077"
+    },
+    {
+      "semanticNodeRef": "N078",
+      "canonicalOccurrenceRef": "H0078"
+    },
+    {
+      "semanticNodeRef": "N079",
+      "canonicalOccurrenceRef": "H0079"
+    },
+    {
+      "semanticNodeRef": "N080",
+      "canonicalOccurrenceRef": "H0080"
+    },
+    {
+      "semanticNodeRef": "N081",
+      "canonicalOccurrenceRef": "H0081"
+    },
+    {
+      "semanticNodeRef": "N082",
+      "canonicalOccurrenceRef": "H0082"
+    },
+    {
+      "semanticNodeRef": "N083",
+      "canonicalOccurrenceRef": "H0083"
+    },
+    {
+      "semanticNodeRef": "N084",
+      "canonicalOccurrenceRef": "H0084"
+    },
+    {
+      "semanticNodeRef": "N085",
+      "canonicalOccurrenceRef": "H0085"
+    },
+    {
+      "semanticNodeRef": "N086",
+      "canonicalOccurrenceRef": "H0086"
+    },
+    {
+      "semanticNodeRef": "N087",
+      "canonicalOccurrenceRef": "H0087"
+    },
+    {
+      "semanticNodeRef": "N088",
+      "canonicalOccurrenceRef": "H0088"
+    },
+    {
+      "semanticNodeRef": "N089",
+      "canonicalOccurrenceRef": "H0089"
+    },
+    {
+      "semanticNodeRef": "N090",
+      "canonicalOccurrenceRef": "H0090"
+    },
+    {
+      "semanticNodeRef": "N091",
+      "canonicalOccurrenceRef": "H0091"
+    },
+    {
+      "semanticNodeRef": "N092",
+      "canonicalOccurrenceRef": "H0092"
+    },
+    {
+      "semanticNodeRef": "N093",
+      "canonicalOccurrenceRef": "H0093"
+    },
+    {
+      "semanticNodeRef": "N094",
+      "canonicalOccurrenceRef": "H0094"
+    },
+    {
+      "semanticNodeRef": "N095",
+      "canonicalOccurrenceRef": "H0095"
+    },
+    {
+      "semanticNodeRef": "N096",
+      "canonicalOccurrenceRef": "H0096"
+    },
+    {
+      "semanticNodeRef": "N097",
+      "canonicalOccurrenceRef": "H0097"
+    },
+    {
+      "semanticNodeRef": "N098",
+      "canonicalOccurrenceRef": "H0098"
+    },
+    {
+      "semanticNodeRef": "N099",
+      "canonicalOccurrenceRef": "H0099"
+    },
+    {
+      "semanticNodeRef": "N100",
+      "canonicalOccurrenceRef": "H0100"
+    },
+    {
+      "semanticNodeRef": "N101",
+      "canonicalOccurrenceRef": "H0101"
+    },
+    {
+      "semanticNodeRef": "N102",
+      "canonicalOccurrenceRef": "H0102"
+    }
+  ],
+  "occurrenceAssignments": [
+    {
+      "headingOccurrenceRef": "H0001",
+      "semanticNodeRef": "N001",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0002",
+      "semanticNodeRef": "N002",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0003",
+      "semanticNodeRef": "N003",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0004",
+      "semanticNodeRef": "N004",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0005",
+      "semanticNodeRef": "N005",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0006",
+      "semanticNodeRef": "N006",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0007",
+      "semanticNodeRef": "N007",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0008",
+      "semanticNodeRef": "N008",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0009",
+      "semanticNodeRef": "N009",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0010",
+      "semanticNodeRef": "N010",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0011",
+      "semanticNodeRef": "N011",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0012",
+      "semanticNodeRef": "N012",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0013",
+      "semanticNodeRef": "N013",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0014",
+      "semanticNodeRef": "N014",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0015",
+      "semanticNodeRef": "N015",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0016",
+      "semanticNodeRef": "N016",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0017",
+      "semanticNodeRef": "N017",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0018",
+      "semanticNodeRef": "N018",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0019",
+      "semanticNodeRef": "N019",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0020",
+      "semanticNodeRef": "N020",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0021",
+      "semanticNodeRef": "N021",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0022",
+      "semanticNodeRef": "N022",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0023",
+      "semanticNodeRef": "N023",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0024",
+      "semanticNodeRef": "N024",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0025",
+      "semanticNodeRef": "N025",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0026",
+      "semanticNodeRef": "N026",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0027",
+      "semanticNodeRef": "N027",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0028",
+      "semanticNodeRef": "N028",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0029",
+      "semanticNodeRef": "N029",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0030",
+      "semanticNodeRef": "N030",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0031",
+      "semanticNodeRef": "N031",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0032",
+      "semanticNodeRef": "N032",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0033",
+      "semanticNodeRef": "N033",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0034",
+      "semanticNodeRef": "N034",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0035",
+      "semanticNodeRef": "N035",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0036",
+      "semanticNodeRef": "N036",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0037",
+      "semanticNodeRef": "N037",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0038",
+      "semanticNodeRef": "N038",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0039",
+      "semanticNodeRef": "N039",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0040",
+      "semanticNodeRef": "N040",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0041",
+      "semanticNodeRef": "N041",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0042",
+      "semanticNodeRef": "N042",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0043",
+      "semanticNodeRef": "N043",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0044",
+      "semanticNodeRef": "N044",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0045",
+      "semanticNodeRef": "N045",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0046",
+      "semanticNodeRef": "N046",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0047",
+      "semanticNodeRef": "N047",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0048",
+      "semanticNodeRef": "N048",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0049",
+      "semanticNodeRef": "N049",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0050",
+      "semanticNodeRef": "N050",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0051",
+      "semanticNodeRef": "N051",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0052",
+      "semanticNodeRef": "N052",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0053",
+      "semanticNodeRef": "N053",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0054",
+      "semanticNodeRef": "N054",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0055",
+      "semanticNodeRef": "N055",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0056",
+      "semanticNodeRef": "N056",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0057",
+      "semanticNodeRef": "N057",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0058",
+      "semanticNodeRef": "N058",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0059",
+      "semanticNodeRef": "N059",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0060",
+      "semanticNodeRef": "N060",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0061",
+      "semanticNodeRef": "N061",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0062",
+      "semanticNodeRef": "N062",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0063",
+      "semanticNodeRef": "N063",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0064",
+      "semanticNodeRef": "N064",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0065",
+      "semanticNodeRef": "N065",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0066",
+      "semanticNodeRef": "N066",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0067",
+      "semanticNodeRef": "N067",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0068",
+      "semanticNodeRef": "N068",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0069",
+      "semanticNodeRef": "N069",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0070",
+      "semanticNodeRef": "N070",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0071",
+      "semanticNodeRef": "N071",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0072",
+      "semanticNodeRef": "N072",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0073",
+      "semanticNodeRef": "N073",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0074",
+      "semanticNodeRef": "N074",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0075",
+      "semanticNodeRef": "N075",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0076",
+      "semanticNodeRef": "N076",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0077",
+      "semanticNodeRef": "N077",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0078",
+      "semanticNodeRef": "N078",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0079",
+      "semanticNodeRef": "N079",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0080",
+      "semanticNodeRef": "N080",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0081",
+      "semanticNodeRef": "N081",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0082",
+      "semanticNodeRef": "N082",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0083",
+      "semanticNodeRef": "N083",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0084",
+      "semanticNodeRef": "N084",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0085",
+      "semanticNodeRef": "N085",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0086",
+      "semanticNodeRef": "N086",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0087",
+      "semanticNodeRef": "N087",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0088",
+      "semanticNodeRef": "N088",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0089",
+      "semanticNodeRef": "N089",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0090",
+      "semanticNodeRef": "N090",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0091",
+      "semanticNodeRef": "N091",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0092",
+      "semanticNodeRef": "N092",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0093",
+      "semanticNodeRef": "N093",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0094",
+      "semanticNodeRef": "N094",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0095",
+      "semanticNodeRef": "N095",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0096",
+      "semanticNodeRef": "N096",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0097",
+      "semanticNodeRef": "N097",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0098",
+      "semanticNodeRef": "N098",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0099",
+      "semanticNodeRef": "N099",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0100",
+      "semanticNodeRef": "N100",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0101",
+      "semanticNodeRef": "N101",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0102",
+      "semanticNodeRef": "N102",
+      "occurrenceRole": "PRIMARY"
+    }
+  ]
+}

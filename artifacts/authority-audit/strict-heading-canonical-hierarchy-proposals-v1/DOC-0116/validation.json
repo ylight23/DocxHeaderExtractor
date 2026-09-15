@@ -1,0 +1,39 @@
+{
+  "status": "INVALID",
+  "valid": false,
+  "validationScope": "canonical semantic-node hierarchy adjudication",
+  "errorCount": 22,
+  "errors": [
+    "MISSING_PARENT_OR_ROOT:N001",
+    "MISSING_PARENT_OR_ROOT:N002",
+    "MISSING_PARENT_OR_ROOT:N003",
+    "MISSING_PARENT_OR_ROOT:N004",
+    "MISSING_PARENT_OR_ROOT:N005",
+    "MISSING_PARENT_OR_ROOT:N006",
+    "MISSING_PARENT_OR_ROOT:N007",
+    "MISSING_PARENT_OR_ROOT:N008",
+    "MISSING_PARENT_OR_ROOT:N009",
+    "MISSING_PARENT_OR_ROOT:N010",
+    "MISSING_PARENT_OR_ROOT:N011",
+    "MISSING_PARENT_OR_ROOT:N012",
+    "MISSING_PARENT_OR_ROOT:N013",
+    "MISSING_PARENT_OR_ROOT:N014",
+    "MISSING_PARENT_OR_ROOT:N015",
+    "MISSING_PARENT_OR_ROOT:N016",
+    "MISSING_PARENT_OR_ROOT:N017",
+    "MISSING_PARENT_OR_ROOT:N018",
+    "MISSING_PARENT_OR_ROOT:N019",
+    "MISSING_PARENT_OR_ROOT:N020",
+    "MISSING_PARENT_OR_ROOT:N021",
+    "MISSING_PARENT_OR_ROOT:N022"
+  ],
+  "warnings": [
+    "NO_ROOT_REACHABLE"
+  ],
+  "occurrenceCount": 22,
+  "assignmentCount": 22,
+  "nodeCount": 22,
+  "parentEdgeCount": 0,
+  "rootCount": 0,
+  "cycleCheck": "PASS"
+}

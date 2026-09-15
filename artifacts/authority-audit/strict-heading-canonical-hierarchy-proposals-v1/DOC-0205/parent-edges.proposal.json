@@ -1,0 +1,294 @@
+{
+  "artifactKind": "a99_canonical_parent_edges_proposal",
+  "schemaVersion": "a99-canonical-parent-edges-proposal-v1",
+  "documentId": "DOC-0205",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "rootRef": "ROOT",
+  "sourcePacketSha256": "fc5d46800c90bf52a388e215841f02568835cdd8110922950e3f232cc2d1ea08",
+  "parentEdges": [
+    {
+      "childSemanticNodeRef": "N001",
+      "parentSemanticNodeRef": "ROOT"
+    },
+    {
+      "childSemanticNodeRef": "N002",
+      "parentSemanticNodeRef": "N001"
+    },
+    {
+      "childSemanticNodeRef": "N003",
+      "parentSemanticNodeRef": "N001"
+    },
+    {
+      "childSemanticNodeRef": "N004",
+      "parentSemanticNodeRef": "N001"
+    },
+    {
+      "childSemanticNodeRef": "N005",
+      "parentSemanticNodeRef": "N001"
+    },
+    {
+      "childSemanticNodeRef": "N006",
+      "parentSemanticNodeRef": "N001"
+    },
+    {
+      "childSemanticNodeRef": "N007",
+      "parentSemanticNodeRef": "N001"
+    },
+    {
+      "childSemanticNodeRef": "N008",
+      "parentSemanticNodeRef": "N001"
+    },
+    {
+      "childSemanticNodeRef": "N009",
+      "parentSemanticNodeRef": "N001"
+    },
+    {
+      "childSemanticNodeRef": "N010",
+      "parentSemanticNodeRef": "ROOT"
+    },
+    {
+      "childSemanticNodeRef": "N011",
+      "parentSemanticNodeRef": "N010"
+    },
+    {
+      "childSemanticNodeRef": "N012",
+      "parentSemanticNodeRef": "N011"
+    },
+    {
+      "childSemanticNodeRef": "N013",
+      "parentSemanticNodeRef": "N011"
+    },
+    {
+      "childSemanticNodeRef": "N014",
+      "parentSemanticNodeRef": "N011"
+    },
+    {
+      "childSemanticNodeRef": "N015",
+      "parentSemanticNodeRef": "N011"
+    },
+    {
+      "childSemanticNodeRef": "N016",
+      "parentSemanticNodeRef": "N011"
+    },
+    {
+      "childSemanticNodeRef": "N017",
+      "parentSemanticNodeRef": "N010"
+    },
+    {
+      "childSemanticNodeRef": "N018",
+      "parentSemanticNodeRef": "N017"
+    },
+    {
+      "childSemanticNodeRef": "N019",
+      "parentSemanticNodeRef": "N017"
+    },
+    {
+      "childSemanticNodeRef": "N020",
+      "parentSemanticNodeRef": "N017"
+    },
+    {
+      "childSemanticNodeRef": "N021",
+      "parentSemanticNodeRef": "N010"
+    },
+    {
+      "childSemanticNodeRef": "N022",
+      "parentSemanticNodeRef": "N021"
+    },
+    {
+      "childSemanticNodeRef": "N023",
+      "parentSemanticNodeRef": "N021"
+    },
+    {
+      "childSemanticNodeRef": "N024",
+      "parentSemanticNodeRef": "N021"
+    },
+    {
+      "childSemanticNodeRef": "N025",
+      "parentSemanticNodeRef": "N021"
+    },
+    {
+      "childSemanticNodeRef": "N026",
+      "parentSemanticNodeRef": "N021"
+    },
+    {
+      "childSemanticNodeRef": "N027",
+      "parentSemanticNodeRef": "N010"
+    },
+    {
+      "childSemanticNodeRef": "N028",
+      "parentSemanticNodeRef": "N027"
+    },
+    {
+      "childSemanticNodeRef": "N029",
+      "parentSemanticNodeRef": "N027"
+    },
+    {
+      "childSemanticNodeRef": "N030",
+      "parentSemanticNodeRef": "N027"
+    },
+    {
+      "childSemanticNodeRef": "N031",
+      "parentSemanticNodeRef": "N027"
+    },
+    {
+      "childSemanticNodeRef": "N032",
+      "parentSemanticNodeRef": "N027"
+    },
+    {
+      "childSemanticNodeRef": "N033",
+      "parentSemanticNodeRef": "N027"
+    },
+    {
+      "childSemanticNodeRef": "N034",
+      "parentSemanticNodeRef": "N027"
+    },
+    {
+      "childSemanticNodeRef": "N035",
+      "parentSemanticNodeRef": "N027"
+    },
+    {
+      "childSemanticNodeRef": "N036",
+      "parentSemanticNodeRef": "N027"
+    },
+    {
+      "childSemanticNodeRef": "N037",
+      "parentSemanticNodeRef": "ROOT"
+    },
+    {
+      "childSemanticNodeRef": "N038",
+      "parentSemanticNodeRef": "N037"
+    },
+    {
+      "childSemanticNodeRef": "N039",
+      "parentSemanticNodeRef": "N038"
+    },
+    {
+      "childSemanticNodeRef": "N040",
+      "parentSemanticNodeRef": "N038"
+    },
+    {
+      "childSemanticNodeRef": "N041",
+      "parentSemanticNodeRef": "N037"
+    },
+    {
+      "childSemanticNodeRef": "N042",
+      "parentSemanticNodeRef": "N041"
+    },
+    {
+      "childSemanticNodeRef": "N043",
+      "parentSemanticNodeRef": "N041"
+    },
+    {
+      "childSemanticNodeRef": "N044",
+      "parentSemanticNodeRef": "N041"
+    },
+    {
+      "childSemanticNodeRef": "N045",
+      "parentSemanticNodeRef": "N037"
+    },
+    {
+      "childSemanticNodeRef": "N046",
+      "parentSemanticNodeRef": "N045"
+    },
+    {
+      "childSemanticNodeRef": "N047",
+      "parentSemanticNodeRef": "N045"
+    },
+    {
+      "childSemanticNodeRef": "N048",
+      "parentSemanticNodeRef": "N045"
+    },
+    {
+      "childSemanticNodeRef": "N049",
+      "parentSemanticNodeRef": "N045"
+    },
+    {
+      "childSemanticNodeRef": "N050",
+      "parentSemanticNodeRef": "N037"
+    },
+    {
+      "childSemanticNodeRef": "N051",
+      "parentSemanticNodeRef": "N050"
+    },
+    {
+      "childSemanticNodeRef": "N052",
+      "parentSemanticNodeRef": "N050"
+    },
+    {
+      "childSemanticNodeRef": "N053",
+      "parentSemanticNodeRef": "N050"
+    },
+    {
+      "childSemanticNodeRef": "N054",
+      "parentSemanticNodeRef": "N050"
+    },
+    {
+      "childSemanticNodeRef": "N055",
+      "parentSemanticNodeRef": "N050"
+    },
+    {
+      "childSemanticNodeRef": "N056",
+      "parentSemanticNodeRef": "N050"
+    },
+    {
+      "childSemanticNodeRef": "N057",
+      "parentSemanticNodeRef": "N050"
+    },
+    {
+      "childSemanticNodeRef": "N058",
+      "parentSemanticNodeRef": "N037"
+    },
+    {
+      "childSemanticNodeRef": "N059",
+      "parentSemanticNodeRef": "N058"
+    },
+    {
+      "childSemanticNodeRef": "N060",
+      "parentSemanticNodeRef": "N058"
+    },
+    {
+      "childSemanticNodeRef": "N061",
+      "parentSemanticNodeRef": "N058"
+    },
+    {
+      "childSemanticNodeRef": "N062",
+      "parentSemanticNodeRef": "N058"
+    },
+    {
+      "childSemanticNodeRef": "N063",
+      "parentSemanticNodeRef": "ROOT"
+    },
+    {
+      "childSemanticNodeRef": "N064",
+      "parentSemanticNodeRef": "N063"
+    },
+    {
+      "childSemanticNodeRef": "N065",
+      "parentSemanticNodeRef": "N063"
+    },
+    {
+      "childSemanticNodeRef": "N066",
+      "parentSemanticNodeRef": "N063"
+    },
+    {
+      "childSemanticNodeRef": "N067",
+      "parentSemanticNodeRef": "N063"
+    },
+    {
+      "childSemanticNodeRef": "N068",
+      "parentSemanticNodeRef": "ROOT"
+    },
+    {
+      "childSemanticNodeRef": "N069",
+      "parentSemanticNodeRef": "N068"
+    },
+    {
+      "childSemanticNodeRef": "N070",
+      "parentSemanticNodeRef": "N068"
+    },
+    {
+      "childSemanticNodeRef": "N071",
+      "parentSemanticNodeRef": "N068"
+    }
+  ]
+}

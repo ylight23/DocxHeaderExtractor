@@ -1,0 +1,254 @@
+{
+  "artifactKind": "a99_canonical_semantic_nodes_proposal",
+  "schemaVersion": "a99-canonical-semantic-nodes-proposal-v1",
+  "documentId": "DOC-0252",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "sourcePacketSha256": "f4e58fc7e7ef9fbe0d7089acbf035590178e0034cb6a547baf49aacb393cbd74",
+  "semanticNodes": [
+    {
+      "semanticNodeRef": "N001",
+      "canonicalOccurrenceRef": "H0001"
+    },
+    {
+      "semanticNodeRef": "N002",
+      "canonicalOccurrenceRef": "H0002"
+    },
+    {
+      "semanticNodeRef": "N003",
+      "canonicalOccurrenceRef": "H0003"
+    },
+    {
+      "semanticNodeRef": "N004",
+      "canonicalOccurrenceRef": "H0004"
+    },
+    {
+      "semanticNodeRef": "N005",
+      "canonicalOccurrenceRef": "H0005"
+    },
+    {
+      "semanticNodeRef": "N006",
+      "canonicalOccurrenceRef": "H0006"
+    },
+    {
+      "semanticNodeRef": "N007",
+      "canonicalOccurrenceRef": "H0007"
+    },
+    {
+      "semanticNodeRef": "N008",
+      "canonicalOccurrenceRef": "H0008"
+    },
+    {
+      "semanticNodeRef": "N009",
+      "canonicalOccurrenceRef": "H0009"
+    },
+    {
+      "semanticNodeRef": "N010",
+      "canonicalOccurrenceRef": "H0010"
+    },
+    {
+      "semanticNodeRef": "N011",
+      "canonicalOccurrenceRef": "H0011"
+    },
+    {
+      "semanticNodeRef": "N012",
+      "canonicalOccurrenceRef": "H0012"
+    },
+    {
+      "semanticNodeRef": "N013",
+      "canonicalOccurrenceRef": "H0013"
+    },
+    {
+      "semanticNodeRef": "N014",
+      "canonicalOccurrenceRef": "H0014"
+    },
+    {
+      "semanticNodeRef": "N015",
+      "canonicalOccurrenceRef": "H0015"
+    },
+    {
+      "semanticNodeRef": "N016",
+      "canonicalOccurrenceRef": "H0016"
+    },
+    {
+      "semanticNodeRef": "N017",
+      "canonicalOccurrenceRef": "H0017"
+    },
+    {
+      "semanticNodeRef": "N018",
+      "canonicalOccurrenceRef": "H0018"
+    },
+    {
+      "semanticNodeRef": "N019",
+      "canonicalOccurrenceRef": "H0019"
+    },
+    {
+      "semanticNodeRef": "N020",
+      "canonicalOccurrenceRef": "H0020"
+    },
+    {
+      "semanticNodeRef": "N021",
+      "canonicalOccurrenceRef": "H0021"
+    },
+    {
+      "semanticNodeRef": "N022",
+      "canonicalOccurrenceRef": "H0022"
+    },
+    {
+      "semanticNodeRef": "N023",
+      "canonicalOccurrenceRef": "H0023"
+    },
+    {
+      "semanticNodeRef": "N024",
+      "canonicalOccurrenceRef": "H0024"
+    },
+    {
+      "semanticNodeRef": "N025",
+      "canonicalOccurrenceRef": "H0025"
+    },
+    {
+      "semanticNodeRef": "N026",
+      "canonicalOccurrenceRef": "H0026"
+    },
+    {
+      "semanticNodeRef": "N027",
+      "canonicalOccurrenceRef": "H0027"
+    }
+  ],
+  "occurrenceAssignments": [
+    {
+      "headingOccurrenceRef": "H0001",
+      "semanticNodeRef": "N001",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0002",
+      "semanticNodeRef": "N002",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0003",
+      "semanticNodeRef": "N003",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0004",
+      "semanticNodeRef": "N004",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0005",
+      "semanticNodeRef": "N005",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0006",
+      "semanticNodeRef": "N006",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0007",
+      "semanticNodeRef": "N007",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0008",
+      "semanticNodeRef": "N008",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0009",
+      "semanticNodeRef": "N009",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0010",
+      "semanticNodeRef": "N010",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0011",
+      "semanticNodeRef": "N011",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0012",
+      "semanticNodeRef": "N012",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0013",
+      "semanticNodeRef": "N013",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0014",
+      "semanticNodeRef": "N014",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0015",
+      "semanticNodeRef": "N015",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0016",
+      "semanticNodeRef": "N016",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0017",
+      "semanticNodeRef": "N017",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0018",
+      "semanticNodeRef": "N018",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0019",
+      "semanticNodeRef": "N019",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0020",
+      "semanticNodeRef": "N020",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0021",
+      "semanticNodeRef": "N021",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0022",
+      "semanticNodeRef": "N022",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0023",
+      "semanticNodeRef": "N023",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0024",
+      "semanticNodeRef": "N024",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0025",
+      "semanticNodeRef": "N025",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0026",
+      "semanticNodeRef": "N026",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0027",
+      "semanticNodeRef": "N027",
+      "occurrenceRole": "PRIMARY"
+    }
+  ]
+}

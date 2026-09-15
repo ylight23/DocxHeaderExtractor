@@ -1,0 +1,47 @@
+[
+  {
+    "type": "MULTI_ROOT_TOP_LEVEL_STRUCTURE",
+    "documentId": "DOC-0001",
+    "rootChildCount": 2,
+    "reason": "Multiple semantic nodes attach directly to the synthetic ROOT; confirm document scope."
+  },
+  {
+    "type": "AMBIGUOUS_PARENT_STRUCTURE",
+    "documentId": "DOC-0116",
+    "reason": "Complete semantic-node parent tree requires additional source review."
+  },
+  {
+    "type": "MULTI_ROOT_TOP_LEVEL_STRUCTURE",
+    "documentId": "DOC-0256",
+    "rootChildCount": 7,
+    "reason": "Multiple semantic nodes attach directly to the synthetic ROOT; confirm document scope."
+  },
+  {
+    "type": "MULTI_ROOT_TOP_LEVEL_STRUCTURE",
+    "documentId": "DOC-0252",
+    "rootChildCount": 8,
+    "reason": "Multiple semantic nodes attach directly to the synthetic ROOT; confirm document scope."
+  },
+  {
+    "type": "MULTI_ROOT_TOP_LEVEL_STRUCTURE",
+    "documentId": "DOC-0205",
+    "rootChildCount": 5,
+    "reason": "Multiple semantic nodes attach directly to the synthetic ROOT; confirm document scope."
+  },
+  {
+    "type": "MULTI_ROOT_TOP_LEVEL_STRUCTURE",
+    "documentId": "DOC-0243",
+    "rootChildCount": 6,
+    "reason": "Multiple semantic nodes attach directly to the synthetic ROOT; confirm document scope."
+  },
+  {
+    "type": "AMBIGUOUS_PARENT_STRUCTURE",
+    "documentId": "DOC-0216",
+    "reason": "Complete semantic-node parent tree requires additional source review."
+  },
+  {
+    "type": "AMBIGUOUS_PARENT_STRUCTURE",
+    "documentId": "DOC-0122",
+    "reason": "Complete semantic-node parent tree requires additional source review."
+  }
+]

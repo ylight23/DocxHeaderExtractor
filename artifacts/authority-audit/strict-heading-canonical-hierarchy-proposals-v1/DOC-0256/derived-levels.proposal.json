@@ -1,0 +1,227 @@
+{
+  "artifactKind": "a99_canonical_derived_levels_proposal",
+  "schemaVersion": "a99-canonical-derived-levels-proposal-v1",
+  "documentId": "DOC-0256",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "sourcePacketSha256": "28c1e478b156cf84eec81f251fea8a480c51c653c00e8fcc0da5ac47b6320244",
+  "derivation": "depth(ROOT)=0; level is derived only after a valid semantic-node tree",
+  "nodes": [
+    {
+      "semanticNodeRef": "N001",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "derivedLevel": 1,
+      "occurrenceRefs": [
+        "H0001"
+      ]
+    },
+    {
+      "semanticNodeRef": "N002",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "derivedLevel": 1,
+      "occurrenceRefs": [
+        "H0002"
+      ]
+    },
+    {
+      "semanticNodeRef": "N003",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0003"
+      ]
+    },
+    {
+      "semanticNodeRef": "N004",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0004"
+      ]
+    },
+    {
+      "semanticNodeRef": "N005",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0005"
+      ]
+    },
+    {
+      "semanticNodeRef": "N006",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0006"
+      ]
+    },
+    {
+      "semanticNodeRef": "N007",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0007"
+      ]
+    },
+    {
+      "semanticNodeRef": "N008",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0008"
+      ]
+    },
+    {
+      "semanticNodeRef": "N009",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "derivedLevel": 1,
+      "occurrenceRefs": [
+        "H0009"
+      ]
+    },
+    {
+      "semanticNodeRef": "N010",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0010"
+      ]
+    },
+    {
+      "semanticNodeRef": "N011",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0011"
+      ]
+    },
+    {
+      "semanticNodeRef": "N012",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0012"
+      ]
+    },
+    {
+      "semanticNodeRef": "N013",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0013"
+      ]
+    },
+    {
+      "semanticNodeRef": "N014",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0014"
+      ]
+    },
+    {
+      "semanticNodeRef": "N015",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0015"
+      ]
+    },
+    {
+      "semanticNodeRef": "N016",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0016"
+      ]
+    },
+    {
+      "semanticNodeRef": "N017",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "derivedLevel": 1,
+      "occurrenceRefs": [
+        "H0017"
+      ]
+    },
+    {
+      "semanticNodeRef": "N018",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "derivedLevel": 1,
+      "occurrenceRefs": [
+        "H0018"
+      ]
+    },
+    {
+      "semanticNodeRef": "N019",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "derivedLevel": 1,
+      "occurrenceRefs": [
+        "H0019"
+      ]
+    },
+    {
+      "semanticNodeRef": "N020",
+      "parentSemanticNodeRef": "N019",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0020"
+      ]
+    },
+    {
+      "semanticNodeRef": "N021",
+      "parentSemanticNodeRef": "N019",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0021"
+      ]
+    },
+    {
+      "semanticNodeRef": "N022",
+      "parentSemanticNodeRef": "N019",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0022"
+      ]
+    },
+    {
+      "semanticNodeRef": "N023",
+      "parentSemanticNodeRef": "N019",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0023"
+      ]
+    },
+    {
+      "semanticNodeRef": "N024",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "derivedLevel": 1,
+      "occurrenceRefs": [
+        "H0024"
+      ]
+    }
+  ],
+  "maxDepth": 2
+}

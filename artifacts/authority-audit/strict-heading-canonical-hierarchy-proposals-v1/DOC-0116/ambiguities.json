@@ -1,0 +1,31 @@
+{
+  "ambiguityId": "A-PARENT-STRUCTURE-001",
+  "type": "PARENT_STRUCTURE_UNRESOLVED",
+  "documentId": "DOC-0116",
+  "occurrenceRefs": [
+    "H0001",
+    "H0002",
+    "H0003",
+    "H0004",
+    "H0005",
+    "H0006",
+    "H0007",
+    "H0008",
+    "H0009",
+    "H0010",
+    "H0011",
+    "H0012",
+    "H0013",
+    "H0014",
+    "H0015",
+    "H0016",
+    "H0017",
+    "H0018",
+    "H0019",
+    "H0020",
+    "H0021",
+    "H0022"
+  ],
+  "reason": "The frozen packet exposes source-backed heading text/order and nearby heading context, but does not provide enough non-historical structural evidence to resolve the complete semantic-node parent tree without additional source inspection.",
+  "requiredAction": "USER_SOURCE_REVIEW_REQUIRED"
+}

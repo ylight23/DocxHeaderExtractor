@@ -1,0 +1,1160 @@
+{
+  "artifactKind": "a99_strict_heading_canonical_hierarchy_source_backed_proposal",
+  "schemaVersion": "a99-strict-heading-canonical-hierarchy-proposal-v1",
+  "documentId": "DOC-0116",
+  "status": "REVIEW_REQUIRED_CANONICAL_HIERARCHY",
+  "reviewAuthority": "CODEX_SOURCE_BACKED_PROPOSAL_NOT_HUMAN_REVIEWED",
+  "approvalRequired": true,
+  "approvedByUser": false,
+  "sourcePacket": "artifacts/authority-audit/strict-heading-canonical-hierarchy-review-v2/packets/DOC-0116.canonical-hierarchy-review.v2.json",
+  "sourcePacketSha256": "6a454440967c2008d8d7dcace5d6ad33c2320aa4042ad79ffd46f7ceb1a91d26",
+  "strictHeadingGoldArtifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0116.strict-gold-v4.json",
+  "strictHeadingGoldSha256": "9076c5f079a781d5c91923fe4e6bbb73108ae6a5bb47e1096a1d939023b9b6f5",
+  "firewall": {
+    "historicalLevelReadDuringAdjudication": false,
+    "historicalParentRead": false,
+    "identityPredictionRead": false,
+    "hierarchyPredictionRead": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "strictHeadingGoldMutation": false,
+    "reviewPacketMutation": false
+  },
+  "headingOccurrences": [
+    {
+      "reviewRef": "H0001",
+      "headingOccurrenceId": "DOC-0116:body[1]/p[145]#key-line-6",
+      "sourceText": "Section 1. Request for Proposal Letter",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[145]",
+      "sourceSpan": null,
+      "sourceOrder": 1,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0116:body[1]/p[248]#key-line-7",
+            "sourceId": "body[1]/p[248]",
+            "sourceText": "A. General Provisions"
+          },
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0116:body[1]/p[251]#key-line-8",
+            "sourceId": "body[1]/p[251]",
+            "sourceText": "E. Data Sheet"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0002",
+      "headingOccurrenceId": "DOC-0116:body[1]/p[248]#key-line-7",
+      "sourceText": "A. General Provisions",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[248]",
+      "sourceSpan": null,
+      "sourceOrder": 2,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0001",
+            "headingOccurrenceId": "DOC-0116:body[1]/p[145]#key-line-6",
+            "sourceId": "body[1]/p[145]",
+            "sourceText": "Section 1. Request for Proposal Letter"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0116:body[1]/p[251]#key-line-8",
+            "sourceId": "body[1]/p[251]",
+            "sourceText": "E. Data Sheet"
+          },
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[16]/tc[1]/p[1]#key-line-9",
+            "sourceId": "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+            "sourceText": "General Considerations"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0003",
+      "headingOccurrenceId": "DOC-0116:body[1]/p[251]#key-line-8",
+      "sourceText": "E. Data Sheet",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[251]",
+      "sourceSpan": null,
+      "sourceOrder": 3,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0001",
+            "headingOccurrenceId": "DOC-0116:body[1]/p[145]#key-line-6",
+            "sourceId": "body[1]/p[145]",
+            "sourceText": "Section 1. Request for Proposal Letter"
+          },
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0116:body[1]/p[248]#key-line-7",
+            "sourceId": "body[1]/p[248]",
+            "sourceText": "A. General Provisions"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[16]/tc[1]/p[1]#key-line-9",
+            "sourceId": "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+            "sourceText": "General Considerations"
+          },
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[20]/tc[1]/p[1]#key-line-10",
+            "sourceId": "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+            "sourceText": "Only One Proposal"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0004",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[16]/tc[1]/p[1]#key-line-9",
+      "sourceText": "General Considerations",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 4,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0116:body[1]/p[248]#key-line-7",
+            "sourceId": "body[1]/p[248]",
+            "sourceText": "A. General Provisions"
+          },
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0116:body[1]/p[251]#key-line-8",
+            "sourceId": "body[1]/p[251]",
+            "sourceText": "E. Data Sheet"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[20]/tc[1]/p[1]#key-line-10",
+            "sourceId": "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+            "sourceText": "Only One Proposal"
+          },
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[21]/tc[1]/p[1]#key-line-11",
+            "sourceId": "body[1]/tbl[1]/tr[21]/tc[1]/p[1]",
+            "sourceText": "Proposal Validity"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0005",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[20]/tc[1]/p[1]#key-line-10",
+      "sourceText": "Only One Proposal",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 5,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0116:body[1]/p[251]#key-line-8",
+            "sourceId": "body[1]/p[251]",
+            "sourceText": "E. Data Sheet"
+          },
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[16]/tc[1]/p[1]#key-line-9",
+            "sourceId": "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+            "sourceText": "General Considerations"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[21]/tc[1]/p[1]#key-line-11",
+            "sourceId": "body[1]/tbl[1]/tr[21]/tc[1]/p[1]",
+            "sourceText": "Proposal Validity"
+          },
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[26]/tc[1]/p[1]#key-line-12",
+            "sourceId": "body[1]/tbl[1]/tr[26]/tc[1]/p[1]",
+            "sourceText": "Preparation of Proposals Specific Considerations"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0006",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[21]/tc[1]/p[1]#key-line-11",
+      "sourceText": "Proposal Validity",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[21]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 6,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[16]/tc[1]/p[1]#key-line-9",
+            "sourceId": "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+            "sourceText": "General Considerations"
+          },
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[20]/tc[1]/p[1]#key-line-10",
+            "sourceId": "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+            "sourceText": "Only One Proposal"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[26]/tc[1]/p[1]#key-line-12",
+            "sourceId": "body[1]/tbl[1]/tr[26]/tc[1]/p[1]",
+            "sourceText": "Preparation of Proposals Specific Considerations"
+          },
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[27]/tc[1]/p[1]#key-line-13",
+            "sourceId": "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+            "sourceText": "Technical Proposal Format and Content"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0007",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[26]/tc[1]/p[1]#key-line-12",
+      "sourceText": "Preparation of Proposals Specific Considerations",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[26]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 7,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[20]/tc[1]/p[1]#key-line-10",
+            "sourceId": "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+            "sourceText": "Only One Proposal"
+          },
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[21]/tc[1]/p[1]#key-line-11",
+            "sourceId": "body[1]/tbl[1]/tr[21]/tc[1]/p[1]",
+            "sourceText": "Proposal Validity"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[27]/tc[1]/p[1]#key-line-13",
+            "sourceId": "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+            "sourceText": "Technical Proposal Format and Content"
+          },
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[28]/tc[1]/p[1]#key-line-14",
+            "sourceId": "body[1]/tbl[1]/tr[28]/tc[1]/p[1]",
+            "sourceText": "Financial Proposal"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0008",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[27]/tc[1]/p[1]#key-line-13",
+      "sourceText": "Technical Proposal Format and Content",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 8,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[21]/tc[1]/p[1]#key-line-11",
+            "sourceId": "body[1]/tbl[1]/tr[21]/tc[1]/p[1]",
+            "sourceText": "Proposal Validity"
+          },
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[26]/tc[1]/p[1]#key-line-12",
+            "sourceId": "body[1]/tbl[1]/tr[26]/tc[1]/p[1]",
+            "sourceText": "Preparation of Proposals Specific Considerations"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[28]/tc[1]/p[1]#key-line-14",
+            "sourceId": "body[1]/tbl[1]/tr[28]/tc[1]/p[1]",
+            "sourceText": "Financial Proposal"
+          },
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[31]/tc[1]/p[1]#key-line-15",
+            "sourceId": "body[1]/tbl[1]/tr[31]/tc[1]/p[1]",
+            "sourceText": "Submission, Sealing, and Marking of Proposals"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0009",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[28]/tc[1]/p[1]#key-line-14",
+      "sourceText": "Financial Proposal",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[28]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 9,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[26]/tc[1]/p[1]#key-line-12",
+            "sourceId": "body[1]/tbl[1]/tr[26]/tc[1]/p[1]",
+            "sourceText": "Preparation of Proposals Specific Considerations"
+          },
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[27]/tc[1]/p[1]#key-line-13",
+            "sourceId": "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+            "sourceText": "Technical Proposal Format and Content"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[31]/tc[1]/p[1]#key-line-15",
+            "sourceId": "body[1]/tbl[1]/tr[31]/tc[1]/p[1]",
+            "sourceText": "Submission, Sealing, and Marking of Proposals"
+          },
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[33]/tc[1]/p[1]#key-line-16",
+            "sourceId": "body[1]/tbl[1]/tr[33]/tc[1]/p[1]",
+            "sourceText": "Opening of Technical Proposals"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0010",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[31]/tc[1]/p[1]#key-line-15",
+      "sourceText": "Submission, Sealing, and Marking of Proposals",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[31]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 10,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[27]/tc[1]/p[1]#key-line-13",
+            "sourceId": "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+            "sourceText": "Technical Proposal Format and Content"
+          },
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[28]/tc[1]/p[1]#key-line-14",
+            "sourceId": "body[1]/tbl[1]/tr[28]/tc[1]/p[1]",
+            "sourceText": "Financial Proposal"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[33]/tc[1]/p[1]#key-line-16",
+            "sourceId": "body[1]/tbl[1]/tr[33]/tc[1]/p[1]",
+            "sourceText": "Opening of Technical Proposals"
+          },
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[34]/tc[1]/p[1]#key-line-17",
+            "sourceId": "body[1]/tbl[1]/tr[34]/tc[1]/p[1]",
+            "sourceText": "Proposals Evaluation"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0011",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[33]/tc[1]/p[1]#key-line-16",
+      "sourceText": "Opening of Technical Proposals",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[33]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 11,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[28]/tc[1]/p[1]#key-line-14",
+            "sourceId": "body[1]/tbl[1]/tr[28]/tc[1]/p[1]",
+            "sourceText": "Financial Proposal"
+          },
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[31]/tc[1]/p[1]#key-line-15",
+            "sourceId": "body[1]/tbl[1]/tr[31]/tc[1]/p[1]",
+            "sourceText": "Submission, Sealing, and Marking of Proposals"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[34]/tc[1]/p[1]#key-line-17",
+            "sourceId": "body[1]/tbl[1]/tr[34]/tc[1]/p[1]",
+            "sourceText": "Proposals Evaluation"
+          },
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[35]/tc[1]/p[1]#key-line-18",
+            "sourceId": "body[1]/tbl[1]/tr[35]/tc[1]/p[1]",
+            "sourceText": "Evaluation of Technical Proposals"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0012",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[34]/tc[1]/p[1]#key-line-17",
+      "sourceText": "Proposals Evaluation",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[34]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 12,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[31]/tc[1]/p[1]#key-line-15",
+            "sourceId": "body[1]/tbl[1]/tr[31]/tc[1]/p[1]",
+            "sourceText": "Submission, Sealing, and Marking of Proposals"
+          },
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[33]/tc[1]/p[1]#key-line-16",
+            "sourceId": "body[1]/tbl[1]/tr[33]/tc[1]/p[1]",
+            "sourceText": "Opening of Technical Proposals"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[35]/tc[1]/p[1]#key-line-18",
+            "sourceId": "body[1]/tbl[1]/tr[35]/tc[1]/p[1]",
+            "sourceText": "Evaluation of Technical Proposals"
+          },
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[37]/tc[1]/p[1]#key-line-19",
+            "sourceId": "body[1]/tbl[1]/tr[37]/tc[1]/p[1]",
+            "sourceText": "Negotiations"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0013",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[35]/tc[1]/p[1]#key-line-18",
+      "sourceText": "Evaluation of Technical Proposals",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[35]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 13,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[33]/tc[1]/p[1]#key-line-16",
+            "sourceId": "body[1]/tbl[1]/tr[33]/tc[1]/p[1]",
+            "sourceText": "Opening of Technical Proposals"
+          },
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[34]/tc[1]/p[1]#key-line-17",
+            "sourceId": "body[1]/tbl[1]/tr[34]/tc[1]/p[1]",
+            "sourceText": "Proposals Evaluation"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[37]/tc[1]/p[1]#key-line-19",
+            "sourceId": "body[1]/tbl[1]/tr[37]/tc[1]/p[1]",
+            "sourceText": "Negotiations"
+          },
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[43]/tc[1]/p[1]#key-line-20",
+            "sourceId": "body[1]/tbl[1]/tr[43]/tc[1]/p[1]",
+            "sourceText": "Notification of Intention to Conclude a Framework Agreement"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0014",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[37]/tc[1]/p[1]#key-line-19",
+      "sourceText": "Negotiations",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[37]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 14,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[34]/tc[1]/p[1]#key-line-17",
+            "sourceId": "body[1]/tbl[1]/tr[34]/tc[1]/p[1]",
+            "sourceText": "Proposals Evaluation"
+          },
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[35]/tc[1]/p[1]#key-line-18",
+            "sourceId": "body[1]/tbl[1]/tr[35]/tc[1]/p[1]",
+            "sourceText": "Evaluation of Technical Proposals"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[43]/tc[1]/p[1]#key-line-20",
+            "sourceId": "body[1]/tbl[1]/tr[43]/tc[1]/p[1]",
+            "sourceText": "Notification of Intention to Conclude a Framework Agreement"
+          },
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#key-line-21",
+            "sourceId": "body[1]/tbl[1]/tr[44]/tc[1]/p[1]",
+            "sourceText": "Framework Agreement Criteria"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0015",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[43]/tc[1]/p[1]#key-line-20",
+      "sourceText": "Notification of Intention to Conclude a Framework Agreement",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[43]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 15,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[35]/tc[1]/p[1]#key-line-18",
+            "sourceId": "body[1]/tbl[1]/tr[35]/tc[1]/p[1]",
+            "sourceText": "Evaluation of Technical Proposals"
+          },
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[37]/tc[1]/p[1]#key-line-19",
+            "sourceId": "body[1]/tbl[1]/tr[37]/tc[1]/p[1]",
+            "sourceText": "Negotiations"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#key-line-21",
+            "sourceId": "body[1]/tbl[1]/tr[44]/tc[1]/p[1]",
+            "sourceText": "Framework Agreement Criteria"
+          },
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[45]/tc[1]/p[1]#key-line-22",
+            "sourceId": "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+            "sourceText": "No Obligation to Procure"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0016",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#key-line-21",
+      "sourceText": "Framework Agreement Criteria",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[44]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 16,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[37]/tc[1]/p[1]#key-line-19",
+            "sourceId": "body[1]/tbl[1]/tr[37]/tc[1]/p[1]",
+            "sourceText": "Negotiations"
+          },
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[43]/tc[1]/p[1]#key-line-20",
+            "sourceId": "body[1]/tbl[1]/tr[43]/tc[1]/p[1]",
+            "sourceText": "Notification of Intention to Conclude a Framework Agreement"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[45]/tc[1]/p[1]#key-line-22",
+            "sourceId": "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+            "sourceText": "No Obligation to Procure"
+          },
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[46]/tc[1]/p[1]#key-line-23",
+            "sourceId": "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+            "sourceText": "Non-exclusivity"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0017",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[45]/tc[1]/p[1]#key-line-22",
+      "sourceText": "No Obligation to Procure",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 17,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[43]/tc[1]/p[1]#key-line-20",
+            "sourceId": "body[1]/tbl[1]/tr[43]/tc[1]/p[1]",
+            "sourceText": "Notification of Intention to Conclude a Framework Agreement"
+          },
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#key-line-21",
+            "sourceId": "body[1]/tbl[1]/tr[44]/tc[1]/p[1]",
+            "sourceText": "Framework Agreement Criteria"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[46]/tc[1]/p[1]#key-line-23",
+            "sourceId": "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+            "sourceText": "Non-exclusivity"
+          },
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[50]/tc[1]/p[1]#key-line-24",
+            "sourceId": "body[1]/tbl[1]/tr[50]/tc[1]/p[1]",
+            "sourceText": "Publication of the Conclusion of Framework Agreement Notice"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0018",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[46]/tc[1]/p[1]#key-line-23",
+      "sourceText": "Non-exclusivity",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 18,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#key-line-21",
+            "sourceId": "body[1]/tbl[1]/tr[44]/tc[1]/p[1]",
+            "sourceText": "Framework Agreement Criteria"
+          },
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[45]/tc[1]/p[1]#key-line-22",
+            "sourceId": "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+            "sourceText": "No Obligation to Procure"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[50]/tc[1]/p[1]#key-line-24",
+            "sourceId": "body[1]/tbl[1]/tr[50]/tc[1]/p[1]",
+            "sourceText": "Publication of the Conclusion of Framework Agreement Notice"
+          },
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#key-line-25",
+            "sourceId": "body[1]/tbl[1]/tr[51]/tc[1]/p[1]",
+            "sourceText": "Procurement Related Complaint"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0019",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[50]/tc[1]/p[1]#key-line-24",
+      "sourceText": "Publication of the Conclusion of Framework Agreement Notice",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[50]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 19,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[45]/tc[1]/p[1]#key-line-22",
+            "sourceId": "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+            "sourceText": "No Obligation to Procure"
+          },
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[46]/tc[1]/p[1]#key-line-23",
+            "sourceId": "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+            "sourceText": "Non-exclusivity"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#key-line-25",
+            "sourceId": "body[1]/tbl[1]/tr[51]/tc[1]/p[1]",
+            "sourceText": "Procurement Related Complaint"
+          },
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[7]/tc[1]/p[1]#key-line-26",
+            "sourceId": "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+            "sourceText": "Unfair Competitive Advantage"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0020",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#key-line-25",
+      "sourceText": "Procurement Related Complaint",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[51]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 20,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[46]/tc[1]/p[1]#key-line-23",
+            "sourceId": "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+            "sourceText": "Non-exclusivity"
+          },
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[50]/tc[1]/p[1]#key-line-24",
+            "sourceId": "body[1]/tbl[1]/tr[50]/tc[1]/p[1]",
+            "sourceText": "Publication of the Conclusion of Framework Agreement Notice"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[7]/tc[1]/p[1]#key-line-26",
+            "sourceId": "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+            "sourceText": "Unfair Competitive Advantage"
+          },
+          {
+            "reviewRef": "H0022",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[9]/tc[1]/p[1]#key-line-27",
+            "sourceId": "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+            "sourceText": "Eligibility"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0021",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[7]/tc[1]/p[1]#key-line-26",
+      "sourceText": "Unfair Competitive Advantage",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 21,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[50]/tc[1]/p[1]#key-line-24",
+            "sourceId": "body[1]/tbl[1]/tr[50]/tc[1]/p[1]",
+            "sourceText": "Publication of the Conclusion of Framework Agreement Notice"
+          },
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#key-line-25",
+            "sourceId": "body[1]/tbl[1]/tr[51]/tc[1]/p[1]",
+            "sourceText": "Procurement Related Complaint"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0022",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[9]/tc[1]/p[1]#key-line-27",
+            "sourceId": "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+            "sourceText": "Eligibility"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0022",
+      "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[9]/tc[1]/p[1]#key-line-27",
+      "sourceText": "Eligibility",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 22,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "sourceReferenceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#key-line-25",
+            "sourceId": "body[1]/tbl[1]/tr[51]/tc[1]/p[1]",
+            "sourceText": "Procurement Related Complaint"
+          },
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0116:body[1]/tbl[1]/tr[7]/tc[1]/p[1]#key-line-26",
+            "sourceId": "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+            "sourceText": "Unfair Competitive Advantage"
+          }
+        ],
+        "nextHeadingOccurrences": [],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    }
+  ],
+  "adjudication": {
+    "occurrenceAssignments": [
+      {
+        "headingOccurrenceRef": "H0001",
+        "semanticNodeRef": "N001",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0002",
+        "semanticNodeRef": "N002",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0003",
+        "semanticNodeRef": "N003",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0004",
+        "semanticNodeRef": "N004",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0005",
+        "semanticNodeRef": "N005",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0006",
+        "semanticNodeRef": "N006",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0007",
+        "semanticNodeRef": "N007",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0008",
+        "semanticNodeRef": "N008",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0009",
+        "semanticNodeRef": "N009",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0010",
+        "semanticNodeRef": "N010",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0011",
+        "semanticNodeRef": "N011",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0012",
+        "semanticNodeRef": "N012",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0013",
+        "semanticNodeRef": "N013",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0014",
+        "semanticNodeRef": "N014",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0015",
+        "semanticNodeRef": "N015",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0016",
+        "semanticNodeRef": "N016",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0017",
+        "semanticNodeRef": "N017",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0018",
+        "semanticNodeRef": "N018",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0019",
+        "semanticNodeRef": "N019",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0020",
+        "semanticNodeRef": "N020",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0021",
+        "semanticNodeRef": "N021",
+        "occurrenceRole": "PRIMARY"
+      },
+      {
+        "headingOccurrenceRef": "H0022",
+        "semanticNodeRef": "N022",
+        "occurrenceRole": "PRIMARY"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeRef": "N001",
+        "canonicalOccurrenceRef": "H0001"
+      },
+      {
+        "semanticNodeRef": "N002",
+        "canonicalOccurrenceRef": "H0002"
+      },
+      {
+        "semanticNodeRef": "N003",
+        "canonicalOccurrenceRef": "H0003"
+      },
+      {
+        "semanticNodeRef": "N004",
+        "canonicalOccurrenceRef": "H0004"
+      },
+      {
+        "semanticNodeRef": "N005",
+        "canonicalOccurrenceRef": "H0005"
+      },
+      {
+        "semanticNodeRef": "N006",
+        "canonicalOccurrenceRef": "H0006"
+      },
+      {
+        "semanticNodeRef": "N007",
+        "canonicalOccurrenceRef": "H0007"
+      },
+      {
+        "semanticNodeRef": "N008",
+        "canonicalOccurrenceRef": "H0008"
+      },
+      {
+        "semanticNodeRef": "N009",
+        "canonicalOccurrenceRef": "H0009"
+      },
+      {
+        "semanticNodeRef": "N010",
+        "canonicalOccurrenceRef": "H0010"
+      },
+      {
+        "semanticNodeRef": "N011",
+        "canonicalOccurrenceRef": "H0011"
+      },
+      {
+        "semanticNodeRef": "N012",
+        "canonicalOccurrenceRef": "H0012"
+      },
+      {
+        "semanticNodeRef": "N013",
+        "canonicalOccurrenceRef": "H0013"
+      },
+      {
+        "semanticNodeRef": "N014",
+        "canonicalOccurrenceRef": "H0014"
+      },
+      {
+        "semanticNodeRef": "N015",
+        "canonicalOccurrenceRef": "H0015"
+      },
+      {
+        "semanticNodeRef": "N016",
+        "canonicalOccurrenceRef": "H0016"
+      },
+      {
+        "semanticNodeRef": "N017",
+        "canonicalOccurrenceRef": "H0017"
+      },
+      {
+        "semanticNodeRef": "N018",
+        "canonicalOccurrenceRef": "H0018"
+      },
+      {
+        "semanticNodeRef": "N019",
+        "canonicalOccurrenceRef": "H0019"
+      },
+      {
+        "semanticNodeRef": "N020",
+        "canonicalOccurrenceRef": "H0020"
+      },
+      {
+        "semanticNodeRef": "N021",
+        "canonicalOccurrenceRef": "H0021"
+      },
+      {
+        "semanticNodeRef": "N022",
+        "canonicalOccurrenceRef": "H0022"
+      }
+    ],
+    "parentEdges": []
+  }
+}
