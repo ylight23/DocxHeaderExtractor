@@ -1,0 +1,154 @@
+{
+  "artifactKind": "A99_CANONICAL_DERIVED_LEVELS",
+  "schemaVersion": "a99-canonical-hierarchy-v1-doc0256",
+  "documentId": "DOC-0256",
+  "derivation": "depth(ROOT)=0; level(node)=depth(node)",
+  "derivedOnlyAfterTreeValidation": true,
+  "levels": [
+    {
+      "semanticNodeRef": "N001",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "level": 1
+    },
+    {
+      "semanticNodeRef": "N002",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "level": 1
+    },
+    {
+      "semanticNodeRef": "N003",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N004",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N005",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N006",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N007",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N008",
+      "parentSemanticNodeRef": "N002",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N009",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "level": 1
+    },
+    {
+      "semanticNodeRef": "N010",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N011",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N012",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N013",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N014",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N015",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N016",
+      "parentSemanticNodeRef": "N009",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N017",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "level": 1
+    },
+    {
+      "semanticNodeRef": "N018",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "level": 1
+    },
+    {
+      "semanticNodeRef": "N019",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "level": 1
+    },
+    {
+      "semanticNodeRef": "N020",
+      "parentSemanticNodeRef": "N019",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N021",
+      "parentSemanticNodeRef": "N019",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N022",
+      "parentSemanticNodeRef": "N019",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N023",
+      "parentSemanticNodeRef": "N019",
+      "depth": 2,
+      "level": 2
+    },
+    {
+      "semanticNodeRef": "N024",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "level": 1
+    }
+  ],
+  "maxDepth": 2.0
+}

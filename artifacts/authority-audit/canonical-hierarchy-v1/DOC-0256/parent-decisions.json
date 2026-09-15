@@ -1,0 +1,646 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_HIERARCHY_DECISIONS",
+  "schemaVersion": "a99-canonical-hierarchy-v1-doc0256",
+  "documentId": "DOC-0256",
+  "decisionCount": 24,
+  "decisions": [
+    {
+      "semanticNodeRef": "N001",
+      "headingOccurrenceRef": "H001",
+      "exactText": "Welcome and meeting objectives",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "FIRST_CANONICAL_SECTION_HAS_NO_ENCLOSING_HEADING"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "NARRATIVE_INITIAL_SECTION",
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "The first section begins at document body scope; no earlier heading can structurally contain it.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N002",
+      "headingOccurrenceRef": "H002",
+      "exactText": "Regional updates on the ICP 2021 cycle implementation",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "N001",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "STANDALONE_SECTION_AFTER_INTRODUCTORY_CONTENT",
+        "SAME_TOP_LEVEL_PATTERN_AS_OTHER_MAJOR_NARRATIVE_SECTIONS"
+      ],
+      "contradictionEvidence": [
+        "NO_STRUCTURAL_SUBORDINATION_TO_N001"
+      ],
+      "scopeRelationship": "NARRATIVE_TOP_LEVEL_SECTION",
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Regional updates begins a new major narrative section; the preceding welcome section is not an enclosing heading.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N003",
+      "headingOccurrenceRef": "H003",
+      "exactText": "Africa",
+      "selectedParentRef": "N002",
+      "candidateParents": [
+        "N002",
+        "N001",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "REGION_HEADING_FOLLOWED_BY_REGION_PROSE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N002"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "REGIONAL_UPDATES_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Africa is a regional subsection under the Regional updates section.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N004",
+      "headingOccurrenceRef": "H004",
+      "exactText": "Asia and the Pacific",
+      "selectedParentRef": "N002",
+      "candidateParents": [
+        "N002",
+        "N001",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "REGION_HEADING_FOLLOWED_BY_REGION_PROSE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N002"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "REGIONAL_UPDATES_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Asia and the Pacific is a sibling regional subsection under Regional updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N005",
+      "headingOccurrenceRef": "H005",
+      "exactText": "Commonwealth of Independent States",
+      "selectedParentRef": "N002",
+      "candidateParents": [
+        "N002",
+        "N001",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "REGION_HEADING_FOLLOWED_BY_REGION_PROSE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N002"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "REGIONAL_UPDATES_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Commonwealth of Independent States is a sibling regional subsection under Regional updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N006",
+      "headingOccurrenceRef": "H006",
+      "exactText": "Eurostat–OECD PPP Program",
+      "selectedParentRef": "N002",
+      "candidateParents": [
+        "N002",
+        "N001",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "REGION_HEADING_FOLLOWED_BY_REGION_PROSE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N002"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "REGIONAL_UPDATES_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Eurostat–OECD PPP Program is a sibling regional subsection under Regional updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N007",
+      "headingOccurrenceRef": "H007",
+      "exactText": "Latin America and the Caribbean",
+      "selectedParentRef": "N002",
+      "candidateParents": [
+        "N002",
+        "N001",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "REGION_HEADING_FOLLOWED_BY_REGION_PROSE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N002"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "REGIONAL_UPDATES_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Latin America and the Caribbean is a sibling regional subsection under Regional updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N008",
+      "headingOccurrenceRef": "H008",
+      "exactText": "Western Asia",
+      "selectedParentRef": "N002",
+      "candidateParents": [
+        "N002",
+        "N001",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "REGION_HEADING_FOLLOWED_BY_REGION_PROSE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N002"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "REGIONAL_UPDATES_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Western Asia is a sibling regional subsection under Regional updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N009",
+      "headingOccurrenceRef": "H009",
+      "exactText": "Global updates on the ICP 2021 cycle implementation",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "N008",
+        "N002",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "NEW_MAJOR_SECTION_AFTER_REGIONAL_BRANCH",
+        "STANDALONE_GLOBAL_UPDATES_HEADING"
+      ],
+      "contradictionEvidence": [
+        "INTERVENING_COMPETING_REGION_HEADING",
+        "NO_STRUCTURAL_SUBORDINATION_TO_N008"
+      ],
+      "scopeRelationship": "NARRATIVE_TOP_LEVEL_SECTION",
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Global updates starts a new top-level narrative branch rather than continuing the final regional subsection.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N010",
+      "headingOccurrenceRef": "H010",
+      "exactText": "Data review: Household consumption price and importance data",
+      "selectedParentRef": "N009",
+      "candidateParents": [
+        "N009",
+        "N002",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DATA_REVIEW_TOPIC_SEQUENCE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N009"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "GLOBAL_DATA_REVIEW_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Household consumption review is the first data-review subsection under Global updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N011",
+      "headingOccurrenceRef": "H011",
+      "exactText": "Data review: Housing prices and volumes",
+      "selectedParentRef": "N009",
+      "candidateParents": [
+        "N009",
+        "N002",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DATA_REVIEW_TOPIC_SEQUENCE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N009"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "GLOBAL_DATA_REVIEW_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Housing prices review is a sibling data-review subsection under Global updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N012",
+      "headingOccurrenceRef": "H012",
+      "exactText": "Data review: Private Education",
+      "selectedParentRef": "N009",
+      "candidateParents": [
+        "N009",
+        "N002",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DATA_REVIEW_TOPIC_SEQUENCE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N009"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "GLOBAL_DATA_REVIEW_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Private Education review is a sibling data-review subsection under Global updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N013",
+      "headingOccurrenceRef": "H013",
+      "exactText": "Data review: Government compensation and productivity adjustment",
+      "selectedParentRef": "N009",
+      "candidateParents": [
+        "N009",
+        "N002",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DATA_REVIEW_TOPIC_SEQUENCE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N009"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "GLOBAL_DATA_REVIEW_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Government compensation review is a sibling data-review subsection under Global updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N014",
+      "headingOccurrenceRef": "H014",
+      "exactText": "Data review: Machinery and equipment and construction",
+      "selectedParentRef": "N009",
+      "candidateParents": [
+        "N009",
+        "N002",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DATA_REVIEW_TOPIC_SEQUENCE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N009"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "GLOBAL_DATA_REVIEW_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Machinery/construction review is a sibling data-review subsection under Global updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N015",
+      "headingOccurrenceRef": "H015",
+      "exactText": "Data review: 2017-2021 National Accounts expenditures",
+      "selectedParentRef": "N009",
+      "candidateParents": [
+        "N009",
+        "N002",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DATA_REVIEW_TOPIC_SEQUENCE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N009"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "GLOBAL_DATA_REVIEW_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "National accounts review is a sibling data-review subsection under Global updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N016",
+      "headingOccurrenceRef": "H016",
+      "exactText": "Data review: 2017-2021 Population and market exchange rates",
+      "selectedParentRef": "N009",
+      "candidateParents": [
+        "N009",
+        "N002",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DATA_REVIEW_TOPIC_SEQUENCE",
+        "REPEATED_SIBLING_PATTERN_UNDER_N009"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "GLOBAL_DATA_REVIEW_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Population/exchange-rate review is a sibling data-review subsection under Global updates.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N017",
+      "headingOccurrenceRef": "H017",
+      "exactText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "N016",
+        "N009",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "NEW_PLANNING_SECTION_AFTER_DATA_REVIEW_BRANCH",
+        "STANDALONE_PLANNING_HEADING"
+      ],
+      "contradictionEvidence": [
+        "NO_STRUCTURAL_SUBORDINATION_TO_N016"
+      ],
+      "scopeRelationship": "NARRATIVE_TOP_LEVEL_SECTION",
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Governance/release planning starts a new top-level branch after the global data-review branch.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N018",
+      "headingOccurrenceRef": "H018",
+      "exactText": "Planning for the ICP 2024 cycle",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "N017",
+        "N009",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "SEPARATE_STANDALONE_PLANNING_HEADING",
+        "PARALLEL_MAJOR_SECTION_PATTERN"
+      ],
+      "contradictionEvidence": [
+        "NO_SUBSECTION_MARKER_UNDER_N017"
+      ],
+      "scopeRelationship": "NARRATIVE_TOP_LEVEL_SECTION",
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "ICP 2024 planning is a separate top-level planning section, not a subsection of the preceding planning section.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N019",
+      "headingOccurrenceRef": "H019",
+      "exactText": "Annex 1: Meeting Agenda",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "N018",
+        "N017",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "EXPLICIT_ANNEX_BOUNDARY",
+        "STANDALONE_ANNEX_HEADING"
+      ],
+      "contradictionEvidence": [
+        "ANNEX_SCOPE_DIFFERENCE_FROM_N018"
+      ],
+      "scopeRelationship": "ANNEX_SECTION",
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Annex 1 begins a distinct document unit and is not structurally subordinate to the narrative section immediately before it.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N020",
+      "headingOccurrenceRef": "H020",
+      "exactText": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "selectedParentRef": "N019",
+      "candidateParents": [
+        "N019",
+        "N018",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DAY_HEADING_INSIDE_ANNEX1_TABLE",
+        "REPEATED_DAY_SECTION_PATTERN_UNDER_N019"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "ANNEX1_DAY_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Day 1 is an explicit subsection of the Annex 1 agenda.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N021",
+      "headingOccurrenceRef": "H021",
+      "exactText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "selectedParentRef": "N019",
+      "candidateParents": [
+        "N019",
+        "N018",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DAY_HEADING_INSIDE_ANNEX1_TABLE",
+        "REPEATED_DAY_SECTION_PATTERN_UNDER_N019"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "ANNEX1_DAY_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Day 2 is a sibling day subsection of the Annex 1 agenda.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N022",
+      "headingOccurrenceRef": "H022",
+      "exactText": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "selectedParentRef": "N019",
+      "candidateParents": [
+        "N019",
+        "N018",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DAY_HEADING_INSIDE_ANNEX1_TABLE",
+        "REPEATED_DAY_SECTION_PATTERN_UNDER_N019"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "ANNEX1_DAY_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Day 3 is a sibling day subsection of the Annex 1 agenda.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N023",
+      "headingOccurrenceRef": "H023",
+      "exactText": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "selectedParentRef": "N019",
+      "candidateParents": [
+        "N019",
+        "N018",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "DAY_HEADING_INSIDE_ANNEX1_TABLE",
+        "REPEATED_DAY_SECTION_PATTERN_UNDER_N019"
+      ],
+      "contradictionEvidence": [],
+      "scopeRelationship": "ANNEX1_DAY_SUBSECTION",
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "PARENT_SCOPE_ENCLOSES_CHILD_SECTION"
+      ],
+      "decisionReason": "Day 4 is a sibling day subsection of the Annex 1 agenda.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    },
+    {
+      "semanticNodeRef": "N024",
+      "headingOccurrenceRef": "H024",
+      "exactText": "Annex 2: List of participants",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "N023",
+        "N019",
+        "ROOT"
+      ],
+      "positiveEvidence": [
+        "EXPLICIT_ANNEX_BOUNDARY",
+        "STANDALONE_ANNEX_HEADING"
+      ],
+      "contradictionEvidence": [
+        "ANNEX_SCOPE_DIFFERENCE_FROM_N023"
+      ],
+      "scopeRelationship": "ANNEX_SECTION",
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Annex 2 begins a new document unit after Annex 1 and is a separate root.",
+      "confidence": "HIGH",
+      "reviewAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "identityMutation": false
+    }
+  ],
+  "unresolvedCount": 0,
+  "levelEnteredByReviewer": false
+}

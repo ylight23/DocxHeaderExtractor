@@ -1,0 +1,63 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_HIERARCHY_MANIFEST",
+  "schemaVersion": "a99-canonical-hierarchy-v1-doc0256",
+  "documentId": "DOC-0256",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "semanticNodeCount": 24,
+  "parentEdgeCount": 24,
+  "rootChildrenCount": 7,
+  "maxDepth": 2.0,
+  "ambiguityCount": 0,
+  "globalConsistencyViolationCount": 0,
+  "validator": "PASS",
+  "files": [
+    {
+      "name": "node-input-manifest.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0256/node-input-manifest.json",
+      "sha256": "8d2404f4bfcff27918ad5eb2f4a7bded7e08e9ac25bbfc21298a8475c89f43fc"
+    },
+    {
+      "name": "parent-decisions.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0256/parent-decisions.json",
+      "sha256": "dab6c2e4d8db9814f4ab1835218caf4ce7f73e25ecc0c98a2372e22b81a0bad9"
+    },
+    {
+      "name": "parent-edges.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0256/parent-edges.json",
+      "sha256": "d5642315c71bdb42228428451f96fc3e10a7e113c05717667f0cae6371730888"
+    },
+    {
+      "name": "ambiguities.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0256/ambiguities.json",
+      "sha256": "c43cac0421d15fc632b88da3f779e3e5aad700698b13c22cf343ea019e288d89"
+    },
+    {
+      "name": "global-consistency-audit.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0256/global-consistency-audit.json",
+      "sha256": "58c4e8101fdfdbcddcff2476ff26b9d9bc5b98ef7267ea0dcb4dc5b02141418f"
+    },
+    {
+      "name": "validation.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0256/validation.json",
+      "sha256": "88229731a3a8a76c8916976ca3a38d5999ea8ad17137e91c2cdcc8088b631c03"
+    },
+    {
+      "name": "derived-levels.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0256/derived-levels.json",
+      "sha256": "3bdf578c988fa3a0444b4ddbfda7396332b3199363c4a7238731cfda1dd3217f"
+    }
+  ],
+  "occurrenceAuthoritySha256": "e0e031f1162bf6a3d13a9c41d130f357a1b138b5538607dee2a326d88c667323",
+  "identityAssignmentsSha256": "f5924618fe328cdaddc777e91b51aefa59f6263a22bd52b30c233006ae16af9e",
+  "identityNodesSha256": "ef9cfdc4c07e3c8c4f418978aa75ef08cbf29050e7d958519f689fdb19d2e226",
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "oldSemanticTotalUsedForDecision": false,
+  "identityMutation": false,
+  "occurrenceMutation": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "userApprovalRequired": true,
+  "stopBeforeHistoricalCompatibility": true
+}

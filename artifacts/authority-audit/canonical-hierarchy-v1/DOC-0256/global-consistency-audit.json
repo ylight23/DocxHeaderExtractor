@@ -1,0 +1,228 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_GLOBAL_CONSISTENCY_AUDIT",
+  "schemaVersion": "a99-canonical-hierarchy-v1-doc0256",
+  "documentId": "DOC-0256",
+  "rule": "SCOPE_OR_OWNERSHIP_ALONE_IS_NOT_PARENT_EVIDENCE",
+  "checks": [
+    {
+      "semanticNodeRef": "N001",
+      "selectedParentRef": "ROOT",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N002",
+      "selectedParentRef": "ROOT",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N003",
+      "selectedParentRef": "N002",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N004",
+      "selectedParentRef": "N002",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N005",
+      "selectedParentRef": "N002",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N006",
+      "selectedParentRef": "N002",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N007",
+      "selectedParentRef": "N002",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N008",
+      "selectedParentRef": "N002",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N009",
+      "selectedParentRef": "ROOT",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N010",
+      "selectedParentRef": "N009",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N011",
+      "selectedParentRef": "N009",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N012",
+      "selectedParentRef": "N009",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N013",
+      "selectedParentRef": "N009",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N014",
+      "selectedParentRef": "N009",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N015",
+      "selectedParentRef": "N009",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N016",
+      "selectedParentRef": "N009",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N017",
+      "selectedParentRef": "ROOT",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N018",
+      "selectedParentRef": "ROOT",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N019",
+      "selectedParentRef": "ROOT",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N020",
+      "selectedParentRef": "N019",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N021",
+      "selectedParentRef": "N019",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N022",
+      "selectedParentRef": "N019",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N023",
+      "selectedParentRef": "N019",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N024",
+      "selectedParentRef": "ROOT",
+      "sameScopeParentRuleChecked": true,
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "rationaleConsistentWithPeerNodes": true,
+      "violation": false
+    }
+  ],
+  "violationCount": 0,
+  "scopeOnlyParentEdges": 0,
+  "inconsistentPeerRationales": 0,
+  "historicalHierarchyUsed": false
+}

@@ -1,0 +1,427 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_HIERARCHY_NODE_INPUT",
+  "schemaVersion": "a99-canonical-hierarchy-v1-doc0256",
+  "documentId": "DOC-0256",
+  "occurrenceAuthority": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0256/exact-bindings.json",
+  "identityAuthority": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0256/semantic-nodes.json",
+  "occurrenceAuthoritySha256": "e0e031f1162bf6a3d13a9c41d130f357a1b138b5538607dee2a326d88c667323",
+  "identityAssignmentsSha256": "f5924618fe328cdaddc777e91b51aefa59f6263a22bd52b30c233006ae16af9e",
+  "identityNodesSha256": "ef9cfdc4c07e3c8c4f418978aa75ef08cbf29050e7d958519f689fdb19d2e226",
+  "semanticNodeCount": 24,
+  "nodes": [
+    {
+      "semanticNodeRef": "N001",
+      "canonicalOccurrenceRef": "H001",
+      "exactText": "Welcome and meeting objectives",
+      "sourceId": "body[1]/p[6]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "documentOrder": 4,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N002",
+      "canonicalOccurrenceRef": "H002",
+      "exactText": "Regional updates on the ICP 2021 cycle implementation",
+      "sourceId": "body[1]/p[10]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "documentOrder": 8,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N003",
+      "canonicalOccurrenceRef": "H003",
+      "exactText": "Africa",
+      "sourceId": "body[1]/p[11]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 6
+      },
+      "documentOrder": 9,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N004",
+      "canonicalOccurrenceRef": "H004",
+      "exactText": "Asia and the Pacific",
+      "sourceId": "body[1]/p[17]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "documentOrder": 13,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N005",
+      "canonicalOccurrenceRef": "H005",
+      "exactText": "Commonwealth of Independent States",
+      "sourceId": "body[1]/p[20]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 34
+      },
+      "documentOrder": 16,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N006",
+      "canonicalOccurrenceRef": "H006",
+      "exactText": "Eurostat–OECD PPP Program",
+      "sourceId": "body[1]/p[26]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 25
+      },
+      "documentOrder": 20,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N007",
+      "canonicalOccurrenceRef": "H007",
+      "exactText": "Latin America and the Caribbean",
+      "sourceId": "body[1]/p[32]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "documentOrder": 24,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N008",
+      "canonicalOccurrenceRef": "H008",
+      "exactText": "Western Asia",
+      "sourceId": "body[1]/p[35]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 12
+      },
+      "documentOrder": 27,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N009",
+      "canonicalOccurrenceRef": "H009",
+      "exactText": "Global updates on the ICP 2021 cycle implementation",
+      "sourceId": "body[1]/p[42]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "documentOrder": 32,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N010",
+      "canonicalOccurrenceRef": "H010",
+      "exactText": "Data review: Household consumption price and importance data",
+      "sourceId": "body[1]/p[55]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "documentOrder": 43,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N011",
+      "canonicalOccurrenceRef": "H011",
+      "exactText": "Data review: Housing prices and volumes",
+      "sourceId": "body[1]/p[61]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "documentOrder": 49,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N012",
+      "canonicalOccurrenceRef": "H012",
+      "exactText": "Data review: Private Education",
+      "sourceId": "body[1]/p[67]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "documentOrder": 53,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N013",
+      "canonicalOccurrenceRef": "H013",
+      "exactText": "Data review: Government compensation and productivity adjustment",
+      "sourceId": "body[1]/p[73]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 64
+      },
+      "documentOrder": 59,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N014",
+      "canonicalOccurrenceRef": "H014",
+      "exactText": "Data review: Machinery and equipment and construction",
+      "sourceId": "body[1]/p[76]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "documentOrder": 62,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N015",
+      "canonicalOccurrenceRef": "H015",
+      "exactText": "Data review: 2017-2021 National Accounts expenditures",
+      "sourceId": "body[1]/p[80]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "documentOrder": 66,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N016",
+      "canonicalOccurrenceRef": "H016",
+      "exactText": "Data review: 2017-2021 Population and market exchange rates",
+      "sourceId": "body[1]/p[88]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 59
+      },
+      "documentOrder": 72,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N017",
+      "canonicalOccurrenceRef": "H017",
+      "exactText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "sourceId": "body[1]/p[90]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 102
+      },
+      "documentOrder": 74,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N018",
+      "canonicalOccurrenceRef": "H018",
+      "exactText": "Planning for the ICP 2024 cycle",
+      "sourceId": "body[1]/p[99]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "documentOrder": 81,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N019",
+      "canonicalOccurrenceRef": "H019",
+      "exactText": "Annex 1: Meeting Agenda",
+      "sourceId": "body[1]/p[107]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "documentOrder": 87,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N020",
+      "canonicalOccurrenceRef": "H020",
+      "exactText": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 32
+      },
+      "documentOrder": 88,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N021",
+      "canonicalOccurrenceRef": "H021",
+      "exactText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 34
+      },
+      "documentOrder": 123,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N022",
+      "canonicalOccurrenceRef": "H022",
+      "exactText": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "documentOrder": 138,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N023",
+      "canonicalOccurrenceRef": "H023",
+      "exactText": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "documentOrder": 159,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N024",
+      "canonicalOccurrenceRef": "H024",
+      "exactText": "Annex 2: List of participants",
+      "sourceId": "body[1]/p[124]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "documentOrder": 185,
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "italicObserved": true,
+        "parserOwnedEvidenceOnly": true
+      }
+    }
+  ],
+  "parentFieldsPresent": false,
+  "levelFieldsPresent": false,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "providerCalls": 0,
+  "modelCalls": 0
+}

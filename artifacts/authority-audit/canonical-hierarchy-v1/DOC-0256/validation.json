@@ -1,0 +1,32 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_HIERARCHY_VALIDATION",
+  "schemaVersion": "a99-canonical-hierarchy-v1-doc0256",
+  "documentId": "DOC-0256",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "checks": {
+    "semanticNodesExactly24": true,
+    "parentDecisionsExactly24": true,
+    "exactlyOneParentPerNode": true,
+    "noSelfParent": true,
+    "noDanglingParent": true,
+    "noMultipleParents": true,
+    "noCycles": true,
+    "everyNodeReachableFromRoot": true,
+    "identityMappingUnchanged": true,
+    "occurrenceMappingUnchanged": true,
+    "noReviewerEnteredLevel": true,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "oldSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "identityMutation": false,
+    "occurrenceMutation": false,
+    "GoldMutationOutsideNewLane": false
+  },
+  "errors": [],
+  "semanticNodeCount": 24,
+  "parentEdgeCount": 24,
+  "rootChildrenCount": 7
+}
