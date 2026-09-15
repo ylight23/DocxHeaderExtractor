@@ -1,0 +1,29 @@
+{
+  "artifactKind": "A99_USER_REVIEWED_CANONICAL_AUTHORITY_FREEZE_VALIDATION",
+  "schemaVersion": "a99-canonical-authority-freeze-v1",
+  "documentId": "DOC-0258",
+  "status": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+  "checks": {
+    "occurrenceCount": 44,
+    "assignmentCount": 44,
+    "semanticNodeCount": 44,
+    "parentEdgeCount": 44,
+    "primaryCount": 44,
+    "repeatCount": 0,
+    "continuationCount": 0,
+    "rootChildCount": 3,
+    "maxDepth": 3,
+    "sourceShaConsistent": true,
+    "identityMappingUnchanged": true,
+    "treeReachable": true,
+    "acyclic": true,
+    "singleParent": true,
+    "noDanglingRefs": true,
+    "derivedLevelsMatchDepth": true,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldMutationOutsideNewFreeze": false
+  }
+}

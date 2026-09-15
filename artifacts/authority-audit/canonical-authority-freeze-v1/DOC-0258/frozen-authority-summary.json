@@ -1,0 +1,27 @@
+{
+  "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+  "documentId": "DOC-0258",
+  "occurrenceCount": 44,
+  "semanticNodeCount": 44,
+  "occurrenceRoles": {
+    "PRIMARY": 44,
+    "REPEAT": 0,
+    "CONTINUATION": 0
+  },
+  "parentEdgeCount": 44,
+  "rootChildCount": 3,
+  "maxDepth": 3,
+  "levelDerivation": "DEPTH_FROM_VALIDATED_TREE_ONLY",
+  "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+  "identityProposalStatus": "READY_FOR_USER_APPROVAL_CANONICAL_IDENTITY",
+  "identityChallengeStatus": "IDENTITY_PROPOSAL_CORROBORATED_44_NODES",
+  "hierarchyProposalStatus": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "provenance": {
+    "occurrenceReview": "CODEX_SOURCE_ONLY_ADJUDICATION",
+    "identityProposal": "CODEX_SOURCE_BACKED",
+    "identityChallenge": "CODEX_SOURCE_BACKED_CHALLENGE_CORROBORATED",
+    "hierarchyProposal": "CODEX_SOURCE_BACKED",
+    "finalPromotion": "EXPLICIT_USER_APPROVAL",
+    "historicalCompatibilityTree": "NOT_USED_OR_MODIFIED"
+  }
+}
