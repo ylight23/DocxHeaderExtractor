@@ -1,0 +1,126 @@
+{
+  "v4hC": {
+    "schemaVersion": "a99-v4h-c-semantic-evaluation-summary-v1",
+    "gold": {
+      "itemCount": 128,
+      "authority": "USER_FINAL_SOURCE_BACKED_ADJUDICATION",
+      "independentHumanGold": false,
+      "artifact": "artifacts/identity-benchmark/v4/semantic-adjudication/results/human-adjudication.frozen.v1.json"
+    },
+    "prediction": {
+      "artifact": "artifacts/identity-benchmark/v4/target-grounding-challenger/execution/parsed-results.json",
+      "validCount": 95,
+      "invalidCount": 33,
+      "coverage": 0.7421875,
+      "source": "FROZEN_V4G_B_PREDICTIONS"
+    },
+    "join": {
+      "exactCandidateIdJoin": 128,
+      "exactPredictionEndpointJoin": 95,
+      "providerErrorEndpointUnavailable": 33,
+      "policy": "Provider-error cells retain frozen candidate join but are INVALID_PREDICTION; no semantic label is inferred."
+    },
+    "overall": {
+      "correct": 71,
+      "total": 128,
+      "effectiveCorrectness": 0.5546875,
+      "validPredictionAccuracy": 0.7473684210526316
+    },
+    "falseMerge": 23,
+    "falseSplit": 1,
+    "perRelation": [
+      {
+        "relation": "SAME_SEMANTIC_REPEAT",
+        "tp": 22,
+        "fp": 18,
+        "fn": 8,
+        "precision": 0.55,
+        "recall": 0.7333333333333333,
+        "f1": 0.6285714285714286
+      },
+      {
+        "relation": "CONTINUATION_OF",
+        "tp": 1,
+        "fp": 5,
+        "fn": 0,
+        "precision": 0.16666666666666666,
+        "recall": 1,
+        "f1": 0.2857142857142857
+      },
+      {
+        "relation": "DISTINCT",
+        "tp": 48,
+        "fp": 1,
+        "fn": 49,
+        "precision": 0.9795918367346939,
+        "recall": 0.4948453608247423,
+        "f1": 0.6575342465753425
+      }
+    ],
+    "executionManifest": "artifacts/identity-benchmark/v4/target-grounding-challenger/execution/execution-manifest.json",
+    "modelCalls": 0,
+    "providerCalls": 0
+  },
+  "v5c": {
+    "schemaVersion": "a99-v5c-semantic-node-evaluation-summary-v2",
+    "phase": "V5C_GRAPH_TO_PAIR_EVALUATION_V2",
+    "gold": {
+      "itemCount": 128,
+      "authority": "USER_FINAL_SOURCE_BACKED_ADJUDICATION",
+      "independentHumanGold": false
+    },
+    "prediction": {
+      "validCount": 103,
+      "invalidCount": 25,
+      "coverage": 0.8046875,
+      "source": "FROZEN_V5B_CLUSTER_INDUCTION"
+    },
+    "overall": {
+      "correct": 46,
+      "total": 128,
+      "effectiveCorrectness": 0.359375,
+      "validPredictionAccuracy": 0.44660194174757284
+    },
+    "falseMerge": 55,
+    "falseSplit": 1,
+    "continuationOnlyErrors": 1,
+    "nodeConstraint": {
+      "correct": 47,
+      "validPairs": 103,
+      "accuracy": 0.4563106796116505
+    },
+    "derivationPolicy": "INVALID cluster first; DISTINCT for different nodes; CONTINUATION_OF for an exact edge in either direction; otherwise SAME_SEMANTIC_REPEAT. occurrenceRole alone is never used.",
+    "perRelation": [
+      {
+        "relation": "SAME_SEMANTIC_REPEAT",
+        "tp": 18,
+        "fp": 44,
+        "fn": 12,
+        "precision": 0.2903225806451613,
+        "recall": 0.6,
+        "f1": 0.3913043478260869
+      },
+      {
+        "relation": "CONTINUATION_OF",
+        "tp": 0,
+        "fp": 12,
+        "fn": 1,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      {
+        "relation": "DISTINCT",
+        "tp": 28,
+        "fp": 1,
+        "fn": 69,
+        "precision": 0.9655172413793104,
+        "recall": 0.28865979381443296,
+        "f1": 0.4444444444444444
+      }
+    ],
+    "modelCalls": 0,
+    "providerCalls": 0,
+    "goldReadBeforePredictionFreeze": false
+  }
+}

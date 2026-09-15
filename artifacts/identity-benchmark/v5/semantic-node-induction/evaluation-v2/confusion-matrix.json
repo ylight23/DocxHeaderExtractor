@@ -1,0 +1,23 @@
+{
+  "rows": {
+    "SAME_SEMANTIC_REPEAT": {
+      "SAME_SEMANTIC_REPEAT": 18,
+      "CONTINUATION_OF": 1,
+      "DISTINCT": 1,
+      "INVALID_PREDICTION": 10
+    },
+    "CONTINUATION_OF": {
+      "SAME_SEMANTIC_REPEAT": 0,
+      "CONTINUATION_OF": 0,
+      "DISTINCT": 0,
+      "INVALID_PREDICTION": 1
+    },
+    "DISTINCT": {
+      "SAME_SEMANTIC_REPEAT": 44,
+      "CONTINUATION_OF": 11,
+      "DISTINCT": 28,
+      "INVALID_PREDICTION": 14
+    }
+  },
+  "invalidPredictionCount": 25
+}

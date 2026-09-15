@@ -30,4 +30,19 @@ public sealed class A99IdentityBenchmarkV5CTests
         Assert.Equal(0, json.GetProperty("providerCalls").GetInt32());
         Assert.True(json.GetProperty("pairLabelsDerived").GetBoolean());
     }
+
+    [Fact]
+    public void V5C_v2_is_direction_agnostic_and_reports_node_constraints()
+    {
+        var root = Root();
+        var manifestPath = Path.Combine(root, "artifacts", "identity-benchmark", "v5", "semantic-node-induction", "evaluation-v2", "manifest.json");
+        var summaryPath = Path.Combine(root, "artifacts", "identity-benchmark", "v5", "semantic-node-induction", "evaluation-v2", "summary.json");
+        using var manifest = JsonDocument.Parse(File.ReadAllText(manifestPath));
+        using var summary = JsonDocument.Parse(File.ReadAllText(summaryPath));
+        Assert.Equal("V5C_V2_COMPLETE", manifest.RootElement.GetProperty("status").GetString());
+        Assert.True(manifest.RootElement.GetProperty("directionAgnosticEdgeDerivation").GetBoolean());
+        Assert.Equal(1, summary.RootElement.GetProperty("continuationOnlyErrors").GetInt32());
+        Assert.Equal(47, summary.RootElement.GetProperty("nodeConstraint").GetProperty("correct").GetInt32());
+        Assert.Equal(103, summary.RootElement.GetProperty("nodeConstraint").GetProperty("validPairs").GetInt32());
+    }
 }

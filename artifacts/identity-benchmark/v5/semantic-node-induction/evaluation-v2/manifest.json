@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "a99-v5c-evaluation-manifest-v2",
+  "status": "V5C_V2_COMPLETE",
+  "goldReadAfterPredictionFreeze": true,
+  "predictionFreezeStatus": "V5C_PREDICTIONS_FROZEN_BEFORE_GOLD",
+  "itemCount": 128,
+  "exactCandidateJoin": 128,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "pairLabelsDerived": true,
+  "directionAgnosticEdgeDerivation": true,
+  "source": "FROZEN_V5B_PRIMARY_ATTEMPTS",
+  "priorEvaluationPreserved": "artifacts/identity-benchmark/v5/semantic-node-induction/evaluation"
+}
