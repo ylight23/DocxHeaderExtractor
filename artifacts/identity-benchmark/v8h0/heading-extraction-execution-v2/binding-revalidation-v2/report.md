@@ -1,4 +1,6 @@
-# V8H0 execution-v2 binding revalidation
+# INVALID / EXCLUDED: V8H0 execution-v2 binding revalidation
+
+This artifact is excluded from authority. It was superseded by `binding-revalidation-v3` after an offline deprojection-key bug was corrected.
 
 Provider calls: **0**. Gold reads: **0**.
 

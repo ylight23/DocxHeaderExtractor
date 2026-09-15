@@ -1,7 +1,8 @@
 {
   "artifactKind": "a99_identity_benchmark_v8h0_heading_binding_revalidation",
   "schemaVersion": "a99-v8h0-heading-binding-revalidation-v2",
-  "status": "COMPLETED_WITH_FAILURES_PRESERVED",
+  "status": "INVALID_REBIND_ATTEMPT_EXCLUDED",
+  "exclusionReason": "offline deprojection bug: initial rebind keyed span decisions by production ref instead of opaque ref; superseded by binding-revalidation-v3; not downstream authority",
   "primaryExecutionManifestSha256": "e5baba9960171167f32aa8f0cbaf6adfb955074dcad6dce524095d611be35bd4",
   "providerCalls": 0,
   "goldReadCount": 0,
