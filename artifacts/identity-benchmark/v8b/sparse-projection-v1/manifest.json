@@ -1,0 +1,88 @@
+{
+  "artifactKind": "a99_identity_benchmark_v8b_sparse_projection",
+  "schemaVersion": "a99-v8b-sparse-projection-v1",
+  "status": "BLOCKED_ON_V8B_SCALABILITY",
+  "authority": {
+    "v8a2Commit": "579b3fd",
+    "parentCandidateUniverseSha256": "c91e0313110708ea4a5f4ab283cb2c54f86bcf8931569df2543a3aca2e47dc21",
+    "v8a2ManifestSha256": "1ceb04713b8ead164e41b8454e3c52a16dfbfe65c828d45f3e3065a4fd71cf7a",
+    "v8a2ArtifactsMutated": false
+  },
+  "retrieval": {
+    "version": "v8b-source-only-multichannel-topk-v1",
+    "projectionVersion": "v8b-deduplicated-handle-projection-v1",
+    "fullCandidateCount": 102915,
+    "shortlistedCandidateCount": 15185,
+    "reductionPercentage": 0.8524510518388961,
+    "perChannelTopK": 2,
+    "perOccurrenceFinalTopK": 4,
+    "contextRadius": 1,
+    "goldUsed": false,
+    "historicalPredictionsUsed": false
+  },
+  "projection": {
+    "occurrenceHandleCount": 12140,
+    "evidenceHandleCount": 12140,
+    "proposerShardCount": 8,
+    "falsifierShardCount": 8,
+    "candidateCoverage": {
+      "proposerCandidateCount": 15185,
+      "falsifierCandidateCount": 15185,
+      "shortlistCandidateCount": 15185,
+      "proposerDuplicateCount": 0,
+      "falsifierDuplicateCount": 0
+    }
+  },
+  "scale": {
+    "totalProposerBytes": 11536767,
+    "totalFalsifierBytes": 11536591,
+    "totalBytes": 23073358,
+    "totalEstimatedInputTokens": 5768346,
+    "maximumEstimatedInputTokens": 699952,
+    "maximumRequestBytes": 2799805,
+    "requestTokenDistribution": {
+      "count": 16,
+      "min": 73603,
+      "p50": 298151,
+      "p95": 699952,
+      "max": 699952,
+      "mean": 360521.625,
+      "total": 5768346
+    },
+    "shortlistFanoutDistribution": {
+      "count": 12140,
+      "min": 2,
+      "p50": 2,
+      "p95": 4,
+      "max": 11,
+      "mean": 2.5016474464579903,
+      "total": 30370
+    },
+    "repeatedContextRatio": 0.15268276078410434
+  },
+  "contextPolicy": {
+    "configuredContextLimitTokens": 1000000,
+    "safetyCeilingTokens": 700000,
+    "inheritedTotalInputBudgetTokens": 5000000,
+    "providerLimitVerified": false
+  },
+  "gate": {
+    "allRequestsBelowSafetyCeiling": true,
+    "totalEstimatedInputWithinBudget": false,
+    "blockers": [
+      "TOTAL_ESTIMATED_INPUT_TOKEN_BUDGET_EXCEEDED"
+    ]
+  },
+  "firewall": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldReadCount": 0,
+    "historicalPredictionReadCount": 0,
+    "historicalEvaluationReadCount": 0,
+    "v8a2Mutated": false,
+    "v8a3Mutated": false,
+    "omittedPairsAre": "NOT_RETRIEVED_NO_PROPOSAL_PATH",
+    "noSemanticDistinctInference": true
+  },
+  "next": "Prepare a new source-only retrieval/projection challenger; do not mutate V8A2/V8A3."
+}

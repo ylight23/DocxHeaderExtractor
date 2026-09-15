@@ -1,0 +1,895 @@
+{
+  "schemaVersion": "a99-v8b-retrieval-manifest-v1",
+  "authority": {
+    "v8a2Commit": "579b3fd",
+    "parentCandidateUniverseSha256": "c91e0313110708ea4a5f4ab283cb2c54f86bcf8931569df2543a3aca2e47dc21",
+    "v8a2ManifestSha256": "1ceb04713b8ead164e41b8454e3c52a16dfbfe65c828d45f3e3065a4fd71cf7a",
+    "v8a2ArtifactsMutated": false
+  },
+  "retrieval": {
+    "version": "v8b-source-only-multichannel-topk-v1",
+    "projectionVersion": "v8b-deduplicated-handle-projection-v1",
+    "fullCandidateCount": 102915,
+    "shortlistedCandidateCount": 15185,
+    "reductionPercentage": 0.8524510518388961,
+    "perChannelTopK": 2,
+    "perOccurrenceFinalTopK": 4,
+    "contextRadius": 1,
+    "goldUsed": false,
+    "historicalPredictionsUsed": false
+  },
+  "documents": [
+    {
+      "documentId": "NEW-073DB817879B",
+      "fullCandidateCount": 2709,
+      "shortlistedCandidateCount": 412,
+      "reductionPercentage": 0.8479143595422666,
+      "perOccurrenceFanout": {
+        "count": 342,
+        "min": 2,
+        "p50": 2,
+        "p95": 4,
+        "max": 5,
+        "mean": 2.409356725146199,
+        "total": 824
+      },
+      "channelStats": [
+        {
+          "channel": "EXACT_NORMALIZED_TEXT",
+          "fullCount": 44,
+          "selectedCount": 43,
+          "selectedShare": 0.10436893203883495
+        },
+        {
+          "channel": "HIGH_LEXICAL_SIMILARITY",
+          "fullCount": 93,
+          "selectedCount": 71,
+          "selectedShare": 0.17233009708737865
+        },
+        {
+          "channel": "NUMBERING_BASE_FORM",
+          "fullCount": 38,
+          "selectedCount": 38,
+          "selectedShare": 0.09223300970873786
+        },
+        {
+          "channel": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullCount": 2709,
+          "selectedCount": 412,
+          "selectedShare": 1
+        },
+        {
+          "channel": "ACRONYM_OR_VARIANT",
+          "fullCount": 49,
+          "selectedCount": 35,
+          "selectedShare": 0.08495145631067962
+        },
+        {
+          "channel": "READING_DISTANCE",
+          "fullCount": 2700,
+          "selectedCount": 403,
+          "selectedShare": 0.9781553398058253
+        }
+      ],
+      "channelOverlap": [
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 19,
+          "selectedIntersection": 19
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 34,
+          "selectedIntersection": 34
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 44,
+          "selectedIntersection": 43
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 35,
+          "selectedIntersection": 34
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 14,
+          "selectedIntersection": 14
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 93,
+          "selectedIntersection": 71
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 86,
+          "selectedIntersection": 64
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 38,
+          "selectedIntersection": 38
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 29,
+          "selectedIntersection": 29
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "EXACT_NORMALIZED_TEXT",
+          "fullIntersection": 0,
+          "selectedIntersection": 0
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 49,
+          "selectedIntersection": 35
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 0,
+          "selectedIntersection": 0
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 49,
+          "selectedIntersection": 35
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 49,
+          "selectedIntersection": 35
+        },
+        {
+          "left": "READING_DISTANCE",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 2700,
+          "selectedIntersection": 403
+        }
+      ]
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "fullCandidateCount": 10413,
+      "shortlistedCandidateCount": 1490,
+      "reductionPercentage": 0.8569096321905311,
+      "perOccurrenceFanout": {
+        "count": 1302,
+        "min": 2,
+        "p50": 2,
+        "p95": 4,
+        "max": 8,
+        "mean": 2.2887864823348694,
+        "total": 2980
+      },
+      "channelStats": [
+        {
+          "channel": "EXACT_NORMALIZED_TEXT",
+          "fullCount": 44,
+          "selectedCount": 37,
+          "selectedShare": 0.024832214765100672
+        },
+        {
+          "channel": "HIGH_LEXICAL_SIMILARITY",
+          "fullCount": 286,
+          "selectedCount": 243,
+          "selectedShare": 0.16308724832214766
+        },
+        {
+          "channel": "NUMBERING_BASE_FORM",
+          "fullCount": 67,
+          "selectedCount": 56,
+          "selectedShare": 0.03758389261744966
+        },
+        {
+          "channel": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullCount": 10413,
+          "selectedCount": 1490,
+          "selectedShare": 1
+        },
+        {
+          "channel": "ACRONYM_OR_VARIANT",
+          "fullCount": 26,
+          "selectedCount": 26,
+          "selectedShare": 0.0174496644295302
+        },
+        {
+          "channel": "READING_DISTANCE",
+          "fullCount": 10380,
+          "selectedCount": 1464,
+          "selectedShare": 0.9825503355704698
+        }
+      ],
+      "channelOverlap": [
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 44,
+          "selectedIntersection": 37
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 44,
+          "selectedIntersection": 37
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 44,
+          "selectedIntersection": 37
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 11,
+          "selectedIntersection": 11
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 67,
+          "selectedIntersection": 56
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 286,
+          "selectedIntersection": 243
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 253,
+          "selectedIntersection": 217
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 67,
+          "selectedIntersection": 56
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 34,
+          "selectedIntersection": 30
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "EXACT_NORMALIZED_TEXT",
+          "fullIntersection": 7,
+          "selectedIntersection": 7
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 19,
+          "selectedIntersection": 19
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 8,
+          "selectedIntersection": 8
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 26,
+          "selectedIntersection": 26
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 22,
+          "selectedIntersection": 22
+        },
+        {
+          "left": "READING_DISTANCE",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 10380,
+          "selectedIntersection": 1464
+        }
+      ]
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "fullCandidateCount": 36014,
+      "shortlistedCandidateCount": 5802,
+      "reductionPercentage": 0.8388959848947631,
+      "perOccurrenceFanout": {
+        "count": 4457,
+        "min": 2,
+        "p50": 2,
+        "p95": 5,
+        "max": 11,
+        "mean": 2.603544985416199,
+        "total": 11604
+      },
+      "channelStats": [
+        {
+          "channel": "EXACT_NORMALIZED_TEXT",
+          "fullCount": 406,
+          "selectedCount": 402,
+          "selectedShare": 0.06928645294725956
+        },
+        {
+          "channel": "HIGH_LEXICAL_SIMILARITY",
+          "fullCount": 1865,
+          "selectedCount": 1609,
+          "selectedShare": 0.2773181661496036
+        },
+        {
+          "channel": "NUMBERING_BASE_FORM",
+          "fullCount": 914,
+          "selectedCount": 829,
+          "selectedShare": 0.14288176490865218
+        },
+        {
+          "channel": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullCount": 36014,
+          "selectedCount": 5802,
+          "selectedShare": 1
+        },
+        {
+          "channel": "ACRONYM_OR_VARIANT",
+          "fullCount": 395,
+          "selectedCount": 364,
+          "selectedShare": 0.06273698724577732
+        },
+        {
+          "channel": "READING_DISTANCE",
+          "fullCount": 35620,
+          "selectedCount": 5412,
+          "selectedShare": 0.9327817993795243
+        }
+      ],
+      "channelOverlap": [
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 397,
+          "selectedIntersection": 393
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 406,
+          "selectedIntersection": 402
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 406,
+          "selectedIntersection": 402
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 12,
+          "selectedIntersection": 12
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 905,
+          "selectedIntersection": 820
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 1865,
+          "selectedIntersection": 1609
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 1471,
+          "selectedIntersection": 1219
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 914,
+          "selectedIntersection": 829
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 520,
+          "selectedIntersection": 439
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "EXACT_NORMALIZED_TEXT",
+          "fullIntersection": 130,
+          "selectedIntersection": 126
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 353,
+          "selectedIntersection": 324
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 318,
+          "selectedIntersection": 290
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 395,
+          "selectedIntersection": 364
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 267,
+          "selectedIntersection": 240
+        },
+        {
+          "left": "READING_DISTANCE",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 35620,
+          "selectedIntersection": 5412
+        }
+      ]
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "fullCandidateCount": 9859,
+      "shortlistedCandidateCount": 1055,
+      "reductionPercentage": 0.8929911755756161,
+      "perOccurrenceFanout": {
+        "count": 751,
+        "min": 2,
+        "p50": 2,
+        "p95": 5,
+        "max": 6,
+        "mean": 2.8095872170439415,
+        "total": 2110
+      },
+      "channelStats": [
+        {
+          "channel": "EXACT_NORMALIZED_TEXT",
+          "fullCount": 4192,
+          "selectedCount": 311,
+          "selectedShare": 0.2947867298578199
+        },
+        {
+          "channel": "HIGH_LEXICAL_SIMILARITY",
+          "fullCount": 4296,
+          "selectedCount": 398,
+          "selectedShare": 0.37725118483412323
+        },
+        {
+          "channel": "NUMBERING_BASE_FORM",
+          "fullCount": 4194,
+          "selectedCount": 313,
+          "selectedShare": 0.2966824644549763
+        },
+        {
+          "channel": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullCount": 9859,
+          "selectedCount": 1055,
+          "selectedShare": 1
+        },
+        {
+          "channel": "ACRONYM_OR_VARIANT",
+          "fullCount": 4042,
+          "selectedCount": 261,
+          "selectedShare": 0.24739336492890995
+        },
+        {
+          "channel": "READING_DISTANCE",
+          "fullCount": 5972,
+          "selectedCount": 988,
+          "selectedShare": 0.9364928909952607
+        }
+      ],
+      "channelOverlap": [
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 4192,
+          "selectedIntersection": 311
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 4192,
+          "selectedIntersection": 311
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 4192,
+          "selectedIntersection": 311
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 305,
+          "selectedIntersection": 244
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 4194,
+          "selectedIntersection": 313
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 4296,
+          "selectedIntersection": 398
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 409,
+          "selectedIntersection": 331
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 4194,
+          "selectedIntersection": 313
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 307,
+          "selectedIntersection": 246
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "EXACT_NORMALIZED_TEXT",
+          "fullIntersection": 4033,
+          "selectedIntersection": 253
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 4042,
+          "selectedIntersection": 261
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 4035,
+          "selectedIntersection": 255
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 4042,
+          "selectedIntersection": 261
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 286,
+          "selectedIntersection": 225
+        },
+        {
+          "left": "READING_DISTANCE",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 5972,
+          "selectedIntersection": 988
+        }
+      ]
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "fullCandidateCount": 41478,
+      "shortlistedCandidateCount": 5997,
+      "reductionPercentage": 0.8554173296687401,
+      "perOccurrenceFanout": {
+        "count": 4985,
+        "min": 2,
+        "p50": 2,
+        "p95": 4,
+        "max": 6,
+        "mean": 2.4060180541624874,
+        "total": 11994
+      },
+      "channelStats": [
+        {
+          "channel": "EXACT_NORMALIZED_TEXT",
+          "fullCount": 2776,
+          "selectedCount": 1340,
+          "selectedShare": 0.22344505586126395
+        },
+        {
+          "channel": "HIGH_LEXICAL_SIMILARITY",
+          "fullCount": 1736,
+          "selectedCount": 360,
+          "selectedShare": 0.060030015007503754
+        },
+        {
+          "channel": "NUMBERING_BASE_FORM",
+          "fullCount": 2811,
+          "selectedCount": 1374,
+          "selectedShare": 0.22911455727863933
+        },
+        {
+          "channel": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullCount": 41478,
+          "selectedCount": 5997,
+          "selectedShare": 1
+        },
+        {
+          "channel": "ACRONYM_OR_VARIANT",
+          "fullCount": 1441,
+          "selectedCount": 240,
+          "selectedShare": 0.0400200100050025
+        },
+        {
+          "channel": "READING_DISTANCE",
+          "fullCount": 39844,
+          "selectedCount": 5738,
+          "selectedShare": 0.9568117392029348
+        }
+      ],
+      "channelOverlap": [
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 1684,
+          "selectedIntersection": 309
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 2776,
+          "selectedIntersection": 1340
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 2776,
+          "selectedIntersection": 1340
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 1142,
+          "selectedIntersection": 1081
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 1684,
+          "selectedIntersection": 309
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 1736,
+          "selectedIntersection": 360
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 111,
+          "selectedIntersection": 110
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 2811,
+          "selectedIntersection": 1374
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 1177,
+          "selectedIntersection": 1115
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "EXACT_NORMALIZED_TEXT",
+          "fullIntersection": 1434,
+          "selectedIntersection": 233
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 1435,
+          "selectedIntersection": 234
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 1434,
+          "selectedIntersection": 233
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 1441,
+          "selectedIntersection": 240
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 57,
+          "selectedIntersection": 57
+        },
+        {
+          "left": "READING_DISTANCE",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 39844,
+          "selectedIntersection": 5738
+        }
+      ]
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "fullCandidateCount": 2442,
+      "shortlistedCandidateCount": 429,
+      "reductionPercentage": 0.8243243243243243,
+      "perOccurrenceFanout": {
+        "count": 303,
+        "min": 2,
+        "p50": 3,
+        "p95": 5,
+        "max": 6,
+        "mean": 2.8316831683168315,
+        "total": 858
+      },
+      "channelStats": [
+        {
+          "channel": "EXACT_NORMALIZED_TEXT",
+          "fullCount": 139,
+          "selectedCount": 111,
+          "selectedShare": 0.25874125874125875
+        },
+        {
+          "channel": "HIGH_LEXICAL_SIMILARITY",
+          "fullCount": 184,
+          "selectedCount": 99,
+          "selectedShare": 0.23076923076923078
+        },
+        {
+          "channel": "NUMBERING_BASE_FORM",
+          "fullCount": 129,
+          "selectedCount": 106,
+          "selectedShare": 0.24708624708624707
+        },
+        {
+          "channel": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullCount": 2442,
+          "selectedCount": 429,
+          "selectedShare": 1
+        },
+        {
+          "channel": "ACRONYM_OR_VARIANT",
+          "fullCount": 0,
+          "selectedCount": 0,
+          "selectedShare": 0
+        },
+        {
+          "channel": "READING_DISTANCE",
+          "fullCount": 2388,
+          "selectedCount": 395,
+          "selectedShare": 0.9207459207459208
+        }
+      ],
+      "channelOverlap": [
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 47,
+          "selectedIntersection": 37
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 124,
+          "selectedIntersection": 101
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 139,
+          "selectedIntersection": 111
+        },
+        {
+          "left": "EXACT_NORMALIZED_TEXT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 85,
+          "selectedIntersection": 77
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 44,
+          "selectedIntersection": 34
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 184,
+          "selectedIntersection": 99
+        },
+        {
+          "left": "HIGH_LEXICAL_SIMILARITY",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 160,
+          "selectedIntersection": 85
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 129,
+          "selectedIntersection": 106
+        },
+        {
+          "left": "NUMBERING_BASE_FORM",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 75,
+          "selectedIntersection": 72
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "EXACT_NORMALIZED_TEXT",
+          "fullIntersection": 0,
+          "selectedIntersection": 0
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "HIGH_LEXICAL_SIMILARITY",
+          "fullIntersection": 0,
+          "selectedIntersection": 0
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "NUMBERING_BASE_FORM",
+          "fullIntersection": 0,
+          "selectedIntersection": 0
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 0,
+          "selectedIntersection": 0
+        },
+        {
+          "left": "ACRONYM_OR_VARIANT",
+          "right": "READING_DISTANCE",
+          "fullIntersection": 0,
+          "selectedIntersection": 0
+        },
+        {
+          "left": "READING_DISTANCE",
+          "right": "STRUCTURAL_CONTEXT_COMPATIBLE",
+          "fullIntersection": 2388,
+          "selectedIntersection": 395
+        }
+      ]
+    }
+  ],
+  "fullCandidateCount": 102915,
+  "shortlistedCandidateCount": 15185
+}
