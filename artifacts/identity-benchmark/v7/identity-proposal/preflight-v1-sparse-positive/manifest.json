@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "a99-v7a-preflight-manifest-v1",
+  "status": "READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION",
+  "requestCount": 3,
+  "documentCount": 3,
+  "occurrenceCount": 226,
+  "candidatePairCount": 291,
+  "requestHashes": [
+    "f0fb93a1e0c9a2e684de4ae2aacd6a24c1f65cedfa66e490370bf35cc4d30044",
+    "50b28f51e695a67bcb3acd3d28d50108abd9b5a202908764c14ba85e985fc0ff",
+    "cdf72754f6e2c9b3546a4c0b56cbc0f76abfbe23c979642ac5cf207385f1ab84"
+  ],
+  "sourceFingerprint": {
+    "sourceManifestSha256": "5fd54bc84cba336ac9bca21a2385ca6470313c7a4ab0b42366ce60a4289dbd4d",
+    "packetsSha256": "e3ccd0a7cc1406bedbfb69e2c03fb350ba0dacf5b807d144cf76abd9159c4b47"
+  },
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "goldDerivedInput": false,
+  "v4hEvaluationIncluded": false,
+  "v5PredictionIncluded": false,
+  "v6dPredictionIncluded": false,
+  "autoCollapse": false,
+  "generalizationClaim": false,
+  "candidatePolicy": "Source-only deterministic attention candidates; candidate pairs are not merge evidence."
+}

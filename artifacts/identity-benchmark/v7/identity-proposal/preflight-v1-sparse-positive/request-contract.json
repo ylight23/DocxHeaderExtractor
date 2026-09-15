@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "a99-v7a-sparse-positive-identity-proposal-contract-v1",
+  "input": [
+    "sourceOccurrences",
+    "documentOrder",
+    "sourceContainerIdentity",
+    "localContext",
+    "parserOwnedEvidence",
+    "deterministicCandidatePairReasons"
+  ],
+  "output": [
+    "positiveProposals",
+    "unresolvedPairIds"
+  ],
+  "proposalRelations": [
+    "SAME_SEMANTIC_REPEAT",
+    "CONTINUATION_OF"
+  ],
+  "defaultPolicy": "KEEP_SPLIT",
+  "modelPositiveStatus": "MODEL_PROPOSED_ONLY",
+  "autoCollapse": false,
+  "forbidden": [
+    "Gold",
+    "V4H/V5/V6D predictions",
+    "parent",
+    "ROOT",
+    "level",
+    "pair labels for omitted pairs",
+    "canonical occurrence IDs in output",
+    "automatic merge authority"
+  ],
+  "validation": [
+    "known pair handle",
+    "known occurrence handles",
+    "no self pair",
+    "one proposal per pair",
+    "valid relation enum",
+    "continuation direction only for CONTINUATION_OF",
+    "no automatic component collapse"
+  ]
+}
