@@ -18,6 +18,7 @@ internal static class Program
     private const string V3PreflightRelative = "artifacts/identity-benchmark/v6/owner-induction/preflight-v3-opaque-handles";
     private const string V3ExecutionRelative = "artifacts/identity-benchmark/v6/owner-induction/execution-v3-opaque-handles";
     private const string V3RevalidationRelative = "artifacts/identity-benchmark/v6/owner-induction/revalidation-v3-target-occurrences-v2";
+    private const string V6DPreflightRelative = "artifacts/identity-benchmark/v6/semantic-node-induction/preflight-v1-owner-conditioned";
     private const string V3HandleMapSha256 = "0666173081122a3b031928f9feadb2e059517168281d4ea1b022bc0bdddd9210";
     private const string Provider = "OpenRouter";
     private const string Model = "qwen/qwen3.7-flash";
@@ -49,6 +50,7 @@ internal static class Program
             if (args.Any(x => string.Equals(x, "--diagnose-primary", StringComparison.Ordinal))) return await DiagnosePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--prepare-v2", StringComparison.Ordinal))) return await PrepareV2Async(root);
             if (args.Any(x => string.Equals(x, "--prepare-v3", StringComparison.Ordinal))) return await PrepareV3Async(root);
+            if (args.Any(x => string.Equals(x, "--prepare-v6d", StringComparison.Ordinal))) return await PrepareV6DAsync(root);
             await RunPreflightAsync(root);
             Console.WriteLine("V6C_STATUS=OWNER_INDUCTION_PREFLIGHT_FROZEN REQUESTS=3 MODEL_CALLS=0 PROVIDER_CALLS=0 GOLD_READ_COUNT=0 V5C_READ_COUNT=0 V6A_READ_COUNT=0");
             return 0;
@@ -1231,6 +1233,148 @@ internal static class Program
     }
 
     private static string[] StringArray(JsonNode node) => node.AsArray().Select(x => x!.GetValue<string>()).ToArray();
+
+    private static async Task<int> PrepareV6DAsync(string root)
+    {
+        var v3 = Full(root, V3PreflightRelative);
+        var revalidation = Full(root, V3RevalidationRelative);
+        var output = Full(root, V6DPreflightRelative);
+        Require(!Directory.Exists(output) || !Directory.EnumerateFiles(output, "*", SearchOption.AllDirectories).Any(), "V6D_PREFLIGHT_ALREADY_EXISTS");
+        using var revalidationManifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(revalidation, "manifest.json")));
+        var authority = revalidationManifest.RootElement;
+        Require(authority.GetProperty("status").GetString() == "OFFLINE_REVALIDATION_COMPLETE" && authority.GetProperty("valid").GetInt32() == ExpectedRequests && authority.GetProperty("invalid").GetInt32() == 0 && authority.GetProperty("assignedOccurrences").GetInt32() == ExpectedOccurrences && authority.GetProperty("unresolvedOccurrences").GetInt32() == 0, "V6D_OWNER_AUTHORITY_NOT_VALID");
+        Require(authority.GetProperty("providerCalls").GetInt32() == 0 && authority.GetProperty("goldReadCount").GetInt32() == 0 && authority.GetProperty("v5cReadCount").GetInt32() == 0 && authority.GetProperty("v6aReadCount").GetInt32() == 0 && authority.GetProperty("rawRepair").GetBoolean() == false && authority.GetProperty("attemptMutation").GetBoolean() == false, "V6D_OWNER_AUTHORITY_FIREWALL");
+        using var requests = JsonDocument.Parse(File.ReadAllText(Path.Combine(v3, "requests.json")));
+        using var predictions = JsonDocument.Parse(File.ReadAllText(Path.Combine(revalidation, "predictions.json")));
+        var records = BuildV6DRecords(requests.RootElement, predictions.RootElement);
+        var rebuilt = BuildV6DRecords(requests.RootElement, predictions.RootElement);
+        var requestHashes = records.Select(x => x!["requestHash"]!.GetValue<string>()).ToArray();
+        var rebuiltHashes = rebuilt.Select(x => x!["requestHash"]!.GetValue<string>()).ToArray();
+        Require(requestHashes.SequenceEqual(rebuiltHashes, StringComparer.Ordinal), "V6D_DETERMINISTIC_REBUILD_MISMATCH");
+        var requestSetSha = Sha256Text(string.Join("\n", requestHashes));
+        Directory.CreateDirectory(output);
+        await WriteAsync(Path.Combine(output, "request-contract.json"), new
+        {
+            schemaVersion = "a99-v6d-semantic-node-induction-owner-conditioned-v1",
+            input = new[] { "frozen V6B source evidence", "V6C corrected owner assignments", "Uxxx occurrence handles", "Exxx evidence handles", "Oxxx owner handles", "owner descriptions/autonomy" },
+            forbiddenInput = new[] { "Gold", "V5C evaluation", "V6A diagnosis", "V5 predictions", "pair labels", "parent", "ROOT", "level" },
+            output = new { semanticNodes = new[] { "node", "description" }, assignments = new[] { "ref", "node", "role" }, continuationEdges = new[] { "from", "to" }, unresolvedRefs = "allowed" },
+            forbiddenOutput = new[] { "canonical occurrence IDs", "canonical evidence IDs", "canonical owner IDs", "numeric offsets", "level", "parent", "pair labels" },
+            validation = new[] { "unknown U => INVALID", "missing target U => INVALID", "duplicate U assignment => INVALID", "unknown N => INVALID", "empty semantic node => INVALID", "unknown continuation endpoint => INVALID", "cross-node continuation => INVALID", "continuation cycle => INVALID", "unknown E/O => INVALID", "no silent repair", "role CONTINUATION alone does not derive a pair relation" },
+            ownerSemantics = "evidence_only_same_owner_does_not_force_same_node_and_different_owner_does_not_force_distinct_node",
+            goldReadCount = 0,
+            v5cReadCount = 0,
+            v6aReadCount = 0,
+        });
+        await WriteAsync(Path.Combine(output, "source-fingerprint.json"), new
+        {
+            v3PreflightManifestSha256 = Sha256File(Path.Combine(v3, "manifest.json")),
+            v3PreflightRequestsSha256 = Sha256File(Path.Combine(v3, "requests.json")),
+            correctedOwnerRevalidationManifestSha256 = Sha256File(Path.Combine(revalidation, "manifest.json")),
+            correctedOwnerPredictionsSha256 = Sha256File(Path.Combine(revalidation, "predictions.json")),
+        });
+        await WriteAsync(Path.Combine(output, "requests.json"), new
+        {
+            schemaVersion = "a99-v6d-semantic-node-induction-requests-v1",
+            status = "FROZEN_OWNER_CONDITIONED_SEMANTIC_NODE_REQUESTS",
+            supersedes = "v6c-v3-corrected-offline-revalidation-v2",
+            requestCount = records.Count,
+            occurrenceCount = records.Sum(x => x!["occurrenceCount"]!.GetValue<int>()),
+            ownerCount = records.Sum(x => x!["ownerCount"]!.GetValue<int>()),
+            requestHashes,
+            requestSetSha256 = requestSetSha,
+            goldDerivedInput = false,
+            v5cEvaluationIncluded = false,
+            v6aDiagnosisIncluded = false,
+            v5PredictionIncluded = false,
+            parentOrHierarchyRequested = false,
+            records,
+        });
+        await WriteAsync(Path.Combine(output, "manifest.json"), new
+        {
+            schemaVersion = "a99-v6d-preflight-manifest-v1",
+            status = "READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION",
+            documentCount = records.Count,
+            requestCount = records.Count,
+            occurrenceCount = records.Sum(x => x!["occurrenceCount"]!.GetValue<int>()),
+            ownerCount = records.Sum(x => x!["ownerCount"]!.GetValue<int>()),
+            requestHashes,
+            requestSetSha256 = requestSetSha,
+            deterministicRebuild = true,
+            ownerAuthority = "V6C_V3_CORRECTED_OFFLINE_REVALIDATION_V2",
+            ownerAuthorityValid = true,
+            goldReadCount = 0,
+            v5cReadCount = 0,
+            v6aReadCount = 0,
+            v5PredictionReadCount = 0,
+            providerCalls = 0,
+            modelCalls = 0,
+            v6cOwnerReads = records.Count,
+            parentOrHierarchyRequested = false,
+        });
+        await File.WriteAllTextAsync(Path.Combine(output, "report.md"), "# A99 V6D — owner-conditioned semantic-node induction preflight\n\nThree document-global requests are frozen from corrected V6C-v3 owner predictions. V6C primary execution remains immutable and is not overwritten. This boundary has zero provider calls and zero Gold/V5/V6A reads. Semantic-node membership is assignments-only; owner membership is already frozen as V6C input evidence.\n", new UTF8Encoding(false));
+        Console.WriteLine($"V6D_PREFLIGHT_COMPLETE REQUESTS={records.Count} OCCURRENCES={records.Sum(x => x!["occurrenceCount"]!.GetValue<int>())} OWNERS={records.Sum(x => x!["ownerCount"]!.GetValue<int>())} PROVIDER_CALLS=0 GOLD_READ_COUNT=0 DETERMINISTIC_REBUILD=true");
+        return 0;
+    }
+
+    private static JsonArray BuildV6DRecords(JsonElement requestsRoot, JsonElement predictionsRoot)
+    {
+        var predictionRows = predictionsRoot.GetProperty("rows").EnumerateArray().ToDictionary(x => x.GetProperty("documentId").GetString()!, StringComparer.Ordinal);
+        var records = new JsonArray();
+        foreach (var record in requestsRoot.GetProperty("records").EnumerateArray().OrderBy(x => x.GetProperty("documentId").GetString(), StringComparer.Ordinal))
+        {
+            var source = JsonNode.Parse(record.GetProperty("request").GetRawText())!.AsObject();
+            var documentId = source["documentId"]!.GetValue<string>();
+            var prediction = predictionRows[documentId];
+            Require(prediction.GetProperty("correctedStatus").GetString() == "VALID", $"V6D_OWNER_PREDICTION_NOT_VALID_{documentId}");
+            var deprojected = JsonNode.Parse(prediction.GetProperty("deprojected").GetRawText())!.AsObject();
+            var occurrenceHandles = source["occurrences"]!.AsArray().ToDictionary(x => x!["sourceOccurrenceId"]!.GetValue<string>(), x => x["ref"]!.GetValue<string>(), StringComparer.Ordinal);
+            var evidenceHandles = source["evidenceCatalog"]!.AsArray().ToDictionary(x => x!["sourceEvidenceId"]!.GetValue<string>(), x => x["ref"]!.GetValue<string>(), StringComparer.Ordinal);
+            var owners = new JsonArray();
+            foreach (var owner in deprojected["owners"]!.AsArray())
+            {
+                var evidenceRefs = new JsonArray(owner!["evidenceRefs"]!.AsArray().Select(x => (JsonNode)JsonValue.Create(evidenceHandles[x!.GetValue<string>()])!).ToArray());
+                owners.Add(new JsonObject { ["owner"] = owner["owner"]!.GetValue<string>(), ["description"] = owner["description"]!.GetValue<string>(), ["autonomous"] = owner["autonomous"]!.GetValue<bool>(), ["evidenceRefs"] = evidenceRefs });
+            }
+            var ownerAssignments = new JsonArray();
+            foreach (var assignment in deprojected["assignments"]!.AsArray())
+            {
+                var occurrenceId = assignment!["occurrenceId"]!.GetValue<string>();
+                Require(occurrenceHandles.ContainsKey(occurrenceId), $"V6D_OWNER_OCCURRENCE_NOT_IN_V3_REQUEST_{documentId}");
+                ownerAssignments.Add(new JsonObject { ["ref"] = occurrenceHandles[occurrenceId], ["owner"] = assignment["owner"]!.GetValue<string>() });
+            }
+            var unresolvedOwnerRefs = new JsonArray(deprojected["unresolvedOccurrenceIds"]!.AsArray().Select(x => (JsonNode)JsonValue.Create(occurrenceHandles[x!.GetValue<string>()])!).ToArray());
+            var targetRefs = new JsonArray(source["occurrences"]!.AsArray().Select(x => (JsonNode)JsonValue.Create(x!["ref"]!.GetValue<string>())!).ToArray());
+            var request = new JsonObject
+            {
+                ["schemaVersion"] = "a99-v6d-semantic-node-induction-owner-conditioned-v1",
+                ["documentId"] = documentId,
+                ["occurrences"] = source["occurrences"]!.DeepClone(),
+                ["parserOwnedScopeGroups"] = source["parserOwnedScopeGroups"]!.DeepClone(),
+                ["evidenceCatalog"] = source["evidenceCatalog"]!.DeepClone(),
+                ["owners"] = owners,
+                ["ownerAssignments"] = ownerAssignments,
+                ["unresolvedOwnerRefs"] = unresolvedOwnerRefs,
+                ["targetOccurrenceRefs"] = targetRefs,
+                ["allowedOccurrenceRefs"] = source["allowedOccurrenceRefs"]!.DeepClone(),
+                ["allowedEvidenceRefs"] = source["allowedEvidenceRefs"]!.DeepClone(),
+                ["allowedOwnerRefs"] = new JsonArray(owners.Select(x => (JsonNode)JsonValue.Create(x!["owner"]!.GetValue<string>())!).ToArray()),
+                ["ownerAuthority"] = "V6C_V3_CORRECTED_OFFLINE_REVALIDATION_V2",
+                ["goldDerivedInput"] = false,
+                ["v5cEvaluationIncluded"] = false,
+                ["v6aDiagnosisIncluded"] = false,
+                ["v5PredictionIncluded"] = false,
+                ["semanticNodeRequested"] = true,
+                ["parentOrHierarchyRequested"] = false,
+                ["pairLabelsRequested"] = false,
+                ["membershipRepresentation"] = "ASSIGNMENTS_ONLY_DERIVE_MEMBERS",
+                ["addressabilityContract"] = "OUTPUT_ONLY_OPAQUE_OCCURRENCE_EVIDENCE_AND_OWNER_HANDLES",
+            };
+            var serialized = request.ToJsonString(JsonOptions);
+            records.Add(new JsonObject { ["documentId"] = documentId, ["request"] = JsonNode.Parse(serialized), ["requestHash"] = Sha256Text(serialized), ["occurrenceCount"] = source["occurrences"]!.AsArray().Count, ["ownerCount"] = owners.Count });
+        }
+        return records;
+    }
 
     private static JsonArray ProjectEvidenceRefs(JsonNode node, IReadOnlyDictionary<string, string> evidenceLookup) => new(StringArray(node).Select(value => (JsonNode)JsonValue.Create(evidenceLookup[value])!).ToArray());
 

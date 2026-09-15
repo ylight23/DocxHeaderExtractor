@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "a99-v6d-semantic-node-induction-owner-conditioned-v1",
+  "input": [
+    "frozen V6B source evidence",
+    "V6C corrected owner assignments",
+    "Uxxx occurrence handles",
+    "Exxx evidence handles",
+    "Oxxx owner handles",
+    "owner descriptions/autonomy"
+  ],
+  "forbiddenInput": [
+    "Gold",
+    "V5C evaluation",
+    "V6A diagnosis",
+    "V5 predictions",
+    "pair labels",
+    "parent",
+    "ROOT",
+    "level"
+  ],
+  "output": {
+    "semanticNodes": [
+      "node",
+      "description"
+    ],
+    "assignments": [
+      "ref",
+      "node",
+      "role"
+    ],
+    "continuationEdges": [
+      "from",
+      "to"
+    ],
+    "unresolvedRefs": "allowed"
+  },
+  "forbiddenOutput": [
+    "canonical occurrence IDs",
+    "canonical evidence IDs",
+    "canonical owner IDs",
+    "numeric offsets",
+    "level",
+    "parent",
+    "pair labels"
+  ],
+  "validation": [
+    "unknown U =\u003E INVALID",
+    "missing target U =\u003E INVALID",
+    "duplicate U assignment =\u003E INVALID",
+    "unknown N =\u003E INVALID",
+    "empty semantic node =\u003E INVALID",
+    "unknown continuation endpoint =\u003E INVALID",
+    "cross-node continuation =\u003E INVALID",
+    "continuation cycle =\u003E INVALID",
+    "unknown E/O =\u003E INVALID",
+    "no silent repair",
+    "role CONTINUATION alone does not derive a pair relation"
+  ],
+  "ownerSemantics": "evidence_only_same_owner_does_not_force_same_node_and_different_owner_does_not_force_distinct_node",
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0
+}

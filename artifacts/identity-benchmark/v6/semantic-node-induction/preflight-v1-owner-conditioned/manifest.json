@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "a99-v6d-preflight-manifest-v1",
+  "status": "READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION",
+  "documentCount": 3,
+  "requestCount": 3,
+  "occurrenceCount": 226,
+  "ownerCount": 106,
+  "requestHashes": [
+    "e893a2d03c3f169d20c08bb7a0b458d9fdd3a7bbad71ab90f9995752dde40189",
+    "9dcee7b0930c037d08df1ead371ce20435458c2c949a1e9e47976d0615d0aad7",
+    "753a9b08aaff70832b260872c37f23c82fe2375c91df53713fbcdb0916771c4e"
+  ],
+  "requestSetSha256": "710452c4bd3b7a695f8078018e8f5b287730ff6f9f9300ca5efcc7c7eeea6637",
+  "deterministicRebuild": true,
+  "ownerAuthority": "V6C_V3_CORRECTED_OFFLINE_REVALIDATION_V2",
+  "ownerAuthorityValid": true,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v5PredictionReadCount": 0,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "v6cOwnerReads": 3,
+  "parentOrHierarchyRequested": false
+}
