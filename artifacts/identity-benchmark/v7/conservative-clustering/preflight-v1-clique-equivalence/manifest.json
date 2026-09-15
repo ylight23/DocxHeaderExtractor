@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "a99-v7c-conservative-clique-equivalence-preflight-v1",
+  "status": "V7C_PREDICTION_GRAPH_FROZEN_BEFORE_GOLD_OR_EVALUATION",
+  "input": {
+    "v7bRequestSetSha256": "5af2dd92a27ff109a4bf929685f336fe9496d6c12602adfd1d3c6fe62e70cf45",
+    "acceptedSameEdges": 41,
+    "acceptedContinuationEdgesUsed": 0,
+    "invalidVerifierDocuments": [
+      "DOC-0252"
+    ]
+  },
+  "occurrenceCount": 226,
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "historicalPredictionReadCount": 0,
+  "evaluationReadCount": 0,
+  "connectedComponentsAuthority": false,
+  "clusteringAlgorithm": "EXACT_CLIQUE_PARTITION_PER_POSITIVE_COMPONENT_V1",
+  "defaultPolicy": "ABSENCE_OF_POSITIVE_AUTHORITY_MEANS_KEEP_SPLIT",
+  "generalizationClaim": false
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "a99-v7c-conservative-clustering-summary-v1",
+  "status": "V7C_PREDICTION_GRAPH_FROZEN_BEFORE_GOLD_OR_EVALUATION",
+  "acceptedSameEdges": 41,
+  "acceptedContinuationEdgesUsed": 0,
+  "invalidVerifierDocuments": [
+    "DOC-0252"
+  ],
+  "totalClusters": 189,
+  "multiMemberClusters": 33,
+  "singletonClusters": 156,
+  "largestCluster": 3,
+  "acceptedEdgesSatisfied": 41,
+  "acceptedEdgesRejectedByGlobalConsistency": 0,
+  "keepSplitViolations": 0,
+  "transitivityViolations": 0,
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "historicalPredictionReadCount": 0,
+  "evaluationReadCount": 0,
+  "connectedComponentsAuthority": false,
+  "componentDiagnostics": [
+    {
+      "documentId": "DOC-0123",
+      "occurrences": 116,
+      "acceptedSameEdges": 36,
+      "invalidVerifierDocument": false,
+      "positiveComponents": 84,
+      "totalClusters": 84,
+      "multiMemberClusters": 28,
+      "largestCluster": 3
+    },
+    {
+      "documentId": "DOC-0133",
+      "occurrences": 57,
+      "acceptedSameEdges": 5,
+      "invalidVerifierDocument": false,
+      "positiveComponents": 52,
+      "totalClusters": 52,
+      "multiMemberClusters": 5,
+      "largestCluster": 2
+    },
+    {
+      "documentId": "DOC-0252",
+      "occurrences": 53,
+      "acceptedSameEdges": 0,
+      "invalidVerifierDocument": true,
+      "positiveComponents": 53,
+      "totalClusters": 53,
+      "multiMemberClusters": 0,
+      "largestCluster": 1
+    }
+  ]
+}
