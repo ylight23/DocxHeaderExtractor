@@ -1,0 +1,151 @@
+{
+  "artifactKind": "a99_identity_benchmark_v8b0_heading_boundary_audit",
+  "schemaVersion": "a99-v8b0-heading-boundary-audit-v1",
+  "status": "BLOCKED_ON_UPSTREAM_HEADING_PREDICTIONS",
+  "authority": {
+    "v8a2Commit": "579b3fd",
+    "v8a2ManifestSha256": "1ceb04713b8ead164e41b8454e3c52a16dfbfe65c828d45f3e3065a4fd71cf7a",
+    "v8a2OccurrencesSha256": "beeae5286a3766cb77a1214d79e5cecbc956342ba0697365e06a626a5e61a54e",
+    "v8a2CandidatePairsSha256": "c91e0313110708ea4a5f4ab283cb2c54f86bcf8931569df2543a3aca2e47dc21",
+    "v8a2ArtifactsMutated": false,
+    "v8bArtifactsMutated": false
+  },
+  "answers": {
+    "sourceOf12140Occurrences": "V8A2_PDF_PDFPIG_WORD_GROUPING_PLUS_LOOKS_STRUCTURAL_PDF_LINE",
+    "headingExtractionAndBindingConfirmedCount": 0,
+    "frozenAuthoritativeBoundHeadingSetExists": false,
+    "candidateInputBoundary": "B_GENERIC_SOURCE_OCCURRENCES",
+    "candidateGeneration": "V8A2 GenerateCandidates(ParsedDocument.Occurrences)"
+  },
+  "sourcePipeline": {
+    "parserImplementation": "tools/identity-benchmark-v8a2-intake/Program.cs",
+    "parserEvidence": "PDF_WORD_COORDINATE_LINE_STRUCTURAL_SIGNAL",
+    "parserBehavior": "PdfPig groups words by rounded Bottom coordinate into non-empty text lines; LooksStructuralPdfLine selects short/numbered/uppercase-like lines.",
+    "llmHeadingExtraction": "NOT_RUN_FOR_V8A2_SOURCES",
+    "harnessBinding": "NO_FROZEN_UPSTREAM_BINDING_ARTIFACT_FOUND"
+  },
+  "documents": [
+    {
+      "documentId": "NEW-073DB817879B",
+      "sourceFormat": "pdf",
+      "rawSourceOccurrences": 342,
+      "headingCandidatesBeforeModel": 342,
+      "modelSelectedHeadings": 0,
+      "successfullySourceBoundHeadings": 0,
+      "rejectedHeadingsRecorded": 0,
+      "occurrencesWithoutFrozenHeadingPrediction": 342,
+      "candidatePairsFromCurrentInput": 2709,
+      "evidenceReasons": [
+        "PDF_WORD_COORDINATE_LINE_STRUCTURAL_SIGNAL"
+      ]
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "sourceFormat": "pdf",
+      "rawSourceOccurrences": 1302,
+      "headingCandidatesBeforeModel": 1302,
+      "modelSelectedHeadings": 0,
+      "successfullySourceBoundHeadings": 0,
+      "rejectedHeadingsRecorded": 0,
+      "occurrencesWithoutFrozenHeadingPrediction": 1302,
+      "candidatePairsFromCurrentInput": 10413,
+      "evidenceReasons": [
+        "PDF_WORD_COORDINATE_LINE_STRUCTURAL_SIGNAL"
+      ]
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "sourceFormat": "pdf",
+      "rawSourceOccurrences": 4457,
+      "headingCandidatesBeforeModel": 4457,
+      "modelSelectedHeadings": 0,
+      "successfullySourceBoundHeadings": 0,
+      "rejectedHeadingsRecorded": 0,
+      "occurrencesWithoutFrozenHeadingPrediction": 4457,
+      "candidatePairsFromCurrentInput": 36014,
+      "evidenceReasons": [
+        "PDF_WORD_COORDINATE_LINE_STRUCTURAL_SIGNAL"
+      ]
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "sourceFormat": "pdf",
+      "rawSourceOccurrences": 751,
+      "headingCandidatesBeforeModel": 751,
+      "modelSelectedHeadings": 0,
+      "successfullySourceBoundHeadings": 0,
+      "rejectedHeadingsRecorded": 0,
+      "occurrencesWithoutFrozenHeadingPrediction": 751,
+      "candidatePairsFromCurrentInput": 9859,
+      "evidenceReasons": [
+        "PDF_WORD_COORDINATE_LINE_STRUCTURAL_SIGNAL"
+      ]
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "sourceFormat": "pdf",
+      "rawSourceOccurrences": 4985,
+      "headingCandidatesBeforeModel": 4985,
+      "modelSelectedHeadings": 0,
+      "successfullySourceBoundHeadings": 0,
+      "rejectedHeadingsRecorded": 0,
+      "occurrencesWithoutFrozenHeadingPrediction": 4985,
+      "candidatePairsFromCurrentInput": 41478,
+      "evidenceReasons": [
+        "PDF_WORD_COORDINATE_LINE_STRUCTURAL_SIGNAL"
+      ]
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "sourceFormat": "pdf",
+      "rawSourceOccurrences": 303,
+      "headingCandidatesBeforeModel": 303,
+      "modelSelectedHeadings": 0,
+      "successfullySourceBoundHeadings": 0,
+      "rejectedHeadingsRecorded": 0,
+      "occurrencesWithoutFrozenHeadingPrediction": 303,
+      "candidatePairsFromCurrentInput": 2442,
+      "evidenceReasons": [
+        "PDF_WORD_COORDINATE_LINE_STRUCTURAL_SIGNAL"
+      ]
+    }
+  ],
+  "upstreamSearch": {
+    "roots": [
+      "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\identity-benchmark",
+      "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop",
+      "C:\\DocxHeaderExtractor-a99-closed-loop\\tools"
+    ],
+    "pathAddressedSourceArtifactMatches": [
+      "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-073DB817879B_pdfqa__2510.22211v1.pdf",
+      "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-26BE9B284520_hips__administrative-decision-making.pdf",
+      "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-45314CB70E99_hips__access-controlled-cyberspace.pdf",
+      "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-6717CCA50787_hips__a-bird-that-flies-with-two-wings.pdf",
+      "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-C07DA5643BE9_hips__a-kind-of-mending.pdf",
+      "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-FDF9C2552AF0_pdfqa__2510.22218v1.pdf"
+    ],
+    "upstreamHeadingArtifactPaths": [],
+    "bindingArtifactPaths": [],
+    "searchReadGold": false,
+    "searchReadHistoricalPredictions": false
+  },
+  "boundHeadingChallenger": {
+    "status": "BLOCKED_ON_UPSTREAM_HEADING_PREDICTIONS",
+    "headingCount": null,
+    "candidatePairCount": null,
+    "requestTokenEstimate": null,
+    "noRawOccurrenceSubstitution": true,
+    "noGoldHeadingLevelUsed": true
+  },
+  "firewall": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldReadCount": 0,
+    "historicalPredictionReadCount": 0,
+    "historicalEvaluationReadCount": 0,
+    "v8a2Mutated": false,
+    "v8a3Mutated": false,
+    "v8bMutated": false
+  },
+  "next": "Produce or freeze upstream heading extraction plus harness binding predictions for all six V8A2 sources; then open a new V8H bound-heading identity lane without mutating V8A2/V8A3/V8B."
+}
