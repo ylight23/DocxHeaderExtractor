@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "a99-v6c-prediction-summary-v1",
+  "status": "OWNER_PREDICTIONS_FROZEN_BEFORE_EVALUATION",
+  "scheduledRequests": 3,
+  "completedAttempts": 3,
+  "validOwnerPredictions": 0,
+  "invalidValidationPredictions": 3,
+  "providerErrors": 0,
+  "sourceOccurrenceDenominator": 226,
+  "assignedOccurrences": 0,
+  "unresolvedOccurrences": 0,
+  "inducedOwnerCount": 0,
+  "ownerSizeDistribution": [],
+  "crossParserScopeOwners": 0,
+  "splitParserScopeGroups": 0,
+  "modelCalls": 3,
+  "providerCalls": 3,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "goldEvaluationOpened": false,
+  "semanticNodeInduction": false,
+  "hierarchyExecuted": false,
+  "rawResponsesPersistedBeforeParsing": true,
+  "retryCount": 0,
+  "effectiveAttemptStatuses": {
+    "001": "INVALID_VALIDATION",
+    "002": "INVALID_VALIDATION",
+    "003": "INVALID_VALIDATION"
+  },
+  "note": "Source-independent owner induction aggregation only. Raw responses were revalidated offline to distinguish schema parsing from validator rejection; no Gold, V5C, or V6A artifacts were read and no semantic repair was applied."
+}

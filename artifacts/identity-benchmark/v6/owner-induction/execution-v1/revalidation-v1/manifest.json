@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "a99-v6c-v1-revalidation-manifest",
+  "status": "RAW_RESPONSES_REVALIDATED_OFFLINE",
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "predictionMutation": false,
+  "records": [
+    {
+      "sequence": 1,
+      "documentId": "DOC-0123",
+      "status": "INVALID_VALIDATION",
+      "validationError": "V6C_FABRICATED_EVIDENCE_REFERENCE",
+      "rawResponseSha256": "b5847ed5ed1ef122bde5911829b5b35a74cfdf69664d66405a5391b5a9d0a3c3",
+      "parsedResponseSha256": "0923a185a38af06deae7e9e0b3f85f975fab797e6236ce16b670484891b018ca"
+    },
+    {
+      "sequence": 2,
+      "documentId": "DOC-0133",
+      "status": "INVALID_VALIDATION",
+      "validationError": "V6C_UNKNOWN_OR_DUPLICATE_MEMBER",
+      "rawResponseSha256": "b8a0f27dc70de6bad7d93272b3b4d88a1ebbe8943d501b6cb138fbd3052dbd82",
+      "parsedResponseSha256": "3adb39408ea77dd88d68e7116a4ed58b34e40ff3ad120db70083fc3e81d4a51c"
+    },
+    {
+      "sequence": 3,
+      "documentId": "DOC-0252",
+      "status": "INVALID_VALIDATION",
+      "validationError": "V6C_UNKNOWN_OR_DUPLICATE_MEMBER",
+      "rawResponseSha256": "15342fcd48920b6171e1324e193bc281fdb867622425d522af6e04dc920b780f",
+      "parsedResponseSha256": "d7b5a425f518f09f8c8c01108b03657a223a30feccd8c04f7987b505f3c69822"
+    }
+  ]
+}

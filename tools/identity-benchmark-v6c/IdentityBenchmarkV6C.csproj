@@ -5,4 +5,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/DocxHeaderExtractor.Core/DocxHeaderExtractor.Core.csproj" />
+    <ProjectReference Include="../../src/DocxHeaderExtractor.Infrastructure/DocxHeaderExtractor.Infrastructure.csproj" />
+    <ProjectReference Include="../../src/DocxHeaderExtractor.Eval/DocxHeaderExtractor.Eval.csproj" />
+    <PackageReference Include="System.Text.Json" />
+  </ItemGroup>
 </Project>
