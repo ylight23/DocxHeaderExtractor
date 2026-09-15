@@ -1,0 +1,38 @@
+{
+  "artifactKind": "a99_canonical_parent_edges_pilot",
+  "schemaVersion": "a99-canonical-parent-edges-v1",
+  "documentId": "DOC-0001",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "rootRef": "ROOT",
+  "sourcePacketSha256": "aeb8709960d4371f5fe317208820e4017a14b0bfc93de18fbb6349cf73d3d65b",
+  "parentEdges": [
+    {
+      "childSemanticNodeRef": "N001",
+      "parentSemanticNodeRef": "ROOT"
+    },
+    {
+      "childSemanticNodeRef": "N002",
+      "parentSemanticNodeRef": "N001"
+    },
+    {
+      "childSemanticNodeRef": "N003",
+      "parentSemanticNodeRef": "N001"
+    },
+    {
+      "childSemanticNodeRef": "N004",
+      "parentSemanticNodeRef": "N003"
+    },
+    {
+      "childSemanticNodeRef": "N005",
+      "parentSemanticNodeRef": "N003"
+    },
+    {
+      "childSemanticNodeRef": "N006",
+      "parentSemanticNodeRef": "ROOT"
+    },
+    {
+      "childSemanticNodeRef": "N007",
+      "parentSemanticNodeRef": "N006"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "artifactKind": "a99_canonical_derived_levels_pilot",
+  "schemaVersion": "a99-canonical-derived-levels-v1",
+  "documentId": "DOC-0001",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "sourcePacketSha256": "aeb8709960d4371f5fe317208820e4017a14b0bfc93de18fbb6349cf73d3d65b",
+  "derivation": "depth(ROOT)=0; semantic node level is depth from synthetic ROOT; no historical level input",
+  "nodes": [
+    {
+      "semanticNodeRef": "N001",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "derivedLevel": 1,
+      "occurrenceRefs": [
+        "H0001"
+      ]
+    },
+    {
+      "semanticNodeRef": "N002",
+      "parentSemanticNodeRef": "N001",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0002"
+      ]
+    },
+    {
+      "semanticNodeRef": "N003",
+      "parentSemanticNodeRef": "N001",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0003"
+      ]
+    },
+    {
+      "semanticNodeRef": "N004",
+      "parentSemanticNodeRef": "N003",
+      "depth": 3,
+      "derivedLevel": 3,
+      "occurrenceRefs": [
+        "H0004"
+      ]
+    },
+    {
+      "semanticNodeRef": "N005",
+      "parentSemanticNodeRef": "N003",
+      "depth": 3,
+      "derivedLevel": 3,
+      "occurrenceRefs": [
+        "H0005"
+      ]
+    },
+    {
+      "semanticNodeRef": "N006",
+      "parentSemanticNodeRef": "ROOT",
+      "depth": 1,
+      "derivedLevel": 1,
+      "occurrenceRefs": [
+        "H0006"
+      ]
+    },
+    {
+      "semanticNodeRef": "N007",
+      "parentSemanticNodeRef": "N006",
+      "depth": 2,
+      "derivedLevel": 2,
+      "occurrenceRefs": [
+        "H0007"
+      ]
+    }
+  ],
+  "maxDepth": 3
+}

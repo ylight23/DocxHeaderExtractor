@@ -1,0 +1,75 @@
+{
+  "artifactKind": "a99_canonical_semantic_nodes_pilot",
+  "schemaVersion": "a99-canonical-semantic-nodes-v1",
+  "documentId": "DOC-0001",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "sourcePacketSha256": "aeb8709960d4371f5fe317208820e4017a14b0bfc93de18fbb6349cf73d3d65b",
+  "semanticNodes": [
+    {
+      "semanticNodeRef": "N001",
+      "canonicalOccurrenceRef": "H0001"
+    },
+    {
+      "semanticNodeRef": "N002",
+      "canonicalOccurrenceRef": "H0002"
+    },
+    {
+      "semanticNodeRef": "N003",
+      "canonicalOccurrenceRef": "H0003"
+    },
+    {
+      "semanticNodeRef": "N004",
+      "canonicalOccurrenceRef": "H0004"
+    },
+    {
+      "semanticNodeRef": "N005",
+      "canonicalOccurrenceRef": "H0005"
+    },
+    {
+      "semanticNodeRef": "N006",
+      "canonicalOccurrenceRef": "H0006"
+    },
+    {
+      "semanticNodeRef": "N007",
+      "canonicalOccurrenceRef": "H0007"
+    }
+  ],
+  "occurrenceAssignments": [
+    {
+      "headingOccurrenceRef": "H0001",
+      "semanticNodeRef": "N001",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0002",
+      "semanticNodeRef": "N002",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0003",
+      "semanticNodeRef": "N003",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0004",
+      "semanticNodeRef": "N004",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0005",
+      "semanticNodeRef": "N005",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0006",
+      "semanticNodeRef": "N006",
+      "occurrenceRole": "PRIMARY"
+    },
+    {
+      "headingOccurrenceRef": "H0007",
+      "semanticNodeRef": "N007",
+      "occurrenceRole": "PRIMARY"
+    }
+  ],
+  "identityDecision": "all seven source-backed occurrences are distinct primary semantic nodes"
+}
