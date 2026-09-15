@@ -1,0 +1,29 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_VALIDATION",
+  "schemaVersion": "a99-canonical-semantic-identity-v1",
+  "documentId": "DOC-0258",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_IDENTITY",
+  "checks": {
+    "inputOccurrenceCountExactly44": true,
+    "assignmentCountMatchesInput": true,
+    "everyOccurrenceAssignedExactlyOnce": true,
+    "everyNodeNonEmpty": true,
+    "everyNodeHasOnePrimary": true,
+    "noDuplicateOccurrenceMembership": true,
+    "noParentFields": true,
+    "noLevelFields": true,
+    "sourceShaPresent": true,
+    "sourceOnly": true,
+    "semanticTotalUsedForDecision": false,
+    "previousIdentityGoldUsedForDecision": false,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldMutation": false
+  },
+  "inputOccurrenceCount": 44,
+  "assignmentCount": 44,
+  "semanticNodeCount": 44,
+  "ambiguityCount": 0
+}

@@ -1,0 +1,1197 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_DECISIONS",
+  "schemaVersion": "a99-canonical-semantic-identity-v1",
+  "documentId": "DOC-0258",
+  "decisions": [
+    {
+      "headingOccurrenceRef": "H001",
+      "sourceOccurrenceId": "body[1]/p[3]",
+      "sourceId": "body[1]/p[3]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 87
+      },
+      "exactHeadingText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "normalizedHeadingText": "minutes of the international comparison program inter agency coordination group meeting",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 1,
+      "context": {
+        "previousHeadingText": null,
+        "nextHeadingText": "Welcome and meeting objectives"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H002",
+      "sourceOccurrenceId": "body[1]/p[6]",
+      "sourceId": "body[1]/p[6]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "exactHeadingText": "Welcome and meeting objectives",
+      "normalizedHeadingText": "welcome and meeting objectives",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 4,
+      "context": {
+        "previousHeadingText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+        "nextHeadingText": "Regional updates on the ICP 2021 cycle implementation"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H003",
+      "sourceOccurrenceId": "body[1]/p[10]",
+      "sourceId": "body[1]/p[10]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "exactHeadingText": "Regional updates on the ICP 2021 cycle implementation",
+      "normalizedHeadingText": "regional updates on the icp 2021 cycle implementation",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 8,
+      "context": {
+        "previousHeadingText": "Welcome and meeting objectives",
+        "nextHeadingText": "Africa"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H004",
+      "sourceOccurrenceId": "body[1]/p[11]",
+      "sourceId": "body[1]/p[11]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 6
+      },
+      "exactHeadingText": "Africa",
+      "normalizedHeadingText": "africa",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 9,
+      "context": {
+        "previousHeadingText": "Regional updates on the ICP 2021 cycle implementation",
+        "nextHeadingText": "Asia and the Pacific"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H005",
+      "sourceOccurrenceId": "body[1]/p[12]",
+      "sourceId": "body[1]/p[12]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "exactHeadingText": "Asia and the Pacific",
+      "normalizedHeadingText": "asia and the pacific",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 10,
+      "context": {
+        "previousHeadingText": "Africa",
+        "nextHeadingText": "Eurostat–OECD PPP Program"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H006",
+      "sourceOccurrenceId": "body[1]/p[17]",
+      "sourceId": "body[1]/p[17]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 25
+      },
+      "exactHeadingText": "Eurostat–OECD PPP Program",
+      "normalizedHeadingText": "eurostat oecd ppp program",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 13,
+      "context": {
+        "previousHeadingText": "Asia and the Pacific",
+        "nextHeadingText": "Commonwealth of Independent States"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H007",
+      "sourceOccurrenceId": "body[1]/p[18]",
+      "sourceId": "body[1]/p[18]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 34
+      },
+      "exactHeadingText": "Commonwealth of Independent States",
+      "normalizedHeadingText": "commonwealth of independent states",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 14,
+      "context": {
+        "previousHeadingText": "Eurostat–OECD PPP Program",
+        "nextHeadingText": "Latin America and the Caribbean"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H008",
+      "sourceOccurrenceId": "body[1]/p[19]",
+      "sourceId": "body[1]/p[19]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "exactHeadingText": "Latin America and the Caribbean",
+      "normalizedHeadingText": "latin america and the caribbean",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 15,
+      "context": {
+        "previousHeadingText": "Commonwealth of Independent States",
+        "nextHeadingText": "Western Asia"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H009",
+      "sourceOccurrenceId": "body[1]/p[24]",
+      "sourceId": "body[1]/p[24]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 12
+      },
+      "exactHeadingText": "Western Asia",
+      "normalizedHeadingText": "western asia",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 18,
+      "context": {
+        "previousHeadingText": "Latin America and the Caribbean",
+        "nextHeadingText": "Global updates on the ICP 2021 cycle implementation"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H010",
+      "sourceOccurrenceId": "body[1]/p[25]",
+      "sourceId": "body[1]/p[25]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "exactHeadingText": "Global updates on the ICP 2021 cycle implementation",
+      "normalizedHeadingText": "global updates on the icp 2021 cycle implementation",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 19,
+      "context": {
+        "previousHeadingText": "Western Asia",
+        "nextHeadingText": "Data review: Household consumption price and importance data"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H011",
+      "sourceOccurrenceId": "body[1]/p[39]",
+      "sourceId": "body[1]/p[39]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "exactHeadingText": "Data review: Household consumption price and importance data",
+      "normalizedHeadingText": "data review household consumption price and importance data",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 31,
+      "context": {
+        "previousHeadingText": "Global updates on the ICP 2021 cycle implementation",
+        "nextHeadingText": "Data review: Housing prices and volumes"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H012",
+      "sourceOccurrenceId": "body[1]/p[48]",
+      "sourceId": "body[1]/p[48]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "exactHeadingText": "Data review: Housing prices and volumes",
+      "normalizedHeadingText": "data review housing prices and volumes",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 41,
+      "context": {
+        "previousHeadingText": "Data review: Household consumption price and importance data",
+        "nextHeadingText": "Data review: Private Education"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H013",
+      "sourceOccurrenceId": "body[1]/p[50]",
+      "sourceId": "body[1]/p[50]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "exactHeadingText": "Data review: Private Education",
+      "normalizedHeadingText": "data review private education",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 43,
+      "context": {
+        "previousHeadingText": "Data review: Housing prices and volumes",
+        "nextHeadingText": "Data review: Government compensation and productivity adjustment"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H014",
+      "sourceOccurrenceId": "body[1]/p[56]",
+      "sourceId": "body[1]/p[56]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 64
+      },
+      "exactHeadingText": "Data review: Government compensation and productivity adjustment",
+      "normalizedHeadingText": "data review government compensation and productivity adjustment",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 47,
+      "context": {
+        "previousHeadingText": "Data review: Private Education",
+        "nextHeadingText": "Data review: Machinery and equipment and construction"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H015",
+      "sourceOccurrenceId": "body[1]/p[59]",
+      "sourceId": "body[1]/p[59]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "exactHeadingText": "Data review: Machinery and equipment and construction",
+      "normalizedHeadingText": "data review machinery and equipment and construction",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 50,
+      "context": {
+        "previousHeadingText": "Data review: Government compensation and productivity adjustment",
+        "nextHeadingText": "Data review: 2017-2021 National Accounts expenditures"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H016",
+      "sourceOccurrenceId": "body[1]/p[62]",
+      "sourceId": "body[1]/p[62]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "exactHeadingText": "Data review: 2017-2021 National Accounts expenditures",
+      "normalizedHeadingText": "data review 2017 2021 national accounts expenditures",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 53,
+      "context": {
+        "previousHeadingText": "Data review: Machinery and equipment and construction",
+        "nextHeadingText": "Data review: 2017-2021 Population and market exchange rates"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H017",
+      "sourceOccurrenceId": "body[1]/p[70]",
+      "sourceId": "body[1]/p[70]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 59
+      },
+      "exactHeadingText": "Data review: 2017-2021 Population and market exchange rates",
+      "normalizedHeadingText": "data review 2017 2021 population and market exchange rates",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 59,
+      "context": {
+        "previousHeadingText": "Data review: 2017-2021 National Accounts expenditures",
+        "nextHeadingText": "Results review: draft revised 2017 and 2021 results"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H018",
+      "sourceOccurrenceId": "body[1]/p[72]",
+      "sourceId": "body[1]/p[72]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "exactHeadingText": "Results review: draft revised 2017 and 2021 results",
+      "normalizedHeadingText": "results review draft revised 2017 and 2021 results",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 61,
+      "context": {
+        "previousHeadingText": "Data review: 2017-2021 Population and market exchange rates",
+        "nextHeadingText": "Planning for the ICP 2024 cycle"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H019",
+      "sourceOccurrenceId": "body[1]/p[74]",
+      "sourceId": "body[1]/p[74]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "exactHeadingText": "Planning for the ICP 2024 cycle",
+      "normalizedHeadingText": "planning for the icp 2024 cycle",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 63,
+      "context": {
+        "previousHeadingText": "Results review: draft revised 2017 and 2021 results",
+        "nextHeadingText": "Planning for the 2023 governance activities and ICP 2021 cycle release"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H020",
+      "sourceOccurrenceId": "body[1]/p[84]",
+      "sourceId": "body[1]/p[84]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 70
+      },
+      "exactHeadingText": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+      "normalizedHeadingText": "planning for the 2023 governance activities and icp 2021 cycle release",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 71,
+      "context": {
+        "previousHeadingText": "Planning for the ICP 2024 cycle",
+        "nextHeadingText": "Planning for an approach to produce annual ICP results and forecasts"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H021",
+      "sourceOccurrenceId": "body[1]/p[91]",
+      "sourceId": "body[1]/p[91]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 68
+      },
+      "exactHeadingText": "Planning for an approach to produce annual ICP results and forecasts",
+      "normalizedHeadingText": "planning for an approach to produce annual icp results and forecasts",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 76,
+      "context": {
+        "previousHeadingText": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+        "nextHeadingText": "Any other business"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H022",
+      "sourceOccurrenceId": "body[1]/p[96]",
+      "sourceId": "body[1]/p[96]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "exactHeadingText": "Any other business",
+      "normalizedHeadingText": "any other business",
+      "structuralScope": "NARRATIVE_BODY",
+      "documentOrder": 81,
+      "context": {
+        "previousHeadingText": "Planning for an approach to produce annual ICP results and forecasts",
+        "nextHeadingText": "Annex 1: Meeting Agenda"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H023",
+      "sourceOccurrenceId": "body[1]/p[102]",
+      "sourceId": "body[1]/p[102]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "exactHeadingText": "Annex 1: Meeting Agenda",
+      "normalizedHeadingText": "annex 1 meeting agenda",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 85,
+      "context": {
+        "previousHeadingText": "Any other business",
+        "nextHeadingText": "DAY 1: MONDAY, MAY 15, 2023"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H024",
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 27
+      },
+      "exactHeadingText": "DAY 1: MONDAY, MAY 15, 2023",
+      "normalizedHeadingText": "day 1 monday may 15 2023",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 86,
+      "context": {
+        "previousHeadingText": "Annex 1: Meeting Agenda",
+        "nextHeadingText": "Regional updates on the ICP 2021 cycle implementation"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H025",
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "exactHeadingText": "Regional updates on the ICP 2021 cycle implementation",
+      "normalizedHeadingText": "regional updates on the icp 2021 cycle implementation",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 88,
+      "context": {
+        "previousHeadingText": "DAY 1: MONDAY, MAY 15, 2023",
+        "nextHeadingText": "Global updates on the ICP 2021 cycle implementation"
+      },
+      "candidateExistingNodeRefs": [
+        "N003"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H026",
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[6]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[6]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "exactHeadingText": "Global updates on the ICP 2021 cycle implementation",
+      "normalizedHeadingText": "global updates on the icp 2021 cycle implementation",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 96,
+      "context": {
+        "previousHeadingText": "Regional updates on the ICP 2021 cycle implementation",
+        "nextHeadingText": "Data review: Household consumption price and importance data"
+      },
+      "candidateExistingNodeRefs": [
+        "N010"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H027",
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[11]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[11]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "exactHeadingText": "Data review: Household consumption price and importance data",
+      "normalizedHeadingText": "data review household consumption price and importance data",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 106,
+      "context": {
+        "previousHeadingText": "Global updates on the ICP 2021 cycle implementation",
+        "nextHeadingText": "DAY 2: TUESDAY, MAY 16, 2023"
+      },
+      "candidateExistingNodeRefs": [
+        "N011"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H028",
+      "sourceOccurrenceId": "body[1]/p[103]",
+      "sourceId": "body[1]/p[103]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 28
+      },
+      "exactHeadingText": "DAY 2: TUESDAY, MAY 16, 2023",
+      "normalizedHeadingText": "day 2 tuesday may 16 2023",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 107,
+      "context": {
+        "previousHeadingText": "Data review: Household consumption price and importance data",
+        "nextHeadingText": "Data review: Housing prices and volumes"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H029",
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "exactHeadingText": "Data review: Housing prices and volumes",
+      "normalizedHeadingText": "data review housing prices and volumes",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 109,
+      "context": {
+        "previousHeadingText": "DAY 2: TUESDAY, MAY 16, 2023",
+        "nextHeadingText": "Data review: Private education"
+      },
+      "candidateExistingNodeRefs": [
+        "N012"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H030",
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "exactHeadingText": "Data review: Private education",
+      "normalizedHeadingText": "data review private education",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 111,
+      "context": {
+        "previousHeadingText": "Data review: Housing prices and volumes",
+        "nextHeadingText": "Data review: Government compensation and productivity adjustment"
+      },
+      "candidateExistingNodeRefs": [
+        "N013"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H031",
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[3]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[3]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 64
+      },
+      "exactHeadingText": "Data review: Government compensation and productivity adjustment",
+      "normalizedHeadingText": "data review government compensation and productivity adjustment",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 113,
+      "context": {
+        "previousHeadingText": "Data review: Private education",
+        "nextHeadingText": "Data review: Machinery and equipment"
+      },
+      "candidateExistingNodeRefs": [
+        "N014"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H032",
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 36
+      },
+      "exactHeadingText": "Data review: Machinery and equipment",
+      "normalizedHeadingText": "data review machinery and equipment",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 115,
+      "context": {
+        "previousHeadingText": "Data review: Government compensation and productivity adjustment",
+        "nextHeadingText": "Data review: Construction and civil engineering"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H033",
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[1]",
+      "sourceSpan": {
+        "start": 14,
+        "end": 61
+      },
+      "exactHeadingText": "Data review: Construction and civil engineering",
+      "normalizedHeadingText": "data review construction and civil engineering",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 116,
+      "context": {
+        "previousHeadingText": "Data review: Machinery and equipment",
+        "nextHeadingText": "DAY 3: WEDNESDAY, MAY 17, 2023"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H034",
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[2]",
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[2]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "exactHeadingText": "DAY 3: WEDNESDAY, MAY 17, 2023",
+      "normalizedHeadingText": "day 3 wednesday may 17 2023",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 117,
+      "context": {
+        "previousHeadingText": "Data review: Construction and civil engineering",
+        "nextHeadingText": "Data review: 2017-2021 National accounts expenditures"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H035",
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "exactHeadingText": "Data review: 2017-2021 National accounts expenditures",
+      "normalizedHeadingText": "data review 2017 2021 national accounts expenditures",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 119,
+      "context": {
+        "previousHeadingText": "DAY 3: WEDNESDAY, MAY 17, 2023",
+        "nextHeadingText": "Data review: 2017-2021 Population and market exchange rates"
+      },
+      "candidateExistingNodeRefs": [
+        "N016"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H036",
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 59
+      },
+      "exactHeadingText": "Data review: 2017-2021 Population and market exchange rates",
+      "normalizedHeadingText": "data review 2017 2021 population and market exchange rates",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 121,
+      "context": {
+        "previousHeadingText": "Data review: 2017-2021 National accounts expenditures",
+        "nextHeadingText": "Result review: draft revised 2017 and 2021 results"
+      },
+      "candidateExistingNodeRefs": [
+        "N017"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H037",
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 50
+      },
+      "exactHeadingText": "Result review: draft revised 2017 and 2021 results",
+      "normalizedHeadingText": "result review draft revised 2017 and 2021 results",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 123,
+      "context": {
+        "previousHeadingText": "Data review: 2017-2021 Population and market exchange rates",
+        "nextHeadingText": "DAY 4: THURSDAY, MAY 18, 2023"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H038",
+      "sourceOccurrenceId": "body[1]/p[104]",
+      "sourceId": "body[1]/p[104]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "exactHeadingText": "DAY 4: THURSDAY, MAY 18, 2023",
+      "normalizedHeadingText": "day 4 thursday may 18 2023",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 124,
+      "context": {
+        "previousHeadingText": "Result review: draft revised 2017 and 2021 results",
+        "nextHeadingText": "Planning for the ICP 2024 cycle"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H039",
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "exactHeadingText": "Planning for the ICP 2024 cycle",
+      "normalizedHeadingText": "planning for the icp 2024 cycle",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 126,
+      "context": {
+        "previousHeadingText": "DAY 4: THURSDAY, MAY 18, 2023",
+        "nextHeadingText": "ICP PPP calculation tools"
+      },
+      "candidateExistingNodeRefs": [
+        "N019"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H040",
+      "sourceOccurrenceId": "body[1]/p[108]",
+      "sourceId": "body[1]/p[108]",
+      "sourceSpan": {
+        "start": 14,
+        "end": 39
+      },
+      "exactHeadingText": "ICP PPP calculation tools",
+      "normalizedHeadingText": "icp ppp calculation tools",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 130,
+      "context": {
+        "previousHeadingText": "Planning for the ICP 2024 cycle",
+        "nextHeadingText": "Planning for the 2023 governance activities and ICP 2021 cycle release"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H041",
+      "sourceOccurrenceId": "body[1]/p[109]",
+      "sourceId": "body[1]/p[109]",
+      "sourceSpan": {
+        "start": 14,
+        "end": 84
+      },
+      "exactHeadingText": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+      "normalizedHeadingText": "planning for the 2023 governance activities and icp 2021 cycle release",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 131,
+      "context": {
+        "previousHeadingText": "ICP PPP calculation tools",
+        "nextHeadingText": "Planning for an approach to produce annual ICP results and forecasts"
+      },
+      "candidateExistingNodeRefs": [
+        "N020"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H042",
+      "sourceOccurrenceId": "body[1]/p[110]",
+      "sourceId": "body[1]/p[110]",
+      "sourceSpan": {
+        "start": 14,
+        "end": 82
+      },
+      "exactHeadingText": "Planning for an approach to produce annual ICP results and forecasts",
+      "normalizedHeadingText": "planning for an approach to produce annual icp results and forecasts",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 132,
+      "context": {
+        "previousHeadingText": "Planning for the 2023 governance activities and ICP 2021 cycle release",
+        "nextHeadingText": "Any other business and closing"
+      },
+      "candidateExistingNodeRefs": [
+        "N021"
+      ],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT"
+      ],
+      "decisionBasis": "SAME_TEXT_BUT_INDEPENDENT_STRUCTURAL_SCOPE; KEEP_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H043",
+      "sourceOccurrenceId": "body[1]/p[111]",
+      "sourceId": "body[1]/p[111]",
+      "sourceSpan": {
+        "start": 14,
+        "end": 44
+      },
+      "exactHeadingText": "Any other business and closing",
+      "normalizedHeadingText": "any other business and closing",
+      "structuralScope": "ANNEX_1_AGENDA",
+      "documentOrder": 133,
+      "context": {
+        "previousHeadingText": "Planning for an approach to produce annual ICP results and forecasts",
+        "nextHeadingText": "Annex 2: List of participants"
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "headingOccurrenceRef": "H044",
+      "sourceOccurrenceId": "body[1]/p[115]",
+      "sourceId": "body[1]/p[115]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "exactHeadingText": "Annex 2: List of participants",
+      "normalizedHeadingText": "annex 2 list of participants",
+      "structuralScope": "ANNEX_2_PARTICIPANTS",
+      "documentOrder": 135,
+      "context": {
+        "previousHeadingText": "Any other business and closing",
+        "nextHeadingText": null
+      },
+      "candidateExistingNodeRefs": [],
+      "decision": "NEW_SEMANTIC_NODE",
+      "occurrenceRole": "PRIMARY",
+      "contradictionEvidence": [],
+      "decisionBasis": "OCCURRENCE_FIRST_DEFAULT_SPLIT",
+      "semanticTotalUsedForDecision": false,
+      "previousIdentityGoldUsedForDecision": false,
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    }
+  ],
+  "sourceOnly": true,
+  "semanticTotalUsedForDecision": false
+}
