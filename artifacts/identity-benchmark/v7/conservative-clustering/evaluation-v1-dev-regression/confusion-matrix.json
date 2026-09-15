@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-v7d-confusion-matrix-v1",
+  "rows": {
+    "SAME_SEMANTIC_REPEAT": {
+      "SAME_SEMANTIC_REPEAT": 13,
+      "CONTINUATION_OF": 0,
+      "DISTINCT": 17
+    },
+    "CONTINUATION_OF": {
+      "SAME_SEMANTIC_REPEAT": 0,
+      "CONTINUATION_OF": 0,
+      "DISTINCT": 1
+    },
+    "DISTINCT": {
+      "SAME_SEMANTIC_REPEAT": 23,
+      "CONTINUATION_OF": 0,
+      "DISTINCT": 74
+    }
+  }
+}

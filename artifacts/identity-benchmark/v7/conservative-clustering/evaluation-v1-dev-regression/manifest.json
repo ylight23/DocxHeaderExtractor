@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-v7d-offline-dev-regression-manifest-v1",
+  "status": "V7D_COMPLETE_PROJECTION_FROZEN_BEFORE_GOLD_JOIN",
+  "projectionArtifact": "projection-freeze.json",
+  "goldArtifact": "artifacts/identity-benchmark/v4/semantic-adjudication/results/human-adjudication.frozen.v1.json",
+  "goldSha256": "1b4c10fd20e0840a272611065bfcff524335542ea5d5b71cfe16bae692eaae16",
+  "goldReadAfterProjectionFreeze": true,
+  "goldAuthority": "USER_FINAL_SOURCE_BACKED_ADJUDICATION",
+  "independentHumanGold": false,
+  "itemCount": 128,
+  "exactOccurrenceJoin": true,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "generalizationClaim": false,
+  "lane": "DEV_EXPOSED_V7D_REGRESSION"
+}

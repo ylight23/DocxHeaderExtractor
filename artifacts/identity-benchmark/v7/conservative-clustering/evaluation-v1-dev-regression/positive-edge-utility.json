@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "a99-v7d-positive-edge-utility-v1",
+  "acceptedSameEdges": 41,
+  "goldCoverage": 36,
+  "counts": {
+    "GOLD_SAME": 13,
+    "GOLD_CONTINUATION": 0,
+    "GOLD_DISTINCT": 23,
+    "NOT_IN_128_GOLD": 5
+  },
+  "note": "Diagnostic after projection freeze; not used to construct clusters."
+}

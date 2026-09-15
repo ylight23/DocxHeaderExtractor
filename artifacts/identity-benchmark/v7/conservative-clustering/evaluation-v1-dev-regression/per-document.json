@@ -1,0 +1,35 @@
+[
+  {
+    "documentId": "DOC-0123",
+    "total": 70,
+    "correct": 39,
+    "effectiveCorrectness": 0.5571428571428572,
+    "nodeConstraintCorrect": 39,
+    "nodeConstraintAccuracy": 0.5571428571428572,
+    "falseMerge": 18,
+    "falseSplit": 13,
+    "continuationPredictions": 0
+  },
+  {
+    "documentId": "DOC-0133",
+    "total": 29,
+    "correct": 20,
+    "effectiveCorrectness": 0.6896551724137931,
+    "nodeConstraintCorrect": 20,
+    "nodeConstraintAccuracy": 0.6896551724137931,
+    "falseMerge": 5,
+    "falseSplit": 4,
+    "continuationPredictions": 0
+  },
+  {
+    "documentId": "DOC-0252",
+    "total": 29,
+    "correct": 28,
+    "effectiveCorrectness": 0.9655172413793104,
+    "nodeConstraintCorrect": 28,
+    "nodeConstraintAccuracy": 0.9655172413793104,
+    "falseMerge": 0,
+    "falseSplit": 1,
+    "continuationPredictions": 0
+  }
+]
