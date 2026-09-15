@@ -1,0 +1,29 @@
+{
+  "artifactKind": "A99_CANONICAL_EXHAUSTIVE_HEADING_OCCURRENCE_VALIDATION",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v1-doc0256",
+  "documentId": "DOC-0256",
+  "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+  "checks": {
+    "sourceExists": true,
+    "sourceShaMatchesExpected": true,
+    "sourceContainersMaterialized": true,
+    "everyAcceptedSpanWithinContainer": true,
+    "everyAcceptedSpanTextMatchesSource": true,
+    "noDuplicateOccurrenceIds": true,
+    "allBindingsReferenceKnownContainers": true,
+    "allContainersDecisionCovered": true,
+    "semanticIdentityAssigned": false,
+    "hierarchyAssigned": false,
+    "levelAssigned": false,
+    "historicalLevelRead": false,
+    "historicalHierarchyRead": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldMutation": false
+  },
+  "rawParagraphCount": 0,
+  "sourceContainerCount": 225,
+  "acceptedCanonicalOccurrenceCount": 24,
+  "rejectedOrNonHeadingContainerCount": 201,
+  "statusMeaning": "Source-only canonical occurrence authority; no semantic identity, parent, tree, or level authority."
+}

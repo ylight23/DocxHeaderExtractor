@@ -1,0 +1,51 @@
+{
+  "artifactKind": "A99_CANONICAL_EXHAUSTIVE_HEADING_OCCURRENCE_MANIFEST",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v1-doc0256",
+  "documentId": "DOC-0256",
+  "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+  "sourcePath": "todo10_8/generated-docx/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.docx",
+  "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+  "files": [
+    {
+      "name": "source-authority.json",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0256/source-authority.json",
+      "sha256": "68c78d489e8d07842166ecf70acb2759b74ed44c90604f98b0f753a39253be99"
+    },
+    {
+      "name": "source-containers.json",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0256/source-containers.json",
+      "sha256": "1d56592728f223f3daf43bd771596b9851b7074aefeb312222cbd9da00f92a9c"
+    },
+    {
+      "name": "occurrence-decisions.json",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0256/occurrence-decisions.json",
+      "sha256": "4881fdd64e6c3b43a89f1b5775f520f9bd0665226f116a37f2fd565a2886a825"
+    },
+    {
+      "name": "exact-bindings.json",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0256/exact-bindings.json",
+      "sha256": "e0e031f1162bf6a3d13a9c41d130f357a1b138b5538607dee2a326d88c667323"
+    },
+    {
+      "name": "historical-bridge-diagnostic.json",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0256/historical-bridge-diagnostic.json",
+      "sha256": "e720ebbc3a2abf22fee4118c37f1d06e37c30b3ac50d733c83a055804d2dada3"
+    },
+    {
+      "name": "validation.json",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0256/validation.json",
+      "sha256": "fa79da721e619af9879c38d8e9cb653937f17fbfce807637f42b21bab481ca2b"
+    }
+  ],
+  "acceptedCanonicalOccurrenceCount": 24,
+  "sourceContainerCount": 225,
+  "historicalLevelRead": false,
+  "historicalHierarchyRead": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "semanticIdentityMutation": false,
+  "hierarchyMutation": false,
+  "levelMutation": false,
+  "goldMutation": false,
+  "stopAfterOccurrenceAuthority": true
+}

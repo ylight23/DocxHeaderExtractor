@@ -1,0 +1,3903 @@
+{
+  "artifactKind": "A99_CANONICAL_EXHAUSTIVE_HEADING_OCCURRENCE_DECISIONS",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v1-doc0256",
+  "documentId": "DOC-0256",
+  "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+  "containerCount": 225,
+  "decisionCount": 225,
+  "acceptedSpanCount": 24,
+  "decisions": [
+    {
+      "sourceOccurrenceId": "body[1]/p[3]",
+      "sourceId": "body[1]/p[3]",
+      "documentOrder": 1,
+      "sourceContainerText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "DOCUMENT_METADATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[4]",
+      "sourceId": "body[1]/p[4]",
+      "documentOrder": 2,
+      "sourceContainerText": "OCTOBER 31 – NOVEMBER 3, 2023 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "DOCUMENT_METADATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[5]",
+      "sourceId": "body[1]/p[5]",
+      "documentOrder": 3,
+      "sourceContainerText": "Hybrid Meeting ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "DOCUMENT_METADATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[6]",
+      "sourceId": "body[1]/p[6]",
+      "documentOrder": 4,
+      "sourceContainerText": "Welcome and meeting objectives ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[6]#heading-span-0-30",
+          "start": 0,
+          "end": 30,
+          "text": "Welcome and meeting objectives",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[7]",
+      "sourceId": "body[1]/p[7]",
+      "documentOrder": 5,
+      "sourceContainerText": "A meeting of the International Comparison Program (ICP) Inter-Agency Coordination Group (IACG) was held from October 31 to November 3, 2023, both virtually and in person in Washington, DC, at the World Bank headquarters. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "DOCUMENT_METADATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[8]",
+      "sourceId": "body[1]/p[8]",
+      "documentOrder": 6,
+      "sourceContainerText": "The main objectives of the meeting were to discuss regional and global updates, review the ICP 2021 cycle data, and plans for the release of final results and the ICP 2024 cycle. The meeting participants are listed in Annex 2. In addition, the meeting agenda and public presentations are available here. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[9]",
+      "sourceId": "body[1]/p[9]",
+      "documentOrder": 7,
+      "sourceContainerText": "Marko Rissanen, World Bank, opened the meeting by welcoming the attendees to the meeting. He noted that the 2021 cycle was in its last stages and that delays to the program due to COVID-19, the war in Ukraine, and the crisis in the Middle East had meant that the original 2023 release of results had been postponed until early 2024. He cited the quality and coverage of the data submitted to date and the harmonization of data from dual participating economies as issues to be resolved and noted that draft results would be discussed by the Technical Advisory Group (TAG) at its meeting the following week. He presented the agenda for the meeting and invited the ICP Regional Implementing Agencies representatives to share regional updates covering participation in the 2021 cycle, the implementation status of the program - including the survey status, expenditure compilation status, data and metadata submission and validation, metadata questionnaire submission status, regional purchasing power parity (PPP) estimation status – and workshops, meetings, outreach activities, and announcements. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[10]",
+      "sourceId": "body[1]/p[10]",
+      "documentOrder": 8,
+      "sourceContainerText": "Regional updates on the ICP 2021 cycle implementation ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[10]#heading-span-0-53",
+          "start": 0,
+          "end": 53,
+          "text": "Regional updates on the ICP 2021 cycle implementation",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[11]",
+      "sourceId": "body[1]/p[11]",
+      "documentOrder": 9,
+      "sourceContainerText": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), presented the status of the ICP 2021 cycle in the Africa region, which provided information on the surveys and expenditure compilation status, the data and metadata submission and validation status, the PPP estimation status, and forthcoming activities and meetings. Fifty-two economies are participating in the ICP 2021 cycle with capacity-building efforts in South Sudan and Somalia, resulting in their participation as an additional two economies compared with the 2017 cycle. Technical assistance has also been extended to Libya and Eritrea. Surveys were conducted from July 2022 to March 2023, following an assessment of the impact of COVID-19 on ICP processes and data collection. On expenditure data compilation, it was noted that 38 countries had ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[11]#heading-span-0-6",
+          "start": 0,
+          "end": 6,
+          "text": "Africa",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_INLINE_HEADING_RUN_PREFIX",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[12]",
+      "sourceId": "body[1]/p[12]",
+      "documentOrder": 10,
+      "sourceContainerText": "1 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[15]",
+      "sourceId": "body[1]/p[15]",
+      "documentOrder": 11,
+      "sourceContainerText": "rebased from SNA 1993 to 2008 and that some countries were still using SNA 1993 and SNA 1968. Validation of data is being finalized as of November 2023. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[16]",
+      "sourceId": "body[1]/p[16]",
+      "documentOrder": 12,
+      "sourceContainerText": "Two regional data validation workshops were held in January and June 2023, in Kigali, Rwanda. Furthermore, AfDB met with the United Nations Human Settlements Programme (UN-Habitat) in April 2023 to discuss the quality of data on housing and with United Nations Economic Commission for Africa (UNECA) and the African Union (AU) to discuss national accounts expenditures. Regional webinars on the data quality survey framework were also held in January 2023, June 2023, and September 2023 for all participating economies. In September 2023, AfDB and the World Bank jointly provided training and consulting for the computation of provincial/city-level PPPs in South Africa in collaboration with Statistics South Africa and price statisticians and household survey specialists attended the workshop. In terms of data collection, computer-assisted personal interview (CAPI) tools, web scraping, and Big Data techniques were used in some economies to price selected items for the surveys on household consumption, machinery and equipment, and construction. Preparations for the ICP 2024 cycle are underway, with item lists due to be finalized by end-January 2024. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[17]",
+      "sourceId": "body[1]/p[17]",
+      "documentOrder": 13,
+      "sourceContainerText": "Asia and the Pacific Criselda De Dios, Asian Development Bank (ADB), presented the status of the ICP 2021 cycle in the Asia and the Pacific region. Twenty-one economies are participating in the ICP 2021 cycle. Most economies conducted price surveys in 2021. Surveys in some economies were delayed due to COVID-19, with the data collection period extended until Q4, 2022 to accommodate the completion of surveys in all economies. For prices collected in periods outside the reference year 2021, a standard method for extrapolation was utilized, employing tools developed by ADB to facilitate this process. Price survey data, national accounts expenditure data, and required metadata questionnaires have been submitted by most economies as of November 2023, and the data validation process is in its final stages. Bilateral engagement with economies is ongoing to address specific data quality issues. ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[17]#heading-span-0-20",
+          "start": 0,
+          "end": 20,
+          "text": "Asia and the Pacific",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_INLINE_HEADING_RUN_PREFIX",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[18]",
+      "sourceId": "body[1]/p[18]",
+      "documentOrder": 14,
+      "sourceContainerText": "A series of regional training and data validation workshops have been conducted by ADB throughout the cycle. Preliminary regional PPPs for the revised 2017 and 2021 results have been computed. Also noteworthy is the ADB methodological research to develop a hybrid approach for estimating PPPs for dwelling services. This approach utilizes data collected from rental and volume approaches and has been endorsed by the ICP TAG. ADB also organized an Experts Group meeting and a meeting of the Regional Advisory Board in October 2023 to review data quality and regional ICP 2021 preliminary results and to discuss estimation methods, including the new methodology for housing. A technical evaluation and review workshop is scheduled for November 2023 with participating economies to discuss the preliminary regional results for ICP 2021 and preparatory activities for the ICP 2024 cycle. ADB has sought feedback on the draft household survey regional product list for 2024 ICP cycle from the region’s economies through an online tool (developed by ADB). The product list is targeted to be finalized in mid-December 2023 after regional discussions in a regional workshop planned for November 2023. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[19]",
+      "sourceId": "body[1]/p[19]",
+      "documentOrder": 15,
+      "sourceContainerText": "In terms of outreach, the regional ICP microsite is continually updated. ADB’s statistical flagship publication - “Key Indicators for Asia and the Pacific 2023” -  includes an extensive section on the ICP in the region, highlighting the critical role that participating economies play in implementing the program. The release of the regional ICP 2021 report is tentatively scheduled for April 2024, and the regional results and database will be disseminated through the ADB website, social media platforms, and other dissemination events. ADB will also encourage participating economies to develop brief country reports and organize their own dissemination events. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[20]",
+      "sourceId": "body[1]/p[20]",
+      "documentOrder": 16,
+      "sourceContainerText": "Commonwealth of Independent States ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[20]#heading-span-0-34",
+          "start": 0,
+          "end": 34,
+          "text": "Commonwealth of Independent States",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[21]",
+      "sourceId": "body[1]/p[21]",
+      "documentOrder": 17,
+      "sourceContainerText": "2 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[24]",
+      "sourceId": "body[1]/p[24]",
+      "documentOrder": 18,
+      "sourceContainerText": "Andrey Kosarev, the Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), presented the status of the ICP 2021 cycle in the CIS region. Nine economies are participating in the ICP 2021 cycle. CIS-STAT is providing support to Turkmenistan in anticipation of its participation in future ICP cycles. The majority of the ICP 2021 cycle price surveys were completed in 2021, with validation at the regional level completed and data submitted to the Global Office in 2023. The survey for construction was provided using two approaches: the regional Resource and Technological Models Method (RTM) approach and the ICP construction and civil engineering approach. The validation of data for the RTM approach was completed in April 2023; data validation on construction and civil engineering is underway as of November 2023. Metadata questionnaires were submitted in May 2023 to the Global Office. Regional PPPs have been computed for all survey categories, and PPPs for national accounts expenditures will be finalized by the end of 2023. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[25]",
+      "sourceId": "body[1]/p[25]",
+      "documentOrder": 19,
+      "sourceContainerText": "A regional workshop was held in June 2023 to review expenditure and price data, proposals for the ICP 2024 cycle household consumption items list, and approaches to estimating annual PPPs. Furthermore, technical assistance meetings were held with ICP staff in the Kyrgyz Republic and Tajikistan in September 2023, and high-level bilateral meetings with the national statistics offices of Uzbekistan and Azerbaijan were conducted in July and August 2023, respectively, to discuss the long-term strategy for the ICP in the region. At a May 2023 meeting in Kazakhstan, the Council of Heads of CIS national statistical offices approved the ICP 2021 cycle status, and the commencement of the ICP 2024 cycle was given. At a follow-up meeting of the Council in Russia in September 2023, it was agreed that annual PPPs at the level of GDP and actual individual consumption will be published, and the introduction of rolling surveys was discussed. A scheduled November 2023 meeting in Uzbekistan will focus on preparations for the ICP 2024 cycle. With regards to outreach, ICP learning exercises provided for students at the Higher School of Economics and Lomonosov Moscow State University are currently taking place and will continue to be developed further. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[26]",
+      "sourceId": "body[1]/p[26]",
+      "documentOrder": 20,
+      "sourceContainerText": "Eurostat–OECD PPP Program Mihai-Iulian Gheorghe, Eurostat, and Sophie Bournot, OECD, presented the status of the Eurostat-OECD PPP Program. Forty-eight economies are participating in the Eurostat-OECD PPP programme for the ICP 2021 cycle. Of those, 36 are coordinated by Eurostat, while twelve economies are coordinated by OECD. Georgia and Ukraine are participating in the ICP 2021 cycle and are linked to the global comparison through the Eurostat comparison. Russia is not participating in the OECD comparison for the ICP 2021 cycle. Surveys for the ICP 2021 cycle were integrated into the established Eurostat and OECD’s regular programme to produce annual PPP estimates. A specific ICP survey on construction was conducted by eleven Eurostat economies, the United States of America, Ukraine, and Georgia. Validation of outstanding data will be completed by the end of November 2023. Selected metadata will be submitted to the Global Office by early 2024. Annual PPPs and expenditures have been submitted to the Global Office for most economies, while 2017 and 2021 estimates are available for Ukraine and Georgia. Data for 2020 and 2021 will be revised in December 2023. Data for 2019 for non-European economies will be recalculated due to a correction to PPPs for health. ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[26]#heading-span-0-25",
+          "start": 0,
+          "end": 25,
+          "text": "Eurostat–OECD PPP Program",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_INLINE_HEADING_RUN_PREFIX",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[27]",
+      "sourceId": "body[1]/p[27]",
+      "documentOrder": 21,
+      "sourceContainerText": "Eurostat country meetings for the consumer goods surveys were held in March and September 2023. OECD participants met in May 2023, and a joint Eurostat-OECD PPP workshop took place in May 2023. The Eurostat PPP Working Group meeting took place in November 2023, and attendees discussed a draft Commission Regulation regarding an adjustment to the list of basic headings used for PPPs, which will be adopted in 2024 to implement the new COICOP 2018. In terms of outreach, in March 2023, GDP PPP flash estimates for 2022 for the EU Member States were released by Eurostat, while GDP PPP estimates for OECD economies were released by the OECD. A complete set of preliminary GDP PPPs for 2022, as well as ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[28]",
+      "sourceId": "body[1]/p[28]",
+      "documentOrder": 22,
+      "sourceContainerText": "3 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[31]",
+      "sourceId": "body[1]/p[31]",
+      "documentOrder": 23,
+      "sourceContainerText": "PPPs for household consumption and actual individual consumption, will be released in December 2023. The revised Eurostat-OECD Methodological Manual on PPPs will be published by the end of 2023. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[32]",
+      "sourceId": "body[1]/p[32]",
+      "documentOrder": 24,
+      "sourceContainerText": "Latin America and the Caribbean ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[32]#heading-span-0-31",
+          "start": 0,
+          "end": 31,
+          "text": "Latin America and the Caribbean",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[33]",
+      "sourceId": "body[1]/p[33]",
+      "documentOrder": 25,
+      "sourceContainerText": "Claudia de Camino Ferrario, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), presented the status of the ICP 2021 cycle in Latin America and the Caribbean region. Thirty-two economies are participating in the 2021 cycle, consisting of thirteen from Latin America and nineteen from the Caribbean. The majority of household consumption price surveys were conducted in 2021, although some surveys were conducted in 2019 and 2020, and data subsequently extrapolated to 2021. Regarding non-household surveys, these were also conducted in 2021, but in some economies, price collection was extended into 2022 and 2023 due to staffing and resource impacts arising from the COVID-19 pandemic. As of November 2023, some economies are yet to submit a complete set of data for non-household surveys and national accounts expenditures. Preliminary PPP estimates at the basic heading level have been computed for household surveys, private education surveys, and housing rental surveys. The incorporation of validated data from non-household surveys and expenditures is underway. At the same time, the revision of 2017 results is also underway. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[34]",
+      "sourceId": "body[1]/p[34]",
+      "documentOrder": 26,
+      "sourceContainerText": "UN-ECLAC has been contacting countries bilaterally to gather the missing data points and address any issues detected during regional and global validation efforts. Preparations for the ICP 2024 cycle are underway, with a survey of economies on items to be included or excluded. The revised ICP 2024 item lists will be used to address challenges encountered by some economies in pricing sufficient items per basic heading. In April 2023, UN-ECLAC and UN-ESCWA organized a joint Webinar on Prices, under the title “Innovation and integration of statistical operations (DA14)”. During the period between July and December of 2023, additional technical meetings on data validation have taken place. With regards to outreach, a presentation on the status of the ICP 2021 cycle and the use made of ICP results and their relevance to policymaking was provided at the September 2023 Statistical Conference of the Americas. A similar presentation was provided at a National Accounts Regional Seminar in October 2023. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[35]",
+      "sourceId": "body[1]/p[35]",
+      "documentOrder": 27,
+      "sourceContainerText": "Western Asia ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[35]#heading-span-0-12",
+          "start": 0,
+          "end": 12,
+          "text": "Western Asia",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[36]",
+      "sourceId": "body[1]/p[36]",
+      "documentOrder": 28,
+      "sourceContainerText": "Majed Skaini, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), presented the status of the ICP 2021 cycle in the Western Asia region. Sixteen economies are participating in the regional program. Data was primarily collected in 2021, with some economies extending collection into 2022 and data being backcasted to 2021 using detailed-level CPIs. Some of the non-household surveys are being collected on an annual basis. Updates were made at the end of October 2023 after review and collaboration with the AfDB for consistency in dual participating economies’ data, and assessment of outstanding issues with some economies. Expenditure data was received from most economies, while UN-ESCWA provided estimates for missing economies. Data validation and verification will be finalized in 2023. Revised regional annual PPPs for 2017 to 2020, preliminary PPPs for 2021 and 2022, and forecasted PPPs for 2023 will be computed in November 2023, with a final time series computed and released in December 2023. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[37]",
+      "sourceId": "body[1]/p[37]",
+      "documentOrder": 29,
+      "sourceContainerText": "In terms of regional activities, UN-ESCWA conducted a regional webinar in April 2023 titled “Prices: innovation and integration of statistical operations” focusing on the integration of the ICP with consumer price index (CPI) and the introduction of innovative data collection tools and sources. UN-ESCWA also conducted a regional workshop in May 2023 to discuss the revision of household and non-household consumption price surveys, and validation and treatment of 2021 and 2022 price data for the computation of PPPs. Another meeting will be held in December 2023 on the impact of PPP and price fluctuations on ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[38]",
+      "sourceId": "body[1]/p[38]",
+      "documentOrder": 30,
+      "sourceContainerText": "4 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[41]",
+      "sourceId": "body[1]/p[41]",
+      "documentOrder": 31,
+      "sourceContainerText": "socioeconomic indicators and Sustainable Development Goals (SDGs), and the release of regional PPP results. Subnational PPP estimates were computed for the Sultanate of Oman at the household consumption level for the year 2022 for eleven governorates. Preparations for the ICP 2024 cycle will commence in 2024. Libya and Yemen are expected to participate in discussions, while other potential participants are planned to be included. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[42]",
+      "sourceId": "body[1]/p[42]",
+      "documentOrder": 32,
+      "sourceContainerText": "Global updates on the ICP 2021 cycle implementation ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[42]#heading-span-0-51",
+          "start": 0,
+          "end": 51,
+          "text": "Global updates on the ICP 2021 cycle implementation",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[43]",
+      "sourceId": "body[1]/p[43]",
+      "documentOrder": 33,
+      "sourceContainerText": "The ICP Global Office presented global updates on the ICP 2021 cycle implementation, covering country participation; overall timeline; governance activities; operational activities and data submission status; risks; and outreach and uses. It was noted that: –The number of participating economies for the ICP 2021 cycle is consistent with previous cycles. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[44]",
+      "sourceId": "body[1]/p[44]",
+      "documentOrder": 34,
+      "sourceContainerText": "–The regions faced various challenges arising from COVID-19, the war in Ukraine, and the crisis in the Middle East. These challenges resulted in delays to surveys, data submissions, processing, quality assurance, and calculations. To address these challenges, ICP IACG had recommended that the release of the results be delayed until Q1, 2024. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[45]",
+      "sourceId": "body[1]/p[45]",
+      "documentOrder": 35,
+      "sourceContainerText": "–Household consumption data have been submitted for all regions, while non-household consumption data are broadly submitted. The share of Global Core List items priced by countries was generally high. Data validation is still ongoing in some regions. An analysis of submitted data identified problematic basic headings that warranted further validation. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[46]",
+      "sourceId": "body[1]/p[46]",
+      "documentOrder": 36,
+      "sourceContainerText": "–Efforts to further improve the replicability and transparency of ICP results in the current 2021 cycle benefitted from investments made in the 2017 cycle, ongoing use of enhanced and streamlined data processing, and independent PPP estimation by three experts and an advisor. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[47]",
+      "sourceId": "body[1]/p[47]",
+      "documentOrder": 37,
+      "sourceContainerText": "Furthermore, two World Bank data blogs on PPP calculations had been published since the 2017 cycle. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[48]",
+      "sourceId": "body[1]/p[48]",
+      "documentOrder": 38,
+      "sourceContainerText": "–Risks to the cycle and its results had necessitated the following mitigation activities. On data quality, enhanced validation efforts were adopted; on the timeliness of results, a revised publication schedule was adopted alongside close monitoring of the production schedule; and on comparability, TAG technical guidance on linking the Commonwealth of Independent States (CIS) region, and an assessment of the impact on ICP 2021 results is sought.",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[49]",
+      "sourceId": "body[1]/p[49]",
+      "documentOrder": 39,
+      "sourceContainerText": "–Regarding governance activities since the previous TAG meeting, the United Nations Statistical Commission (UNSC) had reviewed the 2023 ICP report, which was submitted “for information”. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[50]",
+      "sourceId": "body[1]/p[50]",
+      "documentOrder": 40,
+      "sourceContainerText": "The report was submitted “for discussion” for the March 2024 session. Furthermore, the Governing Board met in February 2023 and noted progress made with the ICP 2021 cycle, despite the COVID-19 pandemic and the war in Ukraine, and the need to identify a new approach to link the CIS region; the need to approach the national implementing agencies on completing the ICP 2021 cycle activities in a timely manner and to begin preparations for the ICP 2024 cycle; the need to identify sustained funding for the program and to strengthen advocacy efforts; and the current and anticipated uses of PPPs. The IACG convened in May 2023 and discussed the ICP 2021 cycle implementation, reviewed data, planning for the 2023/4 governance activities and ICP 2021 cycle release, and planning for the ICP 2024 cycle. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[51]",
+      "sourceId": "body[1]/p[51]",
+      "documentOrder": 41,
+      "sourceContainerText": "–Potential new uses of ICP data include: (i) the use of PPPs in the World Bank’s income classifications, and (ii) the use of PPPs in a new indicator aimed at monitoring shared prosperity using the concept of the prosperity gap. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[52]",
+      "sourceId": "body[1]/p[52]",
+      "documentOrder": 42,
+      "sourceContainerText": "5 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[55]",
+      "sourceId": "body[1]/p[55]",
+      "documentOrder": 43,
+      "sourceContainerText": "Data review: Household consumption price and importance data ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[55]#heading-span-0-60",
+          "start": 0,
+          "end": 60,
+          "text": "Data review: Household consumption price and importance data",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[56]",
+      "sourceId": "body[1]/p[56]",
+      "documentOrder": 44,
+      "sourceContainerText": "The ICP Global Office presented the global validation findings for the household consumption survey price data, noting the improvements made over the last six months, namely the higher number of priced items from the Global Core List and the lower variation coefficients at the basic heading and item levels. The price validation session was based on the analysis of box-plot graphs, derived from the Quaranta Tables (QTs) computed based on the latest available data provided by the RIAs. The box-plot graphs visualize the following information from the QTs: −BH graphs: BH CVs; Country price level indexes (PLIs) and related regional averages and regional spreads; and Country CVs. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[57]",
+      "sourceId": "body[1]/p[57]",
+      "documentOrder": 45,
+      "sourceContainerText": "−Item graphs: Item CVs, country average prices in US dollars, and regional averages and regional spreads; world average prices in US dollars; and country PPP-ratios.1 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[58]",
+      "sourceId": "body[1]/p[58]",
+      "documentOrder": 46,
+      "sourceContainerText": "The main issues were identified for each item, specifying the countries where prices might need to be verified and possibly corrected. Potential causes for these price discrepancies were also noted wherever possible, and suggestions for improvement were discussed. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[59]",
+      "sourceId": "body[1]/p[59]",
+      "documentOrder": 47,
+      "sourceContainerText": "Regarding the assignment of important indicators at the item level, the ICP Global Office presented an assessment of the situation in all regions. The overall share of important items in each region is in line with previous ICP cycles, although some discrepancies remain within countries of the same region. The ICP Global Office shared a set of recommendations to assist RIAs and national coordinators in determining whether an item should be deemed as important. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[60]",
+      "sourceId": "body[1]/p[60]",
+      "documentOrder": 48,
+      "sourceContainerText": "The RIAs acknowledged these findings and will continue to work on improving the data quality until the final submission of the ICP 2021 cycle. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[61]",
+      "sourceId": "body[1]/p[61]",
+      "documentOrder": 49,
+      "sourceContainerText": "Data review: Housing prices and volumes ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[61]#heading-span-0-39",
+          "start": 0,
+          "end": 39,
+          "text": "Data review: Housing prices and volumes",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[62]",
+      "sourceId": "body[1]/p[62]",
+      "documentOrder": 50,
+      "sourceContainerText": "The ICP Global Office presented the submission status and quality of the housing rents and volume data, as well as available validation summary notes and Excel-based tools. The validation of rental prices was observed in both annual rents per m2 and per dwelling, as they both provide usable means to validate the data. Furthermore, the GDP per capita was used as a metric to assess whether rental price data seems plausible given the income level of the country. It was noted that, for some countries with low-income levels, rental prices are high as the existing rental market is targeted at higher-income individuals. It was again stressed that annual rents should be submitted per m2. On volume data, several checks were made, as comparing 2021 to 2017 data, additivity checks, the ratio of formal dwellings over total housing, and dwellings per population checks.  RIAs will conduct the final round of data review with countries based on the findings from the global data quality review and submit the finalized data by the end of December. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[63]",
+      "sourceId": "body[1]/p[63]",
+      "documentOrder": 51,
+      "sourceContainerText": "1The ICP Operational Guide chapter 14 “Validation Tables” provides a comprehensive account of the QTs and Dikhanov Tables (DTs), and interpretation of PPP-Ratios and CPD-residuals, which both measure the patterns of relative prices for the different items within the heading being analyzed.",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[64]",
+      "sourceId": "body[1]/p[64]",
+      "documentOrder": 52,
+      "sourceContainerText": "6 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[67]",
+      "sourceId": "body[1]/p[67]",
+      "documentOrder": 53,
+      "sourceContainerText": "Data review: Private Education ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[67]#heading-span-0-30",
+          "start": 0,
+          "end": 30,
+          "text": "Data review: Private Education",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[68]",
+      "sourceId": "body[1]/p[68]",
+      "documentOrder": 54,
+      "sourceContainerText": "The ICP Global Office presented the validation findings for private education, highlighting outlier cases ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[69]",
+      "sourceId": "body[1]/p[69]",
+      "documentOrder": 55,
+      "sourceContainerText": "and instances where tuition costs for one item are exceedingly high, or low, relative to other items from ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[70]",
+      "sourceId": "body[1]/p[70]",
+      "documentOrder": 56,
+      "sourceContainerText": "the same country, as demonstrated by the PPP-Index. RIAs will conduct the final round of data review ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[71]",
+      "sourceId": "body[1]/p[71]",
+      "documentOrder": 57,
+      "sourceContainerText": "with countries based on the findings from the global data quality review and submit the finalized data by ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[72]",
+      "sourceId": "body[1]/p[72]",
+      "documentOrder": 58,
+      "sourceContainerText": "the end of December. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[73]",
+      "sourceId": "body[1]/p[73]",
+      "documentOrder": 59,
+      "sourceContainerText": "Data review: Government compensation and productivity adjustment ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[73]#heading-span-0-64",
+          "start": 0,
+          "end": 64,
+          "text": "Data review: Government compensation and productivity adjustment",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[74]",
+      "sourceId": "body[1]/p[74]",
+      "documentOrder": 60,
+      "sourceContainerText": "The ICP Global Office presented the submission status of the government compensation data and provided a detailed review of the data quality. It was noted that all the regions have submitted data for the survey with sufficient item coverage, and data quality was improved in spite of the addition of two regions compared to the previous data review. During the session, dispersions of compensation within and across regions, the consistency of data for related occupations, and the level of compensation vis-à-vis the average income of each country were reviewed to ensure data quality and consistency across regions. Though data were mostly of good quality and in semi-final status, some countries still had not submitted data, and some potential errors were observed for further review and correction. Finally, the procedures for the application of productivity adjustment were reviewed. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[75]",
+      "sourceId": "body[1]/p[75]",
+      "documentOrder": 61,
+      "sourceContainerText": "All validation materials were circulated after the meeting. RIAs will conduct the final round of data review with countries based on the findings from the global data quality review and submit the finalized data by the end of December. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[76]",
+      "sourceId": "body[1]/p[76]",
+      "documentOrder": 62,
+      "sourceContainerText": "Data review: Machinery and equipment and construction ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[76]#heading-span-0-53",
+          "start": 0,
+          "end": 53,
+          "text": "Data review: Machinery and equipment and construction",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[77]",
+      "sourceId": "body[1]/p[77]",
+      "documentOrder": 63,
+      "sourceContainerText": "The ICP Global Office provided a review of prices collected for the machinery and equipment and construction surveys. The ICP Global Office identified the key issues to be addressed by each RIA, and all validation materials were circulated after the meeting. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[78]",
+      "sourceId": "body[1]/p[78]",
+      "documentOrder": 64,
+      "sourceContainerText": "For machinery and equipment, since most global items are specified by brand and model, the price differences should be limited. However, tariffs, transportation, and other costs may also contribute to price differences between countries, as well as limited availability of these items in some countries. It was also noted that in some countries, regional brands and models may have been priced as brand and model-specified items, and it should thus be corrected. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[79]",
+      "sourceId": "body[1]/p[79]",
+      "documentOrder": 65,
+      "sourceContainerText": "For construction, some of the observed discrepancies may be attributed to the wrong unit of measurement in materials, hired equipment, and wages. Lastly, for both these surveys, some items may be priced in US dollars or other foreign currencies, and it needs to be confirmed if all prices are in local currency. RIAs will conduct the final round of data review with countries based on the findings from the global data quality review and submit the finalized data by the end of December. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[80]",
+      "sourceId": "body[1]/p[80]",
+      "documentOrder": 66,
+      "sourceContainerText": "Data review: 2017-2021 National Accounts expenditures ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[80]#heading-span-0-53",
+          "start": 0,
+          "end": 53,
+          "text": "Data review: 2017-2021 National Accounts expenditures",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[81]",
+      "sourceId": "body[1]/p[81]",
+      "documentOrder": 67,
+      "sourceContainerText": "The ICP Global Office presented the status of national accounts data submissions and provided findings from a detailed review of expenditure data, including intra- and inter-country validation, time- series ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[82]",
+      "sourceId": "body[1]/p[82]",
+      "documentOrder": 68,
+      "sourceContainerText": "7 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[85]",
+      "sourceId": "body[1]/p[85]",
+      "documentOrder": 69,
+      "sourceContainerText": "validation, inter-regional consistency, the effects of the pandemic on expenditure patterns, and the status of the revision of 2017 expenditures. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[86]",
+      "sourceId": "body[1]/p[86]",
+      "documentOrder": 70,
+      "sourceContainerText": "All participating countries submitted detailed expenditure weights for the ICP benchmark years, 2017 and 2021. The majority of countries also covered data for interim years. The review of data showed that the data reflects changes in expenditures due to the pandemic and geopolitical situation between the two benchmark years, though the degree of impacts observed varies across countries. Even though data are generally in good status and semi-final for many countries, some countries had much less coverage for lower levels of aggregation compared to the ICP 2017 cycle, and a few countries still need to undergo basic validation. The importance of having consistent coverage and estimates over time to avoid unnecessary changes in weights for lower levels of aggregation was emphasized, while changes due to the pandemic need to be carefully reviewed and reflected to measure the economic status accurately. It was also noted that metadata questionnaires need to be submitted along with the final data, as it is important to record country-specific metadata for the pandemic period to retain information on any special data treatments for transparency purposes. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[87]",
+      "sourceId": "body[1]/p[87]",
+      "documentOrder": 71,
+      "sourceContainerText": "All global and regional validation materials were circulated after the meeting. RIAs will conduct the final round of data review with countries based on the findings from the global data quality review and submit the finalized data and metadata questionnaires by the end of December. Global office and RIAs agree to have ad-hoc meetings on a need basis before the final submission date. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[88]",
+      "sourceId": "body[1]/p[88]",
+      "documentOrder": 72,
+      "sourceContainerText": "Data review: 2017-2021 Population and market exchange rates ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[88]#heading-span-0-59",
+          "start": 0,
+          "end": 59,
+          "text": "Data review: 2017-2021 Population and market exchange rates",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[89]",
+      "sourceId": "body[1]/p[89]",
+      "documentOrder": 73,
+      "sourceContainerText": "The ICP Global Office provided a review of the auxiliary data required for the ICP, including population and market exchange rates. Data are to be reported in units instead of multiples. In addition, consistency with reported prices, market exchange rates, and expenditure data needs to be ensured. Regional submissions should also include sufficient metadata on population and market exchange rates, which allow for assessing any potential observed differences between different data sources. The potential challenges with the data, ranging from currency redenomination to parallel exchange rate activities, were also noted. Implementing agencies will monitor situations with potential issues for any potential impact. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[90]",
+      "sourceId": "body[1]/p[90]",
+      "documentOrder": 74,
+      "sourceContainerText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[90]#heading-span-0-102",
+          "start": 0,
+          "end": 102,
+          "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[91]",
+      "sourceId": "body[1]/p[91]",
+      "documentOrder": 75,
+      "sourceContainerText": "Marko Rissanen presented plans for meetings and communications with the governance bodies and plans for the release of ICP 2021 cycle results. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[92]",
+      "sourceId": "body[1]/p[92]",
+      "documentOrder": 76,
+      "sourceContainerText": "It was agreed that the deadline for regional ICP 2021 cycle data submissions (revised ICP 2017 data, ICP 2021 data, and 2018-2020 timeseries data) is by end-December 2023. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[93]",
+      "sourceId": "body[1]/p[93]",
+      "documentOrder": 77,
+      "sourceContainerText": "It was established that the Governing Board (GB) should be updated with the current status of the ICP 2021 cycle and the challenges faced by national statistical offices via a report by email ahead of the in-person pre-UNSC GB meeting in February. Clarification on the make-up of a new ICP 2024 GB with regard to national representation from the regions was sought, and the Governance Framework was circulated to address this. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[94]",
+      "sourceId": "body[1]/p[94]",
+      "documentOrder": 78,
+      "sourceContainerText": "The report to the 55th session of the UNSC needs to be submitted by November 27, 2023.  Regions will be asked to review their regional paragraphs in the next week to meet this timetable. The UNSC global report will emphasize the inadequate resources and funding. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[95]",
+      "sourceId": "body[1]/p[95]",
+      "documentOrder": 79,
+      "sourceContainerText": "8 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[98]",
+      "sourceId": "body[1]/p[98]",
+      "documentOrder": 80,
+      "sourceContainerText": "As for the planned release of the ICP 2021 cycle results, the initial global data release of results via databases with World Bank press releases will precede the global report by some weeks as the latter requires editing and proofreading. Regions reported that their data releases that reference the global dataset will largely coincide with the Global Office release, with reports addressing analyses, methodology, and changes to the program following at a later date. A number of in-person launch events are also planned. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[99]",
+      "sourceId": "body[1]/p[99]",
+      "documentOrder": 81,
+      "sourceContainerText": "Planning for the ICP 2024 cycle ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[99]#heading-span-0-31",
+          "start": 0,
+          "end": 31,
+          "text": "Planning for the ICP 2024 cycle",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[100]",
+      "sourceId": "body[1]/p[100]",
+      "documentOrder": 82,
+      "sourceContainerText": "In preparation for the ICP 2024 cycle, the ICP Global Office presented the ICP 2024 pre-survey item lists, which are expected to be finalized by the end of 2023. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[101]",
+      "sourceId": "body[1]/p[101]",
+      "documentOrder": 83,
+      "sourceContainerText": "The ICP 2024 item list for Household Consumption includes approximately 100 new items, which is an increase from the 636 global core list items of ICP 2021. However, it was noted that all of these new items already exist as regional items in at least two or more regions. However, it was noted that further harmonization is required to ensure gross-regional comparability. Furthermore, while ICP regions are not expected to price all items on the global core list, they are encouraged to include as many global core list items as possible within the regional item lists. The inclusion of additional global items also seeks to increase the representativity of the global core list, by adopting items that are considered important across various regions of the world. The RIAs were invited to review these items, in particular for those BHs that were more difficult to price within the respective region, and to suggest improvements and alternatives where needed. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[102]",
+      "sourceId": "body[1]/p[102]",
+      "documentOrder": 84,
+      "sourceContainerText": "The ICP 2024 item lists for Housing Rentals, Private Education, Government Compensation, and Construction were also revised, but changes are mostly related to minor improvements in item definitions and a few additional items. However, the ICP 2024 Machinery and Equipment survey had a more significant update, as several items were removed and new items were introduced, reflecting the changes in the types of investment goods that have been in higher demand in recent years. The RIAs were invited to review these items and make any additional suggestions necessary. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[103]",
+      "sourceId": "body[1]/p[103]",
+      "documentOrder": 85,
+      "sourceContainerText": "Subsequently, the Global Office presented the changes introduced by the new Classification of Individual Consumption According to Purpose (COICOP) 2018. It was noted that while the main structure of the COICOP stays the same, some changes in various classifications can affect the current ICP classification as countries start adopting the new COICOP. RIAs reported that many countries have already adopted COICOP 2018 for CPI purposes or are in the process of adopting it soon. The ICP Global Office and Regional Implementing Agencies agreed to monitor countries’ progress in adopting the COICOP 2018, look for any changes needed for the ICP classification, and continue the conversation in future IACG meetings. ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[104]",
+      "sourceId": "body[1]/p[104]",
+      "documentOrder": 86,
+      "sourceContainerText": "9 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[107]",
+      "sourceId": "body[1]/p[107]",
+      "documentOrder": 87,
+      "sourceContainerText": "Annex 1: Meeting Agenda ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[107]#heading-span-0-23",
+          "start": 0,
+          "end": 23,
+          "text": "Annex 1: Meeting Agenda",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "documentOrder": 88,
+      "sourceContainerText": "DAY 1: TUESDAY, OCTOBER 31, 2023 ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#heading-span-0-32",
+          "start": 0,
+          "end": 32,
+          "text": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_TABLE_SECTION_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+      "documentOrder": 89,
+      "sourceContainerText": "09:00 – 09:10",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[2]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[2]/tc[2]/p[1]",
+      "documentOrder": 90,
+      "sourceContainerText": "Opening remarks ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[3]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[3]/tc[1]/p[1]",
+      "documentOrder": 91,
+      "sourceContainerText": "09:10– 10:30",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[3]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[3]/tc[2]/p[1]",
+      "documentOrder": 92,
+      "sourceContainerText": "Regional updates on the ICP 2021 cycle implementation ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[4]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[4]/tc[1]/p[1]",
+      "documentOrder": 93,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[4]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[4]/tc[2]/p[1]",
+      "documentOrder": 94,
+      "sourceContainerText": "Country participation status ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[5]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[5]/tc[1]/p[1]",
+      "documentOrder": 95,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[5]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[5]/tc[2]/p[1]",
+      "documentOrder": 96,
+      "sourceContainerText": "Implementation status ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[6]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[6]/tc[1]/p[1]",
+      "documentOrder": 97,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[6]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[6]/tc[2]/p[1]",
+      "documentOrder": 98,
+      "sourceContainerText": "oSurvey status oExpenditure compilation status oData and metadata submission and validation status oMetadata questionnaire submission status oPPP estimation status (2021, 2017, timeseries) Recent and forthcoming workshops and meetings ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+      "documentOrder": 99,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[7]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[7]/tc[2]/p[1]",
+      "documentOrder": 100,
+      "sourceContainerText": "Outreach activities and announcements ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[8]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[8]/tc[1]/p[1]",
+      "documentOrder": 101,
+      "sourceContainerText": "10:30 – 10:45 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[8]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[8]/tc[2]/p[1]",
+      "documentOrder": 102,
+      "sourceContainerText": "Break ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+      "documentOrder": 103,
+      "sourceContainerText": "10:45 – 12:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[9]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[9]/tc[2]/p[1]",
+      "documentOrder": 104,
+      "sourceContainerText": "Regional updates on the ICP 2021 cycle implementation (Cont'd) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[10]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[10]/tc[1]/p[1]",
+      "documentOrder": 105,
+      "sourceContainerText": "12:00 – 13:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[10]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[10]/tc[2]/p[1]",
+      "documentOrder": 106,
+      "sourceContainerText": "Lunch ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[11]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[11]/tc[1]/p[1]",
+      "documentOrder": 107,
+      "sourceContainerText": "13:00 – 14:00",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[11]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[11]/tc[2]/p[1]",
+      "documentOrder": 108,
+      "sourceContainerText": "Global updates on the ICP 2021 cycle implementation ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[12]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[12]/tc[1]/p[1]",
+      "documentOrder": 109,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[12]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[12]/tc[2]/p[1]",
+      "documentOrder": 110,
+      "sourceContainerText": "Overall ICP 2021 cycle timetable and production roadmap ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[13]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[13]/tc[1]/p[1]",
+      "documentOrder": 111,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[13]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[13]/tc[2]/p[1]",
+      "documentOrder": 112,
+      "sourceContainerText": "Data submission and validation status ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[14]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[14]/tc[1]/p[1]",
+      "documentOrder": 113,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[14]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[14]/tc[2]/p[1]",
+      "documentOrder": 114,
+      "sourceContainerText": "Risk assessment ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[15]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[15]/tc[1]/p[1]",
+      "documentOrder": 115,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[15]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[15]/tc[2]/p[1]",
+      "documentOrder": 116,
+      "sourceContainerText": "Outreach activities and announcement ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+      "documentOrder": 117,
+      "sourceContainerText": "14:00 – 14:45",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[16]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[16]/tc[2]/p[1]",
+      "documentOrder": 118,
+      "sourceContainerText": "Data review: Household consumption price and importance data ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[17]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[17]/tc[1]/p[1]",
+      "documentOrder": 119,
+      "sourceContainerText": "14:45 – 15:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[17]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[17]/tc[2]/p[1]",
+      "documentOrder": 120,
+      "sourceContainerText": "Break ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[18]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[18]/tc[1]/p[1]",
+      "documentOrder": 121,
+      "sourceContainerText": "15:00 – 17:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[18]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[18]/tc[2]/p[1]",
+      "documentOrder": 122,
+      "sourceContainerText": "Data review: Household consumption price and importance data ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "documentOrder": 123,
+      "sourceContainerText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023 ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/tbl[2]/tr[1]/tc[1]/p[1]#heading-span-0-34",
+          "start": 0,
+          "end": 34,
+          "text": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_TABLE_SECTION_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[2]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[1]/p[1]",
+      "documentOrder": 124,
+      "sourceContainerText": "09:00 – 10:30 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "documentOrder": 125,
+      "sourceContainerText": "Data review: Housing prices and volumes ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[3]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[3]/tc[1]/p[1]",
+      "documentOrder": 126,
+      "sourceContainerText": "10:30 – 10:45 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[3]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[3]/tc[2]/p[1]",
+      "documentOrder": 127,
+      "sourceContainerText": "Break ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[4]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[4]/tc[1]/p[1]",
+      "documentOrder": 128,
+      "sourceContainerText": "10:45 – 11:30 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+      "documentOrder": 129,
+      "sourceContainerText": "Data review: Private education ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[5]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[5]/tc[1]/p[1]",
+      "documentOrder": 130,
+      "sourceContainerText": "11:30 – 12:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+      "documentOrder": 131,
+      "sourceContainerText": "Data review: Government compensation and productivity adjustment ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[109]",
+      "sourceId": "body[1]/p[109]",
+      "documentOrder": 132,
+      "sourceContainerText": "10 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[112]",
+      "sourceId": "body[1]/p[112]",
+      "documentOrder": 133,
+      "sourceContainerText": "12:00 – 13:00 Lunch ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[113]",
+      "sourceId": "body[1]/p[113]",
+      "documentOrder": 134,
+      "sourceContainerText": "13:00 – 14:00 Data review: Government compensation and productivity (cont’d) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[114]",
+      "sourceId": "body[1]/p[114]",
+      "documentOrder": 135,
+      "sourceContainerText": "14:00 – 15:30 Data review: Machinery and equipment ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[115]",
+      "sourceId": "body[1]/p[115]",
+      "documentOrder": 136,
+      "sourceContainerText": "15:30 – 15:45 Break ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[116]",
+      "sourceId": "body[1]/p[116]",
+      "documentOrder": 137,
+      "sourceContainerText": "15:45 – 17:00 Data review: Construction and civil engineering ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PROSE_OR_NON_HEADING_SOURCE_CONTAINER"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "documentOrder": 138,
+      "sourceContainerText": "DAY 3: THURSDAY, NOVEMBER 2, 2023 ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#heading-span-0-33",
+          "start": 0,
+          "end": 33,
+          "text": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_TABLE_SECTION_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[2]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[2]/tc[1]/p[1]",
+      "documentOrder": 139,
+      "sourceContainerText": "09:00 – 10:30 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "documentOrder": 140,
+      "sourceContainerText": "Data review: 2017-2021 National accounts expenditures ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[3]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[3]/tc[1]/p[1]",
+      "documentOrder": 141,
+      "sourceContainerText": "10:30 – 10:45 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[3]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[3]/tc[2]/p[1]",
+      "documentOrder": 142,
+      "sourceContainerText": "Break ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[4]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[4]/tc[1]/p[1]",
+      "documentOrder": 143,
+      "sourceContainerText": "10:45 – 11:15 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+      "documentOrder": 144,
+      "sourceContainerText": "Data review: 2017-2021 National accounts expenditures (cont’d) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[1]",
+      "documentOrder": 145,
+      "sourceContainerText": "11:15 – 12:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[5]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[2]/p[1]",
+      "documentOrder": 146,
+      "sourceContainerText": "Data review: 2017-2021 Population and market exchange rates ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[6]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[6]/tc[1]/p[1]",
+      "documentOrder": 147,
+      "sourceContainerText": "12:00 – 13:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+      "documentOrder": 148,
+      "sourceContainerText": "Lunch ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[7]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[7]/tc[1]/p[1]",
+      "documentOrder": 149,
+      "sourceContainerText": "13:00 – 14:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+      "documentOrder": 150,
+      "sourceContainerText": "Data review: 2017-2021 timeseries data (PPPs, CPIs, deflators) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[8]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[8]/tc[1]/p[1]",
+      "documentOrder": 151,
+      "sourceContainerText": "14:00 – 14:15 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+      "documentOrder": 152,
+      "sourceContainerText": "Break ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[9]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[9]/tc[1]/p[1]",
+      "documentOrder": 153,
+      "sourceContainerText": "14:15-15:30 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[9]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[9]/tc[2]/p[1]",
+      "documentOrder": 154,
+      "sourceContainerText": "Data reviews (cont’d) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[10]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[10]/tc[1]/p[1]",
+      "documentOrder": 155,
+      "sourceContainerText": "15:30 – 15:45 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[10]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[10]/tc[2]/p[1]",
+      "documentOrder": 156,
+      "sourceContainerText": "Break ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[11]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[11]/tc[1]/p[1]",
+      "documentOrder": 157,
+      "sourceContainerText": "15:45 – 17:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[11]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[11]/tc[2]/p[1]",
+      "documentOrder": 158,
+      "sourceContainerText": "Data review (cont’d) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+      "documentOrder": 159,
+      "sourceContainerText": "DAY 4: FRIDAY, NOVEMBER 3, 2023 ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/tbl[4]/tr[1]/tc[1]/p[1]#heading-span-0-31",
+          "start": 0,
+          "end": 31,
+          "text": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_TABLE_SECTION_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[2]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[2]/tc[1]/p[1]",
+      "documentOrder": 160,
+      "sourceContainerText": "09:00 – 10:30",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[2]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[2]/tc[2]/p[1]",
+      "documentOrder": 161,
+      "sourceContainerText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[3]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[3]/tc[1]/p[1]",
+      "documentOrder": 162,
+      "sourceContainerText": "regional and global levels ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[4]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[4]/tc[1]/p[1]",
+      "documentOrder": 163,
+      "sourceContainerText": "10:30 – 10:45 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[4]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[4]/tc[2]/p[1]",
+      "documentOrder": 164,
+      "sourceContainerText": "Break ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[5]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[5]/tc[1]/p[1]",
+      "documentOrder": 165,
+      "sourceContainerText": "10:45 – 12:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[5]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[5]/tc[2]/p[1]",
+      "documentOrder": 166,
+      "sourceContainerText": "Planning for the ICP 2024 cycle ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[6]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[6]/tc[1]/p[1]",
+      "documentOrder": 167,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[6]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[6]/tc[2]/p[1]",
+      "documentOrder": 168,
+      "sourceContainerText": "Timetable ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[7]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[7]/tc[1]/p[1]",
+      "documentOrder": 169,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[7]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[7]/tc[2]/p[1]",
+      "documentOrder": 170,
+      "sourceContainerText": "Operational materials ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[8]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[8]/tc[1]/p[1]",
+      "documentOrder": 171,
+      "sourceContainerText": "12:00 – 13:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[8]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[8]/tc[2]/p[1]",
+      "documentOrder": 172,
+      "sourceContainerText": "Lunch ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[118]",
+      "sourceId": "body[1]/p[118]",
+      "documentOrder": 173,
+      "sourceContainerText": "11 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[5]/tr[1]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[1]/p[1]",
+      "documentOrder": 174,
+      "sourceContainerText": "13:00 – 14:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[5]/tr[1]/tc[1]/p[2]",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[1]/p[2]",
+      "documentOrder": 175,
+      "sourceContainerText": "14:00 – 14:15 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[5]/tr[1]/tc[1]/p[3]",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[1]/p[3]",
+      "documentOrder": 176,
+      "sourceContainerText": "14:15 – 16:30 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[5]/tr[1]/tc[1]/p[4]",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[1]/p[4]",
+      "documentOrder": 177,
+      "sourceContainerText": "16:30 – 17:00 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]",
+      "documentOrder": 178,
+      "sourceContainerText": "Planning for the ICP 2024 cycle ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[5]/tr[2]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[5]/tr[2]/tc[2]/p[1]",
+      "documentOrder": 179,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[5]/tr[2]/tc[3]/p[1]",
+      "sourceId": "body[1]/tbl[5]/tr[2]/tc[3]/p[1]",
+      "documentOrder": 180,
+      "sourceContainerText": "Timetable ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[5]/tr[3]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[5]/tr[3]/tc[2]/p[1]",
+      "documentOrder": 181,
+      "sourceContainerText": "–",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[5]/tr[3]/tc[3]/p[1]",
+      "sourceId": "body[1]/tbl[5]/tr[3]/tc[3]/p[1]",
+      "documentOrder": 182,
+      "sourceContainerText": "Operational materials ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[5]/tr[4]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[5]/tr[4]/tc[2]/p[1]",
+      "documentOrder": 183,
+      "sourceContainerText": "Break Planning for an approach to produce annual ICP results and forecasts Any other business and closing ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "TABLE_DATA_OR_NON_HEADING_ROW"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[121]",
+      "sourceId": "body[1]/p[121]",
+      "documentOrder": 184,
+      "sourceContainerText": "12 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[124]",
+      "sourceId": "body[1]/p[124]",
+      "documentOrder": 185,
+      "sourceContainerText": "Annex 2: List of participants ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0256:body[1]/p[124]#heading-span-0-29",
+          "start": 0,
+          "end": 29,
+          "text": "Annex 2: List of participants",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STANDALONE_HEADING_CONTAINER",
+            "SOURCE_RUN_BOUNDARY"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "EXACT_RUN_BOUNDARY"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[125]",
+      "sourceId": "body[1]/p[125]",
+      "documentOrder": 186,
+      "sourceContainerText": "African Development Bank (AfDB) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_LIST_LABEL_OR_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[126]",
+      "sourceId": "body[1]/p[126]",
+      "documentOrder": 187,
+      "sourceContainerText": "−Ben Paul Mungyereza (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[127]",
+      "sourceId": "body[1]/p[127]",
+      "documentOrder": 188,
+      "sourceContainerText": "−Gregoire Mboya de Loubassou (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[128]",
+      "sourceId": "body[1]/p[128]",
+      "documentOrder": 189,
+      "sourceContainerText": "−Charles Sessede (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[129]",
+      "sourceId": "body[1]/p[129]",
+      "documentOrder": 190,
+      "sourceContainerText": "−Symphorien Ndang Tabo (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[130]",
+      "sourceId": "body[1]/p[130]",
+      "documentOrder": 191,
+      "sourceContainerText": "Asian Development Bank (ADB) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_LIST_LABEL_OR_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[131]",
+      "sourceId": "body[1]/p[131]",
+      "documentOrder": 192,
+      "sourceContainerText": "−Kaushal Joshi (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[132]",
+      "sourceId": "body[1]/p[132]",
+      "documentOrder": 193,
+      "sourceContainerText": "−Criselda H. De Dios (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[133]",
+      "sourceId": "body[1]/p[133]",
+      "documentOrder": 194,
+      "sourceContainerText": "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_LIST_LABEL_OR_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[134]",
+      "sourceId": "body[1]/p[134]",
+      "documentOrder": 195,
+      "sourceContainerText": "−Andrey Kosarev (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[135]",
+      "sourceId": "body[1]/p[135]",
+      "documentOrder": 196,
+      "sourceContainerText": "−Valerica Accibas (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[136]",
+      "sourceId": "body[1]/p[136]",
+      "documentOrder": 197,
+      "sourceContainerText": "Organisation for Economic Co-operation and Development (OECD) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_LIST_LABEL_OR_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[137]",
+      "sourceId": "body[1]/p[137]",
+      "documentOrder": 198,
+      "sourceContainerText": "−Daniel Sanchez Serra (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[138]",
+      "sourceId": "body[1]/p[138]",
+      "documentOrder": 199,
+      "sourceContainerText": "−Sophie Bournot (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[139]",
+      "sourceId": "body[1]/p[139]",
+      "documentOrder": 200,
+      "sourceContainerText": "Statistical Office of the European Communities (Eurostat) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_LIST_LABEL_OR_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[140]",
+      "sourceId": "body[1]/p[140]",
+      "documentOrder": 201,
+      "sourceContainerText": "−Mihai-Iulian Gheorghe (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[141]",
+      "sourceId": "body[1]/p[141]",
+      "documentOrder": 202,
+      "sourceContainerText": "−Eleonora-Maria Dumitrascu (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[142]",
+      "sourceId": "body[1]/p[142]",
+      "documentOrder": 203,
+      "sourceContainerText": "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_LIST_LABEL_OR_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[143]",
+      "sourceId": "body[1]/p[143]",
+      "documentOrder": 204,
+      "sourceContainerText": "−Claudia de Camino Ferrario (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[144]",
+      "sourceId": "body[1]/p[144]",
+      "documentOrder": 205,
+      "sourceContainerText": "−Lady Infante (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[145]",
+      "sourceId": "body[1]/p[145]",
+      "documentOrder": 206,
+      "sourceContainerText": "−Ernestina Perez (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[146]",
+      "sourceId": "body[1]/p[146]",
+      "documentOrder": 207,
+      "sourceContainerText": "United Nations Economic and Social Commission for Western Asia (UN-ESCWA) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_LIST_LABEL_OR_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[147]",
+      "sourceId": "body[1]/p[147]",
+      "documentOrder": 208,
+      "sourceContainerText": "−Majed Skaini (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[148]",
+      "sourceId": "body[1]/p[148]",
+      "documentOrder": 209,
+      "sourceContainerText": "−Sadim Sbeiti (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[149]",
+      "sourceId": "body[1]/p[149]",
+      "documentOrder": 210,
+      "sourceContainerText": "International Monetary Fund (IMF) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_LIST_LABEL_OR_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[150]",
+      "sourceId": "body[1]/p[150]",
+      "documentOrder": 211,
+      "sourceContainerText": "−Brian Graf (by videoconference) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[151]",
+      "sourceId": "body[1]/p[151]",
+      "documentOrder": 212,
+      "sourceContainerText": "World Bank ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_LIST_LABEL_OR_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[152]",
+      "sourceId": "body[1]/p[152]",
+      "documentOrder": 213,
+      "sourceContainerText": "−Marko Rissanen (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[153]",
+      "sourceId": "body[1]/p[153]",
+      "documentOrder": 214,
+      "sourceContainerText": "−Yan Bai (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[154]",
+      "sourceId": "body[1]/p[154]",
+      "documentOrder": 215,
+      "sourceContainerText": "−Rui Costa (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[155]",
+      "sourceId": "body[1]/p[155]",
+      "documentOrder": 216,
+      "sourceContainerText": "−Yuri Dikhanov (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[156]",
+      "sourceId": "body[1]/p[156]",
+      "documentOrder": 217,
+      "sourceContainerText": "−Nancy Kebe (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[157]",
+      "sourceId": "body[1]/p[157]",
+      "documentOrder": 218,
+      "sourceContainerText": "−Maurice Nsabimana (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[158]",
+      "sourceId": "body[1]/p[158]",
+      "documentOrder": 219,
+      "sourceContainerText": "−Edie Purdie (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[159]",
+      "sourceId": "body[1]/p[159]",
+      "documentOrder": 220,
+      "sourceContainerText": "−Inyoung Song (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[160]",
+      "sourceId": "body[1]/p[160]",
+      "documentOrder": 221,
+      "sourceContainerText": "13 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[163]",
+      "sourceId": "body[1]/p[163]",
+      "documentOrder": 222,
+      "sourceContainerText": "−Giovanni Tonutti (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[164]",
+      "sourceId": "body[1]/p[164]",
+      "documentOrder": 223,
+      "sourceContainerText": "−Mizuki Yamanaka (in-person) ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[165]",
+      "sourceId": "body[1]/p[165]",
+      "documentOrder": 224,
+      "sourceContainerText": "−Sergey Sergeev (by videoconference) for parallel computations ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PARTICIPANT_DATA"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[166]",
+      "sourceId": "body[1]/p[166]",
+      "documentOrder": 225,
+      "sourceContainerText": "14 ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "PAGE_NUMBER_OR_FOOTER_ARTIFACT"
+      ],
+      "reviewAuthority": "CODEX_SOURCE_ONLY_OCCURRENCE_REVIEW",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    }
+  ],
+  "sourceOnly": true,
+  "historicalLevelRead": false,
+  "hierarchyUsed": false,
+  "semanticTotalUsed": false
+}
