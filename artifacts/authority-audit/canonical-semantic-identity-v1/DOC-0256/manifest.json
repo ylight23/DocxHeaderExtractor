@@ -1,0 +1,61 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_MANIFEST",
+  "schemaVersion": "a99-canonical-semantic-identity-v1-doc0256",
+  "documentId": "DOC-0256",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_IDENTITY",
+  "inputOccurrenceCount": 24,
+  "semanticNodeCount": 24,
+  "primaryCount": 24,
+  "repeatCount": 0,
+  "continuationCount": 0,
+  "multiOccurrenceNodeCount": 0,
+  "ambiguityCount": 0,
+  "files": [
+    {
+      "name": "occurrence-input-manifest.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0256/occurrence-input-manifest.json",
+      "sha256": "d405e0bd810a547af1db786f9f0534e95d48245f44ce580a3c3f75833c37ddd2"
+    },
+    {
+      "name": "occurrence-assignments.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0256/occurrence-assignments.json",
+      "sha256": "f5924618fe328cdaddc777e91b51aefa59f6263a22bd52b30c233006ae16af9e"
+    },
+    {
+      "name": "semantic-nodes.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0256/semantic-nodes.json",
+      "sha256": "ef9cfdc4c07e3c8c4f418978aa75ef08cbf29050e7d958519f689fdb19d2e226"
+    },
+    {
+      "name": "identity-decisions.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0256/identity-decisions.json",
+      "sha256": "c6f5857b200b4b3df5b264ba3ed4f25d89bcf7a796db33098eaa6e3acaf36b07"
+    },
+    {
+      "name": "ambiguities.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0256/ambiguities.json",
+      "sha256": "7083445ff7e0f1adce74762c988f231eb772aed30d624d42a530967c3c76ce9b"
+    },
+    {
+      "name": "validation.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0256/validation.json",
+      "sha256": "f7dbbce9d15c28e31f9191bcaff49e6c606e4f9cf1ca8bc82274c8fe4bf52587"
+    },
+    {
+      "name": "post-freeze-diagnostics.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0256/post-freeze-diagnostics.json",
+      "sha256": "f82005d33a8ff6b67c125d9e3435f26e4cc322d52c066b5e2d0895f416b8d5e7"
+    }
+  ],
+  "occurrenceAuthoritySha256": "e0e031f1162bf6a3d13a9c41d130f357a1b138b5538607dee2a326d88c667323",
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "oldSemanticTotalUsedForDecision": false,
+  "parentReviewed": false,
+  "levelReviewed": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "userApprovalRequired": true,
+  "stopBeforeHierarchy": true
+}

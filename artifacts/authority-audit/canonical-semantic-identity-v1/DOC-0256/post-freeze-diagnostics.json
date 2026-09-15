@@ -1,0 +1,17 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_POST_FREEZE_DIAGNOSTICS",
+  "schemaVersion": "a99-canonical-semantic-identity-v1-doc0256",
+  "documentId": "DOC-0256",
+  "identityArtifactsFrozenBeforeDiagnostic": true,
+  "finalSemanticNodeCount": 24,
+  "oldSemanticTotal": 24,
+  "comparison": "24 vs 24",
+  "oldSemanticTotalAuthority": "NON_BINDING_CROSS_AUTHORITY_DIAGNOSTIC",
+  "oldSemanticTotalUsedForDecision": false,
+  "historicalArtifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0256.strict-gold-v4.json",
+  "historicalArtifactSha256": "f12a4a407deddf9d6f1039510d8b2ee4965db091901e2e1b3e806b97344c92e2",
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalIdentityUsedForDecision": false,
+  "note": "Canonical occurrence count is 24; inability to reach the old semantic total is not an error and does not trigger identity mutation."
+}
