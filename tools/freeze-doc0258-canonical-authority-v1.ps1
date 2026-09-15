@@ -193,6 +193,8 @@ $authoritySummary = [pscustomobject]@{
     rootChildCount = 3
     maxDepth = [int](($depthByNode.Values | Measure-Object -Maximum).Maximum)
     levelDerivation = 'DEPTH_FROM_VALIDATED_TREE_ONLY'
+    legacySemanticTotal = 37
+    legacySemanticTotalStatus = 'SUPERSEDED_CONTRADICTED_FOR_DOC0258_CANONICAL_AUTHORITY'
     sourceSha256 = $sourceSha
     identityProposalStatus = [string]$identityManifest.status
     identityChallengeStatus = [string]$challengeValidation.status
@@ -215,6 +217,8 @@ $freezeManifest = [pscustomobject]@{
     userApproval = 'User approved DOC-0258 at checkpoints 78af9bf, 3ffe8f1, 09af8f2, 569b528.'
     commitLineage = $commitLineage
     sourceSha256 = $sourceSha
+    legacySemanticTotal = 37
+    legacySemanticTotalStatus = 'SUPERSEDED_CONTRADICTED_FOR_DOC0258_CANONICAL_AUTHORITY'
     artifactHashes = @($artifactHashes)
     summary = $authoritySummary
     invariants = [ordered]@{
@@ -233,6 +237,7 @@ $freezeManifest = [pscustomobject]@{
         providerCalls = 0
         modelCalls = 0
         goldMutationOutsideNewFreeze = $false
+        legacySemanticTotalUsedForDecision = $false
     }
 }
 
@@ -297,6 +302,7 @@ This freeze promotes the source-backed chain at commits 78af9bf, 3ffe8f1, 09af8f
 - Hierarchy proposal: Codex source-backed
 - Final promotion: explicit user approval
 - Historical compatibility results: not read or modified
+- Legacy semantic total 37: superseded/contradicted for DOC-0258 canonical authority; not used as a target
 
 All artifact SHA256 values and cross-layer invariants are recorded in authority-freeze-manifest.json.
 "@
