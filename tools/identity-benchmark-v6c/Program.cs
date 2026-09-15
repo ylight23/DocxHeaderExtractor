@@ -17,7 +17,7 @@ internal static class Program
     private const string V2ExecutionRelative = "artifacts/identity-benchmark/v6/owner-induction/execution-v2-addressable";
     private const string V3PreflightRelative = "artifacts/identity-benchmark/v6/owner-induction/preflight-v3-opaque-handles";
     private const string V3ExecutionRelative = "artifacts/identity-benchmark/v6/owner-induction/execution-v3-opaque-handles";
-    private const string V3RevalidationRelative = "artifacts/identity-benchmark/v6/owner-induction/revalidation-v3-target-occurrences";
+    private const string V3RevalidationRelative = "artifacts/identity-benchmark/v6/owner-induction/revalidation-v3-target-occurrences-v2";
     private const string V3HandleMapSha256 = "0666173081122a3b031928f9feadb2e059517168281d4ea1b022bc0bdddd9210";
     private const string Provider = "OpenRouter";
     private const string Model = "qwen/qwen3.7-flash";
@@ -514,6 +514,8 @@ internal static class Program
         var unknownE = 0;
         var unknownOwner = 0;
         var emptyOwners = 0;
+        var crossScopeOwners = 0;
+        var splitScopeGroups = 0;
         foreach (var attempt in manifestRoot.GetProperty("attempts").EnumerateArray())
         {
             var sequence = attempt.GetProperty("sequence").GetInt32();
@@ -538,6 +540,18 @@ internal static class Program
                 assigned += validation.AssignedOccurrences;
                 unresolved += validation.UnresolvedOccurrences;
                 owners += validation.OwnerCount;
+                var targetOccurrenceScopes = frozen[documentId].Request.GetProperty("occurrences").EnumerateArray().ToDictionary(x => x.GetProperty("ref").GetString()!, x => x.GetProperty("sourceContainerIdentity").GetString()!, StringComparer.Ordinal);
+                var assignments = response.RootElement.GetProperty("assignments").EnumerateArray().ToArray();
+                foreach (var ownerGroup in assignments.GroupBy(x => x.GetProperty("owner").GetString()!, StringComparer.Ordinal))
+                {
+                    if (ownerGroup.Select(x => targetOccurrenceScopes[x.GetProperty("ref").GetString()!]).Distinct(StringComparer.Ordinal).Count() > 1) crossScopeOwners++;
+                }
+                var ownerByRef = assignments.ToDictionary(x => x.GetProperty("ref").GetString()!, x => x.GetProperty("owner").GetString()!, StringComparer.Ordinal);
+                foreach (var scopeGroup in frozen[documentId].Request.GetProperty("parserOwnedScopeGroups").EnumerateArray())
+                {
+                    var scopeOwners = scopeGroup.GetProperty("occurrenceRefs").EnumerateArray().Select(x => x.GetString()!).Where(ownerByRef.ContainsKey).Select(x => ownerByRef[x]).Distinct(StringComparer.Ordinal).Count();
+                    if (scopeOwners > 1) splitScopeGroups++;
+                }
             }
             else invalid++;
             rows.Add(new { sequence, documentId, primaryStatus = attempt.GetProperty("status").GetString(), correctedStatus = validation.Accepted ? "VALID" : "INVALID_VALIDATION", rawResponseSha256 = rawHash, validation, deprojected });
@@ -570,6 +584,8 @@ internal static class Program
             unknownEvidenceHandles = unknownE,
             unknownOwnerIds = unknownOwner,
             emptyOwners,
+            crossParserScopeOwners = crossScopeOwners,
+            splitParserScopeGroups = splitScopeGroups,
         });
         await WriteAsync(Path.Combine(output, "predictions.json"), new
         {
