@@ -1,0 +1,34 @@
+{
+  "artifactKind": "a99_identity_benchmark_v8h0_execution_integrity_incident",
+  "schemaVersion": "a99-v8h0-execution-integrity-incident-v1",
+  "status": "INVALID_PRIMARY_EXECUTION_ARTIFACT",
+  "preflightCommit": "98ce62e",
+  "providerAuthorization": "V8H0 heading extraction; one primary call per scheduled/triggered request; retry=0",
+  "observed": {
+    "rolePrimaryCallsExecutedAtLeast": 30,
+    "spanPrimaryCalls": "UNKNOWN_NOT_PERSISTED",
+    "totalPrimaryCalls": "AT_LEAST_30",
+    "rawAttemptsPersisted": 0,
+    "goldReads": 0,
+    "rerunPerformed": 0
+  },
+  "failure": {
+    "phase": "post_provider_binding_artifact_materialization",
+    "exception": "The given key was not present in the dictionary.",
+    "cause": "runner looked up JSON property @ref although frozen candidate manifest serializes the anonymous property as ref",
+    "rawResponseRecovery": "not available from the failed process",
+    "causalUse": "FORBIDDEN_FOR_HEADING_QUALITY"
+  },
+  "policy": {
+    "primaryRunInvalid": true,
+    "rerunForbiddenWithoutNewAuthorization": true,
+    "preflightArtifactsMutated": false,
+    "goldOpened": false,
+    "identityCandidateGeneration": false
+  },
+  "remediation": {
+    "fixedBindingKey": "ref",
+    "incrementalAttemptPersistenceAdded": true,
+    "providerCallsAfterIncident": 0
+  }
+}
