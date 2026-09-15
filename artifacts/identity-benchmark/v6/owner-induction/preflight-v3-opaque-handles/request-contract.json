@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "a99-v6c-owner-induction-v3-opaque-handles",
+  "supersedes": "a99-v6c-owner-induction-v2-addressable",
+  "changes": [
+    "opaque short occurrence handles",
+    "opaque short evidence handles",
+    "single assignments-only membership authority",
+    "deterministic deprojection map"
+  ],
+  "semanticContractUnchanged": true,
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v1Mutation": false,
+  "v2Mutation": false,
+  "forbiddenSemanticChanges": [
+    "owner definition",
+    "autonomy definition",
+    "source context",
+    "structural evidence",
+    "document-global reasoning",
+    "Gold/V5C/V6A-derived rules"
+  ],
+  "output": {
+    "owners": [
+      "owner",
+      "description",
+      "autonomous",
+      "evidenceRefs"
+    ],
+    "assignments": [
+      "ref",
+      "owner"
+    ],
+    "unresolvedRefs": "allowed",
+    "forbiddenOutputFields": [
+      "memberOccurrenceIds",
+      "canonical occurrence IDs",
+      "canonical evidence IDs"
+    ]
+  }
+}

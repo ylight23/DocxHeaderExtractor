@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "a99-v6c-preflight-manifest-v3-opaque-handles",
+  "status": "READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION",
+  "supersedes": "preflight-v2-addressable",
+  "documentCount": 3,
+  "requestCount": 3,
+  "occurrenceCount": 226,
+  "requestHashes": [
+    "925658d7928ba49c9ce00930987fa20461f08165bdd301802ebe57c6d3389ce0",
+    "b34126aaf2ccf96fe9f83407c9949b9cdf4ed2f0da4e2e937e4cf7f173bb2ce7",
+    "d5101b697a6fbf3a8e130cba9ef174d0ada0c29119cfd855b1e59825dc9e7183"
+  ],
+  "requestSetSha256": "a85b6ff6d5ad86d10b8430a626338282f09d5c86be91c378ea1b1710000a33ab",
+  "sourceFingerprint": {
+    "v2ManifestSha256": "19f1afb802fb19fa25da63570736cde2587c176cbd30ed6140c7dfd6788132f6",
+    "v2RequestsSha256": "123a399bccc5d8ddf32b15d6ee542a01571ee3fb2a2b9efd7cc21e3cb9c820f2"
+  },
+  "occurrenceHandleCoverage": "100%",
+  "evidenceHandleCoverage": "100%",
+  "duplicatedMembershipRepresentation": false,
+  "semanticContractUnchanged": true,
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v1Mutation": false,
+  "v2Mutation": false
+}

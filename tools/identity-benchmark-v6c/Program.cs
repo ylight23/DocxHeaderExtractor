@@ -41,6 +41,7 @@ internal static class Program
             if (args.Any(x => string.Equals(x, "--diagnose-v2", StringComparison.Ordinal))) return await DiagnoseV2Async(root);
             if (args.Any(x => string.Equals(x, "--diagnose-primary", StringComparison.Ordinal))) return await DiagnosePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--prepare-v2", StringComparison.Ordinal))) return await PrepareV2Async(root);
+            if (args.Any(x => string.Equals(x, "--prepare-v3", StringComparison.Ordinal))) return await PrepareV3Async(root);
             await RunPreflightAsync(root);
             Console.WriteLine("V6C_STATUS=OWNER_INDUCTION_PREFLIGHT_FROZEN REQUESTS=3 MODEL_CALLS=0 PROVIDER_CALLS=0 GOLD_READ_COUNT=0 V5C_READ_COUNT=0 V6A_READ_COUNT=0");
             return 0;
@@ -707,6 +708,148 @@ internal static class Program
         await File.WriteAllTextAsync(Path.Combine(output, "report.md"), "# A99 V6C-v2 — addressable owner induction preflight\n\nV1 is preserved. This challenger makes the exact allowed occurrence/evidence universes explicit to reduce identifier qualification and evidence-reference drift. It has **0 provider calls** and requires separate authorization.\n", new UTF8Encoding(false));
         Console.WriteLine($"V6C_V2_PREFLIGHT_COMPLETE REQUESTS={records.Count} PROVIDER_CALLS=0 GOLD_READ_COUNT=0 V1_MUTATION=false");
         return 0;
+    }
+
+    private static async Task<int> PrepareV3Async(string root)
+    {
+        var v2 = Full(root, V2PreflightRelative);
+        var output = Full(root, "artifacts/identity-benchmark/v6/owner-induction/preflight-v3-opaque-handles");
+        using var v2Manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(v2, "manifest.json")));
+        Require(v2Manifest.RootElement.GetProperty("status").GetString() == "READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION", "V6C_V3_V2_STATUS");
+        Require(v2Manifest.RootElement.GetProperty("providerCalls").GetInt32() == 0 && v2Manifest.RootElement.GetProperty("goldReadCount").GetInt32() == 0 && v2Manifest.RootElement.GetProperty("v5cReadCount").GetInt32() == 0 && v2Manifest.RootElement.GetProperty("v6aReadCount").GetInt32() == 0, "V6C_V3_V2_FIREWALL");
+        using var v2Requests = JsonDocument.Parse(File.ReadAllText(Path.Combine(v2, "requests.json")));
+        var records = new List<object>();
+        var handleMaps = new List<object>();
+        foreach (var record in v2Requests.RootElement.GetProperty("records").EnumerateArray().OrderBy(x => x.GetProperty("documentId").GetString(), StringComparer.Ordinal))
+        {
+            var source = JsonNode.Parse(record.GetProperty("request").GetRawText())!.AsObject();
+            var documentId = source["documentId"]!.GetValue<string>();
+            var occurrences = source["occurrences"]!.AsArray().OrderBy(x => x!["documentOrder"]!.GetValue<int>()).ThenBy(x => x!["occurrenceId"]!.GetValue<string>(), StringComparer.Ordinal).ToArray();
+            var occurrenceIds = occurrences.Select(x => x!["occurrenceId"]!.GetValue<string>()).ToArray();
+            var orderByOccurrence = occurrences.ToDictionary(x => x!["occurrenceId"]!.GetValue<string>(), x => x!["documentOrder"]!.GetValue<int>(), StringComparer.Ordinal);
+            var allOccurrenceIds = occurrenceIds.ToHashSet(StringComparer.Ordinal);
+            foreach (var occurrence in occurrences)
+            {
+                foreach (var context in occurrence!["previousSourceOccurrences"]!.AsArray().Concat(occurrence["nextSourceOccurrences"]!.AsArray())) allOccurrenceIds.Add(context!["occurrenceId"]!.GetValue<string>());
+            }
+            foreach (var group in source["parserOwnedScopeGroups"]!.AsArray()) foreach (var id in StringArray(group!["occurrenceIds"]!)) allOccurrenceIds.Add(id);
+            var occurrenceMap = allOccurrenceIds.OrderBy(id => orderByOccurrence.TryGetValue(id, out var order) ? order : int.MaxValue).ThenBy(id => id, StringComparer.Ordinal).Select((id, index) => new { id, handle = $"U{index + 1:D3}" }).ToDictionary(x => x.id, x => x.handle, StringComparer.Ordinal);
+            var evidenceKinds = new Dictionary<string, SortedSet<string>>(StringComparer.Ordinal);
+            void AddEvidence(string value, string kind)
+            {
+                if (!evidenceKinds.TryGetValue(value, out var kinds)) evidenceKinds[value] = kinds = new SortedSet<string>(StringComparer.Ordinal);
+                kinds.Add(kind);
+            }
+            foreach (var occurrence in occurrences)
+            {
+                AddEvidence(occurrence!["sourceContainerIdentity"]!.GetValue<string>(), "sourceContainerIdentity");
+                foreach (var value in StringArray(occurrence["clusterIds"]!)) AddEvidence(value, "clusterId");
+                foreach (var value in StringArray(occurrence["candidateIds"]!)) AddEvidence(value, "candidateId");
+                foreach (var value in StringArray(occurrence["evidenceReasons"]!)) AddEvidence(value, "evidenceReason");
+            }
+            foreach (var group in source["parserOwnedScopeGroups"]!.AsArray()) AddEvidence(group!["sourceContainerIdentity"]!.GetValue<string>(), "parserScopeGroup");
+            var evidenceMap = evidenceKinds.Keys.OrderBy(x => x, StringComparer.Ordinal).Select((id, index) => new { id, handle = $"E{index + 1:D3}", kinds = evidenceKinds[id].ToArray() }).ToArray();
+            var evidenceLookup = evidenceMap.ToDictionary(x => x.id, x => x.handle, StringComparer.Ordinal);
+            var projectedOccurrences = new JsonArray();
+            foreach (var occurrence in occurrences)
+            {
+                var item = occurrence!;
+                var canonicalId = item["occurrenceId"]!.GetValue<string>();
+                var projected = new JsonObject
+                {
+                    ["ref"] = occurrenceMap[canonicalId],
+                    ["sourceOccurrenceId"] = canonicalId,
+                    ["text"] = item["text"]!.GetValue<string>(),
+                    ["documentOrder"] = item["documentOrder"]!.GetValue<int>(),
+                    ["sourceContainerRef"] = evidenceLookup[item["sourceContainerIdentity"]!.GetValue<string>()],
+                    ["sourceContainerIdentity"] = item["sourceContainerIdentity"]!.GetValue<string>(),
+                    ["sourceUnitKind"] = item["sourceUnitKind"]!.GetValue<string>(),
+                    ["previousSourceOccurrences"] = ProjectOccurrenceContexts(item["previousSourceOccurrences"]!, occurrenceMap),
+                    ["nextSourceOccurrences"] = ProjectOccurrenceContexts(item["nextSourceOccurrences"]!, occurrenceMap),
+                    ["clusterRefs"] = ProjectEvidenceRefs(item["clusterIds"]!, evidenceLookup),
+                    ["candidateRefs"] = ProjectEvidenceRefs(item["candidateIds"]!, evidenceLookup),
+                    ["evidenceReasonRefs"] = ProjectEvidenceRefs(item["evidenceReasons"]!, evidenceLookup),
+                    ["packetClasses"] = item["packetClasses"]!.DeepClone(),
+                };
+                projectedOccurrences.Add(projected);
+            }
+            var projectedGroups = new JsonArray();
+            foreach (var group in source["parserOwnedScopeGroups"]!.AsArray())
+            {
+                var item = group!;
+                var ids = StringArray(item["occurrenceIds"]!);
+                projectedGroups.Add(new JsonObject
+                {
+                    ["sourceContainerRef"] = evidenceLookup[item["sourceContainerIdentity"]!.GetValue<string>()],
+                    ["sourceContainerIdentity"] = item["sourceContainerIdentity"]!.GetValue<string>(),
+                    ["sourceUnitKind"] = item["sourceUnitKind"]!.GetValue<string>(),
+                    ["occurrenceCount"] = item["occurrenceCount"]!.GetValue<int>(),
+                    ["occurrenceRefs"] = new JsonArray(ids.Select(id => (JsonNode)JsonValue.Create(occurrenceMap[id])!).ToArray()),
+                });
+            }
+            var request = new JsonObject
+            {
+                ["schemaVersion"] = "a99-v6c-structural-owner-induction-v3-opaque-handles",
+                ["documentId"] = documentId,
+                ["occurrences"] = projectedOccurrences,
+                ["parserOwnedScopeGroups"] = projectedGroups,
+                ["evidenceCatalog"] = new JsonArray(evidenceMap.Select(x => (JsonNode)new JsonObject { ["ref"] = x.handle, ["sourceEvidenceId"] = x.id, ["evidenceKinds"] = new JsonArray(x.kinds.Select(k => (JsonNode)JsonValue.Create(k)!).ToArray()) }).ToArray()),
+                ["allowedOccurrenceRefs"] = new JsonArray(occurrenceMap.Values.Select(x => (JsonNode)JsonValue.Create(x)!).ToArray()),
+                ["allowedEvidenceRefs"] = new JsonArray(evidenceMap.Select(x => (JsonNode)JsonValue.Create(x.handle)!).ToArray()),
+                ["goldDerivedInput"] = false,
+                ["v5cEvaluationIncluded"] = false,
+                ["v6aDiagnosisIncluded"] = false,
+                ["semanticNodeRequested"] = false,
+                ["hierarchyRequested"] = false,
+                ["addressabilityContract"] = "OUTPUT_ONLY_OPAQUE_OCCURRENCE_AND_EVIDENCE_HANDLES",
+                ["membershipRepresentation"] = "ASSIGNMENTS_ONLY_DERIVE_MEMBERS",
+            };
+            var serialized = request.ToJsonString(JsonOptions);
+            records.Add(new { documentId, request = JsonDocument.Parse(serialized).RootElement.Clone(), requestHash = Sha256Text(serialized), occurrenceCount = occurrenceIds.Length, occurrenceHandleCount = occurrenceMap.Count, evidenceHandleCount = evidenceMap.Length });
+            handleMaps.Add(new { documentId, occurrenceHandles = occurrenceMap.OrderBy(x => x.Value, StringComparer.Ordinal).Select(x => new { @ref = x.Value, sourceOccurrenceId = x.Key }).ToArray(), evidenceHandles = evidenceMap.Select(x => new { @ref = x.handle, sourceEvidenceId = x.id, evidenceKinds = x.kinds }).ToArray() });
+        }
+        var requestHashes = records.Select(x => (string)x.GetType().GetProperty("requestHash")!.GetValue(x)!).ToArray();
+        var requestSetSha = Sha256Text(string.Join("\n", requestHashes));
+        var sourceV2Fingerprint = new { v2ManifestSha256 = Sha256File(Path.Combine(v2, "manifest.json")), v2RequestsSha256 = Sha256File(Path.Combine(v2, "requests.json")) };
+        Directory.CreateDirectory(output);
+        await WriteAsync(Path.Combine(output, "request-contract.json"), new
+        {
+            schemaVersion = "a99-v6c-owner-induction-v3-opaque-handles",
+            supersedes = "a99-v6c-owner-induction-v2-addressable",
+            changes = new[] { "opaque short occurrence handles", "opaque short evidence handles", "single assignments-only membership authority", "deterministic deprojection map" },
+            semanticContractUnchanged = true, providerCalls = 0, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, v2Mutation = false,
+            forbiddenSemanticChanges = new[] { "owner definition", "autonomy definition", "source context", "structural evidence", "document-global reasoning", "Gold/V5C/V6A-derived rules" },
+            output = new { owners = new[] { "owner", "description", "autonomous", "evidenceRefs" }, assignments = new[] { "ref", "owner" }, unresolvedRefs = "allowed", forbiddenOutputFields = new[] { "memberOccurrenceIds", "canonical occurrence IDs", "canonical evidence IDs" } },
+        });
+        await WriteAsync(Path.Combine(output, "source-fingerprint.json"), sourceV2Fingerprint);
+        await WriteAsync(Path.Combine(output, "handle-map.json"), new { schemaVersion = "a99-v6c-v3-handle-map-v1", status = "FROZEN_DETERMINISTIC_DEPROJECTION_AUTHORITY", maps = handleMaps, requestSetSha256 = requestSetSha });
+        await WriteAsync(Path.Combine(output, "requests.json"), new { schemaVersion = "a99-v6c-owner-induction-requests-v3-opaque-handles", status = "FROZEN_SOURCE_ONLY_OWNER_INDUCTION_REQUESTS_V3", supersedes = "preflight-v2-addressable", requestCount = records.Count, occurrenceCount = records.Sum(x => (int)x.GetType().GetProperty("occurrenceCount")!.GetValue(x)!), requestHashes, requestSetSha256 = requestSetSha, sourceFingerprint = sourceV2Fingerprint, goldDerivedInput = false, v5cEvaluationIncluded = false, v6aDiagnosisIncluded = false, semanticNodeRequested = false, hierarchyRequested = false, records });
+        await WriteAsync(Path.Combine(output, "manifest.json"), new
+        {
+            schemaVersion = "a99-v6c-preflight-manifest-v3-opaque-handles", status = "READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION", supersedes = "preflight-v2-addressable", documentCount = records.Count, requestCount = records.Count, occurrenceCount = records.Sum(x => (int)x.GetType().GetProperty("occurrenceCount")!.GetValue(x)!), requestHashes, requestSetSha256 = requestSetSha,
+            sourceFingerprint = sourceV2Fingerprint, occurrenceHandleCoverage = "100%", evidenceHandleCoverage = "100%", duplicatedMembershipRepresentation = false, semanticContractUnchanged = true,
+            providerCalls = 0, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, v2Mutation = false,
+        });
+        await File.WriteAllTextAsync(Path.Combine(output, "report.md"), "# A99 V6C-v3 — opaque addressing preflight\n\nThis is an offline challenger boundary. Canonical occurrence/evidence IDs remain input provenance, while model output is restricted to deterministic short handles. Membership is represented once by assignments; owner members are derived by the harness. V1 and V2 artifacts remain immutable. Gold, V5C, V6A, and provider execution are excluded.\n", new UTF8Encoding(false));
+        Console.WriteLine($"V6C_V3_PREFLIGHT_COMPLETE REQUESTS={records.Count} OCCURRENCES={records.Sum(x => (int)x.GetType().GetProperty("occurrenceCount")!.GetValue(x)!)} PROVIDER_CALLS=0 GOLD_READ_COUNT=0 V2_MUTATION=false");
+        return 0;
+    }
+
+    private static string[] StringArray(JsonNode node) => node.AsArray().Select(x => x!.GetValue<string>()).ToArray();
+
+    private static JsonArray ProjectEvidenceRefs(JsonNode node, IReadOnlyDictionary<string, string> evidenceLookup) => new(StringArray(node).Select(value => (JsonNode)JsonValue.Create(evidenceLookup[value])!).ToArray());
+
+    private static JsonArray ProjectOccurrenceContexts(JsonNode node, IReadOnlyDictionary<string, string> occurrenceMap)
+    {
+        var result = new JsonArray();
+        foreach (var context in node.AsArray())
+        {
+            var item = context!.AsObject();
+            var id = item["occurrenceId"]!.GetValue<string>();
+            Require(occurrenceMap.TryGetValue(id, out var handle), "V6C_V3_CONTEXT_OCCURRENCE_NOT_IN_UNIVERSE");
+            result.Add(new JsonObject { ["ref"] = handle, ["sourceOccurrenceId"] = id, ["text"] = item["text"]!.GetValue<string>(), ["documentOrder"] = item["documentOrder"]!.GetValue<int>() });
+        }
+        return result;
     }
 
     private static async Task<Dictionary<int, string>> RevalidateFrozenResponsesAsync(string execution, IReadOnlyList<FrozenRequest> frozen, JsonElement[] attempts)

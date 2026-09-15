@@ -1,0 +1,5510 @@
+{
+  "schemaVersion": "a99-v6c-v3-handle-map-v1",
+  "status": "FROZEN_DETERMINISTIC_DEPROJECTION_AUTHORITY",
+  "maps": [
+    {
+      "documentId": "DOC-0123",
+      "occurrenceHandles": [
+        {
+          "ref": "U001",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1]"
+        },
+        {
+          "ref": "U002",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[7]"
+        },
+        {
+          "ref": "U003",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[14]"
+        },
+        {
+          "ref": "U004",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[32]/txbxContent[1]/p[1]"
+        },
+        {
+          "ref": "U005",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[32]/txbxContent[2]/p[1]"
+        },
+        {
+          "ref": "U006",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[76]"
+        },
+        {
+          "ref": "U007",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[84]"
+        },
+        {
+          "ref": "U008",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[86]"
+        },
+        {
+          "ref": "U009",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[88]"
+        },
+        {
+          "ref": "U010",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[90]"
+        },
+        {
+          "ref": "U011",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[92]"
+        },
+        {
+          "ref": "U012",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[94]"
+        },
+        {
+          "ref": "U013",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[97]"
+        },
+        {
+          "ref": "U014",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[101]"
+        },
+        {
+          "ref": "U015",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[103]"
+        },
+        {
+          "ref": "U016",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[105]"
+        },
+        {
+          "ref": "U017",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[172]"
+        },
+        {
+          "ref": "U018",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[173]"
+        },
+        {
+          "ref": "U019",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[176]"
+        },
+        {
+          "ref": "U020",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[179]"
+        },
+        {
+          "ref": "U021",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[181]"
+        },
+        {
+          "ref": "U022",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[183]"
+        },
+        {
+          "ref": "U023",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[192]"
+        },
+        {
+          "ref": "U024",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[263]"
+        },
+        {
+          "ref": "U025",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]"
+        },
+        {
+          "ref": "U026",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]"
+        },
+        {
+          "ref": "U027",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]"
+        },
+        {
+          "ref": "U028",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]"
+        },
+        {
+          "ref": "U029",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]"
+        },
+        {
+          "ref": "U030",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[8]"
+        },
+        {
+          "ref": "U031",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]"
+        },
+        {
+          "ref": "U032",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]"
+        },
+        {
+          "ref": "U033",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]"
+        },
+        {
+          "ref": "U034",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]"
+        },
+        {
+          "ref": "U035",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[20]"
+        },
+        {
+          "ref": "U036",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[276]"
+        },
+        {
+          "ref": "U037",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U038",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U039",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]"
+        },
+        {
+          "ref": "U040",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[317]"
+        },
+        {
+          "ref": "U041",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[318]"
+        },
+        {
+          "ref": "U042",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[493]"
+        },
+        {
+          "ref": "U043",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[534]"
+        },
+        {
+          "ref": "U044",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[545]"
+        },
+        {
+          "ref": "U045",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[547]"
+        },
+        {
+          "ref": "U046",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U047",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U048",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[5]/p[1]"
+        },
+        {
+          "ref": "U049",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U050",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U051",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[5]/p[1]"
+        },
+        {
+          "ref": "U052",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[21]/tr[5]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U053",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[21]/tr[6]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U054",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U055",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U056",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[21]/tr[9]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U057",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[583]"
+        },
+        {
+          "ref": "U058",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[584]"
+        },
+        {
+          "ref": "U059",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[637]"
+        },
+        {
+          "ref": "U060",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[639]"
+        },
+        {
+          "ref": "U061",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[641]"
+        },
+        {
+          "ref": "U062",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U063",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]"
+        },
+        {
+          "ref": "U064",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[25]/tr[3]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U065",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U066",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U067",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[695]"
+        },
+        {
+          "ref": "U068",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]"
+        },
+        {
+          "ref": "U069",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]"
+        },
+        {
+          "ref": "U070",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[766]"
+        },
+        {
+          "ref": "U071",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[31]/tr[6]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U072",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[875]"
+        },
+        {
+          "ref": "U073",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[878]"
+        },
+        {
+          "ref": "U074",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[2]"
+        },
+        {
+          "ref": "U075",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[3]"
+        },
+        {
+          "ref": "U076",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[908]"
+        },
+        {
+          "ref": "U077",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U078",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]"
+        },
+        {
+          "ref": "U079",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[919]"
+        },
+        {
+          "ref": "U080",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[920]"
+        },
+        {
+          "ref": "U081",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[921]"
+        },
+        {
+          "ref": "U082",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U083",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U084",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U085",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U086",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U087",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[992]"
+        },
+        {
+          "ref": "U088",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1053]"
+        },
+        {
+          "ref": "U089",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[45]/tr[1]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U090",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[45]/tr[24]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U091",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[47]/tr[6]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U092",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1192]"
+        },
+        {
+          "ref": "U093",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U094",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1199]"
+        },
+        {
+          "ref": "U095",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1201]"
+        },
+        {
+          "ref": "U096",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[14]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U097",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[15]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U098",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[32]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U099",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[33]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U100",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[17]/tc[1]/p[2]"
+        },
+        {
+          "ref": "U101",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]"
+        },
+        {
+          "ref": "U102",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]"
+        },
+        {
+          "ref": "U103",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[77]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U104",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[78]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U105",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U106",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U107",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U108",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[5]/p[1]"
+        },
+        {
+          "ref": "U109",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U110",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[5]/p[1]"
+        },
+        {
+          "ref": "U111",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]"
+        },
+        {
+          "ref": "U112",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]"
+        },
+        {
+          "ref": "U113",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1378]"
+        },
+        {
+          "ref": "U114",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1387]"
+        },
+        {
+          "ref": "U115",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1462]"
+        },
+        {
+          "ref": "U116",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1504]"
+        },
+        {
+          "ref": "U117",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[100]"
+        },
+        {
+          "ref": "U118",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[102]"
+        },
+        {
+          "ref": "U119",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1049]"
+        },
+        {
+          "ref": "U120",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[104]"
+        },
+        {
+          "ref": "U121",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1051]"
+        },
+        {
+          "ref": "U122",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[106]"
+        },
+        {
+          "ref": "U123",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[107]"
+        },
+        {
+          "ref": "U124",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1182]"
+        },
+        {
+          "ref": "U125",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1186]"
+        },
+        {
+          "ref": "U126",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1203]"
+        },
+        {
+          "ref": "U127",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1220]"
+        },
+        {
+          "ref": "U128",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1221]"
+        },
+        {
+          "ref": "U129",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1380]"
+        },
+        {
+          "ref": "U130",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1382]"
+        },
+        {
+          "ref": "U131",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1383]"
+        },
+        {
+          "ref": "U132",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1384]"
+        },
+        {
+          "ref": "U133",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1389]"
+        },
+        {
+          "ref": "U134",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1390]"
+        },
+        {
+          "ref": "U135",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1458]"
+        },
+        {
+          "ref": "U136",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1460]"
+        },
+        {
+          "ref": "U137",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1464]"
+        },
+        {
+          "ref": "U138",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1465]"
+        },
+        {
+          "ref": "U139",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1501]"
+        },
+        {
+          "ref": "U140",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1503]"
+        },
+        {
+          "ref": "U141",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1506]"
+        },
+        {
+          "ref": "U142",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[1507]"
+        },
+        {
+          "ref": "U143",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[169]"
+        },
+        {
+          "ref": "U144",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[171]"
+        },
+        {
+          "ref": "U145",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[174]"
+        },
+        {
+          "ref": "U146",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[175]"
+        },
+        {
+          "ref": "U147",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[177]"
+        },
+        {
+          "ref": "U148",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[178]"
+        },
+        {
+          "ref": "U149",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[180]"
+        },
+        {
+          "ref": "U150",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[182]"
+        },
+        {
+          "ref": "U151",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[189]"
+        },
+        {
+          "ref": "U152",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[193]"
+        },
+        {
+          "ref": "U153",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[195]"
+        },
+        {
+          "ref": "U154",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[259]"
+        },
+        {
+          "ref": "U155",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[260]"
+        },
+        {
+          "ref": "U156",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[264]"
+        },
+        {
+          "ref": "U157",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[278]"
+        },
+        {
+          "ref": "U158",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[279]"
+        },
+        {
+          "ref": "U159",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[314]"
+        },
+        {
+          "ref": "U160",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[315]"
+        },
+        {
+          "ref": "U161",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[319]"
+        },
+        {
+          "ref": "U162",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[36]"
+        },
+        {
+          "ref": "U163",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[38]"
+        },
+        {
+          "ref": "U164",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[489]"
+        },
+        {
+          "ref": "U165",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[491]"
+        },
+        {
+          "ref": "U166",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[495]"
+        },
+        {
+          "ref": "U167",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[497]"
+        },
+        {
+          "ref": "U168",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[4]"
+        },
+        {
+          "ref": "U169",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[530]"
+        },
+        {
+          "ref": "U170",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[532]"
+        },
+        {
+          "ref": "U171",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[536]"
+        },
+        {
+          "ref": "U172",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[538]"
+        },
+        {
+          "ref": "U173",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[542]"
+        },
+        {
+          "ref": "U174",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[543]"
+        },
+        {
+          "ref": "U175",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[548]"
+        },
+        {
+          "ref": "U176",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[549]"
+        },
+        {
+          "ref": "U177",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[585]"
+        },
+        {
+          "ref": "U178",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[5]"
+        },
+        {
+          "ref": "U179",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[634]"
+        },
+        {
+          "ref": "U180",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[636]"
+        },
+        {
+          "ref": "U181",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[642]"
+        },
+        {
+          "ref": "U182",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[644]"
+        },
+        {
+          "ref": "U183",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[693]"
+        },
+        {
+          "ref": "U184",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[694]"
+        },
+        {
+          "ref": "U185",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[696]"
+        },
+        {
+          "ref": "U186",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[697]"
+        },
+        {
+          "ref": "U187",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[6]"
+        },
+        {
+          "ref": "U188",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[74]"
+        },
+        {
+          "ref": "U189",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[75]"
+        },
+        {
+          "ref": "U190",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[2]/p[3]"
+        },
+        {
+          "ref": "U191",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[1]"
+        },
+        {
+          "ref": "U192",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[3]"
+        },
+        {
+          "ref": "U193",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[4]"
+        },
+        {
+          "ref": "U194",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[1]"
+        },
+        {
+          "ref": "U195",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[3]"
+        },
+        {
+          "ref": "U196",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[4]"
+        },
+        {
+          "ref": "U197",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[767]"
+        },
+        {
+          "ref": "U198",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[768]"
+        },
+        {
+          "ref": "U199",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[77]"
+        },
+        {
+          "ref": "U200",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[79]"
+        },
+        {
+          "ref": "U201",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[82]"
+        },
+        {
+          "ref": "U202",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[83]"
+        },
+        {
+          "ref": "U203",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[85]"
+        },
+        {
+          "ref": "U204",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[873]"
+        },
+        {
+          "ref": "U205",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[874]"
+        },
+        {
+          "ref": "U206",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[876]"
+        },
+        {
+          "ref": "U207",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[877]"
+        },
+        {
+          "ref": "U208",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[879]"
+        },
+        {
+          "ref": "U209",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[87]"
+        },
+        {
+          "ref": "U210",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[880]"
+        },
+        {
+          "ref": "U211",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[89]"
+        },
+        {
+          "ref": "U212",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[904]"
+        },
+        {
+          "ref": "U213",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[906]"
+        },
+        {
+          "ref": "U214",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[907]"
+        },
+        {
+          "ref": "U215",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[909]"
+        },
+        {
+          "ref": "U216",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[910]"
+        },
+        {
+          "ref": "U217",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[917]"
+        },
+        {
+          "ref": "U218",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[918]"
+        },
+        {
+          "ref": "U219",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[91]"
+        },
+        {
+          "ref": "U220",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[922]"
+        },
+        {
+          "ref": "U221",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[93]"
+        },
+        {
+          "ref": "U222",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[95]"
+        },
+        {
+          "ref": "U223",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[96]"
+        },
+        {
+          "ref": "U224",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[987]"
+        },
+        {
+          "ref": "U225",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[989]"
+        },
+        {
+          "ref": "U226",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[98]"
+        },
+        {
+          "ref": "U227",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[993]"
+        },
+        {
+          "ref": "U228",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[995]"
+        },
+        {
+          "ref": "U229",
+          "sourceOccurrenceId": "DOC-0123:body[1]/p[99]"
+        },
+        {
+          "ref": "U230",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[11]/tr[6]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U231",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[11]/tr[6]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U232",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U233",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[2]"
+        },
+        {
+          "ref": "U234",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[4]"
+        },
+        {
+          "ref": "U235",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[5]"
+        },
+        {
+          "ref": "U236",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[2]/tc[2]/p[3]"
+        },
+        {
+          "ref": "U237",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[2]/tc[2]/p[4]"
+        },
+        {
+          "ref": "U238",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[3]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U239",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U240",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[2]/p[2]"
+        },
+        {
+          "ref": "U241",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[13]/tr[1]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U242",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[19]/tr[1]/tc[6]/p[1]"
+        },
+        {
+          "ref": "U243",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U244",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[6]/p[1]"
+        },
+        {
+          "ref": "U245",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[6]/p[2]"
+        },
+        {
+          "ref": "U246",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[1]/tr[1]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U247",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[20]/tr[1]/tc[7]/p[1]"
+        },
+        {
+          "ref": "U248",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U249",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[7]/p[1]"
+        },
+        {
+          "ref": "U250",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[7]/p[3]"
+        },
+        {
+          "ref": "U251",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[21]/tr[3]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U252",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[21]/tr[4]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U253",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[21]/tr[6]/tc[5]/p[1]"
+        },
+        {
+          "ref": "U254",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U255",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[22]/tr[1]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U256",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[25]/tr[19]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U257",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[25]/tr[20]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U258",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U259",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U260",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[29]/tr[11]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U261",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[29]/tr[11]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U262",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[29]/tr[16]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U263",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[29]/tr[16]/tc[2]/p[2]"
+        },
+        {
+          "ref": "U264",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[10]"
+        },
+        {
+          "ref": "U265",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[11]"
+        },
+        {
+          "ref": "U266",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[15]"
+        },
+        {
+          "ref": "U267",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[16]"
+        },
+        {
+          "ref": "U268",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U269",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[2]"
+        },
+        {
+          "ref": "U270",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[9]"
+        },
+        {
+          "ref": "U271",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[31]/tr[4]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U272",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[31]/tr[5]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U273",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[31]/tr[7]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U274",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[31]/tr[8]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U275",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[38]/tr[6]/tc[1]/p[5]"
+        },
+        {
+          "ref": "U276",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U277",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[4]"
+        },
+        {
+          "ref": "U278",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[12]"
+        },
+        {
+          "ref": "U279",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[13]"
+        },
+        {
+          "ref": "U280",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[15]"
+        },
+        {
+          "ref": "U281",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[16]"
+        },
+        {
+          "ref": "U282",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[18]"
+        },
+        {
+          "ref": "U283",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[19]"
+        },
+        {
+          "ref": "U284",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[21]"
+        },
+        {
+          "ref": "U285",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[22]"
+        },
+        {
+          "ref": "U286",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[40]/tr[1]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U287",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[40]/tr[1]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U288",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[3]"
+        },
+        {
+          "ref": "U289",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[4]"
+        },
+        {
+          "ref": "U290",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[1]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U291",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[3]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U292",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[3]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U293",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U294",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U295",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[3]/p[4]"
+        },
+        {
+          "ref": "U296",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U297",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[5]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U298",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[41]/tr[5]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U299",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[1]/tc[5]/p[1]"
+        },
+        {
+          "ref": "U300",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[2]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U301",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[6]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U302",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[7]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U303",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[45]/tr[1]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U304",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[45]/tr[1]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U305",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[45]/tr[23]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U306",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[45]/tr[24]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U307",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[45]/tr[25]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U308",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[45]/tr[25]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U309",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[47]/tr[4]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U310",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[47]/tr[5]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U311",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[47]/tr[7]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U312",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[47]/tr[8]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U313",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[48]/tr[1]/tc[1]/p[10]"
+        },
+        {
+          "ref": "U314",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[48]/tr[1]/tc[1]/p[11]"
+        },
+        {
+          "ref": "U315",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[48]/tr[1]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U316",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[48]/tr[1]/tc[1]/p[2]"
+        },
+        {
+          "ref": "U317",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[13]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U318",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[14]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U319",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[15]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U320",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[16]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U321",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[16]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U322",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[1]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U323",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[31]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U324",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[32]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U325",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[33]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U326",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[33]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U327",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[50]/tr[34]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U328",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[16]/tc[2]/p[2]"
+        },
+        {
+          "ref": "U329",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[17]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U330",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[17]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U331",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[17]/tc[2]/p[2]"
+        },
+        {
+          "ref": "U332",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[52]/tc[2]/p[5]"
+        },
+        {
+          "ref": "U333",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U334",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[53]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U335",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[54]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U336",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[55]/tc[2]/p[2]"
+        },
+        {
+          "ref": "U337",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U338",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U339",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[2]/p[2]"
+        },
+        {
+          "ref": "U340",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[76]/tc[2]/p[3]"
+        },
+        {
+          "ref": "U341",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[54]/tr[77]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U342",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[2]/tc[5]/p[1]"
+        },
+        {
+          "ref": "U343",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U344",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U345",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[5]/p[1]"
+        },
+        {
+          "ref": "U346",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U347",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U348",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U349",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U350",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U351",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U352",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[6]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U353",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[57]/tr[6]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U354",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[1]/p[1]"
+        },
+        {
+          "ref": "U355",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[1]"
+        },
+        {
+          "ref": "U356",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[1]"
+        },
+        {
+          "ref": "U357",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[4]/p[1]"
+        },
+        {
+          "ref": "U358",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[4]/p[2]"
+        },
+        {
+          "ref": "U359",
+          "sourceOccurrenceId": "DOC-0123:body[1]/tbl[62]/tr[2]/tc[1]/p[1]"
+        }
+      ],
+      "evidenceHandles": [
+        {
+          "ref": "E001",
+          "sourceEvidenceId": "ADJACENT_ORDER",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E002",
+          "sourceEvidenceId": "DOC-0123:P01-42",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E003",
+          "sourceEvidenceId": "DOC-0123:P05-06",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E004",
+          "sourceEvidenceId": "DOC-0123:P07-08",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E005",
+          "sourceEvidenceId": "DOC-0123:P1006-1007",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E006",
+          "sourceEvidenceId": "DOC-0123:P1035-1036",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E007",
+          "sourceEvidenceId": "DOC-0123:P1036-1037",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E008",
+          "sourceEvidenceId": "DOC-0123:P1056-1057",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E009",
+          "sourceEvidenceId": "DOC-0123:P1057-1058",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E010",
+          "sourceEvidenceId": "DOC-0123:P1087-1088",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E011",
+          "sourceEvidenceId": "DOC-0123:P1091-1092",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E012",
+          "sourceEvidenceId": "DOC-0123:P1093-1094",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E013",
+          "sourceEvidenceId": "DOC-0123:P1094-1095",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E014",
+          "sourceEvidenceId": "DOC-0123:P1160-1161",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E015",
+          "sourceEvidenceId": "DOC-0123:P1161-1162",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E016",
+          "sourceEvidenceId": "DOC-0123:P1177-1178",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E017",
+          "sourceEvidenceId": "DOC-0123:P1178-1179",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E018",
+          "sourceEvidenceId": "DOC-0123:P1228-1229",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E019",
+          "sourceEvidenceId": "DOC-0123:P132-249",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E020",
+          "sourceEvidenceId": "DOC-0123:P1334-1338",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E021",
+          "sourceEvidenceId": "DOC-0123:P1425-1973",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E022",
+          "sourceEvidenceId": "DOC-0123:P1482-1485",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E023",
+          "sourceEvidenceId": "DOC-0123:P1533-1534",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E024",
+          "sourceEvidenceId": "DOC-0123:P1540-1591",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E025",
+          "sourceEvidenceId": "DOC-0123:P1565-1566",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E026",
+          "sourceEvidenceId": "DOC-0123:P1592-1593",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E027",
+          "sourceEvidenceId": "DOC-0123:P1603-1610",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E028",
+          "sourceEvidenceId": "DOC-0123:P1664-1665",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E029",
+          "sourceEvidenceId": "DOC-0123:P1665-1666",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E030",
+          "sourceEvidenceId": "DOC-0123:P1761-1762",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E031",
+          "sourceEvidenceId": "DOC-0123:P1818-2556",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E032",
+          "sourceEvidenceId": "DOC-0123:P2008-2009",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E033",
+          "sourceEvidenceId": "DOC-0123:P2048-2050",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E034",
+          "sourceEvidenceId": "DOC-0123:P2101-2103",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E035",
+          "sourceEvidenceId": "DOC-0123:P250-541",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E036",
+          "sourceEvidenceId": "DOC-0123:P254-1719",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E037",
+          "sourceEvidenceId": "DOC-0123:P2742-2754",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E038",
+          "sourceEvidenceId": "DOC-0123:P2843-2844",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E039",
+          "sourceEvidenceId": "DOC-0123:P3005-3006",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E040",
+          "sourceEvidenceId": "DOC-0123:P3010-3015",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E041",
+          "sourceEvidenceId": "DOC-0123:P3013-3018",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E042",
+          "sourceEvidenceId": "DOC-0123:P3086-3088",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E043",
+          "sourceEvidenceId": "DOC-0123:P3092-3097",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E044",
+          "sourceEvidenceId": "DOC-0123:P3151-3182",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E045",
+          "sourceEvidenceId": "DOC-0123:P348-354",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E046",
+          "sourceEvidenceId": "DOC-0123:P49-132",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E047",
+          "sourceEvidenceId": "DOC-0123:P51-250",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E048",
+          "sourceEvidenceId": "DOC-0123:P53-251",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E049",
+          "sourceEvidenceId": "DOC-0123:P55-252",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E050",
+          "sourceEvidenceId": "DOC-0123:P552-554",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E051",
+          "sourceEvidenceId": "DOC-0123:P57-253",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E052",
+          "sourceEvidenceId": "DOC-0123:P59-254",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E053",
+          "sourceEvidenceId": "DOC-0123:P602-1271",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E054",
+          "sourceEvidenceId": "DOC-0123:P66-1995",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E055",
+          "sourceEvidenceId": "DOC-0123:P68-2007",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E056",
+          "sourceEvidenceId": "DOC-0123:P70-260",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E057",
+          "sourceEvidenceId": "DOC-0123:P783-784",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E058",
+          "sourceEvidenceId": "DOC-0123:P962-1000",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E059",
+          "sourceEvidenceId": "DOC-0123:V4P0049-0119",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E060",
+          "sourceEvidenceId": "DOC-0123:V4P0057-0123",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E061",
+          "sourceEvidenceId": "DOC-0123:V4P0062-0126",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E062",
+          "sourceEvidenceId": "DOC-0123:V4P0066-0258",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E063",
+          "sourceEvidenceId": "DOC-0123:V4P0068-0259",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E064",
+          "sourceEvidenceId": "DOC-0123:V4P0070-0130",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E065",
+          "sourceEvidenceId": "DOC-0123:V4P0120-0250",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E066",
+          "sourceEvidenceId": "DOC-0123:V4P0128-0258",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E067",
+          "sourceEvidenceId": "DOC-0123:V4P0132-0200",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E068",
+          "sourceEvidenceId": "DOC-0123:V4P0200-0249",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E069",
+          "sourceEvidenceId": "DOC-0123:V4P0258-1995",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E070",
+          "sourceEvidenceId": "DOC-0123:V4P0259-2007",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E071",
+          "sourceEvidenceId": "DOC-0123:V4P1271-1341",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E072",
+          "sourceEvidenceId": "NORMALIZED_TEXT_AFFINITY",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E073",
+          "sourceEvidenceId": "SC-070e08de7da1b95f",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E074",
+          "sourceEvidenceId": "SC-08167ba838d293a6",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E075",
+          "sourceEvidenceId": "SC-160cc47520d52014",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E076",
+          "sourceEvidenceId": "SC-1c4e8826322b617f",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E077",
+          "sourceEvidenceId": "SC-2309002963e9d48f",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E078",
+          "sourceEvidenceId": "SC-282e741228750d1f",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E079",
+          "sourceEvidenceId": "SC-2ecdded7e5d3167a",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E080",
+          "sourceEvidenceId": "SC-2f569716eaed3deb",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E081",
+          "sourceEvidenceId": "SC-3a28d380ba15df4f",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E082",
+          "sourceEvidenceId": "SC-3ebbfbdbe24a0530",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E083",
+          "sourceEvidenceId": "SC-3fe557caa33c2f2c",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E084",
+          "sourceEvidenceId": "SC-4b403ae3785e286d",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E085",
+          "sourceEvidenceId": "SC-52691ad0f0d7986c",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E086",
+          "sourceEvidenceId": "SC-538ebaf081e6bad0",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E087",
+          "sourceEvidenceId": "SC-669698e5599ec637",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E088",
+          "sourceEvidenceId": "SC-7059833e26bf82f4",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E089",
+          "sourceEvidenceId": "SC-73ac22ce69d37810",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E090",
+          "sourceEvidenceId": "SC-75b66683b75b0c9d",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E091",
+          "sourceEvidenceId": "SC-79b853331cdd3744",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E092",
+          "sourceEvidenceId": "SC-7f00f6b6d1373a71",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E093",
+          "sourceEvidenceId": "SC-7f1bfd6d60c574fa",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E094",
+          "sourceEvidenceId": "SC-80b901344aab318a",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E095",
+          "sourceEvidenceId": "SC-88db42c1dfb9c081",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E096",
+          "sourceEvidenceId": "SC-91e7ad245f102049",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E097",
+          "sourceEvidenceId": "SC-963694a61eb66696",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E098",
+          "sourceEvidenceId": "SC-998cbc0bfc0238bb",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E099",
+          "sourceEvidenceId": "SC-9ab2d7468337edc1",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E100",
+          "sourceEvidenceId": "SC-9b18cccc27c0d200",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E101",
+          "sourceEvidenceId": "SC-9b24e51b35eb9e0e",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E102",
+          "sourceEvidenceId": "SC-9f1e3d86544b5fc0",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E103",
+          "sourceEvidenceId": "SC-a0f2d7ae724cdb91",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E104",
+          "sourceEvidenceId": "SC-ac7abb41bc2c3aa3",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E105",
+          "sourceEvidenceId": "SC-acfaf38c61fcdf67",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E106",
+          "sourceEvidenceId": "SC-b54f759607ee0732",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E107",
+          "sourceEvidenceId": "SC-b5e7cf633691dae4",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E108",
+          "sourceEvidenceId": "SC-b77c14278a8905d6",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E109",
+          "sourceEvidenceId": "SC-c5711328ecc9f9cb",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E110",
+          "sourceEvidenceId": "SC-c69060a6af5acfbd",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E111",
+          "sourceEvidenceId": "SC-d5c3803d86734251",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E112",
+          "sourceEvidenceId": "SC-d5cbcde35e2b090c",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E113",
+          "sourceEvidenceId": "SC-d72ffa990605f300",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E114",
+          "sourceEvidenceId": "SC-d739ea4122054a93",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E115",
+          "sourceEvidenceId": "SC-d9213bae8cb6cb04",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E116",
+          "sourceEvidenceId": "SC-dc75f78b36c2ca7c",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E117",
+          "sourceEvidenceId": "SC-e8f95e9d0abd1e12",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E118",
+          "sourceEvidenceId": "SC-ee488063d482ae5e",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E119",
+          "sourceEvidenceId": "SC-f40d8092d172eeb3",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E120",
+          "sourceEvidenceId": "SC-fadddbae86c6b0ed",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E121",
+          "sourceEvidenceId": "SC-fe3480c51dd004da",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E122",
+          "sourceEvidenceId": "SHARED_STRUCTURAL_HEADING_KEY",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E123",
+          "sourceEvidenceId": "TERMINAL_ACRONYM_VARIANT",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E124",
+          "sourceEvidenceId": "body[1]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E125",
+          "sourceEvidenceId": "body[1]/tbl[12]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E126",
+          "sourceEvidenceId": "body[1]/tbl[19]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E127",
+          "sourceEvidenceId": "body[1]/tbl[20]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E128",
+          "sourceEvidenceId": "body[1]/tbl[21]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E129",
+          "sourceEvidenceId": "body[1]/tbl[25]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E130",
+          "sourceEvidenceId": "body[1]/tbl[29]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E131",
+          "sourceEvidenceId": "body[1]/tbl[2]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E132",
+          "sourceEvidenceId": "body[1]/tbl[31]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E133",
+          "sourceEvidenceId": "body[1]/tbl[38]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E134",
+          "sourceEvidenceId": "body[1]/tbl[3]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E135",
+          "sourceEvidenceId": "body[1]/tbl[40]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E136",
+          "sourceEvidenceId": "body[1]/tbl[41]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E137",
+          "sourceEvidenceId": "body[1]/tbl[43]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E138",
+          "sourceEvidenceId": "body[1]/tbl[45]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E139",
+          "sourceEvidenceId": "body[1]/tbl[47]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E140",
+          "sourceEvidenceId": "body[1]/tbl[49]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E141",
+          "sourceEvidenceId": "body[1]/tbl[50]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E142",
+          "sourceEvidenceId": "body[1]/tbl[54]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E143",
+          "sourceEvidenceId": "body[1]/tbl[57]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        },
+        {
+          "ref": "E144",
+          "sourceEvidenceId": "body[1]/tbl[62]",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0133",
+      "occurrenceHandles": [
+        {
+          "ref": "U001",
+          "sourceOccurrenceId": "DOC-0133:B000005"
+        },
+        {
+          "ref": "U002",
+          "sourceOccurrenceId": "DOC-0133:B000011"
+        },
+        {
+          "ref": "U003",
+          "sourceOccurrenceId": "DOC-0133:B000013"
+        },
+        {
+          "ref": "U004",
+          "sourceOccurrenceId": "DOC-0133:B000015"
+        },
+        {
+          "ref": "U005",
+          "sourceOccurrenceId": "DOC-0133:B000017"
+        },
+        {
+          "ref": "U006",
+          "sourceOccurrenceId": "DOC-0133:B000034"
+        },
+        {
+          "ref": "U007",
+          "sourceOccurrenceId": "DOC-0133:B000036"
+        },
+        {
+          "ref": "U008",
+          "sourceOccurrenceId": "DOC-0133:B000041"
+        },
+        {
+          "ref": "U009",
+          "sourceOccurrenceId": "DOC-0133:B000099"
+        },
+        {
+          "ref": "U010",
+          "sourceOccurrenceId": "DOC-0133:B000118"
+        },
+        {
+          "ref": "U011",
+          "sourceOccurrenceId": "DOC-0133:B000136"
+        },
+        {
+          "ref": "U012",
+          "sourceOccurrenceId": "DOC-0133:B000140"
+        },
+        {
+          "ref": "U013",
+          "sourceOccurrenceId": "DOC-0133:B000157"
+        },
+        {
+          "ref": "U014",
+          "sourceOccurrenceId": "DOC-0133:B000316"
+        },
+        {
+          "ref": "U015",
+          "sourceOccurrenceId": "DOC-0133:B000337"
+        },
+        {
+          "ref": "U016",
+          "sourceOccurrenceId": "DOC-0133:B000338"
+        },
+        {
+          "ref": "U017",
+          "sourceOccurrenceId": "DOC-0133:B000339"
+        },
+        {
+          "ref": "U018",
+          "sourceOccurrenceId": "DOC-0133:B000340"
+        },
+        {
+          "ref": "U019",
+          "sourceOccurrenceId": "DOC-0133:B000359"
+        },
+        {
+          "ref": "U020",
+          "sourceOccurrenceId": "DOC-0133:B000360"
+        },
+        {
+          "ref": "U021",
+          "sourceOccurrenceId": "DOC-0133:B000561"
+        },
+        {
+          "ref": "U022",
+          "sourceOccurrenceId": "DOC-0133:B000562"
+        },
+        {
+          "ref": "U023",
+          "sourceOccurrenceId": "DOC-0133:B000616"
+        },
+        {
+          "ref": "U024",
+          "sourceOccurrenceId": "DOC-0133:B000827"
+        },
+        {
+          "ref": "U025",
+          "sourceOccurrenceId": "DOC-0133:B000841"
+        },
+        {
+          "ref": "U026",
+          "sourceOccurrenceId": "DOC-0133:B000855"
+        },
+        {
+          "ref": "U027",
+          "sourceOccurrenceId": "DOC-0133:B000856"
+        },
+        {
+          "ref": "U028",
+          "sourceOccurrenceId": "DOC-0133:B000921"
+        },
+        {
+          "ref": "U029",
+          "sourceOccurrenceId": "DOC-0133:B000927"
+        },
+        {
+          "ref": "U030",
+          "sourceOccurrenceId": "DOC-0133:B000930"
+        },
+        {
+          "ref": "U031",
+          "sourceOccurrenceId": "DOC-0133:B000933"
+        },
+        {
+          "ref": "U032",
+          "sourceOccurrenceId": "DOC-0133:B000934"
+        },
+        {
+          "ref": "U033",
+          "sourceOccurrenceId": "DOC-0133:B000935"
+        },
+        {
+          "ref": "U034",
+          "sourceOccurrenceId": "DOC-0133:B000937"
+        },
+        {
+          "ref": "U035",
+          "sourceOccurrenceId": "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11"
+        },
+        {
+          "ref": "U036",
+          "sourceOccurrenceId": "DOC-0133:B000959"
+        },
+        {
+          "ref": "U037",
+          "sourceOccurrenceId": "DOC-0133:B000961"
+        },
+        {
+          "ref": "U038",
+          "sourceOccurrenceId": "DOC-0133:B000965"
+        },
+        {
+          "ref": "U039",
+          "sourceOccurrenceId": "DOC-0133:B000967"
+        },
+        {
+          "ref": "U040",
+          "sourceOccurrenceId": "DOC-0133:B001068"
+        },
+        {
+          "ref": "U041",
+          "sourceOccurrenceId": "DOC-0133:B001069"
+        },
+        {
+          "ref": "U042",
+          "sourceOccurrenceId": "DOC-0133:B001466"
+        },
+        {
+          "ref": "U043",
+          "sourceOccurrenceId": "DOC-0133:B001467"
+        },
+        {
+          "ref": "U044",
+          "sourceOccurrenceId": "DOC-0133:B001610"
+        },
+        {
+          "ref": "U045",
+          "sourceOccurrenceId": "DOC-0133:B001617"
+        },
+        {
+          "ref": "U046",
+          "sourceOccurrenceId": "DOC-0133:B001735"
+        },
+        {
+          "ref": "U047",
+          "sourceOccurrenceId": "DOC-0133:B001752"
+        },
+        {
+          "ref": "U048",
+          "sourceOccurrenceId": "DOC-0133:B001802"
+        },
+        {
+          "ref": "U049",
+          "sourceOccurrenceId": "DOC-0133:B001804"
+        },
+        {
+          "ref": "U050",
+          "sourceOccurrenceId": "DOC-0133:B001891"
+        },
+        {
+          "ref": "U051",
+          "sourceOccurrenceId": "DOC-0133:B001907"
+        },
+        {
+          "ref": "U052",
+          "sourceOccurrenceId": "DOC-0133:B001981"
+        },
+        {
+          "ref": "U053",
+          "sourceOccurrenceId": "DOC-0133:B002045"
+        },
+        {
+          "ref": "U054",
+          "sourceOccurrenceId": "DOC-0133:B002226"
+        },
+        {
+          "ref": "U055",
+          "sourceOccurrenceId": "DOC-0133:B002228"
+        },
+        {
+          "ref": "U056",
+          "sourceOccurrenceId": "DOC-0133:B002277"
+        },
+        {
+          "ref": "U057",
+          "sourceOccurrenceId": "DOC-0133:B002293"
+        },
+        {
+          "ref": "U058",
+          "sourceOccurrenceId": "DOC-0133:B000003"
+        },
+        {
+          "ref": "U059",
+          "sourceOccurrenceId": "DOC-0133:B000004"
+        },
+        {
+          "ref": "U060",
+          "sourceOccurrenceId": "DOC-0133:B000006"
+        },
+        {
+          "ref": "U061",
+          "sourceOccurrenceId": "DOC-0133:B000007"
+        },
+        {
+          "ref": "U062",
+          "sourceOccurrenceId": "DOC-0133:B000009"
+        },
+        {
+          "ref": "U063",
+          "sourceOccurrenceId": "DOC-0133:B000010"
+        },
+        {
+          "ref": "U064",
+          "sourceOccurrenceId": "DOC-0133:B000012"
+        },
+        {
+          "ref": "U065",
+          "sourceOccurrenceId": "DOC-0133:B000014"
+        },
+        {
+          "ref": "U066",
+          "sourceOccurrenceId": "DOC-0133:B000016"
+        },
+        {
+          "ref": "U067",
+          "sourceOccurrenceId": "DOC-0133:B000018"
+        },
+        {
+          "ref": "U068",
+          "sourceOccurrenceId": "DOC-0133:B000019"
+        },
+        {
+          "ref": "U069",
+          "sourceOccurrenceId": "DOC-0133:B000032"
+        },
+        {
+          "ref": "U070",
+          "sourceOccurrenceId": "DOC-0133:B000033"
+        },
+        {
+          "ref": "U071",
+          "sourceOccurrenceId": "DOC-0133:B000035"
+        },
+        {
+          "ref": "U072",
+          "sourceOccurrenceId": "DOC-0133:B000037"
+        },
+        {
+          "ref": "U073",
+          "sourceOccurrenceId": "DOC-0133:B000038"
+        },
+        {
+          "ref": "U074",
+          "sourceOccurrenceId": "DOC-0133:B000039"
+        },
+        {
+          "ref": "U075",
+          "sourceOccurrenceId": "DOC-0133:B000040"
+        },
+        {
+          "ref": "U076",
+          "sourceOccurrenceId": "DOC-0133:B000042"
+        },
+        {
+          "ref": "U077",
+          "sourceOccurrenceId": "DOC-0133:B000043"
+        },
+        {
+          "ref": "U078",
+          "sourceOccurrenceId": "DOC-0133:B000097"
+        },
+        {
+          "ref": "U079",
+          "sourceOccurrenceId": "DOC-0133:B000098"
+        },
+        {
+          "ref": "U080",
+          "sourceOccurrenceId": "DOC-0133:B000100"
+        },
+        {
+          "ref": "U081",
+          "sourceOccurrenceId": "DOC-0133:B000101"
+        },
+        {
+          "ref": "U082",
+          "sourceOccurrenceId": "DOC-0133:B000116"
+        },
+        {
+          "ref": "U083",
+          "sourceOccurrenceId": "DOC-0133:B000117"
+        },
+        {
+          "ref": "U084",
+          "sourceOccurrenceId": "DOC-0133:B000119"
+        },
+        {
+          "ref": "U085",
+          "sourceOccurrenceId": "DOC-0133:B000120"
+        },
+        {
+          "ref": "U086",
+          "sourceOccurrenceId": "DOC-0133:B000134"
+        },
+        {
+          "ref": "U087",
+          "sourceOccurrenceId": "DOC-0133:B000135"
+        },
+        {
+          "ref": "U088",
+          "sourceOccurrenceId": "DOC-0133:B000137"
+        },
+        {
+          "ref": "U089",
+          "sourceOccurrenceId": "DOC-0133:B000138"
+        },
+        {
+          "ref": "U090",
+          "sourceOccurrenceId": "DOC-0133:B000139"
+        },
+        {
+          "ref": "U091",
+          "sourceOccurrenceId": "DOC-0133:B000141"
+        },
+        {
+          "ref": "U092",
+          "sourceOccurrenceId": "DOC-0133:B000142"
+        },
+        {
+          "ref": "U093",
+          "sourceOccurrenceId": "DOC-0133:B000155"
+        },
+        {
+          "ref": "U094",
+          "sourceOccurrenceId": "DOC-0133:B000156"
+        },
+        {
+          "ref": "U095",
+          "sourceOccurrenceId": "DOC-0133:B000158"
+        },
+        {
+          "ref": "U096",
+          "sourceOccurrenceId": "DOC-0133:B000159"
+        },
+        {
+          "ref": "U097",
+          "sourceOccurrenceId": "DOC-0133:B000314"
+        },
+        {
+          "ref": "U098",
+          "sourceOccurrenceId": "DOC-0133:B000315"
+        },
+        {
+          "ref": "U099",
+          "sourceOccurrenceId": "DOC-0133:B000317"
+        },
+        {
+          "ref": "U100",
+          "sourceOccurrenceId": "DOC-0133:B000318"
+        },
+        {
+          "ref": "U101",
+          "sourceOccurrenceId": "DOC-0133:B000335"
+        },
+        {
+          "ref": "U102",
+          "sourceOccurrenceId": "DOC-0133:B000336"
+        },
+        {
+          "ref": "U103",
+          "sourceOccurrenceId": "DOC-0133:B000341"
+        },
+        {
+          "ref": "U104",
+          "sourceOccurrenceId": "DOC-0133:B000342"
+        },
+        {
+          "ref": "U105",
+          "sourceOccurrenceId": "DOC-0133:B000357"
+        },
+        {
+          "ref": "U106",
+          "sourceOccurrenceId": "DOC-0133:B000358"
+        },
+        {
+          "ref": "U107",
+          "sourceOccurrenceId": "DOC-0133:B000361"
+        },
+        {
+          "ref": "U108",
+          "sourceOccurrenceId": "DOC-0133:B000362"
+        },
+        {
+          "ref": "U109",
+          "sourceOccurrenceId": "DOC-0133:B000559"
+        },
+        {
+          "ref": "U110",
+          "sourceOccurrenceId": "DOC-0133:B000560"
+        },
+        {
+          "ref": "U111",
+          "sourceOccurrenceId": "DOC-0133:B000563"
+        },
+        {
+          "ref": "U112",
+          "sourceOccurrenceId": "DOC-0133:B000564"
+        },
+        {
+          "ref": "U113",
+          "sourceOccurrenceId": "DOC-0133:B000614"
+        },
+        {
+          "ref": "U114",
+          "sourceOccurrenceId": "DOC-0133:B000615"
+        },
+        {
+          "ref": "U115",
+          "sourceOccurrenceId": "DOC-0133:B000617"
+        },
+        {
+          "ref": "U116",
+          "sourceOccurrenceId": "DOC-0133:B000618"
+        },
+        {
+          "ref": "U117",
+          "sourceOccurrenceId": "DOC-0133:B000825"
+        },
+        {
+          "ref": "U118",
+          "sourceOccurrenceId": "DOC-0133:B000826"
+        },
+        {
+          "ref": "U119",
+          "sourceOccurrenceId": "DOC-0133:B000828"
+        },
+        {
+          "ref": "U120",
+          "sourceOccurrenceId": "DOC-0133:B000829"
+        },
+        {
+          "ref": "U121",
+          "sourceOccurrenceId": "DOC-0133:B000839"
+        },
+        {
+          "ref": "U122",
+          "sourceOccurrenceId": "DOC-0133:B000840"
+        },
+        {
+          "ref": "U123",
+          "sourceOccurrenceId": "DOC-0133:B000842"
+        },
+        {
+          "ref": "U124",
+          "sourceOccurrenceId": "DOC-0133:B000843"
+        },
+        {
+          "ref": "U125",
+          "sourceOccurrenceId": "DOC-0133:B000853"
+        },
+        {
+          "ref": "U126",
+          "sourceOccurrenceId": "DOC-0133:B000854"
+        },
+        {
+          "ref": "U127",
+          "sourceOccurrenceId": "DOC-0133:B000857"
+        },
+        {
+          "ref": "U128",
+          "sourceOccurrenceId": "DOC-0133:B000858"
+        },
+        {
+          "ref": "U129",
+          "sourceOccurrenceId": "DOC-0133:B000919"
+        },
+        {
+          "ref": "U130",
+          "sourceOccurrenceId": "DOC-0133:B000920"
+        },
+        {
+          "ref": "U131",
+          "sourceOccurrenceId": "DOC-0133:B000922"
+        },
+        {
+          "ref": "U132",
+          "sourceOccurrenceId": "DOC-0133:B000923"
+        },
+        {
+          "ref": "U133",
+          "sourceOccurrenceId": "DOC-0133:B000925"
+        },
+        {
+          "ref": "U134",
+          "sourceOccurrenceId": "DOC-0133:B000926"
+        },
+        {
+          "ref": "U135",
+          "sourceOccurrenceId": "DOC-0133:B000928"
+        },
+        {
+          "ref": "U136",
+          "sourceOccurrenceId": "DOC-0133:B000929"
+        },
+        {
+          "ref": "U137",
+          "sourceOccurrenceId": "DOC-0133:B000931"
+        },
+        {
+          "ref": "U138",
+          "sourceOccurrenceId": "DOC-0133:B000932"
+        },
+        {
+          "ref": "U139",
+          "sourceOccurrenceId": "DOC-0133:B000936"
+        },
+        {
+          "ref": "U140",
+          "sourceOccurrenceId": "DOC-0133:B000938"
+        },
+        {
+          "ref": "U141",
+          "sourceOccurrenceId": "DOC-0133:B000939"
+        },
+        {
+          "ref": "U142",
+          "sourceOccurrenceId": "DOC-0133:B000957"
+        },
+        {
+          "ref": "U143",
+          "sourceOccurrenceId": "DOC-0133:B000958"
+        },
+        {
+          "ref": "U144",
+          "sourceOccurrenceId": "DOC-0133:B000960"
+        },
+        {
+          "ref": "U145",
+          "sourceOccurrenceId": "DOC-0133:B000962"
+        },
+        {
+          "ref": "U146",
+          "sourceOccurrenceId": "DOC-0133:B000963"
+        },
+        {
+          "ref": "U147",
+          "sourceOccurrenceId": "DOC-0133:B000964"
+        },
+        {
+          "ref": "U148",
+          "sourceOccurrenceId": "DOC-0133:B000966"
+        },
+        {
+          "ref": "U149",
+          "sourceOccurrenceId": "DOC-0133:B000968"
+        },
+        {
+          "ref": "U150",
+          "sourceOccurrenceId": "DOC-0133:B000969"
+        },
+        {
+          "ref": "U151",
+          "sourceOccurrenceId": "DOC-0133:B001066"
+        },
+        {
+          "ref": "U152",
+          "sourceOccurrenceId": "DOC-0133:B001067"
+        },
+        {
+          "ref": "U153",
+          "sourceOccurrenceId": "DOC-0133:B001070"
+        },
+        {
+          "ref": "U154",
+          "sourceOccurrenceId": "DOC-0133:B001071"
+        },
+        {
+          "ref": "U155",
+          "sourceOccurrenceId": "DOC-0133:B001464"
+        },
+        {
+          "ref": "U156",
+          "sourceOccurrenceId": "DOC-0133:B001465"
+        },
+        {
+          "ref": "U157",
+          "sourceOccurrenceId": "DOC-0133:B001468"
+        },
+        {
+          "ref": "U158",
+          "sourceOccurrenceId": "DOC-0133:B001469"
+        },
+        {
+          "ref": "U159",
+          "sourceOccurrenceId": "DOC-0133:B001608"
+        },
+        {
+          "ref": "U160",
+          "sourceOccurrenceId": "DOC-0133:B001609"
+        },
+        {
+          "ref": "U161",
+          "sourceOccurrenceId": "DOC-0133:B001611"
+        },
+        {
+          "ref": "U162",
+          "sourceOccurrenceId": "DOC-0133:B001612"
+        },
+        {
+          "ref": "U163",
+          "sourceOccurrenceId": "DOC-0133:B001615"
+        },
+        {
+          "ref": "U164",
+          "sourceOccurrenceId": "DOC-0133:B001616"
+        },
+        {
+          "ref": "U165",
+          "sourceOccurrenceId": "DOC-0133:B001618"
+        },
+        {
+          "ref": "U166",
+          "sourceOccurrenceId": "DOC-0133:B001619"
+        },
+        {
+          "ref": "U167",
+          "sourceOccurrenceId": "DOC-0133:B001733"
+        },
+        {
+          "ref": "U168",
+          "sourceOccurrenceId": "DOC-0133:B001734"
+        },
+        {
+          "ref": "U169",
+          "sourceOccurrenceId": "DOC-0133:B001736"
+        },
+        {
+          "ref": "U170",
+          "sourceOccurrenceId": "DOC-0133:B001737"
+        },
+        {
+          "ref": "U171",
+          "sourceOccurrenceId": "DOC-0133:B001750"
+        },
+        {
+          "ref": "U172",
+          "sourceOccurrenceId": "DOC-0133:B001751"
+        },
+        {
+          "ref": "U173",
+          "sourceOccurrenceId": "DOC-0133:B001753"
+        },
+        {
+          "ref": "U174",
+          "sourceOccurrenceId": "DOC-0133:B001754"
+        },
+        {
+          "ref": "U175",
+          "sourceOccurrenceId": "DOC-0133:B001800"
+        },
+        {
+          "ref": "U176",
+          "sourceOccurrenceId": "DOC-0133:B001801"
+        },
+        {
+          "ref": "U177",
+          "sourceOccurrenceId": "DOC-0133:B001803"
+        },
+        {
+          "ref": "U178",
+          "sourceOccurrenceId": "DOC-0133:B001805"
+        },
+        {
+          "ref": "U179",
+          "sourceOccurrenceId": "DOC-0133:B001806"
+        },
+        {
+          "ref": "U180",
+          "sourceOccurrenceId": "DOC-0133:B001889"
+        },
+        {
+          "ref": "U181",
+          "sourceOccurrenceId": "DOC-0133:B001890"
+        },
+        {
+          "ref": "U182",
+          "sourceOccurrenceId": "DOC-0133:B001892"
+        },
+        {
+          "ref": "U183",
+          "sourceOccurrenceId": "DOC-0133:B001893"
+        },
+        {
+          "ref": "U184",
+          "sourceOccurrenceId": "DOC-0133:B001905"
+        },
+        {
+          "ref": "U185",
+          "sourceOccurrenceId": "DOC-0133:B001906"
+        },
+        {
+          "ref": "U186",
+          "sourceOccurrenceId": "DOC-0133:B001908"
+        },
+        {
+          "ref": "U187",
+          "sourceOccurrenceId": "DOC-0133:B001909"
+        },
+        {
+          "ref": "U188",
+          "sourceOccurrenceId": "DOC-0133:B001979"
+        },
+        {
+          "ref": "U189",
+          "sourceOccurrenceId": "DOC-0133:B001980"
+        },
+        {
+          "ref": "U190",
+          "sourceOccurrenceId": "DOC-0133:B001982"
+        },
+        {
+          "ref": "U191",
+          "sourceOccurrenceId": "DOC-0133:B001983"
+        },
+        {
+          "ref": "U192",
+          "sourceOccurrenceId": "DOC-0133:B002043"
+        },
+        {
+          "ref": "U193",
+          "sourceOccurrenceId": "DOC-0133:B002044"
+        },
+        {
+          "ref": "U194",
+          "sourceOccurrenceId": "DOC-0133:B002046"
+        },
+        {
+          "ref": "U195",
+          "sourceOccurrenceId": "DOC-0133:B002047"
+        },
+        {
+          "ref": "U196",
+          "sourceOccurrenceId": "DOC-0133:B002224"
+        },
+        {
+          "ref": "U197",
+          "sourceOccurrenceId": "DOC-0133:B002225"
+        },
+        {
+          "ref": "U198",
+          "sourceOccurrenceId": "DOC-0133:B002227"
+        },
+        {
+          "ref": "U199",
+          "sourceOccurrenceId": "DOC-0133:B002229"
+        },
+        {
+          "ref": "U200",
+          "sourceOccurrenceId": "DOC-0133:B002230"
+        },
+        {
+          "ref": "U201",
+          "sourceOccurrenceId": "DOC-0133:B002275"
+        },
+        {
+          "ref": "U202",
+          "sourceOccurrenceId": "DOC-0133:B002276"
+        },
+        {
+          "ref": "U203",
+          "sourceOccurrenceId": "DOC-0133:B002278"
+        },
+        {
+          "ref": "U204",
+          "sourceOccurrenceId": "DOC-0133:B002279"
+        },
+        {
+          "ref": "U205",
+          "sourceOccurrenceId": "DOC-0133:B002291"
+        },
+        {
+          "ref": "U206",
+          "sourceOccurrenceId": "DOC-0133:B002292"
+        },
+        {
+          "ref": "U207",
+          "sourceOccurrenceId": "DOC-0133:B002294"
+        },
+        {
+          "ref": "U208",
+          "sourceOccurrenceId": "DOC-0133:B002295"
+        },
+        {
+          "ref": "U209",
+          "sourceOccurrenceId": "DOC-0252:B000006"
+        },
+        {
+          "ref": "U210",
+          "sourceOccurrenceId": "DOC-0252:B000016"
+        },
+        {
+          "ref": "U211",
+          "sourceOccurrenceId": "DOC-0252:B000022"
+        },
+        {
+          "ref": "U212",
+          "sourceOccurrenceId": "DOC-0252:B000026"
+        },
+        {
+          "ref": "U213",
+          "sourceOccurrenceId": "DOC-0252:B000031"
+        },
+        {
+          "ref": "U214",
+          "sourceOccurrenceId": "DOC-0252:B000042"
+        },
+        {
+          "ref": "U215",
+          "sourceOccurrenceId": "DOC-0252:B000063"
+        },
+        {
+          "ref": "U216",
+          "sourceOccurrenceId": "DOC-0252:B000083"
+        },
+        {
+          "ref": "U217",
+          "sourceOccurrenceId": "DOC-0252:B000107"
+        },
+        {
+          "ref": "U218",
+          "sourceOccurrenceId": "DOC-0252:B000162"
+        },
+        {
+          "ref": "U219",
+          "sourceOccurrenceId": "DOC-0252:B000168"
+        },
+        {
+          "ref": "U220",
+          "sourceOccurrenceId": "DOC-0252:B000188"
+        },
+        {
+          "ref": "U221",
+          "sourceOccurrenceId": "DOC-0252:B000189"
+        },
+        {
+          "ref": "U222",
+          "sourceOccurrenceId": "DOC-0252:B000194"
+        },
+        {
+          "ref": "U223",
+          "sourceOccurrenceId": "DOC-0252:B000199"
+        },
+        {
+          "ref": "U224",
+          "sourceOccurrenceId": "DOC-0252:B000224"
+        },
+        {
+          "ref": "U225",
+          "sourceOccurrenceId": "DOC-0252:B000226"
+        },
+        {
+          "ref": "U226",
+          "sourceOccurrenceId": "DOC-0252:B000235"
+        },
+        {
+          "ref": "U227",
+          "sourceOccurrenceId": "DOC-0252:B000253"
+        },
+        {
+          "ref": "U228",
+          "sourceOccurrenceId": "DOC-0252:B000311"
+        },
+        {
+          "ref": "U229",
+          "sourceOccurrenceId": "DOC-0252:B000312"
+        },
+        {
+          "ref": "U230",
+          "sourceOccurrenceId": "DOC-0252:B000325"
+        },
+        {
+          "ref": "U231",
+          "sourceOccurrenceId": "DOC-0252:B000393"
+        },
+        {
+          "ref": "U232",
+          "sourceOccurrenceId": "DOC-0252:B000394"
+        },
+        {
+          "ref": "U233",
+          "sourceOccurrenceId": "DOC-0252:B000396"
+        },
+        {
+          "ref": "U234",
+          "sourceOccurrenceId": "DOC-0252:B000402"
+        },
+        {
+          "ref": "U235",
+          "sourceOccurrenceId": "DOC-0252:B000418"
+        },
+        {
+          "ref": "U236",
+          "sourceOccurrenceId": "DOC-0252:B000426"
+        },
+        {
+          "ref": "U237",
+          "sourceOccurrenceId": "DOC-0252:B000434"
+        },
+        {
+          "ref": "U238",
+          "sourceOccurrenceId": "DOC-0252:B000435"
+        },
+        {
+          "ref": "U239",
+          "sourceOccurrenceId": "DOC-0252:B000439"
+        },
+        {
+          "ref": "U240",
+          "sourceOccurrenceId": "DOC-0252:B000449"
+        },
+        {
+          "ref": "U241",
+          "sourceOccurrenceId": "DOC-0252:B000453"
+        },
+        {
+          "ref": "U242",
+          "sourceOccurrenceId": "DOC-0252:B000508"
+        },
+        {
+          "ref": "U243",
+          "sourceOccurrenceId": "DOC-0252:B000512"
+        },
+        {
+          "ref": "U244",
+          "sourceOccurrenceId": "DOC-0252:B000539"
+        },
+        {
+          "ref": "U245",
+          "sourceOccurrenceId": "DOC-0252:B000544"
+        },
+        {
+          "ref": "U246",
+          "sourceOccurrenceId": "DOC-0252:B000595"
+        },
+        {
+          "ref": "U247",
+          "sourceOccurrenceId": "DOC-0252:B000731"
+        },
+        {
+          "ref": "U248",
+          "sourceOccurrenceId": "DOC-0252:B000750"
+        },
+        {
+          "ref": "U249",
+          "sourceOccurrenceId": "DOC-0252:B000751"
+        },
+        {
+          "ref": "U250",
+          "sourceOccurrenceId": "DOC-0252:B000851"
+        },
+        {
+          "ref": "U251",
+          "sourceOccurrenceId": "DOC-0252:B000872"
+        },
+        {
+          "ref": "U252",
+          "sourceOccurrenceId": "DOC-0252:B000875"
+        },
+        {
+          "ref": "U253",
+          "sourceOccurrenceId": "DOC-0252:B000878"
+        },
+        {
+          "ref": "U254",
+          "sourceOccurrenceId": "DOC-0252:B000883"
+        },
+        {
+          "ref": "U255",
+          "sourceOccurrenceId": "DOC-0252:B000888"
+        },
+        {
+          "ref": "U256",
+          "sourceOccurrenceId": "DOC-0252:B000893"
+        },
+        {
+          "ref": "U257",
+          "sourceOccurrenceId": "DOC-0252:B000898"
+        },
+        {
+          "ref": "U258",
+          "sourceOccurrenceId": "DOC-0252:B000899"
+        },
+        {
+          "ref": "U259",
+          "sourceOccurrenceId": "DOC-0252:B000904"
+        },
+        {
+          "ref": "U260",
+          "sourceOccurrenceId": "DOC-0252:B000955"
+        },
+        {
+          "ref": "U261",
+          "sourceOccurrenceId": "DOC-0252:B000957"
+        }
+      ],
+      "evidenceHandles": [
+        {
+          "ref": "E001",
+          "sourceEvidenceId": "ADJACENT_ORDER",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E002",
+          "sourceEvidenceId": "DOC-0133:P1069-1070",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E003",
+          "sourceEvidenceId": "DOC-0133:P118-136",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E004",
+          "sourceEvidenceId": "DOC-0133:P140-157",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E005",
+          "sourceEvidenceId": "DOC-0133:P1467-1468",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E006",
+          "sourceEvidenceId": "DOC-0133:P1611-1618",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E007",
+          "sourceEvidenceId": "DOC-0133:P1736-1753",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E008",
+          "sourceEvidenceId": "DOC-0133:P1803-1805",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E009",
+          "sourceEvidenceId": "DOC-0133:P1892-1908",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E010",
+          "sourceEvidenceId": "DOC-0133:P1982-2046",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E011",
+          "sourceEvidenceId": "DOC-0133:P2227-2229",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E012",
+          "sourceEvidenceId": "DOC-0133:P2278-2294",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E013",
+          "sourceEvidenceId": "DOC-0133:P337-338",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E014",
+          "sourceEvidenceId": "DOC-0133:P339-340",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E015",
+          "sourceEvidenceId": "DOC-0133:P359-360",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E016",
+          "sourceEvidenceId": "DOC-0133:P36-41",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E017",
+          "sourceEvidenceId": "DOC-0133:P561-562",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E018",
+          "sourceEvidenceId": "DOC-0133:P827-841",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E019",
+          "sourceEvidenceId": "DOC-0133:P855-856",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E020",
+          "sourceEvidenceId": "DOC-0133:P927-930",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E021",
+          "sourceEvidenceId": "DOC-0133:P933-934",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E022",
+          "sourceEvidenceId": "DOC-0133:P937-938",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E023",
+          "sourceEvidenceId": "DOC-0133:P960-962",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E024",
+          "sourceEvidenceId": "DOC-0133:P966-968",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E025",
+          "sourceEvidenceId": "DOC-0133:P99-316",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E026",
+          "sourceEvidenceId": "DOC-0133:V4P0005-0935",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E027",
+          "sourceEvidenceId": "DOC-0133:V4P0011-0013",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E028",
+          "sourceEvidenceId": "DOC-0133:V4P0013-0034",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E029",
+          "sourceEvidenceId": "DOC-0133:V4P0015-0616",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E030",
+          "sourceEvidenceId": "DOC-0133:V4P0017-0921",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E031",
+          "sourceEvidenceId": "NORMALIZED_TEXT_AFFINITY",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E032",
+          "sourceEvidenceId": "SC-032875e9c153cab7",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E033",
+          "sourceEvidenceId": "SC-054b6bb0ac5b9b45",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E034",
+          "sourceEvidenceId": "SC-07084e0aff69e2bd",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E035",
+          "sourceEvidenceId": "SC-0f5f8eb5084651d7",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E036",
+          "sourceEvidenceId": "SC-11d1b04f16c142d4",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E037",
+          "sourceEvidenceId": "SC-137e766fed8e14d8",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E038",
+          "sourceEvidenceId": "SC-193e908c0f00a68c",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E039",
+          "sourceEvidenceId": "SC-19f21d3bb805257d",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E040",
+          "sourceEvidenceId": "SC-336b192f25ee8c62",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E041",
+          "sourceEvidenceId": "SC-44f46f640e7712b0",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E042",
+          "sourceEvidenceId": "SC-475453187c1c821e",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E043",
+          "sourceEvidenceId": "SC-4db7f9417ce6abc3",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E044",
+          "sourceEvidenceId": "SC-4f5dfab186393c56",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E045",
+          "sourceEvidenceId": "SC-56263abc254ef233",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E046",
+          "sourceEvidenceId": "SC-71e2f00f18661add",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E047",
+          "sourceEvidenceId": "SC-7bbcc897f811cf5f",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E048",
+          "sourceEvidenceId": "SC-7dba387f4f54f96d",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E049",
+          "sourceEvidenceId": "SC-8f8b372c4df44219",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E050",
+          "sourceEvidenceId": "SC-948f7fb1a513c101",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E051",
+          "sourceEvidenceId": "SC-c03b3d5ec241bf2d",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E052",
+          "sourceEvidenceId": "SC-c17bdfebd789811c",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E053",
+          "sourceEvidenceId": "SC-c483be6ba7146330",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E054",
+          "sourceEvidenceId": "SC-c557c9be01e4fc96",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E055",
+          "sourceEvidenceId": "SC-cc9434be93085964",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E056",
+          "sourceEvidenceId": "SC-dd7c93016022f445",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E057",
+          "sourceEvidenceId": "SC-e1c35fd18a3f134f",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E058",
+          "sourceEvidenceId": "SC-e418cf6207ee6cfd",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E059",
+          "sourceEvidenceId": "SC-e85d77b885a189a0",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E060",
+          "sourceEvidenceId": "SHARED_STRUCTURAL_HEADING_KEY",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E061",
+          "sourceEvidenceId": "TERMINAL_ACRONYM_VARIANT",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E062",
+          "sourceEvidenceId": "TEXT_STREAM",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "occurrenceHandles": [
+        {
+          "ref": "U001",
+          "sourceOccurrenceId": "DOC-0252:B000006"
+        },
+        {
+          "ref": "U002",
+          "sourceOccurrenceId": "DOC-0252:B000016"
+        },
+        {
+          "ref": "U003",
+          "sourceOccurrenceId": "DOC-0252:B000022"
+        },
+        {
+          "ref": "U004",
+          "sourceOccurrenceId": "DOC-0252:B000026"
+        },
+        {
+          "ref": "U005",
+          "sourceOccurrenceId": "DOC-0252:B000031"
+        },
+        {
+          "ref": "U006",
+          "sourceOccurrenceId": "DOC-0252:B000042"
+        },
+        {
+          "ref": "U007",
+          "sourceOccurrenceId": "DOC-0252:B000063"
+        },
+        {
+          "ref": "U008",
+          "sourceOccurrenceId": "DOC-0252:B000083"
+        },
+        {
+          "ref": "U009",
+          "sourceOccurrenceId": "DOC-0252:B000107"
+        },
+        {
+          "ref": "U010",
+          "sourceOccurrenceId": "DOC-0252:B000162"
+        },
+        {
+          "ref": "U011",
+          "sourceOccurrenceId": "DOC-0252:B000168"
+        },
+        {
+          "ref": "U012",
+          "sourceOccurrenceId": "DOC-0252:B000188"
+        },
+        {
+          "ref": "U013",
+          "sourceOccurrenceId": "DOC-0252:B000189"
+        },
+        {
+          "ref": "U014",
+          "sourceOccurrenceId": "DOC-0252:B000194"
+        },
+        {
+          "ref": "U015",
+          "sourceOccurrenceId": "DOC-0252:B000199"
+        },
+        {
+          "ref": "U016",
+          "sourceOccurrenceId": "DOC-0252:B000224"
+        },
+        {
+          "ref": "U017",
+          "sourceOccurrenceId": "DOC-0252:B000226"
+        },
+        {
+          "ref": "U018",
+          "sourceOccurrenceId": "DOC-0252:B000235"
+        },
+        {
+          "ref": "U019",
+          "sourceOccurrenceId": "DOC-0252:B000253"
+        },
+        {
+          "ref": "U020",
+          "sourceOccurrenceId": "DOC-0252:B000311"
+        },
+        {
+          "ref": "U021",
+          "sourceOccurrenceId": "DOC-0252:B000312"
+        },
+        {
+          "ref": "U022",
+          "sourceOccurrenceId": "DOC-0252:B000325"
+        },
+        {
+          "ref": "U023",
+          "sourceOccurrenceId": "DOC-0252:B000393"
+        },
+        {
+          "ref": "U024",
+          "sourceOccurrenceId": "DOC-0252:B000394"
+        },
+        {
+          "ref": "U025",
+          "sourceOccurrenceId": "DOC-0252:B000396"
+        },
+        {
+          "ref": "U026",
+          "sourceOccurrenceId": "DOC-0252:B000402"
+        },
+        {
+          "ref": "U027",
+          "sourceOccurrenceId": "DOC-0252:B000418"
+        },
+        {
+          "ref": "U028",
+          "sourceOccurrenceId": "DOC-0252:B000426"
+        },
+        {
+          "ref": "U029",
+          "sourceOccurrenceId": "DOC-0252:B000434"
+        },
+        {
+          "ref": "U030",
+          "sourceOccurrenceId": "DOC-0252:B000435"
+        },
+        {
+          "ref": "U031",
+          "sourceOccurrenceId": "DOC-0252:B000439"
+        },
+        {
+          "ref": "U032",
+          "sourceOccurrenceId": "DOC-0252:B000449"
+        },
+        {
+          "ref": "U033",
+          "sourceOccurrenceId": "DOC-0252:B000453"
+        },
+        {
+          "ref": "U034",
+          "sourceOccurrenceId": "DOC-0252:B000508"
+        },
+        {
+          "ref": "U035",
+          "sourceOccurrenceId": "DOC-0252:B000512"
+        },
+        {
+          "ref": "U036",
+          "sourceOccurrenceId": "DOC-0252:B000539"
+        },
+        {
+          "ref": "U037",
+          "sourceOccurrenceId": "DOC-0252:B000544"
+        },
+        {
+          "ref": "U038",
+          "sourceOccurrenceId": "DOC-0252:B000595"
+        },
+        {
+          "ref": "U039",
+          "sourceOccurrenceId": "DOC-0252:B000731"
+        },
+        {
+          "ref": "U040",
+          "sourceOccurrenceId": "DOC-0252:B000750"
+        },
+        {
+          "ref": "U041",
+          "sourceOccurrenceId": "DOC-0252:B000751"
+        },
+        {
+          "ref": "U042",
+          "sourceOccurrenceId": "DOC-0252:B000851"
+        },
+        {
+          "ref": "U043",
+          "sourceOccurrenceId": "DOC-0252:B000872"
+        },
+        {
+          "ref": "U044",
+          "sourceOccurrenceId": "DOC-0252:B000875"
+        },
+        {
+          "ref": "U045",
+          "sourceOccurrenceId": "DOC-0252:B000878"
+        },
+        {
+          "ref": "U046",
+          "sourceOccurrenceId": "DOC-0252:B000883"
+        },
+        {
+          "ref": "U047",
+          "sourceOccurrenceId": "DOC-0252:B000888"
+        },
+        {
+          "ref": "U048",
+          "sourceOccurrenceId": "DOC-0252:B000893"
+        },
+        {
+          "ref": "U049",
+          "sourceOccurrenceId": "DOC-0252:B000898"
+        },
+        {
+          "ref": "U050",
+          "sourceOccurrenceId": "DOC-0252:B000899"
+        },
+        {
+          "ref": "U051",
+          "sourceOccurrenceId": "DOC-0252:B000904"
+        },
+        {
+          "ref": "U052",
+          "sourceOccurrenceId": "DOC-0252:B000955"
+        },
+        {
+          "ref": "U053",
+          "sourceOccurrenceId": "DOC-0252:B000957"
+        },
+        {
+          "ref": "U054",
+          "sourceOccurrenceId": "DOC-0133:B000005"
+        },
+        {
+          "ref": "U055",
+          "sourceOccurrenceId": "DOC-0133:B000011"
+        },
+        {
+          "ref": "U056",
+          "sourceOccurrenceId": "DOC-0133:B000013"
+        },
+        {
+          "ref": "U057",
+          "sourceOccurrenceId": "DOC-0133:B000015"
+        },
+        {
+          "ref": "U058",
+          "sourceOccurrenceId": "DOC-0133:B000017"
+        },
+        {
+          "ref": "U059",
+          "sourceOccurrenceId": "DOC-0133:B000034"
+        },
+        {
+          "ref": "U060",
+          "sourceOccurrenceId": "DOC-0133:B000036"
+        },
+        {
+          "ref": "U061",
+          "sourceOccurrenceId": "DOC-0133:B000041"
+        },
+        {
+          "ref": "U062",
+          "sourceOccurrenceId": "DOC-0133:B000099"
+        },
+        {
+          "ref": "U063",
+          "sourceOccurrenceId": "DOC-0133:B000118"
+        },
+        {
+          "ref": "U064",
+          "sourceOccurrenceId": "DOC-0133:B000136"
+        },
+        {
+          "ref": "U065",
+          "sourceOccurrenceId": "DOC-0133:B000140"
+        },
+        {
+          "ref": "U066",
+          "sourceOccurrenceId": "DOC-0133:B000157"
+        },
+        {
+          "ref": "U067",
+          "sourceOccurrenceId": "DOC-0133:B000316"
+        },
+        {
+          "ref": "U068",
+          "sourceOccurrenceId": "DOC-0133:B000337"
+        },
+        {
+          "ref": "U069",
+          "sourceOccurrenceId": "DOC-0133:B000338"
+        },
+        {
+          "ref": "U070",
+          "sourceOccurrenceId": "DOC-0133:B000339"
+        },
+        {
+          "ref": "U071",
+          "sourceOccurrenceId": "DOC-0133:B000340"
+        },
+        {
+          "ref": "U072",
+          "sourceOccurrenceId": "DOC-0133:B000359"
+        },
+        {
+          "ref": "U073",
+          "sourceOccurrenceId": "DOC-0133:B000360"
+        },
+        {
+          "ref": "U074",
+          "sourceOccurrenceId": "DOC-0133:B000561"
+        },
+        {
+          "ref": "U075",
+          "sourceOccurrenceId": "DOC-0133:B000562"
+        },
+        {
+          "ref": "U076",
+          "sourceOccurrenceId": "DOC-0133:B000616"
+        },
+        {
+          "ref": "U077",
+          "sourceOccurrenceId": "DOC-0133:B000827"
+        },
+        {
+          "ref": "U078",
+          "sourceOccurrenceId": "DOC-0133:B000841"
+        },
+        {
+          "ref": "U079",
+          "sourceOccurrenceId": "DOC-0133:B000855"
+        },
+        {
+          "ref": "U080",
+          "sourceOccurrenceId": "DOC-0133:B000856"
+        },
+        {
+          "ref": "U081",
+          "sourceOccurrenceId": "DOC-0133:B000921"
+        },
+        {
+          "ref": "U082",
+          "sourceOccurrenceId": "DOC-0133:B000927"
+        },
+        {
+          "ref": "U083",
+          "sourceOccurrenceId": "DOC-0133:B000930"
+        },
+        {
+          "ref": "U084",
+          "sourceOccurrenceId": "DOC-0133:B000933"
+        },
+        {
+          "ref": "U085",
+          "sourceOccurrenceId": "DOC-0133:B000934"
+        },
+        {
+          "ref": "U086",
+          "sourceOccurrenceId": "DOC-0133:B000935"
+        },
+        {
+          "ref": "U087",
+          "sourceOccurrenceId": "DOC-0133:B000937"
+        },
+        {
+          "ref": "U088",
+          "sourceOccurrenceId": "DOC-0133:B000959"
+        },
+        {
+          "ref": "U089",
+          "sourceOccurrenceId": "DOC-0133:B000961"
+        },
+        {
+          "ref": "U090",
+          "sourceOccurrenceId": "DOC-0133:B000965"
+        },
+        {
+          "ref": "U091",
+          "sourceOccurrenceId": "DOC-0133:B000967"
+        },
+        {
+          "ref": "U092",
+          "sourceOccurrenceId": "DOC-0133:B001068"
+        },
+        {
+          "ref": "U093",
+          "sourceOccurrenceId": "DOC-0133:B001069"
+        },
+        {
+          "ref": "U094",
+          "sourceOccurrenceId": "DOC-0133:B001466"
+        },
+        {
+          "ref": "U095",
+          "sourceOccurrenceId": "DOC-0133:B001467"
+        },
+        {
+          "ref": "U096",
+          "sourceOccurrenceId": "DOC-0133:B001610"
+        },
+        {
+          "ref": "U097",
+          "sourceOccurrenceId": "DOC-0133:B001617"
+        },
+        {
+          "ref": "U098",
+          "sourceOccurrenceId": "DOC-0133:B001735"
+        },
+        {
+          "ref": "U099",
+          "sourceOccurrenceId": "DOC-0133:B001752"
+        },
+        {
+          "ref": "U100",
+          "sourceOccurrenceId": "DOC-0133:B001802"
+        },
+        {
+          "ref": "U101",
+          "sourceOccurrenceId": "DOC-0133:B001804"
+        },
+        {
+          "ref": "U102",
+          "sourceOccurrenceId": "DOC-0133:B001891"
+        },
+        {
+          "ref": "U103",
+          "sourceOccurrenceId": "DOC-0133:B001907"
+        },
+        {
+          "ref": "U104",
+          "sourceOccurrenceId": "DOC-0133:B001981"
+        },
+        {
+          "ref": "U105",
+          "sourceOccurrenceId": "DOC-0133:B002045"
+        },
+        {
+          "ref": "U106",
+          "sourceOccurrenceId": "DOC-0133:B002226"
+        },
+        {
+          "ref": "U107",
+          "sourceOccurrenceId": "DOC-0133:B002228"
+        },
+        {
+          "ref": "U108",
+          "sourceOccurrenceId": "DOC-0133:B002277"
+        },
+        {
+          "ref": "U109",
+          "sourceOccurrenceId": "DOC-0133:B002293"
+        },
+        {
+          "ref": "U110",
+          "sourceOccurrenceId": "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11"
+        },
+        {
+          "ref": "U111",
+          "sourceOccurrenceId": "DOC-0252:B000004"
+        },
+        {
+          "ref": "U112",
+          "sourceOccurrenceId": "DOC-0252:B000005"
+        },
+        {
+          "ref": "U113",
+          "sourceOccurrenceId": "DOC-0252:B000007"
+        },
+        {
+          "ref": "U114",
+          "sourceOccurrenceId": "DOC-0252:B000008"
+        },
+        {
+          "ref": "U115",
+          "sourceOccurrenceId": "DOC-0252:B000014"
+        },
+        {
+          "ref": "U116",
+          "sourceOccurrenceId": "DOC-0252:B000015"
+        },
+        {
+          "ref": "U117",
+          "sourceOccurrenceId": "DOC-0252:B000017"
+        },
+        {
+          "ref": "U118",
+          "sourceOccurrenceId": "DOC-0252:B000018"
+        },
+        {
+          "ref": "U119",
+          "sourceOccurrenceId": "DOC-0252:B000020"
+        },
+        {
+          "ref": "U120",
+          "sourceOccurrenceId": "DOC-0252:B000021"
+        },
+        {
+          "ref": "U121",
+          "sourceOccurrenceId": "DOC-0252:B000023"
+        },
+        {
+          "ref": "U122",
+          "sourceOccurrenceId": "DOC-0252:B000024"
+        },
+        {
+          "ref": "U123",
+          "sourceOccurrenceId": "DOC-0252:B000025"
+        },
+        {
+          "ref": "U124",
+          "sourceOccurrenceId": "DOC-0252:B000027"
+        },
+        {
+          "ref": "U125",
+          "sourceOccurrenceId": "DOC-0252:B000028"
+        },
+        {
+          "ref": "U126",
+          "sourceOccurrenceId": "DOC-0252:B000029"
+        },
+        {
+          "ref": "U127",
+          "sourceOccurrenceId": "DOC-0252:B000030"
+        },
+        {
+          "ref": "U128",
+          "sourceOccurrenceId": "DOC-0252:B000032"
+        },
+        {
+          "ref": "U129",
+          "sourceOccurrenceId": "DOC-0252:B000033"
+        },
+        {
+          "ref": "U130",
+          "sourceOccurrenceId": "DOC-0252:B000040"
+        },
+        {
+          "ref": "U131",
+          "sourceOccurrenceId": "DOC-0252:B000041"
+        },
+        {
+          "ref": "U132",
+          "sourceOccurrenceId": "DOC-0252:B000043"
+        },
+        {
+          "ref": "U133",
+          "sourceOccurrenceId": "DOC-0252:B000044"
+        },
+        {
+          "ref": "U134",
+          "sourceOccurrenceId": "DOC-0252:B000061"
+        },
+        {
+          "ref": "U135",
+          "sourceOccurrenceId": "DOC-0252:B000062"
+        },
+        {
+          "ref": "U136",
+          "sourceOccurrenceId": "DOC-0252:B000064"
+        },
+        {
+          "ref": "U137",
+          "sourceOccurrenceId": "DOC-0252:B000065"
+        },
+        {
+          "ref": "U138",
+          "sourceOccurrenceId": "DOC-0252:B000081"
+        },
+        {
+          "ref": "U139",
+          "sourceOccurrenceId": "DOC-0252:B000082"
+        },
+        {
+          "ref": "U140",
+          "sourceOccurrenceId": "DOC-0252:B000084"
+        },
+        {
+          "ref": "U141",
+          "sourceOccurrenceId": "DOC-0252:B000085"
+        },
+        {
+          "ref": "U142",
+          "sourceOccurrenceId": "DOC-0252:B000105"
+        },
+        {
+          "ref": "U143",
+          "sourceOccurrenceId": "DOC-0252:B000106"
+        },
+        {
+          "ref": "U144",
+          "sourceOccurrenceId": "DOC-0252:B000108"
+        },
+        {
+          "ref": "U145",
+          "sourceOccurrenceId": "DOC-0252:B000109"
+        },
+        {
+          "ref": "U146",
+          "sourceOccurrenceId": "DOC-0252:B000160"
+        },
+        {
+          "ref": "U147",
+          "sourceOccurrenceId": "DOC-0252:B000161"
+        },
+        {
+          "ref": "U148",
+          "sourceOccurrenceId": "DOC-0252:B000163"
+        },
+        {
+          "ref": "U149",
+          "sourceOccurrenceId": "DOC-0252:B000164"
+        },
+        {
+          "ref": "U150",
+          "sourceOccurrenceId": "DOC-0252:B000166"
+        },
+        {
+          "ref": "U151",
+          "sourceOccurrenceId": "DOC-0252:B000167"
+        },
+        {
+          "ref": "U152",
+          "sourceOccurrenceId": "DOC-0252:B000169"
+        },
+        {
+          "ref": "U153",
+          "sourceOccurrenceId": "DOC-0252:B000170"
+        },
+        {
+          "ref": "U154",
+          "sourceOccurrenceId": "DOC-0252:B000186"
+        },
+        {
+          "ref": "U155",
+          "sourceOccurrenceId": "DOC-0252:B000187"
+        },
+        {
+          "ref": "U156",
+          "sourceOccurrenceId": "DOC-0252:B000190"
+        },
+        {
+          "ref": "U157",
+          "sourceOccurrenceId": "DOC-0252:B000191"
+        },
+        {
+          "ref": "U158",
+          "sourceOccurrenceId": "DOC-0252:B000192"
+        },
+        {
+          "ref": "U159",
+          "sourceOccurrenceId": "DOC-0252:B000193"
+        },
+        {
+          "ref": "U160",
+          "sourceOccurrenceId": "DOC-0252:B000195"
+        },
+        {
+          "ref": "U161",
+          "sourceOccurrenceId": "DOC-0252:B000196"
+        },
+        {
+          "ref": "U162",
+          "sourceOccurrenceId": "DOC-0252:B000197"
+        },
+        {
+          "ref": "U163",
+          "sourceOccurrenceId": "DOC-0252:B000198"
+        },
+        {
+          "ref": "U164",
+          "sourceOccurrenceId": "DOC-0252:B000200"
+        },
+        {
+          "ref": "U165",
+          "sourceOccurrenceId": "DOC-0252:B000201"
+        },
+        {
+          "ref": "U166",
+          "sourceOccurrenceId": "DOC-0252:B000222"
+        },
+        {
+          "ref": "U167",
+          "sourceOccurrenceId": "DOC-0252:B000223"
+        },
+        {
+          "ref": "U168",
+          "sourceOccurrenceId": "DOC-0252:B000225"
+        },
+        {
+          "ref": "U169",
+          "sourceOccurrenceId": "DOC-0252:B000227"
+        },
+        {
+          "ref": "U170",
+          "sourceOccurrenceId": "DOC-0252:B000228"
+        },
+        {
+          "ref": "U171",
+          "sourceOccurrenceId": "DOC-0252:B000233"
+        },
+        {
+          "ref": "U172",
+          "sourceOccurrenceId": "DOC-0252:B000234"
+        },
+        {
+          "ref": "U173",
+          "sourceOccurrenceId": "DOC-0252:B000236"
+        },
+        {
+          "ref": "U174",
+          "sourceOccurrenceId": "DOC-0252:B000237"
+        },
+        {
+          "ref": "U175",
+          "sourceOccurrenceId": "DOC-0252:B000251"
+        },
+        {
+          "ref": "U176",
+          "sourceOccurrenceId": "DOC-0252:B000252"
+        },
+        {
+          "ref": "U177",
+          "sourceOccurrenceId": "DOC-0252:B000254"
+        },
+        {
+          "ref": "U178",
+          "sourceOccurrenceId": "DOC-0252:B000255"
+        },
+        {
+          "ref": "U179",
+          "sourceOccurrenceId": "DOC-0252:B000309"
+        },
+        {
+          "ref": "U180",
+          "sourceOccurrenceId": "DOC-0252:B000310"
+        },
+        {
+          "ref": "U181",
+          "sourceOccurrenceId": "DOC-0252:B000313"
+        },
+        {
+          "ref": "U182",
+          "sourceOccurrenceId": "DOC-0252:B000314"
+        },
+        {
+          "ref": "U183",
+          "sourceOccurrenceId": "DOC-0252:B000323"
+        },
+        {
+          "ref": "U184",
+          "sourceOccurrenceId": "DOC-0252:B000324"
+        },
+        {
+          "ref": "U185",
+          "sourceOccurrenceId": "DOC-0252:B000326"
+        },
+        {
+          "ref": "U186",
+          "sourceOccurrenceId": "DOC-0252:B000327"
+        },
+        {
+          "ref": "U187",
+          "sourceOccurrenceId": "DOC-0252:B000391"
+        },
+        {
+          "ref": "U188",
+          "sourceOccurrenceId": "DOC-0252:B000392"
+        },
+        {
+          "ref": "U189",
+          "sourceOccurrenceId": "DOC-0252:B000395"
+        },
+        {
+          "ref": "U190",
+          "sourceOccurrenceId": "DOC-0252:B000397"
+        },
+        {
+          "ref": "U191",
+          "sourceOccurrenceId": "DOC-0252:B000398"
+        },
+        {
+          "ref": "U192",
+          "sourceOccurrenceId": "DOC-0252:B000400"
+        },
+        {
+          "ref": "U193",
+          "sourceOccurrenceId": "DOC-0252:B000401"
+        },
+        {
+          "ref": "U194",
+          "sourceOccurrenceId": "DOC-0252:B000403"
+        },
+        {
+          "ref": "U195",
+          "sourceOccurrenceId": "DOC-0252:B000404"
+        },
+        {
+          "ref": "U196",
+          "sourceOccurrenceId": "DOC-0252:B000416"
+        },
+        {
+          "ref": "U197",
+          "sourceOccurrenceId": "DOC-0252:B000417"
+        },
+        {
+          "ref": "U198",
+          "sourceOccurrenceId": "DOC-0252:B000419"
+        },
+        {
+          "ref": "U199",
+          "sourceOccurrenceId": "DOC-0252:B000420"
+        },
+        {
+          "ref": "U200",
+          "sourceOccurrenceId": "DOC-0252:B000424"
+        },
+        {
+          "ref": "U201",
+          "sourceOccurrenceId": "DOC-0252:B000425"
+        },
+        {
+          "ref": "U202",
+          "sourceOccurrenceId": "DOC-0252:B000427"
+        },
+        {
+          "ref": "U203",
+          "sourceOccurrenceId": "DOC-0252:B000428"
+        },
+        {
+          "ref": "U204",
+          "sourceOccurrenceId": "DOC-0252:B000432"
+        },
+        {
+          "ref": "U205",
+          "sourceOccurrenceId": "DOC-0252:B000433"
+        },
+        {
+          "ref": "U206",
+          "sourceOccurrenceId": "DOC-0252:B000436"
+        },
+        {
+          "ref": "U207",
+          "sourceOccurrenceId": "DOC-0252:B000437"
+        },
+        {
+          "ref": "U208",
+          "sourceOccurrenceId": "DOC-0252:B000438"
+        },
+        {
+          "ref": "U209",
+          "sourceOccurrenceId": "DOC-0252:B000440"
+        },
+        {
+          "ref": "U210",
+          "sourceOccurrenceId": "DOC-0252:B000441"
+        },
+        {
+          "ref": "U211",
+          "sourceOccurrenceId": "DOC-0252:B000447"
+        },
+        {
+          "ref": "U212",
+          "sourceOccurrenceId": "DOC-0252:B000448"
+        },
+        {
+          "ref": "U213",
+          "sourceOccurrenceId": "DOC-0252:B000450"
+        },
+        {
+          "ref": "U214",
+          "sourceOccurrenceId": "DOC-0252:B000451"
+        },
+        {
+          "ref": "U215",
+          "sourceOccurrenceId": "DOC-0252:B000452"
+        },
+        {
+          "ref": "U216",
+          "sourceOccurrenceId": "DOC-0252:B000454"
+        },
+        {
+          "ref": "U217",
+          "sourceOccurrenceId": "DOC-0252:B000455"
+        },
+        {
+          "ref": "U218",
+          "sourceOccurrenceId": "DOC-0252:B000506"
+        },
+        {
+          "ref": "U219",
+          "sourceOccurrenceId": "DOC-0252:B000507"
+        },
+        {
+          "ref": "U220",
+          "sourceOccurrenceId": "DOC-0252:B000509"
+        },
+        {
+          "ref": "U221",
+          "sourceOccurrenceId": "DOC-0252:B000510"
+        },
+        {
+          "ref": "U222",
+          "sourceOccurrenceId": "DOC-0252:B000511"
+        },
+        {
+          "ref": "U223",
+          "sourceOccurrenceId": "DOC-0252:B000513"
+        },
+        {
+          "ref": "U224",
+          "sourceOccurrenceId": "DOC-0252:B000514"
+        },
+        {
+          "ref": "U225",
+          "sourceOccurrenceId": "DOC-0252:B000537"
+        },
+        {
+          "ref": "U226",
+          "sourceOccurrenceId": "DOC-0252:B000538"
+        },
+        {
+          "ref": "U227",
+          "sourceOccurrenceId": "DOC-0252:B000540"
+        },
+        {
+          "ref": "U228",
+          "sourceOccurrenceId": "DOC-0252:B000541"
+        },
+        {
+          "ref": "U229",
+          "sourceOccurrenceId": "DOC-0252:B000542"
+        },
+        {
+          "ref": "U230",
+          "sourceOccurrenceId": "DOC-0252:B000543"
+        },
+        {
+          "ref": "U231",
+          "sourceOccurrenceId": "DOC-0252:B000545"
+        },
+        {
+          "ref": "U232",
+          "sourceOccurrenceId": "DOC-0252:B000546"
+        },
+        {
+          "ref": "U233",
+          "sourceOccurrenceId": "DOC-0252:B000593"
+        },
+        {
+          "ref": "U234",
+          "sourceOccurrenceId": "DOC-0252:B000594"
+        },
+        {
+          "ref": "U235",
+          "sourceOccurrenceId": "DOC-0252:B000596"
+        },
+        {
+          "ref": "U236",
+          "sourceOccurrenceId": "DOC-0252:B000597"
+        },
+        {
+          "ref": "U237",
+          "sourceOccurrenceId": "DOC-0252:B000729"
+        },
+        {
+          "ref": "U238",
+          "sourceOccurrenceId": "DOC-0252:B000730"
+        },
+        {
+          "ref": "U239",
+          "sourceOccurrenceId": "DOC-0252:B000732"
+        },
+        {
+          "ref": "U240",
+          "sourceOccurrenceId": "DOC-0252:B000733"
+        },
+        {
+          "ref": "U241",
+          "sourceOccurrenceId": "DOC-0252:B000748"
+        },
+        {
+          "ref": "U242",
+          "sourceOccurrenceId": "DOC-0252:B000749"
+        },
+        {
+          "ref": "U243",
+          "sourceOccurrenceId": "DOC-0252:B000752"
+        },
+        {
+          "ref": "U244",
+          "sourceOccurrenceId": "DOC-0252:B000753"
+        },
+        {
+          "ref": "U245",
+          "sourceOccurrenceId": "DOC-0252:B000849"
+        },
+        {
+          "ref": "U246",
+          "sourceOccurrenceId": "DOC-0252:B000850"
+        },
+        {
+          "ref": "U247",
+          "sourceOccurrenceId": "DOC-0252:B000852"
+        },
+        {
+          "ref": "U248",
+          "sourceOccurrenceId": "DOC-0252:B000853"
+        },
+        {
+          "ref": "U249",
+          "sourceOccurrenceId": "DOC-0252:B000870"
+        },
+        {
+          "ref": "U250",
+          "sourceOccurrenceId": "DOC-0252:B000871"
+        },
+        {
+          "ref": "U251",
+          "sourceOccurrenceId": "DOC-0252:B000873"
+        },
+        {
+          "ref": "U252",
+          "sourceOccurrenceId": "DOC-0252:B000874"
+        },
+        {
+          "ref": "U253",
+          "sourceOccurrenceId": "DOC-0252:B000876"
+        },
+        {
+          "ref": "U254",
+          "sourceOccurrenceId": "DOC-0252:B000877"
+        },
+        {
+          "ref": "U255",
+          "sourceOccurrenceId": "DOC-0252:B000879"
+        },
+        {
+          "ref": "U256",
+          "sourceOccurrenceId": "DOC-0252:B000880"
+        },
+        {
+          "ref": "U257",
+          "sourceOccurrenceId": "DOC-0252:B000881"
+        },
+        {
+          "ref": "U258",
+          "sourceOccurrenceId": "DOC-0252:B000882"
+        },
+        {
+          "ref": "U259",
+          "sourceOccurrenceId": "DOC-0252:B000884"
+        },
+        {
+          "ref": "U260",
+          "sourceOccurrenceId": "DOC-0252:B000885"
+        },
+        {
+          "ref": "U261",
+          "sourceOccurrenceId": "DOC-0252:B000886"
+        },
+        {
+          "ref": "U262",
+          "sourceOccurrenceId": "DOC-0252:B000887"
+        },
+        {
+          "ref": "U263",
+          "sourceOccurrenceId": "DOC-0252:B000889"
+        },
+        {
+          "ref": "U264",
+          "sourceOccurrenceId": "DOC-0252:B000890"
+        },
+        {
+          "ref": "U265",
+          "sourceOccurrenceId": "DOC-0252:B000891"
+        },
+        {
+          "ref": "U266",
+          "sourceOccurrenceId": "DOC-0252:B000892"
+        },
+        {
+          "ref": "U267",
+          "sourceOccurrenceId": "DOC-0252:B000894"
+        },
+        {
+          "ref": "U268",
+          "sourceOccurrenceId": "DOC-0252:B000895"
+        },
+        {
+          "ref": "U269",
+          "sourceOccurrenceId": "DOC-0252:B000896"
+        },
+        {
+          "ref": "U270",
+          "sourceOccurrenceId": "DOC-0252:B000897"
+        },
+        {
+          "ref": "U271",
+          "sourceOccurrenceId": "DOC-0252:B000900"
+        },
+        {
+          "ref": "U272",
+          "sourceOccurrenceId": "DOC-0252:B000901"
+        },
+        {
+          "ref": "U273",
+          "sourceOccurrenceId": "DOC-0252:B000902"
+        },
+        {
+          "ref": "U274",
+          "sourceOccurrenceId": "DOC-0252:B000903"
+        },
+        {
+          "ref": "U275",
+          "sourceOccurrenceId": "DOC-0252:B000905"
+        },
+        {
+          "ref": "U276",
+          "sourceOccurrenceId": "DOC-0252:B000906"
+        },
+        {
+          "ref": "U277",
+          "sourceOccurrenceId": "DOC-0252:B000953"
+        },
+        {
+          "ref": "U278",
+          "sourceOccurrenceId": "DOC-0252:B000954"
+        },
+        {
+          "ref": "U279",
+          "sourceOccurrenceId": "DOC-0252:B000956"
+        },
+        {
+          "ref": "U280",
+          "sourceOccurrenceId": "DOC-0252:B000958"
+        },
+        {
+          "ref": "U281",
+          "sourceOccurrenceId": "DOC-0252:B000959"
+        }
+      ],
+      "evidenceHandles": [
+        {
+          "ref": "E001",
+          "sourceEvidenceId": "ADJACENT_ORDER",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E002",
+          "sourceEvidenceId": "DOC-0252:P107-235",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E003",
+          "sourceEvidenceId": "DOC-0252:P16-31",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E004",
+          "sourceEvidenceId": "DOC-0252:P162-168",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E005",
+          "sourceEvidenceId": "DOC-0252:P188-189",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E006",
+          "sourceEvidenceId": "DOC-0252:P194-731",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E007",
+          "sourceEvidenceId": "DOC-0252:P199-325",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E008",
+          "sourceEvidenceId": "DOC-0252:P22-26",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E009",
+          "sourceEvidenceId": "DOC-0252:P224-226",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E010",
+          "sourceEvidenceId": "DOC-0252:P311-312",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E011",
+          "sourceEvidenceId": "DOC-0252:P393-394",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E012",
+          "sourceEvidenceId": "DOC-0252:P396-402",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E013",
+          "sourceEvidenceId": "DOC-0252:P418-426",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E014",
+          "sourceEvidenceId": "DOC-0252:P434-439",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E015",
+          "sourceEvidenceId": "DOC-0252:P449-453",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E016",
+          "sourceEvidenceId": "DOC-0252:P508-512",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E017",
+          "sourceEvidenceId": "DOC-0252:P539-595",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E018",
+          "sourceEvidenceId": "DOC-0252:P63-83",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E019",
+          "sourceEvidenceId": "DOC-0252:P750-751",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E020",
+          "sourceEvidenceId": "DOC-0252:P898-899",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E021",
+          "sourceEvidenceId": "DOC-0252:P955-957",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E022",
+          "sourceEvidenceId": "DOC-0252:V4P0006-0042",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E023",
+          "sourceEvidenceId": "DOC-0252:V4P0042-0253",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E024",
+          "sourceEvidenceId": "DOC-0252:V4P0435-0883",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E025",
+          "sourceEvidenceId": "DOC-0252:V4P0544-0888",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E026",
+          "sourceEvidenceId": "DOC-0252:V4P0544-0893",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E027",
+          "sourceEvidenceId": "DOC-0252:V4P0851-0904",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E028",
+          "sourceEvidenceId": "DOC-0252:V4P0872-0875",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E029",
+          "sourceEvidenceId": "DOC-0252:V4P0875-0878",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E030",
+          "sourceEvidenceId": "DOC-0252:V4P0888-0893",
+          "evidenceKinds": [
+            "candidateId"
+          ]
+        },
+        {
+          "ref": "E031",
+          "sourceEvidenceId": "EXPLICIT_CONTINUATION_VARIANT",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E032",
+          "sourceEvidenceId": "NORMALIZED_TEXT_AFFINITY",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E033",
+          "sourceEvidenceId": "SC-04bc27e74780febd",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E034",
+          "sourceEvidenceId": "SC-08bd91eaff8ac2d7",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E035",
+          "sourceEvidenceId": "SC-10ca4581b17299d1",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E036",
+          "sourceEvidenceId": "SC-2d5e22fcd48f9e6a",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E037",
+          "sourceEvidenceId": "SC-2e75eab82a3e81ee",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E038",
+          "sourceEvidenceId": "SC-463e6c81092ee630",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E039",
+          "sourceEvidenceId": "SC-61fc0dbd9dfcc7f1",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E040",
+          "sourceEvidenceId": "SC-62312e2ef1696634",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E041",
+          "sourceEvidenceId": "SC-625a5883ecaebaa4",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E042",
+          "sourceEvidenceId": "SC-698908c4f6d37a72",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E043",
+          "sourceEvidenceId": "SC-83ba6382175a7582",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E044",
+          "sourceEvidenceId": "SC-87ddf22bac3dbc7a",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E045",
+          "sourceEvidenceId": "SC-95866d105ba259d4",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E046",
+          "sourceEvidenceId": "SC-95c6de236313b846",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E047",
+          "sourceEvidenceId": "SC-9d7862e7cb1eb620",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E048",
+          "sourceEvidenceId": "SC-a120b089d9ec8dc0",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E049",
+          "sourceEvidenceId": "SC-b8cd0daf89cc2809",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E050",
+          "sourceEvidenceId": "SC-cd566bc4da71285c",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E051",
+          "sourceEvidenceId": "SC-df80308b29693450",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E052",
+          "sourceEvidenceId": "SC-e1dba61cbc2b05da",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E053",
+          "sourceEvidenceId": "SC-f12b996463a94a60",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E054",
+          "sourceEvidenceId": "SC-f58ec7a5d0cc2968",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E055",
+          "sourceEvidenceId": "SC-f8cd55c5e557df36",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E056",
+          "sourceEvidenceId": "SC-faa9769a7ae9a698",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E057",
+          "sourceEvidenceId": "SC-fd68b6c73c10e67b",
+          "evidenceKinds": [
+            "clusterId"
+          ]
+        },
+        {
+          "ref": "E058",
+          "sourceEvidenceId": "SHARED_STRUCTURAL_HEADING_KEY",
+          "evidenceKinds": [
+            "evidenceReason"
+          ]
+        },
+        {
+          "ref": "E059",
+          "sourceEvidenceId": "TEXT_STREAM",
+          "evidenceKinds": [
+            "parserScopeGroup",
+            "sourceContainerIdentity"
+          ]
+        }
+      ]
+    }
+  ],
+  "requestSetSha256": "a85b6ff6d5ad86d10b8430a626338282f09d5c86be91c378ea1b1710000a33ab"
+}
