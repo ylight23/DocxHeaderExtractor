@@ -1,0 +1,24 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_CHALLENGE_VALIDATION",
+  "schemaVersion": "a99-canonical-semantic-identity-challenge-v1",
+  "documentId": "DOC-0258",
+  "status": "IDENTITY_PROPOSAL_CORROBORATED_44_NODES",
+  "checks": {
+    "inputOccurrenceCountExactly44": true,
+    "candidateIdsUnique": true,
+    "everyCandidateHasKnownOccurrences": true,
+    "everyDecisionHasCandidate": true,
+    "noParentFields": true,
+    "noLevelFields": true,
+    "semanticTotalUsedForDecision": false,
+    "historicalLevelRead": false,
+    "parentRead": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldMutation": false
+  },
+  "inputOccurrenceCount": 44,
+  "candidateCount": 18,
+  "decisionCount": 18,
+  "mergeRelationsFound": 0
+}

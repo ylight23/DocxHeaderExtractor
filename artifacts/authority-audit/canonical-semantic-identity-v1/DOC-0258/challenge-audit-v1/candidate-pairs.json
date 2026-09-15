@@ -1,0 +1,860 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_CHALLENGE_CANDIDATES",
+  "schemaVersion": "a99-canonical-semantic-identity-challenge-v1",
+  "documentId": "DOC-0258",
+  "occurrenceInputSha256": "6023b375db6a82f79565fef5c18d1025f084c899bbe5ac2b393190cbdd8a5ab1",
+  "inputOccurrenceCount": 44,
+  "candidateGeneration": "SOURCE_ONLY_TITLE_NORMALIZATION_AND_TOKEN_AFFINITY",
+  "allVsAllClassification": false,
+  "candidates": [
+    {
+      "candidateId": "CP001",
+      "leftOccurrenceRef": "H003",
+      "rightOccurrenceRef": "H010",
+      "sourceOrder": {
+        "left": 8,
+        "right": 19
+      },
+      "normalizedCoreTitle": {
+        "left": "regional updates on the icp 2021 cycle implementation",
+        "right": "global updates on the icp 2021 cycle implementation"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "NARRATIVE_BODY"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H004",
+        "H005",
+        "H006",
+        "H007",
+        "H008",
+        "H009"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[10]",
+        "rightSourceId": "body[1]/p[25]",
+        "sameStructuralScope": true
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "NO_EXPLICIT_CONTINUATION_MARKER",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP002",
+      "leftOccurrenceRef": "H003",
+      "rightOccurrenceRef": "H025",
+      "sourceOrder": {
+        "left": 8,
+        "right": 88
+      },
+      "normalizedCoreTitle": {
+        "left": "regional updates on the icp 2021 cycle implementation",
+        "right": "regional updates on the icp 2021 cycle implementation"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H004",
+        "H005",
+        "H006",
+        "H007",
+        "H008",
+        "H009",
+        "H010",
+        "H011",
+        "H012",
+        "H013",
+        "H014",
+        "H015",
+        "H016",
+        "H017",
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[10]",
+        "rightSourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP003",
+      "leftOccurrenceRef": "H003",
+      "rightOccurrenceRef": "H026",
+      "sourceOrder": {
+        "left": 8,
+        "right": 96
+      },
+      "normalizedCoreTitle": {
+        "left": "regional updates on the icp 2021 cycle implementation",
+        "right": "global updates on the icp 2021 cycle implementation"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H004",
+        "H005",
+        "H006",
+        "H007",
+        "H008",
+        "H009",
+        "H010",
+        "H011",
+        "H012",
+        "H013",
+        "H014",
+        "H015",
+        "H016",
+        "H017",
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[10]",
+        "rightSourceId": "body[1]/tbl[2]/tr[6]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP004",
+      "leftOccurrenceRef": "H010",
+      "rightOccurrenceRef": "H025",
+      "sourceOrder": {
+        "left": 19,
+        "right": 88
+      },
+      "normalizedCoreTitle": {
+        "left": "global updates on the icp 2021 cycle implementation",
+        "right": "regional updates on the icp 2021 cycle implementation"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H011",
+        "H012",
+        "H013",
+        "H014",
+        "H015",
+        "H016",
+        "H017",
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[25]",
+        "rightSourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP005",
+      "leftOccurrenceRef": "H010",
+      "rightOccurrenceRef": "H026",
+      "sourceOrder": {
+        "left": 19,
+        "right": 96
+      },
+      "normalizedCoreTitle": {
+        "left": "global updates on the icp 2021 cycle implementation",
+        "right": "global updates on the icp 2021 cycle implementation"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H011",
+        "H012",
+        "H013",
+        "H014",
+        "H015",
+        "H016",
+        "H017",
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[25]",
+        "rightSourceId": "body[1]/tbl[2]/tr[6]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP006",
+      "leftOccurrenceRef": "H011",
+      "rightOccurrenceRef": "H027",
+      "sourceOrder": {
+        "left": 31,
+        "right": 106
+      },
+      "normalizedCoreTitle": {
+        "left": "data review household consumption price and importance data",
+        "right": "data review household consumption price and importance data"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H012",
+        "H013",
+        "H014",
+        "H015",
+        "H016",
+        "H017",
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[39]",
+        "rightSourceId": "body[1]/tbl[2]/tr[11]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP007",
+      "leftOccurrenceRef": "H012",
+      "rightOccurrenceRef": "H029",
+      "sourceOrder": {
+        "left": 41,
+        "right": 109
+      },
+      "normalizedCoreTitle": {
+        "left": "data review housing prices and volumes",
+        "right": "data review housing prices and volumes"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H013",
+        "H014",
+        "H015",
+        "H016",
+        "H017",
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[48]",
+        "rightSourceId": "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP008",
+      "leftOccurrenceRef": "H013",
+      "rightOccurrenceRef": "H030",
+      "sourceOrder": {
+        "left": 43,
+        "right": 111
+      },
+      "normalizedCoreTitle": {
+        "left": "data review private education",
+        "right": "data review private education"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H014",
+        "H015",
+        "H016",
+        "H017",
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028",
+        "H029"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[50]",
+        "rightSourceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP009",
+      "leftOccurrenceRef": "H014",
+      "rightOccurrenceRef": "H031",
+      "sourceOrder": {
+        "left": 47,
+        "right": 113
+      },
+      "normalizedCoreTitle": {
+        "left": "data review government compensation and productivity adjustment",
+        "right": "data review government compensation and productivity adjustment"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H015",
+        "H016",
+        "H017",
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028",
+        "H029",
+        "H030"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[56]",
+        "rightSourceId": "body[1]/tbl[3]/tr[3]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP010",
+      "leftOccurrenceRef": "H015",
+      "rightOccurrenceRef": "H032",
+      "sourceOrder": {
+        "left": 50,
+        "right": 115
+      },
+      "normalizedCoreTitle": {
+        "left": "data review machinery and equipment and construction",
+        "right": "data review machinery and equipment"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H016",
+        "H017",
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028",
+        "H029",
+        "H030",
+        "H031"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[59]",
+        "rightSourceId": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP011",
+      "leftOccurrenceRef": "H016",
+      "rightOccurrenceRef": "H035",
+      "sourceOrder": {
+        "left": 53,
+        "right": 119
+      },
+      "normalizedCoreTitle": {
+        "left": "data review 2017 2021 national accounts expenditures",
+        "right": "data review 2017 2021 national accounts expenditures"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H017",
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028",
+        "H029",
+        "H030",
+        "H031",
+        "H032",
+        "H033",
+        "H034"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[62]",
+        "rightSourceId": "body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP012",
+      "leftOccurrenceRef": "H017",
+      "rightOccurrenceRef": "H036",
+      "sourceOrder": {
+        "left": 59,
+        "right": 121
+      },
+      "normalizedCoreTitle": {
+        "left": "data review 2017 2021 population and market exchange rates",
+        "right": "data review 2017 2021 population and market exchange rates"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H018",
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028",
+        "H029",
+        "H030",
+        "H031",
+        "H032",
+        "H033",
+        "H034",
+        "H035"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[70]",
+        "rightSourceId": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP013",
+      "leftOccurrenceRef": "H018",
+      "rightOccurrenceRef": "H037",
+      "sourceOrder": {
+        "left": 61,
+        "right": 123
+      },
+      "normalizedCoreTitle": {
+        "left": "results review draft revised 2017 and 2021 results",
+        "right": "result review draft revised 2017 and 2021 results"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H019",
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028",
+        "H029",
+        "H030",
+        "H031",
+        "H032",
+        "H033",
+        "H034",
+        "H035",
+        "H036"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[72]",
+        "rightSourceId": "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP014",
+      "leftOccurrenceRef": "H019",
+      "rightOccurrenceRef": "H039",
+      "sourceOrder": {
+        "left": 63,
+        "right": 126
+      },
+      "normalizedCoreTitle": {
+        "left": "planning for the icp 2024 cycle",
+        "right": "planning for the icp 2024 cycle"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H020",
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028",
+        "H029",
+        "H030",
+        "H031",
+        "H032",
+        "H033",
+        "H034",
+        "H035",
+        "H036",
+        "H037",
+        "H038"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[74]",
+        "rightSourceId": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP015",
+      "leftOccurrenceRef": "H020",
+      "rightOccurrenceRef": "H041",
+      "sourceOrder": {
+        "left": 71,
+        "right": 131
+      },
+      "normalizedCoreTitle": {
+        "left": "planning for the 2023 governance activities and icp 2021 cycle release",
+        "right": "planning for the 2023 governance activities and icp 2021 cycle release"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H021",
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028",
+        "H029",
+        "H030",
+        "H031",
+        "H032",
+        "H033",
+        "H034",
+        "H035",
+        "H036",
+        "H037",
+        "H038",
+        "H039",
+        "H040"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[84]",
+        "rightSourceId": "body[1]/p[109]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP016",
+      "leftOccurrenceRef": "H021",
+      "rightOccurrenceRef": "H042",
+      "sourceOrder": {
+        "left": 76,
+        "right": 132
+      },
+      "normalizedCoreTitle": {
+        "left": "planning for an approach to produce annual icp results and forecasts",
+        "right": "planning for an approach to produce annual icp results and forecasts"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H022",
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028",
+        "H029",
+        "H030",
+        "H031",
+        "H032",
+        "H033",
+        "H034",
+        "H035",
+        "H036",
+        "H037",
+        "H038",
+        "H039",
+        "H040",
+        "H041"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[91]",
+        "rightSourceId": "body[1]/p[110]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP017",
+      "leftOccurrenceRef": "H022",
+      "rightOccurrenceRef": "H043",
+      "sourceOrder": {
+        "left": 81,
+        "right": 133
+      },
+      "normalizedCoreTitle": {
+        "left": "any other business",
+        "right": "any other business and closing"
+      },
+      "localStructuralOwner": {
+        "left": "NARRATIVE_BODY",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [
+        "H023",
+        "H024",
+        "H025",
+        "H026",
+        "H027",
+        "H028",
+        "H029",
+        "H030",
+        "H031",
+        "H032",
+        "H033",
+        "H034",
+        "H035",
+        "H036",
+        "H037",
+        "H038",
+        "H039",
+        "H040",
+        "H041",
+        "H042"
+      ],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/p[96]",
+        "rightSourceId": "body[1]/p[111]",
+        "sameStructuralScope": false
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ]
+    },
+    {
+      "candidateId": "CP018",
+      "leftOccurrenceRef": "H025",
+      "rightOccurrenceRef": "H026",
+      "sourceOrder": {
+        "left": 88,
+        "right": 96
+      },
+      "normalizedCoreTitle": {
+        "left": "regional updates on the icp 2021 cycle implementation",
+        "right": "global updates on the icp 2021 cycle implementation"
+      },
+      "localStructuralOwner": {
+        "left": "ANNEX_1_AGENDA",
+        "right": "ANNEX_1_AGENDA"
+      },
+      "interveningHeadingOccurrenceRefs": [],
+      "boundaryContext": {
+        "leftSourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+        "rightSourceId": "body[1]/tbl[2]/tr[6]/tc[2]/p[1]",
+        "sameStructuralScope": true
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH",
+        "SAME_ANNEX_LOCAL_SCOPE"
+      ],
+      "contradictionEvidence": [
+        "NO_EXPLICIT_CONTINUATION_MARKER"
+      ]
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}

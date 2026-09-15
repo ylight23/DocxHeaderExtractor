@@ -1,0 +1,408 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_CHALLENGE_DECISIONS",
+  "schemaVersion": "a99-canonical-semantic-identity-challenge-v1",
+  "documentId": "DOC-0258",
+  "decisions": [
+    {
+      "candidateId": "CP001",
+      "leftOccurrenceRef": "H003",
+      "rightOccurrenceRef": "H010",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "MEDIUM",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "NO_EXPLICIT_CONTINUATION_MARKER",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP002",
+      "leftOccurrenceRef": "H003",
+      "rightOccurrenceRef": "H025",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP003",
+      "leftOccurrenceRef": "H003",
+      "rightOccurrenceRef": "H026",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "MEDIUM",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP004",
+      "leftOccurrenceRef": "H010",
+      "rightOccurrenceRef": "H025",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "MEDIUM",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP005",
+      "leftOccurrenceRef": "H010",
+      "rightOccurrenceRef": "H026",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP006",
+      "leftOccurrenceRef": "H011",
+      "rightOccurrenceRef": "H027",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP007",
+      "leftOccurrenceRef": "H012",
+      "rightOccurrenceRef": "H029",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP008",
+      "leftOccurrenceRef": "H013",
+      "rightOccurrenceRef": "H030",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP009",
+      "leftOccurrenceRef": "H014",
+      "rightOccurrenceRef": "H031",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP010",
+      "leftOccurrenceRef": "H015",
+      "rightOccurrenceRef": "H032",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "MEDIUM",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP011",
+      "leftOccurrenceRef": "H016",
+      "rightOccurrenceRef": "H035",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP012",
+      "leftOccurrenceRef": "H017",
+      "rightOccurrenceRef": "H036",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP013",
+      "leftOccurrenceRef": "H018",
+      "rightOccurrenceRef": "H037",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "MEDIUM",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP014",
+      "leftOccurrenceRef": "H019",
+      "rightOccurrenceRef": "H039",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP015",
+      "leftOccurrenceRef": "H020",
+      "rightOccurrenceRef": "H041",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP016",
+      "leftOccurrenceRef": "H021",
+      "rightOccurrenceRef": "H042",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "HIGH",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_EQUAL"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP017",
+      "leftOccurrenceRef": "H022",
+      "rightOccurrenceRef": "H043",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "MEDIUM",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH"
+      ],
+      "contradictionEvidence": [
+        "DOCUMENT_OWNERSHIP_CONFLICT",
+        "INTERVENING_COMPETING_NODE"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    },
+    {
+      "candidateId": "CP018",
+      "leftOccurrenceRef": "H025",
+      "rightOccurrenceRef": "H026",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "confidence": "MEDIUM",
+      "occurrenceRoles": {
+        "left": "PRIMARY",
+        "right": "PRIMARY"
+      },
+      "positiveIdentityEvidence": [
+        "NORMALIZED_TITLE_NEAR_MATCH",
+        "SAME_ANNEX_LOCAL_SCOPE"
+      ],
+      "contradictionEvidence": [
+        "NO_EXPLICIT_CONTINUATION_MARKER"
+      ],
+      "sourceOnly": true,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false,
+      "parentRead": false
+    }
+  ],
+  "decisionCount": 18,
+  "allCandidatesSourceBacked": true,
+  "semanticTotalUsedForDecision": false,
+  "historicalLevelRead": false,
+  "parentRead": false
+}
