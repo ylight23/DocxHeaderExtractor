@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-v6c-v3-execution-final-v1",
+  "status": "OWNER_PREDICTION_FREEZE_COMPLETE",
+  "scheduledCalls": 3,
+  "completedAttempts": 3,
+  "validOwnerPredictions": 0,
+  "invalidValidationPredictions": 3,
+  "providerErrors": 0,
+  "modelCalls": 3,
+  "providerCalls": 3,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v1Mutation": false,
+  "v2Mutation": false,
+  "handleMapMutation": false,
+  "frozenBeforeEvaluation": true,
+  "retries": 0,
+  "completedUtc": "2026-09-15T04:05:38.4908167+00:00"
+}

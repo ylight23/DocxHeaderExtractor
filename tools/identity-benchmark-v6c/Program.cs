@@ -17,6 +17,7 @@ internal static class Program
     private const string V2ExecutionRelative = "artifacts/identity-benchmark/v6/owner-induction/execution-v2-addressable";
     private const string V3PreflightRelative = "artifacts/identity-benchmark/v6/owner-induction/preflight-v3-opaque-handles";
     private const string V3ExecutionRelative = "artifacts/identity-benchmark/v6/owner-induction/execution-v3-opaque-handles";
+    private const string V3RevalidationRelative = "artifacts/identity-benchmark/v6/owner-induction/revalidation-v3-target-occurrences";
     private const string V3HandleMapSha256 = "0666173081122a3b031928f9feadb2e059517168281d4ea1b022bc0bdddd9210";
     private const string Provider = "OpenRouter";
     private const string Model = "qwen/qwen3.7-flash";
@@ -44,6 +45,7 @@ internal static class Program
             if (args.Any(x => string.Equals(x, "--diagnose-v2", StringComparison.Ordinal))) return await DiagnoseV2Async(root);
             if (args.Any(x => string.Equals(x, "--execute-v3", StringComparison.Ordinal))) return await ExecuteV3Async(root);
             if (args.Any(x => string.Equals(x, "--finalize-v3", StringComparison.Ordinal))) return await FinalizeV3Async(root);
+            if (args.Any(x => string.Equals(x, "--revalidate-v3", StringComparison.Ordinal))) return await RevalidateV3Async(root);
             if (args.Any(x => string.Equals(x, "--diagnose-primary", StringComparison.Ordinal))) return await DiagnosePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--prepare-v2", StringComparison.Ordinal))) return await PrepareV2Async(root);
             if (args.Any(x => string.Equals(x, "--prepare-v3", StringComparison.Ordinal))) return await PrepareV3Async(root);
@@ -490,6 +492,100 @@ internal static class Program
         return 0;
     }
 
+    private static async Task<int> RevalidateV3Async(string root)
+    {
+        var preflight = Full(root, V3PreflightRelative);
+        var execution = Full(root, V3ExecutionRelative);
+        var output = Full(root, V3RevalidationRelative);
+        Require(!Directory.Exists(output) || !Directory.EnumerateFiles(output, "*", SearchOption.AllDirectories).Any(), "V6C_V3_REVALIDATION_ALREADY_EXISTS");
+        var frozen = LoadFrozenV3Requests(preflight).ToDictionary(x => x.DocumentId, StringComparer.Ordinal);
+        using var manifest = JsonDocument.Parse(await File.ReadAllTextAsync(Path.Combine(execution, "attempt-manifest.json")));
+        var manifestRoot = manifest.RootElement;
+        Require(manifestRoot.GetProperty("actualAttemptCount").GetInt32() == ExpectedRequests && manifestRoot.GetProperty("actualModelCalls").GetInt32() == ExpectedRequests && manifestRoot.GetProperty("actualProviderCalls").GetInt32() == ExpectedRequests && manifestRoot.GetProperty("retryCount").GetInt32() == 0 && manifestRoot.GetProperty("goldReadCount").GetInt32() == 0 && manifestRoot.GetProperty("v5cReadCount").GetInt32() == 0 && manifestRoot.GetProperty("v6aReadCount").GetInt32() == 0 && !manifestRoot.GetProperty("v1Mutation").GetBoolean() && !manifestRoot.GetProperty("v2Mutation").GetBoolean() && !manifestRoot.GetProperty("handleMapMutation").GetBoolean(), "V6C_V3_REVALIDATION_FIREWALL");
+        var rows = new List<object>();
+        var valid = 0;
+        var invalid = 0;
+        var assigned = 0;
+        var unresolved = 0;
+        var owners = 0;
+        var unknownU = 0;
+        var duplicateU = 0;
+        var missingU = 0;
+        var unknownE = 0;
+        var unknownOwner = 0;
+        var emptyOwners = 0;
+        foreach (var attempt in manifestRoot.GetProperty("attempts").EnumerateArray())
+        {
+            var sequence = attempt.GetProperty("sequence").GetInt32();
+            var documentId = attempt.GetProperty("documentId").GetString()!;
+            var rawPath = Path.Combine(execution, "raw-responses", $"{sequence:D3}.json");
+            Require(File.Exists(rawPath), $"V6C_V3_REVALIDATION_RAW_MISSING_{sequence:D3}");
+            var raw = await File.ReadAllTextAsync(rawPath);
+            var rawHash = Sha256Text(raw);
+            Require(rawHash == attempt.GetProperty("rawResponseSha256").GetString(), $"V6C_V3_REVALIDATION_RAW_HASH_{sequence:D3}");
+            using var response = JsonDocument.Parse(raw);
+            var validation = InspectV3Response(frozen[documentId].Request, response.RootElement);
+            var deprojected = validation.Accepted ? DeprojectV3Response(frozen[documentId].Request, response.RootElement) : null;
+            unknownU += validation.UnknownOccurrenceHandleCount;
+            duplicateU += validation.DuplicateAssignmentCount;
+            missingU += validation.MissingAssignmentCount;
+            unknownE += validation.UnknownEvidenceHandleCount;
+            unknownOwner += validation.UnknownOwnerIdCount;
+            emptyOwners += validation.EmptyOwnerCount;
+            if (validation.Accepted)
+            {
+                valid++;
+                assigned += validation.AssignedOccurrences;
+                unresolved += validation.UnresolvedOccurrences;
+                owners += validation.OwnerCount;
+            }
+            else invalid++;
+            rows.Add(new { sequence, documentId, primaryStatus = attempt.GetProperty("status").GetString(), correctedStatus = validation.Accepted ? "VALID" : "INVALID_VALIDATION", rawResponseSha256 = rawHash, validation, deprojected });
+        }
+        Directory.CreateDirectory(output);
+        await WriteAsync(Path.Combine(output, "manifest.json"), new
+        {
+            schemaVersion = "a99-v6c-v3-offline-revalidation-manifest-v1",
+            status = "OFFLINE_REVALIDATION_COMPLETE",
+            sourceExecution = V3ExecutionRelative,
+            sourcePreflight = V3PreflightRelative,
+            sourceAttemptManifestSha256 = Sha256File(Path.Combine(execution, "attempt-manifest.json")),
+            sourceRawResponsesUnchanged = true,
+            providerCalls = 0,
+            modelCalls = 0,
+            goldReadCount = 0,
+            v5cReadCount = 0,
+            v6aReadCount = 0,
+            rawRepair = false,
+            attemptMutation = false,
+            rows = rows.Count,
+            valid,
+            invalid,
+            assignedOccurrences = assigned,
+            unresolvedOccurrences = unresolved,
+            inducedOwnerCount = owners,
+            unknownOccurrenceHandles = unknownU,
+            duplicateUAssignments = duplicateU,
+            missingUAssignments = missingU,
+            unknownEvidenceHandles = unknownE,
+            unknownOwnerIds = unknownOwner,
+            emptyOwners,
+        });
+        await WriteAsync(Path.Combine(output, "predictions.json"), new
+        {
+            schemaVersion = "a99-v6c-v3-offline-revalidated-predictions-v1",
+            status = "OWNER_PREDICTIONS_REVALIDATED_OFFLINE_BEFORE_EVALUATION",
+            rows,
+            goldReadCount = 0,
+            v5cReadCount = 0,
+            v6aReadCount = 0,
+            providerCalls = 0,
+            rawRepair = false,
+        });
+        Console.WriteLine($"V6C_V3_OFFLINE_REVALIDATION_COMPLETE VALID={valid} INVALID={invalid} ASSIGNED={assigned} MISSING={missingU} PROVIDER_CALLS=0 GOLD_READ_COUNT=0");
+        return 0;
+    }
+
     private static async Task<int> FinalizeV2Async(string root)
     {
         var preflight = Full(root, V2PreflightRelative);
@@ -676,9 +772,11 @@ internal static class Program
             Require(request.GetProperty("membershipRepresentation").GetString() == "ASSIGNMENTS_ONLY_DERIVE_MEMBERS" && request.GetProperty("addressabilityContract").GetString() == "OUTPUT_ONLY_OPAQUE_OCCURRENCE_AND_EVIDENCE_HANDLES", "V6C_V3_REQUEST_CONTRACT");
             Require(request.GetProperty("allowedOccurrenceRefs").GetArrayLength() > 0 && request.GetProperty("allowedEvidenceRefs").GetArrayLength() > 0, "V6C_V3_HANDLE_UNIVERSE");
             Require(!request.GetProperty("goldDerivedInput").GetBoolean() && !request.GetProperty("v5cEvaluationIncluded").GetBoolean() && !request.GetProperty("v6aDiagnosisIncluded").GetBoolean() && !request.GetProperty("semanticNodeRequested").GetBoolean() && !request.GetProperty("hierarchyRequested").GetBoolean(), "V6C_V3_REQUEST_FIREWALL");
-            return new FrozenRequest(request.GetProperty("documentId").GetString()!, hash, request, request.GetProperty("allowedOccurrenceRefs").GetArrayLength());
+        return new FrozenRequest(request.GetProperty("documentId").GetString()!, hash, request, request.GetProperty("occurrences").GetArrayLength());
         }).OrderBy(x => x.DocumentId, StringComparer.Ordinal).ToArray();
-        Require(items.Length == ExpectedRequests && items.Select(x => x.DocumentId).SequenceEqual(ExpectedDocuments, StringComparer.Ordinal) && items.Sum(x => x.OccurrenceCount) == ExpectedOccurrences, "V6C_V3_REQUEST_SET");
+        Require(items.Length == ExpectedRequests, "V6C_V3_REQUEST_COUNT");
+        Require(items.Select(x => x.DocumentId).SequenceEqual(ExpectedDocuments, StringComparer.Ordinal), "V6C_V3_DOCUMENT_ORDER");
+        Require(items.Sum(x => x.OccurrenceCount) == ExpectedOccurrences, "V6C_V3_OCCURRENCE_COUNT");
         return items;
     }
 
@@ -688,7 +786,7 @@ internal static class Program
         if (response.ValueKind != JsonValueKind.Object) return new(false, 0, 0, 0, 0, 0, 0, 0, 0, 0, ["V6C_V3_RESPONSE_OBJECT_REQUIRED"]);
         if (!response.TryGetProperty("owners", out var owners) || owners.ValueKind != JsonValueKind.Array || !response.TryGetProperty("assignments", out var assignments) || assignments.ValueKind != JsonValueKind.Array || !response.TryGetProperty("unresolvedRefs", out var unresolved) || unresolved.ValueKind != JsonValueKind.Array)
             return new(false, 0, 0, 0, 0, 0, 0, 0, 0, 0, ["V6C_V3_REQUIRED_FIELDS"]);
-        var allowedU = request.GetProperty("allowedOccurrenceRefs").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
+        var allowedU = request.GetProperty("occurrences").EnumerateArray().Select(x => x.GetProperty("ref").GetString()!).ToHashSet(StringComparer.Ordinal);
         var allowedE = request.GetProperty("allowedEvidenceRefs").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
         var ownerIds = new HashSet<string>(StringComparer.Ordinal);
         var unknownEvidence = 0;

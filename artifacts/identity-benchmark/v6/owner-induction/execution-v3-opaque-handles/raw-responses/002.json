@@ -1,0 +1,470 @@
+{
+  "owners": [
+    {
+      "owner": "O001",
+      "description": "Condensed Quarterly Financial Statements Header and Title Block",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E061",
+       "E050"
+      ]
+    },
+    {
+      "owner": "O002",
+      "description": "Table of Contents / Executive Summary Overview",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E060",
+       "E036"
+      ]
+    },
+    {
+      "owner": "O003",
+      "description": "Executive Summary Narrative Text",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E033"
+      ]
+    },
+    {
+      "owner": "O004",
+      "description": "Financial Data Tables and Units (Selected Financial Data)",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E042"
+      ]
+    },
+    {
+      "owner": "O005",
+      "description": "Net Investment Portfolio Narrative",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E058"
+      ]
+    },
+    {
+      "owner": "O006",
+      "description": "Chart Axis Labels and Legends (FY Years)",
+      "autonomous": false,
+      "evidenceRefs": [
+       "E001",
+       "E039",
+       "E041"
+      ]
+    },
+    {
+      "owner": "O007",
+      "description": "Chart Y-Axis Values",
+      "autonomous": false,
+      "evidenceRefs": [
+       "E001",
+       "E051"
+      ]
+    },
+    {
+      "owner": "O008",
+      "description": "Other ALM Portfolio Narrative",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E001",
+       "E057"
+      ]
+    },
+    {
+      "owner": "O009",
+      "description": "Risk Management Section Header",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E060",
+       "E053"
+      ]
+    },
+    {
+      "owner": "O010",
+      "description": "Credit Risk Table Headers and Footers",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E035"
+      ]
+    },
+    {
+      "owner": "O011",
+      "description": "Non-Commercial Counterparty Credit Risk Table Content",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E001",
+       "E056"
+      ]
+    },
+    {
+      "owner": "O012",
+      "description": "Governance Section Header",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E060",
+       "E038"
+      ]
+    },
+    {
+      "owner": "O013",
+      "description": "End of Document / Blank Page Markers",
+      "autonomous": false,
+      "evidenceRefs": [
+       "E031",
+       "E044"
+      ]
+    },
+    {
+      "owner": "O014",
+      "description": "Financial Statements Cover Page Info",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E001",
+       "E049"
+      ]
+    },
+    {
+      "owner": "O015",
+      "description": "Auditor's Review Report Header",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E001",
+       "E048"
+      ]
+    },
+    {
+      "owner": "O016",
+      "description": "Balance Sheet Line Items (Loans)",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E052"
+      ]
+    },
+    {
+      "owner": "O017",
+      "description": "Balance Sheet Line Items (Provisions/Assets)",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E047"
+      ]
+    },
+    {
+      "owner": "O018",
+      "description": "Comprehensive Income Statement Rows",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E001",
+       "E032"
+      ]
+    },
+    {
+      "owner": "O019",
+      "description": "Loan Loss Provision Narrative",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E001",
+       "E055"
+      ]
+    },
+    {
+      "owner": "O020",
+      "description": "Fair Value Hierarchy Notes",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E034"
+      ]
+    },
+    {
+      "owner": "O021",
+      "description": "Derivative Instruments Tables",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E040"
+      ]
+    },
+    {
+      "owner": "O022",
+      "description": "Note Footnotes and Explanations",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E059"
+      ]
+    },
+    {
+      "owner": "O023",
+      "description": "AOCI Reconciliation Tables",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E037"
+      ]
+    },
+    {
+      "owner": "O024",
+      "description": "Fair Value Hierarchy Tables (J2)",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E043"
+      ]
+    },
+    {
+      "owner": "O025",
+      "description": "Fair Value Note Footnotes",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E046"
+      ]
+    },
+    {
+      "owner": "O026",
+      "description": "Gains/Losses on Derivatives Tables",
+      "autonomous": true,
+      "evidenceRefs": [
+       "E031",
+       "E054"
+      ]
+    }
+  ],
+  "assignments": [
+    {
+      "ref": "U001",
+      "owner": "O001"
+    },
+    {
+      "ref": "U002",
+      "owner": "O002"
+    },
+    {
+      "ref": "U003",
+      "owner": "O002"
+    },
+    {
+      "ref": "U004",
+      "owner": "O002"
+    },
+    {
+      "ref": "U005",
+      "owner": "O002"
+    },
+    {
+      "ref": "U006",
+      "owner": "O002"
+    },
+    {
+      "ref": "U007",
+      "owner": "O003"
+    },
+    {
+      "ref": "U008",
+      "owner": "O004"
+    },
+    {
+      "ref": "U009",
+      "owner": "O003"
+    },
+    {
+      "ref": "U010",
+      "owner": "O004"
+    },
+    {
+      "ref": "U011",
+      "owner": "O004"
+    },
+    {
+      "ref": "U012",
+      "owner": "O005"
+    },
+    {
+      "ref": "U013",
+      "owner": "O005"
+    },
+    {
+      "ref": "U014",
+      "owner": "O003"
+    },
+    {
+      "ref": "U015",
+      "owner": "O006"
+    },
+    {
+      "ref": "U016",
+      "owner": "O006"
+    },
+    {
+      "ref": "U017",
+      "owner": "O006"
+    },
+    {
+      "ref": "U018",
+      "owner": "O006"
+    },
+    {
+      "ref": "U019",
+      "owner": "O007"
+    },
+    {
+      "ref": "U020",
+      "owner": "O007"
+    },
+    {
+      "ref": "U021",
+      "owner": "O008"
+    },
+    {
+      "ref": "U022",
+      "owner": "O008"
+    },
+    {
+      "ref": "U023",
+      "owner": "O009"
+    },
+    {
+      "ref": "U024",
+      "owner": "O010"
+    },
+    {
+      "ref": "U025",
+      "owner": "O010"
+    },
+    {
+      "ref": "U026",
+      "owner": "O011"
+    },
+    {
+      "ref": "U027",
+      "owner": "O011"
+    },
+    {
+      "ref": "U028",
+      "owner": "O012"
+    },
+    {
+      "ref": "U029",
+      "owner": "O013"
+    },
+    {
+      "ref": "U030",
+      "owner": "O013"
+    },
+    {
+      "ref": "U031",
+      "owner": "O014"
+    },
+    {
+      "ref": "U032",
+      "owner": "O014"
+    },
+    {
+      "ref": "U033",
+      "owner": "O014"
+    },
+    {
+      "ref": "U034",
+      "owner": "O015"
+    },
+    {
+      "ref": "U035",
+      "owner": "O015"
+    },
+    {
+      "ref": "U036",
+      "owner": "O016"
+    },
+    {
+      "ref": "U037",
+      "owner": "O016"
+    },
+    {
+      "ref": "U038",
+      "owner": "O017"
+    },
+    {
+      "ref": "U039",
+      "owner": "O017"
+    },
+    {
+      "ref": "U040",
+      "owner": "O018"
+    },
+    {
+      "ref": "U041",
+      "owner": "O018"
+    },
+    {
+      "ref": "U042",
+      "owner": "O019"
+    },
+    {
+      "ref": "U043",
+      "owner": "O019"
+    },
+    {
+      "ref": "U044",
+      "owner": "O020"
+    },
+    {
+      "ref": "U045",
+      "owner": "O020"
+    },
+    {
+      "ref": "U046",
+      "owner": "O021"
+    },
+    {
+      "ref": "U047",
+      "owner": "O021"
+    },
+    {
+      "ref": "U048",
+      "owner": "O022"
+    },
+    {
+      "ref": "U049",
+      "owner": "O022"
+    },
+    {
+      "ref": "U050",
+      "owner": "O023"
+    },
+    {
+      "ref": "U051",
+      "owner": "O023"
+    },
+    {
+      "ref": "U052",
+      "owner": "O024"
+    },
+    {
+      "ref": "U053",
+      "owner": "O024"
+    },
+    {
+      "ref": "U054",
+      "owner": "O025"
+    },
+    {
+      "ref": "U055",
+      "owner": "O025"
+    },
+    {
+      "ref": "U056",
+      "owner": "O026"
+    },
+    {
+      "ref": "U057",
+      "owner": "O026"
+    }
+  ],
+  "unresolvedRefs": []
+}

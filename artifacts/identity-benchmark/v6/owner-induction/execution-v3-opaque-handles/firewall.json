@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-v6c-v3-execution-firewall-v1",
+  "status": "COMPLETE_OWNER_PREDICTION_FREEZE",
+  "scheduledRequests": 3,
+  "completedAttempts": 3,
+  "modelCalls": 3,
+  "providerCalls": 3,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v1Mutation": false,
+  "v2Mutation": false,
+  "handleMapMutation": false,
+  "pairLabelsRead": false,
+  "hierarchyRead": false,
+  "semanticNodeInduction": false,
+  "retries": 0,
+  "overwrite": false
+}

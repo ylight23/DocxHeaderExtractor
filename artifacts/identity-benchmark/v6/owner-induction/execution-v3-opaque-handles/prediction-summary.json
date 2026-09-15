@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "a99-v6c-v3-prediction-summary-v1",
+  "status": "OWNER_PREDICTIONS_FROZEN_BEFORE_EVALUATION",
+  "scheduledRequests": 3,
+  "completedAttempts": 3,
+  "validOwnerPredictions": 0,
+  "invalidValidationPredictions": 3,
+  "providerErrors": 0,
+  "sourceOccurrenceDenominator": 226,
+  "assignedOccurrences": 0,
+  "unresolvedOccurrences": 0,
+  "inducedOwnerCount": 0,
+  "ownerSizeDistribution": [],
+  "unknownOccurrenceHandles": 0,
+  "duplicateUAssignments": 0,
+  "missingUAssignments": 675,
+  "unknownEvidenceHandles": 0,
+  "unknownOwnerIds": 0,
+  "emptyOwners": 0,
+  "crossParserScopeOwners": 0,
+  "splitParserScopeGroups": 0,
+  "modelCalls": 3,
+  "providerCalls": 3,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v1Mutation": false,
+  "v2Mutation": false,
+  "handleMapMutation": false,
+  "promptSemanticChanges": false,
+  "retryCount": 0,
+  "diagnostics": [
+    {
+      "sequence": 1,
+      "documentId": "DOC-0123",
+      "status": "INVALID_VALIDATION",
+      "errors": [
+        "V6C_V3_MISSING_U_ASSIGNMENT"
+      ],
+      "unknownOccurrenceHandles": 0,
+      "duplicateUAssignments": 0,
+      "missingUAssignments": 243,
+      "unknownEvidenceHandles": 0,
+      "unknownOwnerIds": 0,
+      "emptyOwners": 0
+    },
+    {
+      "sequence": 2,
+      "documentId": "DOC-0133",
+      "status": "INVALID_VALIDATION",
+      "errors": [
+        "V6C_V3_MISSING_U_ASSIGNMENT"
+      ],
+      "unknownOccurrenceHandles": 0,
+      "duplicateUAssignments": 0,
+      "missingUAssignments": 204,
+      "unknownEvidenceHandles": 0,
+      "unknownOwnerIds": 0,
+      "emptyOwners": 0
+    },
+    {
+      "sequence": 3,
+      "documentId": "DOC-0252",
+      "status": "INVALID_VALIDATION",
+      "errors": [
+        "V6C_V3_MISSING_U_ASSIGNMENT"
+      ],
+      "unknownOccurrenceHandles": 0,
+      "duplicateUAssignments": 0,
+      "missingUAssignments": 228,
+      "unknownEvidenceHandles": 0,
+      "unknownOwnerIds": 0,
+      "emptyOwners": 0
+    }
+  ]
+}

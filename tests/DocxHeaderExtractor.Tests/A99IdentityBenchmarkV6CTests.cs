@@ -65,4 +65,24 @@ public sealed class A99IdentityBenchmarkV6CTests
             Assert.All(request.GetProperty("allowedEvidenceRefs").EnumerateArray(), handle => Assert.Matches("^E[0-9]{3}$", handle.GetString()!));
         }
     }
+
+    [Fact]
+    public void V6C_v3_distinguishes_target_occurrences_from_context_handle_universe()
+    {
+        var path = Path.Combine(Root(), "artifacts", "identity-benchmark", "v6", "owner-induction", "preflight-v3-opaque-handles", "requests.json");
+        using var requests = JsonDocument.Parse(File.ReadAllText(path));
+        var targetCounts = new Dictionary<string, int>(StringComparer.Ordinal)
+        {
+            ["DOC-0123"] = 116,
+            ["DOC-0133"] = 57,
+            ["DOC-0252"] = 53,
+        };
+        foreach (var record in requests.RootElement.GetProperty("records").EnumerateArray())
+        {
+            var request = record.GetProperty("request");
+            var documentId = request.GetProperty("documentId").GetString()!;
+            Assert.Equal(targetCounts[documentId], request.GetProperty("occurrences").GetArrayLength());
+            Assert.True(request.GetProperty("allowedOccurrenceRefs").GetArrayLength() >= request.GetProperty("occurrences").GetArrayLength());
+        }
+    }
 }

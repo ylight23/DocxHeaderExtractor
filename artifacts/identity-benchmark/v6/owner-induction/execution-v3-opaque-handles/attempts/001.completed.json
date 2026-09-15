@@ -1,0 +1,800 @@
+{
+  "schemaVersion": "a99-v6c-v3-attempt-v1",
+  "attemptId": "primary-001",
+  "sequence": 1,
+  "documentId": "DOC-0123",
+  "requestHash": "925658d7928ba49c9ce00930987fa20461f08165bdd301802ebe57c6d3389ce0",
+  "handleMapSha256": "0666173081122a3b031928f9feadb2e059517168281d4ea1b022bc0bdddd9210",
+  "status": "INVALID_VALIDATION",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789444965-60E9gpknKPs6E5TLtpwT",
+  "rawResponseSha256": "a5a168d03aff029d3f4a4083c32e9d20f9063bde5e506b3ce6a1126e2e83d563",
+  "parsedResponseSha256": "b10e3bb8e29761f02f1b7b33070309a79a52e2516ca884e0cf1ba961c25c7530",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 61091,
+  "reportedInputTokens": 79776,
+  "reportedReasoningTokens": 6308,
+  "reportedOutputTokens": 11539,
+  "finishReason": "stop",
+  "error": "V6C_V3_MISSING_U_ASSIGNMENT",
+  "retryCount": 0,
+  "goldReadBeforeFreeze": false,
+  "v5cReadBeforeFreeze": false,
+  "v6aReadBeforeFreeze": false,
+  "v1Mutation": false,
+  "v2Mutation": false,
+  "handleMapMutation": false,
+  "response": {
+    "response": {
+      "owners": [
+        {
+          "owner": "O001",
+          "description": "Document Header and Metadata",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E072",
+            "E090",
+            "E115"
+          ]
+        },
+        {
+          "owner": "O002",
+          "description": "Table of Contents",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E117",
+            "E088",
+            "E104",
+            "E103",
+            "E106",
+            "E105",
+            "E077",
+            "E086",
+            "E074",
+            "E084"
+          ]
+        },
+        {
+          "owner": "O003",
+          "description": "Section I - Instructions to Proposers (ITP)",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E117",
+            "E072",
+            "E122",
+            "E123"
+          ]
+        },
+        {
+          "owner": "O004",
+          "description": "Section II - Proposal Data Sheet (PDS)",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E088",
+            "E072",
+            "E122",
+            "E123"
+          ]
+        },
+        {
+          "owner": "O005",
+          "description": "Subcontractors Section",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E076",
+            "E001"
+          ]
+        },
+        {
+          "owner": "O006",
+          "description": "Proposal Forms (Signature Blocks)",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E089",
+            "E072"
+          ]
+        },
+        {
+          "owner": "O007",
+          "description": "Appendices and Enclosures",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E100",
+            "E001"
+          ]
+        },
+        {
+          "owner": "O008",
+          "description": "Price Adjustment Tables",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E110",
+            "E092",
+            "E001",
+            "E072"
+          ]
+        },
+        {
+          "owner": "O009",
+          "description": "Total Proposal Price Table",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E097",
+            "E091",
+            "E085",
+            "E001"
+          ]
+        },
+        {
+          "owner": "O010",
+          "description": "Daywork Rates Schedule",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E087",
+            "E080",
+            "E001",
+            "E072"
+          ]
+        },
+        {
+          "owner": "O011",
+          "description": "Provisional Sums Table",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E120",
+            "E001"
+          ]
+        },
+        {
+          "owner": "O012",
+          "description": "Code of Conduct Section",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E082",
+            "E112",
+            "E072",
+            "E123"
+          ]
+        },
+        {
+          "owner": "O013",
+          "description": "Key Personnel Tables",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E098",
+            "E072"
+          ]
+        },
+        {
+          "owner": "O014",
+          "description": "Signatures and Declarations",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E114",
+            "E118",
+            "E072",
+            "E001"
+          ]
+        },
+        {
+          "owner": "O015",
+          "description": "Date and RFP Info Forms",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E073",
+            "E078",
+            "E001",
+            "E072"
+          ]
+        },
+        {
+          "owner": "O016",
+          "description": "Dispute Resolution and Contract Info Tables",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E099",
+            "E102",
+            "E001",
+            "E072"
+          ]
+        },
+        {
+          "owner": "O017",
+          "description": "Financial History Table",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E095",
+            "E001"
+          ]
+        },
+        {
+          "owner": "O018",
+          "description": "Fraud and Corruption Section",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E105",
+            "E072",
+            "E122"
+          ]
+        },
+        {
+          "owner": "O019",
+          "description": "Employer\u0027s Requirements Guidance",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E101",
+            "E001"
+          ]
+        },
+        {
+          "owner": "O020",
+          "description": "Health and Safety Sub-Clause Table",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E094",
+            "E072"
+          ]
+        },
+        {
+          "owner": "O021",
+          "description": "General Conditions Section",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E086",
+            "E072",
+            "E122",
+            "E123"
+          ]
+        },
+        {
+          "owner": "O022",
+          "description": "Particular Conditions Section",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E074",
+            "E072",
+            "E122",
+            "E123"
+          ]
+        },
+        {
+          "owner": "O023",
+          "description": "Particular Conditions Data Table",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E096",
+            "E075",
+            "E072"
+          ]
+        },
+        {
+          "owner": "O024",
+          "description": "FIDIC Yellow Book Modifications Table",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E094",
+            "E107",
+            "E081",
+            "E072",
+            "E001"
+          ]
+        },
+        {
+          "owner": "O025",
+          "description": "Evaluation Score Tables",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E108",
+            "E079",
+            "E093",
+            "E001",
+            "E072"
+          ]
+        },
+        {
+          "owner": "O026",
+          "description": "Beneficial Ownership Declaration",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E113",
+            "E121",
+            "E072"
+          ]
+        },
+        {
+          "owner": "O027",
+          "description": "Performance Security Forms",
+          "autonomous": true,
+          "evidenceRefs": [
+            "E119",
+            "E072"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "ref": "U001",
+          "owner": "O001"
+        },
+        {
+          "ref": "U002",
+          "owner": "O001"
+        },
+        {
+          "ref": "U003",
+          "owner": "O001"
+        },
+        {
+          "ref": "U004",
+          "owner": "O001"
+        },
+        {
+          "ref": "U005",
+          "owner": "O001"
+        },
+        {
+          "ref": "U006",
+          "owner": "O001"
+        },
+        {
+          "ref": "U007",
+          "owner": "O002"
+        },
+        {
+          "ref": "U008",
+          "owner": "O002"
+        },
+        {
+          "ref": "U009",
+          "owner": "O002"
+        },
+        {
+          "ref": "U010",
+          "owner": "O002"
+        },
+        {
+          "ref": "U011",
+          "owner": "O002"
+        },
+        {
+          "ref": "U012",
+          "owner": "O002"
+        },
+        {
+          "ref": "U013",
+          "owner": "O002"
+        },
+        {
+          "ref": "U014",
+          "owner": "O002"
+        },
+        {
+          "ref": "U015",
+          "owner": "O002"
+        },
+        {
+          "ref": "U016",
+          "owner": "O002"
+        },
+        {
+          "ref": "U017",
+          "owner": "O002"
+        },
+        {
+          "ref": "U018",
+          "owner": "O002"
+        },
+        {
+          "ref": "U019",
+          "owner": "O002"
+        },
+        {
+          "ref": "U020",
+          "owner": "O002"
+        },
+        {
+          "ref": "U021",
+          "owner": "O002"
+        },
+        {
+          "ref": "U022",
+          "owner": "O002"
+        },
+        {
+          "ref": "U023",
+          "owner": "O002"
+        },
+        {
+          "ref": "U024",
+          "owner": "O003"
+        },
+        {
+          "ref": "U025",
+          "owner": "O002"
+        },
+        {
+          "ref": "U026",
+          "owner": "O002"
+        },
+        {
+          "ref": "U027",
+          "owner": "O002"
+        },
+        {
+          "ref": "U028",
+          "owner": "O002"
+        },
+        {
+          "ref": "U029",
+          "owner": "O002"
+        },
+        {
+          "ref": "U030",
+          "owner": "O002"
+        },
+        {
+          "ref": "U031",
+          "owner": "O002"
+        },
+        {
+          "ref": "U032",
+          "owner": "O002"
+        },
+        {
+          "ref": "U033",
+          "owner": "O002"
+        },
+        {
+          "ref": "U034",
+          "owner": "O003"
+        },
+        {
+          "ref": "U035",
+          "owner": "O003"
+        },
+        {
+          "ref": "U036",
+          "owner": "O004"
+        },
+        {
+          "ref": "U037",
+          "owner": "O004"
+        },
+        {
+          "ref": "U038",
+          "owner": "O004"
+        },
+        {
+          "ref": "U039",
+          "owner": "O004"
+        },
+        {
+          "ref": "U040",
+          "owner": "O005"
+        },
+        {
+          "ref": "U041",
+          "owner": "O005"
+        },
+        {
+          "ref": "U042",
+          "owner": "O006"
+        },
+        {
+          "ref": "U043",
+          "owner": "O006"
+        },
+        {
+          "ref": "U044",
+          "owner": "O007"
+        },
+        {
+          "ref": "U045",
+          "owner": "O007"
+        },
+        {
+          "ref": "U046",
+          "owner": "O008"
+        },
+        {
+          "ref": "U047",
+          "owner": "O008"
+        },
+        {
+          "ref": "U048",
+          "owner": "O008"
+        },
+        {
+          "ref": "U049",
+          "owner": "O008"
+        },
+        {
+          "ref": "U050",
+          "owner": "O008"
+        },
+        {
+          "ref": "U051",
+          "owner": "O008"
+        },
+        {
+          "ref": "U052",
+          "owner": "O009"
+        },
+        {
+          "ref": "U053",
+          "owner": "O009"
+        },
+        {
+          "ref": "U054",
+          "owner": "O009"
+        },
+        {
+          "ref": "U055",
+          "owner": "O009"
+        },
+        {
+          "ref": "U056",
+          "owner": "O009"
+        },
+        {
+          "ref": "U057",
+          "owner": "O009"
+        },
+        {
+          "ref": "U058",
+          "owner": "O009"
+        },
+        {
+          "ref": "U059",
+          "owner": "O010"
+        },
+        {
+          "ref": "U060",
+          "owner": "O010"
+        },
+        {
+          "ref": "U061",
+          "owner": "O010"
+        },
+        {
+          "ref": "U062",
+          "owner": "O010"
+        },
+        {
+          "ref": "U063",
+          "owner": "O010"
+        },
+        {
+          "ref": "U064",
+          "owner": "O010"
+        },
+        {
+          "ref": "U065",
+          "owner": "O011"
+        },
+        {
+          "ref": "U066",
+          "owner": "O011"
+        },
+        {
+          "ref": "U067",
+          "owner": "O012"
+        },
+        {
+          "ref": "U068",
+          "owner": "O012"
+        },
+        {
+          "ref": "U069",
+          "owner": "O012"
+        },
+        {
+          "ref": "U070",
+          "owner": "O012"
+        },
+        {
+          "ref": "U071",
+          "owner": "O013"
+        },
+        {
+          "ref": "U072",
+          "owner": "O014"
+        },
+        {
+          "ref": "U073",
+          "owner": "O014"
+        },
+        {
+          "ref": "U074",
+          "owner": "O014"
+        },
+        {
+          "ref": "U075",
+          "owner": "O014"
+        },
+        {
+          "ref": "U076",
+          "owner": "O015"
+        },
+        {
+          "ref": "U077",
+          "owner": "O016"
+        },
+        {
+          "ref": "U078",
+          "owner": "O016"
+        },
+        {
+          "ref": "U079",
+          "owner": "O015"
+        },
+        {
+          "ref": "U080",
+          "owner": "O015"
+        },
+        {
+          "ref": "U081",
+          "owner": "O015"
+        },
+        {
+          "ref": "U082",
+          "owner": "O016"
+        },
+        {
+          "ref": "U083",
+          "owner": "O016"
+        },
+        {
+          "ref": "U084",
+          "owner": "O017"
+        },
+        {
+          "ref": "U085",
+          "owner": "O017"
+        },
+        {
+          "ref": "U086",
+          "owner": "O017"
+        },
+        {
+          "ref": "U087",
+          "owner": "O018"
+        },
+        {
+          "ref": "U088",
+          "owner": "O019"
+        },
+        {
+          "ref": "U089",
+          "owner": "O019"
+        },
+        {
+          "ref": "U090",
+          "owner": "O020"
+        },
+        {
+          "ref": "U091",
+          "owner": "O013"
+        },
+        {
+          "ref": "U092",
+          "owner": "O021"
+        },
+        {
+          "ref": "U093",
+          "owner": "O022"
+        },
+        {
+          "ref": "U094",
+          "owner": "O022"
+        },
+        {
+          "ref": "U095",
+          "owner": "O022"
+        },
+        {
+          "ref": "U096",
+          "owner": "O023"
+        },
+        {
+          "ref": "U097",
+          "owner": "O023"
+        },
+        {
+          "ref": "U098",
+          "owner": "O023"
+        },
+        {
+          "ref": "U099",
+          "owner": "O023"
+        },
+        {
+          "ref": "U100",
+          "owner": "O024"
+        },
+        {
+          "ref": "U101",
+          "owner": "O024"
+        },
+        {
+          "ref": "U102",
+          "owner": "O024"
+        },
+        {
+          "ref": "U103",
+          "owner": "O024"
+        },
+        {
+          "ref": "U104",
+          "owner": "O024"
+        },
+        {
+          "ref": "U105",
+          "owner": "O025"
+        },
+        {
+          "ref": "U106",
+          "owner": "O025"
+        },
+        {
+          "ref": "U107",
+          "owner": "O025"
+        },
+        {
+          "ref": "U108",
+          "owner": "O025"
+        },
+        {
+          "ref": "U109",
+          "owner": "O025"
+        },
+        {
+          "ref": "U110",
+          "owner": "O025"
+        },
+        {
+          "ref": "U111",
+          "owner": "O026"
+        },
+        {
+          "ref": "U112",
+          "owner": "O026"
+        },
+        {
+          "ref": "U113",
+          "owner": "O026"
+        },
+        {
+          "ref": "U114",
+          "owner": "O026"
+        },
+        {
+          "ref": "U115",
+          "owner": "O027"
+        },
+        {
+          "ref": "U116",
+          "owner": "O027"
+        }
+      ],
+      "unresolvedRefs": []
+    },
+    "validation": {
+      "accepted": false,
+      "assignedOccurrences": 116,
+      "unresolvedOccurrences": 0,
+      "ownerCount": 27,
+      "unknownOccurrenceHandleCount": 0,
+      "duplicateAssignmentCount": 0,
+      "missingAssignmentCount": 243,
+      "unknownEvidenceHandleCount": 0,
+      "unknownOwnerIdCount": 0,
+      "emptyOwnerCount": 0,
+      "errors": [
+        "V6C_V3_MISSING_U_ASSIGNMENT"
+      ]
+    },
+    "deprojected": null
+  }
+}
