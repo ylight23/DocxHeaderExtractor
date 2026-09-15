@@ -1,0 +1,165 @@
+# V6C-v2 addressability diagnosis
+
+Offline forensic only. The three primary provider executions remain immutable; this artifact reads only frozen V2 requests and raw responses. No Gold, V5C, or V6A artifact was read and no prediction/validator was changed.
+
+- {
+  "sequence": 1,
+  "documentId": "DOC-0123",
+  "rawResponseSha256": "c4c6829b0328600ea031c7490c110fbe4f46dd3fdc09fecdc3d7a57eb30c8d7a",
+  "providerStatus": "INVALID_VALIDATION",
+  "ownerCount": 49,
+  "assignmentCount": 116,
+  "unresolvedCount": 0,
+  "badMemberCount": 0,
+  "unqualifiedMemberCount": 0,
+  "badEvidenceCount": 0,
+  "duplicateMemberCount": 0,
+  "duplicateAssignmentCount": 0,
+  "unknownAssignmentReferenceCount": 0,
+  "ownerAssignmentMismatchCount": 1,
+  "missingOwnerMemberCount": 0,
+  "missingCoverageCount": 0,
+  "assignedAndUnresolvedCount": 0,
+  "primaryFailure": "OWNER_ASSIGNMENT_CONSISTENCY",
+  "examples": {
+    "badMembers": [],
+    "unqualifiedMembers": [],
+    "badEvidence": [],
+    "mismatchedAssignments": [
+      "DOC-0123:body[1]/p[641]-\u003EO-P1160-1161"
+    ],
+    "unknownAssignmentRefs": [],
+    "missingOwnerMembers": [],
+    "missingCoverage": []
+  }
+}
+- {
+  "sequence": 2,
+  "documentId": "DOC-0133",
+  "rawResponseSha256": "714f24387fb800f53cce7648c5dc43d6d541b6506758348a4e60eeca887b4cd8",
+  "providerStatus": "INVALID_VALIDATION",
+  "ownerCount": 29,
+  "assignmentCount": 57,
+  "unresolvedCount": 0,
+  "badMemberCount": 57,
+  "unqualifiedMemberCount": 56,
+  "badEvidenceCount": 0,
+  "duplicateMemberCount": 0,
+  "duplicateAssignmentCount": 0,
+  "unknownAssignmentReferenceCount": 0,
+  "ownerAssignmentMismatchCount": 57,
+  "missingOwnerMemberCount": 57,
+  "missingCoverageCount": 0,
+  "assignedAndUnresolvedCount": 0,
+  "primaryFailure": "OCCURRENCE_ADDRESSABILITY_DRIFT",
+  "examples": {
+    "badMembers": [
+      "DOC-0133:O-001:B000005",
+      "DOC-0133:O-002:B000011",
+      "DOC-0133:O-002:B000013",
+      "DOC-0133:O-002:B000034",
+      "DOC-0133:O-003:B000015",
+      "DOC-0133:O-003:B000616",
+      "DOC-0133:O-004:B000017",
+      "DOC-0133:O-004:B000921"
+    ],
+    "unqualifiedMembers": [
+      "DOC-0133:O-001:B000005",
+      "DOC-0133:O-002:B000011",
+      "DOC-0133:O-002:B000013",
+      "DOC-0133:O-002:B000034",
+      "DOC-0133:O-003:B000015",
+      "DOC-0133:O-003:B000616",
+      "DOC-0133:O-004:B000017",
+      "DOC-0133:O-004:B000921"
+    ],
+    "badEvidence": [],
+    "mismatchedAssignments": [
+      "DOC-0133:B000005-\u003EDOC-0133:O-001",
+      "DOC-0133:B000011-\u003EDOC-0133:O-002",
+      "DOC-0133:B000013-\u003EDOC-0133:O-002",
+      "DOC-0133:B000015-\u003EDOC-0133:O-003",
+      "DOC-0133:B000017-\u003EDOC-0133:O-004",
+      "DOC-0133:B000034-\u003EDOC-0133:O-002",
+      "DOC-0133:B000036-\u003EDOC-0133:O-005",
+      "DOC-0133:B000041-\u003EDOC-0133:O-005"
+    ],
+    "unknownAssignmentRefs": [],
+    "missingOwnerMembers": [
+      "DOC-0133:O-001:B000005",
+      "DOC-0133:O-002:B000011",
+      "DOC-0133:O-002:B000013",
+      "DOC-0133:O-002:B000034",
+      "DOC-0133:O-003:B000015",
+      "DOC-0133:O-003:B000616",
+      "DOC-0133:O-004:B000017",
+      "DOC-0133:O-004:B000921"
+    ],
+    "missingCoverage": []
+  }
+}
+- {
+  "sequence": 3,
+  "documentId": "DOC-0252",
+  "rawResponseSha256": "e9f96ecb0e2e104ad579e6a9a15123a06609848ceede5126af97aeaa2ab67d85",
+  "providerStatus": "INVALID_VALIDATION",
+  "ownerCount": 30,
+  "assignmentCount": 53,
+  "unresolvedCount": 0,
+  "badMemberCount": 53,
+  "unqualifiedMemberCount": 53,
+  "badEvidenceCount": 0,
+  "duplicateMemberCount": 0,
+  "duplicateAssignmentCount": 0,
+  "unknownAssignmentReferenceCount": 0,
+  "ownerAssignmentMismatchCount": 53,
+  "missingOwnerMemberCount": 53,
+  "missingCoverageCount": 0,
+  "assignedAndUnresolvedCount": 0,
+  "primaryFailure": "OCCURRENCE_ADDRESSABILITY_DRIFT",
+  "examples": {
+    "badMembers": [
+      "DOC-0252:O001:B000006",
+      "DOC-0252:O002:B000016",
+      "DOC-0252:O002:B000031",
+      "DOC-0252:O003:B000022",
+      "DOC-0252:O003:B000026",
+      "DOC-0252:O004:B000042",
+      "DOC-0252:O005:B000063",
+      "DOC-0252:O005:B000083"
+    ],
+    "unqualifiedMembers": [
+      "DOC-0252:O001:B000006",
+      "DOC-0252:O002:B000016",
+      "DOC-0252:O002:B000031",
+      "DOC-0252:O003:B000022",
+      "DOC-0252:O003:B000026",
+      "DOC-0252:O004:B000042",
+      "DOC-0252:O005:B000063",
+      "DOC-0252:O005:B000083"
+    ],
+    "badEvidence": [],
+    "mismatchedAssignments": [
+      "DOC-0252:B000006-\u003EDOC-0252:O001",
+      "DOC-0252:B000016-\u003EDOC-0252:O002",
+      "DOC-0252:B000022-\u003EDOC-0252:O003",
+      "DOC-0252:B000026-\u003EDOC-0252:O003",
+      "DOC-0252:B000031-\u003EDOC-0252:O002",
+      "DOC-0252:B000042-\u003EDOC-0252:O004",
+      "DOC-0252:B000063-\u003EDOC-0252:O005",
+      "DOC-0252:B000083-\u003EDOC-0252:O005"
+    ],
+    "unknownAssignmentRefs": [],
+    "missingOwnerMembers": [
+      "DOC-0252:O001:B000006",
+      "DOC-0252:O002:B000016",
+      "DOC-0252:O002:B000031",
+      "DOC-0252:O003:B000022",
+      "DOC-0252:O003:B000026",
+      "DOC-0252:O004:B000042",
+      "DOC-0252:O005:B000063",
+      "DOC-0252:O005:B000083"
+    ],
+    "missingCoverage": []
+  }
+}

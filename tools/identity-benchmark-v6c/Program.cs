@@ -38,6 +38,7 @@ internal static class Program
             if (args.Any(x => string.Equals(x, "--finalize-primary", StringComparison.Ordinal))) return await FinalizePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--execute-v2", StringComparison.Ordinal))) return await ExecuteV2Async(root);
             if (args.Any(x => string.Equals(x, "--finalize-v2", StringComparison.Ordinal))) return await FinalizeV2Async(root);
+            if (args.Any(x => string.Equals(x, "--diagnose-v2", StringComparison.Ordinal))) return await DiagnoseV2Async(root);
             if (args.Any(x => string.Equals(x, "--diagnose-primary", StringComparison.Ordinal))) return await DiagnosePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--prepare-v2", StringComparison.Ordinal))) return await PrepareV2Async(root);
             await RunPreflightAsync(root);
@@ -373,6 +374,83 @@ internal static class Program
         await WriteAsync(Path.Combine(execution, "prediction-summary.json"), summary);
         await WriteAsync(Path.Combine(execution, "execution-final.json"), new { schemaVersion = "a99-v6c-v2-execution-final-v1", status = "OWNER_PREDICTION_FREEZE_COMPLETE", scheduledCalls = ExpectedRequests, completedAttempts = attempts.Length, validOwnerPredictions = valid.Length, invalidValidationPredictions = invalid, providerErrors, modelCalls, providerCalls, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, frozenBeforeEvaluation = true, recoveryCohort = false, retries = 0, completedUtc = DateTimeOffset.UtcNow });
         Console.WriteLine($"V6C_V2_OFFLINE_SUMMARY_COMPLETE VALID={valid.Length} INVALID={invalid} PROVIDER_ERRORS={providerErrors} MODEL_CALLS={modelCalls} PROVIDER_CALLS={providerCalls} GOLD_READ_COUNT=0");
+        return 0;
+    }
+
+    private static async Task<int> DiagnoseV2Async(string root)
+    {
+        var preflight = Full(root, V2PreflightRelative);
+        var execution = Full(root, V2ExecutionRelative);
+        var frozen = LoadFrozenV2Requests(preflight);
+        using var manifest = JsonDocument.Parse(await File.ReadAllTextAsync(Path.Combine(execution, "attempt-manifest.json")));
+        var attempts = manifest.RootElement.GetProperty("attempts").EnumerateArray().ToArray();
+        Require(attempts.Length == ExpectedRequests && manifest.RootElement.GetProperty("actualModelCalls").GetInt32() == ExpectedRequests && manifest.RootElement.GetProperty("actualProviderCalls").GetInt32() == ExpectedRequests, "V6C_V2_DIAGNOSIS_ATTEMPT_COUNT");
+        Require(manifest.RootElement.GetProperty("retryCount").GetInt32() == 0 && manifest.RootElement.GetProperty("goldReadCount").GetInt32() == 0 && manifest.RootElement.GetProperty("v5cReadCount").GetInt32() == 0 && manifest.RootElement.GetProperty("v6aReadCount").GetInt32() == 0 && !manifest.RootElement.GetProperty("v1Mutation").GetBoolean(), "V6C_V2_DIAGNOSIS_FIREWALL");
+        var byDocument = frozen.ToDictionary(x => x.DocumentId, StringComparer.Ordinal);
+        var cases = new List<object>();
+        foreach (var attempt in attempts)
+        {
+            var sequence = attempt.GetProperty("sequence").GetInt32();
+            var documentId = attempt.GetProperty("documentId").GetString()!;
+            var rawPath = Path.Combine(execution, "raw-responses", $"{sequence:D3}.json");
+            Require(File.Exists(rawPath), "V6C_V2_DIAGNOSIS_RAW_MISSING");
+            using var response = JsonDocument.Parse(await File.ReadAllTextAsync(rawPath));
+            var request = byDocument[documentId].Request;
+            var allowed = request.GetProperty("allowedOccurrenceIds").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
+            var validEvidence = request.GetProperty("allowedEvidenceRefs").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
+            var owners = response.RootElement.GetProperty("owners");
+            var badMembers = new List<string>();
+            var unqualifiedMembers = new List<string>();
+            var badEvidence = new List<string>();
+            var duplicateMembers = new List<string>();
+            var ownerMembers = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+            foreach (var owner in owners.EnumerateArray())
+            {
+                var ownerId = owner.GetProperty("ownerLocalId").GetString()!;
+                var set = new HashSet<string>(StringComparer.Ordinal);
+                foreach (var member in owner.GetProperty("memberOccurrenceIds").EnumerateArray())
+                {
+                    var memberId = member.GetString()!;
+                    if (!allowed.Contains(memberId))
+                    {
+                        badMembers.Add($"{ownerId}:{memberId}");
+                        if (allowed.Any(x => x.EndsWith(":" + memberId, StringComparison.Ordinal))) unqualifiedMembers.Add($"{ownerId}:{memberId}");
+                    }
+                    if (!set.Add(memberId)) duplicateMembers.Add($"{ownerId}:{memberId}");
+                }
+                foreach (var evidence in owner.GetProperty("evidenceRefs").EnumerateArray())
+                {
+                    var evidenceId = evidence.GetString()!;
+                    if (!validEvidence.Contains(evidenceId)) badEvidence.Add($"{ownerId}:{evidenceId}");
+                }
+                Require(ownerMembers.TryAdd(ownerId, set), "V6C_V2_DIAGNOSIS_DUPLICATE_OWNER");
+            }
+            var assignments = response.RootElement.GetProperty("assignments").EnumerateArray().Select(x => new { OccurrenceId = x.GetProperty("occurrenceId").GetString()!, OwnerId = x.GetProperty("ownerLocalId").GetString()! }).ToArray();
+            var unresolved = response.RootElement.GetProperty("unresolvedOccurrenceIds").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
+            var duplicateAssignments = assignments.GroupBy(x => x.OccurrenceId, StringComparer.Ordinal).Where(x => x.Count() > 1).Select(x => x.Key).OrderBy(x => x, StringComparer.Ordinal).ToArray();
+            var unknownAssignmentRefs = assignments.Where(x => !allowed.Contains(x.OccurrenceId) || !ownerMembers.ContainsKey(x.OwnerId)).Select(x => $"{x.OccurrenceId}->{x.OwnerId}").ToArray();
+            var mismatchedAssignments = assignments.Where(x => ownerMembers.TryGetValue(x.OwnerId, out var members) && !members.Contains(x.OccurrenceId)).Select(x => $"{x.OccurrenceId}->{x.OwnerId}").ToArray();
+            var missingOwnerMembers = ownerMembers.SelectMany(x => x.Value.Where(member => !assignments.Any(a => a.OccurrenceId == member && a.OwnerId == x.Key)).Select(member => $"{x.Key}:{member}")).ToArray();
+            var missingCoverage = allowed.Except(assignments.Select(x => x.OccurrenceId), StringComparer.Ordinal).Except(unresolved, StringComparer.Ordinal).OrderBy(x => x, StringComparer.Ordinal).ToArray();
+            var assignedAndUnresolved = assignments.Select(x => x.OccurrenceId).Intersect(unresolved, StringComparer.Ordinal).OrderBy(x => x, StringComparer.Ordinal).ToArray();
+            var primaryFailure = badMembers.Count > 0 ? "OCCURRENCE_ADDRESSABILITY_DRIFT" : mismatchedAssignments.Length > 0 ? "OWNER_ASSIGNMENT_CONSISTENCY" : unknownAssignmentRefs.Length > 0 ? "ASSIGNMENT_REFERENCE_DRIFT" : duplicateAssignments.Length > 0 ? "DUPLICATE_ASSIGNMENT" : missingOwnerMembers.Length > 0 || missingCoverage.Length > 0 ? "INCOMPLETE_ASSIGNMENT_COVERAGE" : badEvidence.Count > 0 ? "EVIDENCE_ADDRESSABILITY_DRIFT" : "NONE_OBSERVED";
+            cases.Add(new
+            {
+                sequence, documentId, rawResponseSha256 = Sha256File(rawPath), providerStatus = attempt.GetProperty("status").GetString(), ownerCount = owners.GetArrayLength(), assignmentCount = assignments.Length, unresolvedCount = unresolved.Count,
+                badMemberCount = badMembers.Count, unqualifiedMemberCount = unqualifiedMembers.Count, badEvidenceCount = badEvidence.Count, duplicateMemberCount = duplicateMembers.Count, duplicateAssignmentCount = duplicateAssignments.Length,
+                unknownAssignmentReferenceCount = unknownAssignmentRefs.Length, ownerAssignmentMismatchCount = mismatchedAssignments.Length, missingOwnerMemberCount = missingOwnerMembers.Length, missingCoverageCount = missingCoverage.Length, assignedAndUnresolvedCount = assignedAndUnresolved.Length,
+                primaryFailure, examples = new { badMembers = badMembers.Take(8).ToArray(), unqualifiedMembers = unqualifiedMembers.Take(8).ToArray(), badEvidence = badEvidence.Take(8).ToArray(), mismatchedAssignments = mismatchedAssignments.Take(8).ToArray(), unknownAssignmentRefs = unknownAssignmentRefs.Take(8).ToArray(), missingOwnerMembers = missingOwnerMembers.Take(8).ToArray(), missingCoverage = missingCoverage.Take(8).ToArray() },
+            });
+        }
+        var output = Path.Combine(execution, "diagnosis-v2-addressable");
+        Directory.CreateDirectory(output);
+        await WriteAsync(Path.Combine(output, "manifest.json"), new
+        {
+            schemaVersion = "a99-v6c-v2-addressability-diagnosis-v1", status = "OFFLINE_RAW_RESPONSE_FORENSIC_COMPLETE", source = "FROZEN_V6C_V2_RAW_RESPONSES", providerCalls = 0, modelCalls = 0, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, predictionMutation = false, validatorRelaxation = false, cases,
+            conclusion = "Addressability-v2 failures are preserved as received; no semantic repair or validation relaxation was applied.",
+        });
+        await File.WriteAllTextAsync(Path.Combine(output, "report.md"), "# V6C-v2 addressability diagnosis\n\nOffline forensic only. The three primary provider executions remain immutable; this artifact reads only frozen V2 requests and raw responses. No Gold, V5C, or V6A artifact was read and no prediction/validator was changed.\n\n" + string.Join("\n", cases.Select(x => $"- {JsonSerializer.Serialize(x, JsonOptions)}")) + "\n", new UTF8Encoding(false));
+        Console.WriteLine("V6C_V2_DIAGNOSIS_COMPLETE PROVIDER_CALLS=0 GOLD_READ_COUNT=0 V5C_READ_COUNT=0 V6A_READ_COUNT=0");
         return 0;
     }
 
