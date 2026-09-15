@@ -1,0 +1,522 @@
+{
+  "schemaVersion": "a99-v7a-attempt-manifest-v1",
+  "immutableAttemptRecords": true,
+  "expectedAttemptCount": 3,
+  "actualAttemptCount": 3,
+  "actualModelCalls": 3,
+  "actualProviderCalls": 3,
+  "retryCount": 0,
+  "goldReadCount": 0,
+  "historicalPredictionReadCount": 0,
+  "evaluationReadCount": 0,
+  "modelProposedOnly": true,
+  "autoCollapse": false,
+  "attempts": [
+    {
+      "schemaVersion": "a99-v7a-attempt-v1",
+      "attemptId": "primary-001",
+      "sequence": 1,
+      "documentId": "DOC-0123",
+      "requestHash": "f0fb93a1e0c9a2e684de4ae2aacd6a24c1f65cedfa66e490370bf35cc4d30044",
+      "requestSetSha256": "a32a02ab1c55dce4db5042ddb9af47a0e91512bd817770b9269bee65a190e219",
+      "status": "VALID",
+      "httpStatus": 200,
+      "providerCallId": "gen-1789448735-bPnmVYBfI8Q511CVanJ9",
+      "rawResponseSha256": "0c595afb7743eef67570146731fde4e1b6636c3cdc5eb3ee7325beacdea9e1af",
+      "parsedResponseSha256": "a1eb51f0a00e2eae5c4ad1c7d6205efe02e86fc7de8148b432bfbac4362a8c5d",
+      "provider": "OpenRouter",
+      "model": "qwen/qwen3.7-flash",
+      "latencyMs": 44204,
+      "reportedInputTokens": 65998,
+      "reportedReasoningTokens": 6019,
+      "reportedOutputTokens": 7980,
+      "finishReason": "stop",
+      "error": null,
+      "retryCount": 0,
+      "goldReadBeforeFreeze": false,
+      "historicalPredictionReadBeforeFreeze": false,
+      "evaluationReadBeforeFreeze": false,
+      "modelProposedOnly": true,
+      "autoCollapse": false,
+      "response": {
+        "response": {
+          "positiveProposals": [
+            {
+              "pairId": "P0002",
+              "left": "U001",
+              "right": "U006",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0013",
+              "left": "U007",
+              "right": "U023",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0014",
+              "left": "U007",
+              "right": "U025",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0020",
+              "left": "U008",
+              "right": "U026",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0021",
+              "left": "U008",
+              "right": "U036",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0026",
+              "left": "U009",
+              "right": "U027",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0031",
+              "left": "U010",
+              "right": "U028",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0036",
+              "left": "U011",
+              "right": "U029",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0041",
+              "left": "U012",
+              "right": "U030",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0042",
+              "left": "U012",
+              "right": "U087",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0048",
+              "left": "U014",
+              "right": "U092",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0050",
+              "left": "U015",
+              "right": "U093",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0051",
+              "left": "U016",
+              "right": "U033",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0069",
+              "left": "U023",
+              "right": "U025",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0085",
+              "left": "U026",
+              "right": "U036",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0104",
+              "left": "U030",
+              "right": "U087",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0108",
+              "left": "U034",
+              "right": "U035",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0109",
+              "left": "U037",
+              "right": "U038",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0110",
+              "left": "U039",
+              "right": "U067",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0112",
+              "left": "U042",
+              "right": "U043",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0124",
+              "left": "U054",
+              "right": "U055",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0135",
+              "left": "U068",
+              "right": "U069",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0138",
+              "left": "U071",
+              "right": "U091",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0139",
+              "left": "U072",
+              "right": "U073",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0141",
+              "left": "U076",
+              "right": "U079",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0146",
+              "left": "U082",
+              "right": "U083",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0150",
+              "left": "U090",
+              "right": "U100",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0152",
+              "left": "U096",
+              "right": "U097",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0153",
+              "left": "U098",
+              "right": "U099",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0154",
+              "left": "U101",
+              "right": "U102",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0157",
+              "left": "U105",
+              "right": "U107",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0159",
+              "left": "U105",
+              "right": "U109",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0165",
+              "left": "U107",
+              "right": "U109",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0168",
+              "left": "U108",
+              "right": "U110",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0170",
+              "left": "U111",
+              "right": "U112",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0172",
+              "left": "U115",
+              "right": "U116",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            }
+          ]
+        },
+        "validation": {
+          "accepted": true,
+          "proposedPositiveEdges": 36,
+          "proposedContinuationEdges": 0,
+          "touchedOccurrences": 60,
+          "unknownHandleCount": 0,
+          "duplicateEdgeCount": 0,
+          "selfEdgeCount": 0,
+          "directionConflictCount": 0,
+          "errors": []
+        }
+      }
+    },
+    {
+      "schemaVersion": "a99-v7a-attempt-v1",
+      "attemptId": "primary-002",
+      "sequence": 2,
+      "documentId": "DOC-0133",
+      "requestHash": "50b28f51e695a67bcb3acd3d28d50108abd9b5a202908764c14ba85e985fc0ff",
+      "requestSetSha256": "a32a02ab1c55dce4db5042ddb9af47a0e91512bd817770b9269bee65a190e219",
+      "status": "VALID",
+      "httpStatus": 200,
+      "providerCallId": "gen-1789448779-puiGRxMuiDEnEY9GlqBF",
+      "rawResponseSha256": "0462589f22d339f07009215668e546d6c6e03059e627aa7e0e3453ce1eac671d",
+      "parsedResponseSha256": "d2e2a405bbe000c7386d6e72d12845ebe1f836815f3496d0337c9cbfeed22593",
+      "provider": "OpenRouter",
+      "model": "qwen/qwen3.7-flash",
+      "latencyMs": 56410,
+      "reportedInputTokens": 28582,
+      "reportedReasoningTokens": 5435,
+      "reportedOutputTokens": 5938,
+      "finishReason": "stop",
+      "error": null,
+      "retryCount": 0,
+      "goldReadBeforeFreeze": false,
+      "historicalPredictionReadBeforeFreeze": false,
+      "evaluationReadBeforeFreeze": false,
+      "modelProposedOnly": true,
+      "autoCollapse": false,
+      "response": {
+        "response": {
+          "positiveProposals": [
+            {
+              "pairId": "P0014",
+              "left": "U009",
+              "right": "U014",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0015",
+              "left": "U010",
+              "right": "U011",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0022",
+              "left": "U017",
+              "right": "U018",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0023",
+              "left": "U019",
+              "right": "U020",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0026",
+              "left": "U026",
+              "right": "U052",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0027",
+              "left": "U026",
+              "right": "U053",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0061",
+              "left": "U046",
+              "right": "U047",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0063",
+              "left": "U050",
+              "right": "U051",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            },
+            {
+              "pairId": "P0064",
+              "left": "U052",
+              "right": "U053",
+              "relation": "SAME_SEMANTIC_REPEAT"
+            }
+          ]
+        },
+        "validation": {
+          "accepted": true,
+          "proposedPositiveEdges": 9,
+          "proposedContinuationEdges": 0,
+          "touchedOccurrences": 15,
+          "unknownHandleCount": 0,
+          "duplicateEdgeCount": 0,
+          "selfEdgeCount": 0,
+          "directionConflictCount": 0,
+          "errors": []
+        }
+      }
+    },
+    {
+      "schemaVersion": "a99-v7a-attempt-v1",
+      "attemptId": "primary-003",
+      "sequence": 3,
+      "documentId": "DOC-0252",
+      "requestHash": "cdf72754f6e2c9b3546a4c0b56cbc0f76abfbe23c979642ac5cf207385f1ab84",
+      "requestSetSha256": "a32a02ab1c55dce4db5042ddb9af47a0e91512bd817770b9269bee65a190e219",
+      "status": "VALID",
+      "httpStatus": 200,
+      "providerCallId": "gen-1789448835-WCfRbAcVfqCnkkWLNQ5T",
+      "rawResponseSha256": "5e1cd166fd97694dc7b04e8017afafb8160580f01ee1565569bab491f2364026",
+      "parsedResponseSha256": "62e600d4e079a265a6ea9b8f1bfb7dfda9103bf73d232c8a56c7aa4e46f7ef04",
+      "provider": "OpenRouter",
+      "model": "qwen/qwen3.7-flash",
+      "latencyMs": 55636,
+      "reportedInputTokens": 27328,
+      "reportedReasoningTokens": 4575,
+      "reportedOutputTokens": 5554,
+      "finishReason": "stop",
+      "error": null,
+      "retryCount": 0,
+      "goldReadBeforeFreeze": false,
+      "historicalPredictionReadBeforeFreeze": false,
+      "evaluationReadBeforeFreeze": false,
+      "modelProposedOnly": true,
+      "autoCollapse": false,
+      "response": {
+        "response": {
+          "positiveProposals": [
+            {
+              "pairId": "P0009",
+              "left": "U012",
+              "right": "U013",
+              "relation": "CONTINUATION_OF",
+              "from": "U012",
+              "to": "U013"
+            },
+            {
+              "pairId": "P0015",
+              "left": "U016",
+              "right": "U017",
+              "relation": "CONTINUATION_OF",
+              "from": "U016",
+              "to": "U017"
+            },
+            {
+              "pairId": "P0018",
+              "left": "U020",
+              "right": "U021",
+              "relation": "CONTINUATION_OF",
+              "from": "U020",
+              "to": "U021"
+            },
+            {
+              "pairId": "P0019",
+              "left": "U023",
+              "right": "U024",
+              "relation": "CONTINUATION_OF",
+              "from": "U023",
+              "to": "U024"
+            },
+            {
+              "pairId": "P0028",
+              "left": "U029",
+              "right": "U030",
+              "relation": "CONTINUATION_OF",
+              "from": "U029",
+              "to": "U030"
+            },
+            {
+              "pairId": "P0030",
+              "left": "U030",
+              "right": "U031",
+              "relation": "CONTINUATION_OF",
+              "from": "U030",
+              "to": "U031"
+            },
+            {
+              "pairId": "P0032",
+              "left": "U032",
+              "right": "U033",
+              "relation": "CONTINUATION_OF",
+              "from": "U032",
+              "to": "U033"
+            },
+            {
+              "pairId": "P0033",
+              "left": "U034",
+              "right": "U035",
+              "relation": "CONTINUATION_OF",
+              "from": "U034",
+              "to": "U035"
+            },
+            {
+              "pairId": "P0035",
+              "left": "U040",
+              "right": "U041",
+              "relation": "CONTINUATION_OF",
+              "from": "U040",
+              "to": "U041"
+            },
+            {
+              "pairId": "P0036",
+              "left": "U043",
+              "right": "U044",
+              "relation": "CONTINUATION_OF",
+              "from": "U043",
+              "to": "U044"
+            },
+            {
+              "pairId": "P0039",
+              "left": "U044",
+              "right": "U045",
+              "relation": "CONTINUATION_OF",
+              "from": "U044",
+              "to": "U045"
+            },
+            {
+              "pairId": "P0051",
+              "left": "U049",
+              "right": "U050",
+              "relation": "CONTINUATION_OF",
+              "from": "U049",
+              "to": "U050"
+            },
+            {
+              "pairId": "P0054",
+              "left": "U052",
+              "right": "U053",
+              "relation": "CONTINUATION_OF",
+              "from": "U052",
+              "to": "U053"
+            }
+          ]
+        },
+        "validation": {
+          "accepted": true,
+          "proposedPositiveEdges": 13,
+          "proposedContinuationEdges": 13,
+          "touchedOccurrences": 24,
+          "unknownHandleCount": 0,
+          "duplicateEdgeCount": 0,
+          "selfEdgeCount": 0,
+          "directionConflictCount": 0,
+          "errors": []
+        }
+      }
+    }
+  ]
+}

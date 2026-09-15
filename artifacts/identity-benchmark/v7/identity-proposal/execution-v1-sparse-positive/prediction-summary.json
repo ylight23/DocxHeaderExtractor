@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "a99-v7a-proposal-summary-v1",
+  "status": "V7A_PROPOSALS_FROZEN_BEFORE_EVALUATION_OR_PROMOTION",
+  "scheduledRequests": 3,
+  "valid": 3,
+  "invalidValidation": 0,
+  "invalidSchema": 0,
+  "providerErrors": 0,
+  "proposedPositiveEdges": 58,
+  "noClaimPairs": 233,
+  "proposedContinuationEdges": 13,
+  "occurrencesTouchedByPositiveProposals": 99,
+  "connectedComponentCountDiagnostic": 46,
+  "largestProposedComponentDiagnostic": 3,
+  "unknownHandles": 0,
+  "duplicateEdges": 0,
+  "selfEdges": 0,
+  "directionConflicts": 0,
+  "componentDiagnostics": [
+    {
+      "documentId": "DOC-0123",
+      "candidatePairs": 172,
+      "positiveEdges": 36,
+      "noClaimPairs": 136,
+      "touchedOccurrences": 60,
+      "connectedComponentCount": 28,
+      "largestProposedComponent": 3
+    },
+    {
+      "documentId": "DOC-0133",
+      "candidatePairs": 65,
+      "positiveEdges": 9,
+      "noClaimPairs": 56,
+      "touchedOccurrences": 75,
+      "connectedComponentCount": 7,
+      "largestProposedComponent": 3
+    },
+    {
+      "documentId": "DOC-0252",
+      "candidatePairs": 54,
+      "positiveEdges": 13,
+      "noClaimPairs": 41,
+      "touchedOccurrences": 99,
+      "connectedComponentCount": 11,
+      "largestProposedComponent": 3
+    }
+  ],
+  "modelCalls": 3,
+  "providerCalls": 3,
+  "goldReadCount": 0,
+  "historicalPredictionReadCount": 0,
+  "evaluationReadCount": 0,
+  "modelProposedOnly": true,
+  "autoCollapse": false,
+  "connectedComponentsAuthority": false
+}
