@@ -1,0 +1,233 @@
+{
+  "auditKind": "A99_LEVEL_PROVENANCE_AUDIT",
+  "schemaVersion": "a99-level-provenance-v1",
+  "entries": [
+    {
+      "documentId": "DOC-0001",
+      "artifact": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0001.occurrence-gold-v1.json",
+      "sha256": "64bbcdb9cef4bbafefadeffcc60d208c0d5891fa95eb1e14b3caf28b8b458070",
+      "levelCount": 7,
+      "levelAuthority": "UNKNOWN_LEVEL_PROVENANCE",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "A level field exists, but this audit cannot prove its derivation provenance."
+    },
+    {
+      "documentId": "DOC-0205",
+      "artifact": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0205.occurrence-gold-v1.json",
+      "sha256": "fdd4ed7219fda1e6de43693ee6ae431704037e6b9c977b27812388d308fa3e1b",
+      "levelCount": 71,
+      "levelAuthority": "UNKNOWN_LEVEL_PROVENANCE",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "A level field exists, but this audit cannot prove its derivation provenance."
+    },
+    {
+      "documentId": "DOC-0252",
+      "artifact": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0252.occurrence-gold-v1.json",
+      "sha256": "a603acf2588fdb2832c13dd05342d72c8a676ae2efb26c06441ad55a7771653c",
+      "levelCount": 27,
+      "levelAuthority": "UNKNOWN_LEVEL_PROVENANCE",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "A level field exists, but this audit cannot prove its derivation provenance."
+    },
+    {
+      "documentId": "DOC-0256",
+      "artifact": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0256.occurrence-gold-v1.json",
+      "sha256": "b0666f211b8748009403841927042ec94458b0d458ff2bda98777710e12d7826",
+      "levelCount": 24,
+      "levelAuthority": "UNKNOWN_LEVEL_PROVENANCE",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "A level field exists, but this audit cannot prove its derivation provenance."
+    },
+    {
+      "documentId": "DOC-0258",
+      "artifact": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0258.occurrence-gold-v1.json",
+      "sha256": "19120156f87e5abf922ac98e6bddc9edad3041387ef5ecd107ef0bad5e1a4193",
+      "levelCount": 24,
+      "levelAuthority": "UNKNOWN_LEVEL_PROVENANCE",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "A level field exists, but this audit cannot prove its derivation provenance."
+    },
+    {
+      "documentId": "DOC-0001",
+      "artifact": "eval/a99-closed-loop/strict-gold-v3/DOC-0001.strict-gold-v3.json",
+      "sha256": "92fedbec42763179fffdab5de4f286d5f798c41f3ddae1674dee6d3b02048df5",
+      "levelCount": 7,
+      "levelAuthority": "UNKNOWN_LEVEL_PROVENANCE",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "A level field exists, but this audit cannot prove its derivation provenance."
+    },
+    {
+      "documentId": "DOC-0205",
+      "artifact": "eval/a99-closed-loop/strict-gold-v3/DOC-0205.strict-gold-v3.json",
+      "sha256": "f0f95251a70e0f9dcac350c8f15540f4108fef6f188b837502862e69030c27a7",
+      "levelCount": 71,
+      "levelAuthority": "UNKNOWN_LEVEL_PROVENANCE",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "A level field exists, but this audit cannot prove its derivation provenance."
+    },
+    {
+      "documentId": "DOC-0252",
+      "artifact": "eval/a99-closed-loop/strict-gold-v3/DOC-0252.strict-gold-v3.json",
+      "sha256": "f79f9d8556ae2f1608316f01c8f990deddfedcbdd36ca24c0644eac3c324fc37",
+      "levelCount": 27,
+      "levelAuthority": "UNKNOWN_LEVEL_PROVENANCE",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "A level field exists, but this audit cannot prove its derivation provenance."
+    },
+    {
+      "documentId": "DOC-0256",
+      "artifact": "eval/a99-closed-loop/strict-gold-v3/DOC-0256.strict-gold-v3.json",
+      "sha256": "6bf31da2255b691ca377ef5313be983a2bf3a834694c8041703d810df9ac461b",
+      "levelCount": 24,
+      "levelAuthority": "UNKNOWN_LEVEL_PROVENANCE",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "A level field exists, but this audit cannot prove its derivation provenance."
+    },
+    {
+      "documentId": "DOC-0258",
+      "artifact": "eval/a99-closed-loop/strict-gold-v3/DOC-0258.strict-gold-v3.json",
+      "sha256": "80a21a492494541b03d54f8ffdd4302fb3c578b911d4f74931bcb1c6b7ca4a4f",
+      "levelCount": 24,
+      "levelAuthority": "UNKNOWN_LEVEL_PROVENANCE",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "A level field exists, but this audit cannot prove its derivation provenance."
+    },
+    {
+      "documentId": "DOC-0001",
+      "artifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
+      "sha256": "5ac30a82db551a8149ed777390eeca0dc6c6d0bafd9e82468dde32777808dfc8",
+      "levelCount": 7,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "Per-heading level is stored directly; no derivation contract is present in this artifact."
+    },
+    {
+      "documentId": "DOC-0116",
+      "artifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0116.strict-gold-v4.json",
+      "sha256": "9076c5f079a781d5c91923fe4e6bbb73108ae6a5bb47e1096a1d939023b9b6f5",
+      "levelCount": 22,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "Per-heading level is stored directly; no derivation contract is present in this artifact."
+    },
+    {
+      "documentId": "DOC-0122",
+      "artifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0122.strict-gold-v4.json",
+      "sha256": "b6169d95efd89ed534e6666694f6b3a7ecc1f2e4e67c6e1a8406ee9e729d7b69",
+      "levelCount": 126,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "Per-heading level is stored directly; no derivation contract is present in this artifact."
+    },
+    {
+      "documentId": "DOC-0205",
+      "artifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0205.strict-gold-v4.json",
+      "sha256": "160c9cd3daeab79700b5411337fe6ecb666edbdbda61066d47372b5c3df10418",
+      "levelCount": 71,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "Per-heading level is stored directly; no derivation contract is present in this artifact."
+    },
+    {
+      "documentId": "DOC-0216",
+      "artifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0216.strict-gold-v4.json",
+      "sha256": "347d57204be3e5a3bfeb6e26e97054ac33aab89252d11b92d84bb60b48bf14ce",
+      "levelCount": 117,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "Per-heading level is stored directly; no derivation contract is present in this artifact."
+    },
+    {
+      "documentId": "DOC-0243",
+      "artifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0243.strict-gold-v4.json",
+      "sha256": "df4808f0b03e550834f4b16a3c9085c550dae452881fbec0df1773277d3bfd38",
+      "levelCount": 102,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "Per-heading level is stored directly; no derivation contract is present in this artifact."
+    },
+    {
+      "documentId": "DOC-0252",
+      "artifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0252.strict-gold-v4.json",
+      "sha256": "8dc3a2512ce73dbcc84e045a7f84b6d4996e782638949a68af0254946886e325",
+      "levelCount": 27,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "Per-heading level is stored directly; no derivation contract is present in this artifact."
+    },
+    {
+      "documentId": "DOC-0256",
+      "artifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0256.strict-gold-v4.json",
+      "sha256": "f12a4a407deddf9d6f1039510d8b2ee4965db091901e2e1b3e806b97344c92e2",
+      "levelCount": 24,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "Per-heading level is stored directly; no derivation contract is present in this artifact."
+    },
+    {
+      "documentId": "DOC-0258",
+      "artifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0258.strict-gold-v4.json",
+      "sha256": "4519e267a0f04e0f4a3486e53425058252b98de035631a50ebd4fd7751ddb61b",
+      "levelCount": 24,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "hasExplicitParent": false,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "Per-heading level is stored directly; no derivation contract is present in this artifact."
+    },
+    {
+      "documentId": null,
+      "artifact": "keys/hierarchy/076_ICP_IACG08_Minutes_2023.hierarchy.json",
+      "sha256": "3179da378bbd19ef687a705433aa75a41228a768052ee593328ef91a1650bcf0",
+      "levelCount": 24,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "hasExplicitParent": true,
+      "hasExplicitTree": false,
+      "treeBackedHierarchyGold": false,
+      "reason": "Per-heading level is stored directly; no derivation contract is present in this artifact."
+    }
+  ],
+  "summary": {
+    "strictHeadingGoldDocuments": 9,
+    "strictHeadingGoldOccurrencesWithLevel": 520.0,
+    "strictHeadingGoldTreeDerivedDocuments": 0,
+    "strictHeadingGoldExplicitParentDocuments": 0,
+    "strictHeadingGoldHistoricalLevelOnlyDocuments": 9
+  }
+}

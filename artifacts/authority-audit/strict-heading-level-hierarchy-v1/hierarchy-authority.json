@@ -1,0 +1,41 @@
+{
+  "auditKind": "A99_HIERARCHY_AUTHORITY_AUDIT",
+  "schemaVersion": "a99-hierarchy-authority-v1",
+  "conclusion": "Existing strict heading Gold does not constitute general hierarchy Gold.",
+  "strictHeadingGold": {
+    "documents": 9,
+    "occurrences": 520.0,
+    "explicitParentDocuments": 0,
+    "explicitTreeDocuments": 0,
+    "treeDerivedLevelDocuments": 0,
+    "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION"
+  },
+  "explicitHierarchyArtifacts": [
+    {
+      "documentId": "DOC-0205",
+      "path": "eval/a99-closed-loop/hdsa-parent-relation-live/DOC-0205/structural-gold.v1.json",
+      "sha256": "3981b19c62cc450ec9a339990236cb0f41b13462689c2d6413c62cc8cb801f71",
+      "authorityClass": "EXPLICIT_SOURCE_ONLY_STRUCTURAL_HIERARCHY_GOLD",
+      "explicitParentCount": 19,
+      "explicitTreeEdgeCount": 9,
+      "hasSemanticNodeIdentity": true,
+      "levelAuthority": "TREE_DERIVED_LEVEL",
+      "treeBackedHierarchyGold": true,
+      "currentStrictHeadingGold": false,
+      "note": "Dedicated HDSA source-only hierarchy authority; scoped and not a corpus-wide strict heading hierarchy."
+    },
+    {
+      "documentId": null,
+      "path": "keys/hierarchy/076_ICP_IACG08_Minutes_2023.hierarchy.json",
+      "sha256": "3179da378bbd19ef687a705433aa75a41228a768052ee593328ef91a1650bcf0",
+      "authorityClass": "EVALUATION_ONLY_HISTORICAL_HIERARCHY",
+      "explicitParentCount": 10,
+      "explicitTreeEdgeCount": 0,
+      "hasSemanticNodeIdentity": false,
+      "levelAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+      "treeBackedHierarchyGold": false,
+      "currentStrictHeadingGold": false,
+      "note": "Evaluation-only historical hierarchy; not current canonical authority."
+    }
+  ]
+}
