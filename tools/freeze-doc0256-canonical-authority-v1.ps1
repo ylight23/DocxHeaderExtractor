@@ -3,7 +3,8 @@ param(
     [string]$OccurrenceRoot = "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0256",
     [string]$IdentityRoot = "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0256",
     [string]$HierarchyRoot = "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0256",
-    [string]$OutputRoot = "artifacts/authority-audit/canonical-authority-freeze-v1/DOC-0256"
+    [string]$OutputRoot = "artifacts/authority-audit/canonical-authority-freeze-v1/DOC-0256",
+    [string]$FreezeCommit = "THIS_FREEZE_COMMIT"
 )
 
 Set-StrictMode -Version Latest
@@ -170,7 +171,7 @@ $commitLineage = @(
     [pscustomobject]@{ commit = "54aadec"; role = "canonical occurrence authority" },
     [pscustomobject]@{ commit = "9d6bba7"; role = "canonical identity proposal" },
     [pscustomobject]@{ commit = "81965a3"; role = "canonical hierarchy proposal" },
-    [pscustomobject]@{ commit = "THIS_FREEZE_COMMIT"; role = "user-approved authority freeze" }
+    [pscustomobject]@{ commit = $FreezeCommit; role = "user-approved authority freeze" }
 )
 foreach ($commit in @("54aadec", "9d6bba7", "81965a3")) {
     git cat-file -e "$commit^{commit}" 2>$null
@@ -291,7 +292,7 @@ This freeze promotes the already-created source-backed chain after explicit user
 - Hierarchy authority before approval: source-backed hierarchy proposal
 - Final promotion: explicit user approval
 - Approved checkpoints: `54aadec → 9d6bba7 → 81965a3`
-- Freeze commit: recorded as `THIS_FREEZE_COMMIT` in the manifest and by Git history
+- Freeze commit: `$FreezeCommit`
 
 ## Integrity
 
