@@ -1,0 +1,24 @@
+{
+  "artifactKind": "A99_CANONICAL_OCCURRENCE_VALIDATION",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v1",
+  "documentId": "DOC-0001",
+  "status": "CANONICAL_OCCURRENCE_REVIEW_REQUIRED",
+  "checks": {
+    "sourceExists": true,
+    "sourceShaMatchesAuthority": true,
+    "sourceReadable": true,
+    "sourceUniverseMaterialized": true,
+    "placeholderSourceBlocked": false,
+    "historicalBridgeIsNonExhaustive": true,
+    "exhaustiveHeadingReviewCompleted": false,
+    "canonicalOccurrenceAuthorityFrozen": false,
+    "noSemanticIdentityFields": true,
+    "noHierarchyFields": true,
+    "noLevelField": true,
+    "noProviderCalls": true,
+    "noGoldMutation": true
+  },
+  "expectedSemanticTotal": 7,
+  "historicalPositiveCount": 7,
+  "sourceOccurrenceCount": 14
+}

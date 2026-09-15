@@ -1,0 +1,59 @@
+{
+  "artifactKind": "A99_CANONICAL_EXHAUSTIVE_HEADING_OCCURRENCE_PHASE1",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v1",
+  "phase": "MATERIALIZE_CANONICAL_EXHAUSTIVE_HEADING_OCCURRENCE_AUTHORITY_PHASE1",
+  "authorityBoundary": "SOURCE_OCCURRENCE_TRUTH_ONLY",
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "status": "CANONICAL_OCCURRENCE_REVIEW_REQUIRED",
+      "sourcePath": "bench/01-style-chuan.docx",
+      "expectedSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "actualSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "sourceExists": true,
+      "sourceShaMatches": true,
+      "sourceOccurrenceCount": 14,
+      "historicalPositiveCount": 7,
+      "expectedSemanticTotal": 7,
+      "acceptedCanonicalOccurrenceCount": 0,
+      "providerCalls": 0,
+      "historicalLevelRead": false
+    },
+    {
+      "documentId": "DOC-0205",
+      "status": "SOURCE_BINDING_BLOCKED",
+      "sourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+      "expectedSourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "actualSourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "sourceExists": true,
+      "sourceShaMatches": true,
+      "sourceOccurrenceCount": 3,
+      "historicalPositiveCount": 71,
+      "expectedSemanticTotal": 72,
+      "acceptedCanonicalOccurrenceCount": 0,
+      "providerCalls": 0,
+      "historicalLevelRead": false
+    },
+    {
+      "documentId": "DOC-0258",
+      "status": "CANONICAL_SEMANTIC_TOTAL_CONFLICT_REVIEW_REQUIRED",
+      "sourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
+      "expectedSourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "actualSourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "sourceExists": true,
+      "sourceShaMatches": true,
+      "sourceOccurrenceCount": 146,
+      "historicalPositiveCount": 24,
+      "expectedSemanticTotal": 37,
+      "acceptedCanonicalOccurrenceCount": 0,
+      "providerCalls": 0,
+      "historicalLevelRead": false
+    }
+  ],
+  "historicalLevelRead": false,
+  "providerCalls": 0,
+  "goldMutation": false,
+  "hierarchyMutation": false,
+  "semanticIdentityMutation": false,
+  "stopAfterOccurrenceAuthority": true
+}

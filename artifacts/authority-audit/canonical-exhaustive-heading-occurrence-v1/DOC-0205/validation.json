@@ -1,0 +1,24 @@
+{
+  "artifactKind": "A99_CANONICAL_OCCURRENCE_VALIDATION",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v1",
+  "documentId": "DOC-0205",
+  "status": "SOURCE_BINDING_BLOCKED",
+  "checks": {
+    "sourceExists": true,
+    "sourceShaMatchesAuthority": true,
+    "sourceReadable": true,
+    "sourceUniverseMaterialized": true,
+    "placeholderSourceBlocked": true,
+    "historicalBridgeIsNonExhaustive": true,
+    "exhaustiveHeadingReviewCompleted": false,
+    "canonicalOccurrenceAuthorityFrozen": false,
+    "noSemanticIdentityFields": true,
+    "noHierarchyFields": true,
+    "noLevelField": true,
+    "noProviderCalls": true,
+    "noGoldMutation": true
+  },
+  "expectedSemanticTotal": 72,
+  "historicalPositiveCount": 71,
+  "sourceOccurrenceCount": 3
+}

@@ -1,0 +1,227 @@
+{
+  "artifactKind": "A99_CANONICAL_EXHAUSTIVE_HEADING_SOURCE_UNIVERSE",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v1",
+  "documentId": "DOC-0001",
+  "sourcePath": "bench/01-style-chuan.docx",
+  "expectedSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "actualSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "sourceExists": true,
+  "sourceShaMatches": true,
+  "sourceClassification": "MISSING_CANONICAL_SOURCE",
+  "rawParagraphCount": 14,
+  "nonEmptySourceOccurrenceCount": 14,
+  "occurrenceTruthStatus": "NOT_ADJUDICATED",
+  "candidatesAreAttentionOnly": true,
+  "occurrences": [
+    {
+      "sourceOccurrenceId": "body[1]/p[1]",
+      "sourceId": "body[1]/p[1]",
+      "documentOrder": 1,
+      "rawText": "Chương 1. Quy định chung",
+      "sourceSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Heading1\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[2]",
+      "sourceId": "body[1]/p[2]",
+      "documentOrder": 2,
+      "rawText": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+      "sourceSpan": {
+        "start": 0,
+        "end": 167
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Normal\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[3]",
+      "sourceId": "body[1]/p[3]",
+      "documentOrder": 3,
+      "rawText": "1.1. Phạm vi điều chỉnh",
+      "sourceSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Heading2\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[4]",
+      "sourceId": "body[1]/p[4]",
+      "documentOrder": 4,
+      "rawText": "Các số liệu dẫn trong mục này được tổng hợp từ báo cáo quý gần nhất và đã được đối chiếu với hệ thống quản lý tập trung trước khi đưa vào tài liệu.",
+      "sourceSpan": {
+        "start": 0,
+        "end": 147
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Normal\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[5]",
+      "sourceId": "body[1]/p[5]",
+      "documentOrder": 5,
+      "rawText": "1.2. Đối tượng áp dụng",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Heading2\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[6]",
+      "sourceId": "body[1]/p[6]",
+      "documentOrder": 6,
+      "rawText": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+      "sourceSpan": {
+        "start": 0,
+        "end": 167
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Normal\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[7]",
+      "sourceId": "body[1]/p[7]",
+      "documentOrder": 7,
+      "rawText": "1.2.1. Cơ quan quản lý",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Heading3\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[8]",
+      "sourceId": "body[1]/p[8]",
+      "documentOrder": 8,
+      "rawText": "Các số liệu dẫn trong mục này được tổng hợp từ báo cáo quý gần nhất và đã được đối chiếu với hệ thống quản lý tập trung trước khi đưa vào tài liệu.",
+      "sourceSpan": {
+        "start": 0,
+        "end": 147
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Normal\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[9]",
+      "sourceId": "body[1]/p[9]",
+      "documentOrder": 9,
+      "rawText": "1.2.2. Đơn vị trực thuộc",
+      "sourceSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Heading3\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[10]",
+      "sourceId": "body[1]/p[10]",
+      "documentOrder": 10,
+      "rawText": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+      "sourceSpan": {
+        "start": 0,
+        "end": 167
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Normal\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[11]",
+      "sourceId": "body[1]/p[11]",
+      "documentOrder": 11,
+      "rawText": "Chương 2. Tổ chức thực hiện",
+      "sourceSpan": {
+        "start": 0,
+        "end": 27
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Heading1\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[12]",
+      "sourceId": "body[1]/p[12]",
+      "documentOrder": 12,
+      "rawText": "Các số liệu dẫn trong mục này được tổng hợp từ báo cáo quý gần nhất và đã được đối chiếu với hệ thống quản lý tập trung trước khi đưa vào tài liệu.",
+      "sourceSpan": {
+        "start": 0,
+        "end": 147
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Normal\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[13]",
+      "sourceId": "body[1]/p[13]",
+      "documentOrder": 13,
+      "rawText": "2.1. Phân công trách nhiệm",
+      "sourceSpan": {
+        "start": 0,
+        "end": 26
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Heading2\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[14]",
+      "sourceId": "body[1]/p[14]",
+      "documentOrder": 14,
+      "rawText": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+      "sourceSpan": {
+        "start": 0,
+        "end": 167
+      },
+      "sourceEvidence": {
+        "paragraphStyleId": "w:val=\"Normal\"",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      }
+    }
+  ]
+}

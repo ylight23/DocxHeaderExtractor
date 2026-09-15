@@ -1,0 +1,100 @@
+{
+  "artifactKind": "A99_HISTORICAL_POSITIVE_OCCURRENCE_BRIDGE",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v1",
+  "documentId": "DOC-0001",
+  "authority": "NOT_CANONICAL_EXHAUSTIVE",
+  "historicalLevelRead": false,
+  "records": [
+    {
+      "historicalHeadingOccurrenceId": "DOC-0001:paragraph[0]#key-line-3",
+      "sourceId": "paragraph[0]",
+      "sourceText": "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung",
+      "sourceOrder": 1,
+      "sourceSpan": null,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "bridgeAuthority": "HISTORICAL_POSITIVE_ONLY",
+      "canonicalAccepted": false
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0001:paragraph[2]#key-line-4",
+      "sourceId": "paragraph[2]",
+      "sourceText": "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh",
+      "sourceOrder": 2,
+      "sourceSpan": null,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "bridgeAuthority": "HISTORICAL_POSITIVE_ONLY",
+      "canonicalAccepted": false
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0001:paragraph[4]#key-line-5",
+      "sourceId": "paragraph[4]",
+      "sourceText": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng",
+      "sourceOrder": 3,
+      "sourceSpan": null,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "bridgeAuthority": "HISTORICAL_POSITIVE_ONLY",
+      "canonicalAccepted": false
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0001:paragraph[6]#key-line-6",
+      "sourceId": "paragraph[6]",
+      "sourceText": "1.2.1. CÆ¡ quan quáº£n lÃ½",
+      "sourceOrder": 4,
+      "sourceSpan": null,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "bridgeAuthority": "HISTORICAL_POSITIVE_ONLY",
+      "canonicalAccepted": false
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0001:paragraph[8]#key-line-7",
+      "sourceId": "paragraph[8]",
+      "sourceText": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c",
+      "sourceOrder": 5,
+      "sourceSpan": null,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "bridgeAuthority": "HISTORICAL_POSITIVE_ONLY",
+      "canonicalAccepted": false
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0001:paragraph[10]#key-line-8",
+      "sourceId": "paragraph[10]",
+      "sourceText": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n",
+      "sourceOrder": 6,
+      "sourceSpan": null,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "bridgeAuthority": "HISTORICAL_POSITIVE_ONLY",
+      "canonicalAccepted": false
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0001:paragraph[12]#key-line-9",
+      "sourceId": "paragraph[12]",
+      "sourceText": "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m",
+      "sourceOrder": 7,
+      "sourceSpan": null,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "bridgeAuthority": "HISTORICAL_POSITIVE_ONLY",
+      "canonicalAccepted": false
+    }
+  ]
+}
