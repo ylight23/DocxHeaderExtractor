@@ -1,0 +1,30 @@
+{
+  "artifactKind": "A99_SOURCE_ONLY_CANONICAL_HEADING_OCCURRENCE_VALIDATION",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-source-review-v1",
+  "documentId": "DOC-0001",
+  "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+  "checks": {
+    "everySourceOccurrenceReviewed": true,
+    "noDuplicateDecision": true,
+    "noMissingDecision": true,
+    "noUnknownDecision": true,
+    "reviewRequiredCountZero": true,
+    "everyTrueHeadingExactBound": true,
+    "sourceShaMatchesAuthority": true,
+    "semanticCountUsedOnlyAfterFreeze": true,
+    "historicalLevelRead": false,
+    "historicalHierarchyUsed": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldMutation": false,
+    "parentTreeMutation": false
+  },
+  "sourceOccurrenceCount": 14,
+  "trueHeadingCount": 7,
+  "nonHeadingCount": 7,
+  "reviewRequiredCount": 0,
+  "historicalStrictPositiveCount": 7,
+  "canonicalSemanticTotalAfterFreeze": 7,
+  "countDifferenceVsHistorical": 0,
+  "countDifferenceVsSemanticTotal": 0
+}

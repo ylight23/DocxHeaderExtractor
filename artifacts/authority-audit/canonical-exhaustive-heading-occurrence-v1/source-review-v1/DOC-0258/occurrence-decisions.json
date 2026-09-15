@@ -1,0 +1,3556 @@
+{
+  "artifactKind": "A99_SOURCE_ONLY_CANONICAL_HEADING_OCCURRENCE_DECISIONS",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-source-review-v1",
+  "documentId": "DOC-0258",
+  "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+  "sourceOccurrenceCount": 146,
+  "decisionCount": 146,
+  "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+  "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+  "decisions": [
+    {
+      "sourceOccurrenceId": "body[1]/p[3]",
+      "sourceId": "body[1]/p[3]",
+      "documentOrder": 1,
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[3]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[4]",
+      "sourceId": "body[1]/p[4]",
+      "documentOrder": 2,
+      "text": "MAY 15 - 18, 2023 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "DOCUMENT_METADATA",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is meeting date/format metadata under the title, not a structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[5]",
+      "sourceId": "body[1]/p[5]",
+      "documentOrder": 3,
+      "text": "Hybrid meeting ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "DOCUMENT_METADATA",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is meeting date/format metadata under the title, not a structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[6]",
+      "sourceId": "body[1]/p[6]",
+      "documentOrder": 4,
+      "text": "Welcome and meeting objectives ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[6]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[7]",
+      "sourceId": "body[1]/p[7]",
+      "documentOrder": 5,
+      "text": "A meeting of the International Comparison Program (ICP) Inter-Agency Coordination Group (IACG) was held from May 15 to 18, 2023, both virtually and in person in Washington, DC, at the World Bank headquarter. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[8]",
+      "sourceId": "body[1]/p[8]",
+      "documentOrder": 6,
+      "text": "The main objectives of the meeting were to discuss regional and global updates, review the ICP 2021 cycle data, and plan for future activities. The meeting participants are listed in Annex 2. In addition, the meeting agenda and public presentations are available here. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[9]",
+      "sourceId": "body[1]/p[9]",
+      "documentOrder": 7,
+      "text": "Nada Hamadeh, World Bank, opened the meeting by welcoming the attendees and remarking on the progress made by the National and Regional Implementing Agencies across the globe despite the challenges faced during the cycle. Marko Rissanen, World Bank, presented the agenda for the meeting and invited the ICP Regional Implementing Agencies representatives to share regional updates. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[10]",
+      "sourceId": "body[1]/p[10]",
+      "documentOrder": 8,
+      "text": "Regional updates on the ICP 2021 cycle implementation ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[10]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[11]",
+      "sourceId": "body[1]/p[11]",
+      "documentOrder": 9,
+      "text": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), paid tribute to the late Michel Mouyelo-Katoula. He then presented the status of the ICP 2021 cycle in the Africa region and reported on the progress of joint ICP-CPI activities, and the Classification of Individual Consumption According to Purpose (COICOP) 2018 adoption. All 50 African countries in the ICP 2017 cycle will participate in the ICP 2021 cycle. Somalia’s and South Sudan’s participation is being assessed against the available data, and Eritrea and Libya continue to receive technical assistance to prepare for full participation in the future. Validation is ongoing at the regional level, with a full set of preliminary price data slated for submission to the ICP Global Office by July 2023. Data validation workshops are scheduled for the remainder of 2023. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[12]",
+      "sourceId": "body[1]/p[12]",
+      "documentOrder": 10,
+      "text": "Asia and the Pacific Kaushal Joshi, Asian Development Bank (ADB), presented the status of the ICP 2021 cycle in the Asia and the Pacific region. More than half of the 21 participating economies completed price survey activities in Q4 2021, while Lao PDR, India, and Pakistan initiated and conducted all survey activities in 2022. The data from the three economies have not yet been integrated into the regional validations due to the delay. Price data validations are being conducted on an ongoing basis, with four regional inter-economy price data validation workshops conducted since July 2021. In the recent months, the focus has been on the ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[13]",
+      "sourceId": "body[1]/p[13]",
+      "documentOrder": 11,
+      "text": "1 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[16]",
+      "sourceId": "body[1]/p[16]",
+      "documentOrder": 12,
+      "text": "three lagging economies and bi-lateral meetings/communications with others to resolve data validation issues. It is also noted that the back casting of prices to the reference year 2021 is also under progress. ADB has developed a price backcasting tool which allows mapping of ICP items with the appropriate detailed indexes from the CPI and automates extrapolations of prices. Submission and validation of gross domestic product (GDP) expenditures data are ongoing, and many countries are finalizing the detailed breakdown of GDP expenditures. There will be two regional data review and validation workshops in May/June and June/July 2023, while other activities expected during the year are the ICP Experts Group meeting, meeting of the Regional Advisory Board, and preparatory meetings for ICP 2024 in Q3 and Q4 2023. It was noted that while the pandemic restricted data collection and validation activities in the region, participating economies showed tremendous resilience in implementing ICP surveys despite the unusual limitations. The region’s ICP microsite was updated in October 2022 to include events, publications, and a new page for implementing agencies’ information. Additionally, the upcoming ADB’s flagship report Key Indicators for Asia and the Pacific 2023 will feature one section on the ICP, describing the program, its uses, and the contribution of participating economies. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[17]",
+      "sourceId": "body[1]/p[17]",
+      "documentOrder": 13,
+      "text": "Eurostat–OECD PPP Program Mihai-Iulian Gheorghe, Eurostat, and Sophie Bournot, OECD, presented the status of the Eurostat-OECD PPP Program. Data for household consumption, machinery and equipment, and construction surveys have been shared with the ICP Global Office, as well as data on expenditure and PPP estimates for the period 2017-2021. Regarding the latter, data for the years 2020 and 2021 will be revised in the last quarter of 2023, as per the Eurostat-OECD publication schedule. The next data submissions will include housing volume data and regional purchasing power parities (PPPs), as well as expenditure data for Georgia and Ukraine for the year 2021. Given the changes in the Global PPPs publication schedule discussed later at the IACG, Eurostat and OECD proposed to provide updated prices from the selected household consumption surveys, as they will be made available in the last quarter of 2023. Overall, all surveys, data collection, and coordinating activities are being carried out as per the annual work plans. The first estimates of PPPs for GDP, Household Final Consumption Expenditure (HCFE), and Actual Individual Consumption (AIC) will be made available for all EU36 and all OECD countries in June 2023. Finally, an updated list of Basic Headings is now available following the changes introduced by the 2018 COICOP classification. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[18]",
+      "sourceId": "body[1]/p[18]",
+      "documentOrder": 14,
+      "text": "Commonwealth of Independent States Andrey Kosarev, the Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), presented the status of the ICP 2021 cycle in the CIS region. Nine economies are participating in the ICP 2021 cycle. Government compensation and housing rental data have been submitted to CIS-STAT and are expected to be incorporated in the next submission to the ICP Global Office. Detailed GDP expenditure data had also been received from most of the participating countries, with the remaining countries’ data pending. Preliminary regional PPP estimates will be discussed at the regional ICP meeting in June 2023, while the final computation is expected after the final GDP expenditure data are submitted in Q3 2023. Due to the further revisions in GDP expenditures, additional revision of 2017 regional PPPs is expected along with 2021 PPP computation. Regional workshops are planned for late May 2023 to discuss GDP expenditures and for June to review preliminary regional PPPs. A meeting of the Council of Heads of the participating national statistical offices is also planned for May 2023 to review the status of the regional program. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[19]",
+      "sourceId": "body[1]/p[19]",
+      "documentOrder": 15,
+      "text": "Latin America and the Caribbean Claudia de Camino Ferrario, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), presented the status of the ICP 2021 cycle in Latin America and the Caribbean region. A total ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[20]",
+      "sourceId": "body[1]/p[20]",
+      "documentOrder": 16,
+      "text": "2 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[23]",
+      "sourceId": "body[1]/p[23]",
+      "documentOrder": 17,
+      "text": "of 33 economies in the region are participating in the ICP 2021 cycle. Regarding the survey status, all economies have submitted the household consumption price survey data, although complete price data is still missing from some economies. As for the non-household consumption price surveys, the government compensation survey is the most complete, followed by the construction survey. With regards to other non-household consumption price surveys, the machinery and equipment price survey has been the most challenging, due to the technical nature of the survey. The submissions of expenditure data are also ongoing, as 22 economies have already submitted revised 2017 data and 15 economies have submitted 2021 data. The next regional workshops will focus on data validation and are scheduled until the end of the year as necessary. Responding to the challenges in implementing the 2021 ICP cycle in the region, UN-ECLAC will continue its capacity-building activities and communication with national focal points, assessing alternative sources of data, as needed, and sharing best practices. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[24]",
+      "sourceId": "body[1]/p[24]",
+      "documentOrder": 18,
+      "text": "Western Asia Majed Skaini, United Nations Economic and Social Commission for Western Asia (UN-ESCWA),  presented the status of the ICP 2021 cycle in the Western Asia region. Sixteen economies are participating in the regional program. Libya has been joining capacity building activities; however, it will not be a part of the comparisons in the 2021 cycle. Detailed GDP expenditures for seven countries have been submitted to the Regional Implementing Agency, while efforts are ongoing with others. The latest price data, reviewed and updated in the workshop held a week before the IACG meeting, will be incorporated in the next submission to the ICP Global Office. Regional PPPs will be computed for 2017 to 2022, along with forecasts for 2023 in Q3 2023. Regional workshops are planned for June to July 2023 to review the national accounts expenditure time series data, and a country capacity-building workshop for the United Arab Emirates is also planned to further support the personnel change in the national ICP team. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[25]",
+      "sourceId": "body[1]/p[25]",
+      "documentOrder": 19,
+      "text": "Global updates on the ICP 2021 cycle implementation ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[25]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[26]",
+      "sourceId": "body[1]/p[26]",
+      "documentOrder": 20,
+      "text": "The ICP Global Office presented global updates on the ICP 2021 cycle implementation, covering country participation; overall timeline; governance activities; operational activities and data submission status; risks; and outreach and uses. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[27]",
+      "sourceId": "body[1]/p[27]",
+      "documentOrder": 21,
+      "text": "The number of participating economies for the ICP 2021 cycle is similar to the ICP 2017 cycle, during which 176 economies participated. However, work continues at global and regional levels to ensure the participation of a number of economies in Africa, Asia and the Pacific, and Latin America and Caribbean regions. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[28]",
+      "sourceId": "body[1]/p[28]",
+      "documentOrder": 22,
+      "text": "Regarding the ICP 2021 cycle's timeline, the results were initially scheduled to be released by the end of 2023. However, due to the disruptions caused by the COVID-19 pandemic on survey schedules and statistical activities in general and the need for additional data quality assurance, coupled with the participation changes caused by the war in Ukraine that necessitate linking the CIS results linked through the global core list approach, the IACG recommended postponing the release to the first quarter of 2024. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[29]",
+      "sourceId": "body[1]/p[29]",
+      "documentOrder": 23,
+      "text": "Additionally, it recommended postponing the next ICP Technical Advisory Group (TAG) meeting, originally planned for Spring/Summer 2023, to the Fall of 2023, as the draft ICP 2021 results for household consumption would not be ready for TAG review until that time. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[30]",
+      "sourceId": "body[1]/p[30]",
+      "documentOrder": 24,
+      "text": "In terms of governance activities, the report on the ICP was submitted for information to the 54th Session of the United Nations Statistical Commission (UNSC). The Commission was requested to acknowledge the ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[31]",
+      "sourceId": "body[1]/p[31]",
+      "documentOrder": 25,
+      "text": "3 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[34]",
+      "sourceId": "body[1]/p[34]",
+      "documentOrder": 26,
+      "text": "progress made in carrying out the current cycle, along with the associated risks, challenges, and mitigation measures. Additionally, ICP stakeholders were urged to ensure the timely completion of the ICP 2021 cycle activities, to prepare for the upcoming ICP 2024 cycle, and to incorporate the ICP into their regular statistical work programs. In February 2023, the ICP Board Meeting convened to review the status of the 2021 cycle at both the global and regional levels. Furthermore, the ICP TAG held a meeting in December 2022 to discuss the ongoing ICP 2021 cycle, considering the impact of the COVID-19 pandemic and the war in Ukraine on the cycle, exploring new uses of ICP PPPs and data, and examining the progress of items on the ICP Research Agenda. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[35]",
+      "sourceId": "body[1]/p[35]",
+      "documentOrder": 27,
+      "text": "With regards to operational activities, the importance of collecting sufficient metadata, particularly during the current pandemic-impacted cycle, was stressed. The related ICP metadata questionnaires have been prepared for the survey framework and COVID-19, the National Accounts Country Practice Questionnaire, and Housing, and they are to be completed by all participating economies. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[36]",
+      "sourceId": "body[1]/p[36]",
+      "documentOrder": 28,
+      "text": "Regarding the current status of data submissions, the household consumption survey status is the most advanced. However, the status of non-household consumption data, expenditures, and PPPs is less advanced, as regions are in the process of compiling and validating the remaining sets of data. Efforts are underway to ensure availability of all required ICP 2021 cycle datasets. However, it was stressed that the availability of full sets of data for all regions and countries is crucial for the timing and success of the remaining 2023 IACG and TAG meetings, as well as for the release of the cycle’s results. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[37]",
+      "sourceId": "body[1]/p[37]",
+      "documentOrder": 29,
+      "text": "Overall, the ICP 2021 cycle faces risks related to participation, comparability, quality, and timeliness. Participation risks persist in certain regions, and ongoing monitoring and advocacy efforts are being carried out by implementing agencies, the Governing Board, and the UNSC. In terms of comparability, the standard PPP estimation methodology has been maintained as much as possible. However, due to the unavoidable need to directly link the CIS region into the global set of results, the TAG will provide necessary guidance and an assessment of the impact on the ICP 2021 results will be conducted. Regarding quality, additional challenges arising from COVID-19 and variations in price survey schedules and expenditure weights are being mitigated through continued validation efforts at the national, regional, and global levels. The TAG will provide technical guidance and assess the results to ensure quality. Lastly, in terms of timeliness, the publication of the ICP 2021 results was originally scheduled for the end of 2023. However, due to delays in survey implementation and the need for additional quality assurance measures, the IACG recommended postponing the release to the first quarter of 2024. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[38]",
+      "sourceId": "body[1]/p[38]",
+      "documentOrder": 30,
+      "text": "Lastly, with regards to outreach, recent ICP blogs on global PPP estimation and ICP education data were highlighted. The former is part of the ongoing efforts to ensure transparency and share knowledge on ICP methodology. On uses, recent reports by the IMF, World Bank, OECD, and WHO were featured. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[39]",
+      "sourceId": "body[1]/p[39]",
+      "documentOrder": 31,
+      "text": "Data review: Household consumption price and importance data ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[39]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[40]",
+      "sourceId": "body[1]/p[40]",
+      "documentOrder": 32,
+      "text": "The ICP Global Office presented a general assessment of the household consumption survey price data, noting the number of priced Global Core List (GCL) items by each region, and the basic headings (BH) and items that had high coefficients of variation (CVs). ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[41]",
+      "sourceId": "body[1]/p[41]",
+      "documentOrder": 33,
+      "text": "The price validation session was based on the analysis of box-plot graphs, derived from the Quaranta Tables (QTs) computed based on the latest available data provided by the RIAs. The box-plot graphs visualize the following information from the QTs: ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[42]",
+      "sourceId": "body[1]/p[42]",
+      "documentOrder": 34,
+      "text": "4 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "documentOrder": 35,
+      "text": "−−",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+      "documentOrder": 36,
+      "text": "BH graphs: BH CVs; Country price level indexes (PLIs) and related regional averages and regional spreads; and Country CVs. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[1]/tr[1]/tc[2]/p[2]",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[2]/p[2]",
+      "documentOrder": 37,
+      "text": "Item graphs: Item CVs, country average prices in US dollars, and regional averages and regional spreads; world average prices in US dollars; and country PPP-ratios.1",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[1]/tr[1]/tc[2]/p[2]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[45]",
+      "sourceId": "body[1]/p[45]",
+      "documentOrder": 38,
+      "text": "The main issues were identified for each item, identifying the countries where prices might need to be verified and possibly corrected. Wherever possible, potential causes for these price discrepancies were also noted and suggestions for improvement were discussed. Data validation continues at all levels as part of the iterative process, and the next price submissions are expected to be submitted to the ICP Global Office when available, in order to maintain a rolling validation approach until the next IACG meeting. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[46]",
+      "sourceId": "body[1]/p[46]",
+      "documentOrder": 39,
+      "text": "Regarding the assignment of important indicators at the item level, the ICP Global Office presented a preliminary assessment of the situation. The overall share of important items in each region is in line with previous ICP cycles, although there is still a large discrepancy within countries of the same region. The ICP Global Office shared a set of recommendations to assist RIAs and national coordinators in determining whether an item should be deemed as important. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[47]",
+      "sourceId": "body[1]/p[47]",
+      "documentOrder": 40,
+      "text": "Lastly, during an “Operational Clinic” session, available tools for generating Quaranta Tables (QTs) and Dikhanov Tables (DTs), as well as for producing validation visualizations, were presented and discussed. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[48]",
+      "sourceId": "body[1]/p[48]",
+      "documentOrder": 41,
+      "text": "Data review: Housing prices and volumes ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[48]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[49]",
+      "sourceId": "body[1]/p[49]",
+      "documentOrder": 42,
+      "text": "The ICP Global Office presented the submission status and quality of the housing rents and volume data, as well as available validation summary notes and Excel-based tools. The submission of housing rents and volume data was limited, and many submitted data were still under review at the regional and national levels. Despite the scarcity of data, the submitted data showed that the unit of measurement of submitted housing rents should be harmonized. The IACG agreed that, moving forward, housing rents will be reported in per square meters (m2) for annual national rents, rather than per dwelling type. However, for validation purposes at both the regional and global level, both annual rents per m2 and per dwelling can be utilized, as they both provide usable means to validate the data. It was also agreed that all regions will submit housing volume data for the next submission cycle, and that the housing volume data will be reported in “annual national total”, in units, rather than percentages or in thousands/millions. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[50]",
+      "sourceId": "body[1]/p[50]",
+      "documentOrder": 43,
+      "text": "Data review: Private Education ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[50]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[51]",
+      "sourceId": "body[1]/p[51]",
+      "documentOrder": 44,
+      "text": "The ICP Global Office presented current findings of observed issues with private education survey data from four regions. The submissions were preliminary, and under review by the regions. The validation work will continue upon receiving additional of data sets. However, initial global validation findings can be utilized in regional validation. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[52]",
+      "sourceId": "body[1]/p[52]",
+      "documentOrder": 45,
+      "text": "1 The ICP Operational Guide chapter 14 “Validation Tables” provides a comprehensive account of the QTs and Dikhanov Tables (DTs), and interpretation of PPP-Ratios and CPD-residuals, which both measure the patterns of relative prices for the different items within the heading being analyzed. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "FOOTNOTE_OR_NOTE_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a footnote/note continuation embedded in the source, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[53]",
+      "sourceId": "body[1]/p[53]",
+      "documentOrder": 46,
+      "text": "5 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[56]",
+      "sourceId": "body[1]/p[56]",
+      "documentOrder": 47,
+      "text": "Data review: Government compensation and productivity adjustment ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[56]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[57]",
+      "sourceId": "body[1]/p[57]",
+      "documentOrder": 48,
+      "text": "The ICP Global Office presented the submission status of the government compensation data and provided a detailed review of the data quality. Data quality and consistency across regions were reviewed by the meeting for all the items, assessing dispersions of compensation within and across regions, the consistency of data for related occupations, and the level of compensation vis-à-vis the average income of each country. Furthermore, the global and regional procedures for the application of productivity adjustment was reviewed and confirmed. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[58]",
+      "sourceId": "body[1]/p[58]",
+      "documentOrder": 49,
+      "text": "Global quality assessment of the data indicated good initial data coverage, quality, and consistency for the countries that submitted data, while a few items with high variations were identified and discussed for further review. All validation materials were circulated after the meeting and the RIAs will conduct a detailed data review based on the findings from the global data quality review. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[59]",
+      "sourceId": "body[1]/p[59]",
+      "documentOrder": 50,
+      "text": "Data review: Machinery and equipment and construction ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[59]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[60]",
+      "sourceId": "body[1]/p[60]",
+      "documentOrder": 51,
+      "text": "The ICP Global Office provided a review of prices collected for the machinery and equipment and construction surveys. This constituted the first round of global validation for these surveys, and the ICP Global Office emphasized how data submitted by regional agencies need not be final or complete at this stage. Global validation has commenced for five regions, with validation of data from Africa expected to be initiated shortly. The ICP Global Office identified the key issues to be addressed by each RIA, and all validation materials were circulated after the meeting. Global quality assessment to date indicates good initial data coverage, quality, and consistency with the previous cycle. In agreement with the RIAs, the ICP Global Office will set out a review of some of the items included in these surveys, based on the existing list utilized by Eurostat and OECD and inputs from other RIAs. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[61]",
+      "sourceId": "body[1]/p[61]",
+      "documentOrder": 52,
+      "text": "In terms of extrapolating/backcasting machinery and equipment survey price data, the IACG noted the absence of an ideal deflator, such as CPIs for household consumption survey data. However, the Eurostat-OECD PPP Program utilizes Gross Fixed Capital Formation GDP deflators for this purpose at the basic heading level.2 Another potential deflator noted is the Producer Price Index (PPI); however, PPI measures the price movements on domestically produced goods, while many of the items covered by the ICP machinery and equipment survey are in fact imported. Furthermore, the use of Import / Export Price Indexes was noted. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[62]",
+      "sourceId": "body[1]/p[62]",
+      "documentOrder": 53,
+      "text": "Data review: 2017-2021 National Accounts expenditures ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[62]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[63]",
+      "sourceId": "body[1]/p[63]",
+      "documentOrder": 54,
+      "text": "The ICP Global Office presented the current status of national accounts data submissions and provided findings from a detailed review of expenditure data, including intra- and inter-country validation, time-series validation, inter-regional consistency, the effects of the pandemic on expenditure patterns, and the status of the revision of 2017 expenditures. The importance of recording country-specific metadata for the pandemic period was also emphasized to retain information on any special data treatments for transparency purposes. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[64]",
+      "sourceId": "body[1]/p[64]",
+      "documentOrder": 55,
+      "text": "2 Refer to Eurostat-OECD Methodological Manual on PPPs, chapter “Equipment Goods” for details. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "FOOTNOTE_OR_NOTE_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a footnote/note continuation embedded in the source, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[65]",
+      "sourceId": "body[1]/p[65]",
+      "documentOrder": 56,
+      "text": "6 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[68]",
+      "sourceId": "body[1]/p[68]",
+      "documentOrder": 57,
+      "text": "Overall, coverage of national accounts expenditure data has improved significantly, with most of the countries providing initial estimates of detailed time series expenditures for 2017-2020, although regions noted that the compilation of detailed expenditure data are still at the preliminary stage in many countries. A global quality review of time series data indicates that the expenditure structure over the pandemic period exhibits plausible changes reflecting the impact of the pandemic. However, some countries that submitted initial estimates still require further in-depth review and improvement of data to accurately reflect the economic status over the pandemic period. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[69]",
+      "sourceId": "body[1]/p[69]",
+      "documentOrder": 58,
+      "text": "All validation materials, including typical regional and global patterns of changes due to the pandemic outbreak observed in the submitted expenditure data, were circulated after the meeting. RIAs will conduct a detailed data review based on the findings from the global data quality review and countries are expected to share best practices in making estimates for the pandemic period, where methods of estimation and data sources need a detailed review. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[70]",
+      "sourceId": "body[1]/p[70]",
+      "documentOrder": 59,
+      "text": "Data review: 2017-2021 Population and market exchange rates ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[70]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[71]",
+      "sourceId": "body[1]/p[71]",
+      "documentOrder": 60,
+      "text": "The ICP Global Office provided a review of the auxiliary data required for the ICP, including population and market exchange rates. Data are to be reported in units instead of multiples. In addition, the consistency with reported prices, market exchange rates, and expenditure data needs to be ensured. Regional submissions should also include sufficient metadata on population and market exchange rates, which allow for assessing any potential observed differences between different data sources. The potential challenges with the data ranging from currency redenomination to parallel exchange rate activities were also noted. Implementing agencies will monitor situations with potential issues for any potential impact. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[72]",
+      "sourceId": "body[1]/p[72]",
+      "documentOrder": 61,
+      "text": "Results review: draft revised 2017 and 2021 results ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[72]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[73]",
+      "sourceId": "body[1]/p[73]",
+      "documentOrder": 62,
+      "text": "The ICP Global Office presented the preliminary findings of the estimation of the 2021 global PPPs for the heading “Individual Consumption Expenditure by Households without Housing”. The results of this simulation exercise, which was based on preliminary submissions and ICP Global Office estimates with regards to prices, regional PPPs and expenditure data, were discussed with the RIAs who concurred on the need for further data submissions, data validation and subsequent assessment of the results. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[74]",
+      "sourceId": "body[1]/p[74]",
+      "documentOrder": 63,
+      "text": "Planning for the ICP 2024 cycle ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[74]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[75]",
+      "sourceId": "body[1]/p[75]",
+      "documentOrder": 64,
+      "text": "In preparation for the ICP 2024 cycle, the ICP Global Office presented the suggested schedule for the pre-survey and finalization of ICP 2024 item lists, and a summary of changes introduced by the COICOP 2018 at the basic heading level. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[76]",
+      "sourceId": "body[1]/p[76]",
+      "documentOrder": 65,
+      "text": "With regards to the ICP 2024 item lists, it was noted that the regions and countries expect the final ICP 2024 item list to be available during Q4, 2023, in order to be able to conduct the necessary survey preparation activities. However, at the same time the update of certain categories related to fast-evolving technology items would need to be finalized close to the actual survey period. To this end, it was suggested the pre-survey work by the regions would take place during June to September 2023, allowing discussion of the semi-final list at the next IACG meeting in Fall 2023, and subsequent finalization of the ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[77]",
+      "sourceId": "body[1]/p[77]",
+      "documentOrder": 66,
+      "text": "7 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[80]",
+      "sourceId": "body[1]/p[80]",
+      "documentOrder": 67,
+      "text": "item list by November 2023. However, fast-evolving technology items will be finalized in December 2023, in order to ensure availability of the items in 2024. All pre-survey work will be conducted through the ICP Item List Management Tool (ILMT). ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[81]",
+      "sourceId": "body[1]/p[81]",
+      "documentOrder": 68,
+      "text": "It was noted that for all surveys the key objective is to introduce only necessary updates, based on the market realities especially for fast-evolving technology items, or findings from the previous cycle. For non-household consumption surveys, it was noted that limited changes are expected for the private education, housing, and government compensation surveys. For the machinery and equipment survey, however, a more substantial update is needed, while for construction, feedback on the current item definitions is welcomed. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[82]",
+      "sourceId": "body[1]/p[82]",
+      "documentOrder": 69,
+      "text": "Separately, the IACG discussed the item types in relation to brands. Currently, the item types cover the specified brand, well-known brand, brandless, and brand not relevant item types, while for clothing and small and large household appliances the well-known brand category is further divided into high, medium and low. The IACG agreed to suggest a list of high, medium, and low brands, in order to gain a better understanding of the brand levels across the regions and countries. To this end, the ICP Global Office will prepare related materials based on earlier listings developed for the ICP 2017 cycle. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[83]",
+      "sourceId": "body[1]/p[83]",
+      "documentOrder": 70,
+      "text": "Subsequently, the Global Office presented a detailed analysis of the current ICP classification and Classification of Individual Consumption According to Purpose (COICOP) 2018, and the potential impact of the new COICOP. It was noted that while the main structure of the COICOP stays the same, some changes in various classifications can affect the current ICP classification as countries start adopting the new COICOP. RIAs reported that many countries have already adopted COICOP 2018 for CPI purposes or are in process of adopting it soon. The ICP Global Office and Regional Implementing Agencies agree to monitor countries’ progress in adopting the COICOP 2018, look for any changes needed for the ICP classification, and continue the conversation in future IACG meetings. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[84]",
+      "sourceId": "body[1]/p[84]",
+      "documentOrder": 71,
+      "text": "Planning for the 2023 governance activities and ICP 2021 cycle release ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[84]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[85]",
+      "sourceId": "body[1]/p[85]",
+      "documentOrder": 72,
+      "text": "The ICP Global Office presented the planned timetable for the upcoming governance activities in 2023. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[86]",
+      "sourceId": "body[1]/p[86]",
+      "documentOrder": 73,
+      "text": "The next ICP TAG meeting was scheduled for Summer 2023, based on the assumption that preliminary results for household consumption would be available. However, given that the results are not available in comprehensive form, it was agreed to suggest postponing the TAG meeting to the Fall of 2023, and to hold the IACG and TAG meetings back-to-back. Furthermore, the Governing Board meeting is scheduled to take place by the end of 2023 and the ICP report for the United Nations Statistical Commission (UNSC) is due to by November 2023. The report is anticipated to be presented “for discussion” at the UNSC. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[87]",
+      "sourceId": "body[1]/p[87]",
+      "documentOrder": 74,
+      "text": "With regards to the operational activities for the ICP 2021 cycle, it was decided to keep a schedule of rolling data submissions as data becomes available, with ongoing global and regional validation and results assessment. The next formal data submission for a complete set of data is due in September 2023. Additionally, \"Operational Clinics” to address any technical issues are to be arranged virtually as needed. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[88]",
+      "sourceId": "body[1]/p[88]",
+      "documentOrder": 75,
+      "text": "8 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[91]",
+      "sourceId": "body[1]/p[91]",
+      "documentOrder": 76,
+      "text": "Planning for an approach to produce annual ICP results and forecasts ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[91]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[92]",
+      "sourceId": "body[1]/p[92]",
+      "documentOrder": 77,
+      "text": "The ICP Global Office presented an assessment of the ICP’s advances over the years and noted the user expectation of more frequent and recent results. As of now, the ICP cycles are, in principle, conducted every three years; however, the cycle frequency together with the time required to produce the results in that most recent ICP results can be deemed outdated by modern standards. In addition, the current approach does not allow incorporating regional results3 before the next global results are released. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[93]",
+      "sourceId": "body[1]/p[93]",
+      "documentOrder": 78,
+      "text": "To address users’ needs for more recent data, a path to produce annual PPPs was discussed. It was noted that two annual PPP programs are already in place, namely, the Eurostat-OECD PPP Programme and the Western Asia PPP program. Furthermore, it was stressed that many of the elements for an annual PPP production of global PPPs are already developed; however, a systematic production approach and schedule needs to be agreed by the IACG. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[94]",
+      "sourceId": "body[1]/p[94]",
+      "documentOrder": 79,
+      "text": "It was agreed that the ICP Global Office will draft a note describing the suggested approach to produce annual PPPs at the global level, for discussion at the forthcoming ICP TAG and Governing Board meetings. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[95]",
+      "sourceId": "body[1]/p[95]",
+      "documentOrder": 80,
+      "text": "The RIAs will be invited to provide inputs, as needed, as well as review and comment on the note. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[96]",
+      "sourceId": "body[1]/p[96]",
+      "documentOrder": 81,
+      "text": "Any other business ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[96]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[97]",
+      "sourceId": "body[1]/p[97]",
+      "documentOrder": 82,
+      "text": "The World Bank hosted the  9th International Conference on Agricultural Statistics, organized by the World Bank, Food and Agriculture Organization (FAO), and the United States Department of Agriculture (USDA). The event included a session entitled \"Tracking Access to Healthy Diets\" which discussed the methods used to calculate the Cost and Affordability of Healthy Diets (CoAHD) indicators developed by Food Prices for Nutrition based on ICP data among other sources. The attendees of the IACG meeting were invited to attend the session. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "NARRATIVE_PROSE",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is narrative prose or supporting document text and does not introduce a standalone structural heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[98]",
+      "sourceId": "body[1]/p[98]",
+      "documentOrder": 83,
+      "text": "3 Aside of the Eurostat-OECD, which serves as the base region for the global comparison. ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "FOOTNOTE_OR_NOTE_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a footnote/note continuation embedded in the source, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[99]",
+      "sourceId": "body[1]/p[99]",
+      "documentOrder": 84,
+      "text": "9 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[102]",
+      "sourceId": "body[1]/p[102]",
+      "documentOrder": 85,
+      "text": "Annex 1: Meeting Agenda ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[102]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "documentOrder": 86,
+      "text": "DAY 1: MONDAY, MAY 15, 2023 09:00 – 09:10 Opening remarks ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[2]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[1]/p[1]",
+      "documentOrder": 87,
+      "text": "09:10– 12:00 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[2]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "documentOrder": 88,
+      "text": "Regional updates on the ICP 2021 cycle implementation –Country participation status ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[3]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[3]/tc[1]/p[1]",
+      "documentOrder": 89,
+      "text": "–",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[3]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[3]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[3]/tc[2]/p[1]",
+      "documentOrder": 90,
+      "text": "Implementation status ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[3]/tc[2]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[4]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[4]/tc[1]/p[1]",
+      "documentOrder": 91,
+      "text": "–",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[4]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+      "documentOrder": 92,
+      "text": "oSurvey status oExpenditure compilation status oData submission and validation status oPPP estimation status (2021, 2017, timeseries) Recent and forthcoming workshops and meetings ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[5]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[5]/tc[1]/p[1]",
+      "documentOrder": 93,
+      "text": "–",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[5]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+      "documentOrder": 94,
+      "text": "Outreach activities and announcements ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[6]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[6]/tc[1]/p[1]",
+      "documentOrder": 95,
+      "text": "13:00 – 14:00 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[6]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[6]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[6]/tc[2]/p[1]",
+      "documentOrder": 96,
+      "text": "Global updates on the ICP 2021 cycle implementation –Overall ICP 2021 cycle timetable and production roadmap ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[6]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[7]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[7]/tc[1]/p[1]",
+      "documentOrder": 97,
+      "text": "–",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[7]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[7]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[7]/tc[2]/p[1]",
+      "documentOrder": 98,
+      "text": "Operational material and guidance ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[7]/tc[2]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[8]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[8]/tc[1]/p[1]",
+      "documentOrder": 99,
+      "text": "–",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[8]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[8]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[8]/tc[2]/p[1]",
+      "documentOrder": 100,
+      "text": "Data submission and validation status ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[8]/tc[2]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[9]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[9]/tc[1]/p[1]",
+      "documentOrder": 101,
+      "text": "–",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[9]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[9]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[9]/tc[2]/p[1]",
+      "documentOrder": 102,
+      "text": "Risk assessment ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[9]/tc[2]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[10]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[10]/tc[1]/p[1]",
+      "documentOrder": 103,
+      "text": "–",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[10]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[10]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[10]/tc[2]/p[1]",
+      "documentOrder": 104,
+      "text": "Outreach activities and announcement ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[10]/tc[2]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[11]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[11]/tc[1]/p[1]",
+      "documentOrder": 105,
+      "text": "14:00 – 17:00 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[11]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[2]/tr[11]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[11]/tc[2]/p[1]",
+      "documentOrder": 106,
+      "text": "Data review: Household consumption price and importance data ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[2]/tr[11]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[103]",
+      "sourceId": "body[1]/p[103]",
+      "documentOrder": 107,
+      "text": "DAY 2: TUESDAY, MAY 16, 2023 ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[103]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "documentOrder": 108,
+      "text": "09:00 – 10:30 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+      "documentOrder": 109,
+      "text": "Data review: Housing prices and volumes ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[2]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[2]/tc[1]/p[1]",
+      "documentOrder": 110,
+      "text": "10:45 – 11:30 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[2]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "documentOrder": 111,
+      "text": "Data review: Private education ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[3]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[3]/tc[1]/p[1]",
+      "documentOrder": 112,
+      "text": "11:30 – 14:00 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[3]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[3]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[3]/tc[2]/p[1]",
+      "documentOrder": 113,
+      "text": "Data review: Government compensation and productivity adjustment ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[3]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[4]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[4]/tc[1]/p[1]",
+      "documentOrder": 114,
+      "text": "14:00 – 15:30 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[4]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+      "documentOrder": 115,
+      "text": "Data review: Machinery and equipment ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[1]",
+      "documentOrder": 116,
+      "text": "15:45 – 17:00 Data review: Construction and civil engineering ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[5]/tc[1]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[2]",
+      "sourceId": "body[1]/tbl[3]/tr[5]/tc[1]/p[2]",
+      "documentOrder": 117,
+      "text": "DAY 3: WEDNESDAY, MAY 17, 2023 ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[5]/tc[1]/p[2]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[6]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[6]/tc[1]/p[1]",
+      "documentOrder": 118,
+      "text": "09:00 – 11:15 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[6]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+      "documentOrder": 119,
+      "text": "Data review: 2017-2021 National accounts expenditures ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[7]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[7]/tc[1]/p[1]",
+      "documentOrder": 120,
+      "text": "11:15 – 12:00 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[7]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+      "documentOrder": 121,
+      "text": "Data review: 2017-2021 Population and market exchange rates ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[8]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[8]/tc[1]/p[1]",
+      "documentOrder": 122,
+      "text": "13:00 – 17:00 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[8]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+      "documentOrder": 123,
+      "text": "Result review: draft revised 2017 and 2021 results ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[104]",
+      "sourceId": "body[1]/p[104]",
+      "documentOrder": 124,
+      "text": "DAY 4: THURSDAY, MAY 18, 2023 ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[104]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+      "documentOrder": 125,
+      "text": "09:00 – 10:30 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+      "documentOrder": 126,
+      "text": "Planning for the ICP 2024 cycle –Timetable ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:AGENDA_DAY_OR_SESSION_LABEL",
+        "SOURCE_CONTAINER:body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[2]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[2]/tc[2]/p[1]",
+      "documentOrder": 127,
+      "text": "–",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SCHEDULE_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[4]/tr[2]/tc[2]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell contains a time slot or separator used to lay out the agenda, not a heading occurrence.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/tbl[4]/tr[2]/tc[3]/p[1]",
+      "sourceId": "body[1]/tbl[4]/tr[2]/tc[3]/p[1]",
+      "documentOrder": 128,
+      "text": "Operational materials ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "AGENDA_SUPPORTING_CELL",
+        "SOURCE_CONTAINER:body[1]/tbl[4]/tr[2]/tc[3]/p[1]",
+        "SOURCE_TEXT"
+      ],
+      "reason": "The table cell is supporting agenda content/substructure rather than one of the document's standalone heading occurrences.",
+      "confidence": "MEDIUM",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[105]",
+      "sourceId": "body[1]/p[105]",
+      "documentOrder": 129,
+      "text": "10 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[108]",
+      "sourceId": "body[1]/p[108]",
+      "documentOrder": 130,
+      "text": "10:45 – 12:00 ICP PPP calculation tools ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[108]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[109]",
+      "sourceId": "body[1]/p[109]",
+      "documentOrder": 131,
+      "text": "13:00 – 14:00 Planning for the 2023 governance activities and ICP 2021 cycle release ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[109]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[110]",
+      "sourceId": "body[1]/p[110]",
+      "documentOrder": 132,
+      "text": "14:15 – 16:30 Planning for an approach to produce annual ICP results and forecasts ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[110]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[111]",
+      "sourceId": "body[1]/p[111]",
+      "documentOrder": 133,
+      "text": "16:30 – 17:00 Any other business and closing ",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_TEXT_FUNCTION:DOCUMENT_OR_NARRATIVE_SECTION_LABEL",
+        "SOURCE_CONTAINER:body[1]/p[111]",
+        "DOCUMENT_ORDER",
+        "SURROUNDING_SOURCE_STRUCTURE"
+      ],
+      "reason": "The source occurrence is a standalone document title, narrative section label, agenda day/session label, or agenda session heading; it introduces a structural content unit rather than providing prose, pagination, or schedule metadata.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[112]",
+      "sourceId": "body[1]/p[112]",
+      "documentOrder": 134,
+      "text": "11 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[115]",
+      "sourceId": "body[1]/p[115]",
+      "documentOrder": 135,
+      "text": "Annex 2: List of participants African Development Bank (AfDB) −Ben Paul Mungyereza (by videoconference) −Gregoire Mboya de Loubassou (in-person) −Charles Sessede (by videoconference) −Symphorien Ndang Tabo (by videoconference) ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "ANNEX_PARTICIPANT_LIST_OR_PAGE_ARTIFACT",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence belongs to the Annex 2 participant list or a page-number artifact, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[116]",
+      "sourceId": "body[1]/p[116]",
+      "documentOrder": 136,
+      "text": "Asian Development Bank (ADB) −Kaushal Joshi (in-person) −Criselda H. De Dios (in-person) ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "ANNEX_PARTICIPANT_LIST_OR_PAGE_ARTIFACT",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence belongs to the Annex 2 participant list or a page-number artifact, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[117]",
+      "sourceId": "body[1]/p[117]",
+      "documentOrder": 137,
+      "text": "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT) −Andrey Kosarev (by videoconference) −Valerica Accibas (by videoconference) ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "ANNEX_PARTICIPANT_LIST_OR_PAGE_ARTIFACT",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence belongs to the Annex 2 participant list or a page-number artifact, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[118]",
+      "sourceId": "body[1]/p[118]",
+      "documentOrder": 138,
+      "text": "Organisation for Economic Co-operation and Development (OECD) −Daniel Sanchez Serra (by videoconference) −Sophie Bournot (in-person) ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "ANNEX_PARTICIPANT_LIST_OR_PAGE_ARTIFACT",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence belongs to the Annex 2 participant list or a page-number artifact, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[119]",
+      "sourceId": "body[1]/p[119]",
+      "documentOrder": 139,
+      "text": "Statistical Office of the European Communities (Eurostat) −Mihai-Iulian Gheorghe (in-person) −Eleonora-Maria Dumitrascu (by videoconference) ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "ANNEX_PARTICIPANT_LIST_OR_PAGE_ARTIFACT",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence belongs to the Annex 2 participant list or a page-number artifact, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[120]",
+      "sourceId": "body[1]/p[120]",
+      "documentOrder": 140,
+      "text": "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC) −Claudia de Camino Ferrario (in-person) −Lady Infante (by videoconference) −Ernestina Perez (by videoconference) ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "ANNEX_PARTICIPANT_LIST_OR_PAGE_ARTIFACT",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence belongs to the Annex 2 participant list or a page-number artifact, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[121]",
+      "sourceId": "body[1]/p[121]",
+      "documentOrder": 141,
+      "text": "United Nations Economic and Social Commission for Western Asia (UN-ESCWA) −Majed Skaini (in-person) −Sadim Sbeiti (by videoconference) ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "ANNEX_PARTICIPANT_LIST_OR_PAGE_ARTIFACT",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence belongs to the Annex 2 participant list or a page-number artifact, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[122]",
+      "sourceId": "body[1]/p[122]",
+      "documentOrder": 142,
+      "text": "International Monetary Fund (IMF) −Brian Graf (in-person) ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "ANNEX_PARTICIPANT_LIST_OR_PAGE_ARTIFACT",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence belongs to the Annex 2 participant list or a page-number artifact, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[123]",
+      "sourceId": "body[1]/p[123]",
+      "documentOrder": 143,
+      "text": "World Bank −Nada Hamadeh (in-person) −Marko Rissanen (in-person) −Giovanni Tonutti (in-person) −Inyoung Song (in-person) −Maurice Nsabimana (in-person) −Mizuki Yamanaka (in-person) −Nancy Kebe (in-person) −Rui Costa (in-person) −William Vigil-Oliver (by videoconference) −Yan Bai (in-person) ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "ANNEX_PARTICIPANT_LIST_OR_PAGE_ARTIFACT",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence belongs to the Annex 2 participant list or a page-number artifact, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[124]",
+      "sourceId": "body[1]/p[124]",
+      "documentOrder": 144,
+      "text": "12 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[127]",
+      "sourceId": "body[1]/p[127]",
+      "documentOrder": 145,
+      "text": "−Yuri Dikhanov (in-person) ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "ANNEX_PARTICIPANT_LIST_OR_PAGE_ARTIFACT",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence belongs to the Annex 2 participant list or a page-number artifact, not a heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[128]",
+      "sourceId": "body[1]/p[128]",
+      "documentOrder": 146,
+      "text": "13 ",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "PAGE_NUMBER_PATTERN",
+        "SOURCE_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The occurrence is a page-number artifact, not a document heading.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "boldObserved": true,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    }
+  ],
+  "historicalLevelRead": false,
+  "historicalHierarchyUsed": false,
+  "semanticTotalUsedForDecision": false
+}

@@ -1,0 +1,351 @@
+{
+  "artifactKind": "A99_SOURCE_ONLY_CANONICAL_HEADING_OCCURRENCE_DECISIONS",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-source-review-v1",
+  "documentId": "DOC-0001",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "sourceOccurrenceCount": 14,
+  "decisionCount": 14,
+  "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+  "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+  "decisions": [
+    {
+      "sourceOccurrenceId": "body[1]/p[1]",
+      "sourceId": "body[1]/p[1]",
+      "documentOrder": 1,
+      "text": "Chương 1. Quy định chung",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Heading1",
+        "NUMBERED_SECTION_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph carries an explicit Heading style and a numbered section heading text.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Heading1",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[2]",
+      "sourceId": "body[1]/p[2]",
+      "documentOrder": 2,
+      "text": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Normal",
+        "NARRATIVE_BODY_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph is ordinary narrative/body text between structural heading paragraphs.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[3]",
+      "sourceId": "body[1]/p[3]",
+      "documentOrder": 3,
+      "text": "1.1. Phạm vi điều chỉnh",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Heading2",
+        "NUMBERED_SECTION_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph carries an explicit Heading style and a numbered section heading text.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Heading2",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[4]",
+      "sourceId": "body[1]/p[4]",
+      "documentOrder": 4,
+      "text": "Các số liệu dẫn trong mục này được tổng hợp từ báo cáo quý gần nhất và đã được đối chiếu với hệ thống quản lý tập trung trước khi đưa vào tài liệu.",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Normal",
+        "NARRATIVE_BODY_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph is ordinary narrative/body text between structural heading paragraphs.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[5]",
+      "sourceId": "body[1]/p[5]",
+      "documentOrder": 5,
+      "text": "1.2. Đối tượng áp dụng",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Heading2",
+        "NUMBERED_SECTION_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph carries an explicit Heading style and a numbered section heading text.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Heading2",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[6]",
+      "sourceId": "body[1]/p[6]",
+      "documentOrder": 6,
+      "text": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Normal",
+        "NARRATIVE_BODY_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph is ordinary narrative/body text between structural heading paragraphs.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[7]",
+      "sourceId": "body[1]/p[7]",
+      "documentOrder": 7,
+      "text": "1.2.1. Cơ quan quản lý",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Heading3",
+        "NUMBERED_SECTION_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph carries an explicit Heading style and a numbered section heading text.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Heading3",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[8]",
+      "sourceId": "body[1]/p[8]",
+      "documentOrder": 8,
+      "text": "Các số liệu dẫn trong mục này được tổng hợp từ báo cáo quý gần nhất và đã được đối chiếu với hệ thống quản lý tập trung trước khi đưa vào tài liệu.",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Normal",
+        "NARRATIVE_BODY_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph is ordinary narrative/body text between structural heading paragraphs.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[9]",
+      "sourceId": "body[1]/p[9]",
+      "documentOrder": 9,
+      "text": "1.2.2. Đơn vị trực thuộc",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Heading3",
+        "NUMBERED_SECTION_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph carries an explicit Heading style and a numbered section heading text.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Heading3",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[10]",
+      "sourceId": "body[1]/p[10]",
+      "documentOrder": 10,
+      "text": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Normal",
+        "NARRATIVE_BODY_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph is ordinary narrative/body text between structural heading paragraphs.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[11]",
+      "sourceId": "body[1]/p[11]",
+      "documentOrder": 11,
+      "text": "Chương 2. Tổ chức thực hiện",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Heading1",
+        "NUMBERED_SECTION_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph carries an explicit Heading style and a numbered section heading text.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Heading1",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[12]",
+      "sourceId": "body[1]/p[12]",
+      "documentOrder": 12,
+      "text": "Các số liệu dẫn trong mục này được tổng hợp từ báo cáo quý gần nhất và đã được đối chiếu với hệ thống quản lý tập trung trước khi đưa vào tài liệu.",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Normal",
+        "NARRATIVE_BODY_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph is ordinary narrative/body text between structural heading paragraphs.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[13]",
+      "sourceId": "body[1]/p[13]",
+      "documentOrder": 13,
+      "text": "2.1. Phân công trách nhiệm",
+      "decision": "TRUE_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Heading2",
+        "NUMBERED_SECTION_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph carries an explicit Heading style and a numbered section heading text.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Heading2",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "body[1]/p[14]",
+      "sourceId": "body[1]/p[14]",
+      "documentOrder": 14,
+      "text": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+      "decision": "NON_HEADING",
+      "evidence": [
+        "SOURCE_PARAGRAPH_STYLE:Normal",
+        "NARRATIVE_BODY_TEXT",
+        "DOCUMENT_ORDER"
+      ],
+      "reason": "The source paragraph is ordinary narrative/body text between structural heading paragraphs.",
+      "confidence": "HIGH",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": false,
+        "parserOwnedEvidenceOnly": true
+      },
+      "reviewAuthority": "CODEX_SOURCE_ONLY_ADJUDICATION",
+      "historicalPositiveMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "hierarchyUsedForDecision": false,
+      "historicalLevelRead": false
+    }
+  ],
+  "historicalLevelRead": false,
+  "historicalHierarchyUsed": false,
+  "semanticTotalUsedForDecision": false
+}

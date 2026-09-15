@@ -1,0 +1,38 @@
+{
+  "artifactKind": "A99_SOURCE_ONLY_CANONICAL_HEADING_OCCURRENCE_REVIEW",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-source-review-v1",
+  "phase": "SOURCE_ONLY_OCCURRENCE_ADJUDICATION_DOC0001_DOC0258",
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+      "sourceOccurrenceCount": 14,
+      "trueHeadingCount": 7,
+      "nonHeadingCount": 7,
+      "reviewRequiredCount": 0,
+      "exactBindingCount": 7,
+      "historicalStrictPositiveCount": 7,
+      "canonicalSemanticTotal": 7
+    },
+    {
+      "documentId": "DOC-0258",
+      "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+      "sourceOccurrenceCount": 146,
+      "trueHeadingCount": 37,
+      "nonHeadingCount": 109,
+      "reviewRequiredCount": 0,
+      "exactBindingCount": 37,
+      "historicalStrictPositiveCount": 24,
+      "canonicalSemanticTotal": 37
+    }
+  ],
+  "sourceOnly": true,
+  "semanticTotalReadOnlyAfterFreeze": true,
+  "historicalLevelRead": false,
+  "historicalHierarchyUsed": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldMutation": false,
+  "parentTreeMutation": false,
+  "stopAfterOccurrenceReview": true
+}

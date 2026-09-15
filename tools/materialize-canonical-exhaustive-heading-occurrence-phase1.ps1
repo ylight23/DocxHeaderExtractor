@@ -43,11 +43,21 @@ function Get-ParagraphRecord {
     $bold = $false
     foreach ($run in $Paragraph.Descendants($WordNamespace + "r")) {
         $rPr = $run.Element($WordNamespace + "rPr")
-        if ($null -ne $rPr -and $null -ne $rPr.Element($WordNamespace + "b")) {
-            $bold = $true
-            break
+        if ($null -ne $rPr) {
+            $boldElement = $rPr.Element($WordNamespace + "b")
+            if ($null -ne $boldElement) {
+                $boldValue = $boldElement.Attribute("val")
+                $bold = $null -eq $boldValue -or @("0", "false", "off", "no") -notcontains $boldValue.Value.ToLowerInvariant()
+                if ($bold) { break }
+            }
         }
     }
+
+    $styleValue = if ($null -ne $style) {
+        $styleAttribute = $style.Attribute($WordNamespace + "val")
+        if ($null -eq $styleAttribute) { $styleAttribute = $style.Attribute("val") }
+        if ($null -ne $styleAttribute) { [string]$styleAttribute.Value } else { $null }
+    } else { $null }
 
     [pscustomobject]@{
         sourceOccurrenceId = $SourceId
@@ -56,7 +66,7 @@ function Get-ParagraphRecord {
         rawText = $text
         sourceSpan = [pscustomobject]@{ start = 0; end = $text.Length }
         sourceEvidence = [pscustomobject]@{
-            paragraphStyleId = if ($null -ne $style) { [string]$style.Attribute($WordNamespace + "val") } else { $null }
+            paragraphStyleId = $styleValue
             boldObserved = $bold
             parserOwnedEvidenceOnly = $true
         }
