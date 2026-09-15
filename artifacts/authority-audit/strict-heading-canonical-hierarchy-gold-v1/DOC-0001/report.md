@@ -1,9 +1,9 @@
 # DOC-0001 canonical hierarchy pilot
 
-Status: **READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY**
+Status: **USER_REVIEWED_CANONICAL_HIERARCHY_GOLD**
 
-This is a source-only pilot proposal for DOC-0001. It is pending explicit user
-approval and is not yet immutable user-approved Gold.
+This source-only DOC-0001 pilot was explicitly approved by the user against
+commit `3345c70` and is now immutable user-reviewed canonical hierarchy Gold.
 
 - Heading occurrences: 7
 - Semantic nodes: 7
@@ -24,5 +24,6 @@ Levels in this lane are derived only in derived-levels.json from the
 validated synthetic-ROOT tree. Historical level was not read and no
 historical comparison was performed.
 
-Do not proceed to DOC-0002 or freeze this pilot as
-USER_REVIEWED_CANONICAL_HIERARCHY_GOLD until the user explicitly approves it.
+This approval does not authorize adjudication of DOC-0002 or any remaining
+document. Historical level remains unopened; any later comparison is a
+separate diagnostic and cannot modify this hierarchy.
