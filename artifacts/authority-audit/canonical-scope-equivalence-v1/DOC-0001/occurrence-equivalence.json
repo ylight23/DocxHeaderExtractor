@@ -1,0 +1,258 @@
+{
+  "artifactKind": "A99_DOC0001_CANONICAL_SCOPE_OCCURRENCE_EQUIVALENCE",
+  "schemaVersion": "a99-canonical-scope-equivalence-v1",
+  "documentId": "DOC-0001",
+  "status": "CANONICAL_SCOPE_EQUIVALENCE_FAILED",
+  "canonicalAuthority": {
+    "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/source-review-v1/DOC-0001/exact-bindings.json",
+    "sourcePath": "bench/01-style-chuan.docx",
+    "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+    "occurrenceCount": 7
+  },
+  "oldHierarchyAuthority": {
+    "path": "artifacts/authority-audit/strict-heading-canonical-hierarchy-gold-v1/DOC-0001/source-review-adjudication.json",
+    "approvalCommit": "3345c70",
+    "occurrenceCount": 7,
+    "sourcePacketSha256": "aeb8709960d4371f5fe317208820e4017a14b0bfc93de18fbb6349cf73d3d65b",
+    "sourcePaths": [
+      "bench/01-style-chuan.key"
+    ],
+    "sourceReferenceShas": [
+      "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+    ]
+  },
+  "counts": {
+    "oldOccurrenceCount": 7,
+    "canonicalOccurrenceCount": 7,
+    "exactOneToOneBridges": 0,
+    "physicalIdBridgesWithoutComparableSpan": 0,
+    "oldOnly": 7,
+    "canonicalOnly": 7,
+    "ambiguous": 0,
+    "sourceLineageMismatches": 7
+  },
+  "bridgePolicy": "Exact physical identity requires compatible source SHA and source occurrence identity; text normalization is diagnostic evidence only and cannot authorize a bridge.",
+  "bridges": [
+    {
+      "oldReviewRef": "H0001",
+      "oldHeadingOccurrenceId": "DOC-0001:paragraph[0]#key-line-3",
+      "oldSourceId": "paragraph[0]",
+      "oldSourceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "oldSourcePath": "bench/01-style-chuan.key",
+      "oldText": "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung",
+      "reversiblyNormalizedText": "Chương 1. Quy định chung",
+      "canonicalTextCandidateCount": 1,
+      "sameSourceShaCandidateCount": 0,
+      "samePhysicalSourceIdCandidateCount": 0,
+      "exactSpanComparable": false,
+      "bridgeStatus": "SOURCE_LINEAGE_MISMATCH",
+      "canonicalOccurrenceRef": null,
+      "canonicalSourceId": null,
+      "canonicalSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14"
+    },
+    {
+      "oldReviewRef": "H0002",
+      "oldHeadingOccurrenceId": "DOC-0001:paragraph[2]#key-line-4",
+      "oldSourceId": "paragraph[2]",
+      "oldSourceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "oldSourcePath": "bench/01-style-chuan.key",
+      "oldText": "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh",
+      "reversiblyNormalizedText": "1.1. Phạm vi điều chỉnh",
+      "canonicalTextCandidateCount": 1,
+      "sameSourceShaCandidateCount": 0,
+      "samePhysicalSourceIdCandidateCount": 0,
+      "exactSpanComparable": false,
+      "bridgeStatus": "SOURCE_LINEAGE_MISMATCH",
+      "canonicalOccurrenceRef": null,
+      "canonicalSourceId": null,
+      "canonicalSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14"
+    },
+    {
+      "oldReviewRef": "H0003",
+      "oldHeadingOccurrenceId": "DOC-0001:paragraph[4]#key-line-5",
+      "oldSourceId": "paragraph[4]",
+      "oldSourceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "oldSourcePath": "bench/01-style-chuan.key",
+      "oldText": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng",
+      "reversiblyNormalizedText": "1.2. Đối tượng áp dụng",
+      "canonicalTextCandidateCount": 1,
+      "sameSourceShaCandidateCount": 0,
+      "samePhysicalSourceIdCandidateCount": 0,
+      "exactSpanComparable": false,
+      "bridgeStatus": "SOURCE_LINEAGE_MISMATCH",
+      "canonicalOccurrenceRef": null,
+      "canonicalSourceId": null,
+      "canonicalSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14"
+    },
+    {
+      "oldReviewRef": "H0004",
+      "oldHeadingOccurrenceId": "DOC-0001:paragraph[6]#key-line-6",
+      "oldSourceId": "paragraph[6]",
+      "oldSourceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "oldSourcePath": "bench/01-style-chuan.key",
+      "oldText": "1.2.1. CÆ¡ quan quáº£n lÃ½",
+      "reversiblyNormalizedText": "1.2.1. Cơ quan quản lý",
+      "canonicalTextCandidateCount": 1,
+      "sameSourceShaCandidateCount": 0,
+      "samePhysicalSourceIdCandidateCount": 0,
+      "exactSpanComparable": false,
+      "bridgeStatus": "SOURCE_LINEAGE_MISMATCH",
+      "canonicalOccurrenceRef": null,
+      "canonicalSourceId": null,
+      "canonicalSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14"
+    },
+    {
+      "oldReviewRef": "H0005",
+      "oldHeadingOccurrenceId": "DOC-0001:paragraph[8]#key-line-7",
+      "oldSourceId": "paragraph[8]",
+      "oldSourceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "oldSourcePath": "bench/01-style-chuan.key",
+      "oldText": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c",
+      "reversiblyNormalizedText": "1.2.2. Đơn vị trực thuộc",
+      "canonicalTextCandidateCount": 1,
+      "sameSourceShaCandidateCount": 0,
+      "samePhysicalSourceIdCandidateCount": 0,
+      "exactSpanComparable": false,
+      "bridgeStatus": "SOURCE_LINEAGE_MISMATCH",
+      "canonicalOccurrenceRef": null,
+      "canonicalSourceId": null,
+      "canonicalSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14"
+    },
+    {
+      "oldReviewRef": "H0006",
+      "oldHeadingOccurrenceId": "DOC-0001:paragraph[10]#key-line-8",
+      "oldSourceId": "paragraph[10]",
+      "oldSourceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "oldSourcePath": "bench/01-style-chuan.key",
+      "oldText": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n",
+      "reversiblyNormalizedText": "Chương 2. Tổ chức thực hiện",
+      "canonicalTextCandidateCount": 1,
+      "sameSourceShaCandidateCount": 0,
+      "samePhysicalSourceIdCandidateCount": 0,
+      "exactSpanComparable": false,
+      "bridgeStatus": "SOURCE_LINEAGE_MISMATCH",
+      "canonicalOccurrenceRef": null,
+      "canonicalSourceId": null,
+      "canonicalSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14"
+    },
+    {
+      "oldReviewRef": "H0007",
+      "oldHeadingOccurrenceId": "DOC-0001:paragraph[12]#key-line-9",
+      "oldSourceId": "paragraph[12]",
+      "oldSourceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "oldSourcePath": "bench/01-style-chuan.key",
+      "oldText": "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m",
+      "reversiblyNormalizedText": "2.1. Phân công trách nhiệm",
+      "canonicalTextCandidateCount": 1,
+      "sameSourceShaCandidateCount": 0,
+      "samePhysicalSourceIdCandidateCount": 0,
+      "exactSpanComparable": false,
+      "bridgeStatus": "SOURCE_LINEAGE_MISMATCH",
+      "canonicalOccurrenceRef": null,
+      "canonicalSourceId": null,
+      "canonicalSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14"
+    }
+  ],
+  "oldOnlyOccurrences": [
+    {
+      "oldReviewRef": "H0001",
+      "headingOccurrenceId": "DOC-0001:paragraph[0]#key-line-3",
+      "sourceId": "paragraph[0]",
+      "text": "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung",
+      "classification": "OLD_HIERARCHY_ONLY_UNBRIDGED"
+    },
+    {
+      "oldReviewRef": "H0002",
+      "headingOccurrenceId": "DOC-0001:paragraph[2]#key-line-4",
+      "sourceId": "paragraph[2]",
+      "text": "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh",
+      "classification": "OLD_HIERARCHY_ONLY_UNBRIDGED"
+    },
+    {
+      "oldReviewRef": "H0003",
+      "headingOccurrenceId": "DOC-0001:paragraph[4]#key-line-5",
+      "sourceId": "paragraph[4]",
+      "text": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng",
+      "classification": "OLD_HIERARCHY_ONLY_UNBRIDGED"
+    },
+    {
+      "oldReviewRef": "H0004",
+      "headingOccurrenceId": "DOC-0001:paragraph[6]#key-line-6",
+      "sourceId": "paragraph[6]",
+      "text": "1.2.1. CÆ¡ quan quáº£n lÃ½",
+      "classification": "OLD_HIERARCHY_ONLY_UNBRIDGED"
+    },
+    {
+      "oldReviewRef": "H0005",
+      "headingOccurrenceId": "DOC-0001:paragraph[8]#key-line-7",
+      "sourceId": "paragraph[8]",
+      "text": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c",
+      "classification": "OLD_HIERARCHY_ONLY_UNBRIDGED"
+    },
+    {
+      "oldReviewRef": "H0006",
+      "headingOccurrenceId": "DOC-0001:paragraph[10]#key-line-8",
+      "sourceId": "paragraph[10]",
+      "text": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n",
+      "classification": "OLD_HIERARCHY_ONLY_UNBRIDGED"
+    },
+    {
+      "oldReviewRef": "H0007",
+      "headingOccurrenceId": "DOC-0001:paragraph[12]#key-line-9",
+      "sourceId": "paragraph[12]",
+      "text": "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m",
+      "classification": "OLD_HIERARCHY_ONLY_UNBRIDGED"
+    }
+  ],
+  "canonicalOnlyOccurrences": [
+    {
+      "canonicalOccurrenceRef": "DOC-0001:body[1]/p[1]",
+      "sourceId": "body[1]/p[1]",
+      "text": "Chương 1. Quy định chung",
+      "documentOrder": 1,
+      "classification": "CANONICAL_ONLY_UNBRIDGED"
+    },
+    {
+      "canonicalOccurrenceRef": "DOC-0001:body[1]/p[3]",
+      "sourceId": "body[1]/p[3]",
+      "text": "1.1. Phạm vi điều chỉnh",
+      "documentOrder": 3,
+      "classification": "CANONICAL_ONLY_UNBRIDGED"
+    },
+    {
+      "canonicalOccurrenceRef": "DOC-0001:body[1]/p[5]",
+      "sourceId": "body[1]/p[5]",
+      "text": "1.2. Đối tượng áp dụng",
+      "documentOrder": 5,
+      "classification": "CANONICAL_ONLY_UNBRIDGED"
+    },
+    {
+      "canonicalOccurrenceRef": "DOC-0001:body[1]/p[7]",
+      "sourceId": "body[1]/p[7]",
+      "text": "1.2.1. Cơ quan quản lý",
+      "documentOrder": 7,
+      "classification": "CANONICAL_ONLY_UNBRIDGED"
+    },
+    {
+      "canonicalOccurrenceRef": "DOC-0001:body[1]/p[9]",
+      "sourceId": "body[1]/p[9]",
+      "text": "1.2.2. Đơn vị trực thuộc",
+      "documentOrder": 9,
+      "classification": "CANONICAL_ONLY_UNBRIDGED"
+    },
+    {
+      "canonicalOccurrenceRef": "DOC-0001:body[1]/p[11]",
+      "sourceId": "body[1]/p[11]",
+      "text": "Chương 2. Tổ chức thực hiện",
+      "documentOrder": 11,
+      "classification": "CANONICAL_ONLY_UNBRIDGED"
+    },
+    {
+      "canonicalOccurrenceRef": "DOC-0001:body[1]/p[13]",
+      "sourceId": "body[1]/p[13]",
+      "text": "2.1. Phân công trách nhiệm",
+      "documentOrder": 13,
+      "classification": "CANONICAL_ONLY_UNBRIDGED"
+    }
+  ]
+}

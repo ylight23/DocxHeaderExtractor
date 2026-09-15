@@ -1,0 +1,101 @@
+{
+  "artifactKind": "A99_DOC0001_CANONICAL_SCOPE_EQUIVALENCE_MANIFEST",
+  "schemaVersion": "a99-canonical-scope-equivalence-v1",
+  "documentId": "DOC-0001",
+  "status": "CANONICAL_SCOPE_EQUIVALENCE_FAILED",
+  "canonicalScopePromotion": "BLOCKED",
+  "historicalLevelRead": false,
+  "historicalParentUsedAsNewEvidence": false,
+  "semanticReAdjudication": false,
+  "parentReAdjudication": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldMutation": false,
+  "inputs": [
+    {
+      "name": "canonicalExactBindings",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/source-review-v1/DOC-0001/exact-bindings.json",
+      "sha256": "44ce880df5a0e93700235373fcd096ddcf977fdbd361e12b752fb7b13204f2ba"
+    },
+    {
+      "name": "canonicalValidation",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/source-review-v1/DOC-0001/validation.json",
+      "sha256": "848afecb1d35b4688357583faf1c2bb37e14e3a1e445b95fc73fd7f41779000f"
+    },
+    {
+      "name": "canonicalSourceUniverse",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0001/source-universe.json",
+      "sha256": "64c6818ae1d2812fa0012be3d9370fc57b2444ae13b303130d90043ed52f95d9"
+    },
+    {
+      "name": "oldSourceReviewAdjudication",
+      "path": "artifacts/authority-audit/strict-heading-canonical-hierarchy-gold-v1/DOC-0001/source-review-adjudication.json",
+      "sha256": "28b78024de338d6d6fca5f2cf008e52a6bd57efe9eee79b6571688cf915eb2a1"
+    },
+    {
+      "name": "oldParentEdges",
+      "path": "artifacts/authority-audit/strict-heading-canonical-hierarchy-gold-v1/DOC-0001/parent-edges.json",
+      "sha256": "24c2592dcf5e24a3a297c29542146c7fc7106f8ebc41c6d42595348633ee48f1"
+    },
+    {
+      "name": "oldDerivedLevels",
+      "path": "artifacts/authority-audit/strict-heading-canonical-hierarchy-gold-v1/DOC-0001/derived-levels.json",
+      "sha256": "ec3dc4eb6e8023060479dae6f5bb5d7a10d4742591fc23b088dc1bff97e31b9c"
+    },
+    {
+      "name": "oldManifest",
+      "path": "artifacts/authority-audit/strict-heading-canonical-hierarchy-gold-v1/DOC-0001/manifest.json",
+      "sha256": "cf56c513fc0ff768290fc7a1802d10ad0118f8be04da2858093ec05d0f22410a"
+    },
+    {
+      "name": "oldValidation",
+      "path": "artifacts/authority-audit/strict-heading-canonical-hierarchy-gold-v1/DOC-0001/validation.json",
+      "sha256": "5b9e4e128248fd851f1f3537f3074d6026e73040b95d3636257bea917db26817"
+    }
+  ],
+  "outputFiles": [
+    "occurrence-equivalence.json",
+    "identity-equivalence.json",
+    "tree-rebind.json",
+    "derived-levels.json",
+    "validation.json",
+    "manifest.json",
+    "report.md"
+  ],
+  "commitLineage": [
+    "3345c70",
+    "82641d4"
+  ],
+  "outputHashes": [
+    {
+      "name": "occurrence-equivalence",
+      "path": "occurrence-equivalence.json",
+      "sha256": "64a841038d43c58bfa2ea0b0ddc5660f1cf8fbc1fdabddd1c8088c700966cf45"
+    },
+    {
+      "name": "identity-equivalence",
+      "path": "identity-equivalence.json",
+      "sha256": "fdd520013db1c33c61fd2e7d6c2fb2d61fc63a03e9ededcf7682ad15a94ffd41"
+    },
+    {
+      "name": "tree-rebind",
+      "path": "tree-rebind.json",
+      "sha256": "0da0c648de27522a954e7e7a753f07f3608d22a54505ea67abe26a793077f4ad"
+    },
+    {
+      "name": "derived-levels",
+      "path": "derived-levels.json",
+      "sha256": "a374b29b92433ac4d06fe2ac678e3bc522d72434ef579fdf7db7f92fa4c71427"
+    },
+    {
+      "name": "validation",
+      "path": "validation.json",
+      "sha256": "9cf9a83a55c03d6253fd526ff1a1932224751adb8fbbfafbfcb3fd077a6217e2"
+    },
+    {
+      "name": "report",
+      "path": "report.md",
+      "sha256": "d90025f18071b271c963824f792a41a51b77e1f1f3e0efa955da928f607fa7fc"
+    }
+  ]
+}

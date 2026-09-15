@@ -1,0 +1,37 @@
+{
+  "artifactKind": "A99_DOC0001_CANONICAL_SCOPE_EQUIVALENCE_VALIDATION",
+  "schemaVersion": "a99-canonical-scope-equivalence-v1",
+  "documentId": "DOC-0001",
+  "status": "CANONICAL_SCOPE_EQUIVALENCE_FAILED",
+  "valid": false,
+  "checks": {
+    "oldOccurrenceCount": 7,
+    "canonicalOccurrenceCount": 7,
+    "exactOneToOneBridges": 0,
+    "oldOnly": 7,
+    "canonicalOnly": 7,
+    "ambiguous": 0,
+    "sourceShaCompatible": false,
+    "physicalSourceIdsCompatible": false,
+    "identityCardinality": true,
+    "parentTopologyValidatedOnCanonicalRefs": false,
+    "rootChildren": null,
+    "maxDepth": null,
+    "cycles": null,
+    "multipleParents": null,
+    "danglingRefs": null,
+    "unreachableNodes": null,
+    "historicalLevelRead": false,
+    "historicalParentUsedAsNewEvidence": false,
+    "semanticReAdjudication": false,
+    "parentReAdjudication": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldMutation": false
+  },
+  "failureReasons": [
+    "OLD_HIERARCHY_SOURCE_REFERENCE_SHA_DIFFERS_FROM_CANONICAL_SOURCE_SHA",
+    "OLD_HIERARCHY_SOURCE_IDS_ARE_KEY_PARAGRAPH_REFS_WHILE_CANONICAL_IDS_ARE_DOCX_BODY_REFS",
+    "NO_EXACT_ONE_TO_ONE_PHYSICAL_OCCURRENCE_BRIDGE_PROVEN"
+  ]
+}

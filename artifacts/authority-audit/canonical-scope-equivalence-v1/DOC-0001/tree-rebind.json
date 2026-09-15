@@ -1,0 +1,45 @@
+{
+  "artifactKind": "A99_DOC0001_CANONICAL_SCOPE_TREE_REBIND",
+  "schemaVersion": "a99-canonical-scope-equivalence-v1",
+  "documentId": "DOC-0001",
+  "status": "NOT_PERFORMED_SCOPE_EQUIVALENCE_FAILED",
+  "sourceTree": {
+    "parentEdges": [
+      {
+        "childSemanticNodeRef": "N001",
+        "parentSemanticNodeRef": "ROOT"
+      },
+      {
+        "childSemanticNodeRef": "N002",
+        "parentSemanticNodeRef": "N001"
+      },
+      {
+        "childSemanticNodeRef": "N003",
+        "parentSemanticNodeRef": "N001"
+      },
+      {
+        "childSemanticNodeRef": "N004",
+        "parentSemanticNodeRef": "N003"
+      },
+      {
+        "childSemanticNodeRef": "N005",
+        "parentSemanticNodeRef": "N003"
+      },
+      {
+        "childSemanticNodeRef": "N006",
+        "parentSemanticNodeRef": "ROOT"
+      },
+      {
+        "childSemanticNodeRef": "N007",
+        "parentSemanticNodeRef": "N006"
+      }
+    ],
+    "rootRef": "ROOT",
+    "edgeCount": 7,
+    "rootChildCount": 2,
+    "maxDepth": 3
+  },
+  "reboundParentEdges": null,
+  "parentReAdjudication": false,
+  "note": "No parent edge was inferred, repaired, or changed."
+}

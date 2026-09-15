@@ -1,0 +1,17 @@
+{
+  "artifactKind": "A99_DOC0001_CANONICAL_SCOPE_IDENTITY_EQUIVALENCE",
+  "schemaVersion": "a99-canonical-scope-equivalence-v1",
+  "documentId": "DOC-0001",
+  "status": "BLOCKED_BY_OCCURRENCE_SCOPE_EQUIVALENCE",
+  "oldSemanticNodeCount": 7,
+  "canonicalOccurrenceCount": 7,
+  "oldOccurrenceAssignments": 7,
+  "occurrenceRoles": {
+    "PRIMARY": 7,
+    "REPEAT": 0,
+    "CONTINUATION": 0
+  },
+  "singletonIdentityRepresentable": false,
+  "semanticReAdjudication": false,
+  "note": "The old singleton structure has seven rows, but canonical semantic membership is not promoted because source lineage and physical identity equivalence failed."
+}
