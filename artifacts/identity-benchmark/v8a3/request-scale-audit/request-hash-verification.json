@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "a99-v8a3-request-hash-verification-v1",
+  "hashVerification": {
+    "v8a2Authority": "579b3fd",
+    "proposer": {
+      "computedSetSha256": "f4e232c111c973c3c4ee69da48cbd279316b92a0535415e4b2a3c35e82b02afc",
+      "frozenSetSha256": "f4e232c111c973c3c4ee69da48cbd279316b92a0535415e4b2a3c35e82b02afc",
+      "setHashMatches": true,
+      "individualRequestHashesMatch": true,
+      "candidateRebuildHashes": {
+        "jsonElementArrayPretty": "f4e232c111c973c3c4ee69da48cbd279316b92a0535415e4b2a3c35e82b02afc",
+        "jsonElementArrayCompact": "84028d6bf4e1d955603333f4e9756f366c2eb3e0f1ce77c32064d0358a09cd48",
+        "objectArrayPretty": "f4e232c111c973c3c4ee69da48cbd279316b92a0535415e4b2a3c35e82b02afc",
+        "objectArrayCompact": "84028d6bf4e1d955603333f4e9756f366c2eb3e0f1ce77c32064d0358a09cd48",
+        "individualCanonicalJoinedWithNewline": "f249a6eeda2d09c3265c578b306a2e4694c1c4e62334c2443095eecd0adcde06"
+      }
+    },
+    "falsifier": {
+      "computedSetSha256": "008dd3e08f93428c3bceec77540b5d6c4320c3e8936be1523ade3340e19b1440",
+      "frozenSetSha256": "008dd3e08f93428c3bceec77540b5d6c4320c3e8936be1523ade3340e19b1440",
+      "setHashMatches": true,
+      "individualRequestHashesMatch": true,
+      "candidateRebuildHashes": {
+        "jsonElementArrayPretty": "008dd3e08f93428c3bceec77540b5d6c4320c3e8936be1523ade3340e19b1440",
+        "jsonElementArrayCompact": "139bba85ee9e9da0419d0dcb47e8330ae7e04abf2df9fe09e8d0b91540b6e4b4",
+        "objectArrayPretty": "008dd3e08f93428c3bceec77540b5d6c4320c3e8936be1523ade3340e19b1440",
+        "objectArrayCompact": "139bba85ee9e9da0419d0dcb47e8330ae7e04abf2df9fe09e8d0b91540b6e4b4",
+        "individualCanonicalJoinedWithNewline": "b8b69fd4137b5184d557844f37aff8b039330788beba68481ba273598f946821"
+      }
+    },
+    "allIndividualRequestHashesMatch": true,
+    "sourceArtifactsUnchanged": true
+  }
+}

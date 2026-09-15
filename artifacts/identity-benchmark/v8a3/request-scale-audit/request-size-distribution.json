@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "a99-v8a3-request-size-distribution-v1",
+  "requestBytes": {
+    "count": 12,
+    "min": 651667,
+    "p50": 2518441,
+    "p90": 11060977,
+    "p95": 11061000,
+    "p99": 11061000,
+    "max": 11061000,
+    "mean": 4601569.333333333,
+    "total": 55218832
+  },
+  "estimatedInputTokens": {
+    "count": 12,
+    "min": 162917,
+    "p50": 629611,
+    "p90": 2765245,
+    "p95": 2765250,
+    "p99": 2765250,
+    "max": 2765250,
+    "mean": 1150392.6666666667,
+    "total": 13804712
+  },
+  "contextPolicy": {
+    "configuredContextLimitTokens": 1000000,
+    "safeInputThresholdTokens": 900000,
+    "maxOutputTokens": 16000,
+    "totalInputBudgetTokens": 5000000,
+    "providerLimitVerified": false
+  }
+}
