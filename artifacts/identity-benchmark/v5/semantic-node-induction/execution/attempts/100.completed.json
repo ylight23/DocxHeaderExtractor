@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-100",
+  "sequence": 100,
+  "clusterId": "SC-fadddbae86c6b0ed",
+  "requestHash": "4e2223d9acabfed28202a9dd1f9c20f48224cdd9d1b14b372d57c2b5449450eb",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789436287-D5EyffO1p1GKq3s9lVOF",
+  "rawResponseSha256": "9732bcc53c86e7e4ca343b32653c0c650912e4e5033c9b156b566b18d7fd2f1b",
+  "parsedResponseSha256": "f9d1267dcf324f3ae89efe0db62f851bf29fbb294414218ac016e741ccba35ce",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 30229,
+  "reportedInputTokens": 1390,
+  "reportedReasoningTokens": 2228,
+  "reportedOutputTokens": 2663,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-fadddbae86c6b0ed",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Provisional sums for specific ES outcomes and related employer costs",
+          "structuralScopeDescription": "The node represents the line items in a provisional sum schedule table. The primary occurrence defines the category \u0027Provisional sums for any specific ES outcomes\u0027, while the continuation occurrence \u0027etc.\u0027 indicates that this category or similar unspecified items follow in the sequence before the total is calculated.",
+          "organizationalFunction": "ITEM_DEFINITION_AND_LISTING"
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+          "toOccurrenceId": "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

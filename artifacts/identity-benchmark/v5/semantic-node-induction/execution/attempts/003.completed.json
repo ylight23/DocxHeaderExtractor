@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-003",
+  "sequence": 3,
+  "clusterId": "SC-054b6bb0ac5b9b45",
+  "requestHash": "7b5aab167967fbf5e980c983b015d1f332a49aa35c571198b1e810e6bef9d8fe",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433087-dwZlvE6DiBYD6sNaDuOO",
+  "rawResponseSha256": "b83fb97ffbbaee362533a330633f85fbac2340aaf53b4c58c7334e05db3e20bb",
+  "parsedResponseSha256": "fb6169bb22661e3e4fe71e7b404d783919b04edcc29464766ea849d12484aaf0",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 31366,
+  "reportedInputTokens": 1240,
+  "reportedReasoningTokens": 2738,
+  "reportedOutputTokens": 3106,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-054b6bb0ac5b9b45",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000036",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000041",
+          "semanticNodeLocalId": "node_2",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Punctuation separator in Executive Summary introductory paragraph",
+          "structuralScopeDescription": "Separates the MD\u0026A performance statement from the subsequent fiscal year context and disclaimer.",
+          "organizationalFunction": "Syntactic delimiter within a continuous prose block."
+        },
+        {
+          "semanticNodeLocalId": "node_2",
+          "canonicalMeaning": "Punctuation separator in Table header unit description",
+          "structuralScopeDescription": "Separates the currency/ratio unit definition from the table column headers (\u0027As of and for the\u0027).",
+          "organizationalFunction": "Syntactic delimiter between metadata line and data structure header."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

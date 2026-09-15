@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-008",
+  "sequence": 8,
+  "clusterId": "SC-0f5f8eb5084651d7",
+  "requestHash": "bfbf0c89454fc21b5d39965047cfded4a7430c02b50e691aa71a8421f35d7327",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433254-vpeBZq4zcPEwJyRlauXG",
+  "rawResponseSha256": "f32cc049b305f31770d0564a0039736e73920bb5e130f0a904cdddaa41d26561",
+  "parsedResponseSha256": "ced2ef4df9dc046067a6fc3c0028fec37c4ca7467c933855eda11e88c5d11874",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 46381,
+  "reportedInputTokens": 1110,
+  "reportedReasoningTokens": 3415,
+  "reportedOutputTokens": 3856,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-0f5f8eb5084651d7",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000827",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000841",
+          "semanticNodeLocalId": "node_2",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Punctuation separator preceding financial table headers \u0027Investments\u0027 and \u0027Net Swap\u0027",
+          "structuralScopeDescription": "Acts as a syntactic delimiter in the source text sequence, separating the temporal marker \u0027As of June 30 2024\u0027 from the subsequent column headers. It functions as a structural boundary marker rather than conveying semantic content itself.",
+          "organizationalFunction": "SYNTAX_BOUNDARY"
+        },
+        {
+          "semanticNodeLocalId": "node_2",
+          "canonicalMeaning": "Punctuation separator within a conditional clause regarding rating agency methodology",
+          "structuralScopeDescription": "Acts as a syntactic delimiter within a complex sentence describing the calculation of average ratings. It separates the condition \u0027if ratings are not available\u0027 from the consequence \u0027from each of the three rating agencies...\u0027. It functions as a structural boundary marker within the logical flow of the definition.",
+          "organizationalFunction": "SYNTAX_BOUNDARY"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

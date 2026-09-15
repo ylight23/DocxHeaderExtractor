@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-73ac22ce69d37810",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[493]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[534]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "The full legal name of the individual authorized to execute the Proposal on behalf of the Proposer.",
+        "structuralScopeDescription": "This node represents a specific data field within a signature block or authorization section of a contractual document. It is distinct from the \u0027Name of the Proposer\u0027 (the entity) and the \u0027Title\u0027 or \u0027Signature\u0027 fields, serving specifically to identify the natural person acting as the signatory agent.",
+        "organizationalFunction": "IDENTIFICATION_OF_SIGNATORY_AGENT"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

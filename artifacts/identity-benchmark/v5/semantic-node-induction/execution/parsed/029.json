@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-4b403ae3785e286d",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[105]",
+        "semanticNodeLocalId": "SN-X-Forms-Main",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[183]",
+        "semanticNodeLocalId": "SN-X-Forms-Main",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]",
+        "semanticNodeLocalId": "SN-X-Forms-Main",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-X-Forms-Main",
+        "canonicalMeaning": "Section X - Contract Forms",
+        "structuralScopeDescription": "The main heading for Section X of the contract document, identifying the section containing contract forms such as Letter of Acceptance and Contract Agreement.",
+        "organizationalFunction": "HEADING"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

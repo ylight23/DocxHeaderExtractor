@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-102",
+  "sequence": 102,
+  "clusterId": "SC-fe3480c51dd004da",
+  "requestHash": "48cec48c89a3a8f80f0959e2ffbd2c4a098c854c78bbaff84f70a686060439e4",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789436372-RcQ7xrZDSPdfpGnXomRj",
+  "rawResponseSha256": "0275021b2148dfa315576d4875b934de623cfad94c4edb942b4a8c88d2419545",
+  "parsedResponseSha256": "7f290a6fc6cb5adbd3277dfccb779f55804308648294d13b326ab53f434cbe9a",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 29795,
+  "reportedInputTokens": 1270,
+  "reportedReasoningTokens": 2272,
+  "reportedOutputTokens": 2631,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-fe3480c51dd004da",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[1378]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[1387]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Logical disjunction operator indicating alternative conditions in a declaration list regarding Beneficial Ownership status.",
+          "structuralScopeDescription": "Connects distinct declarative clauses (i, ii, iii) within a structured form or legal document section defining criteria for identifying beneficial owners. The node represents the logical \u0027OR\u0027 separating mutually exclusive or alternative compliance paths/declarations.",
+          "organizationalFunction": "Disambiguates the structural separator between alternative legal declarations. It ensures that the subsequent text blocks are interpreted as separate options rather than cumulative requirements."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

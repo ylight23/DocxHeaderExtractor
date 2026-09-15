@@ -1,0 +1,52 @@
+{
+  "response": {
+    "clusterId": "SC-669698e5599ec637",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[637]",
+        "semanticNodeLocalId": "SN-LOCAL-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[639]",
+        "semanticNodeLocalId": "SN-LOCAL-002",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[641]",
+        "semanticNodeLocalId": "SN-LOCAL-003",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-LOCAL-001",
+        "canonicalMeaning": "Specification of the local currency percentage payment rate for daywork materials, to be stated by the proposer.",
+        "structuralScopeDescription": "This node represents a specific contractual clause item (ii) defining the financial proportion for local currency payments within a broader schedule of daywork rates. It functions as a sub-component of a list detailing payment proportions.",
+        "organizationalFunction": "ITEM_DEFINITION"
+      },
+      {
+        "semanticNodeLocalId": "SN-LOCAL-002",
+        "canonicalMeaning": "Specification of the cost of hauling materials from site stores/stockpiles for daywork, governed by Labour and Construction terms.",
+        "structuralScopeDescription": "This node represents a distinct contractual clause item (c) addressing a specific logistical cost component (hauling) separate from the material supply percentages defined in adjacent items. It establishes the payment basis for this specific activity.",
+        "organizationalFunction": "ITEM_DEFINITION"
+      },
+      {
+        "semanticNodeLocalId": "SN-LOCAL-003",
+        "canonicalMeaning": "Heading or topic identifier for \u0027Daywork Contractor\u2019s Equipment\u0027, introducing the section governing payments for equipment used in daywork.",
+        "structuralScopeDescription": "This node serves as a structural heading or label that introduces the subsequent detailed provisions regarding contractor\u0027s equipment rental rates, included costs, and hour calculations. It acts as a topical anchor for the following paragraphs.",
+        "organizationalFunction": "TOPIC_HEADER"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

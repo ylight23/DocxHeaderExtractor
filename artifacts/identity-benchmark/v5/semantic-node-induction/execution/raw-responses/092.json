@@ -1,0 +1,33 @@
+{
+  "clusterId": "SC-e85d77b885a189a0",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B001802",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+    "confidence":  	"LOW"
+    },
+    {
+      "occurrenceId": "DOC-0133:B001804",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "CONTINUATION",
+      "confidence": "LOW"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Punctuation/Connector in a list item continuation",
+      "structuralScopeDescription": "Connects the end of clause 'b' description to its subsequent explanatory phrase.",
+      "organizationalFunction": "Syntactic glue for a fragmented sentence structure within a financial disclosure note."
+    }
+  ],
+  "continuationEdges": [
+    {
+      "fromOccurrenceId": "DOC-0133:B001802",
+      "toOccurrenceId": "DOC-0133:B001804"
+    }
+  ],
+  "unresolvedOccurrenceIds": []
+}

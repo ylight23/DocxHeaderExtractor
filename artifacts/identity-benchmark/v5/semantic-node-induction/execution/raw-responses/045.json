@@ -1,0 +1,28 @@
+{
+  "clusterId": "SC-7bbcc897f811cf5f",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B000965",
+      "semanticNodeLocalId": "SN-CLUSTER-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0133:B000967",
+      "semanticNodeLocalId": "SN-CLUSTER-001",
+      "occurrenceRole": "REPEAT",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-CLUSTER-001",
+      "canonicalMeaning": "Table formatting artifact / separator",
+      "structuralScopeDescription": "The occurrences represent non-informative punctuation sequences (commas) that serve as structural separators within a financial table layout, likely indicating empty cells or column breaks in the source document's tabular data representation. They do not convey specific semantic content but maintain the grid structure.",
+      "organizationalFunction": "Structural Separator"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,39 @@
+{
+  "clusterId": "SC-9ab2d7468337edc1",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]",
+      "semanticNodeLocalId": "SN-002",
+      "occurrenceRole": "CONTINUATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Contract Identification Label",
+      "structuralScopeDescription": "Header label for the contract identification field in a tabular form.",
+      "organizationalFunction": "Identifies the specific section or column dedicated to the unique identifier of the legal contract."
+    },
+    {
+      "semanticNodeLocalId": "SN-002",
+      "canonicalMeaning": "Employer Name Label",
+      "structuralScopeDescription": "Header label for the employer name field, immediately following the contract identification field.",
+      "organizationalFunction": "Identifies the specific section or column dedicated to the name of the contracting employer entity."
+    }
+  ],
+  "continuationEdges": [
+    {
+      "fromOccurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]",
+      "toOccurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]"
+    }
+  ],
+  "unresolvedOccurrenceIds": []
+}

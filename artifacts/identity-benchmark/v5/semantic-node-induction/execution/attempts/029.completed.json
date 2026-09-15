@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-029",
+  "sequence": 29,
+  "clusterId": "SC-4b403ae3785e286d",
+  "requestHash": "16b110218db07c49c25d904b532dd871d368eed47b0ecf7c437ec09b081c16be",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433970-6fvY5XUg662PLvxja6cO",
+  "rawResponseSha256": "1672c8d982d43db75c2d17d31c26e83d798f167932e5bc75c0b70c2b00abab6e",
+  "parsedResponseSha256": "39817a577f60694fa5a8e5fcc2e2cd3840920da54da4cfb1848f0243e5c6597b",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 34540,
+  "reportedInputTokens": 1731,
+  "reportedReasoningTokens": 2482,
+  "reportedOutputTokens": 2858,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-4b403ae3785e286d",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[105]",
+          "semanticNodeLocalId": "SN-X-Forms-Main",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[183]",
+          "semanticNodeLocalId": "SN-X-Forms-Main",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]",
+          "semanticNodeLocalId": "SN-X-Forms-Main",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-X-Forms-Main",
+          "canonicalMeaning": "Section X - Contract Forms",
+          "structuralScopeDescription": "The main heading for Section X of the contract document, identifying the section containing contract forms such as Letter of Acceptance and Contract Agreement.",
+          "organizationalFunction": "HEADING"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

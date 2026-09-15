@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-c483be6ba7146330",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B000015",
+      "semanticNodeLocalId": "SN-RM-GOVERNANCE-HEADER",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":        "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0133:B000616",
+      "semanticNodeLocalId": "SN-RM-GOVERNANCE-HEADER",
+      "occurrenceRole": "ALIAS_REPRESENTATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-RM-GOVERNANCE-HEADER",
+      "canonicalMeaning": "The structural heading for the Risk Management section, specifically focusing on Risk Governance within the document's table of contents or navigation structure.",
+      "structuralScopeDescription": "This node represents the top-level entry in the Table of Contents (B000015) and the corresponding inline section header in the body text (B000616). It serves as the anchor for the 'Risk Management' chapter, with 'Risk Governance' being the immediate sub-topic or specific focus area indicated by the TOC line. The occurrence B000616 acts as a textual repetition/alias of this structural boundary within the narrative flow."
+    ,
+      "organizationalFunction": "HEADINGS_NAVIGATION_ANCHOR"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

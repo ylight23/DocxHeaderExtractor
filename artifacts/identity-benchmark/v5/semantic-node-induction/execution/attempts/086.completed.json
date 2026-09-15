@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-086",
+  "sequence": 86,
+  "clusterId": "SC-dc75f78b36c2ca7c",
+  "requestHash": "c5539959a96095986f7ad37c05ae410036aa780349ea63b49f853e6d8f74a28e",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435782-z1nR9em2WV15XcO7vSY1",
+  "rawResponseSha256": "42966147f7892ebbbf71cf0804cbafa70d39c48e837e586f0980b0b1ddaef6e6",
+  "parsedResponseSha256": "642fad5dc102a4b0c8e69c19b74702d4016297fb1b6dd8a2a1e9645b66bcd2ff",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 29107,
+  "reportedInputTokens": 1362,
+  "reportedReasoningTokens": 2275,
+  "reportedOutputTokens": 2655,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-dc75f78b36c2ca7c",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Invitation to Proposal Section Identifier",
+          "structuralScopeDescription": "Table cell containing the section code \u0027ITP 2.1\u0027 within a structured data table, likely serving as a row header or section marker for subsequent form fields.",
+          "organizationalFunction": "Identifies the specific subsection (2.1) of the Invitation to Proposal (ITP) document being referenced or filled out in this table row. It acts as a structural anchor for the associated metadata fields (Borrower, Loan Amount, Project Name) found in adjacent cells."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

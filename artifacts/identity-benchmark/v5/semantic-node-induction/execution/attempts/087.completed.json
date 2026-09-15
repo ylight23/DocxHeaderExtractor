@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-087",
+  "sequence": 87,
+  "clusterId": "SC-dd7c93016022f445",
+  "requestHash": "f7c310582601360c476a5af791a064868091c564b471d6b7f38fffdc122416fd",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435811-Dz9GWxjBGadwKFb4SRuE",
+  "rawResponseSha256": "2bd38a72d0e80add1743ba7086b8b90ca4105a23336a82da4cf2f237949e8e49",
+  "parsedResponseSha256": "1cf4de4e90579a179f040c1a37e4e4c4ffe3a48bee2b1a40235a1466324d291c",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 28371,
+  "reportedInputTokens": 1151,
+  "reportedReasoningTokens": 2343,
+  "reportedOutputTokens": 2748,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-dd7c93016022f445",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000855",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000856",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Table Header and Unit Specification for Non-Commercial Counterparty Credit Risk Exposures",
+          "structuralScopeDescription": "This node represents the combined semantic header of Table 1 3. It integrates the unit specification (\u0027In millions of U.S. dollars\u0027) with the temporal scope (\u0027Exposures as of March 31 2025\u0027) and the table title context. The occurrences are semantically bound because they jointly define the metadata required to interpret the subsequent data rows (Notional, Net Exposure).",
+          "organizationalFunction": "Header/Context Definition"
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0133:B000855",
+          "toOccurrenceId": "DOC-0133:B000856"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

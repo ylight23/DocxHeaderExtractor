@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-dc75f78b36c2ca7c",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence":  "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Invitation to Proposal Section Identifier",
+      "structuralScopeDescription": "Table cell containing the section code 'ITP 2.1' within a structured data table, likely serving as a row header or section marker for subsequent form fields.",
+      "organizationalFunction": "Identifies the specific subsection (2.1) of the Invitation to Proposal (ITP) document being referenced or filled out in this table row. It acts as a structural anchor for the associated metadata fields (Borrower, Loan Amount, Project Name) found in adjacent cells."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-faa9769a7ae9a698",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000396",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000402",
+        "semanticNodeLocalId": "node_2",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "node_1",
+        "canonicalMeaning": "Ambiguous punctuation/noise token following discussion on health/education approaches and regional groupings.",
+        "structuralScopeDescription": "Acts as a delimiter or noise artifact in the text stream, separating the previous topic from the subsequent mention of countries and Professor Rao\u0027s emphasis on dynamic ICP programs.",
+        "organizationalFunction": "Noise/Punctuation Artifact"
+      },
+      {
+        "semanticNodeLocalId": "node_2",
+        "canonicalMeaning": "Ambiguous punctuation/noise token following discussion on SNA 2025 implementation in ICP structure.",
+        "structuralScopeDescription": "Acts as a delimiter or noise artifact in the text stream, separating the previous topic about SNA 2025 adoption deadlines from the subsequent identification of potential target dates for methodological developments.",
+        "organizationalFunction": "Noise/Punctuation Artifact"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

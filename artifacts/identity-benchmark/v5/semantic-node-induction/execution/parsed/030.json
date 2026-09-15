@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-4db7f9417ce6abc3",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B001981",
+        "semanticNodeLocalId": "SN-UNIT-MILLION-USD-A",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B002045",
+        "semanticNodeLocalId": "SN-UNIT-MILLION-USD-B",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-UNIT-MILLION-USD-A",
+        "canonicalMeaning": "Currency unit specification for the first table (March 31, 2025)",
+        "structuralScopeDescription": "Applies to Table J 2: Fair value hierarchy of IBRD\u2019s assets and liabilities as of March 31, 2025. Defines the monetary scale (millions) and currency (U.S. dollars) for all numerical values in this specific recurring fair value measurement table.",
+        "organizationalFunction": "Defines the quantitative scale and currency for the primary data presentation block associated with the March 2025 reporting period."
+      },
+      {
+        "semanticNodeLocalId": "SN-UNIT-MILLION-USD-B",
+        "canonicalMeaning": "Currency unit specification for the second table (June 30, 2024)",
+        "structuralScopeDescription": "Applies to Table J 2.1: Fair value measurements on a recurring basis as of June 30, 2024. Repeats the same unit definition (millions of U.S. dollars) for a subsequent or supplementary table within the same document context.",
+        "organizationalFunction": "Re-establishes the quantitative scale and currency for a secondary or distinct data presentation block associated with the June 2024 reporting period, ensuring independent interpretability of that specific table."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

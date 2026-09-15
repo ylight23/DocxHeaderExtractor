@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-034",
+  "sequence": 34,
+  "clusterId": "SC-56263abc254ef233",
+  "requestHash": "f662e7f7af1a514788baa0cea8b28fa11d8132713ecfd4eb1739121cc3c7addc",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434154-IEyookHyaYJKxhpThx6i",
+  "rawResponseSha256": "bd5dfff4300869cab4bfd2116587df35b2cd7e7e2f56ac6183420fafb43578a9",
+  "parsedResponseSha256": "0d3d4240e1f53fb2cc66695a99e6e9125a221948c8139eb216456b16f991646b",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 35542,
+  "reportedInputTokens": 1420,
+  "reportedReasoningTokens": 1963,
+  "reportedOutputTokens": 2336,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-56263abc254ef233",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000099",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000316",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Explanation of the $51 million increase in net income for IBRD, attributing it to unrealized mark-to-market gains on non-trading portfolios and increased revenue on interest-earning assets, partially offset by Board-approved transfers.",
+          "structuralScopeDescription": "Covers the causal explanation segment linking the comparative net income figures between FY 25 YTD and the same period in FY 24. It encapsulates the specific drivers (unrealized gains/losses, interest revenue) and offsets (transfers/expenses) that constitute the variance analysis.",
+          "organizationalFunction": "CAUSAL_EXPLANATION_NODE"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

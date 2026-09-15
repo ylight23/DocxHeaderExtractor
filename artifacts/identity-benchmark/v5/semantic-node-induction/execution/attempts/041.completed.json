@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-041",
+  "sequence": 41,
+  "clusterId": "SC-71e2f00f18661add",
+  "requestHash": "a6937c4404ed6aa44fa162a1a12fbcea3ea42759f425e199d9035864d22d55f3",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434405-r5UCcGy9JKbWXWBL13tl",
+  "rawResponseSha256": "dd47267603ed4e5f5deb3e6022c9d261b086a30403ab371b0e788ba10fdc921f",
+  "parsedResponseSha256": "a6a0ae062d891dac21ada1754b6eb37dfd4d64861e68cd73b4ed1a8810c97fde",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 33902,
+  "reportedInputTokens": 1142,
+  "reportedReasoningTokens": 1961,
+  "reportedOutputTokens": 2338,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-71e2f00f18661add",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B002226",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0133:B002228",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Punctuation mark separating clauses in a financial disclosure note regarding currency translation adjustments and comprehensive income statements.",
+          "structuralScopeDescription": "The node represents the syntactic function of the comma within the continuous sentence structure spanning occurrences B002226 through B002229. It serves to separate distinct items or clauses within the list of accounting treatments described in the source text.",
+          "organizationalFunction": "Syntactic Separator"
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0133:B002226",
+          "toOccurrenceId": "DOC-0133:B002228"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

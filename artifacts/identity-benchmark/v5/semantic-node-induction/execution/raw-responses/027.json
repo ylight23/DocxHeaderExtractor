@@ -1,0 +1,33 @@
+{
+  "clusterId": "SC-463e6c81092ee630",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000898",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "PRIMARY",
+      "confidence":  			  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000899",
+      "semanticNodeLocalId": "node_2",
+      "occurrenceRole": "PRIMARY",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "node_1",
+      "canonicalMeaning": "Treatment of Negative Expenditures in ICP",
+      "structuralScopeDescription": "Session slot covering negative expenditure treatment within the International Comparison Program framework, presented by Prasada Rao and Sergey Sergeev.",
+      "organizationalFunction": "Defines a specific technical session on data adjustment methodologies for negative values in economic comparisons."
+    },
+    {
+      "semanticNodeLocalId": "node_2",
+      "canonicalMeaning": "Fine Tuning Global Linking Procedures",
+      "structuralScopeDescription": "Session slot dedicated to refining global linking procedures, immediately following the previous session in the schedule.",
+      "organizationalFunction": "Defines the subsequent technical session focused on methodological adjustments for global data linkage."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

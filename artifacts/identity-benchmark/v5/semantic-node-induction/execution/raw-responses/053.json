@@ -1,0 +1,27 @@
+{
+  "clusterId": "SC-8f8b372c4df44219",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B000933",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "PRIMARY",
+      "confidence":  			  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0133:B000934",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "ALIAS_REPRESENTATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "node_1",
+      "canonicalMeaning": "Document Date Marker",
+      "structuralScopeDescription": "The temporal anchor for the financial report section, specifically identifying the date 'March 31 2025'. The comma (B000934) is structurally bound to this date as a punctuation delimiter within the header line, effectively acting as an alias representation of the complete date-token sequence in the parser's view.",
+      "organizationalFunction": "Establishes the specific reporting period end-date for the 'CONDENSED QUARTERLY FINANCIAL STATEMENTS' that immediately follow. It serves as the primary temporal identifier for the dataset."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

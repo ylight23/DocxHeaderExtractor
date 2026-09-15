@@ -83,4 +83,23 @@ public sealed class A99IdentityBenchmarkV5BTests
         Assert.True(result.Complete);
         Assert.Equal("V5:DOC-test:SC-test:N1", HdsaSemanticClusterInductionContract.Namespace("DOC-test", "SC-test", "N1"));
     }
+
+    [Fact]
+    public void V5B_primary_prediction_summary_is_frozen_before_gold()
+    {
+        var root = RepositoryRoot();
+        var path = Path.Combine(root, "artifacts", "identity-benchmark", "v5", "semantic-node-induction", "execution", "prediction-summary.json");
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        var value = doc.RootElement;
+        Assert.Equal("PREDICTIONS_FROZEN_BEFORE_GOLD", value.GetProperty("status").GetString());
+        Assert.Equal(102, value.GetProperty("completedAttempts").GetInt32());
+        Assert.Equal(89, value.GetProperty("validClusters").GetInt32());
+        Assert.Equal(9, value.GetProperty("invalidValidationClusters").GetInt32());
+        Assert.Equal(4, value.GetProperty("providerErrorClusters").GetInt32());
+        Assert.Equal(102, value.GetProperty("providerCalls").GetInt32());
+        Assert.Equal(0, value.GetProperty("goldReadCount").GetInt32());
+        Assert.False(value.GetProperty("pairLabelsDerived").GetBoolean());
+        Assert.False(value.GetProperty("hierarchyExecuted").GetBoolean());
+        Assert.Equal(15, value.GetProperty("continuationEdges").GetInt32());
+    }
 }

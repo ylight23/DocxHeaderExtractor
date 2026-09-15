@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-075",
+  "sequence": 75,
+  "clusterId": "SC-c483be6ba7146330",
+  "requestHash": "a88623bea8597921e93383c8fcce17de290ef7495c8fa7436569d6c38b54a429",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435419-Ir1Jrp12B6hD7ujYSwxx",
+  "rawResponseSha256": "f1106027b414262c8117d8ce52d4e051d42c02b3a67dfb34da089dc0b5978336",
+  "parsedResponseSha256": "44e567f3aef20dcf25f8fe7f2545ddfb0f6e68f5b2c35a14c0ba757afd894704",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 37470,
+  "reportedInputTokens": 1207,
+  "reportedReasoningTokens": 2883,
+  "reportedOutputTokens": 3288,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-c483be6ba7146330",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000015",
+          "semanticNodeLocalId": "SN-RM-GOVERNANCE-HEADER",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000616",
+          "semanticNodeLocalId": "SN-RM-GOVERNANCE-HEADER",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-RM-GOVERNANCE-HEADER",
+          "canonicalMeaning": "The structural heading for the Risk Management section, specifically focusing on Risk Governance within the document\u0027s table of contents or navigation structure.",
+          "structuralScopeDescription": "This node represents the top-level entry in the Table of Contents (B000015) and the corresponding inline section header in the body text (B000616). It serves as the anchor for the \u0027Risk Management\u0027 chapter, with \u0027Risk Governance\u0027 being the immediate sub-topic or specific focus area indicated by the TOC line. The occurrence B000616 acts as a textual repetition/alias of this structural boundary within the narrative flow.",
+          "organizationalFunction": "HEADINGS_NAVIGATION_ANCHOR"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

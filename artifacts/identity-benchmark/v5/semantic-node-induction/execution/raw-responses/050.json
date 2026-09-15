@@ -1,0 +1,35 @@
+{
+  "clusterId": "SC-83ba6382175a7582",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000107",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000235",
+      "semanticNodeLocalId": "SN-002",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence": 	"LOW"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Ordinal indicator fragment 'th' preceding a noun phrase related to UN Statistical Commission sessions.",
+      "structuralScopeDescription": "Fragmentary occurrence within a list of governance activities. The text 'th' is part of the ordinal '56th' (implied by context '56 sessio n'). It serves as a grammatical modifier for the session identifier.",
+      "organizationalFunction": "Grammatical Modifier / Ordinal Marker"
+    },
+    {
+      "semanticNodeLocalId": "SN-002",
+      "canonicalMeaning": "Ordinal indicator fragment 'th' preceding a noun phrase related to a report release event.",
+      "structuralScopeDescription": "Fragmentary occurrence within a sentence describing the release of an ICP cycle report. The text 'th' is likely a parsing artifact or fragment from 'the' or an ordinal, but given the previous token 'profiles' and next token 'wa s', it appears disconnected or erroneous in isolation. However, based on strict text affinity with SN-001, it is grouped here tentatively.",
+      "organizationalFunction": "Ambiguous Fragment / Potential Ordinal Marker"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

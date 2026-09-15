@@ -1,0 +1,33 @@
+{
+  "clusterId": "SC-b54f759607ee0732",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[92]",
+      "semanticNodeLocalId": "SN-V5-Eligible-Countries-Primary",
+      "occurrenceRole": "PRIMARY",
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[176]",
+      "semanticNodeLocalId": "SN-V5-Eligible-Countries-Primary",
+      "occurrenceRole": "ALIAS_REPRESENTATION",
+      "confidence": "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]",
+      "semanticNodeLocalId": "SN-V5-Eligible-Countries-Primary",
+      "occurrenceRole": "ALIAS_REPRESENTATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-V5-Eligible-Countries-Primary",
+      "canonicalMeaning": "Section V - Eligible Countries",
+      "structuralScopeDescription": "A structural heading identifying Section V of the document, which contains information regarding eligible countries. This node appears in the main body text, a subsequent repetition (likely an index or table of contents entry with page numbers), and within a specific table cell listing section titles.",
+      "organizationalFunction": "HEADING_IDENTIFICATION"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-094",
+  "sequence": 94,
+  "clusterId": "SC-ee488063d482ae5e",
+  "requestHash": "07b772e492b6fc520030f6816d3ba670bcade2a3ef155391fd3deb73e7771352",
+  "status": "INVALID_VALIDATION",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789436066-pGLikwKVkWLqlqVT0gnx",
+  "rawResponseSha256": "c61e25d53a8d08e3c3f85b427719144f6bf7e0713dcc047e13f4038518e14778",
+  "parsedResponseSha256": "facf9b6ae71972201d41f4d709aaeefcbfc1b37a903a9e326e269e229495aa4f",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 50877,
+  "reportedInputTokens": 1475,
+  "reportedReasoningTokens": 3731,
+  "reportedOutputTokens": 4245,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-ee488063d482ae5e",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[2]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[3]",
+          "semanticNodeLocalId": "SN-002",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Submission of Articles of Incorporation or equivalent constitutional/registration documents for the legal entity.",
+          "structuralScopeDescription": "Primary requirement for general corporate documentation under ITP 4.4.",
+          "organizationalFunction": "Establishes the baseline legal existence and registration status of the proposing entity."
+        },
+        {
+          "semanticNodeLocalId": "SN-002",
+          "canonicalMeaning": "Submission of specific autonomy and commercial law compliance documents for state-owned enterprises.",
+          "structuralScopeDescription": "Conditional continuation of documentation requirements under ITP 4.6, triggered by entity type (state-owned).",
+          "organizationalFunction": "Refines the legal entity verification process to address public sector specificities, ensuring financial and operational independence from the Employer."
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[2]",
+          "toOccurrenceId": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[3]"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": false,
+      "complete": false,
+      "errors": [
+        "CONTINUATION_CROSS_NODE"
+      ]
+    }
+  }
+}

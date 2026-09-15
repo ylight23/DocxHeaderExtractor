@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-042",
+  "sequence": 42,
+  "clusterId": "SC-73ac22ce69d37810",
+  "requestHash": "4f564598674a755f1b5348a7ee546884e68e99c05801442945161e79508ed3eb",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434439-xXdSSaqgA5zLpfnRcRhm",
+  "rawResponseSha256": "dcf472f9ddd7e83e8638c07aa03951f406f45ceecd3a73179cbd206b9f809c6c",
+  "parsedResponseSha256": "71dbd60c1a6d64a5a245bc998f20dc4b41e44c6959a73e1d4b741d80505a0dd9",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 25990,
+  "reportedInputTokens": 1323,
+  "reportedReasoningTokens": 1440,
+  "reportedOutputTokens": 1782,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-73ac22ce69d37810",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[493]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[534]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "The full legal name of the individual authorized to execute the Proposal on behalf of the Proposer.",
+          "structuralScopeDescription": "This node represents a specific data field within a signature block or authorization section of a contractual document. It is distinct from the \u0027Name of the Proposer\u0027 (the entity) and the \u0027Title\u0027 or \u0027Signature\u0027 fields, serving specifically to identify the natural person acting as the signatory agent.",
+          "organizationalFunction": "IDENTIFICATION_OF_SIGNATORY_AGENT"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

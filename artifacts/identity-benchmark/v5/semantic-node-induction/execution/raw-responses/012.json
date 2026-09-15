@@ -1,0 +1,28 @@
+{
+  "clusterId": "SC-160cc47520d52014",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[50]/tr[32]/tc[2]/p[1]",
+      "semanticNodeLocalId": "SN-CLUSTER-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[50]/tr[33]/tc[2]/p[1]",
+      "semanticNodeLocalId": "SN-CLUSTER-001",
+      "occurrenceRole": "REPEAT",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-CLUSTER-001",
+      "canonicalMeaning": "Contract Clause Reference 4.20",
+      "structuralScopeDescription": "Table cell containing the numeric identifier for a specific contract clause, repeated across adjacent rows to maintain reference consistency.",
+      "organizationalFunction": "The node serves as a structural anchor within a tabular data structure, identifying a specific contractual provision (Clause 4.20). The first occurrence establishes the reference in the context of 'Number of additional paper copies', while the second occurrence repeats this reference in the context of 'Cyber security', indicating that the same clause number applies to or is being referenced in relation to the subsequent cyber security reporting requirements."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

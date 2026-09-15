@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-4f5dfab186393c56",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B000927",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0133:B000930",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence":  "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "node_1",
+      "canonicalMeaning": "Punctuation separator (comma)",
+      "structuralScopeDescription": "Generic punctuation mark serving as a syntactic delimiter within the document structure.",
+      "organizationalFunction": "The node groups identical, low-information punctuation tokens that appear in different structural contexts (end of a sentence/paragraph vs. start of a new section header). It establishes that these are distinct physical occurrences of the same character class without implying semantic continuity or reference resolution."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

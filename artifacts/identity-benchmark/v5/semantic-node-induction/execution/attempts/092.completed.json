@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-092",
+  "sequence": 92,
+  "clusterId": "SC-e85d77b885a189a0",
+  "requestHash": "e191f9c5ebb57d3efc600d4183fd87bb0c7bb3d3846dcffd37f6e465a678a9f0",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435985-UovAELC7w5UzG7dCARnV",
+  "rawResponseSha256": "902096c2ed03e1515e2d48772aeca923abf6366f16e07b5f07c18dad22c17fd4",
+  "parsedResponseSha256": "31598072f36fce9b64b1a2c49edac4cb7b83c39c7cfd4bd1ad5cf83c9e272ce3",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 29712,
+  "reportedInputTokens": 1172,
+  "reportedReasoningTokens": 1833,
+  "reportedOutputTokens": 2181,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-e85d77b885a189a0",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B001802",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0133:B001804",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Punctuation/Connector in a list item continuation",
+          "structuralScopeDescription": "Connects the end of clause \u0027b\u0027 description to its subsequent explanatory phrase.",
+          "organizationalFunction": "Syntactic glue for a fragmented sentence structure within a financial disclosure note."
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0133:B001802",
+          "toOccurrenceId": "DOC-0133:B001804"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "clusterId": "SC-61fc0dbd9dfcc7f1",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000955",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000957",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "List separator (comma)",
+      "structuralScopeDescription": "Punctuation mark separating items in a list of names/affiliations.",
+      "organizationalFunction": "Syntactic delimiter indicating the end of one list item and the potential start or separation from another, specifically within a structured enumeration of entities."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

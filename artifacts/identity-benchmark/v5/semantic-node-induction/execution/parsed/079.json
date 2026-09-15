@@ -1,0 +1,39 @@
+{
+  "response": {
+    "clusterId": "SC-cc9434be93085964",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B001466",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B001467",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "IBRD Loan Loss Provision Policy and Non-Writing Off Practice",
+        "structuralScopeDescription": "The node encapsulates the definition of economic losses from delayed loan payments, the methodology for estimating these losses, and the specific corporate policy that IBRD does not write off loans, including the historical clearance of nonaccrual obligations.",
+        "organizationalFunction": "This node serves as the primary semantic anchor for the accounting policy regarding loan loss provisions. It defines the risk (economic loss) and the mitigation/accounting stance (no write-offs), providing the necessary context for understanding the \u0027Accumulated Provision for Losses\u0027 mentioned in adjacent text."
+      }
+    ],
+    "continuationEdges": [
+      {
+        "fromOccurrenceId": "DOC-0133:B001466",
+        "toOccurrenceId": "DOC-0133:B001467"
+      }
+    ],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

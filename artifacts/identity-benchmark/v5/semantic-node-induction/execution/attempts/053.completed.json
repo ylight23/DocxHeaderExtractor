@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-053",
+  "sequence": 53,
+  "clusterId": "SC-8f8b372c4df44219",
+  "requestHash": "dd07c32cba66d44296bbc8153182fd3a714d8c139793d530c5924d09e9576537",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434816-JLqMjs3RZ9imt0huEQH7",
+  "rawResponseSha256": "375aef0bde4c9b053d3aa5579555677eab2a5bdc99c31a3e69b8b66d946a5339",
+  "parsedResponseSha256": "2e8a565df51efae2e8e31a7f1921dd1de6ea481ba28ac57473c6ec25c9a8e92e",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 33856,
+  "reportedInputTokens": 1162,
+  "reportedReasoningTokens": 2513,
+  "reportedOutputTokens": 2873,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-8f8b372c4df44219",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000933",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000934",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Document Date Marker",
+          "structuralScopeDescription": "The temporal anchor for the financial report section, specifically identifying the date \u0027March 31 2025\u0027. The comma (B000934) is structurally bound to this date as a punctuation delimiter within the header line, effectively acting as an alias representation of the complete date-token sequence in the parser\u0027s view.",
+          "organizationalFunction": "Establishes the specific reporting period end-date for the \u0027CONDENSED QUARTERLY FINANCIAL STATEMENTS\u0027 that immediately follow. It serves as the primary temporal identifier for the dataset."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-044",
+  "sequence": 44,
+  "clusterId": "SC-79b853331cdd3744",
+  "requestHash": "3d27b3de88153182af89e10b503fa77cfdee30db6968ec659e32ea66975a064c",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434503-NkHH4UKn4DO1GKkvFzEE",
+  "rawResponseSha256": "97fdf437e1948f6f8bc8d589858a684218623c60c15cbd89ac2d12d96a671d39",
+  "parsedResponseSha256": "b9e72503a40a140ff03b3581bc1b905fe151339ebe1059980698631fc6b93c24",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 27167,
+  "reportedInputTokens": 1278,
+  "reportedReasoningTokens": 1907,
+  "reportedOutputTokens": 2303,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-79b853331cdd3744",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Placeholder for Employer-entered provisional sum values in local currency",
+          "structuralScopeDescription": "Table row 7, columns 2 and 4, representing identical input fields for provisional sums.",
+          "organizationalFunction": "This node groups two structurally parallel table cells that serve as identical data entry placeholders. The text \u0027[To be entered by the Employer]\u0027 indicates a mandatory field for specific financial data (provisional sums) within the context of the preceding label \u0027Provisional sums expressed in local currency\u0027. The repetition across columns suggests a multi-currency or multi-component breakdown where the same instruction applies to distinct but semantically equivalent input slots."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

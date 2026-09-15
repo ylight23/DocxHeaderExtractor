@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-b77c14278a8905d6",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-TechScore-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[3]/p[1]",
+        "semanticNodeLocalId": "SN-ProposalPrice-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-TechScore-001",
+        "canonicalMeaning": "Technical score value for the proposal entity",
+        "structuralScopeDescription": "Represents a specific evaluation metric (technical scoring) within a tabular row structure, distinct from pricing or naming fields.",
+        "organizationalFunction": "Isolates the technical performance assessment data point from adjacent financial and identification fields in the table cell."
+      },
+      {
+        "semanticNodeLocalId": "SN-ProposalPrice-001",
+        "canonicalMeaning": "Proposed price value for the proposal entity",
+        "structuralScopeDescription": "Represents a specific financial metric (proposal pricing) within a tabular row structure, distinct from technical scores or evaluated costs.",
+        "organizationalFunction": "Isolates the vendor\u0027s requested price data point from adjacent technical and cost-evaluation fields in the table cell."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

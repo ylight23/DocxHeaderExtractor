@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-010",
+  "sequence": 10,
+  "clusterId": "SC-11d1b04f16c142d4",
+  "requestHash": "35e0708dcaddd782c6975f38d36c307a73e5733876ec20e2cbb08370fdae06b2",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433335-68pSzfkNqY22bkQNdKv4",
+  "rawResponseSha256": "2d19846fbd2dae4df0e72d3829723de39bad7342abb34e7e7e54d2c6fa4a6b41",
+  "parsedResponseSha256": "42aa9e79e1513523250ed5264adaa3421ec8274d984592f9eec1304de41d70b8",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 44867,
+  "reportedInputTokens": 1508,
+  "reportedReasoningTokens": 3371,
+  "reportedOutputTokens": 3926,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-11d1b04f16c142d4",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000011",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000013",
+          "semanticNodeLocalId": "SN-002",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000034",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "MEDIUM"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Executive Summary Section Heading",
+          "structuralScopeDescription": "The primary heading for the Executive Summary section, appearing in both the Table of Contents (B000011) and the body text start (B000034). B000011 is a TOC entry summarizing the section; B000034 is the actual section header in the narrative.",
+          "organizationalFunction": "Defines the start of the Executive Summary content block. The occurrence at B000011 serves as a navigational pointer in the document structure, while B000034 marks the textual beginning of that section."
+        },
+        {
+          "semanticNodeLocalId": "SN-002",
+          "canonicalMeaning": "Financial Results Section Heading",
+          "structuralScopeDescription": "The heading for Section III, titled \u0027Financial Results\u0027, found in the Table of Contents (B000013). It denotes the start of the detailed financial performance analysis.",
+          "organizationalFunction": "Marks the structural division for the Financial Results chapter. It is distinct from SN-001 as it refers to a different section (Section III vs Section I)."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

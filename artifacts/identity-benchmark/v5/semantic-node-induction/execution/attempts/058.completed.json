@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-058",
+  "sequence": 58,
+  "clusterId": "SC-963694a61eb66696",
+  "requestHash": "3225d311f2d6533706e84e6f81c040872fa9fb2134ba457e2dbf3abc343ca35f",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434851-tZBGgxu4yFlaxWsW4cwu",
+  "rawResponseSha256": "936f6b061b3540aca378581abc5bed3e74a8544929a5a6b207dc92d7220c4e23",
+  "parsedResponseSha256": "8e3180a317edab65ea3a7d55cdb5084bfd01f6347664a723bfeb15aaa133a270",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 31738,
+  "reportedInputTokens": 1243,
+  "reportedReasoningTokens": 2559,
+  "reportedOutputTokens": 2966,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-963694a61eb66696",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[5]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[6]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-002",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Foreign currency line item label",
+          "structuralScopeDescription": "Identifies a specific row in a financial table representing foreign currency amounts, distinct from the total.",
+          "organizationalFunction": "Serves as a header/label for a data cell containing foreign currency values, differentiating it from the final total row."
+        },
+        {
+          "semanticNodeLocalId": "SN-002",
+          "canonicalMeaning": "Total Proposal Price label",
+          "structuralScopeDescription": "Identifies the summary row label for the total cost of the proposal.",
+          "organizationalFunction": "Serves as the concluding header/label for the pricing section, indicating the aggregate sum."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

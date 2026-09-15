@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-097",
+  "sequence": 97,
+  "clusterId": "SC-f58ec7a5d0cc2968",
+  "requestHash": "74642c2b48a1dd9fd9f46eb262f0e8f16dddeeb24392bc9bea63782df30407d2",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789436183-h9vxdPIqcXAjdR1HOMhL",
+  "rawResponseSha256": "950cd48e6f4541679139edc30b534ad04d7816238b78a34b9ccfdac4c2bb464e",
+  "parsedResponseSha256": "ec6b7bf510a6167fc067b991974c81f026d9e9abd445d857609c66f68f7dce87",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 29755,
+  "reportedInputTokens": 1365,
+  "reportedReasoningTokens": 2020,
+  "reportedOutputTokens": 2417,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-f58ec7a5d0cc2968",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000393",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000394",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Continuation of the list of research topics presented at Session V, specifically linking the previous mention of \u0027revisiting\u0027 to the subsequent items in the list.",
+          "structuralScopeDescription": "The node captures the syntactic and semantic continuity between the fragmented text segments B000393 and B000394. B000393 ends with \u0027revisiti ng\u0027 and B000394 is a punctuation fragment \u0027, .\u0027 which serves as a separator or continuation marker in the source stream before the next substantive content in B000395 (\u0027approaches...\u0027). The induction treats these adjacent fragments as part of a single logical flow describing the agenda or topics.",
+          "organizationalFunction": "GROUPING_CONTINUOUS_TEXT_FRAGMENTS"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

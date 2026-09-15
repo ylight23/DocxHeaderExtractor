@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-089",
+  "sequence": 89,
+  "clusterId": "SC-e1c35fd18a3f134f",
+  "requestHash": "6ba2f02ab7e3f12ec958afd7a8c9002eef0c695d78fbc20e8aafa5399da38507",
+  "status": "INVALID_VALIDATION",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435873-PlKkxMTuG20Nc0X13Pl8",
+  "rawResponseSha256": "db69b50c85079c6893928a9c11af3d9ce57b3ecb8fcac604d33927f61b1950b8",
+  "parsedResponseSha256": "ec7ec67a12601241b1e5c7391d1b5bcb6e64708112154be3c9c2e02bb5767386",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 39923,
+  "reportedInputTokens": 1356,
+  "reportedReasoningTokens": 2417,
+  "reportedOutputTokens": 3368,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-e1c35fd18a3f134f",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000561",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000562",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "IBRD\u0027s Other ALM Portfolio derivative usage for interest rate stabilization and associated FY25 mark-to-market gains/losses",
+          "structuralScopeDescription": "The node captures the operational strategy of using derivatives to convert variable rate loan cash flows to fixed rates within the Other ALM portfolio, and the resulting financial impact (unrealized mark-to-market gains) observed in the first nine months of FY 25.",
+          "organizationalFunction": "Primary semantic unit linking the strategic purpose of the derivatives (stabilizing interest revenue) with the quantitative outcome (gains due to interest rate decreases). The continuation edge from B000561 to B000562 is established because B000562 (\u0027gains of...\u0027) explicitly continues the sentence fragment ending in B000561 (\u0027recorded unrealized mark-to-market\u0027). Note: B000562 text in input is just \u0027,\u0027, but nextSourceOccurrences shows it connects to B000563 which contains \u0027gains\u0027. Wait, looking at the input structure: B000561 ends with \u0027mark-to-market\u0027. B000562 is \u0027,\u0027. B000563 is \u0027gains...\u0027. The prompt asks to assign occurrences. B000561 and B000562 are adjacent. B000561 is the start of the thought. B000562 is a punctuation connector. B000563 is the continuation of the object. However, the cluster only contains B000561 and B000562. B000563 is NOT in the occurrences list. Therefore, I must treat B000561 and B000562 as the scope. B000561 is the primary statement. B000562 is a syntactic continuation/punctuation that links to the next part of the sentence not fully present or implied. Given the constraint "
+        },
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "IBRD\u0027s Other ALM Portfolio derivative usage for interest rate stabilization and associated FY25 mark-to-market gains/losses",
+          "structuralScopeDescription": "The node captures the operational strategy of using derivatives to convert variable rate loan cash flows to fixed rates within the Other ALM portfolio, and the resulting financial impact (unrealized mark-to-market gains) observed in the first nine months of FY 25.",
+          "organizationalFunction": "Primary semantic unit linking the strategic purpose of the derivatives (stabilizing interest revenue) with the quantitative outcome (gains due to interest rate decreases). The occurrence B000561 initiates the description of the portfolio and its accounting treatment. B000562 acts as a syntactic bridge (comma) continuing the clause started in B000561, leading into the specific gain figures mentioned in subsequent non-clustered text (B000563)."
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0133:B000561",
+          "toOccurrenceId": "DOC-0133:B000562"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": false,
+      "complete": false,
+      "errors": [
+        "DUPLICATE_LOCAL_NODE_ID"
+      ]
+    }
+  }
+}

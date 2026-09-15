@@ -1,0 +1,28 @@
+{
+  "clusterId": "SC-d5cbcde35e2b090c",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY",
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "ALIAS_REPRESENTATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Immutable minimum requirements with optional employer additions based on environmental and social assessments.",
+      "structuralScopeDescription": "The core contractual constraint regarding the modification of minimum requirements, specifically within the context of Employer notes in a proposal template."
+    ,
+      "organizationalFunction": "Establishes the baseline non-negotiable terms while granting conditional authority to the Employer to expand upon them via assessment-driven additions."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

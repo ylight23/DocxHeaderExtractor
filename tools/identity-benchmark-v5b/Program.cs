@@ -35,6 +35,10 @@ internal static class Program
             {
                 return await RunPrimaryAsync(root);
             }
+            if (args.Any(x => string.Equals(x, "--finalize-primary", StringComparison.Ordinal)))
+            {
+                return await FinalizePrimaryAsync(root);
+            }
             await RunAsync(root);
             Console.WriteLine("V5B_STATUS=SEMANTIC_NODE_INDUCTION_PREFLIGHT_COMPLETE REQUESTS_FROZEN=true MODEL_CALLS=0 PROVIDER_CALLS=0 GOLD_READ_COUNT=0");
             return 0;
@@ -274,6 +278,106 @@ internal static class Program
             overwrite = false,
         });
         return attempts.Count == ExpectedClusters && model.ProviderCalls == ExpectedClusters ? 0 : 1;
+    }
+
+    private static async Task<int> FinalizePrimaryAsync(string root)
+    {
+        var execution = Full(root, ExecutionRelative);
+        var attemptManifestPath = Path.Combine(execution, "attempt-manifest.json");
+        Require(File.Exists(attemptManifestPath), "V5B_ATTEMPT_MANIFEST_MISSING");
+        using var document = JsonDocument.Parse(await File.ReadAllTextAsync(attemptManifestPath));
+        var attempts = document.RootElement.GetProperty("attempts").EnumerateArray().ToArray();
+        Require(attempts.Length == ExpectedClusters, "V5B_ATTEMPT_COUNT");
+        var valid = attempts.Where(x => x.GetProperty("status").GetString() == "VALID").ToArray();
+        var invalidValidation = attempts.Count(x => x.GetProperty("status").GetString() == "INVALID_VALIDATION");
+        var providerErrors = attempts.Count(x => x.GetProperty("status").GetString() == "PROVIDER_ERROR");
+        var roleCounts = new Dictionary<string, int>(StringComparer.Ordinal);
+        var confidenceCounts = new Dictionary<string, int>(StringComparer.Ordinal);
+        var assignedOccurrences = 0;
+        var unresolvedOccurrences = 0;
+        var inducedNodes = 0;
+        var continuationEdges = 0;
+        foreach (var attempt in valid)
+        {
+            var response = attempt.GetProperty("response").GetProperty("response");
+            assignedOccurrences += response.GetProperty("occurrenceAssignments").GetArrayLength();
+            unresolvedOccurrences += response.GetProperty("unresolvedOccurrenceIds").GetArrayLength();
+            inducedNodes += response.GetProperty("semanticNodes").GetArrayLength();
+            continuationEdges += response.GetProperty("continuationEdges").GetArrayLength();
+            foreach (var assignment in response.GetProperty("occurrenceAssignments").EnumerateArray())
+            {
+                AddCount(roleCounts, assignment.GetProperty("occurrenceRole").GetString()!);
+                AddCount(confidenceCounts, assignment.GetProperty("confidence").GetString()!);
+            }
+        }
+        var summary = new
+        {
+            schemaVersion = "a99-v5b-prediction-summary-v1",
+            status = "PREDICTIONS_FROZEN_BEFORE_GOLD",
+            executionManifest = "execution-manifest.json",
+            attemptManifest = "attempt-manifest.json",
+            scheduledClusters = ExpectedClusters,
+            completedAttempts = attempts.Length,
+            validClusters = valid.Length,
+            invalidValidationClusters = invalidValidation,
+            providerErrorClusters = providerErrors,
+            sourceOccurrenceDenominator = 226,
+            assignedOccurrences,
+            unresolvedOccurrences,
+            inducedSemanticNodes = inducedNodes,
+            continuationEdges,
+            occurrenceRoles = roleCounts.OrderBy(x => x.Key, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Value, StringComparer.Ordinal),
+            confidenceLevels = confidenceCounts.OrderBy(x => x.Key, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Value, StringComparer.Ordinal),
+            modelCalls = document.RootElement.GetProperty("actualModelCalls").GetInt32(),
+            providerCalls = document.RootElement.GetProperty("actualProviderCalls").GetInt32(),
+            goldReadCount = document.RootElement.GetProperty("goldReadCount").GetInt32(),
+            goldReadBeforeFreeze = false,
+            goldEvaluationOpened = false,
+            pairLabelsDerived = false,
+            hierarchyExecuted = false,
+            promotionExecuted = false,
+            rawResponsesPersistedBeforeParsing = true,
+            retryCount = 0,
+            note = "Offline aggregation of frozen primary attempts only. Invalid/provider-error clusters are excluded from valid induced-node counts; no semantic repair was applied.",
+        };
+        await WriteAsync(Path.Combine(execution, "prediction-summary.json"), summary);
+        await WriteAsync(Path.Combine(execution, "execution-final.json"), new
+        {
+            schemaVersion = "a99-v5b-execution-final-v1",
+            status = "RESPONSE_FREEZE_COMPLETE",
+            scheduledCalls = ExpectedClusters,
+            completedAttempts = attempts.Length,
+            validClusters = valid.Length,
+            invalidValidationClusters = invalidValidation,
+            providerErrorClusters = providerErrors,
+            modelCalls = document.RootElement.GetProperty("actualModelCalls").GetInt32(),
+            providerCalls = document.RootElement.GetProperty("actualProviderCalls").GetInt32(),
+            goldReadCount = 0,
+            goldReadBeforeFreeze = false,
+            frozenBeforeGold = true,
+            recoveryCohort = false,
+            retries = 0,
+            completedUtc = DateTimeOffset.UtcNow,
+        });
+        await WriteAsync(Path.Combine(execution, "prediction-summary-firewall.json"), new
+        {
+            schemaVersion = "a99-v5b-prediction-summary-firewall-v1",
+            providerCalls = document.RootElement.GetProperty("actualProviderCalls").GetInt32(),
+            goldReadCount = 0,
+            goldReadBeforeFreeze = false,
+            pairLabelsRead = false,
+            pairLabelsDerived = false,
+            hierarchyRead = false,
+            semanticRepair = false,
+            attemptOverwrite = false,
+        });
+        Console.WriteLine($"V5B_OFFLINE_SUMMARY_COMPLETE VALID={valid.Length} INVALID_VALIDATION={invalidValidation} PROVIDER_ERRORS={providerErrors} MODEL_CALLS={document.RootElement.GetProperty("actualModelCalls").GetInt32()} PROVIDER_CALLS={document.RootElement.GetProperty("actualProviderCalls").GetInt32()} GOLD_READ_COUNT=0");
+        return 0;
+    }
+
+    private static void AddCount(IDictionary<string, int> counts, string key)
+    {
+        counts[key] = counts.TryGetValue(key, out var current) ? current + 1 : 1;
     }
 
     private const string SystemPrompt = """

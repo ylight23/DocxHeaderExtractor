@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-080",
+  "sequence": 80,
+  "clusterId": "SC-cd566bc4da71285c",
+  "requestHash": "9c33f07138fef3edc6b729cd88eb5f227793350210d58ad97bfe1930b43101ad",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435587-DSHbhDG5NfNFaSNSnFlp",
+  "rawResponseSha256": "60a997b3af4e819ed740d7403b7e193ba11447bf9f92d6230aaf1a95b6ccf013",
+  "parsedResponseSha256": "d67dc96ed844a86ef176cb100fceaaa39e9b299f41c4cb8481847d95449b5041",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 35324,
+  "reportedInputTokens": 1225,
+  "reportedReasoningTokens": 2364,
+  "reportedOutputTokens": 2670,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-cd566bc4da71285c",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000434",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000439",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Sentence Termination / Punctuation Boundary",
+          "structuralScopeDescription": "End of sentence clauses regarding Task Force composition and observer expansion.",
+          "organizationalFunction": "Marks the syntactic closure of distinct propositional units within the meeting minutes, specifically separating the discussion on TAG composition from the subsequent proposal for expanding membership."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

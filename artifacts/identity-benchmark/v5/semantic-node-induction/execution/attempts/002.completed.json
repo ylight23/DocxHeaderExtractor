@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-002",
+  "sequence": 2,
+  "clusterId": "SC-04bc27e74780febd",
+  "requestHash": "6aa9e4ed4cc3f73b6066a348e89f85deb3f9bcf5f23cbf590b5fabb9bb403413",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433037-4QAwE1zm41GjcGLIOUjk",
+  "rawResponseSha256": "78b08053539a3e58b87b5a9f5c693b3cba1123777b2ddd7d4a965dc1bc2de6d2",
+  "parsedResponseSha256": "96a01b18c25923f06c75e921e805972538e2289f26897c193a3acae220bb643a",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 50197,
+  "reportedInputTokens": 1253,
+  "reportedReasoningTokens": 3591,
+  "reportedOutputTokens": 3952,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-04bc27e74780febd",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000851",
+          "semanticNodeLocalId": "SN-01",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000904",
+          "semanticNodeLocalId": "SN-02",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-01",
+          "canonicalMeaning": "Agenda item for miscellaneous business discussion in Session VI",
+          "structuralScopeDescription": "Heading marking the start of the \u0027Any Other Business\u0027 segment within Session VI, distinct from specific technical topics.",
+          "organizationalFunction": "Segmentation marker for open floor or miscellaneous agenda items."
+        },
+        {
+          "semanticNodeLocalId": "SN-02",
+          "canonicalMeaning": "Closing event of Session VI",
+          "structuralScopeDescription": "Heading marking the conclusion of Session VI, specifically labeled as \u0027Closing\u0027.",
+          "organizationalFunction": "Termination marker for the session\u0027s proceedings."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

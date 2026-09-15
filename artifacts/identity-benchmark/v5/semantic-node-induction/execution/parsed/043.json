@@ -1,0 +1,39 @@
+{
+  "response": {
+    "clusterId": "SC-75b66683b75b0c9d",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[7]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[14]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Single-Stage Request for Proposals with specific disqualification exclusions",
+        "structuralScopeDescription": "The node represents a single procedural phase or condition within the procurement document, defined by the initial request type and immediately followed by a clarifying parenthetical constraint regarding SEA/SH obligations.",
+        "organizationalFunction": "Defines the specific scope and constraints of the \u0027Single-Stage Request for Proposals\u0027 mechanism, linking the general proposal stage to the specific exclusion of certain disqualification mechanisms."
+      }
+    ],
+    "continuationEdges": [
+      {
+        "fromOccurrenceId": "DOC-0123:body[1]/p[7]",
+        "toOccurrenceId": "DOC-0123:body[1]/p[14]"
+      }
+    ],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

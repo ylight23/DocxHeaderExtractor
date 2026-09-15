@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-090",
+  "sequence": 90,
+  "clusterId": "SC-e1dba61cbc2b05da",
+  "requestHash": "1cb2e8b0a9d4683630fa05dd82080487b4401e44954618599f72753c93de93e6",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435913-Xjz1u7po7Nryj0TqiR80",
+  "rawResponseSha256": "178ce53f120393c4499cbf209c4347e71acc7c97b579239b59aa15f737bf582a",
+  "parsedResponseSha256": "c0829e4f6cd4bd148f66b177594f1fdc09b3e7c69622f2d0ccda855804c0ad9c",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 33841,
+  "reportedInputTokens": 1216,
+  "reportedReasoningTokens": 2457,
+  "reportedOutputTokens": 2899,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-e1dba61cbc2b05da",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000162",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000168",
+          "semanticNodeLocalId": "node_2",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Punctuation/Transition marker preceding the presentation of ICPS 2024 status and CIS region results by Andrey Kosorov.",
+          "structuralScopeDescription": "Acts as a syntactic bridge or separator between the speaker\u0027s title/affiliation (CIS-Stat) and the action verb \u0027presented\u0027. It indicates a pause or structural break in the parsed text stream before the main clause begins.",
+          "organizationalFunction": "SYNTACTIC_SEPARATOR"
+        },
+        {
+          "semanticNodeLocalId": "node_2",
+          "canonicalMeaning": "Punctuation/Transition marker preceding the attribution to the Global Office regarding regional stability simulations.",
+          "structuralScopeDescription": "Acts as a syntactic bridge or separator following the description of simulation results and preceding the entity \u0027Global Office\u0027. It likely marks the end of a descriptive phrase or the start of a new clause attributing the source of the simulations.",
+          "organizationalFunction": "SYNTACTIC_SEPARATOR"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-059",
+  "sequence": 59,
+  "clusterId": "SC-998cbc0bfc0238bb",
+  "requestHash": "0d0908bd9ba6ff6d1750f495baf2d7f09079dde1960a4e19de90051444e05c13",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434883-Q8tAcl3D9Vb7BpuU6l5b",
+  "rawResponseSha256": "f0f0b87bfbf09529559e3054ef5c8d4e8737c7f9bb98b9ee82e15928a2528c29",
+  "parsedResponseSha256": "e064f2793c2ecc72785c81a5adb3ba3f74e9326537ac60f8bd1696df98099d11",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 26769,
+  "reportedInputTokens": 1232,
+  "reportedReasoningTokens": 2001,
+  "reportedOutputTokens": 2370,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-998cbc0bfc0238bb",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[31]/tr[6]/tc[2]/p[1]",
+          "semanticNodeLocalId": "SN-ENV-IMP-01",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[47]/tr[6]/tc[2]/p[1]",
+          "semanticNodeLocalId": "SN-ENV-IMP-01",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-ENV-IMP-01",
+          "canonicalMeaning": "Environmental Impact Assessment Specialist",
+          "structuralScopeDescription": "Key personnel role within Design phase organizational structure",
+          "organizationalFunction": "Identifies the specific job title for the specialist responsible for environmental impact assessments, appearing in two distinct table structures (tbl[31] and tbl[47]) under the \u0027Key Personnel for Design\u0027 section. The occurrences are structurally parallel, indicating a repetition of the same role definition across different parts of the document or duplicate entries."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

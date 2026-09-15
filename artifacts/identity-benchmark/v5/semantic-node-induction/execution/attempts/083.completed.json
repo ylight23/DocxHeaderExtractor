@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-083",
+  "sequence": 83,
+  "clusterId": "SC-d72ffa990605f300",
+  "requestHash": "f8d4e850dfed0043746c7454526803fddd0d398011e4536702cf537181cdcf6f",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435683-T87fJbWIwbHvi7CQ5iWb",
+  "rawResponseSha256": "8399a7200c16280216214af7b4768c32f0152083f2cfc574e22e62d525d58925",
+  "parsedResponseSha256": "aae93e8384abf4acd707abdb48ee24fba036501f8637eb8587ed3f79e1a481dc",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 32185,
+  "reportedInputTokens": 1288,
+  "reportedReasoningTokens": 2418,
+  "reportedOutputTokens": 2814,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-d72ffa990605f300",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Boolean response indicator for compliance or attribute verification fields in a tabular structure.",
+          "structuralScopeDescription": "The node represents the standard \u0027(Yes / No)\u0027 placeholder text used across multiple columns in a single table row to indicate binary choices for various beneficial ownership criteria.",
+          "organizationalFunction": "This node serves as a structural marker within a data extraction grid. It normalizes identical textual tokens that appear in different column contexts (shares vs voting rights) but serve the same functional role of capturing a binary user input. By clustering these occurrences, the system recognizes them as instances of the same field type rather than distinct semantic entities."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

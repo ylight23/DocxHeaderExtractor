@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "a99-v5b-prediction-summary-v1",
+  "status": "PREDICTIONS_FROZEN_BEFORE_GOLD",
+  "executionManifest": "execution-manifest.json",
+  "attemptManifest": "attempt-manifest.json",
+  "scheduledClusters": 102,
+  "completedAttempts": 102,
+  "validClusters": 89,
+  "invalidValidationClusters": 9,
+  "providerErrorClusters": 4,
+  "sourceOccurrenceDenominator": 226,
+  "assignedOccurrences": 191,
+  "unresolvedOccurrences": 0,
+  "inducedSemanticNodes": 117,
+  "continuationEdges": 15,
+  "occurrenceRoles": {
+    "ALIAS_REPRESENTATION": 36,
+    "CONTINUATION": 15,
+    "PRIMARY": 110,
+    "REPEAT": 30
+  },
+  "confidenceLevels": {
+    "HIGH": 153,
+    "LOW": 30,
+    "MEDIUM": 8
+  },
+  "modelCalls": 102,
+  "providerCalls": 102,
+  "goldReadCount": 0,
+  "goldReadBeforeFreeze": false,
+  "goldEvaluationOpened": false,
+  "pairLabelsDerived": false,
+  "hierarchyExecuted": false,
+  "promotionExecuted": false,
+  "rawResponsesPersistedBeforeParsing": true,
+  "retryCount": 0,
+  "note": "Offline aggregation of frozen primary attempts only. Invalid/provider-error clusters are excluded from valid induced-node counts; no semantic repair was applied."
+}

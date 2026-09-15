@@ -1,0 +1,28 @@
+{
+  "clusterId": "SC-f58ec7a5d0cc2968",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000393",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000394",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "ALIAS_REPRESENTATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "node_1",
+      "canonicalMeaning": "Continuation of the list of research topics presented at Session V, specifically linking the previous mention of 'revisiting' to the subsequent items in the list.",
+      "structuralScopeDescription": "The node captures the syntactic and semantic continuity between the fragmented text segments B000393 and B000394. B000393 ends with 'revisiti ng' and B000394 is a punctuation fragment ', .' which serves as a separator or continuation marker in the source stream before the next substantive content in B000395 ('approaches...'). The induction treats these adjacent fragments as part of a single logical flow describing the agenda or topics.",
+      "organizationalFunction": "GROUPING_CONTINUOUS_TEXT_FRAGMENTS"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-f8cd55c5e557df36",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000022",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000026",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "REPEAT",
+        "confidence": "LOW"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "node_1",
+        "canonicalMeaning": "Punctuation separator (comma) within a sentence structure",
+        "structuralScopeDescription": "The node represents the syntactic function of the comma character in separating clauses or list items. In this specific cluster, the occurrences are isolated punctuation marks that do not carry independent semantic weight beyond their grammatical role as separators. They are grouped because they share the same lexical form and low-level syntactic function, despite appearing in different parts of the text flow.",
+        "organizationalFunction": "GROUPING_OF_SYNTACTIC_MARKERS"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

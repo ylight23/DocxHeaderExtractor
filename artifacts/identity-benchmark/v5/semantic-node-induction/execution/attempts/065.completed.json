@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-065",
+  "sequence": 65,
+  "clusterId": "SC-a0f2d7ae724cdb91",
+  "requestHash": "26c1dd36a8fe26892888ff1821b77e90685169520010aa7bbf9b134a4fb1016c",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435080-3yrjdxvvkxGgdKrog7fu",
+  "rawResponseSha256": "e8d82a8ae8b1e0c3b3c570d1faa3d1e2ad875e0092a655847c5ab681756956e8",
+  "parsedResponseSha256": "c974ff3ad920483dda531f134ed2f2d80fcb498433fec69136853fc1e59335ae",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 33265,
+  "reportedInputTokens": 1226,
+  "reportedReasoningTokens": 2243,
+  "reportedOutputTokens": 2531,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-a0f2d7ae724cdb91",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[90]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Section IV - Proposal Forms",
+          "structuralScopeDescription": "The section of the document containing proposal forms and their submission instructions.",
+          "organizationalFunction": "HEADINGS_AND_SECTIONS"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

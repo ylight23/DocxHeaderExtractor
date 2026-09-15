@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-062",
+  "sequence": 62,
+  "clusterId": "SC-9b24e51b35eb9e0e",
+  "requestHash": "983c1e57d551bcaacc10795cf482385611b548886841a1de05feec97bca1d586",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434975-tmzx6rxbrT0ljUXZW8GP",
+  "rawResponseSha256": "527ef20392328a45bc0a494457385b95d084bcf2d70519c288dfba217a388e1a",
+  "parsedResponseSha256": "06c323f0e8ab66ebd382cdb48c5678b82b7225d06e90964153879c9765a952cd",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 40852,
+  "reportedInputTokens": 1733,
+  "reportedReasoningTokens": 3093,
+  "reportedOutputTokens": 3607,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-9b24e51b35eb9e0e",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[1053]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[45]/tr[1]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-002",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "MEDIUM"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "General guidance on the content and scope of Employer\u0027s Requirements, specifically referencing Sub-Clauses and technical information.",
+          "structuralScopeDescription": "The main paragraph introducing the requirement for technical information in the Employer\u0027s Requirements and linking it to specific contract sub-clauses.",
+          "organizationalFunction": "This node serves as the primary semantic anchor for the section detailing what must be included in the Employer\u0027s Requirements. It establishes the context for the subsequent table by defining the logical basis (Sub-Clauses) for the items listed therein."
+        },
+        {
+          "semanticNodeLocalId": "SN-002",
+          "canonicalMeaning": "Header label for a column identifying Sub-Clause numbers.",
+          "structuralScopeDescription": "A single cell within a table header row, acting as a label for the data column that follows.",
+          "organizationalFunction": "This node functions as a structural metadata element (a column header). It is semantically linked to SN-001 because SN-001 explicitly references \u0027Sub-Clauses\u0027 as the organizing principle for the information that will be presented in the table containing this header. It represents the syntactic container for the specific clause identifiers mentioned in the primary text."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

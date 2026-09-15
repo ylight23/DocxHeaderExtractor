@@ -1,0 +1,39 @@
+{
+  "response": {
+    "clusterId": "SC-dd7c93016022f445",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000855",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000856",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Table Header and Unit Specification for Non-Commercial Counterparty Credit Risk Exposures",
+        "structuralScopeDescription": "This node represents the combined semantic header of Table 1 3. It integrates the unit specification (\u0027In millions of U.S. dollars\u0027) with the temporal scope (\u0027Exposures as of March 31 2025\u0027) and the table title context. The occurrences are semantically bound because they jointly define the metadata required to interpret the subsequent data rows (Notional, Net Exposure).",
+        "organizationalFunction": "Header/Context Definition"
+      }
+    ],
+    "continuationEdges": [
+      {
+        "fromOccurrenceId": "DOC-0133:B000855",
+        "toOccurrenceId": "DOC-0133:B000856"
+      }
+    ],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

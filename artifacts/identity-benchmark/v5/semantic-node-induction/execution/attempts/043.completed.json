@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-043",
+  "sequence": 43,
+  "clusterId": "SC-75b66683b75b0c9d",
+  "requestHash": "0cc90a3cd57e62c240b44f18f22beb053d7be6a37541362001871c8720c158c5",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434465-CZLg4jXIIOuIVI0EDnrx",
+  "rawResponseSha256": "1250a6d84b2d4f5d82937df7804e55413cfca727ddb310acad1a1d5a4300f3eb",
+  "parsedResponseSha256": "d9691113221ac615394162eade7d6ea9b4b177af98c391bb85d73fd66816cfe2",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 37727,
+  "reportedInputTokens": 1172,
+  "reportedReasoningTokens": 2577,
+  "reportedOutputTokens": 2977,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-75b66683b75b0c9d",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[7]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[14]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Single-Stage Request for Proposals with specific disqualification exclusions",
+          "structuralScopeDescription": "The node represents a single procedural phase or condition within the procurement document, defined by the initial request type and immediately followed by a clarifying parenthetical constraint regarding SEA/SH obligations.",
+          "organizationalFunction": "Defines the specific scope and constraints of the \u0027Single-Stage Request for Proposals\u0027 mechanism, linking the general proposal stage to the specific exclusion of certain disqualification mechanisms."
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0123:body[1]/p[7]",
+          "toOccurrenceId": "DOC-0123:body[1]/p[14]"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

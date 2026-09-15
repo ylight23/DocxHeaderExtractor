@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-017",
+  "sequence": 17,
+  "clusterId": "SC-282e741228750d1f",
+  "requestHash": "edbbc50b31213a903c96d225ecda8bb86ce1e0332c284108f90816378285d888",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433590-VwaXkTuWhfmjhjWEYKLz",
+  "rawResponseSha256": "86468c0cf55ce0ee7d87c7d3e48cdd88f7a48ab870c494457905dd9f862a7518",
+  "parsedResponseSha256": "3b834b1df44cd4ff2ac06c46d8bf749375702a7191a7375115f9a2652d1fb0c6",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 27807,
+  "reportedInputTokens": 1246,
+  "reportedReasoningTokens": 2272,
+  "reportedOutputTokens": 2696,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-282e741228750d1f",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[920]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[921]",
+          "semanticNodeLocalId": "SN-002",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Joint Venture Member or Specialized Subcontractor Name Field",
+          "structuralScopeDescription": "A form field label requesting the full name of a joint venture member or specialized subcontractor, situated within a document header or cover page section.",
+          "organizationalFunction": "Identifies the specific entity role (JV member/subcontractor) for which identification details are being collected in this instance of the template."
+        },
+        {
+          "semanticNodeLocalId": "SN-002",
+          "canonicalMeaning": "RFP Number and Title Field",
+          "structuralScopeDescription": "A form field label requesting the reference number and title of the Request for Proposal, adjacent to the previous name field.",
+          "organizationalFunction": "Identifies the specific procurement project context by linking the submission to the governing RFP document."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

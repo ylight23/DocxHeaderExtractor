@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-c17bdfebd789811c",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B000959",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"LOW"
+    },
+    {
+      "occurrenceId": "DOC-0133:B000961",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence": 	"LOW"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Formatting artifact / Punctuation noise",
+      "structuralScopeDescription": "The occurrences represent non-informative punctuation sequences (commas) likely resulting from parsing errors or OCR artifacts in a financial table structure. They do not convey distinct semantic information but serve as delimiters or noise within the source text stream.",
+      "organizationalFunction": "Noise/Artifact Identification: These nodes are grouped to identify and isolate non-semantic textual fragments that disrupt the logical flow of data fields, ensuring they are not misinterpreted as meaningful entities or values."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

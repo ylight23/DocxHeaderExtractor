@@ -1,0 +1,59 @@
+{
+  "response": {
+    "clusterId": "SC-52691ad0f0d7986c",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[9]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[583]",
+        "semanticNodeLocalId": "SN-002",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[584]",
+        "semanticNodeLocalId": "SN-003",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "MEDIUM"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Total Proposal Price including provisional sum",
+        "structuralScopeDescription": "The primary financial summary row in the pricing table, defining the aggregate cost basis for the proposal.",
+        "organizationalFunction": "Establishes the main monetary value anchor for the contract document\u0027s pricing section."
+      },
+      {
+        "semanticNodeLocalId": "SN-002",
+        "canonicalMeaning": "Alternative B Table Header",
+        "structuralScopeDescription": "A distinct section header introducing a specific alternative pricing structure (Alternative B) separate from the main table context.",
+        "organizationalFunction": "Segregates the pricing data into a specific alternative scenario, acting as a structural delimiter between the general total and specific alternative details."
+      },
+      {
+        "semanticNodeLocalId": "SN-003",
+        "canonicalMeaning": "Usage constraint for Alternative B Prices",
+        "structuralScopeDescription": "A conditional instruction specifying that the subsequent currency summary applies only when Alternative B prices are quoted directly in payment currencies.",
+        "organizationalFunction": "Provides logical continuity to the Alternative B section by defining the applicability conditions for the following currency breakdown, linking back to the header SN-002."
+      }
+    ],
+    "continuationEdges": [
+      {
+        "fromOccurrenceId": "DOC-0123:body[1]/p[583]",
+        "toOccurrenceId": "DOC-0123:body[1]/p[584]"
+      }
+    ],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": false,
+    "complete": false,
+    "errors": [
+      "CONTINUATION_CROSS_NODE"
+    ]
+  }
+}

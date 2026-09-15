@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-074",
+  "sequence": 74,
+  "clusterId": "SC-c17bdfebd789811c",
+  "requestHash": "a2b79d4f8497c280904d6d45e312535a5cefa4988885d7c6b9c828598fc984da",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435383-XkNAMgRqRQpCWcfJ65Yt",
+  "rawResponseSha256": "078679dfdf0f2ef019e114322f4f924e9771724d79a84e519212dd1886f6321a",
+  "parsedResponseSha256": "0be13ab8dd088ecd785bf5e3b379d5f62755c611a1bee1c235d669268fbadbe1",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 35627,
+  "reportedInputTokens": 1241,
+  "reportedReasoningTokens": 2642,
+  "reportedOutputTokens": 2990,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-c17bdfebd789811c",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000959",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000961",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "REPEAT",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Formatting artifact / Punctuation noise",
+          "structuralScopeDescription": "The occurrences represent non-informative punctuation sequences (commas) likely resulting from parsing errors or OCR artifacts in a financial table structure. They do not convey distinct semantic information but serve as delimiters or noise within the source text stream.",
+          "organizationalFunction": "Noise/Artifact Identification: These nodes are grouped to identify and isolate non-semantic textual fragments that disrupt the logical flow of data fields, ensuring they are not misinterpreted as meaningful entities or values."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

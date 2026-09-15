@@ -1,0 +1,28 @@
+{
+  "clusterId": "SC-137e766fed8e14d8",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B001891",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0133:B001907",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Fiscal year period designation within Accumulated Other Comprehensive Income (AOCI) reporting context",
+      "structuralScopeDescription": "Header or label indicating the temporal scope for AOCI data columns in a financial statement table.",
+      "organizationalFunction": "Establishes the time-bound context for the subsequent numerical data regarding Cumulative Translation Adjustments and other AOCI components."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

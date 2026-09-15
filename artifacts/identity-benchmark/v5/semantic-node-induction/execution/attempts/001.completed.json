@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-001",
+  "sequence": 1,
+  "clusterId": "SC-032875e9c153cab7",
+  "requestHash": "e84fa6facde5ae849d044e8f529499e457d96b954a2a4b9d654b77de7064bf17",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433003-QieM3tHHR3F1B9iGMckV",
+  "rawResponseSha256": "d5f679816c5e7b7241faa70212b025d233faf8d5927faf3a4cb8e29832ce3adc",
+  "parsedResponseSha256": "66c2d3d96f439b63ecc151664352d17d9ffef0c7d9c22c20bc09fe96b340bfe9",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 34473,
+  "reportedInputTokens": 1278,
+  "reportedReasoningTokens": 3002,
+  "reportedOutputTokens": 3306,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-032875e9c153cab7",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B001068",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B001069",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "MEDIUM"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Currency translation adjustments on functional currency gains (losses) and Total other comprehensive income (loss)",
+          "structuralScopeDescription": "Financial statement line items reporting specific components of Other Comprehensive Income (OCI), specifically currency translation adjustments and the total OCI figure.",
+          "organizationalFunction": "PRIMARY_OCCURRENCE"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-56263abc254ef233",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000099",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000316",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Explanation of the $51 million increase in net income for IBRD, attributing it to unrealized mark-to-market gains on non-trading portfolios and increased revenue on interest-earning assets, partially offset by Board-approved transfers.",
+        "structuralScopeDescription": "Covers the causal explanation segment linking the comparative net income figures between FY 25 YTD and the same period in FY 24. It encapsulates the specific drivers (unrealized gains/losses, interest revenue) and offsets (transfers/expenses) that constitute the variance analysis.",
+        "organizationalFunction": "CAUSAL_EXPLANATION_NODE"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

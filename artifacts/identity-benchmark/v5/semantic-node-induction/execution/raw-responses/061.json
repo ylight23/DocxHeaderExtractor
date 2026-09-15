@@ -1,0 +1,39 @@
+{
+  "clusterId": "SC-9b18cccc27c0d200",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[545]",
+      "semanticNodeLocalId": "SN-ENCLOSURE-LIST",
+      "occurrenceRole": "PRIMARY",
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[547]",
+      "semanticNodeLocalId": "SN-APPENDIX-ITEM",
+      "occurrenceRole": "CONTINUATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-ENCLOSURE-LIST",
+      "canonicalMeaning": "Header indicating the start of a list of enclosures or attachments to the proposal document.",
+      "structuralScopeDescription": "This node functions as a section header that categorizes subsequent items as required attachments. It establishes the context for 'Appendix to Proposal' and 'Schedule of Cost Indexation' as specific enclosure types."
+    ,
+    "organizationalFunction": "Primary structural marker defining the 'Enclosure(s)' category within the proposal submission requirements."
+    },
+    {
+      "semanticNodeLocalId": "SN-APPENDIX-ITEM",
+      "canonicalMeaning": "Specific item listed under the Enclosures, identified as an Appendix to the Proposal.",
+      "structuralScopeDescription": "This node represents a specific instance of an enclosure. It is logically continued from the general 'ENCLOSURE(S):' header, specifying one of the documents that must be attached.",
+      "organizationalFunction": "Represents a specific content element (Appendix) belonging to the broader Enclosure category defined by the preceding header."
+    }
+  ],
+  "continuationEdges": [
+    {
+      "fromOccurrenceId": "DOC-0123:body[1]/p[545]",
+      "toOccurrenceId": "DOC-0123:body[1]/p[547]"
+    }
+  ],
+  "unresolvedOccurrenceIds": []
+}

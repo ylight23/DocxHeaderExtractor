@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-83ba6382175a7582",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000107",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000235",
+        "semanticNodeLocalId": "SN-002",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Ordinal indicator fragment \u0027th\u0027 preceding a noun phrase related to UN Statistical Commission sessions.",
+        "structuralScopeDescription": "Fragmentary occurrence within a list of governance activities. The text \u0027th\u0027 is part of the ordinal \u002756th\u0027 (implied by context \u002756 sessio n\u0027). It serves as a grammatical modifier for the session identifier.",
+        "organizationalFunction": "Grammatical Modifier / Ordinal Marker"
+      },
+      {
+        "semanticNodeLocalId": "SN-002",
+        "canonicalMeaning": "Ordinal indicator fragment \u0027th\u0027 preceding a noun phrase related to a report release event.",
+        "structuralScopeDescription": "Fragmentary occurrence within a sentence describing the release of an ICP cycle report. The text \u0027th\u0027 is likely a parsing artifact or fragment from \u0027the\u0027 or an ordinal, but given the previous token \u0027profiles\u0027 and next token \u0027wa s\u0027, it appears disconnected or erroneous in isolation. However, based on strict text affinity with SN-001, it is grouped here tentatively.",
+        "organizationalFunction": "Ambiguous Fragment / Potential Ordinal Marker"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

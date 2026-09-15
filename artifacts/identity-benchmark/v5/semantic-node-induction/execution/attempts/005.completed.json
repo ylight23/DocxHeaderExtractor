@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-005",
+  "sequence": 5,
+  "clusterId": "SC-070e08de7da1b95f",
+  "requestHash": "941750d2c4305cb095413c594798f581ecc134e36fe1707ef2a76cecb89be8ea",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433154-trfKc54jTtIJfrGs9qgr",
+  "rawResponseSha256": "09daf8ba46491a35e8dae2aa777ad7bc1fa6ed7b6332a220aeb2874d25090532",
+  "parsedResponseSha256": "7dcd87c3e0d08fa847d8ebf3bffea8227c9ebc0a98fda0675f6c80f6888a08cc",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 29641,
+  "reportedInputTokens": 1294,
+  "reportedReasoningTokens": 2596,
+  "reportedOutputTokens": 2892,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-070e08de7da1b95f",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[908]",
+          "semanticNodeLocalId": "SN-01",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[919]",
+          "semanticNodeLocalId": "SN-01",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-01",
+          "canonicalMeaning": "Date field placeholder for form submission",
+          "structuralScopeDescription": "The date input required at the header of the update form sections for both Proposer/JV and JV/Subcontractor contexts.",
+          "organizationalFunction": "HEADER_FIELD_INDICATOR"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

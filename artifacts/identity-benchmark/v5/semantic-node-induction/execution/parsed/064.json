@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-9f1e3d86544b5fc0",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Contract Year / Period Indicator",
+        "structuralScopeDescription": "Table cell placeholder for inserting the year associated with a contract entry or suspension event.",
+        "organizationalFunction": "Identifies the temporal period (year) relevant to the specific row\u0027s data, serving as a key attribute for contract identification and financial reporting in the table structure."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

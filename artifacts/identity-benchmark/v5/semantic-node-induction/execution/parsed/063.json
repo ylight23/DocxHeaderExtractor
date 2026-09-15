@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-9d7862e7cb1eb620",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000435",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000883",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-01",
+        "canonicalMeaning": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "structuralScopeDescription": "Agenda heading or session title referring to the functional scope and governance terms of the Technical Advisory Group (TAG) task forces.",
+        "organizationalFunction": "HEADING"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

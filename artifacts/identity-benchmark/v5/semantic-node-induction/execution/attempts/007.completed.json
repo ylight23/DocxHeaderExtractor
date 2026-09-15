@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-007",
+  "sequence": 7,
+  "clusterId": "SC-08bd91eaff8ac2d7",
+  "requestHash": "60a7a60eedb39a1d6f50abe9c9b2f615f51124706b032aa7067c0b971c1a0c9a",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433213-L4E5yamNnC4nXI9pDvVY",
+  "rawResponseSha256": "6134505c58ee1ebc5d6330a7b361fd5ff49b12876d152b0a3d1d8ccbe4037584",
+  "parsedResponseSha256": "4c20c305dde58f7165ce29263cf31e4d5fa3d42a721f978d42350bc9b7cf6dba",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 40527,
+  "reportedInputTokens": 1195,
+  "reportedReasoningTokens": 3088,
+  "reportedOutputTokens": 3456,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-08bd91eaff8ac2d7",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000449",
+          "semanticNodeLocalId": "SN-01",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000453",
+          "semanticNodeLocalId": "SN-02",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-01",
+          "canonicalMeaning": "End of sentence regarding building and primary users of data.",
+          "structuralScopeDescription": "Terminal punctuation marking the conclusion of a statement about data usage by specific user groups.",
+          "organizationalFunction": "Sentence Boundary Marker"
+        },
+        {
+          "semanticNodeLocalId": "SN-02",
+          "canonicalMeaning": "End of sentence regarding leveraging interest in new data sources for ICP work.",
+          "structuralScopeDescription": "Terminal punctuation marking the conclusion of a statement about potential involvement in International Comparison Program work.",
+          "organizationalFunction": "Sentence Boundary Marker"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

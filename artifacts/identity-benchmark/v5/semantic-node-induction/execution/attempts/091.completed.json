@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-091",
+  "sequence": 91,
+  "clusterId": "SC-e418cf6207ee6cfd",
+  "requestHash": "fe8b4645adbde6a691a3b74f38c9e6cc69a3ea74b37252d8aecef8b27bb1f290",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435947-bK1HHlKDHyavYRx4V3ZI",
+  "rawResponseSha256": "5a979967ba91886f20b0b23d703254aca3da3b6be390d050dca9384b2966bd4a",
+  "parsedResponseSha256": "72c34931ad707147c57cef20d56c6ed7addf725feff0d8bde648bdd77bea8bd8",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 37952,
+  "reportedInputTokens": 1153,
+  "reportedReasoningTokens": 2472,
+  "reportedOutputTokens": 2860,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-e418cf6207ee6cfd",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000140",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000157",
+          "semanticNodeLocalId": "node_2",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Punctuation artifact or separator in financial narrative regarding Net Investment Portfolio growth.",
+          "structuralScopeDescription": "Occurs between the previous period value and the current period value of the Net Investment Portfolio, likely representing a parsing error or redundant comma in the source text stream.",
+          "organizationalFunction": "SEPARATOR"
+        },
+        {
+          "semanticNodeLocalId": "node_2",
+          "canonicalMeaning": "Punctuation artifact or separator in financial narrative regarding Borrowings at amortized cost.",
+          "structuralScopeDescription": "Occurs within the sentence describing borrowings reported at amortized cost, likely representing a parsing error or redundant comma in the source text stream.",
+          "organizationalFunction": "SEPARATOR"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

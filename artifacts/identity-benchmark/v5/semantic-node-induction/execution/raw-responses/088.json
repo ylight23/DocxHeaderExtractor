@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-df80308b29693450",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000224",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "PRIMARY"
+    ,
+    "confidence":  	"LOW"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000226",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "REPEAT"
+    ,
+    "confidence": 	"LOW"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "node_1",
+      "canonicalMeaning": "Sentence boundary punctuation marks within a fragmented text stream regarding communication improvements and data collection timelines.",
+      "structuralScopeDescription": "The node represents the syntactic closure of two distinct but adjacent sentence fragments in a noisy, tokenized document. The first fragment ends with 'shared Data' (implied period at B000224), and the second fragment ends with 'he ld' (implied period at B000226). They are grouped as the same semantic object because they serve the identical functional role of terminating independent clauses in a sequence where the intervening text is continuous in topic (data collection/validation workshops) despite the noise.",
+      "organizationalFunction": "Punctuation-based segmentation anchor."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

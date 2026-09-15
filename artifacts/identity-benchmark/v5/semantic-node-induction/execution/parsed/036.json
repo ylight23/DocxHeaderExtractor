@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-62312e2ef1696634",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000194",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000731",
+        "semanticNodeLocalId": "SN-002",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Punctuation artifact / Noise",
+        "structuralScopeDescription": "End of sentence or list item in a paragraph discussing ICP 2024 participation statistics.",
+        "organizationalFunction": "Terminates the preceding textual segment regarding economic economies and Kosovo. Represents non-lexical noise."
+      },
+      {
+        "semanticNodeLocalId": "SN-002",
+        "canonicalMeaning": "Punctuation artifact / Noise",
+        "structuralScopeDescription": "Mid-sentence punctuation within a technical discussion about Minimum Spanning Trees and similarity indexes.",
+        "organizationalFunction": "Acts as a separator or noise marker within a complex technical sentence structure. Represents non-lexical noise."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

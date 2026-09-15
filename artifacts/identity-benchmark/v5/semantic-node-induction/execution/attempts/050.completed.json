@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-050",
+  "sequence": 50,
+  "clusterId": "SC-83ba6382175a7582",
+  "requestHash": "2fc2c2c65d805ef6564c83fb2227442dfe17d01cc8a709e4ed59ce3082845b79",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434695-Sfps8LHe06uYW5AcTy7c",
+  "rawResponseSha256": "65fe02d1a5f3a62403ed8d19a018105e293d37b95d11845354d5236c5b7d8959",
+  "parsedResponseSha256": "9714220cbbbbd8bdd96992e77711e07b84ce3a8054f2d287bd27906fd07a434f",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 40055,
+  "reportedInputTokens": 1291,
+  "reportedReasoningTokens": 3057,
+  "reportedOutputTokens": 3540,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-83ba6382175a7582",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000107",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000235",
+          "semanticNodeLocalId": "SN-002",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Ordinal indicator fragment \u0027th\u0027 preceding a noun phrase related to UN Statistical Commission sessions.",
+          "structuralScopeDescription": "Fragmentary occurrence within a list of governance activities. The text \u0027th\u0027 is part of the ordinal \u002756th\u0027 (implied by context \u002756 sessio n\u0027). It serves as a grammatical modifier for the session identifier.",
+          "organizationalFunction": "Grammatical Modifier / Ordinal Marker"
+        },
+        {
+          "semanticNodeLocalId": "SN-002",
+          "canonicalMeaning": "Ordinal indicator fragment \u0027th\u0027 preceding a noun phrase related to a report release event.",
+          "structuralScopeDescription": "Fragmentary occurrence within a sentence describing the release of an ICP cycle report. The text \u0027th\u0027 is likely a parsing artifact or fragment from \u0027the\u0027 or an ordinal, but given the previous token \u0027profiles\u0027 and next token \u0027wa s\u0027, it appears disconnected or erroneous in isolation. However, based on strict text affinity with SN-001, it is grouped here tentatively.",
+          "organizationalFunction": "Ambiguous Fragment / Potential Ordinal Marker"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

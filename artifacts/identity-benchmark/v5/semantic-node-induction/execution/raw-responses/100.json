@@ -1,0 +1,33 @@
+{
+  "clusterId": "SC-fadddbae86c6b0ed",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "CONTINUATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Provisional sums for specific ES outcomes and related employer costs",
+      "structuralScopeDescription": "The node represents the line items in a provisional sum schedule table. The primary occurrence defines the category 'Provisional sums for any specific ES outcomes', while the continuation occurrence 'etc.' indicates that this category or similar unspecified items follow in the sequence before the total is calculated.",
+      "organizationalFunction": "ITEM_DEFINITION_AND_LISTING"
+    }
+  ],
+  "continuationEdges": [
+    {
+      "fromOccurrenceId": "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+      "toOccurrenceId": "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]"
+    }
+  ],
+  "unresolvedOccurrenceIds": []
+}

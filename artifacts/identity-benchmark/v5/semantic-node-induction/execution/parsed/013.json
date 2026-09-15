@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-193e908c0f00a68c",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000017",
+        "semanticNodeLocalId": "SN-Gov-Header",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000921",
+        "semanticNodeLocalId": "SN-Gov-Header",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-Gov-Header",
+        "canonicalMeaning": "Section V: Governance Senior Management Changes",
+        "structuralScopeDescription": "The primary table of contents entry for Section V, encompassing the governance topic and specifically highlighting senior management changes. The alias occurrence represents a fragmented or partial extraction of this same structural heading found later in the document text.",
+        "organizationalFunction": "HEADINGS_INDEX_ENTRY"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-099",
+  "sequence": 99,
+  "clusterId": "SC-faa9769a7ae9a698",
+  "requestHash": "b5e445cd3a6221d984a829b1f0e8da438e8b0a3a4da3c0f3e9aed69a3c53e27a",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789436247-f9PrtusaKKA2teYkCNx4",
+  "rawResponseSha256": "9656537c5ea7a3eb52236a0ca4c724580dd03213c569f1a0246d2f43d526a7d5",
+  "parsedResponseSha256": "f0ee501a1c837a2bfe24d04113a19274aaf45fe716600ee7245f6619465db37e",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 40548,
+  "reportedInputTokens": 1299,
+  "reportedReasoningTokens": 2886,
+  "reportedOutputTokens": 3304,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-faa9769a7ae9a698",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000396",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000402",
+          "semanticNodeLocalId": "node_2",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Ambiguous punctuation/noise token following discussion on health/education approaches and regional groupings.",
+          "structuralScopeDescription": "Acts as a delimiter or noise artifact in the text stream, separating the previous topic from the subsequent mention of countries and Professor Rao\u0027s emphasis on dynamic ICP programs.",
+          "organizationalFunction": "Noise/Punctuation Artifact"
+        },
+        {
+          "semanticNodeLocalId": "node_2",
+          "canonicalMeaning": "Ambiguous punctuation/noise token following discussion on SNA 2025 implementation in ICP structure.",
+          "structuralScopeDescription": "Acts as a delimiter or noise artifact in the text stream, separating the previous topic about SNA 2025 adoption deadlines from the subsequent identification of potential target dates for methodological developments.",
+          "organizationalFunction": "Noise/Punctuation Artifact"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

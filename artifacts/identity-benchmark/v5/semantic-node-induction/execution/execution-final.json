@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "a99-v5b-execution-final-v1",
+  "status": "RESPONSE_FREEZE_COMPLETE",
+  "scheduledCalls": 102,
+  "completedAttempts": 102,
+  "validClusters": 89,
+  "invalidValidationClusters": 9,
+  "providerErrorClusters": 4,
+  "modelCalls": 102,
+  "providerCalls": 102,
+  "goldReadCount": 0,
+  "goldReadBeforeFreeze": false,
+  "frozenBeforeGold": true,
+  "recoveryCohort": false,
+  "retries": 0,
+  "completedUtc": "2026-09-15T01:42:42.9353927+00:00"
+}

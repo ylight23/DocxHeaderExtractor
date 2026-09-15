@@ -1,0 +1,39 @@
+{
+  "response": {
+    "clusterId": "SC-71e2f00f18661add",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B002226",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0133:B002228",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "LOW"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "node_1",
+        "canonicalMeaning": "Punctuation mark separating clauses in a financial disclosure note regarding currency translation adjustments and comprehensive income statements.",
+        "structuralScopeDescription": "The node represents the syntactic function of the comma within the continuous sentence structure spanning occurrences B002226 through B002229. It serves to separate distinct items or clauses within the list of accounting treatments described in the source text.",
+        "organizationalFunction": "Syntactic Separator"
+      }
+    ],
+    "continuationEdges": [
+      {
+        "fromOccurrenceId": "DOC-0133:B002226",
+        "toOccurrenceId": "DOC-0133:B002228"
+      }
+    ],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

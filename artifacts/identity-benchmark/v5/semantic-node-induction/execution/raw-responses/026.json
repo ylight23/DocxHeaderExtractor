@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-44f46f640e7712b0",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B000339",
+      "semanticNodeLocalId": "SN-FY-TIMELINE",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":   	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0133:B000340",
+      "semanticNodeLocalId": "SN-FY-TIMELINE",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence": 	"HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-FY-TIMELINE",
+      "canonicalMeaning": "Fiscal Year Timeline Headers (FY 21 through FY 25)",
+      "structuralScopeDescription": "The occurrences serve as column headers or timeline markers for a financial table, defining the temporal scope of the subsequent data entries. The repetition indicates either a multi-page table header or a redundant labeling in the source structure.",
+      "organizationalFunction": "TIMELINE_HEADER"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

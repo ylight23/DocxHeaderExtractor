@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-d9213bae8cb6cb04",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[32]/txbxContent[1]/p[1]",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[32]/txbxContent[2]/p[1]",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "node_1",
+        "canonicalMeaning": "March 2025",
+        "structuralScopeDescription": "Temporal marker indicating the date of the document or section, appearing in adjacent text boxes within paragraph 32.",
+        "organizationalFunction": "The node serves as a temporal anchor for the specific content block (paragraph 32) containing these occurrences. It establishes the validity or publication timeframe for the associated procedural information (Single-Stage Request for Proposals). The two occurrences are structurally split across adjacent text boxes but semantically identical, representing the same date reference."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

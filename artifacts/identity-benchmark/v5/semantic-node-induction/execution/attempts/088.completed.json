@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-088",
+  "sequence": 88,
+  "clusterId": "SC-df80308b29693450",
+  "requestHash": "78df9d3a7985489a034b02caf72d8f035d5808c88048968e7cea85909faa627d",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435840-D8bNEpK8fC7ZYWwXMjM1",
+  "rawResponseSha256": "d8afcf63bd73bc5433475cf57157c4eb7730c84ecbc20f87bba84b2dea85941e",
+  "parsedResponseSha256": "398e80794b076eed72d6f62621fdeef447dcb656c23672b08e274ac68fd95223",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 33361,
+  "reportedInputTokens": 1268,
+  "reportedReasoningTokens": 2333,
+  "reportedOutputTokens": 2714,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-df80308b29693450",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000224",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000226",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "REPEAT",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Sentence boundary punctuation marks within a fragmented text stream regarding communication improvements and data collection timelines.",
+          "structuralScopeDescription": "The node represents the syntactic closure of two distinct but adjacent sentence fragments in a noisy, tokenized document. The first fragment ends with \u0027shared Data\u0027 (implied period at B000224), and the second fragment ends with \u0027he ld\u0027 (implied period at B000226). They are grouped as the same semantic object because they serve the identical functional role of terminating independent clauses in a sequence where the intervening text is continuous in topic (data collection/validation workshops) despite the noise.",
+          "organizationalFunction": "Punctuation-based segmentation anchor."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

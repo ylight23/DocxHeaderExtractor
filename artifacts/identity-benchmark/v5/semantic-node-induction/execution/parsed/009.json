@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-10ca4581b17299d1",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000508",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000512",
+        "semanticNodeLocalId": "node_2",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "node_1",
+        "canonicalMeaning": "Sentence boundary marking the conclusion of the discussion on representation and involvement.",
+        "structuralScopeDescription": "Ends the clause \u0027was discussed\u0027 which followed \u0027while guaranteeing wide representation...\u0027. It serves as a terminal punctuation mark for the previous thought before introducing the recommendation in the next sentence.",
+        "organizationalFunction": "TERMINAL_PUNCTUATION"
+      },
+      {
+        "semanticNodeLocalId": "node_2",
+        "canonicalMeaning": "Sentence boundary marking the end of the Task Force establishment recommendation.",
+        "structuralScopeDescription": "Ends the sentence recommending the establishment of a Task Force on strategies for annual PPPs. It separates this recommendation from the subsequent heading \u00273 Terms of Reference...\u0027 and the presentation by Inyoung Song.",
+        "organizationalFunction": "TERMINAL_PUNCTUATION"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "clusterId": "SC-f12b996463a94a60",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000750",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "PRIMARY",
+      "confidence":  			  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000751",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "ALIAS_REPRESENTATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "node_1",
+      "canonicalMeaning": "Proposal from Professor Alan Heston regarding global PPP estimation methodology",
+      "structuralScopeDescription": "The node represents the core semantic unit of a specific academic proposal. Occurrence B000750 contains the substantive text describing the proposal's origin and intent. Occurrence B000751 is a punctuation fragment (period and comma) that structurally terminates the sentence containing B000750. In this parser context, B000751 is treated as an alias representation or structural continuation marker for the same logical heading/segment initiated by B000750, rather than a distinct semantic object.",
+      "organizationalFunction": "Primary semantic anchor for the proposal topic, with B000751 serving as the syntactic closure marker for that specific segment."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

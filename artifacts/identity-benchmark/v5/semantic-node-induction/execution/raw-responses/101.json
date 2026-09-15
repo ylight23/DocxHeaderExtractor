@@ -1,0 +1,54 @@
+{
+  "clusterId": "SC-fd68b6c73c10e67b",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000006",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY",
+      "confidence":  			  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000042",
+      "semanticNodeLocalId": "SN-002",
+      "occurrenceRole": "REPEAT",
+      "confidence": "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000253",
+      "semanticNodeLocalId": "SN-003",
+      "occurrenceRole": "CONTINUATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Session I : Welcome a nd meeting objectives",
+      "structuralScopeDescription": "Opening session heading defining the initial agenda items of welcome and objective setting for the hybrid meeting.",
+      "organizationalFunction": "INITIAL_HEADING"
+    },
+    {
+      "semanticNodeLocalId": "SN-002",
+      "canonicalMeaning": "Session I I : U pdate on the ICP 2021 Cycle 1 G loba office u pdate .",
+      "structuralScopeDescription": "Second session heading focusing on updates regarding the ICP 2021 cycle publication and dissemination.",
+      "organizationalFunction": "SUBSEQUENT_HEADING"
+    },
+    {
+      "semanticNodeLocalId": "SN-003",
+      "canonicalMeaning": "Session I I I : Short- a nd Long-Term Resea rch a nd Development Agenda 1 Resea rch Topics Emerging from the Previous ICP Cycles .",
+      "structuralScopeDescription": "Third session heading addressing research and development agendas, specifically topics emerging from previous ICP cycles.",
+      "organizationalFunction": "SUBSEQUENT_HEADING"
+    }
+  ],
+  "continuationEdges": [
+    {
+      "fromOccurrenceId": "DOC-0252:B000006",
+      "toOccurrenceId": "DOC-0252:B000042"
+    },
+    {
+      "fromOccurrenceId": "DOC-0252:B000042",
+      "toOccurrenceId": "DOC-0252:B000253"
+    }
+  ],
+  "unresolvedOccurrenceIds": []
+}

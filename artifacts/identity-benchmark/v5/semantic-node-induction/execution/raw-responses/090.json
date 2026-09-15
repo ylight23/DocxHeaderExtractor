@@ -1,0 +1,37 @@
+{
+  "clusterId": "SC-e1dba61cbc2b05da",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000162",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000168",
+      "semanticNodeLocalId": "node_2",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "node_1",
+      "canonicalMeaning": "Punctuation/Transition marker preceding the presentation of ICPS 2024 status and CIS region results by Andrey Kosorov.",
+      "structuralScopeDescription": "Acts as a syntactic bridge or separator between the speaker's title/affiliation (CIS-Stat) and the action verb 'presented'. It indicates a pause or structural break in the parsed text stream before the main clause begins."
+    ,
+      "organizationalFunction": "SYNTACTIC_SEPARATOR"
+    },
+    {
+      "semanticNodeLocalId": "node_2",
+      "canonicalMeaning": "Punctuation/Transition marker preceding the attribution to the Global Office regarding regional stability simulations.",
+      "structuralScopeDescription": "Acts as a syntactic bridge or separator following the description of simulation results and preceding the entity 'Global Office'. It likely marks the end of a descriptive phrase or the start of a new clause attributing the source of the simulations."
+    ,
+      "organizationalFunction": "SYNTACTIC_SEPARATOR"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

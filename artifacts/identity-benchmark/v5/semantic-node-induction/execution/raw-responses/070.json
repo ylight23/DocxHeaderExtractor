@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-b5e7cf633691dae4",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence": 	"HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "A formal communication or directive issued under the contract, specifically referenced in the context of Sub-Clause 15.2.1 and Sub-Clause 16.2.1 regarding response times and suspension of work.",
+      "structuralScopeDescription": "The term 'Notice' appears as a header or key label within table rows defining specific sub-clause modifications (15.2.1 and 16.2.1). It serves as a structural anchor for contractual obligations related to formal notifications.",
+      "organizationalFunction": "HEADWORD_INDICATOR"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

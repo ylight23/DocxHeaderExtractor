@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-2ecdded7e5d3167a",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-TechScore-Row4",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-TechScore-Row5",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-TechScore-Row4",
+        "canonicalMeaning": "Technical score for the first evaluated proposal row",
+        "structuralScopeDescription": "Represents the specific data cell containing the technical evaluation score for the entity listed in the same table row (tr[4]). It is structurally aligned with other scoring metrics in the table.",
+        "organizationalFunction": "Primary instance of the \u0027Technical Score\u0027 attribute for the first record in the comparison table. It anchors the semantic value for this specific row\u0027s technical evaluation."
+      },
+      {
+        "semanticNodeLocalId": "SN-TechScore-Row5",
+        "canonicalMeaning": "Technical score for the second evaluated proposal row",
+        "structuralScopeDescription": "Represents the specific data cell containing the technical evaluation score for the entity listed in the subsequent table row (tr[5]). It mirrors the structure and intent of the previous occurrence but applies to a distinct entity/row.",
+        "organizationalFunction": "Repeat instance of the \u0027Technical Score\u0027 attribute for the second record. It maintains the schema consistency across rows, indicating that the same type of metric is being recorded for a different proposal or candidate."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

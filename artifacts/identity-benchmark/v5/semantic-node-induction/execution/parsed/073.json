@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-c03b3d5ec241bf2d",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000359",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000360",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Net Loans Outstanding Value (300 billion USD)",
+        "structuralScopeDescription": "Represents the specific data point \u0027300\u0027 from Figure 4, indicating the net loans outstanding amount in billions of U.S. dollars.",
+        "organizationalFunction": "Primary anchor for the quantitative value associated with the first chart\u0027s dataset."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

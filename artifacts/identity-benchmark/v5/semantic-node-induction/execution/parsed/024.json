@@ -1,0 +1,45 @@
+{
+  "response": {
+    "clusterId": "SC-3ebbfbdbe24a0530",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[695]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[766]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Code of Conduct for Contractor\u2019s Personnel (ES)",
+        "structuralScopeDescription": "The specific contractual document or form required to be submitted by the Proposer, detailing environmental and social obligations, including provisions on labor influx, communicable diseases, and Sexual Exploitation and Abuse (SEA).",
+        "organizationalFunction": "This node represents the mandatory submission artifact (the Code of Conduct) that operationalizes the contractor\u0027s compliance with Environmental and Social (ES) standards. It serves as the binding agreement between the Contractor and its personnel/subcontractors regarding ethical and safety conduct on site."
+      }
+    ],
+    "continuationEdges": [
+      {
+        "fromOccurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+        "toOccurrenceId": "DOC-0123:body[1]/p[766]"
+      }
+    ],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-016",
+  "sequence": 16,
+  "clusterId": "SC-2309002963e9d48f",
+  "requestHash": "6e18d59fbc3cd365dc29a047cf5fb132991aefffd224eed4b7bdb9ab25cb7edc",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433552-Laowk7iYStLCop3M9dhD",
+  "rawResponseSha256": "a7eb53642bb3f13cee842166ae3cda24b9fa43ae4897586f43bdefdb4b9c6a9a",
+  "parsedResponseSha256": "3fa62951359aedb4854c3b3102309bbbc66b2b7fdb5882d8e25acaa5646f05c9",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 38540,
+  "reportedInputTokens": 1272,
+  "reportedReasoningTokens": 2881,
+  "reportedOutputTokens": 3239,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-2309002963e9d48f",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[97]",
+          "semanticNodeLocalId": "SN-LOCAL-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[179]",
+          "semanticNodeLocalId": "SN-LOCAL-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-LOCAL-001",
+          "canonicalMeaning": "The section of the document defining the Employer\u0027s Requirements, including functional specifications, standards, and environmental/social requirements.",
+          "structuralScopeDescription": "This node represents the main heading for Part 2 of the document structure. It serves as the container for detailed technical and performance specifications required by the employer. The first occurrence marks the start of this section in the body text, while the second occurrence appears to be a table of contents or index entry referencing the same structural part.",
+          "organizationalFunction": "Structural Division Marker"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

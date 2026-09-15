@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-060",
+  "sequence": 60,
+  "clusterId": "SC-9ab2d7468337edc1",
+  "requestHash": "76d711ed6d1ddfaa320baee499f5c292376a39275b831b4e75f1f3e6b47bf837",
+  "status": "INVALID_VALIDATION",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434910-V3GW9dHgVVFcGg9qKYDg",
+  "rawResponseSha256": "c18b0061fa570748543f84f7513c4307826eebf19edec6b894a25ac2d59cd51f",
+  "parsedResponseSha256": "c0d53323adb5731c43310833a239f2ec87e6af0668f26bc083b2edb866531077",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 32538,
+  "reportedInputTokens": 1240,
+  "reportedReasoningTokens": 2388,
+  "reportedOutputTokens": 2865,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-9ab2d7468337edc1",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]",
+          "semanticNodeLocalId": "SN-002",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Contract Identification Label",
+          "structuralScopeDescription": "Header label for the contract identification field in a tabular form.",
+          "organizationalFunction": "Identifies the specific section or column dedicated to the unique identifier of the legal contract."
+        },
+        {
+          "semanticNodeLocalId": "SN-002",
+          "canonicalMeaning": "Employer Name Label",
+          "structuralScopeDescription": "Header label for the employer name field, immediately following the contract identification field.",
+          "organizationalFunction": "Identifies the specific section or column dedicated to the name of the contracting employer entity."
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]",
+          "toOccurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": false,
+      "complete": false,
+      "errors": [
+        "CONTINUATION_CROSS_NODE"
+      ]
+    }
+  }
+}

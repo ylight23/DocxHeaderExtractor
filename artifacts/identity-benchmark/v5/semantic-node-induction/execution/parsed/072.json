@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-b8cd0daf89cc2809",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000016",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000031",
+        "semanticNodeLocalId": "node_2",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "node_1",
+        "canonicalMeaning": "Punctuation/Noise artifact in a list of attendees or entities (Regional Implementing Agencies, World Bank staff).",
+        "structuralScopeDescription": "Isolated punctuation token within a sentence fragment describing participants.",
+        "organizationalFunction": "Represents a non-informative textual artifact (comma sequence) likely resulting from OCR errors or formatting noise. It does not carry semantic weight distinct from surrounding context."
+      },
+      {
+        "semanticNodeLocalId": "node_2",
+        "canonicalMeaning": "Punctuation/Noise artifact closing a quoted title.",
+        "structuralScopeDescription": "Isolated punctuation token following a quoted event title and preceding the acronym definition.",
+        "organizationalFunction": "Represents a non-informative textual artifact (comma sequence) likely resulting from OCR errors or formatting noise. It serves as a delimiter in the source text but carries no independent semantic content."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-cd566bc4da71285c",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000434",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000439",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence": 	"HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Sentence Termination / Punctuation Boundary",
+      "structuralScopeDescription": "End of sentence clauses regarding Task Force composition and observer expansion.",
+      "organizationalFunction": "Marks the syntactic closure of distinct propositional units within the meeting minutes, specifically separating the discussion on TAG composition from the subsequent proposal for expanding membership."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

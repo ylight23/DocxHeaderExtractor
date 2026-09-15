@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-069",
+  "sequence": 69,
+  "clusterId": "SC-b54f759607ee0732",
+  "requestHash": "8dc79ffee428c986fa2823dd6ffa5525097565ecc4eb1bbd54e4b899b3bb7f28",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435219-Qq33Wp0SdP9ZwGPy3r8o",
+  "rawResponseSha256": "f0064ae51cc202031f79534b8549b99f2bef13038b5d0592cd1be8364ad883e9",
+  "parsedResponseSha256": "bbcdd92a3e82609d09323e91f6a1648c0084f1b4c0e941f358bff5709cedcbc7",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 35321,
+  "reportedInputTokens": 1579,
+  "reportedReasoningTokens": 2881,
+  "reportedOutputTokens": 3304,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-b54f759607ee0732",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[92]",
+          "semanticNodeLocalId": "SN-V5-Eligible-Countries-Primary",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[176]",
+          "semanticNodeLocalId": "SN-V5-Eligible-Countries-Primary",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]",
+          "semanticNodeLocalId": "SN-V5-Eligible-Countries-Primary",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-V5-Eligible-Countries-Primary",
+          "canonicalMeaning": "Section V - Eligible Countries",
+          "structuralScopeDescription": "A structural heading identifying Section V of the document, which contains information regarding eligible countries. This node appears in the main body text, a subsequent repetition (likely an index or table of contents entry with page numbers), and within a specific table cell listing section titles.",
+          "organizationalFunction": "HEADING_IDENTIFICATION"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-004",
+  "sequence": 4,
+  "clusterId": "SC-07084e0aff69e2bd",
+  "requestHash": "ea9f6c3082abc92650507e8cb4645857e32c42913f0bb07d91ace77dfd61b48a",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433118-p6hljnKklnyTH0h2oywU",
+  "rawResponseSha256": "1e48840e0172a34bfd7ac28ea09f95f5b0a629302e9e51e5ea662f05f11ce195",
+  "parsedResponseSha256": "1f43a9a79402ec16b4aa07c743d9af618ca3d4c04945cda378832b030585cc65",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 36061,
+  "reportedInputTokens": 1259,
+  "reportedReasoningTokens": 2465,
+  "reportedOutputTokens": 2953,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-07084e0aff69e2bd",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B001610",
+          "semanticNodeLocalId": "SN-01",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0133:B001617",
+          "semanticNodeLocalId": "SN-02",
+          "occurrenceRole": "REPEAT",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-01",
+          "canonicalMeaning": "Ambiguous punctuation or formatting artifact in narrative text regarding fair value hierarchy classification.",
+          "structuralScopeDescription": "Occurs within the textual description of financial instrument valuation levels, likely representing a parsing error or missing data field between sentences discussing Level 2 classification and currency denomination.",
+          "organizationalFunction": "Serves as a noise token that disrupts the semantic flow between the statement on fair value hierarchy levels (Level 2) and the subsequent statement on currency denominations. It does not convey specific financial information but indicates a break or error in the source text structure."
+        },
+        {
+          "semanticNodeLocalId": "SN-02",
+          "canonicalMeaning": "Ambiguous punctuation or formatting artifact preceding a financial table header.",
+          "structuralScopeDescription": "Occurs immediately after the table headers (\u0027In millions...\u0027, \u0027March 31...\u0027) and before the first data row (\u0027Borrowings\u0027). Likely represents a stray comma or delimiter from the table\u0027s internal structure that was extracted as text.",
+          "organizationalFunction": "Acts as a structural separator or noise token at the boundary between table metadata (headers) and table content (data rows). It signals the start of the tabular data section but carries no intrinsic semantic meaning itself."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-d739ea4122054a93",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[875]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[878]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Signature Field Label",
+      "structuralScopeDescription": "The text label indicating a signature line in a contract or agreement document. Occurs twice, likely corresponding to different parties (e.g., Proposer and Counterparty) or sections requiring signatures.",
+      "organizationalFunction": "Identifies the location for an authorized signature."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

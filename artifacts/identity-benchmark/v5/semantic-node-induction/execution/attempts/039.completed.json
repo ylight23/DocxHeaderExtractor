@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-039",
+  "sequence": 39,
+  "clusterId": "SC-698908c4f6d37a72",
+  "requestHash": "e87ff27c6da0f2a517ce25b9a3e10e01f545018886e0bbe6d5212064d7d99dd6",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434333-xHqz41lz4TH6W4VDMfAG",
+  "rawResponseSha256": "198acf769a6955fbc9b1ea5fcbf14117c13aac61943285dc1a5e8724b0603da1",
+  "parsedResponseSha256": "f46cd3941b2615504ac6948e8a985aed33b37d873ae162796eeb0e729ac0f001",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 33065,
+  "reportedInputTokens": 1272,
+  "reportedReasoningTokens": 2495,
+  "reportedOutputTokens": 2879,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-698908c4f6d37a72",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000063",
+          "semanticNodeLocalId": "SN-1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000083",
+          "semanticNodeLocalId": "SN-2",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-1",
+          "canonicalMeaning": "Quotation marks or citation delimiter in a list item context",
+          "structuralScopeDescription": "Encloses the end of a clause referencing the CIS region within a procedural description.",
+          "organizationalFunction": "Marks the boundary of a quoted phrase or specific terminology related to the Commonwealth and Independent States region."
+        },
+        {
+          "semanticNodeLocalId": "SN-2",
+          "canonicalMeaning": "Quotation marks or citation delimiter in a report reference context",
+          "structuralScopeDescription": "Encloses the end of a clause referencing World Bank income classification and wealth estimates.",
+          "organizationalFunction": "Marks the boundary of a quoted phrase or specific terminology related to economic classifications and wealth reports."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-046",
+  "sequence": 46,
+  "clusterId": "SC-7dba387f4f54f96d",
+  "requestHash": "355edd6a22167077adc3a1decb6cfc7a273b908666051e0384e03c49bff50acf",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434559-QA4ggIARrJW7Jeqs2r1p",
+  "rawResponseSha256": "93e67425c19f66d485c1e161e162ba2d7701eda1b38977c4ddeaac0ac5a3a727",
+  "parsedResponseSha256": "e8611829afa0ae8e754e17b9b09d4fe7dc3d614e087f3cee502d9c6117d0e9ba",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 35156,
+  "reportedInputTokens": 1362,
+  "reportedReasoningTokens": 2535,
+  "reportedOutputTokens": 3041,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-7dba387f4f54f96d",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000937",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11",
+          "semanticNodeLocalId": "SN-002",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Table of Contents entry for Condensed Statements of Cash Flows and Notes to Financial Statements",
+          "structuralScopeDescription": "Represents the specific section header or index line item listing \u0027CONDENSED STATEMENTS OF CASH FLOWS\u0027 and \u0027NOTES TO CONDENSED QUARTERLY FINANCIAL STATEMENTS\u0027. It functions as a navigational pointer within the document\u0027s front matter, distinct from the auditor\u0027s report.",
+          "organizationalFunction": "INDEX_ENTRY"
+        },
+        {
+          "semanticNodeLocalId": "SN-002",
+          "canonicalMeaning": "Table of Contents entry for Independent Auditor\u0027s Review Report",
+          "structuralScopeDescription": "Represents the specific section header or index line item listing \u0027INDEPENDENT AUDITOR\u0027S REVIEW REPORT\u0027. Although physically adjacent in the source text (likely due to formatting or OCR grouping), it denotes a separate logical section following the financial statements and notes.",
+          "organizationalFunction": "INDEX_ENTRY"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

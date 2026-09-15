@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-098",
+  "sequence": 98,
+  "clusterId": "SC-f8cd55c5e557df36",
+  "requestHash": "9a506f49de8871e4594ab5fc7124af61e5ddfc0dc0620589065387e1f88292e8",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789436213-akFutoMVEolJ5rj376Es",
+  "rawResponseSha256": "98b989b6ccef6290911158ba68a48ef04cd1313352a910aa1c842e5b6fbcefb2",
+  "parsedResponseSha256": "f0f998cadc80b658545132284d0761975b90b01d44c336a23ca3beface3ab0bd",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 34289,
+  "reportedInputTokens": 1227,
+  "reportedReasoningTokens": 2729,
+  "reportedOutputTokens": 3071,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-f8cd55c5e557df36",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000022",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000026",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "REPEAT",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Punctuation separator (comma) within a sentence structure",
+          "structuralScopeDescription": "The node represents the syntactic function of the comma character in separating clauses or list items. In this specific cluster, the occurrences are isolated punctuation marks that do not carry independent semantic weight beyond their grammatical role as separators. They are grouped because they share the same lexical form and low-level syntactic function, despite appearing in different parts of the text flow.",
+          "organizationalFunction": "GROUPING_OF_SYNTACTIC_MARKERS"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

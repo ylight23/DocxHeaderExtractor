@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-015",
+  "sequence": 15,
+  "clusterId": "SC-1c4e8826322b617f",
+  "requestHash": "44c552867167c9825e2fbce96c15cf9e7dc4306f0ad279b90a0aefbe57c7a40d",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433513-Grd1eusK3K3xgX1asqKZ",
+  "rawResponseSha256": "288bdd38f38617019afb92edc958e85888b4e7dbb41443853e21e8f5b4e3fd58",
+  "parsedResponseSha256": "b7c6c032403c04d7bb81eac80e2340a1a476264dd27730d7394a0cb5664c0769",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 38467,
+  "reportedInputTokens": 1237,
+  "reportedReasoningTokens": 2687,
+  "reportedOutputTokens": 3057,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-1c4e8826322b617f",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[317]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[318]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Subcontractor Requirements and Continuation of Criteria",
+          "structuralScopeDescription": "The section heading \u00271.5 Subcontractors\u0027 introduces the topic, followed immediately by a specific requirement that specialized subcontractors identified during initial selection must continue to meet applicable requirements.",
+          "organizationalFunction": "HEAD_AND_CONTINUATION_PAIR"
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0123:body[1]/p[317]",
+          "toOccurrenceId": "DOC-0123:body[1]/p[318]"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

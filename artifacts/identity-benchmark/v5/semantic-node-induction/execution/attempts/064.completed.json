@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-064",
+  "sequence": 64,
+  "clusterId": "SC-9f1e3d86544b5fc0",
+  "requestHash": "358560451536eb702df3667d810ef87c412763b2b6ec6aaa3b86d05f1981da65",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435049-Dat7fPA1qvENi2WViqre",
+  "rawResponseSha256": "d471407c5587cb701b200c1c48b45cd5d7b88bad05d8e4cac161746b3eb12725",
+  "parsedResponseSha256": "3144f9b6a0fba117e8137f4b5042571957017202a1f36582a7fea3ae3d3dcb9f",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 30838,
+  "reportedInputTokens": 1294,
+  "reportedReasoningTokens": 2124,
+  "reportedOutputTokens": 2462,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-9f1e3d86544b5fc0",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Contract Year / Period Indicator",
+          "structuralScopeDescription": "Table cell placeholder for inserting the year associated with a contract entry or suspension event.",
+          "organizationalFunction": "Identifies the temporal period (year) relevant to the specific row\u0027s data, serving as a key attribute for contract identification and financial reporting in the table structure."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

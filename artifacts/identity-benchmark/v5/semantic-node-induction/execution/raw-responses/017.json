@@ -1,0 +1,35 @@
+{
+  "clusterId": "SC-282e741228750d1f",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[920]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[921]",
+      "semanticNodeLocalId": "SN-002",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence": 	"HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Joint Venture Member or Specialized Subcontractor Name Field",
+      "structuralScopeDescription": "A form field label requesting the full name of a joint venture member or specialized subcontractor, situated within a document header or cover page section.",
+      "organizationalFunction": "Identifies the specific entity role (JV member/subcontractor) for which identification details are being collected in this instance of the template."
+    },
+    {
+      "semanticNodeLocalId": "SN-002",
+      "canonicalMeaning": "RFP Number and Title Field",
+      "structuralScopeDescription": "A form field label requesting the reference number and title of the Request for Proposal, adjacent to the previous name field.",
+      "organizationalFunction": "Identifies the specific procurement project context by linking the submission to the governing RFP document."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-d5c3803d86734251",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1199]",
+        "semanticNodeLocalId": "SN-PC-INTRO",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1201]",
+        "semanticNodeLocalId": "SN-PC-TITLE",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-PC-INTRO",
+        "canonicalMeaning": "Introduction and Hierarchy Rule for Particular Conditions",
+        "structuralScopeDescription": "The introductory paragraph establishing the legal hierarchy between Particular Conditions and General Conditions.",
+        "organizationalFunction": "Establishes the governing principle that Particular Conditions supplement and prevail over General Conditions in case of conflict."
+      },
+      {
+        "semanticNodeLocalId": "SN-PC-TITLE",
+        "canonicalMeaning": "Section Header: Particular Conditions",
+        "structuralScopeDescription": "The standalone heading marking the beginning of the Particular Conditions section.",
+        "organizationalFunction": "Serves as the structural delimiter and title for the subsequent detailed provisions of the Particular Conditions."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-026",
+  "sequence": 26,
+  "clusterId": "SC-44f46f640e7712b0",
+  "requestHash": "cd405f25a6056b0c0af4691fae0933387595d9140ca63846d9e44a5d2ef1ff7f",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433876-qbDYG7KjLdewRdz7lWlP",
+  "rawResponseSha256": "2c597d5a1764d57b7a302549a4912f1397e3ba5b5997fef3294c9b1a4f60df99",
+  "parsedResponseSha256": "d08d746a96803446cb526e624485df9f597651272062058d6e5210c76ddce897",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 32107,
+  "reportedInputTokens": 1195,
+  "reportedReasoningTokens": 2316,
+  "reportedOutputTokens": 2643,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-44f46f640e7712b0",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000339",
+          "semanticNodeLocalId": "SN-FY-TIMELINE",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000340",
+          "semanticNodeLocalId": "SN-FY-TIMELINE",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-FY-TIMELINE",
+          "canonicalMeaning": "Fiscal Year Timeline Headers (FY 21 through FY 25)",
+          "structuralScopeDescription": "The occurrences serve as column headers or timeline markers for a financial table, defining the temporal scope of the subsequent data entries. The repetition indicates either a multi-page table header or a redundant labeling in the source structure.",
+          "organizationalFunction": "TIMELINE_HEADER"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

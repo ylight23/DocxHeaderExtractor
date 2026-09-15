@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "a99-v5b-execution-firewall-v1",
+  "status": "COMPLETE_PREDICTION_FREEZE",
+  "scheduledClusters": 102,
+  "completedAttempts": 102,
+  "modelCalls": 102,
+  "providerCalls": 102,
+  "goldReadCount": 0,
+  "goldReadBeforeFreeze": false,
+  "pairLabelsRead": false,
+  "hierarchyHintsRead": false,
+  "promotionDecision": false,
+  "retries": 0,
+  "overwrite": false
+}

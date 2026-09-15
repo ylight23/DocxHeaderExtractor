@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-079",
+  "sequence": 79,
+  "clusterId": "SC-cc9434be93085964",
+  "requestHash": "492fa40d0367e617890d732f4de2cde73f1cb78aec8f6a0734f6c6bcf2e5064a",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435554-bbb0WVIUKwxCVlLaTHzn",
+  "rawResponseSha256": "d184059d74008a958c42ff7967a16a6684168b4f9fd7a578d9151d1069300c07",
+  "parsedResponseSha256": "b0388cf480f3dae3a590dd41870c1fea28dbedcff3171bbb8570038ddcfb8ca8",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 33315,
+  "reportedInputTokens": 1485,
+  "reportedReasoningTokens": 2452,
+  "reportedOutputTokens": 2873,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-cc9434be93085964",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B001466",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B001467",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "IBRD Loan Loss Provision Policy and Non-Writing Off Practice",
+          "structuralScopeDescription": "The node encapsulates the definition of economic losses from delayed loan payments, the methodology for estimating these losses, and the specific corporate policy that IBRD does not write off loans, including the historical clearance of nonaccrual obligations.",
+          "organizationalFunction": "This node serves as the primary semantic anchor for the accounting policy regarding loan loss provisions. It defines the risk (economic loss) and the mitigation/accounting stance (no write-offs), providing the necessary context for understanding the \u0027Accumulated Provision for Losses\u0027 mentioned in adjacent text."
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0133:B001466",
+          "toOccurrenceId": "DOC-0133:B001467"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

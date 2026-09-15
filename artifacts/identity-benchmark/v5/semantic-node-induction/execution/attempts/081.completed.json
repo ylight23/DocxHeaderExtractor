@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-081",
+  "sequence": 81,
+  "clusterId": "SC-d5c3803d86734251",
+  "requestHash": "383b25237c6a78e600e5cffbe2f115c2e1e0cf5f50e45f0ce88ff5583f3a68b9",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435623-EdvW4b6WEmwAsmtnXvJC",
+  "rawResponseSha256": "28e404fa0e439a8912a645744ac5854ff417f83a3b51c88680ecdcba967f3e61",
+  "parsedResponseSha256": "6ded2db476a84fc518abefb2b827c8a139b5be8c6d4143e2e5807837e1d37020",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 30292,
+  "reportedInputTokens": 1265,
+  "reportedReasoningTokens": 2181,
+  "reportedOutputTokens": 2573,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-d5c3803d86734251",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[1199]",
+          "semanticNodeLocalId": "SN-PC-INTRO",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[1201]",
+          "semanticNodeLocalId": "SN-PC-TITLE",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-PC-INTRO",
+          "canonicalMeaning": "Introduction and Hierarchy Rule for Particular Conditions",
+          "structuralScopeDescription": "The introductory paragraph establishing the legal hierarchy between Particular Conditions and General Conditions.",
+          "organizationalFunction": "Establishes the governing principle that Particular Conditions supplement and prevail over General Conditions in case of conflict."
+        },
+        {
+          "semanticNodeLocalId": "SN-PC-TITLE",
+          "canonicalMeaning": "Section Header: Particular Conditions",
+          "structuralScopeDescription": "The standalone heading marking the beginning of the Particular Conditions section.",
+          "organizationalFunction": "Serves as the structural delimiter and title for the subsequent detailed provisions of the Particular Conditions."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-7f00f6b6d1373a71",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[3]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[5]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Null value / No data indicated by em-dash in table cell",
+        "structuralScopeDescription": "Table row 2, columns 3 through 5. Represents a consistent semantic state of \u0027absence of specific weighting or adjustability data\u0027 across adjacent cells.",
+        "organizationalFunction": "GROUPING_SIMILAR_NULLS"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

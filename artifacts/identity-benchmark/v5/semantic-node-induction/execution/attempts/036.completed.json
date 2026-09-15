@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-036",
+  "sequence": 36,
+  "clusterId": "SC-62312e2ef1696634",
+  "requestHash": "0ef6a1c3a4b2fda21f65d8668ef44f13bc7205136a7fdd04a371adfe7aaa7590",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434218-0cZke6ElwIwlXPdGopY0",
+  "rawResponseSha256": "ce26eb32a25aa1466b28525c4b6f6c465fdfc5eaaec84482333fe2c1cfd250d2",
+  "parsedResponseSha256": "59f8e15004f332d436d02029bd1a6acdb3db472555cc42d81eaf378c5c7f10cd",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 31409,
+  "reportedInputTokens": 1359,
+  "reportedReasoningTokens": 1876,
+  "reportedOutputTokens": 2255,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-62312e2ef1696634",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000194",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000731",
+          "semanticNodeLocalId": "SN-002",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Punctuation artifact / Noise",
+          "structuralScopeDescription": "End of sentence or list item in a paragraph discussing ICP 2024 participation statistics.",
+          "organizationalFunction": "Terminates the preceding textual segment regarding economic economies and Kosovo. Represents non-lexical noise."
+        },
+        {
+          "semanticNodeLocalId": "SN-002",
+          "canonicalMeaning": "Punctuation artifact / Noise",
+          "structuralScopeDescription": "Mid-sentence punctuation within a technical discussion about Minimum Spanning Trees and similarity indexes.",
+          "organizationalFunction": "Acts as a separator or noise marker within a complex technical sentence structure. Represents non-lexical noise."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

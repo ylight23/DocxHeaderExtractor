@@ -1,0 +1,34 @@
+{
+  "clusterId": "SC-2d5e22fcd48f9e6a",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000311",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000312",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "CONTINUATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "node_1",
+      "canonicalMeaning": "Discussion of factors affecting construction wages and reference to PPPs for harmonization.",
+      "structuralScopeDescription": "The node spans the sentence fragment discussing wage factors (B000311) and the subsequent punctuation/transition marker (B000312) which serves as a boundary or continuation point before the next topic on PPPs. B000311 is the primary semantic carrier, while B000312 acts as a structural continuation/boundary marker in the immediate context."
+    ,
+      "organizationalFunction": "Primary occurrence establishes the topic of construction wage discussions. Continuation occurrence marks the end of that specific thought unit or sentence segment, linking to the subsequent reference to PPPs."
+    }
+  ],
+  "continuationEdges": [
+    {
+      "fromOccurrenceId": "DOC-0252:B000311",
+      "toOccurrenceId": "DOC-0252:B000312"
+    }
+  ],
+  "unresolvedOccurrenceIds": []
+}

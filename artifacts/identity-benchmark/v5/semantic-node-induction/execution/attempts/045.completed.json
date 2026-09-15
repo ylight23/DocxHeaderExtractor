@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-045",
+  "sequence": 45,
+  "clusterId": "SC-7bbcc897f811cf5f",
+  "requestHash": "7c7ad2c4d35223839da50116a9cbf8575bbc38685914f2f6dc5b4536e5827099",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434530-OTRXWzdAvdEcomfpvz46",
+  "rawResponseSha256": "0d69bbbf3474a516151b8d41012dd58893824adff8d31740529e3e17694c78f8",
+  "parsedResponseSha256": "b891541640773e18cc46e0a57005b31715ec2a8f36a3ad252cc7883e6f552f94",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 28661,
+  "reportedInputTokens": 1166,
+  "reportedReasoningTokens": 1859,
+  "reportedOutputTokens": 2182,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-7bbcc897f811cf5f",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000965",
+          "semanticNodeLocalId": "SN-CLUSTER-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000967",
+          "semanticNodeLocalId": "SN-CLUSTER-001",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-CLUSTER-001",
+          "canonicalMeaning": "Table formatting artifact / separator",
+          "structuralScopeDescription": "The occurrences represent non-informative punctuation sequences (commas) that serve as structural separators within a financial table layout, likely indicating empty cells or column breaks in the source document\u0027s tabular data representation. They do not convey specific semantic content but maintain the grid structure.",
+          "organizationalFunction": "Structural Separator"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-c557c9be01e4fc96",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B002277",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"LOW"
+    },
+    {
+      "occurrenceId": "DOC-0133:B002293",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "ALIAS_REPRESENTATION"
+    ,
+      "confidence": 	"LOW"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Table Separator / Column Delimiter",
+      "structuralScopeDescription": "Represents a structural delimiter (comma pair) within a financial table header or footnote section, indicating column separation or list item continuation.",
+      "organizationalFunction": "Structural Delimiter"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

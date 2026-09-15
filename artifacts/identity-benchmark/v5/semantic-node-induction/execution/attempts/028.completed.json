@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-028",
+  "sequence": 28,
+  "clusterId": "SC-475453187c1c821e",
+  "requestHash": "3f5c6e5d6ba182b1adc919a12cfba16e02692556ad4eeb67a87f5ac1172ae573",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433935-iUKJxUU84ZbjTcCH4S6v",
+  "rawResponseSha256": "82213339f890154c309e37989c47f6d7be49b42ab6036aa0fb7ea778d9772f0a",
+  "parsedResponseSha256": "4c7be830432c9a121f70d8eb448aae476a2a6641e7a32dcb78ded66a765843cd",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 34490,
+  "reportedInputTokens": 1190,
+  "reportedReasoningTokens": 2217,
+  "reportedOutputTokens": 2560,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-475453187c1c821e",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000118",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000136",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Currency and Unit Specification for Financial Data",
+          "structuralScopeDescription": "Global unit label indicating that associated financial figures are expressed in billions of U.S. dollars.",
+          "organizationalFunction": "This node serves as a metadata header or legend entry that defines the scale and currency for subsequent numerical data tables or lists. It appears in two distinct sections of the document (likely a table footnote/header and a section header), acting as a repeated contextual anchor for interpreting monetary values."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

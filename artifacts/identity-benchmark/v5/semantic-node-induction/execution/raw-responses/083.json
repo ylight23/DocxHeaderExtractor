@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-d72ffa990605f300",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence": 	"HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Boolean response indicator for compliance or attribute verification fields in a tabular structure.",
+      "structuralScopeDescription": "The node represents the standard '(Yes / No)' placeholder text used across multiple columns in a single table row to indicate binary choices for various beneficial ownership criteria.",
+      "organizationalFunction": "This node serves as a structural marker within a data extraction grid. It normalizes identical textual tokens that appear in different column contexts (shares vs voting rights) but serve the same functional role of capturing a binary user input. By clustering these occurrences, the system recognizes them as instances of the same field type rather than distinct semantic entities."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

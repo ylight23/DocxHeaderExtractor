@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-031",
+  "sequence": 31,
+  "clusterId": "SC-4f5dfab186393c56",
+  "requestHash": "fca3332a82a2c1543223420e2cc077835731ff85a8fc0cb2dcd044e21ccfd6d7",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434037-9Q4zFJG3ZdFTb24f7nN6",
+  "rawResponseSha256": "3cc9b4fb6038d554e687f52bcc456678332d5c1ce1a13564529105c9b453ebfc",
+  "parsedResponseSha256": "baf93eb2e6e8079378be58bbd243bb92c151828fc54b4f58ed95839008061977",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 33915,
+  "reportedInputTokens": 1156,
+  "reportedReasoningTokens": 2330,
+  "reportedOutputTokens": 2650,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-4f5dfab186393c56",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0133:B000927",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0133:B000930",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Punctuation separator (comma)",
+          "structuralScopeDescription": "Generic punctuation mark serving as a syntactic delimiter within the document structure.",
+          "organizationalFunction": "The node groups identical, low-information punctuation tokens that appear in different structural contexts (end of a sentence/paragraph vs. start of a new section header). It establishes that these are distinct physical occurrences of the same character class without implying semantic continuity or reference resolution."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

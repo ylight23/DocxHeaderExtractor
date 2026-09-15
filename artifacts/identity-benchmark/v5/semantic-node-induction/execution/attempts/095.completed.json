@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-095",
+  "sequence": 95,
+  "clusterId": "SC-f12b996463a94a60",
+  "requestHash": "88b714edd45ae840521e5e1d3518ea2281a0c3e8c84c7a9dffea6d0c50fbe4d4",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789436117-wymzMljZc3fRPWgMjPlH",
+  "rawResponseSha256": "aae27e5789168773ee9d1ae371cb3dfc3664c81eb6241e282280c84c0fccb598",
+  "parsedResponseSha256": "da3dd7fd17ef6190324160d23884332c6cbfd0b90fe3157a324e3645b22ca7ee",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 36770,
+  "reportedInputTokens": 1285,
+  "reportedReasoningTokens": 2582,
+  "reportedOutputTokens": 2984,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-f12b996463a94a60",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000750",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000751",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Proposal from Professor Alan Heston regarding global PPP estimation methodology",
+          "structuralScopeDescription": "The node represents the core semantic unit of a specific academic proposal. Occurrence B000750 contains the substantive text describing the proposal\u0027s origin and intent. Occurrence B000751 is a punctuation fragment (period and comma) that structurally terminates the sentence containing B000750. In this parser context, B000751 is treated as an alias representation or structural continuation marker for the same logical heading/segment initiated by B000750, rather than a distinct semantic object.",
+          "organizationalFunction": "Primary semantic anchor for the proposal topic, with B000751 serving as the syntactic closure marker for that specific segment."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

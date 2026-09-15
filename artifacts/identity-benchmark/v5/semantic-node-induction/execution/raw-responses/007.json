@@ -1,0 +1,37 @@
+{
+  "clusterId": "SC-08bd91eaff8ac2d7",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000449",
+      "semanticNodeLocalId": "SN-01",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000453",
+      "semanticNodeLocalId": "SN-02",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence": 	"HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-01",
+      "canonicalMeaning": "End of sentence regarding building and primary users of data.",
+      "structuralScopeDescription": "Terminal punctuation marking the conclusion of a statement about data usage by specific user groups."
+    ,
+      "organizationalFunction": "Sentence Boundary Marker"
+    },
+    {
+      "semanticNodeLocalId": "SN-02",
+      "canonicalMeaning": "End of sentence regarding leveraging interest in new data sources for ICP work.",
+      "structuralScopeDescription": "Terminal punctuation marking the conclusion of a statement about potential involvement in International Comparison Program work."
+    ,
+      "organizationalFunction": "Sentence Boundary Marker"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-038",
+  "sequence": 38,
+  "clusterId": "SC-669698e5599ec637",
+  "requestHash": "63586c6de6d67f1289fc98e2373ec22db77919ca789775661d1bac74b793a5a9",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434293-L9upjAUBXSlOM0iCzVqu",
+  "rawResponseSha256": "bac19252e22dea943744363287f71073252bbfc70336c2e429e8bdfa6a8c84f0",
+  "parsedResponseSha256": "285dedf1c43bfd428a12b67c86790f7bc6314fa73bf990c3606a0b2a3b29bd59",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 40199,
+  "reportedInputTokens": 2218,
+  "reportedReasoningTokens": 3127,
+  "reportedOutputTokens": 3776,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-669698e5599ec637",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[637]",
+          "semanticNodeLocalId": "SN-LOCAL-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[639]",
+          "semanticNodeLocalId": "SN-LOCAL-002",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[641]",
+          "semanticNodeLocalId": "SN-LOCAL-003",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-LOCAL-001",
+          "canonicalMeaning": "Specification of the local currency percentage payment rate for daywork materials, to be stated by the proposer.",
+          "structuralScopeDescription": "This node represents a specific contractual clause item (ii) defining the financial proportion for local currency payments within a broader schedule of daywork rates. It functions as a sub-component of a list detailing payment proportions.",
+          "organizationalFunction": "ITEM_DEFINITION"
+        },
+        {
+          "semanticNodeLocalId": "SN-LOCAL-002",
+          "canonicalMeaning": "Specification of the cost of hauling materials from site stores/stockpiles for daywork, governed by Labour and Construction terms.",
+          "structuralScopeDescription": "This node represents a distinct contractual clause item (c) addressing a specific logistical cost component (hauling) separate from the material supply percentages defined in adjacent items. It establishes the payment basis for this specific activity.",
+          "organizationalFunction": "ITEM_DEFINITION"
+        },
+        {
+          "semanticNodeLocalId": "SN-LOCAL-003",
+          "canonicalMeaning": "Heading or topic identifier for \u0027Daywork Contractor\u2019s Equipment\u0027, introducing the section governing payments for equipment used in daywork.",
+          "structuralScopeDescription": "This node serves as a structural heading or label that introduces the subsequent detailed provisions regarding contractor\u0027s equipment rental rates, included costs, and hour calculations. It acts as a topical anchor for the following paragraphs.",
+          "organizationalFunction": "TOPIC_HEADER"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

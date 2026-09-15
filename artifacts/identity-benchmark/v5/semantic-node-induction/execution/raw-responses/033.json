@@ -1,0 +1,63 @@
+{
+  "clusterId": "SC-538ebaf081e6bad0",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[101]",
+      "semanticNodeLocalId": "SN-GC-MAIN",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[181]",
+      "semanticNodeLocalId": "SN-GC-TABLE-ENTRY",
+      "occurrenceRole": "ALIAS_REPRESENTATION"
+    ,
+      "confidence": "MEDIUM"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+      "semanticNodeLocalId": "SN-GC-TABLE-ENTRY",
+      "occurrenceRole": "ALIAS_REPRESENTATION"
+    ,
+      "confidence": "MEDIUM"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[1192]",
+      "semanticNodeLocalId": "SN-GC-CONTINUATION",
+      "occurrenceRole": "CONTINUATION"
+    ,
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-GC-MAIN",
+      "canonicalMeaning": "The General Conditions (GC) section of the contract, specifically referencing the FIDIC Yellow Book.",
+      "structuralScopeDescription": "Primary body text heading introducing Part 3's General Conditions."
+    ,
+      "organizationalFunction": "HEADING_INTRODUCTION"
+    },
+    {
+      "semanticNodeLocalId": "SN-GC-TABLE-ENTRY",
+      "canonicalMeaning": "Index or Table of Contents entry for the General Conditions section.",
+      "structuralScopeDescription": "List entries in structural tables or indices pointing to the GC section."
+    ,
+      "organizationalFunction": "INDEX_REFERENCE"
+    },
+    {
+      "semanticNodeLocalId": "SN-GC-CONTINUATION",
+      "canonicalMeaning": "Reiteration or specific instance of the General Conditions section within a later part of the document structure.",
+      "structuralScopeDescription": "Later occurrence in the document body, potentially in an appendix or detailed breakdown, continuing the logical reference to GC."
+    ,
+      "organizationalFunction": "SECTION_REITERATION"
+    }
+  ],
+  "continuationEdges": [
+    {
+      "fromOccurrenceId": "DOC-0123:body[1]/p[101]",
+      "toOccurrenceId": "DOC-0123:body[1]/p[1192]"
+    }
+  ],
+  "unresolvedOccurrenceIds": []
+}

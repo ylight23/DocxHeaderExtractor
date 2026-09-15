@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-084",
+  "sequence": 84,
+  "clusterId": "SC-d739ea4122054a93",
+  "requestHash": "7b5413da92170aef7583b93902de7d6ec9f9fd8484e63b06f924df90531a738a",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435715-q9zg6f8fgCbmYsmlVxLt",
+  "rawResponseSha256": "996cca133d4a3c74ee4aa3cb3c449a0dd4f688d9d8fba71d79eb9771a4f6e402",
+  "parsedResponseSha256": "e18a36b05fb4057f64f8f9a7186f33a8483cce93c5f6adf561d97323f2b7f16d",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 35806,
+  "reportedInputTokens": 1153,
+  "reportedReasoningTokens": 2362,
+  "reportedOutputTokens": 2670,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-d739ea4122054a93",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[875]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[878]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Signature Field Label",
+          "structuralScopeDescription": "The text label indicating a signature line in a contract or agreement document. Occurs twice, likely corresponding to different parties (e.g., Proposer and Counterparty) or sections requiring signatures.",
+          "organizationalFunction": "Identifies the location for an authorized signature."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-040",
+  "sequence": 40,
+  "clusterId": "SC-7059833e26bf82f4",
+  "requestHash": "72c4c4ca86aa24f43343c79f0a40227925c79bdbe0f93cbed1736cf820767ca6",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434366-HiqH8gpEQ0kX0dfLES7V",
+  "rawResponseSha256": "9db8ef1092b757cba889b65beb1d49c592a0814bb17b06a2457ab1e722d71894",
+  "parsedResponseSha256": "d946c980d5a9afeead97494cbeb3f6a5c28db133ecd8c09c5081bacc408c3d46",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 39411,
+  "reportedInputTokens": 2084,
+  "reportedReasoningTokens": 2659,
+  "reportedOutputTokens": 3253,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-7059833e26bf82f4",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[86]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[173]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[276]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "MEDIUM"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Section II - Proposal Data Sheet (PDS)",
+          "structuralScopeDescription": "The second major section of the procurement document, containing specific data and provisions that supplement or amend Section I (Instructions to Proposers). It serves as a repository for project-specific requirements.",
+          "organizationalFunction": "This node represents the structural heading and logical container for the Proposal Data Sheet. It functions to delineate the boundary between general instructions (Section I) and specific, variable data required for the particular procurement instance. The occurrences show this heading appearing in the main body text, in a table of contents/structure list, and potentially as a sub-heading or reference point within later procedural contexts."
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0123:body[1]/p[86]",
+          "toOccurrenceId": "DOC-0123:body[1]/p[276]"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

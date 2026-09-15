@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-f58ec7a5d0cc2968",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000393",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000394",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "node_1",
+        "canonicalMeaning": "Continuation of the list of research topics presented at Session V, specifically linking the previous mention of \u0027revisiting\u0027 to the subsequent items in the list.",
+        "structuralScopeDescription": "The node captures the syntactic and semantic continuity between the fragmented text segments B000393 and B000394. B000393 ends with \u0027revisiti ng\u0027 and B000394 is a punctuation fragment \u0027, .\u0027 which serves as a separator or continuation marker in the source stream before the next substantive content in B000395 (\u0027approaches...\u0027). The induction treats these adjacent fragments as part of a single logical flow describing the agenda or topics.",
+        "organizationalFunction": "GROUPING_CONTINUOUS_TEXT_FRAGMENTS"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

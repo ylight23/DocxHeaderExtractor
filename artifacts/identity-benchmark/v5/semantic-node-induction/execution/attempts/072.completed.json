@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-072",
+  "sequence": 72,
+  "clusterId": "SC-b8cd0daf89cc2809",
+  "requestHash": "b6047eefb20dce0c51476cd5657cd83a86b099b601c617e7cc4b402a1a024f0d",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435320-FAlUNeRndyndArpaG8Nu",
+  "rawResponseSha256": "9b12556c99c288433e6a61f3efcccb6af8047a48293ebd9acd8334a95513192e",
+  "parsedResponseSha256": "39af0952ea9ba40462a5ec25a41425bf4e3a4b8f983f34bed49c2e828fde91af",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 37597,
+  "reportedInputTokens": 1280,
+  "reportedReasoningTokens": 2702,
+  "reportedOutputTokens": 3120,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-b8cd0daf89cc2809",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000016",
+          "semanticNodeLocalId": "node_1",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000031",
+          "semanticNodeLocalId": "node_2",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "node_1",
+          "canonicalMeaning": "Punctuation/Noise artifact in a list of attendees or entities (Regional Implementing Agencies, World Bank staff).",
+          "structuralScopeDescription": "Isolated punctuation token within a sentence fragment describing participants.",
+          "organizationalFunction": "Represents a non-informative textual artifact (comma sequence) likely resulting from OCR errors or formatting noise. It does not carry semantic weight distinct from surrounding context."
+        },
+        {
+          "semanticNodeLocalId": "node_2",
+          "canonicalMeaning": "Punctuation/Noise artifact closing a quoted title.",
+          "structuralScopeDescription": "Isolated punctuation token following a quoted event title and preceding the acronym definition.",
+          "organizationalFunction": "Represents a non-informative textual artifact (comma sequence) likely resulting from OCR errors or formatting noise. It serves as a delimiter in the source text but carries no independent semantic content."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-336b192f25ee8c62",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B001735",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B001752",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-01",
+        "canonicalMeaning": "Reporting Period Headers (March 31, 2025 and 2024)",
+        "structuralScopeDescription": "The occurrences serve as column headers for financial data tables, indicating the fiscal periods ending March 31 for the years 2025 and 2024. They appear in two distinct table sections within the document.",
+        "organizationalFunction": "These nodes define the temporal scope of the financial metrics presented in the subsequent rows. The first occurrence (B001735) introduces the period headers for a section likely detailing interest rate swaps, while the second occurrence (B001752) repeats this header structure for a different section concerning fixed income instruments and unrealized mark-to-market values. They are semantically identical in function (period labeling) but contextually distinct due to their separation by other content."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

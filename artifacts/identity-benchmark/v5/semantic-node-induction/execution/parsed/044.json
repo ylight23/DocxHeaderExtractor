@@ -1,0 +1,34 @@
+{
+  "response": {
+    "clusterId": "SC-79b853331cdd3744",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Placeholder for Employer-entered provisional sum values in local currency",
+        "structuralScopeDescription": "Table row 7, columns 2 and 4, representing identical input fields for provisional sums.",
+        "organizationalFunction": "This node groups two structurally parallel table cells that serve as identical data entry placeholders. The text \u0027[To be entered by the Employer]\u0027 indicates a mandatory field for specific financial data (provisional sums) within the context of the preceding label \u0027Provisional sums expressed in local currency\u0027. The repetition across columns suggests a multi-currency or multi-component breakdown where the same instruction applies to distinct but semantically equivalent input slots."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

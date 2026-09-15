@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-063",
+  "sequence": 63,
+  "clusterId": "SC-9d7862e7cb1eb620",
+  "requestHash": "7b9e933a35a7b38a8088527384fe6b912ae6c39108b679d144e4b49ce8cc31eb",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435016-3WVBYRXNgV8wx2f02fKp",
+  "rawResponseSha256": "7e3db13e0451fcc057cd80ff142baf1dab53900a4acef7e7df6c74a9c2ae74c0",
+  "parsedResponseSha256": "b8765d55992d96b3fc8f3554c086a2117a505ed8d68232b325b1df2e8957bfb5",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 33033,
+  "reportedInputTokens": 1225,
+  "reportedReasoningTokens": 2166,
+  "reportedOutputTokens": 2455,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-9d7862e7cb1eb620",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000435",
+          "semanticNodeLocalId": "SN-01",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000883",
+          "semanticNodeLocalId": "SN-01",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-01",
+          "canonicalMeaning": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+          "structuralScopeDescription": "Agenda heading or session title referring to the functional scope and governance terms of the Technical Advisory Group (TAG) task forces.",
+          "organizationalFunction": "HEADING"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

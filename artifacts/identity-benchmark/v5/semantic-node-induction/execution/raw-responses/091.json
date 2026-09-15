@@ -1,0 +1,37 @@
+{
+  "clusterId": "SC-e418cf6207ee6cfd",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B000140",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":   	"LOW"
+    },
+    {
+      "occurrenceId": "DOC-0133:B000157",
+      "semanticNodeLocalId": "node_2",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence": "LOW"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "node_1",
+      "canonicalMeaning": "Punctuation artifact or separator in financial narrative regarding Net Investment Portfolio growth.",
+      "structuralScopeDescription": "Occurs between the previous period value and the current period value of the Net Investment Portfolio, likely representing a parsing error or redundant comma in the source text stream."
+    ,
+      "organizationalFunction": "SEPARATOR"
+    },
+    {
+      "semanticNodeLocalId": "node_2",
+      "canonicalMeaning": "Punctuation artifact or separator in financial narrative regarding Borrowings at amortized cost.",
+      "structuralScopeDescription": "Occurs within the sentence describing borrowings reported at amortized cost, likely representing a parsing error or redundant comma in the source text stream."
+    ,
+      "organizationalFunction": "SEPARATOR"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,30 @@
+{
+  "clusterId": "SC-fe3480c51dd004da",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[1378]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[1387]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence": 	"HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Logical disjunction operator indicating alternative conditions in a declaration list regarding Beneficial Ownership status.",
+      "structuralScopeDescription": "Connects distinct declarative clauses (i, ii, iii) within a structured form or legal document section defining criteria for identifying beneficial owners. The node represents the logical 'OR' separating mutually exclusive or alternative compliance paths/declarations."
+    ,
+      "organizationalFunction": "Disambiguates the structural separator between alternative legal declarations. It ensures that the subsequent text blocks are interpreted as separate options rather than cumulative requirements."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

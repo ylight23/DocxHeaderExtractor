@@ -1,0 +1,35 @@
+{
+  "clusterId": "SC-054b6bb0ac5b9b45",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0133:B000036",
+      "semanticNodeLocalId": "node_1",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  	"LOW"
+    },
+    {
+      "occurrenceId": "DOC-0133:B000041",
+      "semanticNodeLocalId": "node_2",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence": 	"LOW"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "node_1",
+      "canonicalMeaning": "Punctuation separator in Executive Summary introductory paragraph",
+      "structuralScopeDescription": "Separates the MD&A performance statement from the subsequent fiscal year context and disclaimer.",
+      "organizationalFunction": "Syntactic delimiter within a continuous prose block."
+    },
+    {
+      "semanticNodeLocalId": "node_2",
+      "canonicalMeaning": "Punctuation separator in Table header unit description",
+      "structuralScopeDescription": "Separates the currency/ratio unit definition from the table column headers ('As of and for the').",
+      "organizationalFunction": "Syntactic delimiter between metadata line and data structure header."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,27 @@
+{
+  "clusterId": "SC-87ddf22bac3dbc7a",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0252:B000188",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "ALIAS_REPRESENTATION",
+      "confidence":  	"LOW"
+    },
+    {
+      "occurrenceId": "DOC-0252:B000189",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Publication of ICP 2021 results via press release",
+      "structuralScopeDescription": "The node represents the specific event of publishing the International Comparison Program 2021 results. The occurrence B000189 provides the substantive content (publication method and timing), while B000188 is a fragmented, likely erroneous or OCR-artifact text segment that appears adjacent but lacks semantic substance. They are grouped as the same logical object due to immediate adjacency and lack of intervening distinct topics, with B000189 serving as the primary carrier of meaning.",
+      "organizationalFunction": "Primary Event Instance"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,77 @@
+{
+  "response": {
+    "clusterId": "SC-e8f95e9d0abd1e12",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[84]",
+        "semanticNodeLocalId": "SN-ITP-MAIN",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[172]",
+        "semanticNodeLocalId": "SN-ITP-TABLE",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "MEDIUM"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[192]",
+        "semanticNodeLocalId": "SN-ITP-REPEAT",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[263]",
+        "semanticNodeLocalId": "SN-ITP-CONTINUATION",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+        "semanticNodeLocalId": "SN-ITP-TABLE",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "MEDIUM"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-ITP-MAIN",
+        "canonicalMeaning": "The primary heading for the \u0027Instructions to Proposers\u0027 section of the Request for Proposal document.",
+        "structuralScopeDescription": "Main body text introduction to Section I.",
+        "organizationalFunction": "Establishes the primary semantic anchor for the Instructions to Proposers content block, defining the start of the procedural guidelines for bidders."
+      },
+      {
+        "semanticNodeLocalId": "SN-ITP-TABLE",
+        "canonicalMeaning": "Reference to the \u0027Instructions to Proposers\u0027 section within a Table of Contents or structural index list.",
+        "structuralScopeDescription": "Listed entry in a table of contents or summary table.",
+        "organizationalFunction": "Serves as a navigational alias or pointer to the main section, appearing in structural indices rather than as the content header itself."
+      },
+      {
+        "semanticNodeLocalId": "SN-ITP-REPEAT",
+        "canonicalMeaning": "A repeated instance of the \u0027Instructions to Proposers\u0027 heading, likely due to document formatting artifacts or re-presentation of the TOC/structure later in the file.",
+        "structuralScopeDescription": "Repeated heading occurrence, potentially following other sections or in a secondary structural view.",
+        "organizationalFunction": "Indicates a repetition of the section marker, possibly reflecting a multi-part document structure or a copy-paste artifact in the source parsing, maintaining identity with the main ITP node but distinct in positional context."
+      },
+      {
+        "semanticNodeLocalId": "SN-ITP-CONTINUATION",
+        "canonicalMeaning": "The continuation or specific sub-header instance of the \u0027Instructions to Proposers\u0027 section, leading into specific subsections like \u0027General\u0027.",
+        "structuralScopeDescription": "Heading immediately preceding detailed subsections (e.g., A. General).",
+        "organizationalFunction": "Acts as a logical continuation point, bridging the general section title to its specific internal components, confirming the active scope of the ITP instructions."
+      }
+    ],
+    "continuationEdges": [
+      {
+        "fromOccurrenceId": "DOC-0123:body[1]/p[84]",
+        "toOccurrenceId": "DOC-0123:body[1]/p[263]"
+      }
+    ],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": false,
+    "complete": false,
+    "errors": [
+      "CONTINUATION_CROSS_NODE"
+    ]
+  }
+}

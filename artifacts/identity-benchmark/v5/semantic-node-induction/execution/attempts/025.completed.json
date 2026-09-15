@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-025",
+  "sequence": 25,
+  "clusterId": "SC-3fe557caa33c2f2c",
+  "requestHash": "9258cf7c4b638517922e2c6aa73bd5c9ca6274cbafbcf24f93bc3026dd4fde98",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433845-JBHo67ZvErdkT4Vf3qvC",
+  "rawResponseSha256": "1c6cfc9ebfe1cd927d65e0ce8ce1058f5bdd1fa429a9acf6f5c2cf3bf8074a3d",
+  "parsedResponseSha256": "41a89e48fd6934c01b99eaf6f1814a8f768c281f41f522a65272696ade7db282",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 30691,
+  "reportedInputTokens": 1387,
+  "reportedReasoningTokens": 2761,
+  "reportedOutputTokens": 3084,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-3fe557caa33c2f2c",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[20]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Condition of failure by the successful Proposer to execute post-award obligations",
+          "structuralScopeDescription": "The clause fragment introducing the list of actions whose omission results in forfeiture of Proposal Security.",
+          "organizationalFunction": "HEAD_CONDITION_INTRODUCER"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

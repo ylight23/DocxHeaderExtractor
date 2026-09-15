@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-998cbc0bfc0238bb",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[31]/tr[6]/tc[2]/p[1]",
+      "semanticNodeLocalId": "SN-ENV-IMP-01",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[47]/tr[6]/tc[2]/p[1]",
+      "semanticNodeLocalId": "SN-ENV-IMP-01",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence":  "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-ENV-IMP-01",
+      "canonicalMeaning": "Environmental Impact Assessment Specialist",
+      "structuralScopeDescription": "Key personnel role within Design phase organizational structure",
+      "organizationalFunction": "Identifies the specific job title for the specialist responsible for environmental impact assessments, appearing in two distinct table structures (tbl[31] and tbl[47]) under the 'Key Personnel for Design' section. The occurrences are structurally parallel, indicating a repetition of the same role definition across different parts of the document or duplicate entries."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

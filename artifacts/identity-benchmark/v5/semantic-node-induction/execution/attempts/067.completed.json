@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-067",
+  "sequence": 67,
+  "clusterId": "SC-ac7abb41bc2c3aa3",
+  "requestHash": "5715eea70594683368694540095ff822525f83e8f66cbeced723ba6301bb81e6",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435156-ktbe3BjACwCzIssFdBNV",
+  "rawResponseSha256": "85237ac5b274d69b5591ec515e35c6bcf656a2d1316abcba83f9c8cc0c86186d",
+  "parsedResponseSha256": "064f15ad31d33345154d45f8ea5d768785eb2b45213de318630f62368ac6e759",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 29185,
+  "reportedInputTokens": 1237,
+  "reportedReasoningTokens": 2066,
+  "reportedOutputTokens": 2382,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-ac7abb41bc2c3aa3",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[88]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Section III - Evaluation and Qualification Criteria",
+          "structuralScopeDescription": "The main body section heading for Section III, which defines the methodology for determining the Most Advantageous Proposal. This node is also represented as a row header in the document\u0027s structural table of contents.",
+          "organizationalFunction": "HEADINGS_AND_TABLE_OF_CONTENTS"
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

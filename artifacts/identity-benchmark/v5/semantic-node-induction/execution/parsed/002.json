@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-04bc27e74780febd",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000851",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000904",
+        "semanticNodeLocalId": "SN-02",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-01",
+        "canonicalMeaning": "Agenda item for miscellaneous business discussion in Session VI",
+        "structuralScopeDescription": "Heading marking the start of the \u0027Any Other Business\u0027 segment within Session VI, distinct from specific technical topics.",
+        "organizationalFunction": "Segmentation marker for open floor or miscellaneous agenda items."
+      },
+      {
+        "semanticNodeLocalId": "SN-02",
+        "canonicalMeaning": "Closing event of Session VI",
+        "structuralScopeDescription": "Heading marking the conclusion of Session VI, specifically labeled as \u0027Closing\u0027.",
+        "organizationalFunction": "Termination marker for the session\u0027s proceedings."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

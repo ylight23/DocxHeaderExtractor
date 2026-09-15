@@ -1,0 +1,29 @@
+{
+  "clusterId": "SC-070e08de7da1b95f",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[908]",
+      "semanticNodeLocalId": "SN-01",
+      "occurrenceRole": "PRIMARY"
+    ,
+      "confidence":  "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[919]",
+      "semanticNodeLocalId": "SN-01",
+      "occurrenceRole": "REPEAT"
+    ,
+      "confidence":  "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-01",
+      "canonicalMeaning": "Date field placeholder for form submission",
+      "structuralScopeDescription": "The date input required at the header of the update form sections for both Proposer/JV and JV/Subcontractor contexts.",
+      "organizationalFunction": "HEADER_FIELD_INDICATOR"
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,33 @@
+{
+  "clusterId": "SC-c69060a6af5acfbd",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[3]/p[1]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY",
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT",
+      "confidence": "HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[5]/p[1]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "REPEAT",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Null value or non-applicable entry in a table cell, indicating absence of data or that the field does not apply to this row.",
+      "structuralScopeDescription": "Table row 2, columns 3 through 5. These cells are adjacent and share the same textual representation ('—'), surrounded by descriptive text in other columns (e.g., 'Nonadjustable', 'Proposer’s proposed weighting'). The pattern suggests a consistent formatting convention for missing or N/A values within this specific row.",
+      "organizationalFunction": "The node groups identical placeholder symbols used to denote empty or non-applicable data points across adjacent columns in a single table row. It establishes a semantic equivalence between these visual placeholders, treating them as instances of the same logical concept (null/NA) rather than distinct entities."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}

@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-625a5883ecaebaa4",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000199",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000325",
+        "semanticNodeLocalId": "SN-002",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Punctuation artifact / Noise token resulting from OCR or parsing errors in a sentence fragment regarding Peru\u0027s OECD accession and Eurostat program integration.",
+        "structuralScopeDescription": "Represents a non-lexical punctuation cluster (., ,, ) that interrupts the flow of text between a statement about work beginning to integrate the country and the subsequent statement about remaining in the ICP Latin America region. It serves as a delimiter for a corrupted or incomplete syntactic unit.",
+        "organizationalFunction": "Noise/Artifact"
+      },
+      {
+        "semanticNodeLocalId": "SN-002",
+        "canonicalMeaning": "Punctuation artifact / Noise token resulting from OCR or parsing errors in a discussion about subsidies, web-scraping data, and discounts.",
+        "structuralScopeDescription": "Represents a non-lexical punctuation cluster (., ,, ) appearing after a discussion on subsidies being akin to discounts. It acts as a separator between the explanation of subsidy pricing availability and the next logical point, likely marking the end of a clause or sentence in a noisy text stream.",
+        "organizationalFunction": "Noise/Artifact"
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

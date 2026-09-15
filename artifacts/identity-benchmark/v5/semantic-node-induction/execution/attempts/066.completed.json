@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-066",
+  "sequence": 66,
+  "clusterId": "SC-a120b089d9ec8dc0",
+  "requestHash": "ce09a5445ef8f1fe0ce03789f6b84257d2dde82196d0f42bb7731b56585f3012",
+  "status": "INVALID_VALIDATION",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435113-0cMIQL1Q1pcYTIqAAdcj",
+  "rawResponseSha256": "919854b0052ef3fea9fe53253a0c78329a74c1d2751103fe27c579e70757d575",
+  "parsedResponseSha256": "42c20f019beabc67abddd4e7bc32d64e3c7dc47f97dccafd656c40628523b276",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 42386,
+  "reportedInputTokens": 1634,
+  "reportedReasoningTokens": 2594,
+  "reportedOutputTokens": 3847,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-a120b089d9ec8dc0",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000872",
+          "semanticNodeLocalId": "SN_001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000873",
+          "semanticNodeLocalId": "SN_001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000874",
+          "semanticNodeLocalId": "SN_001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "MEDIUM"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000875",
+          "semanticNodeLocalId": "SN_002",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000876",
+          "semanticNodeLocalId": "SN_002",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000877",
+          "semanticNodeLocalId": "SN_002",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000878",
+          "semanticNodeLocalId": "SN_003",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000879",
+          "semanticNodeLocalId": "SN_003",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000880",
+          "semanticNodeLocalId": "SN_003",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN_001",
+          "canonicalMeaning": "Session I: Welcome and Opening Remarks",
+          "structuralScopeDescription": "The introductory session of Day 1, covering the welcome address and opening remarks by TAG Co-Chairs from the World Bank.",
+          "organizationalFunction": "HEADER"
+        },
+        {
+          "semanticNodeLocalId": "SN_002",
+          "canonicalMeaning": "Session II: Update on the ICP 2021 and 2024 Cycles",
+          "structuralScopeDescription": "The second session focusing on updates regarding the International Comparison Program (ICP) cycles for 2021 and 2024, presented by the World Bank and Regional Implementing Agencies.",
+          "organizationalFunction": "HEADER"
+        },
+        {
+          "semanticNodeLocalId": "SN_003",
+          "canonicalMeaning": "Session III: Short- and Long-Term Research and Development Agenda",
+          "structuralScopeDescription": "The third session dedicated to research topics emerging from previous ICP cycles and forthcoming research topics, involving presentations by World Bank and Prasada Rao.",
+          "organizationalFunction": "HEADER"
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0252:B000872",
+          "toOccurrenceId": "DOC-0252:B000873"
+        },
+        {
+          "fromOccurrenceId": "DOC-0252:B000873",
+          "toOccurrenceId": "DOC-0252:B000874"
+        },
+        {
+          "fromOccurrenceId": "DOC-0252:B000875",
+          "toOccurrenceId": "DOC-0252:B000876"
+        },
+        {
+          "fromOccurrenceId": "DOC-0252:B000876",
+          "toOccurrenceId": "DOC-0252:B000877"
+        },
+        {
+          "fromOccurrenceId": "DOC-0252:B000878",
+          "toOccurrenceId": "DOC-0252:B000879"
+        },
+        {
+          "fromOccurrenceId": "DOC-0252:B000879",
+          "toOccurrenceId": "DOC-0252:B000880"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": false,
+      "complete": false,
+      "errors": [
+        "UNKNOWN_ASSIGNMENT_OCCURRENCE",
+        "INCOMPLETE_OCCURRENCE_COVERAGE",
+        "UNKNOWN_CONTINUATION_OCCURRENCE"
+      ]
+    }
+  }
+}

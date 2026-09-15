@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-082",
+  "sequence": 82,
+  "clusterId": "SC-d5cbcde35e2b090c",
+  "requestHash": "3befc99c9611a3b32b887b6c079417e40712e58844fed52e58a1b3e1005655d7",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789435653-sUBEl4mAPEccC9KhPd6c",
+  "rawResponseSha256": "1225be76e68a1ac6012be20480842a8ef53b3a79d155151c545ca1715bb045e4",
+  "parsedResponseSha256": "ff9428be4d42556e42ff808e4afafc4ec01d8d218ac8b41c9fe09ee64ca7cad8",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 29767,
+  "reportedInputTokens": 1360,
+  "reportedReasoningTokens": 2133,
+  "reportedOutputTokens": 2471,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-d5cbcde35e2b090c",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Immutable minimum requirements with optional employer additions based on environmental and social assessments.",
+          "structuralScopeDescription": "The core contractual constraint regarding the modification of minimum requirements, specifically within the context of Employer notes in a proposal template.",
+          "organizationalFunction": "Establishes the baseline non-negotiable terms while granting conditional authority to the Employer to expand upon them via assessment-driven additions."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

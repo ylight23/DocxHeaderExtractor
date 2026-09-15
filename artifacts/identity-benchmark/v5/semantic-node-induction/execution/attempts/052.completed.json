@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-052",
+  "sequence": 52,
+  "clusterId": "SC-88db42c1dfb9c081",
+  "requestHash": "48d5c72a6540f2b65326727406d3787302ebc68ce14a4e572854277ff0b0bb5f",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434772-IiYaaVfmKjkAgOXxHuLG",
+  "rawResponseSha256": "f33841ecdbab91d0564b91d1d8a55c159fbd0df863e8acb4119ec17d9322ee45",
+  "parsedResponseSha256": "f8fe74d7808327397cb2101fac53326ce23516dfbfe1f5006d2c9ff42709e3c3",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 43788,
+  "reportedInputTokens": 1566,
+  "reportedReasoningTokens": 2969,
+  "reportedOutputTokens": 3571,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-88db42c1dfb9c081",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Sequential list item markers in a table structure",
+          "structuralScopeDescription": "The occurrences represent sequential numbering (2, 3, 4) within a single table column, indicating a continuation of a list or row indexing scheme.",
+          "organizationalFunction": "These nodes serve as structural delimiters for sequential items. The first occurrence establishes the sequence context (following \u00271.\u0027), and subsequent occurrences continue this logical heading, maintaining the ordinal relationship with adjacent rows."
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]",
+          "toOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]"
+        },
+        {
+          "fromOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+          "toOccurrenceId": "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

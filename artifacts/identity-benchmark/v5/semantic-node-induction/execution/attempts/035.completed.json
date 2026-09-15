@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-035",
+  "sequence": 35,
+  "clusterId": "SC-61fc0dbd9dfcc7f1",
+  "requestHash": "4b7e5261f4c0f44295b7e4b2bb82c2f0b8811553e6311ce250eef2c54e8de130",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789434189-GitF6rRwcecjuDJM9I94",
+  "rawResponseSha256": "72c94a97352097aa97eeaa5b9b5e850aa9ebed4a58cbc32c3e4210bbb0e602ec",
+  "parsedResponseSha256": "1e22f2d9d68419702fe816efcf5cf1e14ae1d2a26ccdaacf5b1be3bbcc1b8e36",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 29072,
+  "reportedInputTokens": 1112,
+  "reportedReasoningTokens": 2048,
+  "reportedOutputTokens": 2343,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-61fc0dbd9dfcc7f1",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000955",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000957",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "REPEAT",
+          "confidence": "HIGH"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "List separator (comma)",
+          "structuralScopeDescription": "Punctuation mark separating items in a list of names/affiliations.",
+          "organizationalFunction": "Syntactic delimiter indicating the end of one list item and the potential start or separation from another, specifically within a structured enumeration of entities."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

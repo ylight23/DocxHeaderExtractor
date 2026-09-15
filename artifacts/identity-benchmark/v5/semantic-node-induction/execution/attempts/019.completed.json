@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-019",
+  "sequence": 19,
+  "clusterId": "SC-2e75eab82a3e81ee",
+  "requestHash": "a58a9d74cf705479191bfe4485fb5922b57d9b4bb36367542807574b932fe479",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433650-AJnGE0N2sbAz83yTa5gL",
+  "rawResponseSha256": "77abeda80e482975b837a8b568eea6603944b10a5aac0299d47f6b1a8280d305",
+  "parsedResponseSha256": "0d560675006dd8a7f4382a993251cad71e0208619681d33c90aa6d05e9d1a730",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 33609,
+  "reportedInputTokens": 1365,
+  "reportedReasoningTokens": 2077,
+  "reportedOutputTokens": 2500,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-2e75eab82a3e81ee",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0252:B000539",
+          "semanticNodeLocalId": "SN-001",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        },
+        {
+          "occurrenceId": "DOC-0252:B000595",
+          "semanticNodeLocalId": "SN-002",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "LOW"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-001",
+          "canonicalMeaning": "Punctuation/Noise artifact at end of a statement regarding the limited impact of new SNA.",
+          "structuralScopeDescription": "Isolated punctuation token following a sentence fragment about ICP purposes and SNA impact. No logical continuation to subsequent text.",
+          "organizationalFunction": "Terminator for the preceding clause; no semantic content beyond syntactic closure."
+        },
+        {
+          "semanticNodeLocalId": "SN-002",
+          "canonicalMeaning": "Punctuation/Noise artifact at end of a statement regarding quality differences in services and ICP methodology.",
+          "structuralScopeDescription": "Isolated punctuation token following a sentence fragment about service quality capture difficulties. No logical continuation to subsequent text.",
+          "organizationalFunction": "Terminator for the preceding clause; no semantic content beyond syntactic closure."
+        }
+      ],
+      "continuationEdges": [],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

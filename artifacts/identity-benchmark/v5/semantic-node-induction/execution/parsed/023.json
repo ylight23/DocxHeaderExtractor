@@ -1,0 +1,40 @@
+{
+  "response": {
+    "clusterId": "SC-3a28d380ba15df4f",
+    "occurrenceAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[77]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[78]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-002",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "semanticNodes": [
+      {
+        "semanticNodeLocalId": "SN-001",
+        "canonicalMeaning": "Amendment to Sub-Clause 9.1 c) regarding travel class definition",
+        "structuralScopeDescription": "Specific textual replacement instruction within the Fees and Expenses table row for sub-clause 9.1",
+        "organizationalFunction": "Defines a specific contractual modification replacing \u0027business class or equivalent\u0027 with \u0027in less than first class\u0027. This node anchors the semantic intent of the first amendment entry in the sequence."
+      },
+      {
+        "semanticNodeLocalId": "SN-002",
+        "canonicalMeaning": "Deletion from Sub-Clause 9.4 regarding air fares and other terms",
+        "structuralScopeDescription": "Specific deletion instruction within the Fees and Expenses table row for sub-clause 9.4",
+        "organizationalFunction": "Defines a subsequent, distinct contractual modification deleting specific phrases from Sub-Clause 9.4. It represents a parallel but separate amendment event linked by adjacency in the source table structure."
+      }
+    ],
+    "continuationEdges": [],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": true,
+    "complete": true,
+    "errors": []
+  }
+}

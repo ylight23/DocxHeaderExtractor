@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "a99-v5b-attempt-v1",
+  "attemptId": "primary-006",
+  "sequence": 6,
+  "clusterId": "SC-08167ba838d293a6",
+  "requestHash": "083f6149177973b7e4fe5839b20a6103df40e1e958c691be62b4c42ff119cc51",
+  "status": "VALID",
+  "httpStatus": 200,
+  "providerCallId": "gen-1789433184-22pAM51EmRz3J5ijJoUY",
+  "rawResponseSha256": "82f1b56e8ed001ee6bdee2d67bdff6c2686c03d3e3f6973fcc537cf5960396b2",
+  "parsedResponseSha256": "26ea273d895d3b5d48e78e61899abc7ca38c6bc01390ab6eb2c4a24da9a13112",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "latencyMs": 29179,
+  "reportedInputTokens": 1908,
+  "reportedReasoningTokens": 2686,
+  "reportedOutputTokens": 3249,
+  "finishReason": "stop",
+  "error": null,
+  "goldReadBeforeFreeze": false,
+  "response": {
+    "response": {
+      "clusterId": "SC-08167ba838d293a6",
+      "occurrenceAssignments": [
+        {
+          "occurrenceId": "DOC-0123:body[1]/p[103]",
+          "semanticNodeLocalId": "SN-IX-PC-MAIN",
+          "occurrenceRole": "PRIMARY",
+          "confidence": "HIGH"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+          "semanticNodeLocalId": "SN-IX-PC-MAIN",
+          "occurrenceRole": "ALIAS_REPRESENTATION",
+          "confidence": "MEDIUM"
+        },
+        {
+          "occurrenceId": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+          "semanticNodeLocalId": "SN-IX-PC-MAIN",
+          "occurrenceRole": "CONTINUATION",
+          "confidence": "MEDIUM"
+        }
+      ],
+      "semanticNodes": [
+        {
+          "semanticNodeLocalId": "SN-IX-PC-MAIN",
+          "canonicalMeaning": "Section IX - Particular Conditions (PC)",
+          "structuralScopeDescription": "The section of the contract document containing particular conditions that supplement and prevail over General Conditions, including Contract Data, Special Provisions, Fraud/Corruption clauses, and Environmental/Social Reporting Metrics.",
+          "organizationalFunction": "This node represents the primary structural heading for the \u0027Particular Conditions\u0027 of the FIDIC Yellow Book contract. It serves to define the specific terms, data, and provisions that modify or add to the standard General Conditions. The occurrences show this section appearing in the main body text, a table of contents/index entry, and a later reference point within the document structure, all referring to the same contractual component."
+        }
+      ],
+      "continuationEdges": [
+        {
+          "fromOccurrenceId": "DOC-0123:body[1]/p[103]",
+          "toOccurrenceId": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]"
+        }
+      ],
+      "unresolvedOccurrenceIds": []
+    },
+    "validation": {
+      "accepted": true,
+      "complete": true,
+      "errors": []
+    }
+  }
+}

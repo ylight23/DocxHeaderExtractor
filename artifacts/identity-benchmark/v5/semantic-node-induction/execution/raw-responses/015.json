@@ -1,0 +1,32 @@
+{
+  "clusterId": "SC-1c4e8826322b617f",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[317]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY",
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[318]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "CONTINUATION",
+      "confidence": "HIGH"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "Subcontractor Requirements and Continuation of Criteria",
+      "structuralScopeDescription": "The section heading '1.5 Subcontractors' introduces the topic, followed immediately by a specific requirement that specialized subcontractors identified during initial selection must continue to meet applicable requirements.",
+      "organizationalFunction": "HEAD_AND_CONTINUATION_PAIR"
+    }
+  ],
+  "continuationEdges": [
+    {
+      "fromOccurrenceId": "DOC-0123:body[1]/p[317]",
+      "toOccurrenceId": "DOC-0123:body[1]/p[318]"
+    }
+  ],
+  "unresolvedOccurrenceIds": []
+}

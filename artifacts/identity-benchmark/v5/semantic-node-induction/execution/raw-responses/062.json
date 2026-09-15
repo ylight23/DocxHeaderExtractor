@@ -1,0 +1,34 @@
+{
+  "clusterId": "SC-9b24e51b35eb9e0e",
+  "occurrenceAssignments": [
+    {
+      "occurrenceId": "DOC-0123:body[1]/p[1053]",
+      "semanticNodeLocalId": "SN-001",
+      "occurrenceRole": "PRIMARY",
+      "confidence":  	"HIGH"
+    },
+    {
+      "occurrenceId": "DOC-0123:body[1]/tbl[45]/tr[1]/tc[1]/p[1]",
+      "semanticNodeLocalId": "SN-002",
+      "occurrenceRole": "ALIAS_REPRESENTATION",
+      "confidence": "MEDIUM"
+    }
+  ],
+  "semanticNodes": [
+    {
+      "semanticNodeLocalId": "SN-001",
+      "canonicalMeaning": "General guidance on the content and scope of Employer's Requirements, specifically referencing Sub-Clauses and technical information.",
+      "structuralScopeDescription": "The main paragraph introducing the requirement for technical information in the Employer's Requirements and linking it to specific contract sub-clauses."
+    ,
+    "organizationalFunction": "This node serves as the primary semantic anchor for the section detailing what must be included in the Employer's Requirements. It establishes the context for the subsequent table by defining the logical basis (Sub-Clauses) for the items listed therein."
+    },
+    {
+      "semanticNodeLocalId": "SN-002",
+      "canonicalMeaning": "Header label for a column identifying Sub-Clause numbers.",
+      "structuralScopeDescription": "A single cell within a table header row, acting as a label for the data column that follows.",
+      "organizationalFunction": "This node functions as a structural metadata element (a column header). It is semantically linked to SN-001 because SN-001 explicitly references 'Sub-Clauses' as the organizing principle for the information that will be presented in the table containing this header. It represents the syntactic container for the specific clause identifiers mentioned in the primary text."
+    }
+  ],
+  "continuationEdges": [],
+  "unresolvedOccurrenceIds": []
+}
