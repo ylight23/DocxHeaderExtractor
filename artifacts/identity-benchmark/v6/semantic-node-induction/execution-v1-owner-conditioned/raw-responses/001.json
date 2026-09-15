@@ -1,0 +1,304 @@
+{
+  "semanticNodes": [
+    {
+      "node": "N001",
+      "description": "Document Header and Metadata (Title, Type, Date, Copyright)"
+    },
+    {
+      "node": "N002",
+      "description": "Table of Contents"
+    },
+    {
+      "node": "N003",
+      "description": "Section I - Instructions to Proposers (ITP)"
+    },
+    {
+      "node": "N004",
+      "description": "Section II - Proposal Data Sheet (PDS)"
+    },
+    {
+      "node": "N005",
+      "description": "Subcontractors Section"
+    },
+    {
+      "node": "N006",
+      "description": "Proposal Forms (Signature Blocks)"
+    },
+    {
+      "node": "N007",
+      "description": "Appendices and Enclosures"
+    },
+    {
+      "node": "N008",
+      "description": "Price Adjustment Tables"
+    },
+    {
+      "node": "N009",
+      "description": "Total Proposal Price Table"
+    },
+    {
+      "node": "N010",
+      "description": "Daywork Rates Schedule"
+    },
+    {
+      "node": "N011",
+      "description": "Provisional Sums Table"
+    },
+    {
+      "node": "N012",
+      "description": "Code of Conduct Section"
+    },
+    {
+      "node": "N013",
+      "description": "Key Personnel Tables"
+    },
+    {
+      "node": "N014",
+      "description": "Signatures and Declarations"
+    },
+    {
+      "node": "N015",
+      "description": "Date and RFP Info Forms"
+    },
+    {
+      "node": "N016",
+      "description": "Dispute Resolution and Contract Info Tables"
+    },
+    {
+      "node": "N017",
+      "description": "Financial History Table"
+    },
+    {
+      "node": "N018",
+      "description": "Fraud and Corruption Section"
+    },
+    {
+      "node": "N019",
+      "description": "Employer's Requirements Guidance"
+    },
+    {
+      "node": "N020",
+      "description": "Health and Safety Sub-Clause Table"
+    },
+    {
+      "node": "N021",
+      "description": "General Conditions Section"
+    },
+    {
+      "node": "N022",
+      "description": "Particular Conditions Section"
+    },
+    {
+      "node": "N023",
+      "description": "Particular Conditions Data Table"
+    },
+    {
+      "node": "N024",
+      "description": "FIDIC Yellow Book Modifications Table"
+    },
+    {
+      "node": "N025",
+      "description": "Evaluation Score Tables"
+    },
+    {
+      "node": "N026",
+      "description": "Beneficial Ownership Declaration"
+    },
+    {
+      "node": "N027",
+      "description": "Performance Security Forms"
+    }
+  ],
+  "assignments": [
+    { "ref": "U001", "node": "N001", "role": "PRIMARY" },
+    { "ref": "U002", "node": "N001", "role": "CONTINUATION" },
+    { "ref": "U003", "node": "N001", "role": "CONTINUATION" },
+    { "ref": "U004", "node": "N001", "role": "CONTINUATION" },
+    { "ref": "U005", "node": "N001", "role": "CONTINUATION" },
+    { "ref": "U006", "node": "N001", "role": "ALIAS" },
+    { "ref": "U007", "node": "N002", "role": "PRIMARY" },
+    { "ref": "U008", "node": "N002", "role": "CONTINUATION" },
+    { "ref": "U009", "node": "N002", "role": "CONTINUATION" },
+    { "ref": "U010", "node": "N002", "role": "CONTINUATION" },
+    { "ref": "U011", "node": "N002", "role": "CONTINUATION" },
+    { "ref": "U012", "node": "N002", "role": "CONTINUATION" },
+    { "ref": "U013", "node": "N002", "role": "CONTINUATION" },
+    { "ref": "U014", "node": "N002", "role": "CONTINUATION" },
+    { "ref": "U015", "node": "N002", "role": "CONTINUATION" },
+    { "ref": "U016", "node": "N002", "role": "CONTINUATION" },
+    { "ref": "U017", "node": "N002", "role": "ALIAS" },
+    { "ref": "U018", "node": "N002", "role": "ALIAS" },
+    { "ref": "U019", "node": "N002", "role": "ALIAS" },
+    { "ref": "U020", "node": "N002", "role": "ALIAS" },
+    { "ref": "U021", "node": "N002", "role": "ALIAS" },
+    { "ref": "U022", "node": "N002", "role": "ALIAS" },
+    { "ref": "U023", "node": "N002", "role": "ALIAS" },
+    { "ref": "U024", "node": "N003", "role": "PRIMARY" },
+    { "ref": "U025", "node": "N002", "role": "ALIAS" },
+    { "ref": "U026", "node": "N002", "role": "ALIAS" },
+    { "ref": "U027", "node": "N002", "role": "ALIAS" },
+    { "ref": "U028", "node": "N002", "role": "ALIAS" },
+    { "ref": "U029", "node": "N002", "role": "ALIAS" },
+    { "ref": "U030", "node": "N002", "role": "ALIAS" },
+    { "ref": "U031", "node": "N002", "role": "ALIAS" },
+    { "ref": "U032", "node": "N002", "role": "ALIAS" },
+    { "ref": "U033", "node": "N002", "role": "ALIAS" },
+    { "ref": "U034", "node": "N003", "role": "CONTINUATION" },
+    { "ref": "U035", "node": "N003", "role": "CONTINUATION" },
+    { "ref": "U036", "node": "N004", "role": "PRIMARY" },
+    { "ref": "U037", "node": "N004", "role": "CONTINUATION" },
+    { "ref": "U038", "node": "N004", "role": "CONTINUATION" },
+    { "ref": "U039", "node": "N004", "role": "CONTINUATION" },
+    { "ref": "U040", "node": "N005", "role": "PRIMARY" },
+    { "ref": "U041", "node": "N005", "role": "CONTINUATION" },
+    { "ref": "U042", "node": "N006", "role": "PRIMARY" },
+    { "ref": "U043", "node": "N006", "role": "ALIAS" },
+    { "ref": "U044", "node": "N007", "role": "PRIMARY" },
+    { "ref": "U045", "node": "N007", "role": "CONTINUATION" },
+    { "ref": "U046", "node": "N008", "role": "PRIMARY" },
+    { "ref": "U047", "node": "N008", "role": "CONTINUATION" },
+    { "ref": "U048", "node": "N008", "role": "CONTINUATION" },
+    { "ref": "U049", "node": "N008", "role": "ALIAS" },
+    { "ref": "U050", "node": "N008", "role": "ALIAS" },
+    { "ref": "U051", "node": "N008", "role": "ALIAS" },
+    { "ref": "U052", "node": "N009", "role": "PRIMARY" },
+    { "ref": "U053", "node": "N009", "role": "CONTINUATION" },
+    { "ref": "U054", "node": "N009", "role": "CONTINUATION" },
+    { "ref": "U055", "node": "N009", "role": "CONTINUATION" },
+    { "ref": "U056", "node": "N009", "role": "CONTINUATION" },
+    { "ref": "U057", "node": "N009", "role": "CONTINUATION" },
+    { "ref": "U058", "node": "N009", "role": "CONTINUATION" },
+    { "ref": "U059", "node": "N010", "role": "PRIMARY" },
+    { "ref": "U060", "node": "N010", "role": "CONTINUATION" },
+    { "ref": "U061", "node": "N010", "role": "CONTINUATION" },
+    { "ref": "U062", "node": "N010", "role": "CONTINUATION" },
+    { "ref": "U063", "node": "N010", "role": "CONTINUATION" },
+    { "ref": "U064", "node": "N010", "role": "CONTINUATION" },
+    { "ref": "U065", "node": "N011", "role": "PRIMARY" },
+    { "ref": "U066", "node": "N011", "role": "CONTINUATION" },
+    { "ref": "U067", "node": "N012", "role": "PRIMARY" },
+    { "ref": "U068", "node": "N012", "role": "CONTINUATION" },
+    { "ref": "U069", "node": "N012", "role": "CONTINUATION" },
+    { "ref": "U070", "node": "N012", "role": "CONTINUATION" },
+    { "ref": "U071", "node": "N013", "role": "PRIMARY" },
+    { "ref": "U072", "node": "N014", "role": "PRIMARY" },
+    { "ref": "U073", "node": "N014", "role": "CONTINUATION" },
+    { "ref": "U074", "node": "N014", "role": "CONTINUATION" },
+    { "ref": "U075", "node": "N014", "role": "CONTINUATION" },
+    { "ref": "U076", "node": "N015", "role": "PRIMARY" },
+    { "ref": "U077", "node": "N016", "role": "PRIMARY" },
+    { "ref": "U078", "node": "N016", "role": "CONTINUATION" },
+    { "ref": "U079", "node": "N015", "role": "ALIAS" },
+    { "ref": "U080", "node": "N015", "role": "CONTINUATION" },
+    { "ref": "U081", "node": "N015", "role": "CONTINUATION" },
+    { "ref": "U082", "node": "N016", "role": "CONTINUATION" },
+    { "ref": "U083", "node": "N016", "role": "CONTINUATION" },
+    { "ref": "U084", "node": "N017", "role": "PRIMARY" },
+    { "ref": "U085", "node": "N017", "role": "CONTINUATION" },
+    { "ref": "U086", "node": "N017", "role": "CONTINUATION" },
+    { "ref": "U087", "node": "N018", "role": "PRIMARY" },
+    { "ref": "U088", "node": "N019", "role": "PRIMARY" },
+    { "ref": "U089", "node": "N019", "role": "CONTINUATION" },
+    { "ref": "U090", "node": "N020", "role": "PRIMARY" },
+    { "ref": "U091", "node": "N013", "role": "ALIAS" },
+    { "ref": "U092", "node": "N021", "role": "PRIMARY" },
+    { "ref": "U093", "node": "N022", "role": "PRIMARY" },
+    { "ref": "U094", "node": "N022", "role": "CONTINUATION" },
+    { "ref": "U095", "node": "N022", "role": "CONTINUATION" },
+    { "ref": "U096", "node": "N023", "role": "PRIMARY" },
+    { "ref": "U097", "node": "N023", "role": "CONTINUATION" },
+    { "ref": "U098", "node": "N023", "role": "CONTINUATION" },
+    { "ref": "U099", "node": "N023", "role": "CONTINUATION" },
+    { "ref": "U100", "node": "N024", "role": "PRIMARY" },
+    { "ref": "U101", "node": "N024", "role": "CONTINUATION" },
+    { "ref": "U102", "node": "N024", "role": "CONTINUATION" },
+    { "ref": "U103", "node": "N024", "role": "CONTINUATION" },
+    { "ref": "U104", "node": "N024", "role": "CONTINUATION" },
+    { "ref": "U105", "node": "N025", "role": "PRIMARY" },
+    { "ref": "U106", "node": "N025", "role": "CONTINUATION" },
+    { "ref": "U107", "node": "N025", "role": "CONTINUATION" },
+    { "ref": "U108", "node": "N025", "role": "CONTINUATION" },
+    { "ref": "U109", "node": "N025", "role": "CONTINUATION" },
+    { "ref": "U110", "node": "N025", "role": "CONTINUATION" },
+    { "ref": "U111", "node": "N026", "role": "PRIMARY" },
+    { "ref": "U112", "node": "N026", "role": "CONTINUATION" },
+    { "ref": "U113", "node": "N026", "role": "CONTINUATION" },
+    { "ref": "U114", "node": "N026", "role": "CONTINUATION" },
+    { "ref": "U115", "node": "N027", "role": "PRIMARY" },
+    { "ref": "U116", "node": "N027", "role": "CONTINUATION" }
+  ],
+  "continuationEdges": [
+    { "from": "U002", "to": "U003" },
+    { "from": "U003", "to": "U004" },
+    { "from": "U004", "to": "U005" },
+    { "from": "U007", "to": "U008" },
+    { "from": "U008", "to": "U009" },
+    { "from": "U009", "to": "U010" },
+    { "from": "U010", "to": "U011" },
+    { "from": "U011", "to": "U012" },
+    { "from": "U012", "to": "U013" },
+    { "from": "U013", "to": "U014" },
+    { "from": "U014", "to": "U015" },
+    { "from": "U015", "to": "U016" },
+    { "from": "U017", "to": "U018" },
+    { "from": "U018", "to": "U019" },
+    { "from": "U019", "to": "U020" },
+    { "from": "U020", "to": "U021" },
+    { "from": "U021", "to": "U022" },
+    { "from": "U022", "to": "U023" },
+    { "from": "U024", "to": "U034" },
+    { "from": "U034", "to": "U035" },
+    { "from": "U036", "to": "U037" },
+    { "from": "U037", "to": "U038" },
+    { "from": "U038", "to": "U039" },
+    { "from": "U040", "to": "U041" },
+    { "from": "U042", "to": "U043" },
+    { "from": "U044", "to": "U045" },
+    { "from": "U046", "to": "U047" },
+    { "from": "U047", "to": "U048" },
+    { "from": "U049", "to": "U050" },
+    { "from": "U050", "to": "U051" },
+    { "from": "U052", "to": "U053" },
+    { "from": "U053", "to": "U054" },
+    { "from": "U054", "to": "U055" },
+    { "from": "U055", "to": "U056" },
+    { "from": "U056", "to": "U057" },
+    { "from": "U057", "to": "U058" },
+    { "from": "U059", "to": "U060" },
+    { "from": "U060", "to": "U061" },
+    { "from": "U062", "to": "U063" },
+    { "from": "U063", "to": "U064" },
+    { "from": "U065", "to": "U066" },
+    { "from": "U067", "to": "U068" },
+    { "from": "U068", "to": "U069" },
+    { "from": "U069", "to": "U070" },
+    { "from": "U072", "to": "U073" },
+    { "from": "U073", "to": "U074" },
+    { "from": "U074", "to": "U075" },
+    { "from": "U076", "to": "U079" },
+    { "from": "U077", "to": "U078" },
+    { "from": "U079", "to": "U080" },
+    { "from": "U080", "to": "U081" },
+    { "from": "U082", "to": "U083" },
+    { "from": "U084", "to": "U085" },
+    { "from": "U085", "to": "U086" },
+    { "from": "U088", "to": "U089" },
+    { "from": "U093", "to": "U094" },
+    { "from": "U094", "to": "U095" },
+    { "from": "U096", "to": "U097" },
+    { "from": "U098", "to": "U099" },
+    { "from": "U100", "to": "U101" },
+    { "from": "U101", "to": "U102" },
+    { "from": "U102", "to": "U103" },
+    { "from": "U103", "to": "U104" },
+    { "from": "U105", "to": "U106" },
+    { "from": "U107", "to": "U108" },
+    { "from": "U108", "to": "U109" },
+    { "from": "U109", "to": "U110" },
+    { "from": "U111", "to": "U112" },
+    { "from": "U113", "to": "U114" },
+    { "from": "U115", "to": "U116" }
+  ]
+,
+  "unresolvedRefs": []
+}

@@ -1,0 +1,560 @@
+{
+  "response": {
+    "semanticNodes": [
+      {
+        "node": "N001",
+        "description": "Session I : Welcome and meeting objectives (Body Text)"
+      },
+      {
+        "node": "N002",
+        "description": "Opening remarks and initial context"
+      },
+      {
+        "node": "N003",
+        "description": "Welcome speech and introductions"
+      },
+      {
+        "node": "N004",
+        "description": "ICP 2021 results and 2024 cycle status"
+      },
+      {
+        "node": "N005",
+        "description": "Side event and publicization of ICP work"
+      },
+      {
+        "node": "N006",
+        "description": "Session II: Update on the ICP 2021 Cycle (Body Text)"
+      },
+      {
+        "node": "N007",
+        "description": "Methodology updates and regional procedures"
+      },
+      {
+        "node": "N008",
+        "description": "World Bank income classification and wealth estimates"
+      },
+      {
+        "node": "N009",
+        "description": "Governance and coordination activities"
+      },
+      {
+        "node": "N010",
+        "description": "CIS region implementation status"
+      },
+      {
+        "node": "N011",
+        "description": "Regional stability and Global Office simulations"
+      },
+      {
+        "node": "N012",
+        "description": "Eurostat-OECD PPP Programme presentation"
+      },
+      {
+        "node": "N013",
+        "description": "Eurostat-OECD PPP Programme results publication"
+      },
+      {
+        "node": "N014",
+        "description": "Eurostat-OECD PPP Programme participation details"
+      },
+      {
+        "node": "N015",
+        "description": "Peru integration and Latin America/Caribbean region"
+      },
+      {
+        "node": "N016",
+        "description": "Regional Coordinator communication and data repository"
+      },
+      {
+        "node": "N017",
+        "description": "Data collection timeline and validation workshops"
+      },
+      {
+        "node": "N018",
+        "description": "Latest ICP cycle report release"
+      },
+      {
+        "node": "N019",
+        "description": "Session III: Short- and Long-Term Research Agenda (Body Text)"
+      },
+      {
+        "node": "N020",
+        "description": "PPP estimation methodology issues"
+      },
+      {
+        "node": "N021",
+        "description": "Construction wages factors discussion"
+      },
+      {
+        "node": "N022",
+        "description": "Scanner/web-scraping data and subsidies"
+      },
+      {
+        "node": "N023",
+        "description": "Research topics: Product characteristics and imports/exports"
+      },
+      {
+        "node": "N024",
+        "description": "Health and education approaches"
+      },
+      {
+        "node": "N025",
+        "description": "Dynamic and evolving ICP program needs"
+      },
+      {
+        "node": "N026",
+        "description": "SNA 2025 implementation in ICP structure"
+      },
+      {
+        "node": "N027",
+        "description": "TAG achievements and comparison methodology"
+      },
+      {
+        "node": "N028",
+        "description": "Longer-term research agenda focus areas"
+      },
+      {
+        "node": "N029",
+        "description": "Session IV: TAG Functioning and Terms of Reference (Body Text)"
+      },
+      {
+        "node": "N030",
+        "description": "Session IV Heading"
+      },
+      {
+        "node": "N031",
+        "description": "TAG composition and expansion proposals"
+      },
+      {
+        "node": "N032",
+        "description": "Attracting younger academics to TAG"
+      },
+      {
+        "node": "N033",
+        "description": "Leveraging interest in new data sources"
+      },
+      {
+        "node": "N034",
+        "description": "Task Force on strategies for annual PPPs"
+      },
+      {
+        "node": "N035",
+        "description": "Task Force on ICP Classification Update"
+      },
+      {
+        "node": "N036",
+        "description": "COICOP and SNA alignment impact"
+      },
+      {
+        "node": "N037",
+        "description": "Session V: Current Research - Import/Export Prices (Body Text)"
+      },
+      {
+        "node": "N038",
+        "description": "Quality differences in services research"
+      },
+      {
+        "node": "N039",
+        "description": "Minimum Spanning Trees and similarity indexes"
+      },
+      {
+        "node": "N040",
+        "description": "Global PPP estimation proposal (Heston)"
+      },
+      {
+        "node": "N041",
+        "description": "Global CPD and Fixity maintenance"
+      },
+      {
+        "node": "N042",
+        "description": "Session VI: Any Other Business (Body Text)"
+      },
+      {
+        "node": "N043",
+        "description": "Agenda Item: Session I Welcome"
+      },
+      {
+        "node": "N044",
+        "description": "Agenda Item: Session II Update"
+      },
+      {
+        "node": "N045",
+        "description": "Agenda Item: Session III Research Agenda"
+      },
+      {
+        "node": "N046",
+        "description": "Agenda Item: Session IV TAG Functioning"
+      },
+      {
+        "node": "N047",
+        "description": "Agenda Item: Session V Current Research"
+      },
+      {
+        "node": "N048",
+        "description": "Agenda Item: Session V Current Research Cont\u0027d"
+      },
+      {
+        "node": "N049",
+        "description": "Agenda Item: Negative Expenditures"
+      },
+      {
+        "node": "N050",
+        "description": "Agenda Item: Fine Tuning Global Linking"
+      },
+      {
+        "node": "N051",
+        "description": "Agenda Item: Session VI Closing"
+      },
+      {
+        "node": "N052",
+        "description": "World Bank Group representatives list"
+      },
+      {
+        "node": "N053",
+        "description": "World Bank Group representatives list continued"
+      }
+    ],
+    "assignments": [
+      {
+        "ref": "U001",
+        "node": "N001",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U002",
+        "node": "N002",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U003",
+        "node": "N003",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U004",
+        "node": "N004",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U005",
+        "node": "N005",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U006",
+        "node": "N006",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U007",
+        "node": "N007",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U008",
+        "node": "N008",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U009",
+        "node": "N009",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U010",
+        "node": "N010",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U011",
+        "node": "N011",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U012",
+        "node": "N012",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U013",
+        "node": "N013",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U014",
+        "node": "N014",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U015",
+        "node": "N015",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U016",
+        "node": "N016",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U017",
+        "node": "N017",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U018",
+        "node": "N018",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U019",
+        "node": "N019",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U020",
+        "node": "N020",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U021",
+        "node": "N021",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U022",
+        "node": "N022",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U023",
+        "node": "N023",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U024",
+        "node": "N024",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U025",
+        "node": "N025",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U026",
+        "node": "N026",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U027",
+        "node": "N027",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U028",
+        "node": "N028",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U029",
+        "node": "N029",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U030",
+        "node": "N030",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U031",
+        "node": "N031",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U032",
+        "node": "N032",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U033",
+        "node": "N033",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U034",
+        "node": "N034",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U035",
+        "node": "N035",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U036",
+        "node": "N036",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U037",
+        "node": "N037",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U038",
+        "node": "N038",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U039",
+        "node": "N039",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U040",
+        "node": "N040",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U041",
+        "node": "N041",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U042",
+        "node": "N042",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U043",
+        "node": "N043",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U044",
+        "node": "N044",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U045",
+        "node": "N045",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U046",
+        "node": "N046",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U047",
+        "node": "N047",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U048",
+        "node": "N048",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U049",
+        "node": "N049",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U050",
+        "node": "N050",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U051",
+        "node": "N051",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U052",
+        "node": "N052",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U053",
+        "node": "N053",
+        "role": "CONTINUATION"
+      }
+    ],
+    "continuationEdges": [
+      {
+        "from": "U012",
+        "to": "U013"
+      },
+      {
+        "from": "U016",
+        "to": "U017"
+      },
+      {
+        "from": "U020",
+        "to": "U021"
+      },
+      {
+        "from": "U023",
+        "to": "U024"
+      },
+      {
+        "from": "U027",
+        "to": "U028"
+      },
+      {
+        "from": "U030",
+        "to": "U031"
+      },
+      {
+        "from": "U032",
+        "to": "U033"
+      },
+      {
+        "from": "U034",
+        "to": "U035"
+      },
+      {
+        "from": "U040",
+        "to": "U041"
+      },
+      {
+        "from": "U049",
+        "to": "U050"
+      },
+      {
+        "from": "U052",
+        "to": "U053"
+      }
+    ],
+    "unresolvedRefs": []
+  },
+  "validation": {
+    "accepted": false,
+    "assignedOccurrences": 53,
+    "semanticNodeCount": 53,
+    "unresolvedOccurrences": 0,
+    "continuationEdgeCount": 11,
+    "singleOwnerSemanticNodes": 53,
+    "crossOwnerSemanticNodes": 0,
+    "nodesSpanningAutonomousOwners": 0,
+    "nodesSpanningParserScopeGroups": 0,
+    "unknownOccurrenceHandleCount": 0,
+    "duplicateAssignmentCount": 0,
+    "missingAssignmentCount": 0,
+    "unknownNodeIdCount": 0,
+    "emptySemanticNodeCount": 0,
+    "invalidContinuationEndpointCount": 0,
+    "crossNodeContinuationEdgeCount": 11,
+    "continuationCycleCount": 0,
+    "unknownEvidenceHandleCount": 0,
+    "unknownOwnerHandleCount": 0,
+    "primaryRoleCount": 42,
+    "repeatRoleCount": 0,
+    "continuationRoleCount": 11,
+    "aliasRoleCount": 0,
+    "errors": [
+      "V6D_CROSS_NODE_CONTINUATION"
+    ]
+  }
+}

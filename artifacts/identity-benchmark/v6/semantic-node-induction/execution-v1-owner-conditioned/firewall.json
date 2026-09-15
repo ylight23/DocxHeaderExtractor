@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-v6d-execution-firewall-v1",
+  "status": "COMPLETE_SEMANTIC_NODE_PREDICTION_FREEZE",
+  "scheduledRequests": 3,
+  "completedAttempts": 3,
+  "modelCalls": 3,
+  "providerCalls": 3,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v5PredictionReadCount": 0,
+  "parentInference": false,
+  "pairLabelInference": false,
+  "retries": 0,
+  "overwrite": false
+}

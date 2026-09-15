@@ -1,0 +1,526 @@
+{
+  "response": {
+    "semanticNodes": [
+      {
+        "node": "N001",
+        "description": "Condensed Quarterly Financial Statements Header and Title Block"
+      },
+      {
+        "node": "N002",
+        "description": "Table of Contents / Executive Summary Overview"
+      },
+      {
+        "node": "N003",
+        "description": "Executive Summary Narrative Text"
+      },
+      {
+        "node": "N004",
+        "description": "Financial Data Tables and Units (Selected Financial Data)"
+      },
+      {
+        "node": "N005",
+        "description": "Net Investment Portfolio Narrative"
+      },
+      {
+        "node": "N006",
+        "description": "Chart Axis Labels and Legends (FY Years)"
+      },
+      {
+        "node": "N007",
+        "description": "Chart Y-Axis Values"
+      },
+      {
+        "node": "N008",
+        "description": "Other ALM Portfolio Narrative"
+      },
+      {
+        "node": "N009",
+        "description": "Risk Management Section Header"
+      },
+      {
+        "node": "N010",
+        "description": "Credit Risk Table Headers and Footers"
+      },
+      {
+        "node": "N011",
+        "description": "Non-Commercial Counterparty Credit Risk Table Content"
+      },
+      {
+        "node": "N012",
+        "description": "Governance Section Header"
+      },
+      {
+        "node": "N013",
+        "description": "End of Document / Blank Page Markers"
+      },
+      {
+        "node": "N014",
+        "description": "Financial Statements Cover Page Info"
+      },
+      {
+        "node": "N015",
+        "description": "Auditor\u0027s Review Report Header"
+      },
+      {
+        "node": "N016",
+        "description": "Balance Sheet Line Items (Loans)"
+      },
+      {
+        "node": "N017",
+        "description": "Balance Sheet Line Items (Provisions/Assets)"
+      },
+      {
+        "node": "N018",
+        "description": "Comprehensive Income Statement Rows"
+      },
+      {
+        "node": "N019",
+        "description": "Loan Loss Provision Narrative"
+      },
+      {
+        "node": "N020",
+        "description": "Fair Value Hierarchy Notes"
+      },
+      {
+        "node": "N021",
+        "description": "Derivative Instruments Tables"
+      },
+      {
+        "node": "N022",
+        "description": "Note Footnotes and Explanations"
+      },
+      {
+        "node": "N023",
+        "description": "AOCI Reconciliation Tables"
+      },
+      {
+        "node": "N024",
+        "description": "Fair Value Hierarchy Tables (J2)"
+      },
+      {
+        "node": "N025",
+        "description": "Fair Value Note Footnotes"
+      },
+      {
+        "node": "N026",
+        "description": "Gains/Losses on Derivatives Tables"
+      }
+    ],
+    "assignments": [
+      {
+        "ref": "U001",
+        "node": "N001",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U002",
+        "node": "N002",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U003",
+        "node": "N002",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U004",
+        "node": "N002",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U005",
+        "node": "N002",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U006",
+        "node": "N002",
+        "role": "ALIAS"
+      },
+      {
+        "ref": "U007",
+        "node": "N003",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U008",
+        "node": "N004",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U009",
+        "node": "N003",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U010",
+        "node": "N004",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U011",
+        "node": "N004",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U012",
+        "node": "N005",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U013",
+        "node": "N005",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U014",
+        "node": "N003",
+        "role": "ALIAS"
+      },
+      {
+        "ref": "U015",
+        "node": "N006",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U016",
+        "node": "N006",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U017",
+        "node": "N006",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U018",
+        "node": "N006",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U019",
+        "node": "N007",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U020",
+        "node": "N007",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U021",
+        "node": "N008",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U022",
+        "node": "N008",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U023",
+        "node": "N009",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U024",
+        "node": "N010",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U025",
+        "node": "N010",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U026",
+        "node": "N011",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U027",
+        "node": "N011",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U028",
+        "node": "N012",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U029",
+        "node": "N013",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U030",
+        "node": "N013",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U031",
+        "node": "N014",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U032",
+        "node": "N014",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U033",
+        "node": "N014",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U034",
+        "node": "N015",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U035",
+        "node": "N015",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U036",
+        "node": "N016",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U037",
+        "node": "N016",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U038",
+        "node": "N017",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U039",
+        "node": "N017",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U040",
+        "node": "N018",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U041",
+        "node": "N018",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U042",
+        "node": "N019",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U043",
+        "node": "N019",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U044",
+        "node": "N020",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U045",
+        "node": "N020",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U046",
+        "node": "N021",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U047",
+        "node": "N021",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U048",
+        "node": "N022",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U049",
+        "node": "N022",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U050",
+        "node": "N023",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U051",
+        "node": "N023",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U052",
+        "node": "N024",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U053",
+        "node": "N024",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U054",
+        "node": "N025",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U055",
+        "node": "N025",
+        "role": "CONTINUATION"
+      },
+      {
+        "ref": "U056",
+        "node": "N026",
+        "role": "PRIMARY"
+      },
+      {
+        "ref": "U057",
+        "node": "N026",
+        "role": "CONTINUATION"
+      }
+    ],
+    "continuationEdges": [
+      {
+        "from": "U002",
+        "to": "U003"
+      },
+      {
+        "from": "U003",
+        "to": "U004"
+      },
+      {
+        "from": "U004",
+        "to": "U005"
+      },
+      {
+        "from": "U015",
+        "to": "U016"
+      },
+      {
+        "from": "U016",
+        "to": "U017"
+      },
+      {
+        "from": "U017",
+        "to": "U018"
+      },
+      {
+        "from": "U019",
+        "to": "U020"
+      },
+      {
+        "from": "U021",
+        "to": "U022"
+      },
+      {
+        "from": "U024",
+        "to": "U025"
+      },
+      {
+        "from": "U026",
+        "to": "U027"
+      },
+      {
+        "from": "U029",
+        "to": "U030"
+      },
+      {
+        "from": "U031",
+        "to": "U032"
+      },
+      {
+        "from": "U032",
+        "to": "U033"
+      },
+      {
+        "from": "U034",
+        "to": "U035"
+      },
+      {
+        "from": "U036",
+        "to": "U037"
+      },
+      {
+        "from": "U038",
+        "to": "U039"
+      },
+      {
+        "from": "U040",
+        "to": "U041"
+      },
+      {
+        "from": "U042",
+        "to": "U043"
+      },
+      {
+        "from": "U044",
+        "to": "U045"
+      },
+      {
+        "from": "U046",
+        "to": "U047"
+      },
+      {
+        "from": "U048",
+        "to": "U049"
+      },
+      {
+        "from": "U050",
+        "to": "U051"
+      },
+      {
+        "from": "U052",
+        "to": "U053"
+      },
+      {
+        "from": "U054",
+        "to": "U055"
+      },
+      {
+        "from": "U056",
+        "to": "U057"
+      }
+    ],
+    "unresolvedRefs": []
+  },
+  "validation": {
+    "accepted": true,
+    "assignedOccurrences": 57,
+    "semanticNodeCount": 26,
+    "unresolvedOccurrences": 0,
+    "continuationEdgeCount": 25,
+    "singleOwnerSemanticNodes": 26,
+    "crossOwnerSemanticNodes": 0,
+    "nodesSpanningAutonomousOwners": 0,
+    "nodesSpanningParserScopeGroups": 0,
+    "unknownOccurrenceHandleCount": 0,
+    "duplicateAssignmentCount": 0,
+    "missingAssignmentCount": 0,
+    "unknownNodeIdCount": 0,
+    "emptySemanticNodeCount": 0,
+    "invalidContinuationEndpointCount": 0,
+    "crossNodeContinuationEdgeCount": 0,
+    "continuationCycleCount": 0,
+    "unknownEvidenceHandleCount": 0,
+    "unknownOwnerHandleCount": 0,
+    "primaryRoleCount": 26,
+    "repeatRoleCount": 0,
+    "continuationRoleCount": 29,
+    "aliasRoleCount": 2,
+    "errors": []
+  }
+}

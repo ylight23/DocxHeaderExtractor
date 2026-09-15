@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "a99-v6d-prediction-summary-v1",
+  "status": "SEMANTIC_NODE_PREDICTIONS_FROZEN_BEFORE_EVALUATION",
+  "scheduledRequests": 3,
+  "completedAttempts": 3,
+  "valid": 2,
+  "invalidValidation": 1,
+  "providerErrors": 0,
+  "sourceOccurrenceDenominator": 226,
+  "assignedOccurrences": 226,
+  "semanticNodeCount": 106,
+  "unresolvedOccurrences": 0,
+  "continuationEdgeCount": 106,
+  "singleOwnerSemanticNodes": 106,
+  "crossOwnerSemanticNodes": 0,
+  "nodesSpanningAutonomousOwners": 0,
+  "nodesSpanningParserScopeGroups": 12,
+  "primaryRoleCount": 95,
+  "repeatRoleCount": 0,
+  "continuationRoleCount": 106,
+  "aliasRoleCount": 25,
+  "unknownOccurrenceHandles": 0,
+  "duplicateAssignments": 0,
+  "missingAssignments": 0,
+  "unknownNodeIds": 0,
+  "emptySemanticNodes": 0,
+  "invalidContinuationEndpoints": 0,
+  "crossNodeContinuationEdges": 11,
+  "continuationCycles": 0,
+  "modelCalls": 3,
+  "providerCalls": 3,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v5PredictionReadCount": 0,
+  "parentInference": false,
+  "pairLabelInference": false,
+  "diagnostics": [
+    {
+      "sequence": 1,
+      "documentId": "DOC-0123",
+      "status": "VALID",
+      "errors": []
+    },
+    {
+      "sequence": 2,
+      "documentId": "DOC-0133",
+      "status": "VALID",
+      "errors": []
+    },
+    {
+      "sequence": 3,
+      "documentId": "DOC-0252",
+      "status": "INVALID_VALIDATION",
+      "errors": [
+        "V6D_CROSS_NODE_CONTINUATION"
+      ]
+    }
+  ]
+}

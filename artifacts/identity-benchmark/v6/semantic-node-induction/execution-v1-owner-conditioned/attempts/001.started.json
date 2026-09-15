@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-v6d-attempt-start-v1",
+  "attemptId": "primary-001",
+  "sequence": 1,
+  "documentId": "DOC-0123",
+  "requestHash": "e893a2d03c3f169d20c08bb7a0b458d9fdd3a7bbad71ab90f9995752dde40189",
+  "requestSetSha256": "710452c4bd3b7a695f8078018e8f5b287730ff6f9f9300ca5efcc7c7eeea6637",
+  "retry": false,
+  "goldReadBeforeAttempt": false,
+  "v5cReadBeforeAttempt": false,
+  "v6aReadBeforeAttempt": false,
+  "v5PredictionReadBeforeAttempt": false,
+  "parentInference": false,
+  "pairLabelInference": false,
+  "startedUtc": "2026-09-15T04:26:00.5569082+00:00"
+}

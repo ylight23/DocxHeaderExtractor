@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-v6d-execution-manifest-v1",
+  "status": "COMPLETE_SEMANTIC_NODE_PREDICTION_FREEZE",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "preflightManifestSha256": "d2d857e281d49d9d70b538eebd5dba041c81f86f0acef5613b0df7075b54593d",
+  "requestSetSha256": "710452c4bd3b7a695f8078018e8f5b287730ff6f9f9300ca5efcc7c7eeea6637",
+  "scheduledCalls": 3,
+  "completedCalls": 3,
+  "transientRequestRetries": 0,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v5PredictionReadCount": 0,
+  "ownerAuthority": "V6C_V3_CORRECTED_OFFLINE_REVALIDATION_V2",
+  "parentInference": false,
+  "pairLabelInference": false,
+  "frozenBeforeEvaluation": true
+}
