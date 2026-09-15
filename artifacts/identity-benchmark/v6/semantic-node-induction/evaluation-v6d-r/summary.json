@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "a99-v6d-r-summary-v1",
+  "phase": "V6D_R_OWNER_CONDITIONED_SEMANTIC_NODE_DEV_REGRESSION",
+  "generalizationClaim": false,
+  "total": 128,
+  "validCoverage": {
+    "count": 99,
+    "denominator": 128,
+    "fraction": 0.7734375
+  },
+  "correct": 20,
+  "effectiveCorrectness": 0.15625,
+  "accuracyOnValid": 0.20202020202020202,
+  "falseMerge": 66,
+  "falseSplit": 11,
+  "continuationOnlyErrors": 2,
+  "nodeConstraint": {
+    "correct": 22,
+    "total": 99,
+    "accuracy": 0.2222222222222222
+  },
+  "perRelation": [
+    {
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "tp": 17,
+      "fp": 8,
+      "fn": 13,
+      "precision": 0.68,
+      "recall": 0.5666666666666667,
+      "f1": 0.6181818181818183
+    },
+    {
+      "relation": "CONTINUATION_OF",
+      "tp": 0,
+      "fp": 60,
+      "fn": 1,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0
+    },
+    {
+      "relation": "DISTINCT_SEMANTIC_NODE",
+      "tp": 3,
+      "fp": 11,
+      "fn": 94,
+      "precision": 0.21428571428571427,
+      "recall": 0.030927835051546393,
+      "f1": 0.05405405405405406
+    }
+  ],
+  "perDocument": [
+    {
+      "documentId": "DOC-0123",
+      "total": 70,
+      "validCoverage": 70,
+      "correct": 19,
+      "falseMerge": 42,
+      "falseSplit": 8,
+      "continuationOnlyErrors": 1
+    },
+    {
+      "documentId": "DOC-0133",
+      "total": 29,
+      "validCoverage": 29,
+      "correct": 1,
+      "falseMerge": 24,
+      "falseSplit": 3,
+      "continuationOnlyErrors": 1
+    },
+    {
+      "documentId": "DOC-0252",
+      "total": 29,
+      "validCoverage": 0,
+      "correct": 0,
+      "falseMerge": 0,
+      "falseSplit": 0,
+      "continuationOnlyErrors": 0
+    }
+  ],
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "predictionMutations": 0
+}

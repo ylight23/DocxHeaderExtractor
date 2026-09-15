@@ -1,0 +1,256 @@
+# A99 V6D-R — owner-conditioned semantic-node dev regression
+
+This is a DEV-EXPOSED offline evaluation of frozen V6D predictions. `generalizationClaim=false`; no provider calls or prediction mutations occurred. DOC-0252 is fail-closed at document validation and no partial response is consumed.
+
+## Summary
+
+```json
+{
+  "schemaVersion": "a99-v6d-r-summary-v1",
+  "phase": "V6D_R_OWNER_CONDITIONED_SEMANTIC_NODE_DEV_REGRESSION",
+  "generalizationClaim": false,
+  "total": 128,
+  "validCoverage": {
+    "count": 99,
+    "denominator": 128,
+    "fraction": 0.7734375
+  },
+  "correct": 20,
+  "effectiveCorrectness": 0.15625,
+  "accuracyOnValid": 0.20202020202020202,
+  "falseMerge": 66,
+  "falseSplit": 11,
+  "continuationOnlyErrors": 2,
+  "nodeConstraint": {
+    "correct": 22,
+    "total": 99,
+    "accuracy": 0.2222222222222222
+  },
+  "perRelation": [
+    {
+      "relation": "SAME_SEMANTIC_REPEAT",
+      "tp": 17,
+      "fp": 8,
+      "fn": 13,
+      "precision": 0.68,
+      "recall": 0.5666666666666667,
+      "f1": 0.6181818181818183
+    },
+    {
+      "relation": "CONTINUATION_OF",
+      "tp": 0,
+      "fp": 60,
+      "fn": 1,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0
+    },
+    {
+      "relation": "DISTINCT_SEMANTIC_NODE",
+      "tp": 3,
+      "fp": 11,
+      "fn": 94,
+      "precision": 0.21428571428571427,
+      "recall": 0.030927835051546393,
+      "f1": 0.05405405405405406
+    }
+  ],
+  "perDocument": [
+    {
+      "documentId": "DOC-0123",
+      "total": 70,
+      "validCoverage": 70,
+      "correct": 19,
+      "falseMerge": 42,
+      "falseSplit": 8,
+      "continuationOnlyErrors": 1
+    },
+    {
+      "documentId": "DOC-0133",
+      "total": 29,
+      "validCoverage": 29,
+      "correct": 1,
+      "falseMerge": 24,
+      "falseSplit": 3,
+      "continuationOnlyErrors": 1
+    },
+    {
+      "documentId": "DOC-0252",
+      "total": 29,
+      "validCoverage": 0,
+      "correct": 0,
+      "falseMerge": 0,
+      "falseSplit": 0,
+      "continuationOnlyErrors": 0
+    }
+  ],
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "predictionMutations": 0
+}
+```
+
+## Failure ownership
+
+```json
+[
+  {
+    "category": "CORRECT",
+    "count": 20,
+    "reviewIds": [
+      "SA-0011",
+      "SA-0017",
+      "SA-0025",
+      "SA-0027",
+      "SA-0035",
+      "SA-0039",
+      "SA-0043",
+      "SA-0047",
+      "SA-0048",
+      "SA-0053",
+      "SA-0056",
+      "SA-0076",
+      "SA-0083",
+      "SA-0092",
+      "SA-0094",
+      "SA-0101",
+      "SA-0103",
+      "SA-0104",
+      "SA-0110",
+      "SA-0115"
+    ]
+  },
+  {
+    "category": "INVALID_V6D_DOCUMENT_VALIDATION",
+    "count": 29,
+    "reviewIds": [
+      "SA-0005",
+      "SA-0006",
+      "SA-0012",
+      "SA-0030",
+      "SA-0032",
+      "SA-0040",
+      "SA-0049",
+      "SA-0051",
+      "SA-0052",
+      "SA-0054",
+      "SA-0058",
+      "SA-0060",
+      "SA-0061",
+      "SA-0065",
+      "SA-0067",
+      "SA-0068",
+      "SA-0074",
+      "SA-0078",
+      "SA-0082",
+      "SA-0089",
+      "SA-0093",
+      "SA-0095",
+      "SA-0096",
+      "SA-0099",
+      "SA-0100",
+      "SA-0108",
+      "SA-0109",
+      "SA-0113",
+      "SA-0127"
+    ]
+  },
+  {
+    "category": "WRONG_CONTINUATION_EDGE",
+    "count": 2,
+    "reviewIds": [
+      "SA-0055",
+      "SA-0106"
+    ]
+  },
+  {
+    "category": "WRONG_NODE_MERGE",
+    "count": 66,
+    "reviewIds": [
+      "SA-0002",
+      "SA-0003",
+      "SA-0004",
+      "SA-0007",
+      "SA-0008",
+      "SA-0009",
+      "SA-0010",
+      "SA-0013",
+      "SA-0014",
+      "SA-0015",
+      "SA-0019",
+      "SA-0020",
+      "SA-0021",
+      "SA-0022",
+      "SA-0023",
+      "SA-0024",
+      "SA-0026",
+      "SA-0028",
+      "SA-0029",
+      "SA-0031",
+      "SA-0033",
+      "SA-0034",
+      "SA-0036",
+      "SA-0037",
+      "SA-0038",
+      "SA-0041",
+      "SA-0042",
+      "SA-0044",
+      "SA-0045",
+      "SA-0046",
+      "SA-0050",
+      "SA-0057",
+      "SA-0059",
+      "SA-0062",
+      "SA-0063",
+      "SA-0064",
+      "SA-0066",
+      "SA-0069",
+      "SA-0070",
+      "SA-0071",
+      "SA-0073",
+      "SA-0075",
+      "SA-0077",
+      "SA-0079",
+      "SA-0081",
+      "SA-0084",
+      "SA-0085",
+      "SA-0087",
+      "SA-0088",
+      "SA-0091",
+      "SA-0097",
+      "SA-0102",
+      "SA-0105",
+      "SA-0111",
+      "SA-0112",
+      "SA-0114",
+      "SA-0116",
+      "SA-0117",
+      "SA-0120",
+      "SA-0121",
+      "SA-0122",
+      "SA-0123",
+      "SA-0124",
+      "SA-0125",
+      "SA-0126",
+      "SA-0128"
+    ]
+  },
+  {
+    "category": "WRONG_NODE_SPLIT",
+    "count": 11,
+    "reviewIds": [
+      "SA-0001",
+      "SA-0016",
+      "SA-0018",
+      "SA-0072",
+      "SA-0080",
+      "SA-0086",
+      "SA-0090",
+      "SA-0098",
+      "SA-0107",
+      "SA-0118",
+      "SA-0119"
+    ]
+  }
+]
+```

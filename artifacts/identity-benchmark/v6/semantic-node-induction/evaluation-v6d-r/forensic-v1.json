@@ -1,0 +1,760 @@
+{
+  "schemaVersion": "a99-v6d-r-forensic-v1",
+  "phase": "V6D_R_OFFLINE_FAILURE_FORENSIC",
+  "source": "FROZEN_V6D_R_PAIR_RESULTS",
+  "providerCalls": 0,
+  "predictionMutations": 0,
+  "goldDerivedRulesInstalled": false,
+  "validPairRows": 99,
+  "falseMergeMechanisms": [
+    {
+      "ownerRelation": "SAME_OWNER",
+      "scopeRelation": "CROSS_SCOPE",
+      "count": 3
+    },
+    {
+      "ownerRelation": "SAME_OWNER",
+      "scopeRelation": "SAME_SCOPE",
+      "count": 63
+    }
+  ],
+  "falseSplitMechanisms": [
+    {
+      "ownerRelation": "CROSS_OWNER",
+      "scopeRelation": "CROSS_SCOPE",
+      "count": 6
+    },
+    {
+      "ownerRelation": "CROSS_OWNER",
+      "scopeRelation": "SAME_SCOPE",
+      "count": 5
+    }
+  ],
+  "continuationMechanisms": [
+    {
+      "ownerRelation": "SAME_OWNER",
+      "scopeRelation": "SAME_SCOPE",
+      "count": 2
+    }
+  ],
+  "cases": {
+    "falseMerges": [
+      {
+        "reviewId": "SA-0002",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0003",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0004",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "SAME_SEMANTIC_REPEAT",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0007",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "SAME_SEMANTIC_REPEAT",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0008",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "CROSS_SCOPE"
+      },
+      {
+        "reviewId": "SA-0009",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0010",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0013",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0014",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0015",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0019",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0020",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0021",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0022",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0023",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0024",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0026",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "SAME_SEMANTIC_REPEAT",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0028",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0029",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0031",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0033",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0034",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0036",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "SAME_SEMANTIC_REPEAT",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0037",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0038",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0041",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0042",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "SAME_SEMANTIC_REPEAT",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "CROSS_SCOPE"
+      },
+      {
+        "reviewId": "SA-0044",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0045",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0046",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0050",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0057",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0059",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0062",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0063",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0064",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0066",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0069",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0070",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0071",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0073",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0075",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0077",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0079",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0081",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0084",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0085",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0087",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0088",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0091",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "CROSS_SCOPE"
+      },
+      {
+        "reviewId": "SA-0097",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0102",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0105",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0111",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0112",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "SAME_SEMANTIC_REPEAT",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0114",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0116",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0117",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0120",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0121",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0122",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0123",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0124",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "SAME_SEMANTIC_REPEAT",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0125",
+        "documentId": "DOC-0123",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0126",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "SAME_SEMANTIC_REPEAT",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0128",
+        "documentId": "DOC-0133",
+        "goldRelation": "DISTINCT_SEMANTIC_NODE",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_NODE_MERGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      }
+    ],
+    "falseSplits": [
+      {
+        "reviewId": "SA-0001",
+        "documentId": "DOC-0133",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0016",
+        "documentId": "DOC-0123",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "CROSS_SCOPE"
+      },
+      {
+        "reviewId": "SA-0018",
+        "documentId": "DOC-0133",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0072",
+        "documentId": "DOC-0123",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "CROSS_SCOPE"
+      },
+      {
+        "reviewId": "SA-0080",
+        "documentId": "DOC-0123",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0086",
+        "documentId": "DOC-0123",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "CROSS_SCOPE"
+      },
+      {
+        "reviewId": "SA-0090",
+        "documentId": "DOC-0123",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0098",
+        "documentId": "DOC-0133",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0107",
+        "documentId": "DOC-0123",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "CROSS_SCOPE"
+      },
+      {
+        "reviewId": "SA-0118",
+        "documentId": "DOC-0123",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "CROSS_SCOPE"
+      },
+      {
+        "reviewId": "SA-0119",
+        "documentId": "DOC-0123",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "DISTINCT_SEMANTIC_NODE",
+        "failureOwnership": "WRONG_NODE_SPLIT",
+        "ownerRelation": "CROSS_OWNER",
+        "scopeRelation": "CROSS_SCOPE"
+      }
+    ],
+    "continuationErrors": [
+      {
+        "reviewId": "SA-0055",
+        "documentId": "DOC-0123",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_CONTINUATION_EDGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      },
+      {
+        "reviewId": "SA-0106",
+        "documentId": "DOC-0133",
+        "goldRelation": "SAME_SEMANTIC_REPEAT",
+        "predictedRelation": "CONTINUATION_OF",
+        "failureOwnership": "WRONG_CONTINUATION_EDGE",
+        "ownerRelation": "SAME_OWNER",
+        "scopeRelation": "SAME_SCOPE"
+      }
+    ]
+  },
+  "conclusion": "V6D owner conditioning did not prevent semantic over-grouping: all observed false merges are within the same owner and parser scope among valid pairs. This is diagnostic only; no owner-veto rule or Gold-derived rule is installed."
+}

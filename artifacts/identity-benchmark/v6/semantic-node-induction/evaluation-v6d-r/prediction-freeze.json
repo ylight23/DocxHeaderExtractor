@@ -1,0 +1,603 @@
+{
+  "schemaVersion": "a99-v6d-r-prediction-freeze-v1",
+  "status": "V6D_R_PREDICTIONS_FROZEN_BEFORE_GOLD",
+  "sourceCommit": "b3df34e",
+  "sourceExecution": "artifacts/identity-benchmark/v6/semantic-node-induction/execution-v1-owner-conditioned",
+  "sourceExecutionManifestSha256": "5b79b1b2ff24e6808cdd8822b5d624ff2f19615281bdee65d58dc8ef7fee6481",
+  "sourceAttemptManifestSha256": "c363d35252c9975bec0e4148b29578f27fb4b3732c476cd340ca60c9a4be5469",
+  "goldReadCount": 0,
+  "providerCallsDuringEvaluation": 0,
+  "predictionMutations": 0,
+  "generalizationClaim": false,
+  "targetOccurrenceDenominator": 226,
+  "derivationPolicy": "Invalid document first; different validated nodes =\u003E DISTINCT; exact directional edge in either direction =\u003E CONTINUATION_OF; otherwise SAME_SEMANTIC_REPEAT. Role alone never derives continuation.",
+  "documents": [
+    {
+      "documentId": "DOC-0123",
+      "status": "VALID",
+      "requestHash": "e893a2d03c3f169d20c08bb7a0b458d9fdd3a7bbad71ab90f9995752dde40189",
+      "rawResponseSha256": "8bfec49eb880b4706b83b98a8c0da8905c0be661fb3b9c5c0a1b54b5b9ca9fdc",
+      "parsedResponseSha256": "07806bde68953e3f73b2ac9736d074bf462ff5248252868f4884ec45ab8e46b6",
+      "assignments": {
+        "DOC-0123:body[1]/p[1]": "N001",
+        "DOC-0123:body[1]/p[7]": "N001",
+        "DOC-0123:body[1]/p[14]": "N001",
+        "DOC-0123:body[1]/p[32]/txbxContent[1]/p[1]": "N001",
+        "DOC-0123:body[1]/p[32]/txbxContent[2]/p[1]": "N001",
+        "DOC-0123:body[1]/p[76]": "N001",
+        "DOC-0123:body[1]/p[84]": "N002",
+        "DOC-0123:body[1]/p[86]": "N002",
+        "DOC-0123:body[1]/p[88]": "N002",
+        "DOC-0123:body[1]/p[90]": "N002",
+        "DOC-0123:body[1]/p[92]": "N002",
+        "DOC-0123:body[1]/p[94]": "N002",
+        "DOC-0123:body[1]/p[97]": "N002",
+        "DOC-0123:body[1]/p[101]": "N002",
+        "DOC-0123:body[1]/p[103]": "N002",
+        "DOC-0123:body[1]/p[105]": "N002",
+        "DOC-0123:body[1]/p[172]": "N002",
+        "DOC-0123:body[1]/p[173]": "N002",
+        "DOC-0123:body[1]/p[176]": "N002",
+        "DOC-0123:body[1]/p[179]": "N002",
+        "DOC-0123:body[1]/p[181]": "N002",
+        "DOC-0123:body[1]/p[183]": "N002",
+        "DOC-0123:body[1]/p[192]": "N002",
+        "DOC-0123:body[1]/p[263]": "N003",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]": "N002",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]": "N002",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]": "N002",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]": "N002",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]": "N002",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[8]": "N002",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]": "N002",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]": "N002",
+        "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]": "N002",
+        "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]": "N003",
+        "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[20]": "N003",
+        "DOC-0123:body[1]/p[276]": "N004",
+        "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]": "N004",
+        "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]": "N004",
+        "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]": "N004",
+        "DOC-0123:body[1]/p[317]": "N005",
+        "DOC-0123:body[1]/p[318]": "N005",
+        "DOC-0123:body[1]/p[493]": "N006",
+        "DOC-0123:body[1]/p[534]": "N006",
+        "DOC-0123:body[1]/p[545]": "N007",
+        "DOC-0123:body[1]/p[547]": "N007",
+        "DOC-0123:body[1]/tbl[19]/tr[2]/tc[3]/p[1]": "N008",
+        "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]": "N008",
+        "DOC-0123:body[1]/tbl[19]/tr[2]/tc[5]/p[1]": "N008",
+        "DOC-0123:body[1]/tbl[20]/tr[2]/tc[3]/p[1]": "N008",
+        "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]": "N008",
+        "DOC-0123:body[1]/tbl[20]/tr[2]/tc[5]/p[1]": "N008",
+        "DOC-0123:body[1]/tbl[21]/tr[5]/tc[1]/p[1]": "N009",
+        "DOC-0123:body[1]/tbl[21]/tr[6]/tc[1]/p[1]": "N009",
+        "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]": "N009",
+        "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]": "N009",
+        "DOC-0123:body[1]/tbl[21]/tr[9]/tc[1]/p[1]": "N009",
+        "DOC-0123:body[1]/p[583]": "N009",
+        "DOC-0123:body[1]/p[584]": "N009",
+        "DOC-0123:body[1]/p[637]": "N010",
+        "DOC-0123:body[1]/p[639]": "N010",
+        "DOC-0123:body[1]/p[641]": "N010",
+        "DOC-0123:body[1]/tbl[25]/tr[2]/tc[4]/p[1]": "N010",
+        "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]": "N010",
+        "DOC-0123:body[1]/tbl[25]/tr[3]/tc[2]/p[1]": "N010",
+        "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]": "N011",
+        "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]": "N011",
+        "DOC-0123:body[1]/p[695]": "N012",
+        "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]": "N012",
+        "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]": "N012",
+        "DOC-0123:body[1]/p[766]": "N012",
+        "DOC-0123:body[1]/tbl[31]/tr[6]/tc[2]/p[1]": "N013",
+        "DOC-0123:body[1]/p[875]": "N014",
+        "DOC-0123:body[1]/p[878]": "N014",
+        "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[2]": "N014",
+        "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[3]": "N014",
+        "DOC-0123:body[1]/p[908]": "N015",
+        "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]": "N016",
+        "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]": "N016",
+        "DOC-0123:body[1]/p[919]": "N015",
+        "DOC-0123:body[1]/p[920]": "N015",
+        "DOC-0123:body[1]/p[921]": "N015",
+        "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]": "N016",
+        "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]": "N016",
+        "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]": "N017",
+        "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]": "N017",
+        "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]": "N017",
+        "DOC-0123:body[1]/p[992]": "N018",
+        "DOC-0123:body[1]/p[1053]": "N019",
+        "DOC-0123:body[1]/tbl[45]/tr[1]/tc[1]/p[1]": "N019",
+        "DOC-0123:body[1]/tbl[45]/tr[24]/tc[2]/p[1]": "N020",
+        "DOC-0123:body[1]/tbl[47]/tr[6]/tc[2]/p[1]": "N013",
+        "DOC-0123:body[1]/p[1192]": "N021",
+        "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]": "N022",
+        "DOC-0123:body[1]/p[1199]": "N022",
+        "DOC-0123:body[1]/p[1201]": "N022",
+        "DOC-0123:body[1]/tbl[50]/tr[14]/tc[2]/p[1]": "N023",
+        "DOC-0123:body[1]/tbl[50]/tr[15]/tc[2]/p[1]": "N023",
+        "DOC-0123:body[1]/tbl[50]/tr[32]/tc[2]/p[1]": "N023",
+        "DOC-0123:body[1]/tbl[50]/tr[33]/tc[2]/p[1]": "N023",
+        "DOC-0123:body[1]/tbl[54]/tr[17]/tc[1]/p[2]": "N024",
+        "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]": "N024",
+        "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]": "N024",
+        "DOC-0123:body[1]/tbl[54]/tr[77]/tc[2]/p[1]": "N024",
+        "DOC-0123:body[1]/tbl[54]/tr[78]/tc[2]/p[1]": "N024",
+        "DOC-0123:body[1]/tbl[57]/tr[3]/tc[2]/p[1]": "N025",
+        "DOC-0123:body[1]/tbl[57]/tr[3]/tc[3]/p[1]": "N025",
+        "DOC-0123:body[1]/tbl[57]/tr[4]/tc[2]/p[1]": "N025",
+        "DOC-0123:body[1]/tbl[57]/tr[4]/tc[5]/p[1]": "N025",
+        "DOC-0123:body[1]/tbl[57]/tr[5]/tc[2]/p[1]": "N025",
+        "DOC-0123:body[1]/tbl[57]/tr[5]/tc[5]/p[1]": "N025",
+        "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]": "N026",
+        "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]": "N026",
+        "DOC-0123:body[1]/p[1378]": "N026",
+        "DOC-0123:body[1]/p[1387]": "N026",
+        "DOC-0123:body[1]/p[1462]": "N027",
+        "DOC-0123:body[1]/p[1504]": "N027"
+      },
+      "continuationEdges": [
+        {
+          "from": "DOC-0123:body[1]/p[7]",
+          "to": "DOC-0123:body[1]/p[14]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[14]",
+          "to": "DOC-0123:body[1]/p[32]/txbxContent[1]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[32]/txbxContent[1]/p[1]",
+          "to": "DOC-0123:body[1]/p[32]/txbxContent[2]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[84]",
+          "to": "DOC-0123:body[1]/p[86]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[86]",
+          "to": "DOC-0123:body[1]/p[88]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[88]",
+          "to": "DOC-0123:body[1]/p[90]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[90]",
+          "to": "DOC-0123:body[1]/p[92]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[92]",
+          "to": "DOC-0123:body[1]/p[94]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[94]",
+          "to": "DOC-0123:body[1]/p[97]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[97]",
+          "to": "DOC-0123:body[1]/p[101]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[101]",
+          "to": "DOC-0123:body[1]/p[103]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[103]",
+          "to": "DOC-0123:body[1]/p[105]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[172]",
+          "to": "DOC-0123:body[1]/p[173]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[173]",
+          "to": "DOC-0123:body[1]/p[176]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[176]",
+          "to": "DOC-0123:body[1]/p[179]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[179]",
+          "to": "DOC-0123:body[1]/p[181]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[181]",
+          "to": "DOC-0123:body[1]/p[183]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[183]",
+          "to": "DOC-0123:body[1]/p[192]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[263]",
+          "to": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]",
+          "to": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[20]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[276]",
+          "to": "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[317]",
+          "to": "DOC-0123:body[1]/p[318]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[493]",
+          "to": "DOC-0123:body[1]/p[534]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[545]",
+          "to": "DOC-0123:body[1]/p[547]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[3]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[5]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[3]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[5]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[21]/tr[5]/tc[1]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[21]/tr[6]/tc[1]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[21]/tr[6]/tc[1]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[21]/tr[9]/tc[1]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[21]/tr[9]/tc[1]/p[1]",
+          "to": "DOC-0123:body[1]/p[583]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[583]",
+          "to": "DOC-0123:body[1]/p[584]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[637]",
+          "to": "DOC-0123:body[1]/p[639]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[639]",
+          "to": "DOC-0123:body[1]/p[641]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[4]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[25]/tr[3]/tc[2]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[695]",
+          "to": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]",
+          "to": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]",
+          "to": "DOC-0123:body[1]/p[766]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[875]",
+          "to": "DOC-0123:body[1]/p[878]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[878]",
+          "to": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[2]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[2]",
+          "to": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[3]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[908]",
+          "to": "DOC-0123:body[1]/p[919]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[919]",
+          "to": "DOC-0123:body[1]/p[920]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[920]",
+          "to": "DOC-0123:body[1]/p[921]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[1053]",
+          "to": "DOC-0123:body[1]/tbl[45]/tr[1]/tc[1]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+          "to": "DOC-0123:body[1]/p[1199]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[1199]",
+          "to": "DOC-0123:body[1]/p[1201]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[50]/tr[14]/tc[2]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[50]/tr[15]/tc[2]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[50]/tr[32]/tc[2]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[50]/tr[33]/tc[2]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[54]/tr[17]/tc[1]/p[2]",
+          "to": "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]",
+          "to": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]",
+          "to": "DOC-0123:body[1]/tbl[54]/tr[77]/tc[2]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[54]/tr[77]/tc[2]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[54]/tr[78]/tc[2]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[2]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[3]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[2]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[5]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[5]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[2]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[2]/p[1]",
+          "to": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[5]/p[1]"
+        },
+        {
+          "from": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]",
+          "to": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[1378]",
+          "to": "DOC-0123:body[1]/p[1387]"
+        },
+        {
+          "from": "DOC-0123:body[1]/p[1462]",
+          "to": "DOC-0123:body[1]/p[1504]"
+        }
+      ],
+      "error": null
+    },
+    {
+      "documentId": "DOC-0133",
+      "status": "VALID",
+      "requestHash": "9dcee7b0930c037d08df1ead371ce20435458c2c949a1e9e47976d0615d0aad7",
+      "rawResponseSha256": "300cf7e02aec4c5f2985985cab8aeb00b2df1f1f3bc2194a0a97cac8c8153cb4",
+      "parsedResponseSha256": "a4b16ea47c2a4a9bd91d717dd0bbe4329e2a41c578c3b7cc6e75ce4b4b64945b",
+      "assignments": {
+        "DOC-0133:B000005": "N001",
+        "DOC-0133:B000011": "N002",
+        "DOC-0133:B000013": "N002",
+        "DOC-0133:B000015": "N002",
+        "DOC-0133:B000017": "N002",
+        "DOC-0133:B000034": "N002",
+        "DOC-0133:B000036": "N003",
+        "DOC-0133:B000041": "N004",
+        "DOC-0133:B000099": "N003",
+        "DOC-0133:B000118": "N004",
+        "DOC-0133:B000136": "N004",
+        "DOC-0133:B000140": "N005",
+        "DOC-0133:B000157": "N005",
+        "DOC-0133:B000316": "N003",
+        "DOC-0133:B000337": "N006",
+        "DOC-0133:B000338": "N006",
+        "DOC-0133:B000339": "N006",
+        "DOC-0133:B000340": "N006",
+        "DOC-0133:B000359": "N007",
+        "DOC-0133:B000360": "N007",
+        "DOC-0133:B000561": "N008",
+        "DOC-0133:B000562": "N008",
+        "DOC-0133:B000616": "N009",
+        "DOC-0133:B000827": "N010",
+        "DOC-0133:B000841": "N010",
+        "DOC-0133:B000855": "N011",
+        "DOC-0133:B000856": "N011",
+        "DOC-0133:B000921": "N012",
+        "DOC-0133:B000927": "N013",
+        "DOC-0133:B000930": "N013",
+        "DOC-0133:B000933": "N014",
+        "DOC-0133:B000934": "N014",
+        "DOC-0133:B000935": "N014",
+        "DOC-0133:B000937": "N015",
+        "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11": "N015",
+        "DOC-0133:B000959": "N016",
+        "DOC-0133:B000961": "N016",
+        "DOC-0133:B000965": "N017",
+        "DOC-0133:B000967": "N017",
+        "DOC-0133:B001068": "N018",
+        "DOC-0133:B001069": "N018",
+        "DOC-0133:B001466": "N019",
+        "DOC-0133:B001467": "N019",
+        "DOC-0133:B001610": "N020",
+        "DOC-0133:B001617": "N020",
+        "DOC-0133:B001735": "N021",
+        "DOC-0133:B001752": "N021",
+        "DOC-0133:B001802": "N022",
+        "DOC-0133:B001804": "N022",
+        "DOC-0133:B001891": "N023",
+        "DOC-0133:B001907": "N023",
+        "DOC-0133:B001981": "N024",
+        "DOC-0133:B002045": "N024",
+        "DOC-0133:B002226": "N025",
+        "DOC-0133:B002228": "N025",
+        "DOC-0133:B002277": "N026",
+        "DOC-0133:B002293": "N026"
+      },
+      "continuationEdges": [
+        {
+          "from": "DOC-0133:B000011",
+          "to": "DOC-0133:B000013"
+        },
+        {
+          "from": "DOC-0133:B000013",
+          "to": "DOC-0133:B000015"
+        },
+        {
+          "from": "DOC-0133:B000015",
+          "to": "DOC-0133:B000017"
+        },
+        {
+          "from": "DOC-0133:B000337",
+          "to": "DOC-0133:B000338"
+        },
+        {
+          "from": "DOC-0133:B000338",
+          "to": "DOC-0133:B000339"
+        },
+        {
+          "from": "DOC-0133:B000339",
+          "to": "DOC-0133:B000340"
+        },
+        {
+          "from": "DOC-0133:B000359",
+          "to": "DOC-0133:B000360"
+        },
+        {
+          "from": "DOC-0133:B000561",
+          "to": "DOC-0133:B000562"
+        },
+        {
+          "from": "DOC-0133:B000827",
+          "to": "DOC-0133:B000841"
+        },
+        {
+          "from": "DOC-0133:B000855",
+          "to": "DOC-0133:B000856"
+        },
+        {
+          "from": "DOC-0133:B000927",
+          "to": "DOC-0133:B000930"
+        },
+        {
+          "from": "DOC-0133:B000933",
+          "to": "DOC-0133:B000934"
+        },
+        {
+          "from": "DOC-0133:B000934",
+          "to": "DOC-0133:B000935"
+        },
+        {
+          "from": "DOC-0133:B000937",
+          "to": "DOC-0133:pdf-image-region:4558550c8d953223ba5ec8bfc805d3cb065528358645f7b0b7a73a531d881b11"
+        },
+        {
+          "from": "DOC-0133:B000959",
+          "to": "DOC-0133:B000961"
+        },
+        {
+          "from": "DOC-0133:B000965",
+          "to": "DOC-0133:B000967"
+        },
+        {
+          "from": "DOC-0133:B001068",
+          "to": "DOC-0133:B001069"
+        },
+        {
+          "from": "DOC-0133:B001466",
+          "to": "DOC-0133:B001467"
+        },
+        {
+          "from": "DOC-0133:B001610",
+          "to": "DOC-0133:B001617"
+        },
+        {
+          "from": "DOC-0133:B001735",
+          "to": "DOC-0133:B001752"
+        },
+        {
+          "from": "DOC-0133:B001802",
+          "to": "DOC-0133:B001804"
+        },
+        {
+          "from": "DOC-0133:B001891",
+          "to": "DOC-0133:B001907"
+        },
+        {
+          "from": "DOC-0133:B001981",
+          "to": "DOC-0133:B002045"
+        },
+        {
+          "from": "DOC-0133:B002226",
+          "to": "DOC-0133:B002228"
+        },
+        {
+          "from": "DOC-0133:B002277",
+          "to": "DOC-0133:B002293"
+        }
+      ],
+      "error": null
+    },
+    {
+      "documentId": "DOC-0252",
+      "status": "INVALID_VALIDATION",
+      "requestHash": "753a9b08aaff70832b260872c37f23c82fe2375c91df53713fbcdb0916771c4e",
+      "rawResponseSha256": "ca374a3e394026487613aeed624cfbaf621fada890011936f9e6866c8b81f514",
+      "parsedResponseSha256": "1a913c93cb5d7957767261a53e52ed1a244432b788c81e153ff69beef480a82f",
+      "assignments": {},
+      "continuationEdges": [],
+      "error": "V6D_CROSS_NODE_CONTINUATION"
+    }
+  ]
+}
