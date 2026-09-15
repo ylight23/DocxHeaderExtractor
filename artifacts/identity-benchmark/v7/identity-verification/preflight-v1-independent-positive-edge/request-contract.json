@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "a99-v7b-independent-positive-edge-verification-contract-v1",
+  "input": [
+    "frozen V7A positive proposals",
+    "exact source occurrences",
+    "source-derived evidence"
+  ],
+  "output": [
+    "ACCEPT",
+    "REJECT",
+    "UNRESOLVED"
+  ],
+  "acceptedRelationPolicy": "ACCEPT is eligible for a later constrained graph only; it is not auto-collapse authority.",
+  "defaultPolicy": "REJECT_AND_UNRESOLVED_KEEP_SPLIT",
+  "confidencePolicy": "audit-only; no threshold promotion",
+  "independence": "V7A rationale and decision explanation are excluded; only frozen proposal identity/relation is shown.",
+  "forbidden": [
+    "Gold",
+    "V4H/V5/V6 predictions",
+    "evaluation artifacts",
+    "connected-component collapse",
+    "automatic merge",
+    "parent",
+    "ROOT",
+    "level"
+  ]
+}
