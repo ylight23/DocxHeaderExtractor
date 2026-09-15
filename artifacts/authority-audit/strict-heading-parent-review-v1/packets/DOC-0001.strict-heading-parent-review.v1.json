@@ -1,0 +1,150 @@
+{
+  "artifactKind": "a99_strict_heading_parent_review_packet",
+  "schemaVersion": "a99-strict-heading-parent-review-v1",
+  "documentId": "DOC-0001",
+  "status": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW",
+  "reviewScope": "USER_REVIEWED_PARENT_EDGES_AND_SEMANTIC_NODE_IDENTITY",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "strictHeadingGoldArtifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
+  "strictHeadingGoldSha256": "5ac30a82db551a8149ed777390eeca0dc6c6d0bafd9e82468dde32777808dfc8",
+  "goldFirewall": {
+    "modelPredictionsVisible": false,
+    "candidateShortlistVisible": false,
+    "oldEvalHierarchyVisible": false,
+    "historicalLevelVisible": false,
+    "existingParentAnnotationsVisible": false,
+    "identityPredictionsVisible": false
+  },
+  "reviewInstructions": [
+    "Review source semantics only; do not infer parent from historical level or document order alone.",
+    "Assign semanticNodeId so repeat/continuation occurrences can share one semantic node.",
+    "Assign parentSemanticNodeId between semantic nodes; assign isRoot explicitly.",
+    "Use PRIMARY, REPEAT, or CONTINUATION only when source evidence supports it.",
+    "Use UNRESOLVED when source evidence is insufficient; do not force a tree.",
+    "Validate no parent cycle and at most one parent per resolved semantic node."
+  ],
+  "occurrences": [
+    {
+      "headingOccurrenceId": "DOC-0001:paragraph[0]#key-line-3",
+      "sourceId": "paragraph[0]",
+      "exactText": "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung",
+      "role": "heading",
+      "sourceReferencePath": "bench/01-style-chuan.key",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "headingOccurrenceId": "DOC-0001:paragraph[10]#key-line-8",
+      "sourceId": "paragraph[10]",
+      "exactText": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n",
+      "role": "heading",
+      "sourceReferencePath": "bench/01-style-chuan.key",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "headingOccurrenceId": "DOC-0001:paragraph[12]#key-line-9",
+      "sourceId": "paragraph[12]",
+      "exactText": "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m",
+      "role": "heading",
+      "sourceReferencePath": "bench/01-style-chuan.key",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "headingOccurrenceId": "DOC-0001:paragraph[2]#key-line-4",
+      "sourceId": "paragraph[2]",
+      "exactText": "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh",
+      "role": "heading",
+      "sourceReferencePath": "bench/01-style-chuan.key",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "headingOccurrenceId": "DOC-0001:paragraph[4]#key-line-5",
+      "sourceId": "paragraph[4]",
+      "exactText": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng",
+      "role": "heading",
+      "sourceReferencePath": "bench/01-style-chuan.key",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "headingOccurrenceId": "DOC-0001:paragraph[6]#key-line-6",
+      "sourceId": "paragraph[6]",
+      "exactText": "1.2.1. CÆ¡ quan quáº£n lÃ½",
+      "role": "heading",
+      "sourceReferencePath": "bench/01-style-chuan.key",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    },
+    {
+      "headingOccurrenceId": "DOC-0001:paragraph[8]#key-line-7",
+      "sourceId": "paragraph[8]",
+      "exactText": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c",
+      "role": "heading",
+      "sourceReferencePath": "bench/01-style-chuan.key",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "annotation": {
+        "semanticNodeId": null,
+        "parentSemanticNodeId": null,
+        "isRoot": null,
+        "occurrenceRelation": null,
+        "reviewNote": null,
+        "reviewStatus": "AWAITING_HUMAN_SOURCE_ONLY_REVIEW"
+      }
+    }
+  ],
+  "validation": {
+    "expectedOccurrenceCount": 7,
+    "assignedOccurrenceCount": 0,
+    "resolvedSemanticNodeCount": 0,
+    "parentEdgeCount": 0,
+    "rootNodeCount": 0,
+    "unresolvedOccurrenceCount": 0,
+    "cycles": 0,
+    "multipleStructuralParents": 0
+  }
+}
