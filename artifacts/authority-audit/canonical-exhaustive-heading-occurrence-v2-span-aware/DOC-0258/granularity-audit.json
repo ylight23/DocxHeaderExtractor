@@ -1,0 +1,132 @@
+{
+  "artifactKind": "A99_CANONICAL_OCCURRENCE_GRANULARITY_AUDIT",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v2-span-aware",
+  "supersededArtifact": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/source-review-v1/DOC-0258",
+  "supersededArtifactSha256": "8644efe9b5359dbdc3a28b3562c4b87f00967ebe7d650b0899fdad81979b1b6c",
+  "currentParagraphDecisionModel": "WHOLE_CONTAINER_BOOLEAN",
+  "correctedModel": "SOURCE_CONTAINER_PLUS_EXACT_HEADING_SPAN",
+  "paragraphContainersWithNewInlineSpan": [
+    {
+      "sourceId": "body[1]/p[11]",
+      "priorDecision": "NON_HEADING",
+      "candidateSpans": [
+        {
+          "start": 0,
+          "end": 6,
+          "text": "Africa",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_RUN_BOUNDARY",
+            "SOURCE_CONTAINER_STRUCTURE",
+            "SOURCE_INLINE_HEADING_RUN_PREFIX"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[12]",
+      "priorDecision": "NON_HEADING",
+      "candidateSpans": [
+        {
+          "start": 0,
+          "end": 20,
+          "text": "Asia and the Pacific",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_RUN_BOUNDARY",
+            "SOURCE_CONTAINER_STRUCTURE",
+            "SOURCE_INLINE_HEADING_RUN_PREFIX"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[17]",
+      "priorDecision": "NON_HEADING",
+      "candidateSpans": [
+        {
+          "start": 0,
+          "end": 25,
+          "text": "Eurostat–OECD PPP Program",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_RUN_BOUNDARY",
+            "SOURCE_CONTAINER_STRUCTURE",
+            "SOURCE_INLINE_HEADING_RUN_PREFIX"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[18]",
+      "priorDecision": "NON_HEADING",
+      "candidateSpans": [
+        {
+          "start": 0,
+          "end": 34,
+          "text": "Commonwealth of Independent States",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_RUN_BOUNDARY",
+            "SOURCE_CONTAINER_STRUCTURE",
+            "SOURCE_INLINE_HEADING_RUN_PREFIX"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[19]",
+      "priorDecision": "NON_HEADING",
+      "candidateSpans": [
+        {
+          "start": 0,
+          "end": 31,
+          "text": "Latin America and the Caribbean",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_RUN_BOUNDARY",
+            "SOURCE_CONTAINER_STRUCTURE",
+            "SOURCE_INLINE_HEADING_RUN_PREFIX"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[24]",
+      "priorDecision": "NON_HEADING",
+      "candidateSpans": [
+        {
+          "start": 0,
+          "end": 12,
+          "text": "Western Asia",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_RUN_BOUNDARY",
+            "SOURCE_CONTAINER_STRUCTURE",
+            "SOURCE_INLINE_HEADING_RUN_PREFIX"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceId": "body[1]/p[115]",
+      "priorDecision": "NON_HEADING",
+      "candidateSpans": [
+        {
+          "start": 0,
+          "end": 29,
+          "text": "Annex 2: List of participants",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_RUN_BOUNDARY",
+            "SOURCE_CONTAINER_STRUCTURE",
+            "SOURCE_INLINE_HEADING_RUN_PREFIX"
+          ]
+        }
+      ]
+    }
+  ],
+  "historicalLevelRead": false,
+  "providerCalls": 0,
+  "modelCalls": 0
+}

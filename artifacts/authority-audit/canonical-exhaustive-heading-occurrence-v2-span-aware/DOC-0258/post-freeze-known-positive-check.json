@@ -1,0 +1,14 @@
+{
+  "artifactKind": "A99_POST_FREEZE_HISTORICAL_EXACT_SPAN_DIAGNOSTIC",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v2-span-aware",
+  "diagnosticOnly": true,
+  "historicalBindingArtifact": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0258.occurrence-gold-v1.json",
+  "historicalPositiveCount": 24,
+  "historicalPositiveSourceShaMatch": true,
+  "historicalPositivePreservedExactly": true,
+  "preservedExactCount": 24,
+  "historicalPositiveInsideNewTrueParagraph": 24,
+  "historicalPositiveInsideNewNonHeadingParagraph": 0,
+  "membershipConflicts": [],
+  "historicalLevelRead": false
+}

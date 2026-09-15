@@ -1,0 +1,27 @@
+{
+  "artifactKind": "A99_CANONICAL_HEADING_SPAN_VALIDATION",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v2-span-aware",
+  "documentId": "DOC-0258",
+  "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+  "checks": {
+    "sourceShaMatches": true,
+    "historicalPositiveSourceShaMatches": true,
+    "allSourceContainersReviewed": true,
+    "exactSpanForEveryAcceptedOccurrence": true,
+    "noDuplicatePhysicalOccurrence": true,
+    "unresolvedSpanBoundariesZero": true,
+    "runBoundariesPreserved": true,
+    "exactUtf16Offsets": true,
+    "historicalLevelRead": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "hierarchyMutation": false,
+    "identityMutation": false,
+    "historicalGoldUsedForCandidateGeneration": false
+  },
+  "sourceContainerCount": 146,
+  "acceptedSpanCount": 44,
+  "historicalPositiveCount": 24,
+  "semanticTotal": 37,
+  "historicalConflictCount": 0
+}
