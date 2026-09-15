@@ -1,0 +1,58 @@
+{
+  "artifactKind": "A99_CANONICAL_EXHAUSTIVE_HEADING_OCCURRENCE_MANIFEST",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v1-doc0252",
+  "documentId": "DOC-0252",
+  "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+  "sourcePath": "todo10_8/generated-docx/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.docx",
+  "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "sourceContainerCount": 210,
+  "canonicalExactHeadingOccurrenceCount": 40,
+  "historicalRows": 27,
+  "historicalExactCrossSourceBridges": 0,
+  "historicalTextOnlyMatches": 11,
+  "canonicalOnly": 25,
+  "historicalOnly": 14,
+  "ambiguousBridges": 2,
+  "sourceOnlyAuthority": true,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalOccurrenceRowsUsedForDecision": false,
+  "oldSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "identityReviewed": false,
+  "parentReviewed": false,
+  "levelReviewed": false,
+  "artifactHashes": [
+    {
+      "artifact": "source-authority.json",
+      "sha256": "4665f3591b5be96ed1d5b253fe982ab5c67b00e1538cea90f4b7305b4b996950"
+    },
+    {
+      "artifact": "source-containers.json",
+      "sha256": "4927e33498e099e75e5533808042af0e3e46307a54b5502c2c1c20cea511892f"
+    },
+    {
+      "artifact": "occurrence-decisions.json",
+      "sha256": "ccfbbce4f2e415ff093c4eb719a5c739439af16058a1f35472a495fee09626e0"
+    },
+    {
+      "artifact": "exact-bindings.json",
+      "sha256": "cc43a09038c70e4f09e7d35810bce089d2fc1fc316467c178f4083bebfd3c3f7"
+    },
+    {
+      "artifact": "historical-bridge-diagnostic.json",
+      "sha256": "dbcb4ec455cf3d7a960d9b7ce5c56d3fd5df33fd1d2d44ed009dc9f62f6a85c6"
+    },
+    {
+      "artifact": "validation.json",
+      "sha256": "9e700812e87bbcf3d9778a26b2b00a7c516bc559ff95ecd35f96763aa2afda70"
+    },
+    {
+      "artifact": "report.md",
+      "sha256": "ea5fd9d86d89f8674086b41541f0d93abcddace4590e4f5ed98ca681df12ffd0"
+    }
+  ],
+  "deterministicRebuildHash": "1a55eaff45ec22dac6a5d2e46a111d49b9e7eec06aa100f972dc05d3a5502c1d"
+}

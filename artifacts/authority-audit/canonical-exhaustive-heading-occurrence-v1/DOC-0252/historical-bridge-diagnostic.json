@@ -1,0 +1,267 @@
+{
+  "artifactKind": "A99_HISTORICAL_STRICT_OCCURRENCE_BRIDGE_DIAGNOSTIC",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v1-doc0252",
+  "documentId": "DOC-0252",
+  "canonicalAuthorityMaterializedBeforeBridge": true,
+  "canonicalSourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "historicalSourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalOccurrenceRowsUsedForCanonicalDecision": false,
+  "historicalRowsRead": 27,
+  "exactCrossSourceBridgeCount": 0,
+  "textOnlyDiagnosticMatchCount": 11,
+  "historicalOnlyCount": 14,
+  "canonicalOnlyCount": 25,
+  "ambiguousCount": 2,
+  "oldSemanticTotal": 41,
+  "oldSemanticSourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "oldSemanticTotalUsedForDecision": false,
+  "records": [
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[4]#key-line-13",
+      "historicalSourceId": "body[1]/p[4]",
+      "historicalExactText": "Session I: Welcome and meeting objectives",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[7]#heading-span-0-41"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[4]#key-line-14",
+      "historicalSourceId": "body[1]/p[4]",
+      "historicalExactText": "Session II: Update on the ICP 2021 Cycle",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[11]#heading-span-0-40"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[4]#key-line-15",
+      "historicalSourceId": "body[1]/p[4]",
+      "historicalExactText": "1. Global office update",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[8]#key-line-16",
+      "historicalSourceId": "body[1]/p[8]",
+      "historicalExactText": "2. Regional updates",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[8]#key-line-17",
+      "historicalSourceId": "body[1]/p[8]",
+      "historicalExactText": "Africa",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[24]#heading-span-0-6"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[8]#key-line-18",
+      "historicalSourceId": "body[1]/p[8]",
+      "historicalExactText": "Asia and the Pacific",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[27]#heading-span-0-20"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[8]#key-line-19",
+      "historicalSourceId": "body[1]/p[8]",
+      "historicalExactText": "Commonwealth of Independent States (CIS)",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[31]#heading-span-0-40"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[10]#key-line-20",
+      "historicalSourceId": "body[1]/p[10]",
+      "historicalExactText": "Eurostatâ€“OECD PPP Program",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[10]#key-line-21",
+      "historicalSourceId": "body[1]/p[10]",
+      "historicalExactText": "Latin America and the Caribbean",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[42]#heading-span-0-31"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[10]#key-line-22",
+      "historicalSourceId": "body[1]/p[10]",
+      "historicalExactText": "Western Asia",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[46]#heading-span-0-12"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[12]#key-line-23",
+      "historicalSourceId": "body[1]/p[12]",
+      "historicalExactText": "Session III: Short- and Long-Term Research and Development Agenda",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[54]#heading-span-0-65",
+        "DOC-0252:body[1]/p[159]#heading-span-1-66"
+      ],
+      "bridgeStatus": "AMBIGUOUS",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[12]#key-line-24",
+      "historicalSourceId": "body[1]/p[12]",
+      "historicalExactText": "1. Research Topics Emerging from the Previous ICP Cycles",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[14]#key-line-25",
+      "historicalSourceId": "body[1]/p[14]",
+      "historicalExactText": "2. Forthcoming Research Topics",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[16]#key-line-26",
+      "historicalSourceId": "body[1]/p[16]",
+      "historicalExactText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[75]#heading-span-0-66"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[16]#key-line-27",
+      "historicalSourceId": "body[1]/p[16]",
+      "historicalExactText": "1. TAG Composition and Terms of Reference",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[16]#key-line-28",
+      "historicalSourceId": "body[1]/p[16]",
+      "historicalExactText": "2. Terms of Reference for a Task Force on Annual PPP Production",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[18]#key-line-29",
+      "historicalSourceId": "body[1]/p[18]",
+      "historicalExactText": "3. Terms of Reference for a Task Force on ICP Classification Update",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[18]#key-line-30",
+      "historicalSourceId": "body[1]/p[18]",
+      "historicalExactText": "Session V: Current Research",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[94]#heading-span-0-27",
+        "DOC-0252:body[1]/p[166]#heading-span-1-28"
+      ],
+      "bridgeStatus": "AMBIGUOUS",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[18]#key-line-31",
+      "historicalSourceId": "body[1]/p[18]",
+      "historicalExactText": "1. The Treatment of Import and Export Prices in International Comparisons",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[20]#key-line-32",
+      "historicalSourceId": "body[1]/p[20]",
+      "historicalExactText": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[20]#key-line-33",
+      "historicalSourceId": "body[1]/p[20]",
+      "historicalExactText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[22]#key-line-34",
+      "historicalSourceId": "body[1]/p[22]",
+      "historicalExactText": "4. Treatment of Negative Expenditures in ICP",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[22]#key-line-35",
+      "historicalSourceId": "body[1]/p[22]",
+      "historicalExactText": "5. Fine Tuning Global Linking Procedures",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[26]#key-line-36",
+      "historicalSourceId": "body[1]/p[26]",
+      "historicalExactText": "6. Improving Reliability of Price Comparisons",
+      "canonicalMatches": [],
+      "bridgeStatus": "HISTORICAL_ONLY",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[26]#key-line-37",
+      "historicalSourceId": "body[1]/p[26]",
+      "historicalExactText": "Session VI: Any Other Business",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[151]#heading-span-0-30"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[28]#key-line-38",
+      "historicalSourceId": "body[1]/p[28]",
+      "historicalExactText": "Agenda",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[158]#heading-span-56-62"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    },
+    {
+      "historicalHeadingOccurrenceId": "DOC-0252:body[1]/p[32]#key-line-39",
+      "historicalSourceId": "body[1]/p[32]",
+      "historicalExactText": "Annex 2: List of Participants",
+      "canonicalMatches": [
+        "DOC-0252:body[1]/p[174]#heading-span-0-29"
+      ],
+      "bridgeStatus": "TEXT_ONLY_DIAGNOSTIC_MATCH",
+      "authority": "HISTORICAL_DIAGNOSTIC_ONLY"
+    }
+  ],
+  "note": "Historical source rows and semantic total are non-binding diagnostics only; current DOCX exact spans are the canonical occurrence authority."
+}
