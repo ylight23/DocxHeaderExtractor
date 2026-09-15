@@ -1,0 +1,610 @@
+{
+  "response": {
+    "owners": [
+      {
+        "ownerLocalId": "DOC-0252:O001",
+        "memberOccurrenceIds": [
+          "B000006"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Session I : Welcome and meeting objectives heading",
+        "evidenceRefs": [
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "SC-fd68b6c73c10e67b"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O002",
+        "memberOccurrenceIds": [
+          "B000016",
+          "B000031"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding observers and side event",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-b8cd0daf89cc2809"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O003",
+        "memberOccurrenceIds": [
+          "B000022",
+          "B000026"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding Paul Schreyer and ICp 2024 cycle",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-f8cd55c5e557df36"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O004",
+        "memberOccurrenceIds": [
+          "B000042"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Session II : Update on the ICP 2021 Cycle heading",
+        "evidenceRefs": [
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "SC-fd68b6c73c10e67b"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O005",
+        "memberOccurrenceIds": [
+          "B000063",
+          "B000083"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding CIS region and World Bank income classification",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-698908c4f6d37a72"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O006",
+        "memberOccurrenceIds": [
+          "B000107",
+          "B000235"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding governance activities and report release",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-83ba6382175a7582"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O007",
+        "memberOccurrenceIds": [
+          "B000162",
+          "B000168"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding CIS region implementation status",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-e1dba61cbc2b05da"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O008",
+        "memberOccurrenceIds": [
+          "B000188",
+          "B000189"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding Eurostat-OECD PPP Programme results",
+        "evidenceRefs": [
+          "ADJACENT_ORDER",
+          "SC-87ddf22bac3dbc7a"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O009",
+        "memberOccurrenceIds": [
+          "B000194",
+          "B000731"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding Eurostat-OECD participation and MST calculations",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-62312e2ef1696634"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O010",
+        "memberOccurrenceIds": [
+          "B000199",
+          "B000325"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding Peru, ECLAC, and scanner data subsidies",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-625a5883ecaebaa4"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O011",
+        "memberOccurrenceIds": [
+          "B000224",
+          "B000226"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding regional coordinator communication and validation workshops",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-df80308b29693450"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O012",
+        "memberOccurrenceIds": [
+          "B000253"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Session III : Short- and Long-Term Research and Development Agenda heading",
+        "evidenceRefs": [
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "SC-fd68b6c73c10e67b"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O013",
+        "memberOccurrenceIds": [
+          "B000311",
+          "B000312"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding construction wages and reference PPPs",
+        "evidenceRefs": [
+          "ADJACENT_ORDER",
+          "SC-2d5e22fcd48f9e6a"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O014",
+        "memberOccurrenceIds": [
+          "B000393",
+          "B000394"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding Robert Feenstra research and health/education approaches",
+        "evidenceRefs": [
+          "ADJACENT_ORDER",
+          "SC-f58ec7a5d0cc2968"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O015",
+        "memberOccurrenceIds": [
+          "B000396",
+          "B000402"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding dynamic ICP program and SNA 2025 implementation",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-faa9769a7ae9a698"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O016",
+        "memberOccurrenceIds": [
+          "B000418",
+          "B000426"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding TAG achievements and long-term research agenda",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-95866d105ba259d4"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O017",
+        "memberOccurrenceIds": [
+          "B000434",
+          "B000439"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment preceding Session IV heading and TAG composition discussion",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-cd566bc4da71285c"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O018",
+        "memberOccurrenceIds": [
+          "B000435"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Session IV: TAG Functioning and Terms of Reference for Task Forces heading",
+        "evidenceRefs": [
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "SC-9d7862e7cb1eb620"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O019",
+        "memberOccurrenceIds": [
+          "B000449",
+          "B000453"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding attracting younger academics and alternative data sources",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-08bd91eaff8ac2d7"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O020",
+        "memberOccurrenceIds": [
+          "B000508",
+          "B000512"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding Task Force on strategies and annual PPPs",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-10ca4581b17299d1"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O021",
+        "memberOccurrenceIds": [
+          "B000539",
+          "B000595"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding SNA impact and quality differences in services",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-2e75eab82a3e81ee"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O022",
+        "memberOccurrenceIds": [
+          "B000544"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Session V: Current Research heading",
+        "evidenceRefs": [
+          "EXPLICIT_CONTINUATION_VARIANT",
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "SC-95c6de236313b846"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O023",
+        "memberOccurrenceIds": [
+          "B000750",
+          "B000751"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Text segment regarding Alan Heston proposal and global CPD",
+        "evidenceRefs": [
+          "ADJACENT_ORDER",
+          "SC-f12b996463a94a60"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O024",
+        "memberOccurrenceIds": [
+          "B000851"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Session VI : Any Other Business heading",
+        "evidenceRefs": [
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "SC-04bc27e74780febd"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O025",
+        "memberOccurrenceIds": [
+          "B000872",
+          "B000875",
+          "B000878"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Agenda headings for Sessions I, II, and III",
+        "evidenceRefs": [
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "SC-a120b089d9ec8dc0"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O026",
+        "memberOccurrenceIds": [
+          "B000883"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Agheading for Session IV",
+        "evidenceRefs": [
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "SC-9d7862e7cb1eb620"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O027",
+        "memberOccurrenceIds": [
+          "B000888",
+          "B000893"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Agenda headings for Session V and Session V (Cont\u0027d)",
+        "evidenceRefs": [
+          "EXPLICIT_CONTINUATION_VARIANT",
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "SC-95c6de236313b846"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O028",
+        "memberOccurrenceIds": [
+          "B000898",
+          "B000899"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Agenda items for Treatment of Negative Expenditures and Fine Tuning Global Linking",
+        "evidenceRefs": [
+          "ADJACENT_ORDER",
+          "SC-463e6c81092ee630"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O029",
+        "memberOccurrenceIds": [
+          "B000904"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Agenda heading for Session VI : Closing",
+        "evidenceRefs": [
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "SC-04bc27e74780febd"
+        ]
+      },
+      {
+        "ownerLocalId": "DOC-0252:O030",
+        "memberOccurrenceIds": [
+          "B000955",
+          "B000957"
+        ],
+        "autonomous": true,
+        "ownerDescription": "List of World Bank Group representatives",
+        "evidenceRefs": [
+          "NORMALIZED_TEXT_AFFINITY",
+          "SC-61fc0dbd9dfcc7f1"
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "occurrenceId": "DOC-0252:B000006",
+        "ownerLocalId": "DOC-0252:O001"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000016",
+        "ownerLocalId": "DOC-0252:O002"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000022",
+        "ownerLocalId": "DOC-0252:O003"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000026",
+        "ownerLocalId": "DOC-0252:O003"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000031",
+        "ownerLocalId": "DOC-0252:O002"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000042",
+        "ownerLocalId": "DOC-0252:O004"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000063",
+        "ownerLocalId": "DOC-0252:O005"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000083",
+        "ownerLocalId": "DOC-0252:O005"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000107",
+        "ownerLocalId": "DOC-0252:O006"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000162",
+        "ownerLocalId": "DOC-0252:O007"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000168",
+        "ownerLocalId": "DOC-0252:O007"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000188",
+        "ownerLocalId": "DOC-0252:O008"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000189",
+        "ownerLocalId": "DOC-0252:O008"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000194",
+        "ownerLocalId": "DOC-0252:O009"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000199",
+        "ownerLocalId": "DOC-0252:O010"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000224",
+        "ownerLocalId": "DOC-0252:O011"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000226",
+        "ownerLocalId": "DOC-0252:O011"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000235",
+        "ownerLocalId": "DOC-0252:O006"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000253",
+        "ownerLocalId": "DOC-0252:O012"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000311",
+        "ownerLocalId": "DOC-0252:O013"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000312",
+        "ownerLocalId": "DOC-0252:O013"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000325",
+        "ownerLocalId": "DOC-0252:O010"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000393",
+        "ownerLocalId": "DOC-0252:O014"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000394",
+        "ownerLocalId": "DOC-0252:O014"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000396",
+        "ownerLocalId": "DOC-0252:O015"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000402",
+        "ownerLocalId": "DOC-0252:O015"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000418",
+        "ownerLocalId": "DOC-0252:O016"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000426",
+        "ownerLocalId": "DOC-0252:O016"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000434",
+        "ownerLocalId": "DOC-0252:O017"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000435",
+        "ownerLocalId": "DOC-0252:O018"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000439",
+        "ownerLocalId": "DOC-0252:O017"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000449",
+        "ownerLocalId": "DOC-0252:O019"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000453",
+        "ownerLocalId": "DOC-0252:O019"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000508",
+        "ownerLocalId": "DOC-0252:O020"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000512",
+        "ownerLocalId": "DOC-0252:O020"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000539",
+        "ownerLocalId": "DOC-0252:O021"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000544",
+        "ownerLocalId": "DOC-0252:O022"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000595",
+        "ownerLocalId": "DOC-0252:O021"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000731",
+        "ownerLocalId": "DOC-0252:O009"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000750",
+        "ownerLocalId": "DOC-0252:O023"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000751",
+        "ownerLocalId": "DOC-0252:O023"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000851",
+        "ownerLocalId": "DOC-0252:O024"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000872",
+        "ownerLocalId": "DOC-0252:O025"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000875",
+        "ownerLocalId": "DOC-0252:O025"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000878",
+        "ownerLocalId": "DOC-0252:O025"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000883",
+        "ownerLocalId": "DOC-0252:O026"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000888",
+        "ownerLocalId": "DOC-0252:O027"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000893",
+        "ownerLocalId": "DOC-0252:O027"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000898",
+        "ownerLocalId": "DOC-0252:O028"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000899",
+        "ownerLocalId": "DOC-0252:O028"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000904",
+        "ownerLocalId": "DOC-0252:O029"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000955",
+        "ownerLocalId": "DOC-0252:O030"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000957",
+        "ownerLocalId": "DOC-0252:O030"
+      }
+    ],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": false,
+    "error": "V6C_UNKNOWN_OR_DUPLICATE_MEMBER"
+  }
+}

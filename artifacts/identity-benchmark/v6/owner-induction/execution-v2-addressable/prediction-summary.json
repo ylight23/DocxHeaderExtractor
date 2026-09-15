@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "a99-v6c-v2-prediction-summary-v1",
+  "status": "OWNER_PREDICTIONS_FROZEN_BEFORE_EVALUATION",
+  "scheduledRequests": 3,
+  "completedAttempts": 3,
+  "validOwnerPredictions": 0,
+  "invalidValidationPredictions": 3,
+  "providerErrors": 0,
+  "sourceOccurrenceDenominator": 226,
+  "assignedOccurrences": 0,
+  "unresolvedOccurrences": 0,
+  "inducedOwnerCount": 0,
+  "ownerSizeDistribution": [],
+  "crossParserScopeOwners": 0,
+  "splitParserScopeGroups": 0,
+  "invalidOccurrenceRefs": 110,
+  "invalidEvidenceRefs": 0,
+  "duplicateAssignments": 0,
+  "missingAssignments": 0,
+  "modelCalls": 3,
+  "providerCalls": 3,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "v1Mutation": false,
+  "goldEvaluationOpened": false,
+  "semanticNodeInduction": false,
+  "hierarchyExecuted": false,
+  "rawResponsesPersistedBeforeParsing": true,
+  "retryCount": 0,
+  "diagnostics": [
+    {
+      "sequence": 1,
+      "documentId": "DOC-0123",
+      "badMemberCount": 0,
+      "badEvidenceCount": 0,
+      "duplicateAssignmentCount": 0,
+      "missingCoverageCount": 0,
+      "primaryFailure": "NONE_OBSERVED"
+    },
+    {
+      "sequence": 2,
+      "documentId": "DOC-0133",
+      "badMemberCount": 57,
+      "badEvidenceCount": 0,
+      "duplicateAssignmentCount": 0,
+      "missingCoverageCount": 0,
+      "primaryFailure": "INVALID_OCCURRENCE_REF"
+    },
+    {
+      "sequence": 3,
+      "documentId": "DOC-0252",
+      "badMemberCount": 53,
+      "badEvidenceCount": 0,
+      "duplicateAssignmentCount": 0,
+      "missingCoverageCount": 0,
+      "primaryFailure": "INVALID_OCCURRENCE_REF"
+    }
+  ],
+  "note": "V6C-v2 addressability-only aggregation. No Gold/V5C/V6A reads, no V6C-v1 mutation, no semantic repair."
+}

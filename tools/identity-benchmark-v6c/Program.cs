@@ -13,6 +13,8 @@ internal static class Program
     private const string V6BRelative = "artifacts/identity-benchmark/v6/owner-evidence/source-only-freeze-v1";
     private const string OutputRelative = "artifacts/identity-benchmark/v6/owner-induction/preflight-v1";
     private const string ExecutionRelative = "artifacts/identity-benchmark/v6/owner-induction/execution-v1";
+    private const string V2PreflightRelative = "artifacts/identity-benchmark/v6/owner-induction/preflight-v2-addressable";
+    private const string V2ExecutionRelative = "artifacts/identity-benchmark/v6/owner-induction/execution-v2-addressable";
     private const string Provider = "OpenRouter";
     private const string Model = "qwen/qwen3.7-flash";
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
@@ -34,6 +36,8 @@ internal static class Program
         {
             if (args.Any(x => string.Equals(x, "--execute-primary", StringComparison.Ordinal))) return await ExecutePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--finalize-primary", StringComparison.Ordinal))) return await FinalizePrimaryAsync(root);
+            if (args.Any(x => string.Equals(x, "--execute-v2", StringComparison.Ordinal))) return await ExecuteV2Async(root);
+            if (args.Any(x => string.Equals(x, "--finalize-v2", StringComparison.Ordinal))) return await FinalizeV2Async(root);
             if (args.Any(x => string.Equals(x, "--diagnose-primary", StringComparison.Ordinal))) return await DiagnosePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--prepare-v2", StringComparison.Ordinal))) return await PrepareV2Async(root);
             await RunPreflightAsync(root);
@@ -186,6 +190,230 @@ internal static class Program
         });
         Console.WriteLine($"V6C_STATUS=OWNER_PREDICTIONS_FROZEN REQUESTS={ExpectedRequests} MODEL_CALLS={model.ProviderCalls} PROVIDER_CALLS={model.ProviderCalls} GOLD_READ_COUNT=0 V5C_READ_COUNT=0 V6A_READ_COUNT=0");
         return 0;
+    }
+
+    private static async Task<int> ExecuteV2Async(string root)
+    {
+        var preflight = Full(root, V2PreflightRelative);
+        var execution = Full(root, V2ExecutionRelative);
+        var frozen = LoadFrozenV2Requests(preflight);
+        Require(!Directory.Exists(execution) || !Directory.EnumerateFiles(execution, "*", SearchOption.AllDirectories).Any(), "V6C_V2_EXECUTION_ALREADY_STARTED_NO_RESUME");
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey))
+        {
+            Directory.CreateDirectory(execution);
+            await WriteAsync(Path.Combine(execution, "execution-manifest.json"), new { schemaVersion = "a99-v6c-v2-execution-manifest-v1", status = "BLOCKED_ON_PROVIDER_API_KEY", scheduledCalls = ExpectedRequests, modelCalls = 0, providerCalls = 0, retryCount = 0, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false });
+            return 1;
+        }
+        var attemptsDir = Path.Combine(execution, "attempts");
+        var rawDir = Path.Combine(execution, "raw-responses");
+        var parsedDir = Path.Combine(execution, "parsed");
+        Directory.CreateDirectory(attemptsDir);
+        Directory.CreateDirectory(rawDir);
+        Directory.CreateDirectory(parsedDir);
+        await WriteAsync(Path.Combine(execution, "execution-manifest.json"), new
+        {
+            schemaVersion = "a99-v6c-v2-execution-manifest-v1", status = "EXECUTING", provider = Provider, model = Model, endpoint = Endpoint,
+            preflightManifestSha256 = Sha256File(Path.Combine(preflight, "manifest.json")), requestSetSha256 = Sha256File(Path.Combine(preflight, "requests.json")),
+            scheduledCalls = ExpectedRequests, transientRequestRetries = 0, maxParallelRequests = 1, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, startedUtc = DateTimeOffset.UtcNow,
+        });
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), ApiKey = apiKey, Model = Model, ContextSize = 1_000_000, MaxOutputTokens = 48_000,
+            RequestTimeoutSeconds = 600, TransientRequestRetries = 0, MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capability = new OpenRouterModelCapability
+        {
+            ModelId = Model, ContextLength = 1_000_000, ReasoningSupported = true, StructuredOutputSupported = true, SelectedReasoningEffort = "enabled",
+            ReasoningEnabled = true, EffortListReported = false, MaxCompletionTokens = 65_536,
+        };
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(root, "identity-benchmark-v6c-v2", "3-addressable-document-global-structural-owner-induction");
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        var completedAttempts = new List<object>();
+        for (var i = 0; i < frozen.Count; i++)
+        {
+            var item = frozen[i];
+            var sequence = i + 1;
+            var attemptId = $"primary-{sequence:D3}";
+            await WriteAsync(Path.Combine(attemptsDir, $"{sequence:D3}.started.json"), new { schemaVersion = "a99-v6c-v2-attempt-start-v1", attemptId, sequence, documentId = item.DocumentId, requestHash = item.RequestHash, requestHashVerified = true, retry = false, goldReadBeforeAttempt = false, v5cReadBeforeAttempt = false, v6aReadBeforeAttempt = false, v1Mutation = false, startedUtc = DateTimeOffset.UtcNow });
+            var status = "PROVIDER_ERROR";
+            string? error = null;
+            string? rawHash = null;
+            string? parsedHash = null;
+            int? httpStatus = null;
+            string? providerCallId = null;
+            RequestPacketTelemetry? telemetry = null;
+            object? parsed = null;
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            try
+            {
+                var requestJson = item.Request.GetRawText();
+                var result = await model.CompleteRawStructuredSemanticAsync(item.DocumentId, "V6C_V2_DOCUMENT_GLOBAL_STRUCTURAL_OWNER_INDUCTION", $"v6c-v2:{item.DocumentId}:{item.RequestHash}", requestJson, item.OccurrenceCount, item.OccurrenceCount, item.OccurrenceCount, SystemPrompt, $"TASK=V6C_V2_DOCUMENT_GLOBAL_STRUCTURAL_OWNER_INDUCTION\n{requestJson}\nReturn exactly the requested JSON object.", ResponseSchema(), "a99_v6c_v2_addressable_owner_induction_v1");
+                telemetry = result.Telemetry;
+                httpStatus = telemetry.HttpStatus;
+                providerCallId = telemetry.ProviderCallId;
+                rawHash = Sha256Text(result.Content);
+                await File.WriteAllTextAsync(Path.Combine(rawDir, $"{sequence:D3}.json"), result.Content, new UTF8Encoding(false));
+                try
+                {
+                    using var response = JsonDocument.Parse(result.Content);
+                    try
+                    {
+                        var validation = ValidateOwnerResponse(item.Request, response.RootElement);
+                        parsed = new { response = response.RootElement.Clone(), validation };
+                        parsedHash = Sha256Text(JsonSerializer.Serialize(parsed, JsonOptions));
+                        await WriteAsync(Path.Combine(parsedDir, $"{sequence:D3}.json"), parsed);
+                        status = "VALID";
+                    }
+                    catch (InvalidDataException ex)
+                    {
+                        parsed = new { response = response.RootElement.Clone(), validation = new { accepted = false, error = ex.Message } };
+                        parsedHash = Sha256Text(JsonSerializer.Serialize(parsed, JsonOptions));
+                        await WriteAsync(Path.Combine(parsedDir, $"{sequence:D3}.json"), parsed);
+                        status = "INVALID_VALIDATION";
+                        error = ex.Message;
+                    }
+                }
+                catch (JsonException ex)
+                {
+                    status = "INVALID_SCHEMA";
+                    error = ex.Message;
+                }
+            }
+            catch (Exception ex) when (ex is HttpRequestException or IOException or TimeoutException or ReasoningCompletionException or FormatException)
+            {
+                status = "PROVIDER_ERROR";
+                error = ex.GetType().Name + ":" + ex.Message;
+            }
+            stopwatch.Stop();
+            var completed = new
+            {
+                schemaVersion = "a99-v6c-v2-attempt-v1", attemptId, sequence, documentId = item.DocumentId, requestHash = item.RequestHash, status, httpStatus, providerCallId,
+                rawResponseSha256 = rawHash, parsedResponseSha256 = parsedHash, provider = Provider, model = Model, latencyMs = stopwatch.ElapsedMilliseconds,
+                reportedInputTokens = telemetry?.ReportedInputTokens, reportedReasoningTokens = telemetry?.ReportedReasoningTokens, reportedOutputTokens = telemetry?.ReportedOutputTokens,
+                finishReason = telemetry?.FinishReason, error, retryCount = 0, goldReadBeforeFreeze = false, v5cReadBeforeFreeze = false, v6aReadBeforeFreeze = false, v1Mutation = false, response = parsed,
+            };
+            await WriteAsync(Path.Combine(attemptsDir, $"{sequence:D3}.completed.json"), completed);
+            completedAttempts.Add(completed);
+            await WriteAsync(Path.Combine(execution, "attempt-manifest.json"), new { schemaVersion = "a99-v6c-v2-attempt-manifest-v1", immutableAttemptRecords = true, expectedAttemptCount = ExpectedRequests, actualAttemptCount = completedAttempts.Count, actualModelCalls = model.ProviderCalls, actualProviderCalls = model.ProviderCalls, retryCount = 0, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, attempts = completedAttempts });
+            Console.WriteLine($"V6C_V2_ATTEMPT={sequence}/{ExpectedRequests} DOCUMENT={item.DocumentId} STATUS={status} PROVIDER_CALLS={model.ProviderCalls}");
+        }
+        Require(completedAttempts.Count == ExpectedRequests && model.ProviderCalls == ExpectedRequests, "V6C_V2_PROVIDER_CALL_COUNT");
+        await WriteAsync(Path.Combine(execution, "prediction-freeze.json"), new { schemaVersion = "a99-v6c-v2-prediction-freeze-v1", status = "OWNER_PREDICTIONS_FROZEN_BEFORE_EVALUATION", scheduledRequests = ExpectedRequests, completedAttempts = completedAttempts.Count, modelCalls = model.ProviderCalls, providerCalls = model.ProviderCalls, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, rawResponsesPersistedBeforeParsing = true, requestMutation = false, retryCount = 0, attempts = completedAttempts });
+        await WriteAsync(Path.Combine(execution, "firewall.json"), new { schemaVersion = "a99-v6c-v2-execution-firewall-v1", status = "COMPLETE_OWNER_PREDICTION_FREEZE", scheduledRequests = ExpectedRequests, completedAttempts = completedAttempts.Count, modelCalls = model.ProviderCalls, providerCalls = model.ProviderCalls, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, pairLabelsRead = false, hierarchyRead = false, semanticNodeInduction = false, retries = 0, overwrite = false });
+        Console.WriteLine($"V6C_V2_STATUS=OWNER_PREDICTIONS_FROZEN REQUESTS={ExpectedRequests} MODEL_CALLS={model.ProviderCalls} PROVIDER_CALLS={model.ProviderCalls} GOLD_READ_COUNT=0 V5C_READ_COUNT=0 V6A_READ_COUNT=0 V1_MUTATION=false");
+        return 0;
+    }
+
+    private static async Task<int> FinalizeV2Async(string root)
+    {
+        var preflight = Full(root, V2PreflightRelative);
+        var execution = Full(root, V2ExecutionRelative);
+        var frozen = LoadFrozenV2Requests(preflight);
+        using var manifest = JsonDocument.Parse(await File.ReadAllTextAsync(Path.Combine(execution, "attempt-manifest.json")));
+        var attempts = manifest.RootElement.GetProperty("attempts").EnumerateArray().ToArray();
+        Require(attempts.Length == ExpectedRequests && manifest.RootElement.GetProperty("retryCount").GetInt32() == 0 && manifest.RootElement.GetProperty("goldReadCount").GetInt32() == 0 && manifest.RootElement.GetProperty("v1Mutation").GetBoolean() == false, "V6C_V2_FINALIZE_FIREWALL");
+        var byDocument = frozen.ToDictionary(x => x.DocumentId, StringComparer.Ordinal);
+        var valid = attempts.Where(x => x.GetProperty("status").GetString() == "VALID").ToArray();
+        var assigned = 0;
+        var unresolved = 0;
+        var ownerCount = 0;
+        var crossScopeOwners = 0;
+        var splitScopeGroups = 0;
+        var ownerSizes = new List<int>();
+        var invalidRefs = 0;
+        var invalidEvidenceRefs = 0;
+        var duplicateAssignments = 0;
+        var missingAssignments = 0;
+        var diagnostics = new List<object>();
+        foreach (var attempt in attempts)
+        {
+            var documentId = attempt.GetProperty("documentId").GetString()!;
+            var rawPath = Path.Combine(execution, "raw-responses", $"{attempt.GetProperty("sequence").GetInt32():D3}.json");
+            if (!File.Exists(rawPath)) continue;
+            using var response = JsonDocument.Parse(await File.ReadAllTextAsync(rawPath));
+            var d = DiagnoseOwnerResponse(byDocument[documentId].Request, response.RootElement);
+            invalidRefs += d.BadMemberCount;
+            invalidEvidenceRefs += d.BadEvidenceCount;
+            duplicateAssignments += d.DuplicateAssignmentCount;
+            missingAssignments += d.MissingCoverageCount;
+            diagnostics.Add(new { sequence = attempt.GetProperty("sequence").GetInt32(), documentId, d.BadMemberCount, d.BadEvidenceCount, d.DuplicateAssignmentCount, d.MissingCoverageCount, d.PrimaryFailure });
+        }
+        foreach (var attempt in valid)
+        {
+            var documentId = attempt.GetProperty("documentId").GetString()!;
+            var response = attempt.GetProperty("response").GetProperty("response");
+            var ownerMembers = response.GetProperty("owners").EnumerateArray().ToDictionary(x => x.GetProperty("ownerLocalId").GetString()!, x => x.GetProperty("memberOccurrenceIds").EnumerateArray().Select(y => y.GetString()!).ToArray(), StringComparer.Ordinal);
+            ownerCount += ownerMembers.Count;
+            assigned += response.GetProperty("assignments").GetArrayLength();
+            unresolved += response.GetProperty("unresolvedOccurrenceIds").GetArrayLength();
+            var request = byDocument[documentId].Request;
+            var occurrenceScopes = request.GetProperty("occurrences").EnumerateArray().ToDictionary(x => x.GetProperty("occurrenceId").GetString()!, x => x.GetProperty("sourceContainerIdentity").GetString()!, StringComparer.Ordinal);
+            foreach (var members in ownerMembers.Values) { ownerSizes.Add(members.Length); if (members.Select(id => occurrenceScopes[id]).Distinct(StringComparer.Ordinal).Count() > 1) crossScopeOwners++; }
+            foreach (var group in request.GetProperty("parserOwnedScopeGroups").EnumerateArray())
+            {
+                var ids = group.GetProperty("occurrenceIds").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
+                if (response.GetProperty("assignments").EnumerateArray().Where(x => ids.Contains(x.GetProperty("occurrenceId").GetString()!)).Select(x => x.GetProperty("ownerLocalId").GetString()!).Distinct(StringComparer.Ordinal).Count() > 1) splitScopeGroups++;
+            }
+        }
+        var invalid = attempts.Count(x => x.GetProperty("status").GetString() is "INVALID_VALIDATION" or "INVALID_SCHEMA");
+        var providerErrors = attempts.Count(x => x.GetProperty("status").GetString() == "PROVIDER_ERROR");
+        var modelCalls = manifest.RootElement.GetProperty("actualModelCalls").GetInt32();
+        var providerCalls = manifest.RootElement.GetProperty("actualProviderCalls").GetInt32();
+        var summary = new
+        {
+            schemaVersion = "a99-v6c-v2-prediction-summary-v1", status = "OWNER_PREDICTIONS_FROZEN_BEFORE_EVALUATION", scheduledRequests = ExpectedRequests, completedAttempts = attempts.Length,
+            validOwnerPredictions = valid.Length, invalidValidationPredictions = invalid, providerErrors, sourceOccurrenceDenominator = ExpectedOccurrences, assignedOccurrences = assigned, unresolvedOccurrences = unresolved,
+            inducedOwnerCount = ownerCount, ownerSizeDistribution = ownerSizes.OrderBy(x => x).ToArray(), crossParserScopeOwners = crossScopeOwners, splitParserScopeGroups = splitScopeGroups,
+            invalidOccurrenceRefs = invalidRefs, invalidEvidenceRefs, duplicateAssignments, missingAssignments, modelCalls, providerCalls, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0,
+            v1Mutation = false, goldEvaluationOpened = false, semanticNodeInduction = false, hierarchyExecuted = false, rawResponsesPersistedBeforeParsing = true, retryCount = 0,
+            diagnostics, note = "V6C-v2 addressability-only aggregation. No Gold/V5C/V6A reads, no V6C-v1 mutation, no semantic repair.",
+        };
+        await WriteAsync(Path.Combine(execution, "prediction-summary.json"), summary);
+        await WriteAsync(Path.Combine(execution, "execution-final.json"), new { schemaVersion = "a99-v6c-v2-execution-final-v1", status = "OWNER_PREDICTION_FREEZE_COMPLETE", scheduledCalls = ExpectedRequests, completedAttempts = attempts.Length, validOwnerPredictions = valid.Length, invalidValidationPredictions = invalid, providerErrors, modelCalls, providerCalls, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, frozenBeforeEvaluation = true, recoveryCohort = false, retries = 0, completedUtc = DateTimeOffset.UtcNow });
+        Console.WriteLine($"V6C_V2_OFFLINE_SUMMARY_COMPLETE VALID={valid.Length} INVALID={invalid} PROVIDER_ERRORS={providerErrors} MODEL_CALLS={modelCalls} PROVIDER_CALLS={providerCalls} GOLD_READ_COUNT=0");
+        return 0;
+    }
+
+    private static IReadOnlyList<FrozenRequest> LoadFrozenV2Requests(string preflight)
+    {
+        using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(preflight, "manifest.json")));
+        var root = manifest.RootElement;
+        Require(root.GetProperty("status").GetString() == "READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION" && root.GetProperty("supersedes").GetString() == "preflight-v1", "V6C_V2_PREFLIGHT_STATUS");
+        Require(root.GetProperty("requestCount").GetInt32() == ExpectedRequests && root.GetProperty("documentCount").GetInt32() == ExpectedRequests && root.GetProperty("occurrenceCount").GetInt32() == ExpectedOccurrences, "V6C_V2_PREFLIGHT_COUNTS");
+        Require(root.GetProperty("providerCalls").GetInt32() == 0 && root.GetProperty("goldReadCount").GetInt32() == 0 && root.GetProperty("v5cReadCount").GetInt32() == 0 && root.GetProperty("v6aReadCount").GetInt32() == 0 && !root.GetProperty("v1PredictionMutation").GetBoolean(), "V6C_V2_PREFLIGHT_FIREWALL");
+        using var requests = JsonDocument.Parse(File.ReadAllText(Path.Combine(preflight, "requests.json")));
+        var items = requests.RootElement.GetProperty("records").EnumerateArray().Select(x =>
+        {
+            var request = x.GetProperty("request").Clone();
+            var hash = x.GetProperty("requestHash").GetString()!;
+            Require(hash == Sha256Text(JsonSerializer.Serialize(request, JsonOptions)), "V6C_V2_REQUEST_HASH_MISMATCH");
+            Require(request.GetProperty("allowedOccurrenceIds").GetArrayLength() == request.GetProperty("occurrences").GetArrayLength() && request.GetProperty("allowedEvidenceRefs").GetArrayLength() > 0, "V6C_V2_ADDRESSABILITY_UNIVERSE");
+            Require(!request.GetProperty("goldDerivedInput").GetBoolean() && !request.GetProperty("v5cEvaluationIncluded").GetBoolean() && !request.GetProperty("v6aDiagnosisIncluded").GetBoolean() && !request.GetProperty("semanticNodeRequested").GetBoolean() && !request.GetProperty("hierarchyRequested").GetBoolean(), "V6C_V2_REQUEST_FIREWALL");
+            return new FrozenRequest(request.GetProperty("documentId").GetString()!, hash, request, request.GetProperty("occurrences").GetArrayLength());
+        }).OrderBy(x => x.DocumentId, StringComparer.Ordinal).ToArray();
+        Require(items.Length == ExpectedRequests && items.Select(x => x.DocumentId).SequenceEqual(ExpectedDocuments, StringComparer.Ordinal) && items.Sum(x => x.OccurrenceCount) == ExpectedOccurrences, "V6C_V2_REQUEST_SET");
+        return items;
+    }
+
+    private static OwnerDiagnostics DiagnoseOwnerResponse(JsonElement request, JsonElement response)
+    {
+        var allowed = request.TryGetProperty("allowedOccurrenceIds", out var ids) ? ids.EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal) : request.GetProperty("occurrences").EnumerateArray().Select(x => x.GetProperty("occurrenceId").GetString()!).ToHashSet(StringComparer.Ordinal);
+        var evidence = request.TryGetProperty("allowedEvidenceRefs", out var refs) ? refs.EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal) : new HashSet<string>(allowed, StringComparer.Ordinal);
+        var badMembers = 0;
+        var badEvidence = 0;
+        foreach (var owner in response.GetProperty("owners").EnumerateArray())
+        {
+            foreach (var member in owner.GetProperty("memberOccurrenceIds").EnumerateArray()) if (!allowed.Contains(member.GetString()!)) badMembers++;
+            foreach (var reference in owner.GetProperty("evidenceRefs").EnumerateArray()) if (!evidence.Contains(reference.GetString()!)) badEvidence++;
+        }
+        var assignments = response.GetProperty("assignments").EnumerateArray().Select(x => x.GetProperty("occurrenceId").GetString()!).ToArray();
+        var unresolved = response.GetProperty("unresolvedOccurrenceIds").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
+        var duplicate = assignments.GroupBy(x => x, StringComparer.Ordinal).Count(x => x.Count() > 1);
+        var missing = allowed.Except(assignments, StringComparer.Ordinal).Except(unresolved, StringComparer.Ordinal).Count();
+        var failure = badMembers > 0 ? "INVALID_OCCURRENCE_REF" : badEvidence > 0 ? "INVALID_EVIDENCE_REF" : duplicate > 0 ? "DUPLICATE_ASSIGNMENT" : missing > 0 ? "MISSING_ASSIGNMENT" : "NONE_OBSERVED";
+        return new OwnerDiagnostics(badMembers, badEvidence, duplicate, missing, failure);
     }
 
     private static async Task<int> FinalizePrimaryAsync(string root)
@@ -488,10 +716,17 @@ internal static class Program
     private static OwnerValidation ValidateOwnerResponse(JsonElement request, JsonElement response)
     {
         Require(response.ValueKind == JsonValueKind.Object, "V6C_RESPONSE_OBJECT_REQUIRED");
-        var allowed = new HashSet<string>(request.GetProperty("occurrences").EnumerateArray().Select(x => x.GetProperty("occurrenceId").GetString()!), StringComparer.Ordinal);
-        var validEvidence = new HashSet<string>(allowed, StringComparer.Ordinal);
-        validEvidence.UnionWith(request.GetProperty("occurrences").EnumerateArray().Select(x => x.GetProperty("sourceContainerIdentity").GetString()!));
-        validEvidence.UnionWith(request.GetProperty("parserOwnedScopeGroups").EnumerateArray().Select(x => x.GetProperty("sourceContainerIdentity").GetString()!));
+        var allowed = request.TryGetProperty("allowedOccurrenceIds", out var allowedIds)
+            ? allowedIds.EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal)
+            : request.GetProperty("occurrences").EnumerateArray().Select(x => x.GetProperty("occurrenceId").GetString()!).ToHashSet(StringComparer.Ordinal);
+        var validEvidence = request.TryGetProperty("allowedEvidenceRefs", out var allowedEvidence)
+            ? allowedEvidence.EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal)
+            : new HashSet<string>(allowed, StringComparer.Ordinal);
+        if (!request.TryGetProperty("allowedEvidenceRefs", out _))
+        {
+            validEvidence.UnionWith(request.GetProperty("occurrences").EnumerateArray().Select(x => x.GetProperty("sourceContainerIdentity").GetString()!));
+            validEvidence.UnionWith(request.GetProperty("parserOwnedScopeGroups").EnumerateArray().Select(x => x.GetProperty("sourceContainerIdentity").GetString()!));
+        }
         Require(response.TryGetProperty("owners", out var owners) && owners.ValueKind == JsonValueKind.Array, "V6C_OWNERS_REQUIRED");
         Require(response.TryGetProperty("assignments", out var assignments) && assignments.ValueKind == JsonValueKind.Array, "V6C_ASSIGNMENTS_REQUIRED");
         Require(response.TryGetProperty("unresolvedOccurrenceIds", out var unresolved) && unresolved.ValueKind == JsonValueKind.Array, "V6C_UNRESOLVED_REQUIRED");
@@ -598,4 +833,5 @@ incomplete response. Return exactly the requested JSON object.
 
     private sealed record FrozenRequest(string DocumentId, string RequestHash, JsonElement Request, int OccurrenceCount);
     private sealed record OwnerValidation(bool Accepted, int AssignedOccurrences, int UnresolvedOccurrences, int OwnerCount);
+    private sealed record OwnerDiagnostics(int BadMemberCount, int BadEvidenceCount, int DuplicateAssignmentCount, int MissingCoverageCount, string PrimaryFailure);
 }

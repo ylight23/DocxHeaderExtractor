@@ -1,0 +1,1150 @@
+{
+  "response": {
+    "owners": [
+      {
+        "ownerLocalId": "O-P01-42",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[1]",
+          "DOC-0123:body[1]/p[76]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Standard Procurement Document Heading",
+        "evidenceRefs": [
+          "SC-c5711328ecc9f9cb",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P05-06",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[7]",
+          "DOC-0123:body[1]/p[14]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "RFP Process Type Subtitle",
+        "evidenceRefs": [
+          "SC-75b66683b75b0c9d",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P07-08",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[32]/txbxContent[1]/p[1]",
+          "DOC-0123:body[1]/p[32]/txbxContent[2]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Date of Issue",
+        "evidenceRefs": [
+          "SC-d9213bae8cb6cb04",
+          "ADJACENT_ORDER",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P132-249",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[84]",
+          "DOC-0123:body[1]/p[172]",
+          "DOC-0123:body[1]/p[192]",
+          "DOC-0123:body[1]/p[263]",
+          "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Section I - Instructions to Proposers (ITP)",
+        "evidenceRefs": [
+          "SC-e8f95e9d0abd1e12",
+          "NORMALIZED_TEXT_AFFINITY",
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "TERMINAL_ACRONYM_VARIANT"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P250-541",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[86]",
+          "DOC-0123:body[1]/p[173]",
+          "DOC-0123:body[1]/p[276]",
+          "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Section II - Proposal Data Sheet (PDS)",
+        "evidenceRefs": [
+          "SC-7059833e26bf82f4",
+          "NORMALIZED_TEXT_AFFINITY",
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "TERMINAL_ACRONYM_VARIANT"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P53-251",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[88]",
+          "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Section III - Evaluation and Qualification Criteria",
+        "evidenceRefs": [
+          "SC-ac7abb41bc2c3aa3",
+          "NORMALIZED_TEXT_AFFINITY",
+          "SHARED_STRUCTURAL_HEADING_KEY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P55-252",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[90]",
+          "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Section IV - Proposal Forms",
+        "evidenceRefs": [
+          "SC-a0f2d7ae724cdb91",
+          "NORMALIZED_TEXT_AFFINITY",
+          "SHARED_STRUCTURAL_HEADING_KEY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P57-253",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[92]",
+          "DOC-0123:body[1]/p[176]",
+          "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Section V - Eligible Countries",
+        "evidenceRefs": [
+          "SC-b54f759607ee0732",
+          "NORMALIZED_TEXT_AFFINITY",
+          "SHARED_STRUCTURAL_HEADING_KEY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P254-1719",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[94]",
+          "DOC-0123:body[1]/p[992]",
+          "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[8]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Section VI - Fraud and Corruption",
+        "evidenceRefs": [
+          "SC-acfaf38c61fcdf67",
+          "NORMALIZED_TEXT_AFFINITY",
+          "SHARED_STRUCTURAL_HEADING_KEY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-V4P0062-0126",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[97]",
+          "DOC-0123:body[1]/p[179]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Section VII - Employer\u0027s Requirements",
+        "evidenceRefs": [
+          "SC-2309002963e9d48f",
+          "SHARED_STRUCTURAL_HEADING_KEY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P66-1995",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[101]",
+          "DOC-0123:body[1]/p[181]",
+          "DOC-0123:body[1]/p[1192]",
+          "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Section VIII - General Conditions (GC)",
+        "evidenceRefs": [
+          "SC-538ebaf081e6bad0",
+          "NORMALIZED_TEXT_AFFINITY",
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "TERMINAL_ACRONYM_VARIANT"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P68-2007",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[103]",
+          "DOC-0123:body[1]/p[183]",
+          "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+          "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Section IX - Particular Conditions (PC)",
+        "evidenceRefs": [
+          "SC-08167ba838d293a6",
+          "NORMALIZED_TEXT_AFFINITY",
+          "SHARED_STRUCTURAL_HEADING_KEY",
+          "TERMINAL_ACRONYM_VARIANT"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P70-260",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[105]",
+          "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Section X - Contract Forms",
+        "evidenceRefs": [
+          "SC-4b403ae3785e286d",
+          "NORMALIZED_TEXT_AFFINITY",
+          "SHARED_STRUCTURAL_HEADING_KEY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P348-354",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]",
+          "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[20]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Proposal Security Forfeiture Conditions",
+        "evidenceRefs": [
+          "SC-3fe557caa33c2f2c",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P552-554",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]",
+          "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "ITP 2.1 Borrower/Project Identification",
+        "evidenceRefs": [
+          "SC-dc75f78b36c2ca7c",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P602-1271",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+          "DOC-0123:body[1]/p[695]",
+          "DOC-0123:body[1]/p[766]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Code of Conduct for Contractor\u0027s Personnel",
+        "evidenceRefs": [
+          "SC-3ebbfbdbe24a0530",
+          "NORMALIZED_TEXT_AFFINITY",
+          "TERMINAL_ACRONYM_VARIANT"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P783-784",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[317]",
+          "DOC-0123:body[1]/p[318]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Subcontractors Section",
+        "evidenceRefs": [
+          "SC-1c4e8826322b617f",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P962-1000",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[493]",
+          "DOC-0123:body[1]/p[534]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Proposal Signature Block",
+        "evidenceRefs": [
+          "SC-73ac22ce69d37810",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1006-1007",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[545]",
+          "DOC-0123:body[1]/p[547]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Enclosures List",
+        "evidenceRefs": [
+          "SC-9b18cccc27c0d200",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1035-1036",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[19]/tr[2]/tc[3]/p[1]",
+          "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+          "DOC-0123:body[1]/tbl[19]/tr[2]/tc[5]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Cost Indexation Table Cells",
+        "evidenceRefs": [
+          "SC-c69060a6af5acfbd",
+          "ADJACENT_ORDER",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1056-1057",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[20]/tr[2]/tc[3]/p[1]",
+          "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+          "DOC-0123:body[1]/tbl[20]/tr[2]/tc[5]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Cost Indexation Table Cells (Alt)",
+        "evidenceRefs": [
+          "SC-7f00f6b6d1373a71",
+          "ADJACENT_ORDER",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1087-1088",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[21]/tr[5]/tc[1]/p[1]",
+          "DOC-0123:body[1]/tbl[21]/tr[6]/tc[1]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Foreign Currency and Total Price Rows",
+        "evidenceRefs": [
+          "SC-963694a61eb66696",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1091-1092",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]",
+          "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Provisional Sums Input Cells",
+        "evidenceRefs": [
+          "SC-79b853331cdd3744",
+          "ADJACENT_ORDER",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1093-1094",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[21]/tr[9]/tc[1]/p[1]",
+          "DOC-0123:body[1]/p[583]",
+          "DOC-0123:body[1]/p[584]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Total Proposal Price and Alternative B Header",
+        "evidenceRefs": [
+          "SC-52691ad0f0d7986c",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1160-1161",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[637]",
+          "DOC-0123:body[1]/p[639]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Daywork Payment Provisions",
+        "evidenceRefs": [
+          "SC-669698e5599ec637",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1177-1178",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[25]/tr[2]/tc[4]/p[1]",
+          "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]",
+          "DOC-0123:body[1]/tbl[25]/tr[3]/tc[2]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Daywork Rates Table Placeholders",
+        "evidenceRefs": [
+          "SC-2f569716eaed3deb",
+          "ADJACENT_ORDER",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1228-1229",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+          "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Provisional Sums for ES Outcomes",
+        "evidenceRefs": [
+          "SC-fadddbae86c6b0ed",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1334-1338",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]",
+          "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Employer Note on Minimum Requirements",
+        "evidenceRefs": [
+          "SC-d5cbcde35e2b090c",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1425-1973",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[31]/tr[6]/tc[2]/p[1]",
+          "DOC-0123:body[1]/tbl[47]/tr[6]/tc[2]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Environmental Impact Assessment Specialist Role",
+        "evidenceRefs": [
+          "SC-998cbc0bfc0238bb",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1482-1485",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[875]",
+          "DOC-0123:body[1]/p[878]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Signature and Date Fields",
+        "evidenceRefs": [
+          "SC-d739ea4122054a93",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1533-1534",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[2]",
+          "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[3]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Legal Entity Documentation Checklist",
+        "evidenceRefs": [
+          "SC-ee488063d482ae5e",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1540-1591",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[908]",
+          "DOC-0123:body[1]/p[919]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Beneficial Ownership Disclosure Form Headers",
+        "evidenceRefs": [
+          "SC-070e08de7da1b95f",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1565-1566",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]",
+          "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Contract Identification Details",
+        "evidenceRefs": [
+          "SC-9ab2d7468337edc1",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1592-1593",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[920]",
+          "DOC-0123:body[1]/p[921]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "JV Member/Subcontractor Name and RFP Info",
+        "evidenceRefs": [
+          "SC-282e741228750d1f",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1603-1610",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]",
+          "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Performance Declaration Year Fields",
+        "evidenceRefs": [
+          "SC-9f1e3d86544b5fc0",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1664-1665",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]",
+          "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+          "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Financial Capacity Numbering",
+        "evidenceRefs": [
+          "SC-88db42c1dfb9c081",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1761-1762",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[1053]",
+          "DOC-0123:body[1]/tbl[45]/tr[1]/tc[1]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Employer\u0027s Requirements Technical Info",
+        "evidenceRefs": [
+          "SC-9b24e51b35eb9e0e",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P1818-2556",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[45]/tr[24]/tc[2]/p[1]",
+          "DOC-0123:body[1]/tbl[54]/tr[17]/tc[1]/p[2]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Health and Safety of Personnel Clause",
+        "evidenceRefs": [
+          "SC-80b901344aab318a",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P2008-2009",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[1199]",
+          "DOC-0123:body[1]/p[1201]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Particular Conditions Introductory Text",
+        "evidenceRefs": [
+          "SC-d5c3803d86734251",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P2048-2050",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[50]/tr[14]/tc[2]/p[1]",
+          "DOC-0123:body[1]/tbl[50]/tr[15]/tc[2]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Communication Addresses Reference",
+        "evidenceRefs": [
+          "SC-91e7ad245f102049",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P2101-2103",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[50]/tr[32]/tc[2]/p[1]",
+          "DOC-0123:body[1]/tbl[50]/tr[33]/tc[2]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Cyber Security Reporting Reference",
+        "evidenceRefs": [
+          "SC-160cc47520d52014",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P2742-2754",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]",
+          "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Notice Clauses Modification",
+        "evidenceRefs": [
+          "SC-b5e7cf633691dae4",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P2843-2844",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[54]/tr[77]/tc[2]/p[1]",
+          "DOC-0123:body[1]/tbl[54]/tr[78]/tc[2]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Fees and Expenses Deletion",
+        "evidenceRefs": [
+          "SC-3a28d380ba15df4f",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P3005-3006",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[57]/tr[3]/tc[2]/p[1]",
+          "DOC-0123:body[1]/tbl[57]/tr[3]/tc[3]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Evaluation Score Insertion Cells",
+        "evidenceRefs": [
+          "SC-b77c14278a8905d6",
+          "ADJACENT_ORDER"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P3010-3015",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[57]/tr[4]/tc[2]/p[1]",
+          "DOC-0123:body[1]/tbl[57]/tr[5]/tc[2]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Technical Score Insertion Cells",
+        "evidenceRefs": [
+          "SC-2ecdded7e5d3167a",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P3013-3018",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[57]/tr[4]/tc[5]/p[1]",
+          "DOC-0123:body[1]/tbl[57]/tr[5]/tc[5]/p[1]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Combined Score Insertion Cells",
+        "evidenceRefs": [
+          "SC-7f1bfd6d60c574fa",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P3086-3088",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]",
+          "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Beneficial Owner Yes/No Checkboxes",
+        "evidenceRefs": [
+          "SC-d72ffa990605f300",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P3092-3097",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[1378]",
+          "DOC-0123:body[1]/p[1387]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Beneficial Owner Declaration Options",
+        "evidenceRefs": [
+          "SC-fe3480c51dd004da",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      },
+      {
+        "ownerLocalId": "O-P3151-3182",
+        "memberOccurrenceIds": [
+          "DOC-0123:body[1]/p[1462]",
+          "DOC-0123:body[1]/p[1504]"
+        ],
+        "autonomous": true,
+        "ownerDescription": "Guarantee/Bond Notes",
+        "evidenceRefs": [
+          "SC-f40d8092d172eeb3",
+          "NORMALIZED_TEXT_AFFINITY"
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1]",
+        "ownerLocalId": "O-P01-42"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[7]",
+        "ownerLocalId": "O-P05-06"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[14]",
+        "ownerLocalId": "O-P05-06"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[32]/txbxContent[1]/p[1]",
+        "ownerLocalId": "O-P07-08"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[32]/txbxContent[2]/p[1]",
+        "ownerLocalId": "O-P07-08"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[76]",
+        "ownerLocalId": "O-P01-42"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[84]",
+        "ownerLocalId": "O-P132-249"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[86]",
+        "ownerLocalId": "O-P250-541"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[88]",
+        "ownerLocalId": "O-P53-251"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[90]",
+        "ownerLocalId": "O-P55-252"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[92]",
+        "ownerLocalId": "O-P57-253"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[94]",
+        "ownerLocalId": "O-P254-1719"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[97]",
+        "ownerLocalId": "O-V4P0062-0126"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[101]",
+        "ownerLocalId": "O-P66-1995"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[103]",
+        "ownerLocalId": "O-P68-2007"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[105]",
+        "ownerLocalId": "O-P70-260"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[172]",
+        "ownerLocalId": "O-P132-249"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[173]",
+        "ownerLocalId": "O-P250-541"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[176]",
+        "ownerLocalId": "O-P57-253"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[179]",
+        "ownerLocalId": "O-V4P0062-0126"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[181]",
+        "ownerLocalId": "O-P66-1995"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[183]",
+        "ownerLocalId": "O-P68-2007"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[192]",
+        "ownerLocalId": "O-P132-249"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[263]",
+        "ownerLocalId": "O-P132-249"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[276]",
+        "ownerLocalId": "O-P250-541"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[317]",
+        "ownerLocalId": "O-P783-784"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[318]",
+        "ownerLocalId": "O-P783-784"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[493]",
+        "ownerLocalId": "O-P962-1000"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[534]",
+        "ownerLocalId": "O-P962-1000"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[545]",
+        "ownerLocalId": "O-P1006-1007"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[547]",
+        "ownerLocalId": "O-P1006-1007"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[583]",
+        "ownerLocalId": "O-P1093-1094"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[584]",
+        "ownerLocalId": "O-P1093-1094"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[637]",
+        "ownerLocalId": "O-P1160-1161"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[639]",
+        "ownerLocalId": "O-P1160-1161"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[641]",
+        "ownerLocalId": "O-P1160-1161"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[695]",
+        "ownerLocalId": "O-P602-1271"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]",
+        "ownerLocalId": "O-P1334-1338"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]",
+        "ownerLocalId": "O-P1334-1338"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[766]",
+        "ownerLocalId": "O-P602-1271"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[875]",
+        "ownerLocalId": "O-P1482-1485"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[878]",
+        "ownerLocalId": "O-P1482-1485"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[908]",
+        "ownerLocalId": "O-P1540-1591"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[919]",
+        "ownerLocalId": "O-P1540-1591"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[920]",
+        "ownerLocalId": "O-P1592-1593"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[921]",
+        "ownerLocalId": "O-P1592-1593"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[992]",
+        "ownerLocalId": "O-P254-1719"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1053]",
+        "ownerLocalId": "O-P1761-1762"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1192]",
+        "ownerLocalId": "O-P66-1995"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1199]",
+        "ownerLocalId": "O-P2008-2009"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1201]",
+        "ownerLocalId": "O-P2008-2009"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1378]",
+        "ownerLocalId": "O-P3092-3097"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1387]",
+        "ownerLocalId": "O-P3092-3097"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1462]",
+        "ownerLocalId": "O-P3151-3182"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1504]",
+        "ownerLocalId": "O-P3151-3182"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[3]",
+        "ownerLocalId": "O-P132-249"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[4]",
+        "ownerLocalId": "O-P250-541"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[5]",
+        "ownerLocalId": "O-P53-251"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+        "ownerLocalId": "O-P55-252"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[7]",
+        "ownerLocalId": "O-P57-253"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[8]",
+        "ownerLocalId": "O-P254-1719"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[12]",
+        "ownerLocalId": "O-P66-1995"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[13]",
+        "ownerLocalId": "O-P68-2007"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[2]/tr[1]/tc[2]/p[14]",
+        "ownerLocalId": "O-P70-260"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]",
+        "ownerLocalId": "O-P348-354"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[20]",
+        "ownerLocalId": "O-P348-354"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]",
+        "ownerLocalId": "O-P552-554"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]",
+        "ownerLocalId": "O-P552-554"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+        "ownerLocalId": "O-P602-1271"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[3]/p[1]",
+        "ownerLocalId": "O-P1035-1036"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+        "ownerLocalId": "O-P1035-1036"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[5]/p[1]",
+        "ownerLocalId": "O-P1035-1036"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[3]/p[1]",
+        "ownerLocalId": "O-P1056-1057"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+        "ownerLocalId": "O-P1056-1057"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[5]/p[1]",
+        "ownerLocalId": "O-P1056-1057"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[5]/tc[1]/p[1]",
+        "ownerLocalId": "O-P1087-1088"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[6]/tc[1]/p[1]",
+        "ownerLocalId": "O-P1087-1088"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]",
+        "ownerLocalId": "O-P1091-1092"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]",
+        "ownerLocalId": "O-P1091-1092"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[9]/tc[1]/p[1]",
+        "ownerLocalId": "O-P1093-1094"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[4]/p[1]",
+        "ownerLocalId": "O-P1177-1178"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]",
+        "ownerLocalId": "O-P1177-1178"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[3]/tc[2]/p[1]",
+        "ownerLocalId": "O-P1177-1178"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+        "ownerLocalId": "O-P1228-1229"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]",
+        "ownerLocalId": "O-P1228-1229"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[31]/tr[6]/tc[2]/p[1]",
+        "ownerLocalId": "O-P1425-1973"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[2]",
+        "ownerLocalId": "O-P1533-1534"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[38]/tr[7]/tc[1]/p[3]",
+        "ownerLocalId": "O-P1533-1534"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[1]",
+        "ownerLocalId": "O-P1565-1566"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[40]/tr[2]/tc[3]/p[2]",
+        "ownerLocalId": "O-P1565-1566"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]",
+        "ownerLocalId": "O-P1603-1610"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]",
+        "ownerLocalId": "O-P1603-1610"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]",
+        "ownerLocalId": "O-P1664-1665"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+        "ownerLocalId": "O-P1664-1665"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]",
+        "ownerLocalId": "O-P1664-1665"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[45]/tr[1]/tc[1]/p[1]",
+        "ownerLocalId": "O-P1761-1762"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[45]/tr[24]/tc[2]/p[1]",
+        "ownerLocalId": "O-P1818-2556"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[47]/tr[6]/tc[2]/p[1]",
+        "ownerLocalId": "O-P1425-1973"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[49]/tr[1]/tc[1]/p[1]",
+        "ownerLocalId": "O-P68-2007"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[50]/tr[14]/tc[2]/p[1]",
+        "ownerLocalId": "O-P2048-2050"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[50]/tr[15]/tc[2]/p[1]",
+        "ownerLocalId": "O-P2048-2050"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[50]/tr[32]/tc[2]/p[1]",
+        "ownerLocalId": "O-P2101-2103"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[50]/tr[33]/tc[2]/p[1]",
+        "ownerLocalId": "O-P2101-2103"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[17]/tc[1]/p[2]",
+        "ownerLocalId": "O-P1818-2556"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]",
+        "ownerLocalId": "O-P2742-2754"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]",
+        "ownerLocalId": "O-P2742-2754"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[77]/tc[2]/p[1]",
+        "ownerLocalId": "O-P2843-2844"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[78]/tc[2]/p[1]",
+        "ownerLocalId": "O-P2843-2844"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[2]/p[1]",
+        "ownerLocalId": "O-P3005-3006"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[3]/tc[3]/p[1]",
+        "ownerLocalId": "O-P3005-3006"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[2]/p[1]",
+        "ownerLocalId": "O-P3010-3015"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[5]/p[1]",
+        "ownerLocalId": "O-P3013-3018"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[2]/p[1]",
+        "ownerLocalId": "O-P3010-3015"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[5]/p[1]",
+        "ownerLocalId": "O-P3013-3018"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]",
+        "ownerLocalId": "O-P3086-3088"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]",
+        "ownerLocalId": "O-P3086-3088"
+      }
+    ],
+    "unresolvedOccurrenceIds": []
+  },
+  "validation": {
+    "accepted": false,
+    "error": "V6C_OWNER_ASSIGNMENT_MISMATCH"
+  }
+}
