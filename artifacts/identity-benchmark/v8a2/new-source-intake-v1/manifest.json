@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "a99-v8a2-manifest-v1",
+  "status": "READY_FOR_V8_PROVIDER_EXECUTION",
+  "sourceDirectory": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8-candidates",
+  "sourceScanSha256": "ddbe2d759a829fca4c00a37d4617e3518d43adfff047012c172bcc7effc94167",
+  "selectionSeed": "a99-v8a2-new-source-corpus-v1",
+  "selectedSourceIds": [
+    "NEW-073DB817879B",
+    "NEW-26BE9B284520",
+    "NEW-45314CB70E99",
+    "NEW-6717CCA50787",
+    "NEW-C07DA5643BE9",
+    "NEW-FDF9C2552AF0"
+  ],
+  "rejectedSourceIds": [
+    "NEW-FF511378FD47"
+  ],
+  "familyDistribution": {
+    "pdfqa": 2,
+    "hips": 4
+  },
+  "formatDistribution": {
+    "pdf": 6
+  },
+  "selectedDocumentCount": 6,
+  "occurrenceCount": 12140,
+  "candidatePairCount": 102915,
+  "proposerRequestCount": 6,
+  "falsifierRequestCount": 6,
+  "proposerRequestSetSha256": "f4e232c111c973c3c4ee69da48cbd279316b92a0535415e4b2a3c35e82b02afc",
+  "falsifierRequestSetSha256": "008dd3e08f93428c3bceec77540b5d6c4320c3e8936be1523ade3340e19b1440",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReadCount": 0,
+  "v7PredictionReadCount": 0,
+  "holdoutSelected": true,
+  "generalizationClaim": false,
+  "autoCollapse": false,
+  "acceptedAuthority": "MODEL_PROPOSED_PROOF \u002B CLEAR_FALSIFIER =\u003E ACCEPTED_FOR_V8_GRAPH_ONLY; otherwise KEEP_SPLIT"
+}

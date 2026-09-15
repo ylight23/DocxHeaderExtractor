@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "a99-v8a2-duplicate-analysis-v1",
+  "sourceOnly": true,
+  "hardDuplicateCount": 0,
+  "nearDuplicateCount": 0,
+  "uncertainLineageDefault": "EXCLUDE",
+  "entries": [
+    {
+      "sourceId": "NEW-6717CCA50787",
+      "name": "hips__a-bird-that-flies-with-two-wings.pdf",
+      "byteSha256": "6717cca5078744646b39bd0d948e29655f14cbdca931710c7913ebd2ea54b871",
+      "normalizedTextSha256": "1e4b608842785377698ca89bbddc3162f0264f9aebb633410973931e2b73ff5c",
+      "hardDuplicate": false,
+      "nearDuplicate": false,
+      "nearDuplicateMatch": null
+    },
+    {
+      "sourceId": "NEW-C07DA5643BE9",
+      "name": "hips__a-kind-of-mending.pdf",
+      "byteSha256": "c07da5643be95e9ca9c63cd7a4beb7fe9d4462b985fe5d2715b003401449c898",
+      "normalizedTextSha256": "3efbb3ebdeb5a004848b2c3cace42d0c18837b4f57323be4942bf14bbd8dc15e",
+      "hardDuplicate": false,
+      "nearDuplicate": false,
+      "nearDuplicateMatch": null
+    },
+    {
+      "sourceId": "NEW-45314CB70E99",
+      "name": "hips__access-controlled-cyberspace.pdf",
+      "byteSha256": "45314cb70e9992e1edd9118ac7afc559db6494465d8beea9897f5b58a9056d27",
+      "normalizedTextSha256": "2a3a63d79a668b63198533a2fb5087407bbe50ddaaa410607d0d35715aa7f72e",
+      "hardDuplicate": false,
+      "nearDuplicate": false,
+      "nearDuplicateMatch": null
+    },
+    {
+      "sourceId": "NEW-26BE9B284520",
+      "name": "hips__administrative-decision-making.pdf",
+      "byteSha256": "26be9b284520e3d62984233a141cd7952f4ca061c0b9c4f7eff46fc6da44fda0",
+      "normalizedTextSha256": "30ad3f8436a2bc96e6b30d30bdac4116f3eae8919e374f88414829b72122fd6e",
+      "hardDuplicate": false,
+      "nearDuplicate": false,
+      "nearDuplicateMatch": null
+    },
+    {
+      "sourceId": "NEW-FF511378FD47",
+      "name": "hips__basic-income-tax.pdf",
+      "byteSha256": "ff511378fd4771262bd4ca282c1c87159f31119331f21098a7bffc355aeae6eb",
+      "normalizedTextSha256": null,
+      "hardDuplicate": false,
+      "nearDuplicate": false,
+      "nearDuplicateMatch": null
+    },
+    {
+      "sourceId": "NEW-073DB817879B",
+      "name": "pdfqa__2510.22211v1.pdf",
+      "byteSha256": "073db817879b901b155ef5e59d2b5767f4bfab0579516460be4f4fde621699a6",
+      "normalizedTextSha256": "de377b8fcfe20c26758c398e4258c05b9790a435ddc55498886b9c766ccd442c",
+      "hardDuplicate": false,
+      "nearDuplicate": false,
+      "nearDuplicateMatch": null
+    },
+    {
+      "sourceId": "NEW-FDF9C2552AF0",
+      "name": "pdfqa__2510.22218v1.pdf",
+      "byteSha256": "fdf9c2552af0793f59ee0e77dd0c38909d9306d8c2fe976dcc8578de89c99c6b",
+      "normalizedTextSha256": "cae35a572ed13fa73daedf28482bccc134a6a805321c52e4efbb9f62a372ad8c",
+      "hardDuplicate": false,
+      "nearDuplicate": false,
+      "nearDuplicateMatch": null
+    }
+  ]
+}

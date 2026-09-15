@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "a99-v8a2-eligibility-snapshot-v1",
+  "status": "FROZEN_NEW_SOURCE_ELIGIBILITY",
+  "selectionSeed": "a99-v8a2-new-source-corpus-v1",
+  "selectionRule": "source-independent family/format/size-band stratification; no semantic difficulty or known failure-shape ranking",
+  "eligiblePoolCount": 6,
+  "selectedSourceIds": [
+    "NEW-073DB817879B",
+    "NEW-26BE9B284520",
+    "NEW-45314CB70E99",
+    "NEW-6717CCA50787",
+    "NEW-C07DA5643BE9",
+    "NEW-FDF9C2552AF0"
+  ],
+  "selectedDocuments": [
+    {
+      "sourceId": "NEW-073DB817879B",
+      "name": "pdfqa__2510.22211v1.pdf",
+      "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8-candidates\\pdfqa__2510.22211v1.pdf",
+      "repositoryPath": "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-073DB817879B_pdfqa__2510.22211v1.pdf",
+      "byteSha256": "073db817879b901b155ef5e59d2b5767f4bfab0579516460be4f4fde621699a6",
+      "normalizedTextSha256": "de377b8fcfe20c26758c398e4258c05b9790a435ddc55498886b9c766ccd442c",
+      "format": "pdf",
+      "family": "pdfqa",
+      "sizeBand": "MEDIUM",
+      "occurrenceCount": 342,
+      "paragraphCount": 1264,
+      "nonEmptyParagraphCount": 1264
+    },
+    {
+      "sourceId": "NEW-26BE9B284520",
+      "name": "hips__administrative-decision-making.pdf",
+      "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8-candidates\\hips__administrative-decision-making.pdf",
+      "repositoryPath": "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-26BE9B284520_hips__administrative-decision-making.pdf",
+      "byteSha256": "26be9b284520e3d62984233a141cd7952f4ca061c0b9c4f7eff46fc6da44fda0",
+      "normalizedTextSha256": "30ad3f8436a2bc96e6b30d30bdac4116f3eae8919e374f88414829b72122fd6e",
+      "format": "pdf",
+      "family": "hips",
+      "sizeBand": "MEDIUM",
+      "occurrenceCount": 1302,
+      "paragraphCount": 9481,
+      "nonEmptyParagraphCount": 9481
+    },
+    {
+      "sourceId": "NEW-45314CB70E99",
+      "name": "hips__access-controlled-cyberspace.pdf",
+      "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8-candidates\\hips__access-controlled-cyberspace.pdf",
+      "repositoryPath": "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-45314CB70E99_hips__access-controlled-cyberspace.pdf",
+      "byteSha256": "45314cb70e9992e1edd9118ac7afc559db6494465d8beea9897f5b58a9056d27",
+      "normalizedTextSha256": "2a3a63d79a668b63198533a2fb5087407bbe50ddaaa410607d0d35715aa7f72e",
+      "format": "pdf",
+      "family": "hips",
+      "sizeBand": "LARGE",
+      "occurrenceCount": 4457,
+      "paragraphCount": 24844,
+      "nonEmptyParagraphCount": 24844
+    },
+    {
+      "sourceId": "NEW-6717CCA50787",
+      "name": "hips__a-bird-that-flies-with-two-wings.pdf",
+      "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8-candidates\\hips__a-bird-that-flies-with-two-wings.pdf",
+      "repositoryPath": "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-6717CCA50787_hips__a-bird-that-flies-with-two-wings.pdf",
+      "byteSha256": "6717cca5078744646b39bd0d948e29655f14cbdca931710c7913ebd2ea54b871",
+      "normalizedTextSha256": "1e4b608842785377698ca89bbddc3162f0264f9aebb633410973931e2b73ff5c",
+      "format": "pdf",
+      "family": "hips",
+      "sizeBand": "MEDIUM",
+      "occurrenceCount": 751,
+      "paragraphCount": 15644,
+      "nonEmptyParagraphCount": 15644
+    },
+    {
+      "sourceId": "NEW-C07DA5643BE9",
+      "name": "hips__a-kind-of-mending.pdf",
+      "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8-candidates\\hips__a-kind-of-mending.pdf",
+      "repositoryPath": "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-C07DA5643BE9_hips__a-kind-of-mending.pdf",
+      "byteSha256": "c07da5643be95e9ca9c63cd7a4beb7fe9d4462b985fe5d2715b003401449c898",
+      "normalizedTextSha256": "3efbb3ebdeb5a004848b2c3cace42d0c18837b4f57323be4942bf14bbd8dc15e",
+      "format": "pdf",
+      "family": "hips",
+      "sizeBand": "MEDIUM",
+      "occurrenceCount": 4985,
+      "paragraphCount": 14486,
+      "nonEmptyParagraphCount": 14486
+    },
+    {
+      "sourceId": "NEW-FDF9C2552AF0",
+      "name": "pdfqa__2510.22218v1.pdf",
+      "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\external-source-intake\\v8-candidates\\pdfqa__2510.22218v1.pdf",
+      "repositoryPath": "artifacts/identity-benchmark/v8a2/new-source-intake-v1/source-corpus/NEW-FDF9C2552AF0_pdfqa__2510.22218v1.pdf",
+      "byteSha256": "fdf9c2552af0793f59ee0e77dd0c38909d9306d8c2fe976dcc8578de89c99c6b",
+      "normalizedTextSha256": "cae35a572ed13fa73daedf28482bccc134a6a805321c52e4efbb9f62a372ad8c",
+      "format": "pdf",
+      "family": "pdfqa",
+      "sizeBand": "LARGE",
+      "occurrenceCount": 303,
+      "paragraphCount": 995,
+      "nonEmptyParagraphCount": 995
+    }
+  ],
+  "rejectedDocuments": [
+    {
+      "sourceId": "NEW-FF511378FD47",
+      "name": "hips__basic-income-tax.pdf",
+      "format": "pdf",
+      "family": "hips",
+      "byteSha256": "ff511378fd4771262bd4ca282c1c87159f31119331f21098a7bffc355aeae6eb",
+      "normalizedTextSha256": null,
+      "readable": false,
+      "error": "PdfDocumentFormatException",
+      "occurrenceCount": 0,
+      "hardDuplicate": false,
+      "nearDuplicate": false,
+      "nearDuplicateMatch": null,
+      "reason": "SOURCE_PARSE_INVALID"
+    }
+  ],
+  "familyDistribution": {
+    "pdfqa": 2,
+    "hips": 4
+  },
+  "formatDistribution": {
+    "pdf": 6
+  },
+  "noGoldOrPredictionInput": true
+}
