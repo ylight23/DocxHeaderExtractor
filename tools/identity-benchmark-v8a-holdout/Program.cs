@@ -43,12 +43,13 @@ internal static class Program
         using var inventoryDoc = JsonDocument.Parse(await File.ReadAllTextAsync(inventoryPath));
         var inventory = ReadInventory(inventoryDoc.RootElement);
         var provenance = ScanProvenance(root);
+        var provenanceScanSha256 = Sha256Text(JsonSerializer.Serialize(provenance.Files, JsonOptions));
         var lineageDenied = inventory.Where(x => provenance.DocumentIds.Contains(x.DocumentId) || provenance.SourceHashes.Contains(x.SourceSha256)).Select(x => x.SourceSha256).ToHashSet(StringComparer.OrdinalIgnoreCase);
         var sourcePool = inventory.Where(IsSourcePoolRow).ToArray();
         var formatAudit = AuditFormats(root, sourcePool);
         var eligible = sourcePool.Where(x => x.SourcePath.EndsWith(".docx", StringComparison.OrdinalIgnoreCase) && File.Exists(Full(root, x.SourcePath)) && !lineageDenied.Contains(x.SourceSha256)).GroupBy(x => x.SourceSha256, StringComparer.OrdinalIgnoreCase).Select(g => g.OrderBy(x => x.DocumentId, StringComparer.Ordinal).First()).ToArray();
         Directory.CreateDirectory(output);
-        await WriteAsync(Path.Combine(output, "provenance-denylist.json"), new { schemaVersion = "a99-v8a-provenance-denylist-v1", generatedFrom = provenance.Files, historicallyExposedDocumentIds = provenance.DocumentIds.OrderBy(x => x, StringComparer.Ordinal).ToArray(), historicallyExposedSourceHashes = provenance.SourceHashes.OrderBy(x => x, StringComparer.OrdinalIgnoreCase).ToArray(), sourceHashLineageDeniedCount = lineageDenied.Count, sourceOnlyScan = true, semanticLabelsRead = false, predictionContentUsed = false });
+        await WriteAsync(Path.Combine(output, "provenance-denylist.json"), new { schemaVersion = "a99-v8a-provenance-denylist-v1", provenanceFileCount = provenance.Files.Count, provenanceScanSha256, historicallyExposedDocumentIds = provenance.DocumentIds.OrderBy(x => x, StringComparer.Ordinal).ToArray(), historicallyExposedSourceHashes = provenance.SourceHashes.OrderBy(x => x, StringComparer.OrdinalIgnoreCase).ToArray(), sourceHashLineageDeniedCount = lineageDenied.Count, sourceOnlyScan = true, semanticLabelsRead = false, predictionContentUsed = false });
         if (eligible.Length < TargetDocuments)
         {
             await WriteAsync(Path.Combine(output, "source-format-audit.json"), formatAudit);
