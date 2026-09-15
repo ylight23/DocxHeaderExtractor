@@ -1,0 +1,78 @@
+{
+  "artifactKind": "A99_DOC0258_CANONICAL_VS_HISTORICAL_LEVEL_DIAGNOSTIC_SUMMARY",
+  "schemaVersion": "a99-canonical-vs-historical-level-diagnostic-v1",
+  "status": "DIAGNOSTIC_COMPLETE",
+  "documentId": "DOC-0258",
+  "canonicalAuthorityCommit": "0c7f22c",
+  "canonicalAuthority": {
+    "occurrences": 44,
+    "semanticNodes": 44,
+    "parentEdges": 44,
+    "rootChildren": 3,
+    "maxDepth": 3,
+    "levels": "DERIVED_FROM_VALIDATED_TREE_ONLY"
+  },
+  "historicalAuthority": "DIRECT_HISTORICAL_LEVEL_ANNOTATION",
+  "counts": {
+    "canonicalOccurrences": 44,
+    "historicalOccurrenceCount": 24,
+    "exactMatched": 24,
+    "canonicalOnly": 20,
+    "historicalOnly": 0,
+    "ambiguousBridge": 0,
+    "levelExactMatch": 3,
+    "levelMismatch": 21,
+    "levelAccuracyOnMatched": 0.125
+  },
+  "deltaDistribution": [
+    {
+      "delta": 0,
+      "count": 3
+    },
+    {
+      "delta": 1,
+      "count": 21
+    }
+  ],
+  "branchDistribution": [
+    {
+      "branch": "ANNEX_1_AGENDA",
+      "matched": 1,
+      "exact": 1,
+      "mismatched": 0,
+      "mismatchDeltas": []
+    },
+    {
+      "branch": "ANNEX_2_PARTICIPANTS",
+      "matched": 1,
+      "exact": 1,
+      "mismatched": 0,
+      "mismatchDeltas": []
+    },
+    {
+      "branch": "DOCUMENT_NARRATIVE",
+      "matched": 22,
+      "exact": 1,
+      "mismatched": 21,
+      "mismatchDeltas": [
+        {
+          "delta": 1,
+          "count": 21
+        }
+      ]
+    }
+  ],
+  "mismatchPattern": "NARRATIVE_BRANCH_DESCENDANTS_ARE_ONE_LEVEL_DEEPER_IN_CANONICAL_TREE; ANNEX_ROOT_MATCHES_ON_BRIDGED_ROWS",
+  "diagnostics": [
+    "ROOT_DEPTH_SHIFT"
+  ],
+  "firewall": {
+    "canonicalGoldMutation": false,
+    "parentMutation": false,
+    "levelMutation": false,
+    "historicalLevelRead": true,
+    "historicalParentRead": false,
+    "providerCalls": 0,
+    "modelCalls": 0
+  }
+}

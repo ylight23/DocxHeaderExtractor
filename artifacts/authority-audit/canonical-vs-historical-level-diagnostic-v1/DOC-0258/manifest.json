@@ -1,0 +1,88 @@
+{
+  "artifactKind": "A99_DOC0258_CANONICAL_VS_HISTORICAL_LEVEL_DIAGNOSTIC_MANIFEST",
+  "schemaVersion": "a99-canonical-vs-historical-level-diagnostic-v1",
+  "status": "DIAGNOSTIC_COMPLETE",
+  "documentId": "DOC-0258",
+  "authorityStatus": "DIRECT_HISTORICAL_LEVEL_ANNOTATION_COMPARED_AFTER_CANONICAL_FREEZE",
+  "canonicalAuthorityCommit": "0c7f22c",
+  "canonicalSourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+  "historicalLevelRead": true,
+  "historicalParentRead": false,
+  "canonicalGoldMutation": false,
+  "parentMutation": false,
+  "levelMutation": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "inputs": [
+    {
+      "name": "canonicalFreezeManifest",
+      "path": "artifacts/authority-audit/canonical-authority-freeze-v1/DOC-0258/authority-freeze-manifest.json",
+      "sha256": "30e2ea765fb430cd14ed73bc9aafde0147c320f8586c8d75f746943b64eb1e46"
+    },
+    {
+      "name": "occurrenceAuthority",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v2-span-aware/DOC-0258/exact-bindings.json",
+      "sha256": "6023b375db6a82f79565fef5c18d1025f084c899bbe5ac2b393190cbdd8a5ab1"
+    },
+    {
+      "name": "identityAssignments",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0258/occurrence-assignments.json",
+      "sha256": "56ca5071a6dfdd78c69079e3ca3364dd1611f981b9ad9a8748b3991ea1bb2994"
+    },
+    {
+      "name": "semanticNodes",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0258/semantic-nodes.json",
+      "sha256": "ad3b931efa5444f74cf269648409470f6e80d2a4b81d9d98ab63723349bf2a1b"
+    },
+    {
+      "name": "parentEdges",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0258/parent-edges.json",
+      "sha256": "1957b28f2017b9d10a0782eb4823d3739dfb688e7711b3d8ce2d397422e5bead"
+    },
+    {
+      "name": "derivedLevels",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0258/derived-levels.json",
+      "sha256": "c214602fcdcd3d3242514af2db238049deac5ff4234aa9970a64e1681aba8996"
+    },
+    {
+      "name": "historicalDirectLevelAuthority",
+      "path": "eval/a99-closed-loop/strict-gold-v4/DOC-0258.strict-gold-v4.json",
+      "sha256": "4519e267a0f04e0f4a3486e53425058252b98de035631a50ebd4fd7751ddb61b"
+    }
+  ],
+  "outputFiles": [
+    "comparison.json",
+    "mismatches.json",
+    "summary.json",
+    "report.md",
+    "manifest.json"
+  ],
+  "notes": [
+    "Diagnostic only.",
+    "No canonical tree repair was attempted.",
+    "Historical parent annotations were not read.",
+    "Historical semantic total and historical level policy were not used to alter canonical authority."
+  ],
+  "outputHashes": [
+    {
+      "name": "comparison",
+      "path": "comparison.json",
+      "sha256": "5f6247d44655ed673b8f4fb51232a21b0c8a42d44da20df81507d025e043cee0"
+    },
+    {
+      "name": "mismatches",
+      "path": "mismatches.json",
+      "sha256": "702353d684e969b2cd377d863479ee3a13c8aa4491b4010d1345fce58c50fe41"
+    },
+    {
+      "name": "summary",
+      "path": "summary.json",
+      "sha256": "06568a0c712473b4f9622082c0eeb09596e70591f3adfd75e6b71a0bd0af21f7"
+    },
+    {
+      "name": "report",
+      "path": "report.md",
+      "sha256": "bbccad9a72d446b7d43dbc7a330837994d8e899046cb8a5029892fd7a50dc074"
+    }
+  ]
+}
