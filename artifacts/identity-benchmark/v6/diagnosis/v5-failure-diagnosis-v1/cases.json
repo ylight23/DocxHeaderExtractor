@@ -1,0 +1,2821 @@
+[
+  {
+    "reviewId": "SA-0002",
+    "candidateId": "DOC-0123:P962-1000",
+    "clusterId": "SC-73ac22ce69d37810",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[493]",
+        "text": "Name of the person duly authorized to sign the Proposal on behalf of the Proposer: ** [insert complete name of person duly authorized to sign the Proposal]",
+        "documentOrder": 1115
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[534]",
+        "text": "Name of the person duly authorized to sign the Proposal on behalf of the Proposer: ** [insert complete name of person duly authorized to sign the Proposal]",
+        "documentOrder": 1180
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[493]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[534]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0003",
+    "candidateId": "DOC-0123:P3151-3182",
+    "clusterId": "SC-f40d8092d172eeb3",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1462]",
+        "text": "Note: All italicized text (including footnotes) is for use in preparing this form and shall be deleted from the final product.",
+        "documentOrder": 4388
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1504]",
+        "text": "Note: All italicized text (including footnotes) is for use in preparing this form and shall be deleted from the final product.",
+        "documentOrder": 4430
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1462]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1504]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0004",
+    "candidateId": "DOC-0123:P3013-3018",
+    "clusterId": "SC-7f1bfd6d60c574fa",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[5]/p[1]",
+        "text": "[insert combined score]",
+        "documentOrder": 4213
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[5]/p[1]",
+        "text": "[insert combined score]",
+        "documentOrder": 4218
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[4]/tc[5]/p[1]",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[57]/tr[5]/tc[5]/p[1]",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-01"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0006",
+    "candidateId": "DOC-0252:P434-439",
+    "clusterId": "SC-cd566bc4da71285c",
+    "documentId": "DOC-0252",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0252:B000434",
+        "text": ".",
+        "documentOrder": 433
+      },
+      {
+        "occurrenceId": "DOC-0252:B000439",
+        "text": ".",
+        "documentOrder": 438
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000434",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000439",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0007",
+    "candidateId": "DOC-0123:V4P1271-1341",
+    "clusterId": "SC-3ebbfbdbe24a0530",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[695]",
+        "text": "Code of Conduct for Contractor\u2019s Personnel (ES)",
+        "documentOrder": 2040
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[766]",
+        "text": "CODE OF CONDUCT FOR CONTRACTOR\u2019S PERSONNEL",
+        "documentOrder": 2125
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[695]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[766]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY",
+      "TERMINAL_ACRONYM_VARIANT"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0010",
+    "candidateId": "DOC-0123:P2101-2103",
+    "clusterId": "SC-160cc47520d52014",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[50]/tr[32]/tc[2]/p[1]",
+        "text": "4.20",
+        "documentOrder": 3229
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[50]/tr[33]/tc[2]/p[1]",
+        "text": "4.20",
+        "documentOrder": 3232
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[50]/tr[32]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-CLUSTER-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[50]/tr[33]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-CLUSTER-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-CLUSTER-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0013",
+    "candidateId": "DOC-0123:P1056-1057",
+    "clusterId": "SC-7f00f6b6d1373a71",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[3]/p[1]",
+        "text": "\u2014",
+        "documentOrder": 1254
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+        "text": "\u2014",
+        "documentOrder": 1255
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[3]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER",
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0014",
+    "candidateId": "DOC-0123:P1482-1485",
+    "clusterId": "SC-d739ea4122054a93",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[875]",
+        "text": "Signature:",
+        "documentOrder": 2368
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[878]",
+        "text": "Signature:",
+        "documentOrder": 2371
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[875]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[878]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0015",
+    "candidateId": "DOC-0123:P1036-1037",
+    "clusterId": "SC-c69060a6af5acfbd",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+        "text": "\u2014",
+        "documentOrder": 1226
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[5]/p[1]",
+        "text": "\u2014",
+        "documentOrder": 1227
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[5]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER",
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0019",
+    "candidateId": "DOC-0133:P1467-1468",
+    "clusterId": "SC-cc9434be93085964",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B001466",
+        "text": "Delays in receiving loan payments result in economic losses to IBRD since it does not charge additional interest on any overdue interest or loan charges. These economic losses are estimated as the difference between the present value of payments of interest and charges made according to the related loan\u0027s contractual terms and the present value of its expected future cash flows. It is IBRD\u2019s practice not to write off its loans. Historically, all contractual",
+        "documentOrder": 1465
+      },
+      {
+        "occurrenceId": "DOC-0133:B001467",
+        "text": "obligations associated with exposures in nonaccrual status were eventually cleared, thereby allowing borrowers to emerge from nonaccrual status. To date, no loans have been written offby IBRD.",
+        "documentOrder": 1466
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B001466",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B001467",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0020",
+    "candidateId": "DOC-0133:P966-968",
+    "clusterId": "SC-7bbcc897f811cf5f",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B000965",
+        "text": ", ,",
+        "documentOrder": 964
+      },
+      {
+        "occurrenceId": "DOC-0133:B000967",
+        "text": ", ,",
+        "documentOrder": 966
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000965",
+        "semanticNodeLocalId": "SN-CLUSTER-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000967",
+        "semanticNodeLocalId": "SN-CLUSTER-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-CLUSTER-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0021",
+    "candidateId": "DOC-0123:P1665-1666",
+    "clusterId": "SC-88db42c1dfb9c081",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+        "text": "3.",
+        "documentOrder": 2603
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]",
+        "text": "4.",
+        "documentOrder": 2609
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[5]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0022",
+    "candidateId": "DOC-0123:P3092-3097",
+    "clusterId": "SC-fe3480c51dd004da",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1378]",
+        "text": "OR",
+        "documentOrder": 4304
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1387]",
+        "text": "OR",
+        "documentOrder": 4313
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1378]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[1387]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0029",
+    "candidateId": "DOC-0123:P1091-1092",
+    "clusterId": "SC-79b853331cdd3744",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]",
+        "text": "[To be entered by the Employer]",
+        "documentOrder": 1325
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]",
+        "text": "[To be entered by the Employer]",
+        "documentOrder": 1327
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[21]/tr[7]/tc[4]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER",
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0030",
+    "candidateId": "DOC-0252:P311-312",
+    "clusterId": "SC-2d5e22fcd48f9e6a",
+    "documentId": "DOC-0252",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0252:B000311",
+        "text": "fa cto rs to co nstru ctio n wages we re d iscu ssed",
+        "documentOrder": 310
+      },
+      {
+        "occurrenceId": "DOC-0252:B000312",
+        "text": ".",
+        "documentOrder": 311
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000311",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000312",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "node_1"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0031",
+    "candidateId": "DOC-0133:P1892-1908",
+    "clusterId": "SC-137e766fed8e14d8",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B001891",
+        "text": "the fiscal year in AOCI income period of the period",
+        "documentOrder": 1890
+      },
+      {
+        "occurrenceId": "DOC-0133:B001907",
+        "text": "the fiscal year in AOCI income period of the period",
+        "documentOrder": 1906
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B001891",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B001907",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0033",
+    "candidateId": "DOC-0123:P1228-1229",
+    "clusterId": "SC-fadddbae86c6b0ed",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+        "text": "[To be entered by the Employer; Delete if not applicable:] Provisional sums for any specific ES outcomes.",
+        "documentOrder": 1957
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]",
+        "text": "etc.",
+        "documentOrder": 1962
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[29]/tr[12]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[29]/tr[14]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0039",
+    "candidateId": "DOC-0123:P602-1271",
+    "clusterId": "SC-3ebbfbdbe24a0530",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+        "text": "Code of Conduct for Contractor\u2019s Personnel (ES)",
+        "documentOrder": 670
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[695]",
+        "text": "Code of Conduct for Contractor\u2019s Personnel (ES)",
+        "documentOrder": 2040
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[14]/tc[2]/p[3]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[695]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY",
+      "TERMINAL_ACRONYM_VARIANT"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0042",
+    "candidateId": "DOC-0123:P1425-1973",
+    "clusterId": "SC-998cbc0bfc0238bb",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[31]/tr[6]/tc[2]/p[1]",
+        "text": "[Environmental Impact Assessment Specialist]",
+        "documentOrder": 2234
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[47]/tr[6]/tc[2]/p[1]",
+        "text": "[Environmental Impact Assessment Specialist]",
+        "documentOrder": 3026
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[31]/tr[6]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-ENV-IMP-01",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[47]/tr[6]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-ENV-IMP-01",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-ENV-IMP-01"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0044",
+    "candidateId": "DOC-0123:P783-784",
+    "clusterId": "SC-1c4e8826322b617f",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[317]",
+        "text": "1.5 Subcontractors",
+        "documentOrder": 891
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[318]",
+        "text": "Any Specialized Sub-contractor identified at the time of Initial Selection shall continue to meet the applicable requirements.",
+        "documentOrder": 892
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[317]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[318]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0045",
+    "candidateId": "DOC-0133:P1803-1805",
+    "clusterId": "SC-e85d77b885a189a0",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B001802",
+        "text": ",",
+        "documentOrder": 1801
+      },
+      {
+        "occurrenceId": "DOC-0133:B001804",
+        "text": ",",
+        "documentOrder": 1803
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B001802",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0133:B001804",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "LOW"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0046",
+    "candidateId": "DOC-0133:P855-856",
+    "clusterId": "SC-dd7c93016022f445",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B000855",
+        "text": "In millions of U.S. dollars",
+        "documentOrder": 854
+      },
+      {
+        "occurrenceId": "DOC-0133:B000856",
+        "text": "Exposures as of March 31 2025",
+        "documentOrder": 855
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000855",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000856",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0050",
+    "candidateId": "DOC-0133:P2227-2229",
+    "clusterId": "SC-71e2f00f18661add",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B002226",
+        "text": ",",
+        "documentOrder": 2225
+      },
+      {
+        "occurrenceId": "DOC-0133:B002228",
+        "text": ",",
+        "documentOrder": 2227
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B002226",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0133:B002228",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "LOW"
+      }
+    ],
+    "predictedNodeIds": [
+      "node_1"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0051",
+    "candidateId": "DOC-0252:V4P0435-0883",
+    "clusterId": "SC-9d7862e7cb1eb620",
+    "documentId": "DOC-0252",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0252:B000435",
+        "text": "Session IV: TAG Fu nction ing a nd Terms of Reference for Task Forces 1 TAG Com position a nd Terms of Reference .",
+        "documentOrder": 434
+      },
+      {
+        "occurrenceId": "DOC-0252:B000883",
+        "text": "SESSION IV: TAG Fu nctioning a nd Terms of Refence for Task Forces",
+        "documentOrder": 882
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000435",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000883",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-01"
+    ],
+    "evidenceReasons": [
+      "SHARED_STRUCTURAL_HEADING_KEY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0057",
+    "candidateId": "DOC-0123:P1603-1610",
+    "clusterId": "SC-9f1e3d86544b5fc0",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]",
+        "text": "[insert year]",
+        "documentOrder": 2521
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]",
+        "text": "[insert year]",
+        "documentOrder": 2528
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[41]/tr[4]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[41]/tr[5]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0058",
+    "candidateId": "DOC-0252:P955-957",
+    "clusterId": "SC-61fc0dbd9dfcc7f1",
+    "documentId": "DOC-0252",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0252:B000955",
+        "text": ",",
+        "documentOrder": 954
+      },
+      {
+        "occurrenceId": "DOC-0252:B000957",
+        "text": ",",
+        "documentOrder": 956
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000955",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000957",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0061",
+    "candidateId": "DOC-0252:P750-751",
+    "clusterId": "SC-f12b996463a94a60",
+    "documentId": "DOC-0252",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0252:B000750",
+        "text": "p ro posa l fro m the late P rofesso r Ala n H esto n Ba sed o n h is s uggestio n glo ba l P P Ps wo u ld be esti m ated by a",
+        "documentOrder": 749
+      },
+      {
+        "occurrenceId": "DOC-0252:B000751",
+        "text": ". ,",
+        "documentOrder": 750
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000750",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000751",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "node_1"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0062",
+    "candidateId": "DOC-0133:P1736-1753",
+    "clusterId": "SC-336b192f25ee8c62",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B001735",
+        "text": "2025 2024 2025 2024",
+        "documentOrder": 1734
+      },
+      {
+        "occurrenceId": "DOC-0133:B001752",
+        "text": "2025 2024 2025 2024",
+        "documentOrder": 1751
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B001735",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B001752",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-01"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0063",
+    "candidateId": "DOC-0123:P2742-2754",
+    "clusterId": "SC-b5e7cf633691dae4",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]",
+        "text": "Notice",
+        "documentOrder": 3923
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]",
+        "text": "Notice",
+        "documentOrder": 3935
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[53]/tc[1]/p[2]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[56]/tc[1]/p[2]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0065",
+    "candidateId": "DOC-0252:P22-26",
+    "clusterId": "SC-f8cd55c5e557df36",
+    "documentId": "DOC-0252",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0252:B000022",
+        "text": ",",
+        "documentOrder": 21
+      },
+      {
+        "occurrenceId": "DOC-0252:B000026",
+        "text": ",",
+        "documentOrder": 25
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000022",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000026",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "REPEAT",
+        "confidence": "LOW"
+      }
+    ],
+    "predictedNodeIds": [
+      "node_1"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0068",
+    "candidateId": "DOC-0252:P224-226",
+    "clusterId": "SC-df80308b29693450",
+    "documentId": "DOC-0252",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0252:B000224",
+        "text": ".",
+        "documentOrder": 223
+      },
+      {
+        "occurrenceId": "DOC-0252:B000226",
+        "text": ".",
+        "documentOrder": 225
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000224",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000226",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "REPEAT",
+        "confidence": "LOW"
+      }
+    ],
+    "predictedNodeIds": [
+      "node_1"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0071",
+    "candidateId": "DOC-0133:P1069-1070",
+    "clusterId": "SC-032875e9c153cab7",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B001068",
+        "text": "Currency translation adjustments on functional currency gains (losses) 51 3 (324) 1 22 (62) Total other comprehensive income (loss) 386 (877) 1 374 1 83",
+        "documentOrder": 1067
+      },
+      {
+        "occurrenceId": "DOC-0133:B001069",
+        "text": ",",
+        "documentOrder": 1068
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B001068",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B001069",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "MEDIUM"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0073",
+    "candidateId": "DOC-0133:P933-934",
+    "clusterId": "SC-8f8b372c4df44219",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B000933",
+        "text": "March 31 2025",
+        "documentOrder": 932
+      },
+      {
+        "occurrenceId": "DOC-0133:B000934",
+        "text": ",",
+        "documentOrder": 933
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000933",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000934",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "node_1"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0077",
+    "candidateId": "DOC-0123:P1664-1665",
+    "clusterId": "SC-88db42c1dfb9c081",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]",
+        "text": "2.",
+        "documentOrder": 2597
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+        "text": "3.",
+        "documentOrder": 2603
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[3]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[43]/tr[4]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0079",
+    "candidateId": "DOC-0123:P1178-1179",
+    "clusterId": "SC-2f569716eaed3deb",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]",
+        "text": "-----",
+        "documentOrder": 1559
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[3]/tc[2]/p[1]",
+        "text": "-----",
+        "documentOrder": 1562
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[3]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "MEDIUM"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER",
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1",
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0081",
+    "candidateId": "DOC-0123:P1177-1178",
+    "clusterId": "SC-2f569716eaed3deb",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[4]/p[1]",
+        "text": "-----",
+        "documentOrder": 1558
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]",
+        "text": "-----",
+        "documentOrder": 1559
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[4]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[25]/tr[2]/tc[5]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER",
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1",
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0084",
+    "candidateId": "DOC-0123:P05-06",
+    "clusterId": "SC-75b66683b75b0c9d",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "CONTINUATION_OF",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[7]",
+        "text": "(Single-Stage Request for Proposals, after Initial Selection)",
+        "documentOrder": 6
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[14]",
+        "text": "(where the Bank\u2019s Disqualification mechanism for non-compliance with SEA/SH obligations DOES NOT APPLY)",
+        "documentOrder": 13
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[7]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[14]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "CONTINUATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0085",
+    "candidateId": "DOC-0123:P3086-3088",
+    "clusterId": "SC-d72ffa990605f300",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]",
+        "text": "(Yes / No)",
+        "documentOrder": 4292
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]",
+        "text": "(Yes / No)",
+        "documentOrder": 4295
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[2]/p[2]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[62]/tr[1]/tc[3]/p[2]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0088",
+    "candidateId": "DOC-0123:P552-554",
+    "clusterId": "SC-dc75f78b36c2ca7c",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]",
+        "text": "ITP 2.1",
+        "documentOrder": 619
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]",
+        "text": "ITP 2.1",
+        "documentOrder": 621
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[3]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[12]/tr[4]/tc[1]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0097",
+    "candidateId": "DOC-0133:P337-338",
+    "clusterId": "SC-19f21d3bb805257d",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B000337",
+        "text": "0",
+        "documentOrder": 336
+      },
+      {
+        "occurrenceId": "DOC-0133:B000338",
+        "text": "0",
+        "documentOrder": 337
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000337",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000338",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER",
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0102",
+    "candidateId": "DOC-0123:P348-354",
+    "clusterId": "SC-3fe557caa33c2f2c",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]",
+        "text": "if the successful Proposer fails to:",
+        "documentOrder": 412
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[20]",
+        "text": "if the successful Proposer fails to:",
+        "documentOrder": 418
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[14]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[3]/tr[8]/tc[2]/p[20]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0105",
+    "candidateId": "DOC-0133:P2278-2294",
+    "clusterId": "SC-c557c9be01e4fc96",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B002277",
+        "text": ", ,",
+        "documentOrder": 2276
+      },
+      {
+        "occurrenceId": "DOC-0133:B002293",
+        "text": ", ,",
+        "documentOrder": 2292
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B002277",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0133:B002293",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "LOW"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "MID_5_16"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0109",
+    "candidateId": "DOC-0252:P188-189",
+    "clusterId": "SC-87ddf22bac3dbc7a",
+    "documentId": "DOC-0252",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0252:B000188",
+        "text": ", ,",
+        "documentOrder": 187
+      },
+      {
+        "occurrenceId": "DOC-0252:B000189",
+        "text": "i m p le m e ntatio n by the E u rostat-O ECD P P P P rogra m m e I CP 202 1 res u lts we re pu bl is hed via p ress re lea se o n",
+        "documentOrder": 188
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000188",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000189",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0111",
+    "candidateId": "DOC-0133:P339-340",
+    "clusterId": "SC-44f46f640e7712b0",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B000339",
+        "text": "FY 21 FY 22 FY 23 FY 24 FY 25",
+        "documentOrder": 338
+      },
+      {
+        "occurrenceId": "DOC-0133:B000340",
+        "text": "FY 21 FY 22 FY 23 FY 24 FY 25",
+        "documentOrder": 339
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000339",
+        "semanticNodeLocalId": "SN-FY-TIMELINE",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000340",
+        "semanticNodeLocalId": "SN-FY-TIMELINE",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-FY-TIMELINE"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER",
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0112",
+    "candidateId": "DOC-0133:P118-136",
+    "clusterId": "SC-475453187c1c821e",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B000118",
+        "text": "In billions of U.S. dollars",
+        "documentOrder": 117
+      },
+      {
+        "occurrenceId": "DOC-0133:B000136",
+        "text": "In billions of U.S. dollars",
+        "documentOrder": 135
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000118",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000136",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0114",
+    "candidateId": "DOC-0123:P1334-1338",
+    "clusterId": "SC-d5cbcde35e2b090c",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]",
+        "text": "The following minimum requirements shall not be modified. The Employer may add additional requirements to address identified issues, informed by relevant environmental and social assessment.",
+        "documentOrder": 2117
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]",
+        "text": "The following minimum requirements shall not be modified. The Employer may add additional requirements to address identified issues, informed by relevant environmental and social assessment.",
+        "documentOrder": 2121
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[3]/p[2]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[764]/txbxContent[4]/p[2]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0115",
+    "candidateId": "DOC-0123:P1818-2556",
+    "clusterId": "SC-80b901344aab318a",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[45]/tr[24]/tc[2]/p[1]",
+        "text": "Health and Safety of Personnel",
+        "documentOrder": 2831
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[17]/tc[1]/p[2]",
+        "text": "Health and Safety of Personnel",
+        "documentOrder": 3736
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[45]/tr[24]/tc[2]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[54]/tr[17]/tc[1]/p[2]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0116",
+    "candidateId": "DOC-0123:P1035-1036",
+    "clusterId": "SC-c69060a6af5acfbd",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[3]/p[1]",
+        "text": "\u2014",
+        "documentOrder": 1225
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+        "text": "\u2014",
+        "documentOrder": 1226
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[3]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[19]/tr[2]/tc[4]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER",
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0120",
+    "candidateId": "DOC-0133:P960-962",
+    "clusterId": "SC-c17bdfebd789811c",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B000959",
+        "text": ", ,",
+        "documentOrder": 958
+      },
+      {
+        "occurrenceId": "DOC-0133:B000961",
+        "text": ", ,",
+        "documentOrder": 960
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000959",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "LOW"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000961",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "LOW"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0122",
+    "candidateId": "DOC-0133:P927-930",
+    "clusterId": "SC-4f5dfab186393c56",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B000927",
+        "text": ",",
+        "documentOrder": 926
+      },
+      {
+        "occurrenceId": "DOC-0133:B000930",
+        "text": ",",
+        "documentOrder": 929
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000927",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000930",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "node_1"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "NEAR_2_4"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0123",
+    "candidateId": "DOC-0123:P1057-1058",
+    "clusterId": "SC-7f00f6b6d1373a71",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+        "text": "\u2014",
+        "documentOrder": 1255
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[5]/p[1]",
+        "text": "\u2014",
+        "documentOrder": 1256
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[4]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/tbl[20]/tr[2]/tc[5]/p[1]",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER",
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0125",
+    "candidateId": "DOC-0123:P1540-1591",
+    "clusterId": "SC-070e08de7da1b95f",
+    "documentId": "DOC-0123",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[908]",
+        "text": "Date: [insert day, month, year]",
+        "documentOrder": 2451
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[919]",
+        "text": "Date: [insert day, month, year]",
+        "documentOrder": 2509
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[908]",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0123:body[1]/p[919]",
+        "semanticNodeLocalId": "SN-01",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-01"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "STRUCTURALLY_PARTIAL"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0126",
+    "candidateId": "DOC-0133:P99-316",
+    "clusterId": "SC-56263abc254ef233",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B000099",
+        "text": "million during the same period in FY 24. The $5 1 million increase was primarily due to unrealized mark-to-market gains on IBRD\u2019s non-trading portfolios in FY 25 YTD as compared to unrealized mark-to-market losses in FY 24",
+        "documentOrder": 98
+      },
+      {
+        "occurrenceId": "DOC-0133:B000316",
+        "text": "million during the same period in FY 24. The $5 1 million increase was primarily due to unrealized mark-to-market gains on IBRD\u2019s non-trading portfolios in FY 25 YTD as compared to unrealized mark-to-market losses in FY 24",
+        "documentOrder": 315
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000099",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000316",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "FAR_17_PLUS"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0127",
+    "candidateId": "DOC-0252:P393-394",
+    "clusterId": "SC-f58ec7a5d0cc2968",
+    "documentId": "DOC-0252",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0252:B000393",
+        "text": "expo rts P P Ps wh ich wa s prese nted Sessio n V of th is TAG m eeti ng Othe r resea rch to pics i n cl u de revisiti ng",
+        "documentOrder": 392
+      },
+      {
+        "occurrenceId": "DOC-0252:B000394",
+        "text": ", .",
+        "documentOrder": 393
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0252:B000393",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0252:B000394",
+        "semanticNodeLocalId": "node_1",
+        "occurrenceRole": "ALIAS_REPRESENTATION",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "node_1"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  },
+  {
+    "reviewId": "SA-0128",
+    "candidateId": "DOC-0133:P359-360",
+    "clusterId": "SC-c03b3d5ec241bf2d",
+    "documentId": "DOC-0133",
+    "goldRelation": "DISTINCT",
+    "predictedRelation": "SAME_SEMANTIC_REPEAT",
+    "failureOwnership": "WRONG_NODE_MERGE",
+    "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+    "occurrencePair": [
+      {
+        "occurrenceId": "DOC-0133:B000359",
+        "text": "300",
+        "documentOrder": 358
+      },
+      {
+        "occurrenceId": "DOC-0133:B000360",
+        "text": "300",
+        "documentOrder": 359
+      }
+    ],
+    "predictedAssignments": [
+      {
+        "occurrenceId": "DOC-0133:B000359",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "PRIMARY",
+        "confidence": "HIGH"
+      },
+      {
+        "occurrenceId": "DOC-0133:B000360",
+        "semanticNodeLocalId": "SN-001",
+        "occurrenceRole": "REPEAT",
+        "confidence": "HIGH"
+      }
+    ],
+    "predictedNodeIds": [
+      "SN-001"
+    ],
+    "evidenceReasons": [
+      "ADJACENT_ORDER",
+      "NORMALIZED_TEXT_AFFINITY"
+    ],
+    "packetClasses": [
+      "LOCAL_ONLY"
+    ],
+    "sourceOrderDistanceBuckets": [
+      "ADJACENT_1"
+    ],
+    "sourceOwnerEvidenceAvailable": false,
+    "diagnosticCategory": "MODEL_SEMANTIC_GROUPING_OVERREACH",
+    "note": "The frozen artifacts prove a wrong node merge, but do not authorize inferring structural ownership from this case. V6 owner induction must acquire/induce owner evidence independently."
+  }
+]

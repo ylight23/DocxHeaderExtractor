@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "a99-v6a-v5-failure-diagnosis-v1",
+  "status": "V6A_COMPLETE",
+  "source": "FROZEN_V5C_V2_FALSE_MERGES",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "predictionsMutated": false,
+  "noProductionRuleInferred": true,
+  "totalFalseMerges": 55,
+  "byMergeMode": [
+    {
+      "mergeMode": "MERGED_VIA_EXPLICIT_CONTINUATION_EDGE",
+      "count": 11
+    },
+    {
+      "mergeMode": "MERGED_WITHOUT_EXPLICIT_CONTINUATION_EDGE",
+      "count": 44
+    }
+  ],
+  "byDocument": [
+    {
+      "documentId": "DOC-0123",
+      "count": 29
+    },
+    {
+      "documentId": "DOC-0133",
+      "count": 17
+    },
+    {
+      "documentId": "DOC-0252",
+      "count": 9
+    }
+  ],
+  "byEvidence": [
+    {
+      "reason": "NORMALIZED_TEXT_AFFINITY",
+      "count": 41
+    },
+    {
+      "reason": "ADJACENT_ORDER",
+      "count": 23
+    },
+    {
+      "reason": "TERMINAL_ACRONYM_VARIANT",
+      "count": 2
+    },
+    {
+      "reason": "SHARED_STRUCTURAL_HEADING_KEY",
+      "count": 1
+    }
+  ],
+  "interpretation": "All cases are observed model grouping overreach against frozen V4H relation authority. This artifact does not infer structural owners or install a veto rule; owner induction remains a separate V6 experiment."
+}
