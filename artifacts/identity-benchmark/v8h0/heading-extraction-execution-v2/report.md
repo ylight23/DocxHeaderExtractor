@@ -1,5 +1,7 @@
 # V8H0 heading extraction execution
 
+The top-level binding snapshot is **superseded** by `binding-revalidation-v3/frozen-bound-heading-occurrence-set.json`, which applies fail-closed document role coverage. Raw provider attempts remain immutable.
+
 Status: **COMPLETED_WITH_FAILURES_PRESERVED**.
 
 Execution used frozen preflight `98ce62e` with retry=0. Gold, identity labels, historical predictions and evaluation artifacts were not read.
