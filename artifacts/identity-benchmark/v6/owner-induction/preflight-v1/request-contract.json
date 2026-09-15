@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "a99-v6c-structural-owner-induction-v1",
+  "input": [
+    "documentId",
+    "frozenOccurrencePackets",
+    "sourceContainerIdentity",
+    "parserOwnedScopeGroups",
+    "documentOrder",
+    "localContext",
+    "containerAncestry",
+    "clusterProvenance"
+  ],
+  "forbidden": [
+    "V4H_Gold",
+    "V5C_evaluation",
+    "V6A_false_merge_cases",
+    "pairLabels",
+    "semanticNodeId",
+    "parent",
+    "ROOT",
+    "level",
+    "shouldMerge",
+    "shouldSplit"
+  ],
+  "output": {
+    "owners": [
+      "ownerLocalId",
+      "memberOccurrenceIds",
+      "autonomous",
+      "ownerDescription",
+      "evidenceRefs"
+    ],
+    "assignments": [
+      "occurrenceId",
+      "ownerLocalId"
+    ],
+    "unresolvedOccurrenceIds": "allowed"
+  },
+  "validation": [
+    "unknown occurrence =\u003E INVALID",
+    "missing assignment =\u003E INVALID",
+    "multiple owner assignment =\u003E INVALID",
+    "unknown member =\u003E INVALID",
+    "empty owner =\u003E INVALID",
+    "duplicate ownerLocalId conflict =\u003E INVALID",
+    "fabricated evidence reference =\u003E INVALID",
+    "malformed schema =\u003E INVALID"
+  ],
+  "note": "autonomous is descriptive output only; it is not a semantic merge veto. Parser scope groups are evidence, not owner truth."
+}

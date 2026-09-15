@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "a99-v6c-preflight-manifest-v1",
+  "status": "READY_FOR_PROVIDER_EXECUTION",
+  "documentCount": 3,
+  "occurrenceCount": 226,
+  "parserScopeGroupCount": 22,
+  "requestCount": 3,
+  "requestHashes": [
+    "53caf4c563485efb5e084a7efb062883cad6611a9d62a416b5e6a2edc09d7a08",
+    "a78c2139f0f82c1d369e0e933511f0ef38539c25faa00357545eaed9664f2880",
+    "3a4e3f7ad2e16de36f4582bf04fa7a361a0732290877e6c03b1c84000cd968cf"
+  ],
+  "sourceFingerprint": {
+    "v6bManifestSha256": "5fd54bc84cba336ac9bca21a2385ca6470313c7a4ab0b42366ce60a4289dbd4d",
+    "packetsSha256": "e3ccd0a7cc1406bedbfb69e2c03fb350ba0dacf5b807d144cf76abd9159c4b47",
+    "groupsSha256": "c7048f3f8073e5c8414eeb63b4c8a83e00fde0e755aa51f6ba61743268eb6ccb"
+  },
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "v5cReadCount": 0,
+  "v6aReadCount": 0,
+  "semanticOwnerAssignments": 0,
+  "semanticNodeAssignments": 0,
+  "hierarchyRequested": false,
+  "note": "Document-global owner induction boundary. No provider execution has occurred."
+}
