@@ -15,6 +15,9 @@ internal static class Program
     private const string ExecutionRelative = "artifacts/identity-benchmark/v6/owner-induction/execution-v1";
     private const string V2PreflightRelative = "artifacts/identity-benchmark/v6/owner-induction/preflight-v2-addressable";
     private const string V2ExecutionRelative = "artifacts/identity-benchmark/v6/owner-induction/execution-v2-addressable";
+    private const string V3PreflightRelative = "artifacts/identity-benchmark/v6/owner-induction/preflight-v3-opaque-handles";
+    private const string V3ExecutionRelative = "artifacts/identity-benchmark/v6/owner-induction/execution-v3-opaque-handles";
+    private const string V3HandleMapSha256 = "0666173081122a3b031928f9feadb2e059517168281d4ea1b022bc0bdddd9210";
     private const string Provider = "OpenRouter";
     private const string Model = "qwen/qwen3.7-flash";
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
@@ -39,6 +42,8 @@ internal static class Program
             if (args.Any(x => string.Equals(x, "--execute-v2", StringComparison.Ordinal))) return await ExecuteV2Async(root);
             if (args.Any(x => string.Equals(x, "--finalize-v2", StringComparison.Ordinal))) return await FinalizeV2Async(root);
             if (args.Any(x => string.Equals(x, "--diagnose-v2", StringComparison.Ordinal))) return await DiagnoseV2Async(root);
+            if (args.Any(x => string.Equals(x, "--execute-v3", StringComparison.Ordinal))) return await ExecuteV3Async(root);
+            if (args.Any(x => string.Equals(x, "--finalize-v3", StringComparison.Ordinal))) return await FinalizeV3Async(root);
             if (args.Any(x => string.Equals(x, "--diagnose-primary", StringComparison.Ordinal))) return await DiagnosePrimaryAsync(root);
             if (args.Any(x => string.Equals(x, "--prepare-v2", StringComparison.Ordinal))) return await PrepareV2Async(root);
             if (args.Any(x => string.Equals(x, "--prepare-v3", StringComparison.Ordinal))) return await PrepareV3Async(root);
@@ -308,6 +313,183 @@ internal static class Program
         return 0;
     }
 
+    private static async Task<int> ExecuteV3Async(string root)
+    {
+        var preflight = Full(root, V3PreflightRelative);
+        var execution = Full(root, V3ExecutionRelative);
+        var frozen = LoadFrozenV3Requests(preflight);
+        Require(!Directory.Exists(execution) || !Directory.EnumerateFiles(execution, "*", SearchOption.AllDirectories).Any(), "V6C_V3_EXECUTION_ALREADY_STARTED_NO_RESUME");
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        if (string.IsNullOrWhiteSpace(apiKey))
+        {
+            Directory.CreateDirectory(execution);
+            await WriteAsync(Path.Combine(execution, "execution-manifest.json"), new { schemaVersion = "a99-v6c-v3-execution-manifest-v1", status = "BLOCKED_ON_PROVIDER_API_KEY", scheduledCalls = ExpectedRequests, modelCalls = 0, providerCalls = 0, retryCount = 0, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, v2Mutation = false, handleMapMutation = false });
+            return 1;
+        }
+        var attemptsDir = Path.Combine(execution, "attempts");
+        var rawDir = Path.Combine(execution, "raw-responses");
+        var parsedDir = Path.Combine(execution, "parsed");
+        Directory.CreateDirectory(attemptsDir);
+        Directory.CreateDirectory(rawDir);
+        Directory.CreateDirectory(parsedDir);
+        await WriteAsync(Path.Combine(execution, "execution-manifest.json"), new
+        {
+            schemaVersion = "a99-v6c-v3-execution-manifest-v1", status = "EXECUTING", provider = Provider, model = Model, endpoint = Endpoint,
+            preflightManifestSha256 = Sha256File(Path.Combine(preflight, "manifest.json")), requestSetSha256 = Sha256File(Path.Combine(preflight, "requests.json")), handleMapSha256 = Sha256File(Path.Combine(preflight, "handle-map.json")),
+            scheduledCalls = ExpectedRequests, transientRequestRetries = 0, maxParallelRequests = 1, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, v2Mutation = false, handleMapMutation = false, startedUtc = DateTimeOffset.UtcNow,
+        });
+        var options = new RemoteInferenceOptions
+        {
+            Endpoint = new Uri(Endpoint), ApiKey = apiKey, Model = Model, ContextSize = 1_000_000, MaxOutputTokens = 48_000,
+            RequestTimeoutSeconds = 600, TransientRequestRetries = 0, MaxParallelRequests = 1, SendChatTemplateKwargs = false, OpenRouterAllowNonZdrPublicBenchmark = true,
+        };
+        var capability = new OpenRouterModelCapability
+        {
+            ModelId = Model, ContextLength = 1_000_000, ReasoningSupported = true, StructuredOutputSupported = true, SelectedReasoningEffort = "enabled",
+            ReasoningEnabled = true, EffortListReported = false, MaxCompletionTokens = 65_536,
+        };
+        using var http = new HttpClient(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(10) }) { Timeout = Timeout.InfiniteTimeSpan };
+        using var lease = await A99OpenRouterLiveProviderLease.AcquireAsync(root, "identity-benchmark-v6c-v3", "3-opaque-handle-document-global-structural-owner-induction");
+        using var model = new OpenRouterCeilingReasoningModel(options, capability, http);
+        var completedAttempts = new List<object>();
+        for (var i = 0; i < frozen.Count; i++)
+        {
+            var item = frozen[i];
+            var sequence = i + 1;
+            var attemptId = $"primary-{sequence:D3}";
+            await WriteAsync(Path.Combine(attemptsDir, $"{sequence:D3}.started.json"), new { schemaVersion = "a99-v6c-v3-attempt-start-v1", attemptId, sequence, documentId = item.DocumentId, requestHash = item.RequestHash, handleMapSha256 = V3HandleMapSha256, requestHashVerified = true, retry = false, goldReadBeforeAttempt = false, v5cReadBeforeAttempt = false, v6aReadBeforeAttempt = false, v1Mutation = false, v2Mutation = false, handleMapMutation = false, startedUtc = DateTimeOffset.UtcNow });
+            var status = "PROVIDER_ERROR";
+            string? error = null;
+            string? rawHash = null;
+            string? parsedHash = null;
+            int? httpStatus = null;
+            string? providerCallId = null;
+            RequestPacketTelemetry? telemetry = null;
+            object? parsed = null;
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            try
+            {
+                var requestJson = item.Request.GetRawText();
+                var result = await model.CompleteRawStructuredSemanticAsync(item.DocumentId, "V6C_V3_DOCUMENT_GLOBAL_STRUCTURAL_OWNER_INDUCTION", $"v6c-v3:{item.DocumentId}:{item.RequestHash}", requestJson, item.OccurrenceCount, item.OccurrenceCount, item.OccurrenceCount, SystemPrompt, $"TASK=V6C_V3_DOCUMENT_GLOBAL_STRUCTURAL_OWNER_INDUCTION\n{requestJson}\nReturn exactly the requested JSON object.", ResponseSchemaV3(), "a99_v6c_v3_opaque_handle_owner_induction_v1");
+                telemetry = result.Telemetry;
+                httpStatus = telemetry.HttpStatus;
+                providerCallId = telemetry.ProviderCallId;
+                rawHash = Sha256Text(result.Content);
+                await File.WriteAllTextAsync(Path.Combine(rawDir, $"{sequence:D3}.json"), result.Content, new UTF8Encoding(false));
+                try
+                {
+                    using var response = JsonDocument.Parse(result.Content);
+                    var validation = InspectV3Response(item.Request, response.RootElement);
+                    var deprojected = validation.Accepted ? DeprojectV3Response(item.Request, response.RootElement) : null;
+                    parsed = new { response = response.RootElement.Clone(), validation, deprojected };
+                    parsedHash = Sha256Text(JsonSerializer.Serialize(parsed, JsonOptions));
+                    await WriteAsync(Path.Combine(parsedDir, $"{sequence:D3}.json"), parsed);
+                    status = validation.Accepted ? "VALID" : "INVALID_VALIDATION";
+                    error = validation.Accepted ? null : validation.Errors.FirstOrDefault();
+                }
+                catch (JsonException ex)
+                {
+                    status = "INVALID_SCHEMA";
+                    error = ex.Message;
+                }
+            }
+            catch (Exception ex) when (ex is HttpRequestException or IOException or TimeoutException or ReasoningCompletionException or FormatException)
+            {
+                status = "PROVIDER_ERROR";
+                error = ex.GetType().Name + ":" + ex.Message;
+            }
+            stopwatch.Stop();
+            var completed = new
+            {
+                schemaVersion = "a99-v6c-v3-attempt-v1", attemptId, sequence, documentId = item.DocumentId, requestHash = item.RequestHash, handleMapSha256 = V3HandleMapSha256, status, httpStatus, providerCallId,
+                rawResponseSha256 = rawHash, parsedResponseSha256 = parsedHash, provider = Provider, model = Model, latencyMs = stopwatch.ElapsedMilliseconds,
+                reportedInputTokens = telemetry?.ReportedInputTokens, reportedReasoningTokens = telemetry?.ReportedReasoningTokens, reportedOutputTokens = telemetry?.ReportedOutputTokens,
+                finishReason = telemetry?.FinishReason, error, retryCount = 0, goldReadBeforeFreeze = false, v5cReadBeforeFreeze = false, v6aReadBeforeFreeze = false, v1Mutation = false, v2Mutation = false, handleMapMutation = false, response = parsed,
+            };
+            await WriteAsync(Path.Combine(attemptsDir, $"{sequence:D3}.completed.json"), completed);
+            completedAttempts.Add(completed);
+            await WriteAsync(Path.Combine(execution, "attempt-manifest.json"), new { schemaVersion = "a99-v6c-v3-attempt-manifest-v1", immutableAttemptRecords = true, expectedAttemptCount = ExpectedRequests, actualAttemptCount = completedAttempts.Count, actualModelCalls = model.ProviderCalls, actualProviderCalls = model.ProviderCalls, retryCount = 0, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, v2Mutation = false, handleMapMutation = false, handleMapSha256 = V3HandleMapSha256, attempts = completedAttempts });
+            Console.WriteLine($"V6C_V3_ATTEMPT={sequence}/{ExpectedRequests} DOCUMENT={item.DocumentId} STATUS={status} PROVIDER_CALLS={model.ProviderCalls}");
+        }
+        Require(completedAttempts.Count == ExpectedRequests && model.ProviderCalls == ExpectedRequests, "V6C_V3_PROVIDER_CALL_COUNT");
+        await WriteAsync(Path.Combine(execution, "prediction-freeze.json"), new { schemaVersion = "a99-v6c-v3-prediction-freeze-v1", status = "OWNER_PREDICTIONS_FROZEN_BEFORE_EVALUATION", scheduledRequests = ExpectedRequests, completedAttempts = completedAttempts.Count, modelCalls = model.ProviderCalls, providerCalls = model.ProviderCalls, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, handleMapSha256 = V3HandleMapSha256, v1Mutation = false, v2Mutation = false, handleMapMutation = false, rawResponsesPersistedBeforeParsing = true, requestMutation = false, promptSemanticChanges = false, retryCount = 0, attempts = completedAttempts });
+        await WriteAsync(Path.Combine(execution, "firewall.json"), new { schemaVersion = "a99-v6c-v3-execution-firewall-v1", status = "COMPLETE_OWNER_PREDICTION_FREEZE", scheduledRequests = ExpectedRequests, completedAttempts = completedAttempts.Count, modelCalls = model.ProviderCalls, providerCalls = model.ProviderCalls, goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, v2Mutation = false, handleMapMutation = false, pairLabelsRead = false, hierarchyRead = false, semanticNodeInduction = false, retries = 0, overwrite = false });
+        Console.WriteLine($"V6C_V3_STATUS=OWNER_PREDICTIONS_FROZEN REQUESTS={ExpectedRequests} MODEL_CALLS={model.ProviderCalls} PROVIDER_CALLS={model.ProviderCalls} GOLD_READ_COUNT=0 V5C_READ_COUNT=0 V6A_READ_COUNT=0 V1_MUTATION=false V2_MUTATION=false HANDLE_MAP_MUTATION=false");
+        return 0;
+    }
+
+    private static async Task<int> FinalizeV3Async(string root)
+    {
+        var preflight = Full(root, V3PreflightRelative);
+        var execution = Full(root, V3ExecutionRelative);
+        var frozen = LoadFrozenV3Requests(preflight);
+        using var manifest = JsonDocument.Parse(await File.ReadAllTextAsync(Path.Combine(execution, "attempt-manifest.json")));
+        Require(manifest.RootElement.GetProperty("actualAttemptCount").GetInt32() == ExpectedRequests && manifest.RootElement.GetProperty("actualModelCalls").GetInt32() == ExpectedRequests && manifest.RootElement.GetProperty("actualProviderCalls").GetInt32() == ExpectedRequests && manifest.RootElement.GetProperty("retryCount").GetInt32() == 0 && manifest.RootElement.GetProperty("goldReadCount").GetInt32() == 0 && manifest.RootElement.GetProperty("v5cReadCount").GetInt32() == 0 && manifest.RootElement.GetProperty("v6aReadCount").GetInt32() == 0 && !manifest.RootElement.GetProperty("v1Mutation").GetBoolean() && !manifest.RootElement.GetProperty("v2Mutation").GetBoolean() && manifest.RootElement.GetProperty("handleMapMutation").GetBoolean() == false, "V6C_V3_FINALIZE_FIREWALL");
+        var attempts = manifest.RootElement.GetProperty("attempts").EnumerateArray().ToArray();
+        var valid = attempts.Count(x => x.GetProperty("status").GetString() == "VALID");
+        var invalid = attempts.Count(x => x.GetProperty("status").GetString() is "INVALID_VALIDATION" or "INVALID_SCHEMA");
+        var providerErrors = attempts.Count(x => x.GetProperty("status").GetString() == "PROVIDER_ERROR");
+        var assigned = 0;
+        var unresolved = 0;
+        var owners = 0;
+        var unknownU = 0;
+        var duplicateU = 0;
+        var missingU = 0;
+        var unknownE = 0;
+        var unknownOwner = 0;
+        var emptyOwners = 0;
+        var crossScopeOwners = 0;
+        var splitScopeGroups = 0;
+        var ownerSizes = new List<int>();
+        var diagnostics = new List<object>();
+        var byDocument = frozen.ToDictionary(x => x.DocumentId, StringComparer.Ordinal);
+        foreach (var attempt in attempts)
+        {
+            var sequence = attempt.GetProperty("sequence").GetInt32();
+            var documentId = attempt.GetProperty("documentId").GetString()!;
+            var validation = attempt.TryGetProperty("response", out var envelope) && envelope.ValueKind == JsonValueKind.Object && envelope.TryGetProperty("validation", out var v) ? v : default;
+            unknownU += validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("unknownOccurrenceHandleCount", out var uu) ? uu.GetInt32() : 0;
+            duplicateU += validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("duplicateAssignmentCount", out var du) ? du.GetInt32() : 0;
+            missingU += validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("missingAssignmentCount", out var mu) ? mu.GetInt32() : 0;
+            unknownE += validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("unknownEvidenceHandleCount", out var ue) ? ue.GetInt32() : 0;
+            unknownOwner += validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("unknownOwnerIdCount", out var uo) ? uo.GetInt32() : 0;
+            emptyOwners += validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("emptyOwnerCount", out var eo) ? eo.GetInt32() : 0;
+            var errors = validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("errors", out var es) ? es.EnumerateArray().Select(x => x.GetString()).ToArray() : Array.Empty<string?>();
+            diagnostics.Add(new { sequence, documentId, status = attempt.GetProperty("status").GetString(), errors, unknownOccurrenceHandles = validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("unknownOccurrenceHandleCount", out var x1) ? x1.GetInt32() : 0, duplicateUAssignments = validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("duplicateAssignmentCount", out var x2) ? x2.GetInt32() : 0, missingUAssignments = validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("missingAssignmentCount", out var x3) ? x3.GetInt32() : 0, unknownEvidenceHandles = validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("unknownEvidenceHandleCount", out var x4) ? x4.GetInt32() : 0, unknownOwnerIds = validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("unknownOwnerIdCount", out var x5) ? x5.GetInt32() : 0, emptyOwners = validation.ValueKind == JsonValueKind.Object && validation.TryGetProperty("emptyOwnerCount", out var x6) ? x6.GetInt32() : 0 });
+            if (attempt.GetProperty("status").GetString() != "VALID") continue;
+            var response = attempt.GetProperty("response").GetProperty("deprojected");
+            var assignmentRows = response.GetProperty("assignments").EnumerateArray().ToArray();
+            assigned += assignmentRows.Length;
+            unresolved += response.GetProperty("unresolvedOccurrenceIds").GetArrayLength();
+            var ownerIds = response.GetProperty("owners").EnumerateArray().Select(x => x.GetProperty("owner").GetString()!).ToHashSet(StringComparer.Ordinal);
+            owners += ownerIds.Count;
+            var memberGroups = assignmentRows.GroupBy(x => x.GetProperty("owner").GetString()!, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Select(y => y.GetProperty("occurrenceId").GetString()!).ToArray(), StringComparer.Ordinal);
+            foreach (var members in memberGroups.Values)
+            {
+                ownerSizes.Add(members.Length);
+                var scopeMap = byDocument[documentId].Request.GetProperty("occurrences").EnumerateArray().ToDictionary(x => x.GetProperty("sourceOccurrenceId").GetString()!, x => x.GetProperty("sourceContainerIdentity").GetString()!, StringComparer.Ordinal);
+                if (members.Select(id => scopeMap[id]).Distinct(StringComparer.Ordinal).Count() > 1) crossScopeOwners++;
+            }
+            foreach (var group in byDocument[documentId].Request.GetProperty("parserOwnedScopeGroups").EnumerateArray())
+            {
+                var refs = group.GetProperty("occurrenceRefs").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
+                var canonical = byDocument[documentId].Request.GetProperty("occurrences").EnumerateArray().Where(x => refs.Contains(x.GetProperty("ref").GetString()!, StringComparer.Ordinal)).Select(x => x.GetProperty("sourceOccurrenceId").GetString()!).ToHashSet(StringComparer.Ordinal);
+                if (assignmentRows.Where(x => canonical.Contains(x.GetProperty("occurrenceId").GetString()!)).Select(x => x.GetProperty("owner").GetString()!).Distinct(StringComparer.Ordinal).Count() > 1) splitScopeGroups++;
+            }
+        }
+        var summary = new
+        {
+            schemaVersion = "a99-v6c-v3-prediction-summary-v1", status = "OWNER_PREDICTIONS_FROZEN_BEFORE_EVALUATION", scheduledRequests = ExpectedRequests, completedAttempts = attempts.Length, validOwnerPredictions = valid, invalidValidationPredictions = invalid, providerErrors,
+            sourceOccurrenceDenominator = ExpectedOccurrences, assignedOccurrences = assigned, unresolvedOccurrences = unresolved, inducedOwnerCount = owners, ownerSizeDistribution = ownerSizes.OrderBy(x => x).ToArray(),
+            unknownOccurrenceHandles = unknownU, duplicateUAssignments = duplicateU, missingUAssignments = missingU, unknownEvidenceHandles = unknownE, unknownOwnerIds = unknownOwner, emptyOwners, crossParserScopeOwners = crossScopeOwners, splitParserScopeGroups = splitScopeGroups,
+            modelCalls = manifest.RootElement.GetProperty("actualModelCalls").GetInt32(), providerCalls = manifest.RootElement.GetProperty("actualProviderCalls").GetInt32(), goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, v2Mutation = false, handleMapMutation = false, promptSemanticChanges = false, retryCount = 0, diagnostics,
+        };
+        await WriteAsync(Path.Combine(execution, "prediction-summary.json"), summary);
+        await WriteAsync(Path.Combine(execution, "execution-final.json"), new { schemaVersion = "a99-v6c-v3-execution-final-v1", status = "OWNER_PREDICTION_FREEZE_COMPLETE", scheduledCalls = ExpectedRequests, completedAttempts = attempts.Length, validOwnerPredictions = valid, invalidValidationPredictions = invalid, providerErrors, modelCalls = manifest.RootElement.GetProperty("actualModelCalls").GetInt32(), providerCalls = manifest.RootElement.GetProperty("actualProviderCalls").GetInt32(), goldReadCount = 0, v5cReadCount = 0, v6aReadCount = 0, v1Mutation = false, v2Mutation = false, handleMapMutation = false, frozenBeforeEvaluation = true, retries = 0, completedUtc = DateTimeOffset.UtcNow });
+        Console.WriteLine($"V6C_V3_OFFLINE_SUMMARY_COMPLETE VALID={valid} INVALID={invalid} PROVIDER_ERRORS={providerErrors} MODEL_CALLS={manifest.RootElement.GetProperty("actualModelCalls").GetInt32()} PROVIDER_CALLS={manifest.RootElement.GetProperty("actualProviderCalls").GetInt32()} GOLD_READ_COUNT=0");
+        return 0;
+    }
+
     private static async Task<int> FinalizeV2Async(string root)
     {
         var preflight = Full(root, V2PreflightRelative);
@@ -474,6 +656,105 @@ internal static class Program
         }).OrderBy(x => x.DocumentId, StringComparer.Ordinal).ToArray();
         Require(items.Length == ExpectedRequests && items.Select(x => x.DocumentId).SequenceEqual(ExpectedDocuments, StringComparer.Ordinal) && items.Sum(x => x.OccurrenceCount) == ExpectedOccurrences, "V6C_V2_REQUEST_SET");
         return items;
+    }
+
+    private static IReadOnlyList<FrozenRequest> LoadFrozenV3Requests(string preflight)
+    {
+        Require(File.Exists(Path.Combine(preflight, "manifest.json")) && File.Exists(Path.Combine(preflight, "requests.json")) && File.Exists(Path.Combine(preflight, "handle-map.json")), "V6C_V3_PREFLIGHT_MISSING");
+        Require(Sha256File(Path.Combine(preflight, "handle-map.json")) == V3HandleMapSha256, "V6C_V3_HANDLE_MAP_FINGERPRINT_MISMATCH");
+        using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(preflight, "manifest.json")));
+        var root = manifest.RootElement;
+        Require(root.GetProperty("status").GetString() == "READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION" && root.GetProperty("supersedes").GetString() == "preflight-v2-addressable", "V6C_V3_PREFLIGHT_STATUS");
+        Require(root.GetProperty("requestCount").GetInt32() == ExpectedRequests && root.GetProperty("documentCount").GetInt32() == ExpectedRequests && root.GetProperty("occurrenceCount").GetInt32() == ExpectedOccurrences, "V6C_V3_PREFLIGHT_COUNTS");
+        Require(root.GetProperty("providerCalls").GetInt32() == 0 && root.GetProperty("goldReadCount").GetInt32() == 0 && root.GetProperty("v5cReadCount").GetInt32() == 0 && root.GetProperty("v6aReadCount").GetInt32() == 0 && root.GetProperty("semanticContractUnchanged").GetBoolean() && !root.GetProperty("duplicatedMembershipRepresentation").GetBoolean(), "V6C_V3_PREFLIGHT_FIREWALL");
+        using var requests = JsonDocument.Parse(File.ReadAllText(Path.Combine(preflight, "requests.json")));
+        var items = requests.RootElement.GetProperty("records").EnumerateArray().Select(x =>
+        {
+            var request = x.GetProperty("request").Clone();
+            var hash = x.GetProperty("requestHash").GetString()!;
+            Require(hash == Sha256Text(JsonSerializer.Serialize(request, JsonOptions)), "V6C_V3_REQUEST_HASH_MISMATCH");
+            Require(request.GetProperty("membershipRepresentation").GetString() == "ASSIGNMENTS_ONLY_DERIVE_MEMBERS" && request.GetProperty("addressabilityContract").GetString() == "OUTPUT_ONLY_OPAQUE_OCCURRENCE_AND_EVIDENCE_HANDLES", "V6C_V3_REQUEST_CONTRACT");
+            Require(request.GetProperty("allowedOccurrenceRefs").GetArrayLength() > 0 && request.GetProperty("allowedEvidenceRefs").GetArrayLength() > 0, "V6C_V3_HANDLE_UNIVERSE");
+            Require(!request.GetProperty("goldDerivedInput").GetBoolean() && !request.GetProperty("v5cEvaluationIncluded").GetBoolean() && !request.GetProperty("v6aDiagnosisIncluded").GetBoolean() && !request.GetProperty("semanticNodeRequested").GetBoolean() && !request.GetProperty("hierarchyRequested").GetBoolean(), "V6C_V3_REQUEST_FIREWALL");
+            return new FrozenRequest(request.GetProperty("documentId").GetString()!, hash, request, request.GetProperty("allowedOccurrenceRefs").GetArrayLength());
+        }).OrderBy(x => x.DocumentId, StringComparer.Ordinal).ToArray();
+        Require(items.Length == ExpectedRequests && items.Select(x => x.DocumentId).SequenceEqual(ExpectedDocuments, StringComparer.Ordinal) && items.Sum(x => x.OccurrenceCount) == ExpectedOccurrences, "V6C_V3_REQUEST_SET");
+        return items;
+    }
+
+    private static V3Validation InspectV3Response(JsonElement request, JsonElement response)
+    {
+        var errors = new List<string>();
+        if (response.ValueKind != JsonValueKind.Object) return new(false, 0, 0, 0, 0, 0, 0, 0, 0, 0, ["V6C_V3_RESPONSE_OBJECT_REQUIRED"]);
+        if (!response.TryGetProperty("owners", out var owners) || owners.ValueKind != JsonValueKind.Array || !response.TryGetProperty("assignments", out var assignments) || assignments.ValueKind != JsonValueKind.Array || !response.TryGetProperty("unresolvedRefs", out var unresolved) || unresolved.ValueKind != JsonValueKind.Array)
+            return new(false, 0, 0, 0, 0, 0, 0, 0, 0, 0, ["V6C_V3_REQUIRED_FIELDS"]);
+        var allowedU = request.GetProperty("allowedOccurrenceRefs").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
+        var allowedE = request.GetProperty("allowedEvidenceRefs").EnumerateArray().Select(x => x.GetString()!).ToHashSet(StringComparer.Ordinal);
+        var ownerIds = new HashSet<string>(StringComparer.Ordinal);
+        var unknownEvidence = 0;
+        var ownerCount = 0;
+        foreach (var owner in owners.EnumerateArray())
+        {
+            ownerCount++;
+            if (owner.ValueKind != JsonValueKind.Object || !owner.TryGetProperty("owner", out var ownerValue) || ownerValue.ValueKind != JsonValueKind.String || string.IsNullOrWhiteSpace(ownerValue.GetString())) { errors.Add("V6C_V3_EMPTY_OWNER"); continue; }
+            var ownerId = ownerValue.GetString()!;
+            if (!System.Text.RegularExpressions.Regex.IsMatch(ownerId, "^O[0-9]{2,3}$", System.Text.RegularExpressions.RegexOptions.CultureInvariant)) errors.Add("V6C_V3_OWNER_ID_FORMAT");
+            if (!ownerIds.Add(ownerId)) errors.Add("V6C_V3_DUPLICATE_OWNER_ID");
+            if (!owner.TryGetProperty("description", out var description) || description.ValueKind != JsonValueKind.String || string.IsNullOrWhiteSpace(description.GetString())) errors.Add("V6C_V3_OWNER_DESCRIPTION");
+            if (!owner.TryGetProperty("autonomous", out var autonomous) || autonomous.ValueKind is not (JsonValueKind.True or JsonValueKind.False)) errors.Add("V6C_V3_OWNER_AUTONOMOUS");
+            if (!owner.TryGetProperty("evidenceRefs", out var refs) || refs.ValueKind != JsonValueKind.Array) { errors.Add("V6C_V3_OWNER_EVIDENCE"); continue; }
+            foreach (var reference in refs.EnumerateArray()) if (reference.ValueKind != JsonValueKind.String || !allowedE.Contains(reference.GetString()!)) unknownEvidence++;
+            if (owner.TryGetProperty("memberOccurrenceIds", out _)) errors.Add("V6C_V3_DUPLICATED_MEMBERSHIP_FIELD");
+        }
+        var assignedRows = new List<(string Ref, string Owner)>();
+        var unknownU = 0;
+        var unknownOwner = 0;
+        foreach (var assignment in assignments.EnumerateArray())
+        {
+            if (assignment.ValueKind != JsonValueKind.Object || !assignment.TryGetProperty("ref", out var reference) || reference.ValueKind != JsonValueKind.String || !assignment.TryGetProperty("owner", out var owner) || owner.ValueKind != JsonValueKind.String) { errors.Add("V6C_V3_ASSIGNMENT_SHAPE"); continue; }
+            var referenceValue = reference.GetString()!;
+            var ownerValue = owner.GetString()!;
+            if (!allowedU.Contains(referenceValue)) unknownU++;
+            if (!ownerIds.Contains(ownerValue)) unknownOwner++;
+            assignedRows.Add((referenceValue, ownerValue));
+        }
+        var unresolvedRefs = new List<string>();
+        foreach (var reference in unresolved.EnumerateArray())
+        {
+            if (reference.ValueKind != JsonValueKind.String) { errors.Add("V6C_V3_UNRESOLVED_SHAPE"); continue; }
+            var referenceValue = reference.GetString()!;
+            if (!allowedU.Contains(referenceValue)) unknownU++;
+            unresolvedRefs.Add(referenceValue);
+        }
+        var duplicateAssignments = assignedRows.GroupBy(x => x.Ref, StringComparer.Ordinal).Count(x => x.Count() > 1);
+        var assigned = assignedRows.Select(x => x.Ref).ToHashSet(StringComparer.Ordinal);
+        var unresolvedSet = unresolvedRefs.ToHashSet(StringComparer.Ordinal);
+        var missing = allowedU.Except(assigned, StringComparer.Ordinal).Except(unresolvedSet, StringComparer.Ordinal).Count();
+        var overlap = assigned.Intersect(unresolvedSet, StringComparer.Ordinal).Count();
+        var assignedPerOwner = assignedRows.GroupBy(x => x.Owner, StringComparer.Ordinal).ToDictionary(x => x.Key, x => x.Count(), StringComparer.Ordinal);
+        var emptyOwners = ownerIds.Count(ownerId => !assignedPerOwner.ContainsKey(ownerId));
+        if (unknownU > 0) errors.Add("V6C_V3_UNKNOWN_OCCURRENCE_HANDLE");
+        if (duplicateAssignments > 0) errors.Add("V6C_V3_DUPLICATE_U_ASSIGNMENT");
+        if (missing > 0) errors.Add("V6C_V3_MISSING_U_ASSIGNMENT");
+        if (overlap > 0) errors.Add("V6C_V3_ASSIGNED_AND_UNRESOLVED");
+        if (unknownEvidence > 0) errors.Add("V6C_V3_UNKNOWN_EVIDENCE_HANDLE");
+        if (unknownOwner > 0) errors.Add("V6C_V3_UNKNOWN_OWNER_ID");
+        if (emptyOwners > 0) errors.Add("V6C_V3_EMPTY_OWNER");
+        return new(errors.Count == 0, assignedRows.Count, unresolvedSet.Count, ownerCount, unknownU, duplicateAssignments, missing, unknownEvidence, unknownOwner, emptyOwners, errors.Distinct(StringComparer.Ordinal).ToArray());
+    }
+
+    private static object DeprojectV3Response(JsonElement request, JsonElement response)
+    {
+        var occurrenceMap = request.GetProperty("occurrences").EnumerateArray().ToDictionary(x => x.GetProperty("ref").GetString()!, x => x.GetProperty("sourceOccurrenceId").GetString()!, StringComparer.Ordinal);
+        var evidenceMap = request.GetProperty("evidenceCatalog").EnumerateArray().ToDictionary(x => x.GetProperty("ref").GetString()!, x => x.GetProperty("sourceEvidenceId").GetString()!, StringComparer.Ordinal);
+        var owners = response.GetProperty("owners").EnumerateArray().Select(owner => new
+        {
+            owner = owner.GetProperty("owner").GetString(), description = owner.GetProperty("description").GetString(), autonomous = owner.GetProperty("autonomous").GetBoolean(),
+            evidenceRefs = owner.GetProperty("evidenceRefs").EnumerateArray().Select(x => evidenceMap[x.GetString()!]).ToArray(),
+        }).ToArray();
+        var assignments = response.GetProperty("assignments").EnumerateArray().Select(row => new { occurrenceId = occurrenceMap[row.GetProperty("ref").GetString()!], owner = row.GetProperty("owner").GetString() }).ToArray();
+        var unresolved = response.GetProperty("unresolvedRefs").EnumerateArray().Select(x => occurrenceMap[x.GetString()!]).ToArray();
+        return new { owners, assignments, unresolvedOccurrenceIds = unresolved };
     }
 
     private static OwnerDiagnostics DiagnoseOwnerResponse(JsonElement request, JsonElement response)
@@ -991,6 +1272,16 @@ internal static class Program
         },
     };
 
+    private static object ResponseSchemaV3() => new
+    {
+        type = "object", additionalProperties = false, required = new[] { "owners", "assignments", "unresolvedRefs" }, properties = new
+        {
+            owners = new { type = "array", items = new { type = "object", additionalProperties = false, required = new[] { "owner", "description", "autonomous", "evidenceRefs" }, properties = new { owner = new { type = "string", pattern = "^O[0-9]{2,3}$" }, description = new { type = "string", minLength = 1 }, autonomous = new { type = "boolean" }, evidenceRefs = new { type = "array", items = new { type = "string", pattern = "^E[0-9]{3}$" } } } } },
+            assignments = new { type = "array", items = new { type = "object", additionalProperties = false, required = new[] { "ref", "owner" }, properties = new { @ref = new { type = "string", pattern = "^U[0-9]{3}$" }, owner = new { type = "string", pattern = "^O[0-9]{2,3}$" } } } },
+            unresolvedRefs = new { type = "array", items = new { type = "string", pattern = "^U[0-9]{3}$" } },
+        },
+    };
+
     private const string SystemPrompt = """
 You are the A99 V6C document-global structural-owner induction reasoner. Infer autonomous
 organizational ownership from the supplied source-backed document evidence. An owner is a
@@ -1055,4 +1346,5 @@ incomplete response. Return exactly the requested JSON object.
     private sealed record FrozenRequest(string DocumentId, string RequestHash, JsonElement Request, int OccurrenceCount);
     private sealed record OwnerValidation(bool Accepted, int AssignedOccurrences, int UnresolvedOccurrences, int OwnerCount);
     private sealed record OwnerDiagnostics(int BadMemberCount, int BadEvidenceCount, int DuplicateAssignmentCount, int MissingCoverageCount, string PrimaryFailure);
+    private sealed record V3Validation(bool Accepted, int AssignedOccurrences, int UnresolvedOccurrences, int OwnerCount, int UnknownOccurrenceHandleCount, int DuplicateAssignmentCount, int MissingAssignmentCount, int UnknownEvidenceHandleCount, int UnknownOwnerIdCount, int EmptyOwnerCount, IReadOnlyList<string> Errors);
 }
