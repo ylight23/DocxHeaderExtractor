@@ -1,0 +1,6579 @@
+{
+  "schemaVersion": "a99-v8h1-full-within-document-pair-universe-v1",
+  "sourceOnly": true,
+  "semanticLabelsUsed": false,
+  "pairs": [
+    {
+      "pairId": "NEW-26BE9B284520:P0001",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B007",
+      "right": "NEW-26BE9B284520:B008",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0001:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0001:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            92
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0001:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0001:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0002",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B007",
+      "right": "NEW-26BE9B284520:B021",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0002:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 14
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0002:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            6
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0002:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0002:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0003",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B007",
+      "right": "NEW-26BE9B284520:B022",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0003:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 15
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0003:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            7
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0003:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0003:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0004",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B007",
+      "right": "NEW-26BE9B284520:B024",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0004:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 17
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0004:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            10
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0004:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0004:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0005",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B007",
+      "right": "NEW-26BE9B284520:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0005:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 24
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0005:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            13
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0005:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0005:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0006",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B007",
+      "right": "NEW-26BE9B284520:B032",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0006:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 25
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0006:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0006:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0006:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0007",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B008",
+      "right": "NEW-26BE9B284520:B021",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0007:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 13
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0007:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            6
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0007:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0007:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0008",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B008",
+      "right": "NEW-26BE9B284520:B022",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0008:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 14
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0008:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            7
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0008:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0008:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0009",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B008",
+      "right": "NEW-26BE9B284520:B024",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0009:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 16
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0009:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            10
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0009:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0009:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0010",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B008",
+      "right": "NEW-26BE9B284520:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0010:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 23
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0010:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            13
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0010:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0010:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0011",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B008",
+      "right": "NEW-26BE9B284520:B032",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0011:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 24
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0011:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            92,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0011:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0011:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0012",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B021",
+      "right": "NEW-26BE9B284520:B022",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0012:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0012:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            6,
+            7
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0012:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0012:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0013",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B021",
+      "right": "NEW-26BE9B284520:B024",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0013:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0013:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            6,
+            10
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0013:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0013:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0014",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B021",
+      "right": "NEW-26BE9B284520:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0014:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 10
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0014:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            6,
+            13
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0014:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0014:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0015",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B021",
+      "right": "NEW-26BE9B284520:B032",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0015:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 11
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0015:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            6,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0015:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0015:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0016",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B022",
+      "right": "NEW-26BE9B284520:B024",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0016:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0016:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            7,
+            10
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0016:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0016:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0017",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B022",
+      "right": "NEW-26BE9B284520:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0017:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 9
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0017:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            7,
+            13
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0017:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0017:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0018",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B022",
+      "right": "NEW-26BE9B284520:B032",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0018:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 10
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0018:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            7,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0018:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0018:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0019",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B024",
+      "right": "NEW-26BE9B284520:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0019:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 7
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0019:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            10,
+            13
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0019:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0019:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0020",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B024",
+      "right": "NEW-26BE9B284520:B032",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0020:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 8
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0020:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            10,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0020:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0020:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-26BE9B284520:P0021",
+      "documentId": "NEW-26BE9B284520",
+      "left": "NEW-26BE9B284520:B031",
+      "right": "NEW-26BE9B284520:B032",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0021:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0021:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            13,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0021:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-26BE9B284520:P0021:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0001",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B002",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0001:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0001:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            282
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0001:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0001:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0002",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B004",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0002:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0002:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            226
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0002:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0002:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0003",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B005",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0003:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 4
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0003:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            228
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0003:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0003:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0004",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B006",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0004:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 5
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0004:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            230
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0004:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0004:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0005",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B007",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0005:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 6
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0005:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            234
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0005:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0005:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0006",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B008",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0006:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 7
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0006:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            237
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0006:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0006:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0007",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B009",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0007:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 8
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0007:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            242
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0007:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0007:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0008",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B014",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0008:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 13
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0008:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            284
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0008:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0008:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0009",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B027",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0009:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 26
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0009:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            227
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0009:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0009:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0010",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0010:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 27
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0010:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            275
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0010:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0010:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0011",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0011:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 29
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0011:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0011:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0011:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0012",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0012:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 30
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0012:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0012:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0012:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0013",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0013:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 32
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0013:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0013:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0013:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0014",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0014:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 33
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0014:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0014:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0014:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0015",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0015:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 34
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0015:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0015:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0015:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0016",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0016:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 35
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0016:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0016:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0016:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0017",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0017:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 36
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0017:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0017:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0017:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0018",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B001",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0018:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 38
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0018:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            271,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0018:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0018:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0019",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B004",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0019:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0019:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            226
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0019:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0019:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0020",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B005",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0020:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0020:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            228
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0020:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0020:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0021",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B006",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0021:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 4
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0021:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            230
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0021:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0021:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0022",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B007",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0022:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 5
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0022:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            234
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0022:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0022:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0023",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B008",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0023:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 6
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0023:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            237
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0023:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0023:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0024",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B009",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0024:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 7
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0024:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            242
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0024:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0024:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0025",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B014",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0025:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 12
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0025:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            284
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0025:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0025:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0026",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B027",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0026:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 25
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0026:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            227
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0026:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0026:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0027",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0027:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 26
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0027:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            275
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0027:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0027:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0028",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0028:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 28
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0028:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0028:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0028:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0029",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0029:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 29
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0029:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0029:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0029:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0030",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0030:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 31
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0030:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0030:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0030:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0031",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0031:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 32
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0031:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0031:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0031:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0032",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0032:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 33
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0032:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0032:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0032:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0033",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0033:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 34
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0033:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0033:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0033:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0034",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0034:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 35
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0034:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0034:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0034:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0035",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B002",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0035:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 37
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0035:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            282,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0035:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0035:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0036",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B005",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0036:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0036:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            228
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0036:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0036:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0037",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B006",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0037:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0037:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            230
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0037:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0037:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0038",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B007",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0038:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0038:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            234
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0038:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0038:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0039",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B008",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0039:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 4
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0039:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            237
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0039:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0039:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0040",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B009",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0040:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 5
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0040:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            242
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0040:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0040:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0041",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B014",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0041:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 10
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0041:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            284
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0041:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0041:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0042",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B027",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0042:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 23
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0042:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            227
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0042:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0042:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0043",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0043:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 24
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0043:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            275
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0043:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0043:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0044",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0044:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 26
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0044:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0044:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0044:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0045",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0045:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 27
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0045:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0045:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0045:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0046",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0046:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 29
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0046:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0046:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0046:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0047",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0047:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 30
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0047:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0047:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0047:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0048",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0048:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 31
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0048:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0048:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0048:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0049",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0049:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 32
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0049:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0049:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0049:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0050",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0050:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 33
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0050:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0050:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0050:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0051",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B004",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0051:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 35
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0051:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            226,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0051:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0051:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0052",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B006",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0052:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0052:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            230
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0052:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0052:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0053",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B007",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0053:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0053:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            234
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0053:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0053:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0054",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B008",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0054:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0054:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            237
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0054:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0054:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0055",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B009",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0055:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 4
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0055:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            242
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0055:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0055:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0056",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B014",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0056:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 9
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0056:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            284
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0056:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0056:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0057",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B027",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0057:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 22
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0057:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            227
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0057:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0057:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0058",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0058:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 23
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0058:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            275
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0058:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0058:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0059",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0059:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 25
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0059:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0059:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0059:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0060",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0060:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 26
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0060:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0060:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0060:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0061",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0061:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 28
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0061:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0061:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0061:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0062",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0062:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 29
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0062:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0062:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0062:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0063",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0063:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 30
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0063:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0063:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0063:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0064",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0064:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 31
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0064:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0064:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0064:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0065",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0065:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 32
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0065:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0065:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0065:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0066",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B005",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0066:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 34
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0066:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            228,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0066:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0066:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0067",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B007",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0067:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0067:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            234
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0067:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0067:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0068",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B008",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0068:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0068:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            237
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0068:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0068:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0069",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B009",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0069:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0069:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            242
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0069:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0069:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0070",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B014",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0070:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 8
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0070:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            284
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0070:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0070:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0071",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B027",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0071:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 21
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0071:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            227
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0071:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0071:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0072",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0072:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 22
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0072:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            275
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0072:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0072:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0073",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0073:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 24
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0073:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0073:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0073:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0074",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0074:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 25
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0074:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0074:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0074:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0075",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0075:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 27
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0075:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0075:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0075:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0076",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0076:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 28
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0076:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0076:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0076:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0077",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0077:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 29
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0077:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0077:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0077:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0078",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0078:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 30
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0078:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0078:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0078:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0079",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0079:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 31
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0079:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0079:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0079:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0080",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B006",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0080:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 33
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0080:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            230,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0080:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0080:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0081",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B008",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0081:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0081:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            237
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0081:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0081:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0082",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B009",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0082:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0082:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            242
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0082:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0082:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0083",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B014",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0083:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 7
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0083:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            284
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0083:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0083:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0084",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B027",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0084:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 20
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0084:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            227
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0084:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0084:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0085",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0085:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 21
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0085:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            275
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0085:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0085:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0086",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0086:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 23
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0086:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0086:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0086:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0087",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0087:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 24
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0087:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0087:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0087:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0088",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0088:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 26
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0088:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0088:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0088:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0089",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0089:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 27
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0089:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0089:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0089:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0090",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0090:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 28
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0090:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0090:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0090:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0091",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0091:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 29
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0091:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0091:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0091:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0092",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0092:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 30
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0092:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0092:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0092:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0093",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B007",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0093:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 32
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0093:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            234,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0093:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0093:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0094",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B009",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0094:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0094:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            242
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0094:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0094:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0095",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B014",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0095:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 6
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0095:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            284
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0095:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0095:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0096",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B027",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0096:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 19
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0096:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            227
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0096:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0096:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0097",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0097:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 20
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0097:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            275
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0097:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0097:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0098",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0098:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 22
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0098:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0098:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0098:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0099",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0099:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 23
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0099:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0099:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0099:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0100",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0100:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 25
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0100:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0100:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0100:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0101",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0101:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 26
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0101:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0101:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0101:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0102",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0102:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 27
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0102:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0102:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0102:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0103",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0103:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 28
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0103:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0103:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0103:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0104",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0104:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 29
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0104:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0104:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0104:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0105",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B008",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0105:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 31
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0105:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            237,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0105:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0105:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0106",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B014",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0106:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 5
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0106:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            284
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0106:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0106:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0107",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B027",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0107:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 18
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0107:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            227
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0107:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0107:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0108",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0108:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 19
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0108:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            275
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0108:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0108:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0109",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0109:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 21
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0109:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0109:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0109:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0110",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0110:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 22
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0110:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0110:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0110:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0111",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0111:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 24
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0111:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0111:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0111:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0112",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0112:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 25
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0112:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0112:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0112:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0113",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0113:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 26
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0113:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0113:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0113:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0114",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0114:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 27
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0114:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0114:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0114:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0115",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0115:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 28
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0115:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0115:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0115:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0116",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B009",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0116:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 30
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0116:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            242,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0116:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0116:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0117",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B014",
+      "right": "NEW-6717CCA50787:B027",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0117:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 13
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0117:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            284,
+            227
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0117:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0117:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0118",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B014",
+      "right": "NEW-6717CCA50787:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0118:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 14
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0118:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            284,
+            275
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0118:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0118:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0119",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B014",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0119:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 16
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0119:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            284,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0119:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": true
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0119:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0120",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B014",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0120:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 17
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0120:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            284,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0120:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": true
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0120:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0121",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B014",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0121:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 19
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0121:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            284,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0121:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0121:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0122",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B014",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0122:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 20
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0122:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            284,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0122:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0122:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0123",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B014",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0123:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 21
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0123:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            284,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0123:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0123:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0124",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B014",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0124:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 22
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0124:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            284,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0124:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0124:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0125",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B014",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0125:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 23
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0125:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            284,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0125:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0125:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0126",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B014",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0126:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 25
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0126:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            284,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0126:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0126:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0127",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B027",
+      "right": "NEW-6717CCA50787:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0127:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0127:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            227,
+            275
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0127:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0127:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0128",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B027",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0128:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0128:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            227,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0128:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0128:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0129",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B027",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0129:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 4
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0129:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            227,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0129:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0129:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0130",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B027",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0130:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 6
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0130:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            227,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0130:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0130:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0131",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B027",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0131:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 7
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0131:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            227,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0131:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0131:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0132",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B027",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0132:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 8
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0132:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            227,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0132:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0132:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0133",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B027",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0133:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 9
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0133:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            227,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0133:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0133:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0134",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B027",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0134:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 10
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0134:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            227,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0134:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0134:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0135",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B027",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0135:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 12
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0135:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            227,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0135:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0135:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0136",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B028",
+      "right": "NEW-6717CCA50787:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0136:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0136:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            14
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0136:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0136:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0137",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B028",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0137:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0137:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0137:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0137:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0138",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B028",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0138:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 5
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0138:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0138:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0138:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0139",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B028",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0139:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 6
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0139:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0139:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0139:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0140",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B028",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0140:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 7
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0140:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0140:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0140:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0141",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B028",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0141:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 8
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0141:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0141:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0141:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0142",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B028",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0142:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 9
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0142:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0142:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0142:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0143",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B028",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0143:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 11
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0143:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0143:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0143:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0144",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B030",
+      "right": "NEW-6717CCA50787:B031",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0144:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0144:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            14,
+            19
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0144:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": true
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0144:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0145",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B030",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0145:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0145:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            14,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0145:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0145:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0146",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B030",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0146:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 4
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0146:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            14,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0146:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0146:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0147",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B030",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0147:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 5
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0147:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            14,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0147:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0147:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0148",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B030",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0148:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 6
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0148:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            14,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0148:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0148:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0149",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B030",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0149:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 7
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0149:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            14,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0149:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0149:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0150",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B030",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0150:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 9
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0150:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            14,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0150:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0150:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0151",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B031",
+      "right": "NEW-6717CCA50787:B033",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0151:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0151:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            19,
+            22
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0151:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0151:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0152",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B031",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0152:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0152:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            19,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0152:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0152:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0153",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B031",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0153:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 4
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0153:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            19,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0153:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0153:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0154",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B031",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0154:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 5
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0154:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            19,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0154:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0154:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0155",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B031",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0155:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 6
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0155:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            19,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0155:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0155:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0156",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B031",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0156:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 8
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0156:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            19,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0156:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0156:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0157",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B033",
+      "right": "NEW-6717CCA50787:B034",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0157:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0157:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            22,
+            24
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0157:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0157:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0158",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B033",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0158:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0158:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            22,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0158:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0158:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0159",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B033",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0159:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0159:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            22,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0159:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0159:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0160",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B033",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0160:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 4
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0160:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            22,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0160:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0160:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0161",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B033",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0161:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 6
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0161:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            22,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0161:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0161:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0162",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B034",
+      "right": "NEW-6717CCA50787:B035",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0162:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0162:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            24,
+            28
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0162:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0162:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0163",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B034",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0163:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0163:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            24,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0163:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0163:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0164",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B034",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0164:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0164:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            24,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0164:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0164:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0165",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B034",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0165:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 5
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0165:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            24,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0165:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0165:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0166",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B035",
+      "right": "NEW-6717CCA50787:B036",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0166:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0166:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            28,
+            29
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0166:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0166:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0167",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B035",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0167:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0167:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            28,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0167:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0167:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0168",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B035",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0168:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 4
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0168:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            28,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0168:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0168:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0169",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B036",
+      "right": "NEW-6717CCA50787:B037",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0169:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0169:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            29,
+            31
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0169:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0169:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0170",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B036",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0170:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0170:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            29,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0170:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0170:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-6717CCA50787:P0171",
+      "documentId": "NEW-6717CCA50787",
+      "left": "NEW-6717CCA50787:B037",
+      "right": "NEW-6717CCA50787:B039",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0171:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0171:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            31,
+            33
+          ]
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0171:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-6717CCA50787:P0171:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-C07DA5643BE9:P0001",
+      "documentId": "NEW-C07DA5643BE9",
+      "left": "NEW-C07DA5643BE9:B026",
+      "right": "NEW-C07DA5643BE9:B027",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0001:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0001:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            276
+          ]
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0001:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0001:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-C07DA5643BE9:P0002",
+      "documentId": "NEW-C07DA5643BE9",
+      "left": "NEW-C07DA5643BE9:B026",
+      "right": "NEW-C07DA5643BE9:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0002:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0002:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            277
+          ]
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0002:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0002:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-C07DA5643BE9:P0003",
+      "documentId": "NEW-C07DA5643BE9",
+      "left": "NEW-C07DA5643BE9:B026",
+      "right": "NEW-C07DA5643BE9:B029",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0003:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0003:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            277
+          ]
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0003:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0003:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-C07DA5643BE9:P0004",
+      "documentId": "NEW-C07DA5643BE9",
+      "left": "NEW-C07DA5643BE9:B026",
+      "right": "NEW-C07DA5643BE9:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0004:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 4
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0004:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            275,
+            278
+          ]
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0004:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0004:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-C07DA5643BE9:P0005",
+      "documentId": "NEW-C07DA5643BE9",
+      "left": "NEW-C07DA5643BE9:B027",
+      "right": "NEW-C07DA5643BE9:B028",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0005:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0005:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            276,
+            277
+          ]
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0005:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0005:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-C07DA5643BE9:P0006",
+      "documentId": "NEW-C07DA5643BE9",
+      "left": "NEW-C07DA5643BE9:B027",
+      "right": "NEW-C07DA5643BE9:B029",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0006:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0006:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            276,
+            277
+          ]
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0006:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0006:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-C07DA5643BE9:P0007",
+      "documentId": "NEW-C07DA5643BE9",
+      "left": "NEW-C07DA5643BE9:B027",
+      "right": "NEW-C07DA5643BE9:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0007:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0007:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            276,
+            278
+          ]
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0007:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0007:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-C07DA5643BE9:P0008",
+      "documentId": "NEW-C07DA5643BE9",
+      "left": "NEW-C07DA5643BE9:B028",
+      "right": "NEW-C07DA5643BE9:B029",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0008:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0008:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            277,
+            277
+          ]
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0008:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0008:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-C07DA5643BE9:P0009",
+      "documentId": "NEW-C07DA5643BE9",
+      "left": "NEW-C07DA5643BE9:B028",
+      "right": "NEW-C07DA5643BE9:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0009:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0009:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            277,
+            278
+          ]
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0009:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0009:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-C07DA5643BE9:P0010",
+      "documentId": "NEW-C07DA5643BE9",
+      "left": "NEW-C07DA5643BE9:B029",
+      "right": "NEW-C07DA5643BE9:B030",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0010:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0010:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            277,
+            278
+          ]
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0010:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-C07DA5643BE9:P0010:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-FDF9C2552AF0:P0001",
+      "documentId": "NEW-FDF9C2552AF0",
+      "left": "NEW-FDF9C2552AF0:B004",
+      "right": "NEW-FDF9C2552AF0:B005",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0001:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0001:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            1,
+            2
+          ]
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0001:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0001:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-FDF9C2552AF0:P0002",
+      "documentId": "NEW-FDF9C2552AF0",
+      "left": "NEW-FDF9C2552AF0:B004",
+      "right": "NEW-FDF9C2552AF0:B006",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0002:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0002:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            1,
+            4
+          ]
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0002:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0002:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-FDF9C2552AF0:P0003",
+      "documentId": "NEW-FDF9C2552AF0",
+      "left": "NEW-FDF9C2552AF0:B004",
+      "right": "NEW-FDF9C2552AF0:B007",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0003:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 3
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0003:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            1,
+            6
+          ]
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0003:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0003:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-FDF9C2552AF0:P0004",
+      "documentId": "NEW-FDF9C2552AF0",
+      "left": "NEW-FDF9C2552AF0:B004",
+      "right": "NEW-FDF9C2552AF0:B019",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0004:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 15
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0004:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            1,
+            10
+          ]
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0004:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0004:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-FDF9C2552AF0:P0005",
+      "documentId": "NEW-FDF9C2552AF0",
+      "left": "NEW-FDF9C2552AF0:B005",
+      "right": "NEW-FDF9C2552AF0:B006",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0005:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0005:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            2,
+            4
+          ]
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0005:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0005:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-FDF9C2552AF0:P0006",
+      "documentId": "NEW-FDF9C2552AF0",
+      "left": "NEW-FDF9C2552AF0:B005",
+      "right": "NEW-FDF9C2552AF0:B007",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0006:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 2
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0006:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            2,
+            6
+          ]
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0006:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0006:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-FDF9C2552AF0:P0007",
+      "documentId": "NEW-FDF9C2552AF0",
+      "left": "NEW-FDF9C2552AF0:B005",
+      "right": "NEW-FDF9C2552AF0:B019",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0007:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 14
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0007:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            2,
+            10
+          ]
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0007:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0007:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-FDF9C2552AF0:P0008",
+      "documentId": "NEW-FDF9C2552AF0",
+      "left": "NEW-FDF9C2552AF0:B006",
+      "right": "NEW-FDF9C2552AF0:B007",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0008:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 1
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0008:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            4,
+            6
+          ]
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0008:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0008:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-FDF9C2552AF0:P0009",
+      "documentId": "NEW-FDF9C2552AF0",
+      "left": "NEW-FDF9C2552AF0:B006",
+      "right": "NEW-FDF9C2552AF0:B019",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0009:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 13
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0009:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            4,
+            10
+          ]
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0009:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0009:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    },
+    {
+      "pairId": "NEW-FDF9C2552AF0:P0010",
+      "documentId": "NEW-FDF9C2552AF0",
+      "left": "NEW-FDF9C2552AF0:B007",
+      "right": "NEW-FDF9C2552AF0:B019",
+      "evidence": [
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0010:E001",
+          "kind": "DOCUMENT_ORDER_DISTANCE",
+          "value": 12
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0010:E002",
+          "kind": "PAGE_PROVENANCE",
+          "value": [
+            6,
+            10
+          ]
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0010:E003",
+          "kind": "NORMALIZED_SOURCE_TEXT_EQUALITY",
+          "value": false
+        },
+        {
+          "evidenceRef": "NEW-FDF9C2552AF0:P0010:E004",
+          "kind": "SOURCE_LINE_OVERLAP",
+          "value": false
+        }
+      ]
+    }
+  ]
+}
