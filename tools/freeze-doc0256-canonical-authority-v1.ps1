@@ -292,17 +292,17 @@ This freeze promotes the already-created source-backed chain after explicit user
 - Hierarchy authority before approval: source-backed hierarchy proposal
 - Final promotion: explicit user approval
 - Approved checkpoints: `54aadec → 9d6bba7 → 81965a3`
-- Freeze commit: `$FreezeCommit`
+- Freeze commit: $FreezeCommit
 
 ## Integrity
 
-- Source SHA-256: `$sourceSha256`
+- Source SHA-256: $sourceSha256
 - Hashed input artifacts: $($artifactHashes.Count)
 - Cross-layer counts: `24 = 24 = 24 = 24`
 - Graph validator: `PASS`
-- Derived levels reproduced exactly: `true`
+- Derived levels reproduced exactly: true
 - Historical compatibility diagnostics: not opened
-- Provider/model calls: `0`
+- Provider/model calls: 0
 
 The historical level must not be used to modify this canonical tree. Any later compatibility comparison is diagnostic only.
 "@
