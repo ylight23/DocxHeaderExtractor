@@ -1,0 +1,54 @@
+{
+  "artifactKind": "A99_USER_REVIEWED_CANONICAL_AUTHORITY_FREEZE_VALIDATION",
+  "schemaVersion": "a99-canonical-authority-freeze-v1-doc0256",
+  "documentId": "DOC-0256",
+  "status": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+  "checks": {
+    "sourceShaMatches": true,
+    "canonicalOccurrences": 24,
+    "occurrenceAssignments": 24,
+    "semanticNodes": 24,
+    "parentEdges": 24,
+    "primaryCount": 24,
+    "repeatCount": 0,
+    "continuationCount": 0,
+    "rootChildren": 7,
+    "maxDepth": 2,
+    "noCycles": true,
+    "noMultipleParents": true,
+    "noDanglingRefs": true,
+    "noUnreachableNodes": true,
+    "noUnknownOccurrenceRefs": true,
+    "treeMutation": false,
+    "derivedLevelsReproduceExactly": true,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "oldSemanticTotalUsed": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "occurrenceMutation": false,
+    "identityMutation": false,
+    "parentMutation": false,
+    "GoldMutationOutsideFreezeLane": false
+  },
+  "hashCount": 17,
+  "commitLineage": [
+    {
+      "commit": "54aadec",
+      "role": "canonical occurrence authority"
+    },
+    {
+      "commit": "9d6bba7",
+      "role": "canonical identity proposal"
+    },
+    {
+      "commit": "81965a3",
+      "role": "canonical hierarchy proposal"
+    },
+    {
+      "commit": "THIS_FREEZE_COMMIT",
+      "role": "user-approved authority freeze"
+    }
+  ],
+  "validator": "PASS"
+}
