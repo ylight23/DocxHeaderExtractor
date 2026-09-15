@@ -1,0 +1,845 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_ADJUDICATION_DECISIONS",
+  "schemaVersion": "a99-canonical-parent-hierarchy-v1",
+  "documentId": "DOC-0258",
+  "decisions": [
+    {
+      "headingOccurrenceRef": "H001",
+      "parentOccurrenceRef": "ROOT",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT"
+      ],
+      "sourceEvidence": [
+        "FIRST_DOCUMENT_HEADING",
+        "DOCUMENT_TITLE_FUNCTION",
+        "NO_PRIOR_SEMANTIC_NODE"
+      ],
+      "decisionBasis": "DOCUMENT_OR_ANNEX_ROOT_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H002",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TITLE_BRANCH_CONTEXT",
+        "SOURCE_ORDER_AFTER_DOCUMENT_TITLE"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H003",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H004",
+      "parentOccurrenceRef": "H003",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H003"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "REGIONAL_SUBSECTION_TEXT",
+        "IMMEDIATELY_WITHIN_REGIONAL_UPDATES_SECTION"
+      ],
+      "decisionBasis": "REGIONAL_SUBSECTION_PARENT",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H005",
+      "parentOccurrenceRef": "H003",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H003"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "REGIONAL_SUBSECTION_TEXT",
+        "IMMEDIATELY_WITHIN_REGIONAL_UPDATES_SECTION"
+      ],
+      "decisionBasis": "REGIONAL_SUBSECTION_PARENT",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H006",
+      "parentOccurrenceRef": "H003",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H003"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "REGIONAL_SUBSECTION_TEXT",
+        "IMMEDIATELY_WITHIN_REGIONAL_UPDATES_SECTION"
+      ],
+      "decisionBasis": "REGIONAL_SUBSECTION_PARENT",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H007",
+      "parentOccurrenceRef": "H003",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H003"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "REGIONAL_SUBSECTION_TEXT",
+        "IMMEDIATELY_WITHIN_REGIONAL_UPDATES_SECTION"
+      ],
+      "decisionBasis": "REGIONAL_SUBSECTION_PARENT",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H008",
+      "parentOccurrenceRef": "H003",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H003"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "REGIONAL_SUBSECTION_TEXT",
+        "IMMEDIATELY_WITHIN_REGIONAL_UPDATES_SECTION"
+      ],
+      "decisionBasis": "REGIONAL_SUBSECTION_PARENT",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H009",
+      "parentOccurrenceRef": "H003",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H003"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "REGIONAL_SUBSECTION_TEXT",
+        "IMMEDIATELY_WITHIN_REGIONAL_UPDATES_SECTION"
+      ],
+      "decisionBasis": "REGIONAL_SUBSECTION_PARENT",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H010",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H011",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H012",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H013",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H014",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H015",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H016",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H017",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H018",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H019",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H020",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H021",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H022",
+      "parentOccurrenceRef": "H001",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "NARRATIVE_BODY",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H001"
+      ],
+      "sourceEvidence": [
+        "NARRATIVE_BODY_SCOPE",
+        "TOP_LEVEL_SECTION_FUNCTION",
+        "TITLE_BRANCH_CONTEXT"
+      ],
+      "decisionBasis": "NARRATIVE_TOP_LEVEL_UNDER_TITLE_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H023",
+      "parentOccurrenceRef": "ROOT",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT"
+      ],
+      "sourceEvidence": [
+        "ANNEX_BOUNDARY",
+        "ANNEX_1_AGENDA_TITLE",
+        "NEW_STRUCTURAL_BRANCH"
+      ],
+      "decisionBasis": "DOCUMENT_OR_ANNEX_ROOT_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H024",
+      "parentOccurrenceRef": "H023",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H023"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_BOUNDARY",
+        "DAY_1_ROOT_WITHIN_AGENDA"
+      ],
+      "decisionBasis": "AGENDA_DAY_UNDER_ANNEX",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H025",
+      "parentOccurrenceRef": "H024",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H024"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_1_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H026",
+      "parentOccurrenceRef": "H024",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H024"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_1_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H027",
+      "parentOccurrenceRef": "H024",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H024"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_1_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H028",
+      "parentOccurrenceRef": "H023",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H023"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_BOUNDARY",
+        "DAY_2_ROOT_WITHIN_AGENDA"
+      ],
+      "decisionBasis": "AGENDA_DAY_UNDER_ANNEX",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H029",
+      "parentOccurrenceRef": "H028",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H028"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_2_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H030",
+      "parentOccurrenceRef": "H028",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H028"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_2_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H031",
+      "parentOccurrenceRef": "H028",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H028"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_2_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H032",
+      "parentOccurrenceRef": "H028",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H028"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_2_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H033",
+      "parentOccurrenceRef": "H028",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H028"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_2_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H034",
+      "parentOccurrenceRef": "H023",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H023"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_BOUNDARY",
+        "DAY_3_ROOT_WITHIN_AGENDA"
+      ],
+      "decisionBasis": "AGENDA_DAY_UNDER_ANNEX",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H035",
+      "parentOccurrenceRef": "H034",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H034"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_3_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H036",
+      "parentOccurrenceRef": "H034",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H034"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_3_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H037",
+      "parentOccurrenceRef": "H034",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H034"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_3_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H038",
+      "parentOccurrenceRef": "H023",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H023"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_BOUNDARY",
+        "DAY_4_ROOT_WITHIN_AGENDA"
+      ],
+      "decisionBasis": "AGENDA_DAY_UNDER_ANNEX",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H039",
+      "parentOccurrenceRef": "H038",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H038"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_4_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H040",
+      "parentOccurrenceRef": "H038",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H038"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_4_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H041",
+      "parentOccurrenceRef": "H038",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H038"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_4_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H042",
+      "parentOccurrenceRef": "H038",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H038"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_4_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H043",
+      "parentOccurrenceRef": "H038",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_1_AGENDA",
+      "candidateParentOccurrenceRefs": [
+        "ROOT",
+        "H038"
+      ],
+      "sourceEvidence": [
+        "ANNEX_1_AGENDA_SCOPE",
+        "DAY_4_CONTEXT",
+        "AGENDA_SESSION_ENTRY"
+      ],
+      "decisionBasis": "AGENDA_SESSION_UNDER_ACTIVE_DAY",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "headingOccurrenceRef": "H044",
+      "parentOccurrenceRef": "ROOT",
+      "decision": "PARENT_ASSIGNED",
+      "structuralOwner": "ANNEX_2_PARTICIPANTS",
+      "candidateParentOccurrenceRefs": [
+        "ROOT"
+      ],
+      "sourceEvidence": [
+        "ANNEX_BOUNDARY",
+        "ANNEX_2_PARTICIPANTS_TITLE",
+        "NEW_STRUCTURAL_BRANCH"
+      ],
+      "decisionBasis": "DOCUMENT_OR_ANNEX_ROOT_BRANCH",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    }
+  ],
+  "parentDecisionCount": 44,
+  "unresolvedCount": 0,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "oldSemanticTotalUsed": false
+}
