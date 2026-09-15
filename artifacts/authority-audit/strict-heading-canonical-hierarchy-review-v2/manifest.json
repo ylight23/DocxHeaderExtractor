@@ -1,0 +1,101 @@
+{
+  "auditKind": "A99_STRICT_HEADING_CANONICAL_HIERARCHY_REVIEW_V2",
+  "schemaVersion": "a99-strict-heading-canonical-hierarchy-review-v2-manifest",
+  "status": "READY_FOR_HUMAN_CANONICAL_HIERARCHY_REVIEW",
+  "authoritativePreflight": "e26f28e",
+  "contractAudit": "12136ab",
+  "headingAuthorityAudit": "c36bcbc",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "humanAdjudicationCount": 0,
+  "semanticNodeAssignments": 0,
+  "parentAssignments": 0,
+  "historicalLevelRead": false,
+  "goldMutation": false,
+  "documentCount": 9,
+  "occurrenceCount": 520,
+  "packetRegenerationDeterministic": true,
+  "packets": [
+    {
+      "documentId": "DOC-0001",
+      "packet": "packets/DOC-0001.canonical-hierarchy-review.v2.json",
+      "packetSha256": "aeb8709960d4371f5fe317208820e4017a14b0bfc93de18fbb6349cf73d3d65b",
+      "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "strictHeadingGoldSha256": "5ac30a82db551a8149ed777390eeca0dc6c6d0bafd9e82468dde32777808dfc8",
+      "occurrenceCount": 7,
+      "status": "PREPARED_FOR_REVIEW"
+    },
+    {
+      "documentId": "DOC-0116",
+      "packet": "packets/DOC-0116.canonical-hierarchy-review.v2.json",
+      "packetSha256": "6a454440967c2008d8d7dcace5d6ad33c2320aa4042ad79ffd46f7ceb1a91d26",
+      "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "strictHeadingGoldSha256": "9076c5f079a781d5c91923fe4e6bbb73108ae6a5bb47e1096a1d939023b9b6f5",
+      "occurrenceCount": 22,
+      "status": "PREPARED_FOR_REVIEW"
+    },
+    {
+      "documentId": "DOC-0122",
+      "packet": "packets/DOC-0122.canonical-hierarchy-review.v2.json",
+      "packetSha256": "e8a6b08ba6e5d22fbde664130a9c85848becc8b68830a6758ce6e0dbf5f835b1",
+      "sourceSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+      "strictHeadingGoldSha256": "b6169d95efd89ed534e6666694f6b3a7ecc1f2e4e67c6e1a8406ee9e729d7b69",
+      "occurrenceCount": 126,
+      "status": "PREPARED_FOR_REVIEW"
+    },
+    {
+      "documentId": "DOC-0205",
+      "packet": "packets/DOC-0205.canonical-hierarchy-review.v2.json",
+      "packetSha256": "fc5d46800c90bf52a388e215841f02568835cdd8110922950e3f232cc2d1ea08",
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "strictHeadingGoldSha256": "160c9cd3daeab79700b5411337fe6ecb666edbdbda61066d47372b5c3df10418",
+      "occurrenceCount": 71,
+      "status": "PREPARED_FOR_REVIEW"
+    },
+    {
+      "documentId": "DOC-0216",
+      "packet": "packets/DOC-0216.canonical-hierarchy-review.v2.json",
+      "packetSha256": "834edc16be1b63e9216047bd646ab19bbac5b8c4bfa2a65212deae78f58a54c0",
+      "sourceSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+      "strictHeadingGoldSha256": "347d57204be3e5a3bfeb6e26e97054ac33aab89252d11b92d84bb60b48bf14ce",
+      "occurrenceCount": 117,
+      "status": "PREPARED_FOR_REVIEW"
+    },
+    {
+      "documentId": "DOC-0243",
+      "packet": "packets/DOC-0243.canonical-hierarchy-review.v2.json",
+      "packetSha256": "f7943439892475411a80fb58bb5aecfa40eb51e86a03d493d8e29c35e6fd604a",
+      "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+      "strictHeadingGoldSha256": "df4808f0b03e550834f4b16a3c9085c550dae452881fbec0df1773277d3bfd38",
+      "occurrenceCount": 102,
+      "status": "PREPARED_FOR_REVIEW"
+    },
+    {
+      "documentId": "DOC-0252",
+      "packet": "packets/DOC-0252.canonical-hierarchy-review.v2.json",
+      "packetSha256": "f4e58fc7e7ef9fbe0d7089acbf035590178e0034cb6a547baf49aacb393cbd74",
+      "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+      "strictHeadingGoldSha256": "8dc3a2512ce73dbcc84e045a7f84b6d4996e782638949a68af0254946886e325",
+      "occurrenceCount": 27,
+      "status": "PREPARED_FOR_REVIEW"
+    },
+    {
+      "documentId": "DOC-0256",
+      "packet": "packets/DOC-0256.canonical-hierarchy-review.v2.json",
+      "packetSha256": "28c1e478b156cf84eec81f251fea8a480c51c653c00e8fcc0da5ac47b6320244",
+      "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+      "strictHeadingGoldSha256": "f12a4a407deddf9d6f1039510d8b2ee4965db091901e2e1b3e806b97344c92e2",
+      "occurrenceCount": 24,
+      "status": "PREPARED_FOR_REVIEW"
+    },
+    {
+      "documentId": "DOC-0258",
+      "packet": "packets/DOC-0258.canonical-hierarchy-review.v2.json",
+      "packetSha256": "374bbfd7cb020f9d1ece2f27976df5172042e4ad7171f15b77b8809519ead79c",
+      "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "strictHeadingGoldSha256": "4519e267a0f04e0f4a3486e53425058252b98de035631a50ebd4fd7751ddb61b",
+      "occurrenceCount": 24,
+      "status": "PREPARED_FOR_REVIEW"
+    }
+  ]
+}

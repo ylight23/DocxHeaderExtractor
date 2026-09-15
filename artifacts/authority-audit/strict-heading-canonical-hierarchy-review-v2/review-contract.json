@@ -1,0 +1,37 @@
+{
+  "contractKind": "A99_CANONICAL_SEMANTIC_NODE_HIERARCHY_REVIEW",
+  "schemaVersion": "a99-canonical-semantic-node-hierarchy-review-v2",
+  "status": "PREPARED_FOR_REVIEW",
+  "input": "source-backed true heading occurrences only",
+  "forbidden": [
+    "historical level",
+    "historical parent",
+    "model predictions",
+    "identity predictions",
+    "previous hierarchy predictions"
+  ],
+  "occurrenceAssignments": {
+    "headingOccurrenceRef": "H0001",
+    "semanticNodeRef": "N001",
+    "occurrenceRole": [
+      "PRIMARY",
+      "REPEAT",
+      "CONTINUATION"
+    ]
+  },
+  "semanticNodes": {
+    "semanticNodeRef": "N001",
+    "canonicalOccurrenceRef": "H0001"
+  },
+  "parentEdges": {
+    "childSemanticNodeRef": "N001",
+    "parentSemanticNodeRef": "N002 or ROOT",
+    "root": "ROOT is harness-owned synthetic root, not a heading node"
+  },
+  "levelPolicy": "reviewer never enters level; derive level from validated ROOT tree depth",
+  "emptyAdjudication": [
+    "occurrenceAssignments",
+    "semanticNodes",
+    "parentEdges"
+  ]
+}

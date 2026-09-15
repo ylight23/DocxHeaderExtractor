@@ -1,0 +1,142 @@
+{
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "occurrenceCount": 7,
+      "occurrenceRefsUnique": true,
+      "sourceTextCoverage": 1.0,
+      "sourceIdCoverage": 1.0,
+      "sourceContextFieldCoverage": 1.0,
+      "provenanceFieldCoverage": 1.0,
+      "historicalLevelPresent": false,
+      "adjudicatedAssignments": 0,
+      "adjudicatedParentEdges": 0
+    },
+    {
+      "documentId": "DOC-0116",
+      "occurrenceCount": 22,
+      "occurrenceRefsUnique": true,
+      "sourceTextCoverage": 1.0,
+      "sourceIdCoverage": 1.0,
+      "sourceContextFieldCoverage": 1.0,
+      "provenanceFieldCoverage": 1.0,
+      "historicalLevelPresent": false,
+      "adjudicatedAssignments": 0,
+      "adjudicatedParentEdges": 0
+    },
+    {
+      "documentId": "DOC-0122",
+      "occurrenceCount": 126,
+      "occurrenceRefsUnique": true,
+      "sourceTextCoverage": 1.0,
+      "sourceIdCoverage": 1.0,
+      "sourceContextFieldCoverage": 1.0,
+      "provenanceFieldCoverage": 1.0,
+      "historicalLevelPresent": false,
+      "adjudicatedAssignments": 0,
+      "adjudicatedParentEdges": 0
+    },
+    {
+      "documentId": "DOC-0205",
+      "occurrenceCount": 71,
+      "occurrenceRefsUnique": true,
+      "sourceTextCoverage": 1.0,
+      "sourceIdCoverage": 1.0,
+      "sourceContextFieldCoverage": 1.0,
+      "provenanceFieldCoverage": 1.0,
+      "historicalLevelPresent": false,
+      "adjudicatedAssignments": 0,
+      "adjudicatedParentEdges": 0
+    },
+    {
+      "documentId": "DOC-0216",
+      "occurrenceCount": 117,
+      "occurrenceRefsUnique": true,
+      "sourceTextCoverage": 1.0,
+      "sourceIdCoverage": 1.0,
+      "sourceContextFieldCoverage": 1.0,
+      "provenanceFieldCoverage": 1.0,
+      "historicalLevelPresent": false,
+      "adjudicatedAssignments": 0,
+      "adjudicatedParentEdges": 0
+    },
+    {
+      "documentId": "DOC-0243",
+      "occurrenceCount": 102,
+      "occurrenceRefsUnique": true,
+      "sourceTextCoverage": 1.0,
+      "sourceIdCoverage": 1.0,
+      "sourceContextFieldCoverage": 1.0,
+      "provenanceFieldCoverage": 1.0,
+      "historicalLevelPresent": false,
+      "adjudicatedAssignments": 0,
+      "adjudicatedParentEdges": 0
+    },
+    {
+      "documentId": "DOC-0252",
+      "occurrenceCount": 27,
+      "occurrenceRefsUnique": true,
+      "sourceTextCoverage": 1.0,
+      "sourceIdCoverage": 1.0,
+      "sourceContextFieldCoverage": 1.0,
+      "provenanceFieldCoverage": 1.0,
+      "historicalLevelPresent": false,
+      "adjudicatedAssignments": 0,
+      "adjudicatedParentEdges": 0
+    },
+    {
+      "documentId": "DOC-0256",
+      "occurrenceCount": 24,
+      "occurrenceRefsUnique": true,
+      "sourceTextCoverage": 1.0,
+      "sourceIdCoverage": 1.0,
+      "sourceContextFieldCoverage": 1.0,
+      "provenanceFieldCoverage": 1.0,
+      "historicalLevelPresent": false,
+      "adjudicatedAssignments": 0,
+      "adjudicatedParentEdges": 0
+    },
+    {
+      "documentId": "DOC-0258",
+      "occurrenceCount": 24,
+      "occurrenceRefsUnique": true,
+      "sourceTextCoverage": 1.0,
+      "sourceIdCoverage": 1.0,
+      "sourceContextFieldCoverage": 1.0,
+      "provenanceFieldCoverage": 1.0,
+      "historicalLevelPresent": false,
+      "adjudicatedAssignments": 0,
+      "adjudicatedParentEdges": 0
+    }
+  ],
+  "contextQA": [
+    {
+      "documentId": "DOC-0001",
+      "selectedForContextQA": true,
+      "sourceContextFieldsPresent": true,
+      "sourceTextAndIdentityPresent": true,
+      "semanticDecisionMade": false,
+      "result": "PASS_CONSTRUCTION_ONLY"
+    },
+    {
+      "documentId": "DOC-0205",
+      "selectedForContextQA": true,
+      "sourceContextFieldsPresent": true,
+      "sourceTextAndIdentityPresent": true,
+      "semanticDecisionMade": false,
+      "result": "PASS_CONSTRUCTION_ONLY"
+    },
+    {
+      "documentId": "DOC-0258",
+      "selectedForContextQA": true,
+      "sourceContextFieldsPresent": true,
+      "sourceTextAndIdentityPresent": true,
+      "semanticDecisionMade": false,
+      "result": "PASS_CONSTRUCTION_ONLY"
+    }
+  ],
+  "totalOccurrences": 520,
+  "historicalLevelRead": false,
+  "semanticNodeAssignments": 0,
+  "parentAssignments": 0
+}

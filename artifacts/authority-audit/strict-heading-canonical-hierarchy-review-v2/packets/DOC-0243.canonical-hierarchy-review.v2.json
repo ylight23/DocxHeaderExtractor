@@ -1,0 +1,4473 @@
+{
+  "artifactKind": "a99_strict_heading_canonical_hierarchy_review_packet",
+  "schemaVersion": "a99-strict-heading-canonical-hierarchy-review-v2",
+  "documentId": "DOC-0243",
+  "status": "PREPARED_FOR_REVIEW",
+  "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+  "strictHeadingGoldArtifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0243.strict-gold-v4.json",
+  "strictHeadingGoldSha256": "df4808f0b03e550834f4b16a3c9085c550dae452881fbec0df1773277d3bfd38",
+  "goldFirewall": {
+    "historicalLevelVisible": false,
+    "historicalParentVisible": false,
+    "modelPredictionsVisible": false,
+    "identityPredictionsVisible": false,
+    "hierarchyPredictionsVisible": false
+  },
+  "headingOccurrences": [
+    {
+      "reviewRef": "H0001",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[20]#key-line-5",
+      "sourceText": "Part I Linear algebra",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[20]",
+      "sourceSpan": null,
+      "sourceOrder": 1,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[24]#key-line-6",
+            "sourceId": "body[1]/p[24]",
+            "sourceText": "CHAPTER 1 Linear maps"
+          },
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[24]#key-line-7",
+            "sourceId": "body[1]/p[24]",
+            "sourceText": "1a. Spaces, vectors"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0002",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[24]#key-line-6",
+      "sourceText": "CHAPTER 1 Linear maps",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[24]",
+      "sourceSpan": null,
+      "sourceOrder": 2,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0001",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[20]#key-line-5",
+            "sourceId": "body[1]/p[20]",
+            "sourceText": "Part I Linear algebra"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[24]#key-line-7",
+            "sourceId": "body[1]/p[24]",
+            "sourceText": "1a. Spaces, vectors"
+          },
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[34]#key-line-8",
+            "sourceId": "body[1]/p[34]",
+            "sourceText": "1b. Linear maps"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0003",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[24]#key-line-7",
+      "sourceText": "1a. Spaces, vectors",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[24]",
+      "sourceSpan": null,
+      "sourceOrder": 3,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0001",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[20]#key-line-5",
+            "sourceId": "body[1]/p[20]",
+            "sourceText": "Part I Linear algebra"
+          },
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[24]#key-line-6",
+            "sourceId": "body[1]/p[24]",
+            "sourceText": "CHAPTER 1 Linear maps"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[34]#key-line-8",
+            "sourceId": "body[1]/p[34]",
+            "sourceText": "1b. Linear maps"
+          },
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[44]#key-line-9",
+            "sourceId": "body[1]/p[44]",
+            "sourceText": "1c. Geometry, analysis"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0004",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[34]#key-line-8",
+      "sourceText": "1b. Linear maps",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[34]",
+      "sourceSpan": null,
+      "sourceOrder": 4,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[24]#key-line-6",
+            "sourceId": "body[1]/p[24]",
+            "sourceText": "CHAPTER 1 Linear maps"
+          },
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[24]#key-line-7",
+            "sourceId": "body[1]/p[24]",
+            "sourceText": "1a. Spaces, vectors"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[44]#key-line-9",
+            "sourceId": "body[1]/p[44]",
+            "sourceText": "1c. Geometry, analysis"
+          },
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[56]#key-line-10",
+            "sourceId": "body[1]/p[56]",
+            "sourceText": "1d. Complex numbers"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0005",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[44]#key-line-9",
+      "sourceText": "1c. Geometry, analysis",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[44]",
+      "sourceSpan": null,
+      "sourceOrder": 5,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[24]#key-line-7",
+            "sourceId": "body[1]/p[24]",
+            "sourceText": "1a. Spaces, vectors"
+          },
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[34]#key-line-8",
+            "sourceId": "body[1]/p[34]",
+            "sourceText": "1b. Linear maps"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[56]#key-line-10",
+            "sourceId": "body[1]/p[56]",
+            "sourceText": "1d. Complex numbers"
+          },
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[66]#key-line-11",
+            "sourceId": "body[1]/p[66]",
+            "sourceText": "1e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0006",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[56]#key-line-10",
+      "sourceText": "1d. Complex numbers",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[56]",
+      "sourceSpan": null,
+      "sourceOrder": 6,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[34]#key-line-8",
+            "sourceId": "body[1]/p[34]",
+            "sourceText": "1b. Linear maps"
+          },
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[44]#key-line-9",
+            "sourceId": "body[1]/p[44]",
+            "sourceText": "1c. Geometry, analysis"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[66]#key-line-11",
+            "sourceId": "body[1]/p[66]",
+            "sourceText": "1e. Exercises"
+          },
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[68]#key-line-12",
+            "sourceId": "body[1]/p[68]",
+            "sourceText": "CHAPTER 2 Matrix theory"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0007",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[66]#key-line-11",
+      "sourceText": "1e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[66]",
+      "sourceSpan": null,
+      "sourceOrder": 7,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[44]#key-line-9",
+            "sourceId": "body[1]/p[44]",
+            "sourceText": "1c. Geometry, analysis"
+          },
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[56]#key-line-10",
+            "sourceId": "body[1]/p[56]",
+            "sourceText": "1d. Complex numbers"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[68]#key-line-12",
+            "sourceId": "body[1]/p[68]",
+            "sourceText": "CHAPTER 2 Matrix theory"
+          },
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[68]#key-line-13",
+            "sourceId": "body[1]/p[68]",
+            "sourceText": "2a. Matrix inversion"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0008",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[68]#key-line-12",
+      "sourceText": "CHAPTER 2 Matrix theory",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[68]",
+      "sourceSpan": null,
+      "sourceOrder": 8,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[56]#key-line-10",
+            "sourceId": "body[1]/p[56]",
+            "sourceText": "1d. Complex numbers"
+          },
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[66]#key-line-11",
+            "sourceId": "body[1]/p[66]",
+            "sourceText": "1e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[68]#key-line-13",
+            "sourceId": "body[1]/p[68]",
+            "sourceText": "2a. Matrix inversion"
+          },
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[80]#key-line-14",
+            "sourceId": "body[1]/p[80]",
+            "sourceText": "2b. The determinant"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0009",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[68]#key-line-13",
+      "sourceText": "2a. Matrix inversion",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[68]",
+      "sourceSpan": null,
+      "sourceOrder": 9,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[66]#key-line-11",
+            "sourceId": "body[1]/p[66]",
+            "sourceText": "1e. Exercises"
+          },
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[68]#key-line-12",
+            "sourceId": "body[1]/p[68]",
+            "sourceText": "CHAPTER 2 Matrix theory"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[80]#key-line-14",
+            "sourceId": "body[1]/p[80]",
+            "sourceText": "2b. The determinant"
+          },
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[96]#key-line-15",
+            "sourceId": "body[1]/p[96]",
+            "sourceText": "2c. Some applications"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0010",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[80]#key-line-14",
+      "sourceText": "2b. The determinant",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[80]",
+      "sourceSpan": null,
+      "sourceOrder": 10,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[68]#key-line-12",
+            "sourceId": "body[1]/p[68]",
+            "sourceText": "CHAPTER 2 Matrix theory"
+          },
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[68]#key-line-13",
+            "sourceId": "body[1]/p[68]",
+            "sourceText": "2a. Matrix inversion"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[96]#key-line-15",
+            "sourceId": "body[1]/p[96]",
+            "sourceText": "2c. Some applications"
+          },
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[106]#key-line-16",
+            "sourceId": "body[1]/p[106]",
+            "sourceText": "2d. Diagonalization"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0011",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[96]#key-line-15",
+      "sourceText": "2c. Some applications",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[96]",
+      "sourceSpan": null,
+      "sourceOrder": 11,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[68]#key-line-13",
+            "sourceId": "body[1]/p[68]",
+            "sourceText": "2a. Matrix inversion"
+          },
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[80]#key-line-14",
+            "sourceId": "body[1]/p[80]",
+            "sourceText": "2b. The determinant"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[106]#key-line-16",
+            "sourceId": "body[1]/p[106]",
+            "sourceText": "2d. Diagonalization"
+          },
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[114]#key-line-17",
+            "sourceId": "body[1]/p[114]",
+            "sourceText": "2e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0012",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[106]#key-line-16",
+      "sourceText": "2d. Diagonalization",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[106]",
+      "sourceSpan": null,
+      "sourceOrder": 12,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[80]#key-line-14",
+            "sourceId": "body[1]/p[80]",
+            "sourceText": "2b. The determinant"
+          },
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[96]#key-line-15",
+            "sourceId": "body[1]/p[96]",
+            "sourceText": "2c. Some applications"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[114]#key-line-17",
+            "sourceId": "body[1]/p[114]",
+            "sourceText": "2e. Exercises"
+          },
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[116]#key-line-18",
+            "sourceId": "body[1]/p[116]",
+            "sourceText": "CHAPTER 3 Spectral theorems"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0013",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[114]#key-line-17",
+      "sourceText": "2e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[114]",
+      "sourceSpan": null,
+      "sourceOrder": 13,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[96]#key-line-15",
+            "sourceId": "body[1]/p[96]",
+            "sourceText": "2c. Some applications"
+          },
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[106]#key-line-16",
+            "sourceId": "body[1]/p[106]",
+            "sourceText": "2d. Diagonalization"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[116]#key-line-18",
+            "sourceId": "body[1]/p[116]",
+            "sourceText": "CHAPTER 3 Spectral theorems"
+          },
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[116]#key-line-19",
+            "sourceId": "body[1]/p[116]",
+            "sourceText": "3a. Self-adjoints"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0014",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[116]#key-line-18",
+      "sourceText": "CHAPTER 3 Spectral theorems",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[116]",
+      "sourceSpan": null,
+      "sourceOrder": 14,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[106]#key-line-16",
+            "sourceId": "body[1]/p[106]",
+            "sourceText": "2d. Diagonalization"
+          },
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[114]#key-line-17",
+            "sourceId": "body[1]/p[114]",
+            "sourceText": "2e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[116]#key-line-19",
+            "sourceId": "body[1]/p[116]",
+            "sourceText": "3a. Self-adjoints"
+          },
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[130]#key-line-20",
+            "sourceId": "body[1]/p[130]",
+            "sourceText": "3b. Rotations, unitaries"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0015",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[116]#key-line-19",
+      "sourceText": "3a. Self-adjoints",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[116]",
+      "sourceSpan": null,
+      "sourceOrder": 15,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[114]#key-line-17",
+            "sourceId": "body[1]/p[114]",
+            "sourceText": "2e. Exercises"
+          },
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[116]#key-line-18",
+            "sourceId": "body[1]/p[116]",
+            "sourceText": "CHAPTER 3 Spectral theorems"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[130]#key-line-20",
+            "sourceId": "body[1]/p[130]",
+            "sourceText": "3b. Rotations, unitaries"
+          },
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[144]#key-line-21",
+            "sourceId": "body[1]/p[144]",
+            "sourceText": "3c. Normal matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0016",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[130]#key-line-20",
+      "sourceText": "3b. Rotations, unitaries",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[130]",
+      "sourceSpan": null,
+      "sourceOrder": 16,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[116]#key-line-18",
+            "sourceId": "body[1]/p[116]",
+            "sourceText": "CHAPTER 3 Spectral theorems"
+          },
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[116]#key-line-19",
+            "sourceId": "body[1]/p[116]",
+            "sourceText": "3a. Self-adjoints"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[144]#key-line-21",
+            "sourceId": "body[1]/p[144]",
+            "sourceText": "3c. Normal matrices"
+          },
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[150]#key-line-22",
+            "sourceId": "body[1]/p[150]",
+            "sourceText": "3d. Spectral measures"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0017",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[144]#key-line-21",
+      "sourceText": "3c. Normal matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[144]",
+      "sourceSpan": null,
+      "sourceOrder": 17,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[116]#key-line-19",
+            "sourceId": "body[1]/p[116]",
+            "sourceText": "3a. Self-adjoints"
+          },
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[130]#key-line-20",
+            "sourceId": "body[1]/p[130]",
+            "sourceText": "3b. Rotations, unitaries"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[150]#key-line-22",
+            "sourceId": "body[1]/p[150]",
+            "sourceText": "3d. Spectral measures"
+          },
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[162]#key-line-23",
+            "sourceId": "body[1]/p[162]",
+            "sourceText": "3e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0018",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[150]#key-line-22",
+      "sourceText": "3d. Spectral measures",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[150]",
+      "sourceSpan": null,
+      "sourceOrder": 18,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[130]#key-line-20",
+            "sourceId": "body[1]/p[130]",
+            "sourceText": "3b. Rotations, unitaries"
+          },
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[144]#key-line-21",
+            "sourceId": "body[1]/p[144]",
+            "sourceText": "3c. Normal matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[162]#key-line-23",
+            "sourceId": "body[1]/p[162]",
+            "sourceText": "3e. Exercises"
+          },
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[164]#key-line-24",
+            "sourceId": "body[1]/p[164]",
+            "sourceText": "CHAPTER 4 Polynomials, roots"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0019",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[162]#key-line-23",
+      "sourceText": "3e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[162]",
+      "sourceSpan": null,
+      "sourceOrder": 19,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[144]#key-line-21",
+            "sourceId": "body[1]/p[144]",
+            "sourceText": "3c. Normal matrices"
+          },
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[150]#key-line-22",
+            "sourceId": "body[1]/p[150]",
+            "sourceText": "3d. Spectral measures"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[164]#key-line-24",
+            "sourceId": "body[1]/p[164]",
+            "sourceText": "CHAPTER 4 Polynomials, roots"
+          },
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[164]#key-line-25",
+            "sourceId": "body[1]/p[164]",
+            "sourceText": "4a. Resultant"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0020",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[164]#key-line-24",
+      "sourceText": "CHAPTER 4 Polynomials, roots",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[164]",
+      "sourceSpan": null,
+      "sourceOrder": 20,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[150]#key-line-22",
+            "sourceId": "body[1]/p[150]",
+            "sourceText": "3d. Spectral measures"
+          },
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[162]#key-line-23",
+            "sourceId": "body[1]/p[162]",
+            "sourceText": "3e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[164]#key-line-25",
+            "sourceId": "body[1]/p[164]",
+            "sourceText": "4a. Resultant"
+          },
+          {
+            "reviewRef": "H0022",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[172]#key-line-26",
+            "sourceId": "body[1]/p[172]",
+            "sourceText": "4b. Discriminant"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0021",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[164]#key-line-25",
+      "sourceText": "4a. Resultant",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[164]",
+      "sourceSpan": null,
+      "sourceOrder": 21,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[162]#key-line-23",
+            "sourceId": "body[1]/p[162]",
+            "sourceText": "3e. Exercises"
+          },
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[164]#key-line-24",
+            "sourceId": "body[1]/p[164]",
+            "sourceText": "CHAPTER 4 Polynomials, roots"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0022",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[172]#key-line-26",
+            "sourceId": "body[1]/p[172]",
+            "sourceText": "4b. Discriminant"
+          },
+          {
+            "reviewRef": "H0023",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[188]#key-line-27",
+            "sourceId": "body[1]/p[188]",
+            "sourceText": "4c. Higher degree"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0022",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[172]#key-line-26",
+      "sourceText": "4b. Discriminant",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[172]",
+      "sourceSpan": null,
+      "sourceOrder": 22,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[164]#key-line-24",
+            "sourceId": "body[1]/p[164]",
+            "sourceText": "CHAPTER 4 Polynomials, roots"
+          },
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[164]#key-line-25",
+            "sourceId": "body[1]/p[164]",
+            "sourceText": "4a. Resultant"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0023",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[188]#key-line-27",
+            "sourceId": "body[1]/p[188]",
+            "sourceText": "4c. Higher degree"
+          },
+          {
+            "reviewRef": "H0024",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[204]#key-line-28",
+            "sourceId": "body[1]/p[204]",
+            "sourceText": "4d. Density results"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0023",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[188]#key-line-27",
+      "sourceText": "4c. Higher degree",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[188]",
+      "sourceSpan": null,
+      "sourceOrder": 23,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[164]#key-line-25",
+            "sourceId": "body[1]/p[164]",
+            "sourceText": "4a. Resultant"
+          },
+          {
+            "reviewRef": "H0022",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[172]#key-line-26",
+            "sourceId": "body[1]/p[172]",
+            "sourceText": "4b. Discriminant"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0024",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[204]#key-line-28",
+            "sourceId": "body[1]/p[204]",
+            "sourceText": "4d. Density results"
+          },
+          {
+            "reviewRef": "H0025",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[210]#key-line-29",
+            "sourceId": "body[1]/p[210]",
+            "sourceText": "4e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0024",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[204]#key-line-28",
+      "sourceText": "4d. Density results",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[204]",
+      "sourceSpan": null,
+      "sourceOrder": 24,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0022",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[172]#key-line-26",
+            "sourceId": "body[1]/p[172]",
+            "sourceText": "4b. Discriminant"
+          },
+          {
+            "reviewRef": "H0023",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[188]#key-line-27",
+            "sourceId": "body[1]/p[188]",
+            "sourceText": "4c. Higher degree"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0025",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[210]#key-line-29",
+            "sourceId": "body[1]/p[210]",
+            "sourceText": "4e. Exercises"
+          },
+          {
+            "reviewRef": "H0026",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[212]#key-line-30",
+            "sourceId": "body[1]/p[212]",
+            "sourceText": "Part II Advanced results"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0025",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[210]#key-line-29",
+      "sourceText": "4e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[210]",
+      "sourceSpan": null,
+      "sourceOrder": 25,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0023",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[188]#key-line-27",
+            "sourceId": "body[1]/p[188]",
+            "sourceText": "4c. Higher degree"
+          },
+          {
+            "reviewRef": "H0024",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[204]#key-line-28",
+            "sourceId": "body[1]/p[204]",
+            "sourceText": "4d. Density results"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0026",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[212]#key-line-30",
+            "sourceId": "body[1]/p[212]",
+            "sourceText": "Part II Advanced results"
+          },
+          {
+            "reviewRef": "H0027",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[216]#key-line-31",
+            "sourceId": "body[1]/p[216]",
+            "sourceText": "CHAPTER 5 Jordan form"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0026",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[212]#key-line-30",
+      "sourceText": "Part II Advanced results",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[212]",
+      "sourceSpan": null,
+      "sourceOrder": 26,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0024",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[204]#key-line-28",
+            "sourceId": "body[1]/p[204]",
+            "sourceText": "4d. Density results"
+          },
+          {
+            "reviewRef": "H0025",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[210]#key-line-29",
+            "sourceId": "body[1]/p[210]",
+            "sourceText": "4e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0027",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[216]#key-line-31",
+            "sourceId": "body[1]/p[216]",
+            "sourceText": "CHAPTER 5 Jordan form"
+          },
+          {
+            "reviewRef": "H0028",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[216]#key-line-32",
+            "sourceId": "body[1]/p[216]",
+            "sourceText": "5a. Linear equations"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0027",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[216]#key-line-31",
+      "sourceText": "CHAPTER 5 Jordan form",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[216]",
+      "sourceSpan": null,
+      "sourceOrder": 27,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0025",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[210]#key-line-29",
+            "sourceId": "body[1]/p[210]",
+            "sourceText": "4e. Exercises"
+          },
+          {
+            "reviewRef": "H0026",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[212]#key-line-30",
+            "sourceId": "body[1]/p[212]",
+            "sourceText": "Part II Advanced results"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0028",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[216]#key-line-32",
+            "sourceId": "body[1]/p[216]",
+            "sourceText": "5a. Linear equations"
+          },
+          {
+            "reviewRef": "H0029",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[224]#key-line-33",
+            "sourceId": "body[1]/p[224]",
+            "sourceText": "5b. Matrix exponential"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0028",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[216]#key-line-32",
+      "sourceText": "5a. Linear equations",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[216]",
+      "sourceSpan": null,
+      "sourceOrder": 28,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0026",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[212]#key-line-30",
+            "sourceId": "body[1]/p[212]",
+            "sourceText": "Part II Advanced results"
+          },
+          {
+            "reviewRef": "H0027",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[216]#key-line-31",
+            "sourceId": "body[1]/p[216]",
+            "sourceText": "CHAPTER 5 Jordan form"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0029",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[224]#key-line-33",
+            "sourceId": "body[1]/p[224]",
+            "sourceText": "5b. Matrix exponential"
+          },
+          {
+            "reviewRef": "H0030",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[240]#key-line-34",
+            "sourceId": "body[1]/p[240]",
+            "sourceText": "5c. The Jordan form"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0029",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[224]#key-line-33",
+      "sourceText": "5b. Matrix exponential",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[224]",
+      "sourceSpan": null,
+      "sourceOrder": 29,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0027",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[216]#key-line-31",
+            "sourceId": "body[1]/p[216]",
+            "sourceText": "CHAPTER 5 Jordan form"
+          },
+          {
+            "reviewRef": "H0028",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[216]#key-line-32",
+            "sourceId": "body[1]/p[216]",
+            "sourceText": "5a. Linear equations"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0030",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[240]#key-line-34",
+            "sourceId": "body[1]/p[240]",
+            "sourceText": "5c. The Jordan form"
+          },
+          {
+            "reviewRef": "H0031",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[252]#key-line-35",
+            "sourceId": "body[1]/p[252]",
+            "sourceText": "5d. Basic applications"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0030",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[240]#key-line-34",
+      "sourceText": "5c. The Jordan form",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[240]",
+      "sourceSpan": null,
+      "sourceOrder": 30,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0028",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[216]#key-line-32",
+            "sourceId": "body[1]/p[216]",
+            "sourceText": "5a. Linear equations"
+          },
+          {
+            "reviewRef": "H0029",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[224]#key-line-33",
+            "sourceId": "body[1]/p[224]",
+            "sourceText": "5b. Matrix exponential"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0031",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[252]#key-line-35",
+            "sourceId": "body[1]/p[252]",
+            "sourceText": "5d. Basic applications"
+          },
+          {
+            "reviewRef": "H0032",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[258]#key-line-36",
+            "sourceId": "body[1]/p[258]",
+            "sourceText": "5e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0031",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[252]#key-line-35",
+      "sourceText": "5d. Basic applications",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[252]",
+      "sourceSpan": null,
+      "sourceOrder": 31,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0029",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[224]#key-line-33",
+            "sourceId": "body[1]/p[224]",
+            "sourceText": "5b. Matrix exponential"
+          },
+          {
+            "reviewRef": "H0030",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[240]#key-line-34",
+            "sourceId": "body[1]/p[240]",
+            "sourceText": "5c. The Jordan form"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0032",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[258]#key-line-36",
+            "sourceId": "body[1]/p[258]",
+            "sourceText": "5e. Exercises"
+          },
+          {
+            "reviewRef": "H0033",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[260]#key-line-37",
+            "sourceId": "body[1]/p[260]",
+            "sourceText": "CHAPTER 6 Singular values"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0032",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[258]#key-line-36",
+      "sourceText": "5e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[258]",
+      "sourceSpan": null,
+      "sourceOrder": 32,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0030",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[240]#key-line-34",
+            "sourceId": "body[1]/p[240]",
+            "sourceText": "5c. The Jordan form"
+          },
+          {
+            "reviewRef": "H0031",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[252]#key-line-35",
+            "sourceId": "body[1]/p[252]",
+            "sourceText": "5d. Basic applications"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0033",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[260]#key-line-37",
+            "sourceId": "body[1]/p[260]",
+            "sourceText": "CHAPTER 6 Singular values"
+          },
+          {
+            "reviewRef": "H0034",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[260]#key-line-38",
+            "sourceId": "body[1]/p[260]",
+            "sourceText": "6a. Singular values"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0033",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[260]#key-line-37",
+      "sourceText": "CHAPTER 6 Singular values",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[260]",
+      "sourceSpan": null,
+      "sourceOrder": 33,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0031",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[252]#key-line-35",
+            "sourceId": "body[1]/p[252]",
+            "sourceText": "5d. Basic applications"
+          },
+          {
+            "reviewRef": "H0032",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[258]#key-line-36",
+            "sourceId": "body[1]/p[258]",
+            "sourceText": "5e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0034",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[260]#key-line-38",
+            "sourceId": "body[1]/p[260]",
+            "sourceText": "6a. Singular values"
+          },
+          {
+            "reviewRef": "H0035",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[270]#key-line-39",
+            "sourceId": "body[1]/p[270]",
+            "sourceText": "6b. Functional calculus"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0034",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[260]#key-line-38",
+      "sourceText": "6a. Singular values",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[260]",
+      "sourceSpan": null,
+      "sourceOrder": 34,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0032",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[258]#key-line-36",
+            "sourceId": "body[1]/p[258]",
+            "sourceText": "5e. Exercises"
+          },
+          {
+            "reviewRef": "H0033",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[260]#key-line-37",
+            "sourceId": "body[1]/p[260]",
+            "sourceText": "CHAPTER 6 Singular values"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0035",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[270]#key-line-39",
+            "sourceId": "body[1]/p[270]",
+            "sourceText": "6b. Functional calculus"
+          },
+          {
+            "reviewRef": "H0036",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[286]#key-line-40",
+            "sourceId": "body[1]/p[286]",
+            "sourceText": "6c. Complex functions"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0035",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[270]#key-line-39",
+      "sourceText": "6b. Functional calculus",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[270]",
+      "sourceSpan": null,
+      "sourceOrder": 35,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0033",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[260]#key-line-37",
+            "sourceId": "body[1]/p[260]",
+            "sourceText": "CHAPTER 6 Singular values"
+          },
+          {
+            "reviewRef": "H0034",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[260]#key-line-38",
+            "sourceId": "body[1]/p[260]",
+            "sourceText": "6a. Singular values"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0036",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[286]#key-line-40",
+            "sourceId": "body[1]/p[286]",
+            "sourceText": "6c. Complex functions"
+          },
+          {
+            "reviewRef": "H0037",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[298]#key-line-41",
+            "sourceId": "body[1]/p[298]",
+            "sourceText": "6d. Normal matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0036",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[286]#key-line-40",
+      "sourceText": "6c. Complex functions",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[286]",
+      "sourceSpan": null,
+      "sourceOrder": 36,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0034",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[260]#key-line-38",
+            "sourceId": "body[1]/p[260]",
+            "sourceText": "6a. Singular values"
+          },
+          {
+            "reviewRef": "H0035",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[270]#key-line-39",
+            "sourceId": "body[1]/p[270]",
+            "sourceText": "6b. Functional calculus"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0037",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[298]#key-line-41",
+            "sourceId": "body[1]/p[298]",
+            "sourceText": "6d. Normal matrices"
+          },
+          {
+            "reviewRef": "H0038",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[306]#key-line-42",
+            "sourceId": "body[1]/p[306]",
+            "sourceText": "6e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0037",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[298]#key-line-41",
+      "sourceText": "6d. Normal matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[298]",
+      "sourceSpan": null,
+      "sourceOrder": 37,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0035",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[270]#key-line-39",
+            "sourceId": "body[1]/p[270]",
+            "sourceText": "6b. Functional calculus"
+          },
+          {
+            "reviewRef": "H0036",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[286]#key-line-40",
+            "sourceId": "body[1]/p[286]",
+            "sourceText": "6c. Complex functions"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0038",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[306]#key-line-42",
+            "sourceId": "body[1]/p[306]",
+            "sourceText": "6e. Exercises"
+          },
+          {
+            "reviewRef": "H0039",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[308]#key-line-43",
+            "sourceId": "body[1]/p[308]",
+            "sourceText": "CHAPTER 7 Dynamical systems"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0038",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[306]#key-line-42",
+      "sourceText": "6e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[306]",
+      "sourceSpan": null,
+      "sourceOrder": 38,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0036",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[286]#key-line-40",
+            "sourceId": "body[1]/p[286]",
+            "sourceText": "6c. Complex functions"
+          },
+          {
+            "reviewRef": "H0037",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[298]#key-line-41",
+            "sourceId": "body[1]/p[298]",
+            "sourceText": "6d. Normal matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0039",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[308]#key-line-43",
+            "sourceId": "body[1]/p[308]",
+            "sourceText": "CHAPTER 7 Dynamical systems"
+          },
+          {
+            "reviewRef": "H0040",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[308]#key-line-44",
+            "sourceId": "body[1]/p[308]",
+            "sourceText": "7a. Differential equations"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0039",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[308]#key-line-43",
+      "sourceText": "CHAPTER 7 Dynamical systems",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[308]",
+      "sourceSpan": null,
+      "sourceOrder": 39,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0037",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[298]#key-line-41",
+            "sourceId": "body[1]/p[298]",
+            "sourceText": "6d. Normal matrices"
+          },
+          {
+            "reviewRef": "H0038",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[306]#key-line-42",
+            "sourceId": "body[1]/p[306]",
+            "sourceText": "6e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0040",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[308]#key-line-44",
+            "sourceId": "body[1]/p[308]",
+            "sourceText": "7a. Differential equations"
+          },
+          {
+            "reviewRef": "H0041",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[316]#key-line-45",
+            "sourceId": "body[1]/p[316]",
+            "sourceText": "7b. Functional analysis"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0040",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[308]#key-line-44",
+      "sourceText": "7a. Differential equations",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[308]",
+      "sourceSpan": null,
+      "sourceOrder": 40,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0038",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[306]#key-line-42",
+            "sourceId": "body[1]/p[306]",
+            "sourceText": "6e. Exercises"
+          },
+          {
+            "reviewRef": "H0039",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[308]#key-line-43",
+            "sourceId": "body[1]/p[308]",
+            "sourceText": "CHAPTER 7 Dynamical systems"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0041",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[316]#key-line-45",
+            "sourceId": "body[1]/p[316]",
+            "sourceText": "7b. Functional analysis"
+          },
+          {
+            "reviewRef": "H0042",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[330]#key-line-46",
+            "sourceId": "body[1]/p[330]",
+            "sourceText": "7c. Existence, uniqueness"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0041",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[316]#key-line-45",
+      "sourceText": "7b. Functional analysis",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[316]",
+      "sourceSpan": null,
+      "sourceOrder": 41,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0039",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[308]#key-line-43",
+            "sourceId": "body[1]/p[308]",
+            "sourceText": "CHAPTER 7 Dynamical systems"
+          },
+          {
+            "reviewRef": "H0040",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[308]#key-line-44",
+            "sourceId": "body[1]/p[308]",
+            "sourceText": "7a. Differential equations"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0042",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[330]#key-line-46",
+            "sourceId": "body[1]/p[330]",
+            "sourceText": "7c. Existence, uniqueness"
+          },
+          {
+            "reviewRef": "H0043",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[348]#key-line-47",
+            "sourceId": "body[1]/p[348]",
+            "sourceText": "7d. Dynamical systems"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0042",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[330]#key-line-46",
+      "sourceText": "7c. Existence, uniqueness",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[330]",
+      "sourceSpan": null,
+      "sourceOrder": 42,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0040",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[308]#key-line-44",
+            "sourceId": "body[1]/p[308]",
+            "sourceText": "7a. Differential equations"
+          },
+          {
+            "reviewRef": "H0041",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[316]#key-line-45",
+            "sourceId": "body[1]/p[316]",
+            "sourceText": "7b. Functional analysis"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0043",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[348]#key-line-47",
+            "sourceId": "body[1]/p[348]",
+            "sourceText": "7d. Dynamical systems"
+          },
+          {
+            "reviewRef": "H0044",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[354]#key-line-48",
+            "sourceId": "body[1]/p[354]",
+            "sourceText": "7e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0043",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[348]#key-line-47",
+      "sourceText": "7d. Dynamical systems",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[348]",
+      "sourceSpan": null,
+      "sourceOrder": 43,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0041",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[316]#key-line-45",
+            "sourceId": "body[1]/p[316]",
+            "sourceText": "7b. Functional analysis"
+          },
+          {
+            "reviewRef": "H0042",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[330]#key-line-46",
+            "sourceId": "body[1]/p[330]",
+            "sourceText": "7c. Existence, uniqueness"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0044",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[354]#key-line-48",
+            "sourceId": "body[1]/p[354]",
+            "sourceText": "7e. Exercises"
+          },
+          {
+            "reviewRef": "H0045",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[356]#key-line-49",
+            "sourceId": "body[1]/p[356]",
+            "sourceText": "CHAPTER 8 Infinite matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0044",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[354]#key-line-48",
+      "sourceText": "7e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[354]",
+      "sourceSpan": null,
+      "sourceOrder": 44,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0042",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[330]#key-line-46",
+            "sourceId": "body[1]/p[330]",
+            "sourceText": "7c. Existence, uniqueness"
+          },
+          {
+            "reviewRef": "H0043",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[348]#key-line-47",
+            "sourceId": "body[1]/p[348]",
+            "sourceText": "7d. Dynamical systems"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0045",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[356]#key-line-49",
+            "sourceId": "body[1]/p[356]",
+            "sourceText": "CHAPTER 8 Infinite matrices"
+          },
+          {
+            "reviewRef": "H0046",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[356]#key-line-50",
+            "sourceId": "body[1]/p[356]",
+            "sourceText": "8a. Infinite matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0045",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[356]#key-line-49",
+      "sourceText": "CHAPTER 8 Infinite matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[356]",
+      "sourceSpan": null,
+      "sourceOrder": 45,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0043",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[348]#key-line-47",
+            "sourceId": "body[1]/p[348]",
+            "sourceText": "7d. Dynamical systems"
+          },
+          {
+            "reviewRef": "H0044",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[354]#key-line-48",
+            "sourceId": "body[1]/p[354]",
+            "sourceText": "7e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0046",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[356]#key-line-50",
+            "sourceId": "body[1]/p[356]",
+            "sourceText": "8a. Infinite matrices"
+          },
+          {
+            "reviewRef": "H0047",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[366]#key-line-51",
+            "sourceId": "body[1]/p[366]",
+            "sourceText": "8b. Spectral radius"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0046",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[356]#key-line-50",
+      "sourceText": "8a. Infinite matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[356]",
+      "sourceSpan": null,
+      "sourceOrder": 46,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0044",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[354]#key-line-48",
+            "sourceId": "body[1]/p[354]",
+            "sourceText": "7e. Exercises"
+          },
+          {
+            "reviewRef": "H0045",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[356]#key-line-49",
+            "sourceId": "body[1]/p[356]",
+            "sourceText": "CHAPTER 8 Infinite matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0047",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[366]#key-line-51",
+            "sourceId": "body[1]/p[366]",
+            "sourceText": "8b. Spectral radius"
+          },
+          {
+            "reviewRef": "H0048",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[376]#key-line-52",
+            "sourceId": "body[1]/p[376]",
+            "sourceText": "8c. Normal operators"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0047",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[366]#key-line-51",
+      "sourceText": "8b. Spectral radius",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[366]",
+      "sourceSpan": null,
+      "sourceOrder": 47,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0045",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[356]#key-line-49",
+            "sourceId": "body[1]/p[356]",
+            "sourceText": "CHAPTER 8 Infinite matrices"
+          },
+          {
+            "reviewRef": "H0046",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[356]#key-line-50",
+            "sourceId": "body[1]/p[356]",
+            "sourceText": "8a. Infinite matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0048",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[376]#key-line-52",
+            "sourceId": "body[1]/p[376]",
+            "sourceText": "8c. Normal operators"
+          },
+          {
+            "reviewRef": "H0049",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[388]#key-line-53",
+            "sourceId": "body[1]/p[388]",
+            "sourceText": "8d. Compact operators"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0048",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[376]#key-line-52",
+      "sourceText": "8c. Normal operators",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[376]",
+      "sourceSpan": null,
+      "sourceOrder": 48,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0046",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[356]#key-line-50",
+            "sourceId": "body[1]/p[356]",
+            "sourceText": "8a. Infinite matrices"
+          },
+          {
+            "reviewRef": "H0047",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[366]#key-line-51",
+            "sourceId": "body[1]/p[366]",
+            "sourceText": "8b. Spectral radius"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0049",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[388]#key-line-53",
+            "sourceId": "body[1]/p[388]",
+            "sourceText": "8d. Compact operators"
+          },
+          {
+            "reviewRef": "H0050",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[402]#key-line-54",
+            "sourceId": "body[1]/p[402]",
+            "sourceText": "8e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0049",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[388]#key-line-53",
+      "sourceText": "8d. Compact operators",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[388]",
+      "sourceSpan": null,
+      "sourceOrder": 49,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0047",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[366]#key-line-51",
+            "sourceId": "body[1]/p[366]",
+            "sourceText": "8b. Spectral radius"
+          },
+          {
+            "reviewRef": "H0048",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[376]#key-line-52",
+            "sourceId": "body[1]/p[376]",
+            "sourceText": "8c. Normal operators"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0050",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[402]#key-line-54",
+            "sourceId": "body[1]/p[402]",
+            "sourceText": "8e. Exercises"
+          },
+          {
+            "reviewRef": "H0051",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[404]#key-line-55",
+            "sourceId": "body[1]/p[404]",
+            "sourceText": "Part III Positive matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0050",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[402]#key-line-54",
+      "sourceText": "8e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[402]",
+      "sourceSpan": null,
+      "sourceOrder": 50,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0048",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[376]#key-line-52",
+            "sourceId": "body[1]/p[376]",
+            "sourceText": "8c. Normal operators"
+          },
+          {
+            "reviewRef": "H0049",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[388]#key-line-53",
+            "sourceId": "body[1]/p[388]",
+            "sourceText": "8d. Compact operators"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0051",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[404]#key-line-55",
+            "sourceId": "body[1]/p[404]",
+            "sourceText": "Part III Positive matrices"
+          },
+          {
+            "reviewRef": "H0052",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[408]#key-line-56",
+            "sourceId": "body[1]/p[408]",
+            "sourceText": "CHAPTER 9 Positive matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0051",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[404]#key-line-55",
+      "sourceText": "Part III Positive matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[404]",
+      "sourceSpan": null,
+      "sourceOrder": 51,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0049",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[388]#key-line-53",
+            "sourceId": "body[1]/p[388]",
+            "sourceText": "8d. Compact operators"
+          },
+          {
+            "reviewRef": "H0050",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[402]#key-line-54",
+            "sourceId": "body[1]/p[402]",
+            "sourceText": "8e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0052",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[408]#key-line-56",
+            "sourceId": "body[1]/p[408]",
+            "sourceText": "CHAPTER 9 Positive matrices"
+          },
+          {
+            "reviewRef": "H0053",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[408]#key-line-57",
+            "sourceId": "body[1]/p[408]",
+            "sourceText": "9a. Jacobian, Hessian"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0052",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[408]#key-line-56",
+      "sourceText": "CHAPTER 9 Positive matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[408]",
+      "sourceSpan": null,
+      "sourceOrder": 52,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0050",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[402]#key-line-54",
+            "sourceId": "body[1]/p[402]",
+            "sourceText": "8e. Exercises"
+          },
+          {
+            "reviewRef": "H0051",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[404]#key-line-55",
+            "sourceId": "body[1]/p[404]",
+            "sourceText": "Part III Positive matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0053",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[408]#key-line-57",
+            "sourceId": "body[1]/p[408]",
+            "sourceText": "9a. Jacobian, Hessian"
+          },
+          {
+            "reviewRef": "H0054",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[424]#key-line-58",
+            "sourceId": "body[1]/p[424]",
+            "sourceText": "9b. Positive matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0053",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[408]#key-line-57",
+      "sourceText": "9a. Jacobian, Hessian",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[408]",
+      "sourceSpan": null,
+      "sourceOrder": 53,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0051",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[404]#key-line-55",
+            "sourceId": "body[1]/p[404]",
+            "sourceText": "Part III Positive matrices"
+          },
+          {
+            "reviewRef": "H0052",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[408]#key-line-56",
+            "sourceId": "body[1]/p[408]",
+            "sourceText": "CHAPTER 9 Positive matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0054",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[424]#key-line-58",
+            "sourceId": "body[1]/p[424]",
+            "sourceText": "9b. Positive matrices"
+          },
+          {
+            "reviewRef": "H0055",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[432]#key-line-59",
+            "sourceId": "body[1]/p[432]",
+            "sourceText": "9c. Sylvester theorem"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0054",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[424]#key-line-58",
+      "sourceText": "9b. Positive matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[424]",
+      "sourceSpan": null,
+      "sourceOrder": 54,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0052",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[408]#key-line-56",
+            "sourceId": "body[1]/p[408]",
+            "sourceText": "CHAPTER 9 Positive matrices"
+          },
+          {
+            "reviewRef": "H0053",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[408]#key-line-57",
+            "sourceId": "body[1]/p[408]",
+            "sourceText": "9a. Jacobian, Hessian"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0055",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[432]#key-line-59",
+            "sourceId": "body[1]/p[432]",
+            "sourceText": "9c. Sylvester theorem"
+          },
+          {
+            "reviewRef": "H0056",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[440]#key-line-60",
+            "sourceId": "body[1]/p[440]",
+            "sourceText": "9d. Infinite matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0055",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[432]#key-line-59",
+      "sourceText": "9c. Sylvester theorem",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[432]",
+      "sourceSpan": null,
+      "sourceOrder": 55,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0053",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[408]#key-line-57",
+            "sourceId": "body[1]/p[408]",
+            "sourceText": "9a. Jacobian, Hessian"
+          },
+          {
+            "reviewRef": "H0054",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[424]#key-line-58",
+            "sourceId": "body[1]/p[424]",
+            "sourceText": "9b. Positive matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0056",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[440]#key-line-60",
+            "sourceId": "body[1]/p[440]",
+            "sourceText": "9d. Infinite matrices"
+          },
+          {
+            "reviewRef": "H0057",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[450]#key-line-61",
+            "sourceId": "body[1]/p[450]",
+            "sourceText": "9e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0056",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[440]#key-line-60",
+      "sourceText": "9d. Infinite matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[440]",
+      "sourceSpan": null,
+      "sourceOrder": 56,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0054",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[424]#key-line-58",
+            "sourceId": "body[1]/p[424]",
+            "sourceText": "9b. Positive matrices"
+          },
+          {
+            "reviewRef": "H0055",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[432]#key-line-59",
+            "sourceId": "body[1]/p[432]",
+            "sourceText": "9c. Sylvester theorem"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0057",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[450]#key-line-61",
+            "sourceId": "body[1]/p[450]",
+            "sourceText": "9e. Exercises"
+          },
+          {
+            "reviewRef": "H0058",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[452]#key-line-62",
+            "sourceId": "body[1]/p[452]",
+            "sourceText": "CHAPTER 10 Forms, signature"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0057",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[450]#key-line-61",
+      "sourceText": "9e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[450]",
+      "sourceSpan": null,
+      "sourceOrder": 57,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0055",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[432]#key-line-59",
+            "sourceId": "body[1]/p[432]",
+            "sourceText": "9c. Sylvester theorem"
+          },
+          {
+            "reviewRef": "H0056",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[440]#key-line-60",
+            "sourceId": "body[1]/p[440]",
+            "sourceText": "9d. Infinite matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0058",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[452]#key-line-62",
+            "sourceId": "body[1]/p[452]",
+            "sourceText": "CHAPTER 10 Forms, signature"
+          },
+          {
+            "reviewRef": "H0059",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[452]#key-line-63",
+            "sourceId": "body[1]/p[452]",
+            "sourceText": "10a. Bilinear forms"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0058",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[452]#key-line-62",
+      "sourceText": "CHAPTER 10 Forms, signature",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[452]",
+      "sourceSpan": null,
+      "sourceOrder": 58,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0056",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[440]#key-line-60",
+            "sourceId": "body[1]/p[440]",
+            "sourceText": "9d. Infinite matrices"
+          },
+          {
+            "reviewRef": "H0057",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[450]#key-line-61",
+            "sourceId": "body[1]/p[450]",
+            "sourceText": "9e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0059",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[452]#key-line-63",
+            "sourceId": "body[1]/p[452]",
+            "sourceText": "10a. Bilinear forms"
+          },
+          {
+            "reviewRef": "H0060",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[458]#key-line-64",
+            "sourceId": "body[1]/p[458]",
+            "sourceText": "10b. Smooth manifolds"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0059",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[452]#key-line-63",
+      "sourceText": "10a. Bilinear forms",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[452]",
+      "sourceSpan": null,
+      "sourceOrder": 59,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0057",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[450]#key-line-61",
+            "sourceId": "body[1]/p[450]",
+            "sourceText": "9e. Exercises"
+          },
+          {
+            "reviewRef": "H0058",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[452]#key-line-62",
+            "sourceId": "body[1]/p[452]",
+            "sourceText": "CHAPTER 10 Forms, signature"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0060",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[458]#key-line-64",
+            "sourceId": "body[1]/p[458]",
+            "sourceText": "10b. Smooth manifolds"
+          },
+          {
+            "reviewRef": "H0061",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[468]#key-line-65",
+            "sourceId": "body[1]/p[468]",
+            "sourceText": "10c. Relativity theory"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0060",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[458]#key-line-64",
+      "sourceText": "10b. Smooth manifolds",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[458]",
+      "sourceSpan": null,
+      "sourceOrder": 60,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0058",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[452]#key-line-62",
+            "sourceId": "body[1]/p[452]",
+            "sourceText": "CHAPTER 10 Forms, signature"
+          },
+          {
+            "reviewRef": "H0059",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[452]#key-line-63",
+            "sourceId": "body[1]/p[452]",
+            "sourceText": "10a. Bilinear forms"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0061",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[468]#key-line-65",
+            "sourceId": "body[1]/p[468]",
+            "sourceText": "10c. Relativity theory"
+          },
+          {
+            "reviewRef": "H0062",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[484]#key-line-66",
+            "sourceId": "body[1]/p[484]",
+            "sourceText": "10d. Curved spacetime"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0061",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[468]#key-line-65",
+      "sourceText": "10c. Relativity theory",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[468]",
+      "sourceSpan": null,
+      "sourceOrder": 61,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0059",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[452]#key-line-63",
+            "sourceId": "body[1]/p[452]",
+            "sourceText": "10a. Bilinear forms"
+          },
+          {
+            "reviewRef": "H0060",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[458]#key-line-64",
+            "sourceId": "body[1]/p[458]",
+            "sourceText": "10b. Smooth manifolds"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0062",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[484]#key-line-66",
+            "sourceId": "body[1]/p[484]",
+            "sourceText": "10d. Curved spacetime"
+          },
+          {
+            "reviewRef": "H0063",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[498]#key-line-67",
+            "sourceId": "body[1]/p[498]",
+            "sourceText": "10e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0062",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[484]#key-line-66",
+      "sourceText": "10d. Curved spacetime",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[484]",
+      "sourceSpan": null,
+      "sourceOrder": 62,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0060",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[458]#key-line-64",
+            "sourceId": "body[1]/p[458]",
+            "sourceText": "10b. Smooth manifolds"
+          },
+          {
+            "reviewRef": "H0061",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[468]#key-line-65",
+            "sourceId": "body[1]/p[468]",
+            "sourceText": "10c. Relativity theory"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0063",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[498]#key-line-67",
+            "sourceId": "body[1]/p[498]",
+            "sourceText": "10e. Exercises"
+          },
+          {
+            "reviewRef": "H0064",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[500]#key-line-68",
+            "sourceId": "body[1]/p[500]",
+            "sourceText": "CHAPTER 11 Special matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0063",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[498]#key-line-67",
+      "sourceText": "10e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[498]",
+      "sourceSpan": null,
+      "sourceOrder": 63,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0061",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[468]#key-line-65",
+            "sourceId": "body[1]/p[468]",
+            "sourceText": "10c. Relativity theory"
+          },
+          {
+            "reviewRef": "H0062",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[484]#key-line-66",
+            "sourceId": "body[1]/p[484]",
+            "sourceText": "10d. Curved spacetime"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0064",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[500]#key-line-68",
+            "sourceId": "body[1]/p[500]",
+            "sourceText": "CHAPTER 11 Special matrices"
+          },
+          {
+            "reviewRef": "H0065",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[500]#key-line-69",
+            "sourceId": "body[1]/p[500]",
+            "sourceText": "11a. Circulant matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0064",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[500]#key-line-68",
+      "sourceText": "CHAPTER 11 Special matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[500]",
+      "sourceSpan": null,
+      "sourceOrder": 64,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0062",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[484]#key-line-66",
+            "sourceId": "body[1]/p[484]",
+            "sourceText": "10d. Curved spacetime"
+          },
+          {
+            "reviewRef": "H0063",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[498]#key-line-67",
+            "sourceId": "body[1]/p[498]",
+            "sourceText": "10e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0065",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[500]#key-line-69",
+            "sourceId": "body[1]/p[500]",
+            "sourceText": "11a. Circulant matrices"
+          },
+          {
+            "reviewRef": "H0066",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[510]#key-line-70",
+            "sourceId": "body[1]/p[510]",
+            "sourceText": "11b. Hadamard matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0065",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[500]#key-line-69",
+      "sourceText": "11a. Circulant matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[500]",
+      "sourceSpan": null,
+      "sourceOrder": 65,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0063",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[498]#key-line-67",
+            "sourceId": "body[1]/p[498]",
+            "sourceText": "10e. Exercises"
+          },
+          {
+            "reviewRef": "H0064",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[500]#key-line-68",
+            "sourceId": "body[1]/p[500]",
+            "sourceText": "CHAPTER 11 Special matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0066",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[510]#key-line-70",
+            "sourceId": "body[1]/p[510]",
+            "sourceText": "11b. Hadamard matrices"
+          },
+          {
+            "reviewRef": "H0067",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[520]#key-line-71",
+            "sourceId": "body[1]/p[520]",
+            "sourceText": "11c. Complex Hadamard"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0066",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[510]#key-line-70",
+      "sourceText": "11b. Hadamard matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[510]",
+      "sourceSpan": null,
+      "sourceOrder": 66,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0064",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[500]#key-line-68",
+            "sourceId": "body[1]/p[500]",
+            "sourceText": "CHAPTER 11 Special matrices"
+          },
+          {
+            "reviewRef": "H0065",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[500]#key-line-69",
+            "sourceId": "body[1]/p[500]",
+            "sourceText": "11a. Circulant matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0067",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[520]#key-line-71",
+            "sourceId": "body[1]/p[520]",
+            "sourceText": "11c. Complex Hadamard"
+          },
+          {
+            "reviewRef": "H0068",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[536]#key-line-72",
+            "sourceId": "body[1]/p[536]",
+            "sourceText": "11d. Bistochastic matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0067",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[520]#key-line-71",
+      "sourceText": "11c. Complex Hadamard",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[520]",
+      "sourceSpan": null,
+      "sourceOrder": 67,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0065",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[500]#key-line-69",
+            "sourceId": "body[1]/p[500]",
+            "sourceText": "11a. Circulant matrices"
+          },
+          {
+            "reviewRef": "H0066",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[510]#key-line-70",
+            "sourceId": "body[1]/p[510]",
+            "sourceText": "11b. Hadamard matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0068",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[536]#key-line-72",
+            "sourceId": "body[1]/p[536]",
+            "sourceText": "11d. Bistochastic matrices"
+          },
+          {
+            "reviewRef": "H0069",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[546]#key-line-73",
+            "sourceId": "body[1]/p[546]",
+            "sourceText": "11e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0068",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[536]#key-line-72",
+      "sourceText": "11d. Bistochastic matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[536]",
+      "sourceSpan": null,
+      "sourceOrder": 68,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0066",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[510]#key-line-70",
+            "sourceId": "body[1]/p[510]",
+            "sourceText": "11b. Hadamard matrices"
+          },
+          {
+            "reviewRef": "H0067",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[520]#key-line-71",
+            "sourceId": "body[1]/p[520]",
+            "sourceText": "11c. Complex Hadamard"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0069",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[546]#key-line-73",
+            "sourceId": "body[1]/p[546]",
+            "sourceText": "11e. Exercises"
+          },
+          {
+            "reviewRef": "H0070",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[548]#key-line-74",
+            "sourceId": "body[1]/p[548]",
+            "sourceText": "CHAPTER 12 Graph theory"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0069",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[546]#key-line-73",
+      "sourceText": "11e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[546]",
+      "sourceSpan": null,
+      "sourceOrder": 69,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0067",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[520]#key-line-71",
+            "sourceId": "body[1]/p[520]",
+            "sourceText": "11c. Complex Hadamard"
+          },
+          {
+            "reviewRef": "H0068",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[536]#key-line-72",
+            "sourceId": "body[1]/p[536]",
+            "sourceText": "11d. Bistochastic matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0070",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[548]#key-line-74",
+            "sourceId": "body[1]/p[548]",
+            "sourceText": "CHAPTER 12 Graph theory"
+          },
+          {
+            "reviewRef": "H0071",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[548]#key-line-75",
+            "sourceId": "body[1]/p[548]",
+            "sourceText": "12a. Graphs, Laplacian"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0070",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[548]#key-line-74",
+      "sourceText": "CHAPTER 12 Graph theory",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[548]",
+      "sourceSpan": null,
+      "sourceOrder": 70,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0068",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[536]#key-line-72",
+            "sourceId": "body[1]/p[536]",
+            "sourceText": "11d. Bistochastic matrices"
+          },
+          {
+            "reviewRef": "H0069",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[546]#key-line-73",
+            "sourceId": "body[1]/p[546]",
+            "sourceText": "11e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0071",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[548]#key-line-75",
+            "sourceId": "body[1]/p[548]",
+            "sourceText": "12a. Graphs, Laplacian"
+          },
+          {
+            "reviewRef": "H0072",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[560]#key-line-76",
+            "sourceId": "body[1]/p[560]",
+            "sourceText": "12b. Kirchoff formula"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0071",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[548]#key-line-75",
+      "sourceText": "12a. Graphs, Laplacian",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[548]",
+      "sourceSpan": null,
+      "sourceOrder": 71,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0069",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[546]#key-line-73",
+            "sourceId": "body[1]/p[546]",
+            "sourceText": "11e. Exercises"
+          },
+          {
+            "reviewRef": "H0070",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[548]#key-line-74",
+            "sourceId": "body[1]/p[548]",
+            "sourceText": "CHAPTER 12 Graph theory"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0072",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[560]#key-line-76",
+            "sourceId": "body[1]/p[560]",
+            "sourceText": "12b. Kirchoff formula"
+          },
+          {
+            "reviewRef": "H0073",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[572]#key-line-77",
+            "sourceId": "body[1]/p[572]",
+            "sourceText": "12c. Into the waves"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0072",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[560]#key-line-76",
+      "sourceText": "12b. Kirchoff formula",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[560]",
+      "sourceSpan": null,
+      "sourceOrder": 72,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0070",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[548]#key-line-74",
+            "sourceId": "body[1]/p[548]",
+            "sourceText": "CHAPTER 12 Graph theory"
+          },
+          {
+            "reviewRef": "H0071",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[548]#key-line-75",
+            "sourceId": "body[1]/p[548]",
+            "sourceText": "12a. Graphs, Laplacian"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0073",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[572]#key-line-77",
+            "sourceId": "body[1]/p[572]",
+            "sourceText": "12c. Into the waves"
+          },
+          {
+            "reviewRef": "H0074",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[582]#key-line-78",
+            "sourceId": "body[1]/p[582]",
+            "sourceText": "12d. Into the heat"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0073",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[572]#key-line-77",
+      "sourceText": "12c. Into the waves",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[572]",
+      "sourceSpan": null,
+      "sourceOrder": 73,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0071",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[548]#key-line-75",
+            "sourceId": "body[1]/p[548]",
+            "sourceText": "12a. Graphs, Laplacian"
+          },
+          {
+            "reviewRef": "H0072",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[560]#key-line-76",
+            "sourceId": "body[1]/p[560]",
+            "sourceText": "12b. Kirchoff formula"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0074",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[582]#key-line-78",
+            "sourceId": "body[1]/p[582]",
+            "sourceText": "12d. Into the heat"
+          },
+          {
+            "reviewRef": "H0075",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[594]#key-line-79",
+            "sourceId": "body[1]/p[594]",
+            "sourceText": "12e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0074",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[582]#key-line-78",
+      "sourceText": "12d. Into the heat",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[582]",
+      "sourceSpan": null,
+      "sourceOrder": 74,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0072",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[560]#key-line-76",
+            "sourceId": "body[1]/p[560]",
+            "sourceText": "12b. Kirchoff formula"
+          },
+          {
+            "reviewRef": "H0073",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[572]#key-line-77",
+            "sourceId": "body[1]/p[572]",
+            "sourceText": "12c. Into the waves"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0075",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[594]#key-line-79",
+            "sourceId": "body[1]/p[594]",
+            "sourceText": "12e. Exercises"
+          },
+          {
+            "reviewRef": "H0076",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[596]#key-line-80",
+            "sourceId": "body[1]/p[596]",
+            "sourceText": "Part IV Matrix groups"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0075",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[594]#key-line-79",
+      "sourceText": "12e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[594]",
+      "sourceSpan": null,
+      "sourceOrder": 75,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0073",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[572]#key-line-77",
+            "sourceId": "body[1]/p[572]",
+            "sourceText": "12c. Into the waves"
+          },
+          {
+            "reviewRef": "H0074",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[582]#key-line-78",
+            "sourceId": "body[1]/p[582]",
+            "sourceText": "12d. Into the heat"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0076",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[596]#key-line-80",
+            "sourceId": "body[1]/p[596]",
+            "sourceText": "Part IV Matrix groups"
+          },
+          {
+            "reviewRef": "H0077",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[600]#key-line-81",
+            "sourceId": "body[1]/p[600]",
+            "sourceText": "CHAPTER 13 Finite groups"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0076",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[596]#key-line-80",
+      "sourceText": "Part IV Matrix groups",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[596]",
+      "sourceSpan": null,
+      "sourceOrder": 76,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0074",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[582]#key-line-78",
+            "sourceId": "body[1]/p[582]",
+            "sourceText": "12d. Into the heat"
+          },
+          {
+            "reviewRef": "H0075",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[594]#key-line-79",
+            "sourceId": "body[1]/p[594]",
+            "sourceText": "12e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0077",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[600]#key-line-81",
+            "sourceId": "body[1]/p[600]",
+            "sourceText": "CHAPTER 13 Finite groups"
+          },
+          {
+            "reviewRef": "H0078",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[600]#key-line-82",
+            "sourceId": "body[1]/p[600]",
+            "sourceText": "13a. Finite groups"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0077",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[600]#key-line-81",
+      "sourceText": "CHAPTER 13 Finite groups",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[600]",
+      "sourceSpan": null,
+      "sourceOrder": 77,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0075",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[594]#key-line-79",
+            "sourceId": "body[1]/p[594]",
+            "sourceText": "12e. Exercises"
+          },
+          {
+            "reviewRef": "H0076",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[596]#key-line-80",
+            "sourceId": "body[1]/p[596]",
+            "sourceText": "Part IV Matrix groups"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0078",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[600]#key-line-82",
+            "sourceId": "body[1]/p[600]",
+            "sourceText": "13a. Finite groups"
+          },
+          {
+            "reviewRef": "H0079",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[612]#key-line-83",
+            "sourceId": "body[1]/p[612]",
+            "sourceText": "13b. Symmetric groups"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0078",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[600]#key-line-82",
+      "sourceText": "13a. Finite groups",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[600]",
+      "sourceSpan": null,
+      "sourceOrder": 78,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0076",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[596]#key-line-80",
+            "sourceId": "body[1]/p[596]",
+            "sourceText": "Part IV Matrix groups"
+          },
+          {
+            "reviewRef": "H0077",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[600]#key-line-81",
+            "sourceId": "body[1]/p[600]",
+            "sourceText": "CHAPTER 13 Finite groups"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0079",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[612]#key-line-83",
+            "sourceId": "body[1]/p[612]",
+            "sourceText": "13b. Symmetric groups"
+          },
+          {
+            "reviewRef": "H0080",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[624]#key-line-84",
+            "sourceId": "body[1]/p[624]",
+            "sourceText": "13c. Reflection groups"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0079",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[612]#key-line-83",
+      "sourceText": "13b. Symmetric groups",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[612]",
+      "sourceSpan": null,
+      "sourceOrder": 79,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0077",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[600]#key-line-81",
+            "sourceId": "body[1]/p[600]",
+            "sourceText": "CHAPTER 13 Finite groups"
+          },
+          {
+            "reviewRef": "H0078",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[600]#key-line-82",
+            "sourceId": "body[1]/p[600]",
+            "sourceText": "13a. Finite groups"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0080",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[624]#key-line-84",
+            "sourceId": "body[1]/p[624]",
+            "sourceText": "13c. Reflection groups"
+          },
+          {
+            "reviewRef": "H0081",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[636]#key-line-85",
+            "sourceId": "body[1]/p[636]",
+            "sourceText": "13d. Complex reflections"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0080",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[624]#key-line-84",
+      "sourceText": "13c. Reflection groups",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[624]",
+      "sourceSpan": null,
+      "sourceOrder": 80,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0078",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[600]#key-line-82",
+            "sourceId": "body[1]/p[600]",
+            "sourceText": "13a. Finite groups"
+          },
+          {
+            "reviewRef": "H0079",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[612]#key-line-83",
+            "sourceId": "body[1]/p[612]",
+            "sourceText": "13b. Symmetric groups"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0081",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[636]#key-line-85",
+            "sourceId": "body[1]/p[636]",
+            "sourceText": "13d. Complex reflections"
+          },
+          {
+            "reviewRef": "H0082",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[642]#key-line-86",
+            "sourceId": "body[1]/p[642]",
+            "sourceText": "13e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0081",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[636]#key-line-85",
+      "sourceText": "13d. Complex reflections",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[636]",
+      "sourceSpan": null,
+      "sourceOrder": 81,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0079",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[612]#key-line-83",
+            "sourceId": "body[1]/p[612]",
+            "sourceText": "13b. Symmetric groups"
+          },
+          {
+            "reviewRef": "H0080",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[624]#key-line-84",
+            "sourceId": "body[1]/p[624]",
+            "sourceText": "13c. Reflection groups"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0082",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[642]#key-line-86",
+            "sourceId": "body[1]/p[642]",
+            "sourceText": "13e. Exercises"
+          },
+          {
+            "reviewRef": "H0083",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[644]#key-line-87",
+            "sourceId": "body[1]/p[644]",
+            "sourceText": "CHAPTER 14 Compact groups"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0082",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[642]#key-line-86",
+      "sourceText": "13e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[642]",
+      "sourceSpan": null,
+      "sourceOrder": 82,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0080",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[624]#key-line-84",
+            "sourceId": "body[1]/p[624]",
+            "sourceText": "13c. Reflection groups"
+          },
+          {
+            "reviewRef": "H0081",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[636]#key-line-85",
+            "sourceId": "body[1]/p[636]",
+            "sourceText": "13d. Complex reflections"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0083",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[644]#key-line-87",
+            "sourceId": "body[1]/p[644]",
+            "sourceText": "CHAPTER 14 Compact groups"
+          },
+          {
+            "reviewRef": "H0084",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[644]#key-line-88",
+            "sourceId": "body[1]/p[644]",
+            "sourceText": "14a. Lie groups"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0083",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[644]#key-line-87",
+      "sourceText": "CHAPTER 14 Compact groups",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[644]",
+      "sourceSpan": null,
+      "sourceOrder": 83,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0081",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[636]#key-line-85",
+            "sourceId": "body[1]/p[636]",
+            "sourceText": "13d. Complex reflections"
+          },
+          {
+            "reviewRef": "H0082",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[642]#key-line-86",
+            "sourceId": "body[1]/p[642]",
+            "sourceText": "13e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0084",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[644]#key-line-88",
+            "sourceId": "body[1]/p[644]",
+            "sourceText": "14a. Lie groups"
+          },
+          {
+            "reviewRef": "H0085",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[650]#key-line-89",
+            "sourceId": "body[1]/p[650]",
+            "sourceText": "14b. Peter-Weyl"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0084",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[644]#key-line-88",
+      "sourceText": "14a. Lie groups",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[644]",
+      "sourceSpan": null,
+      "sourceOrder": 84,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0082",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[642]#key-line-86",
+            "sourceId": "body[1]/p[642]",
+            "sourceText": "13e. Exercises"
+          },
+          {
+            "reviewRef": "H0083",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[644]#key-line-87",
+            "sourceId": "body[1]/p[644]",
+            "sourceText": "CHAPTER 14 Compact groups"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0085",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[650]#key-line-89",
+            "sourceId": "body[1]/p[650]",
+            "sourceText": "14b. Peter-Weyl"
+          },
+          {
+            "reviewRef": "H0086",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[662]#key-line-90",
+            "sourceId": "body[1]/p[662]",
+            "sourceText": "14c. Brauer algebras"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0085",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[650]#key-line-89",
+      "sourceText": "14b. Peter-Weyl",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[650]",
+      "sourceSpan": null,
+      "sourceOrder": 85,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0083",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[644]#key-line-87",
+            "sourceId": "body[1]/p[644]",
+            "sourceText": "CHAPTER 14 Compact groups"
+          },
+          {
+            "reviewRef": "H0084",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[644]#key-line-88",
+            "sourceId": "body[1]/p[644]",
+            "sourceText": "14a. Lie groups"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0086",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[662]#key-line-90",
+            "sourceId": "body[1]/p[662]",
+            "sourceText": "14c. Brauer algebras"
+          },
+          {
+            "reviewRef": "H0087",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[678]#key-line-91",
+            "sourceId": "body[1]/p[678]",
+            "sourceText": "14d. Haar integration"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0086",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[662]#key-line-90",
+      "sourceText": "14c. Brauer algebras",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[662]",
+      "sourceSpan": null,
+      "sourceOrder": 86,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0084",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[644]#key-line-88",
+            "sourceId": "body[1]/p[644]",
+            "sourceText": "14a. Lie groups"
+          },
+          {
+            "reviewRef": "H0085",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[650]#key-line-89",
+            "sourceId": "body[1]/p[650]",
+            "sourceText": "14b. Peter-Weyl"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0087",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[678]#key-line-91",
+            "sourceId": "body[1]/p[678]",
+            "sourceText": "14d. Haar integration"
+          },
+          {
+            "reviewRef": "H0088",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[690]#key-line-92",
+            "sourceId": "body[1]/p[690]",
+            "sourceText": "14e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0087",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[678]#key-line-91",
+      "sourceText": "14d. Haar integration",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[678]",
+      "sourceSpan": null,
+      "sourceOrder": 87,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0085",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[650]#key-line-89",
+            "sourceId": "body[1]/p[650]",
+            "sourceText": "14b. Peter-Weyl"
+          },
+          {
+            "reviewRef": "H0086",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[662]#key-line-90",
+            "sourceId": "body[1]/p[662]",
+            "sourceText": "14c. Brauer algebras"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0088",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[690]#key-line-92",
+            "sourceId": "body[1]/p[690]",
+            "sourceText": "14e. Exercises"
+          },
+          {
+            "reviewRef": "H0089",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[692]#key-line-93",
+            "sourceId": "body[1]/p[692]",
+            "sourceText": "CHAPTER 15 Spin matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0088",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[690]#key-line-92",
+      "sourceText": "14e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[690]",
+      "sourceSpan": null,
+      "sourceOrder": 88,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0086",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[662]#key-line-90",
+            "sourceId": "body[1]/p[662]",
+            "sourceText": "14c. Brauer algebras"
+          },
+          {
+            "reviewRef": "H0087",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[678]#key-line-91",
+            "sourceId": "body[1]/p[678]",
+            "sourceText": "14d. Haar integration"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0089",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[692]#key-line-93",
+            "sourceId": "body[1]/p[692]",
+            "sourceText": "CHAPTER 15 Spin matrices"
+          },
+          {
+            "reviewRef": "H0090",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[692]#key-line-94",
+            "sourceId": "body[1]/p[692]",
+            "sourceText": "15a. Quantum physics"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0089",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[692]#key-line-93",
+      "sourceText": "CHAPTER 15 Spin matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[692]",
+      "sourceSpan": null,
+      "sourceOrder": 89,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0087",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[678]#key-line-91",
+            "sourceId": "body[1]/p[678]",
+            "sourceText": "14d. Haar integration"
+          },
+          {
+            "reviewRef": "H0088",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[690]#key-line-92",
+            "sourceId": "body[1]/p[690]",
+            "sourceText": "14e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0090",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[692]#key-line-94",
+            "sourceId": "body[1]/p[692]",
+            "sourceText": "15a. Quantum physics"
+          },
+          {
+            "reviewRef": "H0091",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[712]#key-line-95",
+            "sourceId": "body[1]/p[712]",
+            "sourceText": "15b. Angular momentum"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0090",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[692]#key-line-94",
+      "sourceText": "15a. Quantum physics",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[692]",
+      "sourceSpan": null,
+      "sourceOrder": 90,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0088",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[690]#key-line-92",
+            "sourceId": "body[1]/p[690]",
+            "sourceText": "14e. Exercises"
+          },
+          {
+            "reviewRef": "H0089",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[692]#key-line-93",
+            "sourceId": "body[1]/p[692]",
+            "sourceText": "CHAPTER 15 Spin matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0091",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[712]#key-line-95",
+            "sourceId": "body[1]/p[712]",
+            "sourceText": "15b. Angular momentum"
+          },
+          {
+            "reviewRef": "H0092",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[724]#key-line-96",
+            "sourceId": "body[1]/p[724]",
+            "sourceText": "15c. Pauli matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0091",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[712]#key-line-95",
+      "sourceText": "15b. Angular momentum",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[712]",
+      "sourceSpan": null,
+      "sourceOrder": 91,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0089",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[692]#key-line-93",
+            "sourceId": "body[1]/p[692]",
+            "sourceText": "CHAPTER 15 Spin matrices"
+          },
+          {
+            "reviewRef": "H0090",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[692]#key-line-94",
+            "sourceId": "body[1]/p[692]",
+            "sourceText": "15a. Quantum physics"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0092",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[724]#key-line-96",
+            "sourceId": "body[1]/p[724]",
+            "sourceText": "15c. Pauli matrices"
+          },
+          {
+            "reviewRef": "H0093",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[730]#key-line-97",
+            "sourceId": "body[1]/p[730]",
+            "sourceText": "15d. Dirac matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0092",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[724]#key-line-96",
+      "sourceText": "15c. Pauli matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[724]",
+      "sourceSpan": null,
+      "sourceOrder": 92,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0090",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[692]#key-line-94",
+            "sourceId": "body[1]/p[692]",
+            "sourceText": "15a. Quantum physics"
+          },
+          {
+            "reviewRef": "H0091",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[712]#key-line-95",
+            "sourceId": "body[1]/p[712]",
+            "sourceText": "15b. Angular momentum"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0093",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[730]#key-line-97",
+            "sourceId": "body[1]/p[730]",
+            "sourceText": "15d. Dirac matrices"
+          },
+          {
+            "reviewRef": "H0094",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[738]#key-line-98",
+            "sourceId": "body[1]/p[738]",
+            "sourceText": "15e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0093",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[730]#key-line-97",
+      "sourceText": "15d. Dirac matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[730]",
+      "sourceSpan": null,
+      "sourceOrder": 93,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0091",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[712]#key-line-95",
+            "sourceId": "body[1]/p[712]",
+            "sourceText": "15b. Angular momentum"
+          },
+          {
+            "reviewRef": "H0092",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[724]#key-line-96",
+            "sourceId": "body[1]/p[724]",
+            "sourceText": "15c. Pauli matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0094",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[738]#key-line-98",
+            "sourceId": "body[1]/p[738]",
+            "sourceText": "15e. Exercises"
+          },
+          {
+            "reviewRef": "H0095",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[740]#key-line-99",
+            "sourceId": "body[1]/p[740]",
+            "sourceText": "CHAPTER 16 Random matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0094",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[738]#key-line-98",
+      "sourceText": "15e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[738]",
+      "sourceSpan": null,
+      "sourceOrder": 94,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0092",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[724]#key-line-96",
+            "sourceId": "body[1]/p[724]",
+            "sourceText": "15c. Pauli matrices"
+          },
+          {
+            "reviewRef": "H0093",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[730]#key-line-97",
+            "sourceId": "body[1]/p[730]",
+            "sourceText": "15d. Dirac matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0095",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[740]#key-line-99",
+            "sourceId": "body[1]/p[740]",
+            "sourceText": "CHAPTER 16 Random matrices"
+          },
+          {
+            "reviewRef": "H0096",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[740]#key-line-100",
+            "sourceId": "body[1]/p[740]",
+            "sourceText": "16a. Random matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0095",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[740]#key-line-99",
+      "sourceText": "CHAPTER 16 Random matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[740]",
+      "sourceSpan": null,
+      "sourceOrder": 95,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0093",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[730]#key-line-97",
+            "sourceId": "body[1]/p[730]",
+            "sourceText": "15d. Dirac matrices"
+          },
+          {
+            "reviewRef": "H0094",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[738]#key-line-98",
+            "sourceId": "body[1]/p[738]",
+            "sourceText": "15e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0096",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[740]#key-line-100",
+            "sourceId": "body[1]/p[740]",
+            "sourceText": "16a. Random matrices"
+          },
+          {
+            "reviewRef": "H0097",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[754]#key-line-101",
+            "sourceId": "body[1]/p[754]",
+            "sourceText": "16b. Gaussian matrices"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0096",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[740]#key-line-100",
+      "sourceText": "16a. Random matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[740]",
+      "sourceSpan": null,
+      "sourceOrder": 96,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0094",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[738]#key-line-98",
+            "sourceId": "body[1]/p[738]",
+            "sourceText": "15e. Exercises"
+          },
+          {
+            "reviewRef": "H0095",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[740]#key-line-99",
+            "sourceId": "body[1]/p[740]",
+            "sourceText": "CHAPTER 16 Random matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0097",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[754]#key-line-101",
+            "sourceId": "body[1]/p[754]",
+            "sourceText": "16b. Gaussian matrices"
+          },
+          {
+            "reviewRef": "H0098",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[766]#key-line-102",
+            "sourceId": "body[1]/p[766]",
+            "sourceText": "16c. Wigner and Wishart"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0097",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[754]#key-line-101",
+      "sourceText": "16b. Gaussian matrices",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[754]",
+      "sourceSpan": null,
+      "sourceOrder": 97,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0095",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[740]#key-line-99",
+            "sourceId": "body[1]/p[740]",
+            "sourceText": "CHAPTER 16 Random matrices"
+          },
+          {
+            "reviewRef": "H0096",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[740]#key-line-100",
+            "sourceId": "body[1]/p[740]",
+            "sourceText": "16a. Random matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0098",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[766]#key-line-102",
+            "sourceId": "body[1]/p[766]",
+            "sourceText": "16c. Wigner and Wishart"
+          },
+          {
+            "reviewRef": "H0099",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[780]#key-line-103",
+            "sourceId": "body[1]/p[780]",
+            "sourceText": "16d. Back to groups"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0098",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[766]#key-line-102",
+      "sourceText": "16c. Wigner and Wishart",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[766]",
+      "sourceSpan": null,
+      "sourceOrder": 98,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0096",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[740]#key-line-100",
+            "sourceId": "body[1]/p[740]",
+            "sourceText": "16a. Random matrices"
+          },
+          {
+            "reviewRef": "H0097",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[754]#key-line-101",
+            "sourceId": "body[1]/p[754]",
+            "sourceText": "16b. Gaussian matrices"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0099",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[780]#key-line-103",
+            "sourceId": "body[1]/p[780]",
+            "sourceText": "16d. Back to groups"
+          },
+          {
+            "reviewRef": "H0100",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[786]#key-line-104",
+            "sourceId": "body[1]/p[786]",
+            "sourceText": "16e. Exercises"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0099",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[780]#key-line-103",
+      "sourceText": "16d. Back to groups",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[780]",
+      "sourceSpan": null,
+      "sourceOrder": 99,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0097",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[754]#key-line-101",
+            "sourceId": "body[1]/p[754]",
+            "sourceText": "16b. Gaussian matrices"
+          },
+          {
+            "reviewRef": "H0098",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[766]#key-line-102",
+            "sourceId": "body[1]/p[766]",
+            "sourceText": "16c. Wigner and Wishart"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0100",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[786]#key-line-104",
+            "sourceId": "body[1]/p[786]",
+            "sourceText": "16e. Exercises"
+          },
+          {
+            "reviewRef": "H0101",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[788]#key-line-105",
+            "sourceId": "body[1]/p[788]",
+            "sourceText": "Bibliography"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0100",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[786]#key-line-104",
+      "sourceText": "16e. Exercises",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[786]",
+      "sourceSpan": null,
+      "sourceOrder": 100,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0098",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[766]#key-line-102",
+            "sourceId": "body[1]/p[766]",
+            "sourceText": "16c. Wigner and Wishart"
+          },
+          {
+            "reviewRef": "H0099",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[780]#key-line-103",
+            "sourceId": "body[1]/p[780]",
+            "sourceText": "16d. Back to groups"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0101",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[788]#key-line-105",
+            "sourceId": "body[1]/p[788]",
+            "sourceText": "Bibliography"
+          },
+          {
+            "reviewRef": "H0102",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[796]#key-line-106",
+            "sourceId": "body[1]/p[796]",
+            "sourceText": "Index"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0101",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[788]#key-line-105",
+      "sourceText": "Bibliography",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[788]",
+      "sourceSpan": null,
+      "sourceOrder": 101,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0099",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[780]#key-line-103",
+            "sourceId": "body[1]/p[780]",
+            "sourceText": "16d. Back to groups"
+          },
+          {
+            "reviewRef": "H0100",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[786]#key-line-104",
+            "sourceId": "body[1]/p[786]",
+            "sourceText": "16e. Exercises"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0102",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[796]#key-line-106",
+            "sourceId": "body[1]/p[796]",
+            "sourceText": "Index"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0102",
+      "headingOccurrenceId": "DOC-0243:body[1]/p[796]#key-line-106",
+      "sourceText": "Index",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[796]",
+      "sourceSpan": null,
+      "sourceOrder": 102,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "sourceReferenceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0100",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[786]#key-line-104",
+            "sourceId": "body[1]/p[786]",
+            "sourceText": "16e. Exercises"
+          },
+          {
+            "reviewRef": "H0101",
+            "headingOccurrenceId": "DOC-0243:body[1]/p[788]#key-line-105",
+            "sourceId": "body[1]/p[788]",
+            "sourceText": "Bibliography"
+          }
+        ],
+        "nextHeadingOccurrences": [],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    }
+  ],
+  "adjudication": {
+    "occurrenceAssignments": [],
+    "semanticNodes": [],
+    "parentEdges": []
+  }
+}

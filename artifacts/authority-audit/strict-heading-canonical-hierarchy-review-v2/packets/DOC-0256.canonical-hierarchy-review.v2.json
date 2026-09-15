@@ -1,0 +1,1041 @@
+{
+  "artifactKind": "a99_strict_heading_canonical_hierarchy_review_packet",
+  "schemaVersion": "a99-strict-heading-canonical-hierarchy-review-v2",
+  "documentId": "DOC-0256",
+  "status": "PREPARED_FOR_REVIEW",
+  "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+  "strictHeadingGoldArtifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0256.strict-gold-v4.json",
+  "strictHeadingGoldSha256": "f12a4a407deddf9d6f1039510d8b2ee4965db091901e2e1b3e806b97344c92e2",
+  "goldFirewall": {
+    "historicalLevelVisible": false,
+    "historicalParentVisible": false,
+    "modelPredictionsVisible": false,
+    "identityPredictionsVisible": false,
+    "hierarchyPredictionsVisible": false
+  },
+  "headingOccurrences": [
+    {
+      "reviewRef": "H0001",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[6]#key-line-5",
+      "sourceText": "Welcome and meeting objectives",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[6]",
+      "sourceSpan": null,
+      "sourceOrder": 1,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[10]#key-line-6",
+            "sourceId": "body[1]/p[10]",
+            "sourceText": "Regional updates on the ICP 2021 cycle implementation"
+          },
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[11]#key-line-7",
+            "sourceId": "body[1]/p[11]",
+            "sourceText": "Africa"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0002",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[10]#key-line-6",
+      "sourceText": "Regional updates on the ICP 2021 cycle implementation",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[10]",
+      "sourceSpan": null,
+      "sourceOrder": 2,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0001",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[6]#key-line-5",
+            "sourceId": "body[1]/p[6]",
+            "sourceText": "Welcome and meeting objectives"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[11]#key-line-7",
+            "sourceId": "body[1]/p[11]",
+            "sourceText": "Africa"
+          },
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[17]#key-line-8",
+            "sourceId": "body[1]/p[17]",
+            "sourceText": "Asia and the Pacific"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0003",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[11]#key-line-7",
+      "sourceText": "Africa",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[11]",
+      "sourceSpan": null,
+      "sourceOrder": 3,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0001",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[6]#key-line-5",
+            "sourceId": "body[1]/p[6]",
+            "sourceText": "Welcome and meeting objectives"
+          },
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[10]#key-line-6",
+            "sourceId": "body[1]/p[10]",
+            "sourceText": "Regional updates on the ICP 2021 cycle implementation"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[17]#key-line-8",
+            "sourceId": "body[1]/p[17]",
+            "sourceText": "Asia and the Pacific"
+          },
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[20]#key-line-9",
+            "sourceId": "body[1]/p[20]",
+            "sourceText": "Commonwealth of Independent States"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0004",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[17]#key-line-8",
+      "sourceText": "Asia and the Pacific",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[17]",
+      "sourceSpan": null,
+      "sourceOrder": 4,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[10]#key-line-6",
+            "sourceId": "body[1]/p[10]",
+            "sourceText": "Regional updates on the ICP 2021 cycle implementation"
+          },
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[11]#key-line-7",
+            "sourceId": "body[1]/p[11]",
+            "sourceText": "Africa"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[20]#key-line-9",
+            "sourceId": "body[1]/p[20]",
+            "sourceText": "Commonwealth of Independent States"
+          },
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[26]#key-line-10",
+            "sourceId": "body[1]/p[26]",
+            "sourceText": "Eurostat-OECD PPP Program"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0005",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[20]#key-line-9",
+      "sourceText": "Commonwealth of Independent States",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[20]",
+      "sourceSpan": null,
+      "sourceOrder": 5,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[11]#key-line-7",
+            "sourceId": "body[1]/p[11]",
+            "sourceText": "Africa"
+          },
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[17]#key-line-8",
+            "sourceId": "body[1]/p[17]",
+            "sourceText": "Asia and the Pacific"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[26]#key-line-10",
+            "sourceId": "body[1]/p[26]",
+            "sourceText": "Eurostat-OECD PPP Program"
+          },
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[32]#key-line-11",
+            "sourceId": "body[1]/p[32]",
+            "sourceText": "Latin America and the Caribbean"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0006",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[26]#key-line-10",
+      "sourceText": "Eurostat-OECD PPP Program",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[26]",
+      "sourceSpan": null,
+      "sourceOrder": 6,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[17]#key-line-8",
+            "sourceId": "body[1]/p[17]",
+            "sourceText": "Asia and the Pacific"
+          },
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[20]#key-line-9",
+            "sourceId": "body[1]/p[20]",
+            "sourceText": "Commonwealth of Independent States"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[32]#key-line-11",
+            "sourceId": "body[1]/p[32]",
+            "sourceText": "Latin America and the Caribbean"
+          },
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[35]#key-line-12",
+            "sourceId": "body[1]/p[35]",
+            "sourceText": "Western Asia"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0007",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[32]#key-line-11",
+      "sourceText": "Latin America and the Caribbean",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[32]",
+      "sourceSpan": null,
+      "sourceOrder": 7,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[20]#key-line-9",
+            "sourceId": "body[1]/p[20]",
+            "sourceText": "Commonwealth of Independent States"
+          },
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[26]#key-line-10",
+            "sourceId": "body[1]/p[26]",
+            "sourceText": "Eurostat-OECD PPP Program"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[35]#key-line-12",
+            "sourceId": "body[1]/p[35]",
+            "sourceText": "Western Asia"
+          },
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[42]#key-line-13",
+            "sourceId": "body[1]/p[42]",
+            "sourceText": "Global updates on the ICP 2021 cycle implementation"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0008",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[35]#key-line-12",
+      "sourceText": "Western Asia",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[35]",
+      "sourceSpan": null,
+      "sourceOrder": 8,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[26]#key-line-10",
+            "sourceId": "body[1]/p[26]",
+            "sourceText": "Eurostat-OECD PPP Program"
+          },
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[32]#key-line-11",
+            "sourceId": "body[1]/p[32]",
+            "sourceText": "Latin America and the Caribbean"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[42]#key-line-13",
+            "sourceId": "body[1]/p[42]",
+            "sourceText": "Global updates on the ICP 2021 cycle implementation"
+          },
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[55]#key-line-14",
+            "sourceId": "body[1]/p[55]",
+            "sourceText": "Data review: Household consumption price and importance data"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0009",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[42]#key-line-13",
+      "sourceText": "Global updates on the ICP 2021 cycle implementation",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[42]",
+      "sourceSpan": null,
+      "sourceOrder": 9,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[32]#key-line-11",
+            "sourceId": "body[1]/p[32]",
+            "sourceText": "Latin America and the Caribbean"
+          },
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[35]#key-line-12",
+            "sourceId": "body[1]/p[35]",
+            "sourceText": "Western Asia"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[55]#key-line-14",
+            "sourceId": "body[1]/p[55]",
+            "sourceText": "Data review: Household consumption price and importance data"
+          },
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[61]#key-line-15",
+            "sourceId": "body[1]/p[61]",
+            "sourceText": "Data review: Housing prices and volumes"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0010",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[55]#key-line-14",
+      "sourceText": "Data review: Household consumption price and importance data",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[55]",
+      "sourceSpan": null,
+      "sourceOrder": 10,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0008",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[35]#key-line-12",
+            "sourceId": "body[1]/p[35]",
+            "sourceText": "Western Asia"
+          },
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[42]#key-line-13",
+            "sourceId": "body[1]/p[42]",
+            "sourceText": "Global updates on the ICP 2021 cycle implementation"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[61]#key-line-15",
+            "sourceId": "body[1]/p[61]",
+            "sourceText": "Data review: Housing prices and volumes"
+          },
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[67]#key-line-16",
+            "sourceId": "body[1]/p[67]",
+            "sourceText": "Data review: Private Education"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0011",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[61]#key-line-15",
+      "sourceText": "Data review: Housing prices and volumes",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[61]",
+      "sourceSpan": null,
+      "sourceOrder": 11,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0009",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[42]#key-line-13",
+            "sourceId": "body[1]/p[42]",
+            "sourceText": "Global updates on the ICP 2021 cycle implementation"
+          },
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[55]#key-line-14",
+            "sourceId": "body[1]/p[55]",
+            "sourceText": "Data review: Household consumption price and importance data"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[67]#key-line-16",
+            "sourceId": "body[1]/p[67]",
+            "sourceText": "Data review: Private Education"
+          },
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[73]#key-line-17",
+            "sourceId": "body[1]/p[73]",
+            "sourceText": "Data review: Government compensation and productivity adjustment"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0012",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[67]#key-line-16",
+      "sourceText": "Data review: Private Education",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[67]",
+      "sourceSpan": null,
+      "sourceOrder": 12,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0010",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[55]#key-line-14",
+            "sourceId": "body[1]/p[55]",
+            "sourceText": "Data review: Household consumption price and importance data"
+          },
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[61]#key-line-15",
+            "sourceId": "body[1]/p[61]",
+            "sourceText": "Data review: Housing prices and volumes"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[73]#key-line-17",
+            "sourceId": "body[1]/p[73]",
+            "sourceText": "Data review: Government compensation and productivity adjustment"
+          },
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[76]#key-line-18",
+            "sourceId": "body[1]/p[76]",
+            "sourceText": "Data review: Machinery and equipment and construction"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0013",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[73]#key-line-17",
+      "sourceText": "Data review: Government compensation and productivity adjustment",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[73]",
+      "sourceSpan": null,
+      "sourceOrder": 13,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0011",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[61]#key-line-15",
+            "sourceId": "body[1]/p[61]",
+            "sourceText": "Data review: Housing prices and volumes"
+          },
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[67]#key-line-16",
+            "sourceId": "body[1]/p[67]",
+            "sourceText": "Data review: Private Education"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[76]#key-line-18",
+            "sourceId": "body[1]/p[76]",
+            "sourceText": "Data review: Machinery and equipment and construction"
+          },
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[80]#key-line-19",
+            "sourceId": "body[1]/p[80]",
+            "sourceText": "Data review: 2017-2021 National Accounts expenditures"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0014",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[76]#key-line-18",
+      "sourceText": "Data review: Machinery and equipment and construction",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[76]",
+      "sourceSpan": null,
+      "sourceOrder": 14,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0012",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[67]#key-line-16",
+            "sourceId": "body[1]/p[67]",
+            "sourceText": "Data review: Private Education"
+          },
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[73]#key-line-17",
+            "sourceId": "body[1]/p[73]",
+            "sourceText": "Data review: Government compensation and productivity adjustment"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[80]#key-line-19",
+            "sourceId": "body[1]/p[80]",
+            "sourceText": "Data review: 2017-2021 National Accounts expenditures"
+          },
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[88]#key-line-20",
+            "sourceId": "body[1]/p[88]",
+            "sourceText": "Data review: 2017-2021 Population and market exchange rates"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0015",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[80]#key-line-19",
+      "sourceText": "Data review: 2017-2021 National Accounts expenditures",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[80]",
+      "sourceSpan": null,
+      "sourceOrder": 15,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0013",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[73]#key-line-17",
+            "sourceId": "body[1]/p[73]",
+            "sourceText": "Data review: Government compensation and productivity adjustment"
+          },
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[76]#key-line-18",
+            "sourceId": "body[1]/p[76]",
+            "sourceText": "Data review: Machinery and equipment and construction"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[88]#key-line-20",
+            "sourceId": "body[1]/p[88]",
+            "sourceText": "Data review: 2017-2021 Population and market exchange rates"
+          },
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[90]#key-line-21",
+            "sourceId": "body[1]/p[90]",
+            "sourceText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0016",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[88]#key-line-20",
+      "sourceText": "Data review: 2017-2021 Population and market exchange rates",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[88]",
+      "sourceSpan": null,
+      "sourceOrder": 16,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0014",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[76]#key-line-18",
+            "sourceId": "body[1]/p[76]",
+            "sourceText": "Data review: Machinery and equipment and construction"
+          },
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[80]#key-line-19",
+            "sourceId": "body[1]/p[80]",
+            "sourceText": "Data review: 2017-2021 National Accounts expenditures"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[90]#key-line-21",
+            "sourceId": "body[1]/p[90]",
+            "sourceText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels"
+          },
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[50]#key-line-22",
+            "sourceId": "body[1]/p[50]",
+            "sourceText": "Planning for the ICP 2024 cycle"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0017",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[90]#key-line-21",
+      "sourceText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[90]",
+      "sourceSpan": null,
+      "sourceOrder": 17,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0015",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[80]#key-line-19",
+            "sourceId": "body[1]/p[80]",
+            "sourceText": "Data review: 2017-2021 National Accounts expenditures"
+          },
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[88]#key-line-20",
+            "sourceId": "body[1]/p[88]",
+            "sourceText": "Data review: 2017-2021 Population and market exchange rates"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[50]#key-line-22",
+            "sourceId": "body[1]/p[50]",
+            "sourceText": "Planning for the ICP 2024 cycle"
+          },
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[107]#key-line-23",
+            "sourceId": "body[1]/p[107]",
+            "sourceText": "Annex 1: Meeting Agenda"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0018",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[50]#key-line-22",
+      "sourceText": "Planning for the ICP 2024 cycle",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[50]",
+      "sourceSpan": null,
+      "sourceOrder": 18,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0016",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[88]#key-line-20",
+            "sourceId": "body[1]/p[88]",
+            "sourceText": "Data review: 2017-2021 Population and market exchange rates"
+          },
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[90]#key-line-21",
+            "sourceId": "body[1]/p[90]",
+            "sourceText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[107]#key-line-23",
+            "sourceId": "body[1]/p[107]",
+            "sourceText": "Annex 1: Meeting Agenda"
+          },
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#key-line-24",
+            "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 1: TUESDAY, OCTOBER 31, 2023"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0019",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[107]#key-line-23",
+      "sourceText": "Annex 1: Meeting Agenda",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[107]",
+      "sourceSpan": null,
+      "sourceOrder": 19,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0017",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[90]#key-line-21",
+            "sourceId": "body[1]/p[90]",
+            "sourceText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels"
+          },
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[50]#key-line-22",
+            "sourceId": "body[1]/p[50]",
+            "sourceText": "Planning for the ICP 2024 cycle"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#key-line-24",
+            "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 1: TUESDAY, OCTOBER 31, 2023"
+          },
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[2]/tr[1]/tc[1]/p[1]#key-line-25",
+            "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0020",
+      "headingOccurrenceId": "DOC-0256:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#key-line-24",
+      "sourceText": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 20,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0018",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[50]#key-line-22",
+            "sourceId": "body[1]/p[50]",
+            "sourceText": "Planning for the ICP 2024 cycle"
+          },
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[107]#key-line-23",
+            "sourceId": "body[1]/p[107]",
+            "sourceText": "Annex 1: Meeting Agenda"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[2]/tr[1]/tc[1]/p[1]#key-line-25",
+            "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023"
+          },
+          {
+            "reviewRef": "H0022",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#key-line-26",
+            "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 3: THURSDAY, NOVEMBER 2, 2023"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0021",
+      "headingOccurrenceId": "DOC-0256:body[1]/tbl[2]/tr[1]/tc[1]/p[1]#key-line-25",
+      "sourceText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 21,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0019",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[107]#key-line-23",
+            "sourceId": "body[1]/p[107]",
+            "sourceText": "Annex 1: Meeting Agenda"
+          },
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#key-line-24",
+            "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 1: TUESDAY, OCTOBER 31, 2023"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0022",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#key-line-26",
+            "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 3: THURSDAY, NOVEMBER 2, 2023"
+          },
+          {
+            "reviewRef": "H0023",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[4]/tr[1]/tc[1]/p[1]#key-line-27",
+            "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 4: FRIDAY, NOVEMBER 3, 2023"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0022",
+      "headingOccurrenceId": "DOC-0256:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#key-line-26",
+      "sourceText": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 22,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0020",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#key-line-24",
+            "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 1: TUESDAY, OCTOBER 31, 2023"
+          },
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[2]/tr[1]/tc[1]/p[1]#key-line-25",
+            "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0023",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[4]/tr[1]/tc[1]/p[1]#key-line-27",
+            "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 4: FRIDAY, NOVEMBER 3, 2023"
+          },
+          {
+            "reviewRef": "H0024",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[124]#key-line-28",
+            "sourceId": "body[1]/p[124]",
+            "sourceText": "Annex 2: List of participants"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0023",
+      "headingOccurrenceId": "DOC-0256:body[1]/tbl[4]/tr[1]/tc[1]/p[1]#key-line-27",
+      "sourceText": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+      "sourceSpan": null,
+      "sourceOrder": 23,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0021",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[2]/tr[1]/tc[1]/p[1]#key-line-25",
+            "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023"
+          },
+          {
+            "reviewRef": "H0022",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#key-line-26",
+            "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 3: THURSDAY, NOVEMBER 2, 2023"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0024",
+            "headingOccurrenceId": "DOC-0256:body[1]/p[124]#key-line-28",
+            "sourceId": "body[1]/p[124]",
+            "sourceText": "Annex 2: List of participants"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0024",
+      "headingOccurrenceId": "DOC-0256:body[1]/p[124]#key-line-28",
+      "sourceText": "Annex 2: List of participants",
+      "semanticRole": "heading",
+      "sourceId": "body[1]/p[124]",
+      "sourceSpan": null,
+      "sourceOrder": 24,
+      "sourceProvenance": {
+        "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "sourceReferenceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0022",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#key-line-26",
+            "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 3: THURSDAY, NOVEMBER 2, 2023"
+          },
+          {
+            "reviewRef": "H0023",
+            "headingOccurrenceId": "DOC-0256:body[1]/tbl[4]/tr[1]/tc[1]/p[1]#key-line-27",
+            "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+            "sourceText": "DAY 4: FRIDAY, NOVEMBER 3, 2023"
+          }
+        ],
+        "nextHeadingOccurrences": [],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    }
+  ],
+  "adjudication": {
+    "occurrenceAssignments": [],
+    "semanticNodes": [],
+    "parentEdges": []
+  }
+}

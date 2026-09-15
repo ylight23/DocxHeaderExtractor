@@ -1,0 +1,293 @@
+{
+  "artifactKind": "a99_strict_heading_canonical_hierarchy_review_packet",
+  "schemaVersion": "a99-strict-heading-canonical-hierarchy-review-v2",
+  "documentId": "DOC-0001",
+  "status": "PREPARED_FOR_REVIEW",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "strictHeadingGoldArtifact": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
+  "strictHeadingGoldSha256": "5ac30a82db551a8149ed777390eeca0dc6c6d0bafd9e82468dde32777808dfc8",
+  "goldFirewall": {
+    "historicalLevelVisible": false,
+    "historicalParentVisible": false,
+    "modelPredictionsVisible": false,
+    "identityPredictionsVisible": false,
+    "hierarchyPredictionsVisible": false
+  },
+  "headingOccurrences": [
+    {
+      "reviewRef": "H0001",
+      "headingOccurrenceId": "DOC-0001:paragraph[0]#key-line-3",
+      "sourceText": "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung",
+      "semanticRole": "heading",
+      "sourceId": "paragraph[0]",
+      "sourceSpan": null,
+      "sourceOrder": 1,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0001:paragraph[2]#key-line-4",
+            "sourceId": "paragraph[2]",
+            "sourceText": "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh"
+          },
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0001:paragraph[4]#key-line-5",
+            "sourceId": "paragraph[4]",
+            "sourceText": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0002",
+      "headingOccurrenceId": "DOC-0001:paragraph[2]#key-line-4",
+      "sourceText": "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh",
+      "semanticRole": "heading",
+      "sourceId": "paragraph[2]",
+      "sourceSpan": null,
+      "sourceOrder": 2,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0001",
+            "headingOccurrenceId": "DOC-0001:paragraph[0]#key-line-3",
+            "sourceId": "paragraph[0]",
+            "sourceText": "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0001:paragraph[4]#key-line-5",
+            "sourceId": "paragraph[4]",
+            "sourceText": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng"
+          },
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0001:paragraph[6]#key-line-6",
+            "sourceId": "paragraph[6]",
+            "sourceText": "1.2.1. CÆ¡ quan quáº£n lÃ½"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0003",
+      "headingOccurrenceId": "DOC-0001:paragraph[4]#key-line-5",
+      "sourceText": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng",
+      "semanticRole": "heading",
+      "sourceId": "paragraph[4]",
+      "sourceSpan": null,
+      "sourceOrder": 3,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0001",
+            "headingOccurrenceId": "DOC-0001:paragraph[0]#key-line-3",
+            "sourceId": "paragraph[0]",
+            "sourceText": "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung"
+          },
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0001:paragraph[2]#key-line-4",
+            "sourceId": "paragraph[2]",
+            "sourceText": "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0001:paragraph[6]#key-line-6",
+            "sourceId": "paragraph[6]",
+            "sourceText": "1.2.1. CÆ¡ quan quáº£n lÃ½"
+          },
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0001:paragraph[8]#key-line-7",
+            "sourceId": "paragraph[8]",
+            "sourceText": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0004",
+      "headingOccurrenceId": "DOC-0001:paragraph[6]#key-line-6",
+      "sourceText": "1.2.1. CÆ¡ quan quáº£n lÃ½",
+      "semanticRole": "heading",
+      "sourceId": "paragraph[6]",
+      "sourceSpan": null,
+      "sourceOrder": 4,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0002",
+            "headingOccurrenceId": "DOC-0001:paragraph[2]#key-line-4",
+            "sourceId": "paragraph[2]",
+            "sourceText": "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh"
+          },
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0001:paragraph[4]#key-line-5",
+            "sourceId": "paragraph[4]",
+            "sourceText": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0001:paragraph[8]#key-line-7",
+            "sourceId": "paragraph[8]",
+            "sourceText": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c"
+          },
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0001:paragraph[10]#key-line-8",
+            "sourceId": "paragraph[10]",
+            "sourceText": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0005",
+      "headingOccurrenceId": "DOC-0001:paragraph[8]#key-line-7",
+      "sourceText": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c",
+      "semanticRole": "heading",
+      "sourceId": "paragraph[8]",
+      "sourceSpan": null,
+      "sourceOrder": 5,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0003",
+            "headingOccurrenceId": "DOC-0001:paragraph[4]#key-line-5",
+            "sourceId": "paragraph[4]",
+            "sourceText": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng"
+          },
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0001:paragraph[6]#key-line-6",
+            "sourceId": "paragraph[6]",
+            "sourceText": "1.2.1. CÆ¡ quan quáº£n lÃ½"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0001:paragraph[10]#key-line-8",
+            "sourceId": "paragraph[10]",
+            "sourceText": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n"
+          },
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0001:paragraph[12]#key-line-9",
+            "sourceId": "paragraph[12]",
+            "sourceText": "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0006",
+      "headingOccurrenceId": "DOC-0001:paragraph[10]#key-line-8",
+      "sourceText": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n",
+      "semanticRole": "heading",
+      "sourceId": "paragraph[10]",
+      "sourceSpan": null,
+      "sourceOrder": 6,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0004",
+            "headingOccurrenceId": "DOC-0001:paragraph[6]#key-line-6",
+            "sourceId": "paragraph[6]",
+            "sourceText": "1.2.1. CÆ¡ quan quáº£n lÃ½"
+          },
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0001:paragraph[8]#key-line-7",
+            "sourceId": "paragraph[8]",
+            "sourceText": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c"
+          }
+        ],
+        "nextHeadingOccurrences": [
+          {
+            "reviewRef": "H0007",
+            "headingOccurrenceId": "DOC-0001:paragraph[12]#key-line-9",
+            "sourceId": "paragraph[12]",
+            "sourceText": "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m"
+          }
+        ],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    },
+    {
+      "reviewRef": "H0007",
+      "headingOccurrenceId": "DOC-0001:paragraph[12]#key-line-9",
+      "sourceText": "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m",
+      "semanticRole": "heading",
+      "sourceId": "paragraph[12]",
+      "sourceSpan": null,
+      "sourceOrder": 7,
+      "sourceProvenance": {
+        "sourceReferencePath": "bench/01-style-chuan.key",
+        "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+      },
+      "sourceContext": {
+        "previousHeadingOccurrences": [
+          {
+            "reviewRef": "H0005",
+            "headingOccurrenceId": "DOC-0001:paragraph[8]#key-line-7",
+            "sourceId": "paragraph[8]",
+            "sourceText": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c"
+          },
+          {
+            "reviewRef": "H0006",
+            "headingOccurrenceId": "DOC-0001:paragraph[10]#key-line-8",
+            "sourceId": "paragraph[10]",
+            "sourceText": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n"
+          }
+        ],
+        "nextHeadingOccurrences": [],
+        "contextConstruction": "SOURCE_AUTHORITY_HEADING_NEIGHBORS_ONLY"
+      }
+    }
+  ],
+  "adjudication": {
+    "occurrenceAssignments": [],
+    "semanticNodes": [],
+    "parentEdges": []
+  }
+}

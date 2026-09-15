@@ -1,0 +1,26 @@
+{
+  "validatorKind": "A99_CANONICAL_HIERARCHY_REVIEW_VALIDATOR",
+  "schemaVersion": "a99-canonical-hierarchy-review-validator-v1",
+  "reject": [
+    "unknown occurrence ref",
+    "occurrence assigned zero or more than one node",
+    "invalid occurrenceRole",
+    "semantic node with no occurrences",
+    "semantic node with more than one PRIMARY",
+    "dangling parent",
+    "multiple parents",
+    "self-parent",
+    "cycle",
+    "unknown node",
+    "duplicate edge",
+    "semantic node unreachable from ROOT",
+    "reviewer-provided level field"
+  ],
+  "require": [
+    "every strict heading occurrence represented exactly once",
+    "every semantic node has exactly one parent or ROOT",
+    "ROOT is synthetic and document-local",
+    "REPEAT/CONTINUATION does not create a new node unless explicitly adjudicated DISTINCT",
+    "level = deterministic depth after validation"
+  ]
+}
