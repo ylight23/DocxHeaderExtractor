@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "a99-v6b-owner-evidence-manifest-v1",
+  "status": "SOURCE_ONLY_OWNER_EVIDENCE_FROZEN",
+  "inputRequests": "artifacts/identity-benchmark/v5/semantic-node-induction/preflight/requests.json",
+  "inputClusters": "artifacts/identity-benchmark/v5/source-only-clusters/freeze/clusters.json",
+  "packetCount": 226,
+  "scopeGroupCount": 22,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "semanticOwnerAssignments": 0,
+  "semanticNodeAssignments": 0,
+  "ownerDecisions": "NONE",
+  "note": "Parser-owned container evidence only. This artifact is an owner-induction input boundary, not semantic owner Gold."
+}
