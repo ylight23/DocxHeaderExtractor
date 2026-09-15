@@ -103,6 +103,11 @@ internal static class PdfBlockAnalyst
     internal static string PromptProfileSha256 => Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(
         System.Text.Encoding.UTF8.GetBytes(SystemPrompt + PointerSpanSystemPrompt + CriticSystemPrompt))).ToLowerInvariant();
 
+    // Read-only access for offline request materialization. These expose the existing production
+    // contract verbatim; they do not alter provider execution or parsing behavior.
+    internal static string RoleSystemPromptText => SystemPrompt;
+    internal static string PointerSpanSystemPromptText => PointerSpanSystemPrompt;
+
     public static async Task<PdfBlockAnalysis> AnalyzeAsync(
         IHeaderClassifier classifier,
         IReadOnlyList<PdfSemanticBlock> blocks,

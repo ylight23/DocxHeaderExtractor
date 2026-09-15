@@ -1,0 +1,245 @@
+{
+  "artifactKind": "a99_identity_benchmark_v8h0_heading_extraction_preflight",
+  "schemaVersion": "a99-v8h0-heading-extraction-preflight-v1",
+  "status": "READY_FOR_V8H0_HEADING_PROVIDER_AUTHORIZATION",
+  "authority": {
+    "v8ProofContract": "ffa1110",
+    "v8a2Commit": "579b3fd",
+    "v8a3Commit": "c6ce41c",
+    "v8bCommit": "1550c2e",
+    "v8b0Commit": "140f8ad",
+    "v8a2ManifestSha256": "1ceb04713b8ead164e41b8454e3c52a16dfbfe65c828d45f3e3065a4fd71cf7a",
+    "sourceIntakeSha256": "2620be3ba7bfa65a11ea698f6a7e126fc62d8d079d11196aa42ba3ca84cb358d",
+    "frozenInputArtifactsMutated": false
+  },
+  "detector": {
+    "version": "pdf-layout-evidence-production-role-span-v1",
+    "reused": "PdfLineExtraction, PdfLineBlockFilter, PdfSemanticBlockGrouper, PdfStyleClusterProfile, PdfCandidateContextBuilder, PdfCandidateRanker, PdfLayoutEvidenceOutline.BuildBroadCandidates/SelectRankedCandidates, PdfBlockAnalyst role/span prompts",
+    "maxAnalystBlocks": 40,
+    "roleBatchSize": 8,
+    "pointerSpanBatchSize": 4,
+    "promptProfileSha256": "028ed77b71687bebadd8f5e702b7ad0890e11dca845597cf0a48652e8aec7aab",
+    "modelCalls": 0,
+    "providerCalls": 0
+  },
+  "documents": {
+    "count": 6,
+    "sourceLineCount": 71424,
+    "sourceRows": [
+      {
+        "sourceId": "NEW-073DB817879B",
+        "name": "pdfqa__2510.22211v1.pdf",
+        "byteSha256": "073db817879b901b155ef5e59d2b5767f4bfab0579516460be4f4fde621699a6",
+        "family": "pdfqa"
+      },
+      {
+        "sourceId": "NEW-26BE9B284520",
+        "name": "hips__administrative-decision-making.pdf",
+        "byteSha256": "26be9b284520e3d62984233a141cd7952f4ca061c0b9c4f7eff46fc6da44fda0",
+        "family": "hips"
+      },
+      {
+        "sourceId": "NEW-45314CB70E99",
+        "name": "hips__access-controlled-cyberspace.pdf",
+        "byteSha256": "45314cb70e9992e1edd9118ac7afc559db6494465d8beea9897f5b58a9056d27",
+        "family": "hips"
+      },
+      {
+        "sourceId": "NEW-6717CCA50787",
+        "name": "hips__a-bird-that-flies-with-two-wings.pdf",
+        "byteSha256": "6717cca5078744646b39bd0d948e29655f14cbdca931710c7913ebd2ea54b871",
+        "family": "hips"
+      },
+      {
+        "sourceId": "NEW-C07DA5643BE9",
+        "name": "hips__a-kind-of-mending.pdf",
+        "byteSha256": "c07da5643be95e9ca9c63cd7a4beb7fe9d4462b985fe5d2715b003401449c898",
+        "family": "hips"
+      },
+      {
+        "sourceId": "NEW-FDF9C2552AF0",
+        "name": "pdfqa__2510.22218v1.pdf",
+        "byteSha256": "fdf9c2552af0793f59ee0e77dd0c38909d9306d8c2fe976dcc8578de89c99c6b",
+        "family": "pdfqa"
+      }
+    ],
+    "candidateManifest": "747ddaaadb7c1f3941e34e232bd401cf5e4c324536a98cff988c89503bcb40b1"
+  },
+  "requestScale": {
+    "requestCount": 89,
+    "roleRequestCount": 30,
+    "pointerSpanRequestCount": 59,
+    "totalRequestBytes": 610125,
+    "maximumRequestBytes": 15419,
+    "totalEstimatedInputTokens": 152568,
+    "maximumEstimatedInputTokens": 3855,
+    "repeatedContextBytes": 45308,
+    "repeatedContextRatio": 0.07426019258348698,
+    "perDocument": [
+      {
+        "documentId": "NEW-073DB817879B",
+        "requestCount": 15,
+        "rawSourceLines": 921,
+        "candidateBlocks": 54,
+        "selectedBlocks": 40,
+        "totalBytes": 109301,
+        "totalEstimatedInputTokens": 27332,
+        "maxRequestBytes": 13903,
+        "maxEstimatedInputTokens": 3476,
+        "roleSourceRefs": 41,
+        "spanSourceRefsUpperBound": 41
+      },
+      {
+        "documentId": "NEW-26BE9B284520",
+        "requestCount": 15,
+        "rawSourceLines": 9876,
+        "candidateBlocks": 638,
+        "selectedBlocks": 40,
+        "totalBytes": 98643,
+        "totalEstimatedInputTokens": 24666,
+        "maxRequestBytes": 12559,
+        "maxEstimatedInputTokens": 3140,
+        "roleSourceRefs": 40,
+        "spanSourceRefsUpperBound": 40
+      },
+      {
+        "documentId": "NEW-45314CB70E99",
+        "requestCount": 15,
+        "rawSourceLines": 31123,
+        "candidateBlocks": 1221,
+        "selectedBlocks": 40,
+        "totalBytes": 116774,
+        "totalEstimatedInputTokens": 29199,
+        "maxRequestBytes": 15419,
+        "maxEstimatedInputTokens": 3855,
+        "roleSourceRefs": 43,
+        "spanSourceRefsUpperBound": 43
+      },
+      {
+        "documentId": "NEW-6717CCA50787",
+        "requestCount": 15,
+        "rawSourceLines": 14840,
+        "candidateBlocks": 822,
+        "selectedBlocks": 40,
+        "totalBytes": 108547,
+        "totalEstimatedInputTokens": 27144,
+        "maxRequestBytes": 14898,
+        "maxEstimatedInputTokens": 3725,
+        "roleSourceRefs": 53,
+        "spanSourceRefsUpperBound": 53
+      },
+      {
+        "documentId": "NEW-C07DA5643BE9",
+        "requestCount": 15,
+        "rawSourceLines": 13871,
+        "candidateBlocks": 1161,
+        "selectedBlocks": 40,
+        "totalBytes": 102844,
+        "totalEstimatedInputTokens": 25717,
+        "maxRequestBytes": 12683,
+        "maxEstimatedInputTokens": 3171,
+        "roleSourceRefs": 52,
+        "spanSourceRefsUpperBound": 52
+      },
+      {
+        "documentId": "NEW-FDF9C2552AF0",
+        "requestCount": 14,
+        "rawSourceLines": 793,
+        "candidateBlocks": 33,
+        "selectedBlocks": 33,
+        "totalBytes": 74016,
+        "totalEstimatedInputTokens": 18510,
+        "maxRequestBytes": 11109,
+        "maxEstimatedInputTokens": 2778,
+        "roleSourceRefs": 33,
+        "spanSourceRefsUpperBound": 33
+      }
+    ]
+  },
+  "binding": {
+    "version": "v8h0-source-bound-heading-binding-v1",
+    "sourceAuthority": "harness-owned immutable source line/block map",
+    "modelOutputRefs": "production block-local opaque ids only; canonical source IDs are never model output authority",
+    "exactTextOwnedByHarness": true,
+    "numericOffsetsOwnedByHarness": true,
+    "noLevelParentIdentity": true,
+    "syntheticTests": {
+      "count": 13,
+      "passed": 13,
+      "results": [
+        {
+          "name": "valid_selection",
+          "pass": true
+        },
+        {
+          "name": "unknown_ref_rejected",
+          "pass": true
+        },
+        {
+          "name": "fabricated_canonical_id_rejected",
+          "pass": true
+        },
+        {
+          "name": "duplicate_incompatible_rejected",
+          "pass": true
+        },
+        {
+          "name": "missing_output_is_invalid",
+          "pass": true
+        },
+        {
+          "name": "forbidden_level_rejected",
+          "pass": true
+        },
+        {
+          "name": "forbidden_parent_rejected",
+          "pass": true
+        },
+        {
+          "name": "forbidden_identity_rejected",
+          "pass": true
+        },
+        {
+          "name": "exact_source_text_binding",
+          "pass": true
+        },
+        {
+          "name": "source_text_drift_rejected",
+          "pass": true
+        },
+        {
+          "name": "provenance_binding_is_exact",
+          "pass": true
+        },
+        {
+          "name": "pointer_offsets_are_harness_owned",
+          "pass": true
+        },
+        {
+          "name": "deterministic_validation",
+          "pass": true
+        }
+      ]
+    }
+  },
+  "firewall": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldReadCount": 0,
+    "v8a2Mutated": false,
+    "v8a3Mutated": false,
+    "v8bMutated": false,
+    "v8b0Mutated": false,
+    "identityCandidateGeneration": false,
+    "historicalN15Mutated": false
+  },
+  "gate": {
+    "sourceUniverseComplete": true,
+    "productionDetectorReused": true,
+    "requestHashesDeterministic": true,
+    "allRequestsMaterializedBeforeProvider": true,
+    "noGoldOrPredictionInputs": true,
+    "status": "READY_FOR_V8H0_HEADING_PROVIDER_AUTHORIZATION"
+  },
+  "next": "Provider authorization may be considered only for frozen role requests; pointer-span requests are conditional upper-bound shards and must be executed only for validated role-selected blocks."
+}

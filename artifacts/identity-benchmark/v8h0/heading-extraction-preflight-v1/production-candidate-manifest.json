@@ -1,0 +1,3852 @@
+{
+  "schemaVersion": "a99-v8h0-production-heading-candidate-manifest-v1",
+  "detectorVersion": "pdf-layout-evidence-production-role-span-v1",
+  "documents": [
+    {
+      "documentId": "NEW-073DB817879B",
+      "rawSourceLineCount": 921,
+      "productionCandidateBlockCount": 54,
+      "selectedAnalystBlockCount": 40,
+      "selectedBlockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008",
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016",
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024",
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032",
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "selectedBlocks": [
+        {
+          "ref": "B001",
+          "productionBlockId": "b207",
+          "page": 7,
+          "text": "Figure 5. The multiwavelength light curves of Ansky showing a double-peaked structure with long rise and decline timescales in the optical",
+          "lineRefs": [
+            "U000412"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "7|433.2292615322034|50.8834624|561.7530688000002|Figure 5. The multiwavelength light curves of Ansky showing a double-peaked structure with long rise and decline timescales in the optical"
+            ],
+            "sourceText": "Figure 5. The multiwavelength light curves of Ansky showing a double-peaked structure with long rise and decline timescales in the optical"
+          }
+        },
+        {
+          "ref": "B002",
+          "productionBlockId": "b238",
+          "page": 8,
+          "text": "Figure 6. The evolution of blackbody temperature, radius and lu-",
+          "lineRefs": [
+            "U000471"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "8|402.2324630399999|50.8834624|291.67613440000014|Figure 6. The evolution of blackbody temperature, radius and lu-"
+            ],
+            "sourceText": "Figure 6. The evolution of blackbody temperature, radius and lu-"
+          }
+        },
+        {
+          "ref": "B003",
+          "productionBlockId": "b287",
+          "page": 9,
+          "text": "and M = 106.42 M (derived in Section ??) the condition",
+          "lineRefs": [
+            "U000559"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "9|132.65220647045447|51.108616200000036|291.94903819999996|and M = 106.42M (derived in Section ??) the condition"
+            ],
+            "sourceText": "and M = 106.42 M (derived in Section ??) the condition"
+          }
+        },
+        {
+          "ref": "B004",
+          "productionBlockId": "b334",
+          "page": 11,
+          "text": "Figure 9. Top panel: Rising timescale (t 1 2 i ) versus black hole",
+          "lineRefs": [
+            "U000649"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|348.4953384150944|50.8834624|291.9183312|Figure 9. Top panel: Rising timescale (t1 2 i ) versus black hole"
+            ],
+            "sourceText": "Figure 9. Top panel: Rising timescale (t 1 2 i ) versus black hole"
+          }
+        },
+        {
+          "ref": "B005",
+          "productionBlockId": "b89",
+          "page": 3,
+          "text": "Rest Wavelength(\u00C5)",
+          "lineRefs": [
+            "U000161"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "3|424.3837094999999|247.92086139999998|402.31740635477615|RestWavelength(\u00C5)"
+            ],
+            "sourceText": "Rest Wavelength(\u00C5)"
+          }
+        },
+        {
+          "ref": "B006",
+          "productionBlockId": "b182",
+          "page": 6,
+          "text": "gre",
+          "lineRefs": [
+            "U000352"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|612.7769441901296|62.678377499999996|74.90367735|gre"
+            ],
+            "sourceText": "gre"
+          }
+        },
+        {
+          "ref": "B007",
+          "productionBlockId": "b184",
+          "page": 6,
+          "text": "Rest Wavelength(\u00C5)",
+          "lineRefs": [
+            "U000358"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|475.97117340441173|258.39352985|411.0139592639869|RestWavelength(\u00C5)"
+            ],
+            "sourceText": "Rest Wavelength(\u00C5)"
+          }
+        },
+        {
+          "ref": "B008",
+          "productionBlockId": "b300",
+          "page": 10,
+          "text": "Rest Wavelength(\u00C5)",
+          "lineRefs": [
+            "U000589"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "10|367.1539395441176|256.2310451|409.9353994157534|RestWavelength(\u00C5)"
+            ],
+            "sourceText": "Rest Wavelength(\u00C5)"
+          }
+        },
+        {
+          "ref": "B009",
+          "productionBlockId": "b12",
+          "page": 1,
+          "text": "USA",
+          "lineRefs": [
+            "U000023"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "1|514.7669392|299.8489501999999|313.27059859999986|USA"
+            ],
+            "sourceText": "USA"
+          }
+        },
+        {
+          "ref": "B010",
+          "productionBlockId": "b5",
+          "page": 1,
+          "text": "ERICA HAMMERSTEIN , SHIFENG HUANG , WENKAI LI , AND BEI YOU",
+          "lineRefs": [
+            "U000013"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "1|621.3278643218752|132.45959679999999|458.44406569999995|ERICA HAMMERSTEIN , SHIFENG HUANG , WENKAI LI , AND BEI YOU"
+            ],
+            "sourceText": "ERICA HAMMERSTEIN , SHIFENG HUANG , WENKAI LI , AND BEI YOU"
+          }
+        },
+        {
+          "ref": "B011",
+          "productionBlockId": "b92",
+          "page": 3,
+          "text": "blue dashed line indicates the location of C IV \u03BB1549.",
+          "lineRefs": [
+            "U000164"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "3|375.8257837866666|50.766899200000005|244.26629440000013|blue dashed line indicates the location of C IV \u03BB1549."
+            ],
+            "sourceText": "blue dashed line indicates the location of C IV \u03BB1549."
+          }
+        },
+        {
+          "ref": "B012",
+          "productionBlockId": "b149",
+          "page": 5,
+          "text": "s Before we begin detailed discussions, we will first summa-",
+          "lineRefs": [
+            "U000301"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|463.63581504699795|59.17585835|561.4585149999994|s Before we begin detailed discussions, we will first summa-"
+            ],
+            "sourceText": "s Before we begin detailed discussions, we will first summa-"
+          }
+        },
+        {
+          "ref": "B013",
+          "productionBlockId": "b150",
+          "page": 5,
+          "text": "gre rize the main properties of Ansky as follows.",
+          "lineRefs": [
+            "U000302"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|450.88699204353816|59.1631175|498.7899887999996|gre rize the main properties of Ansky as follows."
+            ],
+            "sourceText": "gre rize the main properties of Ansky as follows."
+          }
+        },
+        {
+          "ref": "B014",
+          "productionBlockId": "b152",
+          "page": 5,
+          "text": "x TBB \u223C 38, 000 K, showing no detectable emission lines",
+          "lineRefs": [
+            "U000306"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|403.39718642321736|59.290526|561.5312767599997|x TBB \u223C 38, 000K, showing no detectable emission lines"
+            ],
+            "sourceText": "x TBB \u223C 38, 000 K, showing no detectable emission lines"
+          }
+        },
+        {
+          "ref": "B015",
+          "productionBlockId": "b158",
+          "page": 5,
+          "text": "1043 erg s\u22121 is at the lower end of all optical TDEs",
+          "lineRefs": [
+            "U000313"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|308.4407685390245|346.5918485999999|561.5335223999997|1043 erg s\u22121 is at the lower end of all optical TDEs"
+            ],
+            "sourceText": "1043 erg s\u22121 is at the lower end of all optical TDEs"
+          }
+        },
+        {
+          "ref": "B016",
+          "productionBlockId": "b186",
+          "page": 6,
+          "text": "represent the power-law and blackbody fitting of the SED, respectively. The black and grey lines show the UV (HST/STIS on 2025 May 24)",
+          "lineRefs": [
+            "U000360"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|438.3412401297297|50.784832|561.510976|represent the power-law and blackbody fitting of the SED, respectively. The black and grey lines show the UV (HST/STIS on 2025 May 24)"
+            ],
+            "sourceText": "represent the power-law and blackbody fitting of the SED, respectively. The black and grey lines show the UV (HST/STIS on 2025 May 24)"
+          }
+        },
+        {
+          "ref": "B017",
+          "productionBlockId": "b187",
+          "page": 6,
+          "text": "and optical spectra (LRIS/Keck on 2025 June 1), respectively. The blue solid dots denote the photometric measurements of Ansky at the epoch",
+          "lineRefs": [
+            "U000361"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|427.3254563525427|51.0717568|561.8248|and optical spectra (LRIS/Keck on 2025 June 1), respectively. The blue solid dots denote the photometric measurements of Ansky at the epoch"
+            ],
+            "sourceText": "and optical spectra (LRIS/Keck on 2025 June 1), respectively. The blue solid dots denote the photometric measurements of Ansky at the epoch"
+          }
+        },
+        {
+          "ref": "B018",
+          "productionBlockId": "b188",
+          "page": 6,
+          "text": "quasi-simultaneously with the UV spectroscopic observation. The far-UV spectrum provides the strongest evidence for the deviation from a",
+          "lineRefs": [
+            "U000362"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|416.32017167058774|50.9551936|561.9234303999998|quasi-simultaneously with the UV spectroscopic observation. The far-UV spectrum provides the strongest evidence for the deviation from a"
+            ],
+            "sourceText": "quasi-simultaneously with the UV spectroscopic observation. The far-UV spectrum provides the strongest evidence for the deviation from a"
+          }
+        },
+        {
+          "ref": "B019",
+          "productionBlockId": "b198",
+          "page": 6,
+          "text": "featureless TDE",
+          "lineRefs": [
+            "U000382"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|181.16324941428593|417.7034978|483.5064707999998|featureless TDE"
+            ],
+            "sourceText": "featureless TDE"
+          }
+        },
+        {
+          "ref": "B020",
+          "productionBlockId": "b201",
+          "page": 6,
+          "text": "eff . ,",
+          "lineRefs": [
+            "U000390"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|123.66079150000007|167.28034499999998|204.75915516|eff . ,"
+            ],
+            "sourceText": "eff . ,"
+          }
+        },
+        {
+          "ref": "B021",
+          "productionBlockId": "b208",
+          "page": 7,
+          "text": "bands. The black vertical line marks the date of our HST/STIS observation, while the gray dashed line indicates the first epoch of detected",
+          "lineRefs": [
+            "U000413"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "7|422.35455997241337|50.766899200000005|561.8606656000001|bands. The black vertical line marks the date of our HST/STIS observation, while the gray dashed line indicates the first epoch of detected"
+            ],
+            "sourceText": "bands. The black vertical line marks the date of our HST/STIS observation, while the gray dashed line indicates the first epoch of detected"
+          }
+        },
+        {
+          "ref": "B022",
+          "productionBlockId": "b210",
+          "page": 7,
+          "text": "decline. The optical light curves are binned in 10-day intervals, with the original unbinned data overplotted in the background with reduced",
+          "lineRefs": [
+            "U000415"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "7|400.37967743999985|50.982092800000004|561.8606656000002|decline. The optical light curves are binned in 10-day intervals, with the original unbinned data overplotted in the background with reduced"
+            ],
+            "sourceText": "decline. The optical light curves are binned in 10-day intervals, with the original unbinned data overplotted in the background with reduced"
+          }
+        },
+        {
+          "ref": "B023",
+          "productionBlockId": "b227",
+          "page": 8,
+          "text": ")m\u0000\u0016 rious issue for the TDE scenario.",
+          "lineRefs": [
+            "U000452"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "8|620.316485228747|69.4712707525|451.0392469999997|)m\u0000\u0016 rious issue for the TDE scenario."
+            ],
+            "sourceText": ")m\u0000\u0016 rious issue for the TDE scenario."
+          }
+        },
+        {
+          "ref": "B024",
+          "productionBlockId": "b230",
+          "page": 8,
+          "text": ")RB\u0000\u0014 its distinctive properties in luminosity and timescale remain",
+          "lineRefs": [
+            "U000458"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "8|556.9581558320174|55.526947002499995|561.7934711999994|)RB\u0000\u0014 its distinctive properties in luminosity and timescale remain"
+            ],
+            "sourceText": ")RB\u0000\u0014 its distinctive properties in luminosity and timescale remain"
+          }
+        },
+        {
+          "ref": "B025",
+          "productionBlockId": "b249",
+          "page": 8,
+          "text": "fb . y ,",
+          "lineRefs": [
+            "U000503"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "8|152.5661085400004|333.37147600000003|538.3472536|fb . y ,"
+            ],
+            "sourceText": "fb . y ,"
+          }
+        },
+        {
+          "ref": "B026",
+          "productionBlockId": "b264",
+          "page": 9,
+          "text": "M M R",
+          "lineRefs": [
+            "U000532"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "9|293.8187889|144.02167319999998|248.3170088|M M R"
+            ],
+            "sourceText": "M M R"
+          }
+        },
+        {
+          "ref": "B027",
+          "productionBlockId": "b265",
+          "page": 9,
+          "text": "\u2206\u03F5 = 1 92 \u00D7 1017\u03B22 ( bh ) ( \u22C6 ) ( \u22C6 ) er / TDEs, because debris with similar mass falls back over a",
+          "lineRefs": [
+            "U000533"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "9|288.63702287260276|51.20824220000001|561.9229849999994|\u2206\u03F5 = 1 92 \u00D7 1017\u03B22 ( bh ) ( \u22C6 ) ( \u22C6 ) er / TDEs, because debris with similar mass falls back over a"
+            ],
+            "sourceText": "\u2206\u03F5 = 1 92 \u00D7 1017\u03B22 ( bh ) ( \u22C6 ) ( \u22C6 ) er / TDEs, because debris with similar mass falls back over a"
+          }
+        },
+        {
+          "ref": "B028",
+          "productionBlockId": "b282",
+          "page": 9,
+          "text": "m pea the incidence rate of post-MS TDEs is much lower than that",
+          "lineRefs": [
+            "U000554"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "9|164.83640880769238|196.99358080000005|561.9528727999996|m pea the incidence rate of post-MS TDEs is much lower than that"
+            ],
+            "sourceText": "m pea the incidence rate of post-MS TDEs is much lower than that"
+          }
+        },
+        {
+          "ref": "B029",
+          "productionBlockId": "b317",
+          "page": 11,
+          "text": "[t 1 \u0000\u0014\u0000\u0011\u0000\u0018 ogous formation mechanism for QPEs and imply that their",
+          "lineRefs": [
+            "U000623"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|628.8710846372826|54.953615330000005|561.9628353999997|[t1 \u0000\u0014\u0000\u0011\u0000\u0018 ogous formation mechanism for QPEs and imply that their"
+            ],
+            "sourceText": "[t 1 \u0000\u0014\u0000\u0011\u0000\u0018 ogous formation mechanism for QPEs and imply that their"
+          }
+        },
+        {
+          "ref": "B030",
+          "productionBlockId": "b320",
+          "page": 11,
+          "text": "L In this work, we present an HST UV spectrum taken in the",
+          "lineRefs": [
+            "U000627"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|591.3552653379079|54.953615330000005|561.7374677999998|L In this work, we present an HST UV spectrum taken in the"
+            ],
+            "sourceText": "L In this work, we present an HST UV spectrum taken in the"
+          }
+        },
+        {
+          "ref": "B031",
+          "productionBlockId": "b322",
+          "page": 11,
+          "text": "\u0000\u0013 \u0000\u0018 light curves. Our findings strongly support the interpretation",
+          "lineRefs": [
+            "U000629"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|566.2053392016967|71.83350224|561.7934711999993|\u0000\u0013 \u0000\u0018 light curves. Our findings strongly support the interpretation"
+            ],
+            "sourceText": "\u0000\u0013 \u0000\u0018 light curves. Our findings strongly support the interpretation"
+          }
+        },
+        {
+          "ref": "B032",
+          "productionBlockId": "b323",
+          "page": 11,
+          "text": "\u0000\u0011 Log 10[MBH] of Ansky as a featureless TDE, characterized by the persis-",
+          "lineRefs": [
+            "U000630"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|553.4226346557872|78.20071914|561.4647053999997|\u0000\u0011 Log10[MBH] of Ansky as a featureless TDE, characterized by the persis-"
+            ],
+            "sourceText": "\u0000\u0011 Log 10[MBH] of Ansky as a featureless TDE, characterized by the persis-"
+          }
+        },
+        {
+          "ref": "B033",
+          "productionBlockId": "b328",
+          "page": 11,
+          "text": "\u0000\u0017\u0000\u0016 sky. However, high-resolution HST ACQ imaging constrains",
+          "lineRefs": [
+            "U000642"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|417.1692157604814|74.57081044|561.5344435999997|\u0000\u0017\u0000\u0016 sky. However, high-resolution HST ACQ imaging constrains"
+            ],
+            "sourceText": "\u0000\u0017\u0000\u0016 sky. However, high-resolution HST ACQ imaging constrains"
+          }
+        },
+        {
+          "ref": "B034",
+          "productionBlockId": "b330",
+          "page": 11,
+          "text": "\u0000\u0018 \u0000\u0019 \u0000\u001A \u0000\u001B \u0000\u001C strongly disfavoring an offset IMBH-TDE scenario. Instead,",
+          "lineRefs": [
+            "U000644"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|391.9667895502855|109.24915132|561.3949671999995|\u0000\u0018 \u0000\u0019 \u0000\u001A \u0000\u001B \u0000\u001C strongly disfavoring an offset IMBH-TDE scenario. Instead,"
+            ],
+            "sourceText": "\u0000\u0018 \u0000\u0019 \u0000\u001A \u0000\u001B \u0000\u001C strongly disfavoring an offset IMBH-TDE scenario. Instead,"
+          }
+        },
+        {
+          "ref": "B035",
+          "productionBlockId": "b331",
+          "page": 11,
+          "text": "Log [M ] (M ) we propose that Ansky is most likely the tidal disruption of",
+          "lineRefs": [
+            "U000645"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|379.0535901720555|138.28842092|562.4410401999995|Log [M ] (M ) we propose that Ansky is most likely the tidal disruption of"
+            ],
+            "sourceText": "Log [M ] (M ) we propose that Ansky is most likely the tidal disruption of"
+          }
+        },
+        {
+          "ref": "B036",
+          "productionBlockId": "b335",
+          "page": 11,
+          "text": "/ ,r se ity as post-MS TDEs are expected to have longer fallback",
+          "lineRefs": [
+            "U000650"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|342.7423179173083|205.92356800000002|561.9927231999998|/ ,r se ity as post-MS TDEs are expected to have longer fallback"
+            ],
+            "sourceText": "/ ,r se ity as post-MS TDEs are expected to have longer fallback"
+          }
+        },
+        {
+          "ref": "B037",
+          "productionBlockId": "b337",
+          "page": 11,
+          "text": "with the featureless subclass indicated by black dots. As noted in our previous work (?), Ansky shows a long-",
+          "lineRefs": [
+            "U000656"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|304.8776021648354|50.92829439999998|561.4585149999997|with the featureless subclass indicated by black dots. As noted in our previous work (?), Ansky shows a long-"
+            ],
+            "sourceText": "with the featureless subclass indicated by black dots. As noted in our previous work (?), Ansky shows a long-"
+          }
+        },
+        {
+          "ref": "B038",
+          "productionBlockId": "b346",
+          "page": 12,
+          "text": "Software: astropy (The Astropy Collaboration 2013,",
+          "lineRefs": [
+            "U000696"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "12|639.2968387911112|59.9432384|291.55406999999997|Software: astropy (The Astropy Collaboration 2013,"
+            ],
+            "sourceText": "Software: astropy (The Astropy Collaboration 2013,"
+          }
+        },
+        {
+          "ref": "B039",
+          "productionBlockId": "b376",
+          "page": 14,
+          "text": "Nicholl, M. 2018, Research Notes of the American Astronomical Wan M Yin J Ma Y \u0026 Wu Q 2022 A J 933 225",
+          "lineRefs": [
+            "U000846"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "14|537.6640758199992|50.847596800000005|525.90956|Nicholl, M. 2018, Research Notes of the American Astronomical Wan M Yin J Ma Y \u0026 Wu Q 2022 A J 933 225"
+            ],
+            "sourceText": "Nicholl, M. 2018, Research Notes of the American Astronomical Wan M Yin J Ma Y \u0026 Wu Q 2022 A J 933 225"
+          }
+        },
+        {
+          "ref": "B040",
+          "productionBlockId": "b88",
+          "page": 3,
+          "text": "diu Res\u0000\u0013",
+          "lineRefs": [
+            "U000158",
+            "U000159"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "3|506.4329196651527|70.35776327500001|82.99935767500001|diu",
+              "3|484.59025879666854|70.741395475|96.9504268|Res\u0000\u0013"
+            ],
+            "sourceText": "diu Res\u0000\u0013"
+          }
+        }
+      ]
+    },
+    {
+      "documentId": "NEW-26BE9B284520",
+      "rawSourceLineCount": 9876,
+      "productionCandidateBlockCount": 638,
+      "selectedAnalystBlockCount": 40,
+      "selectedBlockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008",
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016",
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024",
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032",
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "selectedBlocks": [
+        {
+          "ref": "B001",
+          "productionBlockId": "b573",
+          "page": 45,
+          "text": "and 2 respectively to the Human Rights Commission Act 1981 (Cth),",
+          "lineRefs": [
+            "U001482"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "45|547.6046697443181|90.27686796875|521.16848125|and 2 respectively to the Human Rights Commission Act 1981 (Cth),"
+            ],
+            "sourceText": "and 2 respectively to the Human Rights Commission Act 1981 (Cth),"
+          }
+        },
+        {
+          "ref": "B002",
+          "productionBlockId": "b2249",
+          "page": 170,
+          "text": "Sections 359 A and 424 A apply to information taken",
+          "lineRefs": [
+            "U005892"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "170|610.9900625610353|77.89988593749999|516.2019994825433|Sections 359A and 424A apply to information taken"
+            ],
+            "sourceText": "Sections 359 A and 424 A apply to information taken"
+          }
+        },
+        {
+          "ref": "B003",
+          "productionBlockId": "b2258",
+          "page": 170,
+          "text": "Sections 359 A and 424 A do not apply to information",
+          "lineRefs": [
+            "U005918"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "170|196.9870220947266|77.90028593750003|522.6723994461034|Sections 359A and 424A do not apply to information"
+            ],
+            "sourceText": "Sections 359 A and 424 A do not apply to information"
+          }
+        },
+        {
+          "ref": "B004",
+          "productionBlockId": "b2265",
+          "page": 171,
+          "text": "Sections 359 A and 424 A do not apply to every step",
+          "lineRefs": [
+            "U005937"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "171|502.7689868774416|77.89978593749998|516.7413940644807|Sections 359A and 424A do not apply to every step"
+            ],
+            "sourceText": "Sections 359 A and 424 A do not apply to every step"
+          }
+        },
+        {
+          "ref": "B005",
+          "productionBlockId": "b2441",
+          "page": 186,
+          "text": "Part 8 C of the Migration Act",
+          "lineRefs": [
+            "U006490"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "186|600.2470455799931|78.64836499023437|311.5139878862343|Part 8C of the Migration Act"
+            ],
+            "sourceText": "Part 8 C of the Migration Act"
+          }
+        },
+        {
+          "ref": "B006",
+          "productionBlockId": "b2678",
+          "page": 198,
+          "text": "Councilfor Civil Service Unions v Ministerfor the Civil Service (popularly",
+          "lineRefs": [
+            "U007004"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "198|408.0576359675481|78.00274218749999|534.902109375|Councilfor Civil Service Unions v Ministerfor the Civil Service (popularly"
+            ],
+            "sourceText": "Councilfor Civil Service Unions v Ministerfor the Civil Service (popularly"
+          }
+        },
+        {
+          "ref": "B007",
+          "productionBlockId": "b1214",
+          "page": 92,
+          "text": "Subdivision C",
+          "lineRefs": [
+            "U003146"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "92|665.389433441162|77.9002859375|194.62693294833312|Subdivision C"
+            ],
+            "sourceText": "Subdivision C"
+          }
+        },
+        {
+          "ref": "B008",
+          "productionBlockId": "b1224",
+          "page": 92,
+          "text": "Subdivisions D and E",
+          "lineRefs": [
+            "U003177"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "92|118.53610064338235|77.90058593750001|260.1418162009306|Subdivisions D and E"
+            ],
+            "sourceText": "Subdivisions D and E"
+          }
+        },
+        {
+          "ref": "B009",
+          "productionBlockId": "b447",
+          "page": 36,
+          "text": "paragraph 35 ofthe judgment of Mc Hugh J.",
+          "lineRefs": [
+            "U001188"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "36|134.0119305778952|76.9537478515625|274.28569121093756|paragraph 35 ofthe judgment ofMcHugh J."
+            ],
+            "sourceText": "paragraph 35 ofthe judgment of Mc Hugh J."
+          }
+        },
+        {
+          "ref": "B010",
+          "productionBlockId": "b1927",
+          "page": 146,
+          "text": "paragraph 93.",
+          "lineRefs": [
+            "U005005"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "146|239.39707946777344|76.95354785156246|138.04799121093748|paragraph 93."
+            ],
+            "sourceText": "paragraph 93."
+          }
+        },
+        {
+          "ref": "B011",
+          "productionBlockId": "b3204",
+          "page": 235,
+          "text": "Review 219.",
+          "lineRefs": [
+            "U008381"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "235|550.36962890625|76.73402128906258|131.16839121093759|Review 219."
+            ],
+            "sourceText": "Review 219."
+          }
+        },
+        {
+          "ref": "B012",
+          "productionBlockId": "b3530",
+          "page": 258,
+          "text": "Citizenship 52 popularly known as the \u2018Malaysia Solution Case\u2019:53",
+          "lineRefs": [
+            "U009223"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "258|203.75790244654604|78.00344218750001|470.7378017578125|Citizenship 52 popularly known as the \u2018Malaysia Solution Case\u2019:53"
+            ],
+            "sourceText": "Citizenship 52 popularly known as the \u2018Malaysia Solution Case\u2019:53"
+          }
+        },
+        {
+          "ref": "B013",
+          "productionBlockId": "b3742",
+          "page": 273,
+          "text": "Journal 1 at 8.",
+          "lineRefs": [
+            "U009770"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "273|415.57468719482426|76.56512480468747|149.27981458975944|Journal 1 at 8."
+            ],
+            "sourceText": "Journal 1 at 8."
+          }
+        },
+        {
+          "ref": "B014",
+          "productionBlockId": "b3755",
+          "page": 273,
+          "text": "Chapter 1.",
+          "lineRefs": [
+            "U009785"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "273|147.75003377278645|77.5830041992188|128.72805735959656|Chapter 1."
+            ],
+            "sourceText": "Chapter 1."
+          }
+        },
+        {
+          "ref": "B015",
+          "productionBlockId": "b3780",
+          "page": 274,
+          "text": "Studies 269.",
+          "lineRefs": [
+            "U009822"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "274|140.5553956187855|77.07651503906246|137.43383347440746|Studies 269."
+            ],
+            "sourceText": "Studies 269."
+          }
+        },
+        {
+          "ref": "B016",
+          "productionBlockId": "b414",
+          "page": 36,
+          "text": "CLR 178 which reached a similar conclusion. The reasoning behind these decisions can be traced",
+          "lineRefs": [
+            "U001146"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "36|698.9880752563477|77.399694140625|534.5140230703128|CLR 178 which reached a similar conclusion. The reasoning behind these decisions can be traced"
+            ],
+            "sourceText": "CLR 178 which reached a similar conclusion. The reasoning behind these decisions can be traced"
+          }
+        },
+        {
+          "ref": "B017",
+          "productionBlockId": "b3011",
+          "page": 224,
+          "text": "3. It was made clear in Eshetu v Minister for Immigration and",
+          "lineRefs": [
+            "U007927"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "224|570.0026591796878|90.34941015624999|522.6973933650002|3. It was made clear in Eshetu v Minister for Immigration and"
+            ],
+            "sourceText": "3. It was made clear in Eshetu v Minister for Immigration and"
+          }
+        },
+        {
+          "ref": "B018",
+          "productionBlockId": "b3099",
+          "page": 231,
+          "text": "3. In SZRHL v Ministerfor Immigration and Citizenship the Federal Court",
+          "lineRefs": [
+            "U008204"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "231|444.1665359246926|77.60041015625|534.9069452250002|3. In SZRHL v Ministerfor Immigration and Citizenship the Federal Court"
+            ],
+            "sourceText": "3. In SZRHL v Ministerfor Immigration and Citizenship the Federal Court"
+          }
+        },
+        {
+          "ref": "B019",
+          "productionBlockId": "b991",
+          "page": 78,
+          "text": "8 Supra n 5.",
+          "lineRefs": [
+            "U002657"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "78|249.31866455078125|77.67335234375|127.7544412109375|8 Supra n5."
+            ],
+            "sourceText": "8 Supra n 5."
+          }
+        },
+        {
+          "ref": "B020",
+          "productionBlockId": "b22",
+          "page": 5,
+          "text": "example Singh v Commonwealth 1 (\u2018Tania Singh\u2019) considered the",
+          "lineRefs": [
+            "U000039"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|431.5609752727005|120.29874062500004|534.11177515625|example Singh v Commonwealth1 (\u2018Tania Singh\u2019) considered the"
+            ],
+            "sourceText": "example Singh v Commonwealth 1 (\u2018Tania Singh\u2019) considered the"
+          }
+        },
+        {
+          "ref": "B021",
+          "productionBlockId": "b34",
+          "page": 6,
+          "text": "The three arms of government",
+          "lineRefs": [
+            "U000072"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|474.1766411590577|77.30495454101568|337.1114789073558|The three arms of government"
+            ],
+            "sourceText": "The three arms of government"
+          }
+        },
+        {
+          "ref": "B022",
+          "productionBlockId": "b48",
+          "page": 7,
+          "text": "The \u2018administrative state\u2019",
+          "lineRefs": [
+            "U000123"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "7|208.78526321411132|77.30435454101563|290.58101937827|The \u2018administrative state\u2019"
+            ],
+            "sourceText": "The \u2018administrative state\u2019"
+          }
+        },
+        {
+          "ref": "B023",
+          "productionBlockId": "b56",
+          "page": 8,
+          "text": "Newfoundland (Board of Commissioners of Public Utilities), captures the",
+          "lineRefs": [
+            "U000143"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "8|486.77249581473217|76.57471953125|534.3876851562501|Newfoundland (Board of Commissioners of Public Utilities), captures the"
+            ],
+            "sourceText": "Newfoundland (Board of Commissioners of Public Utilities), captures the"
+          }
+        },
+        {
+          "ref": "B024",
+          "productionBlockId": "b84",
+          "page": 10,
+          "text": "Early history of Australian migration laws",
+          "lineRefs": [
+            "U000234"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "10|174.33350137246626|78.6473649902344|425.12796775080403|Early history of Australian migration laws"
+            ],
+            "sourceText": "Early history of Australian migration laws"
+          }
+        },
+        {
+          "ref": "B025",
+          "productionBlockId": "b100",
+          "page": 11,
+          "text": "\u2018An Act relating to Immigration, Deportation and Emigration \u2019.",
+          "lineRefs": [
+            "U000265"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|257.21771918402777|92.92051093750007|466.1704750000001|\u2018An Act relating to Immigration, Deportation and Emigration \u2019."
+            ],
+            "sourceText": "\u2018An Act relating to Immigration, Deportation and Emigration \u2019."
+          }
+        },
+        {
+          "ref": "B026",
+          "productionBlockId": "b95",
+          "page": 11,
+          "text": "Labourers Act 1901 (Cth) and the Contract Immigrants Act 1905 (Cth).",
+          "lineRefs": [
+            "U000255"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|426.23595349542023|89.25880156249997|520.6578882812499|Labourers Act 1901 (Cth) and the Contract Immigrants Act 1905 (Cth)."
+            ],
+            "sourceText": "Labourers Act 1901 (Cth) and the Contract Immigrants Act 1905 (Cth)."
+          }
+        },
+        {
+          "ref": "B027",
+          "productionBlockId": "b105",
+          "page": 12,
+          "text": "[391] [In 1989] the Migration Legislation Amendment Act 1989 (Cth)",
+          "lineRefs": [
+            "U000279"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "12|631.0916041324014|90.97266875|521.2340828125|[391] [In 1989] the Migration Legislation Amendment Act 1989 (Cth)"
+            ],
+            "sourceText": "[391] [In 1989] the Migration Legislation Amendment Act 1989 (Cth)"
+          }
+        },
+        {
+          "ref": "B028",
+          "productionBlockId": "b108",
+          "page": 12,
+          "text": "Administrative Decisions (Judicial Review) Act 1977 (Cth) and the",
+          "lineRefs": [
+            "U000288"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "12|469.06468441611844|89.01077812500006|521.5403287562501|Administrative Decisions (Judicial Review) Act 1977 (Cth) and the"
+            ],
+            "sourceText": "Administrative Decisions (Judicial Review) Act 1977 (Cth) and the"
+          }
+        },
+        {
+          "ref": "B029",
+          "productionBlockId": "b116",
+          "page": 12,
+          "text": "Migration Laws Amendment Act 1993 (Cth) (No 59 of 1993).",
+          "lineRefs": [
+            "U000306"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "12|156.2956179355053|89.25267734375001|456.96468828124995|Migration Laws Amendment Act 1993 (Cth) (No 59 of 1993)."
+            ],
+            "sourceText": "Migration Laws Amendment Act 1993 (Cth) (No 59 of 1993)."
+          }
+        },
+        {
+          "ref": "B030",
+          "productionBlockId": "b122",
+          "page": 13,
+          "text": "High Court decisions, such as Shaw v Minister for Immigration and",
+          "lineRefs": [
+            "U000316"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "13|619.5003995028409|77.24834765625002|535.5774193750001|High Court decisions, such as Shaw v Minister for Immigration and"
+            ],
+            "sourceText": "High Court decisions, such as Shaw v Minister for Immigration and"
+          }
+        },
+        {
+          "ref": "B031",
+          "productionBlockId": "b125",
+          "page": 13,
+          "text": "Current structure of migration legislation",
+          "lineRefs": [
+            "U000322"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "13|520.7970907432156|77.84333056640627|419.19735981407246|Current structure of migration legislation"
+            ],
+            "sourceText": "Current structure of migration legislation"
+          }
+        },
+        {
+          "ref": "B032",
+          "productionBlockId": "b140",
+          "page": 14,
+          "text": "Who is an \u2018alien\u2019?",
+          "lineRefs": [
+            "U000361"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "14|452.93326025390627|77.34199145507813|227.95199580168932|Who is an \u2018alien\u2019?"
+            ],
+            "sourceText": "Who is an \u2018alien\u2019?"
+          }
+        },
+        {
+          "ref": "B033",
+          "productionBlockId": "b142",
+          "page": 14,
+          "text": "Court decisions from the 2000 s: Re Patterson Ex parte Taylor, 17 Shaw v",
+          "lineRefs": [
+            "U000363"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "14|406.69416628045553|77.5339921875|534.3287421875|Court decisions from the 2000s: Re Patterson Ex parte Taylor, 17 Shaw v"
+            ],
+            "sourceText": "Court decisions from the 2000 s: Re Patterson Ex parte Taylor, 17 Shaw v"
+          }
+        },
+        {
+          "ref": "B034",
+          "productionBlockId": "b165",
+          "page": 16,
+          "text": "Nolan.",
+          "lineRefs": [
+            "U000437"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "16|414.370361328125|76.57501953125|115.6596875|Nolan."
+            ],
+            "sourceText": "Nolan."
+          }
+        },
+        {
+          "ref": "B035",
+          "productionBlockId": "b175",
+          "page": 17,
+          "text": "finding in Commonwealth v Australian Capital Territory (the \u2018same-sex",
+          "lineRefs": [
+            "U000466"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "17|565.6137655289447|77.57071328125005|534.2284145312501|finding in Commonwealth v Australian Capital Territory (the \u2018same-sex"
+            ],
+            "sourceText": "finding in Commonwealth v Australian Capital Territory (the \u2018same-sex"
+          }
+        },
+        {
+          "ref": "B036",
+          "productionBlockId": "b192",
+          "page": 18,
+          "text": "Chu Kheng Lim v Minister for Immigration,27 that the effect of",
+          "lineRefs": [
+            "U000514"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "18|372.270742525541|90.75294218749997|523.5548791875002|Chu Kheng Lim v Minister for Immigration,27 that the effect of"
+            ],
+            "sourceText": "Chu Kheng Lim v Minister for Immigration,27 that the effect of"
+          }
+        },
+        {
+          "ref": "B037",
+          "productionBlockId": "b213",
+          "page": 20,
+          "text": "Other issues relating to the scope of the immigration",
+          "lineRefs": [
+            "U000585"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "20|460.0742182617187|77.74873828125001|523.6654276179657|Other issues relating to the scope of the immigration"
+            ],
+            "sourceText": "Other issues relating to the scope of the immigration"
+          }
+        },
+        {
+          "ref": "B038",
+          "productionBlockId": "b214",
+          "page": 20,
+          "text": "and aliens powers",
+          "lineRefs": [
+            "U000586"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "20|437.30442004394536|77.76765673828127|232.44447457548372|and aliens powers"
+            ],
+            "sourceText": "and aliens powers"
+          }
+        },
+        {
+          "ref": "B039",
+          "productionBlockId": "b235",
+          "page": 22,
+          "text": "(Actors and Announcers Equity Association (1982) 150 CLR at 192 per",
+          "lineRefs": [
+            "U000645"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "22|594.8915373149671|90.357434375|521.9336900312501|(Actors andAnnouncers Equity Association (1982) 150 CLR at 192 per"
+            ],
+            "sourceText": "(Actors and Announcers Equity Association (1982) 150 CLR at 192 per"
+          }
+        },
+        {
+          "ref": "B040",
+          "productionBlockId": "b244",
+          "page": 22,
+          "text": "Immigration detention cases",
+          "lineRefs": [
+            "U000669"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "22|151.77475700683593|78.89389493164069|318.57150696388635|Immigration detention cases"
+            ],
+            "sourceText": "Immigration detention cases"
+          }
+        }
+      ]
+    },
+    {
+      "documentId": "NEW-45314CB70E99",
+      "rawSourceLineCount": 31123,
+      "productionCandidateBlockCount": 1221,
+      "selectedAnalystBlockCount": 40,
+      "selectedBlockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008",
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016",
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024",
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032",
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "selectedBlocks": [
+        {
+          "ref": "B001",
+          "productionBlockId": "b7785",
+          "page": 621,
+          "text": "BCentral 77 Internet \uFB01ltering in 431 440\u2013441 Belarus 16 161\u20131 71 Internet registration in 437",
+          "lineRefs": [
+            "U029966",
+            "U029968"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "621|309.76632200429003|73.90630800000001|387.9715636790999|BCentral 77 Internet \uFB01ltering in 431 440\u2013441",
+              "621|297.7342772600736|73.90630800000001|364.63490973639995|Belarus 16 161\u20131 71 Internet registration in 437"
+            ],
+            "sourceText": "BCentral 77 Internet \uFB01ltering in 431 440\u2013441 Belarus 16 161\u20131 71 Internet registration in 437"
+          }
+        },
+        {
+          "ref": "B002",
+          "productionBlockId": "b7861",
+          "page": 627,
+          "text": "Jordan 523 key indicators on 192 Internet access in, 524 legal and regulatory frameworks in,",
+          "lineRefs": [
+            "U030482",
+            "U030484"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "627|321.62093085005876|72.94356118937576|344.462118341|Jordan 523 key indicators on 192",
+              "627|309.4273505161961|77.93130800000002|392.1321778443601|Internet access in, 524 legal and regulatory frameworks in,"
+            ],
+            "sourceText": "Jordan 523 key indicators on 192 Internet access in, 524 legal and regulatory frameworks in,"
+          }
+        },
+        {
+          "ref": "B003",
+          "productionBlockId": "b39",
+          "page": 6,
+          "text": "Part I: Access Controlled: Theory and Analysis 1",
+          "lineRefs": [
+            "U000066"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|366.00993567682923|72.4606029|283.33892293700006|Part I: Access Controlled: Theory and Analysis 1"
+            ],
+            "sourceText": "Part I: Access Controlled: Theory and Analysis 1"
+          }
+        },
+        {
+          "ref": "B004",
+          "productionBlockId": "b52",
+          "page": 6,
+          "text": "Part II: Country Pro\uFB01les and Regional Overviews 1 09",
+          "lineRefs": [
+            "U000081"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|124.90809235227262|72.4606029|305.3431222522778|Part II: Country Pro\uFB01les and Regional Overviews 1 09"
+            ],
+            "sourceText": "Part II: Country Pro\uFB01les and Regional Overviews 1 09"
+          }
+        },
+        {
+          "ref": "B005",
+          "productionBlockId": "b1264",
+          "page": 104,
+          "text": "Colin M. Maclay",
+          "lineRefs": [
+            "U004558"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "104|516.9150650999999|72.11988349999999|139.0804539901|Colin M. Maclay"
+            ],
+            "sourceText": "Colin M. Maclay"
+          }
+        },
+        {
+          "ref": "B006",
+          "productionBlockId": "b7856",
+          "page": 627,
+          "text": "Irrawaddy 80 telecommunications in 185 Italy 31 7\u2013324 third-generation controls in 23",
+          "lineRefs": [
+            "U030442",
+            "U030444"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "627|572.6485314836361|73.90630800000001|365.55173829306005|Irrawaddy 80 telecommunications in 185",
+              "627|560.7789376821302|73.90630800000001|378.375961443252|Italy 31 7\u2013324 third-generation controls in 23"
+            ],
+            "sourceText": "Irrawaddy 80 telecommunications in 185 Italy 31 7\u2013324 third-generation controls in 23"
+          }
+        },
+        {
+          "ref": "B007",
+          "productionBlockId": "b69",
+          "page": 8,
+          "text": "Contents vii",
+          "lineRefs": [
+            "U000122"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "8|608.6177633636364|72.075059|430.03307679999995|Contents vii"
+            ],
+            "sourceText": "Contents vii"
+          }
+        },
+        {
+          "ref": "B008",
+          "productionBlockId": "b993",
+          "page": 83,
+          "text": "Notes",
+          "lineRefs": [
+            "U003544"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "83|146.54863083999962|74.24902660000001|95.11501020000001|Notes"
+            ],
+            "sourceText": "Notes"
+          }
+        },
+        {
+          "ref": "B009",
+          "productionBlockId": "b2414",
+          "page": 198,
+          "text": "and Protecting Customer Rights in the Sphere of Electronic Communications.",
+          "lineRefs": [
+            "U008815"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "198|357.4369023397407|72.035208|357.37646652022|and Protecting Customer Rights in the Sphere of Electronic Communications."
+            ],
+            "sourceText": "and Protecting Customer Rights in the Sphere of Electronic Communications."
+          }
+        },
+        {
+          "ref": "B010",
+          "productionBlockId": "b3252",
+          "page": 262,
+          "text": "Notes",
+          "lineRefs": [
+            "U011881"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "262|198.36603083999995|72.3779266|93.2439102|Notes"
+            ],
+            "sourceText": "Notes"
+          }
+        },
+        {
+          "ref": "B011",
+          "productionBlockId": "b3595",
+          "page": 289,
+          "text": "Notes",
+          "lineRefs": [
+            "U013194"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "289|340.83503083999994|74.2490866|95.1150702|Notes"
+            ],
+            "sourceText": "Notes"
+          }
+        },
+        {
+          "ref": "B012",
+          "productionBlockId": "b264",
+          "page": 29,
+          "text": "1. John Palfrey and Urs Gasser Born Digital: Understanding the First Generation of Digital Natives",
+          "lineRefs": [
+            "U000847"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "29|161.4549047831619|74.40754310000005|432.03840298913815|1. John Palfrey and Urs Gasser Born Digital: Understanding the First Generation of Digital Natives"
+            ],
+            "sourceText": "1. John Palfrey and Urs Gasser Born Digital: Understanding the First Generation of Digital Natives"
+          }
+        },
+        {
+          "ref": "B013",
+          "productionBlockId": "b269",
+          "page": 29,
+          "text": "3. Tom Standage The Victorian Internet: The Remarkable Story of the Telegraph and the Nineteenth",
+          "lineRefs": [
+            "U000856"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "29|89.73016265629758|73.954468787112|431.99874391665236|3. Tom Standage The Victorian Internet: The Remarkable Story of the Telegraph and the Nineteenth"
+            ],
+            "sourceText": "3. Tom Standage The Victorian Internet: The Remarkable Story of the Telegraph and the Nineteenth"
+          }
+        },
+        {
+          "ref": "B014",
+          "productionBlockId": "b282",
+          "page": 30,
+          "text": "10. David Lyons, Surveillance Society: Monitoring Everyday Life (Buckingham, UK: Open University",
+          "lineRefs": [
+            "U000891"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "30|345.3893209348758|72.5377306|430.4239685874|10. David Lyons, Surveillance Society: Monitoring Everyday Life (Buckingham, UK: Open University"
+            ],
+            "sourceText": "10. David Lyons, Surveillance Society: Monitoring Everyday Life (Buckingham, UK: Open University"
+          }
+        },
+        {
+          "ref": "B015",
+          "productionBlockId": "b542",
+          "page": 49,
+          "text": "1. The Economist Intelligence Unit The Economist Intelligence Unit\u2019s Index of Democracy 2008 (The",
+          "lineRefs": [
+            "U001774"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "49|433.51630835900534|74.4084306|432.0229791950599|1. The Economist Intelligence Unit The Economist Intelligence Unit\u2019s Index ofDemocracy 2008 (The"
+            ],
+            "sourceText": "1. The Economist Intelligence Unit The Economist Intelligence Unit\u2019s Index of Democracy 2008 (The"
+          }
+        },
+        {
+          "ref": "B016",
+          "productionBlockId": "b567",
+          "page": 50,
+          "text": "16. Security Council of the Russian Federation Information Security Doctrine of the Russian Federa-",
+          "lineRefs": [
+            "U001872"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "50|94.37704805491464|72.52903059999997|430.27040833624204|16. Security Council of the Russian Federation Information Security Doctrine of the Russian Federa-"
+            ],
+            "sourceText": "16. Security Council of the Russian Federation Information Security Doctrine of the Russian Federa-"
+          }
+        },
+        {
+          "ref": "B017",
+          "productionBlockId": "b792",
+          "page": 67,
+          "text": "2. Federal Communications Commission Order FCC 06\u201356 (Federal Communications Commis-",
+          "lineRefs": [
+            "U002732"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "67|198.3809734897347|73.9302186|431.99150657615996|2. Federal Communications Commission Order FCC 06\u201356 (Federal Communications Commis-"
+            ],
+            "sourceText": "2. Federal Communications Commission Order FCC 06\u201356 (Federal Communications Commis-"
+          }
+        },
+        {
+          "ref": "B018",
+          "productionBlockId": "b808",
+          "page": 68,
+          "text": "16. Cooperative Association for Internet Data Analysis, IPv 4 Internet Topology Report as Internet",
+          "lineRefs": [
+            "U002801"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "68|178.03809825404812|72.52943060000007|430.9251266980001|16. Cooperative Association for Internet Data Analysis, IPv4 Internet Topology Report as Internet"
+            ],
+            "sourceText": "16. Cooperative Association for Internet Data Analysis, IPv 4 Internet Topology Report as Internet"
+          }
+        },
+        {
+          "ref": "B019",
+          "productionBlockId": "b821",
+          "page": 69,
+          "text": "25. Websense Security Labs Websense Security Labs: State of Internet Security Q 1\u2013Q 2 2008 (Web-",
+          "lineRefs": [
+            "U002848"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "69|345.507110414049|73.94541860000002|432.03880740195996|25. Websense Security Labs Websense Security Labs: State ofInternet Security Q1\u2013Q2 2008 (Web-"
+            ],
+            "sourceText": "25. Websense Security Labs Websense Security Labs: State of Internet Security Q 1\u2013Q 2 2008 (Web-"
+          }
+        },
+        {
+          "ref": "B020",
+          "productionBlockId": "b833",
+          "page": 70,
+          "text": "35. Message Labs Message Labs Intelligence: Q 1/March 2008: \u2018\u2018One Fifth of All Spam Springs from",
+          "lineRefs": [
+            "U002899"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "70|500.98817262051165|72.08525628711189|430.2329403867998|35. MessageLabs MessageLabs Intelligence: Q1/March 2008: \u2018\u2018One Fifth of All Spam Springs from"
+            ],
+            "sourceText": "35. Message Labs Message Labs Intelligence: Q 1/March 2008: \u2018\u2018One Fifth of All Spam Springs from"
+          }
+        },
+        {
+          "ref": "B021",
+          "productionBlockId": "b835",
+          "page": 70,
+          "text": "36. Nicholas Ianelli and Aaron Hackworth Botnets as a Vehicle for Online Crime (CERT Coordina-",
+          "lineRefs": [
+            "U002903"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "70|471.1197262661308|72.08495628711185|430.1293697539398|36. Nicholas Ianelli and Aaron Hackworth Botnets as a Vehicle for Online Crime (CERT Coordina-"
+            ],
+            "sourceText": "36. Nicholas Ianelli and Aaron Hackworth Botnets as a Vehicle for Online Crime (CERT Coordina-"
+          }
+        },
+        {
+          "ref": "B022",
+          "productionBlockId": "b844",
+          "page": 70,
+          "text": "44. Privacy International PHR 2006\u2014Kingdom of Denmark (Privacy International December 18",
+          "lineRefs": [
+            "U002942"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "70|172.13404378592222|71.98932719999989|427.7475510818199|44. Privacy International PHR2006\u2014Kingdom of Denmark (Privacy International December 18"
+            ],
+            "sourceText": "44. Privacy International PHR 2006\u2014Kingdom of Denmark (Privacy International December 18"
+          }
+        },
+        {
+          "ref": "B023",
+          "productionBlockId": "b1004",
+          "page": 84,
+          "text": "8. Thomas Hammarberg \u2018\u2018The UN Convention on the Rights of the Child\u2014And How to Make It",
+          "lineRefs": [
+            "U003572"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "84|393.4516433333643|72.10653980000004|430.2627301687599|8. Thomas Hammarberg \u2018\u2018The UN Convention on the Rights of the Child\u2014And How to Make It"
+            ],
+            "sourceText": "8. Thomas Hammarberg \u2018\u2018The UN Convention on the Rights of the Child\u2014And How to Make It"
+          }
+        },
+        {
+          "ref": "B024",
+          "productionBlockId": "b1500",
+          "page": 122,
+          "text": "4. Reo Research Managing Access Security and Privacy in the Global Digital Economy (F\u0026C Invest-",
+          "lineRefs": [
+            "U005462"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "122|459.03232419445624|72.00332719999999|430.1768686039999|4. Reo Research Managing Access Security and Privacy in the Global Digital Economy (F\u0026C Invest-"
+            ],
+            "sourceText": "4. Reo Research Managing Access Security and Privacy in the Global Digital Economy (F\u0026C Invest-"
+          }
+        },
+        {
+          "ref": "B025",
+          "productionBlockId": "b1505",
+          "page": 122,
+          "text": "8. Jonathan Zittrain and John Palfrey \u2018\u2018Reluctant Gatekeepers: Corporate Ethics on a Filtered",
+          "lineRefs": [
+            "U005478"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "122|315.6715826201878|72.09943979999997|430.32794618441983|8. Jonathan Zittrain and John Palfrey \u2018\u2018Reluctant Gatekeepers: Corporate Ethics on a Filtered"
+            ],
+            "sourceText": "8. Jonathan Zittrain and John Palfrey \u2018\u2018Reluctant Gatekeepers: Corporate Ethics on a Filtered"
+          }
+        },
+        {
+          "ref": "B026",
+          "productionBlockId": "b1524",
+          "page": 123,
+          "text": "18. Council of Europe Directorate General of Human Rights and Legal Affairs Human Rights",
+          "lineRefs": [
+            "U005537"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "123|393.312868746056|74.40843060000003|432.02294565560004|18. Council of Europe Directorate General of Human Rights and Legal Affairs Human Rights"
+            ],
+            "sourceText": "18. Council of Europe Directorate General of Human Rights and Legal Affairs Human Rights"
+          }
+        },
+        {
+          "ref": "B027",
+          "productionBlockId": "b1540",
+          "page": 124,
+          "text": "32. United Nations General Assembly The International Bill of Human Rights 1948 http://",
+          "lineRefs": [
+            "U005605"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "124|369.51397251017374|72.08425628711194|430.1361295277998|32. United Nations General Assembly The International Bill of Human Rights 1948 http://"
+            ],
+            "sourceText": "32. United Nations General Assembly The International Bill of Human Rights 1948 http://"
+          }
+        },
+        {
+          "ref": "B028",
+          "productionBlockId": "b1810",
+          "page": 151,
+          "text": "6. United Nations United Nations e-Government Survey 2008: From e-Government to Connected Gover-",
+          "lineRefs": [
+            "U006598"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "151|441.13174791340913|74.06548807235664|432.1267379423082|6. United Nations United Nations e-Government Survey 2008: From e-Government to Connected Gover-"
+            ],
+            "sourceText": "6. United Nations United Nations e-Government Survey 2008: From e-Government to Connected Gover-"
+          }
+        },
+        {
+          "ref": "B029",
+          "productionBlockId": "b1941",
+          "page": 161,
+          "text": "3. David Sandukhchyan \u2018\u2018Armenia \u2019\u2019 Political Intelligence Internews December 2006 http://ec",
+          "lineRefs": [
+            "U007073"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "161|165.62220387942793|73.95539190711195|432.1824869901999|3. David Sandukhchyan \u2018\u2018Armenia \u2019\u2019 Political Intelligence Internews December 2006 http://ec"
+            ],
+            "sourceText": "3. David Sandukhchyan \u2018\u2018Armenia \u2019\u2019 Political Intelligence Internews December 2006 http://ec"
+          }
+        },
+        {
+          "ref": "B030",
+          "productionBlockId": "b2262",
+          "page": 186,
+          "text": "6. European Bank for Reconstruction and Development Communications Sector Assessment 2008",
+          "lineRefs": [
+            "U008281"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "186|199.23791643142755|72.19438807235663|428.0164291629581|6. European Bank for Reconstruction and Development Communications Sector Assessment 2008"
+            ],
+            "sourceText": "6. European Bank for Reconstruction and Development Communications Sector Assessment 2008"
+          }
+        },
+        {
+          "ref": "B031",
+          "productionBlockId": "b2273",
+          "page": 187,
+          "text": "15. European Bank for Reconstruction and Development Communications Sector Assessment 2008",
+          "lineRefs": [
+            "U008316"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "187|411.2280171010349|74.4084306|429.8874579881581|15. European Bank for Reconstruction and Development Communications Sector Assessment 2008"
+            ],
+            "sourceText": "15. European Bank for Reconstruction and Development Communications Sector Assessment 2008"
+          }
+        },
+        {
+          "ref": "B032",
+          "productionBlockId": "b2294",
+          "page": 188,
+          "text": "33. Obedinennaya Grazhdanskaya Partiya Svaboda Sobstvenocst Zakonnost \u2018\u2018Na Belorusskikh Forum-",
+          "lineRefs": [
+            "U008393"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "188|214.00887558320875|72.09215628711196|430.1841093834|33. Obedinennaya Grazhdanskaya PartiyaSvaboda Sobstvenocst Zakonnost \u2018\u2018Na Belorusskikh Forum-"
+            ],
+            "sourceText": "33. Obedinennaya Grazhdanskaya Partiya Svaboda Sobstvenocst Zakonnost \u2018\u2018Na Belorusskikh Forum-"
+          }
+        },
+        {
+          "ref": "B033",
+          "productionBlockId": "b2400",
+          "page": 197,
+          "text": "3. European Bank for Reconstruction and Development Telecommunications Assessment 2008",
+          "lineRefs": [
+            "U008775"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "197|193.29679945938685|73.95553628711195|429.87975474006004|3. European Bank for Reconstruction and Development Telecommunications Assessment 2008"
+            ],
+            "sourceText": "3. European Bank for Reconstruction and Development Telecommunications Assessment 2008"
+          }
+        },
+        {
+          "ref": "B034",
+          "productionBlockId": "b2512",
+          "page": 206,
+          "text": "7. National News Agency Kaz Inform \u2018\u2018Srednyaya Zarplata v Kazakhstane\u2019\u2019 [Average Salary in",
+          "lineRefs": [
+            "U009152"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "206|256.0994762878986|72.5213902|430.1520591932798|7. National News Agency KazInform \u2018\u2018Srednyaya Zarplata v Kazakhstane\u2019\u2019 [Average Salary in"
+            ],
+            "sourceText": "7. National News Agency Kaz Inform \u2018\u2018Srednyaya Zarplata v Kazakhstane\u2019\u2019 [Average Salary in"
+          }
+        },
+        {
+          "ref": "B035",
+          "productionBlockId": "b2515",
+          "page": 206,
+          "text": "9. European Bank for Reconstruction and Development Assessment Report Kazakhstan 2008",
+          "lineRefs": [
+            "U009160"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "206|196.2302117917702|72.03611647834285|427.74687242119995|9. European Bank for Reconstruction and Development Assessment Report Kazakhstan 2008"
+            ],
+            "sourceText": "9. European Bank for Reconstruction and Development Assessment Report Kazakhstan 2008"
+          }
+        },
+        {
+          "ref": "B036",
+          "productionBlockId": "b2626",
+          "page": 215,
+          "text": "3. Bishkek \u2018\u2018Issledovanie Auditorii Internet v Kyrgyzstane\u2019\u2019 [Survey on the Internet Auditorium in",
+          "lineRefs": [
+            "U009573"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "215|465.1802523107267|73.9556562871119|432.0242879563997|3. Bishkek \u2018\u2018Issledovanie Auditorii Internet v Kyrgyzstane\u2019\u2019 [Survey on the Internet Auditorium in"
+            ],
+            "sourceText": "3. Bishkek \u2018\u2018Issledovanie Auditorii Internet v Kyrgyzstane\u2019\u2019 [Survey on the Internet Auditorium in"
+          }
+        },
+        {
+          "ref": "B037",
+          "productionBlockId": "b2628",
+          "page": 215,
+          "text": "5. United Nations United Nations e-Government Survey 2008: From e-Government to Connected Gover-",
+          "lineRefs": [
+            "U009578"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "215|417.20457861340896|73.982611017307|432.12703794230816|5. United Nations United Nations e-Government Survey 2008: From e-Government to Connected Gover-"
+            ],
+            "sourceText": "5. United Nations United Nations e-Government Survey 2008: From e-Government to Connected Gover-"
+          }
+        },
+        {
+          "ref": "B038",
+          "productionBlockId": "b2631",
+          "page": 215,
+          "text": "7. United Nations United Nations e-Government Survey 2008: From e-Government to Connected Gover-",
+          "lineRefs": [
+            "U009587"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "215|345.48120047174245|74.39279019999996|432.12703794230816|7. United Nations United Nations e-Government Survey 2008: From e-Government to Connected Gover-"
+            ],
+            "sourceText": "7. United Nations United Nations e-Government Survey 2008: From e-Government to Connected Gover-"
+          }
+        },
+        {
+          "ref": "B039",
+          "productionBlockId": "b2736",
+          "page": 224,
+          "text": "4. National Regulatory Agency for Electronic Communications and Information Technology,",
+          "lineRefs": [
+            "U009942"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "224|346.648609303008|72.00362719999997|429.7857896321|4. National Regulatory Agency for Electronic Communications and Information Technology,"
+            ],
+            "sourceText": "4. National Regulatory Agency for Electronic Communications and Information Technology,"
+          }
+        },
+        {
+          "ref": "B040",
+          "productionBlockId": "b2742",
+          "page": 224,
+          "text": "8. Center of Sociological Politological and Psychological Analysis and Investigations (CIVIS)",
+          "lineRefs": [
+            "U009954"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "224|227.192068479301|72.1072398|427.6738213284798|8. Center of Sociological Politological and Psychological Analysis and Investigations (CIVIS)"
+            ],
+            "sourceText": "8. Center of Sociological Politological and Psychological Analysis and Investigations (CIVIS)"
+          }
+        }
+      ]
+    },
+    {
+      "documentId": "NEW-6717CCA50787",
+      "rawSourceLineCount": 14840,
+      "productionCandidateBlockCount": 822,
+      "selectedAnalystBlockCount": 40,
+      "selectedBlockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008",
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016",
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024",
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032",
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "selectedBlocks": [
+        {
+          "ref": "B001",
+          "productionBlockId": "b4143",
+          "page": 271,
+          "text": "Step 2: Consider the aims of the overall justice system",
+          "lineRefs": [
+            "U012969"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "271|226.09074543478224|68.66244062500002|403.1204386090001|Step 2: Consider the aims of the overall justice system"
+            ],
+            "sourceText": "Step 2: Consider the aims of the overall justice system"
+          }
+        },
+        {
+          "ref": "B002",
+          "productionBlockId": "b4279",
+          "page": 282,
+          "text": "Step 7 : Revise the model pluralist method",
+          "lineRefs": [
+            "U013432"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "282|475.09924620535696|80.00144062500001|334.9510735575|Step 7 : Revise the model pluralist method"
+            ],
+            "sourceText": "Step 7 : Revise the model pluralist method"
+          }
+        },
+        {
+          "ref": "B003",
+          "productionBlockId": "b3978",
+          "page": 262,
+          "text": "Article 149 of the Peruvian Constitution contains a similar provision.",
+          "lineRefs": [
+            "U012498"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "262|113.91218114754048|90.46076000000002|324.54253820000014|Article 149 of the Peruvian Constitution contains a similar provision."
+            ],
+            "sourceText": "Article 149 of the Peruvian Constitution contains a similar provision."
+          }
+        },
+        {
+          "ref": "B004",
+          "productionBlockId": "b3361",
+          "page": 226,
+          "text": "Model 1 : Repression of a non-state justice system by the state system",
+          "lineRefs": [
+            "U010676",
+            "U010677"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "226|514.5121460937501|80.4849390625|428.4483983290001|Model 1 : Repression of a non-state justice system by the",
+              "226|501.10270156249993|80.001540625|156.946905649|state system"
+            ],
+            "sourceText": "Model 1 : Repression of a non-state justice system by the state system"
+          }
+        },
+        {
+          "ref": "B005",
+          "productionBlockId": "b3410",
+          "page": 228,
+          "text": "Model 3 : No formal recognition but active encouragement of a non-state justice system by the State",
+          "lineRefs": [
+            "U010796",
+            "U010797"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "228|342.10100297851585|80.4849390625|430.49857000750023|Model 3 : No formal recognition but active encouragement",
+              "228|328.8547973214287|80.0466578125|336.04840532500003|of a non-state justice system by the State"
+            ],
+            "sourceText": "Model 3 : No formal recognition but active encouragement of a non-state justice system by the State"
+          }
+        },
+        {
+          "ref": "B006",
+          "productionBlockId": "b3448",
+          "page": 230,
+          "text": "Model 4: Limited formal recognition by the State of the exercise of jurisdiction by a non-state justice system",
+          "lineRefs": [
+            "U010901",
+            "U010902"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "230|231.09777316576088|80.4849390625|416.9378355730002|Model 4: Limited formal recognition by the State of the",
+              "230|217.61538239694144|80.027321875|399.6017767450001|exercise of jurisdiction by a non-state justice system"
+            ],
+            "sourceText": "Model 4: Limited formal recognition by the State of the exercise of jurisdiction by a non-state justice system"
+          }
+        },
+        {
+          "ref": "B007",
+          "productionBlockId": "b3511",
+          "page": 234,
+          "text": "Model 5 : Formal recognition of exclusive jurisdiction in a defined area",
+          "lineRefs": [
+            "U011087",
+            "U011088"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "234|333.94943007812503|80.4849390625|424.3649441575003|Model 5 : Formal recognition of exclusive jurisdiction in a",
+              "234|320.8018351562499|79.975759375|153.54090728949998|defined area"
+            ],
+            "sourceText": "Model 5 : Formal recognition of exclusive jurisdiction in a defined area"
+          }
+        },
+        {
+          "ref": "B008",
+          "productionBlockId": "b3562",
+          "page": 237,
+          "text": "Model 6: Formal recognition and the giving of state coercive powers to a non-state justice system",
+          "lineRefs": [
+            "U011250",
+            "U011251"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "237|174.1593212027616|69.1459390625|381.5620899170002|Model 6: Formal recognition and the giving of state",
+              "237|160.67220204326927|68.7205484375|348.887240897|coercive powers to a non-state justice system"
+            ],
+            "sourceText": "Model 6: Formal recognition and the giving of state coercive powers to a non-state justice system"
+          }
+        },
+        {
+          "ref": "B009",
+          "productionBlockId": "b3635",
+          "page": 242,
+          "text": "Model 7 : Complete incorporation of the non-state justice system by the State",
+          "lineRefs": [
+            "U011449",
+            "U011450"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "242|580.5679027104591|80.4849390625|425.49194892100024|Model 7 : Complete incorporation of the non-state justice",
+              "242|567.2908299804687|80.001540625|202.319626405|system by the State"
+            ],
+            "sourceText": "Model 7 : Complete incorporation of the non-state justice system by the State"
+          }
+        },
+        {
+          "ref": "B010",
+          "productionBlockId": "b4130",
+          "page": 270,
+          "text": "Step 1 : Analyse the operation of the state and non-state systems",
+          "lineRefs": [
+            "U012926",
+            "U012927"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "270|219.4498127160904|80.00164062500001|425.41687510250017|Step 1 : Analyse the operation of the state and non-state",
+              "270|205.86531428571416|79.9307421875|129.30415625|systems"
+            ],
+            "sourceText": "Step 1 : Analyse the operation of the state and non-state systems"
+          }
+        },
+        {
+          "ref": "B011",
+          "productionBlockId": "b4165",
+          "page": 273,
+          "text": "Step 3: Examine the current positive and problematic features in the relationship between the systems",
+          "lineRefs": [
+            "U013047",
+            "U013048"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "273|381.93060729166666|68.66222062499999|392.9827400325001|Step 3: Examine the current positive and problematic",
+              "273|368.7340733816963|68.41729874999999|365.702145114|features in the relationship between the systems"
+            ],
+            "sourceText": "Step 3: Examine the current positive and problematic features in the relationship between the systems"
+          }
+        },
+        {
+          "ref": "B012",
+          "productionBlockId": "b4198",
+          "page": 276,
+          "text": "Step 5: Develop the chosen model so that it becomes one of mutual adaptation, mutual recognition and mutual regulation",
+          "lineRefs": [
+            "U013170",
+            "U013171",
+            "U013172"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "276|501.0651470312502|80.00154062500003|430.4060299225003|Step 5: Develop the chosen model so that it becomes one",
+              "276|487.75384052083325|79.95642343750004|400.3548733255003|of mutual adaptation, mutual recognition and mutual",
+              "276|474.528220859375|80.16911875000002|138.75267812500005|regulation"
+            ],
+            "sourceText": "Step 5: Develop the chosen model so that it becomes one of mutual adaptation, mutual recognition and mutual regulation"
+          }
+        },
+        {
+          "ref": "B013",
+          "productionBlockId": "b4270",
+          "page": 281,
+          "text": "Step 6: Develop a method of progressive implementation and evaluation of changes",
+          "lineRefs": [
+            "U013397",
+            "U013398"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "281|341.9378478590424|68.66234062500003|416.1105994530001|Step 6: Develop a method of progressive implementation",
+              "281|328.754036015625|68.59788750000003|227.868163962|and evaluation of changes"
+            ],
+            "sourceText": "Step 6: Develop a method of progressive implementation and evaluation of changes"
+          }
+        },
+        {
+          "ref": "B014",
+          "productionBlockId": "b4309",
+          "page": 284,
+          "text": "ENDNOTES",
+          "lineRefs": [
+            "U013537"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "284|264.46972265624976|80.28543437500001|149.04939062499997|ENDNOTES"
+            ],
+            "sourceText": "ENDNOTES"
+          }
+        },
+        {
+          "ref": "B015",
+          "productionBlockId": "b4394",
+          "page": 288,
+          "text": "and Sustainable Governance in Western Australia, Law Reform Commission",
+          "lineRefs": [
+            "U013690"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "288|277.15351612903225|115.71149999999986|430.62479260000015|and Sustainable Governance in Western Australia, Law Reform Commission"
+            ],
+            "sourceText": "and Sustainable Governance in Western Australia, Law Reform Commission"
+          }
+        },
+        {
+          "ref": "B016",
+          "productionBlockId": "b4621",
+          "page": 296,
+          "text": "Government of South Africa 2008, Policy Framework on the Traditional Justice",
+          "lineRefs": [
+            "U013978"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "296|545.6842500000002|79.73289999999997|425.02319270999993|Government of South Africa 2008, Policy Framework on the Traditional Justice"
+            ],
+            "sourceText": "Government of South Africa 2008, Policy Framework on the Traditional Justice"
+          }
+        },
+        {
+          "ref": "B017",
+          "productionBlockId": "b4634",
+          "page": 296,
+          "text": "Government of Vanuatu 2006, Correctional Services Act 2006.",
+          "lineRefs": [
+            "U013997"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "296|272.76054304205866|79.73290000000004|348.15490000000005|Government of Vanuatu 2006, Correctional Services Act 2006."
+            ],
+            "sourceText": "Government of Vanuatu 2006, Correctional Services Act 2006."
+          }
+        },
+        {
+          "ref": "B018",
+          "productionBlockId": "b4805",
+          "page": 302,
+          "text": "Developing cultural policy in Melanesia.",
+          "lineRefs": [
+            "U014210"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "302|589.4578777777779|115.65881428790074|286.4199|Developing cultural policy in Melanesia."
+            ],
+            "sourceText": "Developing cultural policy in Melanesia."
+          }
+        },
+        {
+          "ref": "B019",
+          "productionBlockId": "b4916",
+          "page": 305,
+          "text": "Nikoletan 1994, Tanna Island Kastom Law.",
+          "lineRefs": [
+            "U014353"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "305|180.39378571428574|68.30590000000004|257.1101|Nikoletan 1994, Tanna Island Kastom Law."
+            ],
+            "sourceText": "Nikoletan 1994, Tanna Island Kastom Law."
+          }
+        },
+        {
+          "ref": "B020",
+          "productionBlockId": "b4947",
+          "page": 306,
+          "text": "custom and courts in conflict\u2019, American Journal of Comparative Law,",
+          "lineRefs": [
+            "U014388"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "306|224.28885762711866|115.85429999999992|424.05229999999995|custom and courts in conflict\u2019, American Journal of Comparative Law,"
+            ],
+            "sourceText": "custom and courts in conflict\u2019, American Journal of Comparative Law,"
+          }
+        },
+        {
+          "ref": "B021",
+          "productionBlockId": "b4948",
+          "page": 306,
+          "text": "Parker, Christine 1999, Just Lawyers: Regulation and access to justice.",
+          "lineRefs": [
+            "U014390"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "306|193.4342096774193|79.65629999999993|382.1012999999999|Parker, Christine 1999, Just Lawyers: Regulation and access to justice."
+            ],
+            "sourceText": "Parker, Christine 1999, Just Lawyers: Regulation and access to justice."
+          }
+        },
+        {
+          "ref": "B022",
+          "productionBlockId": "b5005",
+          "page": 308,
+          "text": "for social scientists and researchers.",
+          "lineRefs": [
+            "U014458"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "308|316.6601588235295|114.5388714499998|267.70859999999993|for social scientists and researchers."
+            ],
+            "sourceText": "for social scientists and researchers."
+          }
+        },
+        {
+          "ref": "B023",
+          "productionBlockId": "b5059",
+          "page": 310,
+          "text": "Scarr, Deryck 1967, Fragments of Empire: A history of the Western Pacific High",
+          "lineRefs": [
+            "U014520"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "310|535.7376499999999|79.84350000000005|427.04776059999995|Scarr, Deryck 1967, Fragments ofEmpire: A history of the Western Pacific High"
+            ],
+            "sourceText": "Scarr, Deryck 1967, Fragments of Empire: A history of the Western Pacific High"
+          }
+        },
+        {
+          "ref": "B024",
+          "productionBlockId": "b5067",
+          "page": 310,
+          "text": "ofcommunity.",
+          "lineRefs": [
+            "U014532"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "310|359.3703166666666|115.76630000000007|175.7715000000001|ofcommunity."
+            ],
+            "sourceText": "ofcommunity."
+          }
+        },
+        {
+          "ref": "B025",
+          "productionBlockId": "b5119",
+          "page": 312,
+          "text": "references to the concepts and institutions of Maori customary law, Te",
+          "lineRefs": [
+            "U014594"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "312|570.8932500000002|115.83154999999998|413.6126281|references to the concepts and institutions ofMaori customary law, Te"
+            ],
+            "sourceText": "references to the concepts and institutions of Maori customary law, Te"
+          }
+        },
+        {
+          "ref": "B026",
+          "productionBlockId": "b5183",
+          "page": 314,
+          "text": "Walker, David 1980, The Oxford Companion to Law.",
+          "lineRefs": [
+            "U014688"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "314|347.52018997160496|79.66729999999993|306.7842999999999|Walker, David 1980, The Oxford Companion to Law."
+            ],
+            "sourceText": "Walker, David 1980, The Oxford Companion to Law."
+          }
+        },
+        {
+          "ref": "B027",
+          "productionBlockId": "b3380",
+          "page": 227,
+          "text": "Model 2 : Formal independence between the systems but tacit acceptance by the State of a non-state justice system",
+          "lineRefs": [
+            "U010719",
+            "U010720"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "227|615.7800143229167|69.1459390625|415.0013578835001|Model 2 : Formal independence between the systems but",
+              "227|602.4492429687498|68.3209390625|418.6130525850002|tacit acceptance by the State of a non-state justice system"
+            ],
+            "sourceText": "Model 2 : Formal independence between the systems but tacit acceptance by the State of a non-state justice system"
+          }
+        },
+        {
+          "ref": "B028",
+          "productionBlockId": "b4183",
+          "page": 275,
+          "text": "Step 4: Consider the applicability of the different models of relationship to this context",
+          "lineRefs": [
+            "U013117",
+            "U013118"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "275|615.9385332031251|68.662540625|414.31824582200005|Step 4: Consider the applicability of the different models",
+              "275|602.67087578125|68.61742343750001|248.09690831449998|of relationship to this context"
+            ],
+            "sourceText": "Step 4: Consider the applicability of the different models of relationship to this context"
+          }
+        },
+        {
+          "ref": "B029",
+          "productionBlockId": "b40",
+          "page": 11,
+          "text": "book such as A Bird that Flies with Two Wings.",
+          "lineRefs": [
+            "U000087"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|483.1703135135134|68.59269999999995|278.21969999999993|book such as A Bird that Flies with Two Wings."
+            ],
+            "sourceText": "book such as A Bird that Flies with Two Wings."
+          }
+        },
+        {
+          "ref": "B030",
+          "productionBlockId": "b80",
+          "page": 14,
+          "text": "ENDNOTES",
+          "lineRefs": [
+            "U000209"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "14|480.37172265625|80.28503437500005|149.04899062500002|ENDNOTES"
+            ],
+            "sourceText": "ENDNOTES"
+          }
+        },
+        {
+          "ref": "B031",
+          "productionBlockId": "b151",
+          "page": 19,
+          "text": "ENDNOTES",
+          "lineRefs": [
+            "U000419"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "19|176.77682265624983|68.94593437500002|137.70989062499999|ENDNOTES"
+            ],
+            "sourceText": "ENDNOTES"
+          }
+        },
+        {
+          "ref": "B032",
+          "productionBlockId": "b164",
+          "page": 21,
+          "text": "Brief history of Vanuatu",
+          "lineRefs": [
+            "U000461"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "21|261.3473506696428|69.01054750000004|213.43176411550007|Brief history of Vanuatu"
+            ],
+            "sourceText": "Brief history of Vanuatu"
+          }
+        },
+        {
+          "ref": "B033",
+          "productionBlockId": "b180",
+          "page": 22,
+          "text": "Place",
+          "lineRefs": [
+            "U000528"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "22|122.53701812499978|80.32995156249996|110.97870156249996|Place"
+            ],
+            "sourceText": "Place"
+          }
+        },
+        {
+          "ref": "B034",
+          "productionBlockId": "b202",
+          "page": 24,
+          "text": "The urban\u2013rural divide: which one is the \u2018easy life\u2019 ?",
+          "lineRefs": [
+            "U000615"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "24|257.82717135416647|79.83406250000006|395.61784154150024|The urban\u2013rural divide: which one is the \u2018easy life\u2019 ?"
+            ],
+            "sourceText": "The urban\u2013rural divide: which one is the \u2018easy life\u2019 ?"
+          }
+        },
+        {
+          "ref": "B035",
+          "productionBlockId": "b247",
+          "page": 28,
+          "text": "Language",
+          "lineRefs": [
+            "U000791"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "28|487.0305713867187|80.34294218749997|137.28640156249995|Language"
+            ],
+            "sourceText": "Language"
+          }
+        },
+        {
+          "ref": "B036",
+          "productionBlockId": "b264",
+          "page": 29,
+          "text": "Politics",
+          "lineRefs": [
+            "U000852"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "29|344.64873638671867|68.99125156250003|110.91625625000005|Politics"
+            ],
+            "sourceText": "Politics"
+          }
+        },
+        {
+          "ref": "B037",
+          "productionBlockId": "b286",
+          "page": 31,
+          "text": "Religion and denomination",
+          "lineRefs": [
+            "U000928"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "31|566.8381002921195|68.99135156249997|227.852905089|Religion and denomination"
+            ],
+            "sourceText": "Religion and denomination"
+          }
+        },
+        {
+          "ref": "B038",
+          "productionBlockId": "b310",
+          "page": 33,
+          "text": "Religious Bodies (Registration) Act 1995, which required all religious bodies in",
+          "lineRefs": [
+            "U001023"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "33|571.7732928571427|68.33624420018353|419.2469880000001|Religious Bodies (Registration) Act 1995, which required all religious bodies in"
+            ],
+            "sourceText": "Religious Bodies (Registration) Act 1995, which required all religious bodies in"
+          }
+        },
+        {
+          "ref": "B039",
+          "productionBlockId": "b313",
+          "page": 33,
+          "text": "Gender",
+          "lineRefs": [
+            "U001032"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "33|443.95062890624996|68.77211093750003|111.32855000000002|Gender"
+            ],
+            "sourceText": "Gender"
+          }
+        },
+        {
+          "ref": "B040",
+          "productionBlockId": "b315",
+          "page": 33,
+          "text": "Convention on the Elimination of All Forms of Discrimination Against Women,",
+          "lineRefs": [
+            "U001035"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "33|412.9826807692308|68.96610000000001|418.6761|Convention on the Elimination of All Forms of Discrimination Against Women,"
+            ],
+            "sourceText": "Convention on the Elimination of All Forms of Discrimination Against Women,"
+          }
+        }
+      ]
+    },
+    {
+      "documentId": "NEW-C07DA5643BE9",
+      "rawSourceLineCount": 13871,
+      "productionCandidateBlockCount": 1161,
+      "selectedAnalystBlockCount": 40,
+      "selectedBlockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008",
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016",
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024",
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032",
+        "B033",
+        "B034",
+        "B035",
+        "B036",
+        "B037",
+        "B038",
+        "B039",
+        "B040"
+      ],
+      "selectedBlocks": [
+        {
+          "ref": "B001",
+          "productionBlockId": "b4211",
+          "page": 296,
+          "text": "Brown D J J 1 980 \u2018The structuring of Polopa kinship and affinity\u2019 O cea n i a. 50: pp",
+          "lineRefs": [
+            "U012052",
+            "U012054"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "296|380.64357500000006|58.5031|103.98999999999997|Brown D J J",
+              "296|369.7045627118645|58.5391|344.45391900000004|1 980 \u2018The structuring of Polopa kinship and affinity\u2019 O cea n i a. 50: pp"
+            ],
+            "sourceText": "Brown D J J 1 980 \u2018The structuring of Polopa kinship and affinity\u2019 O cea n i a. 50: pp"
+          }
+        },
+        {
+          "ref": "B002",
+          "productionBlockId": "b4601",
+          "page": 309,
+          "text": "citizens 7 20 civil war 2 2 1 7 see a l so Bougainvil le \u2014 civil war",
+          "lineRefs": [
+            "U012860",
+            "U012862"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "309|347.77772727272725|58.049699999999994|108.28469999999997|citizens 7 20",
+              "309|337.7016812499999|58.049699999999994|244.59244999999999|civil war 2 2 1 7 see a l so Bougainvil le \u2014 civil war"
+            ],
+            "sourceText": "citizens 7 20 civil war 2 2 1 7 see a l so Bougainvil le \u2014 civil war"
+          }
+        },
+        {
+          "ref": "B003",
+          "productionBlockId": "b4648",
+          "page": 312,
+          "text": "Hawaii 42 Hebou Constructions Pty Ltd 1 1 1 highways 1 6",
+          "lineRefs": [
+            "U013093",
+            "U013094",
+            "U013095"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "312|305.21053750000004|58.458000000000006|99.4348|Hawaii 42",
+              "312|295.0425444444444|58.458000000000006|179.3367601000001|Hebou Constructions Pty Ltd 1 1 1",
+              "312|284.9328274969897|58.339000000000006|107.84639999999999|highways 1 6"
+            ],
+            "sourceText": "Hawaii 42 Hebou Constructions Pty Ltd 1 1 1 highways 1 6"
+          }
+        },
+        {
+          "ref": "B004",
+          "productionBlockId": "b4681",
+          "page": 314,
+          "text": "Micronesia xii migration 6",
+          "lineRefs": [
+            "U013288",
+            "U013289"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "314|76.36432692307692|58.101000000000006|113.04754999999997|Micronesia xii",
+              "314|66.21782749698971|58.288000000000004|103.58789999999999|migration 6"
+            ],
+            "sourceText": "Micronesia xii migration 6"
+          }
+        },
+        {
+          "ref": "B005",
+          "productionBlockId": "b4702",
+          "page": 316,
+          "text": "Obert 223\u2013224 older men see men Ombudsman 1 06",
+          "lineRefs": [
+            "U013382",
+            "U013384",
+            "U013385"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "316|416.6214875|58.05000000000001|117.66899999999998|Obert 223\u2013224",
+              "316|396.1711357142857|57.99050000000001|131.0446|older men see men",
+              "316|386.47098124749135|58.049699999999994|125.69269999999997|Ombudsman 1 06"
+            ],
+            "sourceText": "Obert 223\u2013224 older men see men Ombudsman 1 06"
+          }
+        },
+        {
+          "ref": "B006",
+          "productionBlockId": "b4745",
+          "page": 319,
+          "text": "squatters 1 73 SSGM Project see State, Society and Governance in Melanesia Project stakeholders 4 22 35 37",
+          "lineRefs": [
+            "U013618",
+            "U013619",
+            "U013620"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "319|337.53625|58.0333|109.63679999999997|squatters 1 73",
+              "319|327.5620431034483|58.075799999999994|315.73170000000044|SSGM Project see State, Society and Governance in Melanesia Project",
+              "319|317.90689473684216|58.033100000000005|148.88109999999995|stakeholders 4 22 35 37"
+            ],
+            "sourceText": "squatters 1 73 SSGM Project see State, Society and Governance in Melanesia Project stakeholders 4 22 35 37"
+          }
+        },
+        {
+          "ref": "B007",
+          "productionBlockId": "b4782",
+          "page": 322,
+          "text": "yams 1 77 Yasa n a (provincial council Fiji) 1 67",
+          "lineRefs": [
+            "U013822",
+            "U013825"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "322|466.19876428571433|57.88|97.15424999999999|yams 1 77",
+              "322|446.3385085928092|59.011894|192.12465|Yasa n a (provincial council Fiji) 1 67"
+            ],
+            "sourceText": "yams 1 77 Yasa n a (provincial council Fiji) 1 67"
+          }
+        },
+        {
+          "ref": "B008",
+          "productionBlockId": "b4386",
+          "page": 301,
+          "text": "Maddocks I D Maddocks K Kevau J Mac Kay Q Gaudi and M Huruvari",
+          "lineRefs": [
+            "U012362"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "301|285.32937755102046|58.1251|337.61622999999986|Maddocks I D Maddocks K Kevau J MacKay Q Gaudi and M Huruvari"
+            ],
+            "sourceText": "Maddocks I D Maddocks K Kevau J Mac Kay Q Gaudi and M Huruvari"
+          }
+        },
+        {
+          "ref": "B009",
+          "productionBlockId": "b4416",
+          "page": 302,
+          "text": "Spriggs M and D Denoon (eds) T h e B o u g a i n v i l l e C r i s i s : 1 9 9 1",
+          "lineRefs": [
+            "U012413"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "302|376.4285306122449|92.11360000000002|342.776352|Spriggs M and D Denoon (eds) T h e B o u g a i n v i l l e C r i s i s : 1 9 9 1"
+            ],
+            "sourceText": "Spriggs M and D Denoon (eds) T h e B o u g a i n v i l l e C r i s i s : 1 9 9 1"
+          }
+        },
+        {
+          "ref": "B010",
+          "productionBlockId": "b4431",
+          "page": 302,
+          "text": "I m p act 1 8 8 4\u2013 1 9 8 4: pp 49\u201374. Port Moresby: National Research",
+          "lineRefs": [
+            "U012439"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "302|158.85451923076914|93.717676|344.1420922000001|I m p act 1 8 8 4\u2013 1 9 8 4: pp 49\u201374. Port Moresby: National Research"
+            ],
+            "sourceText": "I m p act 1 8 8 4\u2013 1 9 8 4: pp 49\u201374. Port Moresby: National Research"
+          }
+        },
+        {
+          "ref": "B011",
+          "productionBlockId": "b4449",
+          "page": 303,
+          "text": "and M Pulea (eds) Pac i f i c Co u rts a n d Leg a l Sy ste m s: pp 6\u201342 .",
+          "lineRefs": [
+            "U012468"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "303|387.3296458228919|92.08659999999999|344.0911000000001|and M Pulea (eds) Pac i f i c Co u rts a n d Leg a l Sy ste m s: pp 6\u201342 ."
+            ],
+            "sourceText": "and M Pulea (eds) Pac i f i c Co u rts a n d Leg a l Sy ste m s: pp 6\u201342 ."
+          }
+        },
+        {
+          "ref": "B012",
+          "productionBlockId": "b4499",
+          "page": 304,
+          "text": "Seligman C G",
+          "lineRefs": [
+            "U012559"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "304|113.20649999999998|58.09849999999997|112.54669999999997|Seligman C G"
+            ],
+            "sourceText": "Seligman C G"
+          }
+        },
+        {
+          "ref": "B013",
+          "productionBlockId": "b4612",
+          "page": 310,
+          "text": "training 25,258 see a l so training courses",
+          "lineRefs": [
+            "U012918"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "310|507.4941041666668|86.184|240.85084999999998|training 25,258 see a l so training courses"
+            ],
+            "sourceText": "training 25,258 see a l so training courses"
+          }
+        },
+        {
+          "ref": "B014",
+          "productionBlockId": "b4621",
+          "page": 310,
+          "text": "violent 1 9 see a l so violence",
+          "lineRefs": [
+            "U012949"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "310|297.65223958333326|86.21768000000002|193.34730000000008|violent 1 9 see a l so violence"
+            ],
+            "sourceText": "violent 1 9 see a l so violence"
+          }
+        },
+        {
+          "ref": "B015",
+          "productionBlockId": "b4652",
+          "page": 312,
+          "text": "imprisonment 1 3 see a l so prisons",
+          "lineRefs": [
+            "U013120"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "312|123.4706607142857|58.440999999999995|187.3738|imprisonment 1 3 see a l so prisons"
+            ],
+            "sourceText": "imprisonment 1 3 see a l so prisons"
+          }
+        },
+        {
+          "ref": "B016",
+          "productionBlockId": "b4686",
+          "page": 315,
+          "text": "missions 1 0 see a l so churches",
+          "lineRefs": [
+            "U013302"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "315|487.6181899999999|58.288000000000004|175.06588695000008|missions 1 0 see a l so churches"
+            ],
+            "sourceText": "missions 1 0 see a l so churches"
+          }
+        },
+        {
+          "ref": "B017",
+          "productionBlockId": "b4748",
+          "page": 319,
+          "text": "stealing 1 36 see a l so theft",
+          "lineRefs": [
+            "U013627"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "319|277.7082945639085|58.03310000000001|160.10469999999998|stealing 1 36 see a l so theft"
+            ],
+            "sourceText": "stealing 1 36 see a l so theft"
+          }
+        },
+        {
+          "ref": "B018",
+          "productionBlockId": "b4783",
+          "page": 322,
+          "text": "youth 61 \u201366 1 1 2 22 1 see a l so justice \u2014 juvenile",
+          "lineRefs": [
+            "U013831"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "322|416.33492499768425|57.8799|245.76155|youth 61 \u201366 1 1 2 22 1 see a l so justice \u2014 juvenile"
+            ],
+            "sourceText": "youth 61 \u201366 1 1 2 22 1 see a l so justice \u2014 juvenile"
+          }
+        },
+        {
+          "ref": "B019",
+          "productionBlockId": "b1033",
+          "page": 83,
+          "text": "Jim 1 973 \u2018Vabukori and Pari \u2014 the years of war\u2019",
+          "lineRefs": [
+            "U003210"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "83|66.25977105263162|74.43100000000003|262.2608749000001|Jim 1 973 \u2018Vabukori and Pari \u2014 the years of war\u2019"
+            ],
+            "sourceText": "Jim 1 973 \u2018Vabukori and Pari \u2014 the years of war\u2019"
+          }
+        },
+        {
+          "ref": "B020",
+          "productionBlockId": "b1162",
+          "page": 91,
+          "text": "map 2 the Nebilyer Val ley and environs",
+          "lineRefs": [
+            "U003640"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "91|88.15501249999998|58.323|214.55413049999999|map 2 the Nebilyer Val ley and environs"
+            ],
+            "sourceText": "map 2 the Nebilyer Val ley and environs"
+          }
+        },
+        {
+          "ref": "B021",
+          "productionBlockId": "b1752",
+          "page": 134,
+          "text": "Exa m p l e 1",
+          "lineRefs": [
+            "U005269"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "134|441.57687500000003|59.973222|102.14819399999999|Exa m p l e 1"
+            ],
+            "sourceText": "Exa m p l e 1"
+          }
+        },
+        {
+          "ref": "B022",
+          "productionBlockId": "b1771",
+          "page": 135,
+          "text": "Exa m p l e 2",
+          "lineRefs": [
+            "U005321"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "135|365.41034375000004|59.973222|103.408194|Exa m p l e 2"
+            ],
+            "sourceText": "Exa m p l e 2"
+          }
+        },
+        {
+          "ref": "B023",
+          "productionBlockId": "b1828",
+          "page": 139,
+          "text": "Table 2 Male prisoners by age, 1 994\u201398",
+          "lineRefs": [
+            "U005464"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "139|336.750490625|57.882|240.8169500000001|Table 2 Male prisoners by age, 1 994\u201398"
+            ],
+            "sourceText": "Table 2 Male prisoners by age, 1 994\u201398"
+          }
+        },
+        {
+          "ref": "B024",
+          "productionBlockId": "b1931",
+          "page": 146,
+          "text": "What I Like In Prison",
+          "lineRefs": [
+            "U005736"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "146|358.85909999999996|57.91350000000001|153.03720000000007|What I Like In Prison"
+            ],
+            "sourceText": "What I Like In Prison"
+          }
+        },
+        {
+          "ref": "B025",
+          "productionBlockId": "b2491",
+          "page": 185,
+          "text": "Table 2 Ethnic Origins of Prisoners in Fiji from 1 988 to 1 991",
+          "lineRefs": [
+            "U007185"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "185|169.79068000000007|57.882299999999994|332.2158472499998|Table 2 Ethnic Origins of Prisoners in Fiji from 1 988 to 1 991"
+            ],
+            "sourceText": "Table 2 Ethnic Origins of Prisoners in Fiji from 1 988 to 1 991"
+          }
+        },
+        {
+          "ref": "B026",
+          "productionBlockId": "b3711",
+          "page": 275,
+          "text": "Step 1 . Ta l k i n g w i t h t h e V i ct i m ( s )",
+          "lineRefs": [
+            "U010743"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "275|145.51535344827585|59.5902576|202.88212170000003|Step 1 . Ta l k i n g w i t h t h e V i ct i m ( s )"
+            ],
+            "sourceText": "Step 1 . Ta l k i n g w i t h t h e V i ct i m ( s )"
+          }
+        },
+        {
+          "ref": "B027",
+          "productionBlockId": "b3717",
+          "page": 276,
+          "text": "Step 3 . Meet i n g w i t h bot h Pa rt i es",
+          "lineRefs": [
+            "U010762"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "276|419.50925|59.5902576|205.02568200000002|Step 3 . Meet i n g w i t h bot h Pa rt i es"
+            ],
+            "sourceText": "Step 3 . Meet i n g w i t h bot h Pa rt i es"
+          }
+        },
+        {
+          "ref": "B028",
+          "productionBlockId": "b3732",
+          "page": 277,
+          "text": "Step 5 . Reac h i n g a D ec i s i o n w i t h bot h Pa rt i es",
+          "lineRefs": [
+            "U010796"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "277|460.0184868421052|59.5902576|261.03058200000004|Step 5 . Reac h i n g a D ec i s i o n w i t h bot h Pa rt i es"
+            ],
+            "sourceText": "Step 5 . Reac h i n g a D ec i s i o n w i t h bot h Pa rt i es"
+          }
+        },
+        {
+          "ref": "B029",
+          "productionBlockId": "b3737",
+          "page": 277,
+          "text": "Step 6. T h e Act o f Reco n c i l i at i o n",
+          "lineRefs": [
+            "U010808"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "277|292.3839496310249|59.5902576|203.82180450000004|Step 6. T h e Act o f Reco n c i l i at i o n"
+            ],
+            "sourceText": "Step 6. T h e Act o f Reco n c i l i at i o n"
+          }
+        },
+        {
+          "ref": "B030",
+          "productionBlockId": "b3754",
+          "page": 278,
+          "text": "Step 8. Fo l l ow-u p",
+          "lineRefs": [
+            "U010835"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "278|405.7549000000001|59.5902576|135.8224584|Step 8. Fo l l ow-u p"
+            ],
+            "sourceText": "Step 8. Fo l l ow-u p"
+          }
+        },
+        {
+          "ref": "B031",
+          "productionBlockId": "b4003",
+          "page": 291,
+          "text": "ar u M n",
+          "lineRefs": [
+            "U011593"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "291|146.7614166717289|183.928836322618|354.8055|ar u M n"
+            ],
+            "sourceText": "ar u M n"
+          }
+        },
+        {
+          "ref": "B032",
+          "productionBlockId": "b4115",
+          "page": 293,
+          "text": "ggtn ig r n ra o 4 s",
+          "lineRefs": [
+            "U011881"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "293|288.9257707176641|163.29993079|359.72950000000003|ggtn ig r n ra o4 s"
+            ],
+            "sourceText": "ggtn ig r n ra o 4 s"
+          }
+        },
+        {
+          "ref": "B033",
+          "productionBlockId": "b4144",
+          "page": 294,
+          "text": "Utupua C",
+          "lineRefs": [
+            "U011946"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "294|477.5536780829531|95.41506744959999|165.318831037056|Utupua C"
+            ],
+            "sourceText": "Utupua C"
+          }
+        },
+        {
+          "ref": "B034",
+          "productionBlockId": "b4765",
+          "page": 320,
+          "text": "vandalism 1 1 2 1 85 Va n u a (socio-cultural complex Fiji) 1 65\u20131 66 1 68",
+          "lineRefs": [
+            "U013729",
+            "U013731"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "320|65.2189|57.87180000000001|130.66185259999997|vandalism 1 1 2 1 85",
+              "320|55.026036901894955|58.969394|241.60554999999997|Va n u a (socio-cultural complex Fiji) 1 65\u20131 66 1 68"
+            ],
+            "sourceText": "vandalism 1 1 2 1 85 Va n u a (socio-cultural complex Fiji) 1 65\u20131 66 1 68"
+          }
+        },
+        {
+          "ref": "B035",
+          "productionBlockId": "b1049",
+          "page": 85,
+          "text": "Biddulph 1 970 Hughes Col in A 1 965 The Moresby open and Central special",
+          "lineRefs": [
+            "U003295",
+            "U003297"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "85|546.4945150000001|75.5108|131.78059999999996|Biddulph 1 970",
+              "85|534.0706515137149|75.5108|344.03496290000004|Hughes Col in A 1 965 The Moresby open and Central special"
+            ],
+            "sourceText": "Biddulph 1 970 Hughes Col in A 1 965 The Moresby open and Central special"
+          }
+        },
+        {
+          "ref": "B036",
+          "productionBlockId": "b4642",
+          "page": 311,
+          "text": "fines 22 1 see a l so compensation",
+          "lineRefs": [
+            "U013056"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "311|57.56950000000002|57.836999999999996|183.81904999999998|fines 22 1 see a l so compensation"
+            ],
+            "sourceText": "fines 22 1 see a l so compensation"
+          }
+        },
+        {
+          "ref": "B037",
+          "productionBlockId": "b1220",
+          "page": 93,
+          "text": "map 3 the Ku Waru region and nearby tribes in the western Nebilyer Valley",
+          "lineRefs": [
+            "U003756"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "93|50.73937499999998|58.323|337.73708730000004|map 3 the Ku Waru region and nearby tribes in the western Nebilyer Valley"
+            ],
+            "sourceText": "map 3 the Ku Waru region and nearby tribes in the western Nebilyer Valley"
+          }
+        },
+        {
+          "ref": "B038",
+          "productionBlockId": "b1823",
+          "page": 139,
+          "text": "Table 1 Male prisoners by previous convictions, 1 994\u201398",
+          "lineRefs": [
+            "U005452"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "139|546.6216875000003|57.882|318.47104725|Table 1 Male prisoners by previous convictions, 1 994\u201398"
+            ],
+            "sourceText": "Table 1 Male prisoners by previous convictions, 1 994\u201398"
+          }
+        },
+        {
+          "ref": "B039",
+          "productionBlockId": "b1834",
+          "page": 140,
+          "text": "Table 3 Male prisoners by ethnicity 1 994\u201398",
+          "lineRefs": [
+            "U005479"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "140|546.8039121621623|57.882|263.8606512000002|Table 3 Male prisoners by ethnicity 1 994\u201398"
+            ],
+            "sourceText": "Table 3 Male prisoners by ethnicity 1 994\u201398"
+          }
+        },
+        {
+          "ref": "B040",
+          "productionBlockId": "b2452",
+          "page": 183,
+          "text": "Table 1 Rural/Urban Distribution of Indigenous Fijians in the",
+          "lineRefs": [
+            "U007058"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "183|546.907985849057|57.882|344.54281101000004|Table 1 Rural/Urban Distribution of Indigenous Fijians in the"
+            ],
+            "sourceText": "Table 1 Rural/Urban Distribution of Indigenous Fijians in the"
+          }
+        }
+      ]
+    },
+    {
+      "documentId": "NEW-FDF9C2552AF0",
+      "rawSourceLineCount": 793,
+      "productionCandidateBlockCount": 33,
+      "selectedAnalystBlockCount": 33,
+      "selectedBlockRefs": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008",
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016",
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024",
+        "B025",
+        "B026",
+        "B027",
+        "B028",
+        "B029",
+        "B030",
+        "B031",
+        "B032",
+        "B033"
+      ],
+      "selectedBlocks": [
+        {
+          "ref": "B001",
+          "productionBlockId": "b29",
+          "page": 2,
+          "text": "k s 2 k .",
+          "lineRefs": [
+            "U000097"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "2|498.3170505|224.185035|397.28117807999996|k s 2 k ."
+            ],
+            "sourceText": "k s 2 k ."
+          }
+        },
+        {
+          "ref": "B002",
+          "productionBlockId": "b54",
+          "page": 3,
+          "text": "k s 1 .",
+          "lineRefs": [
+            "U000166"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "3|556.006803225|184.95403500000012|436.5118192000002|k s 1 ."
+            ],
+            "sourceText": "k s 1 ."
+          }
+        },
+        {
+          "ref": "B003",
+          "productionBlockId": "b125",
+          "page": 7,
+          "text": "\u03B6C C",
+          "lineRefs": [
+            "U000420"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "7|347.5207331666665|336.38529700000004|363.0613324|\u03B6C C"
+            ],
+            "sourceText": "\u03B6C C"
+          }
+        },
+        {
+          "ref": "B004",
+          "productionBlockId": "b8",
+          "page": 1,
+          "text": "I. INTRODUCTION",
+          "lineRefs": [
+            "U000024"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "1|561.8087033142855|256.16175680000003|359.8716224|I. INTRODUCTION"
+            ],
+            "sourceText": "I. INTRODUCTION"
+          }
+        },
+        {
+          "ref": "B005",
+          "productionBlockId": "b27",
+          "page": 2,
+          "text": "II. PRIMORDIAL PERTURBATION WITH MODIFIED DISPERSION RELATION",
+          "lineRefs": [
+            "U000091"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "2|577.8808398254545|104.77575680000001|511.26570752000003|II. PRIMORDIAL PERTURBATION WITH MODIFIED DISPERSION RELATION"
+            ],
+            "sourceText": "II. PRIMORDIAL PERTURBATION WITH MODIFIED DISPERSION RELATION"
+          }
+        },
+        {
+          "ref": "B006",
+          "productionBlockId": "b67",
+          "page": 4,
+          "text": "III. GRAVITATIONAL WAVES INDUCED FROM SCALAR PERTURBATION",
+          "lineRefs": [
+            "U000228"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "4|501.06050098823533|115.0387568|501.00192799999996|III. GRAVITATIONAL WAVES INDUCED FROM SCALAR PERTURBATION"
+            ],
+            "sourceText": "III. GRAVITATIONAL WAVES INDUCED FROM SCALAR PERTURBATION"
+          }
+        },
+        {
+          "ref": "B007",
+          "productionBlockId": "b108",
+          "page": 6,
+          "text": "IV. PBH PRODUCTION AND OVERPRODUCTION AVOIDANCE",
+          "lineRefs": [
+            "U000359"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "6|311.7153620571427|142.3947568|473.7283427199999|IV. PBH PRODUCTION AND OVERPRODUCTION AVOIDANCE"
+            ],
+            "sourceText": "IV. PBH PRODUCTION AND OVERPRODUCTION AVOIDANCE"
+          }
+        },
+        {
+          "ref": "B008",
+          "productionBlockId": "b34",
+          "page": 2,
+          "text": "usr\u2032\u2032 \u002B [c 2 k 2 \u2212 ] usr = 0 for slow-roll phase (4)",
+          "lineRefs": [
+            "U000113"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "2|325.23299562368425|191.9499154|561.1039158799999|usr\u2032\u2032 \u002B [c2 k2 \u2212 ] usr = 0 for slow-roll phase (4)"
+            ],
+            "sourceText": "usr\u2032\u2032 \u002B [c 2 k 2 \u2212 ] usr = 0 for slow-roll phase (4)"
+          }
+        },
+        {
+          "ref": "B009",
+          "productionBlockId": "b60",
+          "page": 3,
+          "text": "\uF8F3 k\u2212 1 for small scale .",
+          "lineRefs": [
+            "U000190"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "3|341.3484031944444|271.4936384|380.8911633599999|\uF8F3 k\u2212 1 for small scale ."
+            ],
+            "sourceText": "\uF8F3 k\u2212 1 for small scale ."
+          }
+        },
+        {
+          "ref": "B010",
+          "productionBlockId": "b72",
+          "page": 4,
+          "text": "k k k k .",
+          "lineRefs": [
+            "U000239"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "4|362.25673044000007|226.517559|394.84169780000013|k k k k ."
+            ],
+            "sourceText": "k k k k ."
+          }
+        },
+        {
+          "ref": "B011",
+          "productionBlockId": "b74",
+          "page": 4,
+          "text": "q q k\u2212q",
+          "lineRefs": [
+            "U000242"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "4|323.28430013999997|191.57150400000015|471.52154868|q q k\u2212q"
+            ],
+            "sourceText": "q q k\u2212q"
+          }
+        },
+        {
+          "ref": "B012",
+          "productionBlockId": "b79",
+          "page": 4,
+          "text": "k k k ,",
+          "lineRefs": [
+            "U000256"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "4|193.374338175|228.09355900000006|394.8357022799999|k k k ,"
+            ],
+            "sourceText": "k k k ,"
+          }
+        },
+        {
+          "ref": "B013",
+          "productionBlockId": "b84",
+          "page": 5,
+          "text": "\u03C1GW p",
+          "lineRefs": [
+            "U000279"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|642.918851375|272.75041129999994|323.8604065999999|\u03C1GW p"
+            ],
+            "sourceText": "\u03C1GW p"
+          }
+        },
+        {
+          "ref": "B014",
+          "productionBlockId": "b94",
+          "page": 5,
+          "text": ", r r tot",
+          "lineRefs": [
+            "U000306"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|447.43696201666677|326.9463484600001|419.46285842|, r r tot"
+            ],
+            "sourceText": ", r r tot"
+          }
+        },
+        {
+          "ref": "B015",
+          "productionBlockId": "b96",
+          "page": 5,
+          "text": "tot r , r \u2217 \u2217",
+          "lineRefs": [
+            "U000309"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|433.62221228750013|293.3372402|533.446031|tot r , r \u2217 \u2217"
+            ],
+            "sourceText": "tot r , r \u2217 \u2217"
+          }
+        },
+        {
+          "ref": "B016",
+          "productionBlockId": "b134",
+          "page": 8,
+          "text": "PBH th H ,",
+          "lineRefs": [
+            "U000463"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "8|490.5724743999998|256.9034804000002|368.5154078000003|PBH th H ,"
+            ],
+            "sourceText": "PBH th H ,"
+          }
+        },
+        {
+          "ref": "B017",
+          "productionBlockId": "b156",
+          "page": 9,
+          "text": "\u221A PBH",
+          "lineRefs": [
+            "U000537"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "9|291.554219525|289.8947452|385.4528645|\u221A PBH"
+            ],
+            "sourceText": "\u221A PBH"
+          }
+        },
+        {
+          "ref": "B018",
+          "productionBlockId": "b160",
+          "page": 9,
+          "text": ". \u2299 PBH G",
+          "lineRefs": [
+            "U000543"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "9|229.1715275833334|275.20208360000004|418.8819134|. \u2299 PBH G"
+            ],
+            "sourceText": ". \u2299 PBH G"
+          }
+        },
+        {
+          "ref": "B019",
+          "productionBlockId": "b185",
+          "page": 10,
+          "text": "Acknowledgments",
+          "lineRefs": [
+            "U000604"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "10|356.75559392000025|266.8175551999999|349.30395199999987|Acknowledgments"
+            ],
+            "sourceText": "Acknowledgments"
+          }
+        },
+        {
+          "ref": "B020",
+          "productionBlockId": "b169",
+          "page": 10,
+          "text": "V. CONCLUSIONS AND DISCUSSIONS",
+          "lineRefs": [
+            "U000560"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "10|782.8364828444442|206.80205919999992|408.9378908800001|V. CONCLUSIONS AND DISCUSSIONS"
+            ],
+            "sourceText": "V. CONCLUSIONS AND DISCUSSIONS"
+          }
+        },
+        {
+          "ref": "B021",
+          "productionBlockId": "b2",
+          "page": 1,
+          "text": "Chengrui Yang 1 , \u2217 Weixin Cai 1 , \u2020 and Taotao Qiu 1 , \u2021",
+          "lineRefs": [
+            "U000002"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "1|759.0204696142858|187.5699056|428.05047002000003|Chengrui Yang 1 , \u2217 Weixin Cai 1 , \u2020 and Taotao Qiu1 , \u2021"
+            ],
+            "sourceText": "Chengrui Yang 1 , \u2217 Weixin Cai 1 , \u2020 and Taotao Qiu 1 , \u2021"
+          }
+        },
+        {
+          "ref": "B022",
+          "productionBlockId": "b168",
+          "page": 9,
+          "text": "\u2217 , max",
+          "lineRefs": [
+            "U000558"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "9|122.87229104000002|71.56866820000012|303.7604516000001|\u2217 , max"
+            ],
+            "sourceText": "\u2217 , max"
+          }
+        },
+        {
+          "ref": "B023",
+          "productionBlockId": "b220",
+          "page": 11,
+          "text": "[gr-qc] .",
+          "lineRefs": [
+            "U000722"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "11|174.76000559999943|74.20096799999999|103.32114527999998|[gr-qc] ."
+            ],
+            "sourceText": "[gr-qc] ."
+          }
+        },
+        {
+          "ref": "B024",
+          "productionBlockId": "b88",
+          "page": 5,
+          "text": "\u27E8k\u27E9 \u27E8k\u27E9",
+          "lineRefs": [
+            "U000290"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|545.8416378000001|359.5223844000001|420.54608508000007|\u27E8k\u27E9 \u27E8k\u27E9"
+            ],
+            "sourceText": "\u27E8k\u27E9 \u27E8k\u27E9"
+          }
+        },
+        {
+          "ref": "B025",
+          "productionBlockId": "b90",
+          "page": 5,
+          "text": "GW h",
+          "lineRefs": [
+            "U000292"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|538.1128023333334|359.04816600000004|413.6067560000001|GW h"
+            ],
+            "sourceText": "GW h"
+          }
+        },
+        {
+          "ref": "B026",
+          "productionBlockId": "b92",
+          "page": 5,
+          "text": "GW tot \u2217S",
+          "lineRefs": [
+            "U000303"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "5|471.5301886571429|198.655166|376.41016313999995|GW tot \u2217S"
+            ],
+            "sourceText": "GW tot \u2217S"
+          }
+        },
+        {
+          "ref": "B027",
+          "productionBlockId": "b119",
+          "page": 7,
+          "text": "G G",
+          "lineRefs": [
+            "U000403"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "7|490.14555269999994|314.031166|376.05291339999997|G G"
+            ],
+            "sourceText": "G G"
+          }
+        },
+        {
+          "ref": "B028",
+          "productionBlockId": "b121",
+          "page": 7,
+          "text": "n G",
+          "lineRefs": [
+            "U000407"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "7|451.13463779999995|340.2685852|357.28391339999996|n G"
+            ],
+            "sourceText": "n G"
+          }
+        },
+        {
+          "ref": "B029",
+          "productionBlockId": "b140",
+          "page": 8,
+          "text": "\u2217 H",
+          "lineRefs": [
+            "U000477"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "8|355.3667578999999|293.98466820000004|364.227848|\u2217 H"
+            ],
+            "sourceText": "\u2217 H"
+          }
+        },
+        {
+          "ref": "B030",
+          "productionBlockId": "b165",
+          "page": 9,
+          "text": "H th",
+          "lineRefs": [
+            "U000549"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "9|191.0216786|239.20219220000004|360.98264631999996|H th"
+            ],
+            "sourceText": "H th"
+          }
+        },
+        {
+          "ref": "B031",
+          "productionBlockId": "b35",
+          "page": 2,
+          "text": "k s 2 k ,",
+          "lineRefs": [
+            "U000114"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "2|321.29897231999996|197.887035|428.7936140599999|k s 2 k ,"
+            ],
+            "sourceText": "k s 2 k ,"
+          }
+        },
+        {
+          "ref": "B032",
+          "productionBlockId": "b137",
+          "page": 8,
+          "text": "DM M =0 . \u2299",
+          "lineRefs": [
+            "U000472"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "8|408.3905876142857|236.16748040000002|383.617647|DM M =0 . \u2299"
+            ],
+            "sourceText": "DM M =0 . \u2299"
+          }
+        },
+        {
+          "ref": "B033",
+          "productionBlockId": "b49",
+          "page": 3,
+          "text": "Cst 8 i 1 \u2217 \u2212 1 ( 1) \u03B1k 2 2 ( 1) (2) \u03B1k 2 2 ( 1)",
+          "lineRefs": [
+            "U000151"
+          ],
+          "exactSourceBinding": {
+            "sourceOccurrenceIds": [
+              "3|689.026092362069|77.78812999999995|469.47103741999996|Cst 8i 1 \u2217 \u2212 1 ( 1) \u03B1k2 2 ( 1) (2) \u03B1k2 2 ( 1)"
+            ],
+            "sourceText": "Cst 8 i 1 \u2217 \u2212 1 ( 1) \u03B1k 2 2 ( 1) (2) \u03B1k 2 2 ( 1)"
+          }
+        }
+      ]
+    }
+  ]
+}
