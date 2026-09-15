@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "a99-v8a-holdout-manifest-v1",
+  "status": "BLOCKED_ON_NEW_SOURCE_CORPUS",
+  "holdoutSelected": false,
+  "generalizationClaim": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReadCount": 0,
+  "predictionReadCount": 0,
+  "eligibleUniqueSourceCount": 0,
+  "requiredMinimum": 6,
+  "sourcePoolDocumentCount": 169,
+  "sourcePoolPrefixes": [
+    "todo10_8/heading_corpus_95_word/",
+    "todo10_8/generated-docx/"
+  ],
+  "historicallyExposedIntersection": 0
+}

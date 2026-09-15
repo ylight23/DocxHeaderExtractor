@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-v8a-holdout-eligibility-v1",
+  "status": "BLOCKED_ON_NEW_SOURCE_CORPUS",
+  "sourcePoolPrefixes": [
+    "todo10_8/heading_corpus_95_word/",
+    "todo10_8/generated-docx/"
+  ],
+  "inventoryDocumentCount": 352,
+  "sourcePoolDocumentCount": 169,
+  "historicallyExposedDocumentIds": 352,
+  "historicallyExposedSourceHashes": 319,
+  "lineageDeniedCount": 265,
+  "eligibleUniqueSourceCount": 0,
+  "requiredMinimum": 6,
+  "sourceOnly": true,
+  "goldReadCount": 0,
+  "providerCalls": 0,
+  "reason": "All currently inventoried source-pool documents, including generated-docx, are present in historical provenance or share a historically exposed source hash. No new source corpus was selected or substituted."
+}
