@@ -321,6 +321,10 @@ public static class CanonicalDevV1BaselineRunner
         var requestHash = root.GetProperty("requestHash").GetString()!;
         var workerBenchmark = root.TryGetProperty("benchmark", out var benchmarkValue) ? benchmarkValue.GetString() ?? Benchmark : Benchmark;
         var workerCampaignId = root.TryGetProperty("campaignId", out var campaignValue) ? campaignValue.GetString() ?? CampaignId : CampaignId;
+        var workerProductionSemanticCheckpoint = root.TryGetProperty("productionSemanticCheckpoint", out var semanticCheckpointValue)
+            ? semanticCheckpointValue.GetString() ?? ProductionSemanticCheckpoint : ProductionSemanticCheckpoint;
+        var workerExecutionHarnessCheckpoint = root.TryGetProperty("executionHarnessCheckpoint", out var harnessCheckpointValue)
+            ? harnessCheckpointValue.GetString() ?? ExecutionHarnessCheckpoint : ExecutionHarnessCheckpoint;
         var perAttemptHardTimeoutSeconds = root.TryGetProperty("perAttemptHardTimeoutSeconds", out var attemptTimeoutValue) && attemptTimeoutValue.TryGetInt32(out var attemptTimeout)
             ? attemptTimeout
             : (int)ProviderTimeoutPolicyV2.ResolvePerAttemptHardTimeout().TotalSeconds;
@@ -364,8 +368,8 @@ public static class CanonicalDevV1BaselineRunner
                 schemaVersion = "a99-canonical-dev-v1-production-prediction-v1",
                 benchmark = workerBenchmark,
                 campaignId = workerCampaignId,
-                productionSemanticCheckpoint = ProductionSemanticCheckpoint,
-                executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
+                productionSemanticCheckpoint = workerProductionSemanticCheckpoint,
+                executionHarnessCheckpoint = workerExecutionHarnessCheckpoint,
                 productionSemanticHash,
                 executionHarnessHash,
                 documentId,

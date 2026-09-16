@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "a99-canonical-dev-v1-exec-v4-integrity-forensic-v1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V4",
+  "documentId": "DOC-0001",
+  "status": "UNCONTROLLED_RECOVERY_ATTEMPT_EXCLUDED_FROM_AUTHORITATIVE_RUN",
+  "initialWatchdogStatus": "WORKER_FAILURE",
+  "initialWatchdogProviderCalls": 0,
+  "recoveryExecution": "DIRECT_WORKER_INVOCATION_OUTSIDE_V4_ORCHESTRATOR",
+  "recoveryAttemptId": "CANONICAL_DEV_V1_EXEC_V4:DOC-0001:A01:20260916T114435073Z",
+  "recoveryProviderCalls": 5,
+  "recoveryPredictionPath": "work/DOC-0001/A01/worker-prediction.v1.json",
+  "recoveryAttemptsPath": "work/DOC-0001/A01/worker-attempts.v1.json",
+  "authoritativeUse": false,
+  "goldReadCount": 0,
+  "reason": "The first isolated worker invocation exited before the outer watchdog received a COMPLETE result. A later direct worker invocation produced five provider responses, but it did not pass through the frozen V4 orchestration path and therefore cannot be promoted into the authoritative prediction freeze.",
+  "recordedAt": "2026-09-16T11:45:00Z"
+}

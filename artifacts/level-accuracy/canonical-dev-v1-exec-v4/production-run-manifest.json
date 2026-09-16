@@ -1,0 +1,22 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-exec-v4-production-run-manifest-v1",
+  "status": "BLOCKED_ON_PROVIDER_EXECUTION_INTEGRITY",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V4",
+  "runConfigurationHash": "82db8de917bb27cea606fe8e96ba772a8ebc4be92ec5ca8f61cfbfdd3f68c100",
+  "productionSemanticHash": "5f0eb27dfa44068fc60c69e0dcf8a05b14a061ed7526610e4592d68c268fe5e6",
+  "executionHarnessHash": "29db2561ffe7299d99374b0db71ada7ba5626710c891a629734f9878a5921f4b",
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "status": "WORKER_FAILURE",
+      "providerCalls": 0,
+      "terminationMode": "NONE",
+      "childPid": 21716
+    }
+  ],
+  "providerCalls": 0,
+  "goldReadCount": 0,
+  "scoringArtifacts": 0,
+  "predictionMutationAfterFreeze": false
+}

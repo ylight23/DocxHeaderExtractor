@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-exec-v4-failure-v1",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V4",
+  "documentId": "DOC-0001",
+  "attemptId": "CANONICAL_DEV_V1_EXEC_V4:DOC-0001:A01:20260916T114435073Z",
+  "requestHash": "45924efbb3271a5d5a105672571c4a86855f3077e50dc3731fd36b347e6f2da7",
+  "runConfigurationHash": "82db8de917bb27cea606fe8e96ba772a8ebc4be92ec5ca8f61cfbfdd3f68c100",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "status": "WORKER_FAILURE",
+  "terminationMode": "NONE",
+  "childPid": 21716,
+  "started": "2026-09-16T11:44:35.0738898+00:00",
+  "completed": "2026-09-16T11:44:37.2098219+00:00",
+  "goldReadBeforePredictionFreeze": false
+}
