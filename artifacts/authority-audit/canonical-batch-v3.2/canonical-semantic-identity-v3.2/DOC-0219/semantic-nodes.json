@@ -1,0 +1,4051 @@
+{
+  "documentId": "DOC-0219",
+  "semanticNodeCount": 337,
+  "nodes": [
+    {
+      "semanticNodeRef": "N0001",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1]#heading-span-0-29",
+      "canonicalText": "STANDARD PROCUREMENT DOCUMENT",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[7]#heading-span-0-21",
+      "canonicalText": "Request for Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[7]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[34]#heading-span-0-9",
+      "canonicalText": "Revisions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[34]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[45]#heading-span-0-7",
+      "canonicalText": "Preface",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[45]#heading-span-0-7"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[66]#heading-span-0-29",
+      "canonicalText": "Standard Procurement Documen",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[66]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[67]#heading-span-0-7",
+      "canonicalText": "Summary",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[67]#heading-span-0-7"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[69]#heading-span-0-27",
+      "canonicalText": "Specific Procurement Notice",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[69]#heading-span-0-27"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[70]#heading-span-0-88",
+      "canonicalText": "Specific Procurement Notice - Request for Proposal (RFP) to Initially Selected Proposers",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[70]#heading-span-0-88"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0009",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[72]#heading-span-0-40",
+      "canonicalText": "PART 1 – REQUEST FOR PROPOSAL PROCEDURES",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[72]#heading-span-0-40"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[73]#heading-span-0-42",
+      "canonicalText": "Section I -Instructions to Proposers (ITP)",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[73]#heading-span-0-42"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0011",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[75]#heading-span-0-37",
+      "canonicalText": "Section II -Proposal Data Sheet (PDS)",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[75]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[77]#heading-span-0-50",
+      "canonicalText": "Section III -Evaluation and Qualification Criteria",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[77]#heading-span-0-50"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[79]#heading-span-0-26",
+      "canonicalText": "Section IV -Proposal Forms",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[79]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[81]#heading-span-0-29",
+      "canonicalText": "Section V -Eligible Countries",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[81]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[83]#heading-span-0-32",
+      "canonicalText": "Section VI -Fraud and Corruption",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[83]#heading-span-0-32"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[85]#heading-span-0-32",
+      "canonicalText": "PART 2 – EMPLOYER’S REQUIREMENTS",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[85]#heading-span-0-32"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[86]#heading-span-0-37",
+      "canonicalText": "Section VII – Employer’s Requirements",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[86]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0018",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[88]#heading-span-0-50",
+      "canonicalText": "PART 3 – CONDITIONS OF CONTRACT AND CONTRACT FORMS",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[88]#heading-span-0-50"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[89]#heading-span-0-37",
+      "canonicalText": "Section VIII -General Conditions (GC)",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[89]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[91]#heading-span-0-38",
+      "canonicalText": "Section IX -Particular Conditions (PC)",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[91]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[93]#heading-span-0-25",
+      "canonicalText": "Section X -Contract Forms",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[93]#heading-span-0-25"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[98]#heading-span-0-21",
+      "canonicalText": "Request for Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[98]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[141]#heading-span-0-21",
+      "canonicalText": "Request for Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[141]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[163]#heading-span-0-41",
+      "canonicalText": "PART 1 – Request for Proposal Procedures2",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[163]#heading-span-0-41"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0025",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[164]#heading-span-0-44",
+      "canonicalText": "Section I - Instructions to Proposers (ITP)3",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[164]#heading-span-0-44"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[165]#heading-span-0-40",
+      "canonicalText": "Section II - Proposal Data Sheet (PDS)39",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[165]#heading-span-0-40"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[166]#heading-span-0-52",
+      "canonicalText": "Section III. Evaluation and Qualification Criteria51",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[166]#heading-span-0-52"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[167]#heading-span-0-29",
+      "canonicalText": "Section IV - Proposal Forms59",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[167]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[168]#heading-span-0-33",
+      "canonicalText": "Section V - Eligible Countries118",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[168]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[169]#heading-span-0-36",
+      "canonicalText": "Section VI - Fraud and Corruption119",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[169]#heading-span-0-36"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[170]#heading-span-0-34",
+      "canonicalText": "PART 2 –Employer’s Requirements121",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[170]#heading-span-0-34"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0032",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[171]#heading-span-0-40",
+      "canonicalText": "Section VII – Employer’s Requirements123",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[171]#heading-span-0-40"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[172]#heading-span-0-53",
+      "canonicalText": "PART 3 – Conditions of Contract and Contract Forms142",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[172]#heading-span-0-53"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[173]#heading-span-0-41",
+      "canonicalText": "Section VIII - General Conditions (GC)143",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[173]#heading-span-0-41"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[174]#heading-span-0-37",
+      "canonicalText": "Section IX - Particular Conditions145",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[174]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[175]#heading-span-0-29",
+      "canonicalText": "Section X - Contract Forms205",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[175]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[178]#heading-span-0-40",
+      "canonicalText": "PART 1 – Request for Proposal Procedures",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[178]#heading-span-0-40"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[181]#heading-span-0-43",
+      "canonicalText": "Section I - Instructions to Proposers (ITP)",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[181]#heading-span-0-43"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0039",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[182]#heading-span-0-16",
+      "canonicalText": "Table of Content",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[182]#heading-span-0-16"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[253]#heading-span-0-37",
+      "canonicalText": "Section I - Instructions to Proposers",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[253]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0041",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[254]#heading-span-0-10",
+      "canonicalText": "A. General",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[254]#heading-span-0-10"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#heading-span-0-17",
+      "canonicalText": "Scope of Proposal",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Source of Funds",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-20",
+      "canonicalText": "Fraud and Corruption",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[1]/tr[4]/tc[1]/p[1]#heading-span-0-18",
+      "canonicalText": "Eligible Proposers",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[1]/tr[4]/tc[1]/p[1]#heading-span-0-18"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[1]/tr[5]/tc[1]/p[1]#heading-span-0-43",
+      "canonicalText": "Eligible Materials, Equipment, and Services",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[1]/tr[5]/tc[1]/p[1]#heading-span-0-43"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[255]#heading-span-0-27",
+      "canonicalText": "B. Contents of RFP Document",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[255]#heading-span-0-27"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0048",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[1]/p[1]#heading-span-0-24",
+      "canonicalText": "Sections of RFP Document",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[1]/p[1]#heading-span-0-24"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[2]#heading-span-0-38",
+      "canonicalText": "PART 1 Request for Proposal Procedures",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[2]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[3]#heading-span-0-42",
+      "canonicalText": "Section I -Instructions to Proposers (ITP)",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[3]#heading-span-0-42"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[4]#heading-span-0-38",
+      "canonicalText": "Section II - Proposal Data Sheet (PDS)",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[4]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[5]#heading-span-0-51",
+      "canonicalText": "Section III - Evaluation and Qualification Criteria",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[5]#heading-span-0-51"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[6]#heading-span-0-27",
+      "canonicalText": "Section IV - Proposal Forms",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[6]#heading-span-0-27"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[7]#heading-span-0-29",
+      "canonicalText": "Section V -Eligible Countries",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[7]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0055",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[8]#heading-span-0-33",
+      "canonicalText": "Section VI - Fraud and Corruption",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[8]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[9]#heading-span-0-30",
+      "canonicalText": "PART 2 Employer’s Requirements",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[9]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[10]#heading-span-0-36",
+      "canonicalText": "Section VII -Employer’s Requirements",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[10]#heading-span-0-36"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[11]#heading-span-0-48",
+      "canonicalText": "PART 3 Conditions of Contract and Contract Forms",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[11]#heading-span-0-48"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[12]#heading-span-0-33",
+      "canonicalText": "Section VIII - General Conditions",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[12]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[13]#heading-span-0-33",
+      "canonicalText": "Section IX -Particular Conditions",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[13]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[14]#heading-span-0-25",
+      "canonicalText": "Section X -Contract Forms",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[14]#heading-span-0-25"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0062",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[2]/tc[1]/p[1]#heading-span-0-63",
+      "canonicalText": "Clarification of RFP Document, Site Visit, Pre-Proposal Meeting",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[2]/tc[1]/p[1]#heading-span-0-63"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[3]/tc[1]/p[1]#heading-span-0-25",
+      "canonicalText": "Amendment of RFP Document",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[3]/tc[1]/p[1]#heading-span-0-25"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[4]/tc[1]/p[1]#heading-span-0-17",
+      "canonicalText": "Cost of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[4]/tc[1]/p[1]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[5]/tc[1]/p[1]#heading-span-0-23",
+      "canonicalText": "Contacting the Employer",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[5]/tc[1]/p[1]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[2]/tr[6]/tc[1]/p[1]#heading-span-0-21",
+      "canonicalText": "Language of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[2]/tr[6]/tc[1]/p[1]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[256]#heading-span-0-27",
+      "canonicalText": "C. Preparation of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[256]#heading-span-0-27"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#heading-span-0-33",
+      "canonicalText": "Documents Comprising the Proposal",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0069",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[1]/tc[2]/p[16]#heading-span-0-86",
+      "canonicalText": "Schedule of Rates and Prices (if any): completed in accordance with ITP 15 and ITP 16;",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[1]/tc[2]/p[16]#heading-span-0-86"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[2]/tc[1]/p[1]#heading-span-0-33",
+      "canonicalText": "Letter of Proposal, and Schedules",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[2]/tc[1]/p[1]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0071",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[3]/tc[1]/p[1]#heading-span-0-31",
+      "canonicalText": "Alternative Technical Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[3]/tc[1]/p[1]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[4]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Proposal Prices",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[4]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0073",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[5]/tc[1]/p[1]#heading-span-0-19",
+      "canonicalText": "Proposal Currencies",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[5]/tc[1]/p[1]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0074",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[6]/tc[1]/p[1]#heading-span-0-56",
+      "canonicalText": "Documents Establishing the Qualification of the Proposer",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[6]/tc[1]/p[1]#heading-span-0-56"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0075",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[7]/tc[1]/p[1]#heading-span-0-46",
+      "canonicalText": "Documents Establishing Conformity of the Works",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[7]/tc[1]/p[1]#heading-span-0-46"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0076",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[8]/tc[1]/p[1]#heading-span-0-21",
+      "canonicalText": "Securing the Proposal",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[8]/tc[1]/p[1]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0077",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[8]/tc[2]/p[15]#heading-span-0-47",
+      "canonicalText": "sign the Contract in accordance with ITP 53; or",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[8]/tc[2]/p[15]#heading-span-0-47"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0078",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[8]/tc[2]/p[16]#heading-span-0-141",
+      "canonicalText": "furnish a Performance Security and if required in the PDS, the Environmental and Social (ES) Performance Security, in accordance with ITP 54.",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[8]/tc[2]/p[16]#heading-span-0-141"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0079",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[8]/tc[2]/p[21]#heading-span-0-47",
+      "canonicalText": "sign the Contract in accordance with ITP 53; or",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[8]/tc[2]/p[21]#heading-span-0-47"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0080",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[8]/tc[2]/p[22]#heading-span-0-141",
+      "canonicalText": "furnish a performance security and if required in the PDS, the Environmental and Social (ES) Performance Security, in accordance with ITP 54,",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[8]/tc[2]/p[22]#heading-span-0-141"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0081",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[9]/tc[1]/p[1]#heading-span-0-31",
+      "canonicalText": "Period of Validity of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[9]/tc[1]/p[1]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0082",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[3]/tr[10]/tc[1]/p[1]#heading-span-0-30",
+      "canonicalText": "Format and Signing of Proposal",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[3]/tr[10]/tc[1]/p[1]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0083",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[257]#heading-span-0-26",
+      "canonicalText": "D. Submission of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[257]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0084",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[4]/tr[1]/tc[1]/p[1]#heading-span-0-44",
+      "canonicalText": "Submission, Sealing and Marking of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[4]/tr[1]/tc[1]/p[1]#heading-span-0-44"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0085",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[4]/tr[2]/tc[1]/p[1]#heading-span-0-36",
+      "canonicalText": "Deadline for Submission of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[4]/tr[2]/tc[1]/p[1]#heading-span-0-36"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0086",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[4]/tr[3]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Late Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[4]/tr[3]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0087",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[4]/tr[4]/tc[1]/p[1]#heading-span-0-55",
+      "canonicalText": "Withdrawal, Substitution, and Modification of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[4]/tr[4]/tc[1]/p[1]#heading-span-0-55"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0088",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[258]#heading-span-0-42",
+      "canonicalText": "E. Opening of Technical Parts of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[258]#heading-span-0-42"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0089",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[5]/tr[1]/tc[1]/p[1]#heading-span-0-37",
+      "canonicalText": "Opening of Technical Part by Employer",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[5]/tr[1]/tc[1]/p[1]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0090",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[5]/tr[2]/tc[1]/p[1]#heading-span-0-47",
+      "canonicalText": "F. Evaluation of Proposals – General Provisions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[5]/tr[2]/tc[1]/p[1]#heading-span-0-47"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0091",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[5]/tr[3]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Confidentiality",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[5]/tr[3]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0092",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[5]/tr[4]/tc[1]/p[1]#heading-span-0-26",
+      "canonicalText": "Clarification of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[5]/tr[4]/tc[1]/p[1]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0093",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[5]/tr[5]/tc[1]/p[1]#heading-span-0-39",
+      "canonicalText": "Deviations, Reservations, and Omissions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[5]/tr[5]/tc[1]/p[1]#heading-span-0-39"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0094",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[5]/tr[6]/tc[1]/p[1]#heading-span-0-45",
+      "canonicalText": "G. Evaluation of Technical Parts of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[5]/tr[6]/tc[1]/p[1]#heading-span-0-45"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0095",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[5]/tr[7]/tc[1]/p[1]#heading-span-0-50",
+      "canonicalText": "Determination of Responsiveness of Technical Parts",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[5]/tr[7]/tc[1]/p[1]#heading-span-0-50"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0096",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[5]/tr[8]/tc[1]/p[1]#heading-span-0-33",
+      "canonicalText": "Evaluation of Technical Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[5]/tr[8]/tc[1]/p[1]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0097",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[5]/tr[9]/tc[1]/p[1]#heading-span-0-38",
+      "canonicalText": "Evaluation of Proposer’s Qualification",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[5]/tr[9]/tc[1]/p[1]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0098",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[5]/tr[10]/tc[1]/p[1]#heading-span-0-45",
+      "canonicalText": "Notification of evaluation of Technical Parts",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[5]/tr[10]/tc[1]/p[1]#heading-span-0-45"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0099",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[259]#heading-span-0-29",
+      "canonicalText": "H. Opening of Financial Parts",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[259]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0100",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[6]/tr[1]/tc[1]/p[1]#heading-span-0-72",
+      "canonicalText": "Public Opening of Financial Parts when BAFO or negotiations do not apply",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[6]/tr[1]/tc[1]/p[1]#heading-span-0-72"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0101",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[6]/tr[2]/tc[1]/p[1]#heading-span-0-58",
+      "canonicalText": "Opening of Financial Parts when BAFO or negotiations apply",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[6]/tr[2]/tc[1]/p[1]#heading-span-0-58"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0102",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[260]#heading-span-0-31",
+      "canonicalText": "I. Evaluation of Financial Part",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[260]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0103",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[7]/tr[1]/tc[1]/p[1]#heading-span-0-27",
+      "canonicalText": "Nonmaterial Nonconformities",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[7]/tr[1]/tc[1]/p[1]#heading-span-0-27"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0104",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[7]/tr[2]/tc[1]/p[1]#heading-span-0-21",
+      "canonicalText": "Arithmetic Correction",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[7]/tr[2]/tc[1]/p[1]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0105",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[7]/tr[3]/tc[1]/p[1]#heading-span-0-29",
+      "canonicalText": "Conversion to Single Currency",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[7]/tr[3]/tc[1]/p[1]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0106",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[7]/tr[4]/tc[1]/p[1]#heading-span-0-20",
+      "canonicalText": "Margin of Preference",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[7]/tr[4]/tc[1]/p[1]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0107",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[7]/tr[5]/tc[1]/p[1]#heading-span-0-34",
+      "canonicalText": "Evaluation Process Financial Parts",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[7]/tr[5]/tc[1]/p[1]#heading-span-0-34"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0108",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[7]/tr[6]/tc[1]/p[1]#heading-span-0-24",
+      "canonicalText": "Abnormally Low Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[7]/tr[6]/tc[1]/p[1]#heading-span-0-24"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0109",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[7]/tr[7]/tc[1]/p[1]#heading-span-0-36",
+      "canonicalText": "Unbalanced or Front Loaded Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[7]/tr[7]/tc[1]/p[1]#heading-span-0-36"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0110",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[261]#heading-span-0-54",
+      "canonicalText": "J. Evaluation of Combined Technical and Financial Part",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[261]#heading-span-0-54"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0111",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[8]/tr[1]/tc[1]/p[1]#heading-span-0-56",
+      "canonicalText": "Evaluation of Combined Technical and Financial Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[8]/tr[1]/tc[1]/p[1]#heading-span-0-56"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0112",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[8]/tr[2]/tc[1]/p[1]#heading-span-0-27",
+      "canonicalText": "Best and Final Offer (BAFO)",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[8]/tr[2]/tc[1]/p[1]#heading-span-0-27"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0113",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[8]/tr[3]/tc[1]/p[1]#heading-span-0-32",
+      "canonicalText": "Most Advantageous Proposal (MAP)",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[8]/tr[3]/tc[1]/p[1]#heading-span-0-32"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0114",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[8]/tr[4]/tc[1]/p[1]#heading-span-0-12",
+      "canonicalText": "Negotiations",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[8]/tr[4]/tc[1]/p[1]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0115",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[8]/tr[5]/tc[1]/p[1]#heading-span-0-75",
+      "canonicalText": "Employer’s Right to Accept Any Proposal, and to Reject Any or All Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[8]/tr[5]/tc[1]/p[1]#heading-span-0-75"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0116",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[8]/tr[6]/tc[1]/p[1]#heading-span-0-17",
+      "canonicalText": "Standstill Period",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[8]/tr[6]/tc[1]/p[1]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0117",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[8]/tr[7]/tc[1]/p[1]#heading-span-0-34",
+      "canonicalText": "Notification of Intention to Award",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[8]/tr[7]/tc[1]/p[1]#heading-span-0-34"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0118",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[262]#heading-span-0-20",
+      "canonicalText": "K. Award of Contract",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[262]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0119",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[9]/tr[1]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Award Criteria",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[9]/tr[1]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0120",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[9]/tr[2]/tc[1]/p[1]#heading-span-0-21",
+      "canonicalText": "Notification of Award",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[9]/tr[2]/tc[1]/p[1]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0121",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[9]/tr[3]/tc[1]/p[1]#heading-span-0-26",
+      "canonicalText": "Debriefing by the Employer",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[9]/tr[3]/tc[1]/p[1]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0122",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[9]/tr[4]/tc[1]/p[1]#heading-span-0-19",
+      "canonicalText": "Signing of Contract",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[9]/tr[4]/tc[1]/p[1]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0123",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[9]/tr[5]/tc[1]/p[1]#heading-span-0-20",
+      "canonicalText": "Performance Security",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[9]/tr[5]/tc[1]/p[1]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0124",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[9]/tr[6]/tc[1]/p[1]#heading-span-0-29",
+      "canonicalText": "Procurement Related Complaint",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[9]/tr[6]/tc[1]/p[1]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0125",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[265]#heading-span-0-38",
+      "canonicalText": "Section II - Proposal Data Sheet (PDS)",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[265]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0126",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[10]/tr[7]/tc[2]/p[1]#heading-span-0-118",
+      "canonicalText": "A list of debarred firms and individuals is available on the Bank’s external website: http://www.worldbank.org/debarr.",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[10]/tr[7]/tc[2]/p[1]#heading-span-0-118"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0127",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[275]#heading-span-0-50",
+      "canonicalText": "Section III. Evaluation and Qualification Criteria",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[275]#heading-span-0-50"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0128",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[277]#heading-span-0-8",
+      "canonicalText": "Contents",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[277]#heading-span-0-8"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0129",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[358]#heading-span-0-13",
+      "canonicalText": "Time Schedule",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[358]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0130",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[363]#heading-span-0-16",
+      "canonicalText": "Life Cycle Costs",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[363]#heading-span-0-16"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0131",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[371]#heading-span-0-23",
+      "canonicalText": "Sustainable Procurement",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[371]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0132",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[374]#heading-span-0-28",
+      "canonicalText": "Specific additional criteria",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[374]#heading-span-0-28"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0133",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[400]#heading-span-0-27",
+      "canonicalText": "Section IV - Proposal Forms",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[400]#heading-span-0-27"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0134",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[406]#heading-span-0-22",
+      "canonicalText": "Appendix to Proposal67",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[406]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0135",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[407]#heading-span-0-29",
+      "canonicalText": "Schedule of Cost Indexation67",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[407]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0136",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[417]#heading-span-0-38",
+      "canonicalText": "Schedule of Daywork Rates: 1. Labour79",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[417]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0137",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[418]#heading-span-0-41",
+      "canonicalText": "Schedule of Daywork Rates: 2. Materials80",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[418]#heading-span-0-41"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0138",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[419]#heading-span-0-54",
+      "canonicalText": "Schedule of Daywork Rates: 3. Contractor’s Equipment81",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[419]#heading-span-0-54"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0139",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[433]#heading-span-0-10",
+      "canonicalText": "Form EQU98",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[433]#heading-span-0-10"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0140",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[449]#heading-span-0-47",
+      "canonicalText": "Form of Proposal Security – Demand Guarantee115",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[449]#heading-span-0-47"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0141",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[450]#heading-span-0-40",
+      "canonicalText": "Form of Proposal-Securing Declaration116",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[450]#heading-span-0-40"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0142",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[451]#heading-span-0-89",
+      "canonicalText": "Form of Sexual Exploitation and Abuse (SEA), and/or Sexual Harassment (SH) Declaration117",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[451]#heading-span-0-89"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0143",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[454]#heading-span-0-14",
+      "canonicalText": "Proposal Forms",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[454]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0144",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[455]#heading-span-0-35",
+      "canonicalText": "Letter of Proposal - Technical Part",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[455]#heading-span-0-35"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0145",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[460]#heading-span-0-49",
+      "canonicalText": "Request for Proposal No.: [insert identification]",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[460]#heading-span-0-49"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0146",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[505]#heading-span-0-35",
+      "canonicalText": "Letter of Proposal - Financial Part",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[505]#heading-span-0-35"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0147",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[511]#heading-span-0-49",
+      "canonicalText": "Request for Proposal No.: [insert identification]",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[511]#heading-span-0-49"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0148",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[545]#heading-span-0-20",
+      "canonicalText": "Appendix to Proposal",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[545]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0149",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[546]#heading-span-0-27",
+      "canonicalText": "Schedule of Cost Indexation",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[546]#heading-span-0-27"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0150",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[565]#heading-span-0-20",
+      "canonicalText": "Appendix to Proposal",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[565]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0151",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[566]#heading-span-0-24",
+      "canonicalText": "Table of Adjustment Data",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[566]#heading-span-0-24"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0152",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[568]#heading-span-0-23",
+      "canonicalText": "Table A. Local Currency",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[568]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0153",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[574]#heading-span-0-30",
+      "canonicalText": "Table B. Foreign Currency (FC)",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[574]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0154",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[579]#heading-span-0-38",
+      "canonicalText": "Table C. Summary of Payment Currencies",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[579]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0155",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[588]#heading-span-0-79",
+      "canonicalText": "Summary of currencies of the Proposal for [insert name of Section of the Works",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[588]#heading-span-0-79"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0156",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[592]#heading-span-0-28",
+      "canonicalText": "Proposal Prices and Payments",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[592]#heading-span-0-28"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0157",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[600]#heading-span-0-30",
+      "canonicalText": "Priced Activity Schedule Table",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[600]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0158",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[605]#heading-span-0-41",
+      "canonicalText": "Sample Priced Sub-activity Schedule Table",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[605]#heading-span-0-41"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0159",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[24]/tr[1]/tc[1]/p[2]#heading-span-0-33",
+      "canonicalText": "Sample Price Schedule for Payment",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[24]/tr[1]/tc[1]/p[2]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0160",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[622]#heading-span-0-16",
+      "canonicalText": "Daywork Schedule",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[622]#heading-span-0-16"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0161",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[628]#heading-span-0-36",
+      "canonicalText": "Schedule of Daywork Rates: 1. Labour",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[628]#heading-span-0-36"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0162",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[631]#heading-span-0-39",
+      "canonicalText": "Schedule of Daywork Rates: 2. Materials",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[631]#heading-span-0-39"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0163",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[634]#heading-span-0-52",
+      "canonicalText": "Schedule of Daywork Rates: 3. Contractor’s Equipment",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[634]#heading-span-0-52"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0164",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[637]#heading-span-0-15",
+      "canonicalText": "Daywork Summary",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[637]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0165",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[641]#heading-span-0-26",
+      "canonicalText": "Specified Provisional Sums",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[641]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0166",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[643]#heading-span-0-13",
+      "canonicalText": "Grand Summary",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[643]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0167",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[646]#heading-span-0-24",
+      "canonicalText": "Technical Proposal Forms",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[646]#heading-span-0-24"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0168",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[663]#heading-span-0-15",
+      "canonicalText": "Design Proposal",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[663]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0169",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[684]#heading-span-0-48",
+      "canonicalText": "Method Statement for Key Construction Activities",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[684]#heading-span-0-48"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0170",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[696]#heading-span-0-21",
+      "canonicalText": "Mobilization Schedule",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[696]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0171",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[700]#heading-span-0-32",
+      "canonicalText": "Sustainable Procurement Proposal",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[700]#heading-span-0-32"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0172",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[706]#heading-span-0-48",
+      "canonicalText": "Construction and/or Erection Management Strategy",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[706]#heading-span-0-48"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0173",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[731]#heading-span-0-1642",
+      "canonicalText": "Note to the Employer: The following minimum requirements shall not be modified. The Employer may add additional requirements to address identified issues, informed by relevant environmental and social assessment.The types of issues identified could include risks associated with: labour influx, spread of communicable diseases, and Sexual Exploitation and Abuse (SEA), Sexual Harassment (SH) etc. Delete this Box prior to issuance of the RFP documents.Note to the Employer: The following minimum requirements shall not be modified. The Employer may add additional requirements to address identified issues, informed by relevant environmental and social assessment.The types of issues identified could include risks associated with: labour influx, spread of communicable diseases, and Sexual Exploitation and Abuse (SEA), Sexual Harassment (SH) etc. Delete this Box prior to issuance of the RFP documents.Note to the Proposer: The minimum content of the Code of Conduct form as set out by the Employer shall not be substantially modified. However, the Proposer may add requirements as appropriate, including to take into account Contract-specific issues/risks. The Proposer shall initial and submit the Code of Conduct form as part of its proposal.Note to the Proposer: The minimum content of the Code of Conduct form as set out by the Employer shall not be substantially modified. However, the Proposer may add requirements as appropriate, including to take into account Contract-specific issues/risks. The Proposer shall initial and submit the Code of Conduct form as part of its proposal.Code of Conduct for Contractor’s Personnel (ES) Fo",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[731]#heading-span-0-1642"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0174",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[791]#heading-span-0-12",
+      "canonicalText": "Work Program",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[791]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0175",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[804]#heading-span-0-37",
+      "canonicalText": "Contract Personnel Organization Chart",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[804]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0176",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[806]#heading-span-0-44",
+      "canonicalText": "Risk assessment and Proposed Management Plan",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[806]#heading-span-0-44"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0177",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[812]#heading-span-0-8",
+      "canonicalText": "Form EQU",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[812]#heading-span-0-8"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0178",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[813]#heading-span-0-22",
+      "canonicalText": "Contractor’s Equipment",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[813]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0179",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[819]#heading-span-0-9",
+      "canonicalText": "Personnel",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[819]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0180",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[820]#heading-span-0-11",
+      "canonicalText": "Form PER -1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[820]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0181",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[821]#heading-span-0-50",
+      "canonicalText": "Key Personnel qualifications and resource schedule",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[821]#heading-span-0-50"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0182",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[828]#heading-span-0-11",
+      "canonicalText": "Form PER-2:",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[828]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0183",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[829]#heading-span-0-22",
+      "canonicalText": "Resume and Declaration",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[829]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0184",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[851]#heading-span-0-14",
+      "canonicalText": "Subcontractors",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[851]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0185",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[852]#heading-span-0-23",
+      "canonicalText": "Proposed Subcontractors",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[852]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0186",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[861]#heading-span-0-19",
+      "canonicalText": "Qualification Forms",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[861]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0187",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[862]#heading-span-0-12",
+      "canonicalText": "Form ELI 1.1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[862]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0188",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[863]#heading-span-0-26",
+      "canonicalText": "Proposer Information Sheet",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[863]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0189",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[868]#heading-span-0-12",
+      "canonicalText": "Form ELI 1.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[868]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0190",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[869]#heading-span-0-29",
+      "canonicalText": "Party to JV Information Sheet",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[869]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0191",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[878]#heading-span-0-12",
+      "canonicalText": "Form CON – 2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[878]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0192",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[879]#heading-span-0-78",
+      "canonicalText": "Historical Contract Non-Performance, Pending Litigation and Litigation History",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[879]#heading-span-0-78"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0193",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[889]#heading-span-0-12",
+      "canonicalText": "Form CON – 3",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[889]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0194",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[890]#heading-span-0-48",
+      "canonicalText": "Environmental and Social Performance Declaration",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[890]#heading-span-0-48"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0195",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[899]#heading-span-0-12",
+      "canonicalText": "Form CON – 4",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[899]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0196",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[900]#heading-span-0-84",
+      "canonicalText": "Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment Performance Declaration",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[900]#heading-span-0-84"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0197",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[904]#heading-span-0-8",
+      "canonicalText": "Form CCC",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[904]#heading-span-0-8"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0198",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[905]#heading-span-0-48",
+      "canonicalText": "Current Contract Commitments / Works in Progress",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[905]#heading-span-0-48"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0199",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[910]#heading-span-0-12",
+      "canonicalText": "Form FIN 3.3",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[910]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0200",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[911]#heading-span-0-19",
+      "canonicalText": "Financial Resources",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[911]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0201",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[914]#heading-span-0-6",
+      "canonicalText": "Others",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[914]#heading-span-0-6"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0202",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[917]#heading-span-0-44",
+      "canonicalText": "Form of Proposal Security – Demand Guarantee",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[917]#heading-span-0-44"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0203",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[919]#heading-span-0-25",
+      "canonicalText": "Request for Proposals No:",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[919]#heading-span-0-25"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0204",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[933]#heading-span-0-37",
+      "canonicalText": "Form of Proposal-Securing Declaration",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[933]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0205",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[954]#heading-span-0-86",
+      "canonicalText": "Form of Sexual Exploitation and Abuse (SEA), and/or Sexual Harassment (SH) Declaration",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[954]#heading-span-0-86"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0206",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[976]#heading-span-0-30",
+      "canonicalText": "Section V - Eligible Countries",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[976]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0207",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[984]#heading-span-0-33",
+      "canonicalText": "Section VI - Fraud and Corruption",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[984]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0208",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1021]#heading-span-0-31",
+      "canonicalText": "PART 2 –Employer’s Requirements",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1021]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0209",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1036]#heading-span-0-37",
+      "canonicalText": "Section VII – Employer’s Requirements",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1036]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0210",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1038]#heading-span-0-23",
+      "canonicalText": "Employer’s Requirements",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1038]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0211",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1040]#heading-span-0-46",
+      "canonicalText": "Notes on preparing the Employer’s Requirements",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1040]#heading-span-0-46"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0212",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1072]#heading-span-0-42",
+      "canonicalText": "Environmental and Social (ES) requirements",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1072]#heading-span-0-42"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0213",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1108]#heading-span-0-42",
+      "canonicalText": "Environmental and Social (ES) requirements",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1108]#heading-span-0-42"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0214",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1217]#heading-span-0-50",
+      "canonicalText": "PART 3 – Conditions of Contract and Contract Forms",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1217]#heading-span-0-50"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0215",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[51]/tr[1]/tc[1]/p[1]#heading-span-0-38",
+      "canonicalText": "Section VIII - General Conditions (GC)",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[51]/tr[1]/tc[1]/p[1]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0216",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[52]/tr[1]/tc[1]/p[1]#heading-span-0-34",
+      "canonicalText": "Section IX - Particular Conditions",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[52]/tr[1]/tc[1]/p[1]#heading-span-0-34"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0217",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1239]#heading-span-0-21",
+      "canonicalText": "Particular Conditions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1239]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0218",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1248]#heading-span-0-21",
+      "canonicalText": "Particular Conditions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1248]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0219",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[1]/tc[1]/p[1]#heading-span-0-17",
+      "canonicalText": "Sub-Clause 1.1.43",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[1]/tc[1]/p[1]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0220",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[2]/tc[1]/p[1]#heading-span-0-17",
+      "canonicalText": "Sub-Clause 1.1.67",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[2]/tc[1]/p[1]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0221",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[4]/tc[1]/p[1]#heading-span-0-17",
+      "canonicalText": "Sub-Clause 1.1.81",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[4]/tc[1]/p[1]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0222",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[4]/tc[1]/p[2]#heading-span-0-2",
+      "canonicalText": "ES",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[4]/tc[1]/p[2]#heading-span-0-2"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0223",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[7]/tc[1]/p[2]#heading-span-0-63",
+      "canonicalText": "Sexual Exploitation and Abuse (SEA), and Sexual Harassment (SH)",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[7]/tc[1]/p[2]#heading-span-0-63"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0224",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[10]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 1.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[10]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0225",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[11]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 1.5",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[11]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0226",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[11]/tc[1]/p[2]#heading-span-0-21",
+      "canonicalText": "Priority of Documents",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[11]/tc[1]/p[2]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0227",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[11]/tc[2]/p[4]#heading-span-0-135",
+      "canonicalText": "Particular Conditions- Part E- Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment Performance Declaration for Subcontractors;",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[11]/tc[2]/p[4]#heading-span-0-135"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0228",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[12]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-clause 1.6",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[12]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0229",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[13]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 1.11",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[13]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0230",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[13]/tc[1]/p[2]#heading-span-0-15",
+      "canonicalText": "Confidentiality",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[13]/tc[1]/p[2]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0231",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[14]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 1.16",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[14]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0232",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[14]/tc[1]/p[2]#heading-span-0-33",
+      "canonicalText": "Inspections and Audit by the Bank",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[14]/tc[1]/p[2]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0233",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[15]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 2.4",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[15]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0234",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[16]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 2.7",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[16]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0235",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[16]/tc[1]/p[2]#heading-span-0-17",
+      "canonicalText": "SEA/SH Conference",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[16]/tc[1]/p[2]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0236",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[18]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 4.1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[18]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0237",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[18]/tc[1]/p[2]#heading-span-0-32",
+      "canonicalText": "Contractor’s General Obligations",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[18]/tc[1]/p[2]#heading-span-0-32"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0238",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[19]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 4.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[19]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0239",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[20]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 4.3",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[20]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0240",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[21]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 4.4",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[21]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0241",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[21]/tc[1]/p[2]#heading-span-0-14",
+      "canonicalText": "Subcontractors",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[21]/tc[1]/p[2]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0242",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[24]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 4.8",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[24]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0243",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[25]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 4.15",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[25]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0244",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[25]/tc[1]/p[2]#heading-span-0-12",
+      "canonicalText": "Access Route",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[25]/tc[1]/p[2]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0245",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[26]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 4.18",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[26]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0246",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[27]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 4.20",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[27]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0247",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[28]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 4.21",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[28]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0248",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[29]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 4.23",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[29]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0249",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[29]/tc[1]/p[2]#heading-span-0-38",
+      "canonicalText": "Archaeological and Geological Findings",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[29]/tc[1]/p[2]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0250",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[30]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 4.24",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[30]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0251",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[30]/tc[1]/p[2]#heading-span-0-37",
+      "canonicalText": "Suppliers (other than Subcontractors)",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[30]/tc[1]/p[2]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0252",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[31]/tc[1]/p[2]#heading-span-0-15",
+      "canonicalText": "Code of Conduct",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[31]/tc[1]/p[2]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0253",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[32]/tc[1]/p[2]#heading-span-0-10",
+      "canonicalText": "Milestones",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[32]/tc[1]/p[2]#heading-span-0-10"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0254",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[33]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 5.4",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[33]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0255",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[33]/tc[1]/p[2]#heading-span-0-35",
+      "canonicalText": "Technical Standards and Regulations",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[33]/tc[1]/p[2]#heading-span-0-35"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0256",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[34]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 6.1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[34]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0257",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[35]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 6.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[35]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0258",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[36]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 6.5",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[36]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0259",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[36]/tc[1]/p[2]#heading-span-0-13",
+      "canonicalText": "Working Hours",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[36]/tc[1]/p[2]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0260",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[37]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 6.6",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[37]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0261",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[37]/tc[1]/p[2]#heading-span-0-31",
+      "canonicalText": "Facilities for Staff and Labour",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[37]/tc[1]/p[2]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0262",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[38]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 6.7",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[38]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0263",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[39]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 6.9",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[39]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0264",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[39]/tc[1]/p[2]#heading-span-0-22",
+      "canonicalText": "Contractor’s Personnel",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[39]/tc[1]/p[2]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0265",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[40]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 6.12",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[40]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0266",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[42]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 6.13",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[42]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0267",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[42]/tc[1]/p[2]#heading-span-0-17",
+      "canonicalText": "Foreign Personnel",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[42]/tc[1]/p[2]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0268",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[45]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 6.16",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[45]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0269",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[45]/tc[1]/p[2]#heading-span-0-41",
+      "canonicalText": "Measures against Insect and Pest Nuisance",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[45]/tc[1]/p[2]#heading-span-0-41"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0270",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[58]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 7.3",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[58]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0271",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[58]/tc[1]/p[2]#heading-span-0-10",
+      "canonicalText": "Inspection",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[58]/tc[1]/p[2]#heading-span-0-10"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0272",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[59]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 7.4",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[59]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0273",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[60]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 7.7",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[60]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0274",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[61]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "Sub-Clause 8.1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[61]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0275",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[62]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 11.7",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[62]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0276",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[62]/tc[1]/p[2]#heading-span-0-33",
+      "canonicalText": "Right of access after Taking Over",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[62]/tc[1]/p[2]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0277",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[63]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 13.3",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[63]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0278",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[65]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 13.6",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[65]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0279",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[66]/tc[1]/p[2]#heading-span-0-31",
+      "canonicalText": "Adjustments for Changes in Cost",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[66]/tc[1]/p[2]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0280",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[67]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 14.1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[67]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0281",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[68]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 14.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[68]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0282",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[68]/tc[1]/p[2]#heading-span-0-15",
+      "canonicalText": "Advance Payment",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[68]/tc[1]/p[2]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0283",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[69]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 14.3",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[69]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0284",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[70]/tc[1]/p[1]#heading-span-0-17",
+      "canonicalText": "Sub-Clause 14.6.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[70]/tc[1]/p[1]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0285",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[71]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 14.7",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[71]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0286",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[72]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 14.9",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[72]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0287",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[73]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 15.1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[73]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0288",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[74]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 15.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[74]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0289",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[75]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 15.8",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[75]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0290",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[76]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 16.1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[76]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0291",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[77]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 16.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[77]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0292",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[78]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 17.7",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[78]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0293",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[79]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 18.1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[79]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0294",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[80]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 18.4",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[80]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0295",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[81]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 18.5",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[81]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0296",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[82]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 19.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[82]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0297",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[83]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 20.1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[83]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0298",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[84]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 20.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[84]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0299",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[85]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 21.1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[85]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0300",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[86]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 21.2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[86]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0301",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[86]/tc[1]/p[2]#heading-span-0-33",
+      "canonicalText": "Failure to Appoint DAAB Member(s)",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[86]/tc[1]/p[2]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0302",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[87]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Sub-Clause 21.6",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[87]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0303",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[89]/tc[1]/p[1]#heading-span-0-32",
+      "canonicalText": "Sub-Clause 21.9 SEA/SH Referrals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[89]/tc[1]/p[1]#heading-span-0-32"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0304",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[90]/tc[1]/p[1]#heading-span-0-16",
+      "canonicalText": "Sub-Clause 21.10",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[90]/tc[1]/p[1]#heading-span-0-16"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0305",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[90]/tc[1]/p[2]#heading-span-0-56",
+      "canonicalText": "Dissatisfaction with DAAB’s decision on SEA/SH Referrals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[90]/tc[1]/p[2]#heading-span-0-56"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0306",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[91]/tc[1]/p[1]#heading-span-0-16",
+      "canonicalText": "Sub-Clause 21.11",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[91]/tc[1]/p[1]#heading-span-0-16"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0307",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[56]/tr[91]/tc[1]/p[2]#heading-span-0-65",
+      "canonicalText": "Bank’s disqualification of the Contractor and its Subcontractor/s",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[56]/tr[91]/tc[1]/p[2]#heading-span-0-65"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0308",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[57]/tr[1]/tc[1]/p[1]#heading-span-0-46",
+      "canonicalText": "Appendix- General Conditions of DAAB Agreement",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[57]/tr[1]/tc[1]/p[1]#heading-span-0-46"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0309",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[57]/tr[2]/tc[1]/p[1]#heading-span-0-14",
+      "canonicalText": "1. Definitions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[57]/tr[2]/tc[1]/p[1]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0310",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[57]/tr[3]/tc[1]/p[1]#heading-span-0-21",
+      "canonicalText": "2. General provisions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[57]/tr[3]/tc[1]/p[1]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0311",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[57]/tr[4]/tc[1]/p[1]#heading-span-0-13",
+      "canonicalText": "3. Warranties",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[57]/tr[4]/tc[1]/p[1]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0312",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[57]/tr[5]/tc[1]/p[1]#heading-span-0-18",
+      "canonicalText": "7. Confidentiality",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[57]/tr[5]/tc[1]/p[1]#heading-span-0-18"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0313",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[57]/tr[6]/tc[1]/p[1]#heading-span-0-20",
+      "canonicalText": "9. Fees and Expenses",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[57]/tr[6]/tc[1]/p[1]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0314",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[57]/tr[8]/tc[1]/p[1]#heading-span-0-28",
+      "canonicalText": "Annex- DAAB Procedural Rules",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[57]/tr[8]/tc[1]/p[1]#heading-span-0-28"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0315",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[57]/tr[9]/tc[1]/p[1]#heading-span-0-8",
+      "canonicalText": "Rule 3.3",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[57]/tr[9]/tc[1]/p[1]#heading-span-0-8"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0316",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[57]/tr[10]/tc[1]/p[1]#heading-span-0-8",
+      "canonicalText": "Rule 3.7",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[57]/tr[10]/tc[1]/p[1]#heading-span-0-8"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0317",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[57]/tr[11]/tc[1]/p[1]#heading-span-0-9",
+      "canonicalText": "Rule 3.10",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[57]/tr[11]/tc[1]/p[1]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0318",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1255]#heading-span-0-21",
+      "canonicalText": "Particular Conditions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1255]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0319",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1276]#heading-span-0-21",
+      "canonicalText": "Particular Conditions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1276]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0320",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1332]#heading-span-0-21",
+      "canonicalText": "Particular Conditions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1332]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0321",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/tbl[59]/tr[1]/tc[1]/p[1]#heading-span-0-26",
+      "canonicalText": "Section X - Contract Forms",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/tbl[59]/tr[1]/tc[1]/p[1]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0322",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1349]#heading-span-0-14",
+      "canonicalText": "Table of Forms",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1349]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0323",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1401]#heading-span-0-49",
+      "canonicalText": "Request for Proposal No.: [insert identification]",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1401]#heading-span-0-49"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0324",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1483]#heading-span-0-32",
+      "canonicalText": "Appendix 1: Schedule of Payments",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1483]#heading-span-0-32"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0325",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1484]#heading-span-0-55",
+      "canonicalText": "Appendix 2: Schedule of Cost Indexation [as applicable]",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1484]#heading-span-0-55"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0326",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1485]#heading-span-0-61",
+      "canonicalText": "Appendix 3: Schedule of Performance Standards [as applicable]",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1485]#heading-span-0-61"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0327",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1486]#heading-span-0-59",
+      "canonicalText": "Appendix 4: Schedule of Performance Damages [as applicable]",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1486]#heading-span-0-59"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0328",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1488]#heading-span-0-33",
+      "canonicalText": "Appendix 1 – Schedule of Payments",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1488]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0329",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1489]#heading-span-0-65",
+      "canonicalText": "[Note: Schedule of Payments may be in one of the following forms:",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1489]#heading-span-0-65"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0330",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1490]#heading-span-0-271",
+      "canonicalText": "a)an amount, or percentage of the estimated final Contract Price, for each month (or other period) during the Time for Completion (but this can prove unreasonable if the Contractor's progress differs significantly from the expectation on which the Schedule was based); or",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1490]#heading-span-0-271"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0331",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1491]#heading-span-0-336",
+      "canonicalText": "b)amounts based on the actual progress achieved by the Contractor in executing the Works, which necessitates careful definition of the payment milestones (but disagreements may arise when the work required for a payment milestone is nearly achieved but the balance of the work, albeit minor, cannot be completed until some months later)",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1491]#heading-span-0-336"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0332",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1492]#heading-span-0-372",
+      "canonicalText": "Accordingly, as brought out in GC 14.4, the instalments quoted in the Schedule of Payments shall be treated as the estimated contract values, and the Employer's Representative may proceed to agree or determine revised instalments, and the revised instalments shall take account of the extent to which progress differs from that on which the Schedule of Payments was based.",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1492]#heading-span-0-372"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0333",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1493]#heading-span-0-153",
+      "canonicalText": "Alternatively, if the Works consist of only a few different types of operations, a simple measurement approach for interim valuations may be appropriate]",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1493]#heading-span-0-153"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0334",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1504]#heading-span-0-40",
+      "canonicalText": "Appendix 2 – Schedule of Cost Indexation",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1504]#heading-span-0-40"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0335",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1507]#heading-span-0-47",
+      "canonicalText": "Appendix 3 - Schedule of Performance Guarantees",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1507]#heading-span-0-47"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0336",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1531]#heading-span-0-44",
+      "canonicalText": "Appendix 4 - Schedule of Performance Damages",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1531]#heading-span-0-44"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0337",
+      "canonicalOccurrenceRef": "DOC-0219:body[1]/p[1556]#heading-span-0-49",
+      "canonicalText": "Performance Security – Option 2: Performance Bond",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0219:body[1]/p[1556]#heading-span-0-49"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    }
+  ],
+  "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+}

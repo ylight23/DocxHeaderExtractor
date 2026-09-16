@@ -1,0 +1,3782 @@
+{
+  "artifactKind": "A99_CANONICAL_V3_2_PARENT_DECISIONS",
+  "documentId": "DOC-0264",
+  "decisionCount": 155,
+  "decisions": [
+    {
+      "semanticNodeRef": "N0001",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[16]#heading-span-0-17",
+      "exactText": "LAW ON SECURITIES",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 0,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[21]#heading-span-0-9",
+      "exactText": "Chapter I",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[23]#heading-span-0-30",
+      "exactText": "Article 1. Scope of regulation",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[25]#heading-span-0-34",
+      "exactText": "Article 2. Subjects of application",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[29]#heading-span-0-62",
+      "exactText": "Article 3. Application of the Securities Law and relevant laws",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[31]#heading-span-0-34",
+      "exactText": "Article 4. Interpretation of terms",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[103]#heading-span-0-68",
+      "exactText": "Article 5. Principles of securities and securities market activities",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[108]#heading-span-0-49",
+      "exactText": "Article 6. Securities market development policies",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0009",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[112]#heading-span-0-74",
+      "exactText": "Article 7. Measures to ensure security and safety of the securities market",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[122]#heading-span-0-63",
+      "exactText": "Article 8. State management of securities and securities market",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0011",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[130]#heading-span-0-42",
+      "exactText": "Article 9. The State Securities Commission",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[150]#heading-span-0-63",
+      "exactText": "Article 10. Securities-related socio-professional organizations",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[153]#heading-span-0-45",
+      "exactText": "Article 11. Professional securities investors",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[161]#heading-span-0-74",
+      "exactText": "Article 12. Prohibited acts in securities and securities market activities",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[169]#heading-span-0-10",
+      "exactText": "Chapter II",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[171]#heading-span-0-9",
+      "exactText": "Section 1",
+      "selectedParentRef": "N0015",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[173]#heading-span-0-32",
+      "exactText": "Article 13. Securities par value",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0018",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[177]#heading-span-0-50",
+      "exactText": "Article 14. Forms of public offering of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[180]#heading-span-0-56",
+      "exactText": "Article 15. Conditions for public offering of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[213]#heading-span-0-57",
+      "exactText": "Article 16. Registration of public offering of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[220]#heading-span-0-76",
+      "exactText": "Article 17. Conditions for issuance underwriting of securities to the public",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[226]#heading-span-0-69",
+      "exactText": "Article 18. Dossiers of registration of public offering of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[268]#heading-span-0-22",
+      "exactText": "Article 19. Prospectus",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[285]#heading-span-0-32",
+      "exactText": "Article 20. Financial statements",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0025",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[291]#heading-span-0-67",
+      "exactText": "Article 21. Accredited audit firms and certified public accountants",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[300]#heading-span-0-105",
+      "exactText": "Article 22. Modification and supplementation of dossiers of registration of public offering of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[306]#heading-span-0-129",
+      "exactText": "Article 23. Responsibilities of institutions and individuals related to dossiers of registration of public offering of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[309]#heading-span-0-67",
+      "exactText": "Article 24. Use of information before public offering of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[311]#heading-span-0-81",
+      "exactText": "Article 25. Grant of certificate of registration of public offering of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[316]#heading-span-0-38",
+      "exactText": "Article 26. Distribution of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[324]#heading-span-0-55",
+      "exactText": "Article 27. Suspension of public offering of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0032",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[331]#heading-span-0-57",
+      "exactText": "Article 28. Cancellation of public offering of securities",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[338]#heading-span-0-47",
+      "exactText": "Article 29. Obligations of issuing institutions",
+      "selectedParentRef": "N0016",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0016"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[342]#heading-span-0-9",
+      "exactText": "Section 2",
+      "selectedParentRef": "N0015",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[344]#heading-span-0-95",
+      "exactText": "Article 30. Private placement of securities of issuing institutions other than public companies",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0034"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[346]#heading-span-0-137",
+      "exactText": "Article 31. Private placement of securities of public companies, securities companies and securities investment fund management companies",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0015",
+          "N0034"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[367]#heading-span-0-11",
+      "exactText": "Chapter III",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[369]#heading-span-0-9",
+      "exactText": "Section 1",
+      "selectedParentRef": "N0037",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0039",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[371]#heading-span-0-28",
+      "exactText": "Article 32. Public companies",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037",
+          "N0038"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[377]#heading-span-0-48",
+      "exactText": "Article 33. Public company registration dossiers",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037",
+          "N0038"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0041",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[386]#heading-span-0-54",
+      "exactText": "Article 34. Rights and obligations of public companies",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037",
+          "N0038"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[394]#heading-span-0-22",
+      "exactText": "Article 35. Public bid",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037",
+          "N0038"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[408]#heading-span-0-62",
+      "exactText": "Article 36. Redemption by public companies of their own stocks",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037",
+          "N0038"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[437]#heading-span-0-99",
+      "exactText": "Article 37. Reports on stock redemption, information disclosure and performance of stock redemption",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037",
+          "N0038"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[458]#heading-span-0-54",
+      "exactText": "Article 38. Cancellation of status of public companies",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037",
+          "N0038"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[464]#heading-span-0-61",
+      "exactText": "Article 39. Dossiers of cancellation of public company status",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037",
+          "N0038"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[470]#heading-span-0-9",
+      "exactText": "Section 2",
+      "selectedParentRef": "N0037",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0048",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[472]#heading-span-0-77",
+      "exactText": "Article 40. Principles of corporate governance applicable to public companies",
+      "selectedParentRef": "N0047",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037",
+          "N0047"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[480]#heading-span-0-75",
+      "exactText": "Article 41. Contents of corporate governance applicable to public companies",
+      "selectedParentRef": "N0047",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0037",
+          "N0047"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[513]#heading-span-0-10",
+      "exactText": "Chapter IV",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[515]#heading-span-0-55",
+      "exactText": "Article 42. Organization of a securities trading market",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0050"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[518]#heading-span-0-97",
+      "exactText": "Article 43. Organization and operation of the Vietnam Stock Exchange and its subsidiary companies",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0050"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[522]#heading-span-0-81",
+      "exactText": "Article 44. Organizational and managerial apparatus of the Vietnam Stock Exchange",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0050"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[526]#heading-span-0-49",
+      "exactText": "Article 45. Charter of the Vietnam Stock Exchange",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0050"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0055",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[544]#heading-span-0-64",
+      "exactText": "Article 46. Rights and obligations of the Vietnam Stock Exchange",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0050"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[568]#heading-span-0-49",
+      "exactText": "Article 47. Members of the Vietnam Stock Exchange",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0050"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[584]#heading-span-0-55",
+      "exactText": "Article 48. Securities listing and trading registration",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0050"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[589]#heading-span-0-131",
+      "exactText": "Article 49. Suspension, termination and resumption of trading activities of the Vietnam Stock Exchange and its subsidiary companies",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0050"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[594]#heading-span-0-30",
+      "exactText": "Article 50. Securities trading",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0050"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[600]#heading-span-0-120",
+      "exactText": "Article 51. Participation of foreign investors and foreign-invested economic institutions in Vietnam’s securities market",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0050"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[604]#heading-span-0-9",
+      "exactText": "Chapter V",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0062",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[606]#heading-span-0-101",
+      "exactText": "Article 52. Establishment and operation of the Vietnam Securities Depository and Clearing Corporation",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[610]#heading-span-0-113",
+      "exactText": "Article 53. Organizational and managerial structure of the Vietnam Securities Depository and Clearing Corporation",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[614]#heading-span-0-81",
+      "exactText": "Article 54. Charter of the Vietnam Securities Depository and Clearing Corporation",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[632]#heading-span-0-96",
+      "exactText": "Article 55. Rights and obligations of the Vietnam Securities Depository and Clearing Corporation",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[656]#heading-span-0-81",
+      "exactText": "Article 56. Members of the Vietnam Securities Depository and Clearing Corporation",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[680]#heading-span-0-75",
+      "exactText": "Article 57. Conditions for registration of securities depository activities",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[686]#heading-span-0-73",
+      "exactText": "Article 58. Dossiers for registration of securities depository activities",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0069",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[694]#heading-span-0-101",
+      "exactText": "Article 59. Time limits for grant of certificates of registration of securities depository activities",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[697]#heading-span-0-141",
+      "exactText": "Article 60. Suspension of securities depository activities and revocation of certificates of registration of securities depository activities",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0071",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[709]#heading-span-0-35",
+      "exactText": "Article 61. Securities registration",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[715]#heading-span-0-33",
+      "exactText": "Article 62. Securities depository",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0073",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[720]#heading-span-0-60",
+      "exactText": "Article 63. Clearing and payment for securities transactions",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0074",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[724]#heading-span-0-91",
+      "exactText": "Article 64. Establishment and transfer of ownership rights and other rights over securities",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0075",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[728]#heading-span-0-43",
+      "exactText": "Article 65. Protection of customers’ assets",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0076",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[731]#heading-span-0-33",
+      "exactText": "Article 66. Payment support funds",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0077",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[735]#heading-span-0-26",
+      "exactText": "Article 67. Clearing funds",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0078",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[739]#heading-span-0-161",
+      "exactText": "Article 68. Suspension, termination or resumption of securities registration, depository, clearing and payment activities of the Vietnam Securities Depository a…",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0079",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[744]#heading-span-0-25",
+      "exactText": "Article 69. Payment banks",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0080",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[760]#heading-span-0-10",
+      "exactText": "Chapter VI",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0081",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[762]#heading-span-0-9",
+      "exactText": "Section 1",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0082",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[764]#heading-span-0-107",
+      "exactText": "Article 70. Competence to grant, re-grant, modify and revoke establishment and securities business licenses",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0083",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[766]#heading-span-0-58",
+      "exactText": "Article 71. Enterprise registration, business registration",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0084",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[770]#heading-span-0-55",
+      "exactText": "Article 72. Business operations of securities companies",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0085",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[778]#heading-span-0-82",
+      "exactText": "Article 73. Business operations of securities investment fund management companies",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0086",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[784]#heading-span-0-107",
+      "exactText": "Article 74. Conditions for grant of establishment and securities business licenses for securities companies",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0087",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[805]#heading-span-0-134",
+      "exactText": "Article 75. Conditions for grant of establishment and securities business licenses for securities investment fund management companies",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0088",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[825]#heading-span-0-161",
+      "exactText": "Article 76. Conditions for grant of establishment and securities business licenses for Vietnam-based branches of foreign securities companies or fund management…",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0089",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[838]#heading-span-0-118",
+      "exactText": "Article 77. Foreign investors’ holding rate in securities companies or securities investment fund management companies",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0090",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[848]#heading-span-0-95",
+      "exactText": "Article 78. Representative offices of foreign securities companies or fund management companies",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0091",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[859]#heading-span-0-161",
+      "exactText": "Article 79. Dossiers and procedures for grant, re-grant, modification and revocation of establishment and securities business licenses and operation registratio…",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0092",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[862]#heading-span-0-94",
+      "exactText": "Article 80. Charter of securities companies or securities investment fund management companies",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0093",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[865]#heading-span-0-70",
+      "exactText": "Article 81. Contents of establishment and securities business licenses",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0094",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[880]#heading-span-0-93",
+      "exactText": "Article 82. Names of securities companies and securities investment fund management companies",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0095",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[891]#heading-span-0-47",
+      "exactText": "Article 83. Disclosure of operation information",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0096",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[895]#heading-span-0-54",
+      "exactText": "Article 84. Date of official commencement of operation",
+      "selectedParentRef": "N0081",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0081"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0097",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[904]#heading-span-0-9",
+      "exactText": "Section 2",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0098",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[906]#heading-span-0-97",
+      "exactText": "Article 85. Maintenance of conditions for grant of establishment and securities business licenses",
+      "selectedParentRef": "N0097",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0097"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0099",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[928]#heading-span-0-76",
+      "exactText": "Article 87. Activities requiring approval of the State Securities Commission",
+      "selectedParentRef": "N0097",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0097"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0100",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[938]#heading-span-0-45",
+      "exactText": "Article 88. Management of assets of customers",
+      "selectedParentRef": "N0097",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0097"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0101",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[943]#heading-span-0-106",
+      "exactText": "Article 89. Obligations of securities companies and Vietnam-based branches or foreign securities companies",
+      "selectedParentRef": "N0097",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0097"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0102",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[956]#heading-span-0-138",
+      "exactText": "Article 90. Obligations of securities investment fund management companies and Vietnam-based branches of foreign fund management companies",
+      "selectedParentRef": "N0097",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0097"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0103",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[961]#heading-span-0-161",
+      "exactText": "Article 91. Restrictions on securities companies, securities investment fund management companies and Vietnam-based branches of foreign securities companies and…",
+      "selectedParentRef": "N0097",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0097"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0104",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[973]#heading-span-0-28",
+      "exactText": "Article 92. Financial safety",
+      "selectedParentRef": "N0097",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0097"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0105",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[977]#heading-span-0-9",
+      "exactText": "Section 3",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0106",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[979]#heading-span-0-102",
+      "exactText": "Article 93. Reorganization of securities companies and securities investment fund management companies",
+      "selectedParentRef": "N0105",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0105"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0107",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[987]#heading-span-0-160",
+      "exactText": "Article 94. Suspension from operation of securities companies, securities investment fund management companies, or Vietnam-based branches of foreign securities…",
+      "selectedParentRef": "N0105",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0105"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0108",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1011]#heading-span-0-161",
+      "exactText": "Article 96. Dissolution or bankruptcy of securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securities…",
+      "selectedParentRef": "N0105",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0105"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0109",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1015]#heading-span-0-9",
+      "exactText": "Section 4",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0110",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1017]#heading-span-0-44",
+      "exactText": "Article 97. Securities practice certificates",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0109"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0111",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1033]#heading-span-0-56",
+      "exactText": "Article 98. Responsibilities of securities practitioners",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0080",
+          "N0109"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0112",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1042]#heading-span-0-11",
+      "exactText": "Chapter VII",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0113",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1044]#heading-span-0-9",
+      "exactText": "Section 1",
+      "selectedParentRef": "N0112",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0114",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1046]#heading-span-0-48",
+      "exactText": "Article 99. Types of securities investment funds",
+      "selectedParentRef": "N0113",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0113"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0115",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1049]#heading-span-0-83",
+      "exactText": "Article 100. Formation and organization of operation of securities investment funds",
+      "selectedParentRef": "N0113",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0113"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0116",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1054]#heading-span-0-93",
+      "exactText": "Article 101. Rights and obligations of investors participating in securities investment funds",
+      "selectedParentRef": "N0113",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0113"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0117",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1067]#heading-span-0-71",
+      "exactText": "Article 102. Investors’ general meetings of securities investment funds",
+      "selectedParentRef": "N0113",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0113"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0118",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1081]#heading-span-0-52",
+      "exactText": "Article 103. Charters of securities investment funds",
+      "selectedParentRef": "N0113",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0113"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0119",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1102]#heading-span-0-55",
+      "exactText": "Article 104. Dissolution of securities investment funds",
+      "selectedParentRef": "N0113",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0113"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0120",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1117]#heading-span-0-68",
+      "exactText": "Article 105. Consolidation and merger of securities investment funds",
+      "selectedParentRef": "N0113",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0113"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0121",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1119]#heading-span-0-76",
+      "exactText": "Article 106. Determination of net asset value of securities investment funds",
+      "selectedParentRef": "N0113",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0113"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0122",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1126]#heading-span-0-51",
+      "exactText": "Article 107. Reports on securities investment funds",
+      "selectedParentRef": "N0113",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0113"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0123",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1128]#heading-span-0-9",
+      "exactText": "Section 2",
+      "selectedParentRef": "N0112",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0124",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1130]#heading-span-0-66",
+      "exactText": "Article 108. Mobilization of capital for formation of public funds",
+      "selectedParentRef": "N0123",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0123"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0125",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1136]#heading-span-0-47",
+      "exactText": "Article 109. Boards of Trustees of public funds",
+      "selectedParentRef": "N0123",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0123"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0126",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1141]#heading-span-0-41",
+      "exactText": "Article 110. Restrictions on public funds",
+      "selectedParentRef": "N0123",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0123"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0127",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1158]#heading-span-0-27",
+      "exactText": "Article 111. Open-end funds",
+      "selectedParentRef": "N0123",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0123"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0128",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1165]#heading-span-0-29",
+      "exactText": "Article 112. Closed-end funds",
+      "selectedParentRef": "N0123",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0123"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0129",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1175]#heading-span-0-38",
+      "exactText": "Article 113. Formation of member funds",
+      "selectedParentRef": "N0123",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0123"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0130",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1182]#heading-span-0-9",
+      "exactText": "Section 3",
+      "selectedParentRef": "N0112",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0131",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1184]#heading-span-0-44",
+      "exactText": "Article 114. Securities investment companies",
+      "selectedParentRef": "N0130",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0130"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0132",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1187]#heading-span-0-75",
+      "exactText": "Article 115. Establishment and operation of securities investment companies",
+      "selectedParentRef": "N0130",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0130"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0133",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1196]#heading-span-0-9",
+      "exactText": "Section 4",
+      "selectedParentRef": "N0112",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0134",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1198]#heading-span-0-30",
+      "exactText": "Article 116. Supervisory banks",
+      "selectedParentRef": "N0133",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0133"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0135",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1210]#heading-span-0-46",
+      "exactText": "Article 117. Restrictions on supervisory banks",
+      "selectedParentRef": "N0133",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0112",
+          "N0133"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0136",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1214]#heading-span-0-12",
+      "exactText": "Chapter VIII",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0137",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1216]#heading-span-0-53",
+      "exactText": "Article 118. Subjects obliged to disclose information",
+      "selectedParentRef": "N0136",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0136"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0138",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1230]#heading-span-0-49",
+      "exactText": "Article 119. Principles of information disclosure",
+      "selectedParentRef": "N0136",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0136"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0139",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1236]#heading-span-0-58",
+      "exactText": "Article 120. Disclosure of information by public companies",
+      "selectedParentRef": "N0136",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0136"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0140",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1259]#heading-span-0-92",
+      "exactText": "Article 121. Disclosure of information by institutions issuing corporate bonds to the public",
+      "selectedParentRef": "N0136",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0136"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0141",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1268]#heading-span-0-78",
+      "exactText": "Article 122. Disclosure of information by institutions listing corporate bonds",
+      "selectedParentRef": "N0136",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0136"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0142",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1274]#heading-span-0-161",
+      "exactText": "Article 123. Disclosure of information by securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securitie…",
+      "selectedParentRef": "N0136",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0136"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0143",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1288]#heading-span-0-57",
+      "exactText": "Article 124. Disclosure of information about public funds",
+      "selectedParentRef": "N0136",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0136"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0144",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1306]#heading-span-0-83",
+      "exactText": "Article 125. Disclosure of information about public securities investment companies",
+      "selectedParentRef": "N0136",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0136"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0145",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1316]#heading-span-0-156",
+      "exactText": "Article 126. Disclosure of information by the Vietnam Stock Exchange and its subsidiary companies and Vietnam Securities Depository and Clearing Corporation",
+      "selectedParentRef": "N0136",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0136"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0146",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1336]#heading-span-0-79",
+      "exactText": "Article 128. Disclosure of information by insiders and their affiliated persons",
+      "selectedParentRef": "N0136",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0136"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0147",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1340]#heading-span-0-10",
+      "exactText": "Chapter IX",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0148",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1342]#heading-span-0-36",
+      "exactText": "Article 129. Securities inspectorate",
+      "selectedParentRef": "N0147",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0147"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0149",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1351]#heading-span-0-161",
+      "exactText": "Article 130. Tasks and powers of the State Securities Commission regarding inspection, examination, and handling of violations of the law on securities and secu…",
+      "selectedParentRef": "N0147",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0147"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0150",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1359]#heading-span-0-161",
+      "exactText": "Article 131. Coordination among agencies, organizations and individuals in inspecting, examining, and handling violations of the law on securities and securitie…",
+      "selectedParentRef": "N0147",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0147"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0151",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1365]#heading-span-0-35",
+      "exactText": "Article 132. Handling of violations",
+      "selectedParentRef": "N0147",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0147"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0152",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1373]#heading-span-0-58",
+      "exactText": "Article 133. Settlement of disputes and payment of damages",
+      "selectedParentRef": "N0147",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0147"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0153",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1378]#heading-span-0-9",
+      "exactText": "Chapter X",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0154",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1380]#heading-span-0-19",
+      "exactText": "Article 134. Effect",
+      "selectedParentRef": "N0153",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0153"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0155",
+      "headingOccurrenceRef": "DOC-0264:body[1]/p[1383]#heading-span-0-36",
+      "exactText": "Article 135. Transitional provisions",
+      "selectedParentRef": "N0153",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0153"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    }
+  ],
+  "levelEnteredByReviewer": false,
+  "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+}

@@ -1,0 +1,414 @@
+[
+  {
+    "documentId": "DOC-0185",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/generated-docx/01_phap_quy/005_Luat_Dau_thau_22-2023-QH15_EN.docx",
+    "sourceSha256": "f842861bb7966cd94c8ce12f2064709936c064b7fa5825d133bd77f6ffb5f895",
+    "oldOccurrences": 119,
+    "newOccurrences": 119,
+    "oldSemanticNodes": 119,
+    "newSemanticNodes": 119,
+    "oldParentEdges": 119,
+    "newParentEdges": 119,
+    "rootChildren": 11,
+    "maxDepth": 3,
+    "doc0265ChapterIII": null,
+    "doc0201Article7": null,
+    "identityChallenges": 32,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  },
+  {
+    "documentId": "DOC-0200",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/generated-docx/01_phap_quy/020_TT_133-2016_Che_do_ke_toan_SME.docx",
+    "sourceSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835",
+    "oldOccurrences": 102,
+    "newOccurrences": 102,
+    "oldSemanticNodes": 102,
+    "newSemanticNodes": 102,
+    "oldParentEdges": 102,
+    "newParentEdges": 102,
+    "rootChildren": 7,
+    "maxDepth": 3,
+    "doc0265ChapterIII": null,
+    "doc0201Article7": null,
+    "identityChallenges": 14,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  },
+  {
+    "documentId": "DOC-0201",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/generated-docx/01_phap_quy/021_TT_78-2021_Hoa_don_dien_tu.docx",
+    "sourceSha256": "cb6c4e0878a899688fc1054b268fed1a8e6cb45c36b350d36c7448efecd8964d",
+    "oldOccurrences": 11,
+    "newOccurrences": 11,
+    "oldSemanticNodes": 11,
+    "newSemanticNodes": 11,
+    "oldParentEdges": 11,
+    "newParentEdges": 11,
+    "rootChildren": 11,
+    "maxDepth": 1,
+    "doc0265ChapterIII": null,
+    "doc0201Article7": {
+      "found": false,
+      "window": [
+        {
+          "sourceId": "body[1]/p[96]",
+          "documentOrder": 85,
+          "rawText": "Điều 6. Áp dụng hóa đơn điện tửđối với một sốtrường hợp khác"
+        },
+        {
+          "sourceId": "body[1]/p[97]",
+          "documentOrder": 86,
+          "rawText": "1.Chuyểndữliệuhóađơnđiệntửkhôngcómãđãlậpđếncơquanthuếđốivới trườnghợp quyđịnhtạiđiểma.2khoản3 Điều 22Nghịđịnh số123/2020/NĐ-CPthựchiện như sau:Ngườibánsaukhi lập đầy đủcác nộidung hóađơngửi hóa đơn điện tửchongười muavàđồngthờigửihóađơnđiệntửchocơquanthuế,chậmnhấtlàtrongcùngngàygửi cho người mua."
+        },
+        {
+          "sourceId": "body[1]/p[98]",
+          "documentOrder": 87,
+          "rawText": "2. Hộkinh doanh, cá nhân kinh doanh sửdụng hóa đơn điện tửbao gồm:"
+        },
+        {
+          "sourceId": "body[1]/p[99]",
+          "documentOrder": 88,
+          "rawText": "a) Hộkinh doanh, cá nhân kinh doanh nộp thuếtheo phương pháp kê khai phải sửdụng hóa đơn điện tử;"
+        },
+        {
+          "sourceId": "body[1]/p[100]",
+          "documentOrder": 89,
+          "rawText": "b) Hộkinh doanh,cánhânkinhdoanhnộpthuếtheophươngphápkhoánnếucóyêu cầu sửdụng hóa đơn thì cơ quan thuếcấp lẻhóa đơn điện tửtheo từng lần phát sinh;"
+        },
+        {
+          "sourceId": "body[1]/p[101]",
+          "documentOrder": 90,
+          "rawText": "c)Hộkinhdoanh,cánhânkinhdoanhkhaithuếtheotừnglầnphátsinhnếucóyêu cầu sửdụng hóa đơn thì cơ quan thuếcấp lẻhóa đơn điện tửtheo từng lần phát sinh."
+        },
+        {
+          "sourceId": "body[1]/p[102]",
+          "documentOrder": 91,
+          "rawText": "3.Trườnghợpcungcấpdịchvụngânhàngngàylậphóađơnthựchiệnđịnhkỳtheo hợpđồnggiữahaibênkèmbảngkêhoặcchứngtừkháccóxácnhậncủahaibên,nhưng chậm nhất là ngày cuối cùng của tháng phát sinh hoạt động cung cấp dịch vụ;"
+        },
+        {
+          "sourceId": "body[1]/p[103]",
+          "documentOrder": 92,
+          "rawText": "Trườnghợpcungcấpdịchvụngânhàngvớisốlượnglớn,phátsinhthườngxuyên, cần có thời gian đối soát dữliệu giữa ngân hàng và các bên thứba có liên quan (tổchức thanh toán,tổchứcthẻquốctếhoặccáctổchứckhác),thờiđiểmlậphóađơnlàthờiđiểmhoàn thành việcđốisoátdữliệugiữacácbênnhưngchậmnhấtkhôngquángày10củatháng sau tháng phát sinh."
+        },
+        {
+          "sourceId": "body[1]/p[104]",
+          "documentOrder": 93,
+          "rawText": "4.Trườnghợpbánxăngdầuchokháchhàngthìngườibánchuyểndữliệuhóađơn bánxăngdầutrongngàytheoquyđịnhtạiđiểma.1khoản3Điều22Nghịđịnhsố123/2020/NĐ-CP.Trườnghợpngườibánvàngườimuacóthỏathuậnđểtạothuậnlợicho việc lưu thông hàng hóa hoặc tra cứu dữliệu thì người bán sau khi lập hóa đơn điện tửđầy đủcácnộidungtrênhóađơngửingườimuađồngthờigửihóađơnchocơquanthuếtheoquyđịnh tại điểm a.2 khoản 3 Điều 22 Nghịđịnh số123/2020/NĐ-CP."
+        },
+        {
+          "sourceId": "body[1]/p[105]",
+          "documentOrder": 94,
+          "rawText": "Điều7. Xửlýhóa đơn điệntử,bảngtổnghợpdữliệuhóađơn điệntửđã gửicơquan thuếcó sai sót trong một sốtrường hợp"
+        },
+        {
+          "sourceId": "body[1]/p[106]",
+          "documentOrder": 95,
+          "rawText": "1. Đối với hóa đơn điện tử:"
+        },
+        {
+          "sourceId": "body[1]/p[107]",
+          "documentOrder": 96,
+          "rawText": "a) Trường hợp hóa đơn điện tửđã lập có sai sót phải cấp lại mã của cơ quan thuếhoặc hóa đơn điện tửcó sai sót cần xửlý theo hình thức điều chỉnh hoặc thay thếtheo quy định tạiĐiều 19 Nghịđịnh số123/2020/NĐ-CP thì người bán được lựa chọn sửdụng Mẫu số04/SS-HĐĐTtạiPhụlụcIAbanhànhkèmtheoNghịđịnhsố123/2020/NĐ-CPđểthôngbáoviệcđiềuchỉnhchotừnghóađơncósaisóthoặcthôngbáoviệcđiềuchỉnhchonhiềuhóađơnđiệntửcósaisótvàgửithôngbáotheoMẫusố04/SS-HĐĐTđếncơquanthuếbấtcứthời gian nào nhưng chậm nhất là ngày cuối cùng của kỳkê khai thuếgiá trịgia tăng phát sinh hóađơn điện tửđiều chỉnh;"
+        },
+        {
+          "sourceId": "body[1]/p[110]",
+          "documentOrder": 97,
+          "rawText": "b) Trường hợp người bán lập hóa đơn khi thu tiền trước hoặc trong khi cung cấp dịch vụtheo quy định tại Khoản 2 Điều 9 Nghịđịnh số123/2020/NĐ-CP sau đó có phát sinh việc hủy hoặc chấm dứt việc cung cấp dịch vụthì người bán thực hiện hủy hóa đơn điện tửđã lập và thông báo với cơ quan thuếvềviệc hủy hóa đơn theo Mẫu số04/SS-HĐĐT tại Phụlục IA ban hành kèm theo Nghịđịnh số123/2020/NĐ-CP;"
+        },
+        {
+          "sourceId": "body[1]/p[111]",
+          "documentOrder": 98,
+          "rawText": "c) Trường hợp hóa đơn điện tửđã lập có sai sót và người bán đã xửlý theo hình thứcđiềuchỉnhhoặcthaythếtheoquyđịnhtạiđiểmbkhoản2Điều19Nghịđịnhsố123/2020/NĐ-CP,sauđólạipháthiệnhóađơntiếptụccósaisótthìcáclầnxửlýtiếptheo người bán sẽthực hiện theo hình thức đã áp dụng khi xửlý sai sót lần đầu;"
+        },
+        {
+          "sourceId": "body[1]/p[112]",
+          "documentOrder": 99,
+          "rawText": "d) Theothời hạn thông báo ghitrên Mẫusố01/TB-RSĐT Phụlục IBkèmtheo Nghịđịnhsố123/2020/NĐ-CP,ngườibánthựchiệnthôngbáovớicơquanthuếtheoMẫusố04/SS-HĐĐT tại Phụlục IA ban hành kèm theo Nghịđịnh số123/2020/NĐ-CP vềviệc kiểm trahóađơnđiệntửđãlậpcósaisót,trongđóghirõcăncứkiểmtralàthôngbáoMẫusố01/TB-RSĐT của cơ quan thuế(bao gồm thông tin sốvà ngày thông báo);"
+        },
+        {
+          "sourceId": "body[1]/p[113]",
+          "documentOrder": 100,
+          "rawText": "đ) Trường hợp theoquy định hóa đơnđiện tửđược lập không có ký hiệumẫu sốhóađơn, ký hiệu hóa đơn, sốhóa đơn có sai sót thì người bán chỉthực hiện điều chỉnh mà không thực hiện hủy hoặc thay thế;"
+        },
+        {
+          "sourceId": "body[1]/p[114]",
+          "documentOrder": 101,
+          "rawText": "e) Riêngđối với nội dung vềgiá trịtrên hóa đơn có sai sót thì: điều chỉnh tăng (ghi dấu dương), điều chỉnh giảm (ghi dấu âm) đúng với thực tếđiều chỉnh."
+        },
+        {
+          "sourceId": "body[1]/p[115]",
+          "documentOrder": 102,
+          "rawText": "2. Đối với bảng tổng hợp dữliệu hóa đơn điện tử:"
+        },
+        {
+          "sourceId": "body[1]/p[116]",
+          "documentOrder": 103,
+          "rawText": "a)Sauthờihạnchuyểnbảngtổnghợpdữliệuhóađơnđiệntửđếncơquanthuế, trường hợp thiếu dữliệu hóa đơn điện tửtại bảng tổng hợp dữliệu hóa đơn điện tửđã gửi cơquan thuếthì người bán gửi bảng tổng hợp dữliệu hóa đơn điện tửbổsung;"
+        },
+        {
+          "sourceId": "body[1]/p[117]",
+          "documentOrder": 104,
+          "rawText": "b)Trườnghợpbảngtổnghợpdữliệuhóađơnđiệntửđãgửicơquanthuếcó saisót thì người bán gửi thông tin điều chỉnh cho các thông tin đã kê khai trên bảng tổng hợp;"
+        },
+        {
+          "sourceId": "body[1]/p[118]",
+          "documentOrder": 105,
+          "rawText": "c) Việc điều chỉnh hóa đơn trên bảng tổng hợp dữliệu hóa đơn điện tửtheo quy định tạiđiểma.1khoản3Điều22Nghịđịnhsố123/2020/NĐ-CPthìphảiđiềnđủcácthôngtin: kýhiệumẫusốhóađơn,kýhiệuhóađơn,sốhóađơnvàocột14“thôngtinhóađơnliên quan”tạiMẫu01/TH-HĐĐT banhành kèmtheoNghịđịnhsố123/2020/NĐ-CP(trừtrường hợphóađơnđiệntửkhôngnhấtthiếtphảicóđầyđủcácthôngtinkýhiệumẫusốhóađơn, ký hiệu hóa đơn, sốhóa đơn theo quy định tại khoản 14 Điều 10 Nghịđịnh số123/2020/NĐ-CP)."
+        },
+        {
+          "sourceId": "body[1]/p[119]",
+          "documentOrder": 106,
+          "rawText": "3.Việckhaibổsunghồsơkhaithuếliênquancáchóađơnđiệntửđiềuchỉnh,thay thế(bao gồm cảhóa đơn điện tửbịhủy) thực hiện theo quy định của pháp luật quản lý thuế."
+        },
+        {
+          "sourceId": "body[1]/p[120]",
+          "documentOrder": 107,
+          "rawText": "Điều 8.Hóa đơn điện tửcó mã của cơ quan thuếđược khởi tạo từmáy tính tiền có kết nối chuyển dữliệu điện tửvới cơ quan thuế"
+        }
+      ],
+      "decision": "No source container between Điều 6 and Điều 8 contains Điều 7; retain no Article 7 occurrence."
+    },
+    "identityChallenges": 1,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  },
+  {
+    "documentId": "DOC-0219",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/039_WB_EPC_Turnkey_SingleStage_2025.docx",
+    "sourceSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+    "oldOccurrences": 0,
+    "newOccurrences": 337,
+    "oldSemanticNodes": 0,
+    "newSemanticNodes": 337,
+    "oldParentEdges": 0,
+    "newParentEdges": 337,
+    "rootChildren": 337,
+    "maxDepth": 1,
+    "doc0265ChapterIII": null,
+    "doc0201Article7": null,
+    "identityChallenges": 206,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  },
+  {
+    "documentId": "DOC-0265",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/generated-docx/06_dich_song_ngu/085_Luat_Nha_o_2023_EN.docx",
+    "sourceSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6",
+    "oldOccurrences": 245,
+    "newOccurrences": 248,
+    "oldSemanticNodes": 245,
+    "newSemanticNodes": 248,
+    "oldParentEdges": 245,
+    "newParentEdges": 248,
+    "rootChildren": 14,
+    "maxDepth": 3,
+    "doc0265ChapterIII": {
+      "found": true,
+      "sourceRefs": [
+        "DOC-0265:body[1]/tbl[2]/tr[1]/tc[2]/p[1]#heading-span-0-11"
+      ],
+      "decision": "Source contains Chapter III in a table-cell structural marker; V3.2 materializes it as a true heading under WHOLE_DOCUMENT_HEADING_SCOPE_V1."
+    },
+    "doc0201Article7": null,
+    "identityChallenges": 174,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  },
+  {
+    "documentId": "DOC-0243",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_95_word/04_giao_trinh/063_Advanced_Linear_Algebra.docx",
+    "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+    "oldOccurrences": 121,
+    "newOccurrences": 129,
+    "oldSemanticNodes": 121,
+    "newSemanticNodes": 109,
+    "oldParentEdges": 121,
+    "newParentEdges": 109,
+    "rootChildren": 13,
+    "maxDepth": 3,
+    "doc0265ChapterIII": null,
+    "doc0201Article7": null,
+    "identityChallenges": 83,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  },
+  {
+    "documentId": "DOC-0116",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+    "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+    "oldOccurrences": 0,
+    "newOccurrences": 174,
+    "oldSemanticNodes": 0,
+    "newSemanticNodes": 174,
+    "oldParentEdges": 0,
+    "newParentEdges": 174,
+    "rootChildren": 166,
+    "maxDepth": 2,
+    "doc0265ChapterIII": null,
+    "doc0201Article7": null,
+    "identityChallenges": 125,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  },
+  {
+    "documentId": "DOC-0122",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/037_WB_Plant_TwoStage_2025.docx",
+    "sourceSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+    "oldOccurrences": 0,
+    "newOccurrences": 345,
+    "oldSemanticNodes": 0,
+    "newSemanticNodes": 345,
+    "oldParentEdges": 0,
+    "newParentEdges": 345,
+    "rootChildren": 345,
+    "maxDepth": 1,
+    "doc0265ChapterIII": null,
+    "doc0201Article7": null,
+    "identityChallenges": 215,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  },
+  {
+    "documentId": "DOC-0216",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/036_WB_Plant_SingleStage_2025.docx",
+    "sourceSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+    "oldOccurrences": 0,
+    "newOccurrences": 343,
+    "oldSemanticNodes": 0,
+    "newSemanticNodes": 343,
+    "oldParentEdges": 0,
+    "newParentEdges": 343,
+    "rootChildren": 343,
+    "maxDepth": 1,
+    "doc0265ChapterIII": null,
+    "doc0201Article7": null,
+    "identityChallenges": 220,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  },
+  {
+    "documentId": "DOC-0205",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.doc",
+    "sourceSha256": "128e10058b6648a316c864c49c4a4015098b6b4dad07c4ea95996a50bf5b5004",
+    "oldOccurrences": 72,
+    "newOccurrences": 72,
+    "oldSemanticNodes": 72,
+    "newSemanticNodes": 72,
+    "oldParentEdges": 72,
+    "newParentEdges": 72,
+    "rootChildren": 6,
+    "maxDepth": 3,
+    "doc0265ChapterIII": null,
+    "doc0201Article7": null,
+    "identityChallenges": 70,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  },
+  {
+    "documentId": "DOC-0264",
+    "status": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.doc",
+    "sourceSha256": "5fc30d8bb1a753e673243a4b08d647b116ddab81d23a697f5b1057e84389d318",
+    "oldOccurrences": 155,
+    "newOccurrences": 155,
+    "oldSemanticNodes": 155,
+    "newSemanticNodes": 155,
+    "oldParentEdges": 155,
+    "newParentEdges": 155,
+    "rootChildren": 11,
+    "maxDepth": 3,
+    "doc0265ChapterIII": null,
+    "doc0201Article7": null,
+    "identityChallenges": 167,
+    "structuralResetInvariant": "NO_PARENT_MAY_CROSS_AN_INTERVENING_STRUCTURAL_RESET",
+    "validator": {
+      "cycles": 0,
+      "dangling": 0,
+      "parentEdgesEqualSemanticNodes": true,
+      "semanticNodesNotGreaterThanOccurrences": true
+    },
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "userReviewedPromotion": false
+  }
+]

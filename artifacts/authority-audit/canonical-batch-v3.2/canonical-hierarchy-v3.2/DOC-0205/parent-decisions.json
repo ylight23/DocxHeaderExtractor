@@ -1,0 +1,1767 @@
+{
+  "artifactKind": "A99_CANONICAL_V3_2_PARENT_DECISIONS",
+  "documentId": "DOC-0205",
+  "decisionCount": 72,
+  "decisions": [
+    {
+      "semanticNodeRef": "N0001",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[4]#heading-span-0-59",
+      "exactText": "Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 0,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[14]#heading-span-0-8",
+      "exactText": "Chương I",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[17]#heading-span-0-26",
+      "exactText": "Điều 1. Phạm vi điều chỉnh",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[20]#heading-span-0-25",
+      "exactText": "Điều 2. Đối tượng áp dụng",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[22]#heading-span-0-25",
+      "exactText": "Điều 3. Giải thích từ ngữ",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[34]#heading-span-0-48",
+      "exactText": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[36]#heading-span-0-63",
+      "exactText": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[45]#heading-span-0-42",
+      "exactText": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0009",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[53]#heading-span-0-60",
+      "exactText": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[61]#heading-span-0-34",
+      "exactText": "Điều 8. Các hành vi không được làm",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0011",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[68]#heading-span-0-9",
+      "exactText": "Chương II",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[71]#heading-span-0-60",
+      "exactText": "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+      "selectedParentRef": "N0011",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[73]#heading-span-0-72",
+      "exactText": "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+      "selectedParentRef": "N0012",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0012"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[77]#heading-span-0-48",
+      "exactText": "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+      "selectedParentRef": "N0012",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0012"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[84]#heading-span-0-45",
+      "exactText": "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+      "selectedParentRef": "N0012",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0012"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[98]#heading-span-0-81",
+      "exactText": "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+      "selectedParentRef": "N0012",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0012"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[112]#heading-span-0-30",
+      "exactText": "Điều 13. Cổng dữ liệu quốc gia",
+      "selectedParentRef": "N0012",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0012"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0018",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[119]#heading-span-0-60",
+      "exactText": "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+      "selectedParentRef": "N0011",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[121]#heading-span-0-72",
+      "exactText": "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+      "selectedParentRef": "N0018",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0018"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[130]#heading-span-0-73",
+      "exactText": "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+      "selectedParentRef": "N0018",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0018"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[133]#heading-span-0-44",
+      "exactText": "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+      "selectedParentRef": "N0018",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0018"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[149]#heading-span-0-38",
+      "exactText": "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+      "selectedParentRef": "N0011",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[151]#heading-span-0-60",
+      "exactText": "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+      "selectedParentRef": "N0022",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0022"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[162]#heading-span-0-57",
+      "exactText": "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+      "selectedParentRef": "N0022",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0022"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0025",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[168]#heading-span-0-67",
+      "exactText": "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+      "selectedParentRef": "N0022",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0022"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[176]#heading-span-0-67",
+      "exactText": "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+      "selectedParentRef": "N0022",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0022"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[181]#heading-span-0-71",
+      "exactText": "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+      "selectedParentRef": "N0022",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0022"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[187]#heading-span-0-57",
+      "exactText": "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "selectedParentRef": "N0011",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[189]#heading-span-0-51",
+      "exactText": "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+      "selectedParentRef": "N0028",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0028"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[192]#heading-span-0-36",
+      "exactText": "Điều 23. Phương thức chia sẻ dữ liệu",
+      "selectedParentRef": "N0028",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0028"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[200]#heading-span-0-32",
+      "exactText": "Điều 24. Dịch vụ chia sẻ dữ liệu",
+      "selectedParentRef": "N0028",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0028"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0032",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[207]#heading-span-0-55",
+      "exactText": "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+      "selectedParentRef": "N0028",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0028"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[213]#heading-span-0-49",
+      "exactText": "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+      "selectedParentRef": "N0028",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0028"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[222]#heading-span-0-41",
+      "exactText": "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+      "selectedParentRef": "N0028",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0028"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[233]#heading-span-0-65",
+      "exactText": "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+      "selectedParentRef": "N0028",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0028"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[237]#heading-span-0-50",
+      "exactText": "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+      "selectedParentRef": "N0028",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0028"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[246]#heading-span-0-56",
+      "exactText": "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+      "selectedParentRef": "N0028",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0011",
+          "N0028"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[250]#heading-span-0-10",
+      "exactText": "Chương III",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0039",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[253]#heading-span-0-39",
+      "exactText": "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[255]#heading-span-0-131",
+      "exactText": "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0039"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0041",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[263]#heading-span-0-139",
+      "exactText": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0039"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[271]#heading-span-0-31",
+      "exactText": "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[273]#heading-span-0-47",
+      "exactText": "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+      "selectedParentRef": "N0042",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0042"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[281]#heading-span-0-56",
+      "exactText": "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+      "selectedParentRef": "N0042",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0042"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[288]#heading-span-0-47",
+      "exactText": "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+      "selectedParentRef": "N0042",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0042"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[300]#heading-span-0-43",
+      "exactText": "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[302]#heading-span-0-56",
+      "exactText": "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+      "selectedParentRef": "N0046",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0046"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0048",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[308]#heading-span-0-51",
+      "exactText": "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+      "selectedParentRef": "N0046",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0046"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[314]#heading-span-0-44",
+      "exactText": "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+      "selectedParentRef": "N0046",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0046"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[327]#heading-span-0-52",
+      "exactText": "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+      "selectedParentRef": "N0046",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0046"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[330]#heading-span-0-39",
+      "exactText": "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[332]#heading-span-0-47",
+      "exactText": "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+      "selectedParentRef": "N0051",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0051"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[336]#heading-span-0-51",
+      "exactText": "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+      "selectedParentRef": "N0051",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0051"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[342]#heading-span-0-47",
+      "exactText": "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+      "selectedParentRef": "N0051",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0051"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0055",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[347]#heading-span-0-85",
+      "exactText": "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+      "selectedParentRef": "N0051",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0051"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[359]#heading-span-0-62",
+      "exactText": "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+      "selectedParentRef": "N0051",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0051"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[367]#heading-span-0-40",
+      "exactText": "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+      "selectedParentRef": "N0051",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0051"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[376]#heading-span-0-41",
+      "exactText": "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+      "selectedParentRef": "N0051",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0051"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[381]#heading-span-0-52",
+      "exactText": "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[383]#heading-span-0-60",
+      "exactText": "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+      "selectedParentRef": "N0059",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0059"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[391]#heading-span-0-51",
+      "exactText": "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+      "selectedParentRef": "N0059",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0059"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0062",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[396]#heading-span-0-33",
+      "exactText": "Điều 49. Trình tự xử lý vướng mắc",
+      "selectedParentRef": "N0059",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0059"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[402]#heading-span-0-78",
+      "exactText": "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+      "selectedParentRef": "N0059",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0059"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[410]#heading-span-0-9",
+      "exactText": "Chương IV",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[413]#heading-span-0-58",
+      "exactText": "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+      "selectedParentRef": "N0064",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0064"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[427]#heading-span-0-77",
+      "exactText": "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+      "selectedParentRef": "N0064",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0064"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[436]#heading-span-0-74",
+      "exactText": "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+      "selectedParentRef": "N0064",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0064"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[455]#heading-span-0-82",
+      "exactText": "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+      "selectedParentRef": "N0064",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0064"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0069",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[461]#heading-span-0-8",
+      "exactText": "Chương V",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[464]#heading-span-0-31",
+      "exactText": "Điều 55. Điều khoản chuyển tiếp",
+      "selectedParentRef": "N0069",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0069"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0071",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[469]#heading-span-0-26",
+      "exactText": "Điều 56. Hiệu lực thi hành",
+      "selectedParentRef": "N0069",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0069"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "headingOccurrenceRef": "DOC-0205:body[1]/p[471]#heading-span-0-29",
+      "exactText": "Điều 57. Trách nhiệm thi hành",
+      "selectedParentRef": "N0069",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0069"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank boundaries reset lower scopes.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    }
+  ],
+  "levelEnteredByReviewer": false,
+  "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+}

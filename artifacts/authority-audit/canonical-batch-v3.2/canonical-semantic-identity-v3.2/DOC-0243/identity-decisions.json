@@ -1,0 +1,2418 @@
+{
+  "artifactKind": "A99_CANONICAL_V3_2_IDENTITY_DECISIONS",
+  "documentId": "DOC-0243",
+  "occurrenceCount": 129,
+  "semanticNodeCount": 109,
+  "assignments": [
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2]#heading-span-0-23",
+      "semanticNodeRef": "N0001",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[20]#heading-span-0-7",
+      "semanticNodeRef": "N0002",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/tbl[1]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "semanticNodeRef": "N0003",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-7",
+      "semanticNodeRef": "N0004",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-21",
+      "semanticNodeRef": "N0005",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/tbl[2]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "semanticNodeRef": "N0006",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/tbl[2]/tr[20]/tc[1]/p[1]#heading-span-0-21",
+      "semanticNodeRef": "N0007",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[72]#heading-span-0-6",
+      "semanticNodeRef": "N0008",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[74]#heading-span-0-14",
+      "semanticNodeRef": "N0008",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "semanticNodeRef": "N0010",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[98]#heading-span-0-11",
+      "semanticNodeRef": "N0010",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[100]#heading-span-0-19",
+      "semanticNodeRef": "N0012",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[233]#heading-span-0-15",
+      "semanticNodeRef": "N0013",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[349]#heading-span-0-22",
+      "semanticNodeRef": "N0014",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[570]#heading-span-0-19",
+      "semanticNodeRef": "N0015",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[733]#heading-span-0-13",
+      "semanticNodeRef": "N0016",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "semanticNodeRef": "N0017",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[752]#heading-span-0-13",
+      "semanticNodeRef": "N0017",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[754]#heading-span-0-20",
+      "semanticNodeRef": "N0019",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[922]#heading-span-0-19",
+      "semanticNodeRef": "N0020",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1174]#heading-span-0-21",
+      "semanticNodeRef": "N0021",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1301]#heading-span-0-19",
+      "semanticNodeRef": "N0022",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1405]#heading-span-0-13",
+      "semanticNodeRef": "N0023",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "semanticNodeRef": "N0024",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1424]#heading-span-0-17",
+      "semanticNodeRef": "N0024",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1426]#heading-span-0-17",
+      "semanticNodeRef": "N0026",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1649]#heading-span-0-24",
+      "semanticNodeRef": "N0027",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1832]#heading-span-0-19",
+      "semanticNodeRef": "N0028",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1905]#heading-span-0-21",
+      "semanticNodeRef": "N0029",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2079]#heading-span-0-13",
+      "semanticNodeRef": "N0030",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "semanticNodeRef": "N0031",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2093]#heading-span-0-18",
+      "semanticNodeRef": "N0031",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2095]#heading-span-0-13",
+      "semanticNodeRef": "N0033",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2219]#heading-span-0-16",
+      "semanticNodeRef": "N0034",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2501]#heading-span-0-17",
+      "semanticNodeRef": "N0035",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2787]#heading-span-0-19",
+      "semanticNodeRef": "N0036",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2850]#heading-span-0-13",
+      "semanticNodeRef": "N0037",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+      "semanticNodeRef": "N0038",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2866]#heading-span-0-16",
+      "semanticNodeRef": "N0038",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "semanticNodeRef": "N0040",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2891]#heading-span-0-11",
+      "semanticNodeRef": "N0040",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2893]#heading-span-0-20",
+      "semanticNodeRef": "N0042",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2971]#heading-span-0-22",
+      "semanticNodeRef": "N0043",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3321]#heading-span-0-19",
+      "semanticNodeRef": "N0044",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3519]#heading-span-0-22",
+      "semanticNodeRef": "N0045",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3683]#heading-span-0-13",
+      "semanticNodeRef": "N0046",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "semanticNodeRef": "N0047",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3702]#heading-span-0-15",
+      "semanticNodeRef": "N0047",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3704]#heading-span-0-19",
+      "semanticNodeRef": "N0049",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3870]#heading-span-0-23",
+      "semanticNodeRef": "N0050",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4143]#heading-span-0-21",
+      "semanticNodeRef": "N0051",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4393]#heading-span-0-19",
+      "semanticNodeRef": "N0052",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4514]#heading-span-0-13",
+      "semanticNodeRef": "N0053",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "semanticNodeRef": "N0054",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4527]#heading-span-0-17",
+      "semanticNodeRef": "N0054",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4529]#heading-span-0-26",
+      "semanticNodeRef": "N0056",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4648]#heading-span-0-23",
+      "semanticNodeRef": "N0057",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4926]#heading-span-0-25",
+      "semanticNodeRef": "N0058",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5424]#heading-span-0-21",
+      "semanticNodeRef": "N0059",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5514]#heading-span-0-13",
+      "semanticNodeRef": "N0060",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "semanticNodeRef": "N0061",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5528]#heading-span-0-17",
+      "semanticNodeRef": "N0061",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5530]#heading-span-0-21",
+      "semanticNodeRef": "N0063",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5662]#heading-span-0-19",
+      "semanticNodeRef": "N0064",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5885]#heading-span-0-20",
+      "semanticNodeRef": "N0065",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6035]#heading-span-0-21",
+      "semanticNodeRef": "N0066",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6259]#heading-span-0-13",
+      "semanticNodeRef": "N0067",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+      "semanticNodeRef": "N0068",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+      "semanticNodeRef": "N0068",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "semanticNodeRef": "N0070",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+      "semanticNodeRef": "N0070",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6304]#heading-span-0-21",
+      "semanticNodeRef": "N0072",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6577]#heading-span-0-21",
+      "semanticNodeRef": "N0073",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6713]#heading-span-0-21",
+      "semanticNodeRef": "N0074",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6845]#heading-span-0-21",
+      "semanticNodeRef": "N0075",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6991]#heading-span-0-13",
+      "semanticNodeRef": "N0076",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "semanticNodeRef": "N0077",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7004]#heading-span-0-16",
+      "semanticNodeRef": "N0077",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7006]#heading-span-0-19",
+      "semanticNodeRef": "N0079",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7068]#heading-span-0-21",
+      "semanticNodeRef": "N0080",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7206]#heading-span-0-22",
+      "semanticNodeRef": "N0081",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7490]#heading-span-0-21",
+      "semanticNodeRef": "N0082",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7793]#heading-span-0-14",
+      "semanticNodeRef": "N0083",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "semanticNodeRef": "N0084",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7806]#heading-span-0-16",
+      "semanticNodeRef": "N0084",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7808]#heading-span-0-23",
+      "semanticNodeRef": "N0086",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7978]#heading-span-0-22",
+      "semanticNodeRef": "N0087",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8122]#heading-span-0-21",
+      "semanticNodeRef": "N0088",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8394]#heading-span-0-26",
+      "semanticNodeRef": "N0089",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8535]#heading-span-0-14",
+      "semanticNodeRef": "N0090",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "semanticNodeRef": "N0091",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8548]#heading-span-0-12",
+      "semanticNodeRef": "N0091",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8550]#heading-span-0-22",
+      "semanticNodeRef": "N0093",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8744]#heading-span-0-21",
+      "semanticNodeRef": "N0094",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8911]#heading-span-0-19",
+      "semanticNodeRef": "N0095",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9090]#heading-span-0-18",
+      "semanticNodeRef": "N0096",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9279]#heading-span-0-14",
+      "semanticNodeRef": "N0097",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+      "semanticNodeRef": "N0098",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9295]#heading-span-0-13",
+      "semanticNodeRef": "N0098",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "semanticNodeRef": "N0100",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9320]#heading-span-0-13",
+      "semanticNodeRef": "N0100",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9322]#heading-span-0-18",
+      "semanticNodeRef": "N0102",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9460]#heading-span-0-21",
+      "semanticNodeRef": "N0103",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9702]#heading-span-0-22",
+      "semanticNodeRef": "N0104",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9976]#heading-span-0-24",
+      "semanticNodeRef": "N0105",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10113]#heading-span-0-14",
+      "semanticNodeRef": "N0106",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "semanticNodeRef": "N0107",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10125]#heading-span-0-14",
+      "semanticNodeRef": "N0107",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10127]#heading-span-0-15",
+      "semanticNodeRef": "N0109",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10205]#heading-span-0-15",
+      "semanticNodeRef": "N0110",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10365]#heading-span-0-20",
+      "semanticNodeRef": "N0111",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10618]#heading-span-0-21",
+      "semanticNodeRef": "N0112",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10848]#heading-span-0-14",
+      "semanticNodeRef": "N0113",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "semanticNodeRef": "N0114",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10862]#heading-span-0-13",
+      "semanticNodeRef": "N0114",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10864]#heading-span-0-20",
+      "semanticNodeRef": "N0116",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11286]#heading-span-0-21",
+      "semanticNodeRef": "N0117",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11493]#heading-span-0-19",
+      "semanticNodeRef": "N0118",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11572]#heading-span-0-19",
+      "semanticNodeRef": "N0119",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11702]#heading-span-0-14",
+      "semanticNodeRef": "N0120",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "semanticNodeRef": "N0121",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11719]#heading-span-0-15",
+      "semanticNodeRef": "N0121",
+      "occurrenceRole": "CONTINUATION",
+      "identityDecision": "CONTINUATION_OF",
+      "evidence": [
+        "STRUCTURAL_ADJACENCY_COMPOSITE_HEADING"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11721]#heading-span-0-20",
+      "semanticNodeRef": "N0123",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11904]#heading-span-0-22",
+      "semanticNodeRef": "N0124",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[12138]#heading-span-0-23",
+      "semanticNodeRef": "N0125",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[12383]#heading-span-0-19",
+      "semanticNodeRef": "N0126",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[12463]#heading-span-0-14",
+      "semanticNodeRef": "N0127",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[12472]#heading-span-0-12",
+      "semanticNodeRef": "N0128",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[12587]#heading-span-0-5",
+      "semanticNodeRef": "N0129",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    }
+  ],
+  "relations": [
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[74]#heading-span-0-14",
+      "toOccurrenceId": "DOC-0243:body[1]/p[72]#heading-span-0-6",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[98]#heading-span-0-11",
+      "toOccurrenceId": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[752]#heading-span-0-13",
+      "toOccurrenceId": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[1424]#heading-span-0-17",
+      "toOccurrenceId": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[2093]#heading-span-0-18",
+      "toOccurrenceId": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[2866]#heading-span-0-16",
+      "toOccurrenceId": "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[2891]#heading-span-0-11",
+      "toOccurrenceId": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[3702]#heading-span-0-15",
+      "toOccurrenceId": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[4527]#heading-span-0-17",
+      "toOccurrenceId": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[5528]#heading-span-0-17",
+      "toOccurrenceId": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+      "toOccurrenceId": "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+      "toOccurrenceId": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[7004]#heading-span-0-16",
+      "toOccurrenceId": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[7806]#heading-span-0-16",
+      "toOccurrenceId": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[8548]#heading-span-0-12",
+      "toOccurrenceId": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[9295]#heading-span-0-13",
+      "toOccurrenceId": "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[9320]#heading-span-0-13",
+      "toOccurrenceId": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[10125]#heading-span-0-14",
+      "toOccurrenceId": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[10862]#heading-span-0-13",
+      "toOccurrenceId": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    },
+    {
+      "fromOccurrenceId": "DOC-0243:body[1]/p[11719]#heading-span-0-15",
+      "toOccurrenceId": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "relation": "CONTINUATION_OF",
+      "evidence": [
+        "IMMEDIATE_STRUCTURAL_ADJACENCY",
+        "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+        "SAME_SOURCE_DOCUMENT_OUTLINE"
+      ]
+    }
+  ],
+  "challengeCases": [
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[20]#heading-span-0-7",
+      "rightOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-7",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "rightOccurrenceRef": "DOC-0243:body[1]/tbl[2]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "candidateType": "LEXICAL_COLLISION",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "NORMALIZED_TEXT_COLLISION",
+        "DIFFERENT_SOURCE_POSITION",
+        "FAIL_CLOSED_KEEP_SPLIT"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "rightOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-7",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-7",
+      "rightOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-21",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[74]#heading-span-0-14",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[98]#heading-span-0-11",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[100]#heading-span-0-19",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[752]#heading-span-0-13",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[754]#heading-span-0-20",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[1424]#heading-span-0-17",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[1426]#heading-span-0-17",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2093]#heading-span-0-18",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[2095]#heading-span-0-13",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2866]#heading-span-0-16",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[2891]#heading-span-0-11",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[2893]#heading-span-0-20",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[3702]#heading-span-0-15",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[3704]#heading-span-0-19",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[4527]#heading-span-0-17",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[4529]#heading-span-0-26",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[5528]#heading-span-0-17",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[5530]#heading-span-0-21",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[6304]#heading-span-0-21",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7004]#heading-span-0-16",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[7006]#heading-span-0-19",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[7806]#heading-span-0-16",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[7808]#heading-span-0-23",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[8548]#heading-span-0-12",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[8550]#heading-span-0-22",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[9295]#heading-span-0-13",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[9320]#heading-span-0-13",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[9322]#heading-span-0-18",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[10125]#heading-span-0-14",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10127]#heading-span-0-15",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[10862]#heading-span-0-13",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[10864]#heading-span-0-20",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[11719]#heading-span-0-15",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[11721]#heading-span-0-20",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    },
+    {
+      "leftOccurrenceRef": "DOC-0243:body[1]/p[12463]#heading-span-0-14",
+      "rightOccurrenceRef": "DOC-0243:body[1]/p[12472]#heading-span-0-12",
+      "candidateType": "STRUCTURAL_ADJACENCY",
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "ADJACENT_ACCEPTED_HEADING_OCCURRENCES",
+        "DIFFERENT_STRUCTURAL_HEADING_FUNCTIONS",
+        "NO_SOURCE_BACKED_IDENTITY_PROOF"
+      ]
+    }
+  ],
+  "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+  "goldUsed": false,
+  "historicalLevelRead": false
+}

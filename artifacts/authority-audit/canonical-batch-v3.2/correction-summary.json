@@ -1,0 +1,144 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_V3_2_CORRECTION_SUMMARY",
+  "schemaVersion": "a99-canonical-batch-v3.2",
+  "status": "BATCH_V3_2_READY_FOR_USER_SEMANTIC_REVIEW",
+  "baselineCommit": "a5ac90b",
+  "reviewEvidenceCommit": "1d87d50",
+  "supersedesProposal": "fb60411",
+  "documents": [
+    {
+      "documentId": "DOC-0185",
+      "sourceContainers": 1126,
+      "occurrences": 119,
+      "semanticNodes": 119,
+      "parentEdges": 119,
+      "rootChildren": 11,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 32
+    },
+    {
+      "documentId": "DOC-0200",
+      "sourceContainers": 7823,
+      "occurrences": 102,
+      "semanticNodes": 102,
+      "parentEdges": 102,
+      "rootChildren": 7,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 14
+    },
+    {
+      "documentId": "DOC-0201",
+      "sourceContainers": 605,
+      "occurrences": 11,
+      "semanticNodes": 11,
+      "parentEdges": 11,
+      "rootChildren": 11,
+      "maxDepth": 1,
+      "identityRelations": 0,
+      "identityChallenges": 1
+    },
+    {
+      "documentId": "DOC-0219",
+      "sourceContainers": 3328,
+      "occurrences": 337,
+      "semanticNodes": 337,
+      "parentEdges": 337,
+      "rootChildren": 337,
+      "maxDepth": 1,
+      "identityRelations": 0,
+      "identityChallenges": 206
+    },
+    {
+      "documentId": "DOC-0265",
+      "sourceContainers": 1934,
+      "occurrences": 248,
+      "semanticNodes": 248,
+      "parentEdges": 248,
+      "rootChildren": 14,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 174
+    },
+    {
+      "documentId": "DOC-0243",
+      "sourceContainers": 10606,
+      "occurrences": 129,
+      "semanticNodes": 109,
+      "parentEdges": 109,
+      "rootChildren": 13,
+      "maxDepth": 3,
+      "identityRelations": 20,
+      "identityChallenges": 83
+    },
+    {
+      "documentId": "DOC-0116",
+      "sourceContainers": 1896,
+      "occurrences": 174,
+      "semanticNodes": 174,
+      "parentEdges": 174,
+      "rootChildren": 166,
+      "maxDepth": 2,
+      "identityRelations": 0,
+      "identityChallenges": 125
+    },
+    {
+      "documentId": "DOC-0122",
+      "sourceContainers": 3512,
+      "occurrences": 345,
+      "semanticNodes": 345,
+      "parentEdges": 345,
+      "rootChildren": 345,
+      "maxDepth": 1,
+      "identityRelations": 0,
+      "identityChallenges": 215
+    },
+    {
+      "documentId": "DOC-0216",
+      "sourceContainers": 3399,
+      "occurrences": 343,
+      "semanticNodes": 343,
+      "parentEdges": 343,
+      "rootChildren": 343,
+      "maxDepth": 1,
+      "identityRelations": 0,
+      "identityChallenges": 220
+    },
+    {
+      "documentId": "DOC-0205",
+      "sourceContainers": 97,
+      "occurrences": 72,
+      "semanticNodes": 72,
+      "parentEdges": 72,
+      "rootChildren": 6,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 70
+    },
+    {
+      "documentId": "DOC-0264",
+      "sourceContainers": 205,
+      "occurrences": 155,
+      "semanticNodes": 155,
+      "parentEdges": 155,
+      "rootChildren": 11,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 167
+    }
+  ],
+  "totalDocuments": 11,
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "frozenGoldMutation": false,
+  "newUserReviewedPromotion": false,
+  "correctionNotes": [
+    "V3.2 repairs exact source spans, structural scope reset, DOC-0265 Chapter III, DOC-0201 Article 7 audit, DOC-0243 composite identity, and procurement whole-document scope.",
+    "All decisions remain agent source-backed proposals and require explicit user review."
+  ]
+}
