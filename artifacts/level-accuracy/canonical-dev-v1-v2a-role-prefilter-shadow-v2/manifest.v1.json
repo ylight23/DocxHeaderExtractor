@@ -1,0 +1,25 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-v2a-role-prefilter-shadow-manifest-v1",
+  "status": "V2A_SHADOW_AUDIT_FROZEN",
+  "baselineCheckpoint": "c2d01c2ec42912000fd5155174b7ae906c7472bc",
+  "startHead": "c2d01c2ec42912000fd5155174b7ae906c7472bc",
+  "endHead": "c2d01c2ec42912000fd5155174b7ae906c7472bc",
+  "artifacts": [
+    {
+      "path": "artifacts/level-accuracy/canonical-dev-v1-v2a-role-prefilter-shadow-v2/DOC-0001/shadow-audit.v1.json",
+      "sha256": "22b89351e9996bf30aa757dd8c3bf15e531f5053e2f9007654df4a90dfd698a4"
+    },
+    {
+      "path": "artifacts/level-accuracy/canonical-dev-v1-v2a-role-prefilter-shadow-v2/DOC-0116/shadow-audit.v1.json",
+      "sha256": "421337d138fd0e82f033a84d2fe1cb356af29ec2ffe697623f337ad6c8cb1180"
+    },
+    {
+      "path": "artifacts/level-accuracy/canonical-dev-v1-v2a-role-prefilter-shadow-v2/summary.v1.json",
+      "sha256": "96b15ac36be0695818bcaf3307053b754bba9d95ba592fabcc2c6f29057b0b64"
+    }
+  ],
+  "providerCalls": 0,
+  "goldReads": 0,
+  "scoring": false,
+  "productionPredictionMutation": false
+}

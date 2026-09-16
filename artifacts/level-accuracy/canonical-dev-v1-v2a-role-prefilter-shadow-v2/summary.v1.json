@@ -1,0 +1,53 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-v2a-role-prefilter-shadow-summary-v1",
+  "status": "V2A_SHADOW_AUDIT_COMPLETE",
+  "baselineCheckpoint": "c2d01c2ec42912000fd5155174b7ae906c7472bc",
+  "startHead": "c2d01c2ec42912000fd5155174b7ae906c7472bc",
+  "endHead": "c2d01c2ec42912000fd5155174b7ae906c7472bc",
+  "documents": [
+    "DOC-0001",
+    "DOC-0116"
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReads": 0,
+  "scoring": false,
+  "productionPredictionMutation": false,
+  "decisionPrimaryDocument": "DOC-0116",
+  "documentsAudited": [
+    {
+      "documentId": "DOC-0001",
+      "sourceParagraphCount": 14,
+      "currentRoleInputCount": 14,
+      "prefilterEligibleCount": 7,
+      "prefilterSkippedCount": 7,
+      "projectedRoleBatchCount": 1,
+      "wouldSkipV7HeadingLikeCount": 0,
+      "wouldSkipV7UncertainCount": 0,
+      "v7RoleBatchCount": 2,
+      "v7RoleProviderCalls": 2,
+      "v7RoleMissingIdRetryCalls": 0,
+      "v7TotalResponses": 4
+    },
+    {
+      "documentId": "DOC-0116",
+      "sourceParagraphCount": 3590,
+      "currentRoleInputCount": 1921,
+      "prefilterEligibleCount": 725,
+      "prefilterSkippedCount": 1196,
+      "projectedRoleBatchCount": 62,
+      "wouldSkipV7HeadingLikeCount": 9,
+      "wouldSkipV7UncertainCount": 56,
+      "v7RoleBatchCount": 171,
+      "v7RoleProviderCalls": 190,
+      "v7RoleMissingIdRetryCalls": 19,
+      "v7TotalResponses": 219
+    }
+  ],
+  "gates": {
+    "wouldSkipV7HeadingLikeCountIsZero": false,
+    "doc0116ProjectedRoleBatchCount": 62,
+    "doc0116ProjectedRoleBatchGate": true
+  },
+  "nextPhase": "V2B_PRODUCTION_PREFILTER_NOT_STARTED"
+}

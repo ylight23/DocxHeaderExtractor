@@ -1,0 +1,246 @@
+﻿{
+  "documentId": "DOC-0001",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "sourceParagraphCount": 14,
+  "currentRoleInputCount": 14,
+  "prefilterEligibleCount": 7,
+  "prefilterSkippedCount": 7,
+  "skipReasonCounts": {
+    "SKIP_NO_STRUCTURAL_SIGNAL": 7
+  },
+  "policyCandidateCount": 7,
+  "markerRecoveryCount": 0,
+  "styleRecoveryCount": 0,
+  "domainStructuralRecoveryCount": 0,
+  "otherRecoveryCount": 0,
+  "projectedRoleBatchCount": 1,
+  "projectedRoleInputTokens": 3834,
+  "projectedLargestBatchBlocks": 7,
+  "projectedLargestBatchTokens": 3834,
+  "wouldSkipV7HeadingLikeCount": 0,
+  "wouldSkipV7UncertainCount": 0,
+  "documentMode": "OutlineLevelDriven",
+  "v7RoleBatchCount": 2,
+  "v7RoleProviderCalls": 2,
+  "v7RoleMissingIdRetryCalls": 0,
+  "v7TotalResponses": 4,
+  "decisions": [
+    {
+      "sourceId": "body[1]/p[1]",
+      "sourceOrdinal": 0,
+      "eligibleForRoleModel": true,
+      "decision": "ELIGIBLE_FOR_ROLE_MODEL",
+      "signals": [
+        "existing_policy_candidate",
+        "structural_marker",
+        "trusted_style_or_outline_structure",
+        "conservative_recovery_candidate"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": true,
+      "text": "Ch\u01B0\u01A1ng 1. Quy \u0111\u1ECBnh chung"
+    },
+    {
+      "sourceId": "body[1]/p[2]",
+      "sourceOrdinal": 1,
+      "eligibleForRoleModel": false,
+      "decision": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "signals": [
+        "no_structural_signal"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": false,
+      "text": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n."
+    },
+    {
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 2,
+      "eligibleForRoleModel": true,
+      "decision": "ELIGIBLE_FOR_ROLE_MODEL",
+      "signals": [
+        "existing_policy_candidate",
+        "structural_marker",
+        "trusted_style_or_outline_structure",
+        "conservative_recovery_candidate"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": true,
+      "text": "1.1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "eligibleForRoleModel": false,
+      "decision": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "signals": [
+        "no_structural_signal"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": false,
+      "text": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u."
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "sourceOrdinal": 4,
+      "eligibleForRoleModel": true,
+      "decision": "ELIGIBLE_FOR_ROLE_MODEL",
+      "signals": [
+        "existing_policy_candidate",
+        "structural_marker",
+        "trusted_style_or_outline_structure",
+        "conservative_recovery_candidate"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": true,
+      "text": "1.2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng"
+    },
+    {
+      "sourceId": "body[1]/p[6]",
+      "sourceOrdinal": 5,
+      "eligibleForRoleModel": false,
+      "decision": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "signals": [
+        "no_structural_signal"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": false,
+      "text": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n."
+    },
+    {
+      "sourceId": "body[1]/p[7]",
+      "sourceOrdinal": 6,
+      "eligibleForRoleModel": true,
+      "decision": "ELIGIBLE_FOR_ROLE_MODEL",
+      "signals": [
+        "existing_policy_candidate",
+        "structural_marker",
+        "trusted_style_or_outline_structure",
+        "conservative_recovery_candidate"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": true,
+      "text": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD"
+    },
+    {
+      "sourceId": "body[1]/p[8]",
+      "sourceOrdinal": 7,
+      "eligibleForRoleModel": false,
+      "decision": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "signals": [
+        "no_structural_signal"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": false,
+      "text": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u."
+    },
+    {
+      "sourceId": "body[1]/p[9]",
+      "sourceOrdinal": 8,
+      "eligibleForRoleModel": true,
+      "decision": "ELIGIBLE_FOR_ROLE_MODEL",
+      "signals": [
+        "existing_policy_candidate",
+        "structural_marker",
+        "trusted_style_or_outline_structure",
+        "conservative_recovery_candidate"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": true,
+      "text": "1.2.2. \u0110\u01A1n v\u1ECB tr\u1EF1c thu\u1ED9c"
+    },
+    {
+      "sourceId": "body[1]/p[10]",
+      "sourceOrdinal": 9,
+      "eligibleForRoleModel": false,
+      "decision": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "signals": [
+        "no_structural_signal"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": false,
+      "text": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n."
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "sourceOrdinal": 10,
+      "eligibleForRoleModel": true,
+      "decision": "ELIGIBLE_FOR_ROLE_MODEL",
+      "signals": [
+        "existing_policy_candidate",
+        "structural_marker",
+        "trusted_style_or_outline_structure",
+        "conservative_recovery_candidate"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": true,
+      "text": "Ch\u01B0\u01A1ng 2. T\u1ED5 ch\u1EE9c th\u1EF1c hi\u1EC7n"
+    },
+    {
+      "sourceId": "body[1]/p[12]",
+      "sourceOrdinal": 11,
+      "eligibleForRoleModel": false,
+      "decision": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "signals": [
+        "no_structural_signal"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": false,
+      "text": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u."
+    },
+    {
+      "sourceId": "body[1]/p[13]",
+      "sourceOrdinal": 12,
+      "eligibleForRoleModel": true,
+      "decision": "ELIGIBLE_FOR_ROLE_MODEL",
+      "signals": [
+        "existing_policy_candidate",
+        "structural_marker",
+        "trusted_style_or_outline_structure",
+        "conservative_recovery_candidate"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": true,
+      "text": "2.1. Ph\u00E2n c\u00F4ng tr\u00E1ch nhi\u1EC7m"
+    },
+    {
+      "sourceId": "body[1]/p[14]",
+      "sourceOrdinal": 13,
+      "eligibleForRoleModel": false,
+      "decision": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "signals": [
+        "no_structural_signal"
+      ],
+      "structuralScope": "document_body",
+      "domainRole": "Unknown",
+      "policyCandidate": false,
+      "text": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n."
+    }
+  ],
+  "summary": {
+    "documentId": "DOC-0001",
+    "sourceParagraphCount": 14,
+    "currentRoleInputCount": 14,
+    "prefilterEligibleCount": 7,
+    "prefilterSkippedCount": 7,
+    "projectedRoleBatchCount": 1,
+    "wouldSkipV7HeadingLikeCount": 0,
+    "wouldSkipV7UncertainCount": 0,
+    "v7RoleBatchCount": 2,
+    "v7RoleProviderCalls": 2,
+    "v7RoleMissingIdRetryCalls": 0,
+    "v7TotalResponses": 4
+  }
+}
