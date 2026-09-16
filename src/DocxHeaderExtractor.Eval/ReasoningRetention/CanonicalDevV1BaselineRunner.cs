@@ -130,13 +130,6 @@ public static class CanonicalDevV1BaselineRunner
         };
         await WriteJsonAsync(Path.Combine(output, "manifest.json"), manifest, ct);
 
-        var selection = new InferenceProviderSelection
-        {
-            Backend = InferenceBackend.OpenRouter,
-            Remote = envRemote,
-        };
-        selection.Remote.Validate();
-
         var documentRuns = new List<object>();
         var totalProviderCalls = 0;
         var runAborted = false;
@@ -195,95 +188,30 @@ public static class CanonicalDevV1BaselineRunner
             }, CancellationToken.None);
             try
             {
-                using var documentCts = CancellationTokenSource.CreateLinkedTokenSource(ct);
-                documentCts.CancelAfter(documentTimeout);
-                using var pipeline = new AuthorityExtractionPipeline(
-                    new PipelineOptions { DisableLlm = false },
-                    new HeaderClassifierFactory(selection));
-                var execution = await pipeline.RunDocumentExecutionAsync(source.SourcePath, ct: documentCts.Token);
-                var result = execution.Result;
-                var audit = execution.CompatibilityOutline.RouteAudit;
-                var elements = result.Structure.Elements
-                    .Where(item => item.Type is StructuralElementType.Title or StructuralElementType.Subtitle or StructuralElementType.Heading)
-                    .OrderBy(item => item.Sources.FirstOrDefault()?.SourceOrdinal ?? int.MaxValue)
-                    .ThenBy(item => item.Id, StringComparer.Ordinal)
-                    .ToArray();
-                var elementIds = elements.Select(item => item.Id).ToHashSet(StringComparer.Ordinal);
-                var relations = result.Structure.Relations.Where(item => item.Type == StructuralRelationType.ParentChild &&
-                    elementIds.Contains(item.FromId) && elementIds.Contains(item.ToId)).ToArray();
-                var depth = DeriveDepth(elements, relations);
-                var providerCalls = result.Provenance.ProviderCalls;
+                var workDir = Path.Combine(output, "work", source.DocumentId, $"A{attemptOrdinal:D2}");
+                Directory.CreateDirectory(workDir);
+                var logicalRequestHash = Sha256Text(JsonSerializer.Serialize(new { source.DocumentId, source.SourceSha256, runConfigurationHash, attemptId }, JsonOptions));
+                var jobPath = Path.Combine(workDir, "worker-job.json");
+                await WriteJsonAsync(jobPath, new { benchmark = Benchmark, campaignId = CampaignId, documentId = source.DocumentId, sourcePath = source.SourcePath, sourceSha256 = source.SourceSha256, outputDir = workDir, runConfigurationHash, attemptId, requestHash = logicalRequestHash, started }, CancellationToken.None);
+                var watchdog = await ProviderHardTimeoutIntegrity.RunWorkerAsync(jobPath, workDir, documentTimeout, ct);
+                if (watchdog.Status != "COMPLETE")
+                {
+                    runAborted = true;
+                    await WriteFailureArtifactAsync(docDir, source, watchdog.Status, new TimeoutException(watchdog.Status), started, attemptId, runConfigurationHash, CancellationToken.None, watchdog.ChildPid, watchdog.TerminationMode);
+                    documentRuns.Add(new { documentId = source.DocumentId, status = watchdog.Status, terminationMode = watchdog.TerminationMode, childPid = watchdog.ChildPid, predictionPath = (string?)null, providerCalls = 0, error = watchdog.Status });
+                    if (ct.IsCancellationRequested) break;
+                    continue;
+                }
+                var workerPrediction = Path.Combine(workDir, "worker-prediction.v1.json");
+                var workerAttempts = Path.Combine(workDir, "worker-attempts.v1.json");
+                if (!File.Exists(workerPrediction) || !File.Exists(workerAttempts))
+                    throw new InvalidDataException("WORKER_COMPLETED_WITHOUT_ATOMIC_ARTIFACTS");
+                PromoteAtomic(workerPrediction, predictionPath);
+                PromoteAtomic(workerAttempts, attemptsPath);
+                var providerCalls = ReadProviderCalls(attemptsPath);
                 totalProviderCalls += providerCalls;
-                var requestHash = Sha256Text(JsonSerializer.Serialize(audit?.ModelRequests ?? [], JsonOptions));
-                var responseHash = Sha256Text(JsonSerializer.Serialize(audit?.RawAnalystResponses ?? [], JsonOptions));
-                var prediction = new
-                {
-                    schemaVersion = "a99-canonical-dev-v1-production-prediction-v1",
-                    benchmark = Benchmark,
-                    campaignId = CampaignId,
-                    productionSemanticCheckpoint = ProductionSemanticCheckpoint,
-                    executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
-                    runConfigurationHash,
-                    attemptId,
-                    requestHash,
-                    responseHash,
-                    documentId = source.DocumentId,
-                    sourcePath = source.SourcePath,
-                    sourceSha256 = source.SourceSha256,
-                    productionEntryPoint = "AuthorityExtractionPipeline",
-                    goldReadBeforePredictionFreeze = false,
-                    goldDerivedInput = false,
-                    occurrencePredictions = elements.Select(element => new
-                    {
-                        occurrenceId = element.Sources.FirstOrDefault()?.SourceId,
-                        sourceOrdinal = element.Sources.FirstOrDefault()?.SourceOrdinal,
-                        sourceSpan = element.Sources.FirstOrDefault()?.Span,
-                        sourceText = element.Text,
-                        predictedSemanticNodeId = element.Id,
-                        predictedRole = element.Role.ToString(),
-                        predictedParentSemanticNodeId = element.ParentId,
-                        predictedLevel = depth.GetValueOrDefault(element.Id),
-                        parserLevel = element.Level,
-                    }).ToArray(),
-                    semanticNodes = elements.Select(element => new
-                    {
-                        semanticNodeId = element.Id,
-                        memberOccurrenceIds = element.Sources.Select(item => item.SourceId).ToArray(),
-                        canonicalText = element.Text,
-                        sourceOrder = element.Sources.FirstOrDefault()?.SourceOrdinal ?? int.MaxValue,
-                    }).ToArray(),
-                    parentEdges = relations.Select(item => new { parentSemanticNodeId = item.FromId, childSemanticNodeId = item.ToId }).ToArray(),
-                    derivedLevels = depth.OrderBy(item => item.Key, StringComparer.Ordinal).Select(item => new { semanticNodeId = item.Key, level = item.Value }).ToArray(),
-                    treeValidation = ValidateTree(elements.Select(item => item.Id), relations, depth),
-                    sourceTraces = audit?.OccurrenceTraces ?? [],
-                    parentCandidateContracts = audit?.ModelInputContracts ?? [],
-                    modelRequests = audit?.ModelRequests ?? [],
-                    rawResponses = audit?.RawAnalystResponses ?? [],
-                    providerCalls,
-                    started,
-                    completed = DateTimeOffset.UtcNow,
-                };
-                await WriteJsonJsonIfAbsentAsync(predictionPath, prediction);
-                await WriteJsonJsonIfAbsentAsync(attemptsPath, new
-                {
-                    schemaVersion = "a99-canonical-dev-v1-attempts-v1",
-                    documentId = source.DocumentId,
-                    campaignId = CampaignId,
-                    sourceSha256 = source.SourceSha256,
-                    requests = audit?.ModelRequests ?? [],
-                    responseCount = audit?.RawAnalystResponses.Count ?? 0,
-                    requestContractCount = audit?.ModelInputContracts.Count ?? 0,
-                    providerCalls,
-                    runConfigurationHash,
-                    attemptId,
-                    requestHash,
-                    responseHash,
-                    parseStatus = "PRODUCTION_PIPELINE_COMPLETED",
-                    bindingStatus = "PRODUCTION_PIPELINE_BOUND",
-                    failureStatus = (string?)null,
-                    retryLineage = new { retries = 0, pipelineOwnedRetries = "captured_in_provider_route_if_any" },
-                });
-                documentRuns.Add(new { documentId = source.DocumentId, status = "COMPLETE", predictionPath = Path.Combine(source.DocumentId, "prediction.v1.json").Replace('\\', '/'), providerCalls, predictedOccurrences = elements.Length, predictedSemanticNodes = elements.Length, predictedParentEdges = relations.Length, elapsedMs = (DateTimeOffset.UtcNow - started).TotalMilliseconds });
+                var predictionCounts = ReadPredictionCounts(predictionPath);
+                documentRuns.Add(new { documentId = source.DocumentId, status = "COMPLETE", predictionPath = Path.Combine(source.DocumentId, "prediction.v1.json").Replace('\\', '/'), providerCalls, predictedOccurrences = predictionCounts.Occurrences, predictedSemanticNodes = predictionCounts.SemanticNodes, predictedParentEdges = predictionCounts.ParentEdges, childPid = watchdog.ChildPid, elapsedMs = (DateTimeOffset.UtcNow - started).TotalMilliseconds });
             }
             catch (Exception ex)
             {
@@ -370,6 +298,135 @@ public static class CanonicalDevV1BaselineRunner
         return int.TryParse(raw, out var seconds) && seconds > 0
             ? TimeSpan.FromSeconds(seconds)
             : TimeSpan.FromSeconds(defaultSeconds);
+    }
+
+    public static async Task<int> RunWorkerAsync(CancellationToken ct = default)
+    {
+        var jobPath = Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_WORKER_JOB");
+        if (string.IsNullOrWhiteSpace(jobPath) || !File.Exists(jobPath)) return 2;
+        using var job = JsonDocument.Parse(await File.ReadAllTextAsync(jobPath, ct));
+        var root = job.RootElement;
+        var documentId = root.GetProperty("documentId").GetString()!;
+        var sourcePath = root.GetProperty("sourcePath").GetString()!;
+        var sourceSha256 = root.GetProperty("sourceSha256").GetString()!;
+        var outputDir = root.GetProperty("outputDir").GetString()!;
+        var runConfigurationHash = root.GetProperty("runConfigurationHash").GetString()!;
+        var attemptId = root.GetProperty("attemptId").GetString()!;
+        var requestHash = root.GetProperty("requestHash").GetString()!;
+        var started = root.TryGetProperty("started", out var startedValue) && startedValue.TryGetDateTimeOffset(out var parsedStarted)
+            ? parsedStarted : DateTimeOffset.UtcNow;
+        Directory.CreateDirectory(outputDir);
+        try
+        {
+            var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");
+            var selection = new InferenceProviderSelection { Backend = InferenceBackend.OpenRouter, Remote = envRemote };
+            selection.Remote.Validate();
+            using var pipeline = new AuthorityExtractionPipeline(
+                new PipelineOptions { DisableLlm = false },
+                new HeaderClassifierFactory(selection));
+            var execution = await pipeline.RunDocumentExecutionAsync(sourcePath, ct: ct);
+            var result = execution.Result;
+            var audit = execution.CompatibilityOutline.RouteAudit;
+            var elements = result.Structure.Elements
+                .Where(item => item.Type is StructuralElementType.Title or StructuralElementType.Subtitle or StructuralElementType.Heading)
+                .OrderBy(item => item.Sources.FirstOrDefault()?.SourceOrdinal ?? int.MaxValue)
+                .ThenBy(item => item.Id, StringComparer.Ordinal)
+                .ToArray();
+            var elementIds = elements.Select(item => item.Id).ToHashSet(StringComparer.Ordinal);
+            var relations = result.Structure.Relations.Where(item => item.Type == StructuralRelationType.ParentChild &&
+                elementIds.Contains(item.FromId) && elementIds.Contains(item.ToId)).ToArray();
+            var depth = DeriveDepth(elements, relations);
+            var providerCalls = result.Provenance.ProviderCalls;
+            var responseHash = Sha256Text(JsonSerializer.Serialize(audit?.RawAnalystResponses ?? [], JsonOptions));
+            var prediction = new
+            {
+                schemaVersion = "a99-canonical-dev-v1-production-prediction-v1",
+                benchmark = Benchmark,
+                campaignId = CampaignId,
+                productionSemanticCheckpoint = ProductionSemanticCheckpoint,
+                executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
+                documentId,
+                sourcePath,
+                sourceSha256,
+                productionEntryPoint = "AuthorityExtractionPipeline",
+                goldReadBeforePredictionFreeze = false,
+                goldDerivedInput = false,
+                occurrencePredictions = elements.Select(element => new
+                {
+                    occurrenceId = element.Sources.FirstOrDefault()?.SourceId,
+                    sourceOrdinal = element.Sources.FirstOrDefault()?.SourceOrdinal,
+                    sourceSpan = element.Sources.FirstOrDefault()?.Span,
+                    sourceText = element.Text,
+                    predictedSemanticNodeId = element.Id,
+                    predictedRole = element.Role.ToString(),
+                    predictedParentSemanticNodeId = element.ParentId,
+                    predictedLevel = depth.GetValueOrDefault(element.Id),
+                    parserLevel = element.Level,
+                }).ToArray(),
+                semanticNodes = elements.Select(element => new
+                {
+                    semanticNodeId = element.Id,
+                    memberOccurrenceIds = element.Sources.Select(item => item.SourceId).ToArray(),
+                    canonicalText = element.Text,
+                    sourceOrder = element.Sources.FirstOrDefault()?.SourceOrdinal ?? int.MaxValue,
+                }).ToArray(),
+                parentEdges = relations.Select(item => new { parentSemanticNodeId = item.FromId, childSemanticNodeId = item.ToId }).ToArray(),
+                derivedLevels = depth.OrderBy(item => item.Key, StringComparer.Ordinal).Select(item => new { semanticNodeId = item.Key, level = item.Value }).ToArray(),
+                treeValidation = ValidateTree(elements.Select(item => item.Id), relations, depth),
+                sourceTraces = audit?.OccurrenceTraces ?? [],
+                parentCandidateContracts = audit?.ModelInputContracts ?? [],
+                modelRequests = audit?.ModelRequests ?? [],
+                rawResponses = audit?.RawAnalystResponses ?? [],
+                providerCalls,
+                runConfigurationHash,
+                attemptId,
+                requestHash,
+                responseHash,
+                started,
+                completed = DateTimeOffset.UtcNow,
+            };
+            await WriteJsonAsync(Path.Combine(outputDir, "worker-prediction.v1.json"), prediction, CancellationToken.None);
+            await WriteJsonAsync(Path.Combine(outputDir, "worker-attempts.v1.json"), new
+            {
+                schemaVersion = "a99-canonical-dev-v1-attempts-v1",
+                benchmark = Benchmark,
+                campaignId = CampaignId,
+                documentId,
+                sourceSha256,
+                requests = audit?.ModelRequests ?? [],
+                responseCount = audit?.RawAnalystResponses.Count ?? 0,
+                requestContractCount = audit?.ModelInputContracts.Count ?? 0,
+                providerCalls,
+                runConfigurationHash,
+                attemptId,
+                requestHash,
+                responseHash,
+                parseStatus = "PRODUCTION_PIPELINE_COMPLETED",
+                bindingStatus = "PRODUCTION_PIPELINE_BOUND",
+                failureStatus = (string?)null,
+                retryLineage = new { retries = envRemote.TransientRequestRetries, pipelineOwnedRetries = true },
+            }, CancellationToken.None);
+            return 0;
+        }
+        catch (Exception ex)
+        {
+            await WriteJsonAsync(Path.Combine(outputDir, "worker-failure.v1.json"), new
+            {
+                schemaVersion = "a99-canonical-dev-v1-worker-failure-v1",
+                benchmark = Benchmark,
+                campaignId = CampaignId,
+                documentId,
+                sourceSha256,
+                runConfigurationHash,
+                attemptId,
+                status = ex is OperationCanceledException ? "CANCELLED" : "WORKER_FAILURE",
+                exceptionType = ex.GetType().FullName,
+                message = ex.Message,
+                started,
+                completed = DateTimeOffset.UtcNow,
+            }, CancellationToken.None);
+            return 2;
+        }
     }
 
     private static object BuildRunConfiguration(string repoRoot, string authorityPath, RemoteInferenceOptions remote, TimeSpan documentTimeout)
@@ -470,7 +527,7 @@ public static class CanonicalDevV1BaselineRunner
         }
     }
 
-    private static async Task WriteFailureArtifactAsync(string docDir, ResolvedSource source, string status, Exception? ex, DateTimeOffset started, string attemptId, string runConfigurationHash, CancellationToken ct)
+    private static async Task WriteFailureArtifactAsync(string docDir, ResolvedSource source, string status, Exception? ex, DateTimeOffset started, string attemptId, string runConfigurationHash, CancellationToken ct, int? childPid = null, string? terminationMode = null)
     {
         var suffix = attemptId[(attemptId.LastIndexOf(':') + 1)..];
         var path = Path.Combine(docDir, $"failure-{suffix}.v1.json");
@@ -482,6 +539,8 @@ public static class CanonicalDevV1BaselineRunner
             documentId = source.DocumentId,
             attemptId,
             runConfigurationHash,
+            childPid,
+            terminationMode,
             sourcePath = source.SourcePath,
             sourceSha256 = source.SourceSha256,
             goldReadBeforePredictionFreeze = false,
@@ -491,6 +550,23 @@ public static class CanonicalDevV1BaselineRunner
             started,
             completed = DateTimeOffset.UtcNow,
         }, ct);
+    }
+
+    private static void PromoteAtomic(string source, string destination)
+    {
+        var temporary = destination + ".promoting";
+        File.Copy(source, temporary, overwrite: true);
+        File.Move(temporary, destination, overwrite: true);
+    }
+
+    private static (int Occurrences, int SemanticNodes, int ParentEdges) ReadPredictionCounts(string path)
+    {
+        using var document = JsonDocument.Parse(File.ReadAllText(path));
+        var root = document.RootElement;
+        var occurrences = root.TryGetProperty("occurrencePredictions", out var o) && o.ValueKind == JsonValueKind.Array ? o.GetArrayLength() : 0;
+        var nodes = root.TryGetProperty("semanticNodes", out var n) && n.ValueKind == JsonValueKind.Array ? n.GetArrayLength() : 0;
+        var edges = root.TryGetProperty("parentEdges", out var e) && e.ValueKind == JsonValueKind.Array ? e.GetArrayLength() : 0;
+        return (occurrences, nodes, edges);
     }
 
     private static Task WriteJsonJsonIfAbsentAsync(string path, object value)
