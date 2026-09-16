@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-canonical-dev-v1-execution-integrity-closure-v1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V2",
+  "status": "BLOCKED_ON_PROVIDER_EXECUTION_INTEGRITY",
+  "scorable": false,
+  "reason": "PROVIDER_CALL_NOT_TERMINABLE_BY_FROZEN_COOPERATIVE_TIMEOUT",
+  "productionSemanticCheckpoint": "40a0d5f",
+  "executionHarnessCheckpoint": "7823e42",
+  "documentStates": {
+    "DOC-0001": "COMPLETE",
+    "DOC-0116": "DOCUMENT_TIMEOUT",
+    "DOC-0122": "CANCELLED",
+    "remaining": "NOT_STARTED"
+  },
+  "goldReads": 0,
+  "scoringPerformed": false,
+  "rawExecV2ArtifactsMutated": false,
+  "closureCreatedAfterProcessWatchdogSelfTest": true
+}

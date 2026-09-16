@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "provider-hard-timeout-integrity-v1",
+  "status": "PROVIDER_HARD_TIMEOUT_INTEGRITY_PROVEN",
+  "providerCalls": 0,
+  "normal": {
+    "Mode": "normal",
+    "ChildPid": 13092,
+    "StartedAt": "2026-09-16T09:53:32.805073+00:00",
+    "CompletedAt": "2026-09-16T09:53:32.9889101+00:00",
+    "Status": "COMPLETE",
+    "TerminationMode": "NONE",
+    "ExitCode": 0,
+    "Marker": {
+      "status": "COMPLETE"
+    },
+    "Stdout": "",
+    "Stderr": ""
+  },
+  "hanging": {
+    "Mode": "hang",
+    "ChildPid": 39492,
+    "StartedAt": "2026-09-16T09:53:33.0031411+00:00",
+    "CompletedAt": "2026-09-16T09:53:35.0308119+00:00",
+    "Status": "DOCUMENT_TIMEOUT",
+    "TerminationMode": "PROCESS_TREE_KILL",
+    "ExitCode": -1,
+    "Marker": null,
+    "Stdout": "",
+    "Stderr": ""
+  },
+  "partial": {
+    "Mode": "partial-hang",
+    "ChildPid": 29608,
+    "StartedAt": "2026-09-16T09:53:35.033367+00:00",
+    "CompletedAt": "2026-09-16T09:53:37.0552236+00:00",
+    "Status": "DOCUMENT_TIMEOUT",
+    "TerminationMode": "PROCESS_TREE_KILL",
+    "ExitCode": -1,
+    "Marker": {
+      "status": "PARTIAL"
+    },
+    "Stdout": "",
+    "Stderr": ""
+  },
+  "campaignInterrupt": {
+    "Mode": "hang",
+    "ChildPid": 29428,
+    "StartedAt": "2026-09-16T09:53:37.0582068+00:00",
+    "CompletedAt": "2026-09-16T09:53:37.3220846+00:00",
+    "Status": "CAMPAIGN_CANCELLED",
+    "TerminationMode": "PROCESS_TREE_KILL",
+    "ExitCode": -1,
+    "Marker": null,
+    "Stdout": "",
+    "Stderr": ""
+  }
+}
