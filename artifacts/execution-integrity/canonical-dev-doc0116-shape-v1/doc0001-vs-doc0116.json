@@ -1,0 +1,29 @@
+﻿{
+  "doc0001": {
+    "sourceBytes": 2259,
+    "parserParagraphCount": 14,
+    "productionCandidateCountBeforeModel": 7,
+    "logicalCalls": 5,
+    "requestBytes": [
+      1553,
+      4968,
+      5989,
+      12124,
+      14166
+    ],
+    "estimatedInputTokens": [
+      457,
+      1462,
+      1762,
+      3566,
+      4167
+    ],
+    "largestRequestBytes": 14166,
+    "medianRequestBytes": 5989
+  },
+  "doc0116": {
+    "sourceBytes": 438079,
+    "parserParagraphCount": 3590
+  },
+  "comparisonLimit": "DOC-0001 has persisted model-input contracts; DOC-0116 has source-only and watchdog lineage only."
+}

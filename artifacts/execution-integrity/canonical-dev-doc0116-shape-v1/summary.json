@@ -1,0 +1,41 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-doc0116-shape-summary-v1",
+  "status": "DOC0116_EXECUTION_SHAPE_DIAGNOSED",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V3",
+  "checkpoint": "55dc1d3",
+  "goldReads": 0,
+  "providerCalls": 0,
+  "semanticChanges": false,
+  "doc0001": {
+    "status": "COMPLETE",
+    "logicalCalls": 5,
+    "physicalAttempts": 5,
+    "largestRequestBytes": 14166,
+    "medianRequestBytes": 5989,
+    "largestEstimatedInputTokens": 4167,
+    "medianEstimatedInputTokens": 1762,
+    "riskBuckets": {
+      "\u003C32k": 5
+    }
+  },
+  "doc0116": {
+    "status": "DOCUMENT_TIMEOUT",
+    "watchdogSeconds": 300,
+    "workerWallSeconds": 300.0432532,
+    "logicalCallsStarted": 0,
+    "physicalAttemptsStarted": 0,
+    "requestShape": "UNOBSERVED",
+    "blockingStage": "UNKNOWN",
+    "observabilityGap": true
+  },
+  "timeoutHierarchy": {
+    "documentWatchdogSeconds": 300,
+    "providerRequestTimeoutSeconds": 90,
+    "providerConfiguredRetries": 2,
+    "parentWatchdogOwnsProcessTree": true,
+    "actualObservedEnforcement": "PER_DOCUMENT_PARENT_WATCHDOG"
+  },
+  "primaryExecutionBlocker": "OBSERVABILITY_GAP",
+  "recommendedNextExperiment": "D. OBSERVABILITY_INSTRUMENTATION",
+  "recommendationReason": "The document watchdog kill is proven, but the blocking logical call and transport phase are absent from frozen EXEC_V3 telemetry."
+}

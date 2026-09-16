@@ -1,0 +1,103 @@
+﻿{
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V3",
+  "sourceOnly": [
+    {
+      "documentId": "DOC-0001",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\bench\\01-style-chuan.docx",
+      "sourceBytes": 2259,
+      "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "parserParagraphCount": 14,
+      "productionCandidateCountBeforeModel": 7,
+      "detectedHeadingCountBeforeModel": 7,
+      "modelSelectedHeadingCount": 7,
+      "modelSemanticNodeCount": 7,
+      "semanticInputNodeCountStatus": "MODEL_OUTPUT_COUNTS_FROM_FROZEN_PREDICTION"
+    },
+    {
+      "documentId": "DOC-0116",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_100\\02_hop_dong_mua_sam\\031_WB_Framework_Agreement_Consulting_2025.docx",
+      "sourceBytes": 438079,
+      "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "parserParagraphCount": 3590,
+      "productionCandidateCountBeforeModel": 404,
+      "detectedHeadingCountBeforeModel": 404,
+      "semanticInputNodeCountStatus": "UNAVAILABLE_BEFORE_TIMEOUT"
+    }
+  ],
+  "completedDoc0001Requests": [
+    {
+      "requestId": "semantic-role:25fcaa211c3b660e",
+      "stage": "semantic-role",
+      "requestBytes": 14166,
+      "estimatedInputTokens": 4167,
+      "maxOutputTokens": 768,
+      "candidateCount": 8,
+      "contextUnitsIncluded": 8,
+      "exactPersistedContract": true,
+      "fullProviderEnvelopePersisted": false,
+      "responseObserved": true,
+      "riskBucket": "\u003C32k"
+    },
+    {
+      "requestId": "semantic-role:02640a6898db6f21",
+      "stage": "semantic-role",
+      "requestBytes": 12124,
+      "estimatedInputTokens": 3566,
+      "maxOutputTokens": 768,
+      "candidateCount": 6,
+      "contextUnitsIncluded": 6,
+      "exactPersistedContract": true,
+      "fullProviderEnvelopePersisted": false,
+      "responseObserved": true,
+      "riskBucket": "\u003C32k"
+    },
+    {
+      "requestId": "heading-span:b9bfbeabf6a58893",
+      "stage": "heading-span",
+      "requestBytes": 5989,
+      "estimatedInputTokens": 1762,
+      "maxOutputTokens": 768,
+      "candidateCount": 4,
+      "contextUnitsIncluded": 4,
+      "exactPersistedContract": true,
+      "fullProviderEnvelopePersisted": false,
+      "responseObserved": true,
+      "riskBucket": "\u003C32k"
+    },
+    {
+      "requestId": "heading-span:fbea0d8491222178",
+      "stage": "heading-span",
+      "requestBytes": 4968,
+      "estimatedInputTokens": 1462,
+      "maxOutputTokens": 768,
+      "candidateCount": 3,
+      "contextUnitsIncluded": 3,
+      "exactPersistedContract": true,
+      "fullProviderEnvelopePersisted": false,
+      "responseObserved": true,
+      "riskBucket": "\u003C32k"
+    },
+    {
+      "requestId": "hierarchy:ab72be83cb7b5d97",
+      "stage": "hierarchy",
+      "requestBytes": 1553,
+      "estimatedInputTokens": 457,
+      "maxOutputTokens": 768,
+      "candidateCount": 5,
+      "exactPersistedContract": true,
+      "fullProviderEnvelopePersisted": false,
+      "responseObserved": true,
+      "riskBucket": "\u003C32k"
+    }
+  ],
+  "doc0116RequestShape": {
+    "exactSerializedPayloadAvailable": false,
+    "reason": "No request/attempt artifact was persisted before the document watchdog killed the worker.",
+    "riskBucket": "UNKNOWN"
+  },
+  "convention": {
+    "tokenEstimator": "ReasoningTokenBudget.EstimateTokens(chars / 3.4)",
+    "exactBytesMeaning": "UTF-8 bytes of persisted model input contract; full provider HTTP envelope was not retained by EXEC_V3.",
+    "maxOutputTokens": 768
+  }
+}

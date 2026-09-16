@@ -1,0 +1,91 @@
+﻿{
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "workerStart": "2026-09-16T10:01:42.8190661+00:00",
+      "workerTermination": "2026-09-16T10:02:06.5750939+00:00",
+      "elapsedSeconds": 23.7560278,
+      "logicalCalls": 5,
+      "physicalAttempts": 5,
+      "requests": [
+        {
+          "requestId": "semantic-role:25fcaa211c3b660e",
+          "stage": "semantic-role",
+          "requestBytes": 14166,
+          "estimatedInputTokens": 4167,
+          "maxOutputTokens": 768,
+          "candidateCount": 8,
+          "contextUnitsIncluded": 8,
+          "exactPersistedContract": true,
+          "fullProviderEnvelopePersisted": false,
+          "responseObserved": true,
+          "riskBucket": "\u003C32k"
+        },
+        {
+          "requestId": "semantic-role:02640a6898db6f21",
+          "stage": "semantic-role",
+          "requestBytes": 12124,
+          "estimatedInputTokens": 3566,
+          "maxOutputTokens": 768,
+          "candidateCount": 6,
+          "contextUnitsIncluded": 6,
+          "exactPersistedContract": true,
+          "fullProviderEnvelopePersisted": false,
+          "responseObserved": true,
+          "riskBucket": "\u003C32k"
+        },
+        {
+          "requestId": "heading-span:b9bfbeabf6a58893",
+          "stage": "heading-span",
+          "requestBytes": 5989,
+          "estimatedInputTokens": 1762,
+          "maxOutputTokens": 768,
+          "candidateCount": 4,
+          "contextUnitsIncluded": 4,
+          "exactPersistedContract": true,
+          "fullProviderEnvelopePersisted": false,
+          "responseObserved": true,
+          "riskBucket": "\u003C32k"
+        },
+        {
+          "requestId": "heading-span:fbea0d8491222178",
+          "stage": "heading-span",
+          "requestBytes": 4968,
+          "estimatedInputTokens": 1462,
+          "maxOutputTokens": 768,
+          "candidateCount": 3,
+          "contextUnitsIncluded": 3,
+          "exactPersistedContract": true,
+          "fullProviderEnvelopePersisted": false,
+          "responseObserved": true,
+          "riskBucket": "\u003C32k"
+        },
+        {
+          "requestId": "hierarchy:ab72be83cb7b5d97",
+          "stage": "hierarchy",
+          "requestBytes": 1553,
+          "estimatedInputTokens": 457,
+          "maxOutputTokens": 768,
+          "candidateCount": 5,
+          "exactPersistedContract": true,
+          "fullProviderEnvelopePersisted": false,
+          "responseObserved": true,
+          "riskBucket": "\u003C32k"
+        }
+      ],
+      "lastCompletedLogicalCall": "hierarchy:ab72be83cb7b5d97"
+    },
+    {
+      "documentId": "DOC-0116",
+      "workerStart": "2026-09-16T10:02:06.6614488+00:00",
+      "workerTermination": "2026-09-16T10:07:06.704702+00:00",
+      "elapsedSeconds": 300.0432532,
+      "logicalCalls": 0,
+      "physicalAttempts": 0,
+      "requests": []
+    }
+  ],
+  "lastCompletedLogicalCall": "hierarchy:ab72be83cb7b5d97",
+  "blockingStage": "UNKNOWN",
+  "observabilityGap": true
+}

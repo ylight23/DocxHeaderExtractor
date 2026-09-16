@@ -1,0 +1,38 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-doc0116-shape-manifest-v1",
+  "status": "DIAGNOSTIC_COMPLETE",
+  "campaignRoot": "artifacts/level-accuracy/canonical-dev-v1-exec-v3",
+  "sourceArtifacts": [
+    "production-run-manifest.json",
+    "DOC-0001/prediction.v1.json",
+    "DOC-0001/attempts.v1.json",
+    "DOC-0116/attempt.started.A01-20260916T100206661Z.json",
+    "DOC-0116/failure-20260916T100206661Z.v1.json",
+    "work/DOC-0116/A01/worker-job.json"
+  ],
+  "goldReads": 0,
+  "providerCalls": 0,
+  "semanticMutation": false,
+  "outputFiles": [
+    {
+      "path": "summary.json",
+      "sha256": "f2d078bff38785ed51340558d41c6b261dfa587a04cca733735cd5ff6744c501"
+    },
+    {
+      "path": "request-shape.json",
+      "sha256": "937c397d48532673e0fd5f29a70c7bb05e53df7e6fa1949e9060086c7dffdf1b"
+    },
+    {
+      "path": "attempt-timeline.json",
+      "sha256": "56c74ef8e3785187cabb2b4cbfb3b0ca95d7c88e50d0fa37b251e7cf776cc506"
+    },
+    {
+      "path": "doc0001-vs-doc0116.json",
+      "sha256": "d210c229178b204fa25648512ac7a94c2e4f0269131db595c1a64e2c53daf7da"
+    },
+    {
+      "path": "report.md",
+      "sha256": "d9314ddc074d4554b328f35afac8a066e73e5c5e4286b474c273b2de7d08a360"
+    }
+  ]
+}
