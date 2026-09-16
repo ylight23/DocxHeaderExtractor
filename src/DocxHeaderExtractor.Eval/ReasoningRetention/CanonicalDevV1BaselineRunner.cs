@@ -17,8 +17,11 @@ public static class CanonicalDevV1BaselineRunner
 {
     private const string AuthorityManifest = "artifacts/authority-audit/canonical-authority-freeze-v1/corpus-manifest.json";
     private const string InventoryPath = "eval/a99-dataset/document-inventory.v1.json";
-    private const string OutputRoot = "artifacts/level-accuracy/canonical-dev-v1";
+    private const string OutputRoot = "artifacts/level-accuracy/canonical-dev-v1-exec-v2";
     private const string Benchmark = "CANONICAL_DEV_V1";
+    private const string CampaignId = "CANONICAL_DEV_V1_EXEC_V2";
+    private const string ProductionSemanticCheckpoint = "40a0d5f";
+    private const string ExecutionHarnessCheckpoint = "7823e42";
     private const int ExpectedDocuments = 15;
     private const int ExpectedOccurrences = 1908;
     private const int ExpectedSemanticNodes = 1887;
@@ -80,41 +83,33 @@ public static class CanonicalDevV1BaselineRunner
 
         var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");
         var documentTimeout = ResolveDocumentTimeout();
-        var runConfiguration = BuildRunConfiguration(repoRoot, envRemote, documentTimeout);
+        var runConfiguration = BuildRunConfiguration(repoRoot, authorityPath, envRemote, documentTimeout);
         var runConfigurationPath = Path.Combine(output, "run-configuration.v1.json");
         var runConfigurationHash = Sha256Text(JsonSerializer.Serialize(runConfiguration, JsonOptions));
         if (File.Exists(runConfigurationPath) && !string.Equals(Sha256CanonicalJsonFile(runConfigurationPath), runConfigurationHash, StringComparison.OrdinalIgnoreCase))
             return await BlockAsync(output, "RUN_CONFIGURATION_DRIFT", ct);
         await WriteJsonJsonIfAbsentAsync(runConfigurationPath, runConfiguration);
 
-        var existingPrediction = Path.Combine(output, "DOC-0001", "prediction.v1.json");
-        var existingAttempts = Path.Combine(output, "DOC-0001", "attempts.v1.json");
-        if (File.Exists(existingPrediction) || File.Exists(existingAttempts))
+        await WriteJsonJsonIfAbsentAsync(Path.Combine(output, "campaign-registry.json"), new
         {
-            var existingIntegrity = ValidateExistingDoc0001(existingPrediction, existingAttempts, resolved.Single(item => item.DocumentId == "DOC-0001"), runConfigurationHash);
-            if (!existingIntegrity.Valid)
+            schemaVersion = "a99-canonical-dev-v1-campaign-registry-v1",
+            benchmark = Benchmark,
+            campaigns = new[]
             {
-                await WriteJsonAsync(Path.Combine(output, "execution-integrity-block.v1.json"), new
-                {
-                    schemaVersion = "a99-canonical-dev-v1-integrity-block-v1",
-                    status = "RUN_CONFIGURATION_DRIFT",
-                    documentId = "DOC-0001",
-                    reason = existingIntegrity.Reason,
-                    existingPredictionPath = Path.GetRelativePath(repoRoot, existingPrediction).Replace('\\', '/'),
-                    existingAttemptsPath = Path.GetRelativePath(repoRoot, existingAttempts).Replace('\\', '/'),
-                    existingArtifactsPreserved = true,
-                    goldReadCount = 0,
-                    providerCalls = 0,
-                    created = DateTimeOffset.UtcNow,
-                }, CancellationToken.None);
-                return 2;
-            }
-        }
+                new { campaignId = "CANONICAL_DEV_V1_EXEC_V1", status = "BLOCKED_ON_PROVIDER_EXECUTION_INTEGRITY", scorable = false, reason = "MISSING_RUN_CONFIGURATION_HASH_FOR_EXISTING_ACCEPTED_PREDICTION" },
+                new { campaignId = CampaignId, status = "AUTHORIZED_FOR_PROVIDER_EXECUTION", scorable = false, reason = "PREDICTION_FREEZE_PENDING" },
+            },
+            oldCampaignArtifactRoot = "artifacts/level-accuracy/canonical-dev-v1/",
+            created = DateTimeOffset.UtcNow,
+        });
         var manifest = new
         {
             schemaVersion = "a99-canonical-dev-v1-manifest-v1",
             status = "PRODUCTION_RUN_STARTED",
             benchmark = Benchmark,
+            campaignId = CampaignId,
+            productionSemanticCheckpoint = ProductionSemanticCheckpoint,
+            executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
             devExposed = true,
             blindHoldout = false,
             generalizationClaim = false,
@@ -151,7 +146,6 @@ public static class CanonicalDevV1BaselineRunner
             Directory.CreateDirectory(docDir);
             var predictionPath = Path.Combine(docDir, "prediction.v1.json");
             var attemptsPath = Path.Combine(docDir, "attempts.v1.json");
-            var failurePath = Path.Combine(docDir, "failure.v1.json");
 
             if (File.Exists(predictionPath) && File.Exists(attemptsPath))
             {
@@ -171,21 +165,30 @@ public static class CanonicalDevV1BaselineRunner
             if (ct.IsCancellationRequested)
             {
                 runAborted = true;
-                await WriteFailureArtifactAsync(docDir, source, "CANCELLED_BEFORE_DOCUMENT", null, DateTimeOffset.UtcNow, ct);
+                var cancelledAt = DateTimeOffset.UtcNow;
+                var cancelledOrdinal = Directory.EnumerateFiles(docDir, "attempt*.started.v1.json", SearchOption.TopDirectoryOnly).Count() + 1;
+                var cancelledAttemptId = $"{CampaignId}:{source.DocumentId}:A{cancelledOrdinal:D2}:{cancelledAt:yyyyMMddTHHmmssfffZ}";
+                await WriteFailureArtifactAsync(docDir, source, "CANCELLED_BEFORE_DOCUMENT", null, cancelledAt, cancelledAttemptId, runConfigurationHash, CancellationToken.None);
                 documentRuns.Add(new { documentId = source.DocumentId, status = "CANCELLED", predictionPath = (string?)null, providerCalls = 0, error = "Cancellation requested before document execution." });
                 break;
             }
 
             var started = DateTimeOffset.UtcNow;
-            await WriteJsonAsync(Path.Combine(docDir, "attempt.started.v1.json"), new
+            var attemptOrdinal = Directory.EnumerateFiles(docDir, "attempt*.started.v1.json", SearchOption.TopDirectoryOnly).Count() + 1;
+            var attemptId = $"{CampaignId}:{source.DocumentId}:A{attemptOrdinal:D2}:{started:yyyyMMddTHHmmssfffZ}";
+            var attemptStartedPath = Path.Combine(docDir, $"attempt-{attemptOrdinal:D2}.started.v1.json");
+            await WriteJsonAsync(attemptStartedPath, new
             {
                 schemaVersion = "a99-canonical-dev-v1-attempt-start-v1",
                 benchmark = Benchmark,
+                campaignId = CampaignId,
                 documentId = source.DocumentId,
                 sourcePath = source.SourcePath,
                 sourceSha256 = source.SourceSha256,
                 started,
                 timeoutSeconds = documentTimeout.TotalSeconds,
+                runConfigurationHash,
+                attemptId,
                 retryPolicy = "NONE",
                 goldReadBeforePredictionFreeze = false,
                 goldReadCount = 0,
@@ -211,11 +214,19 @@ public static class CanonicalDevV1BaselineRunner
                 var depth = DeriveDepth(elements, relations);
                 var providerCalls = result.Provenance.ProviderCalls;
                 totalProviderCalls += providerCalls;
+                var requestHash = Sha256Text(JsonSerializer.Serialize(audit?.ModelRequests ?? [], JsonOptions));
+                var responseHash = Sha256Text(JsonSerializer.Serialize(audit?.RawAnalystResponses ?? [], JsonOptions));
                 var prediction = new
                 {
                     schemaVersion = "a99-canonical-dev-v1-production-prediction-v1",
                     benchmark = Benchmark,
+                    campaignId = CampaignId,
+                    productionSemanticCheckpoint = ProductionSemanticCheckpoint,
+                    executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
                     runConfigurationHash,
+                    attemptId,
+                    requestHash,
+                    responseHash,
                     documentId = source.DocumentId,
                     sourcePath = source.SourcePath,
                     sourceSha256 = source.SourceSha256,
@@ -257,12 +268,16 @@ public static class CanonicalDevV1BaselineRunner
                 {
                     schemaVersion = "a99-canonical-dev-v1-attempts-v1",
                     documentId = source.DocumentId,
+                    campaignId = CampaignId,
                     sourceSha256 = source.SourceSha256,
                     requests = audit?.ModelRequests ?? [],
                     responseCount = audit?.RawAnalystResponses.Count ?? 0,
                     requestContractCount = audit?.ModelInputContracts.Count ?? 0,
                     providerCalls,
                     runConfigurationHash,
+                    attemptId,
+                    requestHash,
+                    responseHash,
                     parseStatus = "PRODUCTION_PIPELINE_COMPLETED",
                     bindingStatus = "PRODUCTION_PIPELINE_BOUND",
                     failureStatus = (string?)null,
@@ -275,7 +290,7 @@ public static class CanonicalDevV1BaselineRunner
                 var status = ex is OperationCanceledException
                     ? (ct.IsCancellationRequested ? "CANCELLED" : "DOCUMENT_TIMEOUT")
                     : "PRODUCTION_PIPELINE_FAILURE";
-                await WriteFailureArtifactAsync(docDir, source, status, ex, started, CancellationToken.None);
+                await WriteFailureArtifactAsync(docDir, source, status, ex, started, attemptId, runConfigurationHash, CancellationToken.None);
                 documentRuns.Add(new { documentId = source.DocumentId, status, predictionPath = (string?)null, providerCalls = 0, error = ex.Message });
                 runAborted = true;
                 if (ct.IsCancellationRequested) break;
@@ -283,7 +298,7 @@ public static class CanonicalDevV1BaselineRunner
         }
 
         var predictionFiles = Directory.EnumerateFiles(output, "prediction.v1.json", SearchOption.AllDirectories).OrderBy(item => item, StringComparer.OrdinalIgnoreCase).ToArray();
-        var failureFiles = Directory.EnumerateFiles(output, "failure.v1.json", SearchOption.AllDirectories).OrderBy(item => item, StringComparer.OrdinalIgnoreCase).ToArray();
+        var failureFiles = Directory.EnumerateFiles(output, "failure*.v1.json", SearchOption.AllDirectories).OrderBy(item => item, StringComparer.OrdinalIgnoreCase).ToArray();
         var completedDocumentIds = predictionFiles
             .Select(item => new DirectoryInfo(Path.GetDirectoryName(item)!).Name)
             .ToHashSet(StringComparer.OrdinalIgnoreCase);
@@ -295,6 +310,10 @@ public static class CanonicalDevV1BaselineRunner
                 schemaVersion = "a99-canonical-dev-v1-prediction-freeze-v1",
                 status = "PREDICTIONS_FROZEN_BEFORE_SCORING",
                 benchmark = Benchmark,
+                campaignId = CampaignId,
+                runConfigurationHash,
+                productionSemanticCheckpoint = ProductionSemanticCheckpoint,
+                executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
                 frozenAt = DateTimeOffset.UtcNow,
                 goldReadBeforePredictionFreeze = false,
                 predictionMutation = false,
@@ -306,11 +325,35 @@ public static class CanonicalDevV1BaselineRunner
                 providerCalls = totalProviderCalls,
             }, CancellationToken.None);
         }
+        if (allPredictionsComplete)
+        {
+            var lineageFiles = Directory.EnumerateFiles(output, "*.v1.json", SearchOption.AllDirectories)
+                .Where(item => Path.GetFileName(item).Contains("attempt", StringComparison.OrdinalIgnoreCase) ||
+                               Path.GetFileName(item).Contains("failure", StringComparison.OrdinalIgnoreCase) ||
+                               Path.GetFileName(item).Contains("prediction", StringComparison.OrdinalIgnoreCase))
+                .OrderBy(item => item, StringComparer.OrdinalIgnoreCase)
+                .Select(item => new { path = Path.GetRelativePath(repoRoot, item).Replace('\\', '/'), sha256 = Sha256File(item) })
+                .ToArray();
+            await WriteJsonAsync(Path.Combine(output, "provider-attempt-manifest.json"), new
+            {
+                schemaVersion = "a99-canonical-dev-v1-provider-attempt-manifest-v1",
+                benchmark = Benchmark,
+                campaignId = CampaignId,
+                runConfigurationHash,
+                providerCalls = totalProviderCalls,
+                artifacts = lineageFiles,
+                frozenAt = DateTimeOffset.UtcNow,
+            }, CancellationToken.None);
+        }
         await WriteJsonAsync(Path.Combine(output, "production-run-manifest.json"), new
         {
             schemaVersion = "a99-canonical-dev-v1-production-run-manifest-v1",
             status = allPredictionsComplete ? "PRODUCTION_PREDICTIONS_FROZEN" : "PRODUCTION_RUN_ABORTED",
             benchmark = Benchmark,
+            campaignId = CampaignId,
+            runConfigurationHash,
+            productionSemanticCheckpoint = ProductionSemanticCheckpoint,
+            executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
             goldReadCount = 0,
             documents = documentRuns,
             providerCalls = totalProviderCalls,
@@ -329,7 +372,7 @@ public static class CanonicalDevV1BaselineRunner
             : TimeSpan.FromSeconds(defaultSeconds);
     }
 
-    private static object BuildRunConfiguration(string repoRoot, RemoteInferenceOptions remote, TimeSpan documentTimeout)
+    private static object BuildRunConfiguration(string repoRoot, string authorityPath, RemoteInferenceOptions remote, TimeSpan documentTimeout)
     {
         var sourceFiles = new[]
         {
@@ -341,6 +384,9 @@ public static class CanonicalDevV1BaselineRunner
         {
             schemaVersion = "a99-canonical-dev-v1-run-configuration-v1",
             benchmark = Benchmark,
+            campaignId = CampaignId,
+            productionSemanticCheckpoint = ProductionSemanticCheckpoint,
+            executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
             codeCheckpoint = CodeCheckpoint,
             provider = "OpenRouter",
             model = remote.Model,
@@ -354,8 +400,15 @@ public static class CanonicalDevV1BaselineRunner
             temperature = "pipeline/provider default; not exposed by RemoteInferenceOptions",
             topP = "pipeline/provider default; not exposed by RemoteInferenceOptions",
             promptVersion = "AuthorityExtractionPipeline production contracts",
+            promptHash = "PIPELINE_OWNED_PROMPTS_NOT_EXPOSED_AS_SINGLE_TEMPLATE",
             candidateGenerationVersion = "DocxAuthorityPipeline production candidate path",
+            candidateGenerationHash = FileHashOrMissing(repoRoot, "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxAuthorityPipeline.cs"),
             parserVersion = "OpenXmlDocumentSource production parser",
+            parserHash = FileHashOrMissing(repoRoot, "src/DocxHeaderExtractor.DocumentProcessing/OpenXmlLayer/OpenXmlDocumentSource.cs"),
+            bindingVersion = "RouteOccurrenceTraceBuilder production binding",
+            bindingHash = FileHashOrMissing(repoRoot, "src/DocxHeaderExtractor.DocumentProcessing/Authority/RouteOccurrenceTraceBuilder.cs"),
+            sourceUniverseManifestHash = Sha256File(authorityPath),
+            productionSemanticConfigurationHash = Sha256Text(string.Join("|", sourceFiles.Select(path => FileHashOrMissing(repoRoot, path)))),
             sourceImplementationHashes = sourceFiles.ToDictionary(
                 path => path,
                 path => File.Exists(Path.Combine(repoRoot, path.Replace('/', Path.DirectorySeparatorChar)))
@@ -368,6 +421,12 @@ public static class CanonicalDevV1BaselineRunner
             goldReadsBeforePredictionFreeze = 0,
             historicalReadsBeforePredictionFreeze = 0,
         };
+    }
+
+    private static string FileHashOrMissing(string repoRoot, string relativePath)
+    {
+        var path = Path.Combine(repoRoot, relativePath.Replace('/', Path.DirectorySeparatorChar));
+        return File.Exists(path) ? Sha256File(path) : "MISSING";
     }
 
     private static (bool Valid, string Reason) ValidateExistingDoc0001(string predictionPath, string attemptsPath, ResolvedSource source, string runConfigurationHash)
@@ -411,14 +470,18 @@ public static class CanonicalDevV1BaselineRunner
         }
     }
 
-    private static async Task WriteFailureArtifactAsync(string docDir, ResolvedSource source, string status, Exception? ex, DateTimeOffset started, CancellationToken ct)
+    private static async Task WriteFailureArtifactAsync(string docDir, ResolvedSource source, string status, Exception? ex, DateTimeOffset started, string attemptId, string runConfigurationHash, CancellationToken ct)
     {
-        var path = Path.Combine(docDir, "failure.v1.json");
-        if (File.Exists(path)) return;
+        var suffix = attemptId[(attemptId.LastIndexOf(':') + 1)..];
+        var path = Path.Combine(docDir, $"failure-{suffix}.v1.json");
         await WriteJsonAsync(path, new
         {
             schemaVersion = "a99-canonical-dev-v1-failure-v1",
+            benchmark = Benchmark,
+            campaignId = CampaignId,
             documentId = source.DocumentId,
+            attemptId,
+            runConfigurationHash,
             sourcePath = source.SourcePath,
             sourceSha256 = source.SourceSha256,
             goldReadBeforePredictionFreeze = false,
