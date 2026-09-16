@@ -1,0 +1,320 @@
+{
+  "schemaVersion": "doc0116-provider-micro-v1-timing-audit-v1",
+  "documentStartedAt": "2026-09-16T10:50:45.1902222+00:00",
+  "watchdogCompletedAt": "2026-09-16T10:55:45.2669661+00:00",
+  "watchdogBudgetMs": 300076.7439,
+  "completedCallsBeforeBlocking": 33,
+  "blockingCallOrdinal": 34,
+  "blockingCallStartOffsetMs": 299332.4796,
+  "blockingCallElapsedBeforeKillMs": 744.2643,
+  "sumCompletedCallDurationMs": 296786.2023,
+  "medianCompletedCallMs": 5494.08,
+  "p95CompletedCallMs": 28025.7677,
+  "documentBudgetExhaustionEvidence": true,
+  "calls": [
+    {
+      "callOrdinal": 1,
+      "startedAt": "2026-09-16T10:50:47.5223856+00:00",
+      "completedAt": "2026-09-16T10:51:03.1072559+00:00",
+      "startOffsetMs": 2332.1634,
+      "durationMs": 15584.8703,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 2,
+      "startedAt": "2026-09-16T10:51:03.1189845+00:00",
+      "completedAt": "2026-09-16T10:51:06.7115484+00:00",
+      "startOffsetMs": 17928.7623,
+      "durationMs": 3592.5639,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 3,
+      "startedAt": "2026-09-16T10:51:06.716776+00:00",
+      "completedAt": "2026-09-16T10:51:16.6884493+00:00",
+      "startOffsetMs": 21526.5538,
+      "durationMs": 9971.6733,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 4,
+      "startedAt": "2026-09-16T10:51:16.6977574+00:00",
+      "completedAt": "2026-09-16T10:51:28.1817932+00:00",
+      "startOffsetMs": 31507.5352,
+      "durationMs": 11484.0358,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 5,
+      "startedAt": "2026-09-16T10:51:28.1893113+00:00",
+      "completedAt": "2026-09-16T10:51:33.3977713+00:00",
+      "startOffsetMs": 42999.0891,
+      "durationMs": 5208.46,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 6,
+      "startedAt": "2026-09-16T10:51:33.4053361+00:00",
+      "completedAt": "2026-09-16T10:51:37.8728941+00:00",
+      "startOffsetMs": 48215.1139,
+      "durationMs": 4467.558,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 7,
+      "startedAt": "2026-09-16T10:51:37.8790164+00:00",
+      "completedAt": "2026-09-16T10:51:41.5070869+00:00",
+      "startOffsetMs": 52688.7942,
+      "durationMs": 3628.0705,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 8,
+      "startedAt": "2026-09-16T10:51:41.516361+00:00",
+      "completedAt": "2026-09-16T10:52:08.8940257+00:00",
+      "startOffsetMs": 56326.1388,
+      "durationMs": 27377.6647,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 9,
+      "startedAt": "2026-09-16T10:52:08.9010021+00:00",
+      "completedAt": "2026-09-16T10:52:23.6160135+00:00",
+      "startOffsetMs": 83710.7799,
+      "durationMs": 14715.0114,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 10,
+      "startedAt": "2026-09-16T10:52:23.6211107+00:00",
+      "completedAt": "2026-09-16T10:52:28.924604+00:00",
+      "startOffsetMs": 98430.8885,
+      "durationMs": 5303.4933,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 11,
+      "startedAt": "2026-09-16T10:52:28.9298485+00:00",
+      "completedAt": "2026-09-16T10:52:31.1769932+00:00",
+      "startOffsetMs": 103739.6263,
+      "durationMs": 2247.1447,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 12,
+      "startedAt": "2026-09-16T10:52:31.181558+00:00",
+      "completedAt": "2026-09-16T10:53:07.3530682+00:00",
+      "startOffsetMs": 105991.3358,
+      "durationMs": 36171.5102,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 13,
+      "startedAt": "2026-09-16T10:53:07.3637329+00:00",
+      "completedAt": "2026-09-16T10:53:11.1889704+00:00",
+      "startOffsetMs": 142173.5107,
+      "durationMs": 3825.2375,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 14,
+      "startedAt": "2026-09-16T10:53:11.1957907+00:00",
+      "completedAt": "2026-09-16T10:53:39.2215584+00:00",
+      "startOffsetMs": 146005.5685,
+      "durationMs": 28025.7677,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 15,
+      "startedAt": "2026-09-16T10:53:39.226366+00:00",
+      "completedAt": "2026-09-16T10:53:42.8978682+00:00",
+      "startOffsetMs": 174036.1438,
+      "durationMs": 3671.5022,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 16,
+      "startedAt": "2026-09-16T10:53:42.9064698+00:00",
+      "completedAt": "2026-09-16T10:53:47.9377753+00:00",
+      "startOffsetMs": 177716.2476,
+      "durationMs": 5031.3055,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 17,
+      "startedAt": "2026-09-16T10:53:47.942687+00:00",
+      "completedAt": "2026-09-16T10:53:52.544094+00:00",
+      "startOffsetMs": 182752.4648,
+      "durationMs": 4601.407,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 18,
+      "startedAt": "2026-09-16T10:53:52.5501626+00:00",
+      "completedAt": "2026-09-16T10:53:57.4657573+00:00",
+      "startOffsetMs": 187359.9404,
+      "durationMs": 4915.5947,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 19,
+      "startedAt": "2026-09-16T10:53:57.4721112+00:00",
+      "completedAt": "2026-09-16T10:54:24.4940628+00:00",
+      "startOffsetMs": 192281.889,
+      "durationMs": 27021.9516,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 20,
+      "startedAt": "2026-09-16T10:54:24.4997628+00:00",
+      "completedAt": "2026-09-16T10:54:29.9938428+00:00",
+      "startOffsetMs": 219309.5406,
+      "durationMs": 5494.08,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 21,
+      "startedAt": "2026-09-16T10:54:29.9983806+00:00",
+      "completedAt": "2026-09-16T10:54:33.9478568+00:00",
+      "startOffsetMs": 224808.1584,
+      "durationMs": 3949.4762,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 22,
+      "startedAt": "2026-09-16T10:54:33.9529063+00:00",
+      "completedAt": "2026-09-16T10:54:40.8533502+00:00",
+      "startOffsetMs": 228762.6841,
+      "durationMs": 6900.4439,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 23,
+      "startedAt": "2026-09-16T10:54:40.8579639+00:00",
+      "completedAt": "2026-09-16T10:54:46.8689474+00:00",
+      "startOffsetMs": 235667.7417,
+      "durationMs": 6010.9835,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 24,
+      "startedAt": "2026-09-16T10:54:46.875555+00:00",
+      "completedAt": "2026-09-16T10:54:51.4273604+00:00",
+      "startOffsetMs": 241685.3328,
+      "durationMs": 4551.8054,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 25,
+      "startedAt": "2026-09-16T10:54:51.4321333+00:00",
+      "completedAt": "2026-09-16T10:54:57.545178+00:00",
+      "startOffsetMs": 246241.9111,
+      "durationMs": 6113.0447,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 26,
+      "startedAt": "2026-09-16T10:54:57.5520637+00:00",
+      "completedAt": "2026-09-16T10:55:03.4513832+00:00",
+      "startOffsetMs": 252361.8415,
+      "durationMs": 5899.3195,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 27,
+      "startedAt": "2026-09-16T10:55:03.4578113+00:00",
+      "completedAt": "2026-09-16T10:55:07.3432817+00:00",
+      "startOffsetMs": 258267.5891,
+      "durationMs": 3885.4704,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 28,
+      "startedAt": "2026-09-16T10:55:07.3496984+00:00",
+      "completedAt": "2026-09-16T10:55:13.2560077+00:00",
+      "startOffsetMs": 262159.4762,
+      "durationMs": 5906.3093,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 29,
+      "startedAt": "2026-09-16T10:55:13.2621526+00:00",
+      "completedAt": "2026-09-16T10:55:17.9494201+00:00",
+      "startOffsetMs": 268071.9304,
+      "durationMs": 4687.2675,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 30,
+      "startedAt": "2026-09-16T10:55:17.9565793+00:00",
+      "completedAt": "2026-09-16T10:55:26.7150573+00:00",
+      "startOffsetMs": 272766.3571,
+      "durationMs": 8758.478,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 31,
+      "startedAt": "2026-09-16T10:55:26.7212655+00:00",
+      "completedAt": "2026-09-16T10:55:33.2597685+00:00",
+      "startOffsetMs": 281531.0433,
+      "durationMs": 6538.503,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 32,
+      "startedAt": "2026-09-16T10:55:33.2659124+00:00",
+      "completedAt": "2026-09-16T10:55:37.6948942+00:00",
+      "startOffsetMs": 288075.6902,
+      "durationMs": 4428.9818,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 33,
+      "startedAt": "2026-09-16T10:55:37.7004512+00:00",
+      "completedAt": "2026-09-16T10:55:44.517668+00:00",
+      "startOffsetMs": 292510.229,
+      "durationMs": 6817.2168,
+      "terminalEvent": "LOGICAL_CALL_COMPLETED",
+      "lastEvent": "LOGICAL_CALL_COMPLETED"
+    },
+    {
+      "callOrdinal": 34,
+      "startedAt": "2026-09-16T10:55:44.5227018+00:00",
+      "startOffsetMs": 299332.4796,
+      "lastEvent": "NOT_OBSERVABLE_WITH_CURRENT_TRANSPORT",
+      "lastTransportMilestone": "REQUEST_BODY_SENT"
+    }
+  ]
+}

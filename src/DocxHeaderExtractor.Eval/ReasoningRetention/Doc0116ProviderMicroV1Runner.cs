@@ -123,6 +123,7 @@ public static class Doc0116ProviderMicroV1Runner
         var completed = DateTimeOffset.UtcNow;
         var telemetry = ReadTelemetry(workDir);
         var classification = Classify(watchdog, telemetry, completed - started);
+        await WriteJsonAsync(Path.Combine(output, "timing-audit.json"), BuildTimingAudit(telemetry, watchdog), CancellationToken.None);
         await WriteJsonAsync(Path.Combine(output, "logical-call-timeline.json"), telemetry.LogicalCalls, CancellationToken.None);
         await WriteJsonAsync(Path.Combine(output, "request-shape.json"), telemetry.RequestShapes, CancellationToken.None);
         await WriteJsonAsync(Path.Combine(output, "transport-timeline.json"), telemetry.TransportEvents, CancellationToken.None);
@@ -221,11 +222,13 @@ public static class Doc0116ProviderMicroV1Runner
                 elapsedMs = elapsedElement.GetDouble();
         }
 
+        var startedAt = manifestRoot.GetProperty("started").GetDateTimeOffset();
+        var completedAt = manifestRoot.GetProperty("completed").GetDateTimeOffset();
         var watchdog = new ProviderHardTimeoutIntegrity.WatchdogResult(
             Mode: "DOC0116_PROVIDER_MICRO_V1_OFFLINE_RECLASSIFICATION",
             ChildPid: 0,
-            StartedAt: DateTimeOffset.MinValue,
-            CompletedAt: DateTimeOffset.UtcNow,
+            StartedAt: startedAt,
+            CompletedAt: completedAt,
             Status: watchdogStatus,
             TerminationMode: terminationMode,
             ExitCode: null,
@@ -234,6 +237,7 @@ public static class Doc0116ProviderMicroV1Runner
             Stderr: string.Empty);
         var classification = Classify(watchdog, telemetry, TimeSpan.FromMilliseconds(elapsedMs));
         await WriteJsonAsync(Path.Combine(output, "classification.json"), classification, CancellationToken.None);
+        await WriteJsonAsync(Path.Combine(output, "timing-audit.json"), BuildTimingAudit(telemetry, watchdog), CancellationToken.None);
         await WriteJsonAsync(Path.Combine(output, "offline-reclassification.json"), new
         {
             schemaVersion = "doc0116-provider-micro-v1-offline-reclassification-v1",
@@ -269,6 +273,11 @@ public static class Doc0116ProviderMicroV1Runner
                 physicalAttempts = telemetry.Attempts.Count,
                 primaryClassification = classification.primaryClassification,
                 blockingCallOrdinal = telemetry.LogicalCalls.Count,
+                blockingCallStartOffsetMs = classification.blockingCallStartOffsetMs,
+                completedCallsBeforeBlocking = classification.completedCallsBeforeBlocking,
+                sumCompletedCallDurationMs = classification.sumCompletedCallDurationMs,
+                medianCompletedCallMs = classification.medianCompletedCallMs,
+                p95CompletedCallMs = classification.p95CompletedCallMs,
                 providerCalls = telemetry.LogicalCalls.Count,
                 goldReads = 0,
                 historicalReads = 0,
@@ -312,12 +321,13 @@ public static class Doc0116ProviderMicroV1Runner
 
     private static ClassificationResult Classify(ProviderHardTimeoutIntegrity.WatchdogResult watchdog, TelemetrySnapshot telemetry, TimeSpan elapsed)
     {
+        var timing = BuildTimingAudit(telemetry, watchdog);
         var blockingOrdinal = telemetry.LogicalCalls.Count;
         var scopedEvents = telemetry.Events.Where(x => GetInt32(x, "callOrdinal") == blockingOrdinal).ToArray();
         var scopedHeartbeats = telemetry.Heartbeats.Where(x => GetInt32(x, "callOrdinal") == blockingOrdinal).ToArray();
         var latest = scopedEvents.LastOrDefault();
         var type = latest.ValueKind == JsonValueKind.Undefined ? null : GetString(latest, "eventType");
-        var primary = watchdog.Status == "COMPLETE" ? "H. OTHER_OBSERVED_STAGE" : type switch
+        var primary = watchdog.Status == "COMPLETE" ? "H. OTHER_OBSERVED_STAGE" : timing.documentBudgetExhaustionEvidence ? "G. DOCUMENT_BUDGET_EXHAUSTED_BY_MULTIPLE_HEALTHY_CALLS" : type switch
         {
             "RESPONSE_HEADERS_RECEIVED" => "D. PROVIDER_RESPONSE_STREAM_STALL",
             "RESPONSE_BODY_COMPLETE" => "E. RESPONSE_PARSE_STALL",
@@ -336,6 +346,12 @@ public static class Doc0116ProviderMicroV1Runner
             watchdogStatus = watchdog.Status,
             terminationMode = watchdog.TerminationMode,
             elapsedMs = elapsed.TotalMilliseconds,
+            blockingCallStartOffsetMs = timing.blockingCallStartOffsetMs,
+            completedCallsBeforeBlocking = timing.completedCallsBeforeBlocking,
+            sumCompletedCallDurationMs = timing.sumCompletedCallDurationMs,
+            medianCompletedCallMs = timing.medianCompletedCallMs,
+            p95CompletedCallMs = timing.p95CompletedCallMs,
+            documentBudgetExhaustionEvidence = timing.documentBudgetExhaustionEvidence,
             blockingLogicalCall = telemetry.LogicalCalls.LastOrDefault(),
             blockingAttempt = telemetry.Attempts.LastOrDefault(),
             lastTransportMilestone = lastTransport,
@@ -345,11 +361,60 @@ public static class Doc0116ProviderMicroV1Runner
             responseBodyComplete = scopedEvents.Any(x => GetString(x, "eventType") == "RESPONSE_BODY_COMPLETE") ? "YES" : "NO",
             parseStarted = scopedEvents.Any(x => GetString(x, "eventType") == "PARSE_STARTED"),
             bindStarted = scopedEvents.Any(x => GetString(x, "eventType") == "BIND_STARTED"),
-            nextExperiment = primary.Contains("UNOBSERVABLE", StringComparison.OrdinalIgnoreCase) ? "PER_CALL_TIMEOUT_EXPERIMENT" : "PER_CALL_TIMEOUT_EXPERIMENT",
+            nextExperiment = "PER_CALL_TIMEOUT_EXPERIMENT",
         };
     }
 
-    private static string BuildReport(object summary, TelemetrySnapshot telemetry, ClassificationResult classification) => $"# DOC-0116 provider micro-run\n\nStatus: DOC0116_REAL_PROVIDER_MICRO_V1_COMPLETE\n\nPrimary classification: {classification.primaryClassification}\n\n- Logical calls: {telemetry.LogicalCalls.Count}\n- Physical attempts: {telemetry.Attempts.Count}\n- Provider calls: {telemetry.LogicalCalls.Count}\n- Gold reads: 0\n- Non-scorable forensic run: true\n\nThe run uses the 300-second process-tree watchdog. See `classification.json` for the blocking call, request shape, transport milestone and heartbeat reconstruction.\n";
+    private static string BuildReport(object summary, TelemetrySnapshot telemetry, ClassificationResult classification) => $"# DOC-0116 provider micro-run\n\nStatus: DOC0116_REAL_PROVIDER_MICRO_V1_COMPLETE\n\nPrimary classification: {classification.primaryClassification}\n\n- Logical calls: {telemetry.LogicalCalls.Count}\n- Physical attempts: {telemetry.Attempts.Count}\n- Provider calls: {telemetry.LogicalCalls.Count}\n- Completed calls before watchdog: {classification.completedCallsBeforeBlocking}\n- Blocking call start offset: {classification.blockingCallStartOffsetMs:0.###} ms\n- Blocking call elapsed before kill: {Math.Max(0, classification.elapsedMs - classification.blockingCallStartOffsetMs):0.###} ms\n- Sum completed-call durations: {classification.sumCompletedCallDurationMs:0.###} ms\n- Median completed-call latency: {classification.medianCompletedCallMs:0.###} ms\n- P95 completed-call latency: {classification.p95CompletedCallMs:0.###} ms\n- Document-budget exhaustion evidence: {classification.documentBudgetExhaustionEvidence}\n- Gold reads: 0\n- Non-scorable forensic run: true\n\nThe run uses the 300-second process-tree watchdog. Call-scoped transport evidence is in `classification.json`; the complete offline timing reconstruction is in `timing-audit.json`.\n";
+
+    private static TimingAudit BuildTimingAudit(TelemetrySnapshot telemetry, ProviderHardTimeoutIntegrity.WatchdogResult watchdog)
+    {
+        var timings = telemetry.Events
+            .GroupBy(x => GetInt32(x, "callOrdinal"))
+            .Where(x => x.Key > 0)
+            .OrderBy(x => x.Key)
+            .Select(group =>
+            {
+                var events = group.OrderBy(x => GetDateTimeOffset(x, "timestamp")).ToArray();
+                var start = GetDateTimeOffset(events[0], "timestamp");
+                var terminal = events.LastOrDefault(x => GetString(x, "eventType") is "LOGICAL_CALL_COMPLETED" or "LOGICAL_CALL_FAILED" or "LOGICAL_CALL_CANCELLED");
+                var end = terminal.ValueKind == JsonValueKind.Undefined ? (DateTimeOffset?)null : GetDateTimeOffset(terminal, "timestamp");
+                return new CallTiming
+                {
+                    callOrdinal = group.Key,
+                    startedAt = start,
+                    completedAt = end,
+                    startOffsetMs = (start - watchdog.StartedAt).TotalMilliseconds,
+                    durationMs = end.HasValue ? (end.Value - start).TotalMilliseconds : null,
+                    terminalEvent = terminal.ValueKind == JsonValueKind.Undefined ? null : GetString(terminal, "eventType"),
+                    lastEvent = GetString(events[^1], "eventType"),
+                    lastTransportMilestone = GetString(events[^1], "milestone"),
+                };
+            })
+            .ToArray();
+        var completed = timings.Where(x => x.durationMs.HasValue).Select(x => x.durationMs!.Value).OrderBy(x => x).ToArray();
+        var median = completed.Length == 0 ? 0 : completed[(completed.Length - 1) / 2];
+        var p95 = completed.Length == 0 ? 0 : completed[Math.Min(completed.Length - 1, Math.Max(0, (int)Math.Ceiling(completed.Length * 0.95) - 1))];
+        var blocking = timings.OrderBy(x => x.callOrdinal).LastOrDefault();
+        var blockingOffset = blocking?.startOffsetMs ?? 0;
+        var documentElapsed = Math.Max(0, (watchdog.CompletedAt - watchdog.StartedAt).TotalMilliseconds);
+        return new TimingAudit
+        {
+            schemaVersion = "doc0116-provider-micro-v1-timing-audit-v1",
+            documentStartedAt = watchdog.StartedAt,
+            watchdogCompletedAt = watchdog.CompletedAt,
+            watchdogBudgetMs = documentElapsed,
+            completedCallsBeforeBlocking = completed.Length,
+            blockingCallOrdinal = blocking?.callOrdinal ?? 0,
+            blockingCallStartOffsetMs = blockingOffset,
+            blockingCallElapsedBeforeKillMs = blocking is null ? 0 : Math.Max(0, (watchdog.CompletedAt - blocking.startedAt).TotalMilliseconds),
+            sumCompletedCallDurationMs = completed.Sum(),
+            medianCompletedCallMs = median,
+            p95CompletedCallMs = p95,
+            documentBudgetExhaustionEvidence = watchdog.Status == "DOCUMENT_TIMEOUT" && completed.Length >= 2 && blockingOffset >= documentElapsed * 0.95,
+            calls = timings,
+        };
+    }
 
     private static async Task WriteManifestAsync(string output, CancellationToken cancellationToken)
     {
@@ -379,6 +444,7 @@ public static class Doc0116ProviderMicroV1Runner
 
     private static int GetInt32(JsonElement element, string propertyName) => element.TryGetProperty(propertyName, out var value) && value.ValueKind == JsonValueKind.Number ? value.GetInt32() : 0;
     private static string? GetString(JsonElement element, string propertyName) => element.TryGetProperty(propertyName, out var value) && value.ValueKind != JsonValueKind.Null ? value.GetString() : null;
+    private static DateTimeOffset GetDateTimeOffset(JsonElement element, string propertyName) => element.GetProperty(propertyName).GetDateTimeOffset();
     private static JsonElement ReadJson(string path) => JsonDocument.Parse(File.ReadAllText(path)).RootElement.Clone();
     private static JsonElement[] ReadJsonLines(string path) => File.Exists(path) ? File.ReadAllLines(path).Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => JsonDocument.Parse(x).RootElement.Clone()).ToArray() : [];
     private static string HashRelative(string repoRoot, string relative) => HashFile(Path.Combine(repoRoot, relative.Replace('/', Path.DirectorySeparatorChar)));
@@ -399,6 +465,12 @@ public static class Doc0116ProviderMicroV1Runner
         public required string watchdogStatus { get; init; }
         public required string terminationMode { get; init; }
         public required double elapsedMs { get; init; }
+        public required double blockingCallStartOffsetMs { get; init; }
+        public required int completedCallsBeforeBlocking { get; init; }
+        public required double sumCompletedCallDurationMs { get; init; }
+        public required double medianCompletedCallMs { get; init; }
+        public required double p95CompletedCallMs { get; init; }
+        public required bool documentBudgetExhaustionEvidence { get; init; }
         public object? blockingLogicalCall { get; init; }
         public object? blockingAttempt { get; init; }
         public string? lastTransportMilestone { get; init; }
@@ -409,5 +481,34 @@ public static class Doc0116ProviderMicroV1Runner
         public required bool parseStarted { get; init; }
         public required bool bindStarted { get; init; }
         public required string nextExperiment { get; init; }
+    }
+
+    private sealed record CallTiming
+    {
+        public required int callOrdinal { get; init; }
+        public required DateTimeOffset startedAt { get; init; }
+        public DateTimeOffset? completedAt { get; init; }
+        public required double startOffsetMs { get; init; }
+        public double? durationMs { get; init; }
+        public string? terminalEvent { get; init; }
+        public string? lastEvent { get; init; }
+        public string? lastTransportMilestone { get; init; }
+    }
+
+    private sealed record TimingAudit
+    {
+        public required string schemaVersion { get; init; }
+        public required DateTimeOffset documentStartedAt { get; init; }
+        public required DateTimeOffset watchdogCompletedAt { get; init; }
+        public required double watchdogBudgetMs { get; init; }
+        public required int completedCallsBeforeBlocking { get; init; }
+        public required int blockingCallOrdinal { get; init; }
+        public required double blockingCallStartOffsetMs { get; init; }
+        public required double blockingCallElapsedBeforeKillMs { get; init; }
+        public required double sumCompletedCallDurationMs { get; init; }
+        public required double medianCompletedCallMs { get; init; }
+        public required double p95CompletedCallMs { get; init; }
+        public required bool documentBudgetExhaustionEvidence { get; init; }
+        public required IReadOnlyList<CallTiming> calls { get; init; }
     }
 }

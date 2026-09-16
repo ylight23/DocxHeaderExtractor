@@ -2,11 +2,11 @@
   "schemaVersion": "doc0116-provider-micro-v1-offline-reclassification-v1",
   "status": "OFFLINE_RECLASSIFICATION_COMPLETE",
   "reason": "CALL_SCOPED_FORENSIC_CORRECTION_ONLY",
-  "previousClassificationSha256": "eaad1fd32132a9f7ebe5095bec9caeb8802204bb2e8aa6c6081a11bbe19bd832",
+  "previousClassificationSha256": "6881d8853fc65c48894ea7191962f2097f19b35f09c3c7df9bce53f1201e0478",
   "blockingCallOrdinal": 34,
   "providerCalls": 0,
   "goldReads": 0,
   "historicalReads": 0,
   "rawTelemetryMutated": false,
-  "classification": "I. STILL_UNOBSERVABLE"
+  "classification": "G. DOCUMENT_BUDGET_EXHAUSTED_BY_MULTIPLE_HEALTHY_CALLS"
 }

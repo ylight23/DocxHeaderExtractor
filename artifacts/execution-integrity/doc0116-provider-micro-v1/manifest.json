@@ -12,7 +12,7 @@
   "artifacts": [
     {
       "path": "classification.json",
-      "sha256": "6881d8853fc65c48894ea7191962f2097f19b35f09c3c7df9bce53f1201e0478"
+      "sha256": "8c63c2f2a5623ef5c919b2777a4bd0570759cd5b1316888268485aa64158c3ba"
     },
     {
       "path": "logical-call-timeline.json",
@@ -20,7 +20,7 @@
     },
     {
       "path": "offline-reclassification.json",
-      "sha256": "2f04e267748c2eb15dfe3723cb0b529e471ca9d94ef9d982392aab486fd8820d"
+      "sha256": "ad1a42d7a3b99de79c65a45c58ad4bea175e1e55616dd263aa9bf0157241cdfb"
     },
     {
       "path": "preflight.json",
@@ -32,7 +32,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "1dda3b3aa14fe899afa04e38345ec3a74b4f8e5d151890e9ad5b27bf522ece9c"
+      "sha256": "4445169b68dbde4fff295a69607fab7e09f4218625c91630cbdea2ff39b1104a"
     },
     {
       "path": "request-shape.json",
@@ -44,7 +44,11 @@
     },
     {
       "path": "summary.json",
-      "sha256": "dfaa83f028c64669d3612b8dca50fa518e1083107d43cc43b242ad55bcf62937"
+      "sha256": "f88cae67a254bed10daeb577ec15a67845bc9bb429d373af2773b52e4c50acc2"
+    },
+    {
+      "path": "timing-audit.json",
+      "sha256": "e2c6214a31ea587f9254d9acd8328d26b05ab30a1011c458924688786d5d937d"
     },
     {
       "path": "transport-timeline.json",
