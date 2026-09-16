@@ -1,0 +1,124 @@
+{
+  "artifactKind": "A99_USER_REVIEWED_CANONICAL_IDENTITY_AUTHORITY_FREEZE",
+  "schemaVersion": "a99-canonical-identity-authority-freeze-v1-doc0252",
+  "documentId": "DOC-0252",
+  "authorityStatus": "USER_REVIEWED_CANONICAL_IDENTITY_GOLD",
+  "explicitUserApproval": true,
+  "approvedCheckpoints": [
+    "4ce5cca",
+    "1b49f60"
+  ],
+  "commitLineage": [
+    {
+      "commit": "4ce5cca",
+      "role": "canonical occurrence authority"
+    },
+    {
+      "commit": "1b49f60",
+      "role": "source-backed identity proposal"
+    },
+    {
+      "commit": "THIS_FREEZE_COMMIT",
+      "role": "explicit user-approved identity freeze"
+    }
+  ],
+  "sourcePath": "todo10_8/generated-docx/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.docx",
+  "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "occurrenceCount": 40,
+  "semanticNodeCount": 39,
+  "occurrenceRoles": {
+    "PRIMARY": 39,
+    "REPEAT": 0,
+    "CONTINUATION": 1
+  },
+  "multiOccurrenceNodeCount": 1,
+  "approvedContinuation": {
+    "fromText": "SESSION V: Current Research",
+    "toText": "SESSION V: Current Research (Cont’d)",
+    "owner": "Agenda",
+    "sameSemanticNode": true
+  },
+  "provenance": {
+    "occurrenceAuthority": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+    "identityProposal": "SOURCE_BACKED_IDENTITY_ADJUDICATION_AT_1b49f60",
+    "finalPromotion": "EXPLICIT_USER_APPROVAL",
+    "hierarchyStatus": "NOT_OPENED"
+  },
+  "artifactHashes": [
+    {
+      "artifact": "authoritativeDocx",
+      "path": "todo10_8/generated-docx/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.docx",
+      "sha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77"
+    },
+    {
+      "artifact": "occurrenceAuthorityManifest",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/manifest.json",
+      "sha256": "41a1a55b60541f6c51441ce8878caddf18c9c7e59e94b9a23807a0a432701489"
+    },
+    {
+      "artifact": "occurrenceDecisions",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/occurrence-decisions.json",
+      "sha256": "ccfbbce4f2e415ff093c4eb719a5c739439af16058a1f35472a495fee09626e0"
+    },
+    {
+      "artifact": "exactBindings",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/exact-bindings.json",
+      "sha256": "cc43a09038c70e4f09e7d35810bce089d2fc1fc316467c178f4083bebfd3c3f7"
+    },
+    {
+      "artifact": "identityManifest",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/manifest.json",
+      "sha256": "417052c21526b0e3d737cd8d719c78bf4beb31eece0bc8918dd1956cf62f3b05"
+    },
+    {
+      "artifact": "occurrenceInputManifest",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/occurrence-input-manifest.json",
+      "sha256": "54258e3f7a2ce7938c8995e0785b895abdba9f636e163d02e57fe3cf76340c0d"
+    },
+    {
+      "artifact": "occurrenceAssignments",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/occurrence-assignments.json",
+      "sha256": "d83f7250e4e589d4503c8a23517192ff51bb9efa75b2a4af8ec047285f773b4b"
+    },
+    {
+      "artifact": "semanticNodes",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/semantic-nodes.json",
+      "sha256": "2cb6bc490b69e7d36002fb701ef49f57cec1fdb45b0e77952f2eb489daf7a590"
+    },
+    {
+      "artifact": "identityDecisions",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/identity-decisions.json",
+      "sha256": "0d6077879bbf012cdbf76e90985af4e7b6f42b40f2e2a5e6b21c01edc615ee97"
+    },
+    {
+      "artifact": "ambiguities",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/ambiguities.json",
+      "sha256": "e93c1f21ecf0284ff6d91df0e65b06bb8f5d9195869aef54dcdadb5a9591da79"
+    },
+    {
+      "artifact": "identityValidation",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/validation.json",
+      "sha256": "973bc4bdf03c430cf4dd51681b3d3fbd39ac5e67c2856bb22d967aee2f0df275"
+    },
+    {
+      "artifact": "postFreezeDiagnostics",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/post-freeze-diagnostics.json",
+      "sha256": "12ac50df3f37fa8e685659898a3262821e826fd6afd0c3698641da03885eba72"
+    }
+  ],
+  "validationArtifact": "artifacts/authority-audit/canonical-identity-authority-freeze-v1/DOC-0252/validation.json",
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "oldSemanticTotalUsedForDecision": false,
+  "hierarchyOpened": false,
+  "parentEdgeCount": 0,
+  "levelDerived": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "occurrenceMutation": false,
+  "identityMutation": false,
+  "parentMutation": false,
+  "levelMutation": false,
+  "GoldMutationOutsideFreezeLane": false
+}
