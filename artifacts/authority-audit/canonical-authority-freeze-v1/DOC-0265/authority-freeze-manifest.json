@@ -1,0 +1,149 @@
+{
+  "artifactKind": "A99_USER_REVIEWED_CANONICAL_AUTHORITY_FREEZE",
+  "schemaVersion": "a99-canonical-authority-freeze-v1",
+  "documentId": "DOC-0265",
+  "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+  "explicitUserApproval": true,
+  "approvedProposalCheckpoint": "f6833b6",
+  "approvedDocuments": [
+    "DOC-0185",
+    "DOC-0200",
+    "DOC-0201",
+    "DOC-0219",
+    "DOC-0265",
+    "DOC-0243",
+    "DOC-0116",
+    "DOC-0122",
+    "DOC-0216",
+    "DOC-0205",
+    "DOC-0264"
+  ],
+  "commitLineage": [
+    {
+      "commit": "f6833b6",
+      "role": "user-approved V3.3 occurrence, identity and hierarchy proposal"
+    },
+    {
+      "commit": "PENDING_FREEZE_COMMIT",
+      "role": "canonical authority freeze"
+    }
+  ],
+  "sourcePath": "todo10_8/generated-docx/06_dich_song_ngu/085_Luat_Nha_o_2023_EN.docx",
+  "sourceSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6",
+  "occurrenceCount": 249,
+  "semanticNodeCount": 249,
+  "occurrenceRoles": {
+    "PRIMARY": 249,
+    "REPEAT": 0,
+    "CONTINUATION": 0
+  },
+  "parentEdgeCount": 249,
+  "rootChildrenCount": 14,
+  "maxDepth": 3,
+  "levelDerivation": "depth(validated canonical semantic-node parent tree)",
+  "provenance": {
+    "occurrenceAuthority": "CODEX_SOURCE_BACKED_PROPOSAL",
+    "identityAuthorityBeforeApproval": "CODEX_SOURCE_BACKED_PROPOSAL",
+    "hierarchyAuthorityBeforeApproval": "CODEX_SOURCE_BACKED_PROPOSAL",
+    "finalPromotion": "EXPLICIT_USER_APPROVAL",
+    "historicalCompatibility": "NOT_OPENED_IN_FREEZE"
+  },
+  "identityDeltaExplanation": {
+    "occurrenceCount": 249,
+    "semanticNodeCount": 249,
+    "occurrenceToNodeDelta": 0,
+    "identityRelationCount": 0,
+    "relationRows": [],
+    "statement": "All approved occurrences remain singleton semantic nodes."
+  },
+  "artifactHashes": [
+    {
+      "artifact": "sourceDocument",
+      "path": "todo10_8/generated-docx/06_dich_song_ngu/085_Luat_Nha_o_2023_EN.docx",
+      "sha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6"
+    },
+    {
+      "artifact": "proposalManifest",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/manifest.json",
+      "sha256": "490f9e17767f2bff61ff8e9fafa92196288a7ef07d31568e0bfa2a7bf0422ccd"
+    },
+    {
+      "artifact": "sourceAuthority",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0265/source-authority.json",
+      "sha256": "a4cf21f916c16957531a791b90e78c7b51d1fc7ab628a8c5156f04c201de5271"
+    },
+    {
+      "artifact": "exactBindings",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0265/exact-bindings.json",
+      "sha256": "eeb1f961a9d6656df82c981780ef2d5cd3a4248d1aea7b629ca0efdee9ef4052"
+    },
+    {
+      "artifact": "occurrenceValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0265/validation.json",
+      "sha256": "c195ef552509a7351bf6a7d307a226171bda71319518ff15972e0e876b71a203"
+    },
+    {
+      "artifact": "identityDecisions",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0265/identity-decisions.json",
+      "sha256": "315f603b2ca076f544e7403248899d0bbecb8804a27e93a5a4b3a8b8faa8ef4a"
+    },
+    {
+      "artifact": "semanticNodes",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0265/semantic-nodes.json",
+      "sha256": "abbdbf1f03937c19e4e2e4b64b2fbcd4e753e6b46adf9a3b9c455714e0ed3d88"
+    },
+    {
+      "artifact": "identityValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0265/validation.json",
+      "sha256": "0c999bbd4ab1b2e2f201c5c3b7d34da75f11cfff3d098670f1dc8f89261c3d24"
+    },
+    {
+      "artifact": "hierarchyParentDecisions",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0265/parent-decisions.json",
+      "sha256": "07797da22a3f295247d10fc2ac7939af7439d118c39866b5cf20ac182b2fc31f"
+    },
+    {
+      "artifact": "parentEdges",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0265/parent-edges.json",
+      "sha256": "35a396a6678736c4a6b479aee698ac947ad2b59eb19c7c2f76dfeebf83d3ec18"
+    },
+    {
+      "artifact": "hierarchyValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0265/validation.json",
+      "sha256": "4f038f068a18666b0270eeff23acb86e45872feac850441d3325b8af924018f1"
+    },
+    {
+      "artifact": "derivedLevels",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0265/derived-levels.json",
+      "sha256": "5676b43a9b9475708f454f8706a88116a161e82e95bab28238e24bb8e93c0a4e"
+    }
+  ],
+  "invariants": {
+    "sourceShaMatches": true,
+    "canonicalOccurrences": 249,
+    "occurrenceAssignments": 249,
+    "semanticNodes": 249,
+    "parentEdges": 249,
+    "primaryCount": 249,
+    "repeatCount": 0,
+    "continuationCount": 0,
+    "identityDelta": 0,
+    "rootChildren": 14,
+    "maxDepth": 3,
+    "noCycles": true,
+    "noMultipleParents": true,
+    "noDanglingRefs": true,
+    "noUnreachableNodes": true,
+    "noUnknownOccurrenceRefs": true,
+    "noUnknownSemanticNodeRefs": true,
+    "derivedLevelsReproduceExactly": true,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "occurrenceMutation": false,
+    "identityMutation": false,
+    "parentMutation": false,
+    "GoldMutationOutsideFreezeLane": false
+  }
+}

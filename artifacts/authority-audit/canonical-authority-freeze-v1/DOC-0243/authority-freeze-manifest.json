@@ -1,0 +1,250 @@
+{
+  "artifactKind": "A99_USER_REVIEWED_CANONICAL_AUTHORITY_FREEZE",
+  "schemaVersion": "a99-canonical-authority-freeze-v1",
+  "documentId": "DOC-0243",
+  "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+  "explicitUserApproval": true,
+  "approvedProposalCheckpoint": "f6833b6",
+  "approvedDocuments": [
+    "DOC-0185",
+    "DOC-0200",
+    "DOC-0201",
+    "DOC-0219",
+    "DOC-0265",
+    "DOC-0243",
+    "DOC-0116",
+    "DOC-0122",
+    "DOC-0216",
+    "DOC-0205",
+    "DOC-0264"
+  ],
+  "commitLineage": [
+    {
+      "commit": "f6833b6",
+      "role": "user-approved V3.3 occurrence, identity and hierarchy proposal"
+    },
+    {
+      "commit": "PENDING_FREEZE_COMMIT",
+      "role": "canonical authority freeze"
+    }
+  ],
+  "sourcePath": "todo10_8/heading_corpus_95_word/04_giao_trinh/063_Advanced_Linear_Algebra.docx",
+  "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+  "occurrenceCount": 129,
+  "semanticNodeCount": 109,
+  "occurrenceRoles": {
+    "PRIMARY": 109,
+    "REPEAT": 0,
+    "CONTINUATION": 20
+  },
+  "parentEdgeCount": 109,
+  "rootChildrenCount": 13,
+  "maxDepth": 3,
+  "levelDerivation": "depth(validated canonical semantic-node parent tree)",
+  "provenance": {
+    "occurrenceAuthority": "CODEX_SOURCE_BACKED_PROPOSAL",
+    "identityAuthorityBeforeApproval": "CODEX_SOURCE_BACKED_PROPOSAL",
+    "hierarchyAuthorityBeforeApproval": "CODEX_SOURCE_BACKED_PROPOSAL",
+    "finalPromotion": "EXPLICIT_USER_APPROVAL",
+    "historicalCompatibility": "NOT_OPENED_IN_FREEZE"
+  },
+  "identityDeltaExplanation": {
+    "occurrenceCount": 129,
+    "semanticNodeCount": 109,
+    "occurrenceToNodeDelta": 20,
+    "identityRelationCount": 20,
+    "relationRows": [
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[74]#heading-span-0-14",
+        "toOccurrenceId": "DOC-0243:body[1]/p[72]#heading-span-0-6",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[98]#heading-span-0-11",
+        "toOccurrenceId": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[752]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[1424]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[2093]#heading-span-0-18",
+        "toOccurrenceId": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[2866]#heading-span-0-16",
+        "toOccurrenceId": "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[2891]#heading-span-0-11",
+        "toOccurrenceId": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[3702]#heading-span-0-15",
+        "toOccurrenceId": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[4527]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[5528]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[7004]#heading-span-0-16",
+        "toOccurrenceId": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[7806]#heading-span-0-16",
+        "toOccurrenceId": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[8548]#heading-span-0-12",
+        "toOccurrenceId": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[9295]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[9320]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[10125]#heading-span-0-14",
+        "toOccurrenceId": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[10862]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[11719]#heading-span-0-15",
+        "toOccurrenceId": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      }
+    ],
+    "statement": "The approved identity artifact collapses 20 occurrence(s) through the explicitly recorded identity relation(s); no membership was changed during freeze."
+  },
+  "artifactHashes": [
+    {
+      "artifact": "sourceDocument",
+      "path": "todo10_8/heading_corpus_95_word/04_giao_trinh/063_Advanced_Linear_Algebra.docx",
+      "sha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7"
+    },
+    {
+      "artifact": "proposalManifest",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/manifest.json",
+      "sha256": "490f9e17767f2bff61ff8e9fafa92196288a7ef07d31568e0bfa2a7bf0422ccd"
+    },
+    {
+      "artifact": "sourceAuthority",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0243/source-authority.json",
+      "sha256": "1189e3d39472a698f2cd1b3e4a614c7118f453ad6d165149fb8d301eac1a22e7"
+    },
+    {
+      "artifact": "exactBindings",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0243/exact-bindings.json",
+      "sha256": "b30885a49cc3b512129fd60a84badccab686bc9aaafdd463ac79413ea9d90a4e"
+    },
+    {
+      "artifact": "occurrenceValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0243/validation.json",
+      "sha256": "3a17376e9287b15fbe8b648fa44ddf0291fbee8b904d76cbc81d76c4a5d8860b"
+    },
+    {
+      "artifact": "identityDecisions",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0243/identity-decisions.json",
+      "sha256": "7cc6faff19c49180fdb0de32768cb197beca643da58b5e5d0728bd85988d8d85"
+    },
+    {
+      "artifact": "semanticNodes",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0243/semantic-nodes.json",
+      "sha256": "9bbfc07a221e1da58e478bb390907ed27be6b3435c0203cb392698afa3d1a92e"
+    },
+    {
+      "artifact": "identityValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0243/validation.json",
+      "sha256": "d4d66e8ae152b3aa92ecfa847ac406e679bb00aaf1c599aba01954df84e242c7"
+    },
+    {
+      "artifact": "hierarchyParentDecisions",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0243/parent-decisions.json",
+      "sha256": "aa8b1a729579be46646e9885292889f7e3f277093143770efd24ae712832b6c2"
+    },
+    {
+      "artifact": "parentEdges",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0243/parent-edges.json",
+      "sha256": "249487c1f2bcda96769f49450e9a294547b9741fe4bd233e9ba54e7e2104ab11"
+    },
+    {
+      "artifact": "hierarchyValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0243/validation.json",
+      "sha256": "30cc2e1b92e26bc6297af2ff219d03f2fa7bae6dbcd735a047eb8990c04206ea"
+    },
+    {
+      "artifact": "derivedLevels",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0243/derived-levels.json",
+      "sha256": "bae0ec5362380d02e3187a1f4ffe1d41efc2c4d342df5f7c97d229f48de4f4d4"
+    }
+  ],
+  "invariants": {
+    "sourceShaMatches": true,
+    "canonicalOccurrences": 129,
+    "occurrenceAssignments": 129,
+    "semanticNodes": 109,
+    "parentEdges": 109,
+    "primaryCount": 109,
+    "repeatCount": 0,
+    "continuationCount": 20,
+    "identityDelta": 20,
+    "rootChildren": 13,
+    "maxDepth": 3,
+    "noCycles": true,
+    "noMultipleParents": true,
+    "noDanglingRefs": true,
+    "noUnreachableNodes": true,
+    "noUnknownOccurrenceRefs": true,
+    "noUnknownSemanticNodeRefs": true,
+    "derivedLevelsReproduceExactly": true,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "occurrenceMutation": false,
+    "identityMutation": false,
+    "parentMutation": false,
+    "GoldMutationOutsideFreezeLane": false
+  }
+}

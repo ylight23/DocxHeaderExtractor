@@ -1,0 +1,145 @@
+{
+  "artifactKind": "A99_USER_REVIEWED_CANONICAL_AUTHORITY_FREEZE_VALIDATION",
+  "schemaVersion": "a99-canonical-authority-freeze-v1",
+  "documentId": "DOC-0243",
+  "status": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+  "checks": {
+    "sourceShaMatches": true,
+    "canonicalOccurrences": 129,
+    "occurrenceAssignments": 129,
+    "semanticNodes": 109,
+    "parentEdges": 109,
+    "primaryCount": 109,
+    "repeatCount": 0,
+    "continuationCount": 20,
+    "identityDelta": 20,
+    "rootChildren": 13,
+    "maxDepth": 3,
+    "noCycles": true,
+    "noMultipleParents": true,
+    "noDanglingRefs": true,
+    "noUnreachableNodes": true,
+    "noUnknownOccurrenceRefs": true,
+    "noUnknownSemanticNodeRefs": true,
+    "derivedLevelsReproduceExactly": true,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "occurrenceMutation": false,
+    "identityMutation": false,
+    "parentMutation": false,
+    "GoldMutationOutsideFreezeLane": false
+  },
+  "identityDeltaExplanation": {
+    "occurrenceCount": 129,
+    "semanticNodeCount": 109,
+    "occurrenceToNodeDelta": 20,
+    "identityRelationCount": 20,
+    "relationRows": [
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[74]#heading-span-0-14",
+        "toOccurrenceId": "DOC-0243:body[1]/p[72]#heading-span-0-6",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[98]#heading-span-0-11",
+        "toOccurrenceId": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[752]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[1424]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[2093]#heading-span-0-18",
+        "toOccurrenceId": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[2866]#heading-span-0-16",
+        "toOccurrenceId": "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[2891]#heading-span-0-11",
+        "toOccurrenceId": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[3702]#heading-span-0-15",
+        "toOccurrenceId": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[4527]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[5528]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[7004]#heading-span-0-16",
+        "toOccurrenceId": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[7806]#heading-span-0-16",
+        "toOccurrenceId": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[8548]#heading-span-0-12",
+        "toOccurrenceId": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[9295]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[9320]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[10125]#heading-span-0-14",
+        "toOccurrenceId": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[10862]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      },
+      {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[11719]#heading-span-0-15",
+        "toOccurrenceId": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+        "relation": "CONTINUATION_OF"
+      }
+    ],
+    "statement": "The approved identity artifact collapses 20 occurrence(s) through the explicitly recorded identity relation(s); no membership was changed during freeze."
+  },
+  "hashCount": 12,
+  "validator": "PASS"
+}

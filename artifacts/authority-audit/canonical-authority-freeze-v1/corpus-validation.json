@@ -1,0 +1,167 @@
+{
+  "artifactKind": "A99_CANONICAL_15_DOCUMENT_CORPUS_VALIDATION",
+  "schemaVersion": "a99-canonical-authority-freeze-v1-corpus",
+  "status": "CANONICAL_15_DOCUMENT_CORPUS_FROZEN",
+  "expectedTotals": {
+    "documents": 15,
+    "occurrences": 1908,
+    "semanticNodes": 1887,
+    "parentEdges": 1887
+  },
+  "actualTotals": {
+    "documents": 15,
+    "occurrences": 1908,
+    "semanticNodes": 1887,
+    "parentEdges": 1887
+  },
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 7,
+      "semanticNodeCount": 7,
+      "parentEdgeCount": 7
+    },
+    {
+      "documentId": "DOC-0116",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 120,
+      "semanticNodeCount": 120,
+      "parentEdgeCount": 120
+    },
+    {
+      "documentId": "DOC-0122",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 294,
+      "semanticNodeCount": 294,
+      "parentEdgeCount": 294
+    },
+    {
+      "documentId": "DOC-0185",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 119,
+      "semanticNodeCount": 119,
+      "parentEdgeCount": 119
+    },
+    {
+      "documentId": "DOC-0200",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 105,
+      "semanticNodeCount": 105,
+      "parentEdgeCount": 105
+    },
+    {
+      "documentId": "DOC-0201",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 12,
+      "semanticNodeCount": 12,
+      "parentEdgeCount": 12
+    },
+    {
+      "documentId": "DOC-0205",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 72,
+      "semanticNodeCount": 72,
+      "parentEdgeCount": 72
+    },
+    {
+      "documentId": "DOC-0216",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 295,
+      "semanticNodeCount": 295,
+      "parentEdgeCount": 295
+    },
+    {
+      "documentId": "DOC-0219",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 243,
+      "semanticNodeCount": 243,
+      "parentEdgeCount": 243
+    },
+    {
+      "documentId": "DOC-0243",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 129,
+      "semanticNodeCount": 109,
+      "parentEdgeCount": 109
+    },
+    {
+      "documentId": "DOC-0252",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 40,
+      "semanticNodeCount": 39,
+      "parentEdgeCount": 39
+    },
+    {
+      "documentId": "DOC-0256",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 24,
+      "semanticNodeCount": 24,
+      "parentEdgeCount": 24
+    },
+    {
+      "documentId": "DOC-0258",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 44,
+      "semanticNodeCount": 44,
+      "parentEdgeCount": 44
+    },
+    {
+      "documentId": "DOC-0264",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 155,
+      "semanticNodeCount": 155,
+      "parentEdgeCount": 155
+    },
+    {
+      "documentId": "DOC-0265",
+      "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+      "validator": "PASS",
+      "occurrenceCount": 249,
+      "semanticNodeCount": 249,
+      "parentEdgeCount": 249
+    }
+  ],
+  "checks": {
+    "aggregateTotalsMatch": true,
+    "allDocumentsUserReviewed": true,
+    "newV33TotalsMatch": true,
+    "cycles": 0,
+    "multipleParents": 0,
+    "dangling": 0,
+    "unreachable": 0,
+    "levelDerivedOnlyFromValidatedTreeDepth": true,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "providerCalls": 0,
+    "productionModelCalls": 0,
+    "historicalN15Rebaselined": false,
+    "existingFrozenDocumentsMutated": false,
+    "GoldMutationOutsideFreezeLane": false
+  },
+  "validator": "PASS",
+  "commitLineage": [
+    {
+      "commit": "f6833b6",
+      "role": "approved V3.3 proposal checkpoint"
+    },
+    {
+      "commit": "PENDING_FREEZE_COMMIT",
+      "role": "15-document corpus authority freeze"
+    }
+  ]
+}
