@@ -249,7 +249,7 @@ public static class CanonicalDevV7OptimizedRunner
             });
 
             if (source.DocumentId == "DOC-0116")
-                await WritePerformanceAuditAsync(output, docDir, runs, totalProviderCalls, runConfigurationHash, productionSemanticHash, executionHarnessHash, source, CancellationToken.None);
+                await WritePerformanceAuditAsync(output, docDir, runs, runConfigurationHash, productionSemanticHash, executionHarnessHash, source, CancellationToken.None);
         }
 
         await WriteJsonAsync(Path.Combine(output, "prediction-freeze-manifest.v1.json"), new
@@ -286,14 +286,14 @@ public static class CanonicalDevV7OptimizedRunner
     }
 
     private static async Task WritePerformanceAuditAsync(string output, string docDir, IReadOnlyList<object> runs,
-        int totalProviderCalls, string runConfigurationHash, string productionSemanticHash,
+        string runConfigurationHash, string productionSemanticHash,
         string executionHarnessHash, ResolvedSource source, CancellationToken ct)
     {
         var attemptsPath = Path.Combine(docDir, "attempts.v1.json");
         var telemetry = ReadRequiredObject(attemptsPath, "batchTelemetry");
-        var totalResponses = ReadInt(attemptsPath, "responseCount");
-        var baseRequests = ReadTelemetryInt(telemetry, "roleBatchCount") + ReadTelemetryInt(telemetry, "spanBatchCount") + ReadTelemetryInt(telemetry, "hierarchyProviderCalls");
-        var extraRequests = Math.Max(0, totalProviderCalls - baseRequests);
+        var documentProviderCalls = ReadInt(attemptsPath, "providerCalls");
+        var documentResponseCount = ReadInt(attemptsPath, "responseCount");
+        var metrics = CalculatePerformanceAuditMetrics(documentProviderCalls, documentResponseCount, telemetry);
         await WriteJsonAsync(Path.Combine(output, "v7-performance-audit.v1.json"), new
         {
             schemaVersion = "a99-canonical-dev-v1-exec-v7-performance-audit-v1",
@@ -317,28 +317,41 @@ public static class CanonicalDevV7OptimizedRunner
                 spanInputTokensTotal = ReadTelemetryInt(telemetry, "spanInputTokensTotal"),
                 hierarchyInputCount = ReadTelemetryInt(telemetry, "hierarchyInputCount"),
                 hierarchyProviderCalls = ReadTelemetryInt(telemetry, "hierarchyProviderCalls"),
-                totalProviderCalls,
-                totalResponses,
+                totalProviderCalls = metrics.DocumentProviderCalls,
+                totalResponses = metrics.DocumentResponseCount,
                 elapsedMs = ReadTelemetryLong(telemetry, "elapsedMs"),
-                missingIdRetriesObserved = extraRequests,
+                additionalProviderCallsObserved = metrics.AdditionalProviderCallsObserved,
                 attemptTimeouts = 0,
                 providerFailures = 0,
             },
             reductions = new
             {
-                responseReduction = V6Doc0116Responses - totalResponses,
-                responseReductionRatio = V6Doc0116Responses == 0 ? 0d : 1d - (double)totalResponses / V6Doc0116Responses,
-                providerCallReduction = V6Doc0116Responses - totalProviderCalls,
-                providerCallReductionRatio = V6Doc0116Responses == 0 ? 0d : 1d - (double)totalProviderCalls / V6Doc0116Responses,
+                responseReduction = V6Doc0116Responses - metrics.DocumentResponseCount,
+                responseReductionRatio = V6Doc0116Responses == 0 ? 0d : 1d - (double)metrics.DocumentResponseCount / V6Doc0116Responses,
+                providerCallReduction = V6Doc0116Responses - metrics.DocumentProviderCalls,
+                providerCallReductionRatio = V6Doc0116Responses == 0 ? 0d : 1d - (double)metrics.DocumentProviderCalls / V6Doc0116Responses,
             },
             noGold = true,
             scoring = false,
-            providerCalls = totalProviderCalls,
+            providerCalls = metrics.DocumentProviderCalls,
             runConfigurationHash,
             productionSemanticHash,
             executionHarnessHash,
             documentRuns = runs,
         }, ct);
+    }
+
+    internal static PerformanceAuditMetrics CalculatePerformanceAuditMetrics(
+        int documentProviderCalls, int documentResponseCount, JsonElement telemetry)
+    {
+        var baseProviderCalls = ReadTelemetryInt(telemetry, "roleProviderCalls") +
+                                ReadTelemetryInt(telemetry, "spanProviderCalls") +
+                                ReadTelemetryInt(telemetry, "hierarchyProviderCalls");
+        return new PerformanceAuditMetrics(
+            documentProviderCalls,
+            documentResponseCount,
+            baseProviderCalls,
+            Math.Max(0, documentProviderCalls - baseProviderCalls));
     }
 
     private static bool TelemetryRoundTripMatches(string predictionPath, string attemptsPath, out string failure)
@@ -488,4 +501,10 @@ public static class CanonicalDevV7OptimizedRunner
 
     private sealed record SourceEntry(string DocumentId, string SourcePath, string SourceSha256);
     private sealed record ResolvedSource(string DocumentId, string SourcePath, string ExpectedSha256, string ActualSha256, bool Exists);
+
+    internal sealed record PerformanceAuditMetrics(
+        int DocumentProviderCalls,
+        int DocumentResponseCount,
+        int BaseProviderCalls,
+        int AdditionalProviderCallsObserved);
 }

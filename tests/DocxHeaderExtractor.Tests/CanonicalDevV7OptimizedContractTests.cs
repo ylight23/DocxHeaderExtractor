@@ -1,5 +1,6 @@
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.Eval.ReasoningRetention;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -58,6 +59,25 @@ public sealed class CanonicalDevV7OptimizedContractTests
         Assert.Equal(13, rootElement.GetProperty("responseCount").GetInt32());
         Assert.Equal(32, rootElement.GetProperty("batchTelemetry").GetProperty("roleInputBlockCount").GetInt32());
         Assert.Equal(123456, rootElement.GetProperty("batchTelemetry").GetProperty("elapsedMs").GetInt64());
+    }
+
+    [Fact]
+    public void Performance_audit_uses_document_local_calls_not_campaign_cumulative_calls()
+    {
+        var telemetryJson = "{\"roleProviderCalls\":20,\"spanProviderCalls\":30,\"hierarchyProviderCalls\":40}";
+        using var telemetryDocument = JsonDocument.Parse(telemetryJson);
+
+        // DOC-0001=7 is deliberately outside this document-local calculation.
+        var metrics = CanonicalDevV7OptimizedRunner.CalculatePerformanceAuditMetrics(
+            documentProviderCalls: 100,
+            documentResponseCount: 100,
+            telemetryDocument.RootElement);
+
+        Assert.Equal(100, metrics.DocumentProviderCalls);
+        Assert.Equal(100, metrics.DocumentResponseCount);
+        Assert.Equal(90, metrics.BaseProviderCalls);
+        Assert.Equal(10, metrics.AdditionalProviderCallsObserved);
+        Assert.NotEqual(107, metrics.DocumentProviderCalls);
     }
 
     private static string FindRepositoryRoot()
