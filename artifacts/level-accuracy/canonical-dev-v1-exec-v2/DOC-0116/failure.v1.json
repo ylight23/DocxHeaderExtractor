@@ -1,0 +1,14 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-failure-v1",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V2",
+  "documentId": "DOC-0116",
+  "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_100\\02_hop_dong_mua_sam\\031_WB_Framework_Agreement_Consulting_2025.docx",
+  "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "goldReadBeforePredictionFreeze": false,
+  "status": "DOCUMENT_TIMEOUT",
+  "exceptionType": "System.Threading.Tasks.TaskCanceledException",
+  "message": "A task was canceled.",
+  "started": "2026-09-16T09:33:58.4434477+00:00",
+  "completed": "2026-09-16T09:38:58.4523461+00:00"
+}

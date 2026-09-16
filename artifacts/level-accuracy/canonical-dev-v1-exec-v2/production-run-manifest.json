@@ -1,0 +1,36 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-production-run-manifest-v1",
+  "status": "PRODUCTION_RUN_ABORTED",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V2",
+  "runConfigurationHash": "875055d418d7f98b56d93dc3d51280551b316f3cbd871b56f610762a86d4dd4c",
+  "productionSemanticCheckpoint": "40a0d5f",
+  "executionHarnessCheckpoint": "7823e42",
+  "goldReadCount": 0,
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "status": "COMPLETE",
+      "predictionPath": "DOC-0001/prediction.v1.json",
+      "providerCalls": 5,
+      "predictedOccurrences": 7,
+      "predictedSemanticNodes": 7,
+      "predictedParentEdges": 6,
+      "elapsedMs": 11552.7762
+    },
+    {
+      "documentId": "DOC-0116",
+      "status": "DOCUMENT_TIMEOUT",
+      "providerCalls": 0,
+      "error": "A task was canceled."
+    },
+    {
+      "documentId": "DOC-0122",
+      "status": "CANCELLED",
+      "providerCalls": 0,
+      "error": "A task was canceled."
+    }
+  ],
+  "providerCalls": 5,
+  "documentTimeoutSeconds": 300
+}

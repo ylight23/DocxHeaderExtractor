@@ -1,0 +1,14 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-failure-v1",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V2",
+  "documentId": "DOC-0122",
+  "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_100\\02_hop_dong_mua_sam\\037_WB_Plant_TwoStage_2025.docx",
+  "sourceSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+  "goldReadBeforePredictionFreeze": false,
+  "status": "CANCELLED",
+  "exceptionType": "System.Threading.Tasks.TaskCanceledException",
+  "message": "A task was canceled.",
+  "started": "2026-09-16T09:38:58.4564785+00:00",
+  "completed": "2026-09-16T09:41:22.7738419+00:00"
+}
