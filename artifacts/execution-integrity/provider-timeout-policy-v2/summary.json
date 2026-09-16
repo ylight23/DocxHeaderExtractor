@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "provider-timeout-policy-v2-summary-v1",
+  "status": "PER_ATTEMPT_TIMEOUT_POLICY_PROVEN",
+  "providerCalls": 0,
+  "goldReads": 0,
+  "modelCalls": 0,
+  "productionSemanticHash": "5f0eb27dfa44068fc60c69e0dcf8a05b14a061ed7526610e4592d68c268fe5e6",
+  "expectedProductionSemanticHash": "5f0eb27dfa44068fc60c69e0dcf8a05b14a061ed7526610e4592d68c268fe5e6",
+  "policy": {
+    "perAttemptHardTimeoutSeconds": 300,
+    "documentSafetyCeilingSeconds": 7200,
+    "fixedDocumentTimeoutAuthorityRemoved": true
+  },
+  "scaledProof": {
+    "simulatedPerAttemptTimeoutSeconds": 1,
+    "simulatedOldDocumentBudgetMs": 300,
+    "multiHealthyCalls": [
+      {
+        "Mode": "provider-attempt",
+        "ChildPid": 38932,
+        "StartedAt": "2026-09-16T11:17:15.9164581+00:00",
+        "CompletedAt": "2026-09-16T11:17:16.2843132+00:00",
+        "Status": "COMPLETE",
+        "TerminationMode": "NONE",
+        "ExitCode": 0,
+        "Marker": {
+          "status": "COMPLETE"
+        },
+        "Stdout": "",
+        "Stderr": ""
+      },
+      {
+        "Mode": "provider-attempt",
+        "ChildPid": 34788,
+        "StartedAt": "2026-09-16T11:17:16.3008129+00:00",
+        "CompletedAt": "2026-09-16T11:17:16.6551944+00:00",
+        "Status": "COMPLETE",
+        "TerminationMode": "NONE",
+        "ExitCode": 0,
+        "Marker": {
+          "status": "COMPLETE"
+        },
+        "Stdout": "",
+        "Stderr": ""
+      },
+      {
+        "Mode": "provider-attempt",
+        "ChildPid": 39496,
+        "StartedAt": "2026-09-16T11:17:16.684983+00:00",
+        "CompletedAt": "2026-09-16T11:17:17.0203634+00:00",
+        "Status": "COMPLETE",
+        "TerminationMode": "NONE",
+        "ExitCode": 0,
+        "Marker": {
+          "status": "COMPLETE"
+        },
+        "Stdout": "",
+        "Stderr": ""
+      }
+    ],
+    "multiHealthyCallsComplete": true,
+    "cumulativeExceededOldDocumentBudget": true,
+    "lateCallStartedAt": "2026-09-16T11:17:17.0209606+00:00",
+    "lateCall": {
+      "Mode": "provider-attempt",
+      "ChildPid": 35832,
+      "StartedAt": "2026-09-16T11:17:17.3793156+00:00",
+      "CompletedAt": "2026-09-16T11:17:17.7395138+00:00",
+      "Status": "COMPLETE",
+      "TerminationMode": "NONE",
+      "ExitCode": 0,
+      "Marker": {
+        "status": "COMPLETE"
+      },
+      "Stdout": "",
+      "Stderr": ""
+    },
+    "lateCallReceivedFullAttemptWindow": true,
+    "realHang": {
+      "Mode": "provider-attempt",
+      "ChildPid": 35932,
+      "StartedAt": "2026-09-16T11:17:17.7433796+00:00",
+      "CompletedAt": "2026-09-16T11:17:18.7815663+00:00",
+      "Status": "ATTEMPT_TIMEOUT",
+      "TerminationMode": "PROCESS_TREE_KILL",
+      "ExitCode": -1,
+      "Marker": null,
+      "Stdout": "",
+      "Stderr": ""
+    },
+    "realHangKilledAsAttemptTimeout": true
+  }
+}

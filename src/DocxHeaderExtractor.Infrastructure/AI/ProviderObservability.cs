@@ -102,7 +102,8 @@ public sealed class ProviderCallTelemetry : IDisposable
         string requestHash,
         int requestBytes,
         int estimatedInputTokens,
-        int maxOutputTokens)
+        int maxOutputTokens,
+        TimeSpan? hardTimeout = null)
     {
         lock (_gate)
         {
@@ -110,7 +111,7 @@ public sealed class ProviderCallTelemetry : IDisposable
             _attemptId = attemptId;
             _stage = _metadata.Stage;
             var attempt = new ProviderAttemptTelemetry(this, attemptId, requestHash, requestBytes,
-                estimatedInputTokens, maxOutputTokens);
+                estimatedInputTokens, maxOutputTokens, hardTimeout);
             attempt.Event("TRANSPORT_START");
             attempt.Event("NOT_OBSERVABLE_WITH_CURRENT_TRANSPORT", new { milestone = "CONNECTION_ESTABLISHED" });
             attempt.Event("NOT_OBSERVABLE_WITH_CURRENT_TRANSPORT", new { milestone = "REQUEST_HEADERS_SENT" });
@@ -236,10 +237,12 @@ public sealed class ProviderCallTelemetry : IDisposable
         private bool _completed;
 
         internal ProviderAttemptTelemetry(ProviderCallTelemetry parent, string attemptId, string requestHash,
-            int requestBytes, int estimatedInputTokens, int maxOutputTokens)
+            int requestBytes, int estimatedInputTokens, int maxOutputTokens, TimeSpan? hardTimeout)
         {
             _parent = parent;
             AttemptId = attemptId;
+            AttemptStartedAt = DateTimeOffset.UtcNow;
+            AttemptDeadlineAt = hardTimeout.HasValue ? AttemptStartedAt + hardTimeout.Value : null;
             _parent.Event("ATTEMPT_STARTED", new
             {
                 attemptId,
@@ -247,11 +250,15 @@ public sealed class ProviderCallTelemetry : IDisposable
                 requestBytes,
                 estimatedInputTokens,
                 maxOutputTokens,
+                attemptStartedAt = AttemptStartedAt,
+                attemptDeadlineAt = AttemptDeadlineAt,
             });
-            _parent.WriteAttemptStarted(AttemptId, requestHash, requestBytes, estimatedInputTokens, maxOutputTokens);
+            _parent.WriteAttemptStarted(AttemptId, requestHash, requestBytes, estimatedInputTokens, maxOutputTokens, AttemptStartedAt, AttemptDeadlineAt);
         }
 
         public string AttemptId { get; }
+        public DateTimeOffset AttemptStartedAt { get; }
+        public DateTimeOffset? AttemptDeadlineAt { get; }
         public void Event(string eventType, object? data = null) => _parent.Event(eventType, data);
         public void PersistRawResponse(string responseText) => _parent.WriteText($"response.raw.{Safe(AttemptId)}.txt", responseText);
         public void PersistParsed(object parsed) => _parent.WriteNew($"response.parsed.{Safe(AttemptId)}.json", parsed);
@@ -260,19 +267,20 @@ public sealed class ProviderCallTelemetry : IDisposable
         {
             if (_completed) return;
             _completed = true;
-            Event("ATTEMPT_COMPLETED", data);
+            Event("ATTEMPT_COMPLETED", new { data, attemptStartedAt = AttemptStartedAt, attemptDeadlineAt = AttemptDeadlineAt, attemptEndedAt = DateTimeOffset.UtcNow, attemptElapsedMs = (DateTimeOffset.UtcNow - AttemptStartedAt).TotalMilliseconds });
         }
         public void Fail(string reason, object? data = null)
         {
             if (_completed) return;
             _completed = true;
-            Event("ATTEMPT_FAILED", new { reason, data });
+            var ended = DateTimeOffset.UtcNow;
+            Event("ATTEMPT_FAILED", new { reason, data, attemptStartedAt = AttemptStartedAt, attemptDeadlineAt = AttemptDeadlineAt, attemptEndedAt = ended, attemptElapsedMs = (ended - AttemptStartedAt).TotalMilliseconds });
         }
         public void Dispose() { if (!_completed) Fail("DISPOSED_WITHOUT_TERMINAL"); }
     }
 
     private void WriteAttemptStarted(string attemptId, string requestHash, int requestBytes,
-        int estimatedInputTokens, int maxOutputTokens)
+        int estimatedInputTokens, int maxOutputTokens, DateTimeOffset attemptStartedAt, DateTimeOffset? attemptDeadlineAt)
     {
         WriteNew($"attempt.started.{Safe(attemptId)}.json", new
         {
@@ -289,6 +297,8 @@ public sealed class ProviderCallTelemetry : IDisposable
             requestBytes,
             estimatedInputTokens,
             maxOutputTokens,
+            attemptStartedAt,
+            attemptDeadlineAt,
         });
     }
 

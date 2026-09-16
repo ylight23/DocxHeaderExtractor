@@ -82,10 +82,12 @@ public static class CanonicalDevV1BaselineRunner
         }
 
         var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");
-        var documentTimeout = ResolveDocumentTimeout();
+        var perAttemptTimeout = ProviderTimeoutPolicyV2.ResolvePerAttemptHardTimeout();
+        envRemote.RequestTimeoutSeconds = (int)perAttemptTimeout.TotalSeconds;
+        var documentTimeout = ProviderTimeoutPolicyV2.ResolveDocumentSafetyCeiling();
         var productionSemanticHash = ComputeProductionSemanticHash(repoRoot);
         var executionHarnessHash = ComputeExecutionHarnessHash(repoRoot);
-        var runConfiguration = BuildRunConfiguration(repoRoot, authorityPath, envRemote, documentTimeout, productionSemanticHash, executionHarnessHash);
+        var runConfiguration = BuildRunConfiguration(repoRoot, authorityPath, envRemote, perAttemptTimeout, documentTimeout, productionSemanticHash, executionHarnessHash);
         var runConfigurationPath = Path.Combine(output, "run-configuration.json");
         var runConfigurationHash = Sha256Text(JsonSerializer.Serialize(runConfiguration, JsonOptions));
         if (File.Exists(runConfigurationPath) && !string.Equals(Sha256CanonicalJsonFile(runConfigurationPath), runConfigurationHash, StringComparison.OrdinalIgnoreCase))
@@ -183,7 +185,8 @@ public static class CanonicalDevV1BaselineRunner
                 sourcePath = source.SourcePath,
                 sourceSha256 = source.SourceSha256,
                 started,
-                timeoutSeconds = documentTimeout.TotalSeconds,
+                documentSafetyCeilingSeconds = documentTimeout.TotalSeconds,
+                perAttemptHardTimeoutSeconds = perAttemptTimeout.TotalSeconds,
                 runConfigurationHash,
                 attemptId,
                 retryPolicy = "NONE",
@@ -196,7 +199,7 @@ public static class CanonicalDevV1BaselineRunner
                 Directory.CreateDirectory(workDir);
                 var logicalRequestHash = Sha256Text(JsonSerializer.Serialize(new { source.DocumentId, source.SourceSha256, runConfigurationHash, attemptId }, JsonOptions));
                 var jobPath = Path.Combine(workDir, "worker-job.json");
-                await WriteJsonAsync(jobPath, new { benchmark = Benchmark, campaignId = CampaignId, productionSemanticHash, executionHarnessHash, documentId = source.DocumentId, sourcePath = source.SourcePath, sourceSha256 = source.SourceSha256, outputDir = workDir, runConfigurationHash, attemptId, requestHash = logicalRequestHash, started }, CancellationToken.None);
+                await WriteJsonAsync(jobPath, new { benchmark = Benchmark, campaignId = CampaignId, productionSemanticHash, executionHarnessHash, documentId = source.DocumentId, sourcePath = source.SourcePath, sourceSha256 = source.SourceSha256, outputDir = workDir, runConfigurationHash, attemptId, requestHash = logicalRequestHash, started, perAttemptHardTimeoutSeconds = perAttemptTimeout.TotalSeconds }, CancellationToken.None);
                 var watchdog = await ProviderHardTimeoutIntegrity.RunWorkerAsync(jobPath, workDir, documentTimeout, ct);
                 if (watchdog.Status != "COMPLETE")
                 {
@@ -294,19 +297,11 @@ public static class CanonicalDevV1BaselineRunner
             goldReadCount = 0,
             documents = documentRuns,
             providerCalls = totalProviderCalls,
-            documentTimeoutSeconds = documentTimeout.TotalSeconds,
+            documentSafetyCeilingSeconds = documentTimeout.TotalSeconds,
+            perAttemptHardTimeoutSeconds = perAttemptTimeout.TotalSeconds,
             predictionFreezeManifestSha256 = allPredictionsComplete ? Sha256File(Path.Combine(output, "prediction-freeze-manifest.json")) : null,
         }, CancellationToken.None);
         return allPredictionsComplete ? 0 : 2;
-    }
-
-    private static TimeSpan ResolveDocumentTimeout()
-    {
-        const int defaultSeconds = 300;
-        var raw = Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_DOCUMENT_TIMEOUT_SECONDS");
-        return int.TryParse(raw, out var seconds) && seconds > 0
-            ? TimeSpan.FromSeconds(seconds)
-            : TimeSpan.FromSeconds(defaultSeconds);
     }
 
     public static async Task<int> RunWorkerAsync(CancellationToken ct = default)
@@ -326,12 +321,16 @@ public static class CanonicalDevV1BaselineRunner
         var requestHash = root.GetProperty("requestHash").GetString()!;
         var workerBenchmark = root.TryGetProperty("benchmark", out var benchmarkValue) ? benchmarkValue.GetString() ?? Benchmark : Benchmark;
         var workerCampaignId = root.TryGetProperty("campaignId", out var campaignValue) ? campaignValue.GetString() ?? CampaignId : CampaignId;
+        var perAttemptHardTimeoutSeconds = root.TryGetProperty("perAttemptHardTimeoutSeconds", out var attemptTimeoutValue) && attemptTimeoutValue.TryGetInt32(out var attemptTimeout)
+            ? attemptTimeout
+            : (int)ProviderTimeoutPolicyV2.ResolvePerAttemptHardTimeout().TotalSeconds;
         var started = root.TryGetProperty("started", out var startedValue) && startedValue.TryGetDateTimeOffset(out var parsedStarted)
             ? parsedStarted : DateTimeOffset.UtcNow;
         Directory.CreateDirectory(outputDir);
         try
         {
             var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");
+            envRemote.RequestTimeoutSeconds = perAttemptHardTimeoutSeconds;
             envRemote.Observability = new ProviderObservabilityOptions
             {
                 RootDirectory = outputDir,
@@ -455,7 +454,7 @@ public static class CanonicalDevV1BaselineRunner
         }
     }
 
-    private static object BuildRunConfiguration(string repoRoot, string authorityPath, RemoteInferenceOptions remote, TimeSpan documentTimeout, string productionSemanticHash, string executionHarnessHash)
+    private static object BuildRunConfiguration(string repoRoot, string authorityPath, RemoteInferenceOptions remote, TimeSpan perAttemptTimeout, TimeSpan documentSafetyCeiling, string productionSemanticHash, string executionHarnessHash)
     {
         var sourceFiles = new[]
         {
@@ -479,6 +478,8 @@ public static class CanonicalDevV1BaselineRunner
             contextSize = remote.ContextSize,
             maxOutputTokens = remote.MaxOutputTokens,
             requestTimeoutSeconds = remote.RequestTimeoutSeconds,
+            perAttemptHardTimeoutSeconds = perAttemptTimeout.TotalSeconds,
+            documentSafetyCeilingSeconds = documentSafetyCeiling.TotalSeconds,
             transientRequestRetries = remote.TransientRequestRetries,
             missingIdRetries = remote.MissingIdRetries,
             maxParallelRequests = remote.MaxParallelRequests,
@@ -500,7 +501,7 @@ public static class CanonicalDevV1BaselineRunner
                     ? Sha256File(Path.Combine(repoRoot, path.Replace('/', Path.DirectorySeparatorChar)))
                     : "MISSING",
                 StringComparer.Ordinal),
-            timeoutPerAttemptSeconds = documentTimeout.TotalSeconds,
+            timeoutPerAttemptSeconds = perAttemptTimeout.TotalSeconds,
             maxAttemptsPerLogicalCall = MaxAttemptsPerLogicalCall,
             retryPolicy = "SEQUENTIAL_ATTEMPTS_ACCEPT_FIRST_VALID_BINDABLE_RESPONSE",
             goldReadsBeforePredictionFreeze = 0,

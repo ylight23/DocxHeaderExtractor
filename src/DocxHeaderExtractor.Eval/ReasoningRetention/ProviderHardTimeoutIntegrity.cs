@@ -89,6 +89,66 @@ public static class ProviderHardTimeoutIntegrity
             await stderr);
     }
 
+    /// <summary>
+    /// Isolated timeout for one physical provider attempt. Unlike the legacy document watchdog,
+    /// a timeout here is classified as ATTEMPT_TIMEOUT and has no shared document deadline.
+    /// </summary>
+    public static async Task<WatchdogResult> RunAttemptAsync(
+        string mode,
+        string workDirectory,
+        TimeSpan timeout,
+        CancellationToken cancellationToken = default)
+    {
+        Directory.CreateDirectory(workDirectory);
+        var markerPath = Path.Combine(workDirectory, "attempt-marker.json");
+        var entryAssembly = Assembly.GetEntryAssembly()?.Location
+            ?? throw new InvalidOperationException("CLI entry assembly is unavailable.");
+        var processPath = Environment.ProcessPath
+            ?? throw new InvalidOperationException("Current process path is unavailable.");
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = processPath,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+        };
+        startInfo.ArgumentList.Add(entryAssembly);
+        startInfo.ArgumentList.Add("a99-provider-hard-timeout-child");
+        startInfo.Environment["A99_HARD_TIMEOUT_CHILD_MODE"] = mode;
+        startInfo.Environment["A99_HARD_TIMEOUT_CHILD_MARKER"] = markerPath;
+
+        using var child = Process.Start(startInfo)
+            ?? throw new InvalidOperationException("Could not start isolated attempt process.");
+        var started = DateTimeOffset.UtcNow;
+        var stdout = child.StandardOutput.ReadToEndAsync();
+        var stderr = child.StandardError.ReadToEndAsync();
+        using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        deadline.CancelAfter(timeout);
+        var timedOut = false;
+        var interrupted = false;
+        try { await child.WaitForExitAsync(deadline.Token); }
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested) { timedOut = true; }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested) { interrupted = true; }
+        if (timedOut || interrupted)
+        {
+            try { if (!child.HasExited) child.Kill(entireProcessTree: true); } catch (InvalidOperationException) { } catch (System.ComponentModel.Win32Exception) { }
+            try { await child.WaitForExitAsync(CancellationToken.None); } catch { }
+        }
+        var completed = DateTimeOffset.UtcNow;
+        return new WatchdogResult(
+            "provider-attempt",
+            child.Id,
+            started,
+            completed,
+            timedOut ? "ATTEMPT_TIMEOUT" : interrupted ? "CAMPAIGN_CANCELLED" : child.ExitCode == 0 ? "COMPLETE" : "ATTEMPT_FAILURE",
+            timedOut || interrupted ? "PROCESS_TREE_KILL" : "NONE",
+            child.HasExited ? child.ExitCode : null,
+            File.Exists(markerPath) ? JsonDocument.Parse(await File.ReadAllTextAsync(markerPath)).RootElement.Clone() : null,
+            await stdout,
+            await stderr);
+    }
+
     public static async Task<WatchdogResult> RunWorkerAsync(
         string workerJobPath,
         string workDirectory,
@@ -182,6 +242,12 @@ public static class ProviderHardTimeoutIntegrity
         Directory.CreateDirectory(Path.GetDirectoryName(markerPath)!);
         if (mode == "normal")
         {
+            File.WriteAllText(markerPath, JsonSerializer.Serialize(new { status = "COMPLETE" }));
+            return 0;
+        }
+        if (mode == "healthy-delay")
+        {
+            Thread.Sleep(TimeSpan.FromMilliseconds(150));
             File.WriteAllText(markerPath, JsonSerializer.Serialize(new { status = "COMPLETE" }));
             return 0;
         }

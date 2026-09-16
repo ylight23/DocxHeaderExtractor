@@ -142,7 +142,8 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                 payloadHash,
                 payloadBytes.Length,
                 ProviderObservabilityHashing.EstimateTokens(constrainedUser + system),
-                body.max_tokens);
+                body.max_tokens,
+                TimeSpan.FromSeconds(_options.RequestTimeoutSeconds));
 
             using var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
             {
@@ -152,11 +153,19 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             request.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor");
             _options.DebugLog?.Invoke($"[OpenRouter] LLM REQUEST model={_options.Model} payload={JsonSerializer.Serialize(body)}");
 
+            using var attemptDeadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
+            attemptDeadline.CancelAfter(TimeSpan.FromSeconds(_options.RequestTimeoutSeconds));
+            using var timeoutTelemetry = attemptDeadline.Token.Register(() =>
+            {
+                if (!ct.IsCancellationRequested)
+                    telemetryAttempt?.Fail("ATTEMPT_TIMEOUT", new { timeoutSeconds = _options.RequestTimeoutSeconds });
+            });
+
             var sw = Stopwatch.StartNew();
-            using var response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
+            using var response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, attemptDeadline.Token);
             telemetryAttempt?.Event("RESPONSE_HEADERS_RECEIVED", new { status = (int)response.StatusCode });
             telemetryAttempt?.Event("FIRST_RESPONSE_BYTE", new { observable = false, note = "ReadAsStringAsync is the current transport boundary." });
-            var responseText = await response.Content.ReadAsStringAsync(ct);
+            var responseText = await response.Content.ReadAsStringAsync(attemptDeadline.Token);
             telemetryAttempt?.PersistRawResponse(responseText);
             telemetryAttempt?.Event("RESPONSE_BODY_COMPLETE", new { responseBytes = Encoding.UTF8.GetByteCount(responseText), responseHash = ProviderObservabilityHashing.Sha256Utf8(responseText) });
             sw.Stop();
@@ -277,7 +286,8 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             ProviderObservabilityHashing.Sha256Bytes(payloadBytes),
             payloadBytes.Length,
             ProviderObservabilityHashing.EstimateTokens(systemPrompt + "\n" + userMessage),
-            body.max_tokens);
+            body.max_tokens,
+            TimeSpan.FromSeconds(_options.RequestTimeoutSeconds));
 
         using var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
         {
@@ -287,10 +297,18 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         request.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor");
         _options.DebugLog?.Invoke($"[OpenRouter] LLM REQUEST model={_options.Model} payload={JsonSerializer.Serialize(body)}");
 
-        using var response = await _http.SendAsync(request, ct);
+        using var attemptDeadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        attemptDeadline.CancelAfter(TimeSpan.FromSeconds(_options.RequestTimeoutSeconds));
+        using var timeoutTelemetry = attemptDeadline.Token.Register(() =>
+        {
+            if (!ct.IsCancellationRequested)
+                telemetryAttempt?.Fail("ATTEMPT_TIMEOUT", new { timeoutSeconds = _options.RequestTimeoutSeconds });
+        });
+
+        using var response = await _http.SendAsync(request, attemptDeadline.Token);
         telemetryAttempt?.Event("RESPONSE_HEADERS_RECEIVED", new { status = (int)response.StatusCode });
         telemetryAttempt?.Event("FIRST_RESPONSE_BYTE", new { observable = false, note = "ReadAsStringAsync is the current transport boundary." });
-        var responseText = await response.Content.ReadAsStringAsync(ct);
+        var responseText = await response.Content.ReadAsStringAsync(attemptDeadline.Token);
         telemetryAttempt?.PersistRawResponse(responseText);
         telemetryAttempt?.Event("RESPONSE_BODY_COMPLETE", new { responseBytes = Encoding.UTF8.GetByteCount(responseText), responseHash = ProviderObservabilityHashing.Sha256Utf8(responseText) });
         _options.DebugLog?.Invoke(

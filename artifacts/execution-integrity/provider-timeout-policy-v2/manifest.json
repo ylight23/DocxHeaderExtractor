@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "provider-timeout-policy-v2-manifest-v1",
+  "status": "PER_ATTEMPT_TIMEOUT_POLICY_PROVEN",
+  "providerCalls": 0,
+  "goldReads": 0,
+  "modelCalls": 0,
+  "artifacts": [
+    {
+      "path": "report.md",
+      "sha256": "934544fa0710098c2356277ab842e1b683d8cd60916ff38d6201d06a402c6e75"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "746a1180e4965d0c6d370496755dda681ebd5ac3166b31815ae202bc5de97ee5"
+    }
+  ]
+}
