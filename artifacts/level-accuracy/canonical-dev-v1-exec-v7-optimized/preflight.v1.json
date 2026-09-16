@@ -1,0 +1,27 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-exec-v7-preflight-v1",
+  "status": "FROZEN_BEFORE_PROVIDER_CALL_1",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V7_OPTIMIZED",
+  "codeCheckpoint": "PRE_V7_RUNNER_TELEMETRY_CLOSURE",
+  "productionSemanticHash": "87e1834d03b5dce9c99d2e2b5acce29db38ef33125077bccfc6afd6bbcc48933",
+  "executionHarnessHash": "0edc7c3468fd294b72347273577159a72296d49b038fd38fbbe8dec5897d9403",
+  "sourceUniverseHash": "bdec3cea2bbb3d885f650a150d7325da4388c27641db53a0a33943d48cd868a3",
+  "runConfigurationHash": "86e3a622fd437127ccb18a091b0146df69c0be269decfa8a9ca02c6993a760f7",
+  "documentIds": [
+    "DOC-0001",
+    "DOC-0116"
+  ],
+  "documentsScheduled": 2,
+  "perAttemptHardTimeoutSeconds": 300,
+  "documentSafetyCeilingSeconds": 7200,
+  "roleTargetTokens": 5000,
+  "roleCap": 32,
+  "spanTargetTokens": 5000,
+  "spanCap": 16,
+  "goldReads": 0,
+  "historicalReads": 0,
+  "scoring": false,
+  "predictionReuse": false,
+  "frozenAt": "2026-09-16T16:55:40.7167348+00:00"
+}

@@ -1,0 +1,29 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-exec-v7-production-run-v1",
+  "status": "CANONICAL_DEV_V1_EXEC_V7_PHASE_1_COMPLETE",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V7_OPTIMIZED",
+  "productionSemanticHash": "87e1834d03b5dce9c99d2e2b5acce29db38ef33125077bccfc6afd6bbcc48933",
+  "executionHarnessHash": "0edc7c3468fd294b72347273577159a72296d49b038fd38fbbe8dec5897d9403",
+  "sourceUniverseHash": "bdec3cea2bbb3d885f650a150d7325da4388c27641db53a0a33943d48cd868a3",
+  "runConfigurationHash": "86e3a622fd437127ccb18a091b0146df69c0be269decfa8a9ca02c6993a760f7",
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "status": "COMPLETE",
+      "providerCalls": 4,
+      "responseCount": 4,
+      "elapsedMs": 11629.5622
+    },
+    {
+      "documentId": "DOC-0116",
+      "status": "COMPLETE",
+      "providerCalls": 219,
+      "responseCount": 219,
+      "elapsedMs": 2651436.6691
+    }
+  ],
+  "providerCalls": 223,
+  "goldReads": 0,
+  "scoring": false
+}

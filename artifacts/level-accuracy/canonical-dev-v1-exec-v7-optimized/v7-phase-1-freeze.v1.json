@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "a99-canonical-dev-v1-exec-v7-phase-1-freeze-v1",
+  "status": "CANONICAL_DEV_V1_EXEC_V7_PHASE_1_FROZEN",
+  "checkpoint": "7ca8bff6b874fb13d9dc943b7e53e492b490420a",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V7_OPTIMIZED",
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "status": "COMPLETE",
+      "providerCalls": 4,
+      "responses": 4,
+      "goldReads": 0,
+      "scoring": false
+    },
+    {
+      "documentId": "DOC-0116",
+      "status": "COMPLETE",
+      "providerCalls": 219,
+      "responses": 219,
+      "roleBatches": 171,
+      "roleProviderCalls": 190,
+      "roleRetryCalls": 19,
+      "roleRetryCallsDefinition": "derived roleProviderCalls - roleBatches; not independently classified as missing-ID retries",
+      "spanCalls": 28,
+      "hierarchyCalls": 1,
+      "goldReads": 0,
+      "scoring": false
+    }
+  ],
+  "notScheduled": [
+    "DOC-0122"
+  ],
+  "classification": "OPTIMIZATION_PARTIAL",
+  "scorable": false,
+  "goldReads": 0,
+  "scoring": false,
+  "providerCalls": 223,
+  "predictionReuse": false,
+  "hashAlgorithm": "SHA256",
+  "frozenConfiguration": {
+    "productionSemanticHash": "87e1834d03b5dce9c99d2e2b5acce29db38ef33125077bccfc6afd6bbcc48933",
+    "executionHarnessHash": "0edc7c3468fd294b72347273577159a72296d49b038fd38fbbe8dec5897d9403",
+    "sourceUniverseHash": "bdec3cea2bbb3d885f650a150d7325da4388c27641db53a0a33943d48cd868a3",
+    "runConfigurationHash": "86e3a622fd437127ccb18a091b0146df69c0be269decfa8a9ca02c6993a760f7",
+    "roleTargetTokens": 5000,
+    "roleCap": 32,
+    "spanTargetTokens": 5000,
+    "spanCap": 16,
+    "perAttemptHardTimeoutSeconds": 300,
+    "documentSafetyCeilingSeconds": 7200
+  },
+  "performance": {
+    "baseline": {
+      "documentId": "DOC-0116",
+      "v6TotalResponses": 352
+    },
+    "optimized": {
+      "documentId": "DOC-0116",
+      "providerCalls": 219,
+      "responses": 219,
+      "responseReduction": 133,
+      "responseReductionRatio": 0.37784090909090906,
+      "additionalProviderCallsObserved": 0,
+      "attemptTimeouts": 0,
+      "providerFailures": 0
+    }
+  },
+  "promotedArtifacts": [
+    {
+      "path": "DOC-0001/attempts.v1.json",
+      "sha256": "1106df35e8f3d0e458fb8ed4c919eaa5ca22f7488820d1a65d8140b1833aaf3b"
+    },
+    {
+      "path": "DOC-0001/prediction.v1.json",
+      "sha256": "f540f1f6ea937720ae4e309625f48a7bdf4377495e948dbe8e5657aae5c875f8"
+    },
+    {
+      "path": "DOC-0116/attempts.v1.json",
+      "sha256": "43db295013b94c4791bea3b5940ac27fb86ec0988537539c8c40366c03499c7b"
+    },
+    {
+      "path": "DOC-0116/prediction.v1.json",
+      "sha256": "042cc7206aa1cbd9a4904c8c8c1a6eef31848623bec5cb222d4500be284b7d0b"
+    },
+    {
+      "path": "v7-performance-audit.v1.json",
+      "sha256": "13a91d218c70bdb48c2bffd720d8cda7efaf28dd784fe7bb6e3da7a31e6ca10c"
+    }
+  ],
+  "controlArtifacts": [
+    {
+      "path": "preflight.v1.json",
+      "sha256": "ebe226042869e51c95e09d89e15aa87e62fa6e36a07e8fa2e6779dac17baf886"
+    },
+    {
+      "path": "production-run-manifest.json",
+      "sha256": "f4f9fe442eb08318d0105e050983da0a36394a860b1bcdf9a21e99f56e1f55ae"
+    },
+    {
+      "path": "run-configuration.json",
+      "sha256": "86e3a622fd437127ccb18a091b0146df69c0be269decfa8a9ca02c6993a760f7"
+    },
+    {
+      "path": "prediction-freeze-manifest.v1.json",
+      "sha256": "a3f874b996d86be1bc76f2bf1fe5785e330188ea8ce42c36512a15ae86f9a5ad"
+    }
+  ],
+  "rawProviderLineage": {
+    "preservedOnDisk": true,
+    "includedInThisCommit": false,
+    "authoritativePromotedArtifactsAreHashed": true
+  },
+  "firewall": {
+    "goldReads": 0,
+    "historicalReads": 0,
+    "scoring": false,
+    "providerCallsAfterRun": 0,
+    "doc0122Scheduled": false,
+    "sourceMutationAfterExecution": false
+  },
+  "nextPhase": "V2A_CONSERVATIVE_ROLE_PREFILTER_SHADOW_AUDIT",
+  "nextPhaseProviderCalls": 0
+}
