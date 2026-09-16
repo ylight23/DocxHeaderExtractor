@@ -1,0 +1,35 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-production-run-manifest-v1",
+  "status": "PRODUCTION_RUN_ABORTED",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V3",
+  "runConfigurationHash": "ab5f273abe8b27688f160ca9b75de8f6e08534a68d9b2e9c83c491eea0bfcd68",
+  "productionSemanticHash": "5f0eb27dfa44068fc60c69e0dcf8a05b14a061ed7526610e4592d68c268fe5e6",
+  "executionHarnessHash": "4d229435d73ad09bac7f9e8b756ca2c928a37a73d5e3a9500c402f0d40d038a5",
+  "productionSemanticCheckpoint": "40a0d5f",
+  "executionHarnessCheckpoint": "8f798dd",
+  "goldReadCount": 0,
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "status": "COMPLETE",
+      "predictionPath": "DOC-0001/prediction.v1.json",
+      "providerCalls": 5,
+      "predictedOccurrences": 7,
+      "predictedSemanticNodes": 7,
+      "predictedParentEdges": 6,
+      "childPid": 39212,
+      "elapsedMs": 23841.5385
+    },
+    {
+      "documentId": "DOC-0116",
+      "status": "DOCUMENT_TIMEOUT",
+      "terminationMode": "PROCESS_TREE_KILL",
+      "childPid": 30892,
+      "providerCalls": 0,
+      "error": "DOCUMENT_TIMEOUT"
+    }
+  ],
+  "providerCalls": 5,
+  "documentTimeoutSeconds": 300
+}

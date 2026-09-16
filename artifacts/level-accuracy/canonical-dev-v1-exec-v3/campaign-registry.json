@@ -1,0 +1,25 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-campaign-registry-v1",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaigns": [
+    {
+      "campaignId": "CANONICAL_DEV_V1_EXEC_V1",
+      "status": "BLOCKED_ON_PROVIDER_EXECUTION_INTEGRITY",
+      "scorable": false,
+      "reason": "MISSING_RUN_CONFIGURATION_HASH_FOR_EXISTING_ACCEPTED_PREDICTION"
+    },
+    {
+      "campaignId": "CANONICAL_DEV_V1_EXEC_V3",
+      "status": "BLOCKED_ON_PROVIDER_EXECUTION_INTEGRITY",
+      "scorable": false,
+      "reason": "DOCUMENT_TIMEOUT_DOC-0116",
+      "documentStates": {
+        "DOC-0001": "COMPLETE",
+        "DOC-0116": "DOCUMENT_TIMEOUT",
+        "remaining": "NOT_STARTED"
+      }
+    }
+  ],
+  "oldCampaignArtifactRoot": "artifacts/level-accuracy/canonical-dev-v1/",
+  "created": "2026-09-16T10:01:42.7846476+00:00"
+}
