@@ -12,3 +12,6 @@
 /eval/benchmark-n3/n3.4/*.sha256 -text
 # Historical D evidence is byte-preserved and not an active text diff surface.
 /archive/d-legacy/** -text -diff
+
+# V6 partial forensic snapshot is bound by the manifest's raw SHA-256 values.
+/artifacts/level-accuracy/canonical-dev-v1-exec-v6/partial-forensic-snapshot-v2/** -text -diff

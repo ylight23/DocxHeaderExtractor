@@ -62,6 +62,31 @@ public static class CanonicalDevV4Runner
         }
     }
 
+    public static async Task<int> RunV6Async(string repoRoot, CancellationToken ct = default)
+    {
+        var lifecycleStatus = await CanonicalWorkerLaunchIntegrityRunner.RunLifecycleSelfTestAsync(repoRoot, ct);
+        if (lifecycleStatus != 0) return 2;
+        var previous = new[]
+        {
+            Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_CAMPAIGN_ID"),
+            Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_OUTPUT_ROOT"),
+            Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_SEMANTIC_CHECKPOINT"),
+            Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_HARNESS_CHECKPOINT"),
+        };
+        Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_CAMPAIGN_ID", "CANONICAL_DEV_V1_EXEC_V6");
+        Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_OUTPUT_ROOT", "artifacts/level-accuracy/canonical-dev-v1-exec-v6");
+        Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_SEMANTIC_CHECKPOINT", "f1686fb");
+        Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_HARNESS_CHECKPOINT", "f1686fb");
+        try { return await RunAsync(repoRoot, ct); }
+        finally
+        {
+            Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_CAMPAIGN_ID", previous[0]);
+            Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_OUTPUT_ROOT", previous[1]);
+            Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_SEMANTIC_CHECKPOINT", previous[2]);
+            Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_HARNESS_CHECKPOINT", previous[3]);
+        }
+    }
+
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
     {
         repoRoot = Path.GetFullPath(repoRoot);

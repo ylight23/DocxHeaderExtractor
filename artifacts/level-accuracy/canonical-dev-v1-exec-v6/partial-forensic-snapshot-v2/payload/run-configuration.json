@@ -1,0 +1,136 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-exec_v6-run-configuration-v1",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V6",
+  "productionSemanticCheckpoint": "f1686fb",
+  "executionHarnessCheckpoint": "f1686fb",
+  "productionSemanticHash": "5f0eb27dfa44068fc60c69e0dcf8a05b14a061ed7526610e4592d68c268fe5e6",
+  "executionHarnessHash": "5006f345b63f3c32138e467a2d424b02c1a57b358edadd7f6e16d61711b9eb06",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.5-9b",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "contextSize": 32768,
+  "maxOutputTokens": 768,
+  "requestTimeoutSeconds": 300,
+  "perAttemptHardTimeoutSeconds": 300,
+  "documentSafetyCeilingSeconds": 7200,
+  "transientRequestRetries": 2,
+  "missingIdRetries": 2,
+  "maxParallelRequests": 1,
+  "promptHash": "PIPELINE_OWNED_PROMPTS_NOT_EXPOSED_AS_SINGLE_TEMPLATE",
+  "candidateGenerationHash": "4e794fec150c0257107c703bea3171572ac7be991ba0f2355857208642dfd7d2",
+  "parserHash": "1a1ff26dd05c8e7e2433de7a76c6e3fa9067c8220edb3b68fdf31c1c82664fbb",
+  "bindingHash": "2af0d3d6a08e48561513c816055d2a1e9723054a64f367bd67de14242b3347fd",
+  "sourceUniverseHash": "630802610cb096e07d658e684645cd45137548435176bdf4980fabcaca5730d4",
+  "sourceManifest": [
+    {
+      "documentId": "DOC-0001",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\bench\\01-style-chuan.docx",
+      "expectedSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "actualSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0116",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_100\\02_hop_dong_mua_sam\\031_WB_Framework_Agreement_Consulting_2025.docx",
+      "expectedSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "actualSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0122",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_100\\02_hop_dong_mua_sam\\037_WB_Plant_TwoStage_2025.docx",
+      "expectedSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+      "actualSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0185",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\01_phap_quy\\005_Luat_Dau_thau_22-2023-QH15_EN.docx",
+      "expectedSha256": "f842861bb7966cd94c8ce12f2064709936c064b7fa5825d133bd77f6ffb5f895",
+      "actualSha256": "f842861bb7966cd94c8ce12f2064709936c064b7fa5825d133bd77f6ffb5f895",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0200",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\01_phap_quy\\020_TT_133-2016_Che_do_ke_toan_SME.docx",
+      "expectedSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835",
+      "actualSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0201",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\01_phap_quy\\021_TT_78-2021_Hoa_don_dien_tu.docx",
+      "expectedSha256": "cb6c4e0878a899688fc1054b268fed1a8e6cb45c36b350d36c7448efecd8964d",
+      "actualSha256": "cb6c4e0878a899688fc1054b268fed1a8e6cb45c36b350d36c7448efecd8964d",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0205",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\01_phap_quy\\025_ND_47-2020_Chia_se_du_lieu_so.docx",
+      "expectedSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "actualSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0216",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\036_WB_Plant_SingleStage_2025.docx",
+      "expectedSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+      "actualSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0219",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\039_WB_EPC_Turnkey_SingleStage_2025.docx",
+      "expectedSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+      "actualSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0243",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\04_giao_trinh\\063_Advanced_Linear_Algebra.docx",
+      "expectedSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+      "actualSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0252",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\072_ICP_TAG_Minutes_Mar_2025.docx",
+      "expectedSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+      "actualSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0256",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\076_ICP_IACG08_Minutes_2023.docx",
+      "expectedSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+      "actualSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0258",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\078_ICP_IACG07_Minutes_May_2023.docx",
+      "expectedSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "actualSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0264",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\084_Luat_Chung_khoan_2019_EN.docx",
+      "expectedSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+      "actualSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+      "exists": true
+    },
+    {
+      "documentId": "DOC-0265",
+      "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\085_Luat_Nha_o_2023_EN.docx",
+      "expectedSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6",
+      "actualSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6",
+      "exists": true
+    }
+  ],
+  "retryPolicy": "PIPELINE_FROZEN_PROVIDER_RETRY_POLICY",
+  "goldReadsBeforePredictionFreeze": 0,
+  "historicalLevelReadsBeforePredictionFreeze": 0,
+  "historicalParentReadsBeforePredictionFreeze": 0
+}

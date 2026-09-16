@@ -1,0 +1,5 @@
+
+         
+
+         
+{"id":"gen-1789569645-ptIjM90SgmpVPd6x2pQG","object":"chat.completion","created":1789569645,"model":"qwen/qwen3.5-9b","provider":"DeepInfra","system_fingerprint":null,"service_tier":null,"choices":[{"index":0,"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","message":{"role":"assistant","content":"{\"blocks\":[{\"id\":\"body[1]/p[1286]\",\"heading_span\":{\"start\":0,\"end\":121}},{\"id\":\"body[1]/p[1293]\",\"heading_span\":{\"start\":0,\"end\":43}}]}","refusal":null,"reasoning":null}}],"usage":{"prompt_tokens":880,"completion_tokens":59,"total_tokens":939,"cost":0.00009685,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"cache_write_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":0.00009685,"upstream_inference_prompt_cost":0.000088,"upstream_inference_completions_cost":0.00000885},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0,"audio_tokens":0}}}

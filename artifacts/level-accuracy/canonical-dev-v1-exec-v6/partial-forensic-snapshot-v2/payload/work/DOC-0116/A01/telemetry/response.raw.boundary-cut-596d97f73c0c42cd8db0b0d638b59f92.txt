@@ -1,0 +1,13 @@
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1789568010-vO2aEKmNKEGXGqhIZphY","object":"chat.completion","created":1789568010,"model":"qwen/qwen3.5-9b","provider":"Venice","system_fingerprint":null,"service_tier":null,"choices":[{"index":0,"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","message":{"role":"assistant","content":"{\"blocks\":[{\"id\":\"body[1]/tbl[19]/tr[2]/tc[2]/p[12]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/tbl[19]/tr[2]/tc[2]/p[13]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/tbl[19]/tr[2]/tc[2]/p[14]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/tbl[19]/tr[2]/tc[2]/p[15]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/tbl[19]/tr[2]/tc[2]/p[16]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/tbl[19]/tr[2]/tc[2]/p[17]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/tbl[19]/tr[2]/tc[2]/p[18]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/tbl[19]/tr[2]/tc[2]/p[19]\",\"role\":\"body_text\",\"confidence\":1.0}]}","refusal":null,"reasoning":null}}],"usage":{"prompt_tokens":5952,"completion_tokens":293,"total_tokens":6245,"cost":0.00063915,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"cache_write_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":0.00063915,"upstream_inference_prompt_cost":0.0005952,"upstream_inference_completions_cost":0.00004395},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0,"audio_tokens":0}}}

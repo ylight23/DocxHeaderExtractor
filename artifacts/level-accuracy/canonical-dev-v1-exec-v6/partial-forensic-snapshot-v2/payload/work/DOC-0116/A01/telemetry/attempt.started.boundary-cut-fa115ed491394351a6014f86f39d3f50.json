@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "ATTEMPT_STARTED",
+  "timestamp": "2026-09-16T14:03:04.1381443\u002B00:00",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V6",
+  "documentId": "DOC-0116",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-6adbbaa39597418d9e56fd739f32fd32",
+  "callOrdinal": 87,
+  "attemptId": "boundary-cut-fa115ed491394351a6014f86f39d3f50",
+  "requestHash": "b5495d0f89c407d87c9706afb3e34d28276e3499e5c9afca3fdf221d59eaa8ad",
+  "requestBytes": 19397,
+  "estimatedInputTokens": 3823,
+  "maxOutputTokens": 608,
+  "attemptStartedAt": "2026-09-16T14:03:04.1363359+00:00",
+  "attemptDeadlineAt": "2026-09-16T14:08:04.1363359+00:00"
+}

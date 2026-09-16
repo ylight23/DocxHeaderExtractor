@@ -1,0 +1,17 @@
+{
+  "processStarted": false,
+  "executable": "C:\\DocxHeaderExtractor-a99-closed-loop\\src\\DocxHeaderExtractor.Cli\\bin\\Release\\net9.0\\dhx.exe",
+  "arguments": [
+    "a99-canonical-dev-v1-worker"
+  ],
+  "workingDirectory": "",
+  "documentId": "DOC-0116",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V6",
+  "runConfigurationHash": "a8d2f174801c49321b197038c1a2a0c67668937a644ef22d781c1d5257d46a2b",
+  "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "environmentVariables": [
+    "A99_CANONICAL_DEV_WORKER_JOB"
+  ],
+  "secretsPersisted": false,
+  "timestamp": "2026-09-16T13:46:17.722703+00:00"
+}

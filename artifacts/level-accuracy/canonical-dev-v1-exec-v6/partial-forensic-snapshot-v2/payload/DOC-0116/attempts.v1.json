@@ -1,0 +1,5704 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-attempts-v1",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V6",
+  "documentId": "DOC-0116",
+  "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "requests": [
+    {
+      "requestId": "semantic-role:c179dff82e49acee",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1]",
+        "body[1]/p[4]",
+        "body[1]/p[5]",
+        "body[1]/p[7]",
+        "body[1]/p[12]",
+        "body[1]/p[25]/txbxContent[1]/p[1]",
+        "body[1]/p[25]/txbxContent[2]/p[1]",
+        "body[1]/p[26]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:1c629f3121344215",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[28]",
+        "body[1]/p[30]",
+        "body[1]/p[31]",
+        "body[1]/p[33]",
+        "body[1]/p[34]",
+        "body[1]/p[35]",
+        "body[1]/p[39]",
+        "body[1]/p[41]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:be9c93ee1432a990",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[28]",
+        "body[1]/p[30]",
+        "body[1]/p[31]",
+        "body[1]/p[33]",
+        "body[1]/p[34]",
+        "body[1]/p[35]",
+        "body[1]/p[39]",
+        "body[1]/p[41]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:881101e909b822cf",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[42]",
+        "body[1]/p[43]",
+        "body[1]/p[44]",
+        "body[1]/p[45]",
+        "body[1]/p[46]",
+        "body[1]/p[47]",
+        "body[1]/p[48]",
+        "body[1]/p[49]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:57a9355bfbb499fe",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[50]",
+        "body[1]/p[51]",
+        "body[1]/p[52]",
+        "body[1]/p[54]",
+        "body[1]/p[55]",
+        "body[1]/p[56]",
+        "body[1]/p[57]",
+        "body[1]/p[58]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:44d305e4f43e1588",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[61]",
+        "body[1]/p[63]",
+        "body[1]/p[67]",
+        "body[1]/p[69]",
+        "body[1]/p[71]",
+        "body[1]/p[73]",
+        "body[1]/p[75]",
+        "body[1]/p[77]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:4e9b6c6c03d1f798",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[79]",
+        "body[1]/p[81]",
+        "body[1]/p[83]",
+        "body[1]/p[85]",
+        "body[1]/p[87]",
+        "body[1]/p[89]",
+        "body[1]/p[91]",
+        "body[1]/p[93]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:bf31fdc498f98d23",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[95]",
+        "body[1]/p[101]",
+        "body[1]/p[105]",
+        "body[1]/p[106]",
+        "body[1]/p[109]",
+        "body[1]/p[111]",
+        "body[1]/p[112]",
+        "body[1]/p[113]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:46b2557f0ee5b0cc",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[114]",
+        "body[1]/p[115]",
+        "body[1]/p[116]",
+        "body[1]/p[117]",
+        "body[1]/p[123]",
+        "body[1]/p[125]",
+        "body[1]/p[126]",
+        "body[1]/p[127]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:f42859e00c4583d9",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[128]",
+        "body[1]/p[129]",
+        "body[1]/p[130]",
+        "body[1]/p[131]",
+        "body[1]/p[132]",
+        "body[1]/p[142]",
+        "body[1]/p[145]",
+        "body[1]/p[147]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:f424e14a920e8713",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[150]",
+        "body[1]/p[151]",
+        "body[1]/p[152]",
+        "body[1]/p[153]",
+        "body[1]/p[154]",
+        "body[1]/p[157]",
+        "body[1]/p[159]",
+        "body[1]/p[161]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:2d2ff299cd283470",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[162]",
+        "body[1]/p[163]",
+        "body[1]/p[164]",
+        "body[1]/p[165]",
+        "body[1]/p[166]",
+        "body[1]/p[167]",
+        "body[1]/p[168]",
+        "body[1]/p[169]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:dffb8eeb741a50c3",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[170]",
+        "body[1]/p[171]",
+        "body[1]/p[172]",
+        "body[1]/p[173]",
+        "body[1]/p[174]",
+        "body[1]/p[175]",
+        "body[1]/p[176]",
+        "body[1]/p[177]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e89166d1c2c695f1",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[178]",
+        "body[1]/p[179]",
+        "body[1]/p[180]",
+        "body[1]/p[181]",
+        "body[1]/p[183]",
+        "body[1]/p[184]",
+        "body[1]/p[185]",
+        "body[1]/p[186]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:59de7f6fe722d7f3",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[188]",
+        "body[1]/p[190]",
+        "body[1]/p[191]",
+        "body[1]/p[192]",
+        "body[1]/p[193]",
+        "body[1]/p[194]",
+        "body[1]/p[195]",
+        "body[1]/p[200]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:4a43cda040f7d5a6",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[188]",
+        "body[1]/p[190]",
+        "body[1]/p[191]",
+        "body[1]/p[192]",
+        "body[1]/p[193]",
+        "body[1]/p[194]",
+        "body[1]/p[195]",
+        "body[1]/p[200]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e345ef20c15d2cbe",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[202]",
+        "body[1]/p[204]",
+        "body[1]/p[205]",
+        "body[1]/p[206]",
+        "body[1]/p[207]",
+        "body[1]/p[208]",
+        "body[1]/p[209]",
+        "body[1]/p[210]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:99a88d7fa7ae058a",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[211]",
+        "body[1]/p[212]",
+        "body[1]/p[213]",
+        "body[1]/p[214]",
+        "body[1]/p[215]",
+        "body[1]/p[216]",
+        "body[1]/p[217]",
+        "body[1]/p[218]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:dfe2eb8ec6c4edee",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[219]",
+        "body[1]/p[220]",
+        "body[1]/p[221]",
+        "body[1]/p[222]",
+        "body[1]/p[223]",
+        "body[1]/p[224]",
+        "body[1]/p[225]",
+        "body[1]/p[226]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:807c25dff49e2ef5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[227]",
+        "body[1]/p[228]",
+        "body[1]/p[229]",
+        "body[1]/p[230]",
+        "body[1]/p[231]",
+        "body[1]/p[232]",
+        "body[1]/p[233]",
+        "body[1]/p[234]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:1a66b01bb83efd1e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[235]",
+        "body[1]/p[236]",
+        "body[1]/p[237]",
+        "body[1]/p[238]",
+        "body[1]/p[239]",
+        "body[1]/p[240]",
+        "body[1]/p[241]",
+        "body[1]/p[242]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:58b9a12185734806",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[245]",
+        "body[1]/p[247]",
+        "body[1]/p[248]",
+        "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[4]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:16c904e8c3a67df6",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[5]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[6]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[7]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[8]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[9]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[10]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[11]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[12]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:4682c227489d80f4",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[13]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[14]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[15]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[16]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[17]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[18]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[19]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[20]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:c2b087ee0cac45fb",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[21]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[22]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[23]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[24]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[25]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[26]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[27]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[28]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ee61a11d40b3ce2c",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[29]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[30]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[31]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[32]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[33]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[34]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[35]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[36]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:be1144e033832b44",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[29]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[30]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[31]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[32]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[33]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[34]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[35]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[36]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ad47a40c03899399",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[37]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[38]",
+        "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[2]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[2]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[2]/tc[2]/p[4]",
+        "body[1]/tbl[1]/tr[3]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:382e023191eba604",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[3]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[3]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[6]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:40fc93e38d12f3ab",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[6]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[7]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[8]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[8]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[8]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[9]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:71d347d6196150e8",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[9]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[9]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[10]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[10]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[11]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[11]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[11]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[11]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:c9c706e1085f89bf",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[12]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[12]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[13]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[13]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[13]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[13]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[14]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[14]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:347ec73f9cfc6175",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[15]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[16]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[17]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[17]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[18]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[18]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[19]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:be6d86323adb567c",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[19]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[19]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[19]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[20]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[21]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[21]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[21]/tc[2]/p[2]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:5ad810ef7b199cbc",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[21]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[22]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[22]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[22]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[22]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[23]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[23]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[23]/tc[2]/p[2]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:267cb493224afcdb",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[24]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[24]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[25]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[25]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[25]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[25]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[25]/tc[2]/p[4]",
+        "body[1]/tbl[1]/tr[26]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:74affd1272396778",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[25]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d005a3b603f32fcb",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[26]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[26]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[26]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[27]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[28]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[28]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[29]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:b761c8f43c2e93cc",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[30]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[31]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[31]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[31]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[31]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[31]/tc[2]/p[4]",
+        "body[1]/tbl[1]/tr[31]/tc[2]/p[5]",
+        "body[1]/tbl[1]/tr[31]/tc[2]/p[6]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:74b1227218990a95",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[31]/tc[2]/p[7]",
+        "body[1]/tbl[1]/tr[31]/tc[2]/p[8]",
+        "body[1]/tbl[1]/tr[32]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[32]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[32]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[32]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[33]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[33]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:7dda5ab13e7d6737",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[33]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[34]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[34]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[35]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[35]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[36]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[37]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[37]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:504b26d3dd834034",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[37]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[38]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[38]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[38]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[39]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[39]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[40]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[40]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:22cb64f1ca50a066",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[41]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[41]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[41]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[42]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[42]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[43]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[43]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[43]/tc[2]/p[2]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:33d8653c375c90f7",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[41]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[41]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[41]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[42]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[42]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[43]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[43]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[43]/tc[2]/p[2]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:7bd545bf7d14817e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[43]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[43]/tc[2]/p[4]",
+        "body[1]/tbl[1]/tr[43]/tc[2]/p[5]",
+        "body[1]/tbl[1]/tr[43]/tc[2]/p[6]",
+        "body[1]/tbl[1]/tr[43]/tc[2]/p[7]",
+        "body[1]/tbl[1]/tr[43]/tc[2]/p[8]",
+        "body[1]/tbl[1]/tr[44]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[44]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:5fbbf5df29bdd6f5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[45]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[46]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[47]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[47]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[48]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[48]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d78792787b57bcd8",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[45]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[46]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[47]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[47]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[48]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[48]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:08dcd908f602069e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[48]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[48]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[48]/tc[2]/p[4]",
+        "body[1]/tbl[1]/tr[49]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[49]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[49]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[50]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ec227be6290a9ebe",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[4]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[5]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[6]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[7]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[8]",
+        "body[1]/tbl[1]/tr[51]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:7a28f6323479f06e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[2]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[3]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[4]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[5]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[6]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[7]",
+        "body[1]/tbl[1]/tr[50]/tc[2]/p[8]",
+        "body[1]/tbl[1]/tr[51]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e9a72fb8a191a5c9",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[51]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[52]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[52]/tc[2]/p[1]",
+        "body[1]/p[250]",
+        "body[1]/p[251]",
+        "body[1]/p[252]",
+        "body[1]/p[253]",
+        "body[1]/tbl[2]/tr[1]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:8d71162b621974f6",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[51]/tc[2]/p[1]",
+        "body[1]/tbl[1]/tr[52]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[52]/tc[2]/p[1]",
+        "body[1]/p[250]",
+        "body[1]/p[251]",
+        "body[1]/p[252]",
+        "body[1]/p[253]",
+        "body[1]/tbl[2]/tr[1]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:75c7728c920fa196",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[1]/tc[1]/p[2]",
+        "body[1]/tbl[2]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[3]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[3]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:314c58e853c303ae",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[4]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[4]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[4]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[4]/tc[2]/p[5]",
+        "body[1]/tbl[2]/tr[4]/tc[2]/p[6]",
+        "body[1]/tbl[2]/tr[5]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:8cbd1b34b10e65c7",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[6]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[6]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[6]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[6]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[6]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[6]/tc[2]/p[5]",
+        "body[1]/tbl[2]/tr[6]/tc[2]/p[6]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:f13973772b9d6e7f",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[7]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[7]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[7]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[7]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[7]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[7]/tc[2]/p[5]",
+        "body[1]/tbl[2]/tr[7]/tc[2]/p[6]",
+        "body[1]/tbl[2]/tr[7]/tc[2]/p[7]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:189135b3fa010105",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[7]/tc[2]/p[8]",
+        "body[1]/tbl[2]/tr[7]/tc[2]/p[9]",
+        "body[1]/tbl[2]/tr[8]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[8]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[8]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[9]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[2]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:83c73d6976aede9f",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[5]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[6]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[7]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[9]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[10]",
+        "body[1]/tbl[2]/tr[10]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:0015f4ddc8c3dc1a",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[10]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[11]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[11]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[11]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[11]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[11]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[11]/tc[2]/p[5]",
+        "body[1]/tbl[2]/tr[11]/tc[2]/p[6]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:19fa79b424735508",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[11]/tc[2]/p[7]",
+        "body[1]/tbl[2]/tr[11]/tc[2]/p[8]",
+        "body[1]/tbl[2]/tr[12]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[12]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[12]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[13]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[13]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[14]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:156e3c41418f0f45",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[14]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[15]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[16]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[16]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[16]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[16]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[16]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[16]/tc[2]/p[5]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:7f46c886f32bd7a5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[16]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:1c1d2b4eadfabd28",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[16]/tc[2]/p[6]",
+        "body[1]/tbl[2]/tr[16]/tc[2]/p[7]",
+        "body[1]/tbl[2]/tr[16]/tc[2]/p[8]",
+        "body[1]/tbl[2]/tr[16]/tc[2]/p[9]",
+        "body[1]/tbl[2]/tr[17]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:a90a3eab798e0797",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[5]",
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[6]",
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[7]",
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[8]",
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[9]",
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[10]",
+        "body[1]/tbl[2]/tr[17]/tc[2]/p[11]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:74980150105dea02",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[18]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[18]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[18]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[18]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[19]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[19]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[19]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[20]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:9aef2cb9cb2f4ea2",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[20]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[21]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[21]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[21]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[21]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[22]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[22]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[22]/tc[2]/p[2]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:2525b8acaf3c5610",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[22]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[22]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[23]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[23]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[23]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[24]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[25]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[25]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:b34a66ebd4968540",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[25]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[26]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[26]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[26]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[27]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[27]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[27]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[27]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:cc046349acf5b8c5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[27]/tc[2]/p[5]",
+        "body[1]/tbl[2]/tr[27]/tc[2]/p[6]",
+        "body[1]/tbl[2]/tr[27]/tc[2]/p[7]",
+        "body[1]/tbl[2]/tr[28]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[4]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e50eba294e86ebc8",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[5]",
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[6]",
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[7]",
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[8]",
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[9]",
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[10]",
+        "body[1]/tbl[2]/tr[28]/tc[2]/p[11]",
+        "body[1]/tbl[2]/tr[29]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:c5a2cff0a6768bfb",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[29]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[30]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[6]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[8]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ea92d4cd8525ef21",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[9]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[10]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[11]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[12]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[13]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[14]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[15]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[16]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:7c79e9ab1daadb4f",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[17]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[18]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[20]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[21]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[23]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[24]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[26]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[28]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:9e212106cf53cda3",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[17]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[18]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[20]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[21]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[23]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[24]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[26]",
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[28]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:81c28ae17dff7052",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[30]/tc[2]/p[29]",
+        "body[1]/tbl[2]/tr[31]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[32]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[32]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[32]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[32]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[33]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[33]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:f0fe215d735733bd",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[33]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[34]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[5]",
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[6]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:5c7e6268359174e3",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[7]",
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[8]",
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[9]",
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[10]",
+        "body[1]/tbl[2]/tr[34]/tc[2]/p[11]",
+        "body[1]/p[256]",
+        "body[1]/p[257]",
+        "body[1]/p[258]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:2b6d4cabd18b1b6e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[3]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[5]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:3dd0f4e542e66d0e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[3]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[6]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[7]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[7]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[8]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[9]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:f1bf9a1e6b4acda6",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[3]/tr[9]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[10]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[10]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[11]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[11]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[12]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[12]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[13]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:fdf557c379688681",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[3]/tr[13]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[14]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[14]/tc[2]/p[1]",
+        "body[1]/p[290]",
+        "body[1]/p[291]",
+        "body[1]/p[293]",
+        "body[1]/p[296]",
+        "body[1]/p[298]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:0cba9a14be0f5434",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[301]",
+        "body[1]/p[303]",
+        "body[1]/p[305]",
+        "body[1]/p[307]",
+        "body[1]/p[309]",
+        "body[1]/p[311]",
+        "body[1]/p[312]",
+        "body[1]/p[313]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:57f1750bc9c786c1",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[314]",
+        "body[1]/p[315]",
+        "body[1]/p[316]",
+        "body[1]/p[317]",
+        "body[1]/p[318]",
+        "body[1]/p[319]",
+        "body[1]/p[320]",
+        "body[1]/p[321]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:07ca9ffae13676dc",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[322]",
+        "body[1]/p[323]",
+        "body[1]/p[324]",
+        "body[1]/p[326]",
+        "body[1]/p[328]",
+        "body[1]/p[330]",
+        "body[1]/p[332]",
+        "body[1]/p[333]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:bd37bfd6c0fd6ab5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[334]",
+        "body[1]/p[335]",
+        "body[1]/p[336]",
+        "body[1]/p[337]",
+        "body[1]/p[338]",
+        "body[1]/p[339]",
+        "body[1]/p[340]",
+        "body[1]/p[342]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ef5b0d6f897ea0a3",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[345]",
+        "body[1]/p[347]",
+        "body[1]/p[350]",
+        "body[1]/p[352]",
+        "body[1]/p[354]",
+        "body[1]/p[356]",
+        "body[1]/p[358]",
+        "body[1]/p[361]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e6e427160269f035",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[362]",
+        "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[4]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[4]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[4]/tr[1]/tc[4]/p[1]",
+        "body[1]/tbl[4]/tr[1]/tc[5]/p[1]",
+        "body[1]/tbl[4]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[4]/tr[3]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:96c3136e9dc7b981",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[4]/tr[3]/tc[3]/p[1]",
+        "body[1]/tbl[4]/tr[3]/tc[4]/p[1]",
+        "body[1]/tbl[4]/tr[3]/tc[5]/p[1]",
+        "body[1]/tbl[4]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[4]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[4]/tr[5]/tc[3]/p[1]",
+        "body[1]/tbl[4]/tr[5]/tc[4]/p[1]",
+        "body[1]/tbl[4]/tr[5]/tc[5]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:9a1eb1ec07115124",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[367]",
+        "body[1]/p[369]",
+        "body[1]/p[371]",
+        "body[1]/p[381]",
+        "body[1]/p[383]",
+        "body[1]/p[386]",
+        "body[1]/p[388]",
+        "body[1]/p[391]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ce89d1197a761b9e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[401]",
+        "body[1]/p[403]",
+        "body[1]/tbl[5]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[5]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[5]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[5]/tr[2]/tc[3]/p[1]",
+        "body[1]/tbl[5]/tr[2]/tc[4]/p[1]",
+        "body[1]/tbl[5]/tr[2]/tc[5]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:6d0204e1679e2453",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[5]/tr[2]/tc[6]/p[1]",
+        "body[1]/tbl[5]/tr[2]/tc[7]/p[1]",
+        "body[1]/tbl[5]/tr[2]/tc[8]/p[1]",
+        "body[1]/tbl[5]/tr[2]/tc[9]/p[1]",
+        "body[1]/tbl[5]/tr[2]/tc[10]/p[1]",
+        "body[1]/tbl[5]/tr[2]/tc[11]/p[1]",
+        "body[1]/tbl[5]/tr[2]/tc[12]/p[1]",
+        "body[1]/tbl[5]/tr[2]/tc[13]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:617697cc4697858d",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[5]/tr[2]/tc[14]/p[1]",
+        "body[1]/tbl[5]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[5]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[5]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[5]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[5]/tr[6]/tc[2]/p[1]",
+        "body[1]/tbl[5]/tr[7]/tc[2]/p[1]",
+        "body[1]/tbl[5]/tr[8]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:857184bc1d7be792",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[5]/tr[11]/tc[1]/p[1]",
+        "body[1]/tbl[5]/tr[11]/tc[2]/p[1]",
+        "body[1]/p[408]",
+        "body[1]/p[409]",
+        "body[1]/p[410]",
+        "body[1]/p[412]",
+        "body[1]/p[414]",
+        "body[1]/tbl[6]/tr[1]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:231a608b43867000",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[6]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[6]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[6]/tr[1]/tc[4]/p[1]",
+        "body[1]/tbl[6]/tr[1]/tc[4]/p[2]",
+        "body[1]/tbl[6]/tr[2]/tc[3]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[5]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[7]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[9]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:2c0638bd24cd65fb",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[6]/tr[2]/tc[10]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[12]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[16]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[17]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[18]/p[1]",
+        "body[1]/tbl[6]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[6]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[6]/tr[4]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ebce83671c69aca1",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[6]/tr[2]/tc[10]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[12]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[16]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[17]/p[1]",
+        "body[1]/tbl[6]/tr[2]/tc[18]/p[1]",
+        "body[1]/tbl[6]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[6]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[6]/tr[4]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d3ce2145360e2edc",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[6]/tr[4]/tc[3]/p[1]",
+        "body[1]/tbl[6]/tr[4]/tc[4]/p[1]",
+        "body[1]/tbl[6]/tr[4]/tc[5]/p[1]",
+        "body[1]/tbl[6]/tr[4]/tc[7]/p[1]",
+        "body[1]/tbl[6]/tr[4]/tc[9]/p[1]",
+        "body[1]/tbl[6]/tr[5]/tc[4]/p[1]",
+        "body[1]/tbl[6]/tr[5]/tc[5]/p[1]",
+        "body[1]/tbl[6]/tr[5]/tc[7]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:bebef26051874216",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[6]/tr[5]/tc[9]/p[1]",
+        "body[1]/tbl[6]/tr[6]/tc[1]/p[1]",
+        "body[1]/tbl[6]/tr[8]/tc[1]/p[1]",
+        "body[1]/tbl[6]/tr[12]/tc[1]/p[1]",
+        "body[1]/tbl[6]/tr[14]/tc[12]/p[1]",
+        "body[1]/p[417]",
+        "body[1]/p[418]",
+        "body[1]/p[419]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:9151e9f84fadd068",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[421]",
+        "body[1]/p[422]",
+        "body[1]/p[426]",
+        "body[1]/p[427]",
+        "body[1]/p[429]",
+        "body[1]/tbl[7]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[7]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[7]/tr[2]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:88286f124cc8952d",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[7]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[7]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[7]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[7]/tr[4]/tc[1]/p[1]",
+        "body[1]/p[433]",
+        "body[1]/p[434]",
+        "body[1]/p[436]",
+        "body[1]/tbl[8]/tr[1]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:7ccde8a029af0382",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[8]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[8]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[8]/tr[1]/tc[4]/p[1]",
+        "body[1]/tbl[8]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[8]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[8]/tr[2]/tc[2]/p[3]",
+        "body[1]/p[439]",
+        "body[1]/p[441]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:9d8b944a47946d78",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[442]",
+        "body[1]/p[444]",
+        "body[1]/tbl[9]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[9]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[9]/tr[2]/tc[1]/p[1]",
+        "body[1]/p[448]",
+        "body[1]/p[450]",
+        "body[1]/p[451]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:b137a6ce0122b671",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[455]",
+        "body[1]/p[457]",
+        "body[1]/p[460]",
+        "body[1]/p[462]",
+        "body[1]/p[463]",
+        "body[1]/p[464]",
+        "body[1]/p[468]",
+        "body[1]/p[470]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ea68cfa521d60858",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[472]",
+        "body[1]/p[472]/txbxContent[1]/p[1]",
+        "body[1]/p[472]/txbxContent[1]/p[2]",
+        "body[1]/p[472]/txbxContent[1]/p[3]",
+        "body[1]/p[472]/txbxContent[2]/p[1]",
+        "body[1]/p[472]/txbxContent[2]/p[2]",
+        "body[1]/p[472]/txbxContent[2]/p[3]",
+        "body[1]/p[472]/txbxContent[3]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:85f9055ca1f204a3",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[472]/txbxContent[3]/p[2]",
+        "body[1]/p[472]/txbxContent[3]/p[4]",
+        "body[1]/p[472]/txbxContent[4]/p[1]",
+        "body[1]/p[472]/txbxContent[4]/p[2]",
+        "body[1]/p[472]/txbxContent[4]/p[4]",
+        "body[1]/p[473]",
+        "body[1]/p[474]",
+        "body[1]/p[475]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:3273c5076946ef1d",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[476]",
+        "body[1]/p[477]",
+        "body[1]/p[478]",
+        "body[1]/p[479]",
+        "body[1]/p[480]",
+        "body[1]/p[481]",
+        "body[1]/p[482]",
+        "body[1]/p[483]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:9699a7f0b3e0dd76",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[484]",
+        "body[1]/p[485]",
+        "body[1]/p[486]",
+        "body[1]/p[487]",
+        "body[1]/p[488]",
+        "body[1]/p[489]",
+        "body[1]/p[490]",
+        "body[1]/p[491]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:cd2f5de5265e14c6",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[492]",
+        "body[1]/p[493]",
+        "body[1]/p[494]",
+        "body[1]/p[495]",
+        "body[1]/p[496]",
+        "body[1]/p[497]",
+        "body[1]/p[498]",
+        "body[1]/p[500]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:667eea476caa1b45",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[501]",
+        "body[1]/p[502]",
+        "body[1]/p[503]",
+        "body[1]/p[504]",
+        "body[1]/p[505]",
+        "body[1]/p[506]",
+        "body[1]/p[507]",
+        "body[1]/p[508]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:f9d1b9cfbd51bab3",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[501]",
+        "body[1]/p[502]",
+        "body[1]/p[503]",
+        "body[1]/p[504]",
+        "body[1]/p[505]",
+        "body[1]/p[506]",
+        "body[1]/p[507]",
+        "body[1]/p[508]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:7872ea9ea4b634ad",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[510]",
+        "body[1]/p[511]",
+        "body[1]/p[512]",
+        "body[1]/p[515]",
+        "body[1]/p[517]",
+        "body[1]/p[518]",
+        "body[1]/p[519]",
+        "body[1]/p[520]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:469a229833ae8e37",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[521]",
+        "body[1]/p[522]",
+        "body[1]/p[523]",
+        "body[1]/p[524]",
+        "body[1]/p[525]",
+        "body[1]/p[526]",
+        "body[1]/p[527]",
+        "body[1]/p[528]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:0e845ba7cad3b18c",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[529]",
+        "body[1]/p[530]",
+        "body[1]/p[534]",
+        "body[1]/p[535]",
+        "body[1]/p[537]",
+        "body[1]/p[538]",
+        "body[1]/tbl[10]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[10]/tr[2]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:2a21fb3e1024f4ad",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[10]/tr[2]/tc[1]/p[2]",
+        "body[1]/tbl[10]/tr[2]/tc[1]/p[3]",
+        "body[1]/tbl[10]/tr[2]/tc[1]/p[4]",
+        "body[1]/tbl[10]/tr[3]/tc[1]/p[1]",
+        "body[1]/p[540]",
+        "body[1]/p[540]/txbxContent[1]/p[1]",
+        "body[1]/p[540]/txbxContent[1]/p[3]",
+        "body[1]/p[540]/txbxContent[1]/p[5]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e68a3a55d5d73ae5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[540]/txbxContent[1]/p[7]",
+        "body[1]/p[540]/txbxContent[1]/p[8]",
+        "body[1]/p[540]/txbxContent[1]/p[9]",
+        "body[1]/p[540]/txbxContent[2]/p[1]",
+        "body[1]/p[540]/txbxContent[2]/p[3]",
+        "body[1]/p[540]/txbxContent[2]/p[5]",
+        "body[1]/p[540]/txbxContent[2]/p[7]",
+        "body[1]/p[540]/txbxContent[2]/p[8]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ee919cfc63868221",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[540]/txbxContent[2]/p[9]",
+        "body[1]/p[542]",
+        "body[1]/p[543]",
+        "body[1]/p[545]",
+        "body[1]/p[547]",
+        "body[1]/p[549]",
+        "body[1]/p[551]",
+        "body[1]/tbl[11]/tr[1]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:5ad3af7249dfa7c7",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[11]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[11]/tr[1]/tc[2]/p[2]",
+        "body[1]/tbl[11]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[11]/tr[1]/tc[3]/p[2]",
+        "body[1]/tbl[11]/tr[1]/tc[4]/p[1]",
+        "body[1]/tbl[11]/tr[1]/tc[4]/p[2]",
+        "body[1]/tbl[11]/tr[2]/tc[1]/p[1]",
+        "body[1]/p[553]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:251b338420c9c481",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[555]",
+        "body[1]/p[557]",
+        "body[1]/p[558]",
+        "body[1]/p[559]",
+        "body[1]/p[562]",
+        "body[1]/p[564]",
+        "body[1]/p[565]",
+        "body[1]/p[566]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:938f48e1f6bb7617",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[567]",
+        "body[1]/p[569]",
+        "body[1]/p[571]",
+        "body[1]/p[573]",
+        "body[1]/p[575]",
+        "body[1]/p[577]",
+        "body[1]/p[582]",
+        "body[1]/p[583]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:9887b8cd05a6c942",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[586]",
+        "body[1]/p[588]",
+        "body[1]/p[590]",
+        "body[1]/p[592]",
+        "body[1]/p[596]",
+        "body[1]/p[597]",
+        "body[1]/p[600]",
+        "body[1]/p[601]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:615c057e91e14b0b",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[602]",
+        "body[1]/p[603]",
+        "body[1]/p[604]",
+        "body[1]/p[605]",
+        "body[1]/p[606]",
+        "body[1]/p[607]",
+        "body[1]/p[608]",
+        "body[1]/p[609]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:03a395bef871a726",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[610]",
+        "body[1]/p[611]",
+        "body[1]/p[612]",
+        "body[1]/p[613]",
+        "body[1]/p[614]",
+        "body[1]/p[615]",
+        "body[1]/p[616]",
+        "body[1]/p[619]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:72f18e3005528a81",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[620]",
+        "body[1]/p[622]",
+        "body[1]/p[624]",
+        "body[1]/p[626]",
+        "body[1]/p[628]",
+        "body[1]/p[630]",
+        "body[1]/p[632]",
+        "body[1]/p[634]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:02fad7b843ab1a32",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[635]",
+        "body[1]/p[636]",
+        "body[1]/p[638]",
+        "body[1]/p[640]",
+        "body[1]/p[642]",
+        "body[1]/p[645]",
+        "body[1]/p[646]",
+        "body[1]/p[647]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ae470e1bc9ae99a1",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[648]",
+        "body[1]/p[649]",
+        "body[1]/p[651]",
+        "body[1]/p[653]",
+        "body[1]/p[655]",
+        "body[1]/p[660]",
+        "body[1]/p[667]",
+        "body[1]/p[671]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d1bcf736c2be4ba7",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[673]",
+        "body[1]/p[674]",
+        "body[1]/p[675]",
+        "body[1]/p[676]",
+        "body[1]/p[677]",
+        "body[1]/p[678]",
+        "body[1]/p[679]",
+        "body[1]/p[681]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:b99d700357b0734f",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[682]",
+        "body[1]/p[683]",
+        "body[1]/p[684]",
+        "body[1]/p[685]",
+        "body[1]/p[686]",
+        "body[1]/p[687]",
+        "body[1]/p[689]",
+        "body[1]/p[690]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:581a882845f8fbdb",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[691]",
+        "body[1]/p[692]",
+        "body[1]/p[693]",
+        "body[1]/p[695]",
+        "body[1]/tbl[12]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[12]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[12]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[12]/tr[2]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:289b97bf66314e53",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[12]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[12]/tr[2]/tc[3]/p[1]",
+        "body[1]/tbl[12]/tr[2]/tc[3]/p[2]",
+        "body[1]/tbl[12]/tr[2]/tc[3]/p[3]",
+        "body[1]/tbl[12]/tr[2]/tc[3]/p[4]",
+        "body[1]/tbl[12]/tr[2]/tc[3]/p[5]",
+        "body[1]/tbl[12]/tr[2]/tc[3]/p[6]",
+        "body[1]/tbl[12]/tr[3]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:798acca579798fdc",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[12]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[12]/tr[3]/tc[3]/p[1]",
+        "body[1]/tbl[12]/tr[3]/tc[3]/p[2]",
+        "body[1]/tbl[12]/tr[3]/tc[3]/p[3]",
+        "body[1]/tbl[12]/tr[3]/tc[3]/p[4]",
+        "body[1]/tbl[12]/tr[3]/tc[3]/p[5]",
+        "body[1]/tbl[12]/tr[3]/tc[3]/p[6]",
+        "body[1]/tbl[12]/tr[4]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:bd3745890638a687",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[12]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[12]/tr[4]/tc[3]/p[1]",
+        "body[1]/tbl[12]/tr[4]/tc[3]/p[2]",
+        "body[1]/tbl[12]/tr[4]/tc[3]/p[3]",
+        "body[1]/tbl[12]/tr[4]/tc[3]/p[4]",
+        "body[1]/tbl[12]/tr[4]/tc[3]/p[5]",
+        "body[1]/tbl[12]/tr[4]/tc[3]/p[6]",
+        "body[1]/tbl[12]/tr[5]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:39f5a88de02c6df0",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[12]/tr[5]/tc[2]/p[1]",
+        "body[1]/p[697]",
+        "body[1]/tbl[13]/tr[1]/tc[1]/p[1]",
+        "body[1]/p[698]",
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[2]",
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[3]",
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[4]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:582a083187a10ab1",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[5]",
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[6]",
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[7]",
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[8]",
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[9]",
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[10]",
+        "body[1]/tbl[14]/tr[1]/tc[1]/p[11]",
+        "body[1]/p[699]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ecce42ae6a805e80",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[2]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[3]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[4]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[5]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[6]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[7]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[8]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:3137745928980294",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[9]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[10]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[11]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[12]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[13]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[14]",
+        "body[1]/tbl[15]/tr[1]/tc[1]/p[15]",
+        "body[1]/p[700]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:992fa1d4acac6338",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[16]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[16]/tr[1]/tc[1]/p[2]",
+        "body[1]/tbl[16]/tr[1]/tc[1]/p[3]",
+        "body[1]/p[702]",
+        "body[1]/p[703]",
+        "body[1]/tbl[17]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[17]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[17]/tr[3]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:83d3ce2c78a154ac",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[17]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[17]/tr[5]/tc[1]/p[1]",
+        "body[1]/p[707]",
+        "body[1]/p[708]",
+        "body[1]/p[712]",
+        "body[1]/p[713]",
+        "body[1]/p[716]",
+        "body[1]/p[717]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:3c0851b4ee4ce9ec",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[719]",
+        "body[1]/p[720]",
+        "body[1]/tbl[18]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[18]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[18]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[18]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[18]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[18]/tr[6]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:46eee90feb773053",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[723]",
+        "body[1]/p[724]",
+        "body[1]/p[726]",
+        "body[1]/p[727]",
+        "body[1]/p[728]",
+        "body[1]/p[729]",
+        "body[1]/p[730]",
+        "body[1]/p[731]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:68da1031b45b21bf",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[732]",
+        "body[1]/p[733]",
+        "body[1]/p[734]",
+        "body[1]/p[735]",
+        "body[1]/p[736]",
+        "body[1]/p[737]",
+        "body[1]/p[738]",
+        "body[1]/p[739]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:2992c25cfd76203b",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[740]",
+        "body[1]/p[741]",
+        "body[1]/p[742]",
+        "body[1]/p[743]",
+        "body[1]/p[744]",
+        "body[1]/p[745]",
+        "body[1]/p[746]",
+        "body[1]/p[747]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:71932eaeb0fb7074",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[748]",
+        "body[1]/p[749]",
+        "body[1]/p[750]",
+        "body[1]/p[751]",
+        "body[1]/p[752]",
+        "body[1]/p[753]",
+        "body[1]/p[755]",
+        "body[1]/p[756]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:6cf056760e9c61fd",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[757]",
+        "body[1]/p[758]",
+        "body[1]/p[759]",
+        "body[1]/p[760]",
+        "body[1]/p[761]",
+        "body[1]/p[762]",
+        "body[1]/p[763]",
+        "body[1]/p[764]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:4b8ae546d5858b8f",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[765]",
+        "body[1]/p[766]",
+        "body[1]/p[768]",
+        "body[1]/p[769]",
+        "body[1]/p[770]",
+        "body[1]/p[771]",
+        "body[1]/p[772]",
+        "body[1]/p[774]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:fb87a4aec88bc139",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[776]",
+        "body[1]/p[777]",
+        "body[1]/tbl[19]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:fb447d8f02c344e0",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[4]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[5]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[6]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[7]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[9]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[10]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[11]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ff4583c943d7fdaf",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[12]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[13]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[14]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[15]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[16]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[17]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[18]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[19]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:a04670f1ee2e2158",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[20]",
+        "body[1]/tbl[19]/tr[2]/tc[2]/p[21]",
+        "body[1]/tbl[19]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[3]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[4]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[5]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:09ef6e7c135883eb",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[6]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[7]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[9]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[10]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[11]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[12]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[13]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:3e18cdcfd9489219",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[6]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[7]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[9]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[10]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[11]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[12]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[13]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:4619cde4653f7170",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[14]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[15]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[16]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[17]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[18]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[19]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[20]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[21]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:8714e1e012892ef3",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[22]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[23]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[24]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[25]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[26]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[27]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[28]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[29]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:db3b2afcdd70ba93",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[30]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[31]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[32]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[33]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[34]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[35]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[36]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[37]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d120070f6ccc1d2b",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[38]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[39]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[40]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[41]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[42]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[43]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[44]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[45]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:213d7a596a25b69f",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[46]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[47]",
+        "body[1]/tbl[19]/tr[3]/tc[2]/p[48]",
+        "body[1]/tbl[19]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[4]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[4]/tc[2]/p[3]",
+        "body[1]/tbl[19]/tr[4]/tc[2]/p[4]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:923f52e839b7d42f",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[4]/tc[2]/p[5]",
+        "body[1]/tbl[19]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[3]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[4]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[5]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[6]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:5a521cabfdc3f73b",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[7]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[9]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[10]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[11]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[12]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[13]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[14]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:1488b0d935b27062",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[15]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[16]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[17]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[18]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[19]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[20]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[21]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[22]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d7a590f5d35150cf",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[23]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[24]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[25]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[26]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[27]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[28]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[29]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[30]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:1468d60020783170",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[31]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[32]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[33]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[34]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[35]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[36]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[37]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[38]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:30fc425b616115d5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[39]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[40]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[41]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[42]",
+        "body[1]/tbl[19]/tr[6]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:4b9a26fec4eab9ad",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[4]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[5]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[6]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[7]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[9]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[10]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[11]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:a46253d56293e72e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[12]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[13]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[14]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[15]",
+        "body[1]/tbl[19]/tr[7]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:73d276bc57eeab42",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[4]",
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[5]",
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[6]",
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[7]",
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[8]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[8]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[9]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ae92a3506fab8dd7",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[9]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[9]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[10]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[10]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[10]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[10]/tc[2]/p[3]",
+        "body[1]/tbl[19]/tr[11]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[11]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:21049e85daec8f91",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[12]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[12]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[13]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[4]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[6]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[7]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:bfd865e37d47bf6b",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[9]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[10]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[11]",
+        "body[1]/tbl[19]/tr[14]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:40b9ecbe49628b03",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[9]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[10]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[11]",
+        "body[1]/tbl[19]/tr[14]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:9f6aa675f1dddb4f",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[4]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[5]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[6]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[7]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[9]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[10]",
+        "body[1]/tbl[19]/tr[14]/tc[2]/p[11]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e5137d4142ac744c",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[15]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[15]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[15]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[16]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[16]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[16]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[17]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[17]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:75bdffbf8d034474",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[15]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[15]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[15]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[16]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[16]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[16]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[17]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[17]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ef6b38273929c458",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[17]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[18]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[18]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[19]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[19]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[19]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[20]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[20]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:7de643c609d93fc7",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[21]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[21]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[22]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[22]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[23]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[23]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[23]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[23]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:44216cba56bbe4e1",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[23]/tc[2]/p[4]",
+        "body[1]/tbl[19]/tr[23]/tc[2]/p[5]",
+        "body[1]/tbl[19]/tr[23]/tc[2]/p[6]",
+        "body[1]/tbl[19]/tr[23]/tc[2]/p[7]",
+        "body[1]/tbl[19]/tr[23]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[23]/tc[2]/p[9]",
+        "body[1]/tbl[19]/tr[24]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[24]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:6d32b9f97f0b68ee",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[24]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[24]/tc[2]/p[3]",
+        "body[1]/p[780]",
+        "body[1]/p[781]",
+        "body[1]/p[782]",
+        "body[1]/p[783]",
+        "body[1]/p[784]",
+        "body[1]/p[785]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:625be593c10fdf70",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[786]",
+        "body[1]/p[787]",
+        "body[1]/p[788]",
+        "body[1]/p[789]",
+        "body[1]/p[790]",
+        "body[1]/p[791]",
+        "body[1]/p[792]",
+        "body[1]/p[793]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:63c6f62e2209ed71",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[794]",
+        "body[1]/p[795]",
+        "body[1]/p[796]",
+        "body[1]/p[797]",
+        "body[1]/p[798]",
+        "body[1]/p[799]",
+        "body[1]/p[802]",
+        "body[1]/p[804]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:fb6217a1a73ed31e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[806]",
+        "body[1]/p[811]",
+        "body[1]/p[813]",
+        "body[1]/p[816]",
+        "body[1]/p[817]",
+        "body[1]/p[819]",
+        "body[1]/p[820]",
+        "body[1]/p[821]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:6b5fc905db3559a6",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[822]",
+        "body[1]/p[823]",
+        "body[1]/p[825]",
+        "body[1]/p[827]",
+        "body[1]/p[828]",
+        "body[1]/p[829]",
+        "body[1]/p[830]",
+        "body[1]/p[831]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:3e71970d1b7cb8c0",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[832]",
+        "body[1]/p[833]",
+        "body[1]/p[834]",
+        "body[1]/p[835]",
+        "body[1]/p[836]",
+        "body[1]/p[837]",
+        "body[1]/p[838]",
+        "body[1]/p[839]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:114e3f67def21466",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[840]",
+        "body[1]/p[841]",
+        "body[1]/p[842]",
+        "body[1]/p[843]",
+        "body[1]/p[844]",
+        "body[1]/p[845]",
+        "body[1]/p[846]",
+        "body[1]/p[847]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:32b7dbad595b8dad",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[848]",
+        "body[1]/p[850]",
+        "body[1]/p[852]",
+        "body[1]/p[853]",
+        "body[1]/tbl[20]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[20]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[20]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[20]/tr[2]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:5a55769346019572",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[20]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[20]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[20]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[20]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[20]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[20]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[20]/tr[6]/tc[1]/p[1]",
+        "body[1]/tbl[20]/tr[6]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:4c5c57d8d333aef5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[21]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[21]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[21]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[21]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[21]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[21]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[21]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[21]/tr[4]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:37177fc180fb78dc",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[21]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[21]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[21]/tr[6]/tc[1]/p[1]",
+        "body[1]/tbl[21]/tr[6]/tc[2]/p[1]",
+        "body[1]/tbl[22]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[22]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[22]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[22]/tr[2]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:22d624b5fa305549",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[22]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[22]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[23]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[23]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[23]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[23]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[23]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[23]/tr[3]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:c6ff796d672bd56d",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[859]",
+        "body[1]/p[860]",
+        "body[1]/p[861]",
+        "body[1]/p[862]",
+        "body[1]/p[864]",
+        "body[1]/p[865]",
+        "body[1]/p[866]",
+        "body[1]/p[867]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:a5604a728fba63e5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[868]",
+        "body[1]/p[869]",
+        "body[1]/p[870]",
+        "body[1]/p[871]",
+        "body[1]/p[872]",
+        "body[1]/p[873]",
+        "body[1]/p[874]",
+        "body[1]/p[875]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:1bc28563e750cd1e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[876]",
+        "body[1]/p[877]",
+        "body[1]/p[878]",
+        "body[1]/p[879]",
+        "body[1]/p[880]",
+        "body[1]/p[881]",
+        "body[1]/p[882]",
+        "body[1]/p[883]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:751a00a48ae0321d",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[884]",
+        "body[1]/p[885]",
+        "body[1]/p[886]",
+        "body[1]/p[887]",
+        "body[1]/p[888]",
+        "body[1]/p[889]",
+        "body[1]/p[890]",
+        "body[1]/p[891]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:66605dc5d1167640",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[892]",
+        "body[1]/p[893]",
+        "body[1]/p[895]",
+        "body[1]/p[897]",
+        "body[1]/p[899]",
+        "body[1]/p[900]",
+        "body[1]/p[901]",
+        "body[1]/p[902]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:bd5fb18b23aabddb",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[903]",
+        "body[1]/p[904]",
+        "body[1]/p[905]",
+        "body[1]/p[906]",
+        "body[1]/p[907]",
+        "body[1]/p[909]",
+        "body[1]/p[911]",
+        "body[1]/p[913]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:fb1222e59f471c9b",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[915]",
+        "body[1]/p[916]",
+        "body[1]/p[917]",
+        "body[1]/p[918]",
+        "body[1]/p[919]",
+        "body[1]/p[920]",
+        "body[1]/p[921]",
+        "body[1]/p[922]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:eb916dd005e648a5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[923]",
+        "body[1]/p[924]",
+        "body[1]/p[925]",
+        "body[1]/tbl[24]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[24]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[24]/tr[3]/tc[1]/p[1]",
+        "body[1]/p[927]",
+        "body[1]/p[929]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:db2f5b359a654b1d",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[930]",
+        "body[1]/p[931]",
+        "body[1]/p[935]",
+        "body[1]/tbl[25]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[25]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[25]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[25]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[25]/tr[3]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:f33cc5e25fdd3060",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[25]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[25]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[25]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[25]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[25]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[26]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[26]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[26]/tr[2]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:fc7245067b4c38a5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[26]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[26]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[26]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[26]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[26]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[27]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[27]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[27]/tr[2]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d39214b841a65ac6",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[27]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[27]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[27]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[28]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[28]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[28]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[28]/tr[2]/tc[2]/p[1]",
+        "body[1]/p[942]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:a5815f16046d8db5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[943]",
+        "body[1]/p[944]",
+        "body[1]/p[945]",
+        "body[1]/p[946]",
+        "body[1]/p[947]",
+        "body[1]/p[948]",
+        "body[1]/p[950]",
+        "body[1]/p[951]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:0bf88758f2c41f8c",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[952]",
+        "body[1]/p[953]",
+        "body[1]/p[954]",
+        "body[1]/p[955]",
+        "body[1]/p[956]",
+        "body[1]/p[957]",
+        "body[1]/p[958]",
+        "body[1]/p[959]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:be02b370373d343c",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[960]",
+        "body[1]/p[961]",
+        "body[1]/p[962]",
+        "body[1]/p[964]",
+        "body[1]/p[965]",
+        "body[1]/p[969]",
+        "body[1]/p[971]",
+        "body[1]/p[972]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e69de11b066e4794",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[974]",
+        "body[1]/p[976]",
+        "body[1]/p[977]",
+        "body[1]/p[978]",
+        "body[1]/p[979]",
+        "body[1]/p[980]",
+        "body[1]/p[981]",
+        "body[1]/p[982]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:cbb709075cef5492",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[983]",
+        "body[1]/p[984]",
+        "body[1]/p[985]",
+        "body[1]/p[987]",
+        "body[1]/p[989]",
+        "body[1]/p[991]",
+        "body[1]/p[992]",
+        "body[1]/p[993]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:fec46e54df78d803",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[994]",
+        "body[1]/p[995]",
+        "body[1]/p[998]",
+        "body[1]/p[999]",
+        "body[1]/p[1003]",
+        "body[1]/p[1004]",
+        "body[1]/p[1006]",
+        "body[1]/p[1007]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:9205b8c45bae59c1",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1008]",
+        "body[1]/p[1009]",
+        "body[1]/p[1014]",
+        "body[1]/p[1015]",
+        "body[1]/tbl[29]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[29]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[29]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[29]/tr[2]/tc[3]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e3148c6a4126019f",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[29]/tr[2]/tc[4]/p[1]",
+        "body[1]/tbl[29]/tr[2]/tc[5]/p[1]",
+        "body[1]/tbl[29]/tr[2]/tc[6]/p[1]",
+        "body[1]/tbl[29]/tr[2]/tc[7]/p[1]",
+        "body[1]/tbl[29]/tr[2]/tc[8]/p[1]",
+        "body[1]/tbl[29]/tr[2]/tc[9]/p[1]",
+        "body[1]/tbl[29]/tr[2]/tc[10]/p[1]",
+        "body[1]/tbl[29]/tr[2]/tc[11]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:9547055cbaac7c4d",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[29]/tr[2]/tc[12]/p[1]",
+        "body[1]/tbl[29]/tr[2]/tc[13]/p[1]",
+        "body[1]/tbl[29]/tr[2]/tc[14]/p[1]",
+        "body[1]/tbl[29]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[29]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[29]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[29]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[29]/tr[6]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e6ded630ccc074fd",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[29]/tr[7]/tc[2]/p[1]",
+        "body[1]/tbl[29]/tr[8]/tc[2]/p[1]",
+        "body[1]/tbl[29]/tr[10]/tc[1]/p[1]",
+        "body[1]/tbl[29]/tr[10]/tc[2]/p[1]",
+        "body[1]/p[1020]",
+        "body[1]/p[1021]",
+        "body[1]/p[1022]",
+        "body[1]/p[1024]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:037d3cf10e8ffee0",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1025]",
+        "body[1]/tbl[30]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[30]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[30]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[30]/tr[1]/tc[4]/p[1]",
+        "body[1]/tbl[30]/tr[1]/tc[4]/p[2]",
+        "body[1]/tbl[30]/tr[2]/tc[3]/p[1]",
+        "body[1]/tbl[30]/tr[2]/tc[5]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d7dd77fa70e5dd1a",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[30]/tr[2]/tc[7]/p[1]",
+        "body[1]/tbl[30]/tr[2]/tc[9]/p[1]",
+        "body[1]/tbl[30]/tr[2]/tc[10]/p[1]",
+        "body[1]/tbl[30]/tr[2]/tc[12]/p[1]",
+        "body[1]/tbl[30]/tr[2]/tc[16]/p[1]",
+        "body[1]/tbl[30]/tr[2]/tc[17]/p[1]",
+        "body[1]/tbl[30]/tr[2]/tc[18]/p[1]",
+        "body[1]/tbl[30]/tr[3]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:409ad7f20d27aa28",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[30]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[30]/tr[4]/tc[3]/p[1]",
+        "body[1]/tbl[30]/tr[4]/tc[4]/p[1]",
+        "body[1]/tbl[30]/tr[4]/tc[5]/p[1]",
+        "body[1]/tbl[30]/tr[4]/tc[7]/p[1]",
+        "body[1]/tbl[30]/tr[4]/tc[9]/p[1]",
+        "body[1]/tbl[30]/tr[5]/tc[4]/p[1]",
+        "body[1]/tbl[30]/tr[5]/tc[5]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:3eac1e9432174ae5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[30]/tr[5]/tc[7]/p[1]",
+        "body[1]/tbl[30]/tr[5]/tc[9]/p[1]",
+        "body[1]/tbl[30]/tr[6]/tc[1]/p[1]",
+        "body[1]/tbl[30]/tr[8]/tc[1]/p[1]",
+        "body[1]/tbl[30]/tr[10]/tc[1]/p[1]",
+        "body[1]/tbl[30]/tr[12]/tc[12]/p[1]",
+        "body[1]/tbl[30]/tr[13]/tc[1]/p[1]",
+        "body[1]/tbl[30]/tr[14]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e07e31da430b2c89",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[30]/tr[14]/tc[4]/p[1]",
+        "body[1]/tbl[30]/tr[15]/tc[4]/p[1]",
+        "body[1]/tbl[30]/tr[16]/tc[1]/p[1]",
+        "body[1]/tbl[30]/tr[18]/tc[1]/p[1]",
+        "body[1]/tbl[30]/tr[20]/tc[12]/p[1]",
+        "body[1]/tbl[30]/tr[21]/tc[12]/p[1]",
+        "body[1]/p[1028]",
+        "body[1]/p[1029]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:c4e80e10e7061db9",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[30]/tr[14]/tc[4]/p[1]",
+        "body[1]/tbl[30]/tr[15]/tc[4]/p[1]",
+        "body[1]/tbl[30]/tr[16]/tc[1]/p[1]",
+        "body[1]/tbl[30]/tr[18]/tc[1]/p[1]",
+        "body[1]/tbl[30]/tr[20]/tc[12]/p[1]",
+        "body[1]/tbl[30]/tr[21]/tc[12]/p[1]",
+        "body[1]/p[1028]",
+        "body[1]/p[1029]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e72f6397f2a721b0",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1032]",
+        "body[1]/p[1033]",
+        "body[1]/p[1036]",
+        "body[1]/p[1037]",
+        "body[1]/p[1039]",
+        "body[1]/tbl[31]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[31]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[31]/tr[2]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:90923929b6a579e3",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1032]",
+        "body[1]/p[1033]",
+        "body[1]/p[1036]",
+        "body[1]/p[1037]",
+        "body[1]/p[1039]",
+        "body[1]/tbl[31]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[31]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[31]/tr[2]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:315100cd41fb6dc9",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[31]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[31]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[31]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[31]/tr[4]/tc[1]/p[1]",
+        "body[1]/p[1042]",
+        "body[1]/p[1043]",
+        "body[1]/p[1044]",
+        "body[1]/tbl[32]/tr[1]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:c7c3b21c9b0ef22c",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[32]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[32]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[32]/tr[1]/tc[4]/p[1]",
+        "body[1]/tbl[32]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[32]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[32]/tr[2]/tc[2]/p[3]",
+        "body[1]/p[1045]",
+        "body[1]/p[1046]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:91c61adec571e0e7",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1047]",
+        "body[1]/tbl[33]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[33]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[33]/tr[2]/tc[1]/p[1]",
+        "body[1]/p[1049]",
+        "body[1]/p[1050]",
+        "body[1]/p[1051]",
+        "body[1]/p[1052]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:c24df46829a3641e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1054]",
+        "body[1]/p[1055]",
+        "body[1]/p[1057]",
+        "body[1]/p[1058]",
+        "body[1]/p[1059]",
+        "body[1]/p[1060]",
+        "body[1]/tbl[34]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[34]/tr[1]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:63c695e8ea70a609",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[34]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[34]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[34]/tr[3]/tc[3]/p[1]",
+        "body[1]/tbl[34]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[34]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[34]/tr[6]/tc[1]/p[1]",
+        "body[1]/tbl[34]/tr[7]/tc[1]/p[1]",
+        "body[1]/tbl[34]/tr[8]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:c740ead136bd7fbb",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[34]/tr[8]/tc[1]/p[2]",
+        "body[1]/tbl[34]/tr[9]/tc[1]/p[1]",
+        "body[1]/tbl[34]/tr[10]/tc[1]/p[1]",
+        "body[1]/tbl[34]/tr[11]/tc[1]/p[1]",
+        "body[1]/tbl[34]/tr[12]/tc[1]/p[1]",
+        "body[1]/tbl[34]/tr[13]/tc[1]/p[1]",
+        "body[1]/p[1063]",
+        "body[1]/p[1064]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:b3e1766ae1ec0424",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1066]",
+        "body[1]/tbl[35]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[35]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[35]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[35]/tr[1]/tc[4]/p[1]",
+        "body[1]/tbl[35]/tr[1]/tc[5]/p[1]",
+        "body[1]/tbl[35]/tr[1]/tc[6]/p[1]",
+        "body[1]/tbl[35]/tr[1]/tc[7]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:00fca09fa21c0c68",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[35]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[35]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[35]/tr[3]/tc[4]/p[1]",
+        "body[1]/tbl[35]/tr[4]/tc[4]/p[1]",
+        "body[1]/tbl[35]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[35]/tr[8]/tc[2]/p[1]",
+        "body[1]/tbl[35]/tr[9]/tc[1]/p[1]",
+        "body[1]/tbl[35]/tr[9]/tc[4]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:f59cdc645e9d2cbd",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[35]/tr[10]/tc[1]/p[1]",
+        "body[1]/tbl[35]/tr[10]/tc[4]/p[1]",
+        "body[1]/tbl[35]/tr[14]/tc[5]/p[1]",
+        "body[1]/p[1070]",
+        "body[1]/p[1071]",
+        "body[1]/p[1073]",
+        "body[1]/p[1074]",
+        "body[1]/p[1075]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:aed7f991f9fe76b4",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1076]",
+        "body[1]/p[1077]",
+        "body[1]/p[1078]",
+        "body[1]/p[1079]",
+        "body[1]/p[1080]",
+        "body[1]/p[1082]",
+        "body[1]/p[1083]",
+        "body[1]/p[1085]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:08de46badbd4eaed",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1086]",
+        "body[1]/p[1087]",
+        "body[1]/p[1088]",
+        "body[1]/p[1089]",
+        "body[1]/p[1094]",
+        "body[1]/p[1095]",
+        "body[1]/p[1096]",
+        "body[1]/p[1098]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:fecd9cf06773f0e5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1086]",
+        "body[1]/p[1087]",
+        "body[1]/p[1088]",
+        "body[1]/p[1089]",
+        "body[1]/p[1094]",
+        "body[1]/p[1095]",
+        "body[1]/p[1096]",
+        "body[1]/p[1098]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:6280ce4e6adf4cc8",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1099]",
+        "body[1]/p[1100]",
+        "body[1]/p[1101]",
+        "body[1]/p[1102]",
+        "body[1]/p[1103]",
+        "body[1]/p[1104]",
+        "body[1]/p[1107]",
+        "body[1]/p[1110]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:e0113dd443a54aaa",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1112]",
+        "body[1]/p[1114]",
+        "body[1]/p[1116]",
+        "body[1]/p[1117]",
+        "body[1]/p[1118]",
+        "body[1]/tbl[36]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[36]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[36]/tr[1]/tc[3]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:de9f35d1cb32adc4",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[36]/tr[1]/tc[4]/p[1]",
+        "body[1]/tbl[36]/tr[1]/tc[5]/p[1]",
+        "body[1]/tbl[36]/tr[1]/tc[6]/p[1]",
+        "body[1]/tbl[36]/tr[1]/tc[7]/p[1]",
+        "body[1]/tbl[36]/tr[1]/tc[8]/p[1]",
+        "body[1]/tbl[36]/tr[1]/tc[9]/p[1]",
+        "body[1]/tbl[36]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[36]/tr[2]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:073a5417004c7e83",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[36]/tr[2]/tc[3]/p[1]",
+        "body[1]/tbl[36]/tr[2]/tc[4]/p[1]",
+        "body[1]/tbl[36]/tr[2]/tc[5]/p[1]",
+        "body[1]/tbl[36]/tr[2]/tc[6]/p[1]",
+        "body[1]/tbl[36]/tr[2]/tc[7]/p[1]",
+        "body[1]/tbl[36]/tr[2]/tc[8]/p[1]",
+        "body[1]/tbl[36]/tr[2]/tc[9]/p[1]",
+        "body[1]/tbl[36]/tr[2]/tc[10]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:4e2c75e4dee1e306",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[36]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[36]/tr[8]/tc[1]/p[1]",
+        "body[1]/p[1120]",
+        "body[1]/p[1121]",
+        "body[1]/p[1122]",
+        "body[1]/p[1125]",
+        "body[1]/p[1126]",
+        "body[1]/p[1128]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:b7b3cc17ce1db95e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[37]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[37]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[37]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[37]/tr[1]/tc[4]/p[1]",
+        "body[1]/tbl[37]/tr[1]/tc[5]/p[1]",
+        "body[1]/tbl[37]/tr[1]/tc[6]/p[1]",
+        "body[1]/tbl[37]/tr[1]/tc[7]/p[1]",
+        "body[1]/tbl[37]/tr[2]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:b23f11800529ac13",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[37]/tr[2]/tc[3]/p[1]",
+        "body[1]/tbl[37]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[37]/tr[3]/tc[3]/p[1]",
+        "body[1]/tbl[37]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[37]/tr[4]/tc[3]/p[1]",
+        "body[1]/tbl[37]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[37]/tr[6]/tc[2]/p[1]",
+        "body[1]/tbl[37]/tr[7]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:7391d512adefe980",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[37]/tr[8]/tc[2]/p[1]",
+        "body[1]/tbl[37]/tr[9]/tc[2]/p[1]",
+        "body[1]/tbl[37]/tr[10]/tc[1]/p[1]",
+        "body[1]/p[1132]",
+        "body[1]/p[1135]",
+        "body[1]/tbl[38]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[38]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[38]/tr[2]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d53cc58a8c3353fb",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[38]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[38]/tr[3]/tc[1]/p[1]",
+        "body[1]/tbl[38]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[38]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[38]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[38]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[38]/tr[5]/tc[2]/p[1]",
+        "body[1]/tbl[38]/tr[6]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:71d80d0c12394af8",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[38]/tr[6]/tc[2]/p[1]",
+        "body[1]/tbl[39]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[39]/tr[1]/tc[3]/p[1]",
+        "body[1]/tbl[39]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[39]/tr[2]/tc[1]/p[2]",
+        "body[1]/tbl[39]/tr[2]/tc[3]/p[1]",
+        "body[1]/tbl[39]/tr[2]/tc[3]/p[2]",
+        "body[1]/p[1139]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:6039049dc5d89686",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1140]",
+        "body[1]/p[1142]",
+        "body[1]/p[1144]",
+        "body[1]/p[1145]",
+        "body[1]/p[1147]",
+        "body[1]/p[1149]",
+        "body[1]/p[1150]",
+        "body[1]/p[1152]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:f3741aecf92cec8e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1153]",
+        "body[1]/p[1154]",
+        "body[1]/p[1155]",
+        "body[1]/p[1156]",
+        "body[1]/p[1157]",
+        "body[1]/p[1158]",
+        "body[1]/p[1159]",
+        "body[1]/p[1160]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:cc31f06e1e6be94c",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1162]",
+        "body[1]/p[1163]",
+        "body[1]/p[1164]",
+        "body[1]/p[1165]",
+        "body[1]/p[1166]",
+        "body[1]/p[1167]",
+        "body[1]/p[1168]",
+        "body[1]/p[1169]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:77d662e90b522854",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1170]",
+        "body[1]/p[1171]",
+        "body[1]/p[1173]",
+        "body[1]/p[1174]",
+        "body[1]/p[1175]",
+        "body[1]/p[1176]",
+        "body[1]/p[1177]",
+        "body[1]/p[1178]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:69889787a612e709",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1179]",
+        "body[1]/p[1180]",
+        "body[1]/p[1181]",
+        "body[1]/p[1182]",
+        "body[1]/p[1183]",
+        "body[1]/p[1184]",
+        "body[1]/p[1185]",
+        "body[1]/p[1186]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:2a52d83b8d46dd05",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1187]",
+        "body[1]/p[1188]",
+        "body[1]/p[1189]",
+        "body[1]/p[1190]",
+        "body[1]/p[1191]",
+        "body[1]/p[1192]",
+        "body[1]/p[1193]",
+        "body[1]/p[1194]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:6407554a1e1920b7",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1195]",
+        "body[1]/p[1196]",
+        "body[1]/p[1197]",
+        "body[1]/p[1198]",
+        "body[1]/p[1199]",
+        "body[1]/p[1200]",
+        "body[1]/p[1201]",
+        "body[1]/p[1202]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:c451928ddfb22eb7",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1203]",
+        "body[1]/p[1204]",
+        "body[1]/p[1206]",
+        "body[1]/p[1207]",
+        "body[1]/p[1208]",
+        "body[1]/p[1209]",
+        "body[1]/p[1210]",
+        "body[1]/p[1211]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:2aa406f7e68e98e5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1213]",
+        "body[1]/p[1215]",
+        "body[1]/p[1216]",
+        "body[1]/p[1217]",
+        "body[1]/p[1218]",
+        "body[1]/p[1219]",
+        "body[1]/p[1220]",
+        "body[1]/p[1221]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:b76cc8a3a0b44ae1",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1222]",
+        "body[1]/p[1223]",
+        "body[1]/p[1224]",
+        "body[1]/p[1225]",
+        "body[1]/p[1226]",
+        "body[1]/p[1227]",
+        "body[1]/p[1228]",
+        "body[1]/p[1229]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:a156145327ddc4fe",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1230]",
+        "body[1]/p[1231]",
+        "body[1]/p[1232]",
+        "body[1]/p[1233]",
+        "body[1]/p[1234]",
+        "body[1]/p[1235]",
+        "body[1]/p[1236]",
+        "body[1]/p[1238]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d8008e8614b62bd7",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1240]",
+        "body[1]/p[1241]",
+        "body[1]/p[1242]",
+        "body[1]/p[1243]",
+        "body[1]/p[1244]",
+        "body[1]/p[1245]",
+        "body[1]/p[1247]",
+        "body[1]/p[1248]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:60026348b7771ba0",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1249]",
+        "body[1]/p[1250]",
+        "body[1]/p[1251]",
+        "body[1]/p[1252]",
+        "body[1]/p[1256]",
+        "body[1]/p[1257]",
+        "body[1]/p[1258]",
+        "body[1]/p[1260]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:d5c6e97f63217615",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1249]",
+        "body[1]/p[1250]",
+        "body[1]/p[1251]",
+        "body[1]/p[1252]",
+        "body[1]/p[1256]",
+        "body[1]/p[1257]",
+        "body[1]/p[1258]",
+        "body[1]/p[1260]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:7da0cf46cd18a961",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1262]",
+        "body[1]/p[1263]",
+        "body[1]/p[1264]",
+        "body[1]/p[1265]",
+        "body[1]/p[1266]",
+        "body[1]/p[1267]",
+        "body[1]/p[1268]",
+        "body[1]/p[1270]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:794679617146fa79",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1271]",
+        "body[1]/p[1272]",
+        "body[1]/p[1273]",
+        "body[1]/p[1275]",
+        "body[1]/p[1277]",
+        "body[1]/p[1278]",
+        "body[1]/p[1280]",
+        "body[1]/p[1282]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:3a483e78c8806263",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1283]",
+        "body[1]/p[1286]",
+        "body[1]/p[1287]",
+        "body[1]/p[1288]",
+        "body[1]/tbl[40]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[40]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[40]/tr[2]/tc[1]/p[2]",
+        "body[1]/tbl[40]/tr[2]/tc[1]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:3874875a3932d620",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[40]/tr[2]/tc[1]/p[4]",
+        "body[1]/tbl[40]/tr[3]/tc[1]/p[1]",
+        "body[1]/p[1293]",
+        "body[1]/p[1294]",
+        "body[1]/p[1295]",
+        "body[1]/tbl[41]/tr[1]/tc[1]/p[1]",
+        "body[1]/tbl[41]/tr[1]/tc[2]/p[1]",
+        "body[1]/tbl[41]/tr[1]/tc[3]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:ade8858c82ee270a",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[41]/tr[1]/tc[4]/p[1]",
+        "body[1]/tbl[41]/tr[2]/tc[2]/p[1]",
+        "body[1]/tbl[41]/tr[2]/tc[2]/p[2]",
+        "body[1]/tbl[41]/tr[2]/tc[3]/p[1]",
+        "body[1]/tbl[41]/tr[2]/tc[4]/p[1]",
+        "body[1]/tbl[41]/tr[2]/tc[4]/p[2]",
+        "body[1]/tbl[41]/tr[2]/tc[4]/p[3]",
+        "body[1]/tbl[41]/tr[2]/tc[4]/p[4]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:114dc7c42d005a75",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[41]/tr[2]/tc[4]/p[5]",
+        "body[1]/tbl[41]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[41]/tr[3]/tc[2]/p[2]",
+        "body[1]/tbl[41]/tr[3]/tc[3]/p[1]",
+        "body[1]/tbl[41]/tr[3]/tc[4]/p[1]",
+        "body[1]/tbl[41]/tr[3]/tc[4]/p[2]",
+        "body[1]/tbl[41]/tr[3]/tc[4]/p[3]",
+        "body[1]/tbl[41]/tr[3]/tc[4]/p[4]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:719d799c825bfd42",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[41]/tr[2]/tc[4]/p[5]",
+        "body[1]/tbl[41]/tr[3]/tc[2]/p[1]",
+        "body[1]/tbl[41]/tr[3]/tc[2]/p[2]",
+        "body[1]/tbl[41]/tr[3]/tc[3]/p[1]",
+        "body[1]/tbl[41]/tr[3]/tc[4]/p[1]",
+        "body[1]/tbl[41]/tr[3]/tc[4]/p[2]",
+        "body[1]/tbl[41]/tr[3]/tc[4]/p[3]",
+        "body[1]/tbl[41]/tr[3]/tc[4]/p[4]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:1a05ac4f81e1e1c5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[41]/tr[3]/tc[4]/p[5]",
+        "body[1]/tbl[41]/tr[4]/tc[2]/p[1]",
+        "body[1]/tbl[41]/tr[4]/tc[2]/p[2]",
+        "body[1]/tbl[41]/tr[4]/tc[3]/p[1]",
+        "body[1]/tbl[41]/tr[4]/tc[4]/p[1]",
+        "body[1]/tbl[41]/tr[4]/tc[4]/p[2]",
+        "body[1]/tbl[41]/tr[4]/tc[4]/p[3]",
+        "body[1]/tbl[41]/tr[4]/tc[4]/p[4]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:1f7a34170c15cfa5",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/tbl[41]/tr[4]/tc[4]/p[5]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:fc9b2e28a88a2041",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1]",
+        "body[1]/p[4]",
+        "body[1]/p[5]",
+        "body[1]/p[7]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:a631ff1255385b5b",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[39]",
+        "body[1]/p[61]",
+        "body[1]/p[63]",
+        "body[1]/p[67]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:c0eddbe013b9f77a",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[69]",
+        "body[1]/p[73]",
+        "body[1]/p[77]",
+        "body[1]/p[81]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:f872390a4f84acef",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[85]",
+        "body[1]/p[89]",
+        "body[1]/p[93]",
+        "body[1]/p[101]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:42c2d733f51e88c1",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[105]",
+        "body[1]/p[106]",
+        "body[1]/p[109]",
+        "body[1]/p[128]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:24dc794be3ff21cc",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[129]",
+        "body[1]/p[130]",
+        "body[1]/p[131]",
+        "body[1]/p[132]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:7befa65a9fb14d34",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[142]",
+        "body[1]/p[145]",
+        "body[1]/p[147]",
+        "body[1]/p[173]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:fcb21e9617ec281a",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[174]",
+        "body[1]/p[175]",
+        "body[1]/p[176]",
+        "body[1]/p[177]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:d37ceaa923320468",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[178]",
+        "body[1]/p[179]",
+        "body[1]/p[180]",
+        "body[1]/p[200]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:bffdb3c6fd74ff6f",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[202]",
+        "body[1]/p[204]",
+        "body[1]/p[205]",
+        "body[1]/p[206]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:a2618c8b51ddc994",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[207]",
+        "body[1]/p[208]",
+        "body[1]/p[209]",
+        "body[1]/p[210]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:11350fcb23097c36",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[211]",
+        "body[1]/p[212]",
+        "body[1]/p[213]",
+        "body[1]/p[214]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:9b2b20e8434b099c",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[215]",
+        "body[1]/p[216]",
+        "body[1]/p[217]",
+        "body[1]/p[218]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:ad4e847e8c4bb538",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[219]",
+        "body[1]/p[220]",
+        "body[1]/p[221]",
+        "body[1]/p[222]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:0c08b2aba3dbb645",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[223]",
+        "body[1]/p[224]",
+        "body[1]/p[225]",
+        "body[1]/p[226]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:d0d34644f2be642f",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[227]",
+        "body[1]/p[228]",
+        "body[1]/p[229]",
+        "body[1]/p[230]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:d4b5e6852d4c99f5",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[231]",
+        "body[1]/p[232]",
+        "body[1]/p[233]",
+        "body[1]/p[234]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:423e2e950d9ffd60",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[235]",
+        "body[1]/p[236]",
+        "body[1]/p[237]",
+        "body[1]/p[238]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:ccae4f82734ec1c3",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[239]",
+        "body[1]/p[240]",
+        "body[1]/p[241]",
+        "body[1]/p[242]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:4ecf3b928778dd11",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[247]",
+        "body[1]/p[248]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[5]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[6]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:eaba98aa11668e25",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[7]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[8]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[9]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[10]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:e0df7d51e545c83c",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[11]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[12]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[21]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[22]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:f5facd32bf358be8",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[23]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[24]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[25]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[26]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:387d62dec7e48ae3",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[27]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[28]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[29]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[30]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:379319b331dddd21",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[31]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[32]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[33]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[34]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:35677cc678fb63ca",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[35]",
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[36]",
+        "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[3]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:f7bda6ab8d764f1d",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[4]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[6]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[7]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:bdee52977eff4cac",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[8]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[12]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[13]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:7ed6ab2461ba7c2c",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[14]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[15]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[17]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:c94dee089c45833b",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[18]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[19]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[21]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:04e3750d595e97e4",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[24]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[26]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[28]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:03c0b9962ef04aa5",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[30]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[31]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[32]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[33]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:77aedb473d39ff4b",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[34]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[35]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[36]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[37]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:9891d99258204add",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[38]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[39]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[40]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[44]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:2111aca3abde8f84",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[47]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[48]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:ad2bdcbfeada372a",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[1]/tr[49]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[50]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[51]/tc[1]/p[1]",
+        "body[1]/tbl[1]/tr[52]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:742d7eed197d4f11",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[250]",
+        "body[1]/p[251]",
+        "body[1]/tbl[2]/tr[8]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[8]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:e11c62ec59a92f40",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[9]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[3]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[4]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[5]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:56d3b66019e443cd",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[6]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[7]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[9]",
+        "body[1]/tbl[2]/tr[9]/tc[2]/p[10]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:ec792fcc604db515",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[10]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[12]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[13]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[14]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:c60c6b2e017e0915",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[15]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[17]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[21]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[22]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:086d7ba2e91cd4bd",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[22]/tc[2]/p[2]",
+        "body[1]/tbl[2]/tr[23]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[24]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[25]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:a7f54843709f675c",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[26]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[26]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[27]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[27]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:b1e5c110bedc07b1",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[28]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[29]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[31]/tc[2]/p[1]",
+        "body[1]/tbl[2]/tr[32]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:26256c73bc8f8b6f",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[2]/tr[33]/tc[1]/p[1]",
+        "body[1]/tbl[2]/tr[33]/tc[2]/p[1]",
+        "body[1]/p[256]",
+        "body[1]/p[258]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:aa2bb94921176239",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[3]/tr[6]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[6]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[7]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[7]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:afd67d5ca0dd70a3",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[3]/tr[8]/tc[1]/p[1]",
+        "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+        "body[1]/tbl[3]/tr[9]/tc[1]/p[1]",
+        "body[1]/p[347]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:96d33a84a030ecd8",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[352]",
+        "body[1]/p[358]",
+        "body[1]/p[369]",
+        "body[1]/p[383]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:a93adb258e78af0f",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[388]",
+        "body[1]/p[403]",
+        "body[1]/p[426]",
+        "body[1]/p[429]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:5c03ffe46b2fcd50",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[472]/txbxContent[3]/p[4]",
+        "body[1]/p[472]/txbxContent[4]/p[4]",
+        "body[1]/p[473]",
+        "body[1]/p[478]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:6244d7b9d9d94ecb",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[495]",
+        "body[1]/p[502]",
+        "body[1]/p[515]",
+        "body[1]/p[517]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:6bb6a2871db475ac",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[518]",
+        "body[1]/p[520]",
+        "body[1]/p[526]",
+        "body[1]/tbl[10]/tr[2]/tc[1]/p[2]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:335d56da3a7d9f96",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[10]/tr[2]/tc[1]/p[3]",
+        "body[1]/tbl[10]/tr[2]/tc[1]/p[4]",
+        "body[1]/tbl[10]/tr[3]/tc[1]/p[1]",
+        "body[1]/p[540]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:5fb97986e4a06954",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[555]",
+        "body[1]/p[557]",
+        "body[1]/p[558]",
+        "body[1]/p[559]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:1c7f0be52877c24d",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[562]",
+        "body[1]/p[564]",
+        "body[1]/p[565]",
+        "body[1]/p[566]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:90b4775805c7a32c",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[586]",
+        "body[1]/p[596]",
+        "body[1]/p[600]",
+        "body[1]/p[602]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:d800d0c067494f43",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[619]",
+        "body[1]/p[635]",
+        "body[1]/p[636]",
+        "body[1]/p[638]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:6e24507cd9848cce",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[642]",
+        "body[1]/p[667]",
+        "body[1]/p[671]",
+        "body[1]/p[689]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:bc3b4e0a55b2d757",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[697]",
+        "body[1]/p[698]",
+        "body[1]/p[699]",
+        "body[1]/p[700]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:d0e49c74bef2cd46",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[724]",
+        "body[1]/p[744]",
+        "body[1]/p[745]",
+        "body[1]/p[746]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:28511ad85de6251a",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[747]",
+        "body[1]/p[748]",
+        "body[1]/p[749]",
+        "body[1]/p[750]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:d19ebbf5beab4bf1",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[751]",
+        "body[1]/p[752]",
+        "body[1]/tbl[19]/tr[5]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[4]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:8be41df452900468",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[10]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[13]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[25]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:0da182c22ccf07c5",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[29]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[38]",
+        "body[1]/tbl[19]/tr[5]/tc[2]/p[40]",
+        "body[1]/tbl[19]/tr[6]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:bfd9d18f8b3c017e",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[4]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[5]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[6]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[7]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:a78240fbdd5b3a5c",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[8]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[9]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[10]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[11]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:9e6c5f0c1f945a9c",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[12]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[13]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[14]",
+        "body[1]/tbl[19]/tr[6]/tc[2]/p[15]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:45a03cc073f74774",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[7]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[7]/tc[2]/p[3]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:b8b119ddd7f151e6",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[8]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[9]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[10]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[11]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:57ba04525c3d14be",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[12]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[12]/tc[2]/p[1]",
+        "body[1]/tbl[19]/tr[13]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:1907e3971a0a7a0b",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[2]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[4]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[6]",
+        "body[1]/tbl[19]/tr[13]/tc[2]/p[7]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:d37664598f5b98f5",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[14]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[18]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[19]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[20]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:c2b06a301252bf94",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/tbl[19]/tr[21]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[22]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[23]/tc[1]/p[1]",
+        "body[1]/tbl[19]/tr[24]/tc[1]/p[1]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:66ccfc04273c577a",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[780]",
+        "body[1]/p[781]",
+        "body[1]/p[783]",
+        "body[1]/p[785]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:e4580e239066ab41",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[802]",
+        "body[1]/p[804]",
+        "body[1]/p[811]",
+        "body[1]/p[816]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:e8343fc92868bf94",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[819]",
+        "body[1]/p[835]",
+        "body[1]/p[837]",
+        "body[1]/p[844]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:30314ab185218a28",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[850]",
+        "body[1]/p[852]",
+        "body[1]/p[853]",
+        "body[1]/p[860]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:68ca0b0d7dac230f",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[861]",
+        "body[1]/p[862]",
+        "body[1]/p[879]",
+        "body[1]/p[881]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:288473fff25eb935",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[883]",
+        "body[1]/p[889]",
+        "body[1]/p[891]",
+        "body[1]/p[905]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:f0038f2a1a7c92c6",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[907]",
+        "body[1]/p[911]",
+        "body[1]/p[913]",
+        "body[1]/p[991]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:12e66e9f3b135ae9",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[992]",
+        "body[1]/p[993]",
+        "body[1]/p[1014]",
+        "body[1]/p[1015]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:4924840fcee554f5",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1024]",
+        "body[1]/p[1036]",
+        "body[1]/p[1037]",
+        "body[1]/p[1059]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:aa90dea66a185e4d",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1060]",
+        "body[1]/p[1070]",
+        "body[1]/p[1073]",
+        "body[1]/p[1080]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:3318d2d807db1664",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1098]",
+        "body[1]/p[1125]",
+        "body[1]/p[1126]",
+        "body[1]/p[1135]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:9e86fdc79b436fb7",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1144]",
+        "body[1]/p[1149]",
+        "body[1]/p[1154]",
+        "body[1]/p[1173]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:9ee5ba763ae231a2",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1176]",
+        "body[1]/p[1183]",
+        "body[1]/p[1188]",
+        "body[1]/p[1189]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:7e9e284c41097c4d",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1193]",
+        "body[1]/p[1206]",
+        "body[1]/p[1208]",
+        "body[1]/p[1210]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:8b5e155d60803ea8",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1222]",
+        "body[1]/p[1225]",
+        "body[1]/p[1231]",
+        "body[1]/p[1256]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:d35d18520684cfc4",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1257]",
+        "body[1]/p[1260]",
+        "body[1]/p[1280]",
+        "body[1]/p[1282]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:b3a1b3d66cb979b7",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1286]",
+        "body[1]/p[1293]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "hierarchy:293a7109228db06f",
+      "stage": "hierarchy",
+      "candidateIds": [
+        "body[1]/p[69]",
+        "body[1]/p[73]",
+        "body[1]/p[77]",
+        "body[1]/p[81]",
+        "body[1]/p[85]",
+        "body[1]/p[89]",
+        "body[1]/p[101]",
+        "body[1]/p[105]",
+        "body[1]/p[106]",
+        "body[1]/p[109]",
+        "body[1]/p[147]",
+        "body[1]/tbl[2]/tr[29]/tc[1]/p[1]",
+        "body[1]/p[258]",
+        "body[1]/p[352]",
+        "body[1]/p[358]",
+        "body[1]/p[369]",
+        "body[1]/p[383]",
+        "body[1]/p[426]",
+        "body[1]/p[429]",
+        "body[1]/p[473]",
+        "body[1]/p[478]",
+        "body[1]/p[495]",
+        "body[1]/p[502]",
+        "body[1]/p[518]",
+        "body[1]/p[520]",
+        "body[1]/p[526]",
+        "body[1]/p[540]",
+        "body[1]/p[600]",
+        "body[1]/p[602]",
+        "body[1]/p[635]",
+        "body[1]/p[636]",
+        "body[1]/p[638]",
+        "body[1]/p[698]",
+        "body[1]/p[699]",
+        "body[1]/p[700]",
+        "body[1]/p[724]",
+        "body[1]/p[744]",
+        "body[1]/p[745]",
+        "body[1]/p[780]",
+        "body[1]/p[781]",
+        "body[1]/p[783]",
+        "body[1]/p[785]",
+        "body[1]/p[819]",
+        "body[1]/p[835]",
+        "body[1]/p[837]",
+        "body[1]/p[844]",
+        "body[1]/p[850]",
+        "body[1]/p[852]",
+        "body[1]/p[853]",
+        "body[1]/p[879]",
+        "body[1]/p[881]",
+        "body[1]/p[883]",
+        "body[1]/p[889]",
+        "body[1]/p[891]",
+        "body[1]/p[905]",
+        "body[1]/p[911]",
+        "body[1]/p[992]",
+        "body[1]/p[993]",
+        "body[1]/p[1014]",
+        "body[1]/p[1015]",
+        "body[1]/p[1024]",
+        "body[1]/p[1036]",
+        "body[1]/p[1037]",
+        "body[1]/p[1059]",
+        "body[1]/p[1060]",
+        "body[1]/p[1070]",
+        "body[1]/p[1073]",
+        "body[1]/p[1098]",
+        "body[1]/p[1125]",
+        "body[1]/p[1126]",
+        "body[1]/p[1135]",
+        "body[1]/p[1144]",
+        "body[1]/p[1149]",
+        "body[1]/p[1154]",
+        "body[1]/p[1173]",
+        "body[1]/p[1176]",
+        "body[1]/p[1183]",
+        "body[1]/p[1188]",
+        "body[1]/p[1189]",
+        "body[1]/p[1206]",
+        "body[1]/p[1208]",
+        "body[1]/p[1210]",
+        "body[1]/p[1222]",
+        "body[1]/p[1225]",
+        "body[1]/p[1231]",
+        "body[1]/p[1257]",
+        "body[1]/p[1260]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    }
+  ],
+  "responseCount": 352,
+  "requestContractCount": 332,
+  "providerCalls": 352,
+  "runConfigurationHash": "a8d2f174801c49321b197038c1a2a0c67668937a644ef22d781c1d5257d46a2b",
+  "productionSemanticHash": "5f0eb27dfa44068fc60c69e0dcf8a05b14a061ed7526610e4592d68c268fe5e6",
+  "executionHarnessHash": "5006f345b63f3c32138e467a2d424b02c1a57b358edadd7f6e16d61711b9eb06",
+  "attemptId": "CANONICAL_DEV_V1_EXEC_V6:DOC-0116:A01:20260916T134617710Z",
+  "requestHash": "43ddd8788cc131be3855ed56cf5fb9f9fa4478f55225bdac6bb7ef62552a0061",
+  "responseHash": "4197b34dfe031babb06128394b1691a8e659c0e002581c5af3f837b80d2a4020",
+  "parseStatus": "PRODUCTION_PIPELINE_COMPLETED",
+  "bindingStatus": "PRODUCTION_PIPELINE_BOUND",
+  "retryLineage": {
+    "retries": 2,
+    "pipelineOwnedRetries": true
+  }
+}

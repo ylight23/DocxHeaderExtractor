@@ -352,6 +352,19 @@ public static class CanonicalDevV1BaselineRunner
                 return await RunNoProviderSelfTestAsync(outputDir, documentId, sourcePath, sourceSha256, started, ct);
             if (string.Equals(executionMode, "RUNTIME_FAILURE", StringComparison.Ordinal))
                 throw new InvalidOperationException("DETERMINISTIC_WORKER_RUNTIME_FAILURE_TEST");
+            if (string.Equals(executionMode, "NONZERO_EXIT", StringComparison.Ordinal))
+                return 17;
+            if (string.Equals(executionMode, "PROCESS_TREE_KILL", StringComparison.Ordinal))
+                while (true) Thread.Sleep(TimeSpan.FromMilliseconds(100));
+            if (string.Equals(executionMode, "LARGE_OUTPUT", StringComparison.Ordinal))
+            {
+                for (var i = 0; i < 4096; i++)
+                {
+                    Console.WriteLine($"WORKER_STDOUT_FILL_{i:D4}_{new string('O', 48)}");
+                    Console.Error.WriteLine($"WORKER_STDERR_FILL_{i:D4}_{new string('E', 48)}");
+                }
+                return 0;
+            }
             if (!File.Exists(sourcePath)) throw new FileNotFoundException("SOURCE_NOT_FOUND", sourcePath);
             await WriteWorkerMarkerAsync(outputDir, "worker.stage.SOURCE_RESOLVED.json", new { stage = "SOURCE_RESOLVED", documentId, sourcePath, at = DateTimeOffset.UtcNow });
             var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");

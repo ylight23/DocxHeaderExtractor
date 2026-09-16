@@ -1,0 +1,11 @@
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1789569293-fS68DvwhzVWONMfiUXlM","object":"chat.completion","created":1789569293,"model":"qwen/qwen3.5-9b","provider":"DeepInfra","system_fingerprint":null,"service_tier":null,"choices":[{"index":0,"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","message":{"role":"assistant","content":"{\"blocks\":[{\"id\":\"body[1]/tbl[1]/tr[38]/tc[1]/p[1]\",\"heading_span\":{\"start\":0,\"end\":30}},{\"id\":\"body[1]/tbl[1]/tr[39]/tc[1]/p[1]\",\"heading_span\":{\"start\":0,\"end\":25}},{\"id\":\"body[1]/tbl[1]/tr[40]/tc[1]/p[1]\",\"heading_span\":{\"start\":0,\"end\":33}},{\"id\":\"body[1]/tbl[1]/tr[44]/tc[1]/p[1]\",\"heading_span\":{\"start\":0,\"end\":28}}]}","refusal":null,"reasoning":null}}],"usage":{"prompt_tokens":1158,"completion_tokens":152,"total_tokens":1310,"cost":0.0001386,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"cache_write_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":0.0001386,"upstream_inference_prompt_cost":0.0001158,"upstream_inference_completions_cost":0.0000228},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0,"audio_tokens":0}}}

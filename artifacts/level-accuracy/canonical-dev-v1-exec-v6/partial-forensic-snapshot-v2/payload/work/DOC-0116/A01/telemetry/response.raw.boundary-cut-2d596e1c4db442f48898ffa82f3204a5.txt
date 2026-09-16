@@ -1,0 +1,9 @@
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1789569471-ix4gOv9kivdSDs9xJ6v8","object":"chat.completion","created":1789569471,"model":"qwen/qwen3.5-9b","provider":"DeepInfra","system_fingerprint":null,"service_tier":null,"choices":[{"index":0,"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","message":{"role":"assistant","content":"{\"blocks\":[{\"id\":\"body[1]/tbl[19]/tr[6]/tc[2]/p[8]\",\"heading_span\":null},{\"id\":\"body[1]/tbl[19]/tr[6]/tc[2]/p[9]\",\"heading_span\":null},{\"id\":\"body[1]/tbl[19]/tr[6]/tc[2]/p[10]\",\"heading_span\":null},{\"id\":\"body[1]/tbl[19]/tr[6]/tc[2]/p[11]\",\"heading_span\":null}]}","refusal":null,"reasoning":null}}],"usage":{"prompt_tokens":2860,"completion_tokens":123,"total_tokens":2983,"cost":0.00030445,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"cache_write_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":0.00030445,"upstream_inference_prompt_cost":0.000286,"upstream_inference_completions_cost":0.00001845},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0,"audio_tokens":0}}}

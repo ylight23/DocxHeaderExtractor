@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "LOGICAL_CALL_STARTED",
+  "timestamp": "2026-09-16T15:20:05.6152470\u002B00:00",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V6",
+  "documentId": "DOC-0122",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-7dccc091544c411984dbff573a3d6336",
+  "callOrdinal": 186,
+  "requestHash": "5b6886606b139869b892db9775b5ecdd051ab8c019bd3cc5aa7e6c3d4f500e72",
+  "requestBytes": 15438,
+  "estimatedInputTokens": 2839,
+  "maxOutputTokens": 608,
+  "candidateCount": 1,
+  "currentNodeCount": 0,
+  "contextItemCount": 1,
+  "contextCharacterCount": 9913,
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.5-9b"
+}

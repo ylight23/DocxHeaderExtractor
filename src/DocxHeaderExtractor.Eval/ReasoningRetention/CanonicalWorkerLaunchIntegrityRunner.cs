@@ -129,6 +129,72 @@ public static class CanonicalWorkerLaunchIntegrityRunner
         return passed ? 0 : 2;
     }
 
+    public static async Task<int> RunLifecycleSelfTestAsync(string repoRoot, CancellationToken ct = default)
+    {
+        repoRoot = Path.GetFullPath(repoRoot);
+        var root = Path.Combine(repoRoot, OutputRoot.Replace('/', Path.DirectorySeparatorChar), "orchestration-lifecycle");
+        Directory.CreateDirectory(root);
+        var source = LoadInventory(repoRoot).First(item => item.DocumentId == "DOC-0001");
+        var sourcePath = Path.GetFullPath(Path.Combine(repoRoot, source.SourcePath.Replace('/', Path.DirectorySeparatorChar)));
+        var semanticHash = CanonicalDevV1BaselineRunner.ComputeProductionSemanticHashForIntegrity(repoRoot);
+        var harnessHash = ComputeHarnessHash(repoRoot);
+        var cases = new[]
+        {
+            (Name: "complete", Mode: "NO_PROVIDER_SELF_TEST", TimeoutSeconds: 60),
+            (Name: "nonzero", Mode: "NONZERO_EXIT", TimeoutSeconds: 60),
+            (Name: "runtime", Mode: "RUNTIME_FAILURE", TimeoutSeconds: 60),
+            (Name: "process-tree-kill", Mode: "PROCESS_TREE_KILL", TimeoutSeconds: 1),
+            (Name: "large-output", Mode: "LARGE_OUTPUT", TimeoutSeconds: 60),
+        };
+        var results = new List<object>();
+        var allPassed = true;
+        foreach (var item in cases)
+        {
+            var work = Path.Combine(root, item.Name);
+            Directory.CreateDirectory(work);
+            var jobPath = Path.Combine(work, "worker-job.json");
+            await WriteJsonAsync(jobPath, new
+            {
+                benchmark = "CANONICAL_DEV_V1", campaignId = "CANONICAL_DEV_V1_EXEC_V6",
+                productionSemanticCheckpoint = "f1686fb", executionHarnessCheckpoint = "lifecycle-self-test",
+                productionSemanticHash = semanticHash, executionHarnessHash = harnessHash,
+                documentId = source.DocumentId, sourcePath, sourceSha256 = source.SourceSha256, outputDir = work,
+                runConfigurationHash = Sha256Text($"lifecycle:{item.Name}"), attemptId = $"CANONICAL_WORKER_LAUNCH_INTEGRITY_V6:{item.Name}",
+                requestHash = Sha256Text($"lifecycle-request:{item.Name}"), started = DateTimeOffset.UtcNow,
+                perAttemptHardTimeoutSeconds = item.TimeoutSeconds, executionMode = item.Mode,
+            }, ct);
+            var result = await ProviderHardTimeoutIntegrity.RunWorkerAsync(jobPath, work, TimeSpan.FromSeconds(item.TimeoutSeconds), ct);
+            var stdoutPath = Path.Combine(work, "worker.stdout.log");
+            var stderrPath = Path.Combine(work, "worker.stderr.log");
+            var stdout = File.Exists(stdoutPath) ? await File.ReadAllTextAsync(stdoutPath, ct) : "";
+            var stderr = File.Exists(stderrPath) ? await File.ReadAllTextAsync(stderrPath, ct) : "";
+            var processGone = !IsProcessAlive(result.ChildPid);
+            var captureComplete = File.Exists(stdoutPath) && File.Exists(stderrPath) && File.Exists(Path.Combine(work, "worker-exit.v1.json"));
+            var passed = item.Name switch
+            {
+                "complete" => result.Status == "COMPLETE" && result.ExitCode == 0 && File.Exists(Path.Combine(work, "worker.boot.json")) && File.Exists(Path.Combine(work, "worker.stage.PRODUCTION_INPUT_READY.json")) && captureComplete && processGone,
+                "nonzero" => result.Status == "WORKER_FAILURE" && result.ExitCode != 0 && captureComplete && processGone,
+                "runtime" => result.Status == "WORKER_FAILURE" && result.ExitCode != 0 && File.Exists(Path.Combine(work, "worker-failure.v1.json")) && captureComplete && processGone,
+                "process-tree-kill" => result.Status == "DOCUMENT_TIMEOUT" && result.TerminationMode == "PROCESS_TREE_KILL" && captureComplete && processGone,
+                "large-output" => result.Status == "COMPLETE" && stdout.Length > 100_000 && stderr.Length > 100_000 && captureComplete && processGone,
+                _ => false,
+            };
+            allPassed &= passed;
+            results.Add(new { name = item.Name, mode = item.Mode, passed, result.Status, result.TerminationMode, result.ExitCode, result.ChildPid, processGone, captureComplete, stdoutBytes = Encoding.UTF8.GetByteCount(stdout), stderrBytes = Encoding.UTF8.GetByteCount(stderr), stdoutHash = Sha256Text(stdout), stderrHash = Sha256Text(stderr), providerCalls = 0 });
+        }
+        await WriteJsonAsync(Path.Combine(root, "summary.json"), new
+        {
+            schemaVersion = "a99-canonical-worker-orchestration-lifecycle-v1",
+            status = allPassed ? "PASS" : "FAIL",
+            campaignId = "CANONICAL_DEV_V1_EXEC_V6",
+            providerCalls = 0, modelCalls = 0, GoldReads = 0,
+            productionSemanticHash = semanticHash, expectedProductionSemanticHash = ExpectedSemanticHash,
+            streamLifecycle = "child-exit -> stdout/stderr drain -> capture tasks complete -> streams disposed -> artifact validation",
+            cases = results,
+        }, ct);
+        return allPassed ? 0 : 2;
+    }
+
     private static async Task<bool> RunBadLaunchAsync(string output, string name, string expectedClassification, string processPath, IReadOnlyList<string> args, string workingDirectory, CancellationToken ct, bool omitJobEnvironment = false)
     {
         var dir = Path.Combine(output, name);
@@ -208,6 +274,17 @@ public static class CanonicalWorkerLaunchIntegrityRunner
     }
 
     private static long FileLength(string path) => File.Exists(path) ? new FileInfo(path).Length : 0;
+
+    private static bool IsProcessAlive(int pid)
+    {
+        try
+        {
+            using var process = Process.GetProcessById(pid);
+            return !process.HasExited;
+        }
+        catch (ArgumentException) { return false; }
+        catch (InvalidOperationException) { return false; }
+    }
 
     private static CliLaunch ResolveCliLaunch(string command)
     {
