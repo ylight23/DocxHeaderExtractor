@@ -23,6 +23,8 @@ public static class CanonicalDevV1BaselineRunner
     private const int ExpectedOccurrences = 1908;
     private const int ExpectedSemanticNodes = 1887;
     private const int ExpectedParentEdges = 1887;
+    private const string CodeCheckpoint = "40a0d5f";
+    private const int MaxAttemptsPerLogicalCall = 3;
 
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web)
     {
@@ -77,6 +79,37 @@ public static class CanonicalDevV1BaselineRunner
         }
 
         var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");
+        var documentTimeout = ResolveDocumentTimeout();
+        var runConfiguration = BuildRunConfiguration(repoRoot, envRemote, documentTimeout);
+        var runConfigurationPath = Path.Combine(output, "run-configuration.v1.json");
+        var runConfigurationHash = Sha256Text(JsonSerializer.Serialize(runConfiguration, JsonOptions));
+        if (File.Exists(runConfigurationPath) && !string.Equals(Sha256CanonicalJsonFile(runConfigurationPath), runConfigurationHash, StringComparison.OrdinalIgnoreCase))
+            return await BlockAsync(output, "RUN_CONFIGURATION_DRIFT", ct);
+        await WriteJsonJsonIfAbsentAsync(runConfigurationPath, runConfiguration);
+
+        var existingPrediction = Path.Combine(output, "DOC-0001", "prediction.v1.json");
+        var existingAttempts = Path.Combine(output, "DOC-0001", "attempts.v1.json");
+        if (File.Exists(existingPrediction) || File.Exists(existingAttempts))
+        {
+            var existingIntegrity = ValidateExistingDoc0001(existingPrediction, existingAttempts, resolved.Single(item => item.DocumentId == "DOC-0001"), runConfigurationHash);
+            if (!existingIntegrity.Valid)
+            {
+                await WriteJsonAsync(Path.Combine(output, "execution-integrity-block.v1.json"), new
+                {
+                    schemaVersion = "a99-canonical-dev-v1-integrity-block-v1",
+                    status = "RUN_CONFIGURATION_DRIFT",
+                    documentId = "DOC-0001",
+                    reason = existingIntegrity.Reason,
+                    existingPredictionPath = Path.GetRelativePath(repoRoot, existingPrediction).Replace('\\', '/'),
+                    existingAttemptsPath = Path.GetRelativePath(repoRoot, existingAttempts).Replace('\\', '/'),
+                    existingArtifactsPreserved = true,
+                    goldReadCount = 0,
+                    providerCalls = 0,
+                    created = DateTimeOffset.UtcNow,
+                }, CancellationToken.None);
+                return 2;
+            }
+        }
         var manifest = new
         {
             schemaVersion = "a99-canonical-dev-v1-manifest-v1",
@@ -97,6 +130,8 @@ public static class CanonicalDevV1BaselineRunner
             productionEntryPoint = "AuthorityExtractionPipeline",
             model = envRemote.Model,
             endpoint = envRemote.Endpoint.ToString(),
+            runConfigurationHash,
+            runConfigurationPath = Path.GetRelativePath(repoRoot, runConfigurationPath).Replace('\\', '/'),
         };
         await WriteJsonAsync(Path.Combine(output, "manifest.json"), manifest, ct);
 
@@ -109,7 +144,6 @@ public static class CanonicalDevV1BaselineRunner
 
         var documentRuns = new List<object>();
         var totalProviderCalls = 0;
-        var documentTimeout = ResolveDocumentTimeout();
         var runAborted = false;
         foreach (var source in resolved)
         {
@@ -181,6 +215,7 @@ public static class CanonicalDevV1BaselineRunner
                 {
                     schemaVersion = "a99-canonical-dev-v1-production-prediction-v1",
                     benchmark = Benchmark,
+                    runConfigurationHash,
                     documentId = source.DocumentId,
                     sourcePath = source.SourcePath,
                     sourceSha256 = source.SourceSha256,
@@ -227,6 +262,7 @@ public static class CanonicalDevV1BaselineRunner
                     responseCount = audit?.RawAnalystResponses.Count ?? 0,
                     requestContractCount = audit?.ModelInputContracts.Count ?? 0,
                     providerCalls,
+                    runConfigurationHash,
                     parseStatus = "PRODUCTION_PIPELINE_COMPLETED",
                     bindingStatus = "PRODUCTION_PIPELINE_BOUND",
                     failureStatus = (string?)null,
@@ -291,6 +327,75 @@ public static class CanonicalDevV1BaselineRunner
         return int.TryParse(raw, out var seconds) && seconds > 0
             ? TimeSpan.FromSeconds(seconds)
             : TimeSpan.FromSeconds(defaultSeconds);
+    }
+
+    private static object BuildRunConfiguration(string repoRoot, RemoteInferenceOptions remote, TimeSpan documentTimeout)
+    {
+        var sourceFiles = new[]
+        {
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/AuthorityExtractionPipeline.cs",
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxAuthorityPipeline.cs",
+            "src/DocxHeaderExtractor.DocumentProcessing/OpenXmlLayer/OpenXmlDocumentSource.cs",
+        };
+        return new
+        {
+            schemaVersion = "a99-canonical-dev-v1-run-configuration-v1",
+            benchmark = Benchmark,
+            codeCheckpoint = CodeCheckpoint,
+            provider = "OpenRouter",
+            model = remote.Model,
+            endpoint = remote.Endpoint.ToString(),
+            contextSize = remote.ContextSize,
+            maxOutputTokens = remote.MaxOutputTokens,
+            requestTimeoutSeconds = remote.RequestTimeoutSeconds,
+            transientRequestRetries = remote.TransientRequestRetries,
+            missingIdRetries = remote.MissingIdRetries,
+            maxParallelRequests = remote.MaxParallelRequests,
+            temperature = "pipeline/provider default; not exposed by RemoteInferenceOptions",
+            topP = "pipeline/provider default; not exposed by RemoteInferenceOptions",
+            promptVersion = "AuthorityExtractionPipeline production contracts",
+            candidateGenerationVersion = "DocxAuthorityPipeline production candidate path",
+            parserVersion = "OpenXmlDocumentSource production parser",
+            sourceImplementationHashes = sourceFiles.ToDictionary(
+                path => path,
+                path => File.Exists(Path.Combine(repoRoot, path.Replace('/', Path.DirectorySeparatorChar)))
+                    ? Sha256File(Path.Combine(repoRoot, path.Replace('/', Path.DirectorySeparatorChar)))
+                    : "MISSING",
+                StringComparer.Ordinal),
+            timeoutPerAttemptSeconds = documentTimeout.TotalSeconds,
+            maxAttemptsPerLogicalCall = MaxAttemptsPerLogicalCall,
+            retryPolicy = "SEQUENTIAL_ATTEMPTS_ACCEPT_FIRST_VALID_BINDABLE_RESPONSE",
+            goldReadsBeforePredictionFreeze = 0,
+            historicalReadsBeforePredictionFreeze = 0,
+        };
+    }
+
+    private static (bool Valid, string Reason) ValidateExistingDoc0001(string predictionPath, string attemptsPath, ResolvedSource source, string runConfigurationHash)
+    {
+        if (!File.Exists(predictionPath) || !File.Exists(attemptsPath))
+            return (false, "DOC-0001_COMPLETION_ARTIFACT_INCOMPLETE");
+        try
+        {
+            using var prediction = JsonDocument.Parse(File.ReadAllText(predictionPath));
+            using var attempts = JsonDocument.Parse(File.ReadAllText(attemptsPath));
+            var predictionRoot = prediction.RootElement;
+            var attemptsRoot = attempts.RootElement;
+            var predictionSource = predictionRoot.TryGetProperty("sourceSha256", out var predictionSha) ? predictionSha.GetString() : null;
+            var attemptsSource = attemptsRoot.TryGetProperty("sourceSha256", out var attemptsSha) ? attemptsSha.GetString() : null;
+            var storedConfig = attemptsRoot.TryGetProperty("runConfigurationHash", out var stored) ? stored.GetString() : null;
+            if (!string.Equals(predictionSource, source.SourceSha256, StringComparison.OrdinalIgnoreCase) ||
+                !string.Equals(attemptsSource, source.SourceSha256, StringComparison.OrdinalIgnoreCase))
+                return (false, "DOC-0001_SOURCE_SHA_MISMATCH");
+            if (!string.Equals(storedConfig, runConfigurationHash, StringComparison.OrdinalIgnoreCase))
+                return (false, "DOC-0001_RUN_CONFIGURATION_HASH_MISSING_OR_MISMATCH");
+            if (!predictionRoot.TryGetProperty("goldReadBeforePredictionFreeze", out var goldFlag) || goldFlag.GetBoolean())
+                return (false, "DOC-0001_GOLD_FIREWALL_FAILED");
+            return (true, "VALID");
+        }
+        catch (Exception ex) when (ex is JsonException or IOException or InvalidOperationException)
+        {
+            return (false, "DOC-0001_ARTIFACT_PARSE_FAILURE");
+        }
     }
 
     private static int ReadProviderCalls(string path)
@@ -401,6 +506,14 @@ public static class CanonicalDevV1BaselineRunner
     {
         using var stream = File.OpenRead(path);
         return Convert.ToHexString(SHA256.HashData(stream)).ToLowerInvariant();
+    }
+
+    private static string Sha256Text(string value) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();
+
+    private static string Sha256CanonicalJsonFile(string path)
+    {
+        using var document = JsonDocument.Parse(File.ReadAllText(path));
+        return Sha256Text(JsonSerializer.Serialize(document.RootElement, JsonOptions));
     }
 
     private sealed record CorpusDocument(string DocumentId, int Occurrences, int SemanticNodes, int ParentEdges, string SourcePath, string SourceSha256);
