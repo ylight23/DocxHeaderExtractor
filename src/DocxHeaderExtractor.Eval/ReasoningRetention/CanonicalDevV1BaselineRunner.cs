@@ -84,7 +84,7 @@ public static class CanonicalDevV1BaselineRunner
         var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");
         var documentTimeout = ResolveDocumentTimeout();
         var runConfiguration = BuildRunConfiguration(repoRoot, authorityPath, envRemote, documentTimeout);
-        var runConfigurationPath = Path.Combine(output, "run-configuration.v1.json");
+        var runConfigurationPath = Path.Combine(output, "run-configuration.json");
         var runConfigurationHash = Sha256Text(JsonSerializer.Serialize(runConfiguration, JsonOptions));
         if (File.Exists(runConfigurationPath) && !string.Equals(Sha256CanonicalJsonFile(runConfigurationPath), runConfigurationHash, StringComparison.OrdinalIgnoreCase))
             return await BlockAsync(output, "RUN_CONFIGURATION_DRIFT", ct);
