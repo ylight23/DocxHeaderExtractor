@@ -1,0 +1,12 @@
+﻿{
+  "executionId": "bad-executable-20260916T122243190Z",
+  "executable": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\execution-integrity\\canonical-worker-launch-v1\\self-test\\does-not-exist.exe",
+  "arguments": [],
+  "workingDirectory": "C:\\DocxHeaderExtractor-a99-closed-loop",
+  "expectedClassification": "PROCESS_START_FAILED",
+  "environmentWhitelist": [
+    "provider/model identifiers",
+    "timeout/config identifiers",
+    "artifact/output roots"
+  ]
+}

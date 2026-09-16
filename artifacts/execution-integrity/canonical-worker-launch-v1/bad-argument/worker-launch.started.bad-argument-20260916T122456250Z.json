@@ -1,0 +1,14 @@
+﻿{
+  "executionId": "bad-argument-20260916T122456250Z",
+  "executable": "C:\\DocxHeaderExtractor-a99-closed-loop\\src\\DocxHeaderExtractor.Cli\\bin\\Release\\net9.0\\dhx.exe",
+  "arguments": [
+    "a99-canonical-dev-v1-worker"
+  ],
+  "workingDirectory": "C:\\DocxHeaderExtractor-a99-closed-loop",
+  "expectedClassification": "ARGUMENT_BINDING_FAILED",
+  "environmentWhitelist": [
+    "provider/model identifiers",
+    "timeout/config identifiers",
+    "artifact/output roots"
+  ]
+}

@@ -1,0 +1,11 @@
+﻿{
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V4",
+  "status": "BLOCKED_ON_PROVIDER_EXECUTION_INTEGRITY",
+  "scorable": false,
+  "primaryReason": "WORKER_LAUNCH_FAILURE",
+  "orchestratedProviderCalls": 0,
+  "uncontrolledRecoveryProviderCalls": 5,
+  "uncontrolledRecoveryAccepted": false,
+  "goldReads": 0,
+  "rawExecV4TelemetryMutated": false
+}

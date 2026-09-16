@@ -19,20 +19,16 @@ public static class ProviderHardTimeoutIntegrity
     {
         Directory.CreateDirectory(workDirectory);
         var markerPath = Path.Combine(workDirectory, "child-marker.json");
-        var entryAssembly = Assembly.GetEntryAssembly()?.Location
-            ?? throw new InvalidOperationException("CLI entry assembly is unavailable.");
-        var processPath = Environment.ProcessPath
-            ?? throw new InvalidOperationException("Current process path is unavailable.");
+        var launch = ResolveCliLaunch("a99-provider-hard-timeout-child");
         var startInfo = new ProcessStartInfo
         {
-            FileName = processPath,
+            FileName = launch.ProcessPath,
             UseShellExecute = false,
             CreateNoWindow = true,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
         };
-        startInfo.ArgumentList.Add(entryAssembly);
-        startInfo.ArgumentList.Add("a99-provider-hard-timeout-child");
+        foreach (var argument in launch.Arguments) startInfo.ArgumentList.Add(argument);
         startInfo.Environment["A99_HARD_TIMEOUT_CHILD_MODE"] = mode;
         startInfo.Environment["A99_HARD_TIMEOUT_CHILD_MARKER"] = markerPath;
 
@@ -101,20 +97,16 @@ public static class ProviderHardTimeoutIntegrity
     {
         Directory.CreateDirectory(workDirectory);
         var markerPath = Path.Combine(workDirectory, "attempt-marker.json");
-        var entryAssembly = Assembly.GetEntryAssembly()?.Location
-            ?? throw new InvalidOperationException("CLI entry assembly is unavailable.");
-        var processPath = Environment.ProcessPath
-            ?? throw new InvalidOperationException("Current process path is unavailable.");
+        var launch = ResolveCliLaunch("a99-provider-hard-timeout-child");
         var startInfo = new ProcessStartInfo
         {
-            FileName = processPath,
+            FileName = launch.ProcessPath,
             UseShellExecute = false,
             CreateNoWindow = true,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
         };
-        startInfo.ArgumentList.Add(entryAssembly);
-        startInfo.ArgumentList.Add("a99-provider-hard-timeout-child");
+        foreach (var argument in launch.Arguments) startInfo.ArgumentList.Add(argument);
         startInfo.Environment["A99_HARD_TIMEOUT_CHILD_MODE"] = mode;
         startInfo.Environment["A99_HARD_TIMEOUT_CHILD_MARKER"] = markerPath;
 
@@ -156,20 +148,16 @@ public static class ProviderHardTimeoutIntegrity
         CancellationToken cancellationToken = default)
     {
         Directory.CreateDirectory(workDirectory);
-        var entryAssembly = Assembly.GetEntryAssembly()?.Location
-            ?? throw new InvalidOperationException("CLI entry assembly is unavailable.");
-        var processPath = Environment.ProcessPath
-            ?? throw new InvalidOperationException("Current process path is unavailable.");
+        var launch = ResolveCliLaunch("a99-canonical-dev-v1-worker");
         var startInfo = new ProcessStartInfo
         {
-            FileName = processPath,
+            FileName = launch.ProcessPath,
             UseShellExecute = false,
             CreateNoWindow = true,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
         };
-        startInfo.ArgumentList.Add(entryAssembly);
-        startInfo.ArgumentList.Add("a99-canonical-dev-v1-worker");
+        foreach (var argument in launch.Arguments) startInfo.ArgumentList.Add(argument);
         startInfo.Environment["A99_CANONICAL_DEV_WORKER_JOB"] = workerJobPath;
         using var child = Process.Start(startInfo)
             ?? throw new InvalidOperationException("Could not start isolated production worker.");
@@ -261,6 +249,21 @@ public static class ProviderHardTimeoutIntegrity
         var path = Path.Combine(root, child, "child-marker.json");
         return File.Exists(path) && JsonDocument.Parse(File.ReadAllText(path)).RootElement.GetProperty("status").GetString() == status;
     }
+
+    private static CliLaunch ResolveCliLaunch(string command)
+    {
+        var processPath = Environment.ProcessPath
+            ?? throw new InvalidOperationException("Current process path is unavailable.");
+        var entryAssembly = Assembly.GetEntryAssembly()?.Location
+            ?? throw new InvalidOperationException("CLI entry assembly is unavailable.");
+        var executableName = Path.GetFileNameWithoutExtension(processPath);
+        var isDotnetHost = string.Equals(executableName, "dotnet", StringComparison.OrdinalIgnoreCase);
+        return isDotnetHost
+            ? new CliLaunch(processPath, new[] { entryAssembly, command })
+            : new CliLaunch(processPath, new[] { command });
+    }
+
+    private sealed record CliLaunch(string ProcessPath, IReadOnlyList<string> Arguments);
 
     public sealed record WatchdogResult(
         string Mode,

@@ -1,0 +1,25 @@
+﻿{
+  "schemaVersion": "a99-canonical-worker-launch-failure-classification-v1",
+  "classifications": [
+    {
+      "status": "PROCESS_START_FAILED",
+      "covered": true
+    },
+    {
+      "status": "ARGUMENT_BINDING_FAILED",
+      "covered": true
+    },
+    {
+      "status": "WORKER_RUNTIME_FAILURE",
+      "covered": true
+    },
+    {
+      "status": "CHILD_BOOT_FAILED",
+      "covered": false
+    },
+    {
+      "status": "SOURCE_RESOLUTION_FAILED",
+      "covered": false
+    }
+  ]
+}

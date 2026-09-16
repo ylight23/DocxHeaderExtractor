@@ -1,0 +1,11 @@
+﻿{
+  "executionId": "bad-executable-20260916T122425334Z",
+  "expectedClassification": "PROCESS_START_FAILED",
+  "exceptionType": "System.ComponentModel.Win32Exception",
+  "message": "An error occurred trying to start process \u0027C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\execution-integrity\\canonical-worker-launch-v1\\self-test\\does-not-exist.exe\u0027 with working directory \u0027C:\\DocxHeaderExtractor-a99-closed-loop\u0027. The system cannot find the file specified.",
+  "hresult": -2147467259,
+  "executable": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\execution-integrity\\canonical-worker-launch-v1\\self-test\\does-not-exist.exe",
+  "arguments": [],
+  "workingDirectory": "C:\\DocxHeaderExtractor-a99-closed-loop",
+  "timestamp": "2026-09-16T12:24:25.3588726+00:00"
+}

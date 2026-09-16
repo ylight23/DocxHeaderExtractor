@@ -1,0 +1,25 @@
+﻿{
+  "schemaVersion": "a99-canonical-worker-launch-self-test-v1",
+  "status": "PASS",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReads": 0,
+  "semanticHash": "5f0eb27dfa44068fc60c69e0dcf8a05b14a061ed7526610e4592d68c268fe5e6",
+  "expectedSemanticHash": "5f0eb27dfa44068fc60c69e0dcf8a05b14a061ed7526610e4592d68c268fe5e6",
+  "valid": {
+    "status": "COMPLETE",
+    "childPid": 30996,
+    "exitCode": 0,
+    "stdoutBytes": 0,
+    "bootMarkerFound": true,
+    "lastStageMarker": "PRODUCTION_INPUT_READY",
+    "stderrBytes": 0,
+    "providerCalls": 0
+  },
+  "tests": {
+    "realEntrypoint": true,
+    "badExecutable": true,
+    "badArgument": true,
+    "runtimeFailure": true
+  }
+}

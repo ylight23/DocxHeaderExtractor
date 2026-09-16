@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Eval.ReasoningRetention;
@@ -328,11 +329,29 @@ public static class CanonicalDevV1BaselineRunner
         var perAttemptHardTimeoutSeconds = root.TryGetProperty("perAttemptHardTimeoutSeconds", out var attemptTimeoutValue) && attemptTimeoutValue.TryGetInt32(out var attemptTimeout)
             ? attemptTimeout
             : (int)ProviderTimeoutPolicyV2.ResolvePerAttemptHardTimeout().TotalSeconds;
+        var executionMode = root.TryGetProperty("executionMode", out var executionModeValue) ? executionModeValue.GetString() : null;
         var started = root.TryGetProperty("started", out var startedValue) && startedValue.TryGetDateTimeOffset(out var parsedStarted)
             ? parsedStarted : DateTimeOffset.UtcNow;
         Directory.CreateDirectory(outputDir);
         try
         {
+            await WriteWorkerMarkerAsync(outputDir, "worker.boot.json", new
+            {
+                schemaVersion = "a99-canonical-worker-launch-boot-v1",
+                pid = Environment.ProcessId,
+                documentId,
+                startedAt = started,
+                receivedCampaignId = workerCampaignId,
+                receivedRunConfigurationHash = runConfigurationHash,
+                workingDirectory = Environment.CurrentDirectory,
+                productionSemanticHash,
+                executionHarnessHash,
+                executionMode,
+            });
+            if (string.Equals(executionMode, "NO_PROVIDER_SELF_TEST", StringComparison.Ordinal))
+                return await RunNoProviderSelfTestAsync(outputDir, documentId, sourcePath, sourceSha256, started, ct);
+            if (string.Equals(executionMode, "RUNTIME_FAILURE", StringComparison.Ordinal))
+                throw new InvalidOperationException("DETERMINISTIC_WORKER_RUNTIME_FAILURE_TEST");
             var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");
             envRemote.RequestTimeoutSeconds = perAttemptHardTimeoutSeconds;
             envRemote.Observability = new ProviderObservabilityOptions
@@ -457,6 +476,35 @@ public static class CanonicalDevV1BaselineRunner
             return 2;
         }
     }
+
+    private static async Task<int> RunNoProviderSelfTestAsync(string outputDir, string documentId, string sourcePath, string expectedSha256, DateTimeOffset started, CancellationToken ct)
+    {
+        await WriteWorkerMarkerAsync(outputDir, "worker.stage.WORKER_BOOTED.json", new { stage = "WORKER_BOOTED", documentId, at = DateTimeOffset.UtcNow });
+        if (!File.Exists(sourcePath)) throw new FileNotFoundException("SOURCE_NOT_FOUND", sourcePath);
+        await WriteWorkerMarkerAsync(outputDir, "worker.stage.SOURCE_RESOLVED.json", new { stage = "SOURCE_RESOLVED", documentId, sourcePath, at = DateTimeOffset.UtcNow });
+        var actualSha = Sha256File(sourcePath);
+        if (!string.Equals(actualSha, expectedSha256, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidDataException("SOURCE_SHA_MISMATCH");
+        _ = new OpenXmlDocumentSource().Read(sourcePath);
+        await WriteWorkerMarkerAsync(outputDir, "worker.stage.SOURCE_PARSED.json", new { stage = "SOURCE_PARSED", documentId, at = DateTimeOffset.UtcNow });
+        await WriteWorkerMarkerAsync(outputDir, "worker.stage.PRODUCTION_INPUT_READY.json", new { stage = "PRODUCTION_INPUT_READY", documentId, at = DateTimeOffset.UtcNow });
+        await WriteJsonAsync(Path.Combine(outputDir, "worker-self-test-result.v1.json"), new
+        {
+            schemaVersion = "a99-canonical-worker-launch-self-test-result-v1",
+            documentId,
+            sourcePath,
+            sourceSha256 = expectedSha256,
+            providerCalls = 0,
+            modelCalls = 0,
+            started,
+            completed = DateTimeOffset.UtcNow,
+            status = "NO_PROVIDER_SELF_TEST_COMPLETE",
+        }, CancellationToken.None);
+        return 0;
+    }
+
+    private static Task WriteWorkerMarkerAsync(string outputDir, string fileName, object value) =>
+        WriteJsonAsync(Path.Combine(outputDir, fileName), value, CancellationToken.None);
 
     private static object BuildRunConfiguration(string repoRoot, string authorityPath, RemoteInferenceOptions remote, TimeSpan perAttemptTimeout, TimeSpan documentSafetyCeiling, string productionSemanticHash, string executionHarnessHash)
     {
