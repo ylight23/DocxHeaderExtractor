@@ -1,0 +1,1191 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_NODE_PARENT_ADJUDICATION_DECISIONS",
+  "schemaVersion": "a99-canonical-hierarchy-v1-doc0252",
+  "documentId": "DOC-0252",
+  "decisions": [
+    {
+      "semanticNodeRef": "N001",
+      "canonicalOccurrenceRef": "H001",
+      "memberOccurrenceRefs": [
+        "H001"
+      ],
+      "structuralRole": "NARRATIVE_SECTION",
+      "candidateParentRefs": [
+        "ROOT"
+      ],
+      "selectedParentRef": "ROOT",
+      "scopeRelationship": "NARRATIVE_SESSION_I",
+      "positiveParentEvidence": [
+        "DOCUMENT_OR_AUTONOMOUS_BRANCH_ROOT",
+        "NO_ENCLOSING_SEMANTIC_HEADING_IN_CANONICAL_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": "ROOT_BRANCH_HAS_NO_REQUIRED_SEMANTIC_PARENT",
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N002",
+      "canonicalOccurrenceRef": "H002",
+      "memberOccurrenceRefs": [
+        "H002"
+      ],
+      "structuralRole": "NARRATIVE_SECTION",
+      "candidateParentRefs": [
+        "N001",
+        "ROOT"
+      ],
+      "selectedParentRef": "ROOT",
+      "scopeRelationship": "NARRATIVE_SESSION_II",
+      "positiveParentEvidence": [
+        "NARRATIVE_SESSION_BOUNDARY",
+        "PARALLEL_SESSION_PATTERN",
+        "NO_PARENT_SESSION_ENCLOSURE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": "ROOT_BRANCH_HAS_NO_REQUIRED_SEMANTIC_PARENT",
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N003",
+      "canonicalOccurrenceRef": "H003",
+      "memberOccurrenceRefs": [
+        "H003"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N002",
+        "N001",
+        "ROOT"
+      ],
+      "selectedParentRef": "N002",
+      "scopeRelationship": "SESSION_II_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N004",
+      "canonicalOccurrenceRef": "H004",
+      "memberOccurrenceRefs": [
+        "H004"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N002",
+        "N001",
+        "ROOT"
+      ],
+      "selectedParentRef": "N002",
+      "scopeRelationship": "SESSION_II_SUBSECTION",
+      "positiveParentEvidence": [
+        "SESSION_II_SUBSECTION_SEQUENCE",
+        "REGIONAL_UPDATES_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N005",
+      "canonicalOccurrenceRef": "H005",
+      "memberOccurrenceRefs": [
+        "H005"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N004",
+        "N002",
+        "ROOT"
+      ],
+      "selectedParentRef": "N004",
+      "scopeRelationship": "REGIONAL_SUBSECTION",
+      "positiveParentEvidence": [
+        "REGIONAL_SUBSECTION_PATTERN",
+        "REPEATED_SIBLING_UNDER_N004"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N006",
+      "canonicalOccurrenceRef": "H006",
+      "memberOccurrenceRefs": [
+        "H006"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N004",
+        "N002",
+        "ROOT"
+      ],
+      "selectedParentRef": "N004",
+      "scopeRelationship": "REGIONAL_SUBSECTION",
+      "positiveParentEvidence": [
+        "REGIONAL_SUBSECTION_PATTERN",
+        "REPEATED_SIBLING_UNDER_N004"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N007",
+      "canonicalOccurrenceRef": "H007",
+      "memberOccurrenceRefs": [
+        "H007"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N004",
+        "N002",
+        "ROOT"
+      ],
+      "selectedParentRef": "N004",
+      "scopeRelationship": "REGIONAL_SUBSECTION",
+      "positiveParentEvidence": [
+        "REGIONAL_SUBSECTION_PATTERN",
+        "REPEATED_SIBLING_UNDER_N004"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N008",
+      "canonicalOccurrenceRef": "H008",
+      "memberOccurrenceRefs": [
+        "H008"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N004",
+        "N002",
+        "ROOT"
+      ],
+      "selectedParentRef": "N004",
+      "scopeRelationship": "REGIONAL_SUBSECTION",
+      "positiveParentEvidence": [
+        "REGIONAL_SUBSECTION_PATTERN",
+        "REPEATED_SIBLING_UNDER_N004"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N009",
+      "canonicalOccurrenceRef": "H009",
+      "memberOccurrenceRefs": [
+        "H009"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N004",
+        "N002",
+        "ROOT"
+      ],
+      "selectedParentRef": "N004",
+      "scopeRelationship": "REGIONAL_SUBSECTION",
+      "positiveParentEvidence": [
+        "REGIONAL_SUBSECTION_PATTERN",
+        "REPEATED_SIBLING_UNDER_N004"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N010",
+      "canonicalOccurrenceRef": "H010",
+      "memberOccurrenceRefs": [
+        "H010"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N004",
+        "N002",
+        "ROOT"
+      ],
+      "selectedParentRef": "N004",
+      "scopeRelationship": "REGIONAL_SUBSECTION",
+      "positiveParentEvidence": [
+        "REGIONAL_SUBSECTION_PATTERN",
+        "REPEATED_SIBLING_UNDER_N004"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N011",
+      "canonicalOccurrenceRef": "H011",
+      "memberOccurrenceRefs": [
+        "H011"
+      ],
+      "structuralRole": "NARRATIVE_SECTION",
+      "candidateParentRefs": [
+        "N002",
+        "N001",
+        "ROOT"
+      ],
+      "selectedParentRef": "ROOT",
+      "scopeRelationship": "NARRATIVE_SESSION_III",
+      "positiveParentEvidence": [
+        "DOCUMENT_OR_AUTONOMOUS_BRANCH_ROOT",
+        "NO_ENCLOSING_SEMANTIC_HEADING_IN_CANONICAL_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": "ROOT_BRANCH_HAS_NO_REQUIRED_SEMANTIC_PARENT",
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N012",
+      "canonicalOccurrenceRef": "H012",
+      "memberOccurrenceRefs": [
+        "H012"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N011",
+        "N002",
+        "ROOT"
+      ],
+      "selectedParentRef": "N011",
+      "scopeRelationship": "SESSION_III_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N013",
+      "canonicalOccurrenceRef": "H013",
+      "memberOccurrenceRefs": [
+        "H013"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N011",
+        "N002",
+        "ROOT"
+      ],
+      "selectedParentRef": "N011",
+      "scopeRelationship": "SESSION_III_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N014",
+      "canonicalOccurrenceRef": "H014",
+      "memberOccurrenceRefs": [
+        "H014"
+      ],
+      "structuralRole": "NARRATIVE_SECTION",
+      "candidateParentRefs": [
+        "N011",
+        "N002",
+        "ROOT"
+      ],
+      "selectedParentRef": "ROOT",
+      "scopeRelationship": "NARRATIVE_SESSION_IV",
+      "positiveParentEvidence": [
+        "DOCUMENT_OR_AUTONOMOUS_BRANCH_ROOT",
+        "NO_ENCLOSING_SEMANTIC_HEADING_IN_CANONICAL_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": "ROOT_BRANCH_HAS_NO_REQUIRED_SEMANTIC_PARENT",
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N015",
+      "canonicalOccurrenceRef": "H015",
+      "memberOccurrenceRefs": [
+        "H015"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N014",
+        "N011",
+        "ROOT"
+      ],
+      "selectedParentRef": "N014",
+      "scopeRelationship": "SESSION_IV_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N016",
+      "canonicalOccurrenceRef": "H016",
+      "memberOccurrenceRefs": [
+        "H016"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N014",
+        "N011",
+        "ROOT"
+      ],
+      "selectedParentRef": "N014",
+      "scopeRelationship": "SESSION_IV_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N017",
+      "canonicalOccurrenceRef": "H017",
+      "memberOccurrenceRefs": [
+        "H017"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N014",
+        "N011",
+        "ROOT"
+      ],
+      "selectedParentRef": "N014",
+      "scopeRelationship": "SESSION_IV_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N018",
+      "canonicalOccurrenceRef": "H018",
+      "memberOccurrenceRefs": [
+        "H018"
+      ],
+      "structuralRole": "NARRATIVE_SECTION",
+      "candidateParentRefs": [
+        "N014",
+        "N011",
+        "ROOT"
+      ],
+      "selectedParentRef": "ROOT",
+      "scopeRelationship": "NARRATIVE_SESSION_V",
+      "positiveParentEvidence": [
+        "DOCUMENT_OR_AUTONOMOUS_BRANCH_ROOT",
+        "NO_ENCLOSING_SEMANTIC_HEADING_IN_CANONICAL_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": "ROOT_BRANCH_HAS_NO_REQUIRED_SEMANTIC_PARENT",
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N019",
+      "canonicalOccurrenceRef": "H019",
+      "memberOccurrenceRefs": [
+        "H019"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N018",
+        "N014",
+        "ROOT"
+      ],
+      "selectedParentRef": "N018",
+      "scopeRelationship": "SESSION_V_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N020",
+      "canonicalOccurrenceRef": "H020",
+      "memberOccurrenceRefs": [
+        "H020"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N018",
+        "N014",
+        "ROOT"
+      ],
+      "selectedParentRef": "N018",
+      "scopeRelationship": "SESSION_V_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N021",
+      "canonicalOccurrenceRef": "H021",
+      "memberOccurrenceRefs": [
+        "H021"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N018",
+        "N014",
+        "ROOT"
+      ],
+      "selectedParentRef": "N018",
+      "scopeRelationship": "SESSION_V_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N022",
+      "canonicalOccurrenceRef": "H022",
+      "memberOccurrenceRefs": [
+        "H022"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N018",
+        "N014",
+        "ROOT"
+      ],
+      "selectedParentRef": "N018",
+      "scopeRelationship": "SESSION_V_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N023",
+      "canonicalOccurrenceRef": "H023",
+      "memberOccurrenceRefs": [
+        "H023"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N018",
+        "N014",
+        "ROOT"
+      ],
+      "selectedParentRef": "N018",
+      "scopeRelationship": "SESSION_V_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N024",
+      "canonicalOccurrenceRef": "H024",
+      "memberOccurrenceRefs": [
+        "H024"
+      ],
+      "structuralRole": "NARRATIVE_SUBHEADING",
+      "candidateParentRefs": [
+        "N018",
+        "N014",
+        "ROOT"
+      ],
+      "selectedParentRef": "N018",
+      "scopeRelationship": "SESSION_V_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N025",
+      "canonicalOccurrenceRef": "H025",
+      "memberOccurrenceRefs": [
+        "H025"
+      ],
+      "structuralRole": "NARRATIVE_SECTION",
+      "candidateParentRefs": [
+        "N018",
+        "N014",
+        "ROOT"
+      ],
+      "selectedParentRef": "ROOT",
+      "scopeRelationship": "NARRATIVE_SESSION_VI",
+      "positiveParentEvidence": [
+        "DOCUMENT_OR_AUTONOMOUS_BRANCH_ROOT",
+        "NO_ENCLOSING_SEMANTIC_HEADING_IN_CANONICAL_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": "ROOT_BRANCH_HAS_NO_REQUIRED_SEMANTIC_PARENT",
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N026",
+      "canonicalOccurrenceRef": "H026",
+      "memberOccurrenceRefs": [
+        "H026"
+      ],
+      "structuralRole": "AGENDA_SECTION",
+      "candidateParentRefs": [
+        "N025",
+        "ROOT"
+      ],
+      "selectedParentRef": "ROOT",
+      "scopeRelationship": "AGENDA_ROOT",
+      "positiveParentEvidence": [
+        "EXPLICIT_AGENDA_SECTION_BOUNDARY",
+        "AUTONOMOUS_AGENDA_BRANCH"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": "ROOT_BRANCH_HAS_NO_REQUIRED_SEMANTIC_PARENT",
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N027",
+      "canonicalOccurrenceRef": "H027",
+      "memberOccurrenceRefs": [
+        "H027"
+      ],
+      "structuralRole": "AGENDA_DAY",
+      "candidateParentRefs": [
+        "N026",
+        "ROOT"
+      ],
+      "selectedParentRef": "N026",
+      "scopeRelationship": "AGENDA_DAY_1",
+      "positiveParentEvidence": [
+        "DAY_HEADING_WITHIN_AGENDA",
+        "DAY_1_SCOPE_BOUNDARY"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N028",
+      "canonicalOccurrenceRef": "H028",
+      "memberOccurrenceRefs": [
+        "H028"
+      ],
+      "structuralRole": "AGENDA_SESSION",
+      "candidateParentRefs": [
+        "N027",
+        "N026",
+        "ROOT"
+      ],
+      "selectedParentRef": "N027",
+      "scopeRelationship": "AGENDA_DAY_1_SESSION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N029",
+      "canonicalOccurrenceRef": "H029",
+      "memberOccurrenceRefs": [
+        "H029"
+      ],
+      "structuralRole": "AGENDA_SESSION",
+      "candidateParentRefs": [
+        "N027",
+        "N026",
+        "ROOT"
+      ],
+      "selectedParentRef": "N027",
+      "scopeRelationship": "AGENDA_DAY_1_SESSION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N030",
+      "canonicalOccurrenceRef": "H030",
+      "memberOccurrenceRefs": [
+        "H030"
+      ],
+      "structuralRole": "AGENDA_SESSION",
+      "candidateParentRefs": [
+        "N027",
+        "N026",
+        "ROOT"
+      ],
+      "selectedParentRef": "N027",
+      "scopeRelationship": "AGENDA_DAY_1_SESSION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N031",
+      "canonicalOccurrenceRef": "H031",
+      "memberOccurrenceRefs": [
+        "H031"
+      ],
+      "structuralRole": "AGENDA_SESSION",
+      "candidateParentRefs": [
+        "N027",
+        "N026",
+        "ROOT"
+      ],
+      "selectedParentRef": "N027",
+      "scopeRelationship": "AGENDA_DAY_1_SESSION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N032",
+      "canonicalOccurrenceRef": "H032",
+      "memberOccurrenceRefs": [
+        "H032",
+        "H034"
+      ],
+      "structuralRole": "AGENDA_SESSION",
+      "candidateParentRefs": [
+        "N027",
+        "N033",
+        "N026",
+        "ROOT"
+      ],
+      "selectedParentRef": "N027",
+      "scopeRelationship": "AGENDA_SESSION_V_CROSS_DAY",
+      "positiveParentEvidence": [
+        "AGENDA_SESSION_STARTS_UNDER_DAY_1",
+        "CONTINUATION_OCCURRENCE_ON_DAY_2",
+        "ONE_SEMANTIC_NODE_ONE_PARENT_INVARIANT"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "H034 is a continuation occurrence of N032; it does not create a second parent edge.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N033",
+      "canonicalOccurrenceRef": "H033",
+      "memberOccurrenceRefs": [
+        "H033"
+      ],
+      "structuralRole": "AGENDA_DAY",
+      "candidateParentRefs": [
+        "N026",
+        "N027",
+        "ROOT"
+      ],
+      "selectedParentRef": "N026",
+      "scopeRelationship": "AGENDA_DAY_2",
+      "positiveParentEvidence": [
+        "DAY_HEADING_WITHIN_AGENDA",
+        "DAY_2_SCOPE_BOUNDARY"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N034",
+      "canonicalOccurrenceRef": "H035",
+      "memberOccurrenceRefs": [
+        "H035"
+      ],
+      "structuralRole": "AGENDA_SESSION",
+      "candidateParentRefs": [
+        "N033",
+        "N026",
+        "ROOT"
+      ],
+      "selectedParentRef": "N033",
+      "scopeRelationship": "AGENDA_DAY_2_SESSION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N035",
+      "canonicalOccurrenceRef": "H036",
+      "memberOccurrenceRefs": [
+        "H036"
+      ],
+      "structuralRole": "ANNEX_SECTION",
+      "candidateParentRefs": [
+        "N025",
+        "ROOT"
+      ],
+      "selectedParentRef": "ROOT",
+      "scopeRelationship": "ANNEX_2_ROOT",
+      "positiveParentEvidence": [
+        "EXPLICIT_ANNEX_2_BOUNDARY",
+        "AUTONOMOUS_PARTICIPANT_BRANCH"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": "ROOT_BRANCH_HAS_NO_REQUIRED_SEMANTIC_PARENT",
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N036",
+      "canonicalOccurrenceRef": "H037",
+      "memberOccurrenceRefs": [
+        "H037"
+      ],
+      "structuralRole": "ANNEX_SUBHEADING",
+      "candidateParentRefs": [
+        "N035",
+        "ROOT"
+      ],
+      "selectedParentRef": "N035",
+      "scopeRelationship": "ANNEX_2_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N037",
+      "canonicalOccurrenceRef": "H038",
+      "memberOccurrenceRefs": [
+        "H038"
+      ],
+      "structuralRole": "ANNEX_SUBHEADING",
+      "candidateParentRefs": [
+        "N035",
+        "ROOT"
+      ],
+      "selectedParentRef": "N035",
+      "scopeRelationship": "ANNEX_2_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N038",
+      "canonicalOccurrenceRef": "H039",
+      "memberOccurrenceRefs": [
+        "H039"
+      ],
+      "structuralRole": "ANNEX_SUBHEADING",
+      "candidateParentRefs": [
+        "N035",
+        "ROOT"
+      ],
+      "selectedParentRef": "N035",
+      "scopeRelationship": "ANNEX_2_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    },
+    {
+      "semanticNodeRef": "N039",
+      "canonicalOccurrenceRef": "H040",
+      "memberOccurrenceRefs": [
+        "H040"
+      ],
+      "structuralRole": "ANNEX_SUBHEADING",
+      "candidateParentRefs": [
+        "N035",
+        "ROOT"
+      ],
+      "selectedParentRef": "N035",
+      "scopeRelationship": "ANNEX_2_SUBSECTION",
+      "positiveParentEvidence": [
+        "EXPLICIT_STRUCTURAL_SUBORDINATION",
+        "CHILD_FUNCTION_WITHIN_PARENT_SCOPE"
+      ],
+      "contradictionEvidence": "PRECEDING_HEADING_IS_NOT_AUTOMATIC_PARENT",
+      "structuralSubordinationEvidence": [
+        "PARENT_SCOPE_CONTAINS_CHILD_FUNCTION",
+        "STRUCTURAL_SECTION_OR_DAY_CONTAINMENT"
+      ],
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "confidence": "HIGH",
+      "decision": "PARENT_ASSIGNED",
+      "decisionAuthority": "CODEX_SOURCE_ONLY_PARENT_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false,
+      "oldSemanticTotalUsed": false
+    }
+  ],
+  "decisionCount": 39,
+  "unresolvedCount": 0,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "levelEnteredByReviewer": false
+}

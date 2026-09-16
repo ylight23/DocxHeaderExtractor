@@ -1,0 +1,1078 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_NODE_HIERARCHY_INPUT",
+  "schemaVersion": "a99-canonical-hierarchy-v1-doc0252",
+  "documentId": "DOC-0252",
+  "occurrenceAuthority": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/exact-bindings.json",
+  "identityAuthority": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/semantic-nodes.json",
+  "identityFreezeAuthority": "artifacts/authority-audit/canonical-identity-authority-freeze-v1/DOC-0252/authority-freeze-manifest.json",
+  "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "semanticNodeCount": 39,
+  "nodes": [
+    {
+      "semanticNodeRef": "N001",
+      "canonicalOccurrenceRef": "H001",
+      "memberOccurrenceRefs": [
+        "H001"
+      ],
+      "exactText": "Session I: Welcome and meeting objectives",
+      "sourceId": "body[1]/p[7]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 41
+      },
+      "documentOrder": 5,
+      "headingKind": "NARRATIVE_SECTION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N002",
+      "canonicalOccurrenceRef": "H002",
+      "memberOccurrenceRefs": [
+        "H002"
+      ],
+      "exactText": "Session II: Update on the ICP 2021 Cycle",
+      "sourceId": "body[1]/p[11]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 40
+      },
+      "documentOrder": 9,
+      "headingKind": "NARRATIVE_SECTION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N003",
+      "canonicalOccurrenceRef": "H003",
+      "memberOccurrenceRefs": [
+        "H003"
+      ],
+      "exactText": "1.Global office update",
+      "sourceId": "body[1]/p[12]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "documentOrder": 10,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N004",
+      "canonicalOccurrenceRef": "H004",
+      "memberOccurrenceRefs": [
+        "H004"
+      ],
+      "exactText": "2.Regional updates",
+      "sourceId": "body[1]/p[22]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "documentOrder": 34,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N005",
+      "canonicalOccurrenceRef": "H005",
+      "memberOccurrenceRefs": [
+        "H005"
+      ],
+      "exactText": "Africa",
+      "sourceId": "body[1]/p[24]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 6
+      },
+      "documentOrder": 36,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": true,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N006",
+      "canonicalOccurrenceRef": "H006",
+      "memberOccurrenceRefs": [
+        "H006"
+      ],
+      "exactText": "Asia and the Pacific",
+      "sourceId": "body[1]/p[27]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "documentOrder": 39,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": true,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N007",
+      "canonicalOccurrenceRef": "H007",
+      "memberOccurrenceRefs": [
+        "H007"
+      ],
+      "exactText": "Commonwealth of Independent States (CIS)",
+      "sourceId": "body[1]/p[31]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 40
+      },
+      "documentOrder": 43,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": true,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N008",
+      "canonicalOccurrenceRef": "H008",
+      "memberOccurrenceRefs": [
+        "H008"
+      ],
+      "exactText": "Eurostat–OECD PPP Program",
+      "sourceId": "body[1]/p[39]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 25
+      },
+      "documentOrder": 49,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": true,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N009",
+      "canonicalOccurrenceRef": "H009",
+      "memberOccurrenceRefs": [
+        "H009"
+      ],
+      "exactText": "Latin America and the Caribbean",
+      "sourceId": "body[1]/p[42]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "documentOrder": 52,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": true,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N010",
+      "canonicalOccurrenceRef": "H010",
+      "memberOccurrenceRefs": [
+        "H010"
+      ],
+      "exactText": "Western Asia",
+      "sourceId": "body[1]/p[46]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 12
+      },
+      "documentOrder": 56,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": true,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N011",
+      "canonicalOccurrenceRef": "H011",
+      "memberOccurrenceRefs": [
+        "H011"
+      ],
+      "exactText": "Session III: Short- and Long-Term Research and Development Agenda",
+      "sourceId": "body[1]/p[54]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 65
+      },
+      "documentOrder": 62,
+      "headingKind": "NARRATIVE_SECTION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N012",
+      "canonicalOccurrenceRef": "H012",
+      "memberOccurrenceRefs": [
+        "H012"
+      ],
+      "exactText": "1.Research Topics Emerging from the Previous ICP Cycles",
+      "sourceId": "body[1]/p[55]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 55
+      },
+      "documentOrder": 63,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N013",
+      "canonicalOccurrenceRef": "H013",
+      "memberOccurrenceRefs": [
+        "H013"
+      ],
+      "exactText": "2.Forthcoming Research Topics",
+      "sourceId": "body[1]/p[62]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "documentOrder": 80,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N014",
+      "canonicalOccurrenceRef": "H014",
+      "memberOccurrenceRefs": [
+        "H014"
+      ],
+      "exactText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "sourceId": "body[1]/p[75]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 66
+      },
+      "documentOrder": 91,
+      "headingKind": "NARRATIVE_SECTION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N015",
+      "canonicalOccurrenceRef": "H015",
+      "memberOccurrenceRefs": [
+        "H015"
+      ],
+      "exactText": "1.TAG Composition and Terms of Reference",
+      "sourceId": "body[1]/p[76]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 40
+      },
+      "documentOrder": 92,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N016",
+      "canonicalOccurrenceRef": "H016",
+      "memberOccurrenceRefs": [
+        "H016"
+      ],
+      "exactText": "2.Terms of Reference for a Task Force on Annual PPP Production",
+      "sourceId": "body[1]/p[80]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 62
+      },
+      "documentOrder": 96,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N017",
+      "canonicalOccurrenceRef": "H017",
+      "memberOccurrenceRefs": [
+        "H017"
+      ],
+      "exactText": "3.Terms of Reference for a Task Force on ICP Classification Update",
+      "sourceId": "body[1]/p[89]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 66
+      },
+      "documentOrder": 103,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N018",
+      "canonicalOccurrenceRef": "H018",
+      "memberOccurrenceRefs": [
+        "H018"
+      ],
+      "exactText": "Session V: Current Research",
+      "sourceId": "body[1]/p[94]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 27
+      },
+      "documentOrder": 108,
+      "headingKind": "NARRATIVE_SECTION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N019",
+      "canonicalOccurrenceRef": "H019",
+      "memberOccurrenceRefs": [
+        "H019"
+      ],
+      "exactText": "1.The Treatment of Import and Export Prices in International Comparisons",
+      "sourceId": "body[1]/p[95]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 72
+      },
+      "documentOrder": 109,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N020",
+      "canonicalOccurrenceRef": "H020",
+      "memberOccurrenceRefs": [
+        "H020"
+      ],
+      "exactText": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "sourceId": "body[1]/p[105]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 110
+      },
+      "documentOrder": 117,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N021",
+      "canonicalOccurrenceRef": "H021",
+      "memberOccurrenceRefs": [
+        "H021"
+      ],
+      "exactText": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "sourceId": "body[1]/p[110]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 84
+      },
+      "documentOrder": 122,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N022",
+      "canonicalOccurrenceRef": "H022",
+      "memberOccurrenceRefs": [
+        "H022"
+      ],
+      "exactText": "4.Treatment of Negative Expenditures in ICP",
+      "sourceId": "body[1]/p[120]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 43
+      },
+      "documentOrder": 130,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N023",
+      "canonicalOccurrenceRef": "H023",
+      "memberOccurrenceRefs": [
+        "H023"
+      ],
+      "exactText": "5.Fine Tuning Global Linking Procedures",
+      "sourceId": "body[1]/p[125]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "documentOrder": 135,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N024",
+      "canonicalOccurrenceRef": "H024",
+      "memberOccurrenceRefs": [
+        "H024"
+      ],
+      "exactText": "6.Improving Reliability of Price Comparisons",
+      "sourceId": "body[1]/p[142]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 44
+      },
+      "documentOrder": 148,
+      "headingKind": "NARRATIVE_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N025",
+      "canonicalOccurrenceRef": "H025",
+      "memberOccurrenceRefs": [
+        "H025"
+      ],
+      "exactText": "Session VI: Any Other Business",
+      "sourceId": "body[1]/p[151]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "documentOrder": 157,
+      "headingKind": "NARRATIVE_SECTION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N026",
+      "canonicalOccurrenceRef": "H026",
+      "memberOccurrenceRefs": [
+        "H026"
+      ],
+      "exactText": "Agenda",
+      "sourceId": "body[1]/p[158]",
+      "sourceSpan": {
+        "start": 56,
+        "end": 62
+      },
+      "documentOrder": 161,
+      "headingKind": "AGENDA_SECTION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24",
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N027",
+      "canonicalOccurrenceRef": "H027",
+      "memberOccurrenceRefs": [
+        "H027"
+      ],
+      "exactText": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER",
+      "sourceId": "body[1]/p[158]",
+      "sourceSpan": {
+        "start": 64,
+        "end": 115
+      },
+      "documentOrder": 161,
+      "headingKind": "AGENDA_DAY",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24",
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N028",
+      "canonicalOccurrenceRef": "H028",
+      "memberOccurrenceRefs": [
+        "H028"
+      ],
+      "exactText": "SESSION I: Welcome and Opening Remarks",
+      "sourceId": "body[1]/p[158]",
+      "sourceSpan": {
+        "start": 117,
+        "end": 155
+      },
+      "documentOrder": 161,
+      "headingKind": "AGENDA_SESSION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24",
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N029",
+      "canonicalOccurrenceRef": "H029",
+      "memberOccurrenceRefs": [
+        "H029"
+      ],
+      "exactText": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+      "sourceId": "body[1]/p[158]",
+      "sourceSpan": {
+        "start": 227,
+        "end": 277
+      },
+      "documentOrder": 161,
+      "headingKind": "AGENDA_SESSION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24",
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N030",
+      "canonicalOccurrenceRef": "H030",
+      "memberOccurrenceRefs": [
+        "H030"
+      ],
+      "exactText": "SESSION III: Short- and Long-Term Research and Development Agenda",
+      "sourceId": "body[1]/p[159]",
+      "sourceSpan": {
+        "start": 1,
+        "end": 66
+      },
+      "documentOrder": 164,
+      "headingKind": "AGENDA_SESSION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N031",
+      "canonicalOccurrenceRef": "H031",
+      "memberOccurrenceRefs": [
+        "H031"
+      ],
+      "exactText": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+      "sourceId": "body[1]/p[160]",
+      "sourceSpan": {
+        "start": 1,
+        "end": 65
+      },
+      "documentOrder": 169,
+      "headingKind": "AGENDA_SESSION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N032",
+      "canonicalOccurrenceRef": "H032",
+      "memberOccurrenceRefs": [
+        "H032",
+        "H034"
+      ],
+      "exactText": "SESSION V: Current Research",
+      "sourceId": "body[1]/p[166]",
+      "sourceSpan": {
+        "start": 1,
+        "end": 28
+      },
+      "documentOrder": 173,
+      "headingKind": "AGENDA_SESSION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N033",
+      "canonicalOccurrenceRef": "H033",
+      "memberOccurrenceRefs": [
+        "H033"
+      ],
+      "exactText": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+      "sourceId": "body[1]/p[167]",
+      "sourceSpan": {
+        "start": 1,
+        "end": 52
+      },
+      "documentOrder": 176,
+      "headingKind": "AGENDA_DAY",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N034",
+      "canonicalOccurrenceRef": "H035",
+      "memberOccurrenceRefs": [
+        "H035"
+      ],
+      "exactText": "SESSION VI: Closing",
+      "sourceId": "body[1]/p[169]",
+      "sourceSpan": {
+        "start": 1,
+        "end": 20
+      },
+      "documentOrder": 192,
+      "headingKind": "AGENDA_SESSION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N035",
+      "canonicalOccurrenceRef": "H036",
+      "memberOccurrenceRefs": [
+        "H036"
+      ],
+      "exactText": "Annex 2: List of Participants",
+      "sourceId": "body[1]/p[174]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "documentOrder": 195,
+      "headingKind": "ANNEX_SECTION",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "center",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": false,
+        "fontSizeHalfPointsObserved": [
+          "24"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N036",
+      "canonicalOccurrenceRef": "H037",
+      "memberOccurrenceRefs": [
+        "H037"
+      ],
+      "exactText": "ICP Technical Advisory Group members",
+      "sourceId": "body[1]/p[175]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 36
+      },
+      "documentOrder": 196,
+      "headingKind": "ANNEX_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": true,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N037",
+      "canonicalOccurrenceRef": "H038",
+      "memberOccurrenceRefs": [
+        "H038"
+      ],
+      "exactText": "ICP experts, guest speakers, and observers",
+      "sourceId": "body[1]/p[176]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 42
+      },
+      "documentOrder": 199,
+      "headingKind": "ANNEX_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": true,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N038",
+      "canonicalOccurrenceRef": "H039",
+      "memberOccurrenceRefs": [
+        "H039"
+      ],
+      "exactText": "ICP Inter-Agency Coordination Group (IACG)",
+      "sourceId": "body[1]/p[177]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 42
+      },
+      "documentOrder": 202,
+      "headingKind": "ANNEX_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": true,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    },
+    {
+      "semanticNodeRef": "N039",
+      "canonicalOccurrenceRef": "H040",
+      "memberOccurrenceRefs": [
+        "H040"
+      ],
+      "exactText": "World Bank",
+      "sourceId": "body[1]/p[178]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "documentOrder": 207,
+      "headingKind": "ANNEX_SUBHEADING",
+      "sourceEvidence": {
+        "paragraphStyleId": null,
+        "outlineLevel": null,
+        "alignment": "left",
+        "boldObserved": true,
+        "italicObserved": true,
+        "underlineObserved": true,
+        "fontSizeHalfPointsObserved": [
+          "22"
+        ],
+        "parserOwnedEvidenceOnly": true
+      }
+    }
+  ],
+  "parentFieldsPresent": false,
+  "levelFieldsPresent": false,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "oldSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0
+}

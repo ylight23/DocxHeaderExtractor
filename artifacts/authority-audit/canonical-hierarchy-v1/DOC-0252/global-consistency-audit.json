@@ -1,0 +1,326 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_NODE_GLOBAL_CONSISTENCY_AUDIT",
+  "schemaVersion": "a99-canonical-hierarchy-v1-doc0252",
+  "documentId": "DOC-0252",
+  "rules": [
+    "SCOPE_OR_OWNERSHIP_ALONE_IS_NOT_PARENT_EVIDENCE",
+    "CONTINUATION_IS_NOT_PARENT_CHILD",
+    "ONE_SEMANTIC_NODE_ONE_PARENT"
+  ],
+  "checks": [
+    {
+      "semanticNodeRef": "N001",
+      "selectedParentRef": "ROOT",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N002",
+      "selectedParentRef": "ROOT",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N003",
+      "selectedParentRef": "N002",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N004",
+      "selectedParentRef": "N002",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N005",
+      "selectedParentRef": "N004",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N006",
+      "selectedParentRef": "N004",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N007",
+      "selectedParentRef": "N004",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N008",
+      "selectedParentRef": "N004",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N009",
+      "selectedParentRef": "N004",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N010",
+      "selectedParentRef": "N004",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N011",
+      "selectedParentRef": "ROOT",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N012",
+      "selectedParentRef": "N011",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N013",
+      "selectedParentRef": "N011",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N014",
+      "selectedParentRef": "ROOT",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N015",
+      "selectedParentRef": "N014",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N016",
+      "selectedParentRef": "N014",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N017",
+      "selectedParentRef": "N014",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N018",
+      "selectedParentRef": "ROOT",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N019",
+      "selectedParentRef": "N018",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N020",
+      "selectedParentRef": "N018",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N021",
+      "selectedParentRef": "N018",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N022",
+      "selectedParentRef": "N018",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N023",
+      "selectedParentRef": "N018",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N024",
+      "selectedParentRef": "N018",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N025",
+      "selectedParentRef": "ROOT",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N026",
+      "selectedParentRef": "ROOT",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N027",
+      "selectedParentRef": "N026",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N028",
+      "selectedParentRef": "N027",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N029",
+      "selectedParentRef": "N027",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N030",
+      "selectedParentRef": "N027",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N031",
+      "selectedParentRef": "N027",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N032",
+      "selectedParentRef": "N027",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "H034 is a continuation occurrence of N032; it does not create a second parent edge.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N033",
+      "selectedParentRef": "N026",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N034",
+      "selectedParentRef": "N033",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N035",
+      "selectedParentRef": "ROOT",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N036",
+      "selectedParentRef": "N035",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N037",
+      "selectedParentRef": "N035",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N038",
+      "selectedParentRef": "N035",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    },
+    {
+      "semanticNodeRef": "N039",
+      "selectedParentRef": "N035",
+      "structuralSubordinationRequired": true,
+      "structuralSubordinationPresent": true,
+      "globalConsistencyRationale": "No continuation-specific parent override.",
+      "violation": false
+    }
+  ],
+  "violationCount": 0,
+  "historicalHierarchyUsed": false
+}

@@ -1,0 +1,111 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_NODE_HIERARCHY_V1",
+  "schemaVersion": "a99-canonical-hierarchy-v1-doc0252",
+  "documentId": "DOC-0252",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "authority": "CODEX_SOURCE_BACKED_NOT_USER_APPROVED",
+  "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "identityAuthorityStatus": "USER_REVIEWED_CANONICAL_IDENTITY_GOLD",
+  "identityFreezeCommit": "b4f227e",
+  "semanticNodeCount": 39,
+  "parentEdgeCount": 39,
+  "rootChildCount": 8,
+  "maxDepth": 3,
+  "ambiguityCount": 0,
+  "continuationSemanticNodeRef": "N032",
+  "continuationMemberOccurrenceRefs": [
+    "H032",
+    "H034"
+  ],
+  "continuationParentSemanticNodeRef": "N027",
+  "inputHashes": [
+    {
+      "artifact": "authoritativeDocx",
+      "path": "todo10_8/generated-docx/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.docx",
+      "sha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77"
+    },
+    {
+      "artifact": "occurrenceManifest",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/manifest.json",
+      "sha256": "41a1a55b60541f6c51441ce8878caddf18c9c7e59e94b9a23807a0a432701489"
+    },
+    {
+      "artifact": "occurrenceBindings",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/exact-bindings.json",
+      "sha256": "cc43a09038c70e4f09e7d35810bce089d2fc1fc316467c178f4083bebfd3c3f7"
+    },
+    {
+      "artifact": "sourceAuthority",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/source-authority.json",
+      "sha256": "4665f3591b5be96ed1d5b253fe982ab5c67b00e1538cea90f4b7305b4b996950"
+    },
+    {
+      "artifact": "identityManifest",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/manifest.json",
+      "sha256": "417052c21526b0e3d737cd8d719c78bf4beb31eece0bc8918dd1956cf62f3b05"
+    },
+    {
+      "artifact": "identityAssignments",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/occurrence-assignments.json",
+      "sha256": "d83f7250e4e589d4503c8a23517192ff51bb9efa75b2a4af8ec047285f773b4b"
+    },
+    {
+      "artifact": "identityNodes",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/semantic-nodes.json",
+      "sha256": "2cb6bc490b69e7d36002fb701ef49f57cec1fdb45b0e77952f2eb489daf7a590"
+    },
+    {
+      "artifact": "identityFreezeManifest",
+      "path": "artifacts/authority-audit/canonical-identity-authority-freeze-v1/DOC-0252/authority-freeze-manifest.json",
+      "sha256": "df5026c79743df486cc4865439b9bbaeec289c89077ceb2807cc71879dde2424"
+    }
+  ],
+  "outputHashes": [
+    {
+      "artifact": "node-input-manifest.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/node-input-manifest.json",
+      "sha256": "3d54ef4b28b72ebddaf865505baf6e5400fb71cbec85a71214f0c3e9ed86e7aa"
+    },
+    {
+      "artifact": "parent-decisions.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/parent-decisions.json",
+      "sha256": "c3db779f7d8a7e3dfeb952735b97ad3d08e936712f53fcabb133cc2bc129ea4c"
+    },
+    {
+      "artifact": "parent-edges.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/parent-edges.json",
+      "sha256": "28364ef4392c6311a78a3b91f766250817111adeb96b768d4c3d6dc9a714137c"
+    },
+    {
+      "artifact": "ambiguities.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/ambiguities.json",
+      "sha256": "7daa7a32887c29a3144bb204d66bc857b199c5f7d0d267a7b4cdf555f2230bd5"
+    },
+    {
+      "artifact": "global-consistency-audit.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/global-consistency-audit.json",
+      "sha256": "67ec08cad3745492a8baa7799eeac1f7a38cc9f6ce70c523ac634f315f067afd"
+    },
+    {
+      "artifact": "validation.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/validation.json",
+      "sha256": "2e2c9e8e8bead005f4208ef72f0873144c485c0ed835433822d1a6cfb46163cc"
+    },
+    {
+      "artifact": "derived-levels.json",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/derived-levels.json",
+      "sha256": "8e21b654bd591da1fdc079e9213e557f516a1343cacb8d1f5e342ee33808d5b5"
+    }
+  ],
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalOccurrenceRowsUsedForDecision": false,
+  "oldSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "occurrenceMutation": false,
+  "identityMutation": false,
+  "GoldMutationOutsideNewLane": false,
+  "reviewerEnteredLevel": false
+}
