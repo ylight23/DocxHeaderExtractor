@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "provider-observability-v1-manifest",
+  "status": "FROZEN",
+  "sourceFiles": {
+    "src/DocxHeaderExtractor.Infrastructure/AI/ProviderObservability.cs": "3f8a359e90678905ef9a66c0728526015b041ece6a695d1873ba87b275a79599",
+    "src/DocxHeaderExtractor.Infrastructure/AI/OpenRouterHeaderExtractor.cs": "30ea5af2283ae9f3a5fc35c30ce6f898c9eb77d4bb54be24f91733e5990626b3",
+    "src/DocxHeaderExtractor.Infrastructure/AI/RemoteInferenceOptions.cs": "00cf44c6eadfa9dbcdfa9195d205a09c3ca48925ac760766cbe9f1db6cf0e11c",
+    "src/DocxHeaderExtractor.Eval/ReasoningRetention/ProviderObservabilityV1Runner.cs": "f03dfd4138fdac131cebcded681ca61fc56f2b2e06832b69d0f8dc6001500b3c",
+    "src/DocxHeaderExtractor.Eval/ReasoningRetention/CanonicalDevV1BaselineRunner.cs": "7f8e65a64ff1e838efc16d3edc1484ab5a34665bdc70249be88e6ba53a7b16f6"
+  },
+  "artifactHashes": {
+    "production-semantic-drift-check.json": "7f1f37e2548e075ce44b968dc8b9f313186e403241fa1576d994d6ce25a4f84e",
+    "report.md": "af879e549c0d26f9ae7f474b30e6970bb487389e5df8e8f3885a7c9954426da0",
+    "self-test.json": "b8bf1be8bdb87dfb5446130063247db612ecf87bd07b5d60c834016db0fa5f1b",
+    "summary.json": "5e4a164c95bfdaa4adb6ceae8cfc152d5df114a8d72d9e8e1bc3f0f9f0a49c32",
+    "telemetry-schema.json": "074bb99ca7236b1f5cfb45252754f40e836cac1c283c0763bdc2e58668b2ec4a"
+  },
+  "providerCalls": 0,
+  "goldReads": 0
+}

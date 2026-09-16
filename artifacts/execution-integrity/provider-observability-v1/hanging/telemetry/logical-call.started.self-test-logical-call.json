@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "LOGICAL_CALL_STARTED",
+  "timestamp": "2026-09-16T10:41:27.3139713\u002B00:00",
+  "campaignId": "provider-observability-v1-self-test",
+  "documentId": "SELFTEST-DOC",
+  "stage": "SELF_TEST",
+  "logicalCallId": "self-test-logical-call",
+  "requestHash": "ddc2013e9a666f06b8982d346922d147ab139f694010a9588c19b665c3d6257c",
+  "requestBytes": 4096,
+  "estimatedInputTokens": 1024,
+  "maxOutputTokens": 128,
+  "candidateCount": 12,
+  "currentNodeCount": 12,
+  "contextItemCount": 12,
+  "contextCharacterCount": 4096,
+  "provider": "fake-provider",
+  "model": "fake-model"
+}

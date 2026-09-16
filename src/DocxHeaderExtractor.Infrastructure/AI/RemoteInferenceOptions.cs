@@ -30,6 +30,8 @@ public sealed class RemoteInferenceOptions
     /// <summary>Optional A/B control override. Null uses the provider-reported reasoning
     /// ceiling; false sends the explicit reasoning.enabled=false control.</summary>
     public bool? OpenRouterReasoningEnabledOverride { get; set; }
+    /// <summary>Optional execution-only telemetry. Null preserves the normal production path.</summary>
+    public ProviderObservabilityOptions? Observability { get; set; }
     public Action<string>? DebugLog { get; set; }
 
     public void Validate(bool requireModel = true)

@@ -2,6 +2,7 @@ using DocxHeaderExtractor.DocumentProcessing.Inference;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 
 namespace DocxHeaderExtractor.Infrastructure.AI;
@@ -37,19 +38,20 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         string chunkXml,
         IReadOnlyList<int> allowedIndexes,
         CancellationToken ct = default) =>
-        SendAsync(HeaderPrompt.System, HeaderPrompt.BuildUser(chunkXml), allowedIndexes, roles: true, ct);
+        SendAsync("CLASSIFY", HeaderPrompt.System, HeaderPrompt.BuildUser(chunkXml), allowedIndexes, roles: true, ct);
 
     public Task<ChunkResult> CritiqueAsync(
         string chunkXml,
         IReadOnlyList<int> allowedIndexes,
         CancellationToken ct = default) =>
-        SendAsync(HeaderPrompt.CriticSystem, HeaderPrompt.BuildCriticUser(chunkXml), allowedIndexes, roles: true, ct);
+        SendAsync("CRITIQUE", HeaderPrompt.CriticSystem, HeaderPrompt.BuildCriticUser(chunkXml), allowedIndexes, roles: true, ct);
 
     public Task<ChunkResult> ClassifyHierarchyAsync(
         IReadOnlyList<HierarchyItem> context,
         IReadOnlyList<HierarchyItem> headings,
         CancellationToken ct = default) =>
         SendAsync(
+            "HIERARCHY",
             HeaderPrompt.HierarchySystem,
             HeaderPrompt.BuildHierarchyUser(context, headings),
             headings.Select(h => h.Index).ToArray(),
@@ -57,6 +59,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             ct);
 
     private async Task<ChunkResult> SendAsync(
+        string stage,
         string system,
         string user,
         IReadOnlyList<int> allowedIndexes,
@@ -76,6 +79,22 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         var rawOutputs = new List<string>();
         var rejected = 0;
         long elapsedMs = 0;
+        var firstShape = system + "\n" + user + "\n" + string.Join(',', allAllowed);
+        using var logical = ProviderCallTelemetry.Start(_options.Observability, new ProviderLogicalCallMetadata
+        {
+            Stage = stage,
+            LogicalCallId = $"{stage.ToLowerInvariant()}-{Guid.NewGuid():N}",
+            RequestHash = ProviderObservabilityHashing.Sha256Utf8(firstShape),
+            RequestBytes = Encoding.UTF8.GetByteCount(firstShape),
+            EstimatedInputTokens = ProviderObservabilityHashing.EstimateTokens(firstShape),
+            MaxOutputTokens = _options.MaxOutputTokens,
+            CandidateCount = allAllowed.Length,
+            CurrentNodeCount = headingsCount(roles, user),
+            ContextItemCount = roles ? 0 : allAllowed.Length,
+            ContextCharacterCount = user.Length,
+            Provider = "OpenRouter",
+            Model = _options.Model,
+        });
 
         for (var attempt = 0; remaining.Count > 0 && attempt <= _options.MissingIdRetries; attempt++)
         {
@@ -116,6 +135,14 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                     allow_fallbacks = true,
                 },
             };
+            var payloadBytes = JsonSerializer.SerializeToUtf8Bytes(body);
+            var payloadHash = ProviderObservabilityHashing.Sha256Bytes(payloadBytes);
+            using var telemetryAttempt = logical?.StartAttempt(
+                $"{stage.ToLowerInvariant()}-{Guid.NewGuid():N}",
+                payloadHash,
+                payloadBytes.Length,
+                ProviderObservabilityHashing.EstimateTokens(constrainedUser + system),
+                body.max_tokens);
 
             using var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
             {
@@ -127,7 +154,11 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
 
             var sw = Stopwatch.StartNew();
             using var response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
+            telemetryAttempt?.Event("RESPONSE_HEADERS_RECEIVED", new { status = (int)response.StatusCode });
+            telemetryAttempt?.Event("FIRST_RESPONSE_BYTE", new { observable = false, note = "ReadAsStringAsync is the current transport boundary." });
             var responseText = await response.Content.ReadAsStringAsync(ct);
+            telemetryAttempt?.PersistRawResponse(responseText);
+            telemetryAttempt?.Event("RESPONSE_BODY_COMPLETE", new { responseBytes = Encoding.UTF8.GetByteCount(responseText), responseHash = ProviderObservabilityHashing.Sha256Utf8(responseText) });
             sw.Stop();
             elapsedMs += sw.ElapsedMilliseconds;
             _options.DebugLog?.Invoke(
@@ -135,6 +166,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
 
             if (!response.IsSuccessStatusCode)
             {
+                telemetryAttempt?.Fail("HTTP_ERROR", new { status = (int)response.StatusCode });
                 var requestId = GetDiagnosticHeader(response, "x-request-id")
                     ?? GetDiagnosticHeader(response, "cf-ray")
                     ?? GetDiagnosticHeader(response, "x-openrouter-generation-id");
@@ -147,9 +179,13 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
 
             var raw = ExtractContent(responseText);
             rawOutputs.Add(raw);
+            telemetryAttempt?.Event("PARSE_STARTED", new { responseBytes = Encoding.UTF8.GetByteCount(raw), responseHash = ProviderObservabilityHashing.Sha256Utf8(raw) });
             var parsed = HeadingProposalJson.Parse(raw, includeNonHeadings: true);
+            telemetryAttempt?.PersistParsed(parsed);
+            telemetryAttempt?.Event("PARSE_COMPLETED", new { parsedCount = parsed.Count });
             var requestedThisAttempt = remaining.ToHashSet();
 
+            telemetryAttempt?.Event("BIND_STARTED", new { requestedCount = requestedThisAttempt.Count });
             foreach (var decision in parsed)
             {
                 if (!allowed.Contains(decision.Index) || !requestedThisAttempt.Contains(decision.Index))
@@ -170,6 +206,8 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                 decision.Level = Math.Clamp(decision.Level, 1, 9);
                 kept[decision.Index] = decision;
             }
+            telemetryAttempt?.PersistBinding(new { keptIndexes = kept.Keys.OrderBy(x => x).ToArray(), explicitNonHeadings = explicitNonHeadings.OrderBy(x => x).ToArray() });
+            telemetryAttempt?.Event("BIND_COMPLETED", new { keptCount = kept.Count, rejectedCount = rejected });
 
             remaining = allAllowed.Where(i => !seen.Contains(i)).ToList();
         }
@@ -181,6 +219,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                 $"output={SafeOutput(string.Join(" | ", rawOutputs))}");
 
         var orderedHeadings = allAllowed.Where(kept.ContainsKey).Select(i => kept[i]).ToArray();
+        logical?.Complete(new { resultCount = orderedHeadings.Length, rawResponseCount = rawOutputs.Count });
         return new ChunkResult(
             orderedHeadings,
             string.Join(Environment.NewLine, rawOutputs),
@@ -189,6 +228,8 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             explicitNonHeadings,
             rejectedRoles);
     }
+
+    private static int headingsCount(bool roles, string user) => roles ? 0 : user.Count(c => c == '{');
 
     /// <summary>Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.</summary>
     public async Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
@@ -216,6 +257,27 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                 allow_fallbacks = true,
             },
         };
+        var payloadBytes = JsonSerializer.SerializeToUtf8Bytes(body);
+        using var logical = ProviderCallTelemetry.Start(_options.Observability, new ProviderLogicalCallMetadata
+        {
+            Stage = "BOUNDARY_CUT",
+            LogicalCallId = $"boundary-cut-{Guid.NewGuid():N}",
+            RequestHash = ProviderObservabilityHashing.Sha256Bytes(payloadBytes),
+            RequestBytes = payloadBytes.Length,
+            EstimatedInputTokens = ProviderObservabilityHashing.EstimateTokens(systemPrompt + "\n" + userMessage),
+            MaxOutputTokens = body.max_tokens,
+            CandidateCount = 1,
+            ContextItemCount = 1,
+            ContextCharacterCount = userMessage.Length,
+            Provider = "OpenRouter",
+            Model = _options.Model,
+        });
+        using var telemetryAttempt = logical?.StartAttempt(
+            $"boundary-cut-{Guid.NewGuid():N}",
+            ProviderObservabilityHashing.Sha256Bytes(payloadBytes),
+            payloadBytes.Length,
+            ProviderObservabilityHashing.EstimateTokens(systemPrompt + "\n" + userMessage),
+            body.max_tokens);
 
         using var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
         {
@@ -226,15 +288,28 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         _options.DebugLog?.Invoke($"[OpenRouter] LLM REQUEST model={_options.Model} payload={JsonSerializer.Serialize(body)}");
 
         using var response = await _http.SendAsync(request, ct);
+        telemetryAttempt?.Event("RESPONSE_HEADERS_RECEIVED", new { status = (int)response.StatusCode });
+        telemetryAttempt?.Event("FIRST_RESPONSE_BYTE", new { observable = false, note = "ReadAsStringAsync is the current transport boundary." });
         var responseText = await response.Content.ReadAsStringAsync(ct);
+        telemetryAttempt?.PersistRawResponse(responseText);
+        telemetryAttempt?.Event("RESPONSE_BODY_COMPLETE", new { responseBytes = Encoding.UTF8.GetByteCount(responseText), responseHash = ProviderObservabilityHashing.Sha256Utf8(responseText) });
         _options.DebugLog?.Invoke(
             $"[OpenRouter] LLM RESPONSE status={(int)response.StatusCode} payload={SafeDebug(responseText)}");
         if (!response.IsSuccessStatusCode)
+        {
+            telemetryAttempt?.Fail("HTTP_ERROR", new { status = (int)response.StatusCode });
             throw new HttpRequestException(
                 $"OpenRouter trả {(int)response.StatusCode} {response.ReasonPhrase}: {SafeError(responseText)}",
                 null,
                 response.StatusCode);
-        return ExtractContent(responseText).Trim();
+        }
+        telemetryAttempt?.Event("PARSE_STARTED", new { responseBytes = Encoding.UTF8.GetByteCount(responseText) });
+        var content = ExtractContent(responseText).Trim();
+        telemetryAttempt?.PersistParsed(new { content });
+        telemetryAttempt?.Event("PARSE_COMPLETED", new { resultCharacters = content.Length });
+        telemetryAttempt?.Complete();
+        logical?.Complete(new { resultCharacters = content.Length });
+        return content;
     }
 
     private static string ExtractContent(string response)

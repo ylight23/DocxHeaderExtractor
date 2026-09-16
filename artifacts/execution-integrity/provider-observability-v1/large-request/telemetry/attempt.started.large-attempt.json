@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "ATTEMPT_STARTED",
+  "timestamp": "2026-09-16T10:41:29.4025165\u002B00:00",
+  "campaignId": "large-request-test",
+  "documentId": "LARGE",
+  "stage": "SELF_TEST_LARGE",
+  "logicalCallId": "large-logical",
+  "attemptId": "large-attempt",
+  "requestHash": "be8889d3b8893c11d290b8dcf682164c326a90e6998f6bddb25d9a3a02daf666",
+  "requestBytes": 2000000,
+  "estimatedInputTokens": 500000,
+  "maxOutputTokens": 256
+}

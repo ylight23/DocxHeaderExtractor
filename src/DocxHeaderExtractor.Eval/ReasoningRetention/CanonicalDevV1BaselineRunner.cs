@@ -330,6 +330,15 @@ public static class CanonicalDevV1BaselineRunner
         try
         {
             var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");
+            envRemote.Observability = new ProviderObservabilityOptions
+            {
+                RootDirectory = outputDir,
+                CampaignId = CampaignId,
+                DocumentId = documentId,
+                Provider = "OpenRouter",
+                Model = envRemote.Model,
+                HeartbeatSeconds = 5,
+            };
             var selection = new InferenceProviderSelection { Backend = InferenceBackend.OpenRouter, Remote = envRemote };
             selection.Remote.Validate();
             using var pipeline = new AuthorityExtractionPipeline(
@@ -509,6 +518,8 @@ public static class CanonicalDevV1BaselineRunner
         return Sha256Text(string.Join("|", files.Select(path => path + ":" + FileHashOrMissing(repoRoot, path))));
     }
 
+    internal static string ComputeProductionSemanticHashForIntegrity(string repoRoot) => ComputeProductionSemanticHash(repoRoot);
+
     private static string ComputeExecutionHarnessHash(string repoRoot)
     {
         var files = new[]
@@ -520,6 +531,8 @@ public static class CanonicalDevV1BaselineRunner
         };
         return Sha256Text(string.Join("|", files.Select(path => path + ":" + FileHashOrMissing(repoRoot, path))));
     }
+
+    internal static string ComputeExecutionHarnessHashForIntegrity(string repoRoot) => ComputeExecutionHarnessHash(repoRoot);
 
     private static string FileHashOrMissing(string repoRoot, string relativePath)
     {

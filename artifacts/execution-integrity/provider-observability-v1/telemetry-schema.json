@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "records": [
+    "logical-call.started.\u003Cid\u003E.json",
+    "attempt.started.\u003Cid\u003E.json",
+    "response.raw.\u003CattemptId\u003E.txt",
+    "response.parsed.\u003CattemptId\u003E.json",
+    "response.binding.\u003CattemptId\u003E.json",
+    "events.jsonl",
+    "heartbeats.jsonl"
+  ],
+  "milestones": [
+    "TRANSPORT_START",
+    "CONNECTION_ESTABLISHED",
+    "REQUEST_HEADERS_SENT",
+    "REQUEST_BODY_SENT",
+    "RESPONSE_HEADERS_RECEIVED",
+    "FIRST_RESPONSE_BYTE",
+    "RESPONSE_BODY_COMPLETE",
+    "PARSE_STARTED",
+    "PARSE_COMPLETED",
+    "BIND_STARTED",
+    "BIND_COMPLETED",
+    "HEARTBEAT"
+  ],
+  "terminalRule": "exactly one completed or failed terminal event for a normal logical call; zero terminal events is recoverable after a hard kill",
+  "flushMode": "FileOptions.WriteThrough \u002B Flush(true) per record"
+}

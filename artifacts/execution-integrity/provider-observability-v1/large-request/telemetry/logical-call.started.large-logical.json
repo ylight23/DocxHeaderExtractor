@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "LOGICAL_CALL_STARTED",
+  "timestamp": "2026-09-16T10:41:29.2617185\u002B00:00",
+  "campaignId": "large-request-test",
+  "documentId": "LARGE",
+  "stage": "SELF_TEST_LARGE",
+  "logicalCallId": "large-logical",
+  "requestHash": "be8889d3b8893c11d290b8dcf682164c326a90e6998f6bddb25d9a3a02daf666",
+  "requestBytes": 2000000,
+  "estimatedInputTokens": 500000,
+  "maxOutputTokens": 256,
+  "candidateCount": 0,
+  "currentNodeCount": 0,
+  "contextItemCount": 0,
+  "contextCharacterCount": 0,
+  "provider": null,
+  "model": null
+}
