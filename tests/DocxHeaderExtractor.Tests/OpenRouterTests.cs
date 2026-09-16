@@ -33,6 +33,30 @@ public sealed class OpenRouterTests
     }
 
     [Fact]
+    public async Task Boundary_cut_keeps_configured_output_budget_cap_for_32_role_ids()
+    {
+        var handler = new CaptureHandler(
+            """{"choices":[{"message":{"content":"{}"}}]}""");
+        using var http = new HttpClient(handler);
+        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = "test-key",
+            MaxOutputTokens = 768,
+        });
+
+        var blocks = Enumerable.Range(0, 32).Select(index =>
+            $"{{\"id\":\"DOC-0116:source-paragraph-{index:D3}-long-stable-id\",\"source_text\":\"A realistic source paragraph payload for output-budget testing.\",\"source_length\":64}}");
+        var user = $"{{\"blocks\":[{string.Join(',', blocks)}]}}";
+        await model.BoundaryCutAsync("role system", user);
+
+        using var request = JsonDocument.Parse(handler.Body);
+        using var materialized = JsonDocument.Parse(request.RootElement.GetProperty("messages")[1]
+            .GetProperty("content").GetString()!);
+        Assert.Equal(32, materialized.RootElement.GetProperty("blocks").GetArrayLength());
+        Assert.Equal(768, request.RootElement.GetProperty("max_tokens").GetInt32());
+    }
+
+    [Fact]
     public void Missing_api_key_fails_before_any_request()
     {
         using var http = new HttpClient(new CaptureHandler("{}"));

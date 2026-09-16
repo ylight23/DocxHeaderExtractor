@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
@@ -36,6 +37,7 @@ internal static class DocxAuthorityPipeline
         if (source.Blocks.Count == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "empty-docx-source");
 
+        var routeStarted = Stopwatch.GetTimestamp();
         PdfBlockAnalysis roles;
         PdfBlockAnalysis spans;
         if (analyst is null)
@@ -99,6 +101,25 @@ internal static class DocxAuthorityPipeline
             ValidatedStructures = semanticHierarchy.Structures,
             HierarchyProposals = semanticHierarchy.Audit,
             HierarchyFacts = hierarchyFacts,
+            BatchTelemetry = new PdfPipelineBatchTelemetry(
+                source.Blocks.Count,
+                source.Blocks.Count,
+                roles.BatchTelemetry?.BatchCount ?? 0,
+                roles.BatchTelemetry?.ProviderCalls ?? 0,
+                roles.BatchTelemetry?.InputTokensTotal ?? 0,
+                roles.BatchTelemetry?.LargestBatchBlocks ?? 0,
+                roles.BatchTelemetry?.LargestBatchTokens ?? 0,
+                roles.Decisions.Count(decision => decision.Role == PdfBlockRole.HeadingTopic),
+                spans.BatchTelemetry?.BatchCount ?? 0,
+                spans.BatchTelemetry?.ProviderCalls ?? 0,
+                spans.BatchTelemetry?.InputTokensTotal ?? 0,
+                validated.Count,
+                semanticHierarchy.ModelRequests.Count(request => request.ProviderCallAttempted),
+                roles.ModelRequests.Count(request => request.ProviderCallAttempted) +
+                    spans.ModelRequests.Count(request => request.ProviderCallAttempted) +
+                    semanticHierarchy.ModelRequests.Count(request => request.ProviderCallAttempted),
+                roles.RawResponses.Count + spans.RawResponses.Count + semanticHierarchy.RawResponses.Count,
+                (long)Stopwatch.GetElapsedTime(routeStarted).TotalMilliseconds),
             SemanticLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", source.Blocks.Count,
                 roles.Decisions.Count, 0, 0),
             SpanLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", roles.Decisions.Count,

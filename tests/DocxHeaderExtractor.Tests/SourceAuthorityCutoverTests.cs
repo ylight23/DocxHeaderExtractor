@@ -4,6 +4,8 @@ using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Features;
 using DocxHeaderExtractor.DocumentProcessing.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using System.Text.Json;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -57,6 +59,46 @@ public sealed class SourceAuthorityCutoverTests
         Assert.Equal("p0", projected.SourceId);
     }
 
+    [Fact]
+    public async Task Docx_route_materializes_aggregate_batch_telemetry()
+    {
+        var source = new SourceDocument
+        {
+            DocumentId = "telemetry.docx",
+            FileName = "telemetry.docx",
+            SourcePath = "telemetry.docx",
+            SourceKind = "docx",
+            Paragraphs = Enumerable.Range(0, 3).Select(index => new SourceParagraph
+            {
+                SourceId = $"p{index}",
+                SourceOrdinal = index,
+                Text = $"Heading {index}",
+                Style = new SourceStyleFacts { StyleName = "Normal", FontSizePt = 11, BuiltInHeadingStyleLevel = 1 },
+                Numbering = new SourceNumberingFacts(),
+                Layout = new SourceLayoutFacts(),
+            }).ToArray(),
+        };
+        var features = NumberingStyleFeatures.FromSourceDocument(source);
+        var policy = DocxPolicyStateBuilder.Build(source, features,
+            new DocumentFeatureDeriver().Derive(source), new ExtractionOptions());
+
+        using var classifier = new TelemetryClassifier();
+        var result = await DocxAuthorityPipeline.RunAsync(policy, Mode(), classifier);
+        Assert.NotNull(result.Audit);
+        var audit = result.Audit!;
+        Assert.NotNull(audit.BatchTelemetry);
+        var telemetry = audit.BatchTelemetry!;
+
+        Assert.Equal(source.Paragraphs.Count, telemetry.SourceParagraphCount);
+        Assert.Equal(audit.ModelRequests.Count(request => request.ProviderCallAttempted), telemetry.TotalProviderCalls);
+        Assert.Equal(audit.RawAnalystResponses.Count, telemetry.TotalResponses);
+        Assert.Equal(
+            telemetry.RoleProviderCalls + telemetry.SpanProviderCalls + telemetry.HierarchyProviderCalls,
+            telemetry.TotalProviderCalls);
+        Assert.True(telemetry.RoleBatchCount >= 1);
+        Assert.True(telemetry.SpanBatchCount >= 1);
+    }
+
     private static SourceParagraph SourceParagraph(string id, string text, int? builtInLevel = null) => new()
     {
         SourceId = id,
@@ -68,4 +110,53 @@ public sealed class SourceAuthorityCutoverTests
     };
 
     private static DocumentModeReport Mode() => new(DocumentMode.SemanticOnly, 1, 0, 0, 0, 0, 0, false);
+
+    private sealed class TelemetryClassifier : IHeaderClassifier
+    {
+        public string ModelName => "test/docx-telemetry";
+        public int ContextSize => 32_768;
+        public string RuntimeDescription => "test";
+        public int SharedPrefixTokens => 0;
+
+        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes,
+            CancellationToken ct = default) => throw new NotSupportedException();
+
+        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes,
+            CancellationToken ct = default) => throw new NotSupportedException();
+
+        public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context,
+            IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
+
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+        {
+            using var document = JsonDocument.Parse(userMessage);
+            if (document.RootElement.TryGetProperty("blocks", out var blocks))
+            {
+                var pointer = blocks.EnumerateArray().Any(block =>
+                    block.TryGetProperty("allowed_start_offsets", out _));
+                if (pointer)
+                {
+                    var items = blocks.EnumerateArray().Select(block => new
+                    {
+                        id = block.GetProperty("id").GetString()!,
+                        heading_span = new { start = 0, end = block.GetProperty("source_length").GetInt32() },
+                    }).ToArray();
+                    return Task.FromResult(JsonSerializer.Serialize(new { blocks = items }));
+                }
+
+                var roleItems = blocks.EnumerateArray().Select(block => new
+                {
+                    id = block.GetProperty("id").GetString()!,
+                    role = "heading_topic",
+                    confidence = 0.9,
+                    heading_span = new { start = 0, end = block.GetProperty("source_length").GetInt32() },
+                }).ToArray();
+                return Task.FromResult(JsonSerializer.Serialize(new { blocks = roleItems }));
+            }
+
+            return Task.FromResult("{\"items\":[]}");
+        }
+
+        public void Dispose() { }
+    }
 }
