@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "ATTEMPT_STARTED",
+  "timestamp": "2026-09-16T10:51:28.1971812\u002B00:00",
+  "campaignId": "DOC0116_PROVIDER_MICRO_V1",
+  "documentId": "DOC-0116",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-3a4c5ff20f614df4ab328809390b1877",
+  "callOrdinal": 5,
+  "attemptId": "boundary-cut-cdaaa080999a4d7bb5e4d9239c9f2448",
+  "requestHash": "d1b4d1a4c5a869982bfe4821475b6442024dfb64e544afc3184ff28a707fdc60",
+  "requestBytes": 15056,
+  "estimatedInputTokens": 2807,
+  "maxOutputTokens": 608
+}

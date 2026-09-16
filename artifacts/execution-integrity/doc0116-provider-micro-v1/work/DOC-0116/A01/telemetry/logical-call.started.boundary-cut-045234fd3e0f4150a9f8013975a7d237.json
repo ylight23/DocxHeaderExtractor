@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "LOGICAL_CALL_STARTED",
+  "timestamp": "2026-09-16T10:55:37.6975410\u002B00:00",
+  "campaignId": "DOC0116_PROVIDER_MICRO_V1",
+  "documentId": "DOC-0116",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-045234fd3e0f4150a9f8013975a7d237",
+  "callOrdinal": 33,
+  "requestHash": "df345ae98ae3787fe8c1617919db9075c00c12d25d338e43b2dc9f8ef71d5b8d",
+  "requestBytes": 18615,
+  "estimatedInputTokens": 3624,
+  "maxOutputTokens": 608,
+  "candidateCount": 1,
+  "currentNodeCount": 0,
+  "contextItemCount": 1,
+  "contextCharacterCount": 13051,
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.5-9b"
+}

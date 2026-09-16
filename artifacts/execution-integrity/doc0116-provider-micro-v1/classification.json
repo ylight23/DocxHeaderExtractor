@@ -1,0 +1,47 @@
+{
+  "primaryClassification": "I. STILL_UNOBSERVABLE",
+  "watchdogStatus": "DOCUMENT_TIMEOUT",
+  "terminationMode": "PROCESS_TREE_KILL",
+  "elapsedMs": 300076.7439,
+  "blockingLogicalCall": {
+    "callOrdinal": 34,
+    "logicalCallId": "boundary-cut-28f1968e3c684c44ba9dadf1cf3cabec",
+    "stage": "BOUNDARY_CUT",
+    "requestBytes": 19875,
+    "estimatedInputTokens": 3946,
+    "candidateCount": 1,
+    "contextItemCount": 1,
+    "contextCharacterCount": 14339,
+    "requestHash": "287c6673c24c8eb139b4e3cfc662ca8697bb320378a95c7f70a34c188d72c7d4",
+    "timestamp": "2026-09-16T10:55:44.5200662\u002B00:00"
+  },
+  "blockingAttempt": {
+    "attemptId": "boundary-cut-fe9d3172861340b4951528342f3a18e5",
+    "callOrdinal": 34,
+    "requestBytes": 19875,
+    "estimatedInputTokens": 3946,
+    "requestHash": "287c6673c24c8eb139b4e3cfc662ca8697bb320378a95c7f70a34c188d72c7d4",
+    "timestamp": "2026-09-16T10:55:44.5294282\u002B00:00"
+  },
+  "lastTransportMilestone": "REQUEST_BODY_SENT",
+  "lastHeartbeat": {
+    "schemaVersion": "provider-observability-v1",
+    "eventType": "HEARTBEAT",
+    "sequence": 2,
+    "timestamp": "2026-09-16T10:55:44.5247860\u002B00:00",
+    "campaignId": "DOC0116_PROVIDER_MICRO_V1",
+    "documentId": "DOC-0116",
+    "stage": "BOUNDARY_CUT",
+    "logicalCallId": "boundary-cut-28f1968e3c684c44ba9dadf1cf3cabec",
+    "callOrdinal": 34,
+    "attemptId": null,
+    "lastTransportMilestone": "LOGICAL_CALL_STARTED",
+    "terminal": false
+  },
+  "responseHeadersReceived": "NO",
+  "firstResponseByte": "NO",
+  "responseBodyComplete": "NO",
+  "parseStarted": false,
+  "bindStarted": false,
+  "nextExperiment": "PER_CALL_TIMEOUT_EXPERIMENT"
+}

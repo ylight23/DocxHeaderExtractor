@@ -324,6 +324,8 @@ public static class CanonicalDevV1BaselineRunner
         var executionHarnessHash = root.GetProperty("executionHarnessHash").GetString()!;
         var attemptId = root.GetProperty("attemptId").GetString()!;
         var requestHash = root.GetProperty("requestHash").GetString()!;
+        var workerBenchmark = root.TryGetProperty("benchmark", out var benchmarkValue) ? benchmarkValue.GetString() ?? Benchmark : Benchmark;
+        var workerCampaignId = root.TryGetProperty("campaignId", out var campaignValue) ? campaignValue.GetString() ?? CampaignId : CampaignId;
         var started = root.TryGetProperty("started", out var startedValue) && startedValue.TryGetDateTimeOffset(out var parsedStarted)
             ? parsedStarted : DateTimeOffset.UtcNow;
         Directory.CreateDirectory(outputDir);
@@ -333,7 +335,7 @@ public static class CanonicalDevV1BaselineRunner
             envRemote.Observability = new ProviderObservabilityOptions
             {
                 RootDirectory = outputDir,
-                CampaignId = CampaignId,
+                CampaignId = workerCampaignId,
                 DocumentId = documentId,
                 Provider = "OpenRouter",
                 Model = envRemote.Model,
@@ -361,8 +363,8 @@ public static class CanonicalDevV1BaselineRunner
             var prediction = new
             {
                 schemaVersion = "a99-canonical-dev-v1-production-prediction-v1",
-                benchmark = Benchmark,
-                campaignId = CampaignId,
+                benchmark = workerBenchmark,
+                campaignId = workerCampaignId,
                 productionSemanticCheckpoint = ProductionSemanticCheckpoint,
                 executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
                 productionSemanticHash,
@@ -411,8 +413,8 @@ public static class CanonicalDevV1BaselineRunner
             await WriteJsonAsync(Path.Combine(outputDir, "worker-attempts.v1.json"), new
             {
                 schemaVersion = "a99-canonical-dev-v1-attempts-v1",
-                benchmark = Benchmark,
-                campaignId = CampaignId,
+                benchmark = workerBenchmark,
+                campaignId = workerCampaignId,
                 documentId,
                 sourceSha256,
                 requests = audit?.ModelRequests ?? [],
@@ -437,8 +439,8 @@ public static class CanonicalDevV1BaselineRunner
             await WriteJsonAsync(Path.Combine(outputDir, "worker-failure.v1.json"), new
             {
                 schemaVersion = "a99-canonical-dev-v1-worker-failure-v1",
-                benchmark = Benchmark,
-                campaignId = CampaignId,
+                benchmark = workerBenchmark,
+                campaignId = workerCampaignId,
                 documentId,
                 sourceSha256,
                 runConfigurationHash,

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "doc0116-provider-micro-v1-manifest-v1",
+  "status": "DOC0116_REAL_PROVIDER_MICRO_V1_COMPLETE",
+  "experimentId": "DOC0116_PROVIDER_MICRO_V1",
+  "documentId": "DOC-0116",
+  "productionSemanticHash": "5f0eb27dfa44068fc60c69e0dcf8a05b14a061ed7526610e4592d68c268fe5e6",
+  "providerCalls": 34,
+  "goldReads": 0,
+  "historicalReads": 0,
+  "noScoring": true,
+  "offlineReclassification": true,
+  "artifacts": [
+    {
+      "path": "classification.json",
+      "sha256": "6881d8853fc65c48894ea7191962f2097f19b35f09c3c7df9bce53f1201e0478"
+    },
+    {
+      "path": "logical-call-timeline.json",
+      "sha256": "ff41335ad021c5ef0270db9e5a96f5b5b9626258ae40f687e1435c26d544157e"
+    },
+    {
+      "path": "offline-reclassification.json",
+      "sha256": "2f04e267748c2eb15dfe3723cb0b529e471ca9d94ef9d982392aab486fd8820d"
+    },
+    {
+      "path": "preflight.json",
+      "sha256": "0ff53215589a18069f9c2033ba0e88f6b947a767ef042af0ec46198ec2fcc840"
+    },
+    {
+      "path": "provider-attempt-manifest.json",
+      "sha256": "e42161cfefc1150d5adb248eb30849fa82d392ba96834cd6c7e2bfcd41570409"
+    },
+    {
+      "path": "report.md",
+      "sha256": "1dda3b3aa14fe899afa04e38345ec3a74b4f8e5d151890e9ad5b27bf522ece9c"
+    },
+    {
+      "path": "request-shape.json",
+      "sha256": "ff41335ad021c5ef0270db9e5a96f5b5b9626258ae40f687e1435c26d544157e"
+    },
+    {
+      "path": "run-configuration.json",
+      "sha256": "ed72c0a7a9187d4bad4f1a6752e1c7317e9144c36eeb8f18edf0559dc850439f"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "dfaa83f028c64669d3612b8dca50fa518e1083107d43cc43b242ad55bcf62937"
+    },
+    {
+      "path": "transport-timeline.json",
+      "sha256": "923cba5c07f1b56d34ce01c03db1631c0bae8af13a6813c58cb90cb2f28a9e42"
+    }
+  ]
+}

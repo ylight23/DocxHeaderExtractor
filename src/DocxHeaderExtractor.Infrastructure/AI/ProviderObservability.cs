@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Collections.Concurrent;
 
 namespace DocxHeaderExtractor.Infrastructure.AI;
 
@@ -38,6 +39,7 @@ public sealed record ProviderLogicalCallMetadata
 
 public sealed class ProviderCallTelemetry : IDisposable
 {
+    private static readonly ConcurrentDictionary<string, int> Ordinals = new(StringComparer.OrdinalIgnoreCase);
     private readonly ProviderObservabilityOptions _options;
     private readonly ProviderLogicalCallMetadata _metadata;
     private readonly string _directory;
@@ -48,12 +50,15 @@ public sealed class ProviderCallTelemetry : IDisposable
     private string? _attemptId;
     private bool _terminal;
     private bool _disposed;
+    private readonly int _callOrdinal;
+    private string _lastMilestone = "NONE";
 
     private ProviderCallTelemetry(ProviderObservabilityOptions options, ProviderLogicalCallMetadata metadata)
     {
         _options = options;
         _metadata = metadata;
         _stage = metadata.Stage;
+        _callOrdinal = Ordinals.AddOrUpdate(options.RootDirectory, 1, (_, value) => value + 1);
         _directory = Path.Combine(options.RootDirectory, "telemetry");
         Directory.CreateDirectory(_directory);
         WriteNew($"logical-call.started.{Safe(metadata.LogicalCallId)}.json", new
@@ -65,6 +70,7 @@ public sealed class ProviderCallTelemetry : IDisposable
             documentId = options.DocumentId,
             stage = metadata.Stage,
             logicalCallId = metadata.LogicalCallId,
+            callOrdinal = _callOrdinal,
             requestHash = metadata.RequestHash,
             requestBytes = metadata.RequestBytes,
             estimatedInputTokens = metadata.EstimatedInputTokens,
@@ -128,8 +134,11 @@ public sealed class ProviderCallTelemetry : IDisposable
                 ["documentId"] = _options.DocumentId,
                 ["stage"] = _stage,
                 ["logicalCallId"] = _metadata.LogicalCallId,
+                ["callOrdinal"] = _callOrdinal,
                 ["attemptId"] = _attemptId,
             };
+            if (!string.Equals(eventType, "HEARTBEAT", StringComparison.Ordinal))
+                _lastMilestone = eventType;
             if (data is not null)
                 foreach (var property in JsonSerializer.SerializeToElement(data).EnumerateObject())
                     payload[property.Name] = property.Value.Clone();
@@ -174,7 +183,9 @@ public sealed class ProviderCallTelemetry : IDisposable
                     documentId = _options.DocumentId,
                     stage = _stage,
                     logicalCallId = _metadata.LogicalCallId,
+                    callOrdinal = _callOrdinal,
                     attemptId = _attemptId,
+                    lastTransportMilestone = _lastMilestone,
                     terminal = _terminal,
                 });
             }
@@ -272,6 +283,7 @@ public sealed class ProviderCallTelemetry : IDisposable
             documentId = _options.DocumentId,
             stage = _metadata.Stage,
             logicalCallId = _metadata.LogicalCallId,
+            callOrdinal = _callOrdinal,
             attemptId,
             requestHash,
             requestBytes,

@@ -1,0 +1,289 @@
+{
+  "schemaVersion": "doc0116-provider-micro-v1-attempt-manifest-v1",
+  "experimentId": "DOC0116_PROVIDER_MICRO_V1",
+  "documentId": "DOC-0116",
+  "attempt": "A01",
+  "started": "2026-09-16T10:50:45.1902222+00:00",
+  "completed": "2026-09-16T10:55:45.2669661+00:00",
+  "runConfigurationHash": "ed72c0a7a9187d4bad4f1a6752e1c7317e9144c36eeb8f18edf0559dc850439f",
+  "timeoutSeconds": 300,
+  "retry": 0,
+  "watchdogStatus": "DOCUMENT_TIMEOUT",
+  "terminationMode": "PROCESS_TREE_KILL",
+  "providerCalls": 34,
+  "physicalAttempts": 34,
+  "attempts": [
+    {
+      "attemptId": "boundary-cut-7145b260c03e47a18fe38f6c9e8015aa",
+      "callOrdinal": 1,
+      "requestBytes": 10412,
+      "estimatedInputTokens": 1791,
+      "requestHash": "0f5e5155b77df8839c70edfd072582ca9a195b2d6e5bd0ea3bcaf5d58b5ad9c4",
+      "timestamp": "2026-09-16T10:50:47.5496500\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-6a4ef8063c4140e898df3e77950497f1",
+      "callOrdinal": 2,
+      "requestBytes": 15747,
+      "estimatedInputTokens": 3016,
+      "requestHash": "653419e001b0691407d6e3c40579eeff397e3f0e2e1aa60fb009ef863222534e",
+      "timestamp": "2026-09-16T10:51:03.1252729\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-6c9c3024d1c84a7e9c30cb6b31d297df",
+      "callOrdinal": 3,
+      "requestBytes": 20314,
+      "estimatedInputTokens": 4134,
+      "requestHash": "d07a2bd317a699e6dc30f7ee023c59b1e26157dc077417a36efc377f38114d44",
+      "timestamp": "2026-09-16T10:51:06.7231673\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-b75e7c8e082a4136986b3df2e904df91",
+      "callOrdinal": 4,
+      "requestBytes": 14061,
+      "estimatedInputTokens": 2593,
+      "requestHash": "2acd94a38ebd0402516efdbffc7da14979e25f5fe170d305cc4edf75654fb75e",
+      "timestamp": "2026-09-16T10:51:16.7041948\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-cdaaa080999a4d7bb5e4d9239c9f2448",
+      "callOrdinal": 5,
+      "requestBytes": 15056,
+      "estimatedInputTokens": 2807,
+      "requestHash": "d1b4d1a4c5a869982bfe4821475b6442024dfb64e544afc3184ff28a707fdc60",
+      "timestamp": "2026-09-16T10:51:28.1971812\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-2ff8871ab7b2464f93a29164ac1bf920",
+      "callOrdinal": 6,
+      "requestBytes": 16647,
+      "estimatedInputTokens": 3157,
+      "requestHash": "0ea1337df84ef311216d770662ea03ede26a490924e0a7e0b0d67a41d0835fd1",
+      "timestamp": "2026-09-16T10:51:33.4136092\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-b3a8a9a7a910483ba3c6c287c27e9496",
+      "callOrdinal": 7,
+      "requestBytes": 14631,
+      "estimatedInputTokens": 2657,
+      "requestHash": "b2472eed99d0d28e69c610e5fec6315bcfd847a7c925c85349ac72610982ac3c",
+      "timestamp": "2026-09-16T10:51:37.8856813\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-1be344d2e9c84184910bad71200c1062",
+      "callOrdinal": 8,
+      "requestBytes": 14267,
+      "estimatedInputTokens": 2558,
+      "requestHash": "1a05694c9aa0933836cfe2e2e67f91cc9369ad63e3a8e1e8183a6c9a3f30a8db",
+      "timestamp": "2026-09-16T10:51:41.5231930\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-4d2ebd1c4e4240aa884fcce3049980b5",
+      "callOrdinal": 9,
+      "requestBytes": 14141,
+      "estimatedInputTokens": 2514,
+      "requestHash": "e80f00f5a97e8bf51d577ddc7afa27b96ea3a29dada37fa495fbc48889e2d192",
+      "timestamp": "2026-09-16T10:52:08.9080181\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-05953093c9814bd49cea1d608b4d5ab3",
+      "callOrdinal": 10,
+      "requestBytes": 16863,
+      "estimatedInputTokens": 3214,
+      "requestHash": "06802a73db558b10e7894b10a605ddbc686305017c6a3e6745fc55322e41d972",
+      "timestamp": "2026-09-16T10:52:23.6310901\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-ae5f2fa2d7bb4e3fa8106ed3e5cc142c",
+      "callOrdinal": 11,
+      "requestBytes": 20437,
+      "estimatedInputTokens": 4097,
+      "requestHash": "1bef7ef140dab3eec1b79a9b9b28d4977fd350e791352280e197858050b194f6",
+      "timestamp": "2026-09-16T10:52:28.9363677\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-b647f2c98c7e4d3e86772556e6445227",
+      "callOrdinal": 12,
+      "requestBytes": 16815,
+      "estimatedInputTokens": 3195,
+      "requestHash": "09255b3d84d5a6061bcc4ae07e3b588203831bbb2f9a0329223db0ba72e0e791",
+      "timestamp": "2026-09-16T10:52:31.1878004\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-f69c9970f6084027a872f721dcea04df",
+      "callOrdinal": 13,
+      "requestBytes": 16880,
+      "estimatedInputTokens": 3211,
+      "requestHash": "58362d23315c77699e2b776c939276e566f56aa41fb54ac1e24fa1a533fcd2ff",
+      "timestamp": "2026-09-16T10:53:07.3718068\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-8e2b16a0247c444190460045da7b67c1",
+      "callOrdinal": 14,
+      "requestBytes": 16584,
+      "estimatedInputTokens": 3141,
+      "requestHash": "235bdfd7d688ace79cf1b9686a8a62cbbb85edb2a1ad8688ce990cfab4d91f57",
+      "timestamp": "2026-09-16T10:53:11.2019630\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-0193c8bee90e404a9f7d540d6bc31d0f",
+      "callOrdinal": 15,
+      "requestBytes": 16649,
+      "estimatedInputTokens": 3157,
+      "requestHash": "49002a6c3157c9588bac4a50ac4f5860052f1da70f6a8a52b853db8fd7872737",
+      "timestamp": "2026-09-16T10:53:39.2334142\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-625920148d20453f8d0d8c2fa1c26020",
+      "callOrdinal": 16,
+      "requestBytes": 14213,
+      "estimatedInputTokens": 2547,
+      "requestHash": "5142e7c8010d28700b652e7a43bfd5954a6dccbbc2f47fd8c31a6567987fed9d",
+      "timestamp": "2026-09-16T10:53:42.9132303\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-f524f35e401c4338ac9e3ef6356f610e",
+      "callOrdinal": 17,
+      "requestBytes": 13193,
+      "estimatedInputTokens": 2282,
+      "requestHash": "be25fd758ab03106202848e029aba029f4fad5767107486d12cebb627a4748c1",
+      "timestamp": "2026-09-16T10:53:47.9497245\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-511397c56d314e14b0e8c696e96e7654",
+      "callOrdinal": 18,
+      "requestBytes": 13514,
+      "estimatedInputTokens": 2360,
+      "requestHash": "ea7bcfae7d06227ef4c14267ae2ea6813b7d7fb77b729de0f6b1a7ec280972c1",
+      "timestamp": "2026-09-16T10:53:52.5588707\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-3b0cb5db178946afa838fb4d7f9ae581",
+      "callOrdinal": 19,
+      "requestBytes": 13920,
+      "estimatedInputTokens": 2461,
+      "requestHash": "9c6e61ebd9466abc64955e1070064ce9e63eb9a1580b4a1865d0dcf8e238bc2c",
+      "timestamp": "2026-09-16T10:53:57.4780516\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-d8d7758858ea4c5a8fa3e6c267092223",
+      "callOrdinal": 20,
+      "requestBytes": 13985,
+      "estimatedInputTokens": 2477,
+      "requestHash": "2522dae7b00816675c995f783dbb584a4533d6f0021c8b682a3e908d88c6b7ed",
+      "timestamp": "2026-09-16T10:54:24.5058347\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-bcf4cfc1ef01492bb465d6c0b3324f19",
+      "callOrdinal": 21,
+      "requestBytes": 13859,
+      "estimatedInputTokens": 2446,
+      "requestHash": "db8c2b51076c3d6b6c5e7b8132d67bdd61fd63559fd4f0fb1b50a02be55f5242",
+      "timestamp": "2026-09-16T10:54:30.0053262\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-a0748852fc1943bcba57007ca11f4e3d",
+      "callOrdinal": 22,
+      "requestBytes": 14547,
+      "estimatedInputTokens": 2618,
+      "requestHash": "4ba94a5c2c8f9725fc52b3113ddf19bfea7a0f6d680befb0f7d902011e1cc126",
+      "timestamp": "2026-09-16T10:54:33.9602610\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-0f2a5d8f781240d99de1bc5bdffc8f07",
+      "callOrdinal": 23,
+      "requestBytes": 16973,
+      "estimatedInputTokens": 3216,
+      "requestHash": "4704d07baac2fc67b7e47ded135a4b7fa98a3b4183cdab282641996b1a769157",
+      "timestamp": "2026-09-16T10:54:40.8681464\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-8952c46d6abe4f23a1e317d0e0faa999",
+      "callOrdinal": 24,
+      "requestBytes": 22658,
+      "estimatedInputTokens": 4615,
+      "requestHash": "cb6a2e43bd03f3f8f8c6b927cde888b067d0ebeeab7fbd0dc161a99ab6d3ba32",
+      "timestamp": "2026-09-16T10:54:46.8812157\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-f674ec24c1774c278797f8ba99bd2833",
+      "callOrdinal": 25,
+      "requestBytes": 23251,
+      "estimatedInputTokens": 4765,
+      "requestHash": "e7e3b35fbd922a02520a0e257359b2d96a81a2fd0e547d1c24dd0f53a1fc6fc2",
+      "timestamp": "2026-09-16T10:54:51.4381269\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-b72d538d89f74308a7576b989560336e",
+      "callOrdinal": 26,
+      "requestBytes": 21809,
+      "estimatedInputTokens": 4407,
+      "requestHash": "56a4292d2aacaa651147373561675d8b583eac2a45b6407db6e715540a4ac5b4",
+      "timestamp": "2026-09-16T10:54:57.5587562\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-d44eba222d7b4a07841bd608baf4941c",
+      "callOrdinal": 27,
+      "requestBytes": 21819,
+      "estimatedInputTokens": 4411,
+      "requestHash": "291a44e809a5ae69e6c9a6481ed657ca794216db4153b8c5fb53ad66c7dc9eab",
+      "timestamp": "2026-09-16T10:55:03.4638109\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-8c476ea0aa644e12928f86ec52291b5d",
+      "callOrdinal": 28,
+      "requestBytes": 21867,
+      "estimatedInputTokens": 4435,
+      "requestHash": "30b2d1ee586b75076c8f8c3daedabf5179a08ceeba8057a71324de297172a946",
+      "timestamp": "2026-09-16T10:55:07.3559155\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-67a8321e47d143a0a90dc13dd018bb48",
+      "callOrdinal": 29,
+      "requestBytes": 19805,
+      "estimatedInputTokens": 3932,
+      "requestHash": "ab356fa3a45ae8bbe9ebc8f7f76bbf992edaa6ed4f1e7d5505dd2b57022a0dcc",
+      "timestamp": "2026-09-16T10:55:13.2689870\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-a9aae59f24cc43aabbc25b8a6ba9363c",
+      "callOrdinal": 30,
+      "requestBytes": 19940,
+      "estimatedInputTokens": 3954,
+      "requestHash": "3230899cbcca9ca0725edca25a4d1e941944575c34479e8898053d4c89aba001",
+      "timestamp": "2026-09-16T10:55:17.9654305\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-9c4748e3d2e14e4386b9079a5549b3e7",
+      "callOrdinal": 31,
+      "requestBytes": 19628,
+      "estimatedInputTokens": 3885,
+      "requestHash": "d0a67c86e03c7c49ed83a5df5ea94df9061b4eeba5f46daf4e90bfe198d1a5bc",
+      "timestamp": "2026-09-16T10:55:26.7280802\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-3f0874152e274b0b9376c9c985401b34",
+      "callOrdinal": 32,
+      "requestBytes": 20184,
+      "estimatedInputTokens": 4022,
+      "requestHash": "a94543e3626e2d8c7e0853e47366db17816768e9e3fa05ef79f29984261198d3",
+      "timestamp": "2026-09-16T10:55:33.2718431\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-4bde901eb19240f5b25c65fed6faeee5",
+      "callOrdinal": 33,
+      "requestBytes": 18615,
+      "estimatedInputTokens": 3624,
+      "requestHash": "df345ae98ae3787fe8c1617919db9075c00c12d25d338e43b2dc9f8ef71d5b8d",
+      "timestamp": "2026-09-16T10:55:37.7104174\u002B00:00"
+    },
+    {
+      "attemptId": "boundary-cut-fe9d3172861340b4951528342f3a18e5",
+      "callOrdinal": 34,
+      "requestBytes": 19875,
+      "estimatedInputTokens": 3946,
+      "requestHash": "287c6673c24c8eb139b4e3cfc662ca8697bb320378a95c7f70a34c188d72c7d4",
+      "timestamp": "2026-09-16T10:55:44.5294282\u002B00:00"
+    }
+  ]
+}
