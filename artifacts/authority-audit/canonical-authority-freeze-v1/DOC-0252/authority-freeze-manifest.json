@@ -1,0 +1,207 @@
+{
+  "artifactKind": "A99_USER_REVIEWED_CANONICAL_HIERARCHY_AUTHORITY_FREEZE",
+  "schemaVersion": "a99-canonical-authority-freeze-v1-doc0252",
+  "documentId": "DOC-0252",
+  "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+  "explicitUserApproval": true,
+  "approvedCheckpoints": [
+    "4ce5cca",
+    "1b49f60",
+    "53bda12",
+    "b4f227e",
+    "63a6102"
+  ],
+  "commitLineage": [
+    {
+      "commit": "4ce5cca",
+      "role": "canonical exhaustive occurrence authority"
+    },
+    {
+      "commit": "1b49f60",
+      "role": "canonical identity proposal"
+    },
+    {
+      "commit": "53bda12",
+      "role": "identity authority freeze"
+    },
+    {
+      "commit": "b4f227e",
+      "role": "identity lineage finalization"
+    },
+    {
+      "commit": "63a6102",
+      "role": "canonical hierarchy proposal"
+    },
+    {
+      "commit": "THIS_FREEZE_COMMIT",
+      "role": "user-approved canonical hierarchy authority freeze"
+    }
+  ],
+  "sourcePath": "todo10_8/generated-docx/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.docx",
+  "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "occurrenceCount": 40,
+  "semanticNodeCount": 39,
+  "occurrenceRoles": {
+    "PRIMARY": 39,
+    "REPEAT": 0,
+    "CONTINUATION": 1
+  },
+  "multiOccurrenceSemanticNodeCount": 1,
+  "parentEdgeCount": 39,
+  "rootChildrenCount": 8,
+  "maxDepth": 3,
+  "levelDerivation": "depth(validated canonical semantic-node parent tree)",
+  "continuationAuthority": {
+    "semanticNodeRef": "N032",
+    "memberOccurrenceRefs": [
+      "H032",
+      "H034"
+    ],
+    "parentSemanticNodeRef": "N027",
+    "oneSemanticNode": true,
+    "oneParentEdge": true,
+    "oneDerivedLevel": true
+  },
+  "provenance": {
+    "occurrenceAuthority": "SOURCE_ONLY_CANONICAL_EXHAUSTIVE_REVIEW",
+    "identityAuthority": "SOURCE_BACKED_IDENTITY_ADJUDICATION -> EXPLICIT_USER_REVIEW_APPROVAL -> USER_REVIEWED_CANONICAL_IDENTITY_GOLD",
+    "hierarchyAuthority": "SOURCE_BACKED_HIERARCHY_ADJUDICATION -> EXPLICIT_USER_REVIEW_APPROVAL -> USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+    "historicalCompatibility": "NOT_OPENED_IN_FREEZE"
+  },
+  "artifactHashes": [
+    {
+      "artifact": "sourceDocument",
+      "path": "todo10_8/generated-docx/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.docx",
+      "sha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77"
+    },
+    {
+      "artifact": "occurrenceManifest",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/manifest.json",
+      "sha256": "41a1a55b60541f6c51441ce8878caddf18c9c7e59e94b9a23807a0a432701489"
+    },
+    {
+      "artifact": "occurrenceDecisions",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/occurrence-decisions.json",
+      "sha256": "ccfbbce4f2e415ff093c4eb719a5c739439af16058a1f35472a495fee09626e0"
+    },
+    {
+      "artifact": "exactBindings",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/exact-bindings.json",
+      "sha256": "cc43a09038c70e4f09e7d35810bce089d2fc1fc316467c178f4083bebfd3c3f7"
+    },
+    {
+      "artifact": "occurrenceValidation",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/validation.json",
+      "sha256": "9e700812e87bbcf3d9778a26b2b00a7c516bc559ff95ecd35f96763aa2afda70"
+    },
+    {
+      "artifact": "sourceAuthority",
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v1/DOC-0252/source-authority.json",
+      "sha256": "4665f3591b5be96ed1d5b253fe982ab5c67b00e1538cea90f4b7305b4b996950"
+    },
+    {
+      "artifact": "identityFreezeManifest",
+      "path": "artifacts/authority-audit/canonical-identity-authority-freeze-v1/DOC-0252/authority-freeze-manifest.json",
+      "sha256": "df5026c79743df486cc4865439b9bbaeec289c89077ceb2807cc71879dde2424"
+    },
+    {
+      "artifact": "identityManifest",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/manifest.json",
+      "sha256": "417052c21526b0e3d737cd8d719c78bf4beb31eece0bc8918dd1956cf62f3b05"
+    },
+    {
+      "artifact": "identityAssignments",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/occurrence-assignments.json",
+      "sha256": "d83f7250e4e589d4503c8a23517192ff51bb9efa75b2a4af8ec047285f773b4b"
+    },
+    {
+      "artifact": "semanticNodes",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/semantic-nodes.json",
+      "sha256": "2cb6bc490b69e7d36002fb701ef49f57cec1fdb45b0e77952f2eb489daf7a590"
+    },
+    {
+      "artifact": "identityDecisions",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/identity-decisions.json",
+      "sha256": "0d6077879bbf012cdbf76e90985af4e7b6f42b40f2e2a5e6b21c01edc615ee97"
+    },
+    {
+      "artifact": "identityAmbiguities",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/ambiguities.json",
+      "sha256": "e93c1f21ecf0284ff6d91df0e65b06bb8f5d9195869aef54dcdadb5a9591da79"
+    },
+    {
+      "artifact": "identityValidation",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/validation.json",
+      "sha256": "973bc4bdf03c430cf4dd51681b3d3fbd39ac5e67c2856bb22d967aee2f0df275"
+    },
+    {
+      "artifact": "identityPostFreezeDiagnostics",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/post-freeze-diagnostics.json",
+      "sha256": "12ac50df3f37fa8e685659898a3262821e826fd6afd0c3698641da03885eba72"
+    },
+    {
+      "artifact": "hierarchyManifest",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/manifest.json",
+      "sha256": "3b909030f612fe76f6fd9aeb1bdc6319e58d8a467a9e2b3b990671965a4b5940"
+    },
+    {
+      "artifact": "nodeInputManifest",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/node-input-manifest.json",
+      "sha256": "3d54ef4b28b72ebddaf865505baf6e5400fb71cbec85a71214f0c3e9ed86e7aa"
+    },
+    {
+      "artifact": "parentDecisions",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/parent-decisions.json",
+      "sha256": "c3db779f7d8a7e3dfeb952735b97ad3d08e936712f53fcabb133cc2bc129ea4c"
+    },
+    {
+      "artifact": "parentEdges",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/parent-edges.json",
+      "sha256": "28364ef4392c6311a78a3b91f766250817111adeb96b768d4c3d6dc9a714137c"
+    },
+    {
+      "artifact": "ambiguities",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/ambiguities.json",
+      "sha256": "7daa7a32887c29a3144bb204d66bc857b199c5f7d0d267a7b4cdf555f2230bd5"
+    },
+    {
+      "artifact": "globalConsistencyAudit",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/global-consistency-audit.json",
+      "sha256": "67ec08cad3745492a8baa7799eeac1f7a38cc9f6ce70c523ac634f315f067afd"
+    },
+    {
+      "artifact": "hierarchyValidation",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/validation.json",
+      "sha256": "2e2c9e8e8bead005f4208ef72f0873144c485c0ed835433822d1a6cfb46163cc"
+    },
+    {
+      "artifact": "derivedLevels",
+      "path": "artifacts/authority-audit/canonical-hierarchy-v1/DOC-0252/derived-levels.json",
+      "sha256": "8e21b654bd591da1fdc079e9213e557f516a1343cacb8d1f5e342ee33808d5b5"
+    }
+  ],
+  "invariants": {
+    "occurrenceAssignments": 40,
+    "semanticNodes": 39,
+    "parentEdges": 39,
+    "allNodesReachableFromRoot": true,
+    "noCycles": true,
+    "noMultipleParents": true,
+    "noDanglingRefs": true,
+    "noDuplicateParentEdges": true,
+    "identityMappingUnchanged": true,
+    "occurrenceMappingUnchanged": true,
+    "treeMappingUnchanged": true,
+    "regeneratedDerivedLevelsEqualFrozenArtifact": true,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "oldSemanticTotalUsed": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "occurrenceMutation": false,
+    "identityMutation": false,
+    "parentMutation": false,
+    "GoldMutationOutsideFreezeLane": false
+  }
+}

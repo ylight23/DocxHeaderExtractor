@@ -1,0 +1,66 @@
+{
+  "artifactKind": "A99_USER_REVIEWED_CANONICAL_HIERARCHY_AUTHORITY_FREEZE_VALIDATION",
+  "schemaVersion": "a99-canonical-authority-freeze-v1-doc0252",
+  "documentId": "DOC-0252",
+  "status": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+  "checks": {
+    "sourceShaMatches": true,
+    "canonicalOccurrences": 40,
+    "occurrenceAssignments": 40,
+    "semanticNodes": 39,
+    "parentEdges": 39,
+    "primaryCount": 39,
+    "repeatCount": 0,
+    "continuationCount": 1,
+    "multiOccurrenceSemanticNodes": 1,
+    "rootChildren": 8,
+    "maxDepth": 3,
+    "continuationNode": "N032",
+    "continuationParent": "N027",
+    "noCycles": true,
+    "noMultipleParents": true,
+    "noDanglingRefs": true,
+    "noUnreachableNodes": true,
+    "noUnknownOccurrenceRefs": true,
+    "noUnknownSemanticNodeRefs": true,
+    "identityMutation": false,
+    "occurrenceMutation": false,
+    "parentMutation": false,
+    "derivedLevelsReproduceExactly": true,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "oldSemanticTotalUsed": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "GoldMutationOutsideFreezeLane": false
+  },
+  "hashCount": 22,
+  "commitLineage": [
+    {
+      "commit": "4ce5cca",
+      "role": "canonical exhaustive occurrence authority"
+    },
+    {
+      "commit": "1b49f60",
+      "role": "canonical identity proposal"
+    },
+    {
+      "commit": "53bda12",
+      "role": "identity authority freeze"
+    },
+    {
+      "commit": "b4f227e",
+      "role": "identity lineage finalization"
+    },
+    {
+      "commit": "63a6102",
+      "role": "canonical hierarchy proposal"
+    },
+    {
+      "commit": "THIS_FREEZE_COMMIT",
+      "role": "user-approved canonical hierarchy authority freeze"
+    }
+  ],
+  "validator": "PASS"
+}
