@@ -21,7 +21,7 @@ The continuation occurrence belongs to the same semantic node and does not creat
 - Final promotion: explicit user approval
 - Source SHA-256: 4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77
 - Hashes recorded: 12
-- Commit lineage: 4ce5cca → 1b49f60 → THIS_FREEZE_COMMIT
+- Commit lineage: 4ce5cca → 1b49f60 → 53bda12
 
 The proposal remains identified as source-backed; it is not rewritten as originally human-authored.
 
