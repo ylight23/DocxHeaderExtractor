@@ -1,0 +1,49 @@
+{
+  "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+  "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+  "documentId": "DOC-0243",
+  "blockedPhase": "OCCURRENCE",
+  "reasonCode": "CANONICAL_OCCURRENCE_UNIVERSE_NOT_AUTHORIZED",
+  "sourceCandidatesChecked": [
+    {
+      "path": "todo10_8/heading_corpus_95_word/04_giao_trinh/063_Advanced_Linear_Algebra.docx",
+      "exists": true,
+      "expectedSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+      "role": "BASELINE_SOURCE"
+    }
+  ],
+  "evidence": {
+    "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0243.json",
+    "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+    "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+    "heuristicCandidateCount": 651,
+    "strongStructuralCandidateCount": 41,
+    "conversionLineage": {
+      "conversionStatus": "converted_pdf_text_layout",
+      "conversionSource": "04_giao_trinh/063_Advanced_Linear_Algebra.pdf",
+      "conversionSourceSha256": "063078807adcaab114c0e521d2e937231f7537ee90b61e37eadb7f1e4e5d56ac",
+      "conversionOutputSha256": "6435398f6870ec8f6361fbe87c5e9251f2fdef80faa83722b4069a4c4d91066f"
+    }
+  },
+  "whatWasProven": [
+    "The current source path matches the baseline source SHA.",
+    "The old 102-row proposal is a valid historical-subset proposal only."
+  ],
+  "whatWasNotProven": [
+    "No canonical exhaustive occurrence authority exists for this source.",
+    "Existing strict/historical candidate outputs are not canonical authority.",
+    "The occurrence universe is canonical exhaustive for current source."
+  ],
+  "nextPossibleRecoveryAction": [
+    "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+    "Review all current-source heading occurrences before rebuilding identity or hierarchy."
+  ],
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}

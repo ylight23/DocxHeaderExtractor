@@ -1,0 +1,47 @@
+{
+  "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+  "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+  "documentId": "DOC-0219",
+  "blockedPhase": "OCCURRENCE",
+  "reasonCode": "SOURCE_ONLY_EXHAUSTIVE_REVIEW_PENDING",
+  "sourceCandidatesChecked": [
+    {
+      "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/039_WB_EPC_Turnkey_SingleStage_2025.docx",
+      "exists": true,
+      "expectedSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+      "role": "BASELINE_SOURCE"
+    }
+  ],
+  "evidence": {
+    "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0219.json",
+    "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+    "sourceSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+    "heuristicCandidateCount": 284,
+    "strongStructuralCandidateCount": 60,
+    "conversionLineage": {
+      "conversionStatus": "copied_existing_docx",
+      "conversionSource": "02_hop_dong_mua_sam/039_WB_EPC_Turnkey_SingleStage_2025.docx",
+      "conversionSourceSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+      "conversionOutputSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221"
+    }
+  },
+  "whatWasProven": [
+    "The current source path matches the baseline source SHA."
+  ],
+  "whatWasNotProven": [
+    "No canonical exhaustive occurrence authority exists for this source.",
+    "Existing strict/historical candidate outputs are not canonical authority."
+  ],
+  "nextPossibleRecoveryAction": [
+    "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+    "Use the structural-only source scan as evidence packet input, then perform complete source review."
+  ],
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}

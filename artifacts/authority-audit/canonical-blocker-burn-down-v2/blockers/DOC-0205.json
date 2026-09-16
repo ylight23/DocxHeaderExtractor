@@ -1,0 +1,44 @@
+{
+  "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+  "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+  "documentId": "DOC-0205",
+  "blockedPhase": "OCCURRENCE",
+  "reasonCode": "CANONICAL_SOURCE_RECOVERED_OCCURRENCE_REVIEW_PENDING",
+  "sourceCandidatesChecked": [
+    {
+      "path": "todo10_8/heading_corpus_100/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.doc",
+      "exists": true,
+      "expectedSha256": "128e10058b6648a316c864c49c4a4015098b6b4dad07c4ea95996a50bf5b5004",
+      "role": "RECOVERED_ORIGINAL_SOURCE"
+    }
+  ],
+  "evidence": {
+    "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0205.json",
+    "sourceStatus": "CANONICAL_SOURCE_RECOVERED",
+    "sourceSha256": "128e10058b6648a316c864c49c4a4015098b6b4dad07c4ea95996a50bf5b5004",
+    "heuristicCandidateCount": 97,
+    "strongStructuralCandidateCount": 0,
+    "conversionLineage": {
+      "recoveryReason": "CONVERSION_LOG_SOURCE_TO_CURRENT_DOCX"
+    }
+  },
+  "whatWasProven": [
+    "A source representation with an exact recorded SHA was recovered."
+  ],
+  "whatWasNotProven": [
+    "Every candidate has not yet been semantically reviewed as a true heading occurrence.",
+    "Identity membership and semantic-node hierarchy are not frozen."
+  ],
+  "nextPossibleRecoveryAction": [
+    "Perform source-only exhaustive occurrence review on the recovered source.",
+    "Do not reuse the placeholder-DOCX 71-row proposal; review the recovered .doc directly."
+  ],
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}

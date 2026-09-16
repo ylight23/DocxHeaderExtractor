@@ -1,0 +1,47 @@
+{
+  "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+  "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+  "documentId": "DOC-0200",
+  "blockedPhase": "OCCURRENCE",
+  "reasonCode": "SOURCE_ONLY_EXHAUSTIVE_REVIEW_PENDING",
+  "sourceCandidatesChecked": [
+    {
+      "path": "todo10_8/generated-docx/01_phap_quy/020_TT_133-2016_Che_do_ke_toan_SME.docx",
+      "exists": true,
+      "expectedSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835",
+      "role": "BASELINE_SOURCE"
+    }
+  ],
+  "evidence": {
+    "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0200.json",
+    "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+    "sourceSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835",
+    "heuristicCandidateCount": 390,
+    "strongStructuralCandidateCount": 20,
+    "conversionLineage": {
+      "conversionStatus": "converted_pdf_text_layout",
+      "conversionSource": "01_phap_quy/020_TT_133-2016_Che_do_ke_toan_SME.pdf",
+      "conversionSourceSha256": "a5ffc1ae33f1db83f5934c950b4a1daa22ed182be44560ea9bc8882fb4fb4bda",
+      "conversionOutputSha256": "d622a08f78343d4749815b02319b77c0d90718109552645738bf05eacca42ff6"
+    }
+  },
+  "whatWasProven": [
+    "The current source path matches the baseline source SHA."
+  ],
+  "whatWasNotProven": [
+    "No canonical exhaustive occurrence authority exists for this source.",
+    "Existing strict/historical candidate outputs are not canonical authority."
+  ],
+  "nextPossibleRecoveryAction": [
+    "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+    "Use the structural-only source scan as evidence packet input, then perform complete source review."
+  ],
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}

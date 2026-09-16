@@ -1,0 +1,521 @@
+[
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0185",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "SOURCE_ONLY_EXHAUSTIVE_REVIEW_PENDING",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/generated-docx/01_phap_quy/005_Luat_Dau_thau_22-2023-QH15_EN.docx",
+        "exists": true,
+        "expectedSha256": "f842861bb7966cd94c8ce12f2064709936c064b7fa5825d133bd77f6ffb5f895",
+        "role": "BASELINE_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0185.json",
+      "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+      "sourceSha256": "f842861bb7966cd94c8ce12f2064709936c064b7fa5825d133bd77f6ffb5f895",
+      "heuristicCandidateCount": 164,
+      "strongStructuralCandidateCount": 0,
+      "conversionLineage": {
+        "conversionStatus": "converted_pdf_text_layout",
+        "conversionSource": "01_phap_quy/005_Luat_Dau_thau_22-2023-QH15_EN.pdf",
+        "conversionSourceSha256": "7639a1046fe094a03103b8974e95112f84709533106e9b80cbcffd0fdec0b945",
+        "conversionOutputSha256": "018430088775cb635b7c23413d59dd2e39d0dc79f0f101be437b85cfb828a289"
+      }
+    },
+    "whatWasProven": [
+      "The current source path matches the baseline source SHA."
+    ],
+    "whatWasNotProven": [
+      "No canonical exhaustive occurrence authority exists for this source.",
+      "Existing strict/historical candidate outputs are not canonical authority."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+      "Use the structural-only source scan as evidence packet input, then perform complete source review."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  },
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0200",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "SOURCE_ONLY_EXHAUSTIVE_REVIEW_PENDING",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/generated-docx/01_phap_quy/020_TT_133-2016_Che_do_ke_toan_SME.docx",
+        "exists": true,
+        "expectedSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835",
+        "role": "BASELINE_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0200.json",
+      "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+      "sourceSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835",
+      "heuristicCandidateCount": 390,
+      "strongStructuralCandidateCount": 20,
+      "conversionLineage": {
+        "conversionStatus": "converted_pdf_text_layout",
+        "conversionSource": "01_phap_quy/020_TT_133-2016_Che_do_ke_toan_SME.pdf",
+        "conversionSourceSha256": "a5ffc1ae33f1db83f5934c950b4a1daa22ed182be44560ea9bc8882fb4fb4bda",
+        "conversionOutputSha256": "d622a08f78343d4749815b02319b77c0d90718109552645738bf05eacca42ff6"
+      }
+    },
+    "whatWasProven": [
+      "The current source path matches the baseline source SHA."
+    ],
+    "whatWasNotProven": [
+      "No canonical exhaustive occurrence authority exists for this source.",
+      "Existing strict/historical candidate outputs are not canonical authority."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+      "Use the structural-only source scan as evidence packet input, then perform complete source review."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  },
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0201",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "SOURCE_ONLY_EXHAUSTIVE_REVIEW_PENDING",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/generated-docx/01_phap_quy/021_TT_78-2021_Hoa_don_dien_tu.docx",
+        "exists": true,
+        "expectedSha256": "cb6c4e0878a899688fc1054b268fed1a8e6cb45c36b350d36c7448efecd8964d",
+        "role": "BASELINE_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0201.json",
+      "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+      "sourceSha256": "cb6c4e0878a899688fc1054b268fed1a8e6cb45c36b350d36c7448efecd8964d",
+      "heuristicCandidateCount": 31,
+      "strongStructuralCandidateCount": 0,
+      "conversionLineage": {
+        "conversionStatus": "converted_pdf_text_layout",
+        "conversionSource": "01_phap_quy/021_TT_78-2021_Hoa_don_dien_tu.pdf",
+        "conversionSourceSha256": "1447272076823c6450966e3f2119f03f5441b9a787763139004a7acb070a7c8c",
+        "conversionOutputSha256": "da2c1041caf3cb1c9d5b9996924662689307011f08d7cf615eef91aa319a156c"
+      }
+    },
+    "whatWasProven": [
+      "The current source path matches the baseline source SHA."
+    ],
+    "whatWasNotProven": [
+      "No canonical exhaustive occurrence authority exists for this source.",
+      "Existing strict/historical candidate outputs are not canonical authority."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+      "Use the structural-only source scan as evidence packet input, then perform complete source review."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  },
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0219",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "SOURCE_ONLY_EXHAUSTIVE_REVIEW_PENDING",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/039_WB_EPC_Turnkey_SingleStage_2025.docx",
+        "exists": true,
+        "expectedSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+        "role": "BASELINE_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0219.json",
+      "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+      "sourceSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+      "heuristicCandidateCount": 284,
+      "strongStructuralCandidateCount": 60,
+      "conversionLineage": {
+        "conversionStatus": "copied_existing_docx",
+        "conversionSource": "02_hop_dong_mua_sam/039_WB_EPC_Turnkey_SingleStage_2025.docx",
+        "conversionSourceSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+        "conversionOutputSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221"
+      }
+    },
+    "whatWasProven": [
+      "The current source path matches the baseline source SHA."
+    ],
+    "whatWasNotProven": [
+      "No canonical exhaustive occurrence authority exists for this source.",
+      "Existing strict/historical candidate outputs are not canonical authority."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+      "Use the structural-only source scan as evidence packet input, then perform complete source review."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  },
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0264",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "CANONICAL_SOURCE_RECOVERED_OCCURRENCE_REVIEW_PENDING",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.doc",
+        "exists": true,
+        "expectedSha256": "5fc30d8bb1a753e673243a4b08d647b116ddab81d23a697f5b1057e84389d318",
+        "role": "RECOVERED_ORIGINAL_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0264.json",
+      "sourceStatus": "CANONICAL_SOURCE_RECOVERED",
+      "sourceSha256": "5fc30d8bb1a753e673243a4b08d647b116ddab81d23a697f5b1057e84389d318",
+      "heuristicCandidateCount": 205,
+      "strongStructuralCandidateCount": 0,
+      "conversionLineage": {
+        "recoveryReason": "CONVERSION_LOG_SOURCE_TO_CURRENT_DOCX"
+      }
+    },
+    "whatWasProven": [
+      "A source representation with an exact recorded SHA was recovered."
+    ],
+    "whatWasNotProven": [
+      "Every candidate has not yet been semantically reviewed as a true heading occurrence.",
+      "Identity membership and semantic-node hierarchy are not frozen."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review on the recovered source.",
+      "Do not treat the one-paragraph DOCX placeholder as a heading universe; review the recovered .doc directly."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  },
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0265",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "SOURCE_ONLY_EXHAUSTIVE_REVIEW_PENDING",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/generated-docx/06_dich_song_ngu/085_Luat_Nha_o_2023_EN.docx",
+        "exists": true,
+        "expectedSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6",
+        "role": "BASELINE_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0265.json",
+      "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+      "sourceSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6",
+      "heuristicCandidateCount": 312,
+      "strongStructuralCandidateCount": 0,
+      "conversionLineage": {
+        "conversionStatus": "converted_pdf_text_layout",
+        "conversionSource": "06_dich_song_ngu/085_Luat_Nha_o_2023_EN.pdf",
+        "conversionSourceSha256": "61762a372a48bc7474a1abee4850a1ae1ae49cb56cfb5dd0e034411892b8a30b",
+        "conversionOutputSha256": "cf4866e47f028c68f17855df8640681bc12477fa1839aaa407f84d3731b1b8ce"
+      }
+    },
+    "whatWasProven": [
+      "The current source path matches the baseline source SHA."
+    ],
+    "whatWasNotProven": [
+      "No canonical exhaustive occurrence authority exists for this source.",
+      "Existing strict/historical candidate outputs are not canonical authority."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+      "Use the structural-only source scan as evidence packet input, then perform complete source review."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  },
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0243",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "CANONICAL_OCCURRENCE_UNIVERSE_NOT_AUTHORIZED",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/heading_corpus_95_word/04_giao_trinh/063_Advanced_Linear_Algebra.docx",
+        "exists": true,
+        "expectedSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+        "role": "BASELINE_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0243.json",
+      "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+      "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+      "heuristicCandidateCount": 651,
+      "strongStructuralCandidateCount": 41,
+      "conversionLineage": {
+        "conversionStatus": "converted_pdf_text_layout",
+        "conversionSource": "04_giao_trinh/063_Advanced_Linear_Algebra.pdf",
+        "conversionSourceSha256": "063078807adcaab114c0e521d2e937231f7537ee90b61e37eadb7f1e4e5d56ac",
+        "conversionOutputSha256": "6435398f6870ec8f6361fbe87c5e9251f2fdef80faa83722b4069a4c4d91066f"
+      }
+    },
+    "whatWasProven": [
+      "The current source path matches the baseline source SHA.",
+      "The old 102-row proposal is a valid historical-subset proposal only."
+    ],
+    "whatWasNotProven": [
+      "No canonical exhaustive occurrence authority exists for this source.",
+      "Existing strict/historical candidate outputs are not canonical authority.",
+      "The occurrence universe is canonical exhaustive for current source."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+      "Review all current-source heading occurrences before rebuilding identity or hierarchy."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  },
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0116",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "SOURCE_ONLY_RESTART_REQUIRED_AFTER_INVALID_PROPOSAL",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+        "exists": true,
+        "expectedSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+        "role": "BASELINE_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0116.json",
+      "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+      "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "heuristicCandidateCount": 201,
+      "strongStructuralCandidateCount": 71,
+      "conversionLineage": {
+        "conversionStatus": "copied_existing_docx",
+        "conversionSource": "02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+        "conversionSourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+        "conversionOutputSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da"
+      }
+    },
+    "whatWasProven": [
+      "The current source path matches the baseline source SHA.",
+      "The prior source-backed proposal exists and is retained as invalid/ambiguous history."
+    ],
+    "whatWasNotProven": [
+      "No canonical exhaustive occurrence authority exists for this source.",
+      "Existing strict/historical candidate outputs are not canonical authority.",
+      "A new canonical exhaustive occurrence authority was not materialized."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+      "Restart source-only occurrence review; do not repair the invalid parent topology."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  },
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0122",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "SOURCE_ONLY_RESTART_REQUIRED_AFTER_INVALID_PROPOSAL",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/037_WB_Plant_TwoStage_2025.docx",
+        "exists": true,
+        "expectedSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+        "role": "BASELINE_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0122.json",
+      "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+      "sourceSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+      "heuristicCandidateCount": 349,
+      "strongStructuralCandidateCount": 67,
+      "conversionLineage": {
+        "conversionStatus": "copied_existing_docx",
+        "conversionSource": "02_hop_dong_mua_sam/037_WB_Plant_TwoStage_2025.docx",
+        "conversionSourceSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+        "conversionOutputSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab"
+      }
+    },
+    "whatWasProven": [
+      "The current source path matches the baseline source SHA.",
+      "The prior source-backed proposal exists and is retained as invalid/ambiguous history."
+    ],
+    "whatWasNotProven": [
+      "No canonical exhaustive occurrence authority exists for this source.",
+      "Existing strict/historical candidate outputs are not canonical authority.",
+      "A new canonical exhaustive occurrence authority was not materialized."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+      "Restart source-only occurrence review; do not repair the invalid parent topology."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  },
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0216",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "SOURCE_ONLY_RESTART_REQUIRED_AFTER_INVALID_PROPOSAL",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/036_WB_Plant_SingleStage_2025.docx",
+        "exists": true,
+        "expectedSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+        "role": "BASELINE_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0216.json",
+      "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+      "sourceSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+      "heuristicCandidateCount": 325,
+      "strongStructuralCandidateCount": 52,
+      "conversionLineage": {
+        "conversionStatus": "copied_existing_docx",
+        "conversionSource": "02_hop_dong_mua_sam/036_WB_Plant_SingleStage_2025.docx",
+        "conversionSourceSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+        "conversionOutputSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6"
+      }
+    },
+    "whatWasProven": [
+      "The current source path matches the baseline source SHA.",
+      "The prior source-backed proposal exists and is retained as invalid/ambiguous history."
+    ],
+    "whatWasNotProven": [
+      "No canonical exhaustive occurrence authority exists for this source.",
+      "Existing strict/historical candidate outputs are not canonical authority.",
+      "A new canonical exhaustive occurrence authority was not materialized."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+      "Restart source-only occurrence review; do not repair the invalid parent topology."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  },
+  {
+    "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+    "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+    "documentId": "DOC-0205",
+    "blockedPhase": "OCCURRENCE",
+    "reasonCode": "CANONICAL_SOURCE_RECOVERED_OCCURRENCE_REVIEW_PENDING",
+    "sourceCandidatesChecked": [
+      {
+        "path": "todo10_8/heading_corpus_100/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.doc",
+        "exists": true,
+        "expectedSha256": "128e10058b6648a316c864c49c4a4015098b6b4dad07c4ea95996a50bf5b5004",
+        "role": "RECOVERED_ORIGINAL_SOURCE"
+      }
+    ],
+    "evidence": {
+      "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0205.json",
+      "sourceStatus": "CANONICAL_SOURCE_RECOVERED",
+      "sourceSha256": "128e10058b6648a316c864c49c4a4015098b6b4dad07c4ea95996a50bf5b5004",
+      "heuristicCandidateCount": 97,
+      "strongStructuralCandidateCount": 0,
+      "conversionLineage": {
+        "recoveryReason": "CONVERSION_LOG_SOURCE_TO_CURRENT_DOCX"
+      }
+    },
+    "whatWasProven": [
+      "A source representation with an exact recorded SHA was recovered."
+    ],
+    "whatWasNotProven": [
+      "Every candidate has not yet been semantically reviewed as a true heading occurrence.",
+      "Identity membership and semantic-node hierarchy are not frozen."
+    ],
+    "nextPossibleRecoveryAction": [
+      "Perform source-only exhaustive occurrence review on the recovered source.",
+      "Do not reuse the placeholder-DOCX 71-row proposal; review the recovered .doc directly."
+    ],
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "canonicalGoldMutation": false,
+    "newUserReviewedPromotion": false
+  }
+]

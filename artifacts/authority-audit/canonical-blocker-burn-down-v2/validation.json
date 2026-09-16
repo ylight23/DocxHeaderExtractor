@@ -1,0 +1,17 @@
+{
+  "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_V2_VALIDATION",
+  "schemaVersion": "a99-canonical-blocker-burn-down-v2-validation",
+  "status": "BATCH_V2_READY_FOR_USER_REVIEW",
+  "attemptedDocumentCount": 11,
+  "allOriginalBlockersAttempted": true,
+  "everyDocumentHasPreciseReason": true,
+  "frozenAuthoritiesMutated": false,
+  "newUserReviewedPromotion": false,
+  "canonicalGoldMutation": false,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0
+}

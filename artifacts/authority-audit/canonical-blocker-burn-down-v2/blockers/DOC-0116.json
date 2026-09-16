@@ -1,0 +1,49 @@
+{
+  "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+  "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+  "documentId": "DOC-0116",
+  "blockedPhase": "OCCURRENCE",
+  "reasonCode": "SOURCE_ONLY_RESTART_REQUIRED_AFTER_INVALID_PROPOSAL",
+  "sourceCandidatesChecked": [
+    {
+      "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+      "exists": true,
+      "expectedSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "role": "BASELINE_SOURCE"
+    }
+  ],
+  "evidence": {
+    "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0116.json",
+    "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+    "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+    "heuristicCandidateCount": 201,
+    "strongStructuralCandidateCount": 71,
+    "conversionLineage": {
+      "conversionStatus": "copied_existing_docx",
+      "conversionSource": "02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+      "conversionSourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "conversionOutputSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da"
+    }
+  },
+  "whatWasProven": [
+    "The current source path matches the baseline source SHA.",
+    "The prior source-backed proposal exists and is retained as invalid/ambiguous history."
+  ],
+  "whatWasNotProven": [
+    "No canonical exhaustive occurrence authority exists for this source.",
+    "Existing strict/historical candidate outputs are not canonical authority.",
+    "A new canonical exhaustive occurrence authority was not materialized."
+  ],
+  "nextPossibleRecoveryAction": [
+    "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+    "Restart source-only occurrence review; do not repair the invalid parent topology."
+  ],
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}

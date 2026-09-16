@@ -1,0 +1,47 @@
+{
+  "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+  "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+  "documentId": "DOC-0265",
+  "blockedPhase": "OCCURRENCE",
+  "reasonCode": "SOURCE_ONLY_EXHAUSTIVE_REVIEW_PENDING",
+  "sourceCandidatesChecked": [
+    {
+      "path": "todo10_8/generated-docx/06_dich_song_ngu/085_Luat_Nha_o_2023_EN.docx",
+      "exists": true,
+      "expectedSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6",
+      "role": "BASELINE_SOURCE"
+    }
+  ],
+  "evidence": {
+    "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0265.json",
+    "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+    "sourceSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6",
+    "heuristicCandidateCount": 312,
+    "strongStructuralCandidateCount": 0,
+    "conversionLineage": {
+      "conversionStatus": "converted_pdf_text_layout",
+      "conversionSource": "06_dich_song_ngu/085_Luat_Nha_o_2023_EN.pdf",
+      "conversionSourceSha256": "61762a372a48bc7474a1abee4850a1ae1ae49cb56cfb5dd0e034411892b8a30b",
+      "conversionOutputSha256": "cf4866e47f028c68f17855df8640681bc12477fa1839aaa407f84d3731b1b8ce"
+    }
+  },
+  "whatWasProven": [
+    "The current source path matches the baseline source SHA."
+  ],
+  "whatWasNotProven": [
+    "No canonical exhaustive occurrence authority exists for this source.",
+    "Existing strict/historical candidate outputs are not canonical authority."
+  ],
+  "nextPossibleRecoveryAction": [
+    "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+    "Use the structural-only source scan as evidence packet input, then perform complete source review."
+  ],
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}

@@ -1,0 +1,47 @@
+{
+  "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_BLOCKER",
+  "schemaVersion": "a99-canonical-blocker-burn-down-v2-blocker",
+  "documentId": "DOC-0185",
+  "blockedPhase": "OCCURRENCE",
+  "reasonCode": "SOURCE_ONLY_EXHAUSTIVE_REVIEW_PENDING",
+  "sourceCandidatesChecked": [
+    {
+      "path": "todo10_8/generated-docx/01_phap_quy/005_Luat_Dau_thau_22-2023-QH15_EN.docx",
+      "exists": true,
+      "expectedSha256": "f842861bb7966cd94c8ce12f2064709936c064b7fa5825d133bd77f6ffb5f895",
+      "role": "BASELINE_SOURCE"
+    }
+  ],
+  "evidence": {
+    "sourceScan": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0185.json",
+    "sourceStatus": "CURRENT_SOURCE_EXACT_HASH",
+    "sourceSha256": "f842861bb7966cd94c8ce12f2064709936c064b7fa5825d133bd77f6ffb5f895",
+    "heuristicCandidateCount": 164,
+    "strongStructuralCandidateCount": 0,
+    "conversionLineage": {
+      "conversionStatus": "converted_pdf_text_layout",
+      "conversionSource": "01_phap_quy/005_Luat_Dau_thau_22-2023-QH15_EN.pdf",
+      "conversionSourceSha256": "7639a1046fe094a03103b8974e95112f84709533106e9b80cbcffd0fdec0b945",
+      "conversionOutputSha256": "018430088775cb635b7c23413d59dd2e39d0dc79f0f101be437b85cfb828a289"
+    }
+  },
+  "whatWasProven": [
+    "The current source path matches the baseline source SHA."
+  ],
+  "whatWasNotProven": [
+    "No canonical exhaustive occurrence authority exists for this source.",
+    "Existing strict/historical candidate outputs are not canonical authority."
+  ],
+  "nextPossibleRecoveryAction": [
+    "Perform source-only exhaustive occurrence review without historical denominator assumptions.",
+    "Use the structural-only source scan as evidence packet input, then perform complete source review."
+  ],
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}

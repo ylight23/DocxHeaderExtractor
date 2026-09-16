@@ -1,0 +1,118 @@
+{
+  "artifactKind": "A99_CANONICAL_BLOCKER_BURN_DOWN_V2_MANIFEST",
+  "schemaVersion": "a99-canonical-blocker-burn-down-v2-manifest",
+  "status": "BATCH_V2_READY_FOR_USER_REVIEW",
+  "baselineCommit": "fc07f98",
+  "generatedArtifacts": [
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers.json",
+      "sha256": "9ac8909c72245042f48f613150b79821eb1aa4c5f910d60a485bba6cca7fb886"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0116.json",
+      "sha256": "d33761e410284e5ae63718c8c998cf06d6705e7576b228e4a5efa537194a7a84"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0122.json",
+      "sha256": "f3f31fe4b69125e4da7d4ffa036025d2e4ad57b68c551f1c396c018e6c93de0d"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0185.json",
+      "sha256": "df5e0fa12b3ab1053591ab23aab98590c137c59ed56b3d4c9fd2f151de37810e"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0200.json",
+      "sha256": "677b856751c4b0e4185601686d153d797f21a7798387cee49718e036ad08e906"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0201.json",
+      "sha256": "abbdc5ee6913ca761f7ecad0c136820969c02d07a135c16565377bf172d2b016"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0205.json",
+      "sha256": "659bda509ab4fca2ee338694e635bfcde2881f3ef5dc0fb8f23abfd3ffe98824"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0216.json",
+      "sha256": "eb19d920646d93758633e89da4c99049b661eb812fb84108ddb4827098868b71"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0219.json",
+      "sha256": "32c95b2f7d5686bec0713bdef01fe4be60632209da49954df1e0b3295195f8ab"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0243.json",
+      "sha256": "f45b395daeddb396dc9c631aaf850bcd0c17e49eb1d37264b616a62616661a02"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0264.json",
+      "sha256": "d719d825ef9511c4543bae11b71fd7b83cc279ef47f3adc6f8feff3802ec7c7c"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/blockers/DOC-0265.json",
+      "sha256": "506b5dabf353a4b4c5a4ee60f6300b78b95eac33db9520dbc51a3040d0af8192"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/report.md",
+      "sha256": "f22f2a2035c1d8e270c2e768aeb02b070845a3d403b9343b1e169d7aa228ae56"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0116.json",
+      "sha256": "54888582ac313b6dd129f96ab08f127e82fa31f78c60ad57ed8505bab84a4e0f"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0122.json",
+      "sha256": "faf0ac90dd706573ced2c6d234fb56d5e5ce2e562ee546d7e1cbd38ac4846359"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0185.json",
+      "sha256": "69b12d0759e95841dd9c984ac6f36d40ffa106e2172b356778d458798dc7fd46"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0200.json",
+      "sha256": "8968b5553624c31cafc557cf70402660f97ba73c234f23b45272be6b2cda23f2"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0201.json",
+      "sha256": "d8f19745e1494740275fc774174dd6b4ff741b76f4109983ba7e009d10d450ad"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0205.json",
+      "sha256": "e77af307e26855236ee7924b9994219641356c9b2f429f313cbdd7e09bac03db"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0216.json",
+      "sha256": "9617bbd325e83f06e3cb60aba772caf563304c73d35f75dfc5e043293800aa26"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0219.json",
+      "sha256": "3d2745407c4cb48e7f382a331bafb2049093d5fb5cde7bc95fdf6aa5d635cf75"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0243.json",
+      "sha256": "2b46826b7e86a9cf89df784f6ec338124bee5a9a05f2cec03dda8b0d71d62cf1"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0264.json",
+      "sha256": "6d11f345314c05d5b7bcd982627e200b10fc9e9d56b585738adf13f3e60c6879"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/source-scan/DOC-0265.json",
+      "sha256": "06298c83f4fd2dabdde05d88b12d03cb826b8552666f96fd6d917bc0b70f7b2a"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/summary.json",
+      "sha256": "63d6d4d2b0b46584d320667caab41e87e0f1f62a7092e4e8678f003e6a23f572"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-blocker-burn-down-v2/validation.json",
+      "sha256": "97d7ef25541f89c6936922bf10d2199533c0efb3ef8af341cbd7f9d9c1b4f0cd"
+    }
+  ],
+  "documentCount": 11,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "historicalLevelRead": false,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}

@@ -1,0 +1,33 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_V2_MANIFEST",
+  "schemaVersion": "a99-canonical-batch-v2-manifest",
+  "status": "BATCH_V2_READY_FOR_USER_REVIEW",
+  "baselineCommit": "fc07f98",
+  "burnDownCommit": "PENDING",
+  "generatedArtifacts": [
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v2/batch-review.md",
+      "sha256": "053d6ecaf942901f3f86140528552592efbd37e4590feb56a484d19fb1bbf726"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v2/batch-summary.json",
+      "sha256": "f5ecaad6422f877c0ebe48f800a35ceaa08526e44b1985f161ae54138a8ccea0"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v2/blockers.json",
+      "sha256": "9ac8909c72245042f48f613150b79821eb1aa4c5f910d60a485bba6cca7fb886"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v2/document-inventory.json",
+      "sha256": "1f18f88474e11f4a3bc298fe630b974c2b25bd7a6ca4772c329b9cc67d418451"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v2/validation.json",
+      "sha256": "47abc2f98209a85d0f9acda73dc1eab424df1083a78b6772e4d36a76090438f2"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}
